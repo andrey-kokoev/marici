@@ -793,9 +793,9 @@ and its physical constructor implementation.
   the row from 1/2 to 1; normalized one-port fractions collide. The remaining
   gate is a source-detector gain law or interference-calibrated instrument.
 - flavor-interaction-net-state.md: WP1043 constructs the Interaction Net for
-  the current integer-pole Flavor branch. After WP1096 integration the verified
-  contract has sixty constructed nodes, five open nodes, four rejection
-  rewrite rules, and fifty-eight hostile fixtures. Its terminal physical selector
+  the current integer-pole Flavor branch. After WP1186 integration the verified
+  contract has one hundred fifty constructed nodes, five open nodes, four rejection
+  rewrite rules, and one hundred forty-eight hostile fixtures. Its terminal physical selector
   remains open behind four slots: common integer substrate with preparation
   law, typed pole spectrum and mass clock, calibrated momentum and ratio law,
   and `physical16` gain or interference law.
@@ -1016,6 +1016,190 @@ and its physical constructor implementation.
 - flavor-normalization-packet-authority-audit-gate.md: WP1096 audits three
   Benincasa normalization packets and finds repair ports but no selector
   authority.
+- flavor-finite-scheme-port-gain-no-go.md: WP1097 shows that three faithful
+  finite-scheme ports are not six event weights or gain 3/2.
+- flavor-contact-counterterm-boundary-lift-no-go.md: WP1098 shows that contact
+  port shifts are disjoint from the seven-channel boundary lift.
+- flavor-integral-lattice-clock-orientation-no-go.md: WP1099 shows that a bare
+  integral lattice selects neither n nor sigma.
+- flavor-alternating-cubic-production-kernel-no-go.md: WP1100 shows that six
+  epsilon components are internal tensor entries, not production rows.
+- flavor-anomaly-denominator-clock-no-go.md: WP1101 shows that the denominator
+  four anomaly coset does not select the clock orbit.
+- flavor-bifundamental-pairing-production-kernel-no-go.md: WP1102 shows that
+  the rank-three A-B pairing is internal alignment, not production.
+- flavor-pairing-cyclic-ray-rho-no-go.md: WP1103 shows that det(I_3)/D remains
+  the tautological reciprocal, not rho.
+- flavor-pairing-trace-clock-no-go.md: WP1104 shows that pairing rank or trace
+  three does not select the mass-clock orbit.
+- flavor-history-pairing-gain-no-go.md: WP1105 shows that history isometry
+  times internal pairing has nine internal components, not gain 3/2.
+- flavor-minimal-source-packet-authority-bundle.md: WP1106 freezes the six
+  output authority bundle required from a successful source packet.
+- flavor-source-packet-embodiment-class-gate.md: WP1107 classifies admitted
+  packet classes and leaves only the fused UV boundary-defect class open.
+- flavor-existing-defect-fused-packet-no-go.md: WP1108 excludes the existing
+  interval-defect quotient from the fused six-output packet class.
+- flavor-fused-boundary-defect-field-fiber.md: WP1109 freezes the 23 fields a
+  new fused defect must add.
+- flavor-fused-defect-anomaly-analyticity-fiber.md: WP1110 freezes the exact
+  anomaly, analyticity, and production constraints on those fields.
+- flavor-local-gs-split-realizability-fiber.md: WP1111 reduces the local
+  Green-Schwarz split to an integer/orientation fiber.
+- flavor-endpoint-exchange-split-no-go.md: WP1112 shows endpoint reflection is
+  not a symmetry of the selected quartet packet.
+- flavor-wilson-orientation-split-clock-no-go.md: WP1113 shows Wilson/flux
+  orientation does not select split or clock sign.
+- flavor-extended-line-rho-no-go.md: WP1114 shows flat-line extension keeps the
+  reciprocal determinant ray or supplies no global section.
+- flavor-quotient-descent-production-no-go.md: WP1115 shows quotient descent
+  is permutation/projection, not a production kernel.
+- flavor-localized-brane-green-production-no-go.md: WP1116 shows a common brane
+  Green function is scalar/rank-one, not the production kernel.
+- flavor-brane-coupling-representation-fiber.md: WP1117 fixes branch row
+  orbits and shows event representation assignments remain missing.
+- flavor-physical16-event-representation-no-go.md: WP1118 shows event labels
+  are provenance labels, not source representations.
+- flavor-physical16-amplitude-algebra-gate.md: WP1119 derives the minimal
+  complete-mixing algebra and marks it unsourced.
+- flavor-complete-mixing-source-no-go.md: WP1120 applies DPC and rejects
+  current-source complete mixing.
+- flavor-irreversible-boundary-mixing-no-go.md: WP1121 applies DPC and rejects
+  current-source irreversible boundary mixing.
+- flavor-boundary-s-matrix-hadamard-gate.md: WP1122 constructs the exact
+  Fourier-Hadamard S-matrix algebra and rejects current \(C_6\) provenance.
+- flavor-unitary-s-matrix-hadamard-classification.md: WP1123 proves target-
+  compatible unitaries are six-state complex Hadamards modulo gauge.
+- flavor-hadamard-phase-matching-gate.md: WP1124 constructs the Kronecker
+  \(F_3\otimes F_2\) Hadamard and rejects current phase provenance.
+- flavor-anomaly-sector-phase-provenance-no-go.md: WP1125 rejects anomaly
+  integers as sourced phase characters or six-channel maps.
+- flavor-green-residue-event-basis-no-go.md: WP1126 rejects the rank-one
+  Green residue as a six-channel \(H_6\) event basis.
+- flavor-production-constructor-closure-audit.md: WP1127 closes tested
+  current-source constructors and specifies the required four-part interface.
+- flavor-event-production-packet-admission.md: WP1128 defines executable
+  admission tests for a future event-production packet.
+- flavor-event-production-packet-corpus-search.md: WP1129 finds no admissible
+  packet in the current corpus.
+- flavor-six-branch-preparation-law-gate.md: WP1130 retains exact branch
+  weights but rejects them as preparation dynamics.
+- flavor-parent-branching-preparation-no-go.md: WP1131 rejects representation
+  branching as a stochastic preparation operator.
+- flavor-dimension-trace-preparation-gate.md: WP1132 constructs the exact
+  dimension-trace preparation state without source authority.
+- flavor-uv-boundary-state-matching-no-go.md: WP1133 rejects current UV
+  boundary-state matching to that conditional ensemble.
+- flavor-preparation-constructor-closure-audit.md: WP1134 closes tested
+  current-source preparation constructors and specifies the required interface.
+- flavor-parent-projection-mass-clock-no-go.md: WP1135 rejects dimension-only
+  localized/spin-11 cell identification as a mass-clock projection.
+- flavor-common-twist-localization-clock-no-go.md: WP1136 rejects the common-
+  twist parent clock as localized clock descent.
+- flavor-radius-absolute-clock-no-go.md: WP1137 rejects radius stabilization as
+  absolute clock authority without unique flux/ratio and descent.
+- flavor-mass-clock-constructor-closure-audit.md: WP1138 closes tested
+  mass-clock constructors and records the compactification-clock blocker.
+- flavor-physical16-two-port-channel-no-go.md: WP1139 rejects conditional
+  momentum rows as physical16 channels.
+- flavor-vector-kk-gain-chain-uniqueness.md: WP1140 fixes the vector event-cell
+  reconstruction to \(g=1\) and rejects source-gain promotion.
+- flavor-gain-compatibility-no-go.md: WP1141 rejects a common scalar gain and
+  records the physical16 cascade blocker.
+- flavor-common-gain-reweighting-map-classification.md: WP1142 shows common gain
+  leaves a rank-two reweighting family.
+- flavor-local-rank-two-no-go.md: WP1143 rejects diagonal-plus-one local support
+  for rank-two maps.
+- flavor-minimal-support-reweighting-classification.md: WP1144 fixes minimal
+  support two and minimal local rank three.
+- flavor-rank-three-matching-gate.md: WP1145 identifies six algebraic perfect
+  matchings and rejects source selection.
+- flavor-matching-symmetry-orbits.md: WP1146 finds three equal-weight twin-swap
+  orbits, not a unique matching.
+- flavor-twin-exchange-no-go.md: WP1147 rejects unbroken exchange after quartet
+  localization.
+- flavor-quartet-quotient-gate.md: WP1148 accepts only an algebraic quotient,
+  leaving three matching classes.
+- flavor-quotient-anomaly-invariance.md: WP1149 shows anomaly data cannot
+  distinguish the classes.
+- flavor-smatrix-phase-matching-gate.md: WP1150 shows boundary Hadamard phase
+  data are class-independent.
+- flavor-fixed-q-smatrix-disjointness.md: WP1151 shows fixed-\(q\) S-matrix
+  moduli are disjoint from matching maps.
+- flavor-doubly-stochastic-support-gate.md: WP1152 rejects support-two doubly
+  stochastic maps.
+- flavor-support-three-witness.md: WP1153 constructs an exact support-three
+  doubly stochastic witness.
+- flavor-unistochastic-witness-obstruction.md: WP1154 rejects that witness as
+  unistochastic.
+- flavor-support-graph-search.md: WP1155 excludes support-three
+  unistochastic-compatible fixed-\(q\) graphs.
+- flavor-support-four-witness.md: WP1156 constructs a support-four doubly
+  stochastic witness.
+- flavor-support-four-graph-search.md: WP1157 shows all support-four regular
+  graphs avoid the single-overlap obstruction.
+- flavor-support-four-polytope-point.md: WP1158 gives an exact fixed-\(q\)
+  boundary point on a support-four carrier.
+- flavor-support-four-interior-point.md: WP1159 gives an exact interior
+  support-four fixed-\(q\) point.
+- flavor-phase-lift-obstruction.md: WP1160 rejects that point as unistochastic.
+- flavor-phase-compatible-constraint-census.md: WP1161 counts the exact
+  amplitude constraints for all support-four carriers.
+- flavor-split-minimal-amplitude-no-go.md: WP1162 excludes split minimal
+  carriers through fixed-\(q\) inconsistency.
+- flavor-connected-minimal-amplitude-no-go.md: WP1163 excludes connected
+  minimal interior points after antipodal reduction.
+- flavor-higher-constraint-amplitude-classification.md: WP1164 classifies
+  the remaining underdetermined amplitude systems.
+- flavor-three-c4-amplitude-no-go.md: WP1165 excludes all three-\(C_4\)
+  carriers by block-mass integrality.
+- flavor-c4c8-amplitude-no-go.md: WP1166 excludes all \(C_4+C_8\) interior
+  points, closing regular support four for phase compatibility.
+- flavor-boundary-unistochastic-audit.md: WP1167 rejects all six known
+  boundary or irregular candidates as unistochastic.
+- flavor-support-five-graph-search.md: WP1168 finds 720 linearly feasible
+  derangement carriers and one explicit zero-diagonal interior witness.
+- flavor-support-five-phase-obstruction.md: WP1169 rejects that witness as
+  unistochastic by row and column polygon obstructions.
+- flavor-support-five-unistochastic-candidate.md: WP1170 finds a numerical
+  real orthogonal fixed-\(q\) candidate.
+- flavor-exact-unistochastic-certificate.md: WP1171 certifies an exact nearby
+  solution by a Krawczyk interval proof.
+- flavor-production-realization-no-go.md: WP1172 separates the certified
+  modulus from sourced production authority.
+- flavor-phase-gauge-production-law.md: WP1173 constructs the phase-gauge
+  quotient but not a sourced `physical16` channel map.
+- flavor-physical16-channel-map-no-go.md: WP1174 proves that modulus and
+  output data do not identify the channel.
+- flavor-source-production-kernel-gate.md: WP1175 constructs the minimum-rank
+  conditional kernel but not its source selection.
+- flavor-uv-ensemble-matching-no-go.md: WP1176 shows sector matching does not
+  force microstate uniformity.
+- flavor-uv-boundary-density-no-go.md: WP1177 rejects the three-state dark
+  attractor as the UV boundary density.
+- flavor-portal-to-sector-dilation-gate.md: WP1178 shows a replacement channel
+  exists but erases portal information.
+- flavor-nontrivial-portal-dilation-gate.md: WP1179 constructs a nontrivial
+  conditional dilation that remains source-unselected.
+- flavor-source-dynamics-channel-selection-no-go.md: WP1180 shows stationary
+  source dynamics cannot select the channel.
+- flavor-transient-sector-interface-gate.md: WP1181 constructs a conditional
+  transient sector interface.
+- flavor-threshold-intertwiner-no-go.md: WP1182 shows the polarization does
+  not identify a threshold basis or scale.
+- flavor-threshold-basis-scale-no-go.md: WP1183 shows the conditional curve
+  retains an 88-dimensional fiber.
+- flavor-dimensionful-threshold-anchor-no-go.md: WP1184 shows RG
+  transmutation supplies only a conditional scale.
+- flavor-threshold-boundary-packet-contract.md: WP1185 derives the packet
+  contract and finds four missing fields.
+- flavor-threshold-boundary-authority-no-go.md: WP1186 finds zero
+  source-derived threshold boundary authorities.
+- flavor-interaction-net-state.md: the traversal conformance checklist now
+  requires Git inspection, checker replay, graph admission, changed-file
+  reporting, and closeout audit. The machine audit is
+  `checkers/flavor_dpc_conformance_audit.py` with result
+  `results/flavor_dpc_conformance_audit.json`.
 - `flavor-domain-detector-confusion-kernel.md`: WP99 factors the first detector
   kernel exactly. A CP-covariant three-outcome channel is faithful iff
   `(1-l-2e)(1-b-l) != 0`; its two singular surfaces erase orientation and

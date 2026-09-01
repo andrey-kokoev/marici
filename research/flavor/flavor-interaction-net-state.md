@@ -4,7 +4,7 @@
 
 This packet constructs the current Flavor Interaction Net for the integer-pole
 branch. It is an executable projection of the objects, ports, reductions, and
-hostiles from WP1036--WP1096. It is not a physical selector.
+hostiles from WP1036--WP1186. It is not a physical selector.
 
 Contract: `research/flavor/contracts/flavor-interaction-net-state.v1.json`
 
@@ -180,7 +180,116 @@ The constructed part is a negative and rigidifier chain.
   evaluation. WP1095 shows that a Wilson phase fixes its exponent only modulo
   one and cannot select \(n\) or \(\sigma\). WP1096 audits the admitted
   normalization packets: they identify normalized-dual-cycle, phase, and
-  integral-lattice repair ports but supply no selector authority.
+  integral-lattice repair ports but supply no selector authority. WP1097 shows
+  that three faithful finite-scheme ports are not six event weights or gain.
+  WP1098 shows that contact-port shifts are disjoint from the seven-channel
+  boundary lift and cannot select it. WP1099 shows that a bare integral lattice
+  constrains values to \(\mathbb Z\) but selects neither \(n\) nor \(\sigma\).
+  WP1100 shows that the six epsilon components are internal tensor entries, not
+  production rows. WP1101 shows that the denominator-four anomaly coset does
+  not select the denominator-six clock orbit. WP1102 shows that the rank-three
+  \(A\)-\(B\) pairing is internal alignment, not a production kernel. WP1103
+  shows that \(\det I_3/D\) remains the tautological reciprocal, not \(\rho\).
+  WP1104 shows that pairing rank or trace \(3\) does not select the clock orbit.
+  WP1105 shows that history isometry times internal pairing has nine components,
+  not six event rows or gain \(3/2\). WP1106 freezes the six-output authority
+  bundle required from any successful source packet. WP1107 classifies admitted
+  packet classes as insufficient and leaves only a fused UV boundary-defect
+  class open. WP1108 excludes the existing interval-defect quotient from that
+  positive class. WP1109 freezes the twenty-three fields a new defect must add.
+  WP1110 converts those fields into eleven exact anomaly, analyticity, and
+  production constraints. WP1111 reduces the local Green--Schwarz split to an
+  integer/orientation fiber. WP1112 shows endpoint reflection is not a symmetry
+  of the selected quartet and cannot select the split. WP1113 shows Wilson/flux
+  orientation does not couple to the split or clock sign. WP1114 shows flat-line
+  extension of \(1/D\) remains the same reciprocal ray or has no section.
+  WP1115 shows quotient descent is permutation/projection, not production gain.
+  WP1116 shows a common localized-brane Green function is scalar/rank one, not
+  the \(6\times6\) production kernel. WP1117 fixes five branch row orbits but
+  leaves all 36 coupling entries undetermined. WP1118 shows physical16 event
+  labels carry no source representation law, so singlet constraints remain
+  unevaluable. WP1119 derives the minimal complete-mixing algebra \(J_6/6\),
+  while rejecting it as unsourced dynamics. WP1120 applies DPC and rejects the
+  current-source complete-mixing conjecture: Markov uniformity requires an
+  unsourced \(x=0\) limit, and Krylov history is a three-slot isometry. WP1121
+  applies DPC to irreversible boundary mixing and finds zero dissipative rates
+  and zero physical-time maps. WP1122 constructs the exact Fourier-Hadamard
+  \(F_6\) S-matrix algebra, while rejecting current \(C_6\) and event-channel
+  provenance. WP1123 classifies every target-compatible unitary S-matrix as a
+  six-state complex Hadamard modulo row/column gauge. WP1124 constructs the
+  source-shaped \(F_3\otimes F_2\) Kronecker Hadamard, while rejecting current
+  \(C_3\times\mathbb Z_2\) provenance. WP1125 rejects anomaly integers as phase
+  observables or six-channel provenance. WP1126 rejects the rank-one Green
+  residue as a six-channel \(H_6\) event basis. WP1127 closes the tested
+  current-source constructor rivals and specifies the four-part production
+  interface required from a future source packet. WP1128 turns that interface
+  into an executable admission contract while admitting no actual packet.
+  WP1129 scans the current corpus and finds 63 mention candidates, one typed
+  admission contract, and zero admissible packets. WP1130 retains the exact
+  six-sector dimension distribution while rejecting it as preparation dynamics.
+  WP1131 rejects representation branching as a stochastic preparation operator.
+  WP1132 constructs the exact dimension-trace density operator while rejecting
+  it as a sourced boundary ensemble. WP1133 rejects matching the current UV
+  boundary action/anomaly data to a normalized 23-dimensional state. WP1134
+  closes tested preparation constructors and specifies the four-part state
+  interface required from a future packet. WP1135 rejects dimension-only
+  identification of the localized \(SU(6)\) and spin-11 cells as a mass-clock
+  projection. WP1136 rejects the common-twist parent clock as localized clock
+  descent. WP1137 rejects radius stabilization as absolute clock authority:
+  \(B/A=6n^2\) is necessary but nonunique and undescended. WP1138 closes the
+  tested mass-clock constructors and records `compactification_clock_packet`
+  as the typed blocker. WP1139 rejects the soft/vector momentum rows as
+  physical16 channel realization. WP1140 shows that vector-row carriage has a
+  unique conditional reconstruction \(g=1\), not target gain authority. WP1141
+  rejects identifying that gain with the reweighting gain \(3/2\). WP1142
+  shows the common-gain constraint leaves a rank-two map family. WP1143
+  rejects rank-two maps in the diagonal-plus-one local support class. WP1144
+  classifies minimal support two and minimal local rank three. WP1145 reduces
+  rank-three candidates to six perfect matchings, none source-selected. WP1146
+  reduces them only to three equal-weight twin-swap orbits. WP1147 rejects
+  unbroken twin exchange after quartet localization. WP1148 accepts only an
+  algebraic quartet-choice quotient, leaving three matching classes. WP1149
+  shows anomaly data are invariant across all three. WP1150 shows Hadamard
+  phase data are likewise class-independent. WP1151 proves fixed-\(q\)
+  S-matrix moduli are disjoint from the matching maps. WP1152 rejects all
+  support-two doubly stochastic fixed-\(q\) maps. WP1153 gives an exact
+  support-three algebraic witness, still without unistochastic lift. WP1154
+  rejects that witness through a one-column row-orthogonality obstruction.
+  WP1155 exhausts support-three graphs and excludes fixed-\(q\)
+  unistochastic-compatible support. WP1156 gives a support-four algebraic
+  witness that still fails the unitary support test. WP1157 shows every
+  support-four regular graph passes the single-overlap test. WP1158 gives an
+  exact fixed-\(q\) boundary point on a support-four carrier. WP1159 upgrades
+  it to an exact interior point with all carrier edges positive. WP1160
+  rejects its phase lift through unequal two-overlap amplitudes. WP1161
+  completes the support-four phase-constraint census. WP1162 rejects all
+  split minimal carriers through fixed-\(q\) inconsistency. WP1163 excludes
+  connected minimal interior points after antipodal reduction. WP1164
+  classifies the remaining higher-constraint systems as underdetermined.
+  WP1165 excludes all three-\(C_4\) carriers by block-mass integrality.
+  WP1166 excludes all \(C_4+C_8\) interior points, closing regular support
+  four for phase compatibility. WP1167 rejects all six known boundary or
+  irregular candidates as unistochastic. WP1168 finds 720 linearly feasible
+  derangement carriers and one explicit zero-diagonal interior witness.
+  WP1169 rejects that witness as unistochastic by polygon obstructions.
+  WP1170 finds a numerical real orthogonal fixed-\(q\) candidate. WP1171
+  certifies an exact nearby solution by a Krawczyk interval proof. WP1172
+  separates that modulus from sourced production authority. WP1173 constructs
+  the phase-gauge quotient but not a `physical16` channel map. WP1174 proves
+  that modulus and output data do not identify the channel. WP1175 constructs
+  the minimum-rank conditional kernel but not its source selection. WP1176
+  shows sector matching does not force microstate uniformity. WP1177 rejects
+  the three-state dark attractor as the UV boundary density. WP1178 shows a
+  replacement channel exists but erases portal information. WP1179 constructs
+  a nontrivial conditional dilation that remains source-unselected. WP1180
+  shows stationary source dynamics cannot select the channel. WP1181
+  constructs a conditional transient sector interface. WP1182 shows its
+  polarization does not identify a threshold basis or scale. WP1183 shows its
+  conditional curve retains an 88-dimensional basis/amplitude/time fiber.
+  WP1184 shows RG transmutation supplies only a conditional scale, not a
+  threshold anchor. WP1185 derives the threshold packet contract and finds
+  four missing fields. WP1186 finds zero source-derived threshold boundary
+  authorities.
 - WP1058 shows that WP1056's localized bulk cell is reducible:
   \(6+8+1+4+2+2\) has six invariant mass blocks, five after \(\overline6\)
   exchange. It therefore cannot supply the common clock without a parent
@@ -299,7 +408,95 @@ The checker verifies four open constructor slots.
    WP1094 rejects a mod-integer anomaly residue as a unique boundary action.
    WP1095 rejects a Wilson phase modulo one or quadratic clock value as a
    selection of \(n\) or \(\sigma\). WP1096 rejects flat-section rank,
-   normalization ports, or contact provenance as selector authority.
+   normalization ports, or contact provenance as selector authority. WP1097
+   rejects Vandermonde-faithful finite-scheme ports as event reweighting or
+   gain. WP1098 rejects a contact counterterm as the absolute boundary lift.
+   WP1099 rejects lattice membership or an unoriented generator as clock lift
+   or orientation. WP1100 rejects alternating cubic components as production
+   kernel or event reweighting. WP1101 rejects a quarter-residue denominator
+   as the mass-clock selector. WP1102 rejects \(I_3\) rank, trace, or alignment
+   as production couplings or gain. WP1103 rejects weight-zero pairing times
+   reciprocal determinant as an independent \(\rho\). WP1104 rejects rank,
+   trace, or an unstated factor two as the mass clock. WP1105 rejects history
+   dilation times pairing as event reweighting or gain. WP1106 records that no
+   subset of the closed shortcuts supplies the full six-output source packet.
+   WP1107 rejects class potential as packet construction. WP1108 rejects the
+   existing defect quotient as the fused packet. WP1109 rejects field names or
+   arity bookkeeping as packet values. WP1110 rejects constraint bookkeeping or
+   the parent Green--Schwarz coefficient as constructed values. WP1111 rejects
+   the integer split fiber as a selected endpoint split. WP1112 rejects interval
+   reflection as a split selector. WP1113 rejects Wilson/flux orientation as a
+   joint split-clock selector. WP1114 rejects Wilson holonomy or \(c/D\) as
+   independent \(\rho\). WP1115 rejects quotient descent as the production
+   kernel. WP1116 rejects common Green response or endpoint localization as
+   production reweighting. WP1117 rejects branch dimensions or row orbits as
+   matrix zeros/values. WP1118 rejects detector/monitor/cross/null labels or
+   all-singlet assignments as source representations. WP1119 rejects
+   \(J_6/6\) or the fitted \(GKq\) equation as source dynamics. WP1120 rejects
+   long-time Markov limits or Krylov isometry as event production. WP1121
+   rejects anomaly inflow, endpoint localization, Green response, or a variable
+   named \(t\) as dissipation. WP1122 constructs \(F_6\), but blocks it as a
+   sourced production law until a selected-packet \(C_6\) generator and six
+   physical16 event channels exist. WP1123 proves non-Hadamard unitaries cannot
+   produce q-independent uniform events. WP1124 retains \(F_3\otimes F_2\)
+   algebra but requires a sourced phase observable and six event channels.
+   WP1125 blocks exponentiating or permuting anomaly coefficients without a
+   source-derived character map. WP1126 requires six independent residue
+   channels, not one factorized pole residue. WP1127 requires a future source
+   packet to carry six event channels, a sourced phase observable, production
+   kernel, and event/readout map. WP1128 admits only typed packets with provenance.
+   WP1129 blocks corpus mentions and the admission contract itself from being
+   treated as source packets. WP1130 requires a sourced operator preparing
+   \(q\), not merely sector dimensions. WP1131 requires parent state populations
+   and transition probabilities, not representation decomposition. WP1132
+   retains \(\rho=\oplus_b I_{d_b}/23\) but requires UV state matching and
+   microstate uniformity. WP1133 requires a normalized density matrix, trace
+   functional, and matching map. WP1134 requires a sourced microspace,
+   normalized state, sector probabilities, and preparation operator. WP1135
+   requires an equivariant port-preserving projection with scalar mass pullback.
+   WP1136 requires localization-preserving clock descent and radius calibration.
+   WP1137 requires a unique sourced flux sector and gauge--gravity ratio.
+   WP1138 defers the branch on a compactification clock packet with descent
+   and same-frame momentum. WP1139 requires physical16 production/decay maps,
+   not instrument or vector-KK references. WP1140 forces the vector event-cell
+   reconstruction to \(g=1,\mathcal L=1/5\) and opens gain compatibility.
+   WP1141 requires a physical16 gain-cascade certificate with factor \(3/2\).
+   WP1142 fixes only \(Mq=u\), not the production kernel. WP1143 leaves
+   minimal support and production adjacency open. WP1144 leaves six rank-three
+   support-two algebraic candidates. WP1145 requires a production-matching
+   packet or symmetry-orbit reduction. WP1146 requires a physical twin-exchange
+   certificate before orbit reduction is authoritative. WP1147 requires a
+   post-localization exchange or quartet-choice quotient. WP1148 requires a
+   production quotient map; anomaly invariance is the next executable gate.
+   WP1149 leaves only phase or production data as possible discriminators.
+   WP1150 leaves fixed-\(q\) nonuniversal maps as the executable rival. WP1151
+   leaves doubly stochastic support constraints open. WP1152 leaves support
+   three as the minimal unresolved class. WP1153 leaves unistochastic and
+   physical locality gates open. WP1154 leaves support-graph search open.
+   WP1155 leaves support four as the next sparse class. WP1156 leaves
+   support-four graph search open. WP1157 leaves the support-four fixed-\(q\)
+   polytope and phase tests open. WP1158 leaves an interior support-four
+   point open. WP1159 leaves a unitary phase lift open. WP1160 leaves a
+   phase-compatible interior search open. WP1161 leaves the minimal amplitude
+   system open. WP1162 leaves connected minimal and higher-constraint
+   carriers open. WP1163 leaves the higher-constraint \(10+10\) and
+   \(12+12\) carriers open. WP1164 leaves a semialgebraic witness search open.
+   WP1165 leaves the \(C_4+C_8\) carriers open. WP1166 leaves boundary and
+   irregular support reassessment open. WP1167 leaves support-five sparse
+   search open. WP1168 leaves support-five phase-compatible search open.
+   WP1169 leaves constrained support-five phase search open. WP1170 leaves
+   exact unistochastic certification open. WP1171 leaves physical production
+   realization open. WP1172 leaves a phase-gauge production law open. WP1173
+   leaves a sourced `physical16` channel map open. WP1174 leaves a sourced
+   production kernel open. WP1175 leaves UV ensemble matching open. WP1176
+   leaves a UV boundary density matrix open. WP1177 leaves portal-to-sector
+   dilation open. WP1178 leaves nontrivial portal dynamics open. WP1179
+   leaves source-dynamics channel selection open. WP1180 leaves a transient
+   sector interface open. WP1181 leaves a threshold intertwiner open. WP1182
+   leaves a threshold basis/scale law open. WP1183 leaves a dimensionful
+   threshold anchor open. WP1184 leaves a threshold boundary packet open.
+   WP1185 leaves threshold boundary authority open. WP1186 leaves a
+   threshold source candidate open.
 4. `physical16_gain_or_interference_law`: a source-to-Yukawa or
    source-to-detector gain law, or an instantiated coherent interference
    monitor. WP1044-WP1052 supply the algebraic gain, visibility, common-frame
@@ -321,7 +518,7 @@ remains open.
 
 ## Hostile fixtures
 
-The net retains fifty-eight fixtures as non-invertibility tests:
+The net retains one hundred forty-eight fixtures as non-invertibility tests:
 
 - \(C=23\) versus \(C=22\) under the same preparation grammar;
 - degenerate versus \(22+1\) split poles at fixed zero-momentum coefficient;
@@ -425,10 +622,172 @@ The net retains fifty-eight fixtures as non-invertibility tests:
 - a Wilson phase modulo one or the quadratic value \(6n^2\) treated as a
   selection of integer \(n\) or sign \(\sigma\);
 - flat-section rank, normalization ports, or disjoint contact provenance
-  treated as integer-lift, orientation, \(\rho\), production, or gain authority.
+  treated as integer-lift, orientation, \(\rho\), production, or gain authority;
+- three faithful finite-scheme coordinates or Vandermonde invertibility treated
+  as six event weights, production rows, channel selection, or gain \(3/2\);
+- a loop-independent contact shift or rank-disjointness theorem treated as a
+  seven-channel Chern--Simons lift or endpoint normalization;
+- membership in \(\mathbb Z\), a rank-one lattice, or an unoriented generator
+  treated as a selection of \(n\), \(\sigma\), or \(6n^2\);
+- six epsilon components, signs, or \(SU(3)\) invariance treated as event rows,
+  production couplings, reweighting, or gain;
+- denominator four or a quarter residue treated as a selection of \(n\),
+  \(\sigma\), or the clock orbit \(6n^2\);
+- \(I_3\) rank, trace, or \(A\)-\(B\) alignment treated as six event weights,
+  production couplings, channel selection, or gain;
+- \(\det I_3/D\) or any weight-zero pairing times reciprocal determinant
+  treated as an independent source-authorized \(\rho\);
+- pairing rank \(3\), trace \(3\), or an unstated factor \(2\) treated as \(n\),
+  \(\sigma\), or the clock orbit \(6n^2\);
+- three history slots times rank three, isometry, or \(I_3\) trace treated as
+  six event weights, production rows, or gain \(3/2\);
+- any subset of internal invariants, conditional constructors, normalization
+  ports, or owner silence treated as the full six-output source packet;
+- typed potential of the fused packet class treated as a constructed packet;
+- localized endpoint access, quotient descent, or defect language treated as
+  the six-output source packet;
+- constructor field names, placeholder variables, or arity bookkeeping treated
+  as source-packet values;
+- anomaly/analyticity constraints, residue checks, or the parent coefficient
+  \(-3\) treated as constructed defect values;
+- \(t\in\mathbb Z\), coset compatibility, or parent \(k_{\rm GS}=-3\) treated
+  as a selected endpoint split;
+- interval reflection or endpoint exchange treated as a symmetry forcing
+  \(t=0\) on the selected quartet;
+- Wilson phase, flux conjugation, or clock \(\sigma\) treated as a selector
+  of endpoint split and orientation;
+- Wilson holonomy, a \(\mathbb C^\times\)-torsor generator, or \(c/D\)
+  treated as independent \(\rho\);
+- physical16 descent, quotient permutation, or projection treated as the
+  six-row production kernel, event reweighting, or gain \(3/2\);
+- common Green response, threshold degeneracy, or endpoint localization treated
+  as production reweighting;
+- branch dimensions, row orbits, or quartet exchange treated as coupling-matrix
+  zeros or values;
+- detector/monitor/cross/null labels or an all-singlet assignment treated as
+  source representations;
+- \(J_6/6\), universal mixing, or the fitted \(G K q=p\) equation treated as
+  a source production law;
+- an infinite-time Markov limit, Krylov history, or isometric dilation treated
+  as \(J_6/6\) event production;
+- anomaly inflow, endpoint localization, Green response, or a variable named
+  \(t\) treated as dissipative rates or physical time;
+- \(F_6\) Hadamard algebra, \(C_3\) history, endpoint \(\mathbb Z_2\), or
+  unitarity alone treated as a sourced production kernel;
+- row/column phases, permutations, Fourier form, or a full-\(H_6\)
+  classification gap treated as event-kernel provenance;
+- \(F_3\otimes F_2\), \(C_3\) history, endpoint signs, or Hadamard symmetry
+  treated as source authority;
+- anomaly integers exponentiated, normalized, or permuted without a
+  source-derived character map;
+- \(vv^T\) factorization, four brane couplings, physical16 indices, or pole
+  residue treated as six event channels;
+- conditional algebra, candidate lists, or aggregation of negative gates
+  treated as production authority;
+- a typed admission contract or fixture packet treated as an actual UV source
+  packet;
+- corpus mention density, theorem titles, admission contracts, or checker
+  fixtures treated as source packets;
+- sector dimensions, rational normalization, or the target \(q\) treated as
+  preparation dynamics;
+- representation decomposition, dimensions, or dimension-proportional
+  weighting treated as a stochastic preparation map;
+- \(\rho\), trace one, positivity, or sector weights treated as a sourced
+  boundary ensemble;
+- an action, anomaly coefficient, Green response, or sector decomposition
+  treated as a normalized state;
+- exact \(q\), conditional density operators, or aggregation of negative gates
+  treated as preparation authority;
+- dimension 23, scalar spin-11 mass, or port labels treated as a projection
+  theorem;
+- common twist, parent equality, or radius-changing equality treated as
+  localized clock authority;
+- \(B/A=6n^2\), flux reflection, or one unit solution treated as absolute
+  scale authority;
+- conditional clock facts or aggregation of negative gates treated as
+  absolute clock authority;
+- instrument references, vector-KK modes, or response rows treated as
+  physical16 channels;
+- conditional vector gain-chain reconstruction or \(g=1\) treated as
+  source-derived gain authority;
+- event-cell gain and reweighting gain identified without a physical16
+  cascade certificate;
+- rank-one complete mixing treated as the unique reweighting map;
+- rank-two full-support mixing treated as localized production;
+- two-support reweighting inferred to be rank two or source-selected;
+- one of six algebraic matchings selected without production couplings;
+- equal branch dimensions treated as physical exchange symmetry;
+- exchange between localization cells treated as symmetry within the selected
+  cell;
+- quartet label quotient treated as physical production-kernel descent;
+- class-independent anomaly data treated as matching selector;
+- universal Hadamard moduli or phase equivalence treated as matching
+  provenance;
+- non-doubly-stochastic matching treated as a unitary S-matrix modulus;
+- full-support uniform mixing treated as sparse or localized;
+- support-three double stochasticity treated as unitarity or physical
+  locality;
+- one-shared-column witness support treated as unitary;
+- support-three graph treated as fixed-\(q\) unistochastic;
+- support-four witness treated as unistochastic;
+- graph compatibility treated as a fixed-\(q\) or unistochastic witness;
+- a boundary point treated as exact support-four or unistochastic;
+- an interior doubly stochastic point treated as unistochastic;
+- unequal two-overlap amplitudes treated as phase-liftable;
+- a constraint census treated as a phase witness or no-go proof;
+- a split-carrier no-go treated as an all-support-four no-go;
+- a connected boundary point treated as an interior witness;
+- rank counts treated as a phase witness or no-go;
+- the three-\(C_4\) no-go treated as a \(C_4+C_8\) no-go;
+- regular support four treated as a phase-compatible interior witness;
+- a known boundary fixed-\(q\) point treated as unistochastic;
+- one identity support-five witness generalized to all carriers or treated as
+  unistochastic;
+- absence of two-overlap constraints treated as a phase certificate;
+- a bounded numerical unistochastic candidate treated as exact;
+- a certified unistochastic modulus treated as physical production;
+- a diagonal phase orbit treated as a production law;
+- the phase quotient treated as a `physical16` channel map;
+- a stochastic channel fit treated as a source-derived kernel;
+- minimum-rank kernel algebra treated as source selection;
+- sector matching treated as dimension-trace microstate uniformity;
+- the three-state dark attractor treated as the UV boundary density;
+- an input-erasing replacement channel treated as portal dynamics;
+- a conditional CPTP dilation treated as source-selected channel;
+- the stationary dark attractor treated as a channel selector;
+- a conditional transient channel treated as threshold transport;
+- a conditional sector polarization treated as a sourced threshold signal;
+- the reparametrizable decay rate kappa treated as an absolute threshold scale;
+- an RG-invariant conditional scale treated as a physical sector threshold;
+- a coherent conditional RG run treated as an authority-bearing threshold packet;
+- a declared conditional boundary treated as source-selected threshold authority.
 
-Any proposed successor must reject all fifty-eight promotions while filling the four
+Any proposed successor must reject all one hundred forty-eight promotions while filling the four
 open slots from one source packet.
+
+## Traversal conformance checklist
+
+Every future leaf transition must execute and report this sequence:
+
+1. inspect `git status --short -- research/flavor` before editing and stage
+   only owned Flavor paths;
+2. create the bounded Markdown packet, deterministic checker, and JSON result;
+3. include a nonempty DPC record with conjecture, rivals, risky consequences,
+   falsification attempt, residual, disposition, hostile gate, and claim
+   boundary;
+4. integrate the net node, dependency edge, semantic invariant, and hostile
+   fixture, then update the programme index;
+5. replay the leaf checker and WP1043 before graph admission;
+6. admit the source, claim, and derivation relation, then make one idempotent
+   issue-tree transition from the freshly resumed selected node;
+7. report changed files, verifier commands, graph event, residual gate, and
+   any failed/repaired gate;
+8. at closeout, rerun `flavor_dpc_conformance_audit.py`, inspect the diff,
+   and commit or explicitly report why commit/push is unavailable.
+
+The conformance checker replays WP1177--WP1186 and WP1043, checks the required
+DPC fields and locators, and rejects boxed notation. Its current result is
+`results/flavor_dpc_conformance_audit.json`.
 
 ## Disposition
 

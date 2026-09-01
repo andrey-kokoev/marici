@@ -1,0 +1,41 @@
+{
+  "schema": "marici.flavor.event-production-packet-admission.v1",
+  "status": "active",
+  "purpose": "Executable admission tests for a future source packet claiming physical16 event production.",
+  "required_objects": {
+    "channel_basis": {
+      "count": 6,
+      "independence": "rank_6",
+      "physical16_typed": true
+    },
+    "phase_observable": {
+      "class": "H6_or_equivalent",
+      "squared_modulus": "1/6",
+      "unitarity": "H_dagger_H=6I",
+      "selected_packet_preserving": true
+    },
+    "production_kernel": {
+      "shape": [6, 6],
+      "row_sums": "1",
+      "q_image": "(1/6)^6",
+      "source_derived": true
+    },
+    "event_map": {
+      "gain": "3/2",
+      "event_image": "(1/4)^6",
+      "readout_map_present": true
+    },
+    "provenance": {
+      "packet_id": "nonempty",
+      "boundary_authority": "explicit",
+      "derivation_references_min_count": 1
+    }
+  },
+  "hostile_rejections": [
+    "narrative_or_variable_names_without_typed_fields",
+    "kernel_without_channel_basis_or_provenance",
+    "H6_phase_gauge_without_selected_packet_preservation",
+    "readout_map_without_exact_event_image",
+    "mock_or_fixture_packet_treated_as_source_packet"
+  ]
+}
