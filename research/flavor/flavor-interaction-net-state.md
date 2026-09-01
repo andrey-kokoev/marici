@@ -4,7 +4,7 @@
 
 This packet constructs the current Flavor Interaction Net for the integer-pole
 branch. It is an executable projection of the objects, ports, reductions, and
-hostiles from WP1036--WP1187. It is not a physical selector.
+hostiles from WP1036--WP1188. It is not a physical selector.
 
 Contract: `research/flavor/contracts/flavor-interaction-net-state.v1.json`
 
@@ -290,7 +290,8 @@ The constructed part is a negative and rigidifier chain.
   threshold anchor. WP1185 derives the threshold packet contract and finds
   four missing fields. WP1186 finds zero source-derived threshold boundary
   authorities. WP1187 constructs two exact sub-unit fixed-point candidates
-  but neither is source-authorized.
+  but neither is source-authorized. WP1188 shows WP820 homology does not
+  determine spectrum or threshold transport.
 - WP1058 shows that WP1056's localized bulk cell is reducible:
   \(6+8+1+4+2+2\) has six invariant mass blocks, five after \(\overline6\)
   exchange. It therefore cannot supply the common clock without a parent
@@ -498,7 +499,7 @@ The checker verifies four open constructor slots.
    threshold anchor open. WP1184 leaves a threshold boundary packet open.
    WP1185 leaves threshold boundary authority open. WP1186 leaves a
    threshold source candidate open. WP1187 leaves an incidence-spectrum
-   constructor open.
+   constructor open. WP1188 leaves chain-level matter authority open.
 4. `physical16_gain_or_interference_law`: a source-to-Yukawa or
    source-to-detector gain law, or an instantiated coherent interference
    monitor. WP1044-WP1052 supply the algebraic gain, visibility, common-frame
@@ -520,7 +521,7 @@ remains open.
 
 ## Hostile fixtures
 
-The net retains one hundred forty-nine fixtures as non-invertibility tests:
+The net retains one hundred fifty fixtures as non-invertibility tests:
 
 - \(C=23\) versus \(C=22\) under the same preparation grammar;
 - degenerate versus \(22+1\) split poles at fixed zero-momentum coefficient;
@@ -763,9 +764,10 @@ The net retains one hundred forty-nine fixtures as non-invertibility tests:
 - an RG-invariant conditional scale treated as a physical sector threshold;
 - a coherent conditional RG run treated as an authority-bearing threshold packet;
 - a declared conditional boundary treated as source-selected threshold authority;
-- sub-unit fixed-point coordinates treated as a source-selected threshold boundary.
+- sub-unit fixed-point coordinates treated as a source-selected threshold boundary;
+- WP820 charge homology treated as the physical matter spectrum.
 
-Any proposed successor must reject all one hundred forty-nine promotions while filling the four
+Any proposed successor must reject all one hundred fifty promotions while filling the four
 open slots from one source packet.
 
 ## Traversal conformance checklist
@@ -790,7 +792,7 @@ Every future leaf transition must execute and report this sequence:
 
 The conformance checker replays WP1177--WP1186 and WP1043, checks the required
 DPC fields and locators, and rejects boxed notation. Its current result is
-`results/flavor_dpc_conformance_audit.json` for WP1177--WP1187.
+`results/flavor_dpc_conformance_audit.json` for WP1177--WP1188.
 
 ## Disposition
 
