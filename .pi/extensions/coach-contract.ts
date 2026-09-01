@@ -554,9 +554,9 @@ export default function (pi: ExtensionAPI) {
 						customType: "repeat-duet",
 						content: `repeat-duet completed: ${cycles} cycle(s)\nFocus: ${topic}\n\n${transcript}`,
 						display: true,
-						details: { cycles, topic, roles: ["primary", "socratic"], delivery: "nextTurn" },
+						details: { cycles, topic, roles: ["primary", "socratic"], delivery: "followUp", triggerTurn: true },
 					},
-					{ deliverAs: "nextTurn" },
+					{ deliverAs: "followUp", triggerTurn: true },
 				);
 				ctx.ui.notify(`repeat-duet completed ${cycles} cycle(s).`, "info");
 			} catch (error) {
