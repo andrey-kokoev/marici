@@ -4,7 +4,7 @@
 
 This packet constructs the current Flavor Interaction Net for the integer-pole
 branch. It is an executable projection of the objects, ports, reductions, and
-hostiles from WP1036--WP1191. It is not a physical selector.
+hostiles from WP1036--WP1192. It is not a physical selector.
 
 Contract: `research/flavor/contracts/flavor-interaction-net-state.v1.json`
 
@@ -295,6 +295,8 @@ The constructed part is a negative and rigidifier chain.
   chain-level spectral carrier without source selection. WP1190 shows
   spectral flow and transmutation leave a two-dimensional clock fiber.
   WP1191 constructs a conditional RG spectral event with one phase modulus.
+  WP1192 constructs a relative curvature anchor but shows it is not
+  scheme-independent.
 - WP1058 shows that WP1056's localized bulk cell is reducible:
   \(6+8+1+4+2+2\) has six invariant mass blocks, five after \(\overline6\)
   exchange. It therefore cannot supply the common clock without a parent
@@ -504,7 +506,8 @@ The checker verifies four open constructor slots.
    threshold source candidate open. WP1187 leaves an incidence-spectrum
    constructor open. WP1188 leaves chain-level matter authority open. WP1189
    leaves a spectral-flow clock law open. WP1190 leaves a spectral-path RG
-   event open. WP1191 leaves an RG event anchor open.
+   event open. WP1191 leaves an RG event anchor open. WP1192 leaves a
+   physical running observable open.
 4. `physical16_gain_or_interference_law`: a source-to-Yukawa or
    source-to-detector gain law, or an instantiated coherent interference
    monitor. WP1044-WP1052 supply the algebraic gain, visibility, common-frame
@@ -526,7 +529,7 @@ remains open.
 
 ## Hostile fixtures
 
-The net retains one hundred fifty-three fixtures as non-invertibility tests:
+The net retains one hundred fifty-four fixtures as non-invertibility tests:
 
 - \(C=23\) versus \(C=22\) under the same preparation grammar;
 - degenerate versus \(22+1\) split poles at fixed zero-momentum coefficient;
@@ -773,9 +776,10 @@ The net retains one hundred fifty-three fixtures as non-invertibility tests:
 - WP820 charge homology treated as the physical matter spectrum;
 - a faithful Dirac spectrum treated as source-selected chain-level matter;
 - spectral-flow orientation treated as a numerical threshold clock;
-- heteroclinic endpoint regularity treated as absolute event scale.
+- heteroclinic endpoint regularity treated as absolute event scale;
+- a coupling-coordinate curvature ratio treated as a scheme-independent physical anchor.
 
-Any proposed successor must reject all one hundred fifty-three promotions while filling the four
+Any proposed successor must reject all one hundred fifty-four promotions while filling the four
 open slots from one source packet.
 
 ## Traversal conformance checklist
@@ -800,7 +804,7 @@ Every future leaf transition must execute and report this sequence:
 
 The conformance checker replays WP1177--WP1186 and WP1043, checks the required
 DPC fields and locators, and rejects boxed notation. Its current result is
-`results/flavor_dpc_conformance_audit.json` for WP1177--WP1191.
+`results/flavor_dpc_conformance_audit.json` for WP1177--WP1192.
 
 ## Disposition
 
