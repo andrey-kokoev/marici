@@ -16,6 +16,16 @@ Project trust must be enabled for Pi to load it.
 question to the main agent. The response is displayed as a coach notification.
 The DPC coach also runs once after each settled main-agent run. It receives a bounded
 projection of visible messages and tool results; hidden reasoning is omitted.
+
+## Repeat duet
+
+```text
+/repeat-duet <cycles 1-100> [question or focus]
+```
+
+Each cycle makes one primary-model call and one Socratic-interlocutor call.
+When all cycles finish, the transcript is sent immediately to the main agent as
+a follow-up and triggers its response; no extra `go` message is needed.
 It may notify the operator or inject one bounded follow-up advisory. Repeated
 unchanged advice is suppressed. The coach has no file or session mutation
 authority.
