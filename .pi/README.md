@@ -7,11 +7,14 @@ Project trust must be enabled for Pi to load it.
 
 ```text
 /coach dpc [focus]
+/coach ask [dpc] <question>
 /coach status
 /coach stop
 ```
 
-The DPC coach runs once after each settled main-agent run. It receives a bounded
+`/coach ask` performs one direct, bounded coach review without sending the
+question to the main agent. The response is displayed as a coach notification.
+The DPC coach also runs once after each settled main-agent run. It receives a bounded
 projection of visible messages and tool results; hidden reasoning is omitted.
 It may notify the operator or inject one bounded follow-up advisory. Repeated
 unchanged advice is suppressed. The coach has no file or session mutation
