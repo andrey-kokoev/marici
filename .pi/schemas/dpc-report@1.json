@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dpc-report@1",
+  "title": "Deutsch-Popperian Conjecture report",
+  "description": "A six-field report for one bounded conjecture and its strongest falsification attempt.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "problem",
+    "conjecture",
+    "rivals",
+    "risky_consequences",
+    "falsification",
+    "disposition"
+  ],
+  "properties": {
+    "problem": {
+      "type": "string",
+      "minLength": 1
+    },
+    "conjecture": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rivals": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "claim", "discriminator"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "claim": { "type": "string", "minLength": 1 },
+          "discriminator": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "risky_consequences": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "falsification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["test", "residual"],
+      "properties": {
+        "test": { "type": "string", "minLength": 1 },
+        "residual": { "type": "string", "minLength": 1 }
+      }
+    },
+    "disposition": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
