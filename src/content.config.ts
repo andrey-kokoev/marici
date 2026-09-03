@@ -50,8 +50,8 @@ const ledger = defineCollection({
   loader: ledgerLoader(),
   schema: z.object({
     draft: z.boolean().optional(),
-    author: z.enum(['marici.Nima', 'marici.Benincasa', 'marici.Strominger', 'marici.Figueiredo', 'marici.Grothendieck', 'marici.Kitaev', 'marici.Sontag', 'marici.Aspect']).optional(),
-    authors: z.array(z.enum(['marici.Nima', 'marici.Benincasa', 'marici.Strominger', 'marici.Figueiredo', 'marici.Grothendieck', 'marici.Kitaev', 'marici.Sontag', 'marici.Aspect'])).min(1).optional(),
+    author: z.enum(['marici.Nima', 'marici.Benincasa', 'marici.Strominger', 'marici.Figueiredo', 'marici.Grothendieck', 'marici.Buzzard', 'marici.Voevodsky', 'marici.Kitaev', 'marici.Sontag', 'marici.Aspect']).optional(),
+    authors: z.array(z.enum(['marici.Nima', 'marici.Benincasa', 'marici.Strominger', 'marici.Figueiredo', 'marici.Grothendieck', 'marici.Buzzard', 'marici.Voevodsky', 'marici.Kitaev', 'marici.Sontag', 'marici.Aspect'])).min(1).optional(),
   }).passthrough(),
 })
 
