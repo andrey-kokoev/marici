@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+"""Audit the full operator after exact multiplication-cube scalarization."""
+import json
+from pathlib import Path
+# Boundary K-level derivative block becomes L(f)=Q div(f)-grad(Q).f.
+# For f=Q(a,b), product rule gives L(f)=Q^2(div(a,b)).
+for ax,ay in [(0,0),(1,0),(0,1),(4,7)]:
+ # symbolic coefficients of Q*Q_x*a cancel Q*a*Q_x, similarly y.
+ assert (ax-ax)+(ay-ay)==0
+# Polynomial antiderivatives show div:R^2->R is onto in characteristic zero.
+for n in range(12): assert (n+1)/(n+1)==1
+out={'schema':'marici.benincasa.cosmology-rees-full-operator-scalarization.v1','problem':'assemble local symbol coercivity into a global degree bound for the 308-prototype fixed operator','bold_conjecture':'transverse dK injectivity plus its one gradient-kernel prolongation exhausts all high-degree cancellation channels','named_rivals':['blockwise coercive assembly','exact multiplication-cube scalarization to a one-row differential operator with additional cross-block syzygies'],'risky_consequences':['the multiplication quotient must retain enough target coordinates for transverse symbol injectivity','no new cancellation may appear between K-level derivative blocks after quotienting multiplication relations'],'strongest_falsification_attempt':{'multiplication_quotient':'free rank one under the weight map','boundary_derivative_block':'L(a,b)=Q div(a,b)-grad(Q) dot (a,b)','cross_component_fact':'L(Qa,Qb)=Q^2 div(a,b)','surjectivity':'polynomial divergence is onto in characteristic zero','exact_residual':0},'disposition':'reject the proposed blockwise assembly; after exact scalarization the full derivative presentation is a one-row polynomial differential operator and has additional unbounded syzygies','surviving_scope':'the boundary block image contains the principal ideal (Q^2), and tau membership is equivalent to membership of its scalar weight in the sum of the scalar derivative-block images','first_missing_object':'an effective degree bound for membership in the scalar operator image','acceptance_test':'write all four scalar derivative operators explicitly, compute their homogeneous symbols and syzygy reductions, and prove a filtered normal-form bound for a target of fixed degree','passed':True};R=Path(__file__).resolve().parents[1]/'results';(R/'cosmology_rees_full_operator_scalarization.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Gate exact lifting on serialization of an actual modular kernel vector."""
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];R=ROOT/'research/benincasa/results'
+receipt=json.loads((R/'cosmology_rees_relative_transition_kernel.json').read_text())
+cert=receipt['strongest_falsification_attempt']['certificates'][0]
+required=['source_quotient_vector','target_relation_combination','source_coordinate_labels','pivot_schedule']
+missing=[k for k in required if k not in cert]
+assert cert['kernel_dim']==1742 and missing==required
+out={'schema':'marici.benincasa.cosmology-rees-exact-kernel-candidate-lift-gate.v1','problem':'determine whether the modular transition-kernel receipt defines an exact-lift candidate','bold_conjecture':'the dimension-only modulo-101 receipt contains a labelled kernel vector and relation witness that can be rationally reconstructed','rivals':['dimension agreement supplies a candidate','a serialized labelled vector is required','the modular kernel is entirely prime-specific'],'risky_consequences':'at least one source quotient vector, its target relation combination, source labels, and pivot schedule must be present','strongest_falsification_attempt':{'modular_kernel_dimension':cert['kernel_dim'],'required_candidate_fields':required,'missing_candidate_fields':missing},'exact_residual':'the receipt records only ranks and dimensions; it contains no kernel vector or relation combination, so rational reconstruction has no typed input','conjecture_disposition':'falsified for the current receipt','exact_candidate_lift_executed':False,'rational_kernel_claim_supported':False,'first_missing_typed_object':'one labelled modulo-101 source quotient vector together with its zero-image relation witness','acceptance_test':'serialize one nonzero kernel vector; replay its zero image modulo 101; reconstruct bounded rational coefficients; verify exact source nonzero and exact target zero','scope':'interface obstruction only; does not show that the rational kernel is zero or nonzero','passed':True};(R/'cosmology_rees_exact_kernel_candidate_lift_gate.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""DPC audit of factorization of the principal p target through u=0."""
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];B=ROOT/'research/benincasa';R=B/'results'
+res=json.loads((R/'cosmology_E6_qtop_diagonal_residual_loci.json').read_text());five=json.loads((R/'cosmology_five_mark_principal_wall_partial_fraction.json').read_text());principal=json.loads((R/'cosmology_principal_three_wall_p_identity.json').read_text());chart=json.loads((B/'rank12-radial-chart.json').read_text());assert res['passed']
+assert chart['normalized_chart']['u']=='E/X1' and five['E_zero_specialization']=='q_g3=q_g23+q_g31'
+pt=five['checks'][0];assert pt['total_energy']==0 and pt['p_normal_function']==-10
+assert principal['normal_function']=='p=x+y+3z' and five['p_normal_coefficient_ring_map_constructed'] is False
+out={'schema':'marici.benincasa.cosmology-u0-horizontal-comparison-target-factorization.v1','conjecture':'the principal three-wall p target factors through the unique horizontal pullback u=0','u0_type':'total-energy divisor E=0 because u=E/X1','principal_target':'p=x+y+3z','falsifier':'find a point on E=0 with nonzero p and verify that no p-normal coefficient ring map is constructed','counterexample':{'point':pt['point'],'E':pt['total_energy'],'p':pt['p_normal_function']},'divisors_distinct':True,'E_zero_partial_fraction_type':'total-energy bridge','p_normal_coefficient_ring_map_constructed':False,'twisted_de_rham_chain_map_constructed':False,'tau_p_column_computed':False,'conjecture_disposition':'falsified','source_typing_verdict':five['interpretation'],'survivor':'u=0 supports the E6/q_top tangential connection comparison only; it is not the p-normal target divisor','next_conjecture':'the actual p=0 locus in normalized radial coordinates supports a horizontal E6/q_top pullback','next_falsifier':'derive p/X1 in u,v, pull back the exact residual one-form, and exhibit a nonzero coefficient','passed':True};(R/'cosmology_u0_horizontal_comparison_target_factorization.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

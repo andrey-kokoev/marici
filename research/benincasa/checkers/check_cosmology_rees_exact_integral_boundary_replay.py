@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+"""DPC exact integral replay for a reconstructed labelled certificate."""
+import json,math
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];R=ROOT/'research/benincasa/results'
+prior=json.loads((R/'cosmology_rees_cross_prime_certificate_reconstruction.json').read_text());assert prior['passed']
+candidate=prior['strongest_falsification_attempt']['primitive_candidate'];labels=prior['strongest_falsification_attempt']['labels'];assert candidate==[2,-3,5,7] and math.gcd(*map(abs,candidate))==1
+rows=[[5,0,0],[0,5,0],[-2,3,-7],[0,0,5]]
+def boundary(coeffs):return [sum(c*r[j] for c,r in zip(coeffs,rows)) for j in range(3)]
+residual=boundary(candidate);assert residual==[0,0,0]
+bad=candidate[:];bad[2]+=1;bad_residual=boundary(bad);assert bad_residual==rows[2] and bad_residual!=[0,0,0]
+# Reduction modulo every reconstruction/validation prime agrees with exact replay.
+primes=[101,103,107];modular=[{'prime':p,'valid_residual':[x%p for x in residual],'corrupt_residual':[x%p for x in bad_residual]} for p in primes];assert all(x['valid_residual']==[0,0,0] and x['corrupt_residual']!=[0,0,0] for x in modular)
+out={'schema':'marici.benincasa.cosmology-rees-exact-integral-boundary-replay.v1','problem':'test whether a reconstructed primitive provenance vector survives exact integer boundary replay','bold_conjecture':'the reconstructed primitive vector has exact zero boundary and a one-unit corruption has a specified nonzero residual','rivals':['modular-only validation','support matching without boundary replay','nonprimitive integer scaling'],'risky_consequences':'the exact residual must be zero over Z, the coefficient gcd must be one, and corruption must return the altered row rather than vanish accidentally','strongest_falsification_attempt':{'labels':labels,'primitive_candidate':candidate,'labelled_integer_rows':dict(zip(labels,rows)),'coefficient_gcd':math.gcd(*map(abs,candidate)),'exact_boundary_residual':residual,'corrupted_candidate':bad,'exact_corrupt_residual':bad_residual,'modular_cross_checks':modular},'exact_residual':'valid boundary is exactly zero; corruption residual is (-2,3,-7)','conjecture_disposition':'retained for the bounded exact prototype','synthetic_rows_only':True,'actual_Rees_generator_constructed':False,'required_next_interface':'lift actual labelled Rees source rows to exact integer or rational coefficients with a common normalization','next_conjecture':'the actual Rees raw-relation generator preserves enough coefficient provenance to define a prime-independent exact row lift','next_falsifier':'audit coefficient construction, half-twist denominators, source labels, and prime-dependent reductions in raw_relations','passed':True};(R/'cosmology_rees_exact_integral_boundary_replay.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

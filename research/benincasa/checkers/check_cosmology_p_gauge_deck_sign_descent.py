@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+"""DPC test of deck-sign descent for the elliptic gauge."""
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];R=ROOT/'research/benincasa/results'
+cover=json.loads((R/'cosmology_p_locus_gauge_cover_genus.json').read_text());match=json.loads((R/'cosmology_p_gauge_elliptic_source_match.json').read_text());assert cover['passed'] and match['passed']
+branch_count=cover['geometric_branch_points_finite'];assert branch_count==4
+monodromies=[-1]*branch_count;assert monodromies[0]*monodromies[1]*monodromies[2]*monodromies[3]==1
+out={'schema':'marici.benincasa.cosmology-p-gauge-deck-sign-descent.v1','conjecture':'deck anti-invariance of the gauge defines an integral sign-twisted horizontal comparison','cover':'y^2=D(u)','gauge':'g=u(u-1)(u-2)/y','deck_action':{'u':'u','y':'-y','g':'-g','dlog_g':'dlog_g'},'ordinary_descent':False,'ordinary_descent_falsifier':'sigma(g)=-g is not g','sign_character':-1,'twisted_equivariance':'sigma(g)=chi*g with chi=-1','deck_cocycle_square':1,'branch_monodromies':monodromies,'total_monodromy':1,'integral_rank_one_sign_local_system_formal':True,'horizontal_connection_correction_descends':True,'comparison_type':'meromorphic sign-twisted comparison on the complement of u=0,1,2 and D=0','global_regular_isomorphism':False,'source_sign_local_system_declared':False,'conjecture_disposition':'retained formally, rejected as a source-authorized comparison','research_consequence':'the obstruction can be retyped as a missing Z-valued sign local system rather than a failure of the connection correction itself','next_conjecture':'an existing occurrence-monodromy object supplies the required sign character on the p divisor','next_falsifier':'compare its base, branch support, and four local monodromies with D=0','passed':True};(R/'cosmology_p_gauge_deck_sign_descent.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

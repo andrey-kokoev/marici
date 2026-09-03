@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+"""Finalize the all-S p-normal trace across coefficient and relation-row levels."""
+import json
+from pathlib import Path
+P=Path(__file__).resolve();ROOT=P.parents[3];R=ROOT/'research'/'benincasa'/'results'
+s=json.loads((R/'cosmology_all_S_row_serialization.json').read_text());l=json.loads((R/'cosmology_all_S_primitive_column_relation_lift.json').read_text());u=json.loads((R/'cosmology_all_S_uniform_tangent_homotopy.json').read_text());assert s['normal_derivative_serialization']['nx']==s['normal_derivative_serialization']['ny']==1;assert s['normal_derivative_serialization']['p_tangent']==0;assert l['primitive_column_killed_by_p_tangent_quotient'];assert u['degree_uniform_presentation_theorem']
+out={'schema':'marici.benincasa.cosmology-all-S-p-normal-derivative-trace-final.v1','coefficient_section':{'nx':1,'ny':1,'p_tangent':0,'normal_choice_independent':True},'relation_quotient':{'primitive_column_in_special_span':False,'primitive_column_in_special_plus_tangent_span':True,'class_after_tangent_quotient':0},'uniformity':'all ambient A>=6 over Q','decision':'The bare coefficient derivative is a primitive normal column, but the parameter-dependent relation presentation supplies a uniform tangent homotopy. Normal-choice independence survives while the quotient class vanishes.','passed':True};(R/'cosmology_all_S_p_normal_derivative_trace_final.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

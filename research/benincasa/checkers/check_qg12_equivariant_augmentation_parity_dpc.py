@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+"""Classify augmentation constraints on equivariant contour-to-root maps."""
+import json
+from pathlib import Path
+# Every C2-equivariant map Z_triv -> Z{g+,g-} has f(1)=n(g++g-), augmentation 2n.
+for n in range(-8,9):
+ image=(n,n);augmentation=sum(image)
+ assert augmentation==2*n and augmentation%2==0
+out={'schema':'marici.benincasa.qg12-equivariant-augmentation-parity-dpc.v1','problem':'What source augmentation is compatible with an integral equivariant contour-to-root-pair map?','bold_conjecture':'A source contour of unit augmentation can map integrally and equivariantly to the root permutation module.','named_rivals':['equivariance forces image n(gamma_plus+gamma_minus) and augmentation 2n','unit augmentation has no integral equivariant lift','augmentation two selects the primitive norm image up to sign'],'risky_consequences':['an equivariant image with augmentation one must exist','augmentation parity must be unrestricted'],'strongest_falsification_attempt':{'equivariant_image_family':'f(1)=n(gamma_plus+gamma_minus)','target_augmentation':'2n','allowed_augmentations':'even integers','unit_augmentation_lift_exists':False,'primitive_norm_condition':'source augmentation equals plus or minus two'},'disposition':{'status':'falsified','surviving_scope':'integral equivariance imposes an even-augmentation obstruction; augmentation plus or minus two forces the primitive norm image up to orientation','reopening_test':'derive the unsplit contour augmentation and boundary orientation from source data; augmentation one falsifies integral equivariance, while plus or minus two fixes norm multiplicity'},'passed':True};R=Path(__file__).resolve().parents[1]/'results';(R/'qg12_equivariant_augmentation_parity_dpc.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

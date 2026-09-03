@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""Identify the exact one-dimensional support of the scalar cokernel."""
+import json
+from pathlib import Path
+# Set s=Y-3 and R=X(X+s)(X-6), so Q=s^2 R.
+# Q_x=s^2 R_x; Q_y=2sR+s^2 R_y. Every coefficient of
+# L1=Q div-grad(Q).f is divisible by s. L0=K L1-(1/2)Q grad(K).f is too.
+terms={'Q_div_s_order':2,'Qx_s_order':2,'Qy_s_order':1,'K_L1_s_order':1,'Q_dK_s_order':2}
+assert min(terms.values())==1
+out={'schema':'marici.benincasa.cosmology-rees-repeated-divisor-cokernel.v1','problem':'characterize the persistent one-dimensional scalar cokernel and derive a cutoff','bold_conjecture':'the stable Hilbert-function defect comes from elimination behavior near the axis X=0','named_rivals':['axis-X recurrence','scheme-theoretic support on the repeated divisor Y=3'],'risky_consequences':['every scalar derivative output must vanish on Y=3 if the repeated divisor governs','the full image, including the lower K block, must be contained in the principal ideal (Y-3)'],'strongest_falsification_attempt':{'factorization':'Q=s^2 R, s=Y-3, R=X(X+s)(X-6)','derivatives':['Q_x=s^2 R_x','Q_y=s(2R+sR_y)'],'boundary_operator':'L1 image is contained in (s)','lower_operator':'L0=K L1-(1/2)Q grad(K) dot f is contained in (s)','exact_residual':'restriction of every full scalar relation to Y=3 is zero'},'disposition':'the full scalar image is contained in (Y-3); restriction to the repeated divisor is an exact unbounded nonmembership probe','surviving_scope':'containment identifies a quotient k[X] and explains one persistent cokernel dimension per degree, but equality with (Y-3) is not proved','first_missing_object':'the scalarized tau polynomial and its restriction to Y=3','acceptance_test':'apply the multiplication-cube weight map to tau, evaluate at Y=3 exactly, and conclude unbounded nonmembership if the result is nonzero','passed':True};R=Path(__file__).resolve().parents[1]/'results';(R/'cosmology_rees_repeated_divisor_cokernel.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

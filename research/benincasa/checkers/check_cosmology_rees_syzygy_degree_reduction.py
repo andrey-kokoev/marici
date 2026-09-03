@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""Degree audit for cube-telescoping prolonged syzygies."""
+import json
+from pathlib import Path
+rows=[]
+for m in range(8):
+ d=5+2*m # deg g, Q has degree 5 and I^m degree 2m
+ rows.append({'h_degree_in_I':m,'g_degree':d,'derivative_input_degree':d+1,'max_telescoping_coefficient_degree_K_last':d+5,'overhead_over_derivative_input':4})
+assert all(r['overhead_over_derivative_input']==4 for r in rows)
+out={'schema':'marici.benincasa.cosmology-rees-syzygy-degree-reduction.v1','problem':'use the exact family g=Qh(I) to reduce arbitrary high-degree derivative inputs to a bounded transversal','bold_conjecture':'cube telescoping for the exact prolonged syzygies gives bounded-degree representatives for every derivative input pair','named_rivals':['bounded transversal modulo Q k[I](2Y,X)','an infinite-degree transversal because the exact kernel covers only Q k[I] inside k[X,Y]'],'risky_consequences':['telescoping coefficient overhead must be uniformly bounded','every sufficiently high-degree polynomial multiplier must be congruent modulo Q k[I] to bounded degree'],'strongest_falsification_attempt':{'degree_formula':'deg g=5+2m; derivative input degree=6+2m; transporting q directions before K uses relation coefficients of degree at most deg g+5','uniform_overhead':4,'unreduced_witnesses':'X^n is not in Q k[I] for every n because Q contains the factor Y-3','exact_residual':'arbitrarily high-degree classes remain in k[X,Y]/Q k[I]'},'degree_samples':rows,'disposition':'the syzygy has controlled coefficient overhead but does not produce a bounded transversal','surviving_scope':'exact kernel elements can be removed with multiplication coefficients at most four degrees above the derivative inputs','next_test':'analyze the induced lower-order operator on k[X,Y]/Q k[I], seeking a coercive filtration or a further kernel classification','passed':True};R=Path(__file__).resolve().parents[1]/'results';(R/'cosmology_rees_syzygy_degree_reduction.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

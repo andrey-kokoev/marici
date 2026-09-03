@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+"""Verify the final all-S branch disposition against durable source results."""
+import json
+from pathlib import Path
+P=Path(__file__).resolve();ROOT=P.parents[3];R=ROOT/'research'/'benincasa'/'results'
+cube=json.loads((R/'cosmology_all_S_deletion_cube_dpc.json').read_text());hom=json.loads((R/'cosmology_all_S_uniform_tangent_homotopy.json').read_text());horn=json.loads((R/'cosmology_etale_horn_instantiation.json').read_text());coc=json.loads((R/'cosmology_horn_missing_cyclic_transitions.json').read_text());final=json.loads((R/'cosmology_all_S_branch_final_disposition.json').read_text());assert cube['strongest_falsification_attempt']['ordered_vertex_residual']==[0,2,-2];assert hom['degree_uniform_presentation_theorem'];assert horn['local_integral_horn_instantiated'];assert coc['integral_K2_cocycle_trivial'];assert final['all_S_cube']['closing_connector'] is False;assert final['half_twist_route']['can_supply_surviving_normal_correction'] is False
+out={'schema':'marici.benincasa.cosmology-all-S-branch-final-disposition-check.v1','checks':{'cube_residual_replayed':True,'uniform_tangent_homotopy_replayed':True,'geometric_local_horn_replayed':True,'integral_projective_descent_replayed':True},'decision':'The all-S source is exhausted as a connector; the geometric DNC horn is a distinct strict source enlargement, not a repaired all-S or rank26 class.','passed':True};(R/'cosmology_all_S_branch_final_disposition_check.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

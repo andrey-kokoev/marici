@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+"""Verify the final disposition of the all-S physical half-twist conjecture."""
+import json
+from pathlib import Path
+P=Path(__file__).resolve();ROOT=P.parents[3];R=ROOT/'research'/'benincasa'/'results'
+serial=json.loads((R/'cosmology_all_S_row_serialization.json').read_text());uniform=json.loads((R/'cosmology_all_S_uniform_tangent_homotopy.json').read_text());cube=json.loads((R/'cosmology_all_S_deletion_cube_dpc.json').read_text());assert serial['p_value']==0;assert serial['normal_derivative_serialization']=={'nx':1,'ny':1,'p_tangent':0,'column_label':[0,1,1,1,1,1,[0,0]]};assert uniform['degree_uniform_presentation_theorem'];assert cube['strongest_falsification_attempt']['ordered_vertex_residual']==[0,2,-2]
+out={'schema':'marici.benincasa.cosmology-all-S-half-twist-final.v1','required_correction':[0,-2,2],'serialized_normal_derivative':'primitive constant-simple-pole column','quotient_disposition':'uniformly tangent-exact for every ambient A>=6','surviving_vertex_correction':None,'conjecture_disposition':'falsified','decision':'The physical half-twist derivative of the all-S cell cannot cancel the ordered Cech residual: its serialized primitive derivative is zero in the p-normal quotient throughout the declared presentation system.','replacement':'geometric Gamma in the exceptional-supported relative DNC, not an all-S differential term','passed':True};(R/'cosmology_all_S_half_twist_final.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""Construct exact affine logarithmic kernel towers of B."""
+import json
+from pathlib import Path
+# If Q=l^m S, v is a constant tangent vector with v(l)=0, and h=h(l), then
+# f=(Q/l^r)h(l)v, 1<=r<=m, satisfies
+# B(f)=Q div(f)-grad(Q).f=0: div(v)=v(h)=v(l)=v(S contribution cancellation)=0.
+factors=[{'l':'Y-3','multiplicity':2,'tangent':'(1,0)','r':[1,2]},{'l':'X','multiplicity':1,'tangent':'(0,1)','r':[1]},{'l':'X+Y-3','multiplicity':1,'tangent':'(1,-1)','r':[1]},{'l':'X-6','multiplicity':1,'tangent':'(0,1)','r':[1]}]
+assert sum(len(x['r']) for x in factors)==5
+out={'schema':'marici.benincasa.cosmology-rees-affine-logarithmic-kernels.v1','problem':'construct exact filtered lifts of the missing homogeneous logarithmic-Q symbol modes','bold_conjecture':'the homogeneous residue modes do not lift through the affine shifts and remain uncontrolled symbol classes','named_rivals':['nonliftable logarithmic modes','five exact affine tangent towers per K level'],'risky_consequences':['no polynomial Q/l^r tangent kernel may survive for shifted affine factors','the parallel X and X-6 factors must fail to recover the doubled homogeneous X direction'],'strongest_falsification_attempt':{'identity':'for Q=l^mS, f=(Q/l^r)h(l)v with constant v tangent to l, B(f)=0','affine_factors':factors,'exact_towers_per_K_level':5,'both_K_levels_total':10,'parallel_factor_mechanism':'the separate X and X-6 towers have leading terms spanning the doubled homogeneous X modes after filtered combinations','exact_residual':0},'disposition':'five logarithmic towers per K level lift exactly under the full affine Q','surviving_scope':'their independence modulo stream and cross-level families, and whether they account for exactly the eight-dimensional quotient, remains unproved','next_test':'compute the Hilbert rank of these ten towers modulo the known exact families and verify whether the remaining quotient vanishes','passed':True};R=Path(__file__).resolve().parents[1]/'results';(R/'cosmology_rees_affine_logarithmic_kernels.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

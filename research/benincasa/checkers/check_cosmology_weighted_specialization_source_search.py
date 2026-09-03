@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Audit weighted Cayley--Menger and Gysin artifacts for a typed Xi projection."""
+import json
+from fractions import Fraction
+from pathlib import Path
+P=Path(__file__).resolve();ROOT=P.parents[3];B=ROOT/'research'/'benincasa';R=B/'results'
+g=json.loads((B/'marici-gm'/'gysin-exact-weighted-corner-maps.json').read_text());w=json.loads((B/'cayley-menger-weighted-physical-pullback.json').read_text());order=g['extension_coordinate_order'];images=[]
+for e in g['endpoints']:
+ col=[Fraction(row[-1]) for row in e['unnormalized_mu2_trace_map']];images.append({'divisor':e['divisor'],'orientation':e['orientation'],'principal_trace_column':[str(x) for x in col]})
+assert all(x['principal_trace_column']==['0','-1/2','0','3/2'] for x in images);text=json.dumps(g)+json.dumps(w);assert 'Xi_log' not in text and 'sigma123' not in text
+out={'schema':'marici.benincasa.cosmology-weighted-specialization-source-search.v1','candidates':[{'name':'weighted_Cayley_Menger_initial_forms','typed_object':'scalar source-boundary polynomials','first_failed_interface':'no map from scalar initial forms/current to the four Gysin extension coordinates'},{'name':'exact_weighted_Gysin_principal_trace','typed_object':'principal source column to extension coordinates '+str(order),'computed_images':images,'first_failed_interface':'no source-derived identification of extension coordinates 01 and 11 with (Xi_log,-sigma123)'},{'name':'naive_01_11_projection','candidate_image':['-1/2','3/2'],'primitive_rescaling':['-1','3'],'first_failed_interface':'not the required primitive column (1,1), and no admitted basis change supplies it'}],'chain_map_found':False,'primitive_Xi_projection_found':False,'decision':'No admitted weighted-specialization candidate defines the required source-to-Gysin chain map or primitive (1,1) Xi projection.','first_missing_typed_object':'a chain map from the Cayley-Menger current complex to the labelled four-coordinate Gysin complex','limitations':['artifact-interface audit; absence is scoped to inspected admitted files','does not prove that no future geometric construction can supply the map'],'passed':True};(R/'cosmology_weighted_specialization_source_search.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

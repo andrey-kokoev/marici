@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""Synthesize the strongest typed primitive-lift obstruction in the audited envelope."""
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];R=ROOT/'research/benincasa/results'
+names=['cosmology_minimal_primitive_source_enlargement.json','cosmology_ordered_boundary_odd_principal_source_classification.json','cosmology_asymmetric_incidence_source_census.json','cosmology_weighted_relative_homology_derham_pairing_gate.json','cosmology_rees_production_contract_acceptance.json','cosmology_rees_seven_candidate_cyclic_content_gate.json','cosmology_primitive_tau_current_source_envelope_status.json']
+d={n:json.loads((R/n).read_text()) for n in names};assert all(x['passed'] for x in d.values())
+minimal=d[names[0]];boundary=d[names[1]];rees=d[names[4]]
+assert minimal['existing_principal_lattice']=='2Z' and rees['deficit']==1 and not rees['contract_accepted']
+out={'schema':'marici.benincasa.cosmology-primitive-lift-obstruction-synthesis.v1','target_column':[1,1],'physical_twist':'-1/2','necessary_integral_interface':{'new_principal_coefficient':'odd','ordered_boundary_correction':[0,-2,2],'route_marks':['g23','g31'],'chain_conditions':['ordered Cech signs','d^2=0','Rees-shear invariance']},'audited_failures':{'existing_principal_lattice':'2Z','asymmetric_incidence_source_exists':False,'relative_pairing_defined':False,'Rees_labelled_extraction_accepted':False,'Rees_candidate_deficit':1},'strongest_typed_conclusion':'no source-authorized primitive (1,1) lift exists in the audited serialized source envelope','global_impossibility':False,'minimal_escape':'adjoin or derive a source-labelled integral generator with odd principal coefficient and boundary (0,-2,2), then prove the comparison map, replay, and two-prime coherence','next_test':'construct the universal minimal integral source-extension presentation and separate formal consistency from source realization','passed':True};(R/'cosmology_primitive_lift_obstruction_synthesis.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""Audit promotion of one scalar corner equality to a marked A2 q0 action."""
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];B=ROOT/'research/benincasa';R=B/'results'
+a=json.loads((B/'bivariate_soft_gram_connection.json').read_text());q=json.loads((B/'marked-wall-quotient-connection.json').read_text());torsor=json.loads((R/'e6_global_logarithmic_torsor.json').read_text());census=json.loads((R/'cosmology_common_marked_q0_action_census.json').read_text())
+assert a['schema'].endswith('.v2') and len(a['connection_v'])==9 and len(a['connection_v'][0])==9
+assert q['basis']==['q_top','q_wall1','q_wall2'] and q['matrix_pattern'][0]==['alpha',0,0]
+assert torsor['e6_v_connection_at_u0']==torsor['qtop_v_connection_at_u0']=='-1/(v - 2)' and census['common_marked_q0_action_found'] is False
+out={'schema':'marici.benincasa.cosmology-qtop-e6-scalar-connection-promotion.v1','absolute_operand':{'type':'one diagonal coefficient of a 9x9 connection','coordinate':'connection_v[5][5]','specialization':'u=0'},'quotient_operand':{'type':'q_top diagonal alpha in a 3x3 marked-wall quotient connection','basis':q['basis'],'matrix_pattern':q['matrix_pattern']},'proved_equality':'connection_v[5][5] at u=0 equals alpha equals -1/(v-2)','proved_hom_line_connection_difference':0,'not_proved':['q_top is the marked q0 extension grade','a two-dimensional A2 action on either extension grade','an occurrence-labelled identification between the 9x9 and 3x3 basis lines','equality away from the u=0 specialization','connector naturality'],'promotes_to_common_marked_q0_action':False,'formal_scalar_extension':'alpha times I_A2 would commute with the normalized identity shear','formal_scalar_extension_source_authorized':False,'conclusion':'a specialized equality on two basis lines cannot supply the missing marked 2x2 actions or occurrence identification','next_test':'classify the formal alpha I_A2 extension and determine whether any source gives two occurrence-labelled q_top copies','passed':True};(R/'cosmology_qtop_e6_scalar_connection_promotion.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""Gate the weighted relative homology-de Rham pairing needed by tau_p."""
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];B=ROOT/'research/benincasa';R=B/'results'
+st=json.loads((B/'relative-stokes-pairing-gate.json').read_text());pb=json.loads((B/'cayley-menger-weighted-physical-pullback.json').read_text());cm=json.loads((R/'cosmology_cayley_gysin_common_source_map_gate.json').read_text())
+assert st['naive_contraction_falsifier']['contraction_descends_to_relative_class'] is False
+assert 'does not yet include' in pb['scope']
+assert cm['passed'] and not any(cm['materialized_arrows'].values())
+out={'schema':'marici.benincasa.cosmology-weighted-relative-homology-derham-pairing-gate.v1','correct_pairing_home':st['conclusion']['pairing_home'],'required_pair':{'homology':'oriented Leray tube of a cycle in the marked complement of W_E','cohomology':'orientation-twisted logarithmic de Rham class with normalized-wall residue','identity':'integral_T(gamma) Omega = 2*pi*i integral_gamma Res_W(Omega)'},'available':{'source_semialgebraic_contour_family':True,'weighted_polynomial_initial_forms':True,'central_fiber_complement_primitives':st['central_fiber_complement_primitives']},'failed_or_missing':{'naive_contraction_descends':False,'common_relative_pair_identified':False,'residue_compatible_Gauss_Manin_conductor_frame':False,'continued_Leray_tube_cycle':False,'coefficient_comparison_map':False},'pairing_value_defined':False,'reason':'the contour current and logarithmic coefficient class are not objects of one identified relative pair/local-system duality; the weighted initial form does not supply continuation or the coefficient map','next_constructor':'derive the residue-compatible Gauss-Manin connection in the orientation-twisted conductor frame, with central and moving wall intersections kept distinct','passed':True};(R/'cosmology_weighted_relative_homology_derham_pairing_gate.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

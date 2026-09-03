@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+"""Audit the parametric source of relation inclusion across cutoffs."""
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];src=ROOT/'research/benincasa/checkers/check_cosmology_rees_complete_bounded_exact_row_iterator.py';s=src.read_text()
+loops=['for exp in mons(A):','for exp in mons(A-4):','for exp in mons(A-1):'];assert all(s.count(x)==1 for x in loops)
+assert "os.environ.update(MARICI_FIELD_PRIME=str(p),MARICI_AMBIENT=str(A)" in s
+out={'schema':'marici.benincasa.cosmology-rees-uniform-inclusion-source-audit.v1','source':src.relative_to(ROOT).as_posix(),'relation_family_cutoff_bounds':{'twisted_derivative':'mons(A)','K_multiplication':'mons(A-4)','q_multiplication':'mons(A-1)'},'row_coefficient_formulas':'independent of A once a source label is fixed','nested-label implication':'if monomials_at_most is nested and K_DEPTH, Q_DEPTH, names, finite-difference offsets, and source fiber are cutoff-invariant, every A row reappears identically at A+1','verified_instances':[4,5,6,7],'uniform_inclusion_proved':False,'exact_residual':'the constructor isolates cutoff dependence in monomial bounds and module configuration; invariance of the configured depths and offsets for arbitrary A is not declared as a theorem','first_missing_typed_object':'a source-level configuration contract proving nested monomial sets and cutoff-invariance of K_DEPTH, Q_DEPTH, NAMES, OFFSETS, and row ordering','acceptance_test':'derive those invariants from the backend definitions, then prove each of the three labelled row-family inclusions symbolically','passed':True};(ROOT/'research/benincasa/results/cosmology_rees_uniform_inclusion_source_audit.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

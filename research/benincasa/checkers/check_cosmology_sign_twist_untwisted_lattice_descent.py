@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""DPC integral descent test from a sign local system to an untwisted lattice."""
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];R=ROOT/'research/benincasa/results'
+sign=json.loads((R/'cosmology_p_gauge_deck_sign_descent.json').read_text());gate=json.loads((R/'cosmology_quotient_colimit_tau_p_gate.json').read_text());assert sign['passed']
+# A rank-one integral map is multiplication by m. Equivariance from sign to trivial requires -m=m.
+admissible=[m for m in range(-100,101) if -m==m];assert admissible==[0]
+principal=gate['primitive_integral_tau_p'];assert principal['known_principal_coefficient_lattice']=='2Z' and principal['required_column']==[1,1]
+out={'schema':'marici.benincasa.cosmology-sign-twist-untwisted-lattice-descent.v1','conjecture':'the sign-twisted comparison yields a nonzero untwisted integral rank-twelve lift','source_character':-1,'target_character':1,'equivariance_equation':'-m=m','torsionfree_integral_solutions':[0],'nonzero_integral_linear_descent_exists':False,'conjecture_disposition':'falsified','norm_descent':{'gauge':'g','deck_gauge':'-g','norm':'-g^2=-u^2*(u-1)^2*(u-2)^2/D','logarithmic_correction':'2*dlog(g)','ordinary':True,'primitive':False},'division_by_two_required_to_recover_original_correction':True,'mod_two_character_trivializes':True,'mod_two_is_integral_lift':False,'existing_principal_lattice':principal['known_principal_coefficient_lattice'],'required_primitive_column':principal['required_column'],'parity_obstruction_type_matches_existing_gate':True,'mechanisms_identified_by_source_map':False,'survivor':'only the doubled norm comparison descends untwisted; it cannot produce a primitive unit over Z','next_conjecture':'the norm-doubling obstruction is the same typed 2Z obstruction already found for the principal coefficient lattice','next_falsifier':'construct the comparison map between the norm image and the principal lattice, or retain them as parallel parity obstructions','passed':True};(R/'cosmology_sign_twist_untwisted_lattice_descent.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

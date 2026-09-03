@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""Reassess labelled Rees extraction after the Aspect provenance reducer work."""
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];A=ROOT/'research/aspect/results';B=ROOT/'research/benincasa/results'
+base=json.loads((B/'cosmology_rees_generator_extraction_interface_gate.json').read_text());red=json.loads((A/'sparse_provenance_reducer.json').read_text());stream=json.loads((A/'rank26_provenance_stream_cross_prime.json').read_text());dual=json.loads((A/'rank26_rees_dual_provenance_9780.json').read_text());cand=json.loads((A/'rank26_candidate_dual_cross_prime.json').read_text())
+assert base['physical_length_one_count']==8 and red['passed'] and dual['passed'] and cand['passed']
+assert dual['full_layer_completed'] and not dual['length_one_generators_extracted']
+assert red['production_rank26_extraction_completed'] is False and stream['production_witness_reduction_completed'] is False
+out={'schema':'marici.benincasa.cosmology-labelled-rees-extraction-updated-gate.v1','progress':{'stable_cross_prime_source_row_identities':stream['stable_source_bound_row_identities'],'dual_layer_full_reduction':dual['full_layer_completed'],'dual_dependencies_replay_zero':dual['all_dependencies_replay_zero'],'candidate_dual_annihilation_count':cand['candidate_count']},'target_length_one_count':8,'current_dual_candidate_count':cand['candidate_count'],'count_mismatch':8-cand['candidate_count'],'missing_production_steps':['special-nontrivial selector','triple t^2 annihilation selector','paired provenance reduction through all three layers','source_id coefficient emission','normal and p-tangent image coordinates','two-prime semantic candidate matching'],'labelled_generators_extracted':False,'disposition':'infrastructure advanced, production extraction remains incomplete','owner_locus':'research/aspect/','passed':True};(B/'cosmology_labelled_rees_extraction_updated_gate.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

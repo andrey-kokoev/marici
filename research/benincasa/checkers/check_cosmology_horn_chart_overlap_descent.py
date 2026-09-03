@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+"""Test the materialized G12--G31 overlap for horn descent and orientation."""
+import json
+from pathlib import Path
+P=Path(__file__).resolve();ROOT=P.parents[3];B=ROOT/'research'/'benincasa';R=B/'results'
+t=json.loads((B/'g12-g31-residue-chart-transition.json').read_text());n=json.loads((B/'rank26-full-g12-g31-relation-naturality.json').read_text());assert t['transition']['orientation_sign']==-1;assert t['transition']['mark_map']['g2']=='g3' and t['transition']['mark_map']['g3']=='g2';assert t['checks']['roundtrip_failures']==0;assert n['checks']['all_orientation_squares_commute']
+# Under x2<->x3, (u=x1/x3,v=x2/x3) maps to (u/v,1/v).
+log_matrix=[[1,-1],[0,-1]];det=log_matrix[0][0]*log_matrix[1][1]-log_matrix[0][1]*log_matrix[1][0];assert det==-1
+out={'schema':'marici.benincasa.cosmology-horn-chart-overlap-descent.v1','overlap':'G12 to G31 via sigma_23','wall_permutation':'g2 swaps with g3','permutation_parity':-1,'residue_orientation_sign':-1,'ratio_transform':{'u_prime':'u/v','v_prime':'1/v','dlog_matrix':log_matrix,'dlog_wedge_sign':det},'relation_transport':{'rank':t['checks']['transport_rank'],'roundtrip_failures':0,'raw_generator_comparisons':n['total_generator_comparisons'],'orientation_failures':0},'strict_ordered_descent':False,'sign_local_system_descent_on_materialized_overlap':True,'integral_K2_strict_descent_verified':False,'remaining_gates':['materialize G12-G23 and G23-G31 overlap maps','verify the triple-overlap cocycle','compute any {-1,v} Milnor-K2 correction rather than discarding it'],'decision':'The G12-G31 overlap is an odd wall permutation with the same -1 residue-orientation sign; logarithmic horn and relation transport descend in the determinant sign local system. Strict ordered and full integral K2 descent are not yet established.','passed':True};(R/'cosmology_horn_chart_overlap_descent.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

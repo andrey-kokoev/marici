@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+"""Finalize the primitive-column source lift and quotient disposition."""
+import json
+from pathlib import Path
+P=Path(__file__).resolve();ROOT=P.parents[3];R=ROOT/'research'/'benincasa'/'results'
+m=json.loads((R/'cosmology_all_S_primitive_column_relation_lift.json').read_text());q=json.loads((R/'cosmology_all_S_tangent_killing_exact_lift.json').read_text());u=json.loads((R/'cosmology_all_S_uniform_tangent_homotopy.json').read_text());assert m['primitive_column_has_normal_relation_lift'];assert m['primitive_column_killed_by_p_tangent_quotient'];assert q['exact_reconstruction_verified'];assert u['degree_uniform_presentation_theorem'];out={'schema':'marici.benincasa.cosmology-all-S-primitive-relation-lift-final.v1','source_lift_exists':True,'exact_Q_witness_rows':q['nonzero_exact_sources'],'uniform_homotopy_rows':u['source_rows'],'quotient_class':0,'decision':'The primitive column has exact source-labelled relation lifts, but those lifts certify tangent exactness rather than a surviving normal class. Source provenance does not rescue the half-twist conjecture.','passed':True};(R/'cosmology_all_S_primitive_relation_lift_final.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
