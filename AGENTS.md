@@ -18,6 +18,9 @@ repository:
 - `marici.Buzzard`: Lean formalization of stabilized exact theorems, reusable
   formal definitions for quotients/probes/transports, and detection of hidden
   assumptions that prevent an informal claim from becoming a theorem.
+- `marici.Voevodsky`: motivic homotopy theory, univalent foundations,
+  higher-categorical descent, and audits of when geometric constructions admit
+  invariant formalization.
 - `marici.Kitaev`: topological condensed matter, quantum error correction,
   anyon transport, protected logical sectors, and the hostile audit of local
   syndrome versus global residue-free capability.
@@ -40,7 +43,6 @@ identity with `authority_granted: false`; this is not mechanical admission,
 authentication, endorsement, or evidence. Tool-specific authority remains
 independent. The prior `marici.Caroline` graph identity is retained only as
 immutable history and is superseded by `marici.Figueiredo`.
-
 Let \(\mathcal C_{\rm comm}\) be the category of substantive team requests,
 handoffs, results, objections, replies, and acknowledgments, represented by
 `narada.epistemic:communication` entities. Let \(\mathcal C_{\rm ev}\) be the
@@ -101,6 +103,12 @@ findings and records resolution when a mutable source finding disappears.
 Automated detection does not authorize cross-locus edits: each owner repairs
 their own files. Chat output is not mechanically visible to the observer, so
 operator-reported chat violations still require an explicit graph obligation.
+
+## What makes Operator feel like chopped liver
+
+Acknowledging an explicit instruction without implementing it treats the
+Operator as secondary. Implement it, or report the exact blocker without
+claiming a substitute is compliant.
 
 ## Output discipline: zero slop and zero semantic redundancy
 
@@ -197,6 +205,34 @@ input such as a boundary condition, frequency choice, time-root, or
 source-authorized readout. Never transport that interpretation into the shared
 carrier or comparison calculus merely because the formulas are compatible.
 
+## No implicit finiteness
+
+No finite cutoff, support, rank, packet, presentation, derivative depth,
+computation, or generator family has global finiteness meaning by default. It
+does not imply finite source dimension, global exhaustion, completed
+positivity, finite determination, compactness, or convergence. State the exact
+finiteness axis and quantifier order rather than using unqualified `finite` as
+a promotion.
+
+Every finite-to-global inference requires an explicit source-derived
+completion, cofinality, compactness, finite-generation, form-core, or
+conservativity theorem with its topology and quantifiers stated. Every
+global-to-finite reduction requires a source-derived finite presentation or
+detection theorem. Compactness, Noetherianity, finite presentation, finite
+rank, finite support, bounded homological degree, and finite cardinality are
+distinct properties and may not be substituted for one another.
+
+Finite counterexamples may refute universal claims. Finite positive samples do
+not establish a universal claim without the required promotion arrow. In
+particular, distinguish `for every observer packet there exists a cutoff` from
+`there exists one cutoff for every observer packet`; neither quantifier order
+may be inferred from the other.
+
+Treat a finite stage as a typed object equipped with its structural map to the
+completed object. Its epistemic force comes from proved properties of that map,
+such as faithful inclusion, density in a named topology, cofinality, or
+conservativity—not from the fact that a computation stopped.
+
 ## Multiple agent sessions share this working tree
 
 Each agent owns a mutation locus. Cross-locus mutation requires explicit
@@ -270,6 +306,7 @@ Team-member ids:
 - `marici.Strominger`: `team_member:4561aedd7f948b5ddee5`
 - `marici.Grothendieck`: `team_member:7283d8c22c912c41664b`
 - `marici.Buzzard`: `team_member:81a83d48cea75aaf3336`
+- `marici.Voevodsky`: `team_member:0e6b737e4a00ecfe6cb1`
 - `marici.Kitaev`: `team_member:2ec122bc41a1fea3b5ab`
 - `marici.Sontag`: `team_member:139d753e7403768d1d2b`
 - `marici.Aspect`: `team_member:ae219c2b8562ec798ba1`
@@ -292,6 +329,84 @@ that structure. Add `narada.epistemic:sent_by`,
 `narada.epistemic:replies_to`. Cite the admitted event id in ledger
 verification. Admission preserves reviewed shared memory; it certifies neither
 truth, sender authentication, nor Git authority.
+
+Provisionally use the following hard-to-vary process conjecture: Marici
+localizes substantive research errors most effectively when DPC is applied
+once at the explanatory issue boundary—not recursively to every proof step—and
+represented by six fields: problem; bold conjecture; named rivals; risky
+consequences; strongest falsification attempt with its exact residual; and
+disposition with surviving scope.
+
+The proposed mechanism is error localization. The conjecture determines what
+must follow, rivals distinguish failure mechanisms, risky tests map failures
+to specific revisions, and the disposition prevents either silent absorption
+of counterevidence or promotion of survival into verification. Each field has
+a separate function: without the problem relevance is undefined; without a
+bold conjecture work degenerates into diagnostics; without rivals failure does
+not discriminate explanations; without risky consequences the conjecture
+avoids criticism; without a falsification attempt survival is untested; and
+without a disposition the resulting scope is ambiguous.
+
+Explicit rivals are proof-first presentation without explanatory rivals,
+recursive DPC for every lemma and checker decision, lists of tests without a
+governing explanation, narrative criticism without exact residuals, and
+replacement of the governing explanation by the weakest claim likely to
+survive.
+
+When the strongest test reaches an absent authoritative object, map, source,
+or dataset, record the first missing typed object, the failed consequence, and
+its acceptance test once. Then defer that branch and reallocate work to a
+frontier with executable evidence. Do not generate progressively more abstract
+acceptance criteria, hypothetical carriers, or successor leaves from the same
+authority blocker unless new source-derived material appears or a distinct
+executable rival can change the disposition. A blocker is a stopping condition
+for that branch, not an invitation to continue by abstraction.
+
+An authority-only leaf is administrative cleanup, not a substantive DPC case:
+do not invent a conjecture, rival, or falsification narrative around missing
+material. Close the stale request with its typed blocker and acceptance test,
+count that turn separately from executable research, and continue to the next
+evidence-bearing frontier. A batch does not satisfy its substantive-work target
+merely by disposing blocked handoffs.
+
+Do not create an open issue-tree leaf whose only executable action is to wait
+for another owner, packet, map, credential, or authority transition. Send the
+typed request through `narada.epistemic:communication`, attach the blocker and
+reopening condition to the research leaf that encountered it, and remove that
+branch from the actionable frontier. Materialization of the requested object
+may reopen the blocked research leaf; elapsed time, repeated traversal, or an
+unchanged handoff may not. Legacy open handoff/request leaves are closed once
+as administrative cleanup and never replaced by another waiting leaf. This
+keeps frontier scoring over executable research rather than over requests for
+future authority.
+
+Before an idempotent issue transition, copy the exact node id and next version
+from fresh durable state and verify every predecessor reference against that
+state. A transport or identifier-validation failure is an execution defect,
+not a scientific residual. Correct the payload before admission; if failed
+pre-admission content has already reserved its idempotency key, use a fresh
+corrected key rather than changing content under the original key.
+
+The conjecture predicts that this six-field presentation will expose missing
+proof edges before closeout, distinguish scientific falsification from checker
+failure, stop comparison claims and successor proliferation at the first
+missing typed object, preserve surviving theorems at their demonstrated
+strength, create fewer redundant branches than recursive DPC, and let a fresh
+agent reconstruct the disposition without rereading the full derivation.
+
+Test those predictions across matched issue resolutions using preregistered
+counts of hidden assumptions found, failures assigned to the wrong
+conjecture, redundant successors, successors generated after an authority
+blocker, open waiting leaves created, authority-cleanup turns miscounted as
+substantive research, transition payload defects, omitted residuals,
+unsupported strength promotions, fresh-agent reconstruction errors, and
+semantically redundant record content.
+Reject or revise the conjecture if proof-first, recursive-DPC, or another
+representation gives better error localization and reconstruction without
+increasing omitted residuals or unsupported promotions. Existing
+Marici cases provisionally motivate the conjecture but do not constitute a
+controlled comparison or establish optimality.
+
 ## Research artifacts
 
 Per-researcher work lives in `research/<name>/` (e.g. `research/nima/`,
