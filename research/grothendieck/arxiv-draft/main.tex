@@ -1,0 +1,169 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage[hidelinks]{hyperref}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Lam}{\Lambda}
+
+\title{A Source-Typed Compact-Support Form of Weil's Explicit Formula}
+\author{Author metadata pending}
+\date{Draft of \today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We isolate a compact-support source identity obtained from the centered explicit formula for the completed Riemann zeta function. The presentation separates three logically different ingredients: the classical explicit formula and its normalization, the structural assembly of endpoint, archimedean, and prime terms, and the finite prime packet selected by a compactly supported test. A small UniMath/Rocq certificate kernel-checks the structural implication conditional on the first two ingredients. No positivity hypothesis enters the certificate. Consequently the result is not a proof of the Riemann hypothesis; Fourier--Plancherel extension, digamma estimates, graph closure, zero-extension approximation, and the positivity criterion remain explicit open gates.
+\end{abstract}
+
+\section{Purpose and claim boundary}
+The aim is to give a source-side formulation whose arithmetic contribution is finite for each compactly supported test, while retaining the normalization data needed for comparison with Weil's criterion. The finite packet depends on the test. We do not infer a single cutoff valid for all tests, nor any completed or colimit statement from this pointwise finiteness.
+
+The formal artifact certifies only that named hypotheses compose to the displayed identity and that a supplied compact-support lemma yields a finite packet. It does not formalize or prove the classical explicit formula, analytic continuation, convergence, Fourier inversion, or positivity.
+
+\section{Centered explicit formula}
+Let $h$ be an admissible test function in the centered spectral variable. Fix the Fourier convention
+\[
+ \widehat h(x)=\int_{\R}h(u)e^{-iux}\,du.
+\]
+Write the completed divisor symmetrically and count positive ordinates once after division by two. With endpoint, archimedean, and arithmetic terms denoted respectively by $K_{\mathrm{end}}(h)$, $K_{\Gamma}(h)$, and $K_{\mathrm{pr}}(h)$, the normalized source identity has the form
+\[
+ \Theta(h)=K_{\mathrm{end}}(h)+K_{\Gamma}(h)+K_{\mathrm{pr}}(h).
+\]
+The exact admissibility class and normalization are hypotheses at the present formal boundary and must be discharged from a cited analytic source before publication.
+
+\section{Shifted Gaussian diagnostic}
+For $t>0$ and $\xi\in\R$, set
+\[
+ h_{t,\xi}(u)=\exp\bigl(-t(u-\xi)^2\bigr).
+\]
+Specialization of the centered formula gives
+\begin{align}
+K_{\mathrm{end}}(t,\xi)
+ &=e^{t/4-t\xi^2}\cos(t\xi),\\
+K_{\Gamma}(t,\xi)
+ &=-\frac{\log\pi}{4\sqrt{\pi t}}
+   +\frac{1}{4\pi}\int_{\R}e^{-t(u-\xi)^2}
+     \operatorname{Re}\psi\!\left(\frac14+\frac{iu}{2}\right)\,du,\\
+K_{\mathrm{pr}}(t,\xi)
+ &=-\frac{1}{2\sqrt{\pi t}}
+   \sum_{n\ge2}\frac{\Lam(n)}{\sqrt n}
+   e^{-(\log n)^2/(4t)}\cos(\xi\log n).
+\end{align}
+The endpoint factor follows from
+\[
+ \frac{h_{t,\xi}(i/2)+h_{t,\xi}(-i/2)}{2}
+ =e^{t/4-t\xi^2}\cos(t\xi).
+\]
+This oscillatory term prevents reuse of the scalar endpoint away from $\xi=0$.
+
+\begin{remark}
+The shifted Gaussian is a diagnostic for normalization and for the eventual positivity problem. It is not compactly supported, so its use requires a separate approximation theorem and cannot be inserted into the compact-support theorem without that arrow.
+\end{remark}
+
+\section{Compact support and finite arithmetic packets}
+Let $f$ be a compactly supported source test. The arithmetic side is indexed by prime powers through logarithmic coordinates. Compact support implies that only indices whose logarithmic coordinate meets the support of $f$ can contribute.
+
+\begin{proposition}[Pointwise finite packet]
+For every compactly supported test $f$, there exists a finite packet $P_f$ of arithmetic indices such that every active prime-power term for $f$ belongs to $P_f$.
+\end{proposition}
+
+The quantifiers are
+\[
+ \forall f\;\exists P_f,
+\]
+not $\exists P\;\forall f$. The proposition therefore supplies finite evaluation at each test, not a uniform global cutoff. In the current Rocq artifact this proposition is represented by an explicit hypothesis because the analytic support model and the prime-power indexing object have not yet been formalized.
+
+\section{Kernel-checked structural certificate}
+The certificate is stored as
+\begin{verbatim}
+research/grothendieck/scc/CompactWeilSourceIdentity.v
+\end{verbatim}
+and was checked with Rocq 9.0.1, OCaml 4.14.2, and a compatible build of UniMath Foundations. Its theorem has the following dependency shape:
+\[
+ \bigl(\text{centered explicit formula}\bigr)
+ \times \bigl(\text{half-divisor normalization}\bigr)
+ \times \bigl(\text{polar endpoint normalization}\bigr)
+ \longrightarrow \bigl(\text{assembled source identity}\bigr).
+\]
+A second theorem merely extracts the packet supplied by the compact-support hypothesis. The certificate contains no assumption asserting nonnegativity of the completed Weil form.
+
+Kernel acceptance establishes that these implications are well typed and proof terms exist relative to the declared assumptions. It supplies no reverse implication proving those assumptions from arithmetic geometry or analysis.
+
+\section{Relation to Weil positivity}
+Under the standard analytic identifications, the Riemann hypothesis is equivalent to nonnegativity of the completed Weil form on an appropriate test space. For shifted Gaussians the prospective source inequality is
+\[
+ K_{\mathrm{end}}(t,\xi)+K_{\Gamma}(t,\xi)+K_{\mathrm{pr}}(t,\xi)\ge0
+ \qquad(t>0,\ \xi\in\R).
+\]
+The identity derived above names the terms in this inequality but does not prove it. Neither the endpoint nor the prime term is separately positive.
+
+\subsection{Promotion from Gaussian positivity}
+Let $\mathcal W\in\mathcal S'(\mathbb R)$ be the completed source-side Weil distribution and let
+\[
+ G_s(x)=\frac{1}{\sqrt{4\pi s}}e^{-x^2/(4s)}.
+\]
+If $(\mathcal W*G_s)(\xi)\ge0$ for every $s>0$ and $\xi\in\mathbb R$, then $\mathcal W$ is a positive distribution. Indeed, for every nonnegative $\phi\in C_c^\infty(\mathbb R)$,
+\[
+ \langle\mathcal W,\phi\rangle
+ =\lim_{s\downarrow0}\langle\mathcal W,G_s*\phi\rangle
+ =\lim_{s\downarrow0}\int_{\mathbb R}(\mathcal W*G_s)(\xi)\phi(\xi)\,d\xi
+ \ge0.
+\]
+A positive tempered distribution is a positive measure of polynomial growth, so the inequality extends to nonnegative Schwartz tests. For $g\in C_c^\infty(\mathbb R_+^\times)$, the centered spectral restriction of the quadratic Weil test is $|F_g(u)|^2$, where $F_g$ is the normalized Mellin transform; it is nonnegative and Schwartz. Consequently the source-interface identity
+\[
+ W(g*\overline g^{\,\tau})=\langle\mathcal W,|F_g|^2\rangle
+\]
+promotes all-scale, all-translate Gaussian positivity to Weil positivity. The parameter relation is $s=1/(4t)$; all normalization factors found above are positive. Wong's Weil criterion and multiplicative convolution conventions have been checked directly from the source of arXiv:1608.02296. Its converse proof uses only nonnegativity: an off-line zero produces a test with negative functional value. No additional positivity conjecture is needed for this promotion.
+
+\section{Coercivity in the character variable}
+Fix a compact interval $I=[t_0,T]$ in $(0,\infty)$. The sectorial digamma expansion and Gaussian translation give, uniformly for $t\in I$,
+\[
+ K_\Gamma(t,\xi)=\frac{1}{\sqrt{\pi t}}
+ \log\frac{|\xi|}{2\pi}+o_I(1)
+ \qquad(|\xi|\to\infty)
+\]
+in the symmetrized Guinand--Weil normalization. The endpoint decays like $e^{-t_0\xi^2}$, while absolute convergence bounds the prime cosine series uniformly on $I$. Consequently
+\[
+ \lim_{R\to\infty}\inf_{t\in I,\,|\xi|\ge R}\Theta(t,\xi)=+\infty.
+\]
+The symmetrized convention is four times the positive-half-divisor convention used earlier, so the coercivity and zero-set conclusions agree. Thus loss of positivity near a finite positive threshold cannot escape through unbounded $|\xi|$.
+
+Assuming continuity and the established broad-smoothing regime, any first finite threshold must therefore be attained at a finite double contact
+\[
+ \Theta(t_*,\xi_*)=0,
+ \qquad
+ \partial_\xi\Theta(t_*,\xi_*)=0.
+\]
+Generic signed heat flows admit exactly this behavior, so heat-semigroup and total-positivity arguments alone cannot exclude it.
+
+\section{Unresolved analytic gates}
+A promotion from the compact-support identity to a positivity theorem still requires the following independent results.
+\begin{enumerate}
+\item An effective digamma remainder bound converting character coercivity into a computable compact radius on each bounded positive $t$-interval. The centered explicit formula and the factor-four comparison between the symmetrized and half-divisor conventions have been checked directly against arXiv:2005.02996.
+\item Fourier--Plancherel theory on the declared test space.
+\item Exclusion of every finite double contact, using arithmetic structure rather than generic heat-flow theory.
+\item A proof of all-scale Gaussian nonnegativity without assuming an equivalent form of the Riemann hypothesis.
+\end{enumerate}
+Until these gates are discharged, the result is an identity and a formalized dependency boundary, not an RH proof.
+
+\section{Reproducibility}
+The source certificate, SCC manifest, and digest checker are located at
+\begin{verbatim}
+research/grothendieck/scc/CompactWeilSourceIdentity.v
+research/grothendieck/scc/compact-weil-source-identity.scc.json
+research/grothendieck/checkers/check_compact_weil_scc_manifest.py
+research/grothendieck/results/compact-weil-scc-manifest.json
+\end{verbatim}
+The present manifest records successful kernel checking. A release archive must additionally provide a scripted clean build of the exact Rocq and UniMath revisions rather than relying on a local installation.
+
+\section{Conclusion}
+Compact support gives a test-dependent finite arithmetic packet, and the normalized endpoint, archimedean, and prime terms assemble into a source identity conditional on the classical explicit formula. The Rocq artifact checks this structural composition while exposing every external assumption. The remaining positivity and completion steps are mathematical obligations rather than consequences of kernel acceptance.
+
+\end{document}
