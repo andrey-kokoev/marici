@@ -2,7 +2,10 @@ import json
 from fractions import Fraction
 from pathlib import Path
 
+from flavor_dpc_source_replay import replay_source_checkers
+
 ROOT=Path(__file__).resolve().parents[1]
+_source_replay_records = replay_source_checkers(822,1185,1186)
 wp822=json.loads((ROOT/"results"/"wp822_finite_chiral_matter_spectrum_census.json").read_text())
 wp1185=json.loads((ROOT/"results"/"wp1185_threshold_boundary_packet_contract.json").read_text())
 wp1186=json.loads((ROOT/"results"/"wp1186_threshold_boundary_authority_no_go.json").read_text())

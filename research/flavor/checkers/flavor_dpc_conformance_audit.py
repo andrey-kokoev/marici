@@ -1,6 +1,9 @@
 import json
+import os
+import re
 import subprocess
 import sys
+import uuid
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -8,7 +11,7 @@ REPO=ROOT.parents[1]
 CONTRACT=ROOT/"contracts"/"flavor-interaction-net-state.v1.json"
 INDEX=ROOT/"flavor-programme-index.md"
 NET_MD=ROOT/"flavor-interaction-net-state.md"
-WORK_PACKAGES=list(range(1177,1197))
+WORK_PACKAGES=list(range(1177,1288))
 REQUIRED_TOP_LEVEL={
     "schema","status","question","dpc","classification","remaining_gate",
     "hostile_gate","claim_boundary","disposition"
@@ -22,6 +25,7 @@ net_nodes={node["id"]:node for node in net["nodes"]}
 index_text=INDEX.read_text()
 net_text=NET_MD.read_text()
 records=[]
+os.environ["FLAVOR_DPC_REPLAY_SESSION"] = "audit-" + uuid.uuid4().hex
 for number in WORK_PACKAGES:
     checker=next((ROOT/"checkers").glob(f"wp{number}_*.py"),None)
     result_path=next((ROOT/"results").glob(f"wp{number}_*.json"),None)
@@ -30,6 +34,16 @@ for number in WORK_PACKAGES:
     node_id=checker.stem
     node=net_nodes.get(node_id)
     assert node is not None, f"missing net node {node_id}"
+    checker_text=checker.read_text()
+    assert "replay_source_checkers(" in checker_text, f"WP{number} lacks source replay"
+    source_refs=sorted(set(map(int,re.findall(r'results"/"wp(\d+)_',checker_text)))-{number})
+    evidence_sources=node.get("evidence_sources")
+    assert evidence_sources, f"WP{number} lacks evidence-source provenance"
+    assert sorted(int(x["work_package"][2:]) for x in evidence_sources)==source_refs, f"WP{number} provenance mismatch"
+    for source in evidence_sources:
+        assert source.get("replay_required") is True, f"WP{number} source replay not required"
+        assert (REPO/source["checker"]).exists(), source["checker"]
+        assert (REPO/source["result"]).exists(), source["result"]
     locator=REPO/node["locator"]
     assert locator.exists(), f"missing locator {locator}"
     result=json.loads(result_path.read_text())
@@ -56,6 +70,7 @@ for number in WORK_PACKAGES:
         "result":str(result_path.relative_to(REPO)),
         "locator":node["locator"],
         "net_node":node_id,
+        "evidence_sources":evidence_sources,
         "replay":completed.stdout.strip().splitlines()[-1]
     })
 net_replay=subprocess.run(
@@ -63,10 +78,10 @@ net_replay=subprocess.run(
     cwd=REPO,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,
     timeout=120,check=True
 )
-assert "WP1043 PASS: 160 5" in net_replay.stdout
+assert "WP1043 PASS: 251 5" in net_replay.stdout
 constructed=sum(1 for node in net["nodes"] if node.get("status")=="constructed")
-assert constructed==160
-assert len(net["hostile_fixtures"])==158
+assert constructed==251
+assert len(net["hostile_fixtures"])==249
 assert "\\boxed" not in net_text
 output={
     "schema":"marici.flavor.dpc-conformance-audit.v1",
@@ -78,6 +93,7 @@ output={
     "constructed_nodes":constructed,
     "hostile_fixtures":len(net["hostile_fixtures"]),
     "net_replay":net_replay.stdout.strip(),
+    "replay_session":os.environ["FLAVOR_DPC_REPLAY_SESSION"],
     "records":records,
     "checks":{
         "artifacts_exist":True,
@@ -88,6 +104,8 @@ output={
         "programme_index_entries":True,
         "net_narrative_entries":True,
         "checker_replays":True,
+        "source_checker_replays_required":True,
+        "evidence_source_provenance":True,
         "boxed_notation_absent":True,
         "interaction_net_counts":True
     }

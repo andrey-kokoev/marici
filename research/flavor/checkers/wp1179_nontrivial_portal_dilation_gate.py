@@ -2,7 +2,10 @@ import json
 from fractions import Fraction
 from pathlib import Path
 
+from flavor_dpc_source_replay import replay_source_checkers
+
 ROOT=Path(__file__).resolve().parents[1]
+_source_replay_records = replay_source_checkers(1178)
 wp1178=json.loads((ROOT/"results"/"wp1178_portal_to_sector_dilation_gate.json").read_text())
 assert wp1178["sourced_portal_dynamics"] == 0
 

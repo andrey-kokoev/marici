@@ -1,0 +1,64 @@
+{
+  "schema": "marici.flavor.event-production-packet-admission.v2",
+  "status": "active",
+  "purpose": "Executable admission tests for a future source packet claiming physical16 event production with record-conditioned instrument update authority.",
+  "extends": "research/flavor/contracts/flavor-event-production-packet-admission.v1.json",
+  "required_objects": {
+    "source_selected_uv_boundary_object": {
+      "packet_identity": "nonempty",
+      "common_frame": "explicit",
+      "preparation_lineage": "explicit",
+      "messenger_lineage": "explicit",
+      "typed_maps": [
+        "event_production",
+        "preparation",
+        "compactification",
+        "channel_cascade",
+        "production_matching",
+        "phase_authority"
+      ]
+    },
+    "channel_basis": {
+      "count": 6,
+      "independence": "rank_6",
+      "physical16_typed": true
+    },
+    "phase_observable": {
+      "class": "H6_or_equivalent",
+      "squared_modulus": "1/6",
+      "unitarity": "H_dagger_H=6I",
+      "selected_packet_preserving": true
+    },
+    "production_kernel": {
+      "shape": [6, 6],
+      "row_sums": "1",
+      "q_image": "(1/6)^6",
+      "source_derived": true
+    },
+    "event_map": {
+      "gain": "3/2",
+      "event_image": "(1/4)^6",
+      "readout_map_present": true
+    },
+    "instrument_update": {
+      "record_conditioned": true,
+      "post_record_state_present": true,
+      "sequential_continuation": true,
+      "joint_record_lineage": true
+    },
+    "provenance": {
+      "packet_id": "nonempty",
+      "boundary_authority": "explicit",
+      "derivation_references_min_count": 1
+    }
+  },
+  "hostile_rejections": [
+    "narrative_or_variable_names_without_typed_fields",
+    "kernel_without_channel_basis_or_provenance",
+    "H6_phase_gauge_without_selected_packet_preservation",
+    "readout_map_without_exact_event_image",
+    "mock_or_fixture_packet_treated_as_source_packet",
+    "effect_only_packet_without_record_conditioned_update",
+    "partial_interfaces_without_source_selected_uv_boundary_object"
+  ]
+}

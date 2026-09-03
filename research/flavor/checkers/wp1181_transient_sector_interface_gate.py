@@ -2,7 +2,10 @@ import json
 from fractions import Fraction
 from pathlib import Path
 
+from flavor_dpc_source_replay import replay_source_checkers
+
 ROOT=Path(__file__).resolve().parents[1]
+_source_replay_records = replay_source_checkers(1179,1180)
 wp1179=json.loads((ROOT/"results"/"wp1179_nontrivial_portal_dilation_gate.json").read_text())
 wp1180=json.loads((ROOT/"results"/"wp1180_source_dynamics_channel_selection_no_go.json").read_text())
 assert wp1179["completely_positive"] is True and wp1179["trace_preserving"] is True

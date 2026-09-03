@@ -2,7 +2,10 @@ import json
 from fractions import Fraction
 from pathlib import Path
 
+from flavor_dpc_source_replay import replay_source_checkers
+
 ROOT=Path(__file__).resolve().parents[1]
+_source_replay_records = replay_source_checkers(1181,1182)
 wp1181=json.loads((ROOT/"results"/"wp1181_transient_sector_interface_gate.json").read_text())
 wp1182=json.loads((ROOT/"results"/"wp1182_threshold_intertwiner_no_go.json").read_text())
 assert wp1181["sector_output"] == "sigma_t=rho_dim+epsilon exp(-kappa t)A"

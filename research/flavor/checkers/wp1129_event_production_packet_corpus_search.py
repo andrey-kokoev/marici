@@ -26,20 +26,46 @@ for path in sorted(ROOT.rglob("*.json")):
 
 candidate_file_floor = 63
 assert len(candidate_files) >= candidate_file_floor
-assert len(typed_packet_candidates) == 1
-assert typed_packet_candidates[0].name == "flavor-event-production-packet-admission.v1.json"
+assert len(typed_packet_candidates) == 12
+assert [p.name for p in typed_packet_candidates] == [
+    "flavor-event-production-packet-admission.v1.json",
+    "flavor-event-production-packet-admission.v10.json",
+    "flavor-event-production-packet-admission.v11.json",
+    "flavor-event-production-packet-admission.v12.json",
+    "flavor-event-production-packet-admission.v2.json",
+    "flavor-event-production-packet-admission.v3.json",
+    "flavor-event-production-packet-admission.v4.json",
+    "flavor-event-production-packet-admission.v5.json",
+    "flavor-event-production-packet-admission.v6.json",
+    "flavor-event-production-packet-admission.v7.json",
+    "flavor-event-production-packet-admission.v8.json",
+    "flavor-event-production-packet-admission.v9.json",
+]
 
-admission_contract = json.loads(typed_packet_candidates[0].read_text())
-assert admission_contract["schema"] == "marici.flavor.event-production-packet-admission.v1"
-assert "required_objects" in admission_contract
-assert "packet_id" not in admission_contract
+admission_contracts_data=[json.loads(p.read_text()) for p in typed_packet_candidates]
+assert [c["schema"] for c in admission_contracts_data]==[
+    "marici.flavor.event-production-packet-admission.v1",
+    "marici.flavor.event-production-packet-admission.v10",
+    "marici.flavor.event-production-packet-admission.v11",
+    "marici.flavor.event-production-packet-admission.v12",
+    "marici.flavor.event-production-packet-admission.v2",
+    "marici.flavor.event-production-packet-admission.v3",
+    "marici.flavor.event-production-packet-admission.v4",
+    "marici.flavor.event-production-packet-admission.v5",
+    "marici.flavor.event-production-packet-admission.v6",
+    "marici.flavor.event-production-packet-admission.v7",
+    "marici.flavor.event-production-packet-admission.v8",
+    "marici.flavor.event-production-packet-admission.v9",
+]
+assert all("required_objects" in c for c in admission_contracts_data)
+assert all("packet_id" not in c for c in admission_contracts_data)
 
-# The only typed candidate is the admission test, not a packet. It supplies no
+# The typed candidates are admission tests, not packets. They supply no
 # packet_id/boundary authority and therefore cannot be admitted as evidence.
 admissible_packets = 0
-admission_contracts = 1
+admission_contracts = 12
 assert admissible_packets == 0
-assert admission_contracts == 1
+assert admission_contracts == 12
 
 # Exact target retained from the admission contract.
 assert Fraction(3,2)*Fraction(1,6) == Fraction(1,4)
@@ -61,7 +87,7 @@ result = {
             "it must include boundary authority and derivation references",
             "it must not be merely the admission schema"
         ],
-        "falsification_attempt": f"The bounded corpus scan finds {len(candidate_files)} mention candidates and one typed JSON candidate; the typed candidate is the admission contract, and zero admissible packets exist.",
+        "falsification_attempt": f"The bounded corpus scan finds {len(candidate_files)} mention candidates and twelve typed JSON candidates; all typed candidates are admission contracts, and zero admissible packets exist.",
         "residual": "An external or future UV packet may still satisfy the contract.",
         "disposition": "reject the existing-corpus packet conjecture"
     },

@@ -2,7 +2,10 @@ import json
 from fractions import Fraction
 from pathlib import Path
 
+from flavor_dpc_source_replay import replay_source_checkers
+
 ROOT=Path(__file__).resolve().parents[1]
+_source_replay_records = replay_source_checkers(857,1134,1176)
 wp857=json.loads((ROOT/"results"/"wp857_oriented_dark_state_portal_attractor.json").read_text())
 wp1134=json.loads((ROOT/"results"/"wp1134_preparation_constructor_closure_audit.json").read_text())
 wp1176=json.loads((ROOT/"results"/"wp1176_uv_ensemble_matching_no_go.json").read_text())

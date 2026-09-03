@@ -1,7 +1,10 @@
 import json
 from pathlib import Path
 
+from flavor_dpc_source_replay import replay_source_checkers
+
 ROOT=Path(__file__).resolve().parents[1]
+_source_replay_records = replay_source_checkers(134,1185)
 wp134=json.loads((ROOT/"results"/"wp134_dimensional_transmutation_authority.json").read_text())
 wp1185=json.loads((ROOT/"results"/"wp1185_threshold_boundary_packet_contract.json").read_text())
 assert wp134["checks"]["coupling_boundary_is_required"] is True

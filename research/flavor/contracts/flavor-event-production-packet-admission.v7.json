@@ -1,0 +1,111 @@
+{
+  "schema": "marici.flavor.event-production-packet-admission.v7",
+  "status": "active",
+  "purpose": "Executable admission tests for a future source packet claiming physical16 event production with independent-frame anchoring authority.",
+  "extends": "research/flavor/contracts/flavor-event-production-packet-admission.v6.json",
+  "required_objects": {
+    "source_selected_uv_boundary_object": {
+      "packet_identity": "nonempty",
+      "common_frame": "explicit",
+      "preparation_lineage": "explicit",
+      "messenger_lineage": "explicit",
+      "typed_maps": [
+        "event_production",
+        "preparation",
+        "compactification",
+        "channel_cascade",
+        "production_matching",
+        "phase_authority"
+      ]
+    },
+    "channel_basis": {
+      "count": 6,
+      "independence": "rank_6",
+      "physical16_typed": true
+    },
+    "phase_observable": {
+      "class": "H6_or_equivalent",
+      "squared_modulus": "1/6",
+      "unitarity": "H_dagger_H=6I",
+      "selected_packet_preserving": true
+    },
+    "production_kernel": {
+      "shape": [6, 6],
+      "row_sums": "1",
+      "q_image": "(1/6)^6",
+      "source_derived": true
+    },
+    "event_map": {
+      "gain": "3/2",
+      "event_image": "(1/4)^6",
+      "readout_map_present": true
+    },
+    "instrument_update": {
+      "record_conditioned": true,
+      "post_record_state_present": true,
+      "sequential_continuation": true,
+      "joint_record_lineage": true
+    },
+    "source_transversal": {
+      "source_lift_certificate_present": true,
+      "quotient_predictive_descent": true,
+      "physical_recovery_preserves_source_representatives": true,
+      "u_map_explicit": true,
+      "equivalence_class_representative_only": false
+    },
+    "preparation_production_factorization": {
+      "joint_hidden_state_update_present": true,
+      "preparation_factor_present": true,
+      "production_factor_present": true,
+      "independent_factors": true,
+      "preparation_messenger_lineage": "explicit",
+      "production_response_lineage": "explicit"
+    },
+    "sequential_record_fidelity": {
+      "joint_record_words_present": true,
+      "branch_conditioned_continuation": true,
+      "later_record_bound_to_earlier_branch": true,
+      "cross_branch_substitution_forbidden": true,
+      "continuation_provenance": "explicit"
+    },
+    "constructor_intertwiner": {
+      "external_theorem_inventory": "explicit",
+      "executable_encoding_decoding": true,
+      "primitive_intertwining": true,
+      "fault_model_matching": true,
+      "leakage_transport": true,
+      "source_transport_certificate": true
+    },
+    "independent_frame_anchor": {
+      "externally_sourced_anchor": true,
+      "separate_fault_domain": true,
+      "disagreement_alarm": true,
+      "drift_syndrome": "explicit",
+      "common_mode_drift_visible": true
+    },
+    "provenance": {
+      "packet_id": "nonempty",
+      "boundary_authority": "explicit",
+      "derivation_references_min_count": 1
+    }
+  },
+  "hostile_rejections": [
+    "narrative_or_variable_names_without_typed_fields",
+    "kernel_without_channel_basis_or_provenance",
+    "H6_phase_gauge_without_selected_packet_preservation",
+    "readout_map_without_exact_event_image",
+    "mock_or_fixture_packet_treated_as_source_packet",
+    "effect_only_packet_without_record_conditioned_update",
+    "partial_interfaces_without_source_selected_uv_boundary_object",
+    "predictive_recovery_conflated_with_physical_source_recovery",
+    "equivalence_class_representative_treated_as_source_selected_transversal",
+    "single_instrument_without_factorized_preparation_and_production",
+    "correlated_preparation_response_pair_treated_as_independent_product_factors",
+    "marginal_records_treated_as_joint_record_words",
+    "cross_branch_continuation_substituted_for_branch_conditioned_fidelity",
+    "dimension_equality_promoted_to_constructor_transport",
+    "external_universality_imported_without_constructor_intertwiner",
+    "common_mode_frame_drift_left_invisible",
+    "self_calibration_promoted_to_independent_frame_anchor"
+  ]
+}

@@ -1,7 +1,10 @@
 import json
 from pathlib import Path
 
+from flavor_dpc_source_replay import replay_source_checkers
+
 ROOT=Path(__file__).resolve().parents[1]
+_source_replay_records = replay_source_checkers(827,829,1191)
 wp827=json.loads((ROOT/"results"/"wp827_intrinsic_rg_curvature_anchor_triplet.json").read_text())
 wp829=json.loads((ROOT/"results"/"wp829_rg_curvature_scheme_descent_no_go.json").read_text())
 wp1191=json.loads((ROOT/"results"/"wp1191_spectral_path_rg_event_gate.json").read_text())

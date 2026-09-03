@@ -2,7 +2,10 @@ import json
 from fractions import Fraction
 from pathlib import Path
 
+from flavor_dpc_source_replay import replay_source_checkers
+
 ROOT=Path(__file__).resolve().parents[1]
+_source_replay_records = replay_source_checkers(857,1179)
 wp857=json.loads((ROOT/"results"/"wp857_oriented_dark_state_portal_attractor.json").read_text())
 wp1179=json.loads((ROOT/"results"/"wp1179_nontrivial_portal_dilation_gate.json").read_text())
 assert wp857["summary"]["all_passed"] is True

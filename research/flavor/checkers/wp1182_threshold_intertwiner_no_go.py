@@ -2,7 +2,10 @@ import json
 from fractions import Fraction
 from pathlib import Path
 
+from flavor_dpc_source_replay import replay_source_checkers
+
 ROOT=Path(__file__).resolve().parents[1]
+_source_replay_records = replay_source_checkers(1181)
 wp1181=json.loads((ROOT/"results"/"wp1181_transient_sector_interface_gate.json").read_text())
 assert wp1181["threshold_intertwiners"] == 0
 assert wp1181["source_selected_interfaces"] == 0

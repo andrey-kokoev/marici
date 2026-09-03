@@ -793,9 +793,9 @@ and its physical constructor implementation.
   the row from 1/2 to 1; normalized one-port fractions collide. The remaining
   gate is a source-detector gain law or interference-calibrated instrument.
 - flavor-interaction-net-state.md: WP1043 constructs the Interaction Net for
-  the current integer-pole Flavor branch. After WP1196 integration the verified
-  contract has one hundred sixty constructed nodes, five open nodes, four rejection
-  rewrite rules, and one hundred fifty-eight hostile fixtures. Its terminal physical selector
+  the current integer-pole Flavor branch. After WP1287 integration the verified
+  contract has two hundred fifty-one constructed nodes, five open nodes, four rejection
+  rewrite rules, and two hundred forty-nine hostile fixtures. Its terminal physical selector
   remains open behind four slots: common integer substrate with preparation
   law, typed pole spectrum and mass clock, calibrated momentum and ratio law,
   and `physical16` gain or interference law.
@@ -1215,6 +1215,189 @@ and its physical constructor implementation.
   completion selector with open scale and mixing fibers.
 - flavor-ward-scale-mixing-anchor-gate.md: WP1196 anchors mixing by the
   current reflection but leaves absolute scale open.
+- flavor-spectral-action-normalization-gate.md: WP1197 constructs the
+  charge-diameter candidate flow but leaves microscopic beta authority open.
+- flavor-charge-moment-microscopic-beta-gate.md: WP1198 gives the exact
+  tensor targets and rules out ordinary positive threshold restriction.
+- flavor-equivariant-threshold-matching-gate.md: WP1199 constructs the
+  character-sewn threshold carrier but leaves its equivariant source index open.
+- flavor-equivariant-index-source-gate.md: WP1200 rejects incidence as the
+  equivariant index source and constructs only a typed spurion lift.
+- flavor-spurion-alignment-source-gate.md: WP1201 selects the aligned orbit
+  in-model but leaves source completion open.
+- flavor-positive-pairing-normalization-gate.md: WP1202 normalizes path
+  multiplication but leaves its microscopic source relation open.
+- flavor-oriented-cycle-constructor-gate.md: WP1203 derives the partial
+  isometry and oriented current but requires boundary readout.
+- flavor-boundary-current-readout-gate.md: WP1204 gives a referenced
+  boundary-current readout but leaves threshold transport open.
+- flavor-threshold-intertwiner-gate.md: WP1205 gives the reciprocal basin
+  and exact current threshold criterion but leaves coherent normalization open.
+- flavor-coherent-kinetic-normalization-gate.md: WP1206 fixes the odd dark
+  ray and port magnitude but leaves reservoir-source authority open.
+- flavor-boundary-reservoir-source-gate.md: WP1207 derives the odd ray from
+  a retained return phase but leaves the microscopic junction source open.
+- flavor-common-junction-source-gate.md: WP1208 derives a Kirchhoff junction
+  but leaves microscopic endpoint-reciprocity authority open.
+- flavor-endpoint-reciprocity-source-gate.md: WP1209 realizes reciprocity but
+  leaves source-modulus selection open.
+- flavor-source-modulus-selection-gate.md: WP1210 rejects current modulus
+  authority and leaves flavor dual-pair existence open.
+- flavor-flavor-dual-pair-existence-gate.md: WP1211 rules out current and
+  compulsory dual pairs and requires new Yukawa-active matter.
+- flavor-new-yukawa-active-source-gate.md: WP1212 constructs an ordered
+  Spin(5) packet but leaves matter completion open.
+- flavor-spin5-matter-completion-selector-gate.md: WP1213 rules out audited
+  completion selectors and requires an independent principle.
+- flavor-independent-completion-principle-gate.md: WP1214 gives a conditional
+  Spin(7) orbifold/exchange principle but leaves full action authority open.
+- flavor-complete-endpoint-exchange-action-gate.md: WP1215 rules out complete
+  action authority and requires a new three-family source action.
+- flavor-new-three-family-source-action-gate.md: WP1216 exhausts declared
+  packets and requires new source geometry.
+- flavor-new-source-geometry-gate.md: WP1217 exhausts audited geometries and
+  requires a boundaryless holonomy instrument.
+- flavor-boundaryless-holonomy-instrument-gate.md: WP1218 rejects undeclared
+  holonomy readout and requires a source-derived proper word module.
+- flavor-source-derived-proper-word-module-gate.md: WP1219 exhausts canonical
+  Weyl constructors and requires an independent source-normal coordinate.
+- flavor-independent-source-normal-coordinate-gate.md: WP1220 exhausts canonical
+  source-normal coordinates and requires an asymmetric full-weak-basis operation.
+- flavor-asymmetric-full-weak-basis-operation-gate.md: WP1221 exhausts asymmetric
+  scalar/isotropic/two-involution routes and requires three source-related
+  decompositions.
+- flavor-three-source-decomposition-instrument-gate.md: WP1222 finds a
+  conditional S3 flag route but requires physical doublet/projective coupling.
+- flavor-physical-doublet-projective-coupling-gate.md: WP1223 requires a
+  source-authorized ordered spanning triple.
+- flavor-ordered-spanning-triple-source-action-gate.md: WP1224 exhausts minimal
+  ordered-triple actions and requires an interior-enforcing completion.
+- flavor-interior-enforcing-source-completion-gate.md: WP1225 finds strict
+  affine interior geometry but requires microscopic affine-action authority.
+- flavor-microscopic-affine-action-authority-gate.md: WP1226 finds a
+  renormalizable constructor but requires a source-derived coefficient relation.
+- flavor-source-derived-coefficient-relation-gate.md: WP1227 shows lift
+  tomography is formal and requires complementary source records.
+- flavor-complementary-source-records-gate.md: WP1228 constructs formal records
+  but requires actuator normalization.
+- flavor-source-derived-actuator-normalization-gate.md: WP1229 requires a
+  common-substrate RG lift.
+- flavor-common-substrate-rg-lift-gate.md: WP1230 constructs the lift formally
+  but requires a source-selected global ratio.
+- flavor-global-selector-source-ratio-gate.md: WP1231 requires a mixed
+  covariant portal.
+- flavor-mixed-covariant-portal-gate.md: WP1232 gives portal capacity but
+  requires a compiler-coefficient source principle.
+- flavor-compiler-coefficient-source-principle-gate.md: WP1233 requires a
+  positive CP transmission margin.
+- flavor-positive-cp-transmission-margin-gate.md: WP1234 requires an
+  independent small source ratio.
+- flavor-independent-small-source-ratio-gate.md: WP1235 requires a typed
+  mass-norm interface.
+- flavor-source-covariant-mass-norm-interface-gate.md: WP1236 requires
+  discrete source-actuator typing.
+- flavor-discrete-source-actuator-typing-gate.md: WP1237 requires an
+  anomaly-complete representation theorem.
+- flavor-anomaly-complete-representation-theorem-gate.md: WP1238 requires a
+  source-detector gain law.
+- flavor-source-detector-gain-law-gate.md: WP1239 requires a coherent
+  cofinality monitor.
+- flavor-coherent-cofinality-monitor-gate.md: WP1240 requires source-derived
+  pole-atom dynamics.
+- flavor-source-pole-atom-dynamics-gate.md: WP1241 requires inter-parent
+  clock alignment.
+- flavor-inter-parent-clock-alignment-gate.md: WP1242 requires a Physical16
+  soft-port channel realization.
+- flavor-physical16-soft-port-channel-gate.md: WP1243 requires a
+  channel-dependent reweighting map.
+- flavor-channel-dependent-reweighting-gate.md: WP1244 requires a shifted
+  localization lattice.
+- flavor-shifted-localization-lattice-gate.md: WP1245 requires a common UV
+  boundary-action packet.
+- flavor-common-uv-boundary-action-packet-gate.md: WP1246 requires a Nima
+  source-dynamics handoff.
+- flavor-nima-source-dynamics-branch-gate.md: WP1247 requires an SU(3)-breaking
+  flag and cyclic ray.
+- flavor-su3-breaking-flag-cyclic-ray-gate.md: WP1248 requires an oriented
+  adjoint ray source.
+- flavor-oriented-adjoint-direction-gate.md: WP1249 requires a normalized
+  dual-cycle orientation.
+- flavor-normalized-dual-cycle-orientation-gate.md: WP1250 requires
+  fused-defect analytic constraints.
+- flavor-fused-defect-analytic-constraints-gate.md: WP1251 requires an
+  orientation-odd boundary datum.
+- flavor-orientation-odd-boundary-datum-gate.md: WP1252 requires a sourced
+  boundary character.
+- flavor-sourced-boundary-character-gate.md: WP1253 requires an external
+  event-production packet.
+- flavor-six-branch-preparation-gate.md: WP1254 requires a future UV
+  preparation packet.
+- flavor-mass-clock-gate.md: WP1255 requires a compactification clock packet.
+- flavor-channel-gain-gate.md: WP1256 requires a physical16 channel-cascade
+  packet.
+- flavor-kernel-classification-gate.md: WP1257 requires a production-
+  matching packet.
+- flavor-matching-selection-gate.md: WP1258 requires a boundary S-matrix
+  phase packet.
+- flavor-boundary-smatrix-phase-gate.md: WP1259 requires support-three
+  realizability.
+- flavor-support-three-realizability-gate.md: WP1260 requires support-four
+  search.
+- flavor-support-four-search-gate.md: WP1261 requires a phase-lift test.
+- flavor-boundary-instrument-falsification-gate.md: WP1262 requires a
+  boundary-density instrument.
+- flavor-boundary-density-five-cycle-gate.md: WP1263 requires a source
+  boundary-instrument packet.
+- flavor-threshold-anchor-conjecture-gate.md: WP1264 requires a dimensionful
+  threshold anchor.
+- flavor-equivariant-threshold-necessity-gate.md: WP1265 requires protected
+  equivariant-index transport.
+- flavor-dual-pair-transport-necessity-gate.md: WP1266 requires a new
+  Yukawa-active source.
+- flavor-new-yukawa-geometry-necessity-gate.md: WP1267 requires a boundaryless
+  holonomy source.
+- flavor-proper-word-module-necessity-gate.md: WP1268 requires a
+  source-derived coefficient relation.
+- flavor-instrument-chain-necessity-gate.md: WP1269 requires a positive
+  CP-transmission margin.
+- flavor-common-compactification-necessity-gate.md: WP1270 requires a common
+  UV compactification packet.
+- flavor-oriented-adjoint-ray-necessity-gate.md: WP1271 requires an oriented
+  adjoint ray.
+- flavor-sourced-boundary-character-necessity-gate.md: WP1272 requires an
+  external or newly derived UV event-production packet.
+- flavor-typed-uv-packet-necessity-gate.md: WP1273 requires a typed UV packet
+  handoff.
+- flavor-shared-frame-handoff-necessity-gate.md: WP1274 requires an
+  authorized owner packet reply.
+- flavor-source-selected-uv-boundary-object-gate.md: WP1275 requires a U
+  source-candidate derivation.
+- flavor-instrument-update-admission-gate.md: WP1276 requires a
+  record-conditioned update map.
+- flavor-source-transversal-admission-gate.md: WP1277 requires a
+  source-transversal certificate.
+- flavor-preparation-production-factorization-gate.md: WP1278 requires a
+  preparation-production factorization.
+- flavor-sequential-record-fidelity-gate.md: WP1279 requires
+  sequential-record fidelity.
+- flavor-constructor-intertwiner-gate.md: WP1280 requires a constructor
+  intertwiner.
+- flavor-independent-frame-anchor-gate.md: WP1281 requires an independent
+  frame anchor.
+- flavor-context-saturation-gate.md: WP1282 requires context saturation.
+- flavor-gain-nuisance-observability-gate.md: WP1283 requires gain
+  nuisance-state observability.
+- flavor-normalization-port-rank-gate.md: WP1284 requires normalization-port
+  rank.
+- flavor-authority-grant-composition-gate.md: WP1285 requires authority-grant
+  composition.
+- flavor-sequential-record-lineage-closure-gate.md: WP1286 requires a
+  joint-record lineage certificate.
+- flavor-absolute-boundary-lift-gate.md: WP1287 requires an absolute boundary
+  lift.
+- flavor-dpc-source-replay-repair.md: repairs WP1177--WP1206 by requiring
+  fresh source-checker replay and explicit evidence provenance before gate
+  replay.
 - flavor-interaction-net-state.md: the traversal conformance checklist now
   requires Git inspection, checker replay, graph admission, changed-file
   reporting, and closeout audit. The machine audit is

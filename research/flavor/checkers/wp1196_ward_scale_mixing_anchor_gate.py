@@ -1,7 +1,10 @@
 import json
 from pathlib import Path
 
+from flavor_dpc_source_replay import replay_source_checkers
+
 ROOT=Path(__file__).resolve().parents[1]
+_source_replay_records = replay_source_checkers(837,1195)
 wp837=json.loads((ROOT/"results"/"wp837_primitive_current_reflection_aspect_germ_audit.json").read_text())
 wp1195=json.loads((ROOT/"results"/"wp1195_ward_spectral_completion_gate.json").read_text())
 assert wp837["summary"]["all_passed"] is True

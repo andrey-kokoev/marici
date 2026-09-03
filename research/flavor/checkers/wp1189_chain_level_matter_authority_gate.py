@@ -2,7 +2,10 @@ import json
 from fractions import Fraction
 from pathlib import Path
 
+from flavor_dpc_source_replay import replay_source_checkers
+
 ROOT=Path(__file__).resolve().parents[1]
+_source_replay_records = replay_source_checkers(824,1188)
 wp824=json.loads((ROOT/"results"/"wp824_finite_spectral_completion_scale_selection_audit.json").read_text())
 wp1188=json.loads((ROOT/"results"/"wp1188_incidence_spectrum_constructor_no_go.json").read_text())
 assert wp824["summary"]["all_passed"] is True

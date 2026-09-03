@@ -4,7 +4,7 @@
 
 This packet constructs the current Flavor Interaction Net for the integer-pole
 branch. It is an executable projection of the objects, ports, reductions, and
-hostiles from WP1036--WP1196. It is not a physical selector.
+hostiles from WP1036--WP1287. It is not a physical selector.
 
 Contract: `research/flavor/contracts/flavor-interaction-net-state.v1.json`
 
@@ -301,6 +301,44 @@ The constructed part is a negative and rigidifier chain.
   invariant with a threshold-completion fiber. WP1195 constructs a
   conditional finite Ward-spectral completion selector. WP1196 constructs a
   conditional current-reflection mixing anchor but leaves scale unresolved.
+  WP1197 constructs a charge-diameter normalization candidate whose microscopic
+  beta authority remains open. WP1198 gives exact interaction-tensor targets and
+  rules out ordinary positive threshold restriction. WP1199 constructs a
+  conditional equivariant threshold carrier. WP1200 shows incidence does not
+  source that index and constructs only a typed spurion lift. WP1201 selects
+  the aligned spurion orbit in-model but fails source completion. WP1202
+  normalizes path multiplication but incidence does not authorize it. WP1203
+  derives it from oriented boundary compression but requires a readout. WP1204
+  gives a referenced readout but leaves threshold transport open. WP1205
+  gives the reciprocal basin but requires coherent kinetic normalization. WP1206
+  fixes the odd dark ray but leaves its reservoir source open. WP1207 fixes
+  that ray from a retained return phase but leaves the junction source open. WP1208
+  derives that junction from reciprocal Kirchhoff incidence but leaves endpoint
+  reciprocity open. WP1209 realizes reciprocity through a minimal colligation but
+  leaves its source moduli open. WP1210 shows abstract pairing selection but
+  no current flavor dual pair. WP1211 also rules out the adjacent compulsory
+  repair class and requires a new Yukawa-active source. WP1212 constructs an
+  ordered Spin(5) packet but leaves matter completion unselected. WP1213
+  rules out the audited selector probes and requires a new principle. WP1214
+  gives a conditional Spin(7) orbifold/exchange principle but leaves the full
+  action open. WP1215 rules out complete-action authority on the declared
+  Spin(5) grammar and requires a new three-family action. WP1216 exhausts the
+  declared packets and requires new source geometry. WP1217 exhausts audited
+  interval/boundaryless geometries and requires a boundaryless holonomy instrument.
+  WP1218 rejects undeclared holonomy readout and requires a source-derived proper
+  word module. WP1219 exhausts canonical Weyl constructors and requires an
+  independent source-normal coordinate. WP1220 exhausts canonical source-normal
+  coordinates and requires an asymmetric full-weak-basis operation. WP1221
+  exhausts asymmetric scalar/isotropic/two-involution routes and requires three
+  source-related decompositions. WP1222 finds a conditional S3 flag route but no
+  calibrated instrument, requiring physical doublet/projective coupling. WP1223
+  shows projective coupling needs a source-authorized ordered spanning triple.
+  WP1224 exhausts minimal ordered-triple actions and requires an
+  interior-enforcing completion. WP1225 finds strict affine interior geometry
+  but requires microscopic affine-action authority. WP1226 finds a
+  renormalizable constructor but requires a source-derived coefficient relation.
+  WP1227 shows lift tomography is only formal and requires complementary source
+  records. WP1228 constructs them formally but requires actuator normalization. WP1229 requires a common-substrate RG lift. WP1230 gives it formally but requires a source-selected global ratio. WP1231 requires a mixed covariant portal. WP1232 gives portal capacity but requires a compiler-coefficient source principle. WP1233 requires a positive CP transmission margin. WP1234 requires an independent small source ratio. WP1235 requires a typed mass-norm interface. WP1236 requires discrete source-actuator typing. WP1237 requires an anomaly-complete representation theorem. WP1238 requires a source-detector gain law. WP1239 requires a coherent cofinality monitor. WP1240 requires source-derived pole-atom dynamics. WP1241 requires inter-parent clock alignment. WP1242 requires a Physical16 soft-port channel realization. WP1243 requires a channel-dependent reweighting map. WP1244 requires a shifted localization lattice. WP1245 requires a common UV boundary-action packet. WP1246 requires a Nima source-dynamics handoff. WP1247 requires an SU(3)-breaking flag and cyclic ray. WP1248 requires an oriented adjoint ray source. WP1249 requires a normalized dual-cycle orientation. WP1250 requires fused-defect analytic constraints. WP1251 requires an orientation-odd boundary datum. WP1252 requires a sourced boundary character. WP1253 requires an external event-production packet. WP1254 requires a future UV preparation packet. WP1255 requires a compactification clock packet. WP1256 requires a physical16 channel-cascade packet. WP1257 requires a production-matching packet. WP1258 requires a boundary S-matrix phase packet. WP1259 requires support-three realizability. WP1260 requires support-four search. WP1261 requires a phase-lift test. WP1262 requires a boundary-density instrument. WP1263 requires a source boundary-instrument packet. WP1264 requires a dimensionful threshold anchor. WP1265 requires protected equivariant-index transport. WP1266 requires a new Yukawa-active source. WP1267 requires a boundaryless holonomy source. WP1268 requires a source-derived coefficient relation. WP1269 requires a positive CP-transmission margin. WP1270 requires a common UV compactification packet. WP1271 requires an oriented adjoint ray. WP1272 requires an external or newly derived UV event-production packet. WP1273 requires a typed UV packet handoff. WP1274 requires an authorized owner packet reply. WP1275 requires a U source-candidate derivation. WP1276 requires a record-conditioned update map. WP1277 requires a source-transversal certificate. WP1278 requires a preparation-production factorization. WP1279 requires sequential-record fidelity. WP1280 requires a constructor intertwiner. WP1281 requires an independent frame anchor. WP1282 requires context saturation. WP1283 requires gain nuisance-state observability. WP1284 requires normalization-port rank. WP1285 requires authority-grant composition. WP1286 requires a joint-record lineage certificate. WP1287 requires an absolute boundary lift.
 - WP1058 shows that WP1056's localized bulk cell is reducible:
   \(6+8+1+4+2+2\) has six invariant mass blocks, five after \(\overline6\)
   exchange. It therefore cannot supply the common clock without a parent
@@ -514,6 +552,16 @@ The checker verifies four open constructor slots.
    physical running observable open. WP1193 leaves a probe-natural invariant
    open. WP1194 leaves Ward spectral completion open. WP1195 leaves a Ward
    scale/mixing anchor open. WP1196 leaves spectral-action scale normalization open.
+   WP1197 leaves charge-moment microscopic beta authority open. WP1198 leaves
+   noncontractive threshold matching open. WP1199 leaves an equivariant index
+   source open. WP1200 leaves a spurion alignment source open. WP1201 leaves a
+   positive-pairing normalization source open. WP1202 leaves an oriented cycle
+   constructor open. WP1203 leaves a boundary-current
+   readout constructor open. WP1204 leaves a
+   threshold intertwiner open. WP1205 leaves
+   coherent kinetic normalization open. WP1206
+   leaves the odd-reservoir boundary source open. WP1207
+   leaves the microscopic common-junction source open. WP1208 leaves microscopic endpoint-reciprocity authority open. WP1209 leaves source-modulus selection open. WP1210 leaves flavor dual-pair existence open. WP1211 leaves a new Yukawa-active source open. WP1212 leaves Spin(5) matter-completion selection open. WP1213 leaves an independent completion principle open. WP1214 leaves the complete endpoint-exchange action open. WP1215 leaves a new three-family source action open. WP1216 leaves new source geometry open. WP1217 leaves a boundaryless holonomy instrument open. WP1218 leaves a proper word module open. WP1219 leaves an independent source-normal coordinate open. WP1220 leaves an asymmetric full-weak-basis operation open. WP1221 leaves three source-related decompositions open. WP1222 leaves physical doublet/projective coupling open. WP1223 leaves an ordered-spanning-triple source action open. WP1224 leaves an interior-enforcing completion open. WP1225 leaves microscopic affine-action authority open. WP1226 leaves a source-derived coefficient relation open. WP1227 leaves complementary source records open. WP1228 leaves actuator normalization open. WP1229 leaves the common-substrate RG lift open. WP1230 leaves the source-selected global ratio open. WP1231 leaves the mixed covariant portal open. WP1232 leaves the compiler source principle open. WP1233 leaves positive CP transmission margin open. WP1234 leaves the independent small source ratio open. WP1235 leaves the mass-norm interface open. WP1236 leaves discrete source-actuator typing open. WP1237 leaves the representation theorem open. WP1238 leaves the source-detector gain law open. WP1239 leaves the coherent cofinality monitor open. WP1240 leaves pole-atom dynamics open. WP1241 leaves clock alignment open. WP1242 leaves soft-port channel realization open. WP1243 leaves the reweighting map open. WP1244 leaves the shifted localization lattice open. WP1245 leaves the common UV packet open. WP1246 leaves the source-dynamics handoff open. WP1247 leaves flag and cyclic-ray construction open. WP1248 leaves the oriented adjoint ray open. WP1249 leaves dual-cycle orientation open. WP1250 leaves fused-defect constraints open. WP1251 leaves the orientation-odd datum open. WP1252 leaves the sourced boundary character open. WP1253 leaves the external packet open. WP1254 leaves the UV preparation packet open. WP1255 leaves the compactification clock packet open. WP1256 leaves the physical16 channel-cascade packet open. WP1257 leaves the production-matching packet open. WP1258 leaves the S-matrix phase packet open. WP1259 leaves support-three realizability open. WP1260 leaves support-four search open. WP1261 leaves a phase lift open. WP1262 leaves a boundary-density instrument open. WP1263 leaves a source boundary-instrument packet open. WP1264 leaves a dimensionful threshold anchor open. WP1265 leaves protected equivariant-index transport open. WP1266 leaves a new Yukawa-active source open. WP1267 leaves a boundaryless holonomy source open. WP1268 leaves a source-derived coefficient relation open. WP1269 leaves a positive CP-transmission margin open. WP1270 leaves a common UV compactification packet open. WP1271 leaves an oriented adjoint ray open. WP1272 leaves an external or newly derived UV event-production packet open. WP1273 leaves a typed UV packet handoff open. WP1274 leaves an authorized owner packet reply open. WP1275 leaves a U source-candidate derivation open. WP1276 leaves a record-conditioned update map open. WP1277 leaves a source-transversal certificate open. WP1278 leaves a preparation-production factorization open. WP1279 leaves sequential-record fidelity open. WP1280 leaves a constructor intertwiner open. WP1281 leaves an independent frame anchor open. WP1282 leaves context saturation open. WP1283 leaves gain nuisance-state observability open. WP1284 leaves normalization-port rank open. WP1285 leaves authority-grant composition open. WP1286 leaves a joint-record lineage certificate open. WP1287 leaves an absolute boundary lift open.
 4. `physical16_gain_or_interference_law`: a source-to-Yukawa or
    source-to-detector gain law, or an instantiated coherent interference
    monitor. WP1044-WP1052 supply the algebraic gain, visibility, common-frame
@@ -535,7 +583,7 @@ remains open.
 
 ## Hostile fixtures
 
-The net retains one hundred fifty-eight fixtures as non-invertibility tests:
+The net retains two hundred forty-nine fixtures as non-invertibility tests:
 
 - \(C=23\) versus \(C=22\) under the same preparation grammar;
 - degenerate versus \(22+1\) split poles at fixed zero-momentum coefficient;
@@ -787,9 +835,100 @@ The net retains one hundred fifty-eight fixtures as non-invertibility tests:
 - a process-relative effective charge treated as the canonical running observable;
 - a primitive Ward current treated as probe-natural across threshold completion;
 - an in-domain variational minimum treated as a source-derived physical completion;
-- a current-attached Householder germ treated as a source-generated scale selector.
+- a current-attached Householder germ treated as a source-generated scale selector;
+- a charge-diameter normalized candidate flow treated as derived microscopic beta authority;
+- a numerical threshold increment fourteen treated as source-derived Ward-index authority;
+- an added background-holonomy port treated as a calibrated physical16 readout;
+- incidence kernel coefficients treated as equivariant charge weights;
+- a declared recursive potential treated as source-unavoidable alignment;
+- a charge/incidence/inflow packet treated as partial-isometry authority;
+- marked boundary compression treated as an existing flavor instrument;
+- a sum-contact port treated as faithful to boundary orientation and absence;
+- a threshold that preserves the fixed packet treated as preserving the oriented current;
+- a relaxation spectrum treated as authority for odd reservoir parity;
+- a retained return phase treated as microscopic common-junction authority;
+- a Kirchhoff junction treated as microscopic endpoint-reciprocity authority;
+- lossless endpoint colligation treated as \(q,z\) modulus or calibration authority;
+- abstract self-dual pairing treated as an existing flavor dual pair;
+- an adjacent compulsory mediator treated as a new Yukawa-active source;
+- an ordered Spin(5) packet treated as a selected matter completion;
+- anomaly, threshold, or massability treated as completion selection;
+- a conditional Spin(7) orbifold/exchange treated as the complete source action;
+- desired-channel exchange or a Sylvester lift treated as three-family action authority;
+- a declared Spin packet or boundary packet treated as a new three-family action;
+- boundary removal or marking treated as source-geometry derivation;
+- arbitrary Weyl coefficients or CP-zero single holonomy treated as calibrated readout;
+- full closure, subgroup twirl, or weak-basis conjugation treated as a word module;
+- nonpositive traceless projection or equal-Gram averaging treated as source coordinate;
+- a free sector weight, isotropic scalarization, or two involutions treated as source operation;
+- a conditional or sign/radius-blind S3 flag treated as calibrated instrument;
+- even descent, reused tensor, existing projector, or algebraic witness treated as source coupling;
+- pair-overlap, linear Bargmann, boundary orientation, or volume switching treated as spanning action;
+- conditional minimization geometry or an incomplete constructor treated as source completion;
+- determinant generation, unit repair, exponent balance, or benchmark ray treated as coefficient authority;
+- finite jets, bounded tomography, formal rank, or quotient correction treated as coefficient relation;
+- quotient separation, relative reconstruction, universal feedback, or target-relative margin treated as physical records;
+- assumed budget, formal rank-two map, leafwise drift, or RG projection treated as actuator authority;
+- algebraic submersion, rank-two mediation, priced Gram, positive cone, or score maximum treated as physical control;
+- score uniqueness, conditional source matching, or spectral separation treated as Physical16 selection;
+- J-coordinate reachability, CKM exclusion, or universal compilation treated as source-selected Physical16;
+- commuting/CP-even no-go, qualitative signs, or the T discriminant treated as numerical selection;
+- finite nonzero J, norm constraints, cyclic support, maximal CP, or primitive Landau minima treated as observed-scale margin;
+- inverse readout, quarter duality, prior selector values, data compatibility, or unrelated seventeens treated as source ratio;
+- Frobenius norms, symmetry relations, archived fixed points, direct identifications, or integer multiplicities treated as mass interface;
+- integer existence, slice uniqueness, common support, or zero-momentum normalization treated as source actuator or pole type;
+- degeneracy, threshold shape, calibrated ratio, or normalized fractions treated as absolute Physical16 prediction;
+- local rank, reference rows, transport equality, epoch anchors, overlap records, or monitor counts treated as source-derived gain;
+- same-cell certificates, typed supports, finite atoms, or matched pole declarations treated as physical monitors;
+- representation ancestry, localization selection, fixed U(1) inflow, or a one-gap parent fiber treated as physical pole dynamics;
+- common twist, radius balance, vector ratios, or an instrument lock treated as a physical soft channel;
+- a vector event cell, pole-atom relabeling, equal partition, or branch identification treated as channel realization;
+- a shifted anomaly vector, parent GS coefficient, or conditional endpoint split treated as Physical16 reweighting;
+- a CS residue, shifted flux, unit-clock orbit, signed readout, or chirality bound treated as a localization source;
+- calibration rank, rank-one target fitting, symmetry arithmetic, or candidate audit treated as a UV packet;
+- representation alignment, epsilon carriers, a Krylov witness, determinant line, or natural endomorphism treated as a temporal kernel;
+- localization, Wilson split, simple flag, isometric history, determinant amplitude, or scalar adjoint data treated as a sourced flag and cyclic ray;
+- reciprocal determinants, natural scalars, Wilson phases, history slots, coset lifts, finite ports, contact shifts, or bare lattice membership treated as an oriented direction;
+- an interface, packet class, endpoint quotient, field list, or arity constraint treated as a normalized cycle;
+- constraints, split fibers, reflection, Wilson orientation, extended lines, or descent treated as field values;
+- Markov limits, isometric history, H6 algebra, anomaly integers, endpoint signs, or rank-one residues treated as an orientation datum;
+- closure audits, admission contracts, corpus mentions, or checker fixtures treated as a sourced character;
+- dimensions, q, rho_dim, parent branching, boundary fields, or closure audits treated as a preparation law;
+- equal dimensions, parent mass equality, B/A=6n^2, radius values, or closure audits treated as an absolute clock;
+- exact rows, g=1 reconstruction, common-gain labels, complete mixing, or affine map families treated as Physical16 authority;
+- support two, rank three, six matchings, three orbits, equal weights, or local algebra treated as a selected kernel;
+- pre-localization exchange, label quotient, shared anomaly vectors, or class invariance treated as a selected matching;
+- H6 phases, fixed-q disjointness, support-two failure, J6/6, or support algebra treated as an S-matrix packet;
+- doubly stochastic witnesses, overlap obstructions, graph searches, or support bounds treated as a kernel;
+- algebraic witnesses, graph compatibility, polytope points, or interior algebra treated as a phase lift or kernel;
+- failed falsification or an exact unistochastic survivor treated as a boundary-packet proof;
+- five falsified shortcuts treated as a boundary-density instrument or proof;
+- a conditional CPTP channel or transient curve treated as a dimensionful threshold anchor;
+- failed non-equivariant bypass routes treated as proof or construction;
+- conditional transport or failed dual-pair candidates treated as protected source transport;
+- a conditional Spin5/Spin7 or declared-packet route treated as a new source geometry;
+- a single-holonomy, Weyl, flag, or algebraic-tensor route treated as a source-authorized word module;
+- a formal rank, feedback, lift, score, compiler, or CP-discriminant route treated as a closed instrument chain;
+- a norm, integer, representation, detector, atom, clock, event, anomaly, or coset route treated as the observed positive CP margin;
+- a calibration, candidate, bipartite, Krylov, Wilson, or history packet treated as a source-derived oriented adjoint ray;
+- a determinant, coset, port, constraint, Hadamard, anomaly, residue, or corpus route treated as a sourced boundary character;
+- a preparation, clock, channel, gain, kernel, matching, or S-matrix partial packet treated as an admitted typed UV packet;
+- separate partial, fixture, or narrative handoff replies treated as a shared typed UV packet;
+- an admission contract, corpus mention, partial interface, fitted value, or analogue theorem treated as the source-selected object U;
+- effect probabilities, kernels, phase gauges, readout images, or fixtures treated as a record-conditioned instrument update;
+- predictive quotient descent, equivalence-class representatives, or fixtures treated as a source-derived transversal;
+- one fused record-labelled update or correlated preparation/response pair treated as independent preparation and production factors;
+- marginal records, cross-branch continuations, or fixtures treated as branch-conditioned joint record words;
+- dimension equality, external universality, or abstract isomorphisms treated as executable constructor transport;
+- co-moving or self-calibrated references treated as an independent frame anchor;
+- endpoint or probe-domain equivalence treated as context-saturated route-compositional evidence;
+- fitted scalar gains or stale calibrations treated as nuisance-state observability;
+- a count of reported numbers or finite orbit treated as physical-port Jacobian rank;
+- partial grants, label matching, kind laundering, or factorization dependence treated as full packet authority;
+- an admission requirement, contract field, fixture, or analogue theorem treated as a joint-record lineage certificate;
+- boundary templates, contact shifts, or finite shadows treated as an absolute boundary lift.
 
-Any proposed successor must reject all one hundred fifty-eight promotions while filling the four
+Any proposed successor must reject all two hundred forty-nine promotions while filling the four
 open slots from one source packet.
 
 ## Traversal conformance checklist
@@ -798,12 +937,13 @@ Every future leaf transition must execute and report this sequence:
 
 1. inspect `git status --short -- research/flavor` before editing and stage
    only owned Flavor paths;
-2. create the bounded Markdown packet, deterministic checker, and JSON result;
+2. create the bounded Markdown packet, deterministic checker, and JSON result,
+   with fresh replay of every cited source checker before its result is read;
 3. include a nonempty DPC record with conjecture, rivals, risky consequences,
    falsification attempt, residual, disposition, hostile gate, and claim
    boundary;
-4. integrate the net node, dependency edge, semantic invariant, and hostile
-   fixture, then update the programme index;
+4. integrate the net node, dependency edge, evidence-source records, semantic
+   invariant, and hostile fixture, then update the programme index;
 5. replay the leaf checker and WP1043 before graph admission;
 6. admit the source, claim, and derivation relation, then make one idempotent
    issue-tree transition from the freshly resumed selected node;
@@ -812,9 +952,10 @@ Every future leaf transition must execute and report this sequence:
 8. at closeout, rerun `flavor_dpc_conformance_audit.py`, inspect the diff,
    and commit or explicitly report why commit/push is unavailable.
 
-The conformance checker replays WP1177--WP1186 and WP1043, checks the required
-DPC fields and locators, and rejects boxed notation. Its current result is
-`results/flavor_dpc_conformance_audit.json` for WP1177--WP1196.
+The conformance checker replays WP1177--WP1287 and WP1043, requires fresh
+source-checker replay plus explicit evidence-source provenance, checks the
+required DPC fields and locators, and rejects boxed notation. Its current
+result is `results/flavor_dpc_conformance_audit.json` for WP1177--WP1287.
 
 ## Disposition
 

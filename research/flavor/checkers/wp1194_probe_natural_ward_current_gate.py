@@ -2,7 +2,10 @@ import json
 from fractions import Fraction
 from pathlib import Path
 
+from flavor_dpc_source_replay import replay_source_checkers
+
 ROOT=Path(__file__).resolve().parents[1]
+_source_replay_records = replay_source_checkers(831,1193)
 wp831=json.loads((ROOT/"results"/"wp831_primitive_ward_current_threshold_fiber.json").read_text())
 wp1193=json.loads((ROOT/"results"/"wp1193_physical_running_observable_gate.json").read_text())
 assert wp831["summary"]["all_passed"] is True
