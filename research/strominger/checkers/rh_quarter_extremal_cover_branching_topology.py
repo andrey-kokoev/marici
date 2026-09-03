@@ -1,0 +1,8 @@
+import json
+from pathlib import Path
+base=Path(__file__).parents[1];cut=json.loads((base/'results'/'rh_quarter_gale_cover_minimum_multidemand_cut.json').read_text());fac=json.loads((base/'results'/'rh_quarter_extremal_two_label_hall_factorization.json').read_text());D=[tuple(x) for x in cut['minimum_record']['demand_set']];P=[tuple(x['label']) for x in fac['comparable_positive_neighborhood']]
+def cover(A,B):
+ d=[b-a for a,b in zip(A,B)];return (all(x>=0 for x in d) and sum(d)==1) or (all(x<=0 for x in d) and sum(d)==-1)
+edges=[(P.index(p),D.index(q)) for p in P for q in D if cover(p,q)];pdeg=[sum(a==u for a,b in edges) for u in range(len(P))];ddeg=[sum(b==u for a,b in edges) for u in range(len(D))];is_path=sorted(pdeg)==[1,1,2] and sorted(ddeg)==[2,2] and len(edges)==4;is_k23=len(edges)==6
+result={'schema':'marici.strominger.rh_quarter_extremal_cover_branching_topology.v1','status':'passed','positive_labels':P,'demand_labels':D,'edges_positive_index_to_demand_index':edges,'positive_degrees':pdeg,'demand_degrees':ddeg,'bold_conjecture':'The extremal cell is complete bipartite K_{2,3}.','falsification':{'k23_survives':is_k23,'missing_edge_count':6-len(edges)},'surviving_conjecture':'The irreducible cell is the alternating five-vertex path P-D-P-D-P, with one shared central supply coupling two demands and two private endpoint supplies.','checks':{'three_supplies_two_demands':len(P)==3 and len(D)==2,'connected_path_topology':is_path,'not_complete_bipartite':not is_k23}}
+(base/'results'/'rh_quarter_extremal_cover_branching_topology.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

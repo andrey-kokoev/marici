@@ -1,0 +1,8 @@
+import json,math
+from fractions import Fraction
+from pathlib import Path
+base=Path(__file__).parents[1];src=json.loads((base/"results"/"rh_quarter_cross_limit_power_stabilization.json").read_text(encoding="utf-8"));fits=src["fits"];mature=[r["theta2"] for r in fits if r["order"]==4 or (r["order"]==3 and r["lo"]==28)];lo,hi=min(mature),max(mature);x=float(Fraction(96,443));distance=lo-x if x<lo else x-hi if x>hi else 0
+quartic=[r["theta2"] for r in fits if r["order"]==4];qlo,qhi=min(quartic),max(quartic)
+checks={"source_stabilization_passed":src["status"]=="passed","candidate_inside_conservative_interval":src["interval"][0]<=x<=src["interval"][1],"candidate_below_mature_interval":x<lo,"candidate_below_every_quartic_fit":x<qlo,"separation_exceeds_mature_width":distance>hi-lo,"exact_fraction_used":Fraction(96,443).denominator==443}
+result={"schema":"marici.strominger.rh_quarter_cross_limit_96_over_443_falsification.v1","status":"passed" if all(checks.values()) else "failed","verdict":"96/443 survives the deliberately conservative all-fit interval but lies below the mature degree-48 interval by more than that interval's width. It is rejected as the active rational candidate, conditionally on the inverse-power model.","candidate":{"fraction":"96/443","value":x},"conservative_interval":src["interval"],"mature_interval":[lo,hi],"quartic_interval":[qlo,qhi],"distance_below_mature":distance,"mature_width":hi-lo,"checks":checks,"gate_count":len(checks),"passed_gate_count":sum(checks.values())}
+out=base/"results"/"rh_quarter_cross_limit_96_over_443_falsification.json";out.write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8");print(json.dumps(result,indent=2))

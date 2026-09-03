@@ -1,0 +1,5 @@
+import json
+from pathlib import Path
+base=Path(__file__).parents[1];d=json.loads((base/'results'/'rh_quarter_extremal_cover_singleton_factorization.json').read_text());c=d['primitive_coefficients'];p1,p2=map(int,c['positive']);q=int(c['demand']);res=4*p1*p2-q*q
+result={'schema':'marici.strominger.rh_quarter_extremal_cover_amgm_bound.v1','status':'failed' if res<0 else 'passed','bold_conjecture':'The additive singleton Hall inequality follows from 4 p1 p2 >= d^2 and AM-GM.','values':{'p1':str(p1),'p2':str(p2),'d':str(q)},'falsification':{'residual_4p1p2_minus_d2':str(res),'survives':res>=0},'surviving_conjecture':'The three labels form a two-cover Gale chain with a log-concave magnitude peak at d; test d^2 >= p1 p2 and whether chain log-concavity plus boundary ratios, rather than log-convex AM-GM, controls the positive alternating sum.','checks':{'additive_hall_positive':p1+p2-q>0,'amgm_sufficient_bound':res>=0}}
+(base/'results'/'rh_quarter_extremal_cover_amgm_bound.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

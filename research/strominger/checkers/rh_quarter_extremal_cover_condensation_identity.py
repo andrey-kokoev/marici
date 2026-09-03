@@ -1,0 +1,9 @@
+import itertools,json,runpy
+from pathlib import Path
+base=Path(__file__).parents[1];g=runpy.run_path(str(Path(__file__).with_name('rh_quarter_hurwitz_terminal_minor_source_formula.py')));A,B,dm,comp,k,source_terms=g['A'],g['B'],g['dm'],g['comp'],g['k'],g['source_terms']
+T=(1,3,4,5,6);i,j=7,0;R=tuple(sorted(T+(i,)));S=tuple(sorted(T+(j,)));Ks=((0,2,3,4,6,7),(0,2,3,5,6,7),(0,2,4,5,6,7));xs=dict(source_terms(R,S));o=1 if sum(xs.values())>0 else -1;surplus=o*(xs[Ks[0]]+xs[Ks[1]]+xs[Ks[2]])
+a={K:dm(A,comp(K),comp(R)) for K in Ks};b={K:dm(B,K,S) for K in Ks};pairs=list(itertools.combinations(range(3),2));dets=[a[Ks[u]]*b[Ks[v]]-a[Ks[v]]*b[Ks[u]] for u,v in pairs];matches=[]
+for coeff in itertools.product((-1,0,1),repeat=3):
+ if any(coeff) and sum(c*z for c,z in zip(coeff,dets))==surplus:matches.append(coeff)
+result={'schema':'marici.strominger.rh_quarter_extremal_cover_condensation_identity.v1','status':'failed' if not matches else 'passed','bold_conjecture':'The exact three-term Hall surplus is a unit-coefficient combination of adjacent 2x2 cross-condensation determinants formed from its A- and B-minor factors.','surplus':str(surplus),'cross_determinants':[{'pair':pairs[n],'value':str(z)} for n,z in enumerate(dets)],'unit_coefficient_matches':matches,'falsification':{'candidate_count':26,'survives':bool(matches)},'surviving_conjecture':'No direct unit-coefficient two-branch condensation explains the surplus. The finite positivity is a network Hall property; an all-order proof must establish cut inequalities from total positivity globally or introduce source-derived coefficients beyond canonical condensation.','checks':{'positive_surplus':surplus>0,'direct_condensation_match':bool(matches)}}
+(base/'results'/'rh_quarter_extremal_cover_condensation_identity.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

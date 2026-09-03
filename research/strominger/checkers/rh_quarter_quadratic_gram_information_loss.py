@@ -1,0 +1,8 @@
+import json
+from pathlib import Path
+z=(1,-1); w=(1,1); q=(1,2); neg=tuple(-x for x in q)
+def squares(v):return tuple(x*x for x in v)
+def gram(v):return tuple(tuple(a*b for b in v) for a in v)
+checks={'entrywise_squares_identical':squares(z)==squares(w),'signed_sums_differ':sum(z)!=sum(w),'full_rank_one_gram_global_sign_blind':gram(q)==gram(neg),'global_sign_changes_signed_sum':sum(q)!=sum(neg),'quadratic_margin_scaling_differs_from_linear':sum(squares((2,2)))==8 and sum((2,2))==4,'deliberate_positive_cone_exception':squares((1,2))!=squares((1,3))}
+result={'schema':'marici.strominger.rh_quarter_quadratic_gram_information_loss.v1','status':'passed' if all(checks.values()) else 'failed','theorem':'Entrywise squares quotient independent signs; the full rank-one Gram zz^T still quotients the global sign. Neither determines signed source sums or linear Hall margins without external orientation data.','counterexample':{'entrywise_pair':[z,w],'shared_squares':squares(z),'signed_sums':[sum(z),sum(w)],'global_sign_pair':[q,neg],'shared_full_gram':gram(q),'global_signed_sums':[sum(q),sum(neg)]},'verdict':'Quadratic Gram positivity cannot by itself reconstruct signed quarter-source terms or prove that squared weights have the required Hall margins.','claim_boundary':'If an independent theorem places every source coordinate in a fixed positive cone and supplies the square-root normalization, the ambiguity can disappear; no such source-derived theorem is present.','checks':checks}
+p=Path(__file__).parents[1]/'results'/'rh_quarter_quadratic_gram_information_loss.json';p.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
