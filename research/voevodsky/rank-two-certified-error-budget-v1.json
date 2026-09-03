@@ -1,0 +1,19 @@
+{
+  "schema":"marici.voevodsky.rank-two-certified-error-budget.v1",
+  "determinant":"D=a0*a2-a1^2",
+  "moment_error":"if |a_k-ahat_k|<=eta_k, then |D-Dhat|<=|ahat2|eta0+|ahat0|eta2+2|ahat1|eta1+eta0eta2+eta1^2",
+  "sample_to_moment":"if a_k=X_k-X_(k+1) and |X_k-Xhat_k|<=epsilon_k, then eta_k<=epsilon_k+epsilon_(k+1)",
+  "sector_tail":"a sector tail bound T(s) gives eta_k<=T(t+kh)+T(t+(k+1)h)",
+  "sign_test":"D is certified positive if Dhat exceeds the total propagated bound, negative if Dhat is below its negative, and otherwise indeterminate",
+  "allocation":"with a certified negligible prime tail, the remaining error budget should be assigned to gamma quadrature and completed gamma normalization",
+  "status": {
+    "determinant_perturbation_bound":"verified",
+    "sample_difference_bound":"verified",
+    "interval_sign_fixtures":"verified",
+    "prime_tail_formula":"received_not_recomputed",
+    "gamma_interval_quadrature":"not supplied",
+    "source_D2_certification":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Produce outward-rounded gamma enclosures for the four source samples, propagate them through the exact error budget together with the certified prime tail, and obtain a D2 interval excluding zero."
+}

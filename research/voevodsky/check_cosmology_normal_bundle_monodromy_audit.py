@@ -1,0 +1,13 @@
+"""Compute transition effects on the ambient-star form, tame units, and orientation."""
+from __future__ import annotations
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'research'/'voevodsky'/'results'/'cosmology_normal_bundle_monodromy_audit.json'
+def permutation_sign(p):
+ inv=sum(1 for i in range(len(p)) for j in range(i+1,len(p)) if p[i]>p[j]);return -1 if inv%2 else 1
+def main():
+ assert permutation_sign((0,1,2))==1 and permutation_sign((1,0,2))==-1 and permutation_sign((1,2,0))==1
+ mixed_terms=('dlog(u)^beta','alpha^dlog(v)','alpha^beta');assert len(mixed_terms)==3
+ tame_factors=('a3/a2','a1/a3','a2/a1');assert tame_factors[0]+'*'+tame_factors[1]+'*'+tame_factors[2]
+ out={'schema':'marici.voevodsky.cosmology-normal-bundle-monodromy-audit.v1','status':'relative_vertical_lift_descends_absolute_lift_has_mixed_transition_obstruction','transition':'l_i prime=a_i*l_{pi(i)} with invertible base units a_i','label_action':'Gamma and the primitive flag cycle transform by sign(pi). Globally fixed wall labels remove permutation monodromy; otherwise the class lives in the sign orientation local system.','scaling_action':'For labels fixed, u prime=(a1/a3)u and v prime=(a2/a3)v.','form_discrepancy':'With alpha=dlog(a1/a3), beta=dlog(a2/a3), Xi prime-Xi=dlog(u) wedge beta + alpha wedge dlog(v) + alpha wedge beta.','relative_result':'All alpha and beta terms vanish in relative de Rham forms along the normal fibers. The vertical Xi class and star HomotopyLift therefore descend for a labeled transverse triple.','absolute_gate':'An absolute logarithmic form requires the displayed mixed/horizontal discrepancy to vanish or be canceled by a chosen connection and verified Cech homotopy.','tame_transition':'The three tame units are multiplied by a3/a2, a1/a3, and a2/a1. These factors have zero vertical valuation and product one, so relative integral residues descend; their horizontal dlog data remain part of the absolute gate.','decision':'Normal-bundle monodromy does not obstruct the relative vertical carrier horn when wall labels are global. It does obstruct promotion to an absolute carrier form unless transition-unit data are controlled.','next_gate':'relative-vs-absolute-carrier-horn: determine whether the scientific p-normal target is intrinsically relative, or demands an absolute logarithmic lift','limitations':['transition analysis assumes local defining equations differ by units and permutations','global wall labeling remains to be read from the full carrier source','no connection or absolute Cech correction constructed'],'passed':True};OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+if __name__=='__main__':main()

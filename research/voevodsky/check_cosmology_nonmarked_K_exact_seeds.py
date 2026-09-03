@@ -12,6 +12,7 @@ import check_cosmology_rank26_p_normal_raw_relation_adapter as adapter
 import check_cosmology_rank26_p_normal_lower_quartile_source_dag as dag
 import check_cosmology_rank26_p_normal_K_q_seed_exact_rational_minor as exact
 import check_cosmology_rank26_p_normal_K_q_exact_base_representative_solves as solver
+import cosmology_exact_source_certificate as certificate
 RES=ROOT/'research'/'voevodsky'/'results';OUT=RES/'cosmology_nonmarked_K_exact_seeds_a12.json';P=32003
 def main():
  assert rees.AMBIENT==12
@@ -43,7 +44,9 @@ def main():
   for a,r in zip(coef,erows):
    for c,v in r.items():solver.addq(recon,c,a*v)
   assert recon==target
-  records.append({'k_pole':kp,'levels':list(lev),'exponent':list(e),'dimension':len(erows),'equations':len(cols),'rank':rank,'max_denominator':max((a.denominator for a in coef),default=1),'full_reconstruction':True})
+  descriptor={'family':'K','k_pole':kp,'levels':list(lev),'exponent':list(e)}
+  cert=certificate.make(descriptor,origins,erows,target,cols,coef,Path(__file__))
+  records.append({'k_pole':kp,'levels':list(lev),'exponent':list(e),'dimension':len(erows),'equations':len(cols),'rank':rank,'max_denominator':max((a.denominator for a in coef),default=1),'full_reconstruction':True,'source_certificate':cert})
  base.PRIME=orig
  out={'schema':'marici.voevodsky.cosmology-nonmarked-K-exact-seeds-a12.v1','status':'all_248_nonmarked_parity_seeds_verified_over_Q','ambient_relation_degree':12,'targets_verified':len(records),'dimension_max':max(r['dimension'] for r in records),'equations_max':max(r['equations'] for r in records),'max_denominator':max(r['max_denominator'] for r in records),'records':records,'decision':'Every nonmarked pole/level/parity seed has an exact rational T+S_K contraction.','limitations':['closures selected by F_32003 pivot order','four-prime CRT reconstruction with exact post-verification','unbounded promotion additionally uses constructor naturality and orbit coverage'],'passed':True};OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({k:v for k,v in out.items() if k!='records'},indent=2))
 if __name__=='__main__':main()

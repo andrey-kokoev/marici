@@ -1,0 +1,20 @@
+{
+  "schema": "marici.voevodsky.sector-overlap-edge-contract.v2",
+  "supersedes": "research/voevodsky/sector-overlap-edge-contract-v1.json",
+  "required_fields": ["edge_id","left_sector","right_sector","common_object_sort","common_object","common_object_identity","left_incidence_map","right_incidence_map","comparison_cell","certificate_dependencies","scope"],
+  "common_object_identity_requirements": [
+    "source-derived correspondence between retained left and right labels",
+    "faithful coordinates on the intended quotient",
+    "coefficient and ordering compatibility",
+    "no identification inferred solely from equal matrices, dimensions, ranks, spectra, or scalar probes"
+  ],
+  "map_requirements": ["source_derived","typed_domain","typed_codomain","variance_declared","naturality_domain_declared"],
+  "comparison_requirements": ["parallel_boundaries","cell_direction_declared","invertibility_status_declared","residual_or_proof_recorded"],
+  "admission_rule": "All eleven fields and every identity, map, comparison, and certificate predicate must pass. Syntactic field presence alone is insufficient.",
+  "regression_fixture": {
+    "artifact": "research/voevodsky/aspect-markov-route-gram-overlap-edge-v1.json",
+    "equal_coordinate_matrices": true,
+    "source_derived_label_correspondence": false,
+    "expected_admission": false
+  }
+}

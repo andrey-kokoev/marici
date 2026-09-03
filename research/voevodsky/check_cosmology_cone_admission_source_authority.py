@@ -1,0 +1,14 @@
+"""Define the independent realization contract for promoting a formal cone path."""
+from __future__ import annotations
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'research'/'voevodsky'/'results'/'cosmology_cone_admission_source_authority.json'
+FIELDS=('geometric_source','degree_one_cell','independent_boundary','realization_map','full_component_check','naturality','carrier_comparison')
+def valid(x):return all(x.get(k) for k in FIELDS)
+def main():
+ formal={k:False for k in FIELDS};formal['realization_map']=True
+ assert not valid(formal)
+ complete={k:True for k in FIELDS};assert valid(complete)
+ candidates={'formal_cone':False,'exceptional_divisor_alone':False,'ambient_semistable_blowup':'pending','closed_K2_symbol':False,'local_log_branch':False,'rank26_module':False}
+ out={'schema':'marici.voevodsky.cosmology-cone-admission-source-authority.v1','status':'formal_path_not_promoted_geometric_realization_contract_defined','required_contract':{'geometric_source':'independently defined scheme, pair, correspondence, or stratified object Y','degree_one_cell':'gamma in an admitted geometric chain complex, not freely adjoined to force the equation','independent_boundary':'d gamma computed inside Y before comparison','realization_map':'Phi:C_geo(Y)->Cone(Res)','full_component_check':'Phi(d gamma)=(Xi_log,-sigma123) with every other tame, sign, flag, and support component canceled','naturality':'Phi and gamma are stable under the declared source morphisms and orientation transports','carrier_comparison':'a sourced map connects Y to the original characteristic-zero carrier rather than only to the formal cone'},'promotion':'Only after all fields pass may Phi(gamma)=tau be called a geometric horn realization.','candidate_audit':candidates,'candidate_reasons':{'formal_cone':'has tau but no independent Y or gamma','exceptional_divisor_alone':'has no internal face over the triangle','ambient_semistable_blowup':'its ambient dual complex contains a cone over the exceptional link and requires the successor audit','closed_K2_symbol':'degree two','local_log_branch':'fails descent','rank26_module':'unit component absorbed to zero'},'physical_boundary':'Geometric promotion still does not imply a physical process or readout; that requires the separate physical-interface contract.','decision':'No geometric horn is admitted yet; the ambient semistable blowup is a live candidate because its dual complex contains the missing cone outside the exceptional divisor.'','next_gate':'semistable-geometric-cone-cell: test an independently defined semistable threefold or relative-face geometry against all seven fields','limitations':['contract permits new source geometry but not tautological cone attachment','does not prescribe a unique geometric category','no candidate passes yet'],'passed':True};OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+if __name__=='__main__':main()

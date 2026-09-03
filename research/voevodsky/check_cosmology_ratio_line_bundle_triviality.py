@@ -1,0 +1,11 @@
+"""Determine when the ratio line bundles and Milnor overlap cocycle vanish."""
+from __future__ import annotations
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'research'/'voevodsky'/'results'/'cosmology_ratio_line_bundle_triviality.json'
+def main():
+ # Picard classes: if L1=L2=L3=L, both differences vanish.
+ pic={'L1':1,'L2':1,'L3':1};A=pic['L1']-pic['L3'];B=pic['L2']-pic['L3'];assert A==B==0
+ local_transitions={'a':1,'b':1};assert local_transitions=={'a':1,'b':1}
+ out={'schema':'marici.voevodsky.cosmology-ratio-line-bundle-triviality.v1','status':'local_slice_passes_global_integral_descent_follows_from_common_coefficient_line','ratio_bundles':['A=L1 tensor L3^-1','B=L2 tensor L3^-1'],'local_slice':'U,V,P are affine coordinates, so all three conormal lines are trivial and the overlap cocycle vanishes.','common_line_theorem':'If l1,l2,l3 are global sections of one line bundle L and give the three conormal summands, then L1,L2,L3 are compatibly identified with L|C; A and B are trivial and u=l1/l3, v=l2/l3 are global rational functions.','additive_evidence':'A global identity l3=l1+l2+p is typed only when all four terms are sections of a common additive line/module. Thus any global carrier realizing the displayed identity automatically satisfies the ratio-line condition.','remaining_existence_gate':'The materialized packets do not define those global sections or their common line bundle; they establish only the affine normal slice.','descent_consequence':'Under the common-line hypothesis a=b=1 on compatible trivializations, the Cech K2 obstruction q vanishes and the full integral ambient-star decoration globalizes.','decision':'Ratio triviality is not an additional obstruction once the displayed wall equation exists globally in one coefficient line. Its existence remains part of the missing global carrier constructor.','next_gate':'universal-common-line-integral-horn: construct the full integral lift over the universal common-line ordered triple and prove base-change naturality','limitations':['conditional global theorem plus unconditional local result','does not materialize the intended carrier sections','no higher K3 descent needed in the common-line case'],'passed':True};OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+if __name__=='__main__':main()

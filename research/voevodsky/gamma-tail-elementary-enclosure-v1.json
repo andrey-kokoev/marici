@@ -1,0 +1,19 @@
+{
+  "schema":"marici.voevodsky.gamma-tail-elementary-enclosure.v1",
+  "received_tail":"B(t,R)=[exp(-R)+2 sqrt(pi t) exp(t/4) erfc((R+2t)/(4 sqrt t))]/[1-exp(-R)]",
+  "erfc_bound":"erfc(u)<=exp(-u^2)/(sqrt(pi)u) for u>0",
+  "elementary_tail":"B(t,R)<=[exp(-R)+8t/(R+2t) exp(t/4-(R+2t)^2/(16t))]/[1-exp(-R)]",
+  "uniform_monotonicity":"for fixed R and 0<t<=tmax with R>2tmax, the elementary second numerator term increases with t, so evaluate it at tmax",
+  "numerical_design_point":{"R":40,"tmax":"2/25","elementary_upper_approx":"4.24835425529159e-18"},
+  "consequence":"at R=40 and t<=0.08 the gamma tail is far below a 1e-8 D2 margin; finite-interval quadrature and rounding dominate",
+  "status": {
+    "erfc_reduction":"verified",
+    "t_monotonicity":"verified_symbolically",
+    "design_point_evaluated":"high_precision_not_interval",
+    "received_integral_tail_derivation":"not independently rederived",
+    "finite_gamma_quadrature":"not supplied",
+    "source_D2_certification":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Implement outward-rounded quadrature of the exact gamma integrand on [0,40], combine it with a directed-rounding enclosure of the elementary tail, and propagate four sample intervals through the D2 error budget."
+}

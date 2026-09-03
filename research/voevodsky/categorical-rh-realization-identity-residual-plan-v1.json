@@ -1,0 +1,79 @@
+{
+  "schema": "marici.voevodsky.realization-identity-residual-plan.v1",
+  "status": "author_plan_not_yet_compiled_by_scc",
+  "claim_boundary": "types the realization loop and its residual; constructs neither the missing source kernel nor RH",
+  "objects": [
+    {
+      "name": "order_realization",
+      "state": "inhabited",
+      "object": "H_ord weighted adjacent-log-gap completion",
+      "evidence": ["research/voevodsky/order-commutator-gives-a-cumulative-sum-completion.md"]
+    },
+    {
+      "name": "gaussian_observer_family",
+      "state": "hilbert_total",
+      "object": "Riesz vectors g_tau for exp(-lambda^2/(4 tau))",
+      "evidence": ["research/voevodsky/gaussian-heat-riesz-family-is-bounded-and-total.md"],
+      "limitation": "not proved graph-norm total"
+    },
+    {
+      "name": "polarized_joint_source_kernel",
+      "state": "missing",
+      "required_object": "K(tau,sigma)=q_Gamma+P(g_tau,g_sigma) under one source regularization"
+    },
+    {
+      "name": "common_form_realization",
+      "state": "blocked",
+      "required_object": "closed or closable common form domain carrying arithmetic and Weil realizations",
+      "depends_on": ["polarized_joint_source_kernel"]
+    }
+  ],
+  "generators": [
+    {
+      "name": "identity_order",
+      "type": "order_realization -> order_realization",
+      "state": "defined"
+    },
+    {
+      "name": "gaussian_observation",
+      "type": "order_realization -> gaussian_observer_family",
+      "state": "defined_and_jointly_faithful_in_hilbert_norm"
+    },
+    {
+      "name": "joint_source_action",
+      "type": "gaussian_observer_family -> common_form_realization",
+      "state": "missing"
+    },
+    {
+      "name": "realization_return",
+      "type": "common_form_realization -> order_realization",
+      "state": "missing",
+      "required_object": "source-valid arithmetic-Weil comparison on the closed domain"
+    }
+  ],
+  "loop": {
+    "name": "final_observer_loop",
+    "type": "order_realization -> order_realization",
+    "expression": "realization_return o joint_source_action o gaussian_observation",
+    "state": "undefined",
+    "blocked_by": ["joint_source_action", "realization_return"]
+  },
+  "residual": {
+    "name": "final_observer_residual",
+    "type": "End(order_realization)",
+    "expression": "final_observer_loop - identity_order",
+    "state": "not_formable_until_loop_defined",
+    "dispositions": {
+      "zero": "strict realization",
+      "exact": "requires a higher coherencer Kappa with boundary(Kappa)=residual",
+      "nonexact": "obstruction to realization descent"
+    }
+  },
+  "faithfulness_gate": {
+    "hilbert_level": "passed",
+    "graph_form_level": "open",
+    "rule": "equality on all final observers witnesses identity only at a topology where the observer span is a core"
+  },
+  "first_missing_typed_object": "polarized_joint_source_kernel",
+  "rh_implication": false
+}

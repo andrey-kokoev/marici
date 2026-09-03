@@ -1,0 +1,66 @@
+{
+  "schema": "marici.voevodsky.coherence-pyramid-countermodel-matrix.v1",
+  "countermodels": {
+    "unrestricted_green_pushout": {
+      "evidence": "research/voevodsky/results/green_isometry_pushout.json",
+      "witness_field": "pushout_exists",
+      "witness_value": false,
+      "refused_by": "green_pushout_without_joint_amalgamation"
+    },
+    "pairwise_amalgamation_composition": {
+      "evidence": "research/voevodsky/results/certified_green_amalgamation_composition.json",
+      "witness_field": "failed_joint_determinant",
+      "witness_value": "-31/50",
+      "refused_by": "full_joint_cross_pairing"
+    },
+    "fixed_local_positivity_cutoff": {
+      "evidence": "research/voevodsky/results/no_fixed_green_positivity_cutoff.json",
+      "witness_field": "status",
+      "witness_value": "fixed_local_cutoff_falsified",
+      "refused_by": "joint_positivity"
+    },
+    "negative_closed_limit": {
+      "evidence": "research/voevodsky/results/coherence_pyramid_completion_interface.json",
+      "witness_path": ["hostile_refusals", "negative_limit"],
+      "witness_value": "closed_limit_positive",
+      "refused_by": "closed_limit_positive"
+    },
+    "domain_escape": {
+      "evidence": "research/voevodsky/results/unbounded_r_zeta_identity_gates.json",
+      "witness_path": ["domain_escape", "core_closed"],
+      "witness_value": false,
+      "refused_by": "candidate_form_closable"
+    },
+    "new_completed_radical": {
+      "evidence": "research/voevodsky/results/unbounded_r_zeta_identity_gates.json",
+      "witness_path": ["new_radical", "limit_weight"],
+      "witness_value": "0/1",
+      "refused_by": "radical_stability"
+    },
+    "minimum_modulus_collapse": {
+      "evidence": "research/voevodsky/results/unbounded_r_zeta_identity_gates.json",
+      "witness_path": ["reduced_minimum_modulus", "uniform_coercivity"],
+      "witness_value": false,
+      "refused_by": "positive_reduced_minimum_modulus"
+    },
+    "composite_kernel_omission": {
+      "evidence": "research/voevodsky/results/coherence_pyramid_partial_composition.json",
+      "witness_path": ["hostile_refusals", "over_kernel_omitted"],
+      "witness_value": "missing_composite_kernel_identification",
+      "refused_by": "composite_kernel_identification"
+    },
+    "beck_chevalley_from_square_only": {
+      "evidence": "research/voevodsky/results/coherence_pyramid_cells_and_laws.json",
+      "witness_path": ["hostile_refusals", "beck_chevalley_from_square_only"],
+      "witness_value": "pullback_exactness",
+      "refused_by": "pullback_exactness"
+    },
+    "completion_from_core_equality": {
+      "evidence": "research/voevodsky/results/coherence_pyramid_cells_and_laws.json",
+      "witness_path": ["hostile_refusals", "completion_cell_from_core_equality"],
+      "witness_value": "closed_limit_transport",
+      "refused_by": "closed_limit_transport"
+    }
+  },
+  "coverage_classes": ["variance", "composition", "finite_positivity", "domain", "radical", "coercivity", "kernel", "beck_chevalley", "completion"]
+}

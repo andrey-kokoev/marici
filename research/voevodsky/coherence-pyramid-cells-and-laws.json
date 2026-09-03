@@ -1,0 +1,52 @@
+{
+  "schema": "marici.voevodsky.coherence-pyramid-cells-and-laws.v1",
+  "cells": {
+    "associator": {
+      "boundary": "((f compose g) compose h) => (f compose (g compose h))",
+      "admission": ["both_parenthesizations_admitted", "same_typed_boundary", "certificate_bundle_equivalence"],
+      "law": "pentagon"
+    },
+    "left_unitor": {
+      "boundary": "identity compose f => f",
+      "admission": ["typed_identity", "certificate_normalization"],
+      "law": "triangle"
+    },
+    "right_unitor": {
+      "boundary": "f compose identity => f",
+      "admission": ["typed_identity", "certificate_normalization"],
+      "law": "triangle"
+    },
+    "interchange": {
+      "boundary": "(alpha horizontal beta) vertical (gamma horizontal delta) => (alpha vertical gamma) horizontal (beta vertical delta)",
+      "admission": ["all_four_boundary_composites_admitted", "same_outer_boundary", "transported_certificate_bundle_equivalence"],
+      "law": "interchange_hexagon"
+    },
+    "beck_chevalley": {
+      "boundary": "pullback_then_amalgamate => amalgamate_then_pullback",
+      "admission": ["typed_mixed_square", "pullback_exactness", "full_joint_amalgamation", "comparison_map", "transported_certificate_bundle_equivalence"],
+      "invertibility": ["comparison_map_isomorphism", "inverse_preserves_certificates"],
+      "law": "pasting"
+    },
+    "completion_comparison": {
+      "boundary": "complete_then_compare => compare_then_complete",
+      "admission": ["common_core_square", "closed_limit_transport", "radical_transport", "coercivity_transport"],
+      "invertibility": ["closed_domain_equivalence", "positive_bidirectional_minimum_modulus"],
+      "law": "completion_pasting"
+    }
+  },
+  "coherence_obligations": {
+    "pentagon": ["four_composable_arrows", "five_associator_edges", "equal_composite_certificate_transport"],
+    "triangle": ["two_composable_arrows", "associator", "left_and_right_unitors", "equal_normal_form"],
+    "interchange_hexagon": ["typed_two_by_two_grid", "both_composition_orders", "equal_outer_certificate"],
+    "pasting": ["two_composable_mixed_squares", "component_beck_chevalley_cells", "composite_cell", "equal_certificate_transport"],
+    "completion_pasting": ["two_composable_completion_squares", "common_closed_domain", "stable_radical", "positive_composite_coercivity"]
+  },
+  "refusals": {
+    "associator_from_boundary_only": "certificate bundle equivalence absent",
+    "interchange_from_commuting_maps_only": "transported certificate equivalence absent",
+    "beck_chevalley_from_square_only": "pullback or amalgamation evidence absent",
+    "beck_chevalley_invertibility_assumed": "comparison inverse lacks certificate preservation",
+    "completion_cell_from_core_equality": "closed-domain and coercivity transport absent"
+  },
+  "nonclaims": ["global_double_category_exists", "all_beck_chevalley_cells_are_invertible", "completion_is_pseudofunctorial"]
+}

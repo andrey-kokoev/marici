@@ -1,0 +1,23 @@
+{
+  "schema":"marici.voevodsky.shifted-gaussian-gram-curvature.v1",
+  "probe":"g_a(u)=exp(-t(u-a)^2/2)",
+  "polarization_identity":"g_a g_b=exp(-t(a-b)^2/4) exp(-t(u-(a+b)/2)^2)",
+  "spectral_multiplication_entry":"G_t(a,b)=exp(-t(a-b)^2/4) Theta(t,(a+b)/2) up to common positive normalization; this is not the translated-source Weil Gram entry",
+  "rank_two_condition":"Theta(t,a)Theta(t,b)>=exp(-t(a-b)^2/2)Theta(t,(a+b)/2)^2",
+  "midpoint_function":"Q_t(xi)=log Theta(t,xi)+t xi^2",
+  "rank_two_equivalence":"for positive Theta, every rank-two Gram minor is nonnegative iff Q_t is convex, locally iff partial_xi^2 log Theta+2t>=0",
+  "heat_coordinate":"tau=1/(4t); if U_tau=U_xixi and F=log U, q=F_xixi+1/(2tau)",
+  "curvature_pde":"q_tau=q_xixi+2F_xi q_xi+2q^2-(2/tau)q",
+  "first_contact":"at a first zero spatial minimum, q_xi=0, q_xixi>=0, hence q_tau>=0; curvature positivity propagates forward in tau only",
+  "status": {
+    "spectral_multiplication_identification":"constructed",
+    "translated_source_gram_identification":"not supplied",
+    "rank_two_convexity_equivalence":"proved",
+    "forward_curvature_propagation":"proved",
+    "backward_narrow_propagation":"not available",
+    "arithmetic_curvature_inequality":"not proved",
+    "higher_rank_psd":"not proved",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"First derive the translated-source character-weighted centered-Gaussian Gram interface with fixed Fourier constants; then prove its finite matrices PSD. The midpoint curvature inequality remains a separate spectral-multiplication test."
+}

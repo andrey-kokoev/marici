@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "marici.voevodsky.coherence-transfer-record-contract.v1",
+  "title": "Coherence-pyramid transfer record",
+  "type": "object",
+  "required": [
+    "source",
+    "target",
+    "map",
+    "proposed_invariant",
+    "preserved_invariants",
+    "proposed_strength",
+    "demonstrated_strength",
+    "certificate_dependency_poset",
+    "minimal_failed_prerequisites",
+    "semantic_disposition",
+    "authority_state",
+    "evidence"
+  ],
+  "properties": {
+    "source": {"type": "object", "required": ["id", "type"]},
+    "target": {"type": "object", "required": ["id", "type"]},
+    "map": {"type": ["object", "null"]},
+    "proposed_map_label": {"type": ["string", "null"]},
+    "proposed_invariant": {"type": "string", "minLength": 1},
+    "preserved_invariants": {"type": "array", "items": {"type": "string"}},
+    "proposed_strength": {
+      "enum": [
+        "finite_identity",
+        "quotient_descended_identity",
+        "coherent_finite_composition",
+        "completed_identity",
+        "source_typed_readout_identity"
+      ]
+    },
+    "demonstrated_strength": {
+      "type": ["string", "null"],
+      "enum": [
+        null,
+        "finite_identity",
+        "quotient_descended_identity",
+        "coherent_finite_composition",
+        "completed_identity",
+        "source_typed_readout_identity"
+      ]
+    },
+    "semantic_disposition": {
+      "enum": [
+        "untested",
+        "admitted",
+        "undefined",
+        "representative_dependent",
+        "underdetermined",
+        "inconsistent",
+        "unstable",
+        "counterexample"
+      ]
+    },
+    "authority_state": {
+      "enum": ["authorized", "self_claim_only", "authority_blocked", "not_required"]
+    },
+    "descent_certificate": {"type": ["object", "null"]},
+    "coherence_certificate": {"type": ["object", "null"]},
+    "completion_certificate": {"type": ["object", "null"]},
+    "readout_certificate": {"type": ["object", "null"]},
+    "certificate_dependency_poset": {
+      "type": "object",
+      "required": ["predicates", "edges"],
+      "properties": {
+        "predicates": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [{"type": "string"}, {"type": "string"}],
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "minimal_failed_prerequisites": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "cheapest_discriminating_test": {"type": ["string", "null"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"semantic_disposition": {"const": "admitted"}}},
+      "then": {
+        "properties": {
+          "map": {"type": "object"},
+          "preserved_invariants": {"type": "array", "minItems": 1},
+          "demonstrated_strength": {"type": "string"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"demonstrated_strength": {"const": "quotient_descended_identity"}}},
+      "then": {
+        "required": ["descent_certificate"],
+        "properties": {"descent_certificate": {"type": "object"}}
+      }
+    },
+    {
+      "if": {"properties": {"demonstrated_strength": {"const": "coherent_finite_composition"}}},
+      "then": {
+        "required": ["descent_certificate", "coherence_certificate"],
+        "properties": {
+          "descent_certificate": {"type": "object"},
+          "coherence_certificate": {"type": "object"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"demonstrated_strength": {"const": "completed_identity"}}},
+      "then": {
+        "required": ["descent_certificate", "coherence_certificate", "completion_certificate"],
+        "properties": {
+          "descent_certificate": {"type": "object"},
+          "coherence_certificate": {"type": "object"},
+          "completion_certificate": {"type": "object"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"demonstrated_strength": {"const": "source_typed_readout_identity"}}},
+      "then": {
+        "required": ["descent_certificate", "coherence_certificate", "readout_certificate"],
+        "properties": {
+          "descent_certificate": {"type": "object"},
+          "coherence_certificate": {"type": "object"},
+          "readout_certificate": {"type": "object"}
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

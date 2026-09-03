@@ -1,0 +1,60 @@
+{
+  "schema": "marici.voevodsky.coherence-pyramid-categorical-apparatus.v2",
+  "role": "canonical layered manifest",
+  "layers": [
+    {
+      "id": "base_computad",
+      "artifact": "research/voevodsky/coherence-pyramid-computad-signature.json",
+      "depends_on": [],
+      "status": "presentation_declared"
+    },
+    {
+      "id": "cells_and_laws",
+      "artifact": "research/voevodsky/coherence-pyramid-cells-and-laws.json",
+      "depends_on": ["base_computad"],
+      "status": "presentation_declared"
+    },
+    {
+      "id": "partial_completion",
+      "artifact": "research/voevodsky/coherence-pyramid-completion-interface.json",
+      "depends_on": ["base_computad", "cells_and_laws"],
+      "status": "partial_constructor_declared"
+    },
+    {
+      "id": "filler_fiber_selection",
+      "artifact": "research/voevodsky/filler-fiber-selection-layer-v1.json",
+      "depends_on": ["base_computad", "cells_and_laws", "partial_completion"],
+      "status": "conservative_extension_verified"
+    },
+    {
+      "id": "certificate_transfer",
+      "artifact": "research/voevodsky/coherence-transfer-record-contract-v2.json",
+      "depends_on": ["base_computad", "cells_and_laws"],
+      "status": "dependency_DAG_contract_declared"
+    },
+    {
+      "id": "sector_overlap",
+      "artifact": "research/voevodsky/sector-overlap-edge-contract-v1.json",
+      "depends_on": ["base_computad", "cells_and_laws", "certificate_transfer"],
+      "status": "admission_contract_verified_no_edges"
+    },
+    {
+      "id": "horn_tower",
+      "artifact": "research/voevodsky/horn-filling-obstruction-tower-v1.json",
+      "depends_on": ["cells_and_laws", "filler_fiber_selection", "certificate_transfer", "sector_overlap"],
+      "status": "typed_through_degree_4"
+    },
+    {
+      "id": "bounded_completeness",
+      "artifact": "research/voevodsky/bounded-categorical-completeness-contract-v1.json",
+      "depends_on": ["partial_completion", "filler_fiber_selection", "certificate_transfer", "sector_overlap", "horn_tower"],
+      "status": "parameterized_predicate_verified"
+    }
+  ],
+  "realizations": {
+    "markov": "complete through degree 4 for declared laws, physical scope excluded",
+    "cross_sector": "incomplete at first edge",
+    "RH_completed_filler": "incomplete at coherent natural contraction and completed descent"
+  },
+  "global_claim": "No unbounded or physical global completeness claim."
+}

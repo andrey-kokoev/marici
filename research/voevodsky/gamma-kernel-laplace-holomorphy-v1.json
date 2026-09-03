@@ -1,0 +1,18 @@
+{
+  "schema":"marici.voevodsky.gamma-kernel-laplace-holomorphy.v1",
+  "kernel":"K_gamma(t)=[-EulerGamma-log(pi)+J(t)]/[4 sqrt(pi t)], J(t)=integral_0^infinity [exp(-r)-exp(-r/4-r^2/(16t))]/[1-exp(-r)]dr",
+  "small_t_bound":"split r into (0,t),(t,1),(1,infinity); removable cancellation gives O(1) on the first piece, the middle is O(1+|log t|), and exponential tails are O(1), hence K_gamma(t)=O(t^-1/2(1+|log t|))",
+  "large_t_bound":"on (0,1) the removable quotient is uniformly bounded for t>=1; on (1,infinity) both exponentials are dominated by exp(-r/4), hence K_gamma(t)=O(t^-1/2)",
+  "laplace":"these bounds make integral_0^infinity exp(-xt)K_gamma(t)dt absolutely and locally uniformly convergent for Re x>0",
+  "common_domain":"therefore gamma causes no restriction beyond the endpoint boundary Re x>1/4",
+  "status": {
+    "small_t_integrability":"proved_by_split",
+    "large_t_exponential_order":"proved_by_split",
+    "gamma_laplace_holomorphy_Re_x_gt_0":"proved",
+    "symbolic_integrability_fixtures":"verified",
+    "exact_gamma_kernel_source_identity":"relies_on_existing_packet",
+    "source_complete_equivalence":"pending_Hadamard_source_text_and_joint_review",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Jointly audit the split bounds against the source gamma-kernel derivation and attach the authoritative digamma integral theorem used to identify its Laplace transform."
+}

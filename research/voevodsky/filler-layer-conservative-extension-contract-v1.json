@@ -1,0 +1,26 @@
+{
+  "schema": "marici.voevodsky.filler-layer-conservative-extension-contract.v1",
+  "base_signature": "research/voevodsky/coherence-pyramid-computad-signature.json",
+  "extension_signature": "research/voevodsky/filler-fiber-selection-layer-v1.json",
+  "semantics": "many-sorted partial algebra with empty extension sorts permitted",
+  "conditions": [
+    "base and extension sort names are disjoint",
+    "base generators and laws are unchanged",
+    "every new constructor is partial or has a new-sort output",
+    "every new equation contains at least one extension symbol",
+    "forgetting extension sorts and symbols yields the original base model",
+    "every base model has an empty expansion with all extension domains empty"
+  ],
+  "forgetful_projection": {
+    "map": "U:Model(extended)->Model(base)",
+    "action": "discard boundary_datum, filler, relative_class, completed_filler and every incident extension symbol",
+    "law": "U preserves base sorts, generators, cells, and laws identically"
+  },
+  "empty_expansion": {
+    "map": "E0:Model(base)->Model(extended)",
+    "action": "interpret all four extension sorts as empty and all extension constructors as empty partial maps",
+    "law": "U composed with E0 is identity on Model(base)"
+  },
+  "relative_universal_property": "For a base model B and specified extension data D over B satisfying the layer laws, interpretations of the extended signature over B are exactly law-preserving realizations of D.",
+  "scope": "Finite declared signature only; no claim of homotopical localization, model-category presentation, or unbounded higher-categorical universality."
+}

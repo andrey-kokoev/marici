@@ -1,0 +1,35 @@
+{
+  "schema": "marici.voevodsky.markov-carrier-green-realization-bridge.v1",
+  "constructor": "realize_markov_carrier_as_green_kernel",
+  "partial": true,
+  "source_sort": "carrier",
+  "target_sort": "finite_green",
+  "source_domain": {
+    "carrier_shape": ["finite ordered path", "finite rooted tree"],
+    "vertex_data": "typed finite-dimensional real Hilbert fibers",
+    "edge_data": "typed contraction transfers",
+    "required_certificates": ["unique typed path or rooted-tree parent structure", "edge contraction", "source provenance", "port compatibility"]
+  },
+  "target_construction": {
+    "path": "typed ordered products give block Green covariance",
+    "rooted_tree": "lowest-common-ancestor products give branch covariance",
+    "positivity": "Markov innovation covariance realization"
+  },
+  "naturality": {
+    "ordered_subset_restriction": "source-derived effective covariance and identity Beck-Chevalley",
+    "rooted_subtree_restriction": "principal compression identity Beck-Chevalley",
+    "seam_amalgamation": "ordered transfer-list concatenation",
+    "branch_amalgamation": "conditionally independent rooted branch union",
+    "orthogonal_gauge": "block congruence interchange"
+  },
+  "completion_compatibility": "uniformly contractive path carriers map to bounded closed Green operators",
+  "incidence": ["carrier", "finite_green"],
+  "scope_exclusions": ["arbitrary carrier", "cyclic graph carrier", "untyped edge transfer", "completion without uniform or alternative Schur certificate", "physical readout"],
+  "evidence": [
+    "research/voevodsky/results/operator_valued_markov_green.json",
+    "research/voevodsky/results/varying_fiber_markov_green.json",
+    "research/voevodsky/results/ordered_subset_markov_beck_chevalley.json",
+    "research/voevodsky/results/rooted_tree_markov_amalgamation.json",
+    "research/voevodsky/results/varying_fiber_markov_completion.json"
+  ]
+}

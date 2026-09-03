@@ -1,0 +1,21 @@
+{
+  "schema":"marici.voevodsky.entire-kernel-observer-nerve.v1",
+  "apex":"one even entire kernel K(t,z) satisfying partial_t K=partial_z^2 K",
+  "restrictions": {
+    "heat_jets":"J_k(t)=(-1)^k partial_t^k K(t,0)",
+    "gram_packets":"G_I(t)_(ij)=K(t,a_i-a_j)",
+    "shifted_gaussians":"Theta(t,xi)=exp(-t xi^2)K(t,-2it xi)"
+  },
+  "reconstruction":"K(t,z)=sum_(k>=0)(-1)^k J_k(t)z^(2k)/(2k)!; all real values or all imaginary shifted-Gaussian values also determine entire K",
+  "categorical_picture":"jets, Gram packets, and shifted Gaussians are restriction charts of one analytic observer object; transition maps form a nerve whose completed face curvatures vanish",
+  "identity_generator":"the entire kernel K is the common identity-generator; finite chart coordinates are not independent generators",
+  "residual_axes":["arithmetic prime cutoff N","Taylor jet cutoff m","finite packet sampling I","holomorphic continuation/growth control"],
+  "status": {
+    "atomic_kernel_transition_cells":"verified",
+    "completed_cross_family_generator":"reported_source_derived",
+    "uniform_holomorphic_interchange":"reported_closed_on_compact_strata",
+    "global_positivity":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Use one source-derived completed entire K to verify all chart transition cells, bound arithmetic and Taylor residuals independently, and prove positivity in one faithful chart before transporting it to the others."
+}

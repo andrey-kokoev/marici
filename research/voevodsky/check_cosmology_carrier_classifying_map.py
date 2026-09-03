@@ -1,0 +1,12 @@
+"""Specify the minimal classifying datum pulling back the universal common-line horn."""
+from __future__ import annotations
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'research'/'voevodsky'/'results'/'cosmology_carrier_classifying_map.json'
+FIELDS=('carrier_X','regular_center_C','line_bundle_L','ordered_conormal_isomorphism','wall_lifts','DNC_identification')
+def complete(x):return all(x.get(k) for k in FIELDS)
+def main():
+ local={k:True for k in FIELDS};assert complete(local)
+ global_state={k:False for k in FIELDS};assert not complete(global_state)
+ out={'schema':'marici.voevodsky.cosmology-carrier-classifying-map.v1','status':'minimal_classifying_datum_defined_local_slice_passes_global_carrier_map_absent','classifying_fields':{'carrier_X':'the characteristic-zero geometric carrier','regular_center_C':'a codimension-three regular embedding C into X','line_bundle_L':'the common coefficient line on C','ordered_conormal_isomorphism':'phi:L plus L plus L -> I_C/I_C^2','wall_lifts':'three labeled wall equations lifting the ordered basis and satisfying the declared additive relation','DNC_identification':'an identification of the carrier principal-wall DNC with the blowup/normal model used by the universal construction'},'pullback_theorem':'Any complete datum pulls back the universal P2-bundle, star Gamma, global ratios u,v, Milnor symbol, tame tuple, and equation d Phi(Gamma)=(Xi_rel,-sigma123).','local_slice':{'C':'origin in A3','L':'O','phi_matrix':[[1,0,0],[0,1,0],[1,1,1]],'determinant':1,'status':'complete'},'global_state':'No materialized object supplies any complete global tuple of the six fields.','rank26_interface':'A comparison from the relation presentation to this geometric DNC is not needed to define the HomotopyLift, but is required to claim that it belongs to rather than enlarges the rank26 source.','decision':'The carrier gate is reduced to one explicit six-field classifying map. The local model passes; the intended global carrier remains unclassified.','next_gate':'conditional-global-carrier-theorem: freeze the exact pullback theorem and separate geometric existence from rank26-source membership','limitations':['does not construct the missing global X,C,L,phi','local classifying map is fully explicit','no physical interface inferred'],'passed':True};OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+if __name__=='__main__':main()

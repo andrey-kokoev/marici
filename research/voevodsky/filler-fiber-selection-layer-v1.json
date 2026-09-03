@@ -1,0 +1,40 @@
+{
+  "schema": "marici.voevodsky.filler-fiber-selection-layer.v1",
+  "role": "conservative extension of the coherence-pyramid computad",
+  "object_sorts": ["boundary_datum", "filler", "relative_class", "completed_filler"],
+  "chain_interface": {
+    "objects": ["C2", "C1", "C0"],
+    "maps": ["d2:C2->C1", "d1:C1->C0"],
+    "law": "d1 composed with d2 is zero"
+  },
+  "constructors": {
+    "filler_fiber": {"input":"c in C0","output":"Fill(c)={M in C1 | d1(M)=c}"},
+    "class_projection": {"input":"M in Fill(c)","output":"relative class [M]"},
+    "selection": {"partial":true,"input":"relative class plus source authority","output":"chosen M","law":"class_projection(selection([M]))=[M]"},
+    "completion": {"partial":true,"input":"cutoff filler family M_X","output":"completed_filler","requirements":["graph-topology continuity","boundary-null preservation","uniform orbit control","cutoff coherence"]}
+  },
+  "cells": [
+    "representative_change_2_cell",
+    "selection_naturality_2_cell",
+    "completion_comparison_2_cell",
+    "selection_coherence_3_cell",
+    "completion_pasting_3_cell"
+  ],
+  "typing_rules": [
+    "filler existence does not imply uniqueness",
+    "relative class equality does not imply chain equality",
+    "class projection does not authorize selection",
+    "algebraic selection does not imply completed descent",
+    "undefined selection is not a zero filler"
+  ],
+  "certificate_dependencies": {
+    "relative_class": ["boundary_typed","d_squared_zero","filler_exists"],
+    "strict_selection": ["relative_class","source_authorized_selection","selection_naturality"],
+    "completed_selection": ["strict_selection","graph_continuity","boundary_null_preservation","uniform_cutoff_coherence"],
+    "physical_selection": ["completed_selection","source_admitted_effect","positive_state_effect_pairing","physical_record_map","operational_backend"]
+  },
+  "instances": {
+    "markov_ordered_pentagon": {"filler_fiber_status":"singleton_in_faithful_ordered_list_coordinate","selection_status":"strict_identity_authorized"},
+    "RH_mellin_orbit": {"filler_fiber_status":"nonempty","relative_class_status":"endpoint_incidence_determined","selection_status":"ordinary_affine_orbit_available_but_not_modularly_invariant","completed_selection_status":"unverified"}
+  }
+}

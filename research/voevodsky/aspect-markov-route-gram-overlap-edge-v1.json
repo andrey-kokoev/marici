@@ -1,0 +1,43 @@
+{
+  "schema": "marici.voevodsky.sector-overlap-edge.v1",
+  "edge_id": "aspect-route-gram--markov-zero-transfer-covariance",
+  "left_sector": "aspect_optical_route_frame",
+  "right_sector": "metric_transition_markov",
+  "common_object_sort": "finite_green",
+  "common_object": {
+    "coefficient_field": "real",
+    "matrix": [[4,0],[0,1]],
+    "positivity": "positive_definite",
+    "labels": ["route_or_site_0","route_or_site_1"]
+  },
+  "left_incidence_map": {
+    "source": "Aspect nonorthonormal route frame S=diag(2,1)",
+    "construction": "S transpose times S",
+    "source_derived": true,
+    "variance": "congruence-covariant",
+    "naturality_domain": "singleton frozen route-frame witness and its declared coordinate isomorphisms"
+  },
+  "right_incidence_map": {
+    "source": "two-site scalar metric-transition Markov object with M0=4,M1=1,C0=0",
+    "construction": "zero-transfer two-site Green covariance",
+    "source_derived": true,
+    "variance": "restriction-covariant",
+    "naturality_domain": "two-site zero-transfer metric-transition Markov subcategory"
+  },
+  "comparison_cell": {
+    "source_boundary": "Aspect Gram matrix",
+    "target_boundary": "Markov Green covariance",
+    "direction": "left_to_right",
+    "matrix": [[1,0],[0,1]],
+    "invertible": true,
+    "residual": [[0,0],[0,0]],
+    "source_derived_label_correspondence": false,
+    "admission_status": "blocked"
+  },
+  "certificate_dependencies": {
+    "nodes": ["aspect_gram_exact","markov_covariance_exact","labels_aligned","comparison_residual_zero"],
+    "edges": [["aspect_gram_exact","comparison_residual_zero"],["markov_covariance_exact","comparison_residual_zero"],["labels_aligned","comparison_residual_zero"]]
+  },
+  "minimal_failure": "No source-derived correspondence identifies the two optical route labels with the two Markov site labels; equal matrices in chosen coordinates do not construct it.",
+  "scope": "Fixed finite mathematical overlap object; no optical detection, physical identification, completion, or family-level cross-sector naturality claimed."
+}

@@ -1,0 +1,21 @@
+{
+  "schema":"marici.voevodsky.schwartz-density-of-heat-polynomial-tests.v1",
+  "scaled_coordinate":"phi_h(x)=(1-exp(-hx))/h, with 0<=phi_h(x)<=x and phi_h(x)->x",
+  "test":"F_(h,k,t)(u)=exp(-t u^2/2) sgn(u) phi_h(u^2)^(k+1/2)",
+  "limit":"F_(h,k,t)->exp(-t u^2/2)u^(2k+1) in every Schwartz seminorm",
+  "proof_split":"on |u|<=h^(-1/4), h u^2<=sqrt(h) permits differentiated Taylor bounds; outside, Gaussian decay dominates every polynomial and derivative uniformly",
+  "linear_combinations":"one mesh-dependent polynomial p_h(y)=sum_k c_k h^(-k)(1-y)^k approximates any odd polynomial-Gaussian at fixed t",
+  "density":"finite odd Hermite combinations are Schwartz-dense in odd Schwartz space",
+  "functional_boundary":"real-line Schwartz density does not by itself transport Weil positivity because the general-zero form uses complex evaluation; continuity is required in an analytic graph topology controlling those evaluations",
+  "parity_boundary":"neither analytic form-core density nor equivalence of the odd sector to the full Weil criterion has been proved",
+  "status": {
+    "coordinate_inequalities":"verified",
+    "finite_order_limits":"verified",
+    "Schwartz_split_argument":"proved",
+    "odd_Hermite_density":"standard_theorem_not_source_attached",
+    "odd_sector_weil_positivity_extension":"conditional_on_tempered_continuity",
+    "odd_sector_RH_determining":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Prove or refute that positivity of the even Weil distribution on all odd Schwartz convolution squares detects every off-critical zero; explicitly analyze the parity decomposition and interpolation at the complex zero loci."
+}

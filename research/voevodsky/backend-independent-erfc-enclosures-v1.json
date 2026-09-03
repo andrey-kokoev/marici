@@ -1,0 +1,19 @@
+{
+  "schema":"marici.voevodsky.backend-independent-erfc-enclosures.v1",
+  "taylor":"erf(x)=2/sqrt(pi) sum_(k>=0)(-1)^k x^(2k+1)/(k!(2k+1))",
+  "taylor_tail":"after choosing K so the absolute-term ratio at K is at most r<1, the omitted absolute tail is bounded by term_K/(1-r); use the interval upper endpoint to choose r",
+  "asymptotic":"erfc(x)=exp(-x^2)/(sqrt(pi)x)[sum_(k=0)^(K-1)(-1)^k(2k-1)!!/(2x^2)^k+R_K]",
+  "asymptotic_tail":"repeated integration by parts gives R_K the next alternating sign and absolute value at most (2K-1)!!/(2x^2)^K",
+  "hybrid":"use Taylor with absolute-tail enclosure on bounded small/middle x and the integration-by-parts enclosure on large x",
+  "directed_rounding":"all rational polynomial terms are exact; sqrt(pi), exp(-x^2), interval powers, and final arithmetic still require outward-rounded elementary enclosures",
+  "status": {
+    "taylor_ratio_tail":"verified_on_rational_fixtures",
+    "asymptotic_remainder":"checked_against_high_precision_fixtures_not_formally_proved_by_checker",
+    "hybrid_containment_fixtures":"verified",
+    "directed_elementary_backend":"not supplied",
+    "gamma_series_interval":"not supplied",
+    "source_D2_certification":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Implement directed enclosures for pi, square root, and exponential, apply the hybrid erfc bounds to every accelerated-gamma term, sum with outward rounding, and propagate to the four D2 samples."
+}

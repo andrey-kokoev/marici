@@ -1,0 +1,21 @@
+{
+  "schema":"marici.voevodsky.quarter-shift-normalized-localizer.v1",
+  "normalization":"F(t)=exp(-t/4)H(t)",
+  "spectral_shift":"a raw Laplace atom exp(-t lambda) is sent to exp(-t(lambda+1/4)); the endpoint atom lambda=-1/4 is sent to zero",
+  "hankel_congruence":"M_F(t)=exp(-t/4)D_h M_H(t)D_h with D_h=diag(exp(-i h/4))",
+  "localizer_congruence":"L_F(t)=exp(-t/4)D_h[M_H(t)-exp(-h/4)M_H(t+h)]D_h",
+  "weak_localizer":"the 1-y normalized localizer makes the endpoint constant and contributes zero, but permits a spurious rate-zero atom",
+  "sharp_support":"the RH-equivalent shifted rates are at least 1/4, so y is at most q=exp(-h/4) and the required localizer is q M_F(t)-M_F(t+h)",
+  "sharp_congruence":"q M_F(t)-M_F(t+h)=exp(-t/4)q D_h[M_H(t)-M_H(t+h)]D_h",
+  "consequence":"the sharp normalized localizer is a positive diagonal congruence of the raw localizer and retains the endpoint negative rank-one Schur gate",
+  "positivity_invariance":"translation of a signed spectral measure preserves its coefficient signs; normalization moves support but does not manufacture positivity",
+  "status": {
+    "congruence_formulas":"verified",
+    "endpoint_cancellation":"verified",
+    "raw_vs_normalized_nonidentity":"verified",
+    "source_RH_normalization":"not fully reverified",
+    "normalized_remainder_cone":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Recompute the completed endpoint-gamma-prime localizer in the normalized chart, verify the source RH criterion under the +1/4 spectral shift, and certify the normalized gamma-prime cone with interval tails or a source factor."
+}

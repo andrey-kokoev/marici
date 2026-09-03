@@ -1,0 +1,18 @@
+{
+  "schema":"marici.voevodsky.gaussian-dual-injectivity-exponential-form-space.v1",
+  "candidate_form_space":"H_beta=L2(exp(beta|x|)dx)",
+  "candidate_dual":"H_minus_beta=L2(exp(-beta|x|)dx) under the unweighted pairing",
+  "theorem":"for t>0, convolution by G_t(x)=exp(-x^2/(4t)) is injective on H_minus_beta",
+  "proof_route":["h(y)=f(y)exp(-y^2/(4t)) is L1 by Cauchy-Schwarz","the bilateral Laplace transform L_h(z) is entire because h has Gaussian decay","G_t*f=0 on the real axis implies L_h(x/(2t))=0 for all real x","the identity theorem makes L_h identically zero","restriction to the imaginary axis is the Fourier transform of h, so Fourier uniqueness gives h=0 and f=0"],
+  "categorical_consequence":"if the actual combined form dual embeds into H_minus_beta and graph orthogonality has the stated convolution form, coherent-state restriction is conservative for the graph topology",
+  "remaining_gates":["explicit Bargmann intertwiner","identify actual combined form dual and its pairing","prove Tf belongs to the exponential dual","verify graph orthogonality equals Gaussian convolution","completed prime-row control","positivity"],
+  "status": {
+    "exponential_dual_gaussian_injectivity":"proved_conditionally",
+    "integrability_majorant":"verified",
+    "actual_form_dual_identification":"not supplied",
+    "graph_orthogonality_intertwining":"not supplied",
+    "positivity":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Identify the actual transported combined-form dual with a subspace of H_minus_beta, prove the orthogonality-to-translates equation is Gaussian convolution there, and verify the Bargmann and prime-row comparison cells."
+}

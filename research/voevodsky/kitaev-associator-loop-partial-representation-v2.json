@@ -1,0 +1,55 @@
+{
+  "id": "partial-representation:kitaev-electric-associator-loop:v2",
+  "source": "frozen electric D(S3) four-projector associator data",
+  "target": "ordered Bargmann loop scalar and proposed physical readout",
+  "map_status": "partially_constructed",
+  "interface_descriptor": {
+    "ordered_factors": ["P_A", "Q_A", "P_B", "Q_C"],
+    "observable": "Tr(P_A Q_A P_B Q_C)",
+    "exact_value": "-1/8"
+  },
+  "certificate_dependency_poset": {
+    "predicates": ["typed_projectors", "exact_ordered_trace", "negative_factorization_theorem", "explicit_horn_filler", "higher_coherence", "physical_controlled_cycle", "jointly_faithful_probe_family", "simplex_coverage", "fault_independence", "physical_link_theorem"],
+    "edges": [
+      ["typed_projectors", "exact_ordered_trace"],
+      ["exact_ordered_trace", "negative_factorization_theorem"],
+      ["typed_projectors", "explicit_horn_filler"],
+      ["explicit_horn_filler", "higher_coherence"],
+      ["physical_controlled_cycle", "physical_link_theorem"],
+      ["jointly_faithful_probe_family", "physical_link_theorem"],
+      ["simplex_coverage", "physical_link_theorem"],
+      ["fault_independence", "physical_link_theorem"]
+    ]
+  },
+  "admission_formula": "mathematical_global_gluing := direct_proof OR operational_conservative_detection; physical_realization := operational_conservative_detection",
+  "evidence_backends": [
+    {
+      "backend_id": "direct_proof",
+      "claim_class": "mathematical",
+      "requirements": ["typed_projectors", "explicit_horn_filler", "higher_coherence"],
+      "satisfied": ["typed_projectors"],
+      "minimal_failures": ["explicit_horn_filler", "higher_coherence"]
+    },
+    {
+      "backend_id": "operational_conservative_detection",
+      "claim_class": "physical",
+      "requirements": ["physical_controlled_cycle", "jointly_faithful_probe_family", "simplex_coverage", "fault_independence", "physical_link_theorem"],
+      "satisfied": [],
+      "minimal_failures": ["physical_controlled_cycle", "jointly_faithful_probe_family", "simplex_coverage", "fault_independence"]
+    }
+  ],
+  "minimal_repair_bundles": [
+    ["explicit_horn_filler", "higher_coherence"],
+    ["physical_controlled_cycle", "jointly_faithful_probe_family", "simplex_coverage", "fault_independence", "physical_link_theorem"]
+  ],
+  "demonstrated_strength": "Exact scalar -1/8; excludes positive multiplicative commutative-record factorization; scalar robustness gap 1/8; not a faithful global coherence coordinate.",
+  "physical_status": "blocked",
+  "prohibited_interpretations": ["global gluing verified", "physical controlled cycle constructed", "Bargmann scalar reconstructs projector configuration", "positive-record no-go excludes signed or complex quasiprobability"],
+  "evidence": [
+    "research/kitaev/a-four-copy-cyclic-shift-measures-the-associator-loop-exactly.md",
+    "research/kitaev/a-negative-associator-loop-cannot-factor-through-a-classical-record-algebra.md",
+    "research/voevodsky/results/negative_loop_factorization_witness.json",
+    "research/voevodsky/results/bargmann_generic_fiber_dimension.json",
+    "research/voevodsky/results/alternative_coherence_backends.json"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema":"marici.voevodsky.rank-two-turan-cauchy-binet-gate.v1",
+  "moment_form":"a_n=sum_j w_j y_j^n",
+  "rank_two_minor":"D2=a0*a2-a1^2=sum_(j<k) w_j*w_k*(y_j-y_k)^2",
+  "sampled_difference":"if a_n=H_R(t+nh)-H_R(t+(n+1)h), then D2=[H_R(t)-H_R(t+h)][H_R(t+2h)-H_R(t+3h)]-[H_R(t+h)-H_R(t+2h)]^2",
+  "positive_real_case":"w_j>=0 and y_j real imply every summand is nonnegative",
+  "conjugate_pair":"for equal positive real weights and y,conj(y), the isolated pair contributes -4*w^2*Im(y)^2",
+  "warning":"other cross terms can compensate this negative pair at rank two, so D2>=0 does not isolate each zero",
+  "higher_rank":"Cauchy-Binet gives each principal Hankel determinant as a sum of products of weights times algebraic Vandermonde squares, not modulus squares",
+  "status": {
+    "rank_two_identity":"verified",
+    "sampled_difference_identity":"verified",
+    "conjugate_negative_fixture":"verified",
+    "cross_compensation_fixture":"verified",
+    "certified_endpoint_gamma_prime_D2":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Evaluate D2 from the exact endpoint-gamma-prime formula over a declared rational (t,h) domain using interval arithmetic and explicit prime and zero tail bounds; retain any sign-changing residual."
+}

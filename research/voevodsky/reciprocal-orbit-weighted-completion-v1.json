@@ -1,0 +1,23 @@
+{
+  "schema":"marici.voevodsky.reciprocal-orbit-weighted-completion.v1",
+  "source_space":"B_epsilon={c: sum_r |c_r| H(r)^epsilon < infinity}",
+  "orbit":"K_w={s w | s in [-1,1]}",
+  "orbit_width":"a=|Re(w)|",
+  "condition":"a<epsilon",
+  "target":"C(K_w) with sup norm",
+  "evaluation":"E(c)(z)=sum_r c_r H(r)^(-z)",
+  "uniform_bound":"sup_{z in K_w}|H(r)^(-z)| <= H(r)^a <= H(r)^epsilon",
+  "tail_control":"sup_{z in K_w}|sum_{r outside F_N} c_r H(r)^(-z)| <= sum_{r outside F_N}|c_r|H(r)^epsilon -> 0",
+  "reciprocal":"H(1/r)=H(r), hence the same bound controls both label orientations",
+  "graph_norm":"||c||_B_epsilon + ||E(c)||_C(K_w)",
+  "boundary":"endpoint evaluation is continuous in the orbit sup norm, so boundary-null relations pass to limits",
+  "status": {
+    "conditional_uniform_orbit_completion":"proved",
+    "reciprocal_uniformity":"proved",
+    "boundary_null_preservation":"proved",
+    "unweighted_completion":"not proved",
+    "global_spectral_completion":"not proved",
+    "source_decay_unconditional":"false"
+  },
+  "scope":"Conditional on weighted source decay and a fixed reciprocal affine orbit strictly inside the decay strip."
+}

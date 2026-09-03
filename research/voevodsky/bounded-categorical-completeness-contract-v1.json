@@ -1,0 +1,41 @@
+{
+  "schema": "marici.voevodsky.bounded-categorical-completeness-contract.v1",
+  "completeness_is_parameterized_by": ["domain", "object_sorts", "cell_classes", "law_classes", "simplicial_truncation_degree", "certificate_backend", "completion_scope", "physical_scope"],
+  "required_gates": {
+    "presentation": ["all declared sorts typed", "all declared generators have boundaries", "all declared laws have parallel composites"],
+    "realization": ["each in-scope sort inhabited", "each in-scope generator constructed", "domain predicates explicit"],
+    "horn_coverage": ["all required simplices enumerated through truncation degree", "every required horn has filler or exact obstruction", "next-degree dependencies stated"],
+    "filler_semantics": ["filler fiber typed", "relative class separated from selection", "representative-change cells recorded", "selection coherence checked"],
+    "completion": ["completion functor constructed when claimed", "boundary-null preservation", "uniform cutoff coherence", "completion pasting"],
+    "cross_sector": ["sector vertices admitted", "overlap edges satisfy ten-field contract", "mixed horns checked when typeable"],
+    "physical": ["source-admitted effect", "positive state-effect pairing", "physical record map", "operational backend"]
+  },
+  "nonimplications": [
+    "presentation completeness does not imply realization completeness",
+    "one realized sector does not imply cross-sector completeness",
+    "finite truncation does not imply unbounded coherence",
+    "relative filler class does not imply selected filler",
+    "algebraic filler does not imply completed descent",
+    "mathematical coherence does not imply physical readout"
+  ],
+  "current_certificates": {
+    "markov_declared_truncation": {
+      "domain": "metric_transition_markov",
+      "simplicial_truncation_degree": 4,
+      "physical_scope": "excluded",
+      "status": "complete_for_declared_presentation_laws"
+    },
+    "cross_sector": {
+      "admitted_vertices": 1,
+      "admitted_edges": 0,
+      "status": "incomplete_at_dimension_1"
+    },
+    "RH_completed_filler": {
+      "status": "incomplete",
+      "first_missing": "coherent natural chain contraction on completed cutoff system"
+    },
+    "global_unbounded": {
+      "status": "not_claimed"
+    }
+  }
+}

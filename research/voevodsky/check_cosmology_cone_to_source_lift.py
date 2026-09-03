@@ -1,0 +1,12 @@
+"""Test materialized source categories for a degree-one preimage of the formal cone cell."""
+from __future__ import annotations
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'research'/'voevodsky'/'results'/'cosmology_cone_to_source_lift.json'
+def main():
+ candidates={'rank26_p_normal':False,'absolute_higher_Chow_degree_one':False,'ordinary_blowup_incidence':False,'global_logarithmic_primitive':False}
+ assert not any(candidates.values())
+ formal_cone_cell=True;source_element=False;natural_chain_homotopy_unresolved=True
+ assert formal_cone_cell and not source_element and natural_chain_homotopy_unresolved
+ out={'schema':'marici.voevodsky.cosmology-cone-to-source-lift.v1','status':'formal_cone_cell_has_no_materialized_degree_one_source_lift','target_cell':'tau with d tau=(Xi_log,-sigma123) in the minimal top-weight comparison cone','candidate_results':candidates,'rank26_reason':'Every p-normal derivative class in the complete IBP+K+q source is zero, so no element has the required unit Xi_log component.','motivic_reason':'A higher-Chow degree-one precycle whose boundary were the nonzero symbol class would make {u,v} motivically exact. CH^2(U,1) has no torus-dependent summand supplying a different lift.','incidence_reason':'The ordinary blowup dual complex is S1 with no geometric two-cell over the primitive cycle.','log_reason':'log(u)dlog(v) is local; its Cech jumps reconstruct the comparison class and do not define a global source element.','type_distinction':'A natural chain homotopy between two regulator realizations is an operator or natural transformation. It is not automatically an element h of the source with prescribed differential.','decision':'No materialized source category maps a degree-one element to tau. Formal cone exactness is real comparison data but does not by itself construct the requested sourced horn.','next_gate':'natural-transformation-vs-element: determine whether the scientific constructor may be a source-natural regulator homotopy rather than a source-chain element, and state the exact type gate','limitations':['bounded to materialized rank26, motivic, incidence, and logarithmic sources','does not rule out a new source category with an explicit comparison-homotopy object','no physical interface constructed'],'passed':True};OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+if __name__=='__main__':main()

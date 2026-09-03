@@ -1,0 +1,19 @@
+{
+  "schema":"marici.voevodsky.backward-heat-and-translate-gram-no-go.v1",
+  "heat_coordinate":"tau=1/(4t)",
+  "forward_equation":"partial_tau Theta=partial_xi^2 Theta",
+  "t_equation":"partial_t Theta=-(1/(4t^2)) partial_xi^2 Theta",
+  "first_contact":"at a spatial zero minimum, partial_xi^2 Theta>=0, hence partial_t Theta<=0; increasing t can enter negativity",
+  "broad_to_narrow":"small t means large tau and broader forward heat smoothing; increasing t reverses the positivity-preserving direction",
+  "pointwise_fixture":"k_tau(x)=1-b exp(-tau) cos(x), with b>1; it is pointwise nonnegative once b exp(-tau)<=1 but becomes negative at x=0 under backward continuation",
+  "gram_failure":"even in the pointwise-positive regime, the two-translate matrix at 0 and pi has determinant -4 b exp(-tau)<0",
+  "typing_consequence":"pointwise heat positivity, semigroup direction, and translate-Gram positivity are distinct gates",
+  "status": {
+    "backward_heat_propagation":"refuted",
+    "pointwise_to_gram_promotion":"refuted",
+    "all_translate_difference_kernel":"not supplied",
+    "dense_source_family":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Prove positive semidefiniteness of every finite translate matrix for the completed arithmetic kernel directly, then prove source-family density."
+}

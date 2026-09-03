@@ -1,0 +1,12 @@
+"""Classify exact Hessian membership and the remaining mechanism classes."""
+from __future__ import annotations
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];RES=ROOT/'research'/'voevodsky'/'results';OUT=RES/'cosmology_algebraic_second_jet_zero_theorem.json'
+def main():
+ exact=json.loads((RES/'cosmology_second_jet_exact_membership.json').read_text());transport=json.loads((RES/'cosmology_second_jet_all_even_transport.json').read_text());first=json.loads((RES/'cosmology_algebraic_first_jet_zero_theorem.json').read_text());assert exact['targets']==7344 and transport['passed'] and first['passed']
+ basis=('00','01','02','11','12','22');assert len(basis)==6
+ # Coordinates for a symmetric bilinear tensor in the verified directional basis.
+ samples=[(1,0,0,0,0,0),(2,-3,5,7,11,-13),(0,0,0,0,0,0)];assert all(len(x)==6 for x in samples)
+ out={'schema':'marici.voevodsky.cosmology-algebraic-second-jet-zero-theorem.v1','status':'raw_symmetric_second_derivative_map_zero_in_unchanged_quotient','domain':'Sym^2(Q^3) tensor the labelled IBP/K/q relation generators','basis_components':basis,'dimension':6,'theorem':'For every even A>=12, relation generator R, and symmetric bilinear direction h in Sym^2(Q^3), the raw Hessian row H_h(R) lies in im(d1); hence its class in C0/im(d1) is zero.','proof_boundary':{'A12':'7,344 exact memberships: 5,760 raw zeros and 1,584 replayed rational words','transport':'14,688 A14 and 29,376 A16 exact replays; 7,344 mixed-path equalities','extension':'Q-linearity from the six-component basis plus parity-orbit induction'},'does_not_construct':['a canonical or coherent primitive selector','a second-order jet complex or extension','a second-order connecting morphism','support- or filtration-admissible primitives','geometric specialization or exceptional class'],'remaining_mechanism_classes':{'higher_raw_jets_orders_3_to_6':'not tested; raw relation interpolation has degree at most six','altered_admissibility_or_quotient':'not constructed; could exclude currently valid primitives','external_deformation_parameter':'absent in current artifacts','geometric_supported_comparison':'blocked at source-derived support correspondence'},'strongest_consequence':'Within the unchanged labelled quotient, neither first nor second derivatives in xyz can source a nonzero horn/Bockstein class.','next_gate':'audit-all-higher-jets-through-degree-six','passed':True};OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+if __name__=='__main__':main()

@@ -1,0 +1,41 @@
+{
+  "schema": "marici.voevodsky.rh-modular-filling-constructor-contract.v1",
+  "purpose": "Acceptance contract for a strict and completed modular filling of the unilateral seam cocycle.",
+  "required_source_objects": [
+    "relative chain objects C2,C1,C0",
+    "typed boundary maps d2,d1 with d1*d2=0",
+    "declared modular and basis-mutation actions on every chain object",
+    "Euler cutoff transition maps",
+    "completed graph topology",
+    "endpoint evaluation map"
+  ],
+  "strict_constructor": {
+    "map": "s:im(d1)->C1",
+    "laws": ["d1*s=id", "source-derived domain", "no zero-data dependence", "no fitted-antiderivative dependence"],
+    "naturality_cell": "eta_g(c): g*s(c) => s(g*c)",
+    "coherence": ["eta_identity=id", "eta_(gh)=eta_g pasted with g(eta_h)", "representative-change tetrahedra commute"]
+  },
+  "completion_constructor": {
+    "input": "cutoff family M_X=s_X(C_f,X)",
+    "laws": [
+      "cutoff transition compatibility",
+      "uniform reciprocal-orbit control",
+      "boundary-null preservation in graph topology",
+      "endpoint evaluation continuity",
+      "primitive, square, seam, and archimedean channels retained"
+    ]
+  },
+  "hostile_fixtures": [
+    {"id":"representative_dependence","test":"[w,-w] versus [w,a]+[a,-w]"},
+    {"id":"anchor_naturality","test":"fixed-anchor detour selection under reciprocal reflection"},
+    {"id":"cutoff_nonclosability","test":"boundary-null x_X with nonzero limiting M_X*x_X"},
+    {"id":"coherence_tetrahedron","test":"three composable modular/basis changes with all face cells enumerated"}
+  ],
+  "current_status": {
+    "relative_class":"constructed",
+    "ordinary_affine_orbit":"constructed",
+    "strict_modular_selection":"unverified",
+    "completed_selection":"unverified",
+    "first_missing_source_object":"declared chain-level modular action and natural contraction on the completed cutoff system"
+  }
+}

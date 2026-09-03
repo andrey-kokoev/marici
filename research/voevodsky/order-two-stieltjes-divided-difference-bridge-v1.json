@@ -1,0 +1,19 @@
+{
+  "schema":"marici.voevodsky.order-two-stieltjes-divided-difference-bridge.v1",
+  "target":"H'(x)=integral_(a>=1/4)(x-1/4+a)^(-2)dnu(a), dnu>=0",
+  "factorial_moments":"q_k(x)=(-1)^k H^(k+1)(x)/(k+1)!=integral (x+r)^(-k-2)dnu(r+1/4)",
+  "compact_coordinate":"y=(x+r)^(-1) lies in (0,1/x]; after weighting by y^2, q_k is the kth Hausdorff moment",
+  "three_cones":["(q_(i+j)) PSD","(q_(i+j+1)) PSD","((1/x)q_(i+j)-q_(i+j+1)) PSD"],
+  "divided_difference":"sum_(k>=0)q_k(x)t^k=(H(x)-H(x-t))/t",
+  "operator":"GNS multiplication Y_x satisfies 0<=Y_x<=1/x; Z_x=xY_x is a positive contraction",
+  "relation_to_heat_chart":"the inverse Laplace density is the quarter-shifted heat density multiplied by t, so this is an invertible presentation rather than a positivity bypass",
+  "status": {
+    "factorial_moment_formula":"verified",
+    "three_compact_cones":"verified_on_positive_atomic_fixture",
+    "divided_difference_series":"verified_to_finite_order",
+    "source_positive_measure":"not supplied",
+    "positive_J_fraction":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Construct the divided-difference kernel directly from the explicit xi-derived H and give a source-positive Gram or J-fraction factor for all three q-moment cones without assuming dnu>=0."
+}

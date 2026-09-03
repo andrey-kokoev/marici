@@ -1,0 +1,20 @@
+{
+  "schema":"marici.voevodsky.shifted-gaussian-versus-translate-gram-interface.v1",
+  "fourier_convention":"fhat(u)=integral f(x) exp(-iux) dx",
+  "source_gaussian":"g_sigma(x)=exp(-x^2/(4 sigma))",
+  "translated_fourier":"Fourier(T_a g_sigma)(u)=exp(-iau) Fourier(g_sigma)(u)",
+  "gram_spectral_test":"Fourier(T_a g_sigma)(u) conjugate(Fourier(T_b g_sigma)(u)) = 4 pi sigma exp(-2 sigma u^2) exp(-i(a-b)u)",
+  "materialized_probe":"h_(t,xi)(u)=exp(-t(u-xi)^2)",
+  "probe_inverse_fourier":"proportional to exp(-x^2/(4t)) exp(i xi x)",
+  "typing_distinction":"xi shifts the spectral Gaussian and therefore modulates its inverse Fourier source; a translate Gram entry instead multiplies a centered spectral Gaussian by a character indexed by a-b",
+  "nonidentity":"for xi nonzero, exp(-t(u-xi)^2) is not a constant multiple of exp(-t u^2) exp(-idu)",
+  "required_interface":"an explicit Fourier/polarization map relating the materialized shifted-Gaussian functional to character-weighted centered Gaussian tests, with all constants and width reparameterization",
+  "status": {
+    "direct_identification":"refuted",
+    "fourier_modulation_translation_types":"separated",
+    "polarization_interface":"not supplied",
+    "all_translate_psd":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Derive the character-weighted centered-Gaussian explicit formula and prove it equals the completed Weil translate pairing at t=2 sigma under the declared Fourier normalization."
+}

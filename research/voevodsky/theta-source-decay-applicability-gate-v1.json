@@ -1,0 +1,18 @@
+{
+  "schema":"marici.voevodsky.theta-source-decay-applicability-gate.v1",
+  "required_map":"iota: theta/Euler source -> B_epsilon",
+  "required_identifications":["source labels r","adelic height H(r)","coefficients c_r"],
+  "theta_slice": {
+    "coefficients":"c_n(x)=exp(-pi n^2 x)",
+    "status":"belongs to every polynomially weighted l1 space for each fixed x>0",
+    "nonuniformity":"for x=m^-2 and n<=m, c_n(x)>=exp(-pi), so the epsilon-weighted norm grows at least as exp(-pi) sum_{n<=m} n^epsilon"
+  },
+  "unsmoothed_euler_slice": {
+    "coefficients":"c_n=1",
+    "status":"not in B_epsilon for any epsilon>0"
+  },
+  "typing_consequence":"Parameterwise theta decay does not define a uniform B_epsilon map through the Mellin transform to unsmoothed Euler coefficients.",
+  "acceptance_test":"Supply a source-derived coefficient map and prove a positive epsilon weighted norm bound uniform on an orbit wide enough for the modular endpoints.",
+  "disposition":"arithmetic applicability blocked; conditional affine-filler theorem unchanged",
+  "rh_implication":false
+}

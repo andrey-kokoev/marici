@@ -1,0 +1,45 @@
+{
+  "id": "transfer:R_zeta:S_zeta_labels-to-U_G4:v2",
+  "source": "S_zeta^labels",
+  "target": "U_G4",
+  "map_status": "authority_blocked",
+  "interface_descriptor": {
+    "proposed_map_label": "R_zeta",
+    "required_labels": ["prime", "power", "logarithmic_grade", "shell", "ordered_pair", "theta", "reciprocal_pole"]
+  },
+  "certificate_dependency_poset": {
+    "predicates": ["target_source_typed", "map_source_derived", "source_typed", "finite_identity", "quotient_descended", "faithful", "coherent_finite_composition", "completed_or_unbounded", "source_typed_physical_readout"],
+    "edges": [
+      ["target_source_typed", "source_typed"],
+      ["map_source_derived", "source_typed"],
+      ["source_typed", "finite_identity"],
+      ["source_typed", "quotient_descended"],
+      ["quotient_descended", "faithful"],
+      ["source_typed", "coherent_finite_composition"],
+      ["source_typed", "completed_or_unbounded"],
+      ["coherent_finite_composition", "source_typed_physical_readout"],
+      ["completed_or_unbounded", "source_typed_physical_readout"]
+    ]
+  },
+  "admission_formula": "mathematical_transfer := direct_source_proof",
+  "evidence_backends": [
+    {
+      "backend_id": "direct_source_proof",
+      "claim_class": "mathematical",
+      "requirements": ["target_source_typed", "map_source_derived", "finite_identity", "quotient_descended", "faithful", "coherent_finite_composition"],
+      "satisfied": [],
+      "minimal_failures": ["target_source_typed", "map_source_derived"]
+    }
+  ],
+  "minimal_repair_bundles": [
+    ["target_source_typed", "map_source_derived", "finite_identity", "quotient_descended", "faithful", "coherent_finite_composition"]
+  ],
+  "demonstrated_strength": "Label census and source-side finite evidence only; no constructed target object or transfer map.",
+  "physical_status": "not_applicable",
+  "prohibited_interpretations": ["R_zeta constructed", "U_G4 source typed", "finite identity verified", "descent verified", "completion verified", "physical readout established"],
+  "evidence": [
+    "research/kitaev/coherence-pyramid-transfer-map-registry-v1.json",
+    "research/kitaev/results/coherence_pyramid_transfer_poset.json",
+    "research/voevodsky/r-zeta-u-g4-transfer-record-candidate-v1.json"
+  ]
+}

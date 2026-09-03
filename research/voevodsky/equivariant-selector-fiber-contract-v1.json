@@ -1,0 +1,37 @@
+{
+  "schema": "marici.voevodsky.equivariant-selector-fiber-contract.v1",
+  "input": {
+    "group_action": "G acts on X and Y",
+    "boundary_map": "equivariant surjection B:X->Y",
+    "selector": "equivariant K:Y->X with B*K=id_Y"
+  },
+  "classification": {
+    "difference_of_selectors": "K1-K0 lies in Hom_G(Y,ker B)",
+    "selector_fiber": "if nonempty, an affine torsor over Hom_G(Y,ker B)",
+    "existence_gate": "at least one equivariant splitting",
+    "uniqueness_gate": "Hom_G(Y,ker B)=0"
+  },
+  "required_certificates": [
+    "B equivariant",
+    "B surjective on declared domain",
+    "kernel G-stable",
+    "output character decomposition",
+    "kernel character decomposition",
+    "intertwiner dimension",
+    "cutoff compatibility when completed"
+  ],
+  "finite_fixture": {
+    "group": "reciprocal Z2",
+    "boundary_rank": 3,
+    "kernel_dimension": 7,
+    "kernel_plus_dimension": 4,
+    "kernel_minus_dimension": 3,
+    "output_character": "odd",
+    "intertwiner_dimension": 3,
+    "unique_equivariant_selector": false
+  },
+  "completion_extension": {
+    "requirement": "a compatible point in the inverse system of selector torsors",
+    "nonimplication": "an equivariant selector at each cutoff does not imply a coherent completed selector"
+  }
+}

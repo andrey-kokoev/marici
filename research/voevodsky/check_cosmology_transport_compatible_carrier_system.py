@@ -1,0 +1,12 @@
+"""State the naturality squares required for a geometric even-degree carrier system."""
+from __future__ import annotations
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'research'/'voevodsky'/'results'/'cosmology_transport_compatible_carrier_system.json'
+SQUARES=('cartesian_centers','common_line_pullback','conormal_basis_square','wall_pullback','DNC_base_change','ordered_orientation')
+def coherent(d):return all(d.get(x) for x in SQUARES)
+def main():
+ universal={x:True for x in SQUARES};assert coherent(universal)
+ materialized={x:False for x in SQUARES};assert not coherent(materialized)
+ out={'schema':'marici.voevodsky.cosmology-transport-compatible-carrier-system.v1','status':'naturality_contract_complete_geometric_carrier_system_not_materialized','degree_system':'for every even A>=12, a six-field carrier datum D_A and a carrier morphism f_A:D_A -> D_(A+2)','required_squares':{'cartesian_centers':'C_A is the pullback of C_(A+2) inside X_A','common_line_pullback':'L_A is identified with f_A^*L_(A+2)','conormal_basis_square':'the ordered isomorphisms L^3 -> I/I^2 commute with conormal pullback','wall_pullback':'each labeled wall equation pulls back to its same label','DNC_base_change':'the DNC/blowup identifications commute with f_A','ordered_orientation':'no wall permutation; otherwise use the sign local system'},'consequence':'The induced geometric maps fix Gamma, z, {u,v}, the tame tuple, and d Phi(Gamma)=(Xi_rel,-sigma123), realizing T_A direct_sum id_A geometrically.','materialized_evidence':'Existing T, S_K, and Q transports act on relation modules and prove absorption. They do not define X_A, C_A, L_A, or any of the six geometric naturality squares.','classification':'The algebraic unbounded extension theorem is proved; a geometric unbounded/colimit realization is unmaterialized. Each finite universal common-line realization remains valid.','decision':'Do not promote algebraic transport coherence to geometric carrier coherence. The missing datum is one compatible carrier system, not another rank computation.','next_gate':'programme-boundary-classification: consolidate finite theorem, conditional global theorem, algebraic colimit theorem, and the exact unmaterialized geometric gate','limitations':['bounded to the authoritative transport chain','no claim that a compatible carrier system cannot exist','no physical interface inferred'],'passed':True};OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+if __name__=='__main__':main()

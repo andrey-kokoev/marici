@@ -1,0 +1,24 @@
+{
+  "schema": "marici.voevodsky.affine-simplex-naturality-contract.v1",
+  "simplex": "sigma(v0,...,vn;lambda)=sum_i lambda_i v_i",
+  "action_domain": "affine maps g(v)=L(v)+b preserving the admitted convex spectral domain",
+  "naturality_law": "g(sigma(v_i;lambda))=sigma(g(v_i);lambda)",
+  "chain_consequence": "g_* commutes strictly with affine simplex boundaries",
+  "declared_reciprocal_action": {
+    "map": "rho(v)=-v on the underlying real affine spectral space",
+    "status": "strictly_affine",
+    "fixture_naturality": "verified"
+  },
+  "anti_linear_extension": "Complex conjugate-linear maps are real-linear and therefore preserve real affine simplices when the domain is invariant.",
+  "nonlinear_boundary": {
+    "example": "iota(x)=1/x",
+    "status": "not affine",
+    "consequence": "straight-simplex naturality is not automatic and requires a comparison homotopy"
+  },
+  "remaining_requirements": [
+    "identify every actual modular and basis action on the spectral chain object",
+    "prove each action affine or supply a source-derived simplex comparison homotopy",
+    "verify cutoff transition compatibility",
+    "verify completed graph-topology descent"
+  ]
+}

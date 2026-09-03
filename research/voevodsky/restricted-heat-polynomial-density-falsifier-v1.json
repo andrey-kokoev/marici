@@ -1,0 +1,20 @@
+{
+  "schema":"marici.voevodsky.restricted-heat-polynomial-density-falsifier.v1",
+  "candidate_falsified":"the heat-polynomial image is a small exceptional test family whose positivity may avoid the full odd Gaussian-polynomial Weil difficulty",
+  "source_map":"G_(t,h,p)(u)=exp(-t u^2/2) q_h(u) p(exp(-h u^2)), q_h(u)=u sqrt((1-exp(-h u^2))/u^2)",
+  "scaled_limit":"q_h(u)/sqrt(h) tends to u as h tends to zero",
+  "finite_difference_limit":"h^(-k)(1-exp(-h u^2))^k tends to u^(2k)",
+  "combined_limit":"for p_h(y)=h^(-k)(1-y)^k, G_(t,h,p_h)/sqrt(h) tends to exp(-t u^2/2)u^(2k+1)",
+  "density":"odd monomial-Gaussians span the odd Hermite sector densely in odd L2; with standard seminorm estimates the convergence is Schwartz",
+  "consequence":"the union over small h and polynomials is not a protective finite or sparse subspace; positivity extends by continuity to every odd Gaussian-polynomial square",
+  "warning":"this does not by itself prove density in the entire admissible Weil test topology or establish RH equivalence",
+  "status": {
+    "scaled_limits":"verified_symbolically",
+    "finite_difference_orders_checked":5,
+    "odd_Hermite_span":"standard_theorem_not_source_attached",
+    "Schwartz_density":"argument_requires_written_seminorm_bounds",
+    "full_weil_test_density":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Prove uniform Schwartz-seminorm convergence of the scaled heat-polynomial tests to every odd monomial-Gaussian and identify whether the odd Hermite sector is already a Weil/RH-determining test family."
+}

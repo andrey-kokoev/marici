@@ -1,0 +1,11 @@
+"""Classify complete positive-order xyz jet absorption through degree six."""
+from __future__ import annotations
+import json,math
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];RES=ROOT/'research'/'voevodsky'/'results';OUT=RES/'cosmology_full_positive_jet_absorption_theorem.json'
+def load(n):return json.loads((RES/n).read_text())
+def main():
+ first=load('cosmology_algebraic_first_jet_zero_theorem.json');second=load('cosmology_algebraic_second_jet_zero_theorem.json');higher=load('cosmology_higher_jet_exact_membership.json');transport=load('cosmology_higher_jet_all_even_transport.json');assert all(x['passed'] for x in (first,second,higher,transport))
+ dims={str(k):math.comb(k+2,2) for k in range(1,7)};assert sum(dims.values())==83;seed_components=sum(dims.values())*1224;assert seed_components==101592
+ out={'schema':'marici.voevodsky.cosmology-full-positive-jet-absorption-theorem.v1','status':'all_positive_xyz_jets_absorbed_in_unchanged_algebraic_quotient','orders':{'verified_exact':[1,2,3,4,5,6],'identically_zero_by_degree_bound':'k>6'},'symmetric_basis_dimensions':dims,'total_directional_basis_components':83,'seed_component_memberships':seed_components,'theorem':'For every even A>=12, labelled relation generator R, order k>=1, and h in Sym^k(Q^3), the raw derivative D_h^(k)R lies in im(d1). For k>6 the raw derivative is zero.','proof_factorization':{'orders_1_2':'exact rational certificates, A14/A16 replay, and parity-orbit induction','orders_3_6':'90,576 A12 exact memberships plus parameter-independent squared-axis row naturality','orders_above_6':'interpolation degree at most six'},'maximal_consequence':'No positive-order xyz derivative can yield a nonzero class in the unchanged labelled quotient.','nonconsequences':['no coherent choice of primitives across orders','no formal-family nullhomotopy','no jet complex or connecting morphism','no support- or filtration-admissibility result for all words','no geometric specialization or exceptional class'],'remaining_executable_gate':'Test every exact jet word against the existing pole filtration; a grade violation would be the only currently materialized altered-admissibility obstruction.','next_gate':'test-full-jet-pole-filtered-admissibility','passed':True};OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+if __name__=='__main__':main()

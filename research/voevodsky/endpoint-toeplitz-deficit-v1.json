@@ -1,0 +1,21 @@
+{
+  "schema":"marici.voevodsky.endpoint-toeplitz-deficit.v1",
+  "endpoint_kernel":"E_sigma(d)=exp(sigma/2) cosh(d/2)",
+  "two_point_matrix":"[[E_sigma(0),E_sigma(d)],[E_sigma(d),E_sigma(0)]]",
+  "determinant":"-exp(sigma) sinh(d/2)^2, negative for d nonzero",
+  "eigenchannels": {
+    "symmetric":"E_sigma(0)+E_sigma(d)>0",
+    "antisymmetric":"E_sigma(0)-E_sigma(d)<0 for d nonzero"
+  },
+  "required_completed_compensation":"writing K=E+R, rank-two PSD requires R_sigma(0)-R_sigma(d)>=exp(sigma/2)(cosh(d/2)-1)",
+  "local_limit":"R_sigma''(0)<=-exp(sigma/2)/4 is necessary",
+  "typing":"endpoint scalar positivity is diagonal-only and cannot serve as a Gram anchor; gamma and prime channels must be combined before positivity",
+  "status": {
+    "endpoint_rank_two_failure":"proved",
+    "exact_antisymmetric_deficit":"proved",
+    "sectorwise_positive_decomposition":"refuted",
+    "completed_compensation_inequality":"not proved",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Prove the completed gamma-plus-prime remainder meets the exact antisymmetric compensation inequality for every sigma>0 and d, and then prove higher Toeplitz minors."
+}

@@ -1,0 +1,75 @@
+{
+  "schema":"marici.voevodsky.categorical-rh-lifting-layer-plan.v2",
+  "status":"author_plan_not_yet_compiled_by_scc",
+  "base_object":"source-normalized completed Xi quadratic-form problem",
+  "layers":[
+    {
+      "name":"packet_restriction_bracket",
+      "state":"coherent_section",
+      "kind":"mathematical",
+      "evidence":["research/voevodsky/categorical-rh-proof-bracket-form-core-v1.json"],
+      "forgets_to":"source-normalized completed Xi quadratic-form problem"
+    },
+    {
+      "name":"common_closed_form_domain",
+      "state":"not_constructed",
+      "kind":"mathematical",
+      "required_object":"one declared D(Q) carrying closed or closable arithmetic and Weil forms",
+      "rejected_substitute":"auxiliary completion in ||p||_0^2+||p||_H2^2 without arithmetic source map",
+      "forgets_to":"packet_restriction_bracket"
+    },
+    {
+      "name":"gaussian_jet_form_core",
+      "state":"not_constructed",
+      "kind":"mathematical",
+      "required_object":"inclusion V->D(Q) with graph-norm-dense image",
+      "rejected_substitute":"L2 density or distributional faithfulness",
+      "depends_on":["common_closed_form_domain"],
+      "forgets_to":"common_closed_form_domain"
+    },
+    {
+      "name":"source_weil_comparison",
+      "state":"not_constructed",
+      "kind":"mathematical",
+      "required_object":"source-derived equality or closable intertwiner between arithmetic and Weil forms on the common core",
+      "rejected_substitute":"zero-derived Hardy realization or identity H0->H2",
+      "depends_on":["common_closed_form_domain","gaussian_jet_form_core"],
+      "forgets_to":"gaussian_jet_form_core"
+    },
+    {
+      "name":"observer_coherence",
+      "state":"inhabited",
+      "kind":"mathematical",
+      "evidence":["research/voevodsky/observer-family-refinement-descent.md","research/voevodsky/near-null-polynomial-is-high-difference-observer.md","research/voevodsky/high-difference-frequency-observer.md","research/voevodsky/bernstein-common-measure-coherencer.md"],
+      "limitation":"exact algebraic coherencers exist; rank-uniform quantitative residue remains",
+      "forgets_to":"source_weil_comparison"
+    },
+    {
+      "name":"semibounded_completed_form",
+      "state":"not_constructed",
+      "kind":"mathematical",
+      "required_object":"closable coupled gamma-remainder-plus-prime form with lower bound -1 in the leading positive reference norm",
+      "rejected_substitute":"uniform two-sided operator norm",
+      "depends_on":["source_weil_comparison","observer_coherence"],
+      "forgets_to":"observer_coherence"
+    },
+    {
+      "name":"all_rank_endpoint_free_cone",
+      "state":"not_constructed",
+      "kind":"mathematical",
+      "required_object":"B_N(t,h)>=0 for every finite N and all positive rational t,h",
+      "depends_on":["semibounded_completed_form"],
+      "forgets_to":"semibounded_completed_form"
+    },
+    {
+      "name":"rh_implication",
+      "state":"not_constructed",
+      "kind":"mathematical",
+      "required_object":"apply the source-complete moment and generic-mesh pole theorem to the all-rank cone",
+      "depends_on":["all_rank_endpoint_free_cone"],
+      "forgets_to":"all_rank_endpoint_free_cone"
+    }
+  ],
+  "first_obstruction":"common_closed_form_domain",
+  "acceptance_test":"SCC lifting IR preserves packet_restriction_bracket as the coherent prefix, refuses the auxiliary graph completion as common_closed_form_domain, and reports every successor layer as blocked without promoting RH."
+}

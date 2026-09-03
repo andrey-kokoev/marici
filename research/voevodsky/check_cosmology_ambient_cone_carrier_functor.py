@@ -1,0 +1,13 @@
+"""State the functoriality conditions for globalizing the ambient star over a carrier center."""
+from __future__ import annotations
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'research'/'voevodsky'/'results'/'cosmology_ambient_cone_carrier_functor.json'
+REQUIRED=('smooth_center','rank3_normal_bundle','three_labeled_transverse_conormals','orientation_trivialization','transition_compatibility','mixed_residue_vanishing')
+def valid(x):return all(x.get(k) for k in REQUIRED)
+def main():
+ local={k:True for k in REQUIRED};assert valid(local)
+ global_state={k:'unverified' for k in REQUIRED};global_state['three_labeled_transverse_conormals']=True
+ assert not all(v is True for v in global_state.values())
+ out={'schema':'marici.voevodsky.cosmology-ambient-cone-carrier-functor.v1','status':'construction_is_local_and_base_change_natural_global_carrier_extension_unverified','category':'ordered transverse triples (X,C;D1,D2,D3) with C smooth and conormal determinant a unit','construction':'blow up C, take the exceptional vertex star in the SNC dual complex, and decorate it by u=l1/l3, v=l2/l3','functoriality':'Blowup, exceptional projectivization, the star chain, tame symbols, and ordered residues commute with transverse base change preserving the labeled divisor triple and orientation.','local_contract':local,'global_carrier_evidence':global_state,'global_gates':['the principal center is globally smooth','the three wall conormals trivialize the rank-three normal bundle or define an oriented determinant line','transition functions preserve the ordered star chain','changes of local defining equations introduce no horizontal or mixed dlog residues','the local DNC normal slice is the actual carrier comparison, not only a presentation chart'],'rank26_distinction':'Square transport in ambient degree proves relation-module absorption; it does not verify normal-bundle descent or mixed residue cancellation for this geometric functor.','decision':'The HomotopyLift is étale/local and functorial in the ordered-transverse-triple category. Its extension to the full characteristic-zero carrier is not yet proved.','next_gate':'normal-bundle-monodromy-audit: compute transition action on Gamma, Xi_log, tame units, and the determinant orientation line','limitations':['no global carrier atlas or transition cocycle was materialized in the audited packets','does not retract the valid local realization','no physical interpretation inferred'],'passed':True};OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+if __name__=='__main__':main()

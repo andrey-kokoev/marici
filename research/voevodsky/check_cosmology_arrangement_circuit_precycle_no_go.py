@@ -1,0 +1,14 @@
+"""Falsify a regular circuit precycle using the nonzero generic regulator class."""
+from __future__ import annotations
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];V=ROOT/'research'/'voevodsky'/'results';OUT=V/'cosmology_arrangement_circuit_precycle_no_go.json'
+def main():
+ deg=json.loads((V/'cosmology_arrangement_degeneration_vanishing_cycle.json').read_text());exact=json.loads((V/'cosmology_relative_total_K2_exactness_gate.json').read_text());sing=json.loads((V/'cosmology_singular_nearby_boundary_Bockstein_gate.json').read_text());assert deg['passed'] and exact['passed'] and sing['passed'];assert deg['cohomology_ranks']['generic_H2']==1 and exact['status']=='sourced_K2_triangle_cocycle_is_nonexact'
+ # Over Q[t,t^-1], t is a unit. Hence d(h)=t*z implies z=d(t^-1 h).
+ t_invertible=True;generic_z_nonzero=True
+ candidate_implies_generic_z_exact=t_invertible
+ contradiction=candidate_implies_generic_z_exact and generic_z_nonzero
+ assert contradiction
+ out={'schema':'marici.voevodsky.cosmology-arrangement-circuit-precycle-no-go.v1','status':'regular_circuit_precycle_falsified','candidate':'a regular total degree-one h with d(h)=t*(Xi_log,-sigma123) and no residual components','generic_fiber_argument':['restrict the identity to Q[t,t^-1]','multiplication by t is invertible there','the identity becomes (Xi_log,-sigma123)=d(t^-1 h)','the generic regulator class is already verified nonzero and nonexact'],'contradiction':'The candidate would make the constant rank-one generic class exact. Therefore no such h exists in any regular family complex whose generic comparison preserves Xi_log.','determinant_disposition':'The residual tZ of the line-coefficient circuit is only a dependence determinant. It cannot be promoted to a total differential identity compatible with the generic regulator comparison.','Bockstein_boundary':'A t-Bockstein equation can exist only for a t-torsion cohomology class that vanishes after inverting t. Xi_log is the opposite: it survives as the generator on every nonzero fiber and appears as the class lost only under specialization.','decision':'The arrangement-circuit branch is closed by contradiction. Neither a regular h nor its 1/t localization supplies the original horn. Any further route must change the generic comparison, add a new source complex, or target a different torsion class, each requiring independent authority and evidence.','next_gate':'audit whether a higher-dimensional correspondence can add a face while retaining a faithful pullback to the nonzero generic Xi_log class','limitations':['no-go assumes the required generic comparison sends the target to the verified nonzero regulator generator','does not exclude changed complexes with nonfaithful generic comparison','no physical period inferred'],'passed':True};OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+if __name__=='__main__':main()

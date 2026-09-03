@@ -1,0 +1,38 @@
+{
+  "schema": "marici.voevodsky.coherence-pyramid-completion-interface.v1",
+  "constructor": "complete_finite_form_system",
+  "partial": true,
+  "input": {
+    "finite_system": ["index_category", "finite_green_objects", "restriction_maps", "restriction_form_cells"],
+    "candidate_limit": ["ambient_space", "dense_common_core", "candidate_form", "candidate_radical"],
+    "comparison_data": ["core_embeddings", "finite_to_limit_form_cells"]
+  },
+  "certificate": {
+    "source_independence": ["finite_forms_source_derived", "candidate_form_source_derived", "comparison_maps_source_derived"],
+    "domain": ["common_core_dense", "candidate_form_closable", "closure_domain_identified", "restriction_core_invariant"],
+    "convergence": ["mosco_or_strong_resolvent_witness", "closed_limit_positive"],
+    "radical": ["finite_radicals_declared", "limit_radical_declared", "radical_stability", "comparison_descends_to_quotients"],
+    "coercivity": ["positive_quotient_coercivity_bound", "positive_reduced_minimum_modulus"],
+    "coherence": ["restriction_completion_cells", "composition_compatibility_candidate"]
+  },
+  "output": {
+    "closed_form_object": ["ambient_space", "closed_domain", "closed_form", "declared_radical"],
+    "quotient_form_object": ["radical_quotient", "completed_form_space", "coercivity_bound"],
+    "cells": ["finite_restriction_to_completion", "radical_descent"]
+  },
+  "admission_rule": "all_required_certificate_fields_present_and_positive_numeric_bounds_strictly_positive",
+  "refusals": {
+    "negative_limit": "closed_limit_positive is false",
+    "domain_escape": "closability or closure-domain identification is absent",
+    "new_radical": "radical_stability is false",
+    "quotient_coercivity_loss": "quotient coercivity bound is nonpositive",
+    "minimum_modulus_collapse": "reduced minimum modulus is nonpositive",
+    "circular_comparison": "any source_independence field is false"
+  },
+  "laws_deferred": [
+    "composition_compatibility",
+    "associativity_of_completion_comparison",
+    "beck_chevalley_for_completion",
+    "uniqueness_of_completed_object"
+  ]
+}

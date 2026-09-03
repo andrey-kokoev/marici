@@ -1,0 +1,21 @@
+{
+  "schema":"marici.voevodsky.stieltjes-atoms-force-fiber-spread.v1",
+  "stieltjes_premise":"S(x)=integral dnu(a)/(x+a) with nu positive",
+  "shift":"lambda=a+1/4",
+  "bernstein_derivative_atom":"lambda/(x+lambda)^2 = integral_0^infinity lambda t exp(-(x+lambda)t) dt",
+  "equal_rate_fiber":"conditioning two Gamma(shape=2,rate=lambda) atoms on T+U=v gives density proportional to t(v-t), hence T/v is Beta(2,2)",
+  "equal_rate_variance":"Var(T|V=v)=v^2/20",
+  "exchange_pair_fiber":"rates lambda,mu plus exchanged rates give density proportional to t(v-t) cosh((lambda-mu)(t-v/2))",
+  "spread_monotonicity":"relative to the Beta(2,2) fiber, the cosh tilt is even and increasing in |t-v/2|, so covariance with (t-v/2)^2 is nonnegative",
+  "mixture":"all exchange-paired components have conditional mean v/2 and variance at least v^2/20; positive mixtures preserve the bound",
+  "consequence":"a positive Stieltjes measure implies the fiber-spread condition and therefore rank-two Schwarzian positivity",
+  "status": {
+    "equal_rate_identity":"proved",
+    "exchange_pair_spread":"proved",
+    "positive_mixture_spread":"proved",
+    "independent_spread_assumption":"eliminated",
+    "source_derived_stieltjes_measure":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Construct the positive Stieltjes measure from the completed arithmetic source without assuming the zero set."
+}

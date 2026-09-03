@@ -1,0 +1,114 @@
+{
+  "schema": "marici.voevodsky.three-structural-identities-plan.v1",
+  "status": "author_plan_not_yet_compiled_by_scc",
+  "claim_boundary": "records two proved finite identities and one undefined realization identity; does not promote RH",
+  "identities": [
+    {
+      "name": "presentation_identity",
+      "level": 1,
+      "object": "finite_observer(N,t,h)",
+      "loop": "polynomial_to_difference o difference_to_frequency o frequency_to_polynomial",
+      "target_identity": "id_finite_observer",
+      "state": "proved",
+      "witness_kind": "strict_equality",
+      "evidence": [
+        "research/voevodsky/near-null-polynomial-is-high-difference-observer.md",
+        "research/voevodsky/high-difference-frequency-observer.md"
+      ]
+    },
+    {
+      "name": "descent_identity",
+      "level": 2,
+      "object": "finite_observer_refinement_diagram(N,t,h=m*delta)",
+      "parallel_arrows": ["direct_coarse_observation", "shifted_fine_reassembly"],
+      "target_identity": "equality_of_the_two_coarse_observation_values",
+      "state": "proved_at_finite_rank",
+      "witness_kind": "strict_naturality_equality",
+      "evidence": [
+        "research/voevodsky/observer-family-refinement-descent.md",
+        "research/voevodsky/single-localizer-cone-telescoping.md"
+      ],
+      "limitation": "does not prove rank-uniform analytic completion"
+    },
+    {
+      "name": "realization_identity",
+      "level": 3,
+      "object": "order_realization",
+      "hilbert_loop": "gaussian_reconstruction o gaussian_analysis",
+      "target_identity": "id_order_realization",
+      "state": "proved_in_hilbert_modality",
+      "witness_kind": "strict_equality_on_transported_analysis_range",
+      "evidence": [
+        "research/voevodsky/gaussian-analysis-range-realizes-the-observer-identity.md"
+      ],
+      "completed_form_lift": {
+        "loop": "gaussian_reconstruction o closed_joint_source_action o gaussian_analysis",
+        "state": "undefined",
+        "algebraic_gaussian_form": {
+          "name": "joint_completed_heat_quadratic_form_on_gaussian_span",
+          "witness": "K_R,h=K_H+(exp(h/4)-1) times the endpoint rank-one kernel",
+          "evidence": "research/voevodsky/completed-heat-difference-defines-the-joint-gaussian-source-form.md"
+        },
+        "endpoint_domain": {
+          "name": "order_plus_endpoint_graph_completion",
+          "witness": "H_E is isomorphic to H_ord direct_sum C_endpoint; the endpoint-corrected remainder form is nonclosable on unaugmented H_ord",
+          "evidence": "research/voevodsky/endpoint-graph-completion-is-an-independent-boundary-sector.md"
+        },
+        "source_local_completed_form": {
+          "state": "constructed",
+          "carrier": "H_0^s((-L,L)) for every L>0 and s>0",
+          "operator": "bounded compact self_adjoint A_(L,s)",
+          "evidence": "research/voevodsky/local-sobolev-weil-tower-replaces-order-closure-gate.md"
+        },
+        "blocked_by": [
+          "source_derived_cutoff_or_rigging_comparison_between_gaussian_and_local_weil_cores"
+        ],
+        "rh_bearing_gate": "signed_tail_or_Schur_certificate_for_A_(L,s)>=0_for_every_L"
+      }
+    }
+  ],
+  "residuals": [
+    {
+      "identity": "presentation_identity",
+      "expression": "presentation_loop-id_finite_observer",
+      "state": "zero"
+    },
+    {
+      "identity": "descent_identity",
+      "expression": "descent_loop-id_finite_observer",
+      "state": "zero_at_finite_rank"
+    },
+    {
+      "identity": "realization_identity",
+      "hilbert_expression": "gaussian_reconstruction o gaussian_analysis-id_order_realization",
+      "hilbert_state": "zero",
+      "completed_form_expression": "completed_form_loop-id_order_realization",
+      "completed_form_state": "not_formable",
+      "dispositions_when_formable": {
+        "zero": "strict_completed_form_realization",
+        "exact": "higher_coherencer_required",
+        "nonexact": "realization_descent_obstruction"
+      }
+    }
+  ],
+  "dependency_order": [
+    "presentation_identity",
+    "descent_identity",
+    "jointly_regularized_source_quadratic_form_on_gaussian_span",
+    "stronger_common_domain_controlling_order_norm_and_endpoint_evaluation",
+    "closable_semibounded_source_form_on_stronger_domain",
+    "realization_identity",
+    "graph_form_core_identification_with_weil_domain",
+    "source_weil_form_equality"
+  ],
+  "identity_count": 3,
+  "proved_identity_count": 3,
+  "undefined_identity_count": 0,
+  "undefined_completed_form_lift_count": 1,
+  "conditional_higher_identity": {
+    "name": "coherencer_unit_identity",
+    "state": "inactive_until_nontrivial_realization_2_cell_exists",
+    "not_counted_in_current_identity_count": true
+  },
+  "rh_implication": false
+}

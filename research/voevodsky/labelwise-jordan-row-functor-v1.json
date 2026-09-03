@@ -1,0 +1,19 @@
+{
+  "schema":"marici.voevodsky.labelwise-jordan-row-functor.v1",
+  "labelled_terms":"self-adjoint prime adjacency terms q_n J_n",
+  "nonfunctorial_operation":"taking positive and negative parts after summing T_N=sum_(n<=N)q_n J_n; spectral sign subspaces can rotate when N changes",
+  "functorial_repair":"split each J_n=J_n^+-J_n^- before summation",
+  "rows":"A_N=direct_sum_(n<=N) sqrt(q_n)(J_n^+)^(1/2), B_N=direct_sum_(n<=N) sqrt(q_n)(J_n^-)^(1/2)",
+  "quadratic_identity":"sum_(n<=N) q_n <f,J_n f>=||A_N f||^2-||B_N f||^2",
+  "cutoff_map":"N->N+1 appends the labelled n=N+1 coordinates, so row embeddings compose strictly",
+  "order_of_operations":"complete labelled rows with tail control first; form global coupled A,B; only then test contraction on finite observer spans",
+  "status": {
+    "global_sum_jordan_functoriality":"refuted",
+    "labelwise_row_functor":"constructed",
+    "cutoff_append_coherence":"constructed",
+    "tail_control":"not supplied",
+    "global_observer_contraction":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Prove convergence of the provenance-preserving labelled rows and a tail bound relative to every finite observer eigenvalue margin before testing the global coupled contraction."
+}

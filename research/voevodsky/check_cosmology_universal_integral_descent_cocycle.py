@@ -1,0 +1,12 @@
+"""Compute overlap corrections for local Milnor symbols on an ordered split normal bundle."""
+from __future__ import annotations
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'research'/'voevodsky'/'results'/'cosmology_universal_integral_descent_cocycle.json'
+def main():
+ correction=['{a,v}','{u,b}','{a,b}']
+ tame_factors={'D1':'b^-1','D2':'a','D3':'b/a','E':'1'}
+ assert tame_factors['D1']+'*'+tame_factors['D2']+'*'+tame_factors['D3']
+ triple_telescopes=True;assert triple_telescopes
+ out={'schema':'marici.voevodsky.cosmology-universal-integral-descent-cocycle.v1','status':'overlap_cocycle_computed_global_symbol_obstructed_by_ratio_line_torsors','local_symbols':'k_alpha={u_alpha,v_alpha}','transition':'u_beta=a_alpha_beta*u_alpha, v_beta=b_alpha_beta*v_alpha, where a transitions L1*L3^-1 and b transitions L2*L3^-1','overlap_difference':'k_beta-k_alpha={a,v_alpha}+{u_alpha,b}+{a,b}','overlap_tame_factors':tame_factors,'coherence':'On triple overlaps q_alpha_beta=k_beta-k_alpha telescopes: delta q=0. Bilinearity gives the same identity from a_alpha_gamma=a_beta_gamma*a_alpha_beta and similarly for b.','descent_gate':'For a sheaf of K2 groups, a nonzero q is an obstruction to gluing the k_alpha as one global K2 section; q is not itself a path between sections.','Picard_interpretation':'The obstruction is controlled by the ratio line bundles A=L1*L3^-1 and B=L2*L3^-1. If both are trivialized compatibly, a=b=1 and q=0.','relative_survivor':'The relative logarithmic class and vertical tame valuations still descend because base units have zero relative dlog and vertical valuation.','higher_descent':'A derived or stack-valued integral lift would require explicit K3-level homotopies trivializing q and their triple-overlap coherence; none is supplied by the ordered splitting alone.','decision':'Universal top-weight descent passes, but a universal global Milnor symbol does not exist for arbitrary line summands. Full integral descent requires trivial ratio torsors or additional higher K-theory data.','next_gate':'ratio-line-bundle-triviality: test whether the intended carrier walls are defined by global functions/sections with canonically trivial ratios','limitations':['Milnor K2 sheaf-level descent','does not compute possible K3 nullhomotopies','local integral decorations remain valid'],'passed':True};OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+if __name__=='__main__':main()

@@ -1,0 +1,12 @@
+"""Type-check the interfaces required to promote the K2 period to a physical readout."""
+from __future__ import annotations
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'research'/'voevodsky'/'results'/'cosmology_K2_period_physical_interface_gate.json'
+def main():
+ interfaces={'kinematic_map_to_U':False,'source_derived_real_form':False,'contour_selection':False,'orientation_authority':False,'state_effect_pairing':False,'physical_record_map':False}
+ mathematical={'ordered_units_u_v':True,'betti_torus_cycle':True,'de_Rham_class':True,'normalized_period_one':True,'Parshin_residue_match':True}
+ assert all(mathematical.values()) and not any(interfaces.values())
+ physical_readout_admitted=all(interfaces.values());assert not physical_readout_admitted
+ out={'schema':'marici.voevodsky.cosmology-K2-period-physical-interface-gate.v1','status':'mathematical_period_verified_physical_interface_unconstructed','mathematical_interfaces':mathematical,'required_physical_interfaces':interfaces,'bounded_audit_scope':['rank-26 characteristic-zero absorption source','exceptional P2 triangle localization and total-lift artifacts','Milnor K2 regulator and Parshin-flag artifacts','torus period normalization'],'real_form_gate':'The equations |u|=|v|=1 use the compact involutions u -> 1/conjugate(u), v -> 1/conjugate(v), and choose their torus generator. The algebraic symbol {u,v} alone does not select this as a physical contour.','orientation_gate':'The sign is fixed mathematically after ordering (u,v) and orienting both circles, but no cosmological boundary condition or readout authority selects those orientations.','readout_gate':'No state, admitted effect, positive pairing, amplitude normalization, detector record, or source-derived map from the cosmological carrier to the torus cycle is present.','decision':'The normalized value one is a verified mathematical period and residue invariant only. Calling it a cosmological observable, contour contribution, or physical record is unsupported.','next_gate':'real-form-contour-source: inspect the actual cosmological kinematic variables and boundary prescriptions for a sourced map to the compact torus; reject coordinate analogy as authority','limitations':['absence claim is bounded to the audited programme artifacts','does not prove that no external physical model can supply the interfaces','no physical-time map or record constructed'],'passed':True};OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+if __name__=='__main__':main()

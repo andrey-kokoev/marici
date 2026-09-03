@@ -1,0 +1,41 @@
+{
+  "schema": "marici.voevodsky.local-sobolev-weil-tower-plan.v1",
+  "status": "local_completed_form_constructed_global_coherence_open",
+  "local_objects": {
+    "core": "C_c^infinity((-L,L))",
+    "completion": "H_0^s((-L,L)) for L>0 and s>0",
+    "operator": "bounded compact self_adjoint A_(L,s)",
+    "form_identity": "Q_L(f,g)=inner(A_(L,s)f,g)_(H^s)",
+    "rh_local_condition": "A_(L,s)>=0"
+  },
+  "source_sectors": {
+    "endpoint": "finite_rank",
+    "prime": "finite_sum_for_log(n)<=2L",
+    "gamma": "bounded_by_positive_Sobolev_norm"
+  },
+  "coherence": {
+    "support_order": "L<=L_prime",
+    "core_map": "extension_by_zero",
+    "required_identity": "Q_(L_prime)(extend f,extend g)=Q_L(f,g)",
+    "operator_square_strict": false,
+    "reason": "Riesz operators depend on ambient Sobolev norms"
+  },
+  "gaussian_comparison": {
+    "constructed": false,
+    "blocker": "Gaussian dilation vectors are not compactly supported",
+    "required_map": "source_derived_cutoff_or_rigging_comparison",
+    "required_test": "cutoff_limit_preserves_form_and_observer_identities"
+  },
+  "global_candidate": {
+    "carrier": "Fourier_stable_Gaussian_Gelfand_Shilov_rigging",
+    "admissibility_proved": false,
+    "blocker": "arithmetic_boundary_continuity_on_restricted_product"
+  },
+  "galerkin": {
+    "negative_eigenvalue_finitely_falsifiable": true,
+    "finite_positive_compression_proves_positivity": false,
+    "required_positive_certificate": "signed_tail_or_Schur_bound"
+  },
+  "raw_H_order_closure_is_prerequisite": false,
+  "rh_implication": false
+}

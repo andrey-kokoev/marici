@@ -1,0 +1,18 @@
+{
+  "schema":"marici.voevodsky.finite-difference-complete-monotonicity-gate.v1",
+  "difference_operator":"D_(k,h)H(t)=sum_(j=0)^k (-1)^j binomial(k,j)H(t+jh)=(-1)^k Delta_h^k H(t)",
+  "positive_measure_identity":"for H(t)=integral exp(-t lambda)dnu(lambda), D_(k,h)H(t)=integral exp(-t lambda)(1-exp(-h lambda))^k dnu(lambda)>=0",
+  "equivalence":"for sufficiently smooth H, nonnegativity of all D_(k,h) for k>=0,h>0,t>0 is equivalent to complete monotonicity by division by h^k and h->0",
+  "arithmetic_advantage":"finite differences use bounded spectral factors between zero and one and avoid differentiating infinite prime sums, which otherwise introduces powers of log(n)",
+  "hostile":"H(t)=1-(1/2)exp(-pi^2 t) stays positive but fails the first difference inequality",
+  "residual_axes":"finite-difference order k and step h are observer coordinates; arithmetic cutoff N remains independent",
+  "status": {
+    "spectral_factor_identity":"verified",
+    "derivative_limit":"verified_to_finite_orders",
+    "positive_scalar_hostile_detected":"verified",
+    "explicit_arithmetic_difference_positivity":"not supplied",
+    "bernstein_test_class_hypotheses":"not fully sourced",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Prove D_(k,h)H_explicit(t)>=0 for all rational positive t,h and every natural k, with completed endpoint-gamma-prime coupling and tail bounds that do not assume the representing positive measure."
+}

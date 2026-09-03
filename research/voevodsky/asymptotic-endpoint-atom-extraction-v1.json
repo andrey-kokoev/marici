@@ -1,0 +1,21 @@
+{
+  "schema":"marici.voevodsky.asymptotic-endpoint-atom-extraction.v1",
+  "hypotheses":[
+    "all finite Hankel matrices (a_(i+j)) are PSD, hence (a_n) has a positive Hamburger representing measure mu",
+    "Y>0 and a_n/Y^n tends to c for the full sequence",
+    "c is finite and nonnegative"
+  ],
+  "support_step":"bounded normalized even moments force supp(mu) subset [-Y,Y]",
+  "endpoint_step":"dominated convergence gives lim a_(2n)/Y^(2n)=mu({Y})+mu({-Y}) and lim a_(2n+1)/Y^(2n+1)=mu({Y})-mu({-Y})",
+  "conclusion":"mu({Y})=c and mu({-Y})=0; therefore mu-c delta_Y is positive and every Hankel matrix after endpoint subtraction is PSD",
+  "gate_compression":"if remainder Hankel PSD and the source asymptotic follows independently from completed-H decay, range inclusion and every finite-rank Schur bound follow automatically",
+  "hostile_case":"even-moment asymptotics alone determine only total mass at plus/minus Y and do not exclude a negative-endpoint atom",
+  "status": {
+    "abstract_measure_theorem":"proved",
+    "atomic_fixtures":"verified",
+    "source_remainder_hankel_PSD":"not supplied",
+    "source_decay_to_moment_asymptotic":"not reverified",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Derive the exact remainder moment identity and a_n/Y^n->c from the sourced completed formula and H(s)->0, then prove all remainder Hankel cones PSD without assuming RH."
+}

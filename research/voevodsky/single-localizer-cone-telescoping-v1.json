@@ -1,0 +1,20 @@
+{
+  "schema":"marici.voevodsky.single-localizer-cone-telescoping.v1",
+  "normalization":"H denotes the decaying normalized target; the raw endpoint contribution exp(t/4) must be removed or coupled before applying telescoping",
+  "hankel":"M_h(t)_(ij)=H(t+(i+j)h)",
+  "localizer":"L_h(t)=M_h(t)-M_h(t+h)",
+  "normalized_divided_difference":"Q_h(t)=L_h(t)/h",
+  "telescoping":"M_h(t)=sum_(r=0)^(R-1)L_h(t+r h)+M_h(t+R h)",
+  "single_cone_reduction":"if L_h(t) is PSD for every finite size and positive rational t,h, and H(s)->0 as s->infinity, then M_h(t) is PSD by telescoping and closure of finite PSD cones",
+  "operator_meaning":"L_h(t) is the Gram/localizing form for 1-y; M_h is reconstructed as its positive tail integral/sum",
+  "divided_difference_meaning":"Q_h(t) is the interval average of -M_h'(s), connecting the finite-difference source chart to the reported outer-H Stieltjes density",
+  "status": {
+    "telescoping_identity":"verified",
+    "single_cone_reduction":"derived",
+    "positive_atomic_factor":"verified",
+    "signed_atomic_detection":"verified",
+    "explicit_arithmetic_localizer_positivity":"not supplied",
+    "rh_implication":"none"
+  },
+  "acceptance_test":"Construct a source-derived positive Gram or J-fraction factor for Q_h(t) at every finite size and rational positive t,h, verify H tends to zero with completed tail control, and recover the Hankel cone by telescoping."
+}

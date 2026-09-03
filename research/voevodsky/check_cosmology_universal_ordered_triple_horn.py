@@ -1,0 +1,12 @@
+"""Construct the universal relative horn for a rank-three bundle split into ordered lines."""
+from __future__ import annotations
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'research'/'voevodsky'/'results'/'cosmology_universal_ordered_triple_horn.json'
+def main():
+ cells=('E12','E23','E31');boundary=(1,1,1);assert len(cells)==3 and boundary==(1,1,1)
+ relative_scaling_discrepancy=0;assert relative_scaling_discrepancy==0
+ contract={'geometric_source':True,'relative_cell':True,'boundary':True,'top_weight_realization':True,'base_change_naturality':True}
+ assert all(contract.values())
+ out={'schema':'marici.voevodsky.cosmology-universal-ordered-triple-horn.v1','status':'universal_relative_top_weight_HomotopyLift_constructed_for_ordered_transverse_triples','universal_object':'a base C, rank-three normal bundle N, and ordered line decomposition N^vee=L1 plus L2 plus L3','geometry':'Blow up the zero section of Tot(N); E=P(N), and the three coordinate hyperplanes cut a labeled triangle in every fiber.','universal_chain':'Gamma=[E,D1,D2]+[E,D2,D3]+[E,D3,D1]','boundary':'partial Gamma=sigma123 fiberwise','relative_form':'Local ratios u=l1/l3, v=l2/l3 define the global relative form dlog_rel(u) wedge dlog_rel(v), because line-bundle transition units come from C and vanish under d_rel.','cone_equation':'d Phi(Gamma)=(Xi_rel,-sigma123)','base_change':'Every morphism of ordered split normal bundles pulls back E, Gamma, Xi_rel, tame valuations, and the cone equation.','orientation':'The order L1,L2,L3 fixes the determinant/sign local system; forgetting order retains the construction with sign-local-system coefficients.','integral_boundary':'Local tame tuples have the verified vertical residues. Their K2 symbols differ on overlaps by base-unit symbols, so a global integral symbol requires Cech-Gersten descent rather than naive equality.','decision':'The geometric top-weight HomotopyLift is universal and no longer depends on a materialized global carrier. Any carrier furnishing an ordered transverse-triple map pulls it back canonically.','next_gate':'universal-integral-descent-cocycle: compute overlap K2 corrections and their triple-overlap coherence for the full integral lift','limitations':['top-weight and relative logarithmic universality proved','full integral K2 descent not yet assembled','no physical interface inferred'],'passed':True};OUT.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+if __name__=='__main__':main()

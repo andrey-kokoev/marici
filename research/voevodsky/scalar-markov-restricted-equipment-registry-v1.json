@@ -1,0 +1,62 @@
+{
+  "schema": "marici.voevodsky.scalar-markov-restricted-equipment-registry.v1",
+  "objects": {
+    "finite_chain": "normalized scalar path-product Green matrix with |a_i|<1",
+    "closed_chain": "one-sided path-product operator with uniform |a_i|<=rho<1"
+  },
+  "horizontal_arrows": {
+    "chain_extension": {"partial_on": ["seam_label", "normalization"]},
+    "contiguous_inclusion": {"partial_on": ["ordered_interval"]},
+    "gauge_companion": {"witness": "diagonal sign isometry", "freely_adjoined": true},
+    "gauge_conjoint": {"witness": "inverse diagonal sign isometry", "freely_adjoined": true}
+  },
+  "vertical_arrows": {
+    "vertex_sign_gauge": {"witness": "D_epsilon", "groupoid": true}
+  },
+  "cells": {
+    "path_product_equality": "analytic",
+    "beck_chevalley": "invertible for contiguous restriction",
+    "companion_unit_counit": "free cell with exact orthogonal-matrix realization",
+    "conjoint_unit_counit": "free cell with exact orthogonal-matrix realization",
+    "completion_comparison": "identity"
+  },
+  "laws": {
+    "horizontal_units_associativity": true,
+    "vertical_units_associativity": true,
+    "interchange": "compatible shared seam gauges",
+    "pentagon": true,
+    "beck_chevalley_pasting": true,
+    "companion_triangles": true,
+    "conjoint_triangles": true,
+    "companion_composition_pentagon": true,
+    "completion_naturality": true
+  },
+  "admission_predicates": [
+    "path_product_kernel",
+    "compatible_seam",
+    "contiguous_probe",
+    "shared_vertex_gauge_agreement",
+    "uniform_contraction_for_completion",
+    "bounded_diagonal_gauge"
+  ],
+  "hostile_rejections": [
+    "altered_non_path_pairing",
+    "shared_vertex_gauge_mismatch",
+    "noncontiguous_equal_dimension_probe",
+    "completion_without_uniform_contraction",
+    "unbounded_diagonal_completion"
+  ],
+  "scope": {
+    "restricted_equipment_fragment": true,
+    "all_vertical_arrows_have_companions": false,
+    "operator_valued_green_amalgamation": false,
+    "general_pullback_beck_chevalley": false,
+    "full_coherence_pyramid_equipment": false
+  },
+  "evidence": [
+    "research/voevodsky/results/scalar_markov_green_partial_double_category.json",
+    "research/voevodsky/results/free_gauge_companion_extension.json",
+    "research/voevodsky/results/gauge_companion_completion.json",
+    "research/voevodsky/results/markov_companion_conjoint_obstruction.json"
+  ]
+}

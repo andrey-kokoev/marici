@@ -1,0 +1,61 @@
+{
+  "schema": "marici.voevodsky.coherence-pyramid-computad-signature.v1",
+  "object_sorts": {
+    "carrier": ["carrier_id", "typed_ports", "source_provenance"],
+    "finite_green": ["carrier", "coefficient_object", "green_form", "declared_radical"],
+    "gauge_presentation": ["presentation_space", "gauge_kernel", "quotient_base", "quotient_map"],
+    "closed_form": ["ambient_space", "dense_domain", "closed_form", "declared_radical"],
+    "quotient_form": ["closed_form_object", "radical_quotient", "completion", "coercivity_modulus"]
+  },
+  "one_generators": {
+    "under_embedding": {
+      "source_sort": "finite_green",
+      "target_sort": "finite_green",
+      "variance": "under",
+      "required_certificates": ["typed_injection", "form_preservation", "radical_compatibility"]
+    },
+    "over_quotient": {
+      "source_sort": "gauge_presentation",
+      "target_sort": "carrier",
+      "variance": "over",
+      "required_certificates": ["typed_surjection", "kernel_identification", "exactness"]
+    },
+    "vertical_restriction": {
+      "source_sort": "carrier",
+      "target_sort": "carrier",
+      "variance": "vertical",
+      "required_certificates": ["port_preservation", "source_compatibility"]
+    },
+    "closed_form_comparison": {
+      "source_sort": "quotient_form",
+      "target_sort": "quotient_form",
+      "variance": "comparison",
+      "required_certificates": ["domain_map", "radical_descent", "form_isometry", "dense_quotient_range"]
+    }
+  },
+  "certificate_sorts": {
+    "joint_amalgamation": ["full_cross_pairing", "joint_positivity", "radical_compatibility", "port_compatibility", "sewing_compatibility"],
+    "pullback_exactness": ["fiber_product", "kernel_transport", "exactness"],
+    "completion": ["common_core", "closability", "closed_limit", "radical_stability", "quotient_coercivity", "reduced_minimum_modulus"],
+    "mixed_square": ["boundary_typing", "commuting_cell", "certificate_transport"]
+  },
+  "two_generators": {
+    "form_preservation_cell": ["parallel_one_generators", "form_equality"],
+    "kernel_compatibility_cell": ["over_quotient", "kernel_map", "commuting_square"],
+    "beck_chevalley_candidate": ["pullback_boundary", "amalgamation_boundary", "comparison_map", "invertibility_certificate"],
+    "completion_comparison_cell": ["finite_restriction", "closed_form_comparison", "domain_coherence"]
+  },
+  "constructor_refusals": [
+    "under_embedding_without_form_preservation",
+    "over_quotient_without_kernel_identification",
+    "green_pushout_without_joint_amalgamation",
+    "pairwise_certificate_without_full_completion",
+    "closed_form_identity_from_core_equality_only",
+    "completion_without_radical_and_coercivity_control"
+  ],
+  "nonclaims": [
+    "composition_is_not_defined_by_this_signature",
+    "associators_unitors_interchange_and_beck_chevalley_are_not_yet_proved",
+    "finite_to_closed_completion_is_a_typed_interface_not_a_constructed_functor"
+  ]
+}
