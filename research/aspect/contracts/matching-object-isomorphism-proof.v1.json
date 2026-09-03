@@ -1,0 +1,46 @@
+{
+  "schema": "marici.aspect.matching-object-isomorphism-proof.v1",
+  "assumptions": [
+    "C and D are thin skeletal face categories",
+    "E is an equivalence with sigmaPrime equal to E(sigma)",
+    "E restricts to an equivalence of punctured lower categories",
+    "F and G are Set-valued presheaves",
+    "eta is a natural isomorphism F ≅ G after reindexing",
+    "both boundary diagrams have chosen limits"
+  ],
+  "objects": ["F_sigma", "G_sigmaPrime", "M_F", "M_G", "F_tau", "G_Etau"],
+  "arrows": {
+    "mu_F": ["F_sigma", "M_F"],
+    "mu_G": ["G_sigmaPrime", "M_G"],
+    "eta_sigma": ["F_sigma", "G_sigmaPrime"],
+    "alpha_M": ["M_F", "M_G"],
+    "pi_F_tau": ["M_F", "F_tau"],
+    "pi_G_Etau": ["M_G", "G_Etau"],
+    "eta_tau": ["F_tau", "G_Etau"],
+    "r_F_tau": ["F_sigma", "F_tau"],
+    "r_G_Etau": ["G_sigmaPrime", "G_Etau"]
+  },
+  "equations": {
+    "source_matching_projection": [["mu_F", "pi_F_tau"], ["r_F_tau"]],
+    "target_matching_projection": [["mu_G", "pi_G_Etau"], ["r_G_Etau"]],
+    "limit_comparison_projection": [["alpha_M", "pi_G_Etau"], ["pi_F_tau", "eta_tau"]],
+    "presheaf_naturality": [["r_F_tau", "eta_tau"], ["eta_sigma", "r_G_Etau"]],
+    "conjugacy_after_projection": [["mu_F", "alpha_M", "pi_G_Etau"], ["eta_sigma", "mu_G", "pi_G_Etau"]],
+    "matching_map_conjugacy": [["mu_F", "alpha_M"], ["eta_sigma", "mu_G"]]
+  },
+  "proof_rules": [
+    "alpha_M is induced by the transported limiting cone",
+    "alpha_M inverse is induced by eta inverse and a quasi-inverse of the proper-face equivalence",
+    "limit uniqueness proves both inverse identities",
+    "target limit projections are jointly monic",
+    "joint monicity removes pi_G_Etau from conjugacy_after_projection"
+  ],
+  "conclusion": "eta_sigma restricts to an equivalence between the fiber of mu_F at m and the fiber of mu_G at alpha_M(m)",
+  "nonclaims": [
+    "global rewrite confluence",
+    "normalization",
+    "SCC-wide soundness",
+    "physical equivalence",
+    "physical time interpretation"
+  ]
+}

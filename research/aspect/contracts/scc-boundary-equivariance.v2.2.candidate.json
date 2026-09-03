@@ -1,0 +1,33 @@
+{
+  "schema": "marici.scc.boundary-equivariance.v2.2.candidate",
+  "status": "review_candidate_not_live",
+  "extends": {
+    "path": "research/aspect/contracts/scc-decorated-boundary-transport.v2.1.candidate.json",
+    "sha256": "ed3a0607df5769f9aa68a575be7c567896c09cd51105284c2df0a63cef1b5a2e"
+  },
+  "capability": "boundary_automorphism_equivariance_certificate",
+  "sections": [
+    "source_automorphism_group",
+    "target_automorphism_group",
+    "group_isomorphism",
+    "source_matching_action",
+    "target_matching_action",
+    "matching_object_map",
+    "equivariance_equations"
+  ],
+  "reversible_requirement": "matching_object_map is bijective and equivariant under the group isomorphism",
+  "quotient_rule": {
+    "orbit_only_requires": "source_derived_quotient_authority",
+    "authorized_kind": "occurrence_orbit_quotient",
+    "forbidden_promotion": "orbit quotient certificate is a reversible occurrence-sensitive rewrite"
+  },
+  "migration": {
+    "trivial_automorphism_group": "not_applicable",
+    "absence_does_not_mean": "trivial action"
+  },
+  "nonclaims": [
+    "not live",
+    "not admitted",
+    "no physical symmetry without source authority"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "marici.aspect.finite-probe-semantics-lean-handoff.v1",
+  "status": "frozen_statement_handoff_not_formalized",
+  "owner_required": "marici.Buzzard",
+  "source_packets": [
+    "research/aspect/typed-probe-configuration-category-and-restriction-semantics.md",
+    "research/aspect/local-rewrite-soundness-for-probe-decorated-interaction-nets.md"
+  ],
+  "definitions": [
+    {"id": "FaceSystem", "data": ["finite vertex type", "admitted finite faces"], "laws": ["empty face admitted", "downward closure"]},
+    {"id": "FaceCategory", "data": ["objects are admitted faces", "one morphism for each inclusion"], "laws": ["identity", "inclusion composition"]},
+    {"id": "ConstraintPresheaf", "data": ["functor FaceCategoryᵒᵖ ⥤ Type"], "laws": ["restriction identity", "restriction composition"]},
+    {"id": "MatchingFamily", "data": ["compatible proper-face sections"], "laws": ["equal restrictions on intersections"]},
+    {"id": "MatchingMap", "data": ["joint section to matching family"], "laws": ["component equals restriction"]},
+    {"id": "ProbeRewrite", "data": ["face-category equivalence", "natural isomorphism of constraint presheaves"], "laws": ["source-target typing"]}
+  ],
+  "theorems": [
+    {"id": "matchingMap_natural", "requires": ["FaceSystem", "ConstraintPresheaf", "MatchingMap"], "conclusion": "matching map commutes with restriction-preserving morphisms"},
+    {"id": "rewrite_matching_conjugacy", "requires": ["ProbeRewrite", "MatchingMap"], "conclusion": "rewrite identifies matching maps up to the induced natural isomorphisms"},
+    {"id": "rewrite_fiber_equiv", "requires": ["rewrite_matching_conjugacy"], "conclusion": "corresponding matching-map fibers are equivalent"},
+    {"id": "two_vertex_matching_family", "requires": ["FaceSystem", "MatchingFamily"], "conclusion": "for the full two-vertex face system, matching data is the pullback of singleton sections over the empty face"}
+  ],
+  "explicit_assumptions": [
+    "DecidableEq on finite vertices for Finset representations",
+    "chosen universe levels for Type-valued presheaves",
+    "chosen finite limits or an explicit compatible-family subtype",
+    "rewrite equivalence maps proper-face indexing diagrams",
+    "no additive structure unless an additive specialization is separately declared"
+  ],
+  "forbidden_promotions": [
+    "matching-map fiber equivalence implies global rewrite confluence",
+    "natural isomorphism implies physical equivalence",
+    "finite two-face theorem implies arbitrary coherence-pyramid descent",
+    "nonempty fiber implies unique reconstruction",
+    "composition order implies physical time"
+  ],
+  "implementation_order": [
+    "FaceSystem",
+    "FaceCategory",
+    "ConstraintPresheaf",
+    "MatchingFamily",
+    "MatchingMap",
+    "matchingMap_natural",
+    "ProbeRewrite",
+    "rewrite_matching_conjugacy",
+    "rewrite_fiber_equiv",
+    "two_vertex_matching_family"
+  ],
+  "acceptance": [
+    "lake build passes in the existing Buzzard project",
+    "no sorry declarations",
+    "all assumptions appear in theorem signatures",
+    "one malformed non-downward-closed fixture is unrepresentable or rejected",
+    "one rewrite lacking naturality cannot construct ProbeRewrite"
+  ]
+}

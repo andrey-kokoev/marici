@@ -1,0 +1,23 @@
+{
+  "schema": "marici.scc.registry.v2.candidate",
+  "status": "review_candidate_not_live",
+  "predecessor": "research/aspect/scc/registry.v1.json",
+  "checks": {
+    "probe-domain-downward-closure": {"handler": "configuration", "required": true},
+    "probe-restriction-functoriality": {"handler": "presheaf", "required": true},
+    "probe-matching-map-typing": {"handler": "matching", "required": true},
+    "probe-continuation-interface-faithfulness": {"handler": "continuation", "required": true},
+    "probe-rewrite-naturality": {"handler": "rewrite", "required": true},
+    "probe-source-digest": {"handler": "source", "required": true}
+  },
+  "interaction_checks": {
+    "classification": {"handler": "interaction", "required": true},
+    "optional_additive_specialization": {"handler": "additive", "required": true},
+    "authority_boundary": {"handler": "boundary", "required": true}
+  },
+  "nonclaims": [
+    "not live",
+    "not admitted",
+    "does not replace registry.v1.json"
+  ]
+}

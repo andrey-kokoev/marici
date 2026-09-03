@@ -1,0 +1,587 @@
+{
+  "schema": "marici.scc.current-rh-model.v1",
+  "sources": {
+    "identity_plan": {
+      "path": "research\\voevodsky\\categorical-rh-three-structural-identities-plan-v1.json",
+      "sha256": "5292c39097f57e6791684d30d66a0f5452f06e200af1046b9d92384e46824b02"
+    },
+    "local_tower": {
+      "path": "research\\voevodsky\\local-sobolev-weil-tower-plan-v1.json",
+      "sha256": "4208bc6eb64cd07784d6b82e4291b757b13dbb93ee42bb569faab3236beeb1d0"
+    }
+  },
+  "representation": "branch family over shared coherent prefix; branches are incomparable gates, not one linear dependency chain",
+  "reports": {
+    "rh_positivity": {
+      "schema": "marici.scc.lifting-ir.v1",
+      "passed": true,
+      "first_failed_gate": null,
+      "explanation_complete": false,
+      "layers": [
+        {
+          "id": "presentation_identity",
+          "kind": "mathematical",
+          "base_ref": "source_normalized_RH_problem",
+          "total_ref": "presentation_identity:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_presentation_identity",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "finite_rank_descent_naturality",
+          "kind": "mathematical",
+          "base_ref": "presentation_identity:total",
+          "total_ref": "finite_rank_descent_naturality:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_finite_rank_descent_naturality",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "hilbert_observer_realization",
+          "kind": "mathematical",
+          "base_ref": "finite_rank_descent_naturality:total",
+          "total_ref": "hilbert_observer_realization:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_hilbert_observer_realization",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "local_sobolev_core",
+          "kind": "mathematical",
+          "base_ref": "hilbert_observer_realization:total",
+          "total_ref": "local_sobolev_core:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_local_sobolev_core",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "local_compact_self_adjoint_operator",
+          "kind": "mathematical",
+          "base_ref": "local_sobolev_core:total",
+          "total_ref": "local_compact_self_adjoint_operator:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_local_compact_self_adjoint_operator",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "local_form_identity",
+          "kind": "mathematical",
+          "base_ref": "local_compact_self_adjoint_operator:total",
+          "total_ref": "local_form_identity:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_local_form_identity",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "all_L_positivity_by_signed_tail_or_Schur_certificate",
+          "kind": "mathematical",
+          "base_ref": "local_form_identity:total",
+          "total_ref": "all_L_positivity_by_signed_tail_or_Schur_certificate:total",
+          "state": "not_constructed",
+          "global_status": "obstructed_here",
+          "blocked_by": null,
+          "projection": null,
+          "capabilities": {
+            "fiber_constructed": false,
+            "inhabited": false,
+            "unique_up_to_identity": false,
+            "selector": false,
+            "coherent_section": false
+          },
+          "unimath_certificate": "not_supplied"
+        }
+      ],
+      "first_obstruction": {
+        "index": 6,
+        "layer": "all_L_positivity_by_signed_tail_or_Schur_certificate",
+        "obstruction": "missing_displayed_layer"
+      },
+      "forgetful_projections": [
+        {
+          "from": "presentation_identity:total",
+          "to": "source_normalized_RH_problem",
+          "projection": "forget_presentation_identity"
+        },
+        {
+          "from": "finite_rank_descent_naturality:total",
+          "to": "presentation_identity:total",
+          "projection": "forget_finite_rank_descent_naturality"
+        },
+        {
+          "from": "hilbert_observer_realization:total",
+          "to": "finite_rank_descent_naturality:total",
+          "projection": "forget_hilbert_observer_realization"
+        },
+        {
+          "from": "local_sobolev_core:total",
+          "to": "hilbert_observer_realization:total",
+          "projection": "forget_local_sobolev_core"
+        },
+        {
+          "from": "local_compact_self_adjoint_operator:total",
+          "to": "local_sobolev_core:total",
+          "projection": "forget_local_compact_self_adjoint_operator"
+        },
+        {
+          "from": "local_form_identity:total",
+          "to": "local_compact_self_adjoint_operator:total",
+          "projection": "forget_local_form_identity"
+        }
+      ],
+      "surviving_prefix": [
+        "presentation_identity",
+        "finite_rank_descent_naturality",
+        "hilbert_observer_realization",
+        "local_sobolev_core",
+        "local_compact_self_adjoint_operator",
+        "local_form_identity"
+      ],
+      "identity_claims": [],
+      "physical_readout_status": "not_constructed",
+      "claim_boundary": "structural lifting certificate; source objects and physical adequacy remain external"
+    },
+    "support_coherence": {
+      "schema": "marici.scc.lifting-ir.v1",
+      "passed": true,
+      "first_failed_gate": null,
+      "explanation_complete": false,
+      "layers": [
+        {
+          "id": "presentation_identity",
+          "kind": "mathematical",
+          "base_ref": "source_normalized_RH_problem",
+          "total_ref": "presentation_identity:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_presentation_identity",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "finite_rank_descent_naturality",
+          "kind": "mathematical",
+          "base_ref": "presentation_identity:total",
+          "total_ref": "finite_rank_descent_naturality:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_finite_rank_descent_naturality",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "hilbert_observer_realization",
+          "kind": "mathematical",
+          "base_ref": "finite_rank_descent_naturality:total",
+          "total_ref": "hilbert_observer_realization:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_hilbert_observer_realization",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "local_sobolev_core",
+          "kind": "mathematical",
+          "base_ref": "hilbert_observer_realization:total",
+          "total_ref": "local_sobolev_core:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_local_sobolev_core",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "local_compact_self_adjoint_operator",
+          "kind": "mathematical",
+          "base_ref": "local_sobolev_core:total",
+          "total_ref": "local_compact_self_adjoint_operator:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_local_compact_self_adjoint_operator",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "local_form_identity",
+          "kind": "mathematical",
+          "base_ref": "local_compact_self_adjoint_operator:total",
+          "total_ref": "local_form_identity:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_local_form_identity",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "extension_by_zero_form_naturality",
+          "kind": "mathematical",
+          "base_ref": "local_form_identity:total",
+          "total_ref": "extension_by_zero_form_naturality:total",
+          "state": "not_constructed",
+          "global_status": "obstructed_here",
+          "blocked_by": null,
+          "projection": null,
+          "capabilities": {
+            "fiber_constructed": false,
+            "inhabited": false,
+            "unique_up_to_identity": false,
+            "selector": false,
+            "coherent_section": false
+          },
+          "unimath_certificate": "not_supplied"
+        }
+      ],
+      "first_obstruction": {
+        "index": 6,
+        "layer": "extension_by_zero_form_naturality",
+        "obstruction": "missing_displayed_layer"
+      },
+      "forgetful_projections": [
+        {
+          "from": "presentation_identity:total",
+          "to": "source_normalized_RH_problem",
+          "projection": "forget_presentation_identity"
+        },
+        {
+          "from": "finite_rank_descent_naturality:total",
+          "to": "presentation_identity:total",
+          "projection": "forget_finite_rank_descent_naturality"
+        },
+        {
+          "from": "hilbert_observer_realization:total",
+          "to": "finite_rank_descent_naturality:total",
+          "projection": "forget_hilbert_observer_realization"
+        },
+        {
+          "from": "local_sobolev_core:total",
+          "to": "hilbert_observer_realization:total",
+          "projection": "forget_local_sobolev_core"
+        },
+        {
+          "from": "local_compact_self_adjoint_operator:total",
+          "to": "local_sobolev_core:total",
+          "projection": "forget_local_compact_self_adjoint_operator"
+        },
+        {
+          "from": "local_form_identity:total",
+          "to": "local_compact_self_adjoint_operator:total",
+          "projection": "forget_local_form_identity"
+        }
+      ],
+      "surviving_prefix": [
+        "presentation_identity",
+        "finite_rank_descent_naturality",
+        "hilbert_observer_realization",
+        "local_sobolev_core",
+        "local_compact_self_adjoint_operator",
+        "local_form_identity"
+      ],
+      "identity_claims": [],
+      "physical_readout_status": "not_constructed",
+      "claim_boundary": "structural lifting certificate; source objects and physical adequacy remain external"
+    },
+    "gaussian_enrichment": {
+      "schema": "marici.scc.lifting-ir.v1",
+      "passed": true,
+      "first_failed_gate": null,
+      "explanation_complete": false,
+      "layers": [
+        {
+          "id": "presentation_identity",
+          "kind": "mathematical",
+          "base_ref": "source_normalized_RH_problem",
+          "total_ref": "presentation_identity:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_presentation_identity",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "finite_rank_descent_naturality",
+          "kind": "mathematical",
+          "base_ref": "presentation_identity:total",
+          "total_ref": "finite_rank_descent_naturality:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_finite_rank_descent_naturality",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "hilbert_observer_realization",
+          "kind": "mathematical",
+          "base_ref": "finite_rank_descent_naturality:total",
+          "total_ref": "hilbert_observer_realization:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_hilbert_observer_realization",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "local_sobolev_core",
+          "kind": "mathematical",
+          "base_ref": "hilbert_observer_realization:total",
+          "total_ref": "local_sobolev_core:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_local_sobolev_core",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "local_compact_self_adjoint_operator",
+          "kind": "mathematical",
+          "base_ref": "local_sobolev_core:total",
+          "total_ref": "local_compact_self_adjoint_operator:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_local_compact_self_adjoint_operator",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "local_form_identity",
+          "kind": "mathematical",
+          "base_ref": "local_compact_self_adjoint_operator:total",
+          "total_ref": "local_form_identity:total",
+          "state": "coherent_section",
+          "global_status": "coherent_prefix",
+          "blocked_by": null,
+          "projection": "forget_local_form_identity",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "source_derived_cutoff_or_rigging_comparison",
+          "kind": "mathematical",
+          "base_ref": "local_form_identity:total",
+          "total_ref": "source_derived_cutoff_or_rigging_comparison:total",
+          "state": "not_constructed",
+          "global_status": "obstructed_here",
+          "blocked_by": null,
+          "projection": null,
+          "capabilities": {
+            "fiber_constructed": false,
+            "inhabited": false,
+            "unique_up_to_identity": false,
+            "selector": false,
+            "coherent_section": false
+          },
+          "unimath_certificate": "not_supplied"
+        }
+      ],
+      "first_obstruction": {
+        "index": 6,
+        "layer": "source_derived_cutoff_or_rigging_comparison",
+        "obstruction": "missing_displayed_layer"
+      },
+      "forgetful_projections": [
+        {
+          "from": "presentation_identity:total",
+          "to": "source_normalized_RH_problem",
+          "projection": "forget_presentation_identity"
+        },
+        {
+          "from": "finite_rank_descent_naturality:total",
+          "to": "presentation_identity:total",
+          "projection": "forget_finite_rank_descent_naturality"
+        },
+        {
+          "from": "hilbert_observer_realization:total",
+          "to": "finite_rank_descent_naturality:total",
+          "projection": "forget_hilbert_observer_realization"
+        },
+        {
+          "from": "local_sobolev_core:total",
+          "to": "hilbert_observer_realization:total",
+          "projection": "forget_local_sobolev_core"
+        },
+        {
+          "from": "local_compact_self_adjoint_operator:total",
+          "to": "local_sobolev_core:total",
+          "projection": "forget_local_compact_self_adjoint_operator"
+        },
+        {
+          "from": "local_form_identity:total",
+          "to": "local_compact_self_adjoint_operator:total",
+          "projection": "forget_local_form_identity"
+        }
+      ],
+      "surviving_prefix": [
+        "presentation_identity",
+        "finite_rank_descent_naturality",
+        "hilbert_observer_realization",
+        "local_sobolev_core",
+        "local_compact_self_adjoint_operator",
+        "local_form_identity"
+      ],
+      "identity_claims": [],
+      "physical_readout_status": "not_constructed",
+      "claim_boundary": "structural lifting certificate; source objects and physical adequacy remain external"
+    }
+  },
+  "acceptance_checks": {
+    "local_completed_form_constructed": true,
+    "operators_typed": true,
+    "rh_gate_is_all_L_positivity": true,
+    "finite_positive_not_promoted": true,
+    "negative_eigenvalue_finitely_falsifiable": true,
+    "gaussian_comparison_absent": true,
+    "global_carrier_absent": true,
+    "raw_H_order_closure_not_prerequisite": true,
+    "three_branches_compile": true,
+    "branch_obstructions_exact": true,
+    "rh_not_promoted": true
+  },
+  "passed": true,
+  "disposition": {
+    "proved": "three structural identities and each local bounded compact self-adjoint A_(L,s)",
+    "open": [
+      "positivity for every L",
+      "extension-by-zero form naturality",
+      "Gaussian cutoff/rigging comparison",
+      "global carrier admissibility"
+    ],
+    "retracted": "raw H-kernel closability on H_ord as RH prerequisite",
+    "rh_implication": false
+  }
+}

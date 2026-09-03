@@ -1,0 +1,360 @@
+{
+  "schema": "marici.scc.lifting-ir-examples.v1",
+  "reports": {
+    "window_localization": {
+      "schema": "marici.scc.lifting-ir.v1",
+      "passed": true,
+      "first_failed_gate": null,
+      "explanation_complete": false,
+      "layers": [
+        {
+          "id": "partition",
+          "kind": "mathematical",
+          "base_ref": "periodic_2pi_chart",
+          "total_ref": "partition:total",
+          "state": "coherent_section",
+          "projection": "forget_partition",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "directed_budget",
+          "kind": "mathematical",
+          "base_ref": "partition:total",
+          "total_ref": "directed_budget:total",
+          "state": "coherent_section",
+          "projection": "forget_budget",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "physical_readout",
+          "kind": "readout",
+          "base_ref": "directed_budget:total",
+          "total_ref": "physical_readout:total",
+          "state": "not_constructed",
+          "projection": null,
+          "capabilities": {
+            "fiber_constructed": false,
+            "inhabited": false,
+            "unique_up_to_identity": false,
+            "selector": false,
+            "coherent_section": false
+          },
+          "unimath_certificate": "not_supplied"
+        }
+      ],
+      "first_obstruction": {
+        "index": 2,
+        "layer": "physical_readout",
+        "obstruction": "missing_displayed_layer"
+      },
+      "forgetful_projections": [
+        {
+          "from": "partition:total",
+          "to": "periodic_2pi_chart",
+          "projection": "forget_partition"
+        },
+        {
+          "from": "directed_budget:total",
+          "to": "partition:total",
+          "projection": "forget_budget"
+        }
+      ],
+      "surviving_prefix": [
+        "partition",
+        "directed_budget"
+      ],
+      "identity_claims": [],
+      "physical_readout_status": "not_constructed",
+      "claim_boundary": "structural lifting certificate; source objects and physical adequacy remain external"
+    },
+    "optical_gram_reconstruction": {
+      "schema": "marici.scc.lifting-ir.v1",
+      "passed": true,
+      "first_failed_gate": null,
+      "explanation_complete": false,
+      "layers": [
+        {
+          "id": "gram_invariants",
+          "kind": "mathematical",
+          "base_ref": "two_route_amplitudes",
+          "total_ref": "gram_invariants:total",
+          "state": "coherent_section",
+          "projection": "forget_invariants",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "four_intensity_formula",
+          "kind": "mathematical",
+          "base_ref": "gram_invariants:total",
+          "total_ref": "four_intensity_formula:total",
+          "state": "coherent_section",
+          "projection": "forget_formula",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "laboratory_record",
+          "kind": "readout",
+          "base_ref": "four_intensity_formula:total",
+          "total_ref": "laboratory_record:total",
+          "state": "not_constructed",
+          "projection": null,
+          "capabilities": {
+            "fiber_constructed": false,
+            "inhabited": false,
+            "unique_up_to_identity": false,
+            "selector": false,
+            "coherent_section": false
+          },
+          "unimath_certificate": "not_supplied"
+        }
+      ],
+      "first_obstruction": {
+        "index": 2,
+        "layer": "laboratory_record",
+        "obstruction": "missing_displayed_layer"
+      },
+      "forgetful_projections": [
+        {
+          "from": "gram_invariants:total",
+          "to": "two_route_amplitudes",
+          "projection": "forget_invariants"
+        },
+        {
+          "from": "four_intensity_formula:total",
+          "to": "gram_invariants:total",
+          "projection": "forget_formula"
+        }
+      ],
+      "surviving_prefix": [
+        "gram_invariants",
+        "four_intensity_formula"
+      ],
+      "identity_claims": [],
+      "physical_readout_status": "not_constructed",
+      "claim_boundary": "structural lifting certificate; source objects and physical adequacy remain external"
+    },
+    "theta_rh_registry_model": {
+      "schema": "marici.scc.lifting-ir.v1",
+      "passed": true,
+      "first_failed_gate": null,
+      "explanation_complete": false,
+      "layers": [
+        {
+          "id": "registered_evidence",
+          "kind": "mathematical",
+          "base_ref": "theta_rh_corrected_g4_v2",
+          "total_ref": "registered_evidence:total",
+          "state": "inhabited",
+          "projection": "forget_registered_evidence",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": false,
+            "coherent_section": false
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "categorical_completion",
+          "kind": "mathematical",
+          "base_ref": "registered_evidence:total",
+          "total_ref": "categorical_completion:total",
+          "state": "not_constructed",
+          "projection": null,
+          "capabilities": {
+            "fiber_constructed": false,
+            "inhabited": false,
+            "unique_up_to_identity": false,
+            "selector": false,
+            "coherent_section": false
+          },
+          "unimath_certificate": "not_supplied"
+        }
+      ],
+      "first_obstruction": {
+        "index": 0,
+        "layer": "registered_evidence",
+        "obstruction": "selector_not_constructed"
+      },
+      "forgetful_projections": [
+        {
+          "from": "registered_evidence:total",
+          "to": "theta_rh_corrected_g4_v2",
+          "projection": "forget_registered_evidence"
+        }
+      ],
+      "surviving_prefix": [
+        "registered_evidence"
+      ],
+      "identity_claims": [],
+      "physical_readout_status": "not_constructed",
+      "claim_boundary": "structural lifting certificate; source objects and physical adequacy remain external"
+    },
+    "kernel_checked_tower": {
+      "schema": "marici.scc.lifting-ir.v1",
+      "passed": true,
+      "first_failed_gate": null,
+      "explanation_complete": false,
+      "layers": [
+        {
+          "id": "completion",
+          "kind": "mathematical",
+          "base_ref": "formal_base",
+          "total_ref": "completion:total",
+          "state": "coherent_section",
+          "projection": "forget_completion",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": {
+            "status": "kernel_checked_conditional",
+            "source_sha256": "d32638ad45ae2e5c32ac2c31834633439f07766c825cf4ffcbf2a203726b7722",
+            "object_sha256": "b7dbc4f5c01f32847c176641dc3cbe9cc469b4a82ce411243d575bbf89002152"
+          }
+        },
+        {
+          "id": "certificates",
+          "kind": "mathematical",
+          "base_ref": "completion:total",
+          "total_ref": "certificates:total",
+          "state": "coherent_section",
+          "projection": "forget_certificates",
+          "capabilities": {
+            "fiber_constructed": true,
+            "inhabited": true,
+            "unique_up_to_identity": false,
+            "selector": true,
+            "coherent_section": true
+          },
+          "unimath_certificate": "not_supplied"
+        },
+        {
+          "id": "physical_readout",
+          "kind": "readout",
+          "base_ref": "certificates:total",
+          "total_ref": "physical_readout:total",
+          "state": "not_constructed",
+          "projection": null,
+          "capabilities": {
+            "fiber_constructed": false,
+            "inhabited": false,
+            "unique_up_to_identity": false,
+            "selector": false,
+            "coherent_section": false
+          },
+          "unimath_certificate": "not_supplied"
+        }
+      ],
+      "first_obstruction": {
+        "index": 2,
+        "layer": "physical_readout",
+        "obstruction": "missing_displayed_layer"
+      },
+      "forgetful_projections": [
+        {
+          "from": "completion:total",
+          "to": "formal_base",
+          "projection": "forget_completion"
+        },
+        {
+          "from": "certificates:total",
+          "to": "completion:total",
+          "projection": "forget_certificates"
+        }
+      ],
+      "surviving_prefix": [
+        "completion",
+        "certificates"
+      ],
+      "identity_claims": [],
+      "physical_readout_status": "not_constructed",
+      "claim_boundary": "structural lifting certificate; source objects and physical adequacy remain external"
+    }
+  },
+  "summary": {
+    "window_localization": {
+      "compiled": true,
+      "complete": false,
+      "first_obstruction": {
+        "index": 2,
+        "layer": "physical_readout",
+        "obstruction": "missing_displayed_layer"
+      },
+      "surviving_prefix": [
+        "partition",
+        "directed_budget"
+      ]
+    },
+    "optical_gram_reconstruction": {
+      "compiled": true,
+      "complete": false,
+      "first_obstruction": {
+        "index": 2,
+        "layer": "laboratory_record",
+        "obstruction": "missing_displayed_layer"
+      },
+      "surviving_prefix": [
+        "gram_invariants",
+        "four_intensity_formula"
+      ]
+    },
+    "theta_rh_registry_model": {
+      "compiled": true,
+      "complete": false,
+      "first_obstruction": {
+        "index": 0,
+        "layer": "registered_evidence",
+        "obstruction": "selector_not_constructed"
+      },
+      "surviving_prefix": [
+        "registered_evidence"
+      ]
+    },
+    "kernel_checked_tower": {
+      "compiled": true,
+      "complete": false,
+      "first_obstruction": {
+        "index": 2,
+        "layer": "physical_readout",
+        "obstruction": "missing_displayed_layer"
+      },
+      "surviving_prefix": [
+        "completion",
+        "certificates"
+      ]
+    }
+  }
+}

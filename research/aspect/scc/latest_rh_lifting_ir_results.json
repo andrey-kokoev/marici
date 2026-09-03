@@ -1,0 +1,125 @@
+{
+  "schema": "marici.scc.latest-rh-lifting-ir.v1",
+  "source": "research\\voevodsky\\categorical-rh-proof-bracket-form-core-v1.json",
+  "source_sha256": "70d37b88aca5d77e01ca49e4613a624dc78d09adbf1a774901db684af9d8626e",
+  "source_status": {
+    "necessary_bracket": "typed",
+    "sufficient_bracket": "conditional",
+    "endpoint_L2_discontinuity": "verified",
+    "gaussian_form_core": "not supplied",
+    "source_Weil_comparison": "not reverified here",
+    "rh_implication": "none"
+  },
+  "report": {
+    "schema": "marici.scc.lifting-ir.v1",
+    "passed": true,
+    "first_failed_gate": null,
+    "explanation_complete": false,
+    "layers": [
+      {
+        "id": "necessary_restriction_bracket",
+        "kind": "mathematical",
+        "base_ref": "arithmetic_source_A",
+        "total_ref": "necessary_restriction_bracket:total",
+        "state": "coherent_section",
+        "projection": "forget_packet_restriction",
+        "capabilities": {
+          "fiber_constructed": true,
+          "inhabited": true,
+          "unique_up_to_identity": false,
+          "selector": true,
+          "coherent_section": true
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "common_closed_form_domain",
+        "kind": "mathematical",
+        "base_ref": "necessary_restriction_bracket:total",
+        "total_ref": "common_closed_form_domain:total",
+        "state": "not_constructed",
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "gaussian_jet_form_core",
+        "kind": "mathematical",
+        "base_ref": "common_closed_form_domain:total",
+        "total_ref": "gaussian_jet_form_core:total",
+        "state": "not_constructed",
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "source_Weil_comparison",
+        "kind": "mathematical",
+        "base_ref": "gaussian_jet_form_core:total",
+        "total_ref": "source_Weil_comparison:total",
+        "state": "not_constructed",
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "RH_implication",
+        "kind": "mathematical",
+        "base_ref": "source_Weil_comparison:total",
+        "total_ref": "RH_implication:total",
+        "state": "not_constructed",
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      }
+    ],
+    "first_obstruction": {
+      "index": 1,
+      "layer": "common_closed_form_domain",
+      "obstruction": "missing_displayed_layer"
+    },
+    "forgetful_projections": [
+      {
+        "from": "necessary_restriction_bracket:total",
+        "to": "arithmetic_source_A",
+        "projection": "forget_packet_restriction"
+      }
+    ],
+    "surviving_prefix": [
+      "necessary_restriction_bracket"
+    ],
+    "identity_claims": [],
+    "physical_readout_status": "not_constructed",
+    "claim_boundary": "structural lifting certificate; source objects and physical adequacy remain external"
+  },
+  "interpretation": {
+    "necessary_direction": "survives as typed restriction bracket",
+    "first_missing_object": "common closed or closable realization of A and B on D(Q)",
+    "acceptance_test": "Construct one source-typed domain D(Q), prove A and B closed or closable there, prove the rational Gaussian-jet span is dense in the resulting graph norm, and verify its restricted form equals the completed arithmetic Gram packets.",
+    "rh_conclusion": "not admitted"
+  }
+}

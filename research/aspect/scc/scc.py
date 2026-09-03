@@ -14,6 +14,14 @@ from interaction_net_algebra import compile_net_algebra
 from universal_net_certifier import compile_universal_core
 from rh_net_state_compiler import compile_rh_net_state
 from rh_net_visualizer import write_rh_net_viewer
+from window_partition_compiler import compile_window_partition
+from categorical_apparatus_compiler import compile_categorical_apparatus
+from categorical_residual_compiler import compile_categorical_residual
+from explanation_debugger import debug_explanation, propagate_comparison_budget
+from scc_toolkit import TOOLS as MAINTENANCE_TOOLS, provenance_lock, hostile_replay
+from unimath_backend import compile_unimath_backend, verify_unimath_result
+from unimath_displayed_tower import compile_displayed_tower
+from lifting_ir import compile_lifting_ir
 
 HERE=Path(__file__).resolve().parent; ROOT=HERE.parents[2]
 STATE_DIR=ROOT/".ai"/"tmp"/"scc-state"
@@ -22,7 +30,7 @@ CENTRAL_CHECKS={x["id"]:x for x in REGISTRY["checks"]}
 
 def usage():
     print("SCC - Stratified Coherence Compiler")
-    print("usage: scc.py init <owner> <model-id> | import <checker> [--write] | models | dashboard [--markdown] | doctor | plan | capsule <model> | graph-packet <model|all> | categorical <diagram> | formulas <contract> | observer-set <contract> | globular-tower <contract> | beurling-rigging <contract> | beurling-source <contract> | projective-rigging <contract> | net-algebra <contract> | universal-core <contract> | rh-state <contract> | inverse <diagram> <claim> | validate <manifest|all> | status <model|all> | check <model|all> | explain <model|all> | constructors <model> | impact <model> | transfers <model> | freeze <model> | challenge <model> <checker> <survives|falsifies> | watch | run <check|group> [--verbose]")
+    print("usage: scc.py init <owner> <model-id> | import <checker> [--write] | models | dashboard [--markdown] | doctor | plan | capsule <model> | graph-packet <model|all> | categorical <diagram> | toolkit <action> <contract> | lifting-ir <contract> | unimath <contract> | unimath-verify <emission> <result> | categorical-apparatus <contract> | categorical-residual <contract> | formulas <contract> | observer-set <contract> | globular-tower <contract> | window-partition <contract> | beurling-rigging <contract> | beurling-source <contract> | projective-rigging <contract> | net-algebra <contract> | universal-core <contract> | rh-state <contract> | inverse <diagram> <claim> | validate <manifest|all> | status <model|all> | check <model|all> | explain <model|all> | constructors <model> | impact <model> | transfers <model> | freeze <model> | challenge <model> <checker> <survives|falsifies> | watch | run <check|group> [--verbose]")
 
 APPARATUS_REQUIRED=(
     "authority_locator","substrate_state_type","apparatus_state_type",
@@ -439,6 +447,47 @@ def main(argv):
                 relation["target_ref"]="model-"+dep
                 ops.append(relation)
         print(json.dumps({"schema":"marici.scc.graph-packet.v1","authority":"none_dry_run_only","actor":"OWNER_REVIEW_REQUIRED","authority_basis":{"kind":"owner_review_required"},"operations":ops},indent=2));return 0
+    if len(argv)==2 and argv[0]=="lifting-ir":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_lifting_ir(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot compile lifting IR: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==2 and argv[0]=="unimath-tower":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_displayed_tower(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot emit UniMath displayed tower: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==2 and argv[0]=="unimath":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_unimath_backend(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot emit UniMath backend: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==3 and argv[0]=="unimath-verify":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));r=json.loads(workspace_path(argv[2]).read_text(encoding="utf-8"));report=verify_unimath_result(c,r)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot verify UniMath result: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==3 and argv[0]=="toolkit":
+        try:
+            c=json.loads(workspace_path(argv[2]).read_text(encoding="utf-8"));action=argv[1]
+            if action=="provenance-lock":report=provenance_lock(c,ROOT)
+            elif action=="hostile-replay":report=hostile_replay(c,{"categorical-apparatus":compile_categorical_apparatus,"categorical-residual":compile_categorical_residual,"explanation-debug":debug_explanation})
+            elif action in MAINTENANCE_TOOLS:report=MAINTENANCE_TOOLS[action](c)
+            else:raise ValueError("unknown toolkit action")
+        except (OSError,ValueError,json.JSONDecodeError,KeyError) as e:print("cannot run SCC toolkit: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report.get("passed",True) else 1
+    if len(argv)==2 and argv[0]=="explanation-debug":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=debug_explanation(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot debug explanation: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==2 and argv[0]=="comparison-budget":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=propagate_comparison_budget(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot propagate comparison budget: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==2 and argv[0]=="categorical-apparatus":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_categorical_apparatus(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot compile categorical apparatus: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==2 and argv[0]=="categorical-residual":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_categorical_residual(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot compile categorical residual: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
     if len(argv)==2 and argv[0]=="categorical":
         try:d=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_diagram(d)
         except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot compile categorical diagram: "+str(e),file=sys.stderr);return 2
@@ -458,6 +507,10 @@ def main(argv):
     if len(argv)==2 and argv[0]=="globular-tower":
         try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_globular_tower(c)
         except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot compile globular tower: "+str(e),file=sys.stderr);return 2
+        print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
+    if len(argv)==2 and argv[0]=="window-partition":
+        try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_window_partition(c)
+        except (OSError,ValueError,json.JSONDecodeError) as e:print("cannot compile window partition: "+str(e),file=sys.stderr);return 2
         print(json.dumps(report,indent=2));return 0 if report["passed"] else 1
     if len(argv)==2 and argv[0]=="beurling-rigging":
         try:c=json.loads(workspace_path(argv[1]).read_text(encoding="utf-8"));report=compile_beurling_rigging(c)

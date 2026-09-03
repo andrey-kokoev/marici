@@ -1,0 +1,41 @@
+{
+  "schema": "marici.aspect.decorated-boundary-transport.v1",
+  "boundary_presentation": {
+    "index_category": "I_sigma",
+    "carrier_functor": "j_sigma : I_sigma -> C",
+    "incidence_cone": "lambda_sigma : j_sigma => Delta(sigma)",
+    "occurrence_sensitive": true
+  },
+  "transport": {
+    "ambient_equivalence": "E : C ~= D",
+    "apex_isomorphism": "u : E(sigma) ~= sigmaPrime",
+    "index_equivalence": "e : I_sigma ~= I_sigmaPrime",
+    "carrier_natural_isomorphism": "kappa : E o j_sigma ~= j_sigmaPrime o e",
+    "incidence_coherence": "u o E(lambda_sigma) = lambda_sigmaPrime o kappa"
+  },
+  "presheaf_comparison": "eta : F ~= G o E^op",
+  "construction": [
+    "eta and kappa induce a natural isomorphism of boundary diagrams",
+    "e transports the source limiting cone to a target limiting cone",
+    "limit universality induces alpha_M",
+    "inverse transport induces alpha_M inverse",
+    "incidence coherence and eta naturality prove matching-map conjugacy",
+    "component inverses induce corresponding fiber equivalences"
+  ],
+  "counterexample": {
+    "ambient_objects": ["a", "b", "sigma"],
+    "ambient_arrows": ["a->sigma", "b->sigma"],
+    "ambient_equivalence": "identity",
+    "presheaf_comparison": "identity",
+    "source_boundary": ["a"],
+    "target_boundary": ["b"],
+    "source_matching_cardinality": 2,
+    "target_matching_cardinality": 1,
+    "missing": ["index_equivalence", "carrier_natural_isomorphism", "incidence_coherence"]
+  },
+  "nonclaims": [
+    "minimality of the transport package among all presentations",
+    "global rewrite confluence",
+    "physical equivalence"
+  ]
+}

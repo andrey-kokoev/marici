@@ -1,0 +1,191 @@
+{
+  "schema": "marici.scc.rh-lifting-plan-v2-result.v1",
+  "source": "research\\voevodsky\\categorical-rh-lifting-layer-plan-v2.json",
+  "source_sha256": "e8f83af37bc9208ad76e03e70a954b884ea10aa9c2315c9048a8de367e802eed",
+  "report": {
+    "schema": "marici.scc.lifting-ir.v1",
+    "passed": true,
+    "first_failed_gate": null,
+    "explanation_complete": false,
+    "layers": [
+      {
+        "id": "packet_restriction_bracket",
+        "kind": "mathematical",
+        "base_ref": "source-normalized completed Xi quadratic-form problem",
+        "total_ref": "packet_restriction_bracket:total",
+        "state": "coherent_section",
+        "global_status": "coherent_prefix",
+        "blocked_by": null,
+        "projection": "forget_packet_restriction_bracket",
+        "capabilities": {
+          "fiber_constructed": true,
+          "inhabited": true,
+          "unique_up_to_identity": false,
+          "selector": true,
+          "coherent_section": true
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "common_closed_form_domain",
+        "kind": "mathematical",
+        "base_ref": "packet_restriction_bracket:total",
+        "total_ref": "common_closed_form_domain:total",
+        "state": "not_constructed",
+        "global_status": "obstructed_here",
+        "blocked_by": null,
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "gaussian_jet_form_core",
+        "kind": "mathematical",
+        "base_ref": "common_closed_form_domain:total",
+        "total_ref": "gaussian_jet_form_core:total",
+        "state": "not_constructed",
+        "global_status": "blocked_by_prior_layer",
+        "blocked_by": "common_closed_form_domain",
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "source_weil_comparison",
+        "kind": "mathematical",
+        "base_ref": "gaussian_jet_form_core:total",
+        "total_ref": "source_weil_comparison:total",
+        "state": "not_constructed",
+        "global_status": "blocked_by_prior_layer",
+        "blocked_by": "common_closed_form_domain",
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "observer_coherence",
+        "kind": "mathematical",
+        "base_ref": "source_weil_comparison:total",
+        "total_ref": "observer_coherence:total",
+        "state": "inhabited",
+        "global_status": "blocked_by_prior_layer",
+        "blocked_by": "common_closed_form_domain",
+        "projection": "forget_observer_coherence",
+        "capabilities": {
+          "fiber_constructed": true,
+          "inhabited": true,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "semibounded_completed_form",
+        "kind": "mathematical",
+        "base_ref": "observer_coherence:total",
+        "total_ref": "semibounded_completed_form:total",
+        "state": "not_constructed",
+        "global_status": "blocked_by_prior_layer",
+        "blocked_by": "common_closed_form_domain",
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "all_rank_endpoint_free_cone",
+        "kind": "mathematical",
+        "base_ref": "semibounded_completed_form:total",
+        "total_ref": "all_rank_endpoint_free_cone:total",
+        "state": "not_constructed",
+        "global_status": "blocked_by_prior_layer",
+        "blocked_by": "common_closed_form_domain",
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "rh_implication",
+        "kind": "mathematical",
+        "base_ref": "all_rank_endpoint_free_cone:total",
+        "total_ref": "rh_implication:total",
+        "state": "not_constructed",
+        "global_status": "blocked_by_prior_layer",
+        "blocked_by": "common_closed_form_domain",
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      }
+    ],
+    "first_obstruction": {
+      "index": 1,
+      "layer": "common_closed_form_domain",
+      "obstruction": "missing_displayed_layer"
+    },
+    "forgetful_projections": [
+      {
+        "from": "packet_restriction_bracket:total",
+        "to": "source-normalized completed Xi quadratic-form problem",
+        "projection": "forget_packet_restriction_bracket"
+      },
+      {
+        "from": "observer_coherence:total",
+        "to": "source_weil_comparison:total",
+        "projection": "forget_observer_coherence"
+      }
+    ],
+    "surviving_prefix": [
+      "packet_restriction_bracket"
+    ],
+    "identity_claims": [],
+    "physical_readout_status": "not_constructed",
+    "claim_boundary": "structural lifting certificate; source objects and physical adequacy remain external"
+  },
+  "acceptance_checks": {
+    "layer_order_matches_forgets_to": true,
+    "coherent_prefix_exact": true,
+    "first_obstruction_matches": true,
+    "all_successors_globally_blocked": true,
+    "observer_local_inhabitation_preserved": true,
+    "rh_not_promoted": true,
+    "rejected_substitutes_preserved": true
+  },
+  "passed": true,
+  "claim_boundary": "structural translation and blockage propagation only; no RH implication"
+}

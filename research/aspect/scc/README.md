@@ -92,6 +92,7 @@ python research/aspect/scc/scc.py categorical research/owner/contracts/diagram.j
 python research/aspect/scc/scc.py formulas research/owner/contracts/formula-system.json
 python research/aspect/scc/scc.py observer-set research/owner/contracts/observer-set.json
 python research/aspect/scc/scc.py globular-tower research/owner/contracts/globular-tower.json
+python research/aspect/scc/scc.py window-partition research/owner/contracts/window-partition.json
 python research/aspect/scc/scc.py beurling-rigging research/owner/contracts/beurling-rigging.json
 python research/aspect/scc/scc.py projective-rigging research/owner/contracts/projective-rigging.json
 python research/aspect/scc/scc.py net-algebra research/owner/contracts/interaction-net-algebra.json

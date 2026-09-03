@@ -1,0 +1,159 @@
+{
+  "schema": "marici.scc.latest-flavor-lifting-ir.v1",
+  "sources": {
+    "packet": "research\\flavor\\flavor-interaction-net-state.md",
+    "packet_sha256": "604a00c70b2cb01e592f7c4135d085b3ab776f27ef1a69927a2299b4c6cce920",
+    "result": "research\\flavor\\results\\wp1043_flavor_interaction_net_state.json",
+    "result_sha256": "a68e17abfc0cf77d5902f5e3f76d610196ba4888012e7c5707ea63031b349950"
+  },
+  "source_counts": {
+    "constructed_nodes": 249,
+    "open_nodes": 5,
+    "hostile_fixtures": 247
+  },
+  "report": {
+    "schema": "marici.scc.lifting-ir.v1",
+    "passed": true,
+    "first_failed_gate": null,
+    "explanation_complete": false,
+    "layers": [
+      {
+        "id": "verified_interaction_net",
+        "kind": "mathematical",
+        "base_ref": "flavor_source_label_lattice",
+        "total_ref": "verified_interaction_net:total",
+        "state": "coherent_section",
+        "global_status": "coherent_prefix",
+        "blocked_by": null,
+        "projection": "forget_interaction_net",
+        "capabilities": {
+          "fiber_constructed": true,
+          "inhabited": true,
+          "unique_up_to_identity": false,
+          "selector": true,
+          "coherent_section": true
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "common_integer_substrate_with_preparation_law",
+        "kind": "mathematical",
+        "base_ref": "verified_interaction_net:total",
+        "total_ref": "common_integer_substrate_with_preparation_law:total",
+        "state": "not_constructed",
+        "global_status": "obstructed_here",
+        "blocked_by": null,
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "typed_pole_spectrum_and_mass_clock",
+        "kind": "mathematical",
+        "base_ref": "common_integer_substrate_with_preparation_law:total",
+        "total_ref": "typed_pole_spectrum_and_mass_clock:total",
+        "state": "not_constructed",
+        "global_status": "blocked_by_prior_layer",
+        "blocked_by": "common_integer_substrate_with_preparation_law",
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "calibrated_momentum_and_ratio_law",
+        "kind": "mathematical",
+        "base_ref": "typed_pole_spectrum_and_mass_clock:total",
+        "total_ref": "calibrated_momentum_and_ratio_law:total",
+        "state": "not_constructed",
+        "global_status": "blocked_by_prior_layer",
+        "blocked_by": "common_integer_substrate_with_preparation_law",
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "physical16_gain_or_interference_law",
+        "kind": "mathematical",
+        "base_ref": "calibrated_momentum_and_ratio_law:total",
+        "total_ref": "physical16_gain_or_interference_law:total",
+        "state": "not_constructed",
+        "global_status": "blocked_by_prior_layer",
+        "blocked_by": "common_integer_substrate_with_preparation_law",
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      },
+      {
+        "id": "flavor_physical_selector_terminal",
+        "kind": "readout",
+        "base_ref": "physical16_gain_or_interference_law:total",
+        "total_ref": "flavor_physical_selector_terminal:total",
+        "state": "not_constructed",
+        "global_status": "blocked_by_prior_layer",
+        "blocked_by": "common_integer_substrate_with_preparation_law",
+        "projection": null,
+        "capabilities": {
+          "fiber_constructed": false,
+          "inhabited": false,
+          "unique_up_to_identity": false,
+          "selector": false,
+          "coherent_section": false
+        },
+        "unimath_certificate": "not_supplied"
+      }
+    ],
+    "first_obstruction": {
+      "index": 1,
+      "layer": "common_integer_substrate_with_preparation_law",
+      "obstruction": "missing_displayed_layer"
+    },
+    "forgetful_projections": [
+      {
+        "from": "verified_interaction_net:total",
+        "to": "flavor_source_label_lattice",
+        "projection": "forget_interaction_net"
+      }
+    ],
+    "surviving_prefix": [
+      "verified_interaction_net"
+    ],
+    "identity_claims": [],
+    "physical_readout_status": "not_constructed",
+    "claim_boundary": "structural lifting certificate; source objects and physical adequacy remain external"
+  },
+  "acceptance_checks": {
+    "source_replay_passed": true,
+    "frontier_exact": true,
+    "coherent_prefix_is_obstruction_net_only": true,
+    "first_obstruction_is_source_preparation": true,
+    "all_later_layers_globally_blocked": true,
+    "terminal_remains_open": true,
+    "no_physical_selector_promoted": true
+  },
+  "passed": true,
+  "claim_boundary": "WP1043 obstruction-net translation only; no source selector or physical16 prediction"
+}

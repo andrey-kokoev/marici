@@ -1,0 +1,77 @@
+{
+  "schema": "marici.scc.contract.v2.candidate",
+  "status": "review_candidate_not_live",
+  "name": "Stratified Coherence Compiler",
+  "short_name": "SCC",
+  "namespace": "marici.scc",
+  "predecessor": {
+    "path": "research/aspect/scc/contract.v1.json",
+    "schema": "marici.scc.contract.v1",
+    "sha256": "9526040f031787a1d4bb700d7b728f38b97ec27b2df11865502b64d3f5f09cb8"
+  },
+  "stages": [
+    "packet",
+    "stratum",
+    "ports",
+    "probe_configuration",
+    "static_coherence",
+    "dynamic_coherence",
+    "probe_rewrite_certificate",
+    "hostiles",
+    "admission"
+  ],
+  "probe_sections": [
+    "configuration_domain",
+    "constraint_presheaf",
+    "interaction_classification",
+    "optional_additive_specialization",
+    "continuation_interface",
+    "rewrite_certificate",
+    "authority_and_boundary"
+  ],
+  "probe_registry_checks": [
+    "probe-domain-downward-closure",
+    "probe-restriction-functoriality",
+    "probe-matching-map-typing",
+    "probe-continuation-interface-faithfulness",
+    "probe-rewrite-naturality",
+    "probe-source-digest"
+  ],
+  "legacy_migration": {
+    "preserve_original_entry": true,
+    "default_probe_status": "untyped_for_probe_semantics",
+    "default_interaction_defect": null,
+    "null_means": "not_constructed",
+    "forbidden_inference": "legacy absence implies zero interaction"
+  },
+  "probe_invariants": [
+    "Configuration absence is distinct from an empty constraint object.",
+    "A matching defect requires a typed matching map.",
+    "An additive cross-effect requires declared additive target authority.",
+    "A record projection cannot authorize state reconstruction without a faithfulness proof.",
+    "Local rewrite naturality does not certify global confluence.",
+    "Composition order has no physical-time meaning without a separately typed map."
+  ],
+  "additional_outputs": [
+    "configuration_domain_certificate",
+    "matching_map_certificate",
+    "continuation_interface_certificate",
+    "rewrite_naturality_certificate",
+    "typed_probe_residual",
+    "probe_semantics_status"
+  ],
+  "admission_requirements": [
+    "explicit review of candidate contract",
+    "versioned registry successor",
+    "legacy migration checker pass",
+    "Schur and polarizer shadow entries pass",
+    "live compiler compatibility test"
+  ],
+  "nonclaims": [
+    "not the live SCC contract",
+    "not admitted",
+    "no SCC-wide soundness theorem",
+    "no proof-system completeness theorem",
+    "no physical-realization theorem"
+  ]
+}

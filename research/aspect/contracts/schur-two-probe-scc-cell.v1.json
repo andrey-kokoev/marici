@@ -1,0 +1,61 @@
+{
+  "schema": "marici.aspect.schur-two-probe-scc-cell.v1",
+  "status": "finite_inhabited_fragment",
+  "cell_id": "schur_two_probe_closed_continuation",
+  "constraint_category": "exact_rational_additive",
+  "deformation_coordinate_has_temporal_meaning": false,
+  "ports": {
+    "retained_response": {"symbol": "A", "type": "invertible_endomorphism"},
+    "entry_incidence": {"symbol": "B", "type": "map_new_to_retained"},
+    "exit_incidence": {"symbol": "C", "type": "map_retained_to_new"},
+    "local_response": {"symbol": "E", "type": "endomorphism_new"}
+  },
+  "configurations": {
+    "empty": "E",
+    "entry_only": "E",
+    "exit_only": "E",
+    "joint": "E-C*A^-1*B"
+  },
+  "comparison": {
+    "kind": "binary_additive_cross_effect",
+    "formula": "F(entry,exit)-F(entry)-F(exit)+F(empty)",
+    "value": "-C*A^-1*B",
+    "factorized_iff": "C*A^-1*B=0"
+  },
+  "rewrite": {
+    "lhs": "NEW(E) joined_to RETAINED(A) along C,B",
+    "rhs": "EFFECTIVE(E-C*A^-1*B)",
+    "proof_witness": "Schur_complement_identity",
+    "first_jet": "E'-C'*A^-1*B+C*A^-1*A'*A^-1*B-C*A^-1*B'"
+  },
+  "hostile_fixtures": [
+    {"id": "erase_entry", "mutation": "B=0", "expected": "cross_effect_zero"},
+    {"id": "erase_exit", "mutation": "C=0", "expected": "cross_effect_zero"},
+    {"id": "noninvertible_retained", "mutation": "A=0", "expected": "undefined_not_zero"},
+    {"id": "local_shadow", "mutation": "E'=0", "expected": "joint_first_jet_may_remain_nonzero"}
+  ],
+  "exact_fixture": {
+    "A": "2",
+    "B": "3",
+    "C": "4",
+    "E": "5",
+    "A_prime": "1/2",
+    "B_prime": "0",
+    "C_prime": "2",
+    "E_prime": "0",
+    "joint": "-1",
+    "cross_effect": "-6",
+    "joint_first_jet": "-3/2"
+  },
+  "sources": [
+    {"path": "research/aspect/schur-continuation-as-two-probe-interaction-defect.md", "sha256": "3bd098287b16f255b283d0d0160d356f3d8ab20289b8a8c20fb389a34aace006"},
+    {"path": "research/aspect/checkers/check_schur_two_probe_interaction_defect.py", "sha256": "23fea0d74f74046fa58c1417f7e506433cdd883dea3ec5176a8dab7ff5b1834b"},
+    {"path": "research/aspect/results/schur_two_probe_interaction_defect.json", "sha256": "77159a3d1335ee9b8af3d08b62adb1fbd34c838aec07d33c2ae87aa785511a50"}
+  ],
+  "nonclaims": [
+    "not_admitted_into_live_scc_registry",
+    "not_scc_wide_soundness",
+    "not_proof_system_completeness",
+    "not_physical_realization"
+  ]
+}
