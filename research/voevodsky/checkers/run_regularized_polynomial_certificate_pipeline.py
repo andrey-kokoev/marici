@@ -45,8 +45,10 @@ def main():
  complete=not missing and all(statuses.values()) and bool(final.get('continuum_positivity_verified',False))
  result={'schema':'marici.voevodsky.regularized-polynomial-pipeline.v2',
   'completed_steps':completed,'required_artifacts':RESULTS,'missing_artifacts':missing,
-  'artifact_pass_statuses':statuses,'continuum_certificate_complete':complete,
-  'scope':'cutoff-250 and uncut first-prime support window',
+  'artifact_pass_statuses':statuses,'coded_form_continuum_certificate_complete':complete,
+  'rh_criterion_source_identity_verified':False,
+  'continuum_certificate_complete':complete,
+  'scope':'coded cutoff-250 and uncut first-prime support-window form',
   'rh_implication':False,'passed':complete}
  rendered=json.dumps(result,indent=2,sort_keys=True)
  Path('research/voevodsky/results/regularized_polynomial_pipeline.json').write_text(rendered+'\n',encoding='utf-8')

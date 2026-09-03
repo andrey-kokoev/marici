@@ -20,7 +20,7 @@ def schur_matrix(nx=560, nu=2200, U=250., threshold=1/130, reltol=1e-12):
     E=np.exp(-1j*u[:,None]*x[None,:])*(np.sqrt(wu)[:,None]*sw[None,:]/math.sqrt(2*math.pi))
     A=np.real(E.conj().T@(symbol[:,None]*E))
     vp=sw*np.exp(x/2); vm=sw*np.exp(-x/2)
-    A += np.outer(vp,vm)+np.outer(vm,vp)
+    A += (np.outer(vp,vm)+np.outer(vm,vp))/2
     P=V[:,:rank]; Q=V[:,rank:]
     F=P.T@A@P; C=Q.T@A@Q; C=(C+C.T)/2; B=P.T@A@Q
     ceig,CV=np.linalg.eigh(C); tol=reltol*max(1.,abs(ceig[-1])); pos=ceig>tol

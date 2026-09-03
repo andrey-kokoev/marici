@@ -1,0 +1,42 @@
+{
+  "schema": "marici.voevodsky.compact-weil-source-identity-instance.v1",
+  "source_locator": "research/grothendieck/explicit-two-variable-weil-heat-source-formula.md",
+  "derivation_locator": "research/voevodsky/compact-support-weil-source-identity-derived-instance.md",
+  "authority_status": "internally_derived_external_source_verification_pending",
+  "test_space": "compact_logarithmic_support",
+  "fourier_convention": {
+    "forward_kernel": "Ff(u)=integral f(x) exp(-iux) dx",
+    "inverse_prefactor": "1/(2*pi)",
+    "plancherel_measure": "du/(2*pi); unitary transform is F/sqrt(2*pi)"
+  },
+  "quadratic_form_normalization": {
+    "divisor_counting": "even completed-Xi divisor with positive ordinates counted once",
+    "polarization": "Hermitian h_f(z)=Ff(z) conjugate(Ff(conjugate(z)))",
+    "overall_prefactor": "centered half-divisor convention"
+  },
+  "archimedean_term": {
+    "multiplier": "Re digamma(1/4+iu/2)-log(pi)",
+    "sign": "+",
+    "prefactor": "1/(4*pi) against |Ff|^2 du, equivalently 1/2 against |unitary_Ff|^2 du"
+  },
+  "prime_translation_terms": {
+    "coefficient": "Lambda(n)/sqrt(n) for log(n)<=2L",
+    "sign": "-",
+    "prefactor": "1",
+    "translation_direction": "T_a f(x)=f(x+a), a=log(n), with zero extension",
+    "adjoint_rule": "take Re <f,T_a f>; T_a^*=T_-a"
+  },
+  "polar_endpoint_terms": {
+    "rank": 2,
+    "functionals": ["a_plus(f)=integral f(x) exp(x/2) dx", "a_minus(f)=integral f(x) exp(-x/2) dx"],
+    "signs": ["+"],
+    "prefactors": ["1/2 on a_plus a_minus^* + a_minus a_plus^*; quadratic value Re(a_plus conjugate(a_minus))"]
+  },
+  "zero_extension_convention": "Functions on [-L,L] are extended by zero to R before translation and Fourier transform.",
+  "dirichlet_comparison_map": {
+    "basis": "normalized Legendre polynomials on [-L,L], zero-extended",
+    "matrix_element_rule": "integrate the unitary Fourier multiplier plus the half-sum endpoint matrix",
+    "domain_statement": "The basis lies in H_log,L and is the graph-norm closure of smooth compact interval tests via H^s approximation for 0<s<1/2."
+  },
+  "external_source_verification_required": true
+}

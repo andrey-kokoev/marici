@@ -26,7 +26,7 @@ def run(nx,npanel,reltol=1e-12,export_path=None):
     Fm=np.exp(-1j*u[:,None]*x[None,:])*(np.sqrt(wu)[:,None]*sw[None,:]/math.sqrt(2*math.pi))
     M=np.real(Fm.conj().T@(symbol[:,None]*Fm));M2=np.real(Fm.conj().T@((symbol*symbol)[:,None]*Fm))
     vp=sw*np.exp(x/2);vm=sw*np.exp(-x/2)
-    Endpoint=np.outer(vp,vm)+np.outer(vm,vp);A=M+Endpoint
+    Endpoint=(np.outer(vp,vm)+np.outer(vm,vp))/2;A=M+Endpoint
     F=P.T@A@P;C=Q.T@A@Q;C=(C+C.T)/2;B=P.T@A@Q
     ce,CV=np.linalg.eigh(C)
     allL=legvander(z,nx-1)*np.sqrt((2*np.arange(nx)+1)/(2*L))[None,:]

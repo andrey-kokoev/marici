@@ -80,7 +80,7 @@ The concentration matrix is recomputed by an independent directed Arb Gauss calc
 \alpha=0.0048694576565823159\ldots.
 \]
 
-The cutoff-form matrix has maximum entry radius \(4.09\times10^{-21}\). Exact-decimal span algebra and the residual tail complete all 25 interval \(LDL^*\) pivots; the minimum pivot lower bound is \(0.24288511718261613\).
+The source endpoint is the half-sum of the two polar evaluations, so its matrix is \((a_+a_-^*+a_-a_+^*)/2\). An audit found that the original checker had omitted this factor \(1/2\). After repair, the cutoff-form matrix still has maximum entry radius below \(4.09\times10^{-21}\). Exact-decimal span algebra and the residual tail complete all 25 interval \(LDL^*\) pivots; the corrected minimum pivot lower bound is \(0.0017645830061413439\).
 
 ## Disposition
 

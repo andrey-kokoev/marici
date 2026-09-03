@@ -15,7 +15,7 @@ def run(nx,nu,U,threshold=1/130):
     E=np.exp(-1j*u[:,None]*x[None,:])*(np.sqrt(wu)[:,None]*sw[None,:]/math.sqrt(2*math.pi))
     A=np.real(E.conj().T@(symbol[:,None]*E))
     vp=sw*np.exp(x/2); vm=sw*np.exp(-x/2)
-    A += np.outer(vp,vm)+np.outer(vm,vp)
+    A += (np.outer(vp,vm)+np.outer(vm,vp))/2
     rank=int(np.count_nonzero(lam>threshold))
     P=V[:,:rank]; F=P.T@A@P; A2=P.T@(A@A)@P
     leakage=A2-F@F; leakage=(leakage+leakage.T)/2

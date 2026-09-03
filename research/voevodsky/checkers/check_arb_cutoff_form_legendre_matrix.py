@@ -64,7 +64,7 @@ def main():
  for n in range(N):
   moment=2*L*((2*n+1)/(2*L)).sqrt()*sph_i(n,x);ap.append(moment);am.append(((-1)**n)*moment)
  for i in range(N):
-  for j in range(N):H[i][j]+=ap[i]*am[j]+am[i]*ap[j]+arb(0,REMAINDER)
+  for j in range(N):H[i][j]+=(ap[i]*am[j]+am[i]*ap[j])/2+arb(0,REMAINDER)
  numeric_data=json.loads(SOURCE.read_text(encoding='utf-8'));numeric=numeric_data['cutoff_form_legendre_matrix']
  failures=[];max_radius=0.;max_center_difference=0.
  for i in range(N):
@@ -87,6 +87,7 @@ def main():
  target_neighborhood=max_center_difference+max_radius<1e-8
  result={'schema':'marici.voevodsky.arb-cutoff-form-legendre-matrix.v1','dimension':N,
   'nodes_per_positive_panel':Q,'positive_panel_edges':[float(x) for x in EDGES],
+  'polar_endpoint_matrix':'(a_plus a_minus^* + a_minus a_plus^*)/2',
   'analytic_remainder_radius_per_entry':str(REMAINDER),'maximum_interval_radius':max_radius,
   'maximum_numeric_center_difference':max_center_difference,'numeric_scout_entries_contained':not failures,
   'numeric_scout_within_target_neighborhood':target_neighborhood,
@@ -101,6 +102,8 @@ def main():
   'final_minimum_ldl_pivot_lower':least,
   'continuum_concentration_entries_certified':True,
   'continuum_cutoff_form_entries_certified':True,
+  'coded_form_continuum_positivity_verified':tail_floor_ok and final_ok,
+  'rh_criterion_source_identity_verified':False,
   'continuum_positivity_verified':tail_floor_ok and final_ok,
   'rh_implication':False,'passed':target_neighborhood and max_radius<1e-8 and tail_floor_ok and final_ok}
  rendered=json.dumps(result,indent=2,sort_keys=True)
