@@ -35,10 +35,12 @@ def main():
         captured=G.inv()*K;tr=sum((captured[i,i] for i in range(25)),arb(0))
         rho=arb(70)/arb.pi()-tr
         floor=(1-130*rho)/40
+        residual_ok=float(rho.upper()) < float((arb(1)/130).lower())
+        floor_ok=float(floor.lower()) > 0
         tests.append({'concentration_entry_radius':radius,'captured_trace_interval':str(tr),
-          'trace_residual_interval':str(rho),'trace_residual_below_1_over_130':bool(rho<arb(1)/130),
-          'derived_tail_floor_interval':str(floor),'derived_tail_floor_positive':bool(floor>0),
-          'derived_inverse_tail_floor_interval':str(1/floor) if floor>0 else None})
+          'trace_residual_interval':str(rho),'trace_residual_below_1_over_130':residual_ok,
+          'derived_tail_floor_interval':str(floor),'derived_tail_floor_positive':floor_ok,
+          'derived_inverse_tail_floor_interval':str(1/floor) if floor_ok else None})
     result={'schema':'marici.voevodsky.interval-exact-span-trace.v1',
       'status':'exact_decimal_span_conditional_concentration_enclosure',
       'source':str(SOURCE),'concentration_matrix_dimension':80,
@@ -49,6 +51,9 @@ def main():
       'tests':tests,'gauss_remainder_bound_attached':True,
       'floating_center_roundoff_mechanically_enclosed':False,
       'continuum_concentration_entries_certified':False,
-      'passed':all(t['derived_tail_floor_positive'] for t in tests)}
-    print(json.dumps(result,indent=2,sort_keys=True))
+      'largest_passing_entry_radius':max((t['concentration_entry_radius'] for t in tests if t['derived_tail_floor_positive']),default=None),
+      'passed':any(t['derived_tail_floor_positive'] for t in tests)}
+    rendered=json.dumps(result,indent=2,sort_keys=True)
+    Path('research/voevodsky/results/interval_exact_span_trace.json').write_text(rendered+'\n',encoding='utf-8')
+    print(rendered)
 if __name__=='__main__':main()

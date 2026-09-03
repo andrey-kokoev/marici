@@ -6,7 +6,7 @@ Must a certification calculation integrate the corrected multiplier over the ent
 
 ## Claim boundary
 
-No. For \(|u|\geq100\), the corrected combined multiplier is nonnegative. Therefore the contribution omitted beyond a cutoff \(U\geq100\) is a nonnegative quadratic form. It suffices to certify positivity of the truncated form at one such cutoff. The stable \(U=250\) scout supplies a quantitative target, not a certificate.
+No. For \(|u|\geq100\), the corrected combined multiplier is nonnegative. Directed Arb subdivision now certifies this on \(100\leq|u|\leq10000\) with minimum lower margin \(0.8935\); the Binet bound covers the exterior region. Therefore the contribution omitted beyond a cutoff \(U\geq100\) is a nonnegative quadratic form. It suffices to certify positivity of the truncated form at one such cutoff. The stable \(U=250\) scout supplies a quantitative target, not a certificate.
 
 ## Monotone completion
 
@@ -77,14 +77,15 @@ At tolerance \(10^{-12}\), the reported range residual is
 r\approx4.97\times10^{-8}.
 \]
 
-Using the full-tail lower bound \(C\geq1/40\), the worst correction associated with a rigorously isolated residual of this size would be bounded by
+The former assertion \(C\geq1/40\) was too strong and is superseded. The certified concentration trace gives
 
 \[
-40r^2
-\approx9.88\times10^{-14}.
+C\geq\alpha Q,
+\qquad
+\alpha=0.00486945765658\ldots,
 \]
 
-This term is negligible relative to the target margin, but the residual itself is not interval-certified.
+so the valid inverse factor is \(\alpha^{-1}=205.361678964\ldots\). The final directed residual calculation uses this larger factor and still passes all 25 \(LDL^*\) pivots.
 
 ## Certification obligations
 
