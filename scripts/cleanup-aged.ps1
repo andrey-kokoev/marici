@@ -35,20 +35,41 @@ $commitMessages = @{
 function Invoke-Git {
   param([Parameter(ValueFromRemainingArguments)][string[]]$Arguments)
 
-  $output = & git -C $repo @Arguments 2>&1
-  if ($LASTEXITCODE -ne 0) {
-    throw "git $($Arguments -join ' ') failed: $($output -join [Environment]::NewLine)"
+  $gitPath = (Get-Command git.exe -ErrorAction Stop).Source
+  $startInfo = [System.Diagnostics.ProcessStartInfo]::new()
+  $startInfo.FileName = $gitPath
+  $startInfo.UseShellExecute = $false
+  $startInfo.RedirectStandardOutput = $true
+  $startInfo.RedirectStandardError = $true
+  $startInfo.ArgumentList.Add('-C')
+  $startInfo.ArgumentList.Add($repo)
+  foreach ($argument in $Arguments) {
+    $startInfo.ArgumentList.Add([string]$argument)
   }
-  return $output
+
+  $process = [System.Diagnostics.Process]::new()
+  $process.StartInfo = $startInfo
+  $started = $process.Start()
+  if (-not $started) { throw 'Could not start git.exe.' }
+  $stdoutTask = $process.StandardOutput.ReadToEndAsync()
+  $stderrTask = $process.StandardError.ReadToEndAsync()
+  $process.WaitForExit()
+  $stdout = $stdoutTask.GetAwaiter().GetResult()
+  $stderr = $stderrTask.GetAwaiter().GetResult()
+  $exitCode = $process.ExitCode
+  $process.Dispose()
+
+  if ($exitCode -ne 0) {
+    $detail = if ($stderr.Trim()) { $stderr.Trim() } else { $stdout.Trim() }
+    throw "git $($Arguments -join ' ') failed with exit code ${exitCode}: $detail"
+  }
+  if ($stdout.Trim()) { return ($stdout -split '\r?\n' | Where-Object { $_ }) }
 }
 
 function Invoke-GitQuiet {
   param([Parameter(ValueFromRemainingArguments)][string[]]$Arguments)
 
-  & git -C $repo @Arguments *> $null
-  if ($LASTEXITCODE -ne 0) {
-    throw "git $($Arguments -join ' ') failed with exit code $LASTEXITCODE"
-  }
+  $null = Invoke-Git @Arguments
 }
 
 function Get-DirtyRecords {
