@@ -1,0 +1,33 @@
+{
+  "schema": "marici.voevodsky.cyclic-common-interface.v1",
+  "fixture": "K=exp(-t*a^2)cos(a*z)-epsilon*exp(-t*b^2)cos(b*z)",
+  "parameters": ["t", "z", "a", "b", "epsilon", "delta", "tau"],
+  "constraints": ["t>0", "a>0", "b>0", "epsilon>0", "a!=b", "delta>=0", "tau>=0"],
+  "interfaces": {
+    "O_A": "entire even heat kernel K",
+    "P_B": "three coupled sector weights and normalization correction delta",
+    "O_B": "arithmetic presentation E+G+P=K",
+    "R_B": "tail enclosure tau*H with H=exp(-t*b^2)cos(b*z)",
+    "O_C_raw": "heat jets, Gram values, and shifted-Gaussian values of K",
+    "R_C": "negative-frequency amplitude epsilon",
+    "P_A": "gauge deformation width s=epsilon",
+    "O_A_def": "gauged kernel K_s"
+  },
+  "sector_split": {
+    "endpoint_weight": "1/4",
+    "gamma_weight": "1/4",
+    "prime_weight": "1/2",
+    "sum": "1"
+  },
+  "edge_cells": {
+    "alpha_A": "normalization correction equality",
+    "alpha_B": "tail enclosure witness tau*H",
+    "alpha_C_def": "gauge-deformation equality"
+  },
+  "completion": {
+    "transport": "(a,b)->(a/2,b/2)",
+    "limit": "(a,b)=(0,0)",
+    "preserve_epsilon": true
+  },
+  "scope": "integrated fixture for lax categorical realization; not a zeta-source identification or positivity claim"
+}

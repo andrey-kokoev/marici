@@ -1,0 +1,28 @@
+{
+  "schema": "marici.voevodsky.arithmetic-generator-gb.v1",
+  "generator": "G_B: P_B -> O_B",
+  "parameter_sort": {
+    "source_formula": "research/grothendieck/explicit-two-variable-weil-heat-source-formula.md",
+    "source_result": "research/grothendieck/results/explicit-two-variable-weil-heat-source.json",
+    "fourier_convention": "research/voevodsky/compact-weil-source-identity-instance.json",
+    "sector_inputs": ["endpoint", "gamma", "prime"],
+    "completion_parameters": ["common_cutoff", "analytic_continuation", "half_divisor_normalization"]
+  },
+  "object_sort": {
+    "kind": "completed_arithmetic_presentation",
+    "formula": "rho_ar = endpoint + gamma + prime",
+    "cancellation_policy": "assemble all sectors before scalarization",
+    "positive_sector_decomposition_asserted": false
+  },
+  "normalization": {
+    "source_to_marici_common_positive_factor": 4,
+    "factor_applies_uniformly_to": ["endpoint", "gamma", "prime"],
+    "factor_two_convention_rejected": true
+  },
+  "output_interfaces": {
+    "raw_probe_evaluation": "Phi_B: O_B -> O_C_raw",
+    "completion_residue": "C_B: O_B -> R_B"
+  },
+  "source_ownership": "read_only_reference_to_research/grothendieck",
+  "rh_or_positivity_asserted": false
+}

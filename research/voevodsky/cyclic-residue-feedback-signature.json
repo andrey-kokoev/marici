@@ -1,0 +1,84 @@
+{
+  "schema": "marici.voevodsky.cyclic-residue-feedback-signature.v1",
+  "index_object": "Z/3Z",
+  "orientation": "counterclockwise successor i -> i+1 mod 3",
+  "vertices": {
+    "A": {
+      "parameter_sort": "P_A: analytic kernel and deformation parameters",
+      "object_sort": "O_A: completed analytic objects",
+      "residue_sort": "R_A: analytic presentation-coherence residues",
+      "generator": "G_A: P_A -> O_A",
+      "coherencer": "C_A: O_A -> R_A"
+    },
+    "B": {
+      "parameter_sort": "P_B: arithmetic sector-source and continuation parameters",
+      "object_sort": "O_B: completed arithmetic presentations",
+      "residue_sort": "R_B: arithmetic completion and prime-tail residues",
+      "generator": "G_B: P_B -> O_B",
+      "coherencer": "C_B: O_B -> R_B"
+    },
+    "C": {
+      "parameter_sort": "P_C: probe-family parameters",
+      "object_sort": "O_C_raw: unrestricted probe-data objects",
+      "positive_object_sort": "O_C_positive: positive-cone objects",
+      "residue_sort": "R_C: signed-measure or Douglas obstruction residues",
+      "generator": "G_C: P_C -> O_C_raw",
+      "coherencer": "C_C: O_C_raw -> R_C",
+      "positivity_lift": "L_C: O_C_raw -> O_C_positive (candidate, not materialized)"
+    }
+  },
+  "residue_transports": {
+    "T_A": "R_A -> P_B",
+    "T_B": "R_B -> P_C",
+    "T_C": "R_C -> P_A"
+  },
+  "transition_candidates": {
+    "Phi_A": {
+      "type": "O_A -> O_B",
+      "status": "materialized_classical_normalization_comparison"
+    },
+    "Phi_B": {
+      "type": "O_B -> O_C_raw",
+      "status": "materialized_as_raw_probe_evaluation; separate lift L_C to O_C_positive is missing"
+    },
+    "Phi_C": {
+      "type": "O_C -> O_A",
+      "status": "speculative_deformation_in_fork; not admitted in main model"
+    }
+  },
+  "edge_comparison_2_cells": {
+    "alpha_A": "G_B o T_A o C_A => Phi_A",
+    "alpha_B": "G_C o T_B o C_B => Phi_B",
+    "alpha_C": "G_A o T_C o C_C => Phi_C"
+  },
+  "cycle_cell": {
+    "name": "Omega_ABC",
+    "boundary": "pasting(alpha_C, alpha_B, alpha_A) compares the residue-feedback three-cycle with Phi_C o Phi_B o Phi_A",
+    "status": "materialized_as_lax_filler_on_common_signed_even_fixture"
+  },
+  "completion_interface": {
+    "objects": "F_a for a in [0,infinity)",
+    "transport": "h_a: F_a -> F_(a/2)",
+    "limit": "F_0",
+    "obligation": "G_i, C_i, T_i, alpha_i, and Omega_ABC preserve declared omega-limit cones whenever defined"
+  },
+  "realization_state": {
+    "G_A": "materialized",
+    "G_B": "materialized",
+    "G_C": "materialized_on_atomic_fixture",
+    "C_A": "materialized_on_normalization_fixture",
+    "C_B": "materialized",
+    "C_C": "materialized",
+    "T_A": "materialized_as_tag_preserving_map",
+    "T_B": "materialized",
+    "T_C": "materialized",
+    "alpha_A": "materialized_on_normalization_fixture",
+    "alpha_B": "materialized_as_raw_probe_enclosure_cell",
+    "alpha_C": "materialized_in_deformation_envelope_fixture",
+    "Omega_ABC": "materialized_as_lax_filler_on_common_signed_even_fixture; unique modulo local vertex adjustments (H2=0)"
+  },
+  "semantic_mode": "lax_cyclic_cubical_diagram",
+  "transport_modality": "typed directed maps; no adjacent-fiber equivalence or inverse asserted",
+  "global_coherence_modality": "fixture-level lax filler inhabited and unique modulo local vertex adjustments; literal uniqueness, higher contractibility, and source-global naturality not asserted",
+  "scope": "simultaneous signature declaration only; no missing realization or coherence law is asserted"
+}

@@ -1,0 +1,117 @@
+{-# OPTIONS --safe --cubical --no-import-sorts --guardedness --lossy-unification #-}
+module ConstructiveValueModel where
+
+-- Checked completion carrier and additive structure.
+open import CauchyMetricEquivalence public
+open import CauchyRationalDensity public
+open import LeastDyadicExponent public
+open import LeastDyadicExponentSearch public
+open import CanonicalDyadicallyBoundedCauchy public
+open import CauchyQuantitativeContinuity public
+open import CauchyCompletionAbGroup public
+open import DyadicallyBoundedCauchyAddition public
+open import DyadicallyBoundedCauchyMultiplication public
+open import DyadicallyBoundedCauchyNegation public
+open import DyadicallyBoundedCauchyShift public
+
+-- Checked multiplication and its currently established law boundary.
+open import CauchyCompletionMultiplication public
+open import CauchyCompletionMultiplicativeLaws public
+open import CauchyCompletionCommRing public
+
+-- Checked rational exponential/cosine values and their zero identities.
+open import RationalSineTaylorApproximants public
+open import RationalLogTaylorApproximants public
+open import RationalLogConvergenceContract public
+open import AtanhTermBounds public
+open import AtanhPowerDecayContract public
+open import AtanhTailBounds public
+open import OrderedDifferenceRegularity public
+open import ConstructiveDirichletTerm public
+open import OperationalDirichletTerm public
+open import OperationalDirichletPartialSum public
+open import OperationalZetaPrimitives public
+open import CanonicalRegularMultiplication public
+open import CanonicalComplexRegularMultiplication public
+open import CanonicalComplexRegularExponential public
+open import CanonicalNegativePowerKernel public
+open import CanonicalDirichletRegularPartialSum public
+open import CanonicalDirichletTriangularApproximation public
+open import ConstructiveZetaTwo public
+open import ConstructiveNaturalZeta public
+open import NaturalZetaCompletion public
+open import RegularCauchyTriangularEmbedding public
+open import AbsoluteTaylorSeriesMultiplication public
+open import RationalSineSymmetry public
+open import SineTermBounds public
+open import UniformSineSeedBounds public
+open import SineInputDifference public
+open import SinePartialSumInputDifference public
+open import UniformSineInputStabilityContract public
+open import UniformSineStabilityScale public
+open import UniformSineLateDifference public
+open import CanonicalSineSchedule public
+open import CanonicalSineRegularity public
+open import CanonicalSineComparisonSchedule public
+open import CanonicalSineUniformComparison public
+open import OperationalSineMetric public
+open import SineTailSchedule public
+open import SineSeedCoherence public
+open import SineSeedNegation public
+open import CanonicalRationalSineSeed public
+open import ExponentialSeedConstruction public
+open import TaylorUniformSeedBounds public
+open import TaylorInputDifference public
+open import TaylorPartialSumInputDifference public
+open import UniformTaylorInputStabilityContract public
+open import UniformExponentialStabilityScale public
+open import UniformExponentialDifferenceWeights public
+open import UniformExponentialLateDifference public
+open import CanonicalExponentialSchedule public
+open import TaylorScheduleMonotonicity public
+open import TaylorRegularityComposition public
+open import CanonicalExponentialRegularity public
+open import CanonicalExponentialComparisonSchedule public
+open import CanonicalExponentialUniformComparison public
+open import OperationalExponentialMetric public
+open import ComplexExponentialAssembly public
+open import OperationalAnalyticZeroLaws public
+open import CosineSeedConstruction public
+open import UniformCosineSeedBounds public
+open import CosineInputDifference public
+open import CosinePartialSumInputDifference public
+open import UniformCosineInputStabilityContract public
+open import UniformCosineStabilityScale public
+open import UniformCosineLateDifference public
+open import CanonicalCosineSchedule public
+open import CanonicalCosineRegularity public
+import CanonicalCosineComparisonSchedule
+import CanonicalCosineUniformComparison
+open import OperationalCosineMetric public
+open import TaylorValuesAtZero public
+
+-- Typed arbitrary-input lift requirements and completed-model integration.
+open import CompletionUnaryDescent public
+open import TaylorLiftContract public
+open import MultiplicativeCompletedKernelEvaluation public
+
+-- Source interpretation is checked only relative to externally supplied source
+-- objects; supplying those objects remains a separate authority operation.
+open import SourceInterpretation public
+
+-- Checked complex carrier and typed zeta-zero constructibility questions.
+open import ConstructiveComplexCompletion public
+open import ComplexCauchyApproximation public
+open import CertifiedComplexEvaluation public
+open import ComplexSeriesCompletion public
+open import TriangularComplexSeriesCompletion public
+open import ComplexSeriesZeroControl public
+open import ConstructiveZetaInterfaces public
+open import CriticalStripZeroContract public
+open import ExactComplexZeroExclusion public
+open import ZetaConstructibilityContract public
+open import RationalDirichletZeta public
+open import FiniteZetaExactExclusion public
+open import FiniteZetaNoSelector public
+open import ZetaSelectorCountermodels public
+open import ZetaZeroNamingContract public

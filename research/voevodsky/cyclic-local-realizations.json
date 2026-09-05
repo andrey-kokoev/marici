@@ -1,0 +1,56 @@
+{
+  "schema": "marici.voevodsky.cyclic-local-realizations.v1",
+  "G_C": {
+    "type": "P_C -> O_C_raw",
+    "charts": ["heat_jets", "real_gram_packets", "shifted_gaussians"],
+    "common_apex": "K(t,z)",
+    "fixture": "K(t,z)=exp(-t*a^2)*cos(a*z)"
+  },
+  "C_A": {
+    "type": "O_A -> R_A",
+    "residue_sum": ["normalization", "continuation", "cutoff", "completion"],
+    "zero_requires_certificate": true
+  },
+  "T_A": {
+    "type": "R_A -> P_B",
+    "tag_map": {
+      "normalization": "half_divisor_normalization",
+      "continuation": "analytic_continuation",
+      "cutoff": "common_cutoff",
+      "completion": "completion_parameter"
+    },
+    "tag_preserving": true
+  },
+  "alpha_B": {
+    "type": "G_C o T_B o C_B => Phi_B",
+    "modality": "interval enclosure cell",
+    "codomain": "O_C_raw"
+  },
+  "alpha_A": {
+    "type": "G_B o T_A o C_A => Phi_A",
+    "modality": "normalization correction cell"
+  },
+  "Phi_C_def": {
+    "type": "O_C_raw -> O_A_def",
+    "scope": "deformation envelope only",
+    "map": "rho_epsilon -> K_epsilon(t,z)"
+  },
+  "alpha_C_def": {
+    "type": "G_A o T_C o C_C => Phi_C_def",
+    "modality": "equality on signed atomic fixture"
+  },
+  "completion": {
+    "family": "F_a, a>=0",
+    "transport": "a -> a/2",
+    "limit": "F_0",
+    "local_maps_required_to_commute": ["G_C", "C_A", "T_A", "alpha_B", "alpha_A", "Phi_C_def", "alpha_C_def"]
+  },
+  "Omega_ABC": {
+    "status": "materialized_as_lax_filler_on_common_signed_even_fixture",
+    "common_interface": "research/voevodsky/cyclic-common-interface.json",
+    "witness": "(0, tau*H, 0)",
+    "unique_or_contractible_asserted": false,
+    "source_global_naturality_asserted": false
+  },
+  "rh_or_positivity_asserted": false
+}

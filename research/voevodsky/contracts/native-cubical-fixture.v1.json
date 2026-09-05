@@ -1,0 +1,36 @@
+{
+  "schema": "marici.voevodsky.native-cubical-fixture.v1",
+  "coefficient_ring": "Z",
+  "vertices": [
+    {"id": "A", "parameter": "P_A", "object": "O_A", "residue": "R_A", "generator": {"source": "P_A", "target": "O_A"}, "coherencer": {"source": "O_A", "target": "R_A"}},
+    {"id": "B", "parameter": "P_B", "object": "O_B", "residue": "R_B", "generator": {"source": "P_B", "target": "O_B"}, "coherencer": {"source": "O_B", "target": "R_B"}},
+    {"id": "C", "parameter": "P_C", "object": "O_C_raw", "residue": "R_C", "generator": {"source": "P_C", "target": "O_C_raw"}, "coherencer": {"source": "O_C_raw", "target": "R_C"}}
+  ],
+  "successor": {"A": "B", "B": "C", "C": "A"},
+  "residue_transports": [
+    {"id": "T_A", "source": "R_A", "target": "P_B"},
+    {"id": "T_B", "source": "R_B", "target": "P_C"},
+    {"id": "T_C", "source": "R_C", "target": "P_A"}
+  ],
+  "transitions": [
+    {"id": "Phi_A", "source": "O_A", "target": "O_B"},
+    {"id": "Phi_B", "source": "O_B", "target": "O_C_raw"},
+    {"id": "Phi_C", "source": "O_C_raw", "target": "O_A"}
+  ],
+  "edge_cells": [
+    {"id": "alpha_A", "source_path": ["C_A", "T_A", "G_B"], "target": "Phi_A"},
+    {"id": "alpha_B", "source_path": ["C_B", "T_B", "G_C"], "target": "Phi_B"},
+    {"id": "alpha_C", "source_path": ["C_C", "T_C", "G_A"], "target": "Phi_C"}
+  ],
+  "omega": {"id": "Omega_ABC", "oriented_faces": ["alpha_A", "alpha_B", "alpha_C"], "filler_status": "fixture_inhabited_unique_mod_vertex_adjustment"},
+  "chain_complex": {
+    "c1_basis": ["A", "B", "C"],
+    "c2_basis": ["alpha_A", "alpha_B", "alpha_C"],
+    "c3_basis": ["Omega_ABC"],
+    "d1_matrix": [[-1, 1, 0], [0, -1, 1], [1, 0, -1]],
+    "d2_matrix": [[1, 1, 1]]
+  },
+  "completion": {"base": "signed_even_kernel_fixture", "completed": "completed_signed_even_kernel_fixture", "map": "identity_fixture_adapter", "preserves_injection": true},
+  "residual_reentry": {"source": "child_tower", "target": "parent_tower", "authority_constructor": null, "required_constructor": "cubical_residual_parent_promotion"},
+  "scope": "integer-coordinate fixture contract; no source-global naturality or RH conclusion"
+}
