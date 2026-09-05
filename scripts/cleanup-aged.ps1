@@ -17,7 +17,7 @@ Set-StrictMode -Version Latest
 $repo = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path
 $cutoff = (Get-Date).ToUniversalTime().AddMinutes(-$OlderThanMinutes)
 $maxPathsPerCommit = 200
-$temporaryPattern = '(^|/)(tmp|temp)(/|$)|(^|/).*\.(tmp|bak|swp)$|(^|/)tmp\.json$'
+$temporaryPattern = '(^|/)(tmp|temp|\.check-tmp[^/]*)(/|$)|(^|/).*\.(tmp|bak|swp)$|(^|/)tmp\.json$'
 $commitMessages = @{
   '.narada' = 'Checkpoint Narada metadata'
   'background' = 'Checkpoint background artifacts'
@@ -84,6 +84,8 @@ function Invoke-GitAdd {
   $startInfo.RedirectStandardError = $true
   $startInfo.ArgumentList.Add('-C')
   $startInfo.ArgumentList.Add($repo)
+  $startInfo.ArgumentList.Add('-c')
+  $startInfo.ArgumentList.Add('core.longpaths=true')
   $startInfo.ArgumentList.Add('add')
   $startInfo.ArgumentList.Add('--pathspec-from-file=-')
   $startInfo.ArgumentList.Add('--pathspec-file-nul')
