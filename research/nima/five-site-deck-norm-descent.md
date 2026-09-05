@@ -20,41 +20,29 @@ For a four-element proper-section orbit with invariant part \(A\),
 \]
 
 Consequently the 91 cover hyperplanes become exactly
-
 \[
-\boxed{1+5+20=26}
+1+5+20=26.
 \]
 
-base norm divisors: the invariant total-energy carrier, five edge norms, and
-twenty proper-section norms. No choice of sheet enters this descent.
+These are base norm divisors: the invariant total-energy carrier, five edge norms, and twenty proper-section norms. No choice of sheet enters this descent.
 
-These 26 divisors are the poles of the descended rational marked form. The
-twisted connection also has its five Kummer branch divisors \(R_i=0\).
-Therefore the complete logarithmic support packet for the character complex
-is
+These 26 divisors are the poles of the descended rational marked form. The twisted connection also has its five Kummer branch divisors \(R_i=0\). Therefore the complete logarithmic support packet for the character complex is
 
 \[
-\boxed{
 \{q_G=0\}
 \cup\{T^2-4R_i=0\}_{i=1}^5
 \cup\{N_A=0\}_{A=1}^{20}
-\cup\{R_i=0\}_{i=1}^5,
-}
+\cup\{R_i=0\}_{i=1}^5.
 \]
 
-with 31 labelled components before fiberwise removal of the parameter-only
-total-energy factor. The extra five are existing edge-soft/Kummer branch
-support, not new marked carrier divisors.
+There are 31 labelled components before fiberwise removal of the parameter-only total-energy factor. The extra five are existing edge-soft/Kummer branch support, not new marked carrier divisors.
 
 ## Weight-five hostile block
 
 For \(\chi_{12345}\), the rank-one Kummer connection on the base is
 
 \[
-\boxed{
-\nabla_{12345}
-=d+\frac12\sum_{i=1}^5d\log R_i.
-}
+\nabla_{12345}=d+\frac12\sum_{i=1}^5d\log R_i.
 \]
 
 On Benincasa's frozen asymmetric slice, the corrected physical numerator has

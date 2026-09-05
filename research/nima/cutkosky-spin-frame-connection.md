@@ -24,15 +24,7 @@ Thus the equality of their spin fibers is exactly the comparison datum that
 was missing from independent experimental angular bins. In the source theory
 it is provided by cut gluing, not chosen afterward.
 
-This establishes the typing of the nonforward connection:
-
-\[
-\boxed{
-\text{common on-shell cut fiber}
-\longrightarrow
-\text{canonical cross-angle pairing}.
-}
-\]
+This establishes the typed map from the common on-shell cut fiber to the canonical cross-angle pairing.
 
 The remaining work is analytic rather than categorical: construct the explicit
 fixed-\(t\) phase-space discontinuities, determine the required subtractions,

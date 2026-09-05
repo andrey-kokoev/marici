@@ -1,0 +1,49 @@
+{
+  "schema": "marici.nima.six_point_nmhv_triangulation_fixture.v1",
+  "status": "combinatorial_fixture_constructed_analytic_source_locator_pending",
+  "sector": {
+    "theory": "planar N=4 supersymmetric Yang-Mills",
+    "multiplicity": 6,
+    "helicity_sector": "NMHV",
+    "amplituhedron_parameters": {"n": 6, "k": 1, "m": 4}
+  },
+  "external_data": {
+    "symbol": "Z",
+    "condition": "explicit positive ordered moment-curve data",
+    "explicit_coordinates": {
+      "formula": "Z_i=(1,i,i^2,i^3,i^4)",
+      "index_range": [1, 6]
+    },
+    "positivity_certificate": "Every ordered five-bracket is a positive Vandermonde determinant; exact values are recorded by the canonical-form checker."
+  },
+  "orientation": "Every simplex and facet is written in increasing vertex order; boundary deletes position i with coefficient (-1)^i, using zero-based i.",
+  "triangulations": {
+    "left": [[1,2,3,4,5],[1,2,3,5,6],[1,3,4,5,6]],
+    "right": [[1,2,3,4,6],[1,2,4,5,6],[2,3,4,5,6]]
+  },
+  "expected_internal_facets": {
+    "left": [[1,2,3,5],[1,3,4,5],[1,3,5,6]],
+    "right": [[1,2,4,6],[2,3,4,6],[2,4,5,6]]
+  },
+  "five_bracket_relation": "[12345]-[12346]+[12356]-[12456]+[13456]-[23456]=0",
+  "equivalent_positive_sums": "[12345]+[12356]+[13456]=[12346]+[12456]+[23456]",
+  "sources": [
+    {
+      "citation": "N. Arkani-Hamed and J. Trnka, The Amplituhedron, arXiv:1312.2007",
+      "role": "primary framework for positive geometry and canonical forms",
+      "exact_equation_locator": null
+    },
+    {
+      "citation": "N. Arkani-Hamed et al., Scattering Amplitudes and the Positive Grassmannian, arXiv:1212.5605",
+      "role": "primary framework for positroid/on-shell representations and R-invariants",
+      "exact_equation_locator": null
+    }
+  ],
+  "authority_boundary": "The triangulation and six-term relation are an authored standard reconstruction. They are not yet a primary-source-extracted fixture because exact equation locators, bosonization convention, canonical-form normalization, and boundary-to-kinematics dictionary are absent.",
+  "acceptance_remaining": [
+    "primary-source equation locators",
+    "proof of the rational canonical-form identity for generic positive Z rather than the explicit moment-curve fixture",
+    "primary-source normalization for the cell canonical forms",
+    "boundary-to-factorization and collinear dictionary"
+  ]
+}
