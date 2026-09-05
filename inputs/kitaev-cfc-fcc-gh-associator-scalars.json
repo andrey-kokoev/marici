@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-cfc-fcc-gh-associator-scalars",
+  "created_at": "2026-08-31T21:14:26.649741Z",
+  "sha256": "7828e14577ac31c69916b7662380c2a8bf86b37ef481606b14d006f835bd7087",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import math\nq=math.sqrt\ndef mm(A,B):return[[sum(A[i][k]*B[k][j]for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[A[j][i].conjugate()for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(A,B):return[[A[i//len(B)][j//len(B[0])]*B[i%len(B)][j%len(B[0])]for j in range(len(A[0])*len(B[0]))]for i in range(len(A)*len(B))]\ndef flip(E):return[[E[2*(r%2)+r//2][j]for j in range(2)]for r in range(4)]\ndef scalar(R,L):\n X=mm(dg(R),L);s=sum(X[i][i]for i in range(2))/2;e=max(abs(X[i][j]-(s if i==j else 0))for i in range(2)for j in range(2));return s,e\nI=[[1,0],[0,1]];EC=[[1/q(2),0],[0,-1/q(2)],[0,-1/q(2)],[-1/q(2),0]];W=[[-q(3)+1j,0],[0,-2j],[1+1j*q(3),0],[0,2]];ag=(-q(3)-1j)/2;VG=[[ag*z/(2*q(2))for z in r]for r in W];VH=[[z.conjugate()for z in r]for r in VG]\nfor t,U in [('G',VH),('H',VG)]:\n S=flip(U);L=mm(kr(U,I),S);R=mm(kr(I,S),U);print('CFC',t,scalar(R,L))\n outer=flip(VG if t=='G' else VH);L2=mm(kr(S,I),S);R2=mm(kr(I,EC),outer);print('FCC',t,scalar(R2,L2))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "numerical total-G/H CFC and FCC associator scalar derivation",
+    "expected_cost": "eight 8x2 path maps and four scalar overlaps"
+  }
+}

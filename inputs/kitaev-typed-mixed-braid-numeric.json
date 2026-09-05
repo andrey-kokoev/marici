@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-typed-mixed-braid-numeric",
+  "created_at": "2026-08-31T20:16:27.4500607Z",
+  "sha256": "a2780452b09009cfd32e7d3af22de7715a19cbcd373cb645a5ca6231b5a1c736",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import math,cmath,json\nsq=math.sqrt\ndef mm(A,B):return[[sum(A[i][k]*B[k][j]for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[A[j][i].conjugate()for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(A,B):return[[A[i//len(B)][j//len(B[0])]*B[i%len(B)][j%len(B[0])]for j in range(len(A[0])*len(B[0]))]for i in range(len(A)*len(B))]\ndef err(A,B):return max(abs(A[i][j]-B[i][j])for i in range(len(A))for j in range(len(A[0])))\ndef coord(T,O,S):\n M=[];res=0\n for t in T:\n  row=[]\n  for s in S:\n   X=mm(dg(t),mm(O,s));q=sum(X[i][i]for i in range(2))/2;res=max(res,err(X,[[q,0],[0,q]]));row.append(q)\n  M.append(row)\n return M,res\nI=[[1,0],[0,1]];P=[[1,0,0,0],[0,0,1,0],[0,1,0,0],[0,0,0,1]];EA=[[1/sq(2)],[0],[0],[1/sq(2)]];EB=[[0],[1/sq(2)],[-1/sq(2)],[0]];JB=[[1,0],[0,-1]]\nWg=[[-sq(3)+1j,0],[0,-2j],[1+1j*sq(3),0],[0,2]];Wh=[[z.conjugate()for z in r]for r in Wg];ag=(-sq(3)-1j)/2;ah=ag.conjugate();VG=[[ag*z/(2*sq(2))for z in r]for r in Wg];VH=[[ah*z/(2*sq(2))for z in r]for r in Wh];PG=mm(P,VG);PH=mm(P,VH)\nCCF=[kr(EA,I),mm(kr(EB,I),JB)];CFC=[mm(kr(VG,I),PH),mm(kr(VH,I),PG)];FCC=[mm(kr(PG,I),PH),mm(kr(PH,I),PG)]\nr=[[-.5,-sq(3)/2],[sq(3)/2,-.5]];r2=mm(r,r);R=[[0]*4 for _ in range(4)]\nfor b,M in enumerate((r,r2)):\n for i in range(2):\n  for j in range(2):R[2*b+i][2*b+j]=M[i][j]\nBFC=mm(P,R);Bplain=P\nops={'a':coord(CCF,kr(Bplain,I),CCF),'b':coord(CFC,kr(I,Bplain),CCF),'c':coord(FCC,kr(Bplain,I),CFC),'d':coord(CCF,kr(I,BFC),CFC),'e':coord(CFC,kr(BFC,I),FCC),'f':coord(FCC,kr(I,Bplain),FCC)}\na,b,c,d,e,f=[ops[x][0]for x in 'abcdef'];left=mm(c,mm(b,a));right=mm(f,mm(c,b));left2=mm(a,mm(d,e));right2=mm(d,mm(e,f));print(json.dumps({'maps':{k:[[str(complex(round(z.real,12),round(z.imag,12)))for z in row]for row in v[0]]for k,v in ops.items()},'scalar_residual':max(v[1]for v in ops.values()),'CCF_to_FCC_braid_residual':err(left,right),'FCC_to_CCF_braid_residual':err(left2,right2)},indent=2))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "read-only typed mixed braid relation across ordered CCF CFC FCC spaces",
+    "expected_cost": "six coordinate maps and two 2x2 route comparisons"
+  }
+}

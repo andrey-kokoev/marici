@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-frozen-representation-source-extract-v2",
+  "created_at": "2026-08-31T21:34:13.3709212Z",
+  "sha256": "307321f9f713254ae199cf074370b908f6ea6032b5dd3fcc1763b5de925c7477",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import ast\nfrom pathlib import Path\np=Path('research/kitaev/checkers/check_s3_universal_R_partial_trace.py');s=p.read_text(encoding='utf-8');t=ast.parse(s)\nfor x in ast.walk(t):\n if isinstance(x,ast.FunctionDef) and x.name in ('internal_matrix','representation'):print('---',x.name);print(ast.get_source_segment(s,x))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "bounded extraction of nested frozen representation definitions",
+    "expected_cost": "one AST walk and two definition renderings"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-gf-hf-to-c-intertwiners",
+  "created_at": "2026-08-31T21:31:37.8500055Z",
+  "sha256": "e6140bc59d21e3e882532fad2f5c62b18ec3ec2b230fd3c74950dd27ff524a90",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as Q\nZ=(Q(0),)*4;O=(Q(1),Q(0),Q(0),Q(0));S=(Q(0),Q(1),Q(0),Q(0));I=(Q(0),Q(0),Q(1),Q(0))\ndef a(x,y):return tuple(x[j]+y[j]for j in range(4))\ndef sc(q,x):return tuple(q*v for v in x)\ndef m(x,y):\n A,B,C,D=x;E,F,G,H=y;return(A*E+3*B*F-C*G-3*D*H,A*F+B*E-C*H-D*G,A*G+3*B*H+C*E+3*D*F,A*H+B*G+C*F+D*E)\ndef sm(xs):\n z=Z\n for x in xs:z=a(z,x)\n return z\ndef mm(A,B):return[[sm(m(A[i][k],B[k][j])for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[(A[j][i][0],A[j][i][1],-A[j][i][2],-A[j][i][3])for j in range(len(A))]for i in range(len(A[0]))]\nR=[[sc(-Q(1,2),O),sc(-Q(1,2),S)],[sc(Q(1,2),S),sc(-Q(1,2),O)]];T=[[O,Z],[Z,sc(-1,O)]];w=sc(Q(1,2),a(sc(-1,O),m(I,S)));w2=(w[0],w[1],-w[2],-w[3]);X=[[w,Z],[Z,w2]];X2=[[w2,Z],[Z,w]];P=[[Z,O],[O,Z]]\nfor name,D,U in [('GxF->C',X,[[O,I],[O,sc(-1,I)]]),('HxF->C',X2,[[O,sc(-1,I)],[O,I]])]:\n assert mm(D,U)==mm(U,R);assert mm(P,U)==mm(U,T);assert mm(dg(U),U)==[[sc(2,O),Z],[Z,sc(2,O)]];print(name,{'cleared_support_rows':['r,r2','r2,r'],'gram':2,'generator_checks':['r','s']})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "exact G/H tensor F to C intertwiners on zero-flux support",
+    "expected_cost": "four exact generator identities and two Gram identities"
+  }
+}

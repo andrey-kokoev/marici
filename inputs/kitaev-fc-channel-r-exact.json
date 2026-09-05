@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-fc-channel-r-exact",
+  "created_at": "2026-08-31T19:53:43.8308213Z",
+  "sha256": "3ce212a49e5aaf0db143eebc030326d082f7a402b718853f74bd083212cfd0bc",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as Q\nZ=(Q(0),)*4;O=(Q(1),Q(0),Q(0),Q(0));S=(Q(0),Q(1),Q(0),Q(0));I=(Q(0),Q(0),Q(1),Q(0))\ndef a(x,y):return tuple(x[k]+y[k]for k in range(4))\ndef s(q,x):return tuple(q*z for z in x)\ndef m(x,y):\n A,B,C,D=x;E,F,G,H=y\n return(A*E+3*B*F-C*G-3*D*H,A*F+B*E-C*H-D*G,A*G+3*B*H+C*E+3*D*F,A*H+B*G+C*F+D*E)\ndef mv(M,v):return[a(m(M[i][0],v[0]),m(M[i][1],v[1]))for i in range(2)]\nr=[[s(Q(-1,2),O),s(Q(-1,2),S)],[s(Q(1,2),S),s(Q(-1,2),O)]]\ndef mm(A,B):return[[a(m(A[i][0],B[0][j]),m(A[i][1],B[1][j]))for j in range(2)]for i in range(2)]\nr2=mm(r,r);w=(Q(-1,2),Q(0),Q(0),Q(1,2));w2=m(w,w)\nvg0=[a(s(-1,S),I),a(O,m(I,S))];vg1=[s(-2,I),s(2,O)];vh0=[a(s(-1,S),s(-1,I)),a(O,s(-1,m(I,S)))];vh1=[s(2,I),s(2,O)]\nfor M,v,l in[(r,vg0,w),(r2,vg1,w),(r,vh0,w2),(r2,vh1,w2)]:assert mv(M,v)==[m(l,x)for x in v]\nprint({'R_FC_G':'omega','R_FC_H':'omega^2','exact_flux_block_eigenchecks':4,'monodromy_with_R_CF':('omega','omega^2')})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "read-only exact Q(sqrt(3),i) verification of F-first channel braid eigenvalues",
+    "expected_cost": "four exact 2x2 matrix-vector identities"
+  }
+}

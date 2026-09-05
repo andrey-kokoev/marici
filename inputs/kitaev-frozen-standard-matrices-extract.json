@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-frozen-standard-matrices-extract",
+  "created_at": "2026-08-31T21:36:17.70248Z",
+  "sha256": "c3474dbd05d5ca8d5d33de083b625ae6053d5bc307045fbf2ffc874d8fa58672",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import ast\nfrom pathlib import Path\np=Path('research/kitaev/checkers/check_s3_universal_R_partial_trace.py');s=p.read_text(encoding='utf-8');t=ast.parse(s)\nfor x in ast.walk(t):\n if isinstance(x,ast.Assign) and any(getattr(y,'id','') in ('rmat','smat') for y in x.targets):print(ast.get_source_segment(s,x))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "bounded extraction of frozen standard generator matrices",
+    "expected_cost": "two assignment renderings"
+  }
+}

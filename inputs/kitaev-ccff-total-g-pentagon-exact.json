@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-ccff-total-g-pentagon-exact",
+  "created_at": "2026-08-31T21:28:32.4644226Z",
+  "sha256": "42774df21cd4c273f902d68c5884d13770a2204cb1a36cc45ca4941f13240fbc",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as Q\nZ=(Q(0),)*4;O=(Q(1),Q(0),Q(0),Q(0));S=(Q(0),Q(1),Q(0),Q(0));I=(Q(0),Q(0),Q(1),Q(0))\ndef a(x,y):return tuple(x[k]+y[k]for k in range(4))\ndef sc(q,x):return tuple(q*v for v in x)\ndef cj(x):return(x[0],x[1],-x[2],-x[3])\ndef m(x,y):\n A,B,C,D=x;E,F,G,H=y;return(A*E+3*B*F-C*G-3*D*H,A*F+B*E-C*H-D*G,A*G+3*B*H+C*E+3*D*F,A*H+B*G+C*F+D*E)\ndef sm(xs):\n z=Z\n for x in xs:z=a(z,x)\n return z\ndef mm(A,B):return[[sm(m(A[i][k],B[k][j])for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[cj(A[j][i])for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(*xs):\n R=[[O]]\n for B in xs:R=[[m(R[i//len(B)][j//len(B[0])],B[i%len(B)][j%len(B[0])])for j in range(len(R[0])*len(B[0]))]for i in range(len(R)*len(B))]\n return R\ndef chk(M,q):assert mm(dg(M),M)==[[sc(q,O),Z],[Z,sc(q,O)]]\ndef edge(T,U,z):assert mm(dg(T),U)==[[z,Z],[Z,z]]\nID=[[O,Z],[Z,O]];EC=[[O,Z],[Z,sc(-1,O)],[Z,sc(-1,O)],[sc(-1,O),Z]];W=[[a(sc(-1,S),I),Z],[Z,sc(-2,I)],[a(O,m(I,S)),Z],[Z,sc(2,O)]];ag=sc(Q(1,2),a(sc(-1,S),sc(-1,I)));Ug=[[m(ag,x)for x in r]for r in W];Uh=[[cj(x)for x in r]for r in Ug];D=[[Z,O],[Z,Z],[Z,Z],[O,Z]]\nT1=mm(mm(kr(EC,ID,ID),kr(Uh,ID)),D);T2=mm(mm(kr(ID,Ug,ID),kr(Ug,ID)),D);T3=mm(kr(EC,D),Ug);T4=mm(mm(kr(ID,Ug,ID),kr(ID,D)),Uh);T5=mm(mm(kr(ID,ID,D),kr(ID,Uh)),Uh)\nfor T,q in zip((T1,T2,T3,T4,T5),(16,64,16,64,64)):chk(T,q)\nw=sc(Q(1,2),a(sc(-1,O),m(I,S)));w2=cj(w);edge(T2,T1,sc(32,O));edge(T4,T2,sc(64,w));edge(T5,T4,sc(64,w));edge(T3,T5,sc(32,O));edge(T3,T1,sc(16,w2));assert m(w,w)==w2\nprint({'field':'Q(sqrt(3),i)','path_grams':[16,64,16,64,64],'edge_scalars':['1','omega','omega','1','omega^2'],'exact_pentagon':True,'status':'passed'})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "exact one-dimensional total-G CCFF pentagon certificate",
+    "expected_cost": "five exact path Grams, five exact overlaps, one phase product"
+  }
+}

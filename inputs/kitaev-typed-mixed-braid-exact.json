@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-typed-mixed-braid-exact",
+  "created_at": "2026-08-31T20:18:54.5520488Z",
+  "sha256": "965f67add334056df39ddcb1904439ceb6d53f0bdd778d8e33b79b162dfa5429",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as Q\nZ=(Q(0),)*4;O=(Q(1),Q(0),Q(0),Q(0));S=(Q(0),Q(1),Q(0),Q(0));I=(Q(0),Q(0),Q(1),Q(0))\ndef a(x,y):return tuple(x[k]+y[k]for k in range(4))\ndef s(q,x):return tuple(q*z for z in x)\ndef n(x):return s(-1,x)\ndef cj(x):return(x[0],x[1],-x[2],-x[3])\ndef m(x,y):\n A,B,C,D=x;E,F,G,H=y\n return(A*E+3*B*F-C*G-3*D*H,A*F+B*E-C*H-D*G,A*G+3*B*H+C*E+3*D*F,A*H+B*G+C*F+D*E)\ndef sm(xs):\n z=Z\n for x in xs:z=a(z,x)\n return z\ndef mm(A,B):return[[sm(m(A[i][k],B[k][j])for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[cj(A[j][i])for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(A,B):return[[m(A[i//len(B)][j//len(B[0])],B[i%len(B)][j%len(B[0])])for j in range(len(A[0])*len(B[0]))]for i in range(len(A)*len(B))]\ndef proj(T,X,U):return[[mm(dg(T[i]),mm(X,U[j])) for j in range(2)]for i in range(2)]\ndef chk(B,E):\n for i in range(2):\n  for j in range(2):assert B[i][j]==[[E[i][j],Z],[Z,E[i][j]]]\nID=[[O,Z],[Z,O]];P=[[O,Z,Z,Z],[Z,Z,O,Z],[Z,O,Z,Z],[Z,Z,Z,O]];EA=[[O],[Z],[Z],[O]];EB=[[Z],[O],[n(O)],[Z]];JB=[[O,Z],[Z,n(O)]]\nWg=[[a(n(S),I),Z],[Z,s(-2,I)],[a(O,m(I,S)),Z],[Z,s(2,O)]];Wh=[[cj(x)for x in r]for r in Wg];ag=s(Q(1,2),a(n(S),n(I)));ah=cj(ag);Ug=[[m(ag,x)for x in r]for r in Wg];Uh=[[m(ah,x)for x in r]for r in Wh];Pg=mm(P,Ug);Ph=mm(P,Uh)\nCCF=[kr(EA,ID),mm(kr(EB,ID),JB)];CFC=[mm(kr(Ug,ID),Ph),mm(kr(Uh,ID),Pg)];FCC=[mm(kr(Pg,ID),Ph),mm(kr(Ph,ID),Pg)]\nr=[[s(Q(-1,2),O),s(Q(-1,2),S)],[s(Q(1,2),S),s(Q(-1,2),O)]];r2=mm(r,r);R=[[Z for j in range(4)]for i in range(4)]\nfor b,M in enumerate((r,r2)):\n for i in range(2):\n  for j in range(2):R[2*b+i][2*b+j]=M[i][j]\nB=mm(P,R);A=[[O,Z],[Z,n(O)]];BN=[[O,n(I)],[O,I]];C=ID;DN=[[a(n(O),n(m(I,S))),a(n(O),m(I,S))],[a(S,n(I)),a(S,I)]];w=s(Q(1,2),a(n(O),m(I,S)));w2=cj(w);E=[[w2,Z],[Z,w]];F=[[Z,O],[O,Z]]\nchk(proj(CCF,kr(P,ID),CCF),[[s(2,x)for x in row]for row in A]);chk(proj(CFC,kr(ID,P),CCF),[[s(8,x)for x in row]for row in BN]);chk(proj(FCC,kr(P,ID),CFC),[[s(64,x)for x in row]for row in C]);chk(proj(CCF,kr(ID,B),CFC),[[s(4,x)for x in row]for row in DN]);chk(proj(CFC,kr(B,ID),FCC),[[s(64,x)for x in row]for row in E]);chk(proj(FCC,kr(ID,P),FCC),[[s(64,x)for x in row]for row in F]);assert mm(C,mm(BN,A))==mm(F,mm(C,BN));assert mm(A,mm(DN,E))==mm(DN,mm(E,F));print({'exact_coordinate_maps':6,'exact_ordered_braid_routes':2,'field':'Q(sqrt(3),i)','status':'passed'})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "read-only exact typed mixed braid projections and two ordered route identities",
+    "expected_cost": "six exact 2x2 block projections and two exact route comparisons"
+  }
+}

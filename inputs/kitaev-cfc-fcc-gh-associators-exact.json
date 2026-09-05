@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-cfc-fcc-gh-associators-exact",
+  "created_at": "2026-08-31T21:15:30.413174Z",
+  "sha256": "f83fe12c2589391a7c657dd9e0056d3df23bf7ef5f65052ae878bd0312cd6099",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as Q\nZ=(Q(0),)*4;O=(Q(1),Q(0),Q(0),Q(0));S=(Q(0),Q(1),Q(0),Q(0));I=(Q(0),Q(0),Q(1),Q(0))\ndef a(x,y):return tuple(x[k]+y[k]for k in range(4))\ndef sc(q,x):return tuple(q*v for v in x)\ndef cj(x):return(x[0],x[1],-x[2],-x[3])\ndef m(x,y):\n A,B,C,D=x;E,F,G,H=y;return(A*E+3*B*F-C*G-3*D*H,A*F+B*E-C*H-D*G,A*G+3*B*H+C*E+3*D*F,A*H+B*G+C*F+D*E)\ndef sm(xs):\n z=Z\n for x in xs:z=a(z,x)\n return z\ndef mm(A,B):return[[sm(m(A[i][k],B[k][j])for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[cj(A[j][i])for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(A,B):return[[m(A[i//len(B)][j//len(B[0])],B[i%len(B)][j%len(B[0])])for j in range(len(A[0])*len(B[0]))]for i in range(len(A)*len(B))]\ndef flip(E):return[[E[2*(r%2)+r//2][j]for j in range(2)]for r in range(4)]\ndef chk(M,q):assert mm(dg(M),M)==[[sc(q,O),Z],[Z,sc(q,O)]]\nID=[[O,Z],[Z,O]];EC=[[O,Z],[Z,sc(-1,O)],[Z,sc(-1,O)],[sc(-1,O),Z]];W=[[a(sc(-1,S),I),Z],[Z,sc(-2,I)],[a(O,m(I,S)),Z],[Z,sc(2,O)]];ag=sc(Q(1,2),a(sc(-1,S),sc(-1,I)));Ug=[[m(ag,x)for x in r]for r in W];Uh=[[cj(x)for x in r]for r in Ug]\nfor U,V in ((Uh,Ug),(Ug,Uh)):\n T=flip(U);L=mm(kr(U,ID),T);R=mm(kr(ID,T),U);chk(L,64);chk(R,64);assert mm(dg(R),L)==[[sc(64,O),Z],[Z,sc(64,O)]]\n outer=flip(V);L2=mm(kr(T,ID),T);R2=mm(kr(ID,EC),outer);chk(L2,64);chk(R2,16);assert mm(dg(R2),L2)==[[sc(32,O),Z],[Z,sc(32,O)]]\nprint({'field':'Q(sqrt(3),i)','CFC_associators':[1,1],'FCC_associators':[1,1],'exact_gram_overlap_identities':12,'status':'passed'})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "exact total-G/H CFC and FCC associator certificate",
+    "expected_cost": "eight exact path Grams and four exact overlaps"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-cccf-total-g-pentagon-numeric",
+  "created_at": "2026-08-31T21:00:24.5759765Z",
+  "sha256": "34d3193cdafb0e6e9ffaffcc533065b36fe56d8e7c9238049d00ea49b7245b4e",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import math,json\nq=math.sqrt\ndef mm(A,B):return[[sum(A[i][k]*B[k][j]for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[A[j][i].conjugate()for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(*xs):\n R=[[1]]\n for B in xs:R=[[R[i//len(B)][j//len(B[0])]*B[i%len(B)][j%len(B[0])]for j in range(len(R[0])*len(B[0]))]for i in range(len(R)*len(B))]\n return R\ndef ov(T,S):\n M=[];e=0\n for t in T:\n  row=[]\n  for s in S:\n   X=mm(dg(t),s);z=sum(X[i][i]for i in range(2))/2;e=max(e,max(abs(X[i][j]-(z if i==j else 0))for i in range(2)for j in range(2)));row.append(z)\n  M.append(row)\n return M,e\ndef err(A,B):return max(abs(A[i][j]-B[i][j])for i in range(len(A))for j in range(len(A[0])))\nI=[[1,0],[0,1]];EA=[[1/q(2)],[0],[0],[1/q(2)]];EB=[[0],[1/q(2)],[-1/q(2)],[0]];EC=[[1/q(2),0],[0,-1/q(2)],[0,-1/q(2)],[-1/q(2),0]];J=[[0,1],[-1,0]];JB=[[1,0],[0,-1]];DB=JB\nW=[[-q(3)+1j,0],[0,-2j],[1+1j*q(3),0],[0,2]];ag=(-q(3)-1j)/2;VG=[[ag*z/(2*q(2))for z in r]for r in W];VH=[[z.conjugate()for z in r]for r in VG]\nEX=[I,J,EC];ECC=[EA,EB,EC]\nT1=[mm(mm(kr(ECC[k],I,I),kr(EX[k],I)),VG)for k in range(3)];T2=[mm(mm(kr(I,ECC[k],I),kr(EX[k],I)),VG)for k in range(3)]\nT3=[mm(kr(EA,VG),I),mm(kr(EB,VG),DB),mm(kr(EC,VH),VH)]\nT4=[mm(mm(kr(I,EA,I),kr(I,I)),VG),mm(mm(kr(I,EB,I),kr(I,JB)),VG),mm(mm(kr(I,EC,I),kr(I,VH)),VH)]\nT5=[mm(mm(kr(I,I,VG),kr(I,VH)),VG),mm(mm(kr(I,I,VG),kr(I,VG)),VH),mm(mm(kr(I,I,VH),kr(I,VG)),VG)]\nTs=[T1,T2,T3,T4,T5];gr=max(err(mm(dg(x),x),I)for T in Ts for x in T);E={}\nfor a,b in [(1,0),(3,1),(4,3),(2,4),(2,0)]:E[(a,b)]=ov(Ts[a],Ts[b])\nD=E[(2,0)][0];C=mm(E[(2,4)][0],mm(E[(4,3)][0],mm(E[(3,1)][0],E[(1,0)][0])));f=lambda M:[[str(complex(round(z.real,12),round(z.imag,12)))for z in r]for r in M]\nprint(json.dumps({'gram_residual':gr,'scalar_residual':max(x[1]for x in E.values()),'edges':{f'{a+1}<-{b+1}':f(v[0])for (a,b),v in E.items()},'pentagon_residual':err(D,C)},indent=2))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "numerical total-G CCCF pentagon construction",
+    "expected_cost": "fifteen 16x2 path maps and five 3x3 edge overlaps"
+  }
+}

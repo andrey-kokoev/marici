@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-total-gh-ffirst-braid-routes-exact",
+  "created_at": "2026-08-31T21:20:38.1136501Z",
+  "sha256": "032457e351d8d9610fcaf566eb072148c9bef2fe4d28207edde77d77980d944a",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as Q\nZ=(Q(0),)*4;O=(Q(1),Q(0),Q(0),Q(0));S=(Q(0),Q(1),Q(0),Q(0));I=(Q(0),Q(0),Q(1),Q(0))\ndef a(x,y):return tuple(x[k]+y[k]for k in range(4))\ndef sc(q,x):return tuple(q*v for v in x)\ndef cj(x):return(x[0],x[1],-x[2],-x[3])\ndef m(x,y):\n A,B,C,D=x;E,F,G,H=y;return(A*E+3*B*F-C*G-3*D*H,A*F+B*E-C*H-D*G,A*G+3*B*H+C*E+3*D*F,A*H+B*G+C*F+D*E)\ndef sm(xs):\n z=Z\n for x in xs:z=a(z,x)\n return z\ndef mm(A,B):return[[sm(m(A[i][k],B[k][j])for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[cj(A[j][i])for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(A,B):return[[m(A[i//len(B)][j//len(B[0])],B[i%len(B)][j%len(B[0])])for j in range(len(A[0])*len(B[0]))]for i in range(len(A)*len(B))]\ndef flip(E):return[[E[2*(r%2)+r//2][j]for j in range(2)]for r in range(4)]\ndef op(M,pos,B):\n N=[[Z]*2 for _ in range(8)]\n for r in range(8):\n  bits=[r//4,(r//2)%2,r%2]\n  for u in range(2):\n   for v in range(2):\n    c=B[2*u+v][2*bits[pos]+bits[pos+1]]\n    if c!=Z:\n     b=bits[:];b[pos]=u;b[pos+1]=v;rr=4*b[0]+2*b[1]+b[2]\n     for j in range(2):N[rr][j]=a(N[rr][j],m(c,M[r][j]))\n return N\ndef block(T,U,pos,B,z):assert mm(dg(T),op(U,pos,B))==[[z,Z],[Z,z]]\nID=[[O,Z],[Z,O]];EC=[[O,Z],[Z,sc(-1,O)],[Z,sc(-1,O)],[sc(-1,O),Z]];W=[[a(sc(-1,S),I),Z],[Z,sc(-2,I)],[a(O,m(I,S)),Z],[Z,sc(2,O)]];ag=sc(Q(1,2),a(sc(-1,S),sc(-1,I)));Ug=[[m(ag,x)for x in r]for r in W];Uh=[[cj(x)for x in r]for r in Ug];r=[[sc(-Q(1,2),O),sc(-Q(1,2),S)],[sc(Q(1,2),S),sc(-Q(1,2),O)]];r2=[[sc(-Q(1,2),O),sc(Q(1,2),S)],[sc(-Q(1,2),S),sc(-Q(1,2),O)]];B=[[Z]*4 for _ in range(4)]\nfor f,R in enumerate((r,r2)):\n for x in range(2):\n  for y in range(2):B[2*y+f][2*f+x]=R[y][x]\nP=[[O,Z,Z,Z],[Z,Z,O,Z],[Z,O,Z,Z],[Z,Z,Z,O]];w2=sc(Q(1,2),a(sc(-1,O),sc(-1,m(I,S))));w=cj(w2)\nfor U,V,ph in ((Uh,Ug,w2),(Ug,Uh,w)):\n CCF=mm(kr(EC,ID),V);CFC=mm(kr(U,ID),flip(U));FCC=mm(kr(flip(U),ID),flip(U));block(CFC,FCC,0,B,sc(64,ph));block(CCF,CFC,1,B,sc(32,ph));block(CCF,CCF,0,P,sc(16,O));block(FCC,FCC,1,P,sc(64,O));assert m(ph,ph)==cj(ph)\nprint({'field':'Q(sqrt(3),i)','G_FC_scalars':['omega^2','omega^2'],'H_FC_scalars':['omega','omega'],'route_values':['omega','omega^2'],'exact_swap_blocks':8,'status':'passed'})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "exact total-G/H F-first typed braid-route certificate",
+    "expected_cost": "eight exact microscopic braid projections and two phase products"
+  }
+}

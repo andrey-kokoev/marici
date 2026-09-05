@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-cxf-intertwiners-stdlib-check",
+  "created_at": "2026-08-31T19:39:06.2856344Z",
+  "sha256": "7edd11acd010309bab9ea4f84a8e5450dea3d544851a965cca56b82760753fae",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import itertools,cmath,math,json\nG=list(itertools.permutations(range(3))); e=(0,1,2); t=(1,0,2); c=(1,2,0)\ndef mul(p,q):return tuple(p[q[i]] for i in range(3))\ndef inv(p):return tuple(p.index(i) for i in range(3))\ndef conj(a,b):return mul(mul(a,b),inv(a))\ndef typ(p):\n f=sum(p[i]==i for i in range(3));return 'e' if f==3 else ('t' if f==1 else 'c')\ncls={z:[g for g in G if typ(g)==z] for z in 'etc'}; rep={'e':e,'t':t,'c':c}; q={z:{h:next(a for a in G if conj(a,rep[z])==h) for h in cls[z]} for z in cls}\ndef mm(A,B):return [[sum(A[i][k]*B[k][j] for k in range(len(B))) for j in range(len(B[0]))] for i in range(len(A))]\ndef kron(A,B):return [[A[i//len(B)][j//len(B[0])]*B[i%len(B)][j%len(B[0])] for j in range(len(A[0])*len(B[0]))] for i in range(len(A)*len(B))]\ndef add(A,B):return [[A[i][j]+B[i][j] for j in range(len(A[0]))] for i in range(len(A))]\ndef zero(n,m):return [[0j]*m for _ in range(n)]\nr=[[-.5,-math.sqrt(3)/2],[math.sqrt(3)/2,-.5]]; s=[[1,0],[0,-1]]\ndef std(x):\n for k in range(3):\n  p=e;M=[[1,0],[0,1]]\n  for _ in range(k):p=mul(c,p);M=mm(r,M)\n  for z in range(2):\n   if mul(p,t if z else e)==x:return mm(M,s if z else [[1,0],[0,1]])\ndef imat(name,z):\n if name=='C':return std(z)\n pw={e:0,c:1,mul(c,c):2}[z]; ex=pw*({'F':0,'G':1,'H':2}[name])%3;return [[cmath.exp(2j*math.pi*ex/3)]]\ndef R(name,g,x):\n sec='e' if name=='C' else 'c'; fl=cls[sec]; d=2; M=zero(d,d)\n for i,fi in enumerate(fl):\n  fo=conj(x,fi);j=fl.index(fo)\n  if g!=fo:continue\n  z=mul(mul(inv(q[sec][fo]),x),q[sec][fi]);M[j][i]=imat(name,z)[0][0] if name!='C' else imat(name,z)[j][i]\n return M\n# C has one flux and 2D internal block; repair direct action\ndef RC(g,x):return std(x) if g==e else zero(2,2)\ndef T(g,x):\n M=zero(4,4)\n for a in G:\n  for b in G:\n   if mul(a,b)==g:M=add(M,kron(RC(a,x),R('F',b,x)))\n return M\nrt=math.sqrt(2); Vs={'G':[[1/rt,0],[0,1/rt],[-1j/rt,0],[0,1j/rt]],'H':[[1/rt,0],[0,1/rt],[1j/rt,0],[0,-1j/rt]]}\ndef err(A,B):return max(abs(A[i][j]-B[i][j]) for i in range(len(A)) for j in range(len(A[0])))\nout={}\nfor name,V in Vs.items():\n mx=0\n for x in G:\n  for g in G:mx=max(mx,err(mm(T(g,x),V),mm(V,R(name,g,x))))\n out[name]={'max_generator_residual':mx,'embedding':V}\nprint(json.dumps(out,default=str,indent=2));assert max(v['max_generator_residual'] for v in out.values())<1e-12"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "read-only dependency-free full D(S3) generator check for candidate CxF embeddings; no files written",
+    "expected_cost": "bounded: 72 generator checks for each of G and H"
+  }
+}

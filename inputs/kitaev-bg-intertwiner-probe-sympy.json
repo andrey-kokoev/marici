@@ -1,0 +1,22 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-bg-intertwiner-probe-sympy",
+  "created_at": "2026-08-31T20:51:04.4904855Z",
+  "sha256": "0e778b12b12f4ab801b54d73dff9a97e2577599f1935a85a1c54c1107dd6c751",
+  "input": {
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "sympy",
+      "python",
+      "-c",
+      "import runpy\nm=runpy.run_path('research/kitaev/checkers/check_s3_universal_R_partial_trace.py',run_name='probe')\nprint(sorted(k for k,v in m.items() if callable(v) or k.isupper()))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "read-only frozen-checker API probe in ephemeral SymPy environment",
+    "expected_cost": "one cached ephemeral environment and module load"
+  }
+}

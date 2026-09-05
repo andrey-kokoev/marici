@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-frozen-representation-assignments",
+  "created_at": "2026-08-31T21:34:34.9581616Z",
+  "sha256": "b91622792cf18991ddfc44d1365481533db24f0a51330ecfe17ab69d6ddf9e9c",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import ast\nfrom pathlib import Path\np=Path('research/kitaev/checkers/check_s3_universal_R_partial_trace.py');s=p.read_text(encoding='utf-8');t=ast.parse(s);wanted={'labels','standard','transporters','classes','c','tau','e'}\nfor x in ast.walk(t):\n if isinstance(x,(ast.Assign,ast.AnnAssign)):\n  ts=x.targets if isinstance(x,ast.Assign) else [x.target];names={getattr(y,'id','')for y in ts}\n  if names&wanted:print(ast.get_source_segment(s,x))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "bounded extraction of frozen labels, classes, transporters, and standard matrices",
+    "expected_cost": "one AST walk over selected assignments"
+  }
+}

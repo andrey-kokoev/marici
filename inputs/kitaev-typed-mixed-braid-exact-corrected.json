@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-typed-mixed-braid-exact-corrected",
+  "created_at": "2026-08-31T20:21:51.1679652Z",
+  "sha256": "9797d4c3cebfd9b6e1c57896170f7ff6f84c5f6d3debaa8eb40c6ba638fffacb",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import json,pathlib\np=pathlib.Path('.ai/tmp/mcp-outputs/workspace/o_13112_1788207540971020200_16.json')\nd=json.loads(p.read_text(encoding='utf-8'));code=d['args'][1]\nold='E=[[w2,Z],[Z,w]]';new='E=[[w,Z],[Z,w2]]'\nassert code.count(old)==1\nexec(code.replace(old,new))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "complete corrected rerun of exact typed mixed braid projections and routes",
+    "expected_cost": "six exact projections and two exact route comparisons"
+  }
+}

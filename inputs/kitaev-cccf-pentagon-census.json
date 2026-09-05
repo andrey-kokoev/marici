@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-cccf-pentagon-census",
+  "created_at": "2026-08-31T20:24:23.5904355Z",
+  "sha256": "7a43f19722db0665c8f1c771022fa1e3e6aafd3bb371de842fbb0ec8dd5b91ef",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import json,collections\np='research/kitaev/results/s3-fusion-ring.json';d=json.load(open(p,encoding='utf-8'));R=d['unordered_nontrivial_fusion_rules']\ndef fu(a,b):\n if a=='A':return [b]\n if b=='A':return [a]\n return R['x'.join(sorted((a,b)))]\ndef mul(X,Y):\n z=collections.Counter()\n for a,ma in X.items():\n  for b,mb in Y.items():\n   for c in fu(a,b):z[c]+=ma*mb\n return z\nT={'C':1}\nfor x in 'CCF':T=mul(T,{x:1})\nassert T==collections.Counter({'G':3,'H':3,'F':2})\nt1=[(x,y)for x in fu('C','C')for y in fu(x,'C')if 'F'in fu(y,'F')]\nt2=[(x,y)for x in fu('C','C')for y in fu('C',x)if 'F'in fu(y,'F')]\nt3=[(x,z)for x in fu('C','C')for z in fu('C','F')if 'F'in fu(x,z)]\nt4=[(x,y)for x in fu('C','C')for y in fu(x,'F')if 'F'in fu('C',y)]\nt5=[(z,y)for z in fu('C','F')for y in fu('C',z)if 'F'in fu('C',y)]\nexpected=[[('C','A'),('C','B')],[('C','A'),('C','B')],[('C','G'),('C','H')],[('C','G'),('C','H')],[('G','H'),('H','G')]]\nassert [t1,t2,t3,t4,t5]==expected\nprint(json.dumps({'total_multiplicities':dict(T),'selected_total':'F','five_parenthesization_paths':[t1,t2,t3,t4,t5],'all_selected_basis_dimensions':[2]*5},indent=2))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "read-only exact fusion-ring census for the C C C F pentagon",
+    "expected_cost": "five finite path enumerations"
+  }
+}

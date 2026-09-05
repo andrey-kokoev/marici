@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-flux-flux-diagonal-intertwiners",
+  "created_at": "2026-08-31T21:24:05.0520805Z",
+  "sha256": "9da21e6c94a76aa3e9300546b7a54063deb06bf946cf771326a900c92b31329a",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import itertools\nG=list(itertools.permutations(range(3)));e=(0,1,2);r=(1,2,0);r2=(2,0,1);s=(1,0,2)\ndef mul(p,q):return tuple(p[q[i]]for i in range(3))\ndef inv(p):return tuple(p.index(i)for i in range(3))\ndef conj(g,x):return mul(mul(g,x),inv(g))\nflux=[r,r2];rep={r:e,r2:s}\ndef expz(h):\n for j,x in enumerate((e,r,r2)):\n  if h==x:return j\n raise ValueError(h)\ndef act_exp(k,g,x):\n y=conj(g,x);h=mul(mul(inv(rep[y]),g),rep[x]);return y,(k*expz(h))%3\ndef certify(k1,k2,kt):\n # target r uses pair r2,r2 coefficient alpha=omega^p; target r2 uses r,r coefficient beta=1 (first nonzero positive)\n pair={r:(r2,r2),r2:(r,r)}\n good=[]\n for p in range(3):\n  coeff={r:p,r2:0};ok=True\n  for g in G:\n   for t in flux:\n    a,b=pair[t];ta,ea=act_exp(k1,g,a);tb,eb=act_exp(k2,g,b);u,et=act_exp(kt,g,t)\n    ok &= (mul(ta,tb)==u and (coeff[t]+ea+eb-et-coeff[u])%3==0)\n  if ok:good.append(p)\n assert len(good)==1;return good[0]\nprint({'F_F_to_F_alpha_exponent':certify(0,0,0),'H_F_to_G_alpha_exponent':certify(2,0,1),'G_F_to_H_alpha_exponent':certify(1,0,2),'beta_exponent':0,'group_checks_per_map':12,'status':'passed'})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "exact induced-representation solve for three flux-flux diagonal intertwiners",
+    "expected_cost": "36 finite S3 equivariance checks over cube-root exponents"
+  }
+}

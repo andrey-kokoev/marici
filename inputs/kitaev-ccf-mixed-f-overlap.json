@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-ccf-mixed-f-overlap",
+  "created_at": "2026-08-31T19:58:15.8792928Z",
+  "sha256": "7244d1be3fc13fff37d0dc41043d12616f2c764a6f7e472b2b6754662e97c75c",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import math,cmath,json\nsq=math.sqrt\ndef mm(A,B):return[[sum(A[i][k]*B[k][j]for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[A[j][i].conjugate()for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(A,B):return[[A[i//len(B)][j//len(B[0])]*B[i%len(B)][j%len(B[0])]for j in range(len(A[0])*len(B[0]))]for i in range(len(A)*len(B))]\ndef err(A,B):return max(abs(A[i][j]-B[i][j])for i in range(len(A))for j in range(len(A[0])))\nI=[[1,0],[0,1]]; EA=[[1/sq(2)],[0],[0],[1/sq(2)]];EB=[[0],[1/sq(2)],[-1/sq(2)],[0]];JB=[[1,0],[0,-1]]\nVG=[[-sq(3)+1j,0],[0,-2j],[1+1j*sq(3),0],[0,2]];VH=[[z.conjugate()for z in row]for row in VG]\naG=(-sq(3)-1j)/2;aH=(-sq(3)+1j)/2\nVG=[[aG*z/(2*sq(2))for z in row]for row in VG];VH=[[aH*z/(2*sq(2))for z in row]for row in VH]\nLA=mm(kr(EA,I),I);LB=mm(kr(EB,I),JB);RG=mm(kr(I,VG),VH);RH=mm(kr(I,VH),VG)\npathsL=[LA,LB];pathsR=[RG,RH];F=[];nonscalar=0\nfor L in pathsL:\n row=[]\n for R in pathsR:\n  M=mm(dg(L),R);q=(M[0][0]+M[1][1])/2;nonscalar=max(nonscalar,err(M,[[q,0],[0,q]]));row.append(q)\n F.append(row)\nu=mm(dg(F),F);print(json.dumps({'F':[[str(z)for z in row]for row in F],'scalar_residual':nonscalar,'unitarity_residual':err(u,I)},indent=2));assert nonscalar<1e-12 and err(u,I)<1e-12"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "read-only mixed C,C,F to F association-path overlap and unitarity check",
+    "expected_cost": "four 2x2 overlaps of explicit 8x2 isometries"
+  }
+}

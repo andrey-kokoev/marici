@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-cfc-fcc-associators-numeric",
+  "created_at": "2026-08-31T20:12:54.3417648Z",
+  "sha256": "0e29be1b1c50ba3090b71aa1a3ef16daff0a6537289040dc911810fe317b7b38",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import math,json\nsq=math.sqrt\ndef mm(A,B):return[[sum(A[i][k]*B[k][j]for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[A[j][i].conjugate()for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(A,B):return[[A[i//len(B)][j//len(B[0])]*B[i%len(B)][j%len(B[0])]for j in range(len(A[0])*len(B[0]))]for i in range(len(A)*len(B))]\ndef ov(Ls,Rs):\n F=[];res=0\n for L in Ls:\n  row=[]\n  for R in Rs:\n   M=mm(dg(L),R);q=sum(M[i][i]for i in range(2))/2;res=max(res,max(abs(M[i][j]-(q if i==j else 0))for i in range(2)for j in range(2)));row.append(q)\n  F.append(row)\n return F,res\nI=[[1,0],[0,1]];P=[[1,0,0,0],[0,0,1,0],[0,1,0,0],[0,0,0,1]];EA=[[1/sq(2)],[0],[0],[1/sq(2)]];EB=[[0],[1/sq(2)],[-1/sq(2)],[0]];JB=[[1,0],[0,-1]]\nWg=[[-sq(3)+1j,0],[0,-2j],[1+1j*sq(3),0],[0,2]];Wh=[[z.conjugate()for z in r]for r in Wg];ag=(-sq(3)-1j)/2;ah=ag.conjugate();VG=[[ag*z/(2*sq(2))for z in r]for r in Wg];VH=[[ah*z/(2*sq(2))for z in r]for r in Wh];PG=mm(P,VG);PH=mm(P,VH)\nCFC_L=[mm(kr(VG,I),PH),mm(kr(VH,I),PG)];CFC_R=[mm(kr(I,PG),VH),mm(kr(I,PH),VG)]\nFCC_L=[mm(kr(PG,I),PH),mm(kr(PH,I),PG)];FCC_R=[kr(I,EA),mm(kr(I,EB),JB)]\nfc,rc=ov(CFC_L,CFC_R);ff,rf=ov(FCC_L,FCC_R)\ndef out(F):return[[str(complex(round(z.real,12),round(z.imag,12)))for z in r]for r in F]\nprint(json.dumps({'F_CFC_to_F':out(fc),'F_FCC_to_F':out(ff),'scalar_residuals':[rc,rf]},indent=2))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "read-only numerical ordered-path overlaps for CFC and FCC total-F associators",
+    "expected_cost": "eight explicit 2x2 overlaps"
+  }
+}

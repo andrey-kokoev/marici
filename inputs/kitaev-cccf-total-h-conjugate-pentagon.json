@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-cccf-total-h-conjugate-pentagon",
+  "created_at": "2026-08-31T21:04:53.4362793Z",
+  "sha256": "fe844583327036bbd702300c6212f8ea29f2fa9ffd37fd32600022d713785a41",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as Q\nz=(Q(0),)*4;o=(Q(1),Q(0),Q(0),Q(0));ii=(Q(0),Q(0),Q(1),Q(0));h=(Q(0),Q(1,2),Q(0),Q(0))\ndef m(x,y):\n a,b,c,d=x;e,f,g,h=y;return(a*e+2*b*f-c*g-2*d*h,a*f+b*e-c*h-d*g,a*g+2*b*h+c*e+2*d*f,a*h+b*g+c*f+d*e)\ndef a(x,y):return tuple(x[k]+y[k]for k in range(4))\ndef mm(A,B):return[[__import__('functools').reduce(a,(m(A[i][k],B[k][j])for k in range(len(B))),z)for j in range(len(B[0]))]for i in range(len(A))]\ndef n(x):return tuple(-v for v in x)\ndef cj(x):return(x[0],x[1],-x[2],-x[3])\nih=m(ii,h);D=[[o,z,z],[z,n(ii),z],[z,z,o]];A=[[(Q(1,2),Q(0),Q(0),Q(0)),(-Q(1,2),Q(0),Q(0),Q(0)),h],[(Q(1,2),Q(0),Q(0),Q(0)),(-Q(1,2),Q(0),Q(0),Q(0)),n(h)],[h,h,z]];B=[[h,ih,z],[z,z,o],[h,n(ih),z]];C=[[h,h,z],[ih,n(ih),z],[z,z,o]]\nconj=lambda M:[[cj(x)for x in r]for r in M];DH,AH,BH,CH=map(conj,(D,A,B,C));assert DH==mm(CH,mm(BH,mm(DH,AH)))\nassert DH==[[o,z,z],[z,ii,z],[z,z,o]]\nprint({'derivation':'complex conjugation exchanges G and H while fixing electric maps','field':'Q(sqrt(2),i)','direct_edge':'diag(1,i,1)','exact_total_H_pentagon':True,'status':'passed'})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "exact total-H CCCF pentagon by conjugation of certified total-G data",
+    "expected_cost": "conjugation of five 3x3 edge matrices and one exact route product"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-ccf-gh-associator-scalars",
+  "created_at": "2026-08-31T21:06:59.1105263Z",
+  "sha256": "0fc7d4d02f38c3633d4488e8c5932226e9b9a196a6baaa1ce252c5f4f5804031",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import math\nq=math.sqrt\ndef mm(A,B):return[[sum(A[i][k]*B[k][j]for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[A[j][i].conjugate()for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(A,B):return[[A[i//len(B)][j//len(B[0])]*B[i%len(B)][j%len(B[0])]for j in range(len(A[0])*len(B[0]))]for i in range(len(A)*len(B))]\nI=[[1,0],[0,1]];EC=[[1/q(2),0],[0,-1/q(2)],[0,-1/q(2)],[-1/q(2),0]];W=[[-q(3)+1j,0],[0,-2j],[1+1j*q(3),0],[0,2]];ag=(-q(3)-1j)/2;VG=[[ag*z/(2*q(2))for z in r]for r in W];VH=[[z.conjugate()for z in r]for r in VG]\n# CxH->G uses VH; CxG->H uses VG by character shift\nfor total,Eout,Eright in [('G',VG,VH),('H',VH,VG)]:\n L=mm(kr(EC,I),Eout);R=mm(kr(I,Eright),Eright);X=mm(dg(R),L);s=sum(X[i][i]for i in range(2))/2;res=max(abs(X[i][j]-(s if i==j else 0))for i in range(2)for j in range(2));unit=max(abs(abs(s)-1),max(abs(mm(dg(L),L)[i][j]-(1 if i==j else 0))for i in range(2)for j in range(2)),max(abs(mm(dg(R),R)[i][j]-(1 if i==j else 0))for i in range(2)for j in range(2)));print(total,complex(round(s.real,12),round(s.imag,12)),res,unit)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "numerical one-dimensional CCF total-G/H associator derivation",
+    "expected_cost": "four 8x2 path maps and two scalar overlap checks"
+  }
+}

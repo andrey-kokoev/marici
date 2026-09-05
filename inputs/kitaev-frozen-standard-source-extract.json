@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-frozen-standard-source-extract",
+  "created_at": "2026-08-31T21:35:57.1056533Z",
+  "sha256": "afaf37a446819dc99ab36ab59b97003d9650f7f9461d5d98fb534a5316510e91",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import ast\nfrom pathlib import Path\np=Path('research/kitaev/checkers/check_s3_universal_R_partial_trace.py');s=p.read_text(encoding='utf-8');t=ast.parse(s)\nfor x in ast.walk(t):\n if isinstance(x,ast.For) and 'standard[' in (z:=ast.get_source_segment(s,x)):print(z)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "bounded extraction of frozen standard-representation construction",
+    "expected_cost": "one selected loop rendering"
+  }
+}

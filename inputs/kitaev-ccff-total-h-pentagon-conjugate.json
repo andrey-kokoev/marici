@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-ccff-total-h-pentagon-conjugate",
+  "created_at": "2026-08-31T21:29:18.8387483Z",
+  "sha256": "35105b0f05c0cc048c7e5896c2b5fe4bd352638bd065778a63d46300b4647e10",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as Q\ndef m(x,y):\n A,B,C,D=x;E,F,G,H=y;return(A*E+3*B*F-C*G-3*D*H,A*F+B*E-C*H-D*G,A*G+3*B*H+C*E+3*D*F,A*H+B*G+C*F+D*E)\ndef cj(x):return(x[0],x[1],-x[2],-x[3])\no=(Q(1),Q(0),Q(0),Q(0));s=(Q(0),Q(1),Q(0),Q(0));i=(Q(0),Q(0),Q(1),Q(0));w=(Q(-1,2),Q(0),Q(0),Q(1,2));w2=cj(w);G=[o,w,w,o,w2];H=list(map(cj,G));assert H==[o,w2,w2,o,w];assert m(m(m(H[0],H[1]),H[2]),H[3])==H[4]\nprint({'derivation':'complex conjugation exchanges total G and H','G_edges':['1','omega','omega','1','omega^2'],'H_edges':['1','omega^2','omega^2','1','omega'],'exact_total_H_pentagon':True,'status':'passed'})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "exact total-H CCFF pentagon by conjugation",
+    "expected_cost": "five exact edge conjugations and one phase product"
+  }
+}

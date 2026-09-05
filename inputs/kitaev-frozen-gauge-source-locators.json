@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-frozen-gauge-source-locators",
+  "created_at": "2026-08-31T21:35:18.4476053Z",
+  "sha256": "6a04286df8a1572286b29ec7799c10cc0d0bc3683b7e02dd639a43e1782746c7",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import ast\nfrom pathlib import Path\np=Path('research/kitaev/checkers/check_s3_universal_R_partial_trace.py');s=p.read_text(encoding='utf-8');t=ast.parse(s)\nfor x in ast.walk(t):\n if isinstance(x,ast.Assign):\n  text=ast.get_source_segment(s,x);low=text.lower()\n  if any(k in low for k in ('group=','reps=','standard[','omega=','c=','s=')):print(text)"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "bounded extraction of frozen group enumeration and gauge assignments",
+    "expected_cost": "one AST walk over selected assignments"
+  }
+}

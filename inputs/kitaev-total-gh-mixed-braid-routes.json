@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-total-gh-mixed-braid-routes",
+  "created_at": "2026-08-31T21:16:47.8037316Z",
+  "sha256": "efd8a7cf11bf5641cddf4ed513fbf3999d8590fc5aeb2b3659b0a95db5c826f2",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import math\nq=math.sqrt\ndef mm(A,B):return[[sum(A[i][k]*B[k][j]for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[A[j][i].conjugate()for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(A,B):return[[A[i//len(B)][j//len(B[0])]*B[i%len(B)][j%len(B[0])]for j in range(len(A[0])*len(B[0]))]for i in range(len(A)*len(B))]\ndef flip(E):return[[E[2*(r%2)+r//2][j]for j in range(2)]for r in range(4)]\ndef sw(M,a,b):\n N=[[0]*len(M[0])for _ in range(8)]\n for r in range(8):\n  bits=[r//4,(r//2)%2,r%2];bits[a],bits[b]=bits[b],bits[a];rr=4*bits[0]+2*bits[1]+bits[2];N[rr]=M[r]\n return N\ndef coord(T,S,a,b):\n X=mm(dg(T),sw(S,a,b));z=sum(X[i][i]for i in range(2))/2;e=max(abs(X[i][j]-(z if i==j else 0))for i in range(2)for j in range(2));return z,e\nI=[[1,0],[0,1]];EC=[[1/q(2),0],[0,-1/q(2)],[0,-1/q(2)],[-1/q(2),0]];W=[[-q(3)+1j,0],[0,-2j],[1+1j*q(3),0],[0,2]];ag=(-q(3)-1j)/2;VG=[[ag*z/(2*q(2))for z in r]for r in W];VH=[[z.conjugate()for z in r]for r in VG]\nfor t,U in [('G',VH),('H',VG)]:\n V=VG if t=='G' else VH;CCF=mm(kr(EC,I),V);CFC=mm(kr(U,I),flip(U));FCC=mm(kr(flip(U),I),flip(U));a=coord(CCF,CCF,0,1);b=coord(CFC,CCF,1,2);c=coord(FCC,CFC,0,1);d=coord(FCC,FCC,1,2);route1=a[0]*b[0]*c[0];route2=b[0]*c[0]*d[0];print(t,{'sigma1_CCF':a,'sigma2':b,'sigma1':c,'sigma2_FCC':d,'route_residual':abs(route1-route2),'route':route1})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "numerical total-G/H typed mixed braid-route test",
+    "expected_cost": "eight microscopic 8x2 swap projections and two scalar route comparisons"
+  }
+}

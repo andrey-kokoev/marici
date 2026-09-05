@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-mixed-hexagon-gh-census",
+  "created_at": "2026-08-31T21:05:42.2522017Z",
+  "sha256": "8be6ede6bd28e249ec00850c5ad2a2c16bfdbfa252242413a0828cadd2a84fab",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import json\nR=json.load(open('research/kitaev/results/s3-fusion-ring.json',encoding='utf-8'))['unordered_nontrivial_fusion_rules']\ndef fu(a,b):\n if a=='A':return[b]\n if b=='A':return[a]\n return R['x'.join(sorted((a,b)))]\nout={}\nfor abc in [('C','C','F'),('C','F','C'),('F','C','C')]:\n for t in ('G','H'):\n  L=[x for x in fu(abc[0],abc[1])if t in fu(x,abc[2])];Q=[y for y in fu(abc[1],abc[2])if t in fu(abc[0],y)];assert len(L)==len(Q)==1;out[''.join(abc)+'->'+t]={'left':L,'right':Q}\nprint(json.dumps(out,sort_keys=True))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "exact fusion-ring census for total-G/H ordered mixed hexagon spaces",
+    "expected_cost": "twelve finite path enumerations"
+  }
+}

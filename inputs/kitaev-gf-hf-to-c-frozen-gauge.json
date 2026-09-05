@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-gf-hf-to-c-frozen-gauge",
+  "created_at": "2026-08-31T21:37:56.8264711Z",
+  "sha256": "48122476b639173dae7edc46e2d0fecbc8b973b10e960806a082f310673e6064",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as Q\nZ=(Q(0),)*4;O=(Q(1),Q(0),Q(0),Q(0));S=(Q(0),Q(1),Q(0),Q(0));I=(Q(0),Q(0),Q(1),Q(0))\ndef a(x,y):return tuple(x[j]+y[j]for j in range(4))\ndef sc(q,x):return tuple(q*v for v in x)\ndef m(x,y):\n A,B,C,D=x;E,F,G,H=y;return(A*E+3*B*F-C*G-3*D*H,A*F+B*E-C*H-D*G,A*G+3*B*H+C*E+3*D*F,A*H+B*G+C*F+D*E)\ndef sm(xs):\n z=Z\n for x in xs:z=a(z,x)\n return z\ndef mm(A,B):return[[sm(m(A[i][k],B[k][j])for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef cj(x):return(x[0],x[1],-x[2],-x[3])\ndef dg(A):return[[cj(A[j][i])for j in range(len(A))]for i in range(len(A[0]))]\nR=[[sc(-Q(1,2),O),sc(-Q(1,2),S)],[sc(Q(1,2),S),sc(-Q(1,2),O)]];T=[[O,Z],[Z,sc(-1,O)]];w=(Q(-1,2),Q(0),Q(0),Q(1,2));w2=cj(w);Xr=[[w,Z],[Z,w2]];Xs=[[Z,w],[w2,Z]];UG=[[O,I],[w2,sc(-1,m(I,w2))]];UH=[[cj(x)for x in r]for r in UG]\nfor name,U,Dr,Ds in [('GF',UG,Xr,Xs),('HF',UH,[[w2,Z],[Z,w]],[[Z,w2],[w,Z]])]:\n assert mm(Dr,U)==mm(U,R);assert mm(Ds,U)==mm(U,T);assert mm(dg(U),U)==[[sc(2,O),Z],[Z,sc(2,O)]];print(name,{'cleared_rows':U,'gram':2,'frozen_transporter_checks':['c','s']})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "exact frozen-gauge GF/HF to C intertwiner certificate",
+    "expected_cost": "four exact generator identities and two Gram identities"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-bg-intertwiner-probe",
+  "created_at": "2026-08-31T20:50:47.7595669Z",
+  "sha256": "51ccd829d240fed0c4ec717e3dd0e2cb2cefa2fb88cc20a0e9cd76995155ffff",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import runpy\nm=runpy.run_path('research/kitaev/checkers/check_s3_universal_R_partial_trace.py',run_name='probe')\nprint(sorted(k for k,v in m.items() if callable(v) or k.isupper()))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "read-only probe of frozen checker API for BxG intertwiner verification",
+    "expected_cost": "one module load and bounded symbol listing"
+  }
+}

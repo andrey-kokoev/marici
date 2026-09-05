@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-ccff-pentagon-census",
+  "created_at": "2026-08-31T21:21:37.4736535Z",
+  "sha256": "57fca24d3f4cdf57f4a5e92d19e10da400abbbdcdf4d5fd37bc74fa766842c94",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import json\nD=json.load(open('research/kitaev/results/s3-fusion-ring.json',encoding='utf-8'));R=D['unordered_nontrivial_fusion_rules'];labs=list('ABCDEFGH')\ndef fu(a,b):\n if a=='A':return[b]\n if b=='A':return[a]\n return R['x'.join(sorted((a,b)))]\na,b,c,d='C','C','F','F';out={}\nfor t in labs:\n P=[];P.append([(x,y)for x in fu(a,b)for y in fu(x,c)if t in fu(y,d)]);P.append([(x,y)for x in fu(b,c)for y in fu(a,x)if t in fu(y,d)]);P.append([(x,z)for x in fu(a,b)for z in fu(c,d)if t in fu(x,z)]);P.append([(x,y)for x in fu(b,c)for y in fu(x,d)if t in fu(a,y)]);P.append([(x,y)for x in fu(c,d)for y in fu(b,x)if t in fu(a,y)]);dims=list(map(len,P));assert len(set(dims))==1\n if dims[0]:out[t]={'dimension':dims[0],'paths':P}\nprint(json.dumps(out,sort_keys=True))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "exact CCFF pentagon sector and path census",
+    "expected_cost": "forty finite parenthesized path enumerations"
+  }
+}

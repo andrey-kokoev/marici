@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-ccff-total-g-pentagon-numeric",
+  "created_at": "2026-08-31T21:25:15.3018811Z",
+  "sha256": "f994f238a812ced1f9801fac304f83732230731b59d2b0b0c3210c63235c248e",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import math\nq=math.sqrt\ndef mm(A,B):return[[sum(A[i][k]*B[k][j]for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[A[j][i].conjugate()for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(*xs):\n R=[[1]]\n for B in xs:R=[[R[i//len(B)][j//len(B[0])]*B[i%len(B)][j%len(B[0])]for j in range(len(R[0])*len(B[0]))]for i in range(len(R)*len(B))]\n return R\ndef ov(T,S):\n X=mm(dg(T),S);z=sum(X[i][i]for i in range(2))/2;e=max(abs(X[i][j]-(z if i==j else 0))for i in range(2)for j in range(2));return z,e\ndef er(A,B):return max(abs(A[i][j]-B[i][j])for i in range(2)for j in range(2))\nI=[[1,0],[0,1]];EC=[[1/q(2),0],[0,-1/q(2)],[0,-1/q(2)],[-1/q(2),0]];W=[[-q(3)+1j,0],[0,-2j],[1+1j*q(3),0],[0,2]];ag=(-q(3)-1j)/2;VG=[[ag*z/(2*q(2))for z in r]for r in W];VH=[[z.conjugate()for z in r]for r in VG];Q=[[0,1],[0,0],[0,0],[1,0]]\nT1=mm(mm(kr(EC,I,I),kr(VH,I)),Q);T2=mm(mm(kr(I,VG,I),kr(VG,I)),Q);T3=mm(kr(EC,Q),VG);T4=mm(mm(kr(I,VG,I),kr(I,Q)),VH);T5=mm(mm(kr(I,I,Q),kr(I,VH)),VH);T=[T1,T2,T3,T4,T5]\nG=max(er(mm(dg(x),x),I)for x in T);edges={(a,b):ov(T[a],T[b]) for a,b in [(1,0),(3,1),(4,3),(2,4),(2,0)]};route=edges[(1,0)][0]*edges[(3,1)][0]*edges[(4,3)][0]*edges[(2,4)][0];print({'gram_residual':G,'edges':{f'{a+1}<-{b+1}':v for (a,b),v in edges.items()},'route_residual':abs(route-edges[(2,0)][0]),'route':route})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "numerical one-dimensional total-G CCFF pentagon construction",
+    "expected_cost": "five 16x2 paths, five scalar overlaps, one route product"
+  }
+}

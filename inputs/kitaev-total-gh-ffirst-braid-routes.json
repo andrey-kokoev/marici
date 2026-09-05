@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-total-gh-ffirst-braid-routes",
+  "created_at": "2026-08-31T21:19:06.3054065Z",
+  "sha256": "f1fdcbcf6dc153973d2414a767651bc41f7aa398c5fcc8913a434765fd0ce398",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import math\nq=math.sqrt\ndef mm(A,B):return[[sum(A[i][k]*B[k][j]for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[A[j][i].conjugate()for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(A,B):return[[A[i//len(B)][j//len(B[0])]*B[i%len(B)][j%len(B[0])]for j in range(len(A[0])*len(B[0]))]for i in range(len(A)*len(B))]\ndef flip(E):return[[E[2*(r%2)+r//2][j]for j in range(2)]for r in range(4)]\ndef op(M,pos,B):\n N=[[0j]*2 for _ in range(8)]\n for r in range(8):\n  bits=[r//4,(r//2)%2,r%2]\n  for u in range(2):\n   for v in range(2):\n    coeff=B[2*u+v][2*bits[pos]+bits[pos+1]]\n    if coeff:\n     b=bits[:];b[pos]=u;b[pos+1]=v;rr=4*b[0]+2*b[1]+b[2]\n     for j in range(2):N[rr][j]+=coeff*M[r][j]\n return N\ndef coord(T,S,pos,B):\n X=mm(dg(T),op(S,pos,B));z=sum(X[i][i]for i in range(2))/2;e=max(abs(X[i][j]-(z if i==j else 0))for i in range(2)for j in range(2));return z,e\nI=[[1,0],[0,1]];EC=[[1/q(2),0],[0,-1/q(2)],[0,-1/q(2)],[-1/q(2),0]];W=[[-q(3)+1j,0],[0,-2j],[1+1j*q(3),0],[0,2]];ag=(-q(3)-1j)/2;VG=[[ag*z/(2*q(2))for z in r]for r in W];VH=[[z.conjugate()for z in r]for r in VG];c=-.5;s=q(3)/2;R=[[[c,-s],[s,c]],[[c,s],[-s,c]]];B=[[0j]*4 for _ in range(4)]\nfor f in range(2):\n for x in range(2):\n  for y in range(2):B[2*y+f][2*f+x]=R[f][y][x]\nP=[[1,0,0,0],[0,0,1,0],[0,1,0,0],[0,0,0,1]]\nfor t,U in [('G',VH),('H',VG)]:\n V=VG if t=='G' else VH;CCF=mm(kr(EC,I),V);CFC=mm(kr(U,I),flip(U));FCC=mm(kr(flip(U),I),flip(U));a=coord(CFC,FCC,0,B);b=coord(CCF,CFC,1,B);c1=coord(CCF,CCF,0,P);c2=coord(FCC,FCC,1,P);r1=a[0]*b[0]*c1[0];r2=c2[0]*a[0]*b[0];print(t,{'FC_left':a,'FC_right':b,'CC_final':c1,'CC_initial':c2,'route':r1,'residual':abs(r1-r2)})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "numerical total-G/H F-first typed braid-route test",
+    "expected_cost": "eight microscopic braid projections and two scalar route comparisons"
+  }
+}

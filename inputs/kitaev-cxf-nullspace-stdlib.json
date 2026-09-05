@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-cxf-nullspace-stdlib",
+  "created_at": "2026-08-31T19:41:06.3371317Z",
+  "sha256": "d4ae67dda6352f04ca1acaff5573f4156c6355050c6415323f5ebb5dcaf81739",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import itertools,cmath,math,json\nG=list(itertools.permutations(range(3)));e=(0,1,2);t=(1,0,2);c=(1,2,0)\ndef mu(p,q):return tuple(p[q[i]] for i in range(3))\ndef iv(p):return tuple(p.index(i) for i in range(3))\ndef cj(a,b):return mu(mu(a,b),iv(a))\ndef ty(p):\n f=sum(p[i]==i for i in range(3));return'e'if f==3 else('t'if f==1 else'c')\ncl={z:[g for g in G if ty(g)==z]for z in'etc'};rp={'e':e,'t':t,'c':c};q={z:{h:next(a for a in G if cj(a,rp[z])==h)for h in cl[z]}for z in cl}\ndef mm(A,B):return[[sum(A[i][k]*B[k][j]for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef kr(A,B):return[[A[i//len(B)][j//len(B[0])]*B[i%len(B)][j%len(B[0])]for j in range(len(A[0])*len(B[0]))]for i in range(len(A)*len(B))]\ndef zz(n,m):return[[0j]*m for _ in range(n)]\ndef ad(A,B):return[[A[i][j]+B[i][j]for j in range(len(A[0]))]for i in range(len(A))]\nr=[[-.5,-math.sqrt(3)/2],[math.sqrt(3)/2,-.5]];s=[[1,0],[0,-1]];I=[[1,0],[0,1]]\ndef st(x):\n for k in range(3):\n  p=e;M=I\n  for _ in range(k):p=mu(c,p);M=mm(r,M)\n  for z in range(2):\n   if mu(p,t if z else e)==x:return mm(M,s if z else I)\ndef im(n,z):\n pw={e:0,c:1,mu(c,c):2}[z];ex=pw*{'F':0,'G':1,'H':2}[n]%3;return cmath.exp(2j*math.pi*ex/3)\ndef R(n,g,x):\n fl=cl['c'];M=zz(2,2)\n for i,fi in enumerate(fl):\n  fo=cj(x,fi);j=fl.index(fo)\n  if g==fo:M[j][i]=im(n,mu(mu(iv(q['c'][fo]),x),q['c'][fi]))\n return M\ndef RC(g,x):return st(x)if g==e else zz(2,2)\ndef T(g,x):\n M=zz(4,4)\n for a in G:\n  for b in G:\n   if mu(a,b)==g:M=ad(M,kr(RC(a,x),R('F',b,x)))\n return M\ndef null(rows,tol=1e-10):\n A=[r[:]for r in rows if max(map(abs,r),default=0)>tol];m=len(A);n=8;piv=[];i=0\n for j in range(n):\n  k=max(range(i,m),key=lambda z:abs(A[z][j]),default=i)\n  if i>=m or abs(A[k][j])<tol:continue\n  A[i],A[k]=A[k],A[i];v=A[i][j];A[i]=[x/v for x in A[i]]\n  for z in range(m):\n   if z!=i and abs(A[z][j])>tol:\n    v=A[z][j];A[z]=[A[z][u]-v*A[i][u]for u in range(n)]\n  piv.append(j);i+=1\n free=[j for j in range(n)if j not in piv];assert len(free)==1,(len(piv),free)\n v=[0j]*n;v[free[0]]=1\n for z in range(len(piv)-1,-1,-1):v[piv[z]]=-sum(A[z][j]*v[j]for j in free)\n norm=math.sqrt(sum(abs(x)**2 for x in v)/2);return[x/norm for x in v],len(piv)\ndef er(A,B):return max(abs(A[i][j]-B[i][j])for i in range(len(A))for j in range(len(A[0])))\nout={}\nfor n in('G','H'):\n rows=[]\n for x in G:\n  for g in G:\n   A=T(g,x);U=R(n,g,x)\n   for i in range(4):\n    for j in range(2):\n     row=[0j]*8\n     for k in range(4):row[2*k+j]+=A[i][k]\n     for l in range(2):row[2*i+l]-=U[l][j]\n     rows.append(row)\n v,rank=null(rows);V=[[v[2*i+j]for j in range(2)]for i in range(4)];mx=max(er(mm(T(g,x),V),mm(V,R(n,g,x)))for x in G for g in G);out[n]={'rank':rank,'residual':mx,'V':V}\nprint(json.dumps(out,default=str,indent=2));assert max(z['residual']for z in out.values())<1e-9"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "read-only dependency-free nullspace solve for full CxF to G,H D(S3) intertwiner equations",
+    "expected_cost": "bounded complex row reduction with 8 unknowns for each target"
+  }
+}

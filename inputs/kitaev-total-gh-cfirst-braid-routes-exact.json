@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-total-gh-cfirst-braid-routes-exact",
+  "created_at": "2026-08-31T21:17:53.6828459Z",
+  "sha256": "b4c2c96dc1d9e745b7c41505212076cde5ee84925c6a71c43bfd987ca271c805",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as Q\nZ=(Q(0),)*4;O=(Q(1),Q(0),Q(0),Q(0));S=(Q(0),Q(1),Q(0),Q(0));I=(Q(0),Q(0),Q(1),Q(0))\ndef a(x,y):return tuple(x[k]+y[k]for k in range(4))\ndef sc(q,x):return tuple(q*v for v in x)\ndef cj(x):return(x[0],x[1],-x[2],-x[3])\ndef m(x,y):\n A,B,C,D=x;E,F,G,H=y;return(A*E+3*B*F-C*G-3*D*H,A*F+B*E-C*H-D*G,A*G+3*B*H+C*E+3*D*F,A*H+B*G+C*F+D*E)\ndef sm(xs):\n z=Z\n for x in xs:z=a(z,x)\n return z\ndef mm(A,B):return[[sm(m(A[i][k],B[k][j])for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[cj(A[j][i])for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(A,B):return[[m(A[i//len(B)][j//len(B[0])],B[i%len(B)][j%len(B[0])])for j in range(len(A[0])*len(B[0]))]for i in range(len(A)*len(B))]\ndef flip(E):return[[E[2*(r%2)+r//2][j]for j in range(2)]for r in range(4)]\ndef sw(M,p,q):\n N=[[Z]*2 for _ in range(8)]\n for r in range(8):\n  b=[r//4,(r//2)%2,r%2];b[p],b[q]=b[q],b[p];N[4*b[0]+2*b[1]+b[2]]=M[r]\n return N\ndef block(T,S,p,q,v):assert mm(dg(T),sw(S,p,q))==[[sc(v,O),Z],[Z,sc(v,O)]]\nID=[[O,Z],[Z,O]];EC=[[O,Z],[Z,sc(-1,O)],[Z,sc(-1,O)],[sc(-1,O),Z]];W=[[a(sc(-1,S),I),Z],[Z,sc(-2,I)],[a(O,m(I,S)),Z],[Z,sc(2,O)]];ag=sc(Q(1,2),a(sc(-1,S),sc(-1,I)));Ug=[[m(ag,x)for x in r]for r in W];Uh=[[cj(x)for x in r]for r in Ug]\nfor U,V in ((Uh,Ug),(Ug,Uh)):\n CCF=mm(kr(EC,ID),V);CFC=mm(kr(U,ID),flip(U));FCC=mm(kr(flip(U),ID),flip(U));block(CCF,CCF,0,1,16);block(CFC,CCF,1,2,32);block(FCC,CFC,0,1,64);block(FCC,FCC,1,2,64)\nprint({'field':'Q(sqrt(3),i)','channels':['G','H'],'exact_swap_blocks':8,'normalized_scalars':[1,1,1,1],'exact_route_equality':True,'status':'passed'})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "exact total-G/H C-first typed braid-route certificate",
+    "expected_cost": "eight exact microscopic swap projections and two route products"
+  }
+}

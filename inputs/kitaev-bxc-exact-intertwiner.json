@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-bxc-exact-intertwiner",
+  "created_at": "2026-08-31T20:56:45.3163531Z",
+  "sha256": "27ae5e3d4ac7317fc32867a5e5d994c352f089d81ced7a5d51313fba459b88c8",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as Q\nZ=(Q(0),Q(0));O=(Q(1),Q(0));S=(Q(0),Q(1))\ndef a(x,y):return(x[0]+y[0],x[1]+y[1])\ndef m(x,y):return(x[0]*y[0]+3*x[1]*y[1],x[0]*y[1]+x[1]*y[0])\ndef sm(xs):\n z=Z\n for x in xs:z=a(z,x)\n return z\ndef mm(A,B):return[[sm(m(A[i][k],B[k][j])for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef sc(q,A):return[[(q*x[0],q*x[1])for x in r]for r in A]\nr=[[(-Q(1,2),Q(0)),(Q(0),-Q(1,2))],[(Q(0),Q(1,2)),(-Q(1,2),Q(0))]];s=[[O,Z],[Z,(-Q(1),Q(0))]];U=[[Z,O],[(-Q(1),Q(0)),Z]]\nassert mm(r,U)==mm(U,r)\nassert mm(sc(-1,s),U)==mm(U,s)\nassert mm([[U[j][i] for j in range(2)]for i in range(2)],U)==[[O,Z],[Z,O]]\nprint({'field':'Q(sqrt(3))','generators_checked':['r','s'],'isometry':True,'gauge':'first_nonzero_positive','status':'passed'})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "exact B tensor C to C intertwiner verification",
+    "expected_cost": "two 2x2 generator identities and one Gram identity"
+  }
+}

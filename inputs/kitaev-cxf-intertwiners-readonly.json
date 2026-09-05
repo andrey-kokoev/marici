@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-cxf-intertwiners-readonly",
+  "created_at": "2026-08-31T19:37:29.7806394Z",
+  "sha256": "2705a736c6eb08f30ae7a8201b8a9e6fbe37f685d018b5b64af26251f3805f8a",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import pathlib\np=pathlib.Path('research/kitaev/checkers/check_s3_universal_R_partial_trace.py')\ns=p.read_text()\nmark='    s_matrix=sp.Matrix(['\nins='''    # injected read-only CxF intertwiner solve\\n    C,F=by_name[\"C\"],by_name[\"F\"]\\n    for target_name in (\"G\",\"H\"):\\n        target=by_name[target_name]\\n        z=sp.symbols(\"z0:8\"); V=sp.Matrix(4,2,z)\\n        eq=[]\\n        for x in group:\\n            for flux in group:\\n                tensor=sum((sp.kronecker_product(representation(C,a,x),representation(F,b,x)) for a in group for b in group if compose(a,b)==flux),sp.zeros(4))\\n                eq.extend(list(tensor*V-V*representation(target,flux,x)))\\n        A,_=sp.linear_eq_to_matrix(eq,z); ns=A.nullspace(); assert len(ns)==1\\n        W=sp.Matrix(4,2,ns[0]); norm=sp.simplify((W.H*W)[0,0]); W=sp.simplify(W/sp.sqrt(norm))\\n        assert sp.simplify(W.H*W-sp.eye(2))==sp.zeros(2)\\n        print(target_name, W.tolist())\\n    raise SystemExit\\n'''\nexec(compile(s.replace(mark,ins+mark),str(p),'exec'))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "read-only exact C tensor F to G,H induced-module intertwiner solve; no files written",
+    "expected_cost": "bounded: 72 generator equations over 8 unknowns for each of two targets"
+  }
+}

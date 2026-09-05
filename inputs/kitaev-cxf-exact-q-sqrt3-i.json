@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-cxf-exact-q-sqrt3-i",
+  "created_at": "2026-08-31T19:49:48.481461Z",
+  "sha256": "8278b1b38b56a4b1c4d72b596b83ccc46a444a1895aa0e8156b21a2d3637c02d",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as Q\nimport itertools,json\nZ=(Q(0),)*4;ONE=(Q(1),Q(0),Q(0),Q(0));S=(Q(0),Q(1),Q(0),Q(0));I=(Q(0),Q(0),Q(1),Q(0))\ndef ad(x,y):return tuple(x[k]+y[k] for k in range(4))\ndef ng(x):return tuple(-a for a in x)\ndef ml(x,y):\n a,b,c,d=x;e,f,g,h=y\n return(a*e+3*b*f-c*g-3*d*h,a*f+b*e-c*h-d*g,a*g+3*b*h+c*e+3*d*f,a*h+b*g+c*f+d*e)\ndef pw(x,n):\n y=ONE\n for _ in range(n):y=ml(y,x)\n return y\ndef co(x):return(x[0],x[1],-x[2],-x[3])\ndef sc(q,x):return tuple(q*a for a in x)\ndef MM(A,B):return[[sumz(ml(A[i][k],B[k][j])for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef sumz(xs):\n y=Z\n for x in xs:y=ad(y,x)\n return y\ndef KR(A,B):return[[ml(A[i//len(B)][j//len(B[0])],B[i%len(B)][j%len(B[0])])for j in range(len(A[0])*len(B[0]))]for i in range(len(A)*len(B))]\ndef ZZ(n,m):return[[Z for _ in range(m)]for _ in range(n)]\ndef MA(A,B):return[[ad(A[i][j],B[i][j])for j in range(len(A[0]))]for i in range(len(A))]\ndef EQ(A,B):return A==B\ndef DG(A):return[[co(A[j][i])for j in range(len(A))]for i in range(len(A[0]))]\nP=list(itertools.permutations(range(3)));e=(0,1,2);t=(1,0,2);c=(1,2,0)\ndef mu(p,q):return tuple(p[q[i]]for i in range(3))\ndef iv(p):return tuple(p.index(i)for i in range(3))\ndef cj(a,b):return mu(mu(a,b),iv(a))\ndef ty(p):\n f=sum(p[i]==i for i in range(3));return'e'if f==3 else('t'if f==1 else'c')\ncl={z:[g for g in P if ty(g)==z]for z in'etc'};rp={'e':e,'t':t,'c':c};tr={z:{h:next(a for a in P if cj(a,rp[z])==h)for h in cl[z]}for z in cl}\nR=[sc(Q(-1,2),ONE),sc(Q(-1,2),S)],[sc(Q(1,2),S),sc(Q(-1,2),ONE)];SM=[[ONE,Z],[Z,ng(ONE)]];ID=[[ONE,Z],[Z,ONE]]\ndef std(x):\n for k in range(3):\n  p=e;M=ID\n  for _ in range(k):p=mu(c,p);M=MM(R,M)\n  for z in range(2):\n   if mu(p,t if z else e)==x:return MM(M,SM if z else ID)\nomega=(Q(-1,2),Q(0),Q(0),Q(1,2))\ndef chi(n,z):\n k={e:0,c:1,mu(c,c):2}[z]*{'F':0,'G':1,'H':2}[n]%3;return pw(omega,k)\ndef rep(n,g,x):\n fl=cl['c'];M=ZZ(2,2)\n for a,fi in enumerate(fl):\n  fo=cj(x,fi);b=fl.index(fo)\n  if g==fo:M[b][a]=chi(n,mu(mu(iv(tr['c'][fo]),x),tr['c'][fi]))\n return M\ndef rc(g,x):return std(x)if g==e else ZZ(2,2)\ndef ten(g,x):\n M=ZZ(4,4)\n for a in P:\n  for b in P:\n   if mu(a,b)==g:M=MA(M,KR(rc(a,x),rep('F',b,x)))\n return M\nmS=ng(S);m2I=sc(Q(-2),I);p2I=sc(Q(2),I);onepIS=ad(ONE,ml(I,S));mSpI=ad(mS,I)\nWG=[[mSpI,Z],[Z,m2I],[onepIS,Z],[Z,sc(Q(2),ONE)]];WH=[[co(x)for x in row]for row in WG]\nout={}\nfor n,W in [('G',WG),('H',WH)]:\n checks=0\n for x in P:\n  for g in P:\n   assert EQ(MM(ten(g,x),W),MM(W,rep(n,g,x)));checks+=1\n assert EQ(MM(DG(W),W),[[sc(Q(8),ONE),Z],[Z,sc(Q(8),ONE)]])\n out[n]={'generator_equalities':checks,'exact_isometry_scale':8}\nassert EQ(MM(DG(WG),WH),ZZ(2,2))\nassert EQ(MA(MM(WG,DG(WG)),MM(WH,DG(WH))),[[sc(Q(8),ONE)if i==j else Z for j in range(4)]for i in range(4)])\nprint(json.dumps({'field':'Q(sqrt(3),i)','channels':out,'cross_orthogonal':True,'complete_after_dividing_by_8':True},indent=2))"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "read-only exact Q(sqrt(3),i) verification of C tensor F embeddings, all quantum-double generators and channel projectors",
+    "expected_cost": "bounded exact rational arithmetic over 72 generator elements per channel"
+  }
+}

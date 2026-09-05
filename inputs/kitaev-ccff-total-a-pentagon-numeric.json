@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-ccff-total-a-pentagon-numeric",
+  "created_at": "2026-08-31T21:32:56.4682875Z",
+  "sha256": "f91b2cabb714f8ee584a18d97123843d653475a4a33bfff26e00570ad7eff382",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "import math\nq=math.sqrt\ndef mm(A,B):return[[sum(A[i][k]*B[k][j]for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[A[j][i].conjugate()for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(*xs):\n R=[[1]]\n for B in xs:R=[[R[i//len(B)][j//len(B[0])]*B[i%len(B)][j%len(B[0])]for j in range(len(R[0])*len(B[0]))]for i in range(len(R)*len(B))]\n return R\ndef ovs(T,S):\n M=[];e=0\n for t in T:\n  row=[]\n  for s in S:\n   z=mm(dg(t),s)[0][0];row.append(z)\n  M.append(row)\n return M\nI=[[1,0],[0,1]];EA=[[1/q(2)],[0],[0],[1/q(2)]];EB=[[0],[1/q(2)],[-1/q(2)],[0]];EC=[[1/q(2),0],[0,-1/q(2)],[0,-1/q(2)],[-1/q(2),0]];J=[[0,1],[-1,0]];JB=[[1,0],[0,-1]];FA=[[0],[1/q(2)],[1/q(2)],[0]];FB=[[0],[1/q(2)],[-1/q(2)],[0]];W=[[-q(3)+1j,0],[0,-2j],[1+1j*q(3),0],[0,2]];ag=(-q(3)-1j)/2;VG=[[ag*z/(2*q(2))for z in r]for r in W];VH=[[z.conjugate()for z in r]for r in VG];UG=[[0,0],[1/q(2),1j/q(2)],[1/q(2),-1j/q(2)],[0,0]];UH=[[z.conjugate()for z in r]for r in UG]\nT1=[mm(mm(kr(E,I,I),kr(K,I)),FA)for E,K in ((EA,I),(EB,JB))];T2=[mm(mm(kr(I,E,I),kr(K,I)),FA)for E,K in ((VG,VH),(VH,VG))];T3=[kr(EA,FA),kr(EB,FB)];T4=[mm(mm(kr(I,E,I),kr(I,K)),EA)for E,K in ((VG,UG),(VH,UH))];T5=[mm(mm(kr(I,I,E),kr(I,K)),EA)for E,K in ((FA,I),(FB,J))];T=[T1,T2,T3,T4,T5];G=max(abs(mm(dg(x),x)[0][0]-1)for V in T for x in V);E={(a,b):ovs(T[a],T[b])for a,b in [(1,0),(3,1),(4,3),(2,4),(2,0)]};route=mm(E[(2,4)],mm(E[(4,3)],mm(E[(3,1)],E[(1,0)])));err=max(abs(route[i][j]-E[(2,0)][i][j])for i in range(2)for j in range(2));f=lambda M:[[complex(round(z.real,12),round(z.imag,12))for z in r]for r in M];print({'gram_residual':G,'edges':{f'{a+1}<-{b+1}':f(v)for (a,b),v in E.items()},'route_residual':err})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "numerical two-dimensional total-A CCFF pentagon construction",
+    "expected_cost": "ten 16x1 paths, five 2x2 edge overlaps, one route product"
+  }
+}

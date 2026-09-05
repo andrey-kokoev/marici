@@ -1,0 +1,18 @@
+{
+  "schema": "narada.structured_command.input.v0",
+  "ref": "structured_command_input:kitaev-cccf-pentagon-exact",
+  "created_at": "2026-08-31T20:29:12.26731Z",
+  "sha256": "b1b049bfe0a4322a23522782aabbd03973a2a928570aa3d74ab0b5dbe45a7743",
+  "input": {
+    "command": "python",
+    "args": [
+      "-c",
+      "from fractions import Fraction as Q\nZ=(Q(0),)*4;O=(Q(1),Q(0),Q(0),Q(0));S=(Q(0),Q(1),Q(0),Q(0));I=(Q(0),Q(0),Q(1),Q(0))\ndef a(x,y):return tuple(x[k]+y[k]for k in range(4))\ndef s(q,x):return tuple(q*z for z in x)\ndef n(x):return s(-1,x)\ndef cj(x):return(x[0],x[1],-x[2],-x[3])\ndef m(x,y):\n A,B,C,D=x;E,F,G,H=y\n return(A*E+3*B*F-C*G-3*D*H,A*F+B*E-C*H-D*G,A*G+3*B*H+C*E+3*D*F,A*H+B*G+C*F+D*E)\ndef sm(xs):\n z=Z\n for x in xs:z=a(z,x)\n return z\ndef mm(A,B):return[[sm(m(A[i][k],B[k][j])for k in range(len(B)))for j in range(len(B[0]))]for i in range(len(A))]\ndef dg(A):return[[cj(A[j][i])for j in range(len(A))]for i in range(len(A[0]))]\ndef kr(*xs):\n R=[[O]]\n for B in xs:R=[[m(R[i//len(B)][j//len(B[0])],B[i%len(B)][j%len(B[0])])for j in range(len(R[0])*len(B[0]))]for i in range(len(R)*len(B))]\n return R\ndef gram(M,q):assert mm(dg(M),M)==[[s(q,O),Z],[Z,s(q,O)]]\ndef edge(T,U,E):\n for i in range(2):\n  for j in range(2):assert mm(dg(T[i]),U[j])==[[E[i][j],Z],[Z,E[i][j]]]\nID=[[O,Z],[Z,O]];EA=[[O],[Z],[Z],[O]];EB=[[Z],[O],[n(O)],[Z]];EC=[[O,Z],[Z,n(O)],[Z,n(O)],[n(O),Z]];JB=[[O,Z],[Z,n(O)]]\nWg=[[a(n(S),I),Z],[Z,s(-2,I)],[a(O,m(I,S)),Z],[Z,s(2,O)]];Wh=[[cj(x)for x in r]for r in Wg];ag=s(Q(1,2),a(n(S),n(I)));ah=cj(ag);Ug=[[m(ag,x)for x in r]for r in Wg];Uh=[[m(ah,x)for x in r]for r in Wh]\nEY=[EA,EB];J=[ID,JB];EZ=[Ug,Uh];CY=[Uh,Ug]\nT1=[mm(mm(kr(EC,ID,ID),kr(EY[k],ID)),J[k])for k in range(2)];T2=[mm(mm(kr(ID,EC,ID),kr(EY[k],ID)),J[k])for k in range(2)];T3=[mm(kr(EC,EZ[k]),CY[k])for k in range(2)];T4=[mm(mm(kr(ID,EC,ID),kr(ID,EZ[k])),CY[k])for k in range(2)];T5=[mm(mm(kr(ID,ID,EZ[k]),kr(ID,EZ[k])),CY[1-k])for k in range(2)]\nfor T,q in zip((T1,T2,T3,T4,T5),(4,4,128,128,512)):\n for X in T:gram(X,q)\nD=[[O,Z],[Z,n(O)]];K=[[O,I],[O,n(I)]];P=[[Z,O],[O,Z]];E2=[[s(4,x)for x in r]for r in D];E42=[[s(16,x)for x in r]for r in K];E54=[[s(256,x)for x in r]for r in P];E35=[[s(256,x)for x in r]for r in ID];E31=E42\nedge(T2,T1,E2);edge(T4,T2,E42);edge(T5,T4,E54);edge(T3,T5,E35);edge(T3,T1,E31)\nassert K==mm(ID,mm(P,mm(K,D)))\nprint({'field':'Q(sqrt(3),i)','exact_path_grams':10,'exact_edge_blocks':5,'exact_pentagon':True,'status':'passed'})"
+    ],
+    "working_directory": "C:\\Users\\andrey\\src\\marici",
+    "timeout_ms": 120000,
+    "wait_for_completion": true,
+    "test_scope": "read-only exact total-F C C C F pentagon certificate",
+    "expected_cost": "ten exact 16x2 path Grams, five exact edge blocks, one route identity"
+  }
+}
