@@ -19,6 +19,10 @@ $cutoff = (Get-Date).ToUniversalTime().AddMinutes(-$OlderThanMinutes)
 $maxPathsPerCommit = 200
 $temporaryPattern = '(^|/)(tmp|temp)(/|$)|(^|/).*\.(tmp|bak|swp)$|(^|/)tmp\.json$'
 $commitMessages = @{
+  '.narada' = 'Checkpoint Narada metadata'
+  'background' = 'Checkpoint background artifacts'
+  'executions' = 'Checkpoint execution records'
+  'public' = 'Checkpoint public artifacts'
   'research/aspect' = 'Advance Aspect programme'
   'research/benincasa' = 'Advance cosmology programme'
   'research/flavor' = 'Advance flavor programme'
@@ -81,7 +85,13 @@ foreach ($record in $dirty) {
   $mtime = (Get-Item -LiteralPath $fullPath).LastWriteTimeUtc
   if ($mtime -le $cutoff) {
     $parts = $record.Path -split '/'
-    $group = if ($parts.Count -ge 2) { "$($parts[0])/$($parts[1])" } else { '(root)' }
+    $group = if ($parts[0] -eq 'research' -and $parts.Count -ge 2) {
+      "research/$($parts[1])"
+    } elseif ($parts[0] -eq 'src' -and $parts.Count -ge 2 -and $parts[1] -eq 'ledger') {
+      'src/ledger'
+    } else {
+      $parts[0]
+    }
     $eligible.Add([pscustomobject]@{ Path = $record.Path; Group = $group })
   } else {
     $protected.Add($record.Path)
