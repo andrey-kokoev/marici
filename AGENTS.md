@@ -293,6 +293,10 @@ binding's `epistemic_graph_issue_tree_resume` and
 `marici-issue-tree` binding, and `marici-task-lifecycle` does not expose graph
 operations. Read `epistemic_graph_guidance` before unfamiliar operations.
 
+For objective decomposition, executable-frontier selection, issue-boundary DPC,
+evidence attachment, disposition, and successor activation, follow
+`docs/protocols/typed-executable-frontier-protocol.md`.
+
 At turn boundaries, query addressed `narada.epistemic:communication` records,
 the read-only aliases `marici:communication` and `communication`, and the
 team-member neighborhood. Reply to acted-on messages with
