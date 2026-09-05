@@ -1,5 +1,5 @@
 """Directed degree-five Taylor coefficients for the degree-29 source pivot."""
-import itertools,json,math,os
+import itertools,json,math,os,sys
 from decimal import Decimal as D
 from pathlib import Path
 
@@ -7,8 +7,22 @@ import reduced_source_central_interval_chords as I
 
 ROOT=Path(__file__).parents[1]; VARIABLES=int(os.environ.get('MARICI_TAYLOR_VARIABLES','5')); ORDER=5; zero=(0,)*VARIABLES
 payload=json.loads((ROOT/'results'/'central-H-degree-eleven-interval.json').read_text())
-f=[(D(a),D(b)) for a,b in payload['F_coefficients_through_degree_twenty_nine']]
-M=D('6.038308'); CENTER=D('.01')
+f=[(D(a),D(b)) for a,b in payload['F_coefficients_through_degree_forty_nine']]
+SOURCE_DEGREE=len(f)-1
+M=D('6.038308')
+_anchor_arg=next((arg.split('=',1)[1] for arg in sys.argv[1:] if arg.startswith('--anchor=')),None)
+_anchor_text=_anchor_arg or os.environ.get('MARICI_TAYLOR_ANCHOR',','.join(['.01']*VARIABLES))
+ANCHOR=tuple(D(value.strip()) for value in _anchor_text.split(','))
+if len(ANCHOR)!=VARIABLES:
+    raise ValueError(f'MARICI_TAYLOR_ANCHOR requires {VARIABLES} comma-separated values')
+if any(value<0 or value>D('.01') for value in ANCHOR):
+    raise ValueError('Taylor anchors must lie in [0,0.01]')
+CENTER=max(ANCHOR)
+INJECT_SOURCE_TAIL='--finite-source-only' not in sys.argv
+_radius_arg=next((arg.split('=',1)[1] for arg in sys.argv[1:] if arg.startswith('--radius=')),None)
+RADIUS=D(_radius_arg or '.0005')
+if RADIUS<=0 or CENTER+RADIUS>=1:
+    raise ValueError('Taylor radius must be positive and remain inside the unit source disk')
 def up_pow(base,exponent): return I.up.power(base,D(exponent))
 def add(a,b):
     out=dict(a)
@@ -54,7 +68,7 @@ def tail_derivative(i,j,degree):
     cache_key=(i,j,degree)
     if cache_key in tail_derivative_cache: return tail_derivative_cache[cache_key]
     order=i+j+degree; value=D(0)
-    for p in range(29,201):
+    for p in range(SOURCE_DEGREE,201):
         falling=math.factorial(p)//math.factorial(p-order)
         term=I.up.multiply(M,I.up.multiply(D(falling),up_pow(CENTER,p-order)))
         value=I.up.add(value,I.up.divide(term,D(math.factorial(i)*math.factorial(j))))
@@ -64,6 +78,7 @@ def tail_derivative(i,j,degree):
     tail_derivative_cache[cache_key]=value
     return value
 def inject_source_tail(jet,i,j):
+    if not INJECT_SOURCE_TAIL: return jet
     out=dict(jet)
     for key in multiindices:
         denominator=math.prod(math.factorial(component) for component in key)
@@ -74,11 +89,11 @@ def inject_source_tail(jet,i,j):
 nodes=[]
 for variable in range(VARIABLES):
     key=tuple(1 if i==variable else 0 for i in range(VARIABLES))
-    nodes.append({zero:I.box('.01'),key:I.box(1)})
-tables=[]; h=[constant(1)]+[constant(0)]*29
+    nodes.append({zero:I.box(ANCHOR[variable]),key:I.box(1)})
+tables=[]; h=[constant(1)]+[constant(0)]*SOURCE_DEGREE
 for node in nodes:
-    powers=[power(node,q) for q in range(30)]
-    h=[add_all(mul(h[d-q],powers[q]) for q in range(d+1)) for d in range(30)]
+    powers=[power(node,q) for q in range(SOURCE_DEGREE+1)]
+    h=[add_all(mul(h[d-q],powers[q]) for q in range(d+1)) for d in range(SOURCE_DEGREE+1)]
     tables.append(h)
 matrix=[]
 for i in range(VARIABLES):
@@ -100,7 +115,7 @@ for k in range(VARIABLES):
         value=matrix[i][k]
         for j in range(k): value=sub(value,mul(mul(lower[i][j],lower[k][j]),diagonal[j]))
         lower[i][k]=div(value,pivot)
-fifth=diagonal[-1]; radius=D('.0005')
+fifth=diagonal[-1]; radius=RADIUS
 budgets={}
 for degree in range(1,ORDER+1):
     budget=D(0)
@@ -112,16 +127,34 @@ for degree in range(1,ORDER+1):
 total_budget=D(0)
 for budget in budgets.values(): total_budget=I.up.add(total_budget,budget)
 margin=I.down.subtract(fifth[zero][0],total_budget)
+derivative_box_uppers=[]
+for variable in range(VARIABLES):
+    upper=D(0)
+    for key,value in fifth.items():
+        if not key[variable]: continue
+        if sum(key)==1:
+            upper=I.up.add(upper,value[1])
+        else:
+            coefficient=max(abs(value[0]),abs(value[1]))
+            term=I.up.multiply(D(key[variable])*coefficient,up_pow(radius,sum(key)-1))
+            upper=I.up.add(upper,term)
+    derivative_box_uppers.append(upper)
 if VARIABLES == 5:
     assert margin > 0
 result={
-    'anchor':['0.01']*VARIABLES,
+    'anchor':[str(value) for value in ANCHOR],
     'radius':str(radius),
     'fifth_pivot_constant_interval':[str(x) for x in fifth[zero]],
+    'fifth_pivot_coordinate_derivative_intervals':[
+        [str(x) for x in fifth[tuple(1 if i==variable else 0 for i in range(VARIABLES))]]
+        for variable in range(VARIABLES)],
     'degree_box_budget_uppers':{str(degree):str(value) for degree,value in budgets.items()},
+    'coordinate_derivative_degree_five_box_uppers':[str(value) for value in derivative_box_uppers],
+    'degree_five_polynomial_coordinatewise_decreasing':all(value<0 for value in derivative_box_uppers),
     'degree_five_polynomial_margin_lower':str(margin),
-    'degree_twenty_nine_source_polynomial_interval_certified':True,
-    'omitted_source_analytic_tail_through_Taylor_degree_five_injected':True,
+    'source_polynomial_degree':SOURCE_DEGREE,
+    'finite_source_polynomial_interval_certified':True,
+    'omitted_source_analytic_tail_through_Taylor_degree_five_injected':INJECT_SOURCE_TAIL,
     'omitted_source_tail_beyond_Taylor_degree_five_certified':False,
     'rational_Taylor_remainder_beyond_degree_five_certified':False,
     'directed_decimal_rounding':True,

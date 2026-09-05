@@ -1,11 +1,13 @@
 """Directed-rounding certificate for 21 central reciprocal-slope chords."""
-import json
+import json,os,sys
 from decimal import Decimal, Context, ROUND_FLOOR, ROUND_CEILING
 from fractions import Fraction
 from functools import lru_cache
 from pathlib import Path
 
-PREC, DEPTH = 90, 120
+_precision_arg=next((arg.split('=',1)[1] for arg in sys.argv[1:]
+                     if arg.startswith('--interval-precision=')),None)
+PREC, DEPTH = int(_precision_arg or os.environ.get('MARICI_INTERVAL_PRECISION','90')), 120
 D = Decimal
 down = Context(prec=PREC, rounding=ROUND_FLOOR)
 up = Context(prec=PREC, rounding=ROUND_CEILING)

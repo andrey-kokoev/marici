@@ -5,7 +5,7 @@ from pathlib import Path
 
 import central_rank_five_pivot_taylor_interval as P
 
-I=P.I; R=D('.0005'); ORDER=P.ORDER; zero=P.zero
+I=P.I; R=P.RADIUS; ORDER=P.ORDER; zero=P.zero
 def coefficient_norm(jet,include_constant=True):
     return sum((max(abs(value[0]),abs(value[1]))*R**sum(key)
                 for key,value in jet.items() if include_constant or key!=zero),D(0))
@@ -40,7 +40,7 @@ def source_tail_after_degree_five(i,j):
     total=D(0); rho=D('.0005'); center=D('.01')
     for degree in range(6,41):
         order=i+j+degree; derivative=D(0)
-        for p in range(max(29,order),201):
+        for p in range(max(P.SOURCE_DEGREE,order),201):
             falling=math.factorial(p)//math.factorial(p-order)
             derivative=I.up.add(derivative,I.up.divide(
                 I.up.multiply(P.M,D(falling)*center**(p-order)),D(math.factorial(i)*math.factorial(j))))
@@ -66,13 +66,13 @@ def polynomial_power(a,n):
     out=[D(1)]
     for _ in range(n): out=polynomial_mul(out,a)
     return out
-node_majorant=[D('.01'),D('.0005')]; homogeneous=[]
+node_majorant=[D('.01'),R]; homogeneous=[]
 for length in range(1,P.VARIABLES+1):
-    h=[[D(1)]]+[[D(0)] for _ in range(29)]
+    h=[[D(1)]]+[[D(0)] for _ in range(P.SOURCE_DEGREE)]
     for _ in range(length):
-        powers=[polynomial_power(node_majorant,q) for q in range(30)]
+        powers=[polynomial_power(node_majorant,q) for q in range(P.SOURCE_DEGREE+1)]
         h=[__import__('functools').reduce(polynomial_add,
-             (polynomial_mul(h[d-q],powers[q]) for q in range(d+1)),[D(0)]) for d in range(30)]
+             (polynomial_mul(h[d-q],powers[q]) for q in range(d+1)),[D(0)]) for d in range(P.SOURCE_DEGREE+1)]
     homogeneous.append(h)
 known_polynomial_remainders=[]
 for i in range(P.VARIABLES):
@@ -88,9 +88,10 @@ for i in range(P.VARIABLES):
                     value=polynomial_add(value,term)
         row.append(sum(value[6:],D(0)))
     known_polynomial_remainders.append(row)
-ENTRY_REMAINDER=D('1e-30')
+
 maximum_entry_remainder=max(computed_source_remainders[i][j]+known_polynomial_remainders[i][j]
                             for i in range(P.VARIABLES) for j in range(P.VARIABLES))
+ENTRY_REMAINDER=I.up.multiply(D(2),maximum_entry_remainder)
 assert maximum_entry_remainder<ENTRY_REMAINDER
 matrix=[[(P.matrix[i][j],ENTRY_REMAINDER) for j in range(P.VARIABLES)] for i in range(P.VARIABLES)]
 lower=[[(P.constant(0),D(0)) for _ in range(P.VARIABLES)] for _ in range(P.VARIABLES)]
@@ -107,13 +108,42 @@ fifth=diagonal[-1]
 polynomial_lower=I.down.subtract(fifth[0][zero][0],coefficient_norm(fifth[0],False))
 full_lower=I.down.subtract(polynomial_lower,fifth[1])
 assert full_lower>0
+inner_arg=next((arg.split('=',1)[1] for arg in __import__('sys').argv[1:]
+                if arg.startswith('--inner-radius=')),None)
+inner_radius=D(inner_arg) if inner_arg else None
+cauchy_derivative_remainder=None; polynomial_derivative_uppers=None; full_derivative_uppers=None
+if inner_radius is not None:
+    if not D(0)<inner_radius<R: raise ValueError('inner radius must lie strictly inside outer radius')
+    cauchy_derivative_remainder=I.up.divide(fifth[1],I.down.subtract(R,inner_radius))
+    polynomial_derivative_uppers=[]
+    for variable in range(P.VARIABLES):
+        upper=D(0)
+        for key,value in fifth[0].items():
+            if not key[variable]: continue
+            if sum(key)==1: upper=I.up.add(upper,value[1])
+            else:
+                coefficient=max(abs(value[0]),abs(value[1]))
+                term=I.up.multiply(D(key[variable])*coefficient,inner_radius**(sum(key)-1))
+                upper=I.up.add(upper,term)
+        polynomial_derivative_uppers.append(upper)
+    full_derivative_uppers=[I.up.add(value,cauchy_derivative_remainder)
+                            for value in polynomial_derivative_uppers]
+    if '--require-decreasing' in __import__('sys').argv:
+        assert all(value<0 for value in full_derivative_uppers)
 result={
+    'anchor':[str(value) for value in P.ANCHOR],
+    'radius':str(R),
     'matrix_entry_degree_six_and_higher_remainder_bound':str(ENTRY_REMAINDER),
     'maximum_computed_omitted_source_remainder':str(max(max(row) for row in computed_source_remainders)),
     'maximum_computed_known_polynomial_remainder':str(max(max(row) for row in known_polynomial_remainders)),
     'maximum_combined_matrix_entry_remainder':str(maximum_entry_remainder),
     'fifth_pivot_polynomial_lower':str(polynomial_lower),
     'fifth_pivot_a_posteriori_remainder_bound':str(fifth[1]),
+    'inner_radius':str(inner_radius) if inner_radius is not None else None,
+    'cauchy_coordinate_derivative_remainder_bound':str(cauchy_derivative_remainder) if cauchy_derivative_remainder is not None else None,
+    'polynomial_coordinate_derivative_uppers':[str(value) for value in polynomial_derivative_uppers] if polynomial_derivative_uppers is not None else None,
+    'full_coordinate_derivative_uppers':[str(value) for value in full_derivative_uppers] if full_derivative_uppers is not None else None,
+    'coordinatewise_decreasing_on_inner_polydisc':all(value<0 for value in full_derivative_uppers) if full_derivative_uppers is not None else None,
     'fifth_pivot_full_Taylor_model_lower':str(full_lower),
     'all_inverse_lower_bounds_positive':True,
     'source_and_rational_remainders_included':True,

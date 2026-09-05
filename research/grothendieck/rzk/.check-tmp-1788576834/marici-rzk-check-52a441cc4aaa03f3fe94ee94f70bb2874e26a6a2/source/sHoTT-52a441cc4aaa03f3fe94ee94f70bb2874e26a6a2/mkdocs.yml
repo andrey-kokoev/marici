@@ -1,0 +1,102 @@
+site_name: 'Simplicial HoTT'
+repo_url: https://github.com/rzk-lang/sHoTT
+repo_name: rzk-lang/sHoTT
+edit_uri: edit/main/src
+
+docs_dir: src
+nav:
+  - General:
+      - About: index.md
+      - Code style: STYLEGUIDE.md
+      - Contributors: CONTRIBUTORS.md
+
+  - HoTT:
+      - Common: hott/00-common.rzk.md
+      - Paths: hott/01-paths.rzk.md
+      - Homotopies: hott/02-homotopies.rzk.md
+      - Equivalences: hott/03-equivalences.rzk.md
+      - Half Adjoint Equivalences: hott/04-half-adjoint-equivalences.rzk.md
+      - Sigma types: hott/05-sigma.rzk.md
+      - Contractible: hott/06-contractible.rzk.md
+      - Fibers: hott/07-fibers.rzk.md
+      - Families of maps: hott/08-families-of-maps.rzk.md
+      - Propositions: hott/09-propositions.rzk.md
+      - Trivial fibrations: hott/10-trivial-fibrations.rzk.md
+      - Homotopy pullbacks: hott/11-homotopy-pullbacks.rzk.md
+
+  - Simplicial HoTT:
+      - Simplicial Type Theory: simplicial-hott/02-simplicial-type-theory.rzk.md
+      - Extension Types: simplicial-hott/03-extension-types.rzk.md
+      - Right Orthogonal Fibrations: simplicial-hott/04-right-orthogonal.rzk.md
+      - Segal Types: simplicial-hott/05-segal-types.rzk.md
+      - 2-Category of Segal Types: simplicial-hott/06-2cat-of-segal-types.rzk.md
+      - Discrete Types: simplicial-hott/07-discrete.rzk.md
+      - Covariant Families: simplicial-hott/08-covariant.rzk.md
+      - The Yoneda Lemma: simplicial-hott/09-yoneda.rzk.md
+      - Rezk Types: simplicial-hott/10-rezk-types.rzk.md
+      - Adjunctions: simplicial-hott/11-adjunctions.rzk.md
+      - Inner Families: simplicial-hott/12-inner.rzk.md
+      - Cocartesian Families: simplicial-hott/13-cocartesian.rzk.md
+      - Limits and Colimits: simplicial-hott/14-limits.rzk.md
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - pymdownx.details
+  - mdx_math
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+theme:
+  name: material
+  custom_dir: overrides
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+  features:
+    - content.code.copy
+    - content.action.edit
+    - navigation.footer
+    - navigation.sections
+    - navigation.path
+  palette:
+    # Palette toggle for light mode
+    - media: '(prefers-color-scheme: light)'
+      primary: indigo
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: '(prefers-color-scheme: dark)'
+      primary: indigo
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+extra_javascript:
+  - javascript/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - assets/css/rzk-render.css
+
+plugins:
+  - search
+  - rzk:
+      render_svg: false
+      anchor_definitions: true

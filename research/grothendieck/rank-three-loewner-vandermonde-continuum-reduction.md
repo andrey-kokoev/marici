@@ -203,3 +203,19 @@ cells.
   `checkers/central_rank_five_pivot_taylor_majorant.py`
 - Taylor-majorant result:
   `results/central-rank-five-pivot-taylor-majorant.json`
+
+The existing directed source payload also contains `F` through degree 49.
+Using those coefficients reduces the omitted-source remainder to
+`1.558e-67`. On the outer endpoint polydisc of radius `0.0006`, the full
+pivot remainder is below `2.103e-34`. Cauchy transport to radius `0.0005`
+bounds each coordinate derivative remainder by `2.103e-30`. Adding this to
+the degree-five derivative boxes leaves the first four derivative uppers
+below `-1.4096e-28` and the fifth below `-1.2239e-27`. Thus the fifth pivot
+is coordinatewise decreasing on the endpoint cell, including source and
+rational inversion remainders.
+
+One large endpoint-centered polydisc does not prove global monotonicity. At
+outer radius `0.011`, its Cauchy derivative allowance is `7.985e-24`, so the
+single-box global certificate fails by dependency rather than by a positive
+derivative witness. Uniform rank-five continuum positivity still requires
+smaller-cell transport or a sharper structural monotonicity argument.

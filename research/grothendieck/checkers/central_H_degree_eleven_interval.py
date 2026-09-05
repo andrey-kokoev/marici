@@ -7,23 +7,24 @@ from pathlib import Path
 
 import central_interval_jet_first_cell_probe as P
 
-I=P.I; D=Decimal; P.O=101; P.DEPTH=300
+I=P.I; D=Decimal; P.O=101; SOURCE_DEPTH=500; P.DEPTH=SOURCE_DEPTH
 q=[I.box(0),I.box(1)]+[I.box(0)]*(P.O-1)
 s=P.add(P.c(Fraction(1,2)),q)
 eta,eta_s=P.eta_pair(s)
 for n in range(P.O+1):
-    eta_tail=D(4)*D(10)**n/(D(300)+D('0.4'))*D(2)**(-300)
-    eta_s_tail=D(4)*D(n+1)*D(10)**(n+1)/(D(300)+D('0.4'))*D(2)**(-300)
+    eta_tail=D(4)*D(10)**n/(D(SOURCE_DEPTH)+D('0.4'))*D(2)**(-SOURCE_DEPTH)
+    eta_s_tail=D(4)*D(n+1)*D(10)**(n+1)/(D(SOURCE_DEPTH)+D('0.4'))*D(2)**(-SOURCE_DEPTH)
     eta[n]=I.add(eta[n],(eta_tail.copy_negate(),eta_tail))
     eta_s[n]=I.add(eta_s[n],(eta_s_tail.copy_negate(),eta_s_tail))
 
 r=P.expj(P.mul(P.sub(P.c(1),s),P.cb(I.log2)))
 zlog=P.sub(P.div(eta_s,eta),P.div(P.mul(r,P.cb(I.log2)),P.sub(P.c(1),r)))
 endpoint=P.add(P.inv(s),P.inv(P.sub(s,P.c(1))))
+I.bernoulli=I.bernoulli+[Fraction(43867,798)]
 gamma=P.digamma(P.scale(s,Fraction(1,2)))
-b18=I.qbox(Fraction(43867,798)); base=I.div(b18,I.scale(I.powi(I.box(1000),18),18))[1]
+b20=I.qbox(Fraction(174611,330)); base=I.div(b20,I.scale(I.powi(I.box(1000),20),20))[1]
 for n in range(P.O+1):
-    error=I.up.divide(I.up.multiply(base,D(2)**18),D(1000)**n)
+    error=I.up.divide(I.up.multiply(base,D(2)**20),D(1000)**n)
     gamma[n]=I.add(gamma[n],(error.copy_negate(),error))
 
 xi_log=P.add(endpoint,P.cb(I.neg(I.scale(I.logpi,Fraction(1,2)))),P.scale(gamma,Fraction(1,2)),zlog)
@@ -40,7 +41,11 @@ h=P.powj(g,Fraction(-1,2))
 
 assert all(a<=0<=b for a,b in even)
 result={
-    'centered_q_order':81,
+    'centered_q_order':101,
+    'directed_decimal_precision':I.PREC,
+    'eta_source_depth':SOURCE_DEPTH,
+    'digamma_included_through_B18':True,
+    'digamma_first_omitted_term_B20_bounded':True,
     'F_coefficients_through_degree_twenty_three':[[str(a),str(b)] for a,b in f[:24]],
     'F_coefficients_through_degree_twenty_nine':[[str(a),str(b)] for a,b in f],
     'F_coefficients_through_degree_thirty_nine':[[str(a),str(b)] for a,b in f_deep[:40]],
