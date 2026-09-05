@@ -42,6 +42,15 @@ function Invoke-Git {
   return $output
 }
 
+function Invoke-GitQuiet {
+  param([Parameter(ValueFromRemainingArguments)][string[]]$Arguments)
+
+  & git -C $repo @Arguments *> $null
+  if ($LASTEXITCODE -ne 0) {
+    throw "git $($Arguments -join ' ') failed with exit code $LASTEXITCODE"
+  }
+}
+
 function Get-DirtyRecords {
   $raw = [string]::Join('', (& git -C $repo -c core.quotepath=false status --porcelain=v1 -z -uall))
   if ($LASTEXITCODE -ne 0) { throw 'git status failed' }
@@ -120,9 +129,9 @@ foreach ($grouping in ($eligible | Group-Object Group | Sort-Object Name)) {
     foreach ($path in ($chunk | Where-Object { $_ -notin $stable })) { $protected.Add($path) }
     if ($stable.Count -eq 0) { continue }
 
-    Invoke-Git add -- @stable | Out-Null
+    Invoke-GitQuiet add -- @stable
     $part = if ($paths.Count -gt $maxPathsPerCommit) { " $([Math]::Floor($offset / $maxPathsPerCommit) + 1)" } else { '' }
-    Invoke-Git commit -m "$baseMessage$part" -- @stable | Out-Null
+    Invoke-GitQuiet commit -m "$baseMessage$part" -- @stable
     $sha = (Invoke-Git rev-parse HEAD | Select-Object -Last 1).Trim()
     $commits.Add([pscustomobject]@{ Group = $grouping.Name; Count = $stable.Count; Commit = $sha })
   }
@@ -130,7 +139,7 @@ foreach ($grouping in ($eligible | Group-Object Group | Sort-Object Name)) {
 
 $pushed = $false
 if ($commits.Count -gt 0 -and -not $NoPush) {
-  Invoke-Git push | Out-Null
+  Invoke-GitQuiet push
   $pushed = $true
 }
 
