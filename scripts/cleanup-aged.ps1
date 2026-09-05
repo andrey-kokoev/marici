@@ -72,6 +72,42 @@ function Invoke-GitQuiet {
   $null = Invoke-Git @Arguments
 }
 
+function Invoke-GitAdd {
+  param([string[]]$Paths)
+
+  $gitPath = (Get-Command git.exe -ErrorAction Stop).Source
+  $startInfo = [System.Diagnostics.ProcessStartInfo]::new()
+  $startInfo.FileName = $gitPath
+  $startInfo.UseShellExecute = $false
+  $startInfo.RedirectStandardInput = $true
+  $startInfo.RedirectStandardOutput = $true
+  $startInfo.RedirectStandardError = $true
+  $startInfo.ArgumentList.Add('-C')
+  $startInfo.ArgumentList.Add($repo)
+  $startInfo.ArgumentList.Add('add')
+  $startInfo.ArgumentList.Add('--pathspec-from-file=-')
+  $startInfo.ArgumentList.Add('--pathspec-file-nul')
+
+  $process = [System.Diagnostics.Process]::new()
+  $process.StartInfo = $startInfo
+  $started = $process.Start()
+  if (-not $started) { throw 'Could not start git.exe for pathspec staging.' }
+  $stdoutTask = $process.StandardOutput.ReadToEndAsync()
+  $stderrTask = $process.StandardError.ReadToEndAsync()
+  $process.StandardInput.Write(([string]::Join([char]0, $Paths) + [char]0))
+  $process.StandardInput.Close()
+  $process.WaitForExit()
+  $stdout = $stdoutTask.GetAwaiter().GetResult()
+  $stderr = $stderrTask.GetAwaiter().GetResult()
+  $exitCode = $process.ExitCode
+  $process.Dispose()
+
+  if ($exitCode -ne 0) {
+    $detail = if ($stderr.Trim()) { $stderr.Trim() } else { $stdout.Trim() }
+    throw "git add failed with exit code ${exitCode}: $detail"
+  }
+}
+
 function Get-DirtyRecords {
   $raw = [string]::Join('', (& git -C $repo -c core.quotepath=false status --porcelain=v1 -z -uall))
   if ($LASTEXITCODE -ne 0) { throw 'git status failed' }
@@ -150,9 +186,9 @@ foreach ($grouping in ($eligible | Group-Object Group | Sort-Object Name)) {
     foreach ($path in ($chunk | Where-Object { $_ -notin $stable })) { $protected.Add($path) }
     if ($stable.Count -eq 0) { continue }
 
-    Invoke-GitQuiet add -- @stable
+    Invoke-GitAdd $stable
     $part = if ($paths.Count -gt $maxPathsPerCommit) { " $([Math]::Floor($offset / $maxPathsPerCommit) + 1)" } else { '' }
-    Invoke-GitQuiet commit -m "$baseMessage$part" -- @stable
+    Invoke-GitQuiet commit -m "$baseMessage$part"
     $sha = (Invoke-Git rev-parse HEAD | Select-Object -Last 1).Trim()
     $commits.Add([pscustomobject]@{ Group = $grouping.Name; Count = $stable.Count; Commit = $sha })
   }
