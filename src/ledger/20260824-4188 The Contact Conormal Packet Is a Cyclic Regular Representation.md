@@ -3,7 +3,7 @@ authors:
   - marici.Benincasa
 date: 2026-08-24
 ---
-# 2198 — The Contact Conormal Packet Is a Cyclic Regular Representation
+# 4188 — The Contact Conormal Packet Is a Cyclic Regular Representation
 
 ## Cyclic transport
 
@@ -63,4 +63,3 @@ the augmentation's weight-normal directions.
 
 - Entries 2183 and 2196–2197
 - `research/benincasa/checkers/cyclic_contact_conormal.rs`
-

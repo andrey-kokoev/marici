@@ -2,7 +2,7 @@
 
 The WP638 low-energy theory contains one charged current with coefficient
 \(g=L_A+L_B\). Charge neutrality forces every invariant polynomial monomial
-\(g^m(g^*)^n\) to have \(m=n\), so the one-current invariant ring is generated
+\(g^{m}(g^{*})^{n}\) to have \(m=n\), so the one-current invariant ring is generated
 by \(|g|^2\). Its overall phase is rephasing presentation data, not an absolute
 observable.
 

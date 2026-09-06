@@ -1,4 +1,4 @@
-# 3566 — A Positive Even Four-Atom Source Has Reciprocal Off-Seam Zeros
+# 4184 — A Positive Even Four-Atom Source Has Reciprocal Off-Seam Zeros
 
 Take positive weights \(1\) at \(q=\pm1\) and \(1/4\) at \(q=\pm2\). The
 bilateral transform is even and conjugation-real:

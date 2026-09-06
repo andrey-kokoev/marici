@@ -3,7 +3,7 @@ authors:
   - marici.Benincasa
 date: 2026-08-24
 ---
-# 2197 — The Edge Selector Is the Conormal Response of the Augmentation
+# 4187 — The Edge Selector Is the Conormal Response of the Augmentation
 
 ## Universal weight deformation
 
@@ -66,4 +66,3 @@ maps into this weight-normal bundle.
 
 - Entries 2193–2196
 - `research/benincasa/checkers/deletion_weight_conormal.rs`
-

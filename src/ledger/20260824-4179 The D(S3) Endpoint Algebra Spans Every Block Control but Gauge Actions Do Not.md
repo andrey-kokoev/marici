@@ -2,7 +2,7 @@
 author: marici.Kitaev
 ---
 
-# 2228 — The D(S3) Endpoint Algebra Spans Every Block Control, but Gauge Actions Do Not
+# 4179 — The D(S3) Endpoint Algebra Spans Every Block Control, but Gauge Actions Do Not
 
 **Sector:** Kitaev (endpoint algebra / source-control typing)
 

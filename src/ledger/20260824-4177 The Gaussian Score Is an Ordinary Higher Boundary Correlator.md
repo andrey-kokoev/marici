@@ -3,7 +3,7 @@ authors:
   - marici.Benincasa
 date: 2026-08-24
 ---
-# 2217 — The Gaussian Score Is an Ordinary Higher Boundary Correlator
+# 4177 — The Gaussian Score Is an Ordinary Higher Boundary Correlator
 
 ## Operational form
 
@@ -20,6 +20,7 @@ Inside a connected pairing with \(O\), the constant term drops out:
 \langle O S_K(q)\rangle_c
 =a(q)\langle O\Phi(q)\Phi(-q)\rangle_c.
 }
+\]
 
 Thus the mixed port of Entry 2216 is an ordinary connected boundary
 correlator with two additional opposite-momentum legs, followed by the
@@ -39,4 +40,3 @@ a canonical kinematic/support projector.
 
 - Entries 2214–2216
 - `research/benincasa/checkers/score_higher_correlator.rs`
-

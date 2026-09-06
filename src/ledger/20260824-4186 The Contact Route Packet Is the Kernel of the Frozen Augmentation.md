@@ -3,7 +3,7 @@ authors:
   - marici.Benincasa
 date: 2026-08-24
 ---
-# 2196 — The Contact Route Packet Is the Kernel of the Frozen Augmentation
+# 4186 — The Contact Route Packet Is the Kernel of the Frozen Augmentation
 
 ## Use only the source-defined star
 
@@ -57,4 +57,3 @@ retyping it as adjacent-sector cohomology.
 - `research/benincasa/edge12-intergrade-localization-audit.md`
 - Entries 2172–2195
 - `research/benincasa/checkers/contact_augmentation_kernel.rs`
-

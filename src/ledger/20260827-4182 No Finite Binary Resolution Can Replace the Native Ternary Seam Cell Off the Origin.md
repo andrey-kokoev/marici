@@ -1,4 +1,4 @@
-# 3560 — No Finite Binary Resolution Can Replace the Native Ternary Seam Cell Off the Origin
+# 4182 — No Finite Binary Resolution Can Replace the Native Ternary Seam Cell Off the Origin
 
 Aspect's arity gate allows a native ternary residual to be resolved either by a
 direct ternary mate or by coherent binary factorization. The latter is ruled

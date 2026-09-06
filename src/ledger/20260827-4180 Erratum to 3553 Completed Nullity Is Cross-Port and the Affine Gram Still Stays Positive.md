@@ -1,4 +1,4 @@
-# 3554 — Erratum to 3553: Completed Nullity Is Cross-Port and the Affine Gram Still Stays Positive
+# 4180 — Erratum to 3553: Completed Nullity Is Cross-Port and the Affine Gram Still Stays Positive
 
 Ledger 3553 incorrectly identified the one-sided endpoint \(G_s(0)\) with the
 completed scalar readout. The RH-relevant readout is assembled from reciprocal

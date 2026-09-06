@@ -1,4 +1,4 @@
-# 3559 — The Primitive-Transfer Residual Is a Native Ternary Germ
+# 4193 — The Primitive-Transfer Residual Is a Native Ternary Germ
 
 After the source primitive transfers the relative Green response, the remaining
 common-path term on the normalized source fiber is

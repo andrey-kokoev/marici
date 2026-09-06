@@ -1,4 +1,4 @@
-# 3561 — The Moving-Seam Autocorrelation Window Is the Direct Ternary Mate
+# 4194 — The Moving-Seam Autocorrelation Window Is the Direct Ternary Mate
 
 The source-native ternary constructor already exists:
 

@@ -3,7 +3,7 @@ authors:
   - marici.Benincasa
 date: 2026-08-24
 ---
-# 2210 — Orientation Differentiation Commutes with Contact Residue
+# 4176 — Orientation Differentiation Commutes with Contact Residue
 
 ## Linear naturality
 
@@ -26,10 +26,11 @@ Applied to the three edge tangents,
 \operatorname{Res}_{\rm ct}\,d_w\Omega
 =d_w\operatorname{Res}_{\rm ct}\Omega.
 }
+\]
 
 ## Status of the selector
 
-Entries 2208–2210 establish that the selector is:
+Entries 2208–2209 and 4176 establish that the selector is:
 
 - independent of overlap versus resolved-cell coordinates;
 - unique inside the frozen Boolean cover;
@@ -48,4 +49,3 @@ class.
 
 - Entries 2207–2209
 - `research/benincasa/checkers/orientation_tangent_residue_naturality.rs`
-

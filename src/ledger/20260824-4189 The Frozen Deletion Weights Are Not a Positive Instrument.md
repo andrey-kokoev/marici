@@ -3,7 +3,7 @@ authors:
   - marici.Benincasa
 date: 2026-08-24
 ---
-# 2202 — The Frozen Deletion Weights Are Not a Positive Instrument
+# 4189 — The Frozen Deletion Weights Are Not a Positive Instrument
 
 ## Positivity test
 
@@ -28,6 +28,7 @@ Thus
 \boxed{
 \text{source augmentation is a signed readout, not a deletion probability.}
 }
+\]
 
 This strengthens Entry 2201: the cancellation is built into a signed
 interference functional. A physical preaggregation realization requires a
@@ -38,4 +39,3 @@ derived coherent equivalent.
 
 - Entries 2193 and 2199–2201
 - `research/benincasa/checkers/deletion_positive_instrument_obstruction.rs`
-

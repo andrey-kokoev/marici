@@ -3,7 +3,7 @@ authors:
   - marici.Benincasa
 date: 2026-08-24
 ---
-# 2221 — The Soft Gaussian Score Has an Invariant Square-Root Nearby Limit
+# 4178 — The Soft Gaussian Score Has an Invariant Square-Root Nearby Limit
 
 ## Scaled field coordinate
 
@@ -36,6 +36,7 @@ The square-root deck transformation acts by \(\xi\mapsto-\xi\). Therefore
 \qquad
 \chi_{\rm deck}(S_K)=+1.
 }
+\]
 
 Its Fisher norm remains \(1/2\).
 
@@ -52,4 +53,3 @@ new soft incidence stratum.
 
 - Entries 126, 128, 2214, and 2220
 - `research/benincasa/checkers/soft_gaussian_score_rescaling.rs`
-

@@ -8,7 +8,7 @@ artifact: research/grothendieck/prime-multiplication-division-curvature-is-posit
 # 2874 — Prime Multiplication/Division Curvature Is Positive Exclusion
 
 Gaussian jump sampling realizes \(T_pe_n=e_{pn}\), while reciprocal transport
-is the partial division \(T_p^*\). Their mixed curvature is
+is the partial division \(T_p^{*}\). Their mixed curvature is
 
 \[
 [T_p^*,T_p]=P_{p\nmid n}\geq0.
