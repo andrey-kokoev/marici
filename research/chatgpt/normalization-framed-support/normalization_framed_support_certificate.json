@@ -1,0 +1,864 @@
+{
+  "schema": "marici.branch-a.normalization-framed-support.v1",
+  "commit": "d1947b67a60d3e88ba77f4ca60ea02c2a306ee61",
+  "node_variables": "zplus,zminus; separate from X,u,t",
+  "sources": [
+    "research/voevodsky/check_global_k6_koszul_cech_promotion.rs",
+    "src/ledger/20260815-143 Two-Endpoint Road Carrier and the Loaded Conductor Cospan Blocker.md",
+    "research/voevodsky/check_conductor_road_endpoint_pullback.rs",
+    "research/voevodsky/check_normalization_conductor_bimodule_kernel.py"
+  ],
+  "models": {
+    "independent_finite": {
+      "fibre": {
+        "fibre_generators": 222,
+        "B_generators": 208,
+        "projection_formula": "b - attaching(q)",
+        "contracting_homotopy": "(e,q,v) -> (q,0,0)",
+        "equivalence": "fib(E -> Q + V[1]) ~= B",
+        "annihilating_B_primitive": [
+          {
+            "cell": "[02;02]",
+            "coefficient": "X_02*u_03*u_04*u_13*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[02,03;02,03]",
+            "coefficient": "X_02*X_03*u_04*u_13*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[02,03,04;02,03,04]",
+            "coefficient": "-X_02*X_03*X_04*u_13*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[02,03,35;02,03,35]",
+            "coefficient": "-X_02*X_03*X_35*u_04*u_13*u_14*u_15*u_24*u_25"
+          },
+          {
+            "cell": "[02,04;02,04]",
+            "coefficient": "X_02*X_04*u_03*u_13*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[02,04,24;02,04,24]",
+            "coefficient": "-X_02*X_04*X_24*u_03*u_13*u_14*u_15*u_25*u_35"
+          },
+          {
+            "cell": "[02,24;02,24]",
+            "coefficient": "X_02*X_24*u_03*u_04*u_13*u_14*u_15*u_25*u_35"
+          },
+          {
+            "cell": "[02,24,25;02,24,25]",
+            "coefficient": "-X_02*X_24*X_25*u_03*u_04*u_13*u_14*u_15*u_35"
+          },
+          {
+            "cell": "[02,25;02,25]",
+            "coefficient": "X_02*X_25*u_03*u_04*u_13*u_14*u_15*u_24*u_35"
+          },
+          {
+            "cell": "[02,25,35;02,25,35]",
+            "coefficient": "-X_02*X_25*X_35*u_03*u_04*u_13*u_14*u_15*u_24"
+          },
+          {
+            "cell": "[02,35;02,35]",
+            "coefficient": "X_02*X_35*u_03*u_04*u_13*u_14*u_15*u_24*u_25"
+          },
+          {
+            "cell": "[03,04;03,04]",
+            "coefficient": "X_03*X_04*u_02*u_13*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[03,04,13;03,04,13]",
+            "coefficient": "-X_03*X_04*X_13*u_02*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[03,13;03,13]",
+            "coefficient": "X_03*X_13*u_02*u_04*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[03,13,35;03,13,35]",
+            "coefficient": "-X_03*X_13*X_35*u_02*u_04*u_14*u_15*u_24*u_25"
+          },
+          {
+            "cell": "[03,35;03,35]",
+            "coefficient": "X_03*X_35*u_02*u_04*u_13*u_14*u_15*u_24*u_25"
+          },
+          {
+            "cell": "[04;04]",
+            "coefficient": "X_04*u_02*u_03*u_13*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[04,13;04,13]",
+            "coefficient": "X_04*X_13*u_02*u_03*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[04,13,14;04,13,14]",
+            "coefficient": "-X_04*X_13*X_14*u_02*u_03*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[04,14;04,14]",
+            "coefficient": "X_04*X_14*u_02*u_03*u_13*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[04,14,24;04,14,24]",
+            "coefficient": "-X_04*X_14*X_24*u_02*u_03*u_13*u_15*u_25*u_35"
+          },
+          {
+            "cell": "[04,24;04,24]",
+            "coefficient": "X_04*X_24*u_02*u_03*u_13*u_14*u_15*u_25*u_35"
+          },
+          {
+            "cell": "[13;13]",
+            "coefficient": "X_13*u_02*u_03*u_04*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[13,14;13,14]",
+            "coefficient": "X_13*X_14*u_02*u_03*u_04*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[13,14,15;13,14,15]",
+            "coefficient": "-X_13*X_14*X_15*u_02*u_03*u_04*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[13,15;13,15]",
+            "coefficient": "X_13*X_15*u_02*u_03*u_04*u_14*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[13,15,35;13,15,35]",
+            "coefficient": "-X_13*X_15*X_35*u_02*u_03*u_04*u_14*u_24*u_25"
+          },
+          {
+            "cell": "[13,35;13,35]",
+            "coefficient": "X_13*X_35*u_02*u_03*u_04*u_14*u_15*u_24*u_25"
+          },
+          {
+            "cell": "[14,15;14,15]",
+            "coefficient": "X_14*X_15*u_02*u_03*u_04*u_13*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[14,15,24;14,15,24]",
+            "coefficient": "-X_14*X_15*X_24*u_02*u_03*u_04*u_13*u_25*u_35"
+          },
+          {
+            "cell": "[14,24;14,24]",
+            "coefficient": "X_14*X_24*u_02*u_03*u_04*u_13*u_15*u_25*u_35"
+          },
+          {
+            "cell": "[15;15]",
+            "coefficient": "X_15*u_02*u_03*u_04*u_13*u_14*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[15,24;15,24]",
+            "coefficient": "X_15*X_24*u_02*u_03*u_04*u_13*u_14*u_25*u_35"
+          },
+          {
+            "cell": "[15,24,25;15,24,25]",
+            "coefficient": "-X_15*X_24*X_25*u_02*u_03*u_04*u_13*u_14*u_35"
+          },
+          {
+            "cell": "[15,25;15,25]",
+            "coefficient": "X_15*X_25*u_02*u_03*u_04*u_13*u_14*u_24*u_35"
+          },
+          {
+            "cell": "[15,25,35;15,25,35]",
+            "coefficient": "-X_15*X_25*X_35*u_02*u_03*u_04*u_13*u_14*u_24"
+          },
+          {
+            "cell": "[15,35;15,35]",
+            "coefficient": "X_15*X_35*u_02*u_03*u_04*u_13*u_14*u_24*u_25"
+          },
+          {
+            "cell": "[24;24]",
+            "coefficient": "X_24*u_02*u_03*u_04*u_13*u_14*u_15*u_25*u_35"
+          },
+          {
+            "cell": "[24,25;24,25]",
+            "coefficient": "X_24*X_25*u_02*u_03*u_04*u_13*u_14*u_15*u_35"
+          },
+          {
+            "cell": "[25,35;25,35]",
+            "coefficient": "X_25*X_35*u_02*u_03*u_04*u_13*u_14*u_15*u_24"
+          },
+          {
+            "cell": "[35;35]",
+            "coefficient": "X_35*u_02*u_03*u_04*u_13*u_14*u_15*u_24*u_25"
+          }
+        ]
+      },
+      "source": {
+        "source": "P_R[1] with full node, sheets, roads, tags, and norm",
+        "source_quasi_isomorphism": "phi:P_R -> R_chi[1], phi=sum of roads",
+        "source_R_SDR_is_not_claimed_A_linear": true,
+        "comparison": "f=beta*phi, s=theta_tilde*phi",
+        "boundary_family": "h_lambda=(lambda*theta*phi,0,0)",
+        "framed_support_class": "(1-lambda)*[beta] in H_2(B)",
+        "secondary_residual": "lambda-1 modulo Delta",
+        "physical_lambda_selected": false
+      }
+    },
+    "independent_cech": {
+      "fibre": {
+        "fibre_generators": 222,
+        "B_generators": 208,
+        "projection_formula": "b - attaching(q)",
+        "contracting_homotopy": "(e,q,v) -> (q,0,0)",
+        "equivalence": "fib(E -> Q + V[1]) ~= B",
+        "annihilating_B_primitive": [
+          {
+            "cell": "[02;02]",
+            "coefficient": "X_02*u_03*u_04*u_13*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[02,03;02,03]",
+            "coefficient": "X_02*X_03*u_04*u_13*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[02,03,04;02,03,04]",
+            "coefficient": "-X_02*X_03*X_04*u_13*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[02,03,35;02,03,35]",
+            "coefficient": "-X_02*X_03*X_35*u_04*u_13*u_14*u_15*u_24*u_25"
+          },
+          {
+            "cell": "[02,04;02,04]",
+            "coefficient": "X_02*X_04*u_03*u_13*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[02,04,24;02,04,24]",
+            "coefficient": "-X_02*X_04*X_24*u_03*u_13*u_14*u_15*u_25*u_35"
+          },
+          {
+            "cell": "[02,24;02,24]",
+            "coefficient": "X_02*X_24*u_03*u_04*u_13*u_14*u_15*u_25*u_35"
+          },
+          {
+            "cell": "[02,24,25;02,24,25]",
+            "coefficient": "-X_02*X_24*X_25*u_03*u_04*u_13*u_14*u_15*u_35"
+          },
+          {
+            "cell": "[02,25;02,25]",
+            "coefficient": "X_02*X_25*u_03*u_04*u_13*u_14*u_15*u_24*u_35"
+          },
+          {
+            "cell": "[02,25,35;02,25,35]",
+            "coefficient": "-X_02*X_25*X_35*u_03*u_04*u_13*u_14*u_15*u_24"
+          },
+          {
+            "cell": "[02,35;02,35]",
+            "coefficient": "X_02*X_35*u_03*u_04*u_13*u_14*u_15*u_24*u_25"
+          },
+          {
+            "cell": "[03,04;03,04]",
+            "coefficient": "X_03*X_04*u_02*u_13*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[03,04,13;03,04,13]",
+            "coefficient": "-X_03*X_04*X_13*u_02*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[03,13;03,13]",
+            "coefficient": "X_03*X_13*u_02*u_04*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[03,13,35;03,13,35]",
+            "coefficient": "-X_03*X_13*X_35*u_02*u_04*u_14*u_15*u_24*u_25"
+          },
+          {
+            "cell": "[03,35;03,35]",
+            "coefficient": "X_03*X_35*u_02*u_04*u_13*u_14*u_15*u_24*u_25"
+          },
+          {
+            "cell": "[04;04]",
+            "coefficient": "X_04*u_02*u_03*u_13*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[04,13;04,13]",
+            "coefficient": "X_04*X_13*u_02*u_03*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[04,13,14;04,13,14]",
+            "coefficient": "-X_04*X_13*X_14*u_02*u_03*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[04,14;04,14]",
+            "coefficient": "X_04*X_14*u_02*u_03*u_13*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[04,14,24;04,14,24]",
+            "coefficient": "-X_04*X_14*X_24*u_02*u_03*u_13*u_15*u_25*u_35"
+          },
+          {
+            "cell": "[04,24;04,24]",
+            "coefficient": "X_04*X_24*u_02*u_03*u_13*u_14*u_15*u_25*u_35"
+          },
+          {
+            "cell": "[13;13]",
+            "coefficient": "X_13*u_02*u_03*u_04*u_14*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[13,14;13,14]",
+            "coefficient": "X_13*X_14*u_02*u_03*u_04*u_15*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[13,14,15;13,14,15]",
+            "coefficient": "-X_13*X_14*X_15*u_02*u_03*u_04*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[13,15;13,15]",
+            "coefficient": "X_13*X_15*u_02*u_03*u_04*u_14*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[13,15,35;13,15,35]",
+            "coefficient": "-X_13*X_15*X_35*u_02*u_03*u_04*u_14*u_24*u_25"
+          },
+          {
+            "cell": "[13,35;13,35]",
+            "coefficient": "X_13*X_35*u_02*u_03*u_04*u_14*u_15*u_24*u_25"
+          },
+          {
+            "cell": "[14,15;14,15]",
+            "coefficient": "X_14*X_15*u_02*u_03*u_04*u_13*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[14,15,24;14,15,24]",
+            "coefficient": "-X_14*X_15*X_24*u_02*u_03*u_04*u_13*u_25*u_35"
+          },
+          {
+            "cell": "[14,24;14,24]",
+            "coefficient": "X_14*X_24*u_02*u_03*u_04*u_13*u_15*u_25*u_35"
+          },
+          {
+            "cell": "[15;15]",
+            "coefficient": "X_15*u_02*u_03*u_04*u_13*u_14*u_24*u_25*u_35"
+          },
+          {
+            "cell": "[15,24;15,24]",
+            "coefficient": "X_15*X_24*u_02*u_03*u_04*u_13*u_14*u_25*u_35"
+          },
+          {
+            "cell": "[15,24,25;15,24,25]",
+            "coefficient": "-X_15*X_24*X_25*u_02*u_03*u_04*u_13*u_14*u_35"
+          },
+          {
+            "cell": "[15,25;15,25]",
+            "coefficient": "X_15*X_25*u_02*u_03*u_04*u_13*u_14*u_24*u_35"
+          },
+          {
+            "cell": "[15,25,35;15,25,35]",
+            "coefficient": "-X_15*X_25*X_35*u_02*u_03*u_04*u_13*u_14*u_24"
+          },
+          {
+            "cell": "[15,35;15,35]",
+            "coefficient": "X_15*X_35*u_02*u_03*u_04*u_13*u_14*u_24*u_25"
+          },
+          {
+            "cell": "[24;24]",
+            "coefficient": "X_24*u_02*u_03*u_04*u_13*u_14*u_15*u_25*u_35"
+          },
+          {
+            "cell": "[24,25;24,25]",
+            "coefficient": "X_24*X_25*u_02*u_03*u_04*u_13*u_14*u_15*u_35"
+          },
+          {
+            "cell": "[25,35;25,35]",
+            "coefficient": "X_25*X_35*u_02*u_03*u_04*u_13*u_14*u_15*u_24"
+          },
+          {
+            "cell": "[35;35]",
+            "coefficient": "X_35*u_02*u_03*u_04*u_13*u_14*u_15*u_24*u_25"
+          }
+        ]
+      },
+      "source": {
+        "source": "P_R[1] with full node, sheets, roads, tags, and norm",
+        "source_quasi_isomorphism": "phi:P_R -> R_chi[1], phi=sum of roads",
+        "source_R_SDR_is_not_claimed_A_linear": true,
+        "comparison": "f=beta*phi, s=theta_tilde*phi",
+        "boundary_family": "h_lambda=(lambda*theta*phi,0,0)",
+        "framed_support_class": "(1-lambda)*[beta] in H_2(B)",
+        "secondary_residual": "lambda-1 modulo Delta",
+        "physical_lambda_selected": false
+      }
+    },
+    "rees_finite": {
+      "fibre": {
+        "fibre_generators": 222,
+        "B_generators": 208,
+        "projection_formula": "b - attaching(q)",
+        "contracting_homotopy": "(e,q,v) -> (q,0,0)",
+        "equivalence": "fib(E -> Q + V[1]) ~= B",
+        "annihilating_B_primitive": [
+          {
+            "cell": "[02;02]",
+            "coefficient": "t_03*t_04*t_13*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[02,03;02,03]",
+            "coefficient": "t_04*t_13*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[02,03,04;02,03,04]",
+            "coefficient": "-t_13*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[02,03,35;02,03,35]",
+            "coefficient": "-t_04*t_13*t_14*t_15*t_24*t_25"
+          },
+          {
+            "cell": "[02,04;02,04]",
+            "coefficient": "t_03*t_13*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[02,04,24;02,04,24]",
+            "coefficient": "-t_03*t_13*t_14*t_15*t_25*t_35"
+          },
+          {
+            "cell": "[02,24;02,24]",
+            "coefficient": "t_03*t_04*t_13*t_14*t_15*t_25*t_35"
+          },
+          {
+            "cell": "[02,24,25;02,24,25]",
+            "coefficient": "-t_03*t_04*t_13*t_14*t_15*t_35"
+          },
+          {
+            "cell": "[02,25;02,25]",
+            "coefficient": "t_03*t_04*t_13*t_14*t_15*t_24*t_35"
+          },
+          {
+            "cell": "[02,25,35;02,25,35]",
+            "coefficient": "-t_03*t_04*t_13*t_14*t_15*t_24"
+          },
+          {
+            "cell": "[02,35;02,35]",
+            "coefficient": "t_03*t_04*t_13*t_14*t_15*t_24*t_25"
+          },
+          {
+            "cell": "[03,04;03,04]",
+            "coefficient": "t_02*t_13*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[03,04,13;03,04,13]",
+            "coefficient": "-t_02*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[03,13;03,13]",
+            "coefficient": "t_02*t_04*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[03,13,35;03,13,35]",
+            "coefficient": "-t_02*t_04*t_14*t_15*t_24*t_25"
+          },
+          {
+            "cell": "[03,35;03,35]",
+            "coefficient": "t_02*t_04*t_13*t_14*t_15*t_24*t_25"
+          },
+          {
+            "cell": "[04;04]",
+            "coefficient": "t_02*t_03*t_13*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[04,13;04,13]",
+            "coefficient": "t_02*t_03*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[04,13,14;04,13,14]",
+            "coefficient": "-t_02*t_03*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[04,14;04,14]",
+            "coefficient": "t_02*t_03*t_13*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[04,14,24;04,14,24]",
+            "coefficient": "-t_02*t_03*t_13*t_15*t_25*t_35"
+          },
+          {
+            "cell": "[04,24;04,24]",
+            "coefficient": "t_02*t_03*t_13*t_14*t_15*t_25*t_35"
+          },
+          {
+            "cell": "[13;13]",
+            "coefficient": "t_02*t_03*t_04*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[13,14;13,14]",
+            "coefficient": "t_02*t_03*t_04*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[13,14,15;13,14,15]",
+            "coefficient": "-t_02*t_03*t_04*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[13,15;13,15]",
+            "coefficient": "t_02*t_03*t_04*t_14*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[13,15,35;13,15,35]",
+            "coefficient": "-t_02*t_03*t_04*t_14*t_24*t_25"
+          },
+          {
+            "cell": "[13,35;13,35]",
+            "coefficient": "t_02*t_03*t_04*t_14*t_15*t_24*t_25"
+          },
+          {
+            "cell": "[14,15;14,15]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[14,15,24;14,15,24]",
+            "coefficient": "-t_02*t_03*t_04*t_13*t_25*t_35"
+          },
+          {
+            "cell": "[14,24;14,24]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_15*t_25*t_35"
+          },
+          {
+            "cell": "[15;15]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[15,24;15,24]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_25*t_35"
+          },
+          {
+            "cell": "[15,24,25;15,24,25]",
+            "coefficient": "-t_02*t_03*t_04*t_13*t_14*t_35"
+          },
+          {
+            "cell": "[15,25;15,25]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_24*t_35"
+          },
+          {
+            "cell": "[15,25,35;15,25,35]",
+            "coefficient": "-t_02*t_03*t_04*t_13*t_14*t_24"
+          },
+          {
+            "cell": "[15,35;15,35]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_24*t_25"
+          },
+          {
+            "cell": "[24;24]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_15*t_25*t_35"
+          },
+          {
+            "cell": "[24,25;24,25]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_15*t_35"
+          },
+          {
+            "cell": "[25,35;25,35]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_15*t_24"
+          },
+          {
+            "cell": "[35;35]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_15*t_24*t_25"
+          }
+        ]
+      },
+      "source": {
+        "source": "P_R[1] with full node, sheets, roads, tags, and norm",
+        "source_quasi_isomorphism": "phi:P_R -> R_chi[1], phi=sum of roads",
+        "source_R_SDR_is_not_claimed_A_linear": true,
+        "comparison": "f=beta*phi, s=theta_tilde*phi",
+        "boundary_family": "h_lambda=(lambda*theta*phi,0,0)",
+        "framed_support_class": "(1-lambda)*[beta] in H_2(B)",
+        "secondary_residual": "lambda-1 modulo Delta",
+        "physical_lambda_selected": false
+      }
+    },
+    "rees_cech": {
+      "fibre": {
+        "fibre_generators": 222,
+        "B_generators": 208,
+        "projection_formula": "b - attaching(q)",
+        "contracting_homotopy": "(e,q,v) -> (q,0,0)",
+        "equivalence": "fib(E -> Q + V[1]) ~= B",
+        "annihilating_B_primitive": [
+          {
+            "cell": "[02;02]",
+            "coefficient": "t_03*t_04*t_13*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[02,03;02,03]",
+            "coefficient": "t_04*t_13*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[02,03,04;02,03,04]",
+            "coefficient": "-t_13*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[02,03,35;02,03,35]",
+            "coefficient": "-t_04*t_13*t_14*t_15*t_24*t_25"
+          },
+          {
+            "cell": "[02,04;02,04]",
+            "coefficient": "t_03*t_13*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[02,04,24;02,04,24]",
+            "coefficient": "-t_03*t_13*t_14*t_15*t_25*t_35"
+          },
+          {
+            "cell": "[02,24;02,24]",
+            "coefficient": "t_03*t_04*t_13*t_14*t_15*t_25*t_35"
+          },
+          {
+            "cell": "[02,24,25;02,24,25]",
+            "coefficient": "-t_03*t_04*t_13*t_14*t_15*t_35"
+          },
+          {
+            "cell": "[02,25;02,25]",
+            "coefficient": "t_03*t_04*t_13*t_14*t_15*t_24*t_35"
+          },
+          {
+            "cell": "[02,25,35;02,25,35]",
+            "coefficient": "-t_03*t_04*t_13*t_14*t_15*t_24"
+          },
+          {
+            "cell": "[02,35;02,35]",
+            "coefficient": "t_03*t_04*t_13*t_14*t_15*t_24*t_25"
+          },
+          {
+            "cell": "[03,04;03,04]",
+            "coefficient": "t_02*t_13*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[03,04,13;03,04,13]",
+            "coefficient": "-t_02*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[03,13;03,13]",
+            "coefficient": "t_02*t_04*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[03,13,35;03,13,35]",
+            "coefficient": "-t_02*t_04*t_14*t_15*t_24*t_25"
+          },
+          {
+            "cell": "[03,35;03,35]",
+            "coefficient": "t_02*t_04*t_13*t_14*t_15*t_24*t_25"
+          },
+          {
+            "cell": "[04;04]",
+            "coefficient": "t_02*t_03*t_13*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[04,13;04,13]",
+            "coefficient": "t_02*t_03*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[04,13,14;04,13,14]",
+            "coefficient": "-t_02*t_03*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[04,14;04,14]",
+            "coefficient": "t_02*t_03*t_13*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[04,14,24;04,14,24]",
+            "coefficient": "-t_02*t_03*t_13*t_15*t_25*t_35"
+          },
+          {
+            "cell": "[04,24;04,24]",
+            "coefficient": "t_02*t_03*t_13*t_14*t_15*t_25*t_35"
+          },
+          {
+            "cell": "[13;13]",
+            "coefficient": "t_02*t_03*t_04*t_14*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[13,14;13,14]",
+            "coefficient": "t_02*t_03*t_04*t_15*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[13,14,15;13,14,15]",
+            "coefficient": "-t_02*t_03*t_04*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[13,15;13,15]",
+            "coefficient": "t_02*t_03*t_04*t_14*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[13,15,35;13,15,35]",
+            "coefficient": "-t_02*t_03*t_04*t_14*t_24*t_25"
+          },
+          {
+            "cell": "[13,35;13,35]",
+            "coefficient": "t_02*t_03*t_04*t_14*t_15*t_24*t_25"
+          },
+          {
+            "cell": "[14,15;14,15]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[14,15,24;14,15,24]",
+            "coefficient": "-t_02*t_03*t_04*t_13*t_25*t_35"
+          },
+          {
+            "cell": "[14,24;14,24]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_15*t_25*t_35"
+          },
+          {
+            "cell": "[15;15]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_24*t_25*t_35"
+          },
+          {
+            "cell": "[15,24;15,24]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_25*t_35"
+          },
+          {
+            "cell": "[15,24,25;15,24,25]",
+            "coefficient": "-t_02*t_03*t_04*t_13*t_14*t_35"
+          },
+          {
+            "cell": "[15,25;15,25]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_24*t_35"
+          },
+          {
+            "cell": "[15,25,35;15,25,35]",
+            "coefficient": "-t_02*t_03*t_04*t_13*t_14*t_24"
+          },
+          {
+            "cell": "[15,35;15,35]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_24*t_25"
+          },
+          {
+            "cell": "[24;24]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_15*t_25*t_35"
+          },
+          {
+            "cell": "[24,25;24,25]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_15*t_35"
+          },
+          {
+            "cell": "[25,35;25,35]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_15*t_24"
+          },
+          {
+            "cell": "[35;35]",
+            "coefficient": "t_02*t_03*t_04*t_13*t_14*t_15*t_24*t_25"
+          }
+        ]
+      },
+      "source": {
+        "source": "P_R[1] with full node, sheets, roads, tags, and norm",
+        "source_quasi_isomorphism": "phi:P_R -> R_chi[1], phi=sum of roads",
+        "source_R_SDR_is_not_claimed_A_linear": true,
+        "comparison": "f=beta*phi, s=theta_tilde*phi",
+        "boundary_family": "h_lambda=(lambda*theta*phi,0,0)",
+        "framed_support_class": "(1-lambda)*[beta] in H_2(B)",
+        "secondary_residual": "lambda-1 modulo Delta",
+        "physical_lambda_selected": false
+      }
+    }
+  },
+  "source_resolution": {
+    "resolution_ranks": [
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "all_differentials_vanish_after_Hom_to_conductor_supported_target": true,
+    "H_minus1_extra_ambient_terms": "H_(3+j)(E)=0 for j>=1",
+    "H_minus1_extra_boundary_terms": "only j=1 possible; H4(boundary)=H3(V)=0",
+    "full_A_derived_secondary_cokernel": "same R/(Delta)",
+    "H3_B": "0 because H3(K)->H3(Q) is multiplication by nonzero Delta",
+    "higher_paths_of_Map_A(P_R[1],B)": "all zero over the retained independent/Rees base",
+    "central_specialization_of_these_homology_claims": "not inferred"
+  },
+  "checks": {
+    "B_is_subcomplex": 832,
+    "E_d_squared": 796,
+    "SDR_H_commutes_finite_to_Cech": 444,
+    "SDR_p_commutes_finite_to_Cech": 444,
+    "V_is_subcomplex": 64,
+    "W_endpoint_connector": 4,
+    "all_zero_residuals_ambient_primitive": 12,
+    "all_zero_residuals_endpoint_homotopy": 12,
+    "annihilating_primitive_full_B_boundary": 4,
+    "annihilating_primitive_full_B_support": 4,
+    "annihilator_homotopy_includes_endpoints": 4,
+    "annihilator_primitive_stays_in_P": 4,
+    "beta_absolute_closed": 4,
+    "beta_nonzero_chain": 4,
+    "beta_road_relative_support": 4,
+    "beta_strict_zero_boundary": 4,
+    "d_W_delta_beta": 4,
+    "d_degree": 860,
+    "d_legal_denominators": 860,
+    "d_squared": 860,
+    "delta_nonunit": 4,
+    "endpoint_connector_formula": 796,
+    "endpoint_connector_of_omega": 4,
+    "endpoint_correction_not_zero": 4,
+    "fibre_D3_H": 1776,
+    "fibre_D3_d": 1776,
+    "fibre_D3_p": 1776,
+    "fibre_H_legal_localizations": 2664,
+    "fibre_H_squared": 888,
+    "fibre_d_squared": 888,
+    "fibre_inclusion_chain_map": 832,
+    "fibre_integral_SDR": 888,
+    "fibre_p_H_zero": 888,
+    "fibre_p_i_identity": 832,
+    "fibre_p_legal_localizations": 888,
+    "fibre_projection_chain_map": 888,
+    "full_source_ambient_nullhomotopy": 236,
+    "full_source_beta_map_chain_equation": 236,
+    "full_source_beta_map_closed": 236,
+    "full_source_frame_family_B_class": 1180,
+    "full_source_frame_family_closed": 1180,
+    "h1_frame_is_exact": 4,
+    "h_equal_r_s_gives_zero_secondary": 4,
+    "h_minus_r_s_closed": 4,
+    "lift_frame_explicit_primitive": 4,
+    "lift_frame_projects_to_zero": 4,
+    "node_annihilator_minus": 24,
+    "node_annihilator_plus": 24,
+    "node_resolution_d_squared": 13,
+    "omega_full_cycle": 4,
+    "omega_source_orientation_character": 8,
+    "polynomial_source_d_squared": 236,
+    "r_s_theta_zero_endpoints": 4,
+    "residual_unit_nonzero_mod_delta": 4,
+    "rho_chain_map": 796,
+    "rho_legal_denominators": 2388,
+    "same_ambient_f_for_two_framings": 4,
+    "same_endpoint_h_for_two_framings": 4,
+    "six_endpoint_correction_terms": 4,
+    "source_D3_chain_map": 472,
+    "source_R_linear_integral_SDR": 236,
+    "source_dihedral_relation": 236,
+    "source_node_ring_linearity": 472,
+    "source_readout_A_linearity": 472,
+    "source_readout_chain_map": 236,
+    "source_readout_orientation_covariance": 472,
+    "source_reflection_order_two": 236,
+    "source_rotation_order_three": 236,
+    "source_unit_is_cycle": 4,
+    "source_unit_normalization": 4,
+    "theta_Q_cycle": 4,
+    "theta_source_orientation_character": 8,
+    "top_Q_map_is_delta": 4,
+    "zero_frame_is_actual_B_connecting_class": 4
+  },
+  "total_checks": 30713,
+  "checker_sha256": "e650273ea735f94e6118bbc5a0435363d8ac320a4875038671eba5a4dbed984c",
+  "scope": [
+    "Complete target coefficient flag; canonical fibre equivalence to its 208-generator short-boundary complex.",
+    "Entire polynomial normalization-road source, including A-linearity and its unbounded node resolution.",
+    "Target node action is the specified conductor augmentation A->R.",
+    "No physical identification of f with a spatial Gysin kernel; lambda remains unselected.",
+    "Explicit counterexample to selection of lambda by coefficient source plus strict endpoint data and symmetry alone.",
+    "No central specialization or global equivariant-derived cohomology classification inferred.",
+    "No repository mutation; symbolic verification with accompanying algebraic proofs, not proof-assistant certification."
+  ]
+}

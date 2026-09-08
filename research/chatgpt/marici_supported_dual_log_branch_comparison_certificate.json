@@ -1,0 +1,529 @@
+{
+  "date": "2026-09-07",
+  "source_commit": "d1947b67a60d3e88ba77f4ca60ea02c2a306ee61",
+  "source_blobs": {
+    "research/voevodsky/check_d03_plus_excess_beck_chevalley.rs": "df8448271089910a90c8e641af5b8ae95f1472dd",
+    "research/voevodsky/check_global_k6_koszul_cech_promotion.rs": "e972b69d0e2b1b0a0aee5e0a027c8216bcace3e8",
+    "research/voevodsky/check_two_endpoint_tate_carrier.rs": "0147e2e42dafac0da7289c571cb0331b51338be1",
+    "src/ledger/20260814-115 Boundary-Triad Tate Realization and the Multi-Rees Cartier Bicomplex.md": "63da17cb5d641705056c5d5b9bc6f53cda72baf5"
+  },
+  "status": "proved_scoped_supported_line_normalization_log_branch_residues_and_surviving_dual_transgression",
+  "source": {
+    "Koszul_sequence": [
+      "u1",
+      "u3",
+      "u5",
+      "u0",
+      "u3"
+    ],
+    "generators": 32,
+    "eta": "h3_plus-h3_pair"
+  },
+  "target": {
+    "loaded_stalks": 215,
+    "same_V_B_K_E_Q_filtration": true
+  },
+  "log_base_change": {
+    "equations": "u_i=X_i*t_i on all six shorts; long u_D independent",
+    "global_occurrence_inversion": false,
+    "flatness_assumed": false,
+    "critical_Tor1_Hom_is_identical_to_prelog_Hom": [
+      {
+        "target": "V",
+        "generators": 18,
+        "Ext": {}
+      },
+      {
+        "target": "E",
+        "generators": 202,
+        "Ext": {}
+      },
+      {
+        "target": "Q",
+        "generators": 7,
+        "Ext": {
+          "2": 1
+        }
+      },
+      {
+        "target": "B",
+        "generators": 213,
+        "Ext": {
+          "3": 1
+        }
+      },
+      {
+        "target": "K",
+        "generators": 220,
+        "Ext": {}
+      }
+    ]
+  },
+  "selected_branch": "X1=X3=X5=0",
+  "principal_occurrence_line": "I_plus=(X1*X3*X5); normalize via its dual frame before restriction",
+  "purity": {
+    "branch_codimension": 3,
+    "branch_occurrence_order": [
+      "X1",
+      "X3",
+      "X5"
+    ],
+    "purity_cohomological_degree": 3,
+    "purity_value": "top dual coefficient modulo (X1,X3,X5)",
+    "purity_line": "det((X1,X3,X5)/(X1,X3,X5)^2)^vee",
+    "duality_counit": "dual degree zero evaluation; higher components zero",
+    "full_original_excess_dual_supported_degrees": [
+      4,
+      5
+    ],
+    "regular_dual_frame": "(h1_plus wedge h3_plus wedge h5_plus wedge h0_pair)^vee",
+    "excess_dual_frame": "eta^vee retained; eta=h3_plus-h3_pair",
+    "top_coordinate_signs_in_original_basis": {
+      "regular_4": 1,
+      "excess_5": -1
+    },
+    "target_tensor_columns_checked": 1720
+  },
+  "channels": [
+    {
+      "channel": "Tor0",
+      "frame_in_original_exponents": [
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "frame_in_log_exponents": [
+        -1,
+        -1,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "targets": {
+        "V": {
+          "generators": 6,
+          "Ext": {
+            "1": 2
+          }
+        },
+        "E": {
+          "generators": 172,
+          "Ext": {
+            "1": 8
+          }
+        },
+        "Q": {
+          "generators": 14,
+          "Ext": {
+            "1": 2
+          }
+        },
+        "B": {
+          "generators": 164,
+          "Ext": {
+            "1": 10,
+            "2": 2
+          }
+        },
+        "K": {
+          "generators": 178,
+          "Ext": {
+            "1": 10
+          }
+        }
+      },
+      "raw_endpoint_restriction": "zero on every cochain column",
+      "normalized_endpoint_cochain": {
+        "01111 -> x1,x5,x3[x1,x5,x3]": 1,
+        "11101 -> x1,x5,x3[x1,x5,x3]": 1
+      },
+      "normalized_endpoint_coordinates": {
+        "01111 -> x1,x5,x3[x1,x5,x3]": 1,
+        "11101 -> x1,x5,x3[x1,x5,x3]": 1
+      },
+      "generic_top_coefficient": "(t1*t3*t5)*U",
+      "generic_cochain": {
+        "01111 -> T[]": 1,
+        "01111 -> D03[D03]": -1,
+        "01111 -> D14[D14]": -1,
+        "01111 -> D25[D25]": -1,
+        "11101 -> T[]": 1,
+        "11101 -> D03[D03]": -1,
+        "11101 -> D14[D14]": -1,
+        "11101 -> D25[D25]": -1
+      },
+      "generic_coordinates": {
+        "01111 -> D25[D25]": -1,
+        "11101 -> D25[D25]": -1
+      },
+      "short_support_obstruction": {
+        "01111 -> x0[]": 1,
+        "01111 -> x0,D03[D03]": -1,
+        "01111 -> x0,D25[D25]": -1,
+        "01111 -> D03,x4[D03]": 1,
+        "01111 -> x4[]": 1,
+        "01111 -> x4,D14[D14]": -1,
+        "01111 -> D14,x2[D14]": 1,
+        "01111 -> x2[]": 1,
+        "01111 -> x2,D25[D25]": -1,
+        "11101 -> x0[]": 1,
+        "11101 -> x0,D03[D03]": -1,
+        "11101 -> x0,D25[D25]": -1,
+        "11101 -> D03,x4[D03]": 1,
+        "11101 -> x4[]": 1,
+        "11101 -> x4,D14[D14]": -1,
+        "11101 -> D14,x2[D14]": 1,
+        "11101 -> x2[]": 1,
+        "11101 -> x2,D25[D25]": -1
+      },
+      "obstruction_coordinates": {
+        "01111 -> x2,D25[D25]": -1,
+        "11101 -> x2,D25[D25]": -1
+      },
+      "target_to_generic_homology_map": "zero",
+      "obstruction_additive_order": "infinite"
+    },
+    {
+      "channel": "Tor1",
+      "frame_in_original_exponents": [
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "frame_in_log_exponents": [
+        -1,
+        -1,
+        0,
+        -2,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "targets": {
+        "V": {
+          "generators": 3,
+          "Ext": {
+            "2": 1
+          }
+        },
+        "E": {
+          "generators": 86,
+          "Ext": {
+            "2": 4
+          }
+        },
+        "Q": {
+          "generators": 7,
+          "Ext": {
+            "2": 1
+          }
+        },
+        "B": {
+          "generators": 82,
+          "Ext": {
+            "2": 5,
+            "3": 1
+          }
+        },
+        "K": {
+          "generators": 89,
+          "Ext": {
+            "2": 5
+          }
+        }
+      },
+      "raw_endpoint_restriction": "zero on every cochain column",
+      "normalized_endpoint_cochain": {
+        "11111 -> x1,x5,x3[x1,x5,x3]": 1
+      },
+      "normalized_endpoint_coordinates": {
+        "11111 -> x1,x5,x3[x1,x5,x3]": 1
+      },
+      "generic_top_coefficient": "(t1*t3*t5)*U",
+      "generic_cochain": {
+        "11111 -> T[]": -1,
+        "11111 -> D03[D03]": 1,
+        "11111 -> D14[D14]": 1,
+        "11111 -> D25[D25]": 1
+      },
+      "generic_coordinates": {
+        "11111 -> D25[D25]": 1
+      },
+      "short_support_obstruction": {
+        "11111 -> x0[]": -1,
+        "11111 -> x0,D03[D03]": 1,
+        "11111 -> x0,D25[D25]": 1,
+        "11111 -> D03,x4[D03]": -1,
+        "11111 -> x4[]": -1,
+        "11111 -> x4,D14[D14]": 1,
+        "11111 -> D14,x2[D14]": -1,
+        "11111 -> x2[]": -1,
+        "11111 -> x2,D25[D25]": 1
+      },
+      "obstruction_coordinates": {
+        "11111 -> x2,D25[D25]": 1
+      },
+      "target_to_generic_homology_map": "zero",
+      "obstruction_additive_order": "infinite"
+    }
+  ],
+  "small_fixed_mark_models": {
+    "V": {
+      "generators": 1,
+      "Ext": {
+        "2": 1
+      }
+    },
+    "E": {
+      "generators": 12,
+      "Ext": {
+        "2": 4
+      }
+    },
+    "Q": {
+      "generators": 1,
+      "Ext": {
+        "2": 1
+      }
+    },
+    "B": {
+      "generators": 12,
+      "Ext": {
+        "2": 5,
+        "3": 1
+      }
+    },
+    "K": {
+      "generators": 13,
+      "Ext": {
+        "2": 5
+      }
+    }
+  },
+  "eight_odd_mark_sectors": [
+    {
+      "fixed_odd_marks": [],
+      "available_even_labels": [
+        2,
+        4
+      ]
+    },
+    {
+      "fixed_odd_marks": [
+        1
+      ],
+      "available_even_labels": [
+        4
+      ]
+    },
+    {
+      "fixed_odd_marks": [
+        3
+      ],
+      "available_even_labels": []
+    },
+    {
+      "fixed_odd_marks": [
+        5
+      ],
+      "available_even_labels": [
+        2
+      ]
+    },
+    {
+      "fixed_odd_marks": [
+        1,
+        3
+      ],
+      "available_even_labels": []
+    },
+    {
+      "fixed_odd_marks": [
+        1,
+        5
+      ],
+      "available_even_labels": []
+    },
+    {
+      "fixed_odd_marks": [
+        3,
+        5
+      ],
+      "available_even_labels": []
+    },
+    {
+      "fixed_odd_marks": [
+        1,
+        3,
+        5
+      ],
+      "available_even_labels": []
+    }
+  ],
+  "dual_critical_triangle": {
+    "duality": "RHom_Z of the full finite homogeneous Hom slice; not identified with spatial Verdier duality",
+    "short_functional": {
+      "11111 -> x2,D25[D25]": 1
+    },
+    "generic_functional": {
+      "11111 -> D25[D25]": 1
+    },
+    "pairing_with_short_obstruction": 1,
+    "pairing_with_generic_class": 1,
+    "short_dual_homology": {
+      "2": 5,
+      "3": 1
+    },
+    "generic_dual_homology": {
+      "2": 1
+    },
+    "obstruction_removed": false
+  },
+  "scope": [
+    "The principal-line endpoint factorization is derived from actual common occurrence factors, with no inverse adjoined to the base.",
+    "The selected branch is the admitted positive occurrence branch, not a branch chosen by a desired sign.",
+    "The Rees determinant t1*t3*t5 is retained on the framed generic class; it is not replaced by one or by an internal normal product.",
+    "Ordered closed-immersion purity adds the dual occurrence conormal determinant and cohomological shift three. It does not turn the nonzero connecting class into a boundary.",
+    "All four endpoint-quotient cohomology classes in the critical Tor1 slice have zero generic projection.",
+    "The finite-slice dual is an exact coefficient calculation, not a construction of the full supported Verdier dual of the spatial target.",
+    "No exceptional nearby-cycle/log-blowdown counit with the two coupled endpoint connector cells is asserted; no physical parity is assigned."
+  ],
+  "assertion_categories": {
+    "Hom_d_squared": 1592,
+    "Hom_homological_degree": 1592,
+    "Hom_source_differential_domain": 1824,
+    "Hom_source_exact_monomial": 1824,
+    "Hom_target_differential_domain": 2140,
+    "Hom_target_exact_monomial": 2140,
+    "SDR_dH_plus_Hd": 890,
+    "SDR_projection_chain_map": 890,
+    "SDR_projection_section_identity": 58,
+    "SDR_section_closed": 58,
+    "SDR_zero_residual": 12,
+    "Tor1_critical_log_base_change_exact_coefficients": 660,
+    "Tor1_critical_log_base_change_identical_matrices": 5,
+    "Tor1_selected_endpoint_line": 1,
+    "Tor1_selected_endpoint_quotient_four_classes": 1,
+    "Tor1_selected_full_target_five_classes": 1,
+    "Tor1_selected_generic_line": 1,
+    "Tor1_selected_short_support_obstruction_line": 1,
+    "actual_branch_restriction_chain_map": 3248,
+    "actual_dual_obstruction_functional_closed": 1,
+    "actual_dual_obstruction_pairing_is_plus_one": 1,
+    "actual_polynomial_target_d_squared": 215,
+    "actual_target_stalk_count": 1,
+    "both_dual_classes_nonzero": 1,
+    "both_supported_purity_top_signs": 1,
+    "determinant_orientation_unit": 6,
+    "dual_connecting_lands_in_generic_dual": 1,
+    "dual_connecting_pairing_is_plus_one": 1,
+    "dual_extension_choice_changes_only_exact_Q_term": 7,
+    "dual_generic_functional_closed": 1,
+    "dual_slice_d_squared": 178,
+    "dual_slice_degree": 178,
+    "endpoint_has_exact_occurrence_factor": 20,
+    "eta_is_difference_of_shared_normals": 1,
+    "every_endpoint_quotient_class_has_zero_generic_image": 12,
+    "excess_basis_change_commutes_with_source_d": 32,
+    "excess_basis_change_is_integral_involution": 32,
+    "excess_basis_change_preserves_normal_degree": 32,
+    "framed_generic_source_map_closed": 2,
+    "framed_generic_source_map_legal": 2,
+    "framed_generic_source_map_primitive": 2,
+    "full_excess_dual_basis_change_chain_map": 32,
+    "generic_top_coefficient_is_Rees_determinant_times_U": 3,
+    "independent_five_noncontractible_odd_sectors": 1,
+    "integral_unit_pivot": 493,
+    "log_Hom_d_squared": 7919,
+    "log_Hom_homological_degree": 7919,
+    "log_source_arrow_exact_monomial": 5004,
+    "log_source_arrow_has_legal_domain": 5004,
+    "log_target_arrow_exact_monomial": 11919,
+    "log_target_arrow_has_legal_domain": 11919,
+    "normalized_selected_endpoint_is_closed": 2,
+    "normalized_selected_endpoint_primitive": 2,
+    "normalized_selected_endpoint_survives_in_full_target": 2,
+    "ordered_dual_purity_permutation_covariance": 48,
+    "ordered_occurrence_purity_dual_d_squared": 8,
+    "ordered_occurrence_top_is_dual_cocycle": 1,
+    "oriented_line_is_primitive": 1,
+    "principal_occurrence_line_factorization_chain_map": 2,
+    "principal_occurrence_line_factorization_legal": 2,
+    "purity_top_boundaries_vanish_on_support": 3,
+    "raw_endpoint_restriction_is_zero_termwise": 2,
+    "selected_Hom_basis_comes_from_log_basis": 12,
+    "selected_actual_short_support_term_count": 2,
+    "selected_coefficient_frame_retained": 807,
+    "selected_defect_closed": 2,
+    "selected_defect_is_short_supported": 2,
+    "selected_generic_obstruction_primitive": 2,
+    "six_log_branch_transports_chain_maps": 3204,
+    "six_log_branch_transports_exact_coefficients": 3204,
+    "six_log_branch_transports_have_legal_stalks": 3204,
+    "small_fixed_mark_projection_is_chain_map": 267,
+    "small_projection_cone_d_squared": 306,
+    "small_projection_is_integral_quasi_isomorphism": 5,
+    "supported_purity_full_215_target_tensor_chain_equation": 1720,
+    "transported_supported_classes_are_legal": 48,
+    "uniform_occurrence_division_does_not_define_generic_arrow": 2,
+    "upper_shriek_adjoint_domains": 660,
+    "upper_shriek_explicit_currying_chain_map": 660,
+    "zero_residual_differential_integral_homology": 15
+  },
+  "total_exact_assertions": 82073,
+  "checker_sha256": "56221013896de069b2ef9a2547e0f2ef26592160a861be3285facd26467e60e3"
+}
