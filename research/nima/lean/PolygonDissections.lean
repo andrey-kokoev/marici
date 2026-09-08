@@ -3109,27 +3109,27 @@ theorem monomialWeight_split {n : ℕ} {R : Type*} [CommMonoid R]
     (Finset.prod_sdiff T.2 (f := inverseChannelWeight)).symm
 
 /-- Full planar amplitude: the finite sum over all maximal dissections. -/
-noncomputable def planarAmplitude {n : ℕ} {R : Type*} [CommSemiring R]
+noncomputable def planarWeightedSum {n : ℕ} {R : Type*} [CommSemiring R]
     (inverseChannelWeight : Diagonal n → R) : R :=
   ∑ T : Triangulation n, monomialWeight inverseChannelWeight T.1
 
 /-- Coefficient residue along `D`, after removing the channel weights in `D`. -/
-noncomputable def residueAmplitude {n : ℕ} {R : Type*} [CommSemiring R]
+noncomputable def residueWeightedSum {n : ℕ} {R : Type*} [CommSemiring R]
     (inverseChannelWeight : Diagonal n → R) (D : Dissection n) : R :=
   ∑ T : RefiningTriangulation D, residualWeight inverseChannelWeight D T
 
 /-- The portion of the amplitude supported on triangulations containing `D`. -/
-noncomputable def supportedAmplitude {n : ℕ} {R : Type*} [CommSemiring R]
+noncomputable def supportedWeightedSum {n : ℕ} {R : Type*} [CommSemiring R]
     (inverseChannelWeight : Diagonal n → R) (D : Dissection n) : R :=
   ∑ T : RefiningTriangulation D, monomialWeight inverseChannelWeight T.1.1
 
 /-- Extracting the common cut-channel weights from every supported planar term
 leaves exactly the coefficient residue. -/
-theorem supportedAmplitude_factor {n : ℕ} {R : Type*} [CommSemiring R]
+theorem supportedWeightedSum_factor {n : ℕ} {R : Type*} [CommSemiring R]
     (inverseChannelWeight : Diagonal n → R) (D : Dissection n) :
-    supportedAmplitude inverseChannelWeight D =
-      monomialWeight inverseChannelWeight D * residueAmplitude inverseChannelWeight D := by
-  unfold supportedAmplitude residueAmplitude
+    supportedWeightedSum inverseChannelWeight D =
+      monomialWeight inverseChannelWeight D * residueWeightedSum inverseChannelWeight D := by
+  unfold supportedWeightedSum residueWeightedSum
   simp_rw [monomialWeight_split inverseChannelWeight D]
   exact (Finset.mul_sum _ _ _).symm
 
@@ -3483,7 +3483,7 @@ theorem residualWeight_product_regions {n : ℕ} {R : Type*} [CommMonoid R]
 
 /-- The amplitude of one region is the sum over its maximal noncrossing
 families. -/
-noncomputable def regionalAmplitude {n : ℕ} {R : Type*} [CommSemiring R]
+noncomputable def regionalWeightedSum {n : ℕ} {R : Type*} [CommSemiring R]
     (inverseChannelWeight : Diagonal n → R) {D : Dissection n}
     (regions : RegionDecomposition D) (r : regions.Region) : R :=
   ∑ T : RegionalTriangulation regions r,
@@ -3523,13 +3523,13 @@ noncomputable def canonicalRegionalFactorization {n : ℕ} {R : Type*}
 /-- Once the geometric regional certificate is supplied, the coefficient
 residue of the polygon amplitude is exactly the product of regional
 amplitudes. This is the integrated factorization theorem. -/
-theorem residueAmplitude_factorization {n : ℕ} {R : Type*}
+theorem residueWeightedSum_factorization {n : ℕ} {R : Type*}
     [CommSemiring R] (inverseChannelWeight : Diagonal n → R) (D : Dissection n)
     (F : RegionalFactorization inverseChannelWeight D) :
-    residueAmplitude inverseChannelWeight D =
+    residueWeightedSum inverseChannelWeight D =
       ∏ r, ∑ u : F.RegionalTriangulation r, F.regionalWeight r u := by
   classical
-  unfold residueAmplitude
+  unfold residueWeightedSum
   calc
     (∑ T : RefiningTriangulation D, residualWeight inverseChannelWeight D T) =
         ∑ a : ((r : F.decomposition.Region) → F.RegionalTriangulation r),
@@ -3543,17 +3543,17 @@ theorem residueAmplitude_factorization {n : ℕ} {R : Type*}
 
 /-- Certificate-free factorization for an arbitrary convex polygon and any
 chosen regional decomposition of `D`. -/
-theorem residueAmplitude_factorization_canonical {n : ℕ} {R : Type*}
+theorem residueWeightedSum_factorization_canonical {n : ℕ} {R : Type*}
     [CommSemiring R] (inverseChannelWeight : Diagonal n → R) (D : Dissection n)
     (regions : RegionDecomposition D) :
-    residueAmplitude inverseChannelWeight D =
-      ∏ r, regionalAmplitude inverseChannelWeight regions r := by
+    residueWeightedSum inverseChannelWeight D =
+      ∏ r, regionalWeightedSum inverseChannelWeight regions r := by
   classical
   let F := canonicalRegionalFactorization inverseChannelWeight D regions
-  rw [residueAmplitude_factorization inverseChannelWeight D F]
+  rw [residueWeightedSum_factorization inverseChannelWeight D F]
   apply Finset.prod_congr rfl
   intro r _
-  unfold regionalAmplitude
+  unfold regionalWeightedSum
   exact Fintype.sum_equiv (Equiv.refl _) _ _ (fun _ => rfl)
 
 /-- Laurent exponent vectors for planar channel variables. Negative entries
@@ -3662,7 +3662,7 @@ theorem regionalStandardLaurentEquiv_triangulationProduct
     regionalDiagonalStandardEquiv]
 
 /-- Regional amplitude internal to its own canonical channel Laurent algebra. -/
-noncomputable def canonicalRegionalFiberAmplitude
+noncomputable def canonicalRegionalFiberWeightedSum
     {n : ℕ} {R : Type*} [CommSemiring R]
     {D : Dissection n} (r : OptionalSignatureRegion D) :
     LaurentAlgebraOn R (OptionalSignatureRegionalDiagonal r) := by
@@ -3678,37 +3678,37 @@ noncomputable def canonicalRegionalFiberAmplitude
 
 /-- The canonical regional amplitude expressed directly in the full standard
 lower-point channel Laurent algebra. -/
-noncomputable def canonicalRegionalStandardAmplitude
+noncomputable def canonicalRegionalStandardWeightedSum
     {n : ℕ} {R : Type*} [CommSemiring R]
     {D : Dissection n} {r : OptionalSignatureRegion D} :
     LaurentAlgebraOn R (Diagonal (optionalSignatureRegionArity r)) :=
   regionalStandardLaurentEquiv (R := R)
-    (canonicalRegionalFiberAmplitude (R := R) r)
+    (canonicalRegionalFiberWeightedSum (R := R) r)
 
 /-- Its definition is the explicit channel-by-channel Laurent transport. -/
-theorem canonicalRegionalFiberAmplitude_standard_relabel
+theorem canonicalRegionalFiberWeightedSum_standard_relabel
     {n : ℕ} {R : Type*} [CommSemiring R]
     {D : Dissection n} {r : OptionalSignatureRegion D} :
     regionalStandardLaurentEquiv (R := R)
-        (canonicalRegionalFiberAmplitude (R := R) r) =
-      canonicalRegionalStandardAmplitude (R := R) := rfl
+        (canonicalRegionalFiberWeightedSum (R := R) r) =
+      canonicalRegionalStandardWeightedSum (R := R) := rfl
 
 /-- The same regional amplitude expressed in realized local channel
 coordinates. -/
-noncomputable def realizedLocalRegionalAmplitude
+noncomputable def realizedLocalRegionalWeightedSum
     {n : ℕ} {R : Type*} [CommSemiring R]
     {D : Dissection n} (r : OptionalSignatureRegion D) :
     LaurentAlgebraOn R (RealizedLocalOrderedChord r) :=
   optionalSignatureRegionalLaurentEquiv (R := R) r
-    (canonicalRegionalFiberAmplitude (R := R) r)
+    (canonicalRegionalFiberWeightedSum (R := R) r)
 
 /-- Regional amplitude transport along the explicit channel relabeling. -/
-theorem canonicalRegionalFiberAmplitude_relabel
+theorem canonicalRegionalFiberWeightedSum_relabel
     {n : ℕ} {R : Type*} [CommSemiring R]
     {D : Dissection n} (r : OptionalSignatureRegion D) :
     optionalSignatureRegionalLaurentEquiv (R := R) r
-        (canonicalRegionalFiberAmplitude (R := R) r) =
-      realizedLocalRegionalAmplitude r := rfl
+        (canonicalRegionalFiberWeightedSum (R := R) r) =
+      realizedLocalRegionalWeightedSum r := rfl
 
 /-- Embed regional exponent vectors into the ambient global channel lattice. -/
 noncomputable def optionalSignatureRegionalExponentEmbedding
@@ -3928,14 +3928,14 @@ theorem planarChannelReadoutEvaluation_eq_inverseChannelReadout
 
 /-- Evaluated residue factorization using the canonical side-signature region
 decomposition; no regional decomposition is supplied to the theorem. -/
-theorem evaluatedResidueAmplitude_factorization
+theorem evaluatedResidueWeightedSum_factorization
     {V K : Type*} [AddCommGroup V] [CommRing K] {n : ℕ}
     {Q : EvenMomentumReadout V K} {P : MomentumConfiguration V n}
     (U : InvertiblePlanarChannelReadout V K Q P) (D : Dissection n) :
-    residueAmplitude (inverseChannelReadout U) D =
-      ∏ r, regionalAmplitude (inverseChannelReadout U)
+    residueWeightedSum (inverseChannelReadout U) D =
+      ∏ r, regionalWeightedSum (inverseChannelReadout U)
         (canonicalRegionDecomposition D) r :=
-  residueAmplitude_factorization_canonical
+  residueWeightedSum_factorization_canonical
     (inverseChannelReadout U) D (canonicalRegionDecomposition D)
 
 /-- The complementary channel has the same invariant; this relation follows
@@ -4040,12 +4040,12 @@ theorem optionalSignatureRegionalLaurentEmbedding_laurentInverse
 
 /-- Embedding the intrinsic regional amplitude recovers the corresponding
 ambient regional amplitude exactly. -/
-theorem optionalSignatureRegionalLaurentEmbedding_fiberAmplitude
+theorem optionalSignatureRegionalLaurentEmbedding_fiberWeightedSum
     {n : ℕ} {R : Type*} [CommSemiring R]
     {D : Dissection n} (r : OptionalSignatureRegion D) :
     optionalSignatureRegionalLaurentEmbedding (R := R) r
-        (canonicalRegionalFiberAmplitude (R := R) r) =
-      regionalAmplitude (channelInverse (R := R))
+        (canonicalRegionalFiberWeightedSum (R := R) r) =
+      regionalWeightedSum (channelInverse (R := R))
         (canonicalRegionDecomposition D) r := by
   classical
   let regions := canonicalRegionDecomposition D
@@ -4086,7 +4086,7 @@ variables. This is the formal target of the declared evaluation, not by itself
 a claim about a physical amplitude. -/
 noncomputable def combinatorialBiadjointAmplitude {n : ℕ} {R : Type*}
     [CommSemiring R] : ChannelLaurentAlgebra R n :=
-  planarAmplitude (channelInverse (R := R))
+  planarWeightedSum (channelInverse (R := R))
 
 /-- Projected quotient class of a planar channel variable. -/
 noncomputable def projectedPlanarChannel
@@ -4124,7 +4124,7 @@ theorem projectedPlanarInverseChannel_mul_channel
   exact projectedPlanarChannel_mul_inverse U d
 
 /-- Projected quotient class of the global combinatorial amplitude. -/
-noncomputable def projectedPlanarAmplitudeClass
+noncomputable def projectedPlanarWeightedSumClass
     {V K : Type*} [AddCommGroup V] [CommRing K] {n : ℕ}
     {Q : EvenMomentumReadout V K} {P : MomentumConfiguration V n}
     (U : InvertiblePlanarChannelReadout V K Q P) :
@@ -4134,10 +4134,10 @@ noncomputable def projectedPlanarAmplitudeClass
 
 /-- Canonical regional Laurent transport is exactly the standard lower-point
 combinatorial biadjoint amplitude. -/
-theorem canonicalRegionalStandardAmplitude_eq_combinatorialBiadjointAmplitude
+theorem canonicalRegionalStandardWeightedSum_eq_combinatorialBiadjointAmplitude
     {n : ℕ} {R : Type*} [CommSemiring R]
     {D : Dissection n} {r : OptionalSignatureRegion D} :
-    canonicalRegionalStandardAmplitude (R := R) =
+    canonicalRegionalStandardWeightedSum (R := R) =
       combinatorialBiadjointAmplitude
         (n := optionalSignatureRegionArity r) (R := R) := by
   change regionalStandardLaurentEquiv (R := R)
@@ -4154,23 +4154,23 @@ theorem canonicalRegionalStandardAmplitude_eq_combinatorialBiadjointAmplitude
 
 /-- Canonical residue factorization into explicitly relabeled standard
 lower-point amplitudes; no regional presentation certificate is supplied. -/
-theorem residueAmplitude_factorization_standardLowerPoint
+theorem residueWeightedSum_factorization_standardLowerPoint
     {n : ℕ} {R : Type*} [CommSemiring R] (D : Dissection n) :
-    residueAmplitude (channelInverse (R := R)) D =
+    residueWeightedSum (channelInverse (R := R)) D =
       ∏ r : OptionalSignatureRegion D,
         optionalSignatureRegionalLaurentEmbedding (R := R) r
           ((regionalStandardLaurentEquiv (R := R) (r := r)).symm
             (combinatorialBiadjointAmplitude
               (n := optionalSignatureRegionArity r) (R := R))) := by
-  rw [residueAmplitude_factorization_canonical
+  rw [residueWeightedSum_factorization_canonical
     (channelInverse (R := R)) D (canonicalRegionDecomposition D)]
   apply Finset.prod_congr rfl
   intro r _
-  rw [← optionalSignatureRegionalLaurentEmbedding_fiberAmplitude]
+  rw [← optionalSignatureRegionalLaurentEmbedding_fiberWeightedSum]
   congr 1
   apply (regionalStandardLaurentEquiv (R := R) (r := r)).injective
   rw [(regionalStandardLaurentEquiv (R := R) (r := r)).apply_symm_apply]
-  exact canonicalRegionalStandardAmplitude_eq_combinatorialBiadjointAmplitude
+  exact canonicalRegionalStandardWeightedSum_eq_combinatorialBiadjointAmplitude
     (R := R)
 
 /-- The defining triangulation expansion of the combinatorial amplitude. -/
@@ -4625,7 +4625,7 @@ theorem simultaneousChannelResidue_combinatorialBiadjointAmplitude
     {n : ℕ} {R : Type*} [CommSemiring R] (D : Dissection n) :
     simultaneousChannelResidue D
         (combinatorialBiadjointAmplitude (n := n) (R := R)) =
-      residueAmplitude (channelInverse (R := R)) D := by
+      residueWeightedSum (channelInverse (R := R)) D := by
   classical
   rw [combinatorialBiadjointAmplitude_eq_triangulation_sum]
   rw [show (∑ T : Triangulation n,
@@ -4643,7 +4643,7 @@ theorem simultaneousChannelResidue_combinatorialBiadjointAmplitude
     (p := fun T : Triangulation n => D.1 ⊆ T.1.1)
     (Finset.univ.filter (fun T : Triangulation n => D.1 ⊆ T.1.1))
     (by intro T; simp)]
-  unfold residueAmplitude residualWeight
+  unfold residueWeightedSum residualWeight
   apply Finset.sum_congr rfl
   intro T _
   exact (channelInverse_prod (R := R) (T.1.1.1 \ D.1)).symm
@@ -4664,19 +4664,19 @@ theorem projectedPlanarResidueClass_factorization_standardLowerPoint
   unfold projectedPlanarResidueClass
   rw [simultaneousChannelResidue_combinatorialBiadjointAmplitude]
   exact congrArg (evaluatedPlanarKinematicProjection U)
-    (residueAmplitude_factorization_standardLowerPoint D)
+    (residueWeightedSum_factorization_standardLowerPoint D)
 
 /-- Channel-readout evaluation transports the combinatorial residual sum to the
 evaluated inverse-channel-weight residual sum. -/
-theorem planarChannelReadoutEvaluation_residueAmplitude
+theorem planarChannelReadoutEvaluation_residueWeightedSum
     {V K : Type*} [AddCommGroup V] [CommRing K] {n : ℕ}
     {Q : EvenMomentumReadout V K} {P : MomentumConfiguration V n}
     (U : InvertiblePlanarChannelReadout V K Q P) (D : Dissection n) :
     planarChannelReadoutEvaluation U
-        (residueAmplitude (channelInverse (R := K)) D) =
-      residueAmplitude (inverseChannelReadout U) D := by
+        (residueWeightedSum (channelInverse (R := K)) D) =
+      residueWeightedSum (inverseChannelReadout U) D := by
   classical
-  unfold residueAmplitude residualWeight
+  unfold residueWeightedSum residualWeight
   simp_rw [map_sum, map_prod]
   apply Finset.sum_congr rfl
   intro T _
@@ -4687,20 +4687,20 @@ theorem planarChannelReadoutEvaluation_residueAmplitude
 /-- Evaluated residue factorization into canonical standard lower-point
 amplitudes, obtained solely by channel-readout evaluation of the explicit
 relabeling diagram. -/
-theorem evaluatedResidueAmplitude_factorization_standardLowerPoint
+theorem evaluatedResidueWeightedSum_factorization_standardLowerPoint
     {V K : Type*} [AddCommGroup V] [CommRing K] {n : ℕ}
     {Q : EvenMomentumReadout V K} {P : MomentumConfiguration V n}
     (U : InvertiblePlanarChannelReadout V K Q P) (D : Dissection n) :
-    residueAmplitude (inverseChannelReadout U) D =
+    residueWeightedSum (inverseChannelReadout U) D =
       planarChannelReadoutEvaluation U
         (∏ r : OptionalSignatureRegion D,
           optionalSignatureRegionalLaurentEmbedding (R := K) r
             ((regionalStandardLaurentEquiv (R := K) (r := r)).symm
               (combinatorialBiadjointAmplitude
                 (n := optionalSignatureRegionArity r) (R := K)))) := by
-  rw [← planarChannelReadoutEvaluation_residueAmplitude U D]
+  rw [← planarChannelReadoutEvaluation_residueWeightedSum U D]
   exact congrArg (planarChannelReadoutEvaluation U)
-    (residueAmplitude_factorization_standardLowerPoint D)
+    (residueWeightedSum_factorization_standardLowerPoint D)
 
 /-- The evaluated Laurent residue factors over the canonical regions. -/
 theorem planarChannelReadoutEvaluation_residue_factorization
@@ -4710,11 +4710,11 @@ theorem planarChannelReadoutEvaluation_residue_factorization
     planarChannelReadoutEvaluation U
       (simultaneousChannelResidue D
         (combinatorialBiadjointAmplitude (n := n) (R := K))) =
-      ∏ r, regionalAmplitude (inverseChannelReadout U)
+      ∏ r, regionalWeightedSum (inverseChannelReadout U)
         (canonicalRegionDecomposition D) r := by
   rw [simultaneousChannelResidue_combinatorialBiadjointAmplitude]
-  rw [planarChannelReadoutEvaluation_residueAmplitude]
-  exact evaluatedResidueAmplitude_factorization U D
+  rw [planarChannelReadoutEvaluation_residueWeightedSum]
+  exact evaluatedResidueWeightedSum_factorization U D
 
 /-- Nested-cut naturality survives channel-readout evaluation. -/
 theorem planarChannelReadoutEvaluation_nested_residue
@@ -4742,7 +4742,7 @@ theorem planarChannelReadoutEvaluation_nested_residue_factorization
       (simultaneousChannelResidue (dissectionDifference E D)
         (simultaneousChannelResidue D
           (combinatorialBiadjointAmplitude (n := n) (R := K)))) =
-      ∏ r, regionalAmplitude (inverseChannelReadout U)
+      ∏ r, regionalWeightedSum (inverseChannelReadout U)
         (canonicalRegionDecomposition E) r := by
   rw [simultaneousChannelResidue_nested D E hDE]
   exact planarChannelReadoutEvaluation_residue_factorization U E
@@ -5016,33 +5016,33 @@ theorem NestedRegionDecomposition.cutExponent_difference_eq_sum_affected
 /-- Regional factorization is coherent under nested cuts at the embedded
 Laurent-expression level: factor first over `D` and then take the residue in
 the new channels, or factor directly over `E`. -/
-theorem regionalAmplitude_nested_coherence {n : ℕ} {R : Type*}
+theorem regionalWeightedSum_nested_coherence {n : ℕ} {R : Type*}
     [CommSemiring R] (D E : Dissection n) (hDE : D ≤ E)
     (regionsD : RegionDecomposition D) (regionsE : RegionDecomposition E) :
     simultaneousChannelResidue (dissectionDifference E D)
-        (∏ r, regionalAmplitude (channelInverse (R := R)) regionsD r) =
-      ∏ s, regionalAmplitude (channelInverse (R := R)) regionsE s := by
-  rw [← residueAmplitude_factorization_canonical
+        (∏ r, regionalWeightedSum (channelInverse (R := R)) regionsD r) =
+      ∏ s, regionalWeightedSum (channelInverse (R := R)) regionsE s := by
+  rw [← residueWeightedSum_factorization_canonical
     (channelInverse (R := R)) D regionsD]
   rw [← simultaneousChannelResidue_combinatorialBiadjointAmplitude D]
   rw [simultaneousChannelResidue_nested D E hDE]
   rw [simultaneousChannelResidue_combinatorialBiadjointAmplitude E]
-  exact residueAmplitude_factorization_canonical
+  exact residueWeightedSum_factorization_canonical
     (channelInverse (R := R)) E regionsE
 
 /-- Componentwise regional coherence: first factor over `D`, then process
 all cut families localized in affected `D`-regions, or factor directly over
 `E`. -/
-theorem affectedRegionalAmplitude_nested_coherence {n : ℕ} {R : Type*}
+theorem affectedRegionalWeightedSum_nested_coherence {n : ℕ} {R : Type*}
     [CommSemiring R] {D E : Dissection n} {hDE : D ≤ E}
     {regionsD : RegionDecomposition D} {regionsE : RegionDecomposition E}
     (nested : NestedRegionDecomposition hDE regionsD regionsE) :
     simultaneousChannelResidue
         (nested.affectedCutsForRegions Finset.univ)
-        (∏ r, regionalAmplitude (channelInverse (R := R)) regionsD r) =
-      ∏ s, regionalAmplitude (channelInverse (R := R)) regionsE s := by
+        (∏ r, regionalWeightedSum (channelInverse (R := R)) regionsD r) =
+      ∏ s, regionalWeightedSum (channelInverse (R := R)) regionsE s := by
   rw [nested.affectedCutsForRegions_univ]
-  exact regionalAmplitude_nested_coherence D E hDE regionsD regionsE
+  exact regionalWeightedSum_nested_coherence D E hDE regionsD regionsE
 
 /-- A presented amplitude factors through canonical regions and explicit
 standard lower-point amplitudes. No physical provenance or regional
@@ -5058,7 +5058,7 @@ theorem biadjointPresentationResidue_factorization {n : ℕ} {R : Type*}
               (n := optionalSignatureRegionArity r) (R := R))) := by
   rw [global.triangulation_expansion]
   rw [simultaneousChannelResidue_combinatorialBiadjointAmplitude D]
-  exact residueAmplitude_factorization_standardLowerPoint D
+  exact residueWeightedSum_factorization_standardLowerPoint D
 
 /-- Channel-readout evaluation of the presented factorization. This asserts only
 the algebraic evaluation supplied by `U`, not a physical interpretation. -/
