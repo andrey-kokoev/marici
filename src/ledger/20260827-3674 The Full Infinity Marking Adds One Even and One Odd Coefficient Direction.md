@@ -7,7 +7,7 @@ date: 2026-08-27
 
 ## Frozen marked geometry
 
-After the source residue (q_{\mathcal G_{12}}=0\), the five remaining
+After the source residue \(q_{\mathcal G_{12}}=0\), the five remaining
 denominators restrict on the elliptic infinity boundary to three labelled
 projective positions:
 

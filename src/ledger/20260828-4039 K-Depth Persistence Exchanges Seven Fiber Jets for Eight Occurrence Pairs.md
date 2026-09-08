@@ -50,7 +50,7 @@ Both charts produce the same decomposition
 The seven low directions outside persistence are exactly
 
 [
-egin{aligned}
+\begin{aligned}
 &(0,1,1,1,1,1;(0,4)),\
 &(0,1,1,1,1,1;(0,5)),\
 &(0,1,1,1,1,1;(0,6)),\
@@ -67,7 +67,7 @@ The eight persistent directions outside the low sector are exactly the
 square-free occurrence-pair labels
 
 [
-egin{aligned}
+\begin{aligned}
 &(0,1,1,1,2,2;(0,0)),\
 &(0,1,1,2,1,2;(0,0)),\
 &(0,1,1,2,2,1;(0,0)),\

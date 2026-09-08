@@ -83,10 +83,10 @@ The cofinal diagonal is
 \[
 H(r)leq N
 \quad\longmapsto\quad
-igl(
+\bigl(
 H(r)leq N,
 H(r^{-1})leq N
-igr).
+\bigr).
 \]
 
 Reciprocal sewing preserves this filtration exactly, not merely up to bounded
@@ -154,4 +154,3 @@ and its invariance is a consequence of the product formula.
 The half-line is selected because a reversible comparison of two boundary
 meanings, measured at the same adelic resolution, is neutral only at
 \(\Re s=1/2\).
-

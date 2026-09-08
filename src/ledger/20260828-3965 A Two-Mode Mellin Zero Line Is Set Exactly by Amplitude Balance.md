@@ -3,7 +3,7 @@
 For two positive Gaussian rates, the Mellin zeros lie on
 
 \[
-\Re s=rac{\log(b/a)}
+\Re s=\frac{\log(b/a)}
 {\log(\lambda_2/\lambda_1)}.
 \]
 

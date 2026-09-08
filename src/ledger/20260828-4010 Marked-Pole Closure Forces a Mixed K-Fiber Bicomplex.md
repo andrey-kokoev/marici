@@ -30,7 +30,7 @@ The result is identical at both primes.
 Occurrence closure then forces the square-free degree-two layer in the five labelled pole factors: the (q)-pole and four marked poles. This layer has dimension
 
 [
-inom52=10,
+\binom52=10,
 ]
 
 giving a rank-36 candidate over (Q_{26}).

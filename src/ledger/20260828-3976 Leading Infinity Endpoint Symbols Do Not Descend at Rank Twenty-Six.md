@@ -32,7 +32,7 @@ i+j=5.
 Its boundary differential is
 
 [
-rac{t^{i-2}}{t+1}rac{dt}{W}.
+\frac{t^{i-2}}{t+1}\frac{dt}{W}.
 ]
 
 This explains why degree five is geometrically distinguished in the physical
@@ -45,7 +45,7 @@ The induced odd endpoint residues on the six degree-five monomials
 (a^i b^{5-i}), ordered by (i=0,ldots,5), are proportional to
 
 [
-egin{aligned}
+\begin{aligned}
 t=0 &: (-1/y,;1/y,;0,;0,;0,;0),\
 t=-1 &: (1/z,;-1/z,;1/z,;-1/z,;1/z,;-1/z),\
 t=infty &: (0,;0,;0,;0,;-1/x,;1/x).

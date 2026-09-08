@@ -49,7 +49,7 @@ grading:
 \qquad
 [D,H_{ij}]=0,
 \qquad
-[D,F_{ij}]=-rac12F_{ij}.
+[D,F_{ij}]=-\frac12F_{ij}.
 \]
 
 Thus the spectral triple does not require an independently adjoined grade
@@ -77,4 +77,3 @@ boundary identification is implied.
 The exact checker passes 9 of 9 gates through total degree 40.
 
 Allocator claim: `seqclaim-dc79a7b1ce3a9124fcec18ff`.
-

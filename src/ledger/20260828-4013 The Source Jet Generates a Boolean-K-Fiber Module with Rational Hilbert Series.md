@@ -109,7 +109,7 @@ H(s,t)
 3(1+t)^5
 sum_{kge0}(k+1)(2k+1)s^k
 =
-3(1+t)^5rac{1+3s}{(1-s)^3}.
+3(1+t)^5\frac{1+3s}{(1-s)^3}.
 ]
 
 This is a statement about the labelled source-generator module before exact-relation quotienting.

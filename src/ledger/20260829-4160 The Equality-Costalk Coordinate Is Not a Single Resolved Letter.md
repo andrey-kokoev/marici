@@ -50,7 +50,7 @@ although (x+1) is unchanged.
 
 A second candidate,
 [
-7+5v_2!left(rac{(x+1)(z-x)}2ight),
+7+5v_2!left(\frac{(x+1)(z-x)}2ight),
 ]
 is also falsified:
 [

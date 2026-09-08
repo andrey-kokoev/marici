@@ -7,7 +7,7 @@ operators as
 \widehat{K_\pm g}(t)=m_\pm(t)\widehat g(-t),
 \]
 
-where, for (s=1/2-it\),
+where, for \(s=1/2-it\),
 
 \[
 m_+(t)=2(2\pi)^{-s}\Gamma(s)\cos(\pi s/2),

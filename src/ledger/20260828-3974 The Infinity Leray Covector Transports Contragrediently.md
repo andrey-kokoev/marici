@@ -28,7 +28,7 @@ Direct substitution into the matrix from the source compactification gives
 [
 M(y,x)P
 =
-egin{pmatrix}
+\begin{pmatrix}
 1&0\
 0&y^2/x^2
 end{pmatrix}
@@ -52,7 +52,7 @@ because
 
 [
 (1,x^2/y^2)
-egin{pmatrix}
+\begin{pmatrix}
 1&0\
 0&y^2/x^2
 end{pmatrix}

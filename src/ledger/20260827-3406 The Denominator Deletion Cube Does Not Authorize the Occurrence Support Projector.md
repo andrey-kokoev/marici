@@ -46,7 +46,7 @@ variance are different.
 Entry 580 constructs one product-pole complex reproducing the complete rank
 cube, but explicitly stops before compatible bases and deletion maps.
 
-Entry 3375 constructs the cyclic (A_2\)-to-(e_6) occurrence morphism, but
+Entry 3375 constructs the cyclic \(A_2\)-to-(e_6) occurrence morphism, but
 explicitly stops before the complete rank-twelve triangular transport.
 
 No source-derived connector currently maps denominator deletion arrows to

@@ -16,13 +16,13 @@ new denominator support or a larger Carrier?
 For a shifted loop vector (k(t)) and length (y(t)=\sqrt{k(t)^2}),
 
 \[
-y'=rac{k\cdot k'}{y},
+y'=\frac{k\cdot k'}{y},
 \]
 
 and
 
 \[
-y''=rac{k'^2+k\cdot k''}{y}
+y''=\frac{k'^2+k\cdot k''}{y}
 -\frac{(k\cdot k')^2}{y^3}.
 \]
 

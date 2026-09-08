@@ -91,7 +91,7 @@ c_{\mathrm{top}}=(1,1,1).
 The common top line after removing the two wall legs is
 
 \[
-c_{\mathrm{top}}-rac12c_1-rac12c_2=(0,0,1).
+c_{\mathrm{top}}-\frac12c_1-\frac12c_2=(0,0,1).
 \]
 
 Entry 367 identifies this remaining coordinate with the common \(e_6\)

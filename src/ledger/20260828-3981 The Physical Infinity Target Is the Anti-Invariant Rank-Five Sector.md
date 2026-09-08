@@ -32,9 +32,9 @@ A source-normalized basis may be chosen as follows.
 
 The compact anti-invariant classes are
 [
-omega_0=rac{dt}{W},
+omega_0=\frac{dt}{W},
 qquad
-omega_2=rac{t^2dt}{W}.
+omega_2=\frac{t^2dt}{W}.
 ]
 
 Three anti-invariant logarithmic classes have residue vectors
@@ -50,11 +50,11 @@ Three anti-invariant logarithmic classes have residue vectors
 
 They are represented by
 [
-yrac{dt}{tW},
+y\frac{dt}{tW},
 qquad
-zrac{dt}{(t+1)W},
+z\frac{dt}{(t+1)W},
 qquad
-xrac{t,dt}{W}.
+x\frac{t,dt}{W}.
 ]
 
 Thus the anti-invariant sector has rank
@@ -64,9 +64,9 @@ Thus the anti-invariant sector has rank
 
 The remaining two classes are invariant logarithmic forms
 [
-rac{dt}{t},
+\frac{dt}{t},
 qquad
-rac{dt}{t+1},
+\frac{dt}{t+1},
 ]
 with residue vectors
 [

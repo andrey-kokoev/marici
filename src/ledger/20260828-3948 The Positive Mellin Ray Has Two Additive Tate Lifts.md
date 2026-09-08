@@ -9,7 +9,7 @@ K_+^2=I,
 K_-^2=-I.
 \]
 
-Hence the quarter-phase (\pm i\) is native only to the additive odd port. It
+Hence the quarter-phase \(\pm i\) is native only to the additive odd port. It
 cannot be inferred from reciprocal oddness in the logarithmic coordinate.
 
 The logarithmic Hermite witness points the Mellin endpoint, while the additive

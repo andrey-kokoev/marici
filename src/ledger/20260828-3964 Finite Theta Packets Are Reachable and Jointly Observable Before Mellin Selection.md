@@ -1,6 +1,6 @@
 # Finite Theta Packets Are Reachable and Jointly Observable Before Mellin Selection
 
-On any finite divisor-closed integer packet, prime multiplication from (e_1\)
+On any finite divisor-closed integer packet, prime multiplication from \(e_1\)
 reaches every labelled basis state. The Gaussian observation family
 
 \[

@@ -2,7 +2,7 @@
 
 The seam zeros of \(\cosh(qz)\) have counting density \(2q/\pi\). Two
 bi-infinite zero sets that interlace globally must have counting functions
-differing by only (O(1)\). Therefore reciprocal packets with distinct rates
+differing by only \(O(1)\). Therefore reciprocal packets with distinct rates
 cannot have common interlacing.
 
 This closes the most obvious all-label mechanism for preserving seam zeros

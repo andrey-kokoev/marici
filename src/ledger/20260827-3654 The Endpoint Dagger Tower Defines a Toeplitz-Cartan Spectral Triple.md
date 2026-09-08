@@ -38,7 +38,7 @@ an orthogonal projection. Their commutators are
 \[
 [D,S_a]=\frac12S_a,
 \qquad
-[D,S_a^\dagger]=-rac12S_a^\dagger.
+[D,S_a^\dagger]=-\frac12S_a^\dagger.
 \]
 
 The Leibniz rule gives bounded commutators for every element of
@@ -97,4 +97,3 @@ curvature is the structure that satisfies both gates simultaneously.
 The exact checker passes 8 of 8 gates through grade 200.
 
 Allocator claim: `seqclaim-f4b7e528dee10d339c35b1e4`.
-

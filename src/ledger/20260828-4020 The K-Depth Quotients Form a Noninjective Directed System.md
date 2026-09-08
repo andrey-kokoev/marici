@@ -106,7 +106,7 @@ The separate (K)-pole and occurrence filtrations do not define a compatible bigr
 Therefore the pre-quotient factorization
 
 [
-3(1+t)^5rac{1+3s}{(1-s)^3}
+3(1+t)^5\frac{1+3s}{(1-s)^3}
 ]
 
 does not descend as an ordinary tensor-product Hilbert series.

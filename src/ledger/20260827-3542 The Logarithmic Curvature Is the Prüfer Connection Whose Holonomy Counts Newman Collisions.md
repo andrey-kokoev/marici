@@ -9,9 +9,9 @@ G(\lambda,x)=H_\lambda(x)+iH_x(\lambda,x),
 the phase connection \(\omega=d\arg G\) has components
 
 \[
-\omega_x=rac{HH_{xx}-H_x^2}{H^2+H_x^2},
+\omega_x=\frac{HH_{xx}-H_x^2}{H^2+H_x^2},
 \qquad
-\omega_\lambda=rac{H_xH_{xx}-HH_{xxx}}{H^2+H_x^2}.
+\omega_\lambda=\frac{H_xH_{xx}-HH_{xxx}}{H^2+H_x^2}.
 \]
 
 Thus the recurring logarithmic curvature and derivative Wronskian are the two

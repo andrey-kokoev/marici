@@ -32,7 +32,7 @@ The joint generic cover has deck group
 G_{\rm deck}\cong(\mathbb Z_2)^6.
 \]
 
-The occurrence generator (\sigma\) acts in two free three-cycles:
+The occurrence generator \(\sigma\) acts in two free three-cycles:
 
 \[
 (A_0A_1A_2)(B_0B_1B_2).

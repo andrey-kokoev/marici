@@ -1,6 +1,6 @@
 # Theta Completion Replaces Factorized Augmentation by a Joint Gaussian Observation
 
-For (n=\prod_pp^{k_p}\), theta completion uses the observation
+For \(n=\prod_pp^{k_p}\), theta completion uses the observation
 
 \[
 w_x(k)=\exp\left(-\pi x e^{2\sum_pk_p\log p}\right).

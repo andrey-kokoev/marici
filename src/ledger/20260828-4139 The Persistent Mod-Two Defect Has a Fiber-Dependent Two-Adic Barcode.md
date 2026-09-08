@@ -52,7 +52,7 @@ The depth-(12) computations reach cumulative rank (2194) at both fibers.
 The exact valuation multiplicities are:
 
 [
-egin{array}{c|rrrrrrrrrrrr}
+\begin{array}{c|rrrrrrrrrrrr}
 v&0&1&2&3&4&5&6&7&8&9&10&11\
 hline
 (5,7,11)&2135&45&10&2&0&0&0&2&0&0&0&0\

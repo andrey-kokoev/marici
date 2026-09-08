@@ -1,6 +1,6 @@
 # The Local Valuation Complex Has One Augmentation Boundary
 
-For the valuation shift (S_pe_k=e_{k+1}\), the discrete differential
+For the valuation shift \(S_pe_k=e_{k+1}\), the discrete differential
 
 \[
 \Delta_p=I-S_p

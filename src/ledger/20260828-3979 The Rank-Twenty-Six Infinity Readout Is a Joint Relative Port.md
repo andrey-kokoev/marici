@@ -18,7 +18,7 @@ b=s^{-1},qquad a=t s^{-1},qquad w=W s^{-2},
 ]
 write the five marked denominator factors as
 [
-q_r=s^{-1}igl(l_r(t)+s c_rigr).
+q_r=s^{-1}\bigl(l_r(t)+s c_r\bigr).
 ]
 
 Their product is
@@ -33,7 +33,7 @@ overline K=F+s^2G+O(s^4).
 
 For a numerator of total degree (5+n), the logarithmic finite-part coefficient is derived from
 [
-[s^n]rac{1}{D(s)sqrt{F+s^2G}},
+[s^n]\frac{1}{D(s)sqrt{F+s^2G}},
 qquad n=0,1,2.
 ]
 
@@ -78,7 +78,7 @@ the physical quotient has dimension twenty-six.
 The number of nonzero raw endpoint coefficients by numerator degree is
 
 [
-egin{array}{c|ccc}
+\begin{array}{c|ccc}
 &5&6&7\
 hline
 t=0&2&3&4\

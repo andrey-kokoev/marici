@@ -1,7 +1,7 @@
 # Integrality Makes the Rank-One Theta Log Coordinate Faithful
 
 Scope correction: Entry 3963 shows that the full Gaussian trajectory remains
-jointly faithful. The continuous (Q\)-kernel is a hostile relaxation model,
+jointly faithful. The continuous \(Q\)-kernel is a hostile relaxation model,
 not an established explanation of Riemann zeros.
 
 Theta observation depends on prime valuations through the single coordinate

@@ -41,7 +41,7 @@ Fourth, symmetry-character ports form an independent observability axis. For a
 reachable locus (L), a family of ports (pi_chi) is complete exactly when
 
 [
-Lcapigcap_chikerpi_chi=0.
+Lcap\bigcap_chikerpi_chi=0.
 ]
 
 Strominger's electric port separates the magnetic kernel under the proved
