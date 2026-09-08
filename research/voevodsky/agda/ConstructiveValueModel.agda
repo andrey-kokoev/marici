@@ -18,6 +18,9 @@ open import DyadicallyBoundedCauchyShift public
 open import CauchyCompletionMultiplication public
 open import CauchyCompletionMultiplicativeLaws public
 open import CauchyCompletionCommRing public
+open import CompletionExponentialMultiplicationLaw public
+  using (completionExponentialMultiplication)
+open import CompletionExponentialNaturalMultiples public
 
 -- Checked rational exponential/cosine values and their zero identities.
 open import RationalSineTaylorApproximants public

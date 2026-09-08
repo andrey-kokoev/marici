@@ -1,0 +1,71 @@
+{-# OPTIONS --safe --cubical --guardedness #-}
+module DGPyramidArchitecture where
+
+-- Aggregate closure check for the bounded interface and its controls.
+open import DGPyramidBoundary public
+open import DGPyramidFiller public
+open import DGPyramidNegativeControls public
+open import DGPyramidAdapter public
+open import DGPyramidQSupport public
+open import DGPyramidCarrierEndpoint public
+open import DGPyramidMarkedNormalQ public
+open import DGPyramidSupportEquivalence public
+open import DGPyramidQFillingAttachment public
+open import DGPyramidEndpointNormalCube public
+open import DGPyramidReesResonance public
+open import DGPyramidDihedralAttachment public
+open import DGPyramidDerivedHom public
+open import DGPyramidNonflatBaseChange public
+open import CartierSupportedHomCone public
+open import UpperShriekAdjunction public
+open import IteratedRegularImmersionPurity public
+open import TensorHomCurrying public
+open import SupportTriangleDualReversal public
+open import KFlatBaseChange public
+open import FirstNormalSymbol public
+open import StrictTwoTermSummand public
+open import DGPyramidPurityDualTransgression public
+open import DGPyramidPhysicalReesGysin public
+open import DGPyramidSupportedReesResidue public
+open import DGPyramidOrbitSupportedQ public
+open import DGPyramidBetaZeroExcessEndpoint public
+open import DGPyramidCommonSpatialGate public
+open import DGPyramidCubicalSupportedDualKernel public
+open import SupportedCohomologicalCorrespondence public
+open import DGPyramidRegulatorVertexDecomposition public
+open import DGPyramidBetaEndpointQTransgression public
+open import DGPyramidOrbitSupportAssembly public
+open import DGPyramidUnionRecollement public
+open import FunctorialLocalCohomology public
+open import DGPyramidFramedDeformations public
+open import DGPyramidNativeKernelRealization public
+open import DGPyramidOccurrenceDescent public
+open import DGPyramidTCellPyramid public
+open import DGPyramidTStemSideProduct public
+open import DGPyramidTCellLongStarComparison public
+open import DGPyramidMixedEdgeCostalk public
+open import DGPyramidShortFaceSpatialCap public
+open import DGPyramidNativeSpatialThreeExtension public
+open import DGPyramidEndpointTransformationSupport public
+open import DGPyramidCompletedNormalDual public
+open import DGPyramidMarkedGalleryToricDescent public
+open import DGPyramidConductorFormalTower public
+open import DGPyramidStructuralPrediction public
+open import DGPyramidEnhancedPhysicalCollar public
+open import DGPyramidNormalizationDualityDilation public
+open import DGPyramidAllDegreeEndpointTangential public
+open import DGPyramidSupportedTraceDuality public
+open import DGPyramidConductorChannels public
+open import DGPyramidJointConductorCone public
+open import DGPyramidNativeConductorAttachment public
+open import DGPyramidReverseEndpointGysin public
+open import DGPyramidIntrinsicConductorResolution public
+open import DGPyramidFirstConductorCoherent public
+open import DGPyramidConductorSymbolLifting public
+open import DGPyramidPartialMariciAdapter public
+open import DGPyramidMixedVarianceMate public
+open import DGPyramidFixture public
+
+-- No physical packet is imported here. In particular, the newly available
+-- endpoint-derived relative comparison is only a partial future adapter input:
+-- its own certificate explicitly leaves the physical Q/support roof open.
