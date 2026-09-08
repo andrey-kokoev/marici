@@ -81,6 +81,7 @@ Thus
 \quad\text{in}\quad
 \mathcal R_{\rm late}/\langle f\rangle
 }
+\]
 
 for every admitted local finite counterterm.
 

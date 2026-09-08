@@ -77,7 +77,7 @@ w=pW.
 Because (Omega_{111}) has Rees order (-1), its normalized form is
 
 \[
-p\Omega_{111}ig|_{p=0}
+p\Omega_{111}\big|_{p=0}
 =
 \frac{dA\wedge dB}
 {(B-1)(A+(s-1)/2)W}.

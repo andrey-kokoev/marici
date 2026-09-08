@@ -23,7 +23,7 @@ Restoring the frozen factor (a^4) and dividing by the declared minus normal
 (c) gives
 
 [
-a^4rac{g}{c}
+a^4\frac{g}{c}
 =
 a^7(2-c).
 ]
@@ -31,7 +31,7 @@ a^7(2-c).
 Therefore the minus conormal residue is
 
 [
-oxed{
+\boxed{
 operatorname{Res}_{c=0}(a^4g)=2a^7.
 }
 ]
@@ -55,8 +55,8 @@ Using Entry 460's source-derived boundary assignment,
 [
 B(I,J)=
 left(
-leftlfloorrac I2ightfloor,
-leftlfloorrac I2ightfloor+J
+leftlfloor\frac I2ightfloor,
+leftlfloor\frac I2ightfloor+J
 ight),
 ]
 
@@ -95,7 +95,7 @@ D_b:(6,0)longrightarrow(7,0)
 is a unit map, and
 
 [
-oxed{
+\boxed{
 2a^7
 in
 operatorname{im}D_b.

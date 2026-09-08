@@ -71,7 +71,7 @@ u_{m master})=(10,66).
 
 Therefore
 [
-oxed{
+\boxed{
 	ext{the unsaturated rank-ten master-image presentation is not flat across
 either projective axis.}
 }

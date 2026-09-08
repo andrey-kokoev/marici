@@ -48,7 +48,7 @@ d^3(lambdaell)=lambda^3d^3ell.
 Changing variables (ell=lambdaell') therefore gives
 
 [
-oxed{
+\boxed{
 Pi(lambda t,lambdaho)
 =
 lambda^{-7}Pi(t,ho).
@@ -58,7 +58,7 @@ lambda^{-7}Pi(t,ho).
 Equivalently,
 
 [
-oxed{
+\boxed{
 (tpartial_t+hopartial_ho+7)Pi=0
 }
 ]
@@ -66,7 +66,7 @@ Equivalently,
 and
 
 [
-oxed{
+\boxed{
 Pi(t,ho)=ho^{-7}Pi(t/ho,1).
 }
 ]

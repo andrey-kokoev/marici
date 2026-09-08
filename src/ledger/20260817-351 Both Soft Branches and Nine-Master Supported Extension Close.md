@@ -55,9 +55,9 @@ v_{m alg}/X_1^2
 and exchanges (e_8,e_9). In the involuted adapted basis the residue matrix is identical, up to the source orientation sign. Consequently,
 
 [
-oxed{
+\boxed{
 operatorname{PP}_{X_1=0}
-igl(R_{E_T}^{m ext}igr)=0.
+\bigl(R_{E_T}^{m ext}\bigr)=0.
 }
 ]
 
@@ -84,7 +84,7 @@ These rank-one poles remain internal to the corresponding algebraic rank-two cha
 Therefore the full nine-master kernel-to-elliptic supported principal rank is
 
 [
-oxed{0}.
+\boxed{0}.
 ]
 
 ## Replication
@@ -102,7 +102,7 @@ using disjoint deterministic streams.
 ## Narrow result
 
 [
-oxed{
+\boxed{
 	ext{On }E_T=0,	ext{ no algebraic-to-elliptic logarithmic extension is supported on }X_1X_2=0
 }
 ]

@@ -51,6 +51,7 @@ zero-bearing types assemble as
 \boxed{
 2\mathbb Q[C_5],
 }
+\]
 
 with character
 
@@ -58,6 +59,7 @@ with character
 \boxed{
 (10,0,0,0,0).
 }
+\]
 
 Among the twenty active-soft endpoint occurrences, exactly ten carry one
 physical numerator-zero ray and ten carry none.

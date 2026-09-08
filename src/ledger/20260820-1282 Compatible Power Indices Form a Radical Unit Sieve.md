@@ -32,7 +32,7 @@ Compatibility is therefore periodic modulo (R_q). Its residue classes are
 the unit group ((\mathbf Z/R_q\mathbf Z)^\times), and compatibility is
 closed under multiplication, coherently with (P_mP_n=P_{mn}).
 
-Each complete period contains (arphi(R_q)) survivors, giving density
+Each complete period contains (\varphi(R_q)) survivors, giving density
 
 \[
 \frac{\varphi(R_q)}{R_q}

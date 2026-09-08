@@ -30,7 +30,7 @@ themselves with their integration orientation transported by the change of
 variables. Hence
 
 [
-oxed{Pi(t,-ho)=Pi(t,ho).}
+\boxed{Pi(t,-ho)=Pi(t,ho).}
 ]
 
 No permutation of occurrence labels is used.
@@ -52,7 +52,7 @@ Let (z=t/ho). Momentum reversal then implies
 and therefore
 
 [
-oxed{phi(-z)=-phi(z).}
+\boxed{phi(-z)=-phi(z).}
 ]
 
 The one-variable physical period is odd.
@@ -60,12 +60,12 @@ The one-variable physical period is odd.
 When an asymptotic expansion at infinity exists, it has the form
 
 [
-oxed{
+\boxed{
 phi(z)
 =
 z^{-7}
 left(
-c_0+rac{c_1}{z^2}+rac{c_2}{z^4}+cdots
+c_0+\frac{c_1}{z^2}+\frac{c_2}{z^4}+cdots
 ight).
 }
 ]

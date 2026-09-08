@@ -88,7 +88,7 @@ must not be identified.
 ## Next falsifier
 
 Determine whether successive covariance-rank drops are governed uniformly by
-the complete flag of null directions. Formulate the rank-(r\) local normal
+the complete flag of null directions. Formulate the rank-\(r\) local normal
 model and test whether each new finite Schur correction is exactly one
 quadratic Rees ratio per newly vanishing eigen-direction. A failure would be
 the first indication that covariance coefficients require structure beyond

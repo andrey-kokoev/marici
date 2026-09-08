@@ -97,6 +97,7 @@ Therefore
 \boxed{
 \operatorname{ord}_s B_{\rm rel}=0,
 }
+\]
 
 not (-1), in every tested transverse branch.  No exceptional logarithmic
 residue occupies Entry 1767's relative-sign slot.

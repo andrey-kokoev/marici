@@ -13,7 +13,7 @@ where both site-soft normals vanish simultaneously.
 The hard-to-vary claim is:
 
 [
-oxed{
+\boxed{
 	ext{the double-soft corner produces a new mixed class, torsion prime, or
 support generator not obtained from the two soft axes and occurrence
 identifications.}
@@ -27,7 +27,7 @@ Retain the source occurrence matrices
 [
 Phi_{m exc}
 =
-egin{pmatrix}
+\begin{pmatrix}
 1&-1&1&-1\
 1&1&-1&-1\
 1&-1&-1&1
@@ -36,14 +36,14 @@ end{pmatrix},
 
 [
 J=
-egin{pmatrix}
+\begin{pmatrix}
 2&0&1\
 0&2&1\
 0&0&1
 end{pmatrix},
 qquad
 K=
-egin{pmatrix}
+\begin{pmatrix}
 0&0&1&-1\
 0&1&0&-1\
 1&-1&-1&1
@@ -83,7 +83,7 @@ R=mathbb Z[x,y],
 exact multiplication gives
 
 [
-oxed{
+\boxed{
 D(x,y)Phi_{m exc}
 =
 (D(x,y)J)K.
@@ -107,7 +107,7 @@ operatorname{diag}(2y,2x,1).
 After permutation, the exact presentation is
 
 [
-oxed{operatorname{diag}(1,2x,2y).}
+\boxed{operatorname{diag}(1,2x,2y).}
 ]
 
 ## Why there is no ordinary Smith form
@@ -117,7 +117,7 @@ The ring (mathbb Z[x,y]) is not a principal ideal domain, and the second determi
 The correct Fitting ideals are
 
 [
-oxed{
+\boxed{
 I_1=(1),
 qquad
 I_2=(2x,2y),
@@ -147,7 +147,7 @@ operatorname{rank}_{(0,1)}=1.
 There is no additional primitive direction in grade ((1,1)). Hence
 
 [
-oxed{
+\boxed{
 1+1+1=3,
 }
 ]
@@ -168,7 +168,7 @@ The tested claim is falsified.
 Thus
 
 [
-oxed{
+\boxed{
 	ext{double-soft physical comparison}
 =
 	ext{one central grade}

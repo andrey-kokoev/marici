@@ -64,7 +64,7 @@ Every one of the 32 coefficients is nonzero, and every monomial of (C_S)
 has exactly the same total degree:
 
 [
-oxed{
+\boxed{
 deg_{t,u,ho} C_S=16-|S|.
 }
 ]
@@ -72,7 +72,7 @@ deg_{t,u,ho} C_S=16-|S|.
 The degree table is therefore
 
 [
-egin{array}{c|c|c}
+\begin{array}{c|c|c}
 |S|&#	ext{ characters}&deg C_S\
 hline
 0&1&16\
@@ -92,7 +92,7 @@ degree audit and Entry 1286's parity/filtration audit.
 The physical (ho=1) filtration is the specialization of the bigrading
 
 [
-oxed{
+\boxed{
 deg(C_S)+|S|=16.
 }
 ]

@@ -15,21 +15,21 @@ to transport three finite conductor--energy centers away from the first tested
 point. That coordinate map is false. In the (x=1) marked chart the
 source-defined map is
 [
-oxed{
-u=rac{E}{x}=rac1r,
+\boxed{
+u=\frac{E}{x}=\frac1r,
 qquad
-v=rac{ell_3}{x}=rac{2r+2s-1}{r}.
+v=\frac{ell_3}{x}=\frac{2r+2s-1}{r}.
 }
 ]
 The identity (v=s^{-1}) happens to hold at
-((r,s)=(1,rac12)), so Entry 382 remains valid. The other three center
+((r,s)=(1,\frac12)), so Entry 382 remains valid. The other three center
 computations and the corresponding table in Entry 383 are retracted.
 
 ## Corrected centers
 
 The four finite centers are
 [
-(1,2),quad(2,4),quadleft(rac23,0ight),quad(-1,0)
+(1,2),quad(2,4),quadleft(\frac23,0ight),quad(-1,0)
 ]
 in ((u,v)). The same frozen weight
 [
@@ -41,10 +41,10 @@ field, frame, sampling bounds, and rational reconstruction.
 
 | source center | corrected ((u,v)) | raw minima | weighted minima | bad masks | nonzero coordinates |
 |---|---:|---:|---:|---:|---:|
-| ((1,rac12)) | ((1,2)) | ((-2,-1)) | ((-1,0)) | ((120,120)) | 54 |
-| ((rac12,1)) | ((2,4)) | ((-2,-1)) | ((-1,0)) | ((120,120)) | 54 |
-| ((rac32,-1)) | ((rac23,0)) | ((-1,0)) | ((-1,0)) | ((0,0)) | 28 |
-| ((-1,rac32)) | ((-1,0)) | ((-1,0)) | ((-1,0)) | ((0,0)) | 28 |
+| ((1,\frac12)) | ((1,2)) | ((-2,-1)) | ((-1,0)) | ((120,120)) | 54 |
+| ((\frac12,1)) | ((2,4)) | ((-2,-1)) | ((-1,0)) | ((120,120)) | 54 |
+| ((\frac32,-1)) | ((\frac23,0)) | ((-1,0)) | ((-1,0)) | ((0,0)) | 28 |
+| ((-1,\frac32)) | ((-1,0)) | ((-1,0)) | ((-1,0)) | ((0,0)) | 28 |
 
 Thus the transported one-step weight still suffices for logarithmic
 valuations at every corrected center.
@@ -64,11 +64,11 @@ coefficient. The source geometry has
 [
 c=-u,
 qquad
-y=rac{u+v-2}{2},
+y=\frac{u+v-2}{2},
 ]
 hence
 [
-c+y=rac{v-u-2}{2}.
+c+y=\frac{v-u-2}{2}.
 ]
 At the center its strict transform is
 [
@@ -85,12 +85,12 @@ support, including its Cayley--Menger branch divisor, generates them.
 
 Entry 383 is superseded by
 [
-oxed{	ext{the single marked weight }w_{111}=1	ext{ is logarithmic at all
+\boxed{	ext{the single marked weight }w_{111}=1	ext{ is logarithmic at all
 four corrected finite tangencies.}}
 ]
 However,
 [
-oxed{	ext{the second center also requires the already existing
+\boxed{	ext{the second center also requires the already existing
 Cayley--Menger direction }c+y=0.}
 ]
 There is no unknown residual support factor and no new carrier datum.

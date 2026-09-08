@@ -30,6 +30,7 @@ substitution of (z^k) defines a matrix (T). Direct evaluation gives
 \boxed{
 H_Z=T^TM_{XY}T.
 }
+\]
 
 Therefore the complete joint positive functional descends by positive
 congruence exactly as in the independent case.
@@ -54,7 +55,7 @@ All three have identical marginal moments at every order. Yet
 \end{cases}
 \]
 
-For nonzero (alpha,eta), these values differ. Marginal Hankel matrices
+For nonzero (alpha,\beta), these values differ. Marginal Hankel matrices
 therefore cannot reconstruct the merged state.
 
 The exact checker verifies 36 correlated positive cases through degree four,
@@ -67,6 +68,7 @@ the marginal moments through order eight.
 \boxed{
 \text{correlated Cut positivity requires the joint moment matrix and then descends by congruence.}
 }
+\]
 
 The missing information in a marginal treatment is exactly the labelled mixed
 moment/cumulant sector identified in Entry 1677. This remains coefficient data

@@ -24,15 +24,15 @@ is primitive and has kernel (mathbf Zlangle d,cangle).
 
 Contraction by (delta) gives a degree-lowering integral map
 [
-iota_delta:Lambda^ulletmathbf Zlangle a,b,cangle
+iota_delta:Lambda^\bulletmathbf Zlangle a,b,cangle
  longrightarrow
-Lambda^{ullet-1}mathbf Zlangle d,cangle.
+Lambda^{\bullet-1}mathbf Zlangle d,cangle.
 ]
 In the ordered bases ((a,b,c)), ((awedge b,awedge c,bwedge c)),
 and (awedge bwedge c), its nonzero matrices are
 [
 [-1  1  0],qquad
-egin{bmatrix}-1&0&0\0&-1&1end{bmatrix},qquad
+\begin{bmatrix}-1&0&0\0&-1&1end{bmatrix},qquad
 [-1].
 ]
 Their ranks are (1,2,1), and their Smith factors are respectively

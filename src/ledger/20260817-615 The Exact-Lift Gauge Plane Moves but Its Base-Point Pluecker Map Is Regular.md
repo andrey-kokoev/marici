@@ -39,7 +39,7 @@ t=31,ldots,55.
 At both representatives, for every tested row, chart, axis, direction, and
 normal sample, the projected gauge module has
 [
-oxed{operatorname{rank}G=2}.
+\boxed{operatorname{rank}G=2}.
 ]
 Its stable RREF pivot mask is
 [
@@ -47,7 +47,7 @@ Its stable RREF pivot mask is
 ]
 so the pivot columns are (3,4), and
 [
-oxed{p_{34}=1}
+\boxed{p_{34}=1}
 ]
 throughout the tested locus.
 
@@ -70,14 +70,14 @@ Across both base points, both point-blowup charts, five exceptional
 directions, both derivative axes, and rows (0,1,2,8), every normalized minor
 has nonnegative ordinary normal valuation. The rowwise minima are
 [
-oxed{(0,0,0,0)}
+\boxed{(0,0,0,0)}
 ]
 at each representative, and every Pluecker pole mask is zero.
 
 Thus the Grassmannian map moves but extends regularly through every tested
 base-point direction:
 [
-oxed{G_X	ext{ is nonconstant, rank-stable, and Pluecker-regular at the
+\boxed{G_X	ext{ is nonconstant, rank-stable, and Pluecker-regular at the
 tested elliptic base points}.}
 ]
 

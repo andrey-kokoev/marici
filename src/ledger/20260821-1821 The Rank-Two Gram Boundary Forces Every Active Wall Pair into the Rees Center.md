@@ -53,6 +53,7 @@ Consequently their span has rank one, and for every active pair
 \boxed{
 \det L_{A,B}=0.
 }
+\]
 
 At the two-wall intersection itself,
 

@@ -33,6 +33,7 @@ gradient-dependence condition. Therefore
 \boxed{
 \text{physical }d^3\ell\text{ survivors}=0
 }
+\]
 
 within this complete tested pair family.
 

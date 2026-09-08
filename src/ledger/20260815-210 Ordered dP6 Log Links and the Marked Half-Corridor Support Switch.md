@@ -38,9 +38,9 @@ source columns and (48) legal target edge-state terms. For every term the
 differential has the entry-143 signs
 
 [
-arnothing,qquad
-{a}mapsto-arnothing,qquad
-{b}mapsto-arnothing,qquad
+\varnothing,qquad
+{a}mapsto-\varnothing,qquad
+{b}mapsto-\varnothing,qquad
 {a,b}mapsto-{b}+{a},
 ]
 
@@ -74,7 +74,7 @@ the line-valued transformation
 
 [
 operatorname{or}_{log}otimes
-I_{14}^{ee}otimes I_{03}^{ee}otimes
+I_{14}^{\vee}otimes I_{03}^{\vee}otimes
 K_{m Tor/Cech}
 longrightarrow
 E_{143}|_{q_{25}^{+}}

@@ -41,6 +41,7 @@ Neither supplies stochastic covariance data to the total-energy family.
 \boxed{
 \text{the mixed energy--covariance normal comparison is currently untyped.}
 }
+\]
 
 It is therefore unauthorized to assert either
 

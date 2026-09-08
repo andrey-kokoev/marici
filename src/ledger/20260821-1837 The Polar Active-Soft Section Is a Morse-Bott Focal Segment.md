@@ -28,7 +28,7 @@ Let \(s\in(0,R)\) be distance along a focal segment of length \(R\), and let
 \[
 |\ell-C_e|+|\ell-C_b|
 =
-R+rac{R}{2s(R-s)}|\rho|^2+O(|\rho|^4).
+R+\frac{R}{2s(R-s)}|\rho|^2+O(|\rho|^4).
 \]
 
 Thus the owner wall has local form

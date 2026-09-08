@@ -18,8 +18,8 @@ No new carrier cell, fitted support summand, or post hoc splitting is allowed.
 
 On the (X_1=1) patch use
 [
-E_T=u,qquad X_2=rac{u+v}{2}-1,qquad
-X_3=rac{u-v}{2}.
+E_T=u,qquad X_2=\frac{u+v}{2}-1,qquad
+X_3=\frac{u-v}{2}.
 ]
 The comparison product includes the existing site-energy and signed-energy
 walls, (A), (B), and the two Cayley--Menger discriminants
@@ -41,7 +41,7 @@ samples.
 
 The maximum reconstructed denominator degree is
 [
-oxed{0}.
+\boxed{0}.
 ]
 Thus no generic rational denominator, known or residual, appears in this
 census. The moving Grassmannian map is polynomial on every tested slice away
@@ -69,11 +69,11 @@ The remaining eight points are
 ]
 They lie on the single patch conic
 [
-oxed{v=2u^2-u+2}.
+\boxed{v=2u^2-u+2}.
 ]
 Using the frozen coordinate map, this homogenizes to
 [
-oxed{X_1X_2-E_T^2=0}.
+\boxed{X_1X_2-E_T^2=0}.
 ]
 
 At generic points the projected gauge rank and pivot mask are
@@ -83,7 +83,7 @@ At generic points the projected gauge rank and pivot mask are
 At two conic points independently tested with exact-form degrees (8,10,12),
 they remain
 [
-oxed{(3,280)}.
+\boxed{(3,280)}.
 ]
 The defect therefore survives enlargement of the exact-form ansatz and is not
 the degree-eight truncation artifact tested here.
@@ -111,7 +111,7 @@ is falsified in the tested presentation.
 
 The narrower surviving statement is
 [
-oxed{	ext{the frozen exact-lift module carries an additional relative
+\boxed{	ext{the frozen exact-lift module carries an additional relative
 coefficient Fitting conic }X_1X_2-E_T^2=0.}
 ]
 

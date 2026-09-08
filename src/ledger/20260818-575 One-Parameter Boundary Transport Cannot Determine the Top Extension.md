@@ -57,8 +57,8 @@ represents the extension in that splitting.  Flatness requires
 d\beta+A_{20}\wedge\beta+\beta\wedge\alpha=0.
 \]
 
-Changing the splitting changes (eta) by the corresponding covariant
-exact term.  Hence neither (eta) nor its individual matrix entries are
+Changing the splitting changes (\beta) by the corresponding covariant
+exact term.  Hence neither (\beta) nor its individual matrix entries are
 canonical before the filtration maps and gauge quotient are fixed.
 
 ## One-parameter no-go

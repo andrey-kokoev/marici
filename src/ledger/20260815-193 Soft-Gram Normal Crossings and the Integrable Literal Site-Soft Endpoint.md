@@ -22,7 +22,7 @@ summand, or carrier cell.
 The hard-to-vary claim was
 
 [
-oxed{
+\boxed{
 	ext{An intersection of fixed-base Gram components can create a new
 non-product physical vanishing cycle away from pre-existing soft support.}
 }
@@ -84,7 +84,7 @@ Thus every pair of distinct physical Heron components forces one soft
 resultant:
 
 [
-oxed{
+\boxed{
 f_i=f_j=0, i
 e j
 quadLongrightarrowquad
@@ -104,7 +104,7 @@ The coefficient matrix of (f_1,f_2,f_3) has exact determinant
 
 [
 det
-egin{pmatrix}
+\begin{pmatrix}
 1&-1&-1\
 1&-1& 1\
 1& 1&-1
@@ -138,7 +138,7 @@ orientation Kummer characters. On the resolved cover there is no new
 Picard--Lefschetz transvection. In particular,
 
 [
-oxed{
+\boxed{
 T_u=1,
 qquad
 N=0
@@ -163,9 +163,9 @@ For the literal six-term source, a term supplies at most one simple
 (q_{g_i})-pole at this endpoint. In three spatial dimensions,
 
 [
-rac{d^3ell}{q_{g_i}}
+\frac{d^3ell}{q_{g_i}}
 sim
-rac{ho^2,dho,dOmega}{ho}
+\frac{ho^2,dho,dOmega}{ho}
 =
 ho,dho,dOmega.
 ]
@@ -173,7 +173,7 @@ sim
 The exact radial exponent is therefore
 
 [
-oxed{+1}.
+\boxed{+1}.
 ]
 
 It is integrable and is not the logarithmic exponent (-1). Hence the
@@ -205,7 +205,7 @@ For the overlap strata proved here:
 Thus
 
 [
-oxed{
+\boxed{
 	ext{physical multi-Gram overlap}
 =
 	ext{soft support}

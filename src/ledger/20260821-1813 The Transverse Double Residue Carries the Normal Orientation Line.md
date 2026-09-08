@@ -41,6 +41,7 @@ The rational quadratic quotient is tensored with the normal orientation line
 \boxed{
 \det N^*_{A,B}.
 }
+\]
 
 Under the wall-exchange group \(S_2\), this line carries the sign character.
 This must be distinguished from the scalar source denominator product

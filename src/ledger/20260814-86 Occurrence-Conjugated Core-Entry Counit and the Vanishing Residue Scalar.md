@@ -15,7 +15,7 @@ normal Pochhammer factor.  Its apparent underdetermination arose only after quot
 sink marks to one unmarked center-to-channel edge.
 
 For one explicit edge the counit has two terms and primitive-dual period (2).  The two center
-entries on either polarity sheet sum to (4g_4oxtimes g_4).  The plus and minus sums are
+entries on either polarity sheet sum to (4g_4\boxtimes g_4).  The plus and minus sums are
 identical, so the six-point polarity-difference residue scalar is
 
 \[

@@ -57,7 +57,7 @@ filler columns can be shifted independently by that sphere, so the complete
 homogeneous solution module is
 
 [
-operatorname{Hom}igl(C_2^{mathrm{exp}},ker d_2^{K6}igr)
+operatorname{Hom}\bigl(C_2^{mathrm{exp}},ker d_2^{K6}\bigr)
 cong mathbf Z^8.
 ]
 

@@ -59,7 +59,7 @@ manufacture a missing target support grade.
 
 Hence a correspondence
 [
-Gamma_{ij}^{!,log}longrightarrow C_ullet(q_k)subset F_B/F_V
+Gamma_{ij}^{!,log}longrightarrow C_\bullet(q_k)subset F_B/F_V
 ]
 cannot exist as a support-preserving morphism in the current literal
 entry143 category for any of the three pairwise long-road intersections

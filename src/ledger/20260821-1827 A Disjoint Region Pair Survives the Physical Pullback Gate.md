@@ -61,8 +61,8 @@ so the positive multiplier ratio is exactly one.  The wall equations set
 
 \[
 t
-=-rac{y_2+y_4}{3}
-=-rac{y_1+y_3}{3}<0,
+=-\frac{y_2+y_4}{3}
+=-\frac{y_1+y_3}{3}<0,
 \]
 
 with all internal distances positive.

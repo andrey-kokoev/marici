@@ -69,6 +69,7 @@ before admission and replaced by the exact Gram certificate.
 \boxed{
 \text{cardinality-weighted independent Cut merge preserves every finite Hankel cone.}
 }
+\]
 
 Combined with Entry 1678, the global positive object is a compatible inverse
 system of finite cones, and Cut merge acts grade by grade by positive

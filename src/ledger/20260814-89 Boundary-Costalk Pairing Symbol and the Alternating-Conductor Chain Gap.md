@@ -319,7 +319,7 @@ closed.  On the same six source generators:
 Both witnesses have the same modules and associated symbol.  Thus coefficient
 closure cannot decide the chain-map identity without the actual scalar
 kinetic/BRST differential and its map.  The first unsupported datum is exactly
-(oldsymbol\sigma_{\rm alt}), not another normal-line sign.
+(\boldsymbol\sigma_{\rm alt}), not another normal-line sign.
 
 ## Boundary costalk is not the full half-object
 
@@ -405,7 +405,7 @@ Promote:
 
 Retain as the immediate frontier:
 
-> Construct (oldsymbol\sigma_{\rm alt}) with the actual scalar kinetic/BRST
+> Construct (\boldsymbol\sigma_{\rm alt}) with the actual scalar kinetic/BRST
 > and endpoint Cousin differentials.  Use it to define the three circuit PC
 > generators and their relation generator.  Only then test the full pairing;
 > separately, type the (H_6^{\rm mark})/contact-kernel value or prove the

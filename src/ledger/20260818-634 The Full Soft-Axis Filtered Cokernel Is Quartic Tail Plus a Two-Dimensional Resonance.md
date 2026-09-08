@@ -64,7 +64,7 @@ For every tested cutoff
 ]
 the image has constant codimension two inside the truncated ideal:
 [
-oxed{
+\boxed{
 dimoperatorname{im}d_{m ex,le D}
 =
 dim(a^4)_{le D}-2.
@@ -73,11 +73,11 @@ dim(a^4)_{le D}-2.
 
 Since
 [
-dimigl(mathbf F[a,b]/(a^4)igr)_{le D}=4D-2,
+dim\bigl(mathbf F[a,b]/(a^4)\bigr)_{le D}=4D-2,
 ]
 the full filtered cokernel satisfies
 [
-oxed{
+\boxed{
 dimoperatorname{coker}d_{m ex,le D}=4D.
 }
 ]
@@ -86,7 +86,7 @@ Therefore the filtered object is not merely the quartic tail. At the tested
 Hilbert-function level it consists of
 
 [
-oxed{
+\boxed{
 	ext{infinite quartic tail}
 +
 	ext{stable two-dimensional finite resonance}.

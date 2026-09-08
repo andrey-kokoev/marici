@@ -15,11 +15,9 @@ Use one observed binary occurrence, one internal occurrence initialized in (|0\r
 Therefore
 
 \[
-\boxed{
-\operatorname{Tr}_E\!left[U^2(\rho\otimes|0\rangle\langle0|)U^{\dagger2}\right]
+\operatorname{Tr}_E\!\left[U^2(\rho\otimes|0\rangle\langle0|)U^{\dagger2}\right]
 \ne
 \Phi_U\!\left(\Phi_U(\rho)\right).
-}
 \]
 
 The checker finds two differing off-diagonal matrix entries: identity on the retained global route versus zero on the stepwise-pushforward route.

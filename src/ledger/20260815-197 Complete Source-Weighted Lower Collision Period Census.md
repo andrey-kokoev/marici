@@ -26,7 +26,7 @@ changed.
 The hard-to-vary claim was
 
 [
-oxed{
+\boxed{
 	ext{No finite lower-sector discriminant component is silently removed by
 the literal six-term source weight before physical PL projection.}
 }
@@ -61,11 +61,11 @@ the frozen source is
 [
 Omega_{m src}
 =
-rac{abc}{E L_1L_2L_3}
+\frac{abc}{E L_1L_2L_3}
 left[
-rac1{G_{12}L_{23}}+rac1{G_{12}L_{31}}
-+rac1{G_{23}L_{31}}+rac1{G_{23}L_{12}}
-+rac1{G_{31}L_{12}}+rac1{G_{31}L_{23}}
+\frac1{G_{12}L_{23}}+\frac1{G_{12}L_{31}}
++\frac1{G_{23}L_{31}}+\frac1{G_{23}L_{12}}
++\frac1{G_{31}L_{12}}+\frac1{G_{31}L_{23}}
 ight].
 ]
 
@@ -92,17 +92,17 @@ K_{ij}(u)=A_{ij}u^2+B_{ij}u+C_{ij},
 with double root
 
 [
-u_*=-rac{B_{ij}}{2A_{ij}}.
+u_*=-\frac{B_{ij}}{2A_{ij}}.
 ]
 
 The local period at exponent (chi=-1/2) is therefore
 
 [
-oxed{
+\boxed{
 Pi_{ij,f}
 =
 C_delta
-rac{R_{ij}(u_*)}{sqrt{A_{ij}}}
+\frac{R_{ij}(u_*)}{sqrt{A_{ij}}}
 }
 ]
 
@@ -137,7 +137,7 @@ pair/component occurrences, the verifier records:
 The result is
 
 [
-oxed{
+\boxed{
 50 	ext{finite nonzero local periods},
 qquad
 0 	ext{source-weight zeros},
@@ -170,7 +170,7 @@ The result concerns the analytically continued coefficient-side vanishing
 period. It does not alter entry 188's physical-chain result:
 
 [
-leftlangleGamma_{m BD},delta^eeightangle=0
+leftlangleGamma_{m BD},delta^\veeightangle=0
 ]
 
 for every marked collision. Consequently
@@ -178,7 +178,7 @@ for every marked collision. Consequently
 [
 operatorname{Var}_{f}(Gamma_{m BD})
 =
-leftlangleGamma_{m BD},delta^eeightangledelta
+leftlangleGamma_{m BD},delta^\veeightangledelta
 =
 0
 ]
@@ -188,7 +188,7 @@ for all 150 occurrences despite their nonzero local periods.
 Thus the separation is now exhaustive:
 
 [
-oxed{
+\boxed{
 	ext{nonzero local coefficient period}
 ;
 otRightarrow;
@@ -227,8 +227,8 @@ The complete finite-collision result is:
 The narrow surviving theorem is therefore
 
 [
-oxed{
-egin{gathered}
+\boxed{
+\begin{gathered}
 	ext{every generic finite lower collision carries a nonzero literal-source
 local period,}\
 	ext{every such period has zero Bunch--Davies PL intersection,}\

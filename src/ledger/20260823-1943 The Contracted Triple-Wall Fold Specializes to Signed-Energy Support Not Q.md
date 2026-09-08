@@ -69,7 +69,7 @@ Exact Symbolica reduction gives
 \[
 \boxed{
 \Delta_{\rm sing}^{\rm hom}
-=-rac1{16}
+=-\frac1{16}
 (X+Y-Z)^2(X-Y+Z)^2(X-Y-Z)^2.
 }
 \]
@@ -135,4 +135,3 @@ the established support calculus.  Do not continue searching for a
 - `research/benincasa/results/contracted-triangle-singleton-discriminant.json`
 - Entries 660, 1941, and 1942
 - allocator claim: `seqclaim-7b818c93dcd14357669ccb70`
-

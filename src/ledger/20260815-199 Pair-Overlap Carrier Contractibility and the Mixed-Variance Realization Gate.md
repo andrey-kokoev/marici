@@ -45,7 +45,7 @@ face corestriction.
 The exact first missing arrow is a mixed-variance realization
 [
 Gamma_{ij}^{!,log}longrightarrow
-C_ullet(q_k)subset F_B/F_V,
+C_\bullet(q_k)subset F_B/F_V,
 qquad {i,j,k}={14,03,25},
 ]
 whose two restrictions agree with the adjacent long-facet packets and whose

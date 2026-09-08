@@ -27,7 +27,7 @@ c=b+1.
 Every exact-form image is divisible by (a^4). Divide by that universal
 factor and retain the ((s_a,s_b)=(1,1)) sector. Its two exact operators are
 [
-oxed{
+\boxed{
 D_b=a(1-cpartial_c),
 qquad
 D_a=c(apartial_a-7).
@@ -65,8 +65,8 @@ constant because every divided image retains an (a) or (c) prefactor.
 
 Therefore, in characteristic zero,
 [
-oxed{
-mathbf Q[a,c]ig/
+\boxed{
+mathbf Q[a,c]\big/
 operatorname{im}(d_{m ex}/a^4)
 simeq
 mathbf Qlangle[1],[a^7c]angle.
@@ -75,7 +75,7 @@ mathbf Qlangle[1],[a^7c]angle.
 
 Restoring the universal factor gives intrinsic representatives
 [
-oxed{
+\boxed{
 [a^4],
 qquad
 [a^{11}(b+1)].
@@ -107,7 +107,7 @@ plane.
 Entry 448 proves that the soft Kodaira--Spencer class forces the meromorphic
 vertical correction
 [
-V=rac{b^2-1}{4a}.
+V=\frac{b^2-1}{4a}.
 ]
 The present theorem does not define its action on the resonance plane:
 coefficientwise application does not preserve the exact quotient without

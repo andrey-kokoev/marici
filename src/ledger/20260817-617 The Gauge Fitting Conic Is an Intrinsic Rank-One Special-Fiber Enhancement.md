@@ -26,7 +26,7 @@ At tested conic points, the same presentation gives
 ]
 Thus
 [
-oxed{Deltaoperatorname{rank}A=-1,qquad
+\boxed{Deltaoperatorname{rank}A=-1,qquad
 Deltadimker A=+1,qquad
 Deltaoperatorname{rank}G=+1.}
 ]
@@ -57,15 +57,15 @@ field.
 
 Results:
 [
-oxed{196/196}
+\boxed{196/196}
 ]
 conic fibers have full rank drop one, and
 [
-oxed{196/196}
+\boxed{196/196}
 ]
 gain exactly one projected gauge direction. All
 [
-oxed{392/392}
+\boxed{392/392}
 ]
 neighboring fibers retain the generic full rank, projected rank, and pivot
 mask. No exception occurred.
@@ -74,7 +74,7 @@ mask. No exception occurred.
 
 In the tested family,
 [
-oxed{C_{m fit}	ext{ is an intrinsic codimension-one rank-one
+\boxed{C_{m fit}	ext{ is an intrinsic codimension-one rank-one
 special-fiber enhancement of the frozen exact-lift presentation}.}
 ]
 

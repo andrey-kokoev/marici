@@ -14,7 +14,7 @@ Only the first is printed and geometrically normalized.
 The hard-to-vary claim tested here is:
 
 [
-oxed{
+\boxed{
 	ext{the source cyclic occurrence data already define a global Čech
 differential between the three rank-twelve residue sectors.}
 }
@@ -52,7 +52,7 @@ F:mathbb Z^6	omathbb Z^3,
 
 [
 F=
-egin{pmatrix}
+\begin{pmatrix}
 1&1&0&0&0&0\
 0&0&1&1&0&0\
 0&0&0&0&1&1
@@ -74,7 +74,7 @@ mathbb Z(0,0,0,0,1,-1).
 The physical all-positive source vector obeys
 
 [
-oxed{
+\boxed{
 F(1,1,1,1,1,1)=(2,2,2).
 }
 ]
@@ -123,7 +123,7 @@ It does not supply:
 Therefore the tested claim is falsified:
 
 [
-oxed{
+\boxed{
 	ext{cyclic period assembly}
 
 otRightarrow
@@ -134,7 +134,7 @@ otRightarrow
 The admissible global result is narrower:
 
 [
-oxed{
+\boxed{
 	ext{the six physical occurrences form a canonical }
 C_3	ext{-equivariant Rees direct sum with multiplicity-two forgetting}.
 }

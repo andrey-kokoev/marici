@@ -62,6 +62,7 @@ through eleven occurrences and cumulant order eight.
 \boxed{
 \text{the complete labelled joint cumulant tensor restores correlated non-Gaussian Cut descent.}
 }
+\]
 
 Partition incidence is already supplied by labelled occurrence tuples and set
 decomposition. No new carrier cell or higher associator is required. The

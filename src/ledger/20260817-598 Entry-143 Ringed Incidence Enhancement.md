@@ -11,7 +11,7 @@ Let (P=P_{K_6}^{m or}), and use the opposite Alexandrov space
 (X=P^{m op}). For (x=(S,H)), set
 
 [
-A_x=R[X]igl[u_a^{-1}:ain Ssetminus Higr].
+A_x=R[X]\bigl[u_a^{-1}:ain Ssetminus H\bigr].
 ]
 
 For every entry-143 boundary relation (xprec y), the set of inverted

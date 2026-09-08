@@ -51,7 +51,7 @@ survives in two other charts.
 Accordingly the surviving multiplicities are
 
 \[
-10\ \text{(G_{-e}) and four-site labels of multiplicity }2,
+10\,(G_{-e})\text{ and four-site labels of multiplicity }2,
 \]
 
 and

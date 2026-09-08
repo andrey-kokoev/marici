@@ -33,7 +33,7 @@ The exceptional divisor is (H=0).
 The first draft checker accidentally reused a multiplicative-specialization helper and evaluated (H=1). That affine slice was rejected before admission. The repaired checker substitutes
 
 [
-oxed{H=0}
+\boxed{H=0}
 ]
 
 after exact pullback and cancellation. Only the repaired calculation is evidence for this entry.
@@ -44,8 +44,8 @@ The corrected exceptional restriction has six nonzero entries, all in the second
 
 [
 R_E=
-rac1U
-egin{pmatrix}
+\frac1U
+\begin{pmatrix}
 0&0&0&0&0&0\
 r_1&r_2&r_3&r_4&r_5&r_6
 end{pmatrix},
@@ -84,7 +84,7 @@ the exceptional direction where (y) vanishes faster than (a). Multiplication by 
 Thus the canonical object is not an affine-normalized vector. It is the Cartier-twisted line
 
 [
-oxed{
+\boxed{
 mathcal L_{m off}
 simeq
 mathcal O_E([U=0])otimes
@@ -101,7 +101,7 @@ The ratio (V=(Q-1)/(A_4-1)) does not enter the exceptional class.
 The Rees blowup resolves Entry 916's finite order dependence without adding a carrier stratum:
 
 [
-oxed{
+\boxed{
 	ext{order-dependent ordinary limits}
 longrightarrow
 	ext{canonical projective rank-one exceptional line}

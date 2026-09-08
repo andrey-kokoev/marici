@@ -15,19 +15,19 @@ that is invisible on the generic total-energy divisor?
 Work in the homogeneous chart
 
 [
-X_1=1,qquad u=E_T,qquad y=X_2=rac{u+v}{2}-1.
+X_1=1,qquad u=E_T,qquad y=X_2=\frac{u+v}{2}-1.
 ]
 
 The source-defined algebraic kernel generator degenerates at (u=0,v=2) as
 
 [
-v_{m alg}=y^2igl(0,1-y^2,2,-2igr).
+v_{m alg}=y^2\bigl(0,1-y^2,2,-2\bigr).
 ]
 
 The supported test therefore uses the saturated generator
 
 [
-widetilde v_{m alg}=rac{v_{m alg}}{X_2^2}
+widetilde v_{m alg}=\frac{v_{m alg}}{X_2^2}
 ]
 
 before specializing to (X_2=0). No carrier cell, support summand, or fitted normalization is added.
@@ -60,10 +60,10 @@ The only soft pole in the saturated total-energy residue lies in the elliptic qu
 [
 operatorname{PP}_{X_2=0} R_{E_T}
 =
-egin{pmatrix}
+\begin{pmatrix}
 0&0&0&0\
 0&0&0&0\
-0&0&0&-rac12\
+0&0&0&-\frac12\
 0&0&0&0
 end{pmatrix}.
 ]
@@ -71,9 +71,9 @@ end{pmatrix}.
 The algebraic-to-elliptic extension principal part is
 
 [
-oxed{
+\boxed{
 operatorname{PP}_{X_2=0}
-igl(R_{E_T}^{m ext}igr)=0.
+\bigl(R_{E_T}^{m ext}\bigr)=0.
 }
 ]
 
@@ -81,10 +81,10 @@ A regular finite off-diagonal coefficient survives:
 
 [
 operatorname{FP}_{X_2=0}
-igl(R_{E_T}^{m ext}igr)
+\bigl(R_{E_T}^{m ext}\bigr)
 =
-egin{pmatrix}
-0&-rac14\
+\begin{pmatrix}
+0&-\frac14\
 0&0
 end{pmatrix}.
 ]
@@ -100,7 +100,7 @@ The remaining pole is the expected quotient degeneration, and the regular (-1/4)
 Classification:
 
 [
-oxed{
+\boxed{
 	ext{existing soft carrier}
 +
 	ext{elliptic quotient degeneration}

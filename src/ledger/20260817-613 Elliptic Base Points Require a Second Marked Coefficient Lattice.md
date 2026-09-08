@@ -72,14 +72,14 @@ Thus the finite-tangency lattice is falsified at elliptic base points.
 The valuation inequalities at both representatives have the common minimal
 solution
 [
-oxed{
+\boxed{
 (w_{111},w_{101},w_{110};w_6,w_7,w_8,w_9)
 =(2,1,1;0,0,0,0).
 }
 ]
 This lattice was frozen and rerun at both visible points. It gives
 [
-oxed{
+\boxed{
 minord A_t=-1,qquad minord A_ho=0,
 qquad M_t=M_ho=0
 }
@@ -94,7 +94,7 @@ At ([0:1:0]), the rational exceptional directions are
 ]
 They come respectively from (y=0) and
 [
-c+y=rac{v-u-2}{2}=0.
+c+y=\frac{v-u-2}{2}=0.
 ]
 The residual quadratic reconstructed in the shifted coordinate
 (q=ho-1000) is
@@ -103,7 +103,7 @@ q^2+2006q+1006001.
 ]
 Returning to (ho) gives
 [
-oxed{ho^2+6ho+1}.
+\boxed{ho^2+6ho+1}.
 ]
 Direct expansion of the frozen Cayley--Menger discriminant gives
 [
@@ -117,7 +117,7 @@ At ([2:1:0]), the (u)-chart directions are
 ]
 with reciprocal directions in the second chart. Direct expansion gives
 [
-oxed{
+\boxed{
 Delta_2=t^2(ho+1)(ho+9)+O(t^3).
 }
 ]
@@ -128,14 +128,14 @@ Cayley--Menger support. No unknown factor remains.
 
 The stronger hypothesis
 [
-oxed{	ext{one marked coefficient lattice works at finite tangencies and
+\boxed{	ext{one marked coefficient lattice works at finite tangencies and
 elliptic base points}}
 ]
 is falsified.
 
 The narrower surviving statement is
 [
-oxed{	ext{elliptic base points require the sector-specific lattice
+\boxed{	ext{elliptic base points require the sector-specific lattice
 }(2,1,1;0,0,0,0),	ext{ over unchanged source support}.}
 ]
 This is evidence for shared carrier plus layer-specific coefficient lattices,

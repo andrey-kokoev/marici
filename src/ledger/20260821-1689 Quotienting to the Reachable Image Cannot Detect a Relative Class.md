@@ -37,6 +37,7 @@ isomorphism by construction.
 \boxed{
 \text{quotienting to the reachable image cannot detect a stable relative coefficient class.}
 }
+\]
 
 The conserved Hamiltonian powers found in Entry 1688 are genuine kernel data,
 but once they are quotiented, defining the target to be the image removes every

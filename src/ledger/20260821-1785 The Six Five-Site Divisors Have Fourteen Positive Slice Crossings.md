@@ -25,7 +25,7 @@ L_r(x)\in\mathbb Q(\sqrt5)[x],
 \]
 
 construct its Sturm chain over the ordered real field
-(mathbb Q(\sqrt5)\). Signs of (a+b\sqrt5) are decided exactly by comparing
+\(mathbb Q(\sqrt5)\). Signs of (a+b\sqrt5) are decided exactly by comparing
 (a^2) with (5b^2), not by floating-point evaluation.
 
 The positive-root count is

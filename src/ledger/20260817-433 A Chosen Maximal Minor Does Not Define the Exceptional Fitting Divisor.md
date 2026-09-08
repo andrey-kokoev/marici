@@ -52,7 +52,7 @@ non-generating minor chart.
 
 Therefore
 [
-oxed{	ext{a chosen maximal-minor ratio is not an intrinsic generator of
+\boxed{	ext{a chosen maximal-minor ratio is not an intrinsic generator of
 the exceptional Fitting line}.}
 ]
 

@@ -39,7 +39,7 @@ objects (three per polarity side), each equipped with:
 
 1. two log-residue maps to the adjacent long-facet ray packets;
 2. a multiplicity-sensitive support-switch/Gysin comparison landing in the
-   complementary marked corridor (C_ullet(q_k)subset F_B/F_V);
+   complementary marked corridor (C_\bullet(q_k)subset F_B/F_V);
 3. all four Boolean normal-state maps with the two Tor grades and Čech signs;
 4. endpoint-framed Beck-Chevalley cells and (D_3)/reflection covariance.
 

@@ -14,7 +14,7 @@ of ranks (9	o12	o3).
 The hard-to-vary claim tested here is:
 
 [
-oxed{
+\boxed{
 	ext{one of the three marked extension columns acquires a nonzero elliptic
 principal part on }X_1X_2=0.
 }
@@ -25,26 +25,26 @@ principal part on }X_1X_2=0.
 At (E=0), put (x=X_1), (y=X_2), and (s=x+y). Retain the source-derived algebraic vector
 
 [
-v_0=x^2y^2igl((x^2-y^2)e_7+2e_8-2e_9igr).
+v_0=x^2y^2\bigl((x^2-y^2)e_7+2e_8-2e_9\bigr).
 ]
 
 The complete marked algebraic block from Entry 300 is
 
 [
 Theta_{101}^{m fix}
-=-rac{e_4}{4xy}
--rac{v_0}{4x^3y^3s},
+=-\frac{e_4}{4xy}
+-\frac{v_0}{4x^3y^3s},
 ]
 
 [
 Theta_{110}^{m fix}
-=-rac{e_2}{4xy}
-+rac{v_0}{4x^3y^3s},
+=-\frac{e_2}{4xy}
++\frac{v_0}{4x^3y^3s},
 ]
 
 [
 Theta_{111}^{m filt}
-=rac{e_6}{8s}.
+=\frac{e_6}{8s}.
 ]
 
 No lift, support summand, or carrier cell is changed.
@@ -58,17 +58,17 @@ e_7mapstoomega_0,
 ]
 
 [
-e_8mapstorac{y^2}{2}omega_0-rac{x^2}{2}omega_2,
+e_8mapsto\frac{y^2}{2}omega_0-\frac{x^2}{2}omega_2,
 ]
 
 [
-e_9mapstorac{x^2}{2}omega_0-rac{x^2}{2}omega_2.
+e_9mapsto\frac{x^2}{2}omega_0-\frac{x^2}{2}omega_2.
 ]
 
 Therefore
 
 [
-R_inftyigl((x^2-y^2)e_7+2e_8-2e_9igr)=0
+R_infty\bigl((x^2-y^2)e_7+2e_8-2e_9\bigr)=0
 ]
 
 as a polynomial identity. The other coordinates (e_2,e_4,e_6) are already in the algebraic Gysin kernel.
@@ -96,7 +96,7 @@ The primitive top column has denominator (s=x+y), so it is regular at either ind
 Consequently,
 
 [
-oxed{
+\boxed{
 operatorname{rank}
 R_infty!left(
 operatorname{PP}_{X_1X_2=0}C_{m alg}
@@ -121,7 +121,7 @@ with zero mismatches.
 Adding the three conductor/top classes of the canonical rank-twelve marked extension introduces simple Tate/Kummer soft poles internal to the algebraic kernel, but no new elliptic supported extension:
 
 [
-oxed{
+\boxed{
 	ext{rank-twelve soft nearby data}
 =
 	ext{existing algebraic soft poles}

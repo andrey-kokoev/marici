@@ -95,6 +95,7 @@ tested presentation.
 \boxed{
 \text{the first filtered kernels are ordinary conservation laws, not new coefficient sectors.}
 }
+\]
 
 No stable kernel or cokernel class beyond Hamiltonian invariants is identified.
 This does not prove the formula at arbitrary (D,n), nor does it compare the

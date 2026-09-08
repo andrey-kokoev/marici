@@ -77,6 +77,7 @@ ternary parenthesization identities, and 100 exact CP Gram factorizations.
 \boxed{
 \text{the infinite cubic Dyson--Schmidt tower is unbounded in rank but finitely presented by one shift generator.}
 }
+\]
 
 This parallels Entry 1649's finite differential presentation of the infinite
 moment module. The two infinite coefficient realizations are structured, not

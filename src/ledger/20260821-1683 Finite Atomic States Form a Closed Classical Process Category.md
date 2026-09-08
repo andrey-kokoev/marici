@@ -33,6 +33,7 @@ in which four product atoms map to three output atoms.
 \boxed{
 \text{the union of all finite atomic positive states is closed under the classical process operations.}
 }
+\]
 
 A fixed-(N) stratum is not monoidally closed:
 

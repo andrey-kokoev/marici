@@ -78,6 +78,7 @@ The exceptional object is supported only on
 \boxed{
 \varepsilon=k=0.
 }
+\]
 
 This is the derived polar/compatibility locus of two already declared wall
 sections. It is not a new primary carrier generator.

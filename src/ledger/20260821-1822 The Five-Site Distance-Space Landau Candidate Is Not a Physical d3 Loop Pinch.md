@@ -48,6 +48,7 @@ certifies
 \nabla G^-_{e_{12}}\times\nabla g_5
 \right\|^2>0
 }
+\]
 
 on both reflected sheets. Equivalently, the restriction of \(\nabla g_5\)
 to the \(G^-_{e_{12}}\)-level tangent plane has strictly positive squared
@@ -55,11 +56,7 @@ norm on both sheets.
 
 Therefore
 
-\[
-\boxed{
-\text{the distance-space Landau candidate is not a critical point of the
-physical }d^3\ell\text{ pullback}.}
-}
+The distance-space Landau candidate is not a critical point of the physical (d^3\ell) pullback.
 
 ## Correct classification
 
@@ -107,6 +104,7 @@ object:
 \not\Rightarrow
 \text{Landau on the physical loop current}.
 }
+\]
 
 The correction removes the apparent five-site physical threshold evidence
 but strengthens the requirement that carrier incidence, coefficient support,

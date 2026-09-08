@@ -16,7 +16,7 @@ Hilbert-tail correction. The observed valuations (89,92,95) at exact-form
 degrees (8,10,12) suggested the provisional rule
 [
 
-u_N=89+rac32(N-8).
+u_N=89+\frac32(N-8).
 ]
 If that rule survived, it could motivate a relative-index subtraction,
 provided the subtraction were subsequently derived from the graded
@@ -73,7 +73,7 @@ The rank difference remains ten, while the determinant difference changes.
 
 Therefore
 [
-oxed{
+\boxed{
 	ext{neither raw cutoff stabilization nor one affine tail subtraction
 defines the soft-axis saturation weight through degree 16.}
 }

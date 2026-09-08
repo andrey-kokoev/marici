@@ -30,6 +30,7 @@ For the number-moment subalgebra,
 \mathcal L^\dagger f(N)
 =(N+1)\bigl[f(N+1)-f(N)\bigr].
 }
+\]
 
 If \(\deg f=D\), then
 

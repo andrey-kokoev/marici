@@ -27,7 +27,7 @@ The soft factor is (z). The twenty proper walls collapse to fourteen
 distinct quadratic factors:
 
 [
-egin{gathered}
+\begin{gathered}
 z^2-1, z^2-14, z^2-29,\
 16z^2-1, 16z^2-14, 16z^2-29,\
 4z^2-2, 4z^2-21, 4z^2-26, 4z^2-3,\
@@ -38,7 +38,7 @@ end{gathered}
 Thus the frozen finite candidate divisor is
 
 [
-oxed{
+\boxed{
 Delta_{m cand}(z)
 =
 zprod_{alpha=1}^{14}f_alpha(z),
@@ -64,7 +64,7 @@ already listed support. The triple census contains 1140 objects inheriting an
 empty pair and 70 restricted to existing total-energy support. Hence
 
 [
-oxed{
+\boxed{
 	ext{unresolved pairs}=0,
 qquad
 	ext{unresolved triples}=0.

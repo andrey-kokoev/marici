@@ -44,7 +44,7 @@ of every free exact-lift variable.
 At both base-point representatives and for every tested row, the nonfixed
 column mask is
 [
-oxed{248}.
+\boxed{248}.
 ]
 Since
 [
@@ -52,11 +52,11 @@ Since
 ]
 the nonfixed columns are exactly
 [
-oxed{{3,4,5,6,7}}.
+\boxed{{3,4,5,6,7}}.
 ]
 The complementary columns
 [
-oxed{{0,1,2,8,9,10,11}}
+\boxed{{0,1,2,8,9,10,11}}
 ]
 are fixed throughout the census. These are precisely the canonical
 seven-coordinate projection tested in Entries 382--385.
@@ -69,7 +69,7 @@ Gauss--Manin connection.
 
 The proposed next test from Entry 385 is rejected as ill-typed:
 [
-oxed{	ext{one cannot demand logarithmicity of columns }3,dots,7
+\boxed{	ext{one cannot demand logarithmicity of columns }3,dots,7
 	ext{ before specifying a source-defined splitting.}}
 ]
 This does not prove that no canonical splitting exists. It proves only that
@@ -78,7 +78,7 @@ choice of zero free variables would be an unmotivated splitting.
 
 The surviving statement is
 [
-oxed{	ext{the seven-column quotient is the complete fixed coordinate
+\boxed{	ext{the seven-column quotient is the complete fixed coordinate
 subsystem in the tested twelve-column reduction.}}
 ]
 

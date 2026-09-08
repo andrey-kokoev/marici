@@ -63,6 +63,7 @@ extension examples.
 \boxed{
 \text{cumulant positivity is filtered Hankel compatibility, not species-local data.}
 }
+\]
 
 A finite grade has a finite positivity cone. Global positivity requires a
 compatible inverse system across all grades, matching Entry 1648's infinite

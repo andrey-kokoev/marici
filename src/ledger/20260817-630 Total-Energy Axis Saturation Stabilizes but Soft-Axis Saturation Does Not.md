@@ -51,7 +51,7 @@ u_{m master}=93
 at all three exact-form degrees. Relative to the generic value 66, the
 stable transverse excess is
 [
-oxed{27}.
+\boxed{27}.
 ]
 
 At (X_2=0), the valuations are
@@ -64,7 +64,7 @@ defined by the present polynomial exact-form presentation.
 
 Therefore
 [
-oxed{
+\boxed{
 	ext{the current truncation defines a stable total-energy transform but not
 a stable soft-axis transform.}
 }

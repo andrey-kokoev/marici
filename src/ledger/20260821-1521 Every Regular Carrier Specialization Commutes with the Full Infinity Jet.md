@@ -38,13 +38,13 @@ over (A[q_0^{-1}]).
 
 ## Regular-specialization theorem
 
-Let (arphi:A\to B) be a carrier specialization. If
+Let (\varphi:A\to B) be a carrier specialization. If
 
 \[
 \boxed{\varphi(q_0)\ne0,}
 \]
 
-then (arphi(\widetilde Q)) remains a unit in (B[[z]]). Since inversion of
+then (\varphi(\widetilde Q)) remains a unit in (B[[z]]). Since inversion of
 a formal power series with invertible constant term is functorial,
 
 \[
@@ -52,7 +52,7 @@ a formal power series with invertible constant term is functorial,
 =\varphi(\widetilde Q)^{-1}.
 \]
 
-Therefore coefficient extraction commutes with (arphi) at every grade:
+Therefore coefficient extraction commutes with (\varphi) at every grade:
 
 \[
 \boxed{

@@ -61,6 +61,7 @@ visited sparse coefficients through bond order sixteen.
 \boxed{
 \text{the adjoint Dyson transform is a source-derived filtered map into the moment module.}
 }
+\]
 
 This explains why the two infinite presentations track the same dynamics at
 different variances: bond order records interaction history, while moment

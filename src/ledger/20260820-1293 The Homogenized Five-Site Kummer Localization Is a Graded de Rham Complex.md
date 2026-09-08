@@ -34,7 +34,7 @@ the five one-cut total walls, and the twenty proper connected-subgraph walls.
 Every Kummer relation is homogeneous of degree two:
 
 [
-oxed{deg(y_i^2-F_i)=2.}
+\boxed{deg(y_i^2-F_i)=2.}
 ]
 
 Every frozen wall equation is homogeneous of degree one. Explicitly, they have
@@ -51,7 +51,7 @@ qquad
 Thus
 
 [
-oxed{
+\boxed{
 R=
 mathbb Q[t,u,ho,y_1,ldots,y_5]/
 (y_i^2-F_i)
@@ -64,7 +64,7 @@ Entry 1270's numerator has degree sixteen, while the complete denominator has
 degree twenty-six. Hence the canonical rational function has degree
 
 [
-oxed{degOmega_{C_5}=-10.}
+\boxed{degOmega_{C_5}=-10.}
 ]
 
 With the displayed differential-form grading, the algebraic de Rham

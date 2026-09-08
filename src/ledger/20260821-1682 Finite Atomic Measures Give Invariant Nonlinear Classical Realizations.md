@@ -66,6 +66,7 @@ In particular, the tested three-atom realization is eight-dimensional.
 \boxed{
 \text{the classical scalar-cubic process has finite-dimensional invariant positive families.}
 }
+\]
 
 This does not contradict Entries 1648 and 1681. The moment hierarchy is an
 infinite linear coefficient representation; an (N)-atomic family is a finite

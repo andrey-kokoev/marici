@@ -11,7 +11,7 @@ Bogoliubov variation has phase
 \exp\left(i(q-k)\eta_1+i(q+k)\eta_2\right).
 \]
 
-In the simultaneous hard region (q=Q\),
+In the simultaneous hard region \(q=Q\),
 
 \[
 k=Q-p\cos\theta+O(Q^{-1}).
@@ -36,7 +36,7 @@ primitive supplies one inverse power,
 4\longmapsto3.
 \]
 
-With the source condition (eta_Q=o(Q^{-2})), the state-dependent middle
+With the source condition (\beta_Q=o(Q^{-2})), the state-dependent middle
 grade is only bounded by
 
 \[

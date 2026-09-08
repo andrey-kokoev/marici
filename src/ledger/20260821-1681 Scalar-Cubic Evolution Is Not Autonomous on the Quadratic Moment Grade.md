@@ -93,6 +93,7 @@ has derivatives
 \boxed{
 \text{scalar-cubic evolution is not autonomous on the finite quadratic Hankel cone.}
 }
+\]
 
 More generally, the cubic generator raises moment degree and requires the next
 filtered grade. Positivity of a finite truncation is preserved by Cut merge,

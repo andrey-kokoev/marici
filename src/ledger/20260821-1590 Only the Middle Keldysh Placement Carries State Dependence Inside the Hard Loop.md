@@ -50,7 +50,7 @@ Therefore the raw radial integrand has degree
 \boxed{4.}
 \]
 
-The source Hadamard condition (eta_Q=o(Q^{-2})) lowers the middle
+The source Hadamard condition (\beta_Q=o(Q^{-2})) lowers the middle
 state-dependent grade strictly below (2).
 
 No convergence claim follows yet: time primitives, endpoint terms,

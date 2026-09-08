@@ -17,7 +17,7 @@ exact image is divisible by (a^4). The simplest proposed lift would replace
 
 [
 K=a^4+u,a^2(1-b^2)
-qquad (mod,u^2)
+qquad (\bmod,u^2)
 ]
 
 and reduce every exact-form representative coefficientwise modulo (K).
@@ -37,7 +37,7 @@ with
 [
 L_1=b+1-u,
 qquad
-L_2^-=a-rac u2.
+L_2^-=a-\frac u2.
 ]
 
 Its (q)-exact operator is
@@ -46,7 +46,7 @@ Its (q)-exact operator is
 q
 =
 -L_1K
--rac32L_1L_2^-K_a.
+-\frac32L_1L_2^-K_a.
 ]
 
 Modulo (K), the first term vanishes. To first order,
@@ -64,7 +64,7 @@ a^4=-u,a^2(1-b^2)
 gives
 
 [
-oxed{
+\boxed{
 q
 equiv
 3u(b+1)
@@ -82,7 +82,7 @@ Therefore coefficientwise reduction does not send the complete exact image
 to zero:
 
 [
-oxed{
+\boxed{
 C_{m full}^{m Rees}longrightarrowmathbb Q[u,a,b]/(K)
 }
 ]

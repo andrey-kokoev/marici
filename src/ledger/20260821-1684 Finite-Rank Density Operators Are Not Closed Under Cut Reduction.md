@@ -66,6 +66,7 @@ strictly positive finite prefixes and tails.
 \boxed{
 \text{finite-rank density operators are not closed under source Cut reduction.}
 }
+\]
 
 Global rank-one purity does not bound reduced rank; the missing coefficient is
 Schmidt-spectrum data. Consequently finite rank cannot replace the filtered

@@ -9,7 +9,7 @@ date: 2026-08-17
 
 Entry 382 found a one-step marked coefficient lattice at
 [
-(r,s)=left(1,rac12ight).
+(r,s)=left(1,\frac12ight).
 ]
 Freeze that lattice before visiting the remaining finite tangencies:
 [
@@ -28,8 +28,8 @@ In the generic (x=1) chart,
 ]
 The four source centers become
 [
-(1,2),quad(2,1),quadleft(rac23,-1ight),quad
-left(-1,rac23ight).
+(1,2),quad(2,1),quadleft(\frac23,-1ight),quad
+left(-1,\frac23ight).
 ]
 At each center use both point-blowup charts
 [
@@ -49,10 +49,10 @@ Its certificate output was also changed to valid JSON.
 
 | source center | ((u,v)) | raw ((minord A_t,minord A_ho)) | weighted | bad masks | nonzero coordinates |
 |---|---:|---:|---:|---:|---:|
-| ((1,rac12)) | ((1,2)) | ((-2,-1)) | ((-1,0)) | ((120,120)) | 54 |
-| ((rac12,1)) | ((2,1)) | ((-1,0)) | ((-1,0)) | ((0,0)) | 27 |
-| ((rac32,-1)) | ((rac23,-1)) | ((-1,0)) | ((0,1)) | ((0,0)) | 0 |
-| ((-1,rac32)) | ((-1,rac23)) | ((-1,0)) | ((0,1)) | ((0,0)) | 0 |
+| ((1,\frac12)) | ((1,2)) | ((-2,-1)) | ((-1,0)) | ((120,120)) | 54 |
+| ((\frac12,1)) | ((2,1)) | ((-1,0)) | ((-1,0)) | ((0,0)) | 27 |
+| ((\frac32,-1)) | ((\frac23,-1)) | ((-1,0)) | ((0,1)) | ((0,0)) | 0 |
+| ((-1,\frac32)) | ((-1,\frac23)) | ((-1,0)) | ((0,1)) | ((0,0)) | 0 |
 
 Thus only the first center actually requires the positive marked weight. The
 transported lattice remains admissible at the other three. At the last two
@@ -68,14 +68,14 @@ denominator root. No residual irreducible support occurs.
 
 The hostile claim
 [
-oxed{	ext{one fixed marked coefficient lattice cannot resolve all four
+\boxed{	ext{one fixed marked coefficient lattice cannot resolve all four
 finite conductor--energy tangencies}}
 ]
 is falsified for the canonical seven-coordinate projection.
 
 The narrow surviving statement is
 [
-oxed{	ext{the weight }w_{111}=1	ext{ extends across all four centers,
+\boxed{	ext{the weight }w_{111}=1	ext{ extends across all four centers,
 and no new support or carrier stratum is required.}}
 ]
 

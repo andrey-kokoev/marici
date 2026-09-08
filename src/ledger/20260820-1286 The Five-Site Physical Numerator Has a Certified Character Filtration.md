@@ -32,7 +32,7 @@ Let (w=|S|). Every one of the 43296 monomials in the 32 coefficient
 polynomials satisfies
 
 [
-oxed{
+\boxed{
 deg_tequiv wpmod 2,
 qquad
 deg_t+deg_ule 16-w.
@@ -42,7 +42,7 @@ deg_t+deg_ule 16-w.
 All 32 characters are nonzero. Their exact aggregate profile is
 
 [
-egin{array}{c|c|c|c|c}
+\begin{array}{c|c|c|c|c}
 w & #	ext{ characters} & #	ext{ terms} &
 deg_t^{min} & deg_t^{max}\
 hline
@@ -92,7 +92,7 @@ It carries the filtration forced by ambient degree and labelled deck
 character:
 
 [
-oxed{
+\boxed{
 	ext{character weight }w
 Longrightarrow
 	ext{coefficient budget }16-w

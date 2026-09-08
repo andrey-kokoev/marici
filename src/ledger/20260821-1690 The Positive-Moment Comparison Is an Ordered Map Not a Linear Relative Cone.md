@@ -48,6 +48,7 @@ Entries 1633--1634. It must not be retyped as positivity cokernel data.
 \boxed{
 \text{the Dyson-to-positive-moment comparison is an ordered positive map, not a linear relative cone.}
 }
+\]
 
 No additional linear “positivity class” is defined by this comparison. Any
 residual question concerns:

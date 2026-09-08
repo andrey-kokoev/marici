@@ -66,7 +66,7 @@ times the appropriate power of (b) cannot lie in the image.
 The computed rank reaches the full dimension of the ideal ((a^4)) in every
 tested shell (dge13). Thus the tested eventual symbol cokernel is
 [
-oxed{
+\boxed{
 operatorname{coker}sigma_{mathrm{tail}}
 simeq
 mathbf F[a,b]/(a^4)

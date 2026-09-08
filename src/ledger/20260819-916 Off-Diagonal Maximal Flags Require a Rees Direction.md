@@ -47,7 +47,7 @@ Keep (X) tangential and use multiplicative Laurent coordinates
 [
 Q=XYZ,
 qquad
-Z=rac{Q}{XY}.
+Z=\frac{Q}{XY}.
 ]
 
 The six orders of
@@ -63,7 +63,7 @@ Q	o1
 give the following numbers of nonzero matrix entries:
 
 [
-egin{array}{c|c}
+\begin{array}{c|c}
 	ext{order}&	ext{nonzero entries}\
 hline
 (A_4,Y,Q)&0\
@@ -80,7 +80,7 @@ Every route is finite after exact cancellation, but the routes disagree.
 Therefore
 
 [
-oxed{
+\boxed{
 operatorname{Sp}_{a=y=q=0}widehat T_3
 	ext{ is not an ordinary order-independent specialization.}
 }
@@ -105,8 +105,8 @@ Hence the same classification applies to the (z)-flag.
 The maximal flags split into at least two coefficient-geometric types:
 
 [
-oxed{
-egin{array}{c|c}
+\boxed{
+\begin{array}{c|c}
 x	ext{-flag}&	ext{ordinary value }0, 	ext{first conormal grade rank }1\
 y/z	ext{-flags}&	ext{ordinary iterated specialization order dependent}
 end{array}

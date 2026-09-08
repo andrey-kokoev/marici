@@ -23,7 +23,7 @@ to the same Boolean state on the two legal edges of the complementary marked
 corridor (q_k). The occurrence boundary matrix on outer, middle, and inner
 corridor rows is
 [
-egin{pmatrix}
+\begin{pmatrix}
 -1&0\\
 1&-1\\
 0&1

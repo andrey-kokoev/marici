@@ -21,7 +21,7 @@ summand, or carrier cell.
 The hard-to-vary claim was
 
 [
-oxed{
+\boxed{
 	ext{the published }mathcal Q_{12}	ext{ may acquire genuine monodromy
 from a cyclic residue sector or only after source-weighted physical-chain
 assembly.}
@@ -50,13 +50,13 @@ arXiv:2408.16386v2, equation (mathrm{eq:Triangle}), gives
 [
 I_{{1}}^{(3,1)}
 =kappa_0int_Gammaprod_e(dy_e,y_e)
-rac{K^gamma}{q_{mathcal G}prod_{j=1}^3q_{mathfrak g_j}}
+\frac{K^gamma}{q_{mathcal G}prod_{j=1}^3q_{mathfrak g_j}}
 sum_{m cyc}
-rac1{q_{mathcal G_{ij}}}
+\frac1{q_{mathcal G_{ij}}}
 left(
-rac1{q_{mathfrak g_{jk}}}
+\frac1{q_{mathfrak g_{jk}}}
 +
-rac1{q_{mathfrak g_{ki}}}
+\frac1{q_{mathfrak g_{ki}}}
 ight).
 ]
 
@@ -122,7 +122,7 @@ fraction-free pseudo-division. The optimized checker compiled and returned
 exit code zero. Hence
 
 [
-oxed{3cdot1719=5157}
+\boxed{3cdot1719=5157}
 ]
 
 exact factor rejections pass, without kinematic specialization.
@@ -155,7 +155,7 @@ For the homogeneous lower/zero sector, the paper prints the complete dlog
 alphabet
 
 [
-egin{aligned}
+\begin{aligned}
 W_{m low}={&
 X_1,X_2,X_3,
 X_1+X_2,X_2+X_3,X_1+X_3,\
@@ -196,7 +196,7 @@ operatorname{Var}_{mathcal Q_{12}}I_{ij}^{(a)}
 Therefore, on the generic nonsoft locus,
 
 [
-oxed{
+\boxed{
 T_{mathcal Q_{12}}^{m phys}=1,qquad
 N_{mathcal Q_{12}}^{m phys}=0,qquad
 operatorname{Var}_{mathcal Q_{12}}(Gamma_{m phys})=0.
@@ -264,7 +264,7 @@ of the full master system.
 ## Narrow result
 
 [
-oxed{
+\boxed{
 	ext{At generic nonsoft homogeneous kinematics, the published quartic is
 apparent in all three cyclic residue sectors and in their literal
 source-weighted physical assembly.}

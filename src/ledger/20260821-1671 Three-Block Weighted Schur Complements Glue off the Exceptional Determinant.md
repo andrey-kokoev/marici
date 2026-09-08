@@ -27,13 +27,13 @@ joint conditioning on the last two blocks gives
 
 \[
 S_{m joint}
-=a-rac{dx^2-2zxy+by^2}{bd-z^2}.
+=a-\frac{dx^2-2zxy+by^2}{bd-z^2}.
 \]
 
 Eliminating the (b)-block first gives
 
 \[
-a-rac{x^2}{b}
+a-\frac{x^2}{b}
 -
 \frac{(y-xz/b)^2}{d-z^2/b},
 \]
@@ -41,7 +41,7 @@ a-rac{x^2}{b}
 while eliminating the (d)-block first gives
 
 \[
-a-rac{y^2}{d}
+a-\frac{y^2}{d}
 -
 \frac{(x-yz/d)^2}{b-z^2/d}.
 \]

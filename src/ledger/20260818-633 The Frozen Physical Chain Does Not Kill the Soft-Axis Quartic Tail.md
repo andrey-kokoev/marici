@@ -63,7 +63,7 @@ ambiguity forbids selecting one termwise.
 
 Therefore, under the frozen source object,
 [
-oxed{
+\boxed{
 	ext{the quartic soft-axis tail is not canonically killed by the physical
 relative chain.}
 }

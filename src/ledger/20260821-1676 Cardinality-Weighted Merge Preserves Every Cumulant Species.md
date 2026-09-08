@@ -3,7 +3,7 @@
 ## Non-Gaussian normalization test
 
 Entry 1654 gives a finite species presentation for cumulant Cut sewing. Entry
-1666 introduces cardinality-dependent normalization needed for fixed-(\hbar\)
+1666 introduces cardinality-dependent normalization needed for fixed-\(\hbar\)
 descent. Test whether this normalization mixes cumulant orders.
 
 For independent blocks of sizes (m,n), let

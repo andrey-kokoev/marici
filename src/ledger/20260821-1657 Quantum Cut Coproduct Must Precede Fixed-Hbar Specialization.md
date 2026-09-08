@@ -68,11 +68,7 @@ and the relation descends exactly.
 
 ## Narrow result
 
-\[
-\boxed{
-\text{The quantum Cut/cumulant coproduct must be constructed in the homogenized occurrence-resolved CCR algebra before fixed-\(\hbar\) specialization.}
-}
-\]
+The quantum Cut/cumulant coproduct must be constructed in the homogenized occurrence-resolved CCR algebra before fixed-\(\hbar\) specialization.
 
 This repeats a central Marici pattern:
 

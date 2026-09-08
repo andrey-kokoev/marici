@@ -94,7 +94,7 @@ complex, up to one global scalar.}
 \]
 
 This is stronger than the local-support result of Entry 1010.  It still does
-not identify (D_ullet) with the physical twisted period pairing: the
+not identify (D_\bullet) with the physical twisted period pairing: the
 remaining global scalar, integral orientation, and compatibility with the
 KLT occurrence bases have not been derived from the source intersection
 normalization.

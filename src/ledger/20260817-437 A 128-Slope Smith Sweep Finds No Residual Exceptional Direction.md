@@ -58,7 +58,7 @@ same pair.
 
 Thus
 [
-oxed{	ext{the bounded 128-slope intrinsic sweep finds no unclassified
+\boxed{	ext{the bounded 128-slope intrinsic sweep finds no unclassified
 exceptional direction}.}
 ]
 

@@ -7,7 +7,7 @@ The source-normalized physical Cut--nearby commutator is already nonzero on the 
 [
 [psi_{E=0},operatorname{Res}_{q_{mathcal G_{12}}=0}]
 =
--rac{2pi^2}{xy}
+-\frac{2pi^2}{xy}
 left(y e_3+x e_5+e_6ight)
 ]
 
@@ -18,7 +18,7 @@ Entries 351--352 closed the de Rham infinity-Gysin extension at (xy=0), but did 
 The hard-to-vary claim tested here is:
 
 [
-oxed{
+\boxed{
 	ext{the physical enhanced/conductor comparison acquires new torsion,
 support, or an unrepresented vanishing class at }xy=0.
 }
@@ -31,7 +31,7 @@ The enhanced-point realization is
 [
 Phi_{m exc}
 =
-egin{pmatrix}
+\begin{pmatrix}
 1&-1&1&-1\
 1&1&-1&-1\
 1&-1&-1&1
@@ -42,7 +42,7 @@ The horizontal conductor embedding is
 
 [
 J=
-egin{pmatrix}
+\begin{pmatrix}
 2&0&1\
 0&2&1\
 0&0&1
@@ -53,7 +53,7 @@ and the occurrence quotient is
 
 [
 K=
-egin{pmatrix}
+\begin{pmatrix}
 0&0&1&-1\
 0&1&0&-1\
 1&-1&-1&1
@@ -99,7 +99,7 @@ D_x(t)=operatorname{diag}(1,t,1).
 Do not set (t=0) before forming the comparison. Exact multiplication gives, on both branches,
 
 [
-oxed{
+\boxed{
 D_{m soft}Phi_{m exc}
 =
 (D_{m soft}J)K.
@@ -119,7 +119,7 @@ D_{m soft}J
 to
 
 [
-oxed{operatorname{diag}(1,2,2t).}
+\boxed{operatorname{diag}(1,2,2t).}
 ]
 
 Equivalently, its determinantal ideals are
@@ -143,7 +143,7 @@ operatorname{rank}=2.
 The missing third direction is not destroyed: it occurs at the next Rees grade with weight (t). Therefore the filtered ranks are
 
 [
-oxed{2+1=3.}
+\boxed{2+1=3.}
 ]
 
 ## Result
@@ -157,7 +157,7 @@ The generic Smith type
 extends to the soft Rees type
 
 [
-oxed{(1,2,2t).}
+\boxed{(1,2,2t).}
 ]
 
 Consequently:
@@ -175,7 +175,7 @@ The hard-to-vary claim is falsified.
 At either individual site-soft branch,
 
 [
-oxed{
+\boxed{
 psi^{m Rees}_{xy=0}operatorname{Cut}_{12}
 simeq
 operatorname{Cut}_{12}psi^{m Rees}_{xy=0}

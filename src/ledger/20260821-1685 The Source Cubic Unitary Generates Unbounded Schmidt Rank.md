@@ -60,6 +60,7 @@ Schmidt terms, and 97 explicit matrix-rank calculations.
 \boxed{
 \text{the source cubic unitary has no uniform finite Schmidt-rank closure.}
 }
+\]
 
 At generic nonzero coupling and time, the complete analytic expansion has
 infinite Schmidt rank. Therefore neither finite Schmidt rank nor finite reduced
