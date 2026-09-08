@@ -58,6 +58,50 @@
     {"id":"critical_seam_green_confinement","status":"open","interface_ref":"g4_common","depends_on":["evans_to_conservative_green_chain_map","centered_incidence_range_closure_typing","local_module_length_preservation"],"authority_class":"formal_slot"},
     {"id":"riemann_hypothesis_terminal","status":"open","interface_ref":"g4_common","depends_on":["evans_to_conservative_green_chain_map","critical_seam_green_confinement"],"authority_class":"formal_slot"}
   ],
+  "visualization_contract": {
+    "schema": "marici.scc.rh-three-plane-dual.v1",
+    "node_planes": {
+      "three_port_source_separation": "realization",
+      "conservative_green_complex": "realization",
+      "exact_evans_history_domain": "realization",
+      "maximal_isotropic_evans_domain": "realization",
+      "centered_incidence_range_closure_typing": "invariant",
+      "zero_free_arithmetic_complement": "invariant",
+      "local_module_length_preservation": "invariant",
+      "critical_seam_green_confinement": "invariant",
+      "riemann_hypothesis_terminal": "invariant",
+      "theta_koszul_divisor_complex": "presentation",
+      "bare_euler_det3_with_two_anomaly_lines": "presentation",
+      "relative_reciprocal_det2_return": "presentation",
+      "centered_trace_class_seam_return": "presentation",
+      "five_port_arithmetic_summability": "presentation"
+    },
+    "semantic_edges": [
+      {"source":"three_port_source_separation","target":"centered_incidence_range_closure_typing","semantic_relation":"realizes","witness":"corrected_g4_audit:three_port_to_centered_incidence"},
+      {"source":"exact_evans_history_domain","target":"centered_incidence_range_closure_typing","semantic_relation":"realizes","witness":"exact_evans_five_port_rigging:history_domain_to_incidence"},
+      {"source":"theta_koszul_divisor_complex","target":"centered_incidence_range_closure_typing","semantic_relation":"presents","witness":"corrected_g4_audit:theta_divisor_presentation"},
+      {"source":"centered_trace_class_seam_return","target":"centered_incidence_range_closure_typing","semantic_relation":"presents","witness":"corrected_g4_audit:trace_seam_presentation"},
+      {"source":"conservative_green_complex","target":"zero_free_arithmetic_complement","semantic_relation":"realizes","witness":"corrected_g4_audit:green_to_zero_free_complement"},
+      {"source":"maximal_isotropic_evans_domain","target":"zero_free_arithmetic_complement","semantic_relation":"realizes","witness":"exact_evans_five_port_rigging:isotropic_to_complement"},
+      {"source":"bare_euler_det3_with_two_anomaly_lines","target":"zero_free_arithmetic_complement","semantic_relation":"presents","witness":"corrected_g4_audit:det3_presentation"},
+      {"source":"relative_reciprocal_det2_return","target":"zero_free_arithmetic_complement","semantic_relation":"presents","witness":"corrected_g4_audit:det2_presentation"}
+    ],
+    "admitted_equivalences": [],
+    "requirements": [
+      {"id":"common_g4_interface","kind":"interface"},
+      {"id":"source_authority","kind":"authority"},
+      {"id":"exact_range_witness","kind":"detection"},
+      {"id":"prime_shell_residual_zero","kind":"test"}
+    ],
+    "requirement_edges": [
+      {"constructor":"three_port_source_separation","requirement":"common_g4_interface","relation":"requires","witness":"interface_descriptors:g4_common"},
+      {"constructor":"theta_koszul_divisor_complex","requirement":"common_g4_interface","relation":"requires","witness":"interface_descriptors:g4_common"},
+      {"constructor":"centered_incidence_range_closure_typing","requirement":"exact_range_witness","relation":"detects","witness":"centered_incidence_contract:exact_lift_authorized"},
+      {"constructor":"prime_shell_adjoint_residual_family","requirement":"prime_shell_residual_zero","relation":"tests","witness":"rh_bearing_residual:prime_shell_family_complete"},
+      {"constructor":"evans_to_conservative_green_chain_map","requirement":"source_authority","relation":"requires","witness":"authority_class:formal_slot"},
+      {"constructor":"critical_seam_green_confinement","requirement":"prime_shell_residual_zero","relation":"coheres","witness":"rh_bearing_residual:B_Sigma_dagger"}
+    ]
+  },
   "semantic_invariants": {
     "pass_does_not_imply_proved": true,
     "simulation_does_not_imply_physical_realization": true,

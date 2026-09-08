@@ -1,4 +1,5 @@
 """Compile the current RH programme as a typed partial interaction-net presentation."""
+from rh_net_semantic_views import compile_semantic_views
 LENS_REQ={
  "additive":["common_fiber","bounded_residual"],
  "determinant":["operator_ideal","normalization_authority","counterterm_authority"],
@@ -181,7 +182,9 @@ def compile_g4_rh_net_state(c):
     if terminal!="riemann_hypothesis_terminal" or by.get(terminal,{}).get("status")!="open":return fail("rh_overpromotion","RH terminal must remain open")
     open_ids={n["id"] for n in nodes if n["status"]=="open"}
     cut_sets=_g4_cut_sets(by,terminal);frontier=cut_sets["completion_frontier"]
-    return {"schema":"marici.scc.rh-interaction-net-state.v2","passed":True,"proved":False,"physical_realization":False,"first_failed_gate":None,"model_generation":"corrected_G4","versioning":versioning,"interface_pullback":{"descriptor":"g4_common","fields":list(G4_INTERFACE_FIELDS),"all_edges_checked":True},"semantic_invariants":G4_SEMANTIC_INVARIANTS,"negative_knowledge_gates":G4_NEGATIVE_GATES,"terminal_cut_sets":cut_sets,"frontier_antichain":frontier,"downstream_open":sorted(open_ids-set(frontier)),"interaction_net":interaction_net(nodes),"determinant_ideal_contract":determinant,"three_port_contract":ports,"centered_incidence_contract":range_contract,"rh_bearing_residual":residual,"hostile_fixtures":hostiles,"terminal":{"id":terminal,"status":"open","rh_proved":False},"explanation":"The corrected G4 topology is typed conservatively. RH remains blocked by the prime-shell adjoint residual family, seam-state/domain gates, and the Evans-to-conservative-Green chain map."}
+    visualization=compile_semantic_views(c)
+    if not visualization.get("passed"):return fail("visualization_contract",visualization)
+    return {"schema":"marici.scc.rh-interaction-net-state.v2","passed":True,"proved":False,"physical_realization":False,"first_failed_gate":None,"model_generation":"corrected_G4","versioning":versioning,"visualization":visualization,"interface_pullback":{"descriptor":"g4_common","fields":list(G4_INTERFACE_FIELDS),"all_edges_checked":True},"semantic_invariants":G4_SEMANTIC_INVARIANTS,"negative_knowledge_gates":G4_NEGATIVE_GATES,"terminal_cut_sets":cut_sets,"frontier_antichain":frontier,"downstream_open":sorted(open_ids-set(frontier)),"interaction_net":interaction_net(nodes),"determinant_ideal_contract":determinant,"three_port_contract":ports,"centered_incidence_contract":range_contract,"rh_bearing_residual":residual,"hostile_fixtures":hostiles,"terminal":{"id":terminal,"status":"open","rh_proved":False},"explanation":"The corrected G4 topology is typed conservatively. RH remains blocked by the prime-shell adjoint residual family, seam-state/domain gates, and the Evans-to-conservative-Green chain map."}
 def compile_rh_net_state(c):
     if c.get("schema")=="marici.scc.rh-interaction-net-state-contract.v2":return compile_g4_rh_net_state(c)
     if c.get("claim")!="current_rh_programme_not_rh_proof":return fail("claim_boundary","RH state model must not claim RH")
