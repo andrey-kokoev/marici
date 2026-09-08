@@ -127,6 +127,17 @@ def main() -> int:
             "CriticalStripZeroContract.agda",
             "FiniteZetaExactExclusion.agda",
             "FiniteZetaNoSelector.agda",
+            "CompletionExponentialMultiplicationLaw.agda",
+            "CompletionExponentialNaturalMultiples.agda",
+            "CompletedExponentialMultiplication.agda",
+            "MetricCompletionEffectiveness.agda",
+            "RationalExponentialProductRepresentative.agda",
+            "RawProductRefinementTransport.agda",
+            "ExponentialProductEventualApproximation.agda",
+            "EndpointBoundedProductComparison.agda",
+            "SynchronizedExponentialApproximation.agda",
+            "ExponentialRationalApproximation.agda",
+            "BoundedExponentialModulus.agda",
             "ConstructiveValueModel.agda",
         ]
         source_digests = {
