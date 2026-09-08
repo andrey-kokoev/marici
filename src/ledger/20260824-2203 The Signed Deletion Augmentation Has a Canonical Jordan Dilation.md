@@ -49,6 +49,7 @@ one has the exact factorization
 \sum_S(-2)^{|S|}T_S
 =27\,\mathbb E_q[\chi(S)T_S].
 }
+\]
 
 ## Status
 
@@ -64,4 +65,3 @@ or a parity measurement realizing the right side.
 
 - Entry 2202
 - `research/benincasa/checkers/deletion_jordan_dilation.rs`
-

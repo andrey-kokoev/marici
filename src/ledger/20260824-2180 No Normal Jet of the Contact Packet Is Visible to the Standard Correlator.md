@@ -28,13 +28,14 @@ Therefore, identically as a function of (s),
 \boxed{
 \sigma p(s)=f(s)-f(s)=0.
 }
+\]
 
 ## All normal jets
 
 Since the vanishing is an identity before specialization,
 
 \[
-\partial_s^m(\sigma p)ig|_{s=0}=0
+\partial_s^m(\sigma p)\big|_{s=0}=0
 \]
 
 for every (m\ge0). Equivalently,
@@ -44,6 +45,7 @@ for every (m\ge0). Equivalently,
 \sigma\operatorname{gr}^{(m)}p=0
 \qquad\text{for every normal grade }m.
 }
+\]
 
 Thus Entry 2178's nonzero Cartier interference class is not activated by
 taking more derivatives of the ordinary correlator. Higher normal order

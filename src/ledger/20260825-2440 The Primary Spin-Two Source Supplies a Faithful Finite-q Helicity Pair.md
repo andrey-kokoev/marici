@@ -131,12 +131,7 @@ completion.
 
 ## Result
 
-\[
-\boxed{
-\text{the primary finite-$q$ spin-two vertex supplies a faithful pair of
-physical helicity ports away from existing Gram support.}
-}
-\]
+The primary finite-\(q\) spin-two vertex supplies a faithful pair of physical helicity ports away from existing Gram support.
 
 No tensor-specific Carrier support appears at the local vertex.
 

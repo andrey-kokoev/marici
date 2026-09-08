@@ -44,6 +44,7 @@ Therefore
 \boxed{
 G\text{ is not determined by }F.
 }
+\]
 
 Equivalently, the deletion-Euler selector does not descend through the
 forgetful map from labelled route packets to the ordinary summed
@@ -60,6 +61,7 @@ classifies its type:
 G=-8C\text{ is an invariant of the retained deletion presentation, not of
 the ungraded correlator alone.}
 }
+\]
 
 To promote it to a physical observable, one must show that the physical
 apparatus or source retains the route decomposition, or prove invariance

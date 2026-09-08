@@ -42,6 +42,7 @@ Hence
 \text{isotropic scalar}+\text{Gaussian quadrupole}
 \text{ resolves all three homogeneous occurrences}.
 }
+\]
 
 ## Minimality
 
@@ -54,4 +55,3 @@ source enlargement with the required representation type.
 
 - Entries 2233–2234
 - `research/benincasa/checkers/quadrupole_gaussian_port.rs`
-

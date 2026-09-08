@@ -123,6 +123,7 @@ the source relation module, there is no additional direct-image kernel:
 \ker(\mathcal I_{\rm source}\to H_{\rm low})
 =\langle\text{the three exact source relations}\rangle.
 }
+\]
 
 Equivalently, on the correctly typed source quotient,
 
@@ -131,6 +132,7 @@ Equivalently, on the correctly typed source quotient,
 \mathcal I_{\rm source}^{(7)}
 \hookrightarrow H_{\rm low}^{(34)}
 }
+\]
 
 is generically injective.
 

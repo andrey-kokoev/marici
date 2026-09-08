@@ -101,6 +101,7 @@ is invertible.  Hence
 \operatorname{Ext}^1_{\mathrm{Loc}_{\mathbf Q}}
 (\mathcal K_-,\mathcal M_9)=0.
 }
+\]
 
 Any logarithmic off-diagonal representative at this generic conductor
 point is removable by a boundary-preserving rational triangular gauge.  No

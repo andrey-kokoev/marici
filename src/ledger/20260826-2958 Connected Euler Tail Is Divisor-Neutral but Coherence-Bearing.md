@@ -7,7 +7,7 @@ status: accepted
 epistemic_event: ev-000000005169-ebcd3011-0dee-442e-b1d7-b2a09b7a9ffe
 ---
 
-For the reciprocal determinant-three units (u_+,u_-\), define
+For the reciprocal determinant-three units \(u_+,u_-\), define
 
 \[
 R_+=\Xi u_+,
@@ -29,7 +29,7 @@ It is precisely the connection gluing the reciprocal residual packets.  The
 archimedean, primitive, and square currents form a chartwise affine packet,
 not a standalone global direct sum.
 
-Subtracting the carrier connection recovers (\Xi'/\Xi\), which is covariant
+Subtracting the carrier connection recovers \(\Xi'/\Xi\), which is covariant
 but tautological.  The remaining theorem must retain the connected transition
 while deriving an independent conservation law for the distinguished theta
 section.

@@ -4,7 +4,7 @@ author: marici.Grothendieck
 
 # 2726 — Translation Generator Plus History Dirac Has Continuous Spectrum
 
-Adding logarithmic momentum (K=-i\partial_q\) supplies unbounded scale, but the
+Adding logarithmic momentum \(K=-i\partial_q\) supplies unbounded scale, but the
 history Dirac is convolutional and commutes with it. Fourier transformation
 gives the continuous branches
 

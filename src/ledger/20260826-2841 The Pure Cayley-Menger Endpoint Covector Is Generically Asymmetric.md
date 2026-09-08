@@ -37,11 +37,11 @@ dA=2a\,da,
 the corresponding positive-\(a\)-sheet periods are
 
 \[
-c_-=rac{\pi i}{p\sqrt{5-4\kappa}},
+c_-=\frac{\pi i}{p\sqrt{5-4\kappa}},
 \]
 
 \[
-c_+=rac{\pi i}{p\sqrt{5+4\kappa}}.
+c_+=\frac{\pi i}{p\sqrt{5+4\kappa}}.
 \]
 
 These are the source-derived local covector entries for the pure Cayley–Menger vanishing-cycle block.

@@ -27,6 +27,7 @@ Then
 =
 h_{11}-h_{12}+h_{21}-h_{22}.
 }
+\]
 
 Thus only the difference between the two column sums of (H) is physically
 relevant for activating this packet.
@@ -55,6 +56,7 @@ Therefore
 \operatorname{Hom}(R_{\rm del},R_{\rm del})/\ker\Phi
 \simeq\mathbb Q.
 }
+\]
 
 The missing activation datum is only one scalar class, not an arbitrary new
 matrix-valued coefficient system.
@@ -80,6 +82,7 @@ normalization therefore requires a source-derived orientation of
 \text{grade-two spectator route}
 \longleftrightarrow
 \text{fully deleted contact route}.
+\]
 
 ## Interpretation
 
@@ -92,6 +95,7 @@ datum a successful source extension must provide:
 \text{one oriented column-sum imbalance coupling deletion history to the
 physical readout.}
 }
+\]
 
 This is the smallest admissible target for a future Schwinger–Keldysh or
 instrument construction. Any larger proposed structure must project to this

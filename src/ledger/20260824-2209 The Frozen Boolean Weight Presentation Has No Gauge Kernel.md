@@ -19,6 +19,7 @@ and \(Z\) is invertible over \(\mathbb Z\). Consequently
 \boxed{
 \ker Z=0.
 }
+\]
 
 No nonzero redistribution of the eight overlap coefficients preserves every
 resolved-cell weight. In particular, once the source's Boolean cover and
@@ -39,4 +40,3 @@ it does not descend to the scalar readout.
 
 - Entries 2194 and 2206–2208
 - `research/benincasa/checkers/boolean_zeta_unimodular.rs`
-

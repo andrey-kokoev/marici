@@ -36,6 +36,7 @@ The faithful momentum-score quotient has dimension
 \boxed{
 \prod_{a=1}^d(m_a+1),
 }
+\]
 
 instead of \(2^{|E|}\).
 
@@ -50,4 +51,3 @@ failure that more derivatives can repair.
 
 - Entries 2228 and 2231
 - `research/benincasa/checkers/energy_collision_route_quotient.rs`
-

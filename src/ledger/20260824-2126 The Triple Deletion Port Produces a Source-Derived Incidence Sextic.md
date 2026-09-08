@@ -28,7 +28,7 @@ No loop coordinate remains. Substituting this section into the frozen Cayley--Me
 
 \[
 K\big|_{A=B=C=E_T^2/4}
-=-rac12\widetilde{\mathcal Q}_3,
+=-\frac12\widetilde{\mathcal Q}_3,
 \]
 
 where

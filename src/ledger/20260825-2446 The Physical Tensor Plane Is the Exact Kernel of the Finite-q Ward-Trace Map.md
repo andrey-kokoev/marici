@@ -87,12 +87,7 @@ required by the primary source.
 
 ## Result
 
-\[
-\boxed{
-\text{the physical finite-$q$ tensor plane is a strict Ward cocycle; the
-scalar contact terms live in the complementary longitudinal sector.}
-}
-\]
+The physical finite-\(q\) tensor plane is a strict Ward cocycle; the scalar contact terms live in the complementary longitudinal sector.
 
 Therefore the Ward/contact completion does not modify the TT helicity
 observer class. It is nevertheless required for a full unprojected

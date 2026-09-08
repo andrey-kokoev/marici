@@ -17,6 +17,7 @@ R_e
 =\langle O_{\rm ct}S_{K_e}\rangle_c
 =-8C_e.
 }
+\]
 
 Thus preparing and subtracting a second nearby state is not required in
 principle. The response can be obtained from a mixed correlator containing
@@ -55,4 +56,3 @@ port.
 
 - Entries 2199, 2212–2215
 - `research/benincasa/checkers/fixed_state_score_port.rs`
-

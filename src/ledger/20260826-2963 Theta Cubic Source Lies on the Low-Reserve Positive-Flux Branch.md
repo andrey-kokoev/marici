@@ -34,7 +34,7 @@ The monotone-barrier margin is approximately
 
 stable from 3,000 through 24,000 Simpson panels.  This is reconnaissance, not
 an interval proof.  The next step is a directed enclosure of
-(Z_2,Z_3,Z_4,Z_5\) using positive quadrature and a super-exponential tail
+\(Z_2,Z_3,Z_4,Z_5\) using positive quadrature and a super-exponential tail
 bound.
 
 Artifact:

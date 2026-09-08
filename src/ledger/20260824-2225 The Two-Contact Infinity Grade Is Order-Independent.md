@@ -37,6 +37,7 @@ independent integral Cartier coordinates.
 \text{normal monodromy}&\text{trivial}
 \end{array}
 }
+\]
 
 The Gaussian mixed readout accesses the filtered line through its asymptotic
 coefficient. No new compactification cell, branch cover, or coefficient
@@ -46,4 +47,3 @@ extension is required.
 
 - Entries 2178 and 2223–2224
 - `research/benincasa/checkers/double_contact_infinity_order.rs`
-

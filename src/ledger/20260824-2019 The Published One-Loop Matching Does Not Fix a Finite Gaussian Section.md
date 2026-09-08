@@ -88,6 +88,7 @@ Consequently, choosing finite \(A\) and \(B\) to enter the positivity half-plane
 \quad
 \text{not a finite positive Gaussian section}.
 }
+\]
 
 In Nima's three-way classification, the current source lands in the middle case:
 
@@ -95,6 +96,7 @@ In Nima's three-way classification, the current source lands in the middle case:
 \boxed{
 \text{missing renormalization/readout datum}.
 }
+\]
 
 No positivity pass or failure can be assigned to the generated finite state from the published formulas alone.
 

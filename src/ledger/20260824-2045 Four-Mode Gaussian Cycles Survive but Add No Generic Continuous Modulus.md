@@ -31,7 +31,7 @@ S\in\operatorname{Sp}(8,\mathbb Q).
 The six squeezing coordinates are
 
 \[
-\left(rac1{11},\frac1{9},\frac1{7},\frac1{6},\frac1{5},\frac2{9}\right).
+\left(\frac1{11},\frac1{9},\frac1{7},\frac1{6},\frac1{5},\frac2{9}\right).
 \]
 
 Exact dual-number arithmetic retains all six tangent directions and verifies

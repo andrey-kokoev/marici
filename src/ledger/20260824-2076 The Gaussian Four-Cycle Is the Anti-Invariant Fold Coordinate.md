@@ -79,6 +79,7 @@ Since \(s^2\) is a local equation of the discriminant,
 \boxed{
 \operatorname{ord}_{R=0}(\Delta L)^2=1
 }
+\]
 
 on the generic fold locus.
 

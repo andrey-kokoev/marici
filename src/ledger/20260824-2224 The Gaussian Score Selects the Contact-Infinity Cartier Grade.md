@@ -29,6 +29,7 @@ fixed asymptotic coefficient is
 \frac{R_{jk}}{s_js_k}
 =-\frac8{\widehat\ell_j\widehat\ell_k}.
 }
+\]
 
 Equivalently,
 
@@ -51,4 +52,3 @@ asymptotic coefficient detects the filtered interference class of Entry 2178.
 
 - Entries 2178 and 2217–2219
 - `research/benincasa/checkers/contact_infinity_score_cartier.rs`
-

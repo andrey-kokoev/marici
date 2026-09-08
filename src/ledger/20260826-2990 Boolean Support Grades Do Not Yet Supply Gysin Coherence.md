@@ -45,7 +45,7 @@ Thus no Beck–Chevalley commutator is defined from these packets alone.
 
 ## Retracted crossing candidate
 
-The (q_{\mathfrak g_{23}}\)-(q_{\mathfrak g_{31}}) crossing was previously described in the epistemic graph as a rank-one two-normal Kato/Gysin class. Its current source file carries a withdrawal notice: the quotient was built from branch maps that fail relation descent.
+The \(q_{\mathfrak g_{23}}\)-(q_{\mathfrak g_{31}}) crossing was previously described in the epistemic graph as a rank-one two-normal Kato/Gysin class. Its current source file carries a withdrawal notice: the quotient was built from branch maps that fail relation descent.
 
 The following data survive:
 

@@ -38,6 +38,7 @@ It is independent of all three nonhomogeneous normals:
 \partial_{\nu_i}q_{\mathcal G_{12}}=0,
 \qquad i=1,2,3.
 }
+\]
 
 Consequently normal multiplication by every coefficient of
 \(K^{-1}\partial_{\nu}K\) commutes strictly with localization and residue on
@@ -68,6 +69,7 @@ source module, so it has rank at most seven.  Therefore
 \operatorname{rank}
 (\mathcal I^{(7)}\to\operatorname{End}H_5^{(60)})=7.
 }
+\]
 
 Equivalently,
 
@@ -76,6 +78,7 @@ Equivalently,
 \ker
 (\mathcal I^{(7)}\to\operatorname{End}H_5^{(60)})=0.
 }
+\]
 
 The off-diagonal normal connection block may encode a nonsplit extension,
 but it cannot erase an interaction class already visible on the invariant
@@ -101,6 +104,7 @@ generic algebraic interaction level.
 \text{the generic rank-sixty five-pole direct image is faithful on the
 complete rank-seven nonhomogeneous scalar interaction module.}
 }
+\]
 
 This is the first direct-image-level contextual-faithfulness theorem for the
 source-derived interacting scalar kernel.  It is stronger than a rank census

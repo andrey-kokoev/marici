@@ -28,6 +28,7 @@ occurrence set would therefore be
 
 \[
 \boxed{R_{\rm del}\times B_{\rm SK},}
+\]
 
 with four elements, not two.
 
@@ -46,6 +47,7 @@ authorizes that collapse. Therefore
 \text{the route-difference covector }(1,-1)
 \text{ is not automatically a Keldysh quantum-source derivative.}
 }
+\]
 
 ## Consequence
 

@@ -30,6 +30,7 @@ Boolean Möbius inversion gives uniquely
 &=2^{|S|}(-1)^{|S|}\\
 &=(-2)^{|S|}.
 \end{aligned}
+\]
 
 Thus
 
@@ -38,6 +39,7 @@ Thus
 (-2)^{|S|}
 =\zeta_{B_3}^{-1}\bigl((-1)^{|T|}\bigr)(S).
 }
+\]
 
 The factor two is not a branch multiplicity or probability odds. It is the
 incidence-theoretic cost of pulling a sign character on disjoint cells back
@@ -55,4 +57,3 @@ resolved geometry precedes coarse coefficient arithmetic.
 - Entry 2205
 - Benincasa–Dian equation (4.69), using the binomial identity at (4.70)
 - `research/benincasa/checkers/boolean_mobius_orientation.rs`
-

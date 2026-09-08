@@ -34,6 +34,7 @@ A_I+B\ge0,
 \qquad
 A_I-B\ge0,
 }
+\]
 
 or equivalently
 
@@ -101,6 +102,7 @@ Such a \(Q\) exists exactly when
 \boxed{
 cS-sP\ge0.
 }
+\]
 
 Thus the projected admissible readout is a closed half-plane through the origin. Its interior is
 
@@ -120,6 +122,7 @@ Adding the stronger sign condition \(B\le0\), appropriate to the usual positive 
 \quad\Rightarrow\quad
 \text{a two-dimensional readout cone, not a line}.
 }
+\]
 
 Therefore the rank-two readout of Entry 2013 survives the first physical admissibility gate. Positivity removes half of the projective directions but does not identify the two coefficient coordinates.
 

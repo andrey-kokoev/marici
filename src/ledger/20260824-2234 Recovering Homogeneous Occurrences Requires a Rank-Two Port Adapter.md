@@ -25,6 +25,7 @@ has rank two:
 \boxed{
 \mathcal A_{\rm occ}\simeq\mathbb Q(\zeta_3).
 }
+\]
 
 ## Source interpretations
 
@@ -45,4 +46,3 @@ post hoc. Its source and transformation law must be frozen independently.
 
 - Entries 2232–2233
 - `research/benincasa/checkers/occurrence_adapter_minimal_rank.rs`
-

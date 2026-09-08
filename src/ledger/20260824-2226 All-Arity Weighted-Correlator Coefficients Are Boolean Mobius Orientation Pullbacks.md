@@ -29,6 +29,7 @@ Since the Boolean zeta matrix is unitriangular,
 \boxed{
 \mu=\zeta_{B_E}^{-1}\chi_{\rm orient}
 }
+\]
 
 is the unique integral overlap coefficient system inducing orientation parity
 \(\chi_{\rm orient}(T)=(-1)^{|T|}\).
@@ -49,4 +50,3 @@ triangle.
 - Benincasa–Dian, equation (4.69) and its binomial proof
 - Entries 2205–2210
 - `research/benincasa/checkers/all_arity_boolean_orientation.rs`
-

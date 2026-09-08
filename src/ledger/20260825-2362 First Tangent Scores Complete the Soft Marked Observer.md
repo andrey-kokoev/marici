@@ -55,6 +55,7 @@ cumulative observer ranks are
 \boxed{
 10\quad\xrightarrow{\text{first tangent score}}\quad16.
 }
+\]
 
 No higher score is required.  All source vectors lie in the declared
 simple-pole frame; the unsupported-term count is zero.

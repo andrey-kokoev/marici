@@ -18,6 +18,7 @@ contact normal commutes with logarithmic differentiation in \(K_e\):
 \left[\operatorname{gr}_{\rm ct},
 K_e\partial_{K_e}\right]=0.
 }
+\]
 
 On the projected route pair,
 
@@ -43,6 +44,7 @@ The source-normalized mixed contact readout is therefore
 \operatorname{gr}_{\rm ct}
 \langle O S_{K_e}\rangle_c=-8C_e.
 }
+\]
 
 The contact grade removes the backgrounds identified in Entry 2218 without
 being chosen to fit the answer. It predates the Gaussian-score construction
@@ -58,4 +60,3 @@ the generic result must not be extended there silently.
 
 - Entries 2158–2159, 2174, and 2217–2218
 - `research/benincasa/checkers/contact_grade_score_commutation.rs`
-

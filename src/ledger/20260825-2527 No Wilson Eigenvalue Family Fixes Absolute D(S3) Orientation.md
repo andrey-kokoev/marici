@@ -28,7 +28,7 @@ W_{x,\sigma(a)}=\varepsilon_xW_{x,a},
 \varepsilon_D=\varepsilon_E=-1,
 \]
 
-with every other (arepsilon_x=1). The (A) coordinate is constant and the
+with every other (\varepsilon_x=1). The (A) coordinate is constant and the
 (B) coordinate is invariant, so neither breaks orientation.
 
 All 255 nonempty Wilson subsets were checked. Exactly sixty are faithful—of

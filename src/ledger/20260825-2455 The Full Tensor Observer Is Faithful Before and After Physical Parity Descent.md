@@ -60,7 +60,7 @@ Its kernel is exactly the anti-invariant line ((1,-1)).  The even inclusion
 and averaging retraction satisfy
 
 \[
-\frac12(1,1)inom11=1.
+\frac12(1,1)\binom11=1.
 \]
 
 Hence the quotient is canonically rank one per labelled occurrence.

@@ -70,9 +70,7 @@ Because the two classes occupy distinct Rees grades, their readouts form a
 graded diagonal map of rank two:
 
 \[
-\boxed{
-\ker\mathcal O_{\rm phys}^{\rm soft\mbox{-}tri}=0.
-}
+\ker\mathcal O_{\mathrm{phys}}^{\mathrm{soft\text{-}tri}}=0.
 \]
 
 ## Result

@@ -67,6 +67,7 @@ count is zero.  Consequently
 \right)
 =M_{16}^{\rm deleted}.
 }
+\]
 
 Thus the algebraic observer sequence is exact:
 

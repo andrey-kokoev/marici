@@ -32,7 +32,7 @@ They establish a source-polarized positive theory.  Additional source structure 
 
 ## Separator one: local tomography
 
-A normalized real (d\)-level density matrix is a real symmetric matrix and therefore has
+A normalized real \(d\)-level density matrix is a real symmetric matrix and therefore has
 
 \[
 K_{\mathbb R}(d)=\frac{d(d+1)}2

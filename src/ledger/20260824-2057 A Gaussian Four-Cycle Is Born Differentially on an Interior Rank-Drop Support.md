@@ -87,6 +87,7 @@ Exact polynomial gcd calculation gives
 \gcd(R,M_i)=1,
 \qquad i=1,2,3,4.
 }
+\]
 
 Therefore, at a generic point of the interior divisor \(R=0\), the lower differential has rank three while
 
@@ -123,6 +124,7 @@ Thus the shared principle is not “the same divisor in every sector.” It is
 \boxed{
 \text{higher records become independent where the sector's lower reconstruction map loses rank.}
 }
+\]
 
 ## What remains unproved
 

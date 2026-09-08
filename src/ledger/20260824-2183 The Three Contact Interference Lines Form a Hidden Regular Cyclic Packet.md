@@ -52,6 +52,7 @@ three-dimensional cyclic packet:
 \operatorname{rank}
 \left(sigma\big|_{\oplus\mathcal L_{jk}^{\rm int}}\right)=0.
 }
+\]
 
 In particular, cyclic averaging does not activate the invariant line. It
 only constructs a symmetric hidden interference class.
@@ -76,6 +77,7 @@ The complete object is
 \mathcal K_{\rm contact}
 \otimes\mathbb Q\langle(1,-1)\rangle.
 }
+\]
 
 Its ingredients are all existing:
 

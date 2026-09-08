@@ -23,6 +23,7 @@ On the predeclared polynomial jet basis \((1,y,y^2)\), the determinant is
 \boxed{
 (y_{23}-y_{12})(y_{31}-y_{12})(y_{31}-y_{23}).
 }
+\]
 
 Hence the evaluation rank is:
 
@@ -34,6 +35,7 @@ Hence the evaluation rank is:
 \text{exactly two equal}&2\\
 \text{all equal}&1.
 \end{array}
+\]
 
 ## Consequence
 
@@ -53,4 +55,3 @@ rank loss, not a new Carrier stratum.
 
 - Entries 2200 and 2211–2212
 - `research/benincasa/checkers/gaussian_functional_evaluation_rank.rs`
-

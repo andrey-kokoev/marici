@@ -31,6 +31,7 @@ Its permanent blind plane is
 \{(x_{12},x_{23},x_{31}):x_{12}+x_{23}+x_{31}=0\}
 \simeq\mathbb Q(\zeta_3).
 }
+\]
 
 ## Meaning
 
@@ -46,4 +47,3 @@ not occurrence-level reconstruction.
 
 - Entries 2200, 2228, and 2231–2232
 - `research/benincasa/checkers/homogeneous_triangle_score_blind_plane.rs`
-

@@ -29,6 +29,7 @@ occurrences produce duplicate rows. Therefore
 \boxed{
 \operatorname{rank}(\operatorname{ev}_{\{y_e\}})=d.
 }
+\]
 
 ## Interpretation
 
@@ -44,4 +45,3 @@ faithful detector of deletion-route information.
 
 - Entries 2213 and 2227
 - `research/benincasa/checkers/energy_collision_score_rank.rs`
-

@@ -104,6 +104,7 @@ Away from deeper contact support (C=0),
 \boxed{
 (A,B)|_{E}=(8C,-8C)\ne(0,0).
 }
+\]
 
 Thus the component-soft blowup does not turn the generic null readout into
 route loss. It preserves a nonzero exceptional destructive-interference

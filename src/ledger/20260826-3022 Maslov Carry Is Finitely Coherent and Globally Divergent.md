@@ -8,7 +8,7 @@ status: discovery
 
 # 3022 — Maslov Carry Is Finitely Coherent and Globally Divergent
 
-Write phase-space area in (2\pi) units as (m+\theta), where (m\) is an integer and (0\le\theta<1). Composition is ordinary addition with carry:
+Write phase-space area in \(2\pi) units as (m+\theta), where (m\) is an integer and (0\le\theta<1). Composition is ordinary addition with carry:
 
 \[
 (m,\theta)\star(n,\phi)

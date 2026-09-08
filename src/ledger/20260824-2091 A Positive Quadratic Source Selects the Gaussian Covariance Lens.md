@@ -53,6 +53,7 @@ The positive-frequency choice determines the compatible complex structure
 \boxed{
 J_h=\frac{\Omega h}{\sqrt{\det h}}.
 }
+\]
 
 The selected vacuum covariance is
 
@@ -61,6 +62,7 @@ The selected vacuum covariance is
 V_h=-\frac12J_h\Omega
 =\frac{\sqrt{\det h}}2h^{-1}.
 }
+\]
 
 It is invariant under irrelevant positive rescaling:
 
@@ -111,6 +113,7 @@ V_h=\begin{pmatrix}1/3&-1/6\\-1/6&5/6\end{pmatrix}.
 \boxed{
 \text{Carrier constraints define the admissible Gaussian lenses; source dynamics selects the physical lens.}
 }
+\]
 
 Equivalently, the positive Hamiltonian supplies a source polarization map whose pullback of the standard positive Hermitian form is the covariance lens. This is the Gaussian analogue of the source-record construction \(E^\dagger E\): naturality governs transport, while source framing performs selection.
 

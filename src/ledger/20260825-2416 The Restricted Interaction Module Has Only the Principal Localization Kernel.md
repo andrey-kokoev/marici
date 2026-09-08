@@ -38,6 +38,7 @@ D_3-E^2U
 =(c-E)q_{\mathcal G_{12}}
 =0.
 }
+\]
 
 This is a principal Cartier restriction relation.  It exists before
 cohomological reduction and has source-fixed normalization.
@@ -53,6 +54,7 @@ interaction rank from seven to six:
 \qquad
 \ker=\langle D_3-E^2U\rangle.
 }
+\]
 
 The map is surjective at the generic source-polynomial level.
 
@@ -90,6 +92,7 @@ No fifth relation appears.
 D_3-E^2U
 \rangle.
 }
+\]
 
 Hence, on the correctly restricted source quotient,
 
@@ -98,6 +101,7 @@ Hence, on the correctly restricted source quotient,
 \mathcal I_{q_G}^{(6)}
 \hookrightarrow H_{q_G}^{(26)}
 }
+\]
 
 is generically injective.  The rank drop \(7\to6\) is principal
 localization data, not coefficient loss.
@@ -117,6 +121,7 @@ assemble as
 \mathcal I_{q_G}^{(6)}
 \longrightarrow0.
 }
+\]
 
 This is the finite interaction analogue of deletion–restriction.  The
 remaining issue is not rank but the off-diagonal extension/coherence map in

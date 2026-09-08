@@ -26,6 +26,7 @@ The exact positivity/uncertainty condition is
 \qquad
 |\kappa|^2\le\nu(\nu+1).
 }
+\]
 
 The equality locus consists of pure Gaussian states.
 
@@ -63,6 +64,7 @@ Cancelling \(\nu^2\) gives the exact elimination identity
 \boxed{
 P^2+S^2\le(2S+1)\nu.
 }
+\]
 
 ## Image theorem
 
@@ -94,6 +96,7 @@ Consequently,
 =
 \{(P,S):S>-\tfrac12\}.
 }
+\]
 
 This is an open two-dimensional half-plane.
 

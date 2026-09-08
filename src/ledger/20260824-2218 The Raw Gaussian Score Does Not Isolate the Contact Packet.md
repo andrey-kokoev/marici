@@ -21,6 +21,7 @@ connected and partially deleted contributions:
 \neq
 \text{contact packet alone}.
 }
+\]
 
 Entry 2216 correctly computes the contact packet's contribution to the score
 response, but it must not be read as saying that one raw higher correlator
@@ -36,4 +37,3 @@ projector may be fitted from the desired value \(-8C_e\).
 
 - Entries 2174 and 2211–2217
 - `research/benincasa/checkers/score_total_response_contamination.rs`
-

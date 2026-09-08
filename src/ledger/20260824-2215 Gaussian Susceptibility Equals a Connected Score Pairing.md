@@ -15,6 +15,7 @@ gives
 \frac{\partial}{\partial\log K}\langle O\rangle
 =\langle O\,S_K\rangle_c.
 }
+\]
 
 The connected subscript is precisely the normalization subtraction. For the
 hostile quadratic test,
@@ -52,4 +53,3 @@ boundary insertion.
 
 - Entries 2211–2214
 - `research/benincasa/checkers/gaussian_score_response_identity.rs`
-

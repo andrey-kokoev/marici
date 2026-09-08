@@ -55,6 +55,7 @@ Therefore
 \text{no operation confined to the Keldysh branch factor can activate the
 deletion-route interference line.}
 }
+\]
 
 This includes taking arbitrary branch-difference derivatives before the
 equal-source diagonal, provided they do not mix deletion-route labels.

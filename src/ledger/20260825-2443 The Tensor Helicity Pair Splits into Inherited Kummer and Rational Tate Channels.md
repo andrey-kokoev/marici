@@ -66,7 +66,7 @@ with
 
 \[
 \mathcal K
-=-rac{N^2+4p^2K_{\rm CM}}
+=-\frac{N^2+4p^2K_{\rm CM}}
 {4p^2\Lambda\,s_K},
 \qquad
 \mathcal T
@@ -122,12 +122,7 @@ branch support. No tensor-specific divisor appears.
 
 ## Result
 
-\[
-\boxed{
-\text{the finite-$q$ tensor insertion produces a deck-odd Kummer channel
-and a deck-even rational/Tate channel over the unchanged Carrier.}
-}
-\]
+The finite-\(q\) tensor insertion produces a deck-odd Kummer channel and a deck-even rational/Tate channel over the unchanged Carrier.
 
 This is the first source-derived coefficient enlargement in the interacting
 spin-two objective. It is neither a new Carrier cell nor a copy of the free

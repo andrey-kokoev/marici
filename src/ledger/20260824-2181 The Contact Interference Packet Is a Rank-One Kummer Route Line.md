@@ -24,6 +24,7 @@ Hence its minimal coefficient object is
 \mathcal K_{\ell_j^{-1}\ell_k^{-1}}
 \otimes\mathbb Q\langle(1,-1)\rangle.
 }
+\]
 
 The first factor is the product of the two source contact Kummer lines. The
 second is the constant kernel line of the route-sum map.

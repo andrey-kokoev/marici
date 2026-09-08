@@ -108,7 +108,7 @@ The local quadrupole Jacobian is
 
 \[
 4(Y_i^2+Z_i^2)
-=-rac{Lambda(P_i,y_{i-1,i},y_{i,i+1})}{P_i^2}.
+=-\frac{Lambda(P_i,y_{i-1,i},y_{i,i+1})}{P_i^2}.
 \]
 
 Hence rank is lost only when the corresponding apex/base face is collinear.
@@ -117,12 +117,7 @@ also already frozen support.
 
 ## Result
 
-\[
-\boxed{
-\text{all three occurrence-labelled finite-$q$ tensor vertices are compiled
-from the existing Gram and Cayley--Menger coefficient sheets.}
-}
-\]
+All three occurrence-labelled finite-\(q\) tensor vertices are compiled from the existing Gram and Cayley–Menger coefficient sheets.
 
 This is evidence for H2's shared Carrier plus sector-specific coefficient
 objects: spin two uses the scalar carrier's orientation cover without adding

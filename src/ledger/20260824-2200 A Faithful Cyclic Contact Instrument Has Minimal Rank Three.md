@@ -32,6 +32,7 @@ representation:
 \boxed{
 K_{\rm ct}\longrightarrow\mathbb Q[C_3].
 }
+\]
 
 Entry 2197's diagonal conormal map realizes this minimal algebraic type at
 generic contact kinematics.
@@ -51,4 +52,3 @@ false reconstruction theorem.
 
 - Entries 2197–2199
 - `research/benincasa/checkers/minimal_cyclic_route_instrument.rs`
-

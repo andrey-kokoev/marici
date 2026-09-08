@@ -55,6 +55,7 @@ R_{\rm edge}
 =
 -8\operatorname{diag}(C_{12},C_{23},C_{31}).
 }
+\]
 
 ## Consequence
 
@@ -69,6 +70,7 @@ This substantially narrows the physical question:
 \text{Can the source couple a probe to whether one specific final edge was
 deleted?}
 }
+\]
 
 The other two edge-counting directions are exact spectators for that
 channel.

@@ -34,6 +34,7 @@ gives
 \boxed{
 \frac{\partial}{\partial\log K_e}\log K_S=1_{e\in S}.
 }
+\]
 
 This is exactly the edge-deletion counting operator of Entries 2195 and
 2207.
@@ -62,4 +63,3 @@ separate question.
   erased-edge rules surrounding equations (2.8)–(2.14)
 - Entries 2205–2210
 - `research/benincasa/checkers/gaussian_kernel_deletion_tangent.rs`
-

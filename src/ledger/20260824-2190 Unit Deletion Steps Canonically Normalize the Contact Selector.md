@@ -49,6 +49,7 @@ Therefore
 \boxed{
 \Phi(N_{\rm del})=-1
 }
+\]
 
 is canonically normalized by the existing source grading.
 

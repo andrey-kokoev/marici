@@ -36,6 +36,7 @@ Differentiation before imposing the physical slice gives
 \boxed{
 F'(1)=8C(2-3)=-8C.
 }
+\]
 
 This equals Entry 2189's deletion-Euler activation exactly:
 
@@ -66,6 +67,7 @@ Therefore
 \text{ is source-normalized coefficient data but not yet a physical
 observable.}
 }
+\]
 
 This parallels Entry 2107's transverse Keldysh response, with a crucial
 difference: the Keldysh difference source has an operational in-in meaning,

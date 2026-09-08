@@ -77,6 +77,7 @@ lies in
 \boxed{
 \operatorname{im}\widetilde T\cap\ker\sigma,
 }
+\]
 
 not in \(\ker\widetilde T\). It is therefore a genuine
 destructive-interference packet rather than route loss.

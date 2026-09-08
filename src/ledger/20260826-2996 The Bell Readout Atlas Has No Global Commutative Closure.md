@@ -30,15 +30,15 @@ The frozen joint law is
 [
 p(a,bmid x,y)
 =
-rac14left(1+abE_{xy}ight),
+\frac14left(1+abE_{xy}ight),
 ]
 
 with
 
 [
-E_{00}=E_{01}=E_{10}=-rac1{sqrt2},
+E_{00}=E_{01}=E_{10}=-\frac1{sqrt2},
 qquad
-E_{11}=rac1{sqrt2}.
+E_{11}=\frac1{sqrt2}.
 ]
 
 Every probability is positive and every context normalizes to one.
@@ -48,9 +48,9 @@ Every probability is positive and every context normalizes to one.
 Contexts sharing (A_x) agree on its marginal, and contexts sharing (B_y) agree on its marginal:
 
 [
-sum_b p(a,bmid x,y)=rac12,
+sum_b p(a,bmid x,y)=\frac12,
 qquad
-sum_a p(a,bmid x,y)=rac12.
+sum_a p(a,bmid x,y)=\frac12.
 ]
 
 Thus the four local closures glue consistently on every pairwise overlap.  The obstruction below is not a mismatch of local marginals and not a signalling defect.

@@ -8,6 +8,7 @@ Every grade-two or grade-three component pole involving two loop distances has t
 \boxed{
 p_f-L^2,
 }
+\]
 
 where `L` is the component site-energy sum and `P_f^2=p_f` is the squared separation of the two distance foci.
 
@@ -37,6 +38,7 @@ Restrict the three-site Cayley--Menger determinant to this hyperplane and impose
 \boxed{
 p_f^2(p_f-L^2)^3\Lambda(p_1,p_2,p_3)^3.
 }
+\]
 
 Thus the generic component threshold is
 
@@ -87,6 +89,7 @@ Hence their Landau support is exactly
 \qquad
 \nu_i=P_i^2-X_i^2.
 }
+\]
 
 These are the same labelled normal directions whose square-free second-normal products appeared in Entry 698's generic lower algebraic-letter sector.
 
@@ -108,6 +111,7 @@ all three isolated-contact thresholds collapse identically. Therefore their info
 \longrightarrow
 \text{the existing labelled }(\nu_1,\nu_2,\nu_3)\text{ normal module}.
 }
+\]
 
 This is a cross-check of H2 and of the port-adapter architecture. The wavefunction-to-correlator map does not generate a new quartic home; it exposes the same normal directions through a different physical readout.
 
@@ -126,4 +130,3 @@ Compute the first nonzero associated grade of the component-resolved correlator 
 \]
 
 matching the generic lower-sector module—without inserting cross-sector coherence by hand.
-

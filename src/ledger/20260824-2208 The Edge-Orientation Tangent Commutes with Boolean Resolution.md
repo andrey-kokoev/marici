@@ -31,11 +31,11 @@ which is exactly the directly defined resolved-cell orientation tangent.
 Hence the square
 
 \[
-\begin{CD}
-\text{overlap coefficients}@>{Z}>>\text{resolved cell weights}\\
-@V{\delta_e}VV @VV{\delta_e}V\\
-\text{overlap tangents}@>{Z}>>\text{resolved tangents}
-\end{CD}
+\begin{array}{ccc}
+\text{overlap coefficients} & \xrightarrow{Z} & \text{resolved cell weights}\\
+\delta_e\,\downarrow & & \downarrow\,\delta_e\\
+\text{overlap tangents} & \xrightarrow{Z} & \text{resolved tangents}
+\end{array}
 \]
 
 commutes for all three labelled edges.
@@ -54,4 +54,3 @@ Boolean resolution; arbitrary unrelated triangulations are not yet covered.
 
 - Entries 2206–2207
 - `research/benincasa/checkers/boolean_zeta_comparison_square.rs`
-

@@ -25,6 +25,7 @@ K_{\rm ct}
 \longrightarrow
 T^*_{w_{\rm phys}}\mathcal W_{\rm orient},
 }
+\]
 
 where \(\mathcal W_{\rm orient}\) denotes the local space of relative weight
 assignments on the frozen subdivision.
@@ -50,4 +51,3 @@ the Boolean cover.
 - Benincasa–Dian discussion of variable relative weights following the
   weighted-triangle adjoint conditions
 - `research/benincasa/checkers/orientation_moduli_conormal.rs`
-

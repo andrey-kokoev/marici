@@ -36,6 +36,7 @@ Thus
 K/K^{(1)}
 =\text{the part of the scalar-hidden kernel visible at first Gaussian order}.
 }
+\]
 
 ## Architectural status
 
@@ -48,4 +49,3 @@ than a metaphor.
 
 - Entries 2199 and 2227–2228
 - `research/benincasa/checkers/deletion_score_observability.rs`
-

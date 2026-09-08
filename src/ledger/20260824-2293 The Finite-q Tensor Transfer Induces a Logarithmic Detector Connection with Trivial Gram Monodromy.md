@@ -15,6 +15,7 @@ derived tensor transfer \(T\) therefore induces the unique detector connection
 \boxed{
 A_D=dT\,T^{-1}
 }
+\]
 
 for which
 

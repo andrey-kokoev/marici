@@ -58,6 +58,7 @@ Thus the source deletion grading supplies a nonzero representative of Entry
 \boxed{
 \Phi(N_{\rm del})=2-3=-1.
 }
+\]
 
 ## Interpretation
 
@@ -79,6 +80,7 @@ The missing datum has narrowed again:
 \text{not an arbitrary mixed port, but physical access to the already
 existing deletion-grade Euler operator.}
 }
+\]
 
 No new Carrier cell, contour branch, or coefficient system is needed at the
 algebraic level.

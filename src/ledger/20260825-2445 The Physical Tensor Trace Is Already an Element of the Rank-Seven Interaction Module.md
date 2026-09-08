@@ -32,7 +32,7 @@ For site 1, Entry 2443 gives
 \[
 Q^{\rm even}_1
 =Y_1^2-Z_1^2
-=-rac{N_1^2+4P_1^2K_{\rm CM}}
+=-\frac{N_1^2+4P_1^2K_{\rm CM}}
 {4P_1^2\Lambda(P_1,P_2,P_3)}.
 \]
 
@@ -78,12 +78,7 @@ combination of the seven already certified interaction actions.
 
 ## Result
 
-\[
-\boxed{
-\text{the physical parity-even finite-$q$ tensor trace deforms the existing
-rank-seven interaction action rather than enlarging it.}
-}
-\]
+The physical parity-even finite-\(q\) tensor trace deforms the existing rank-seven interaction action rather than enlarging it.
 
 This extends algebraic contextual faithfulness to the generic tensor trace.
 The remaining genuinely new structure is the Ward/contact totalization and

@@ -62,6 +62,7 @@ product. Removing only that Cartier factor gives
 =
 \frac1{\widehat\ell_j\widehat\ell_k}(8,-8).
 }
+\]
 
 This is nonzero and remains in the kernel of the sum readout. Therefore the
 first nonvanishing normal grade preserves destructive interference even

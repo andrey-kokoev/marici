@@ -36,6 +36,7 @@ Thus
 \boxed{
 \operatorname{Pole}(R_{jk})=V(\ell_j\ell_k),
 }
+\]
 
 with logarithmic order one on each component.
 
@@ -50,4 +51,3 @@ that was already present.
 
 - Entries 2135–2136, 2177, and 2219
 - `research/benincasa/checkers/contact_pole_score_residue.rs`
-

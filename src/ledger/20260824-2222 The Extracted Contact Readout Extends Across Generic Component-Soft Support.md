@@ -26,6 +26,7 @@ specializes as
 \right)
 =-8C_e.
 }
+\]
 
 The nearby score inertia is trivial, and no additional soft-supported class
 or coherence cell appears.
@@ -49,4 +50,3 @@ must retain their own Gysin/decay analysis.
 
 - Entries 2176–2178 and 2219–2221
 - `research/benincasa/checkers/soft_contact_score_nearby.rs`
-

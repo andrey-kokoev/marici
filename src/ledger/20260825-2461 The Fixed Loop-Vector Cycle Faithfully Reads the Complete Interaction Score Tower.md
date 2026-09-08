@@ -44,7 +44,7 @@ v_3=(P_2,0,0),
 v_4=
 \left(
 \frac{P_1^2+P_2^2-P_3^2}{2P_2},
-\sqrt{P_1^2-left(
+\sqrt{P_1^2-\left(
 \frac{P_1^2+P_2^2-P_3^2}{2P_2}
 \right)^2},0
 \right),

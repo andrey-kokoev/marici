@@ -27,6 +27,7 @@ Therefore
 \boxed{
 K^{(1)}_{\triangle,\rm ct}=0.
 }
+\]
 
 Every scalar-hidden contact direction is visible with one quadratic Gaussian
 score insertion. Higher mixed-score orders are unnecessary for this kernel.
@@ -41,4 +42,3 @@ and the physical evaluation theorem must remain distinct.
 
 - Entries 2196, 2219, and 2228–2229
 - `research/benincasa/checkers/triangle_score_observability.rs`
-

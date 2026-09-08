@@ -15,12 +15,12 @@ L_+(s)e_p=p^{-s}e_p,
 L_-(s)e_p=p^{s-1}e_p
 \]
 
-belong to Schatten class three on (\Re s>1/3\) and
-(\Re s<2/3\), respectively.  Their charts overlap across the critical
+belong to Schatten class three on \(\Re s>1/3\) and
+\(\Re s<2/3\), respectively.  Their charts overlap across the critical
 seam.
 
 Neither regularized determinant can vanish on its chart: an eigenvalue one
-would force (\Re s=0\) for (L_+\) or (\Re s=1\) for (L_-\).
+would force \(\Re s=0\) for \(L_+\) or \(\Re s=1\) for \(L_-\).
 Their overlap transition is therefore a nowhere-zero unit.
 
 The determinant-three Euler object is a coherent reciprocal carrier, not the

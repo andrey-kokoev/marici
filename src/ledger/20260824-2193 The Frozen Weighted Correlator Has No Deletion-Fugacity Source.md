@@ -44,6 +44,7 @@ Therefore
 F'(1)=-8C
 \text{ is not presently a source derivative of a physical coupling.}
 }
+\]
 
 It remains an exact filtered coefficient selector.
 

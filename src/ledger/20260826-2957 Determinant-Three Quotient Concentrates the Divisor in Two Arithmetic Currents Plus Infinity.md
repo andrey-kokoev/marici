@@ -15,8 +15,8 @@ R_+(s)=\Xi(s)\det_3(I-L_s),
 L_se_p=p^{-s}e_p.
 \]
 
-The determinant-three factor is a nowhere-zero unit, so (R_+\) has exactly
-the divisor of (\Xi\).  In the Euler chamber,
+The determinant-three factor is a nowhere-zero unit, so \(R_+\) has exactly
+the divisor of \(\Xi\).  In the Euler chamber,
 
 \[
 R_+(s)

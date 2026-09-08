@@ -19,6 +19,7 @@ grade-three route does. Therefore
 \[
 \frac{\partial}{\partial\log K_e}(A_e+B_e)
 =B_e=-8C_e.
+\]
 
 Since \(K_e=(2\operatorname{Re}\psi_2(y_e))^{-1}\),
 
@@ -27,6 +28,7 @@ Since \(K_e=(2\operatorname{Re}\psi_2(y_e))^{-1}\),
 \frac{\partial}{\partial\log\operatorname{Re}\psi_2(y_e)}
 (A_e+B_e)=+8C_e.
 }
+\]
 
 The shared erased edges contribute equally to both routes and cancel from
 the edge-specific response.
@@ -43,6 +45,7 @@ linear susceptibility of the source-defined probability distribution:
 \quad+\quad
 \text{nonzero boundary-state response}.
 }
+\]
 
 This is physical readout at the level of a controlled family of boundary
 states. It does not imply that a single fixed-state measurement reconstructs
@@ -52,4 +55,3 @@ the three routes.
 
 - Entries 2195, 2201, and 2211
 - `research/benincasa/checkers/gaussian_contact_susceptibility.rs`
-

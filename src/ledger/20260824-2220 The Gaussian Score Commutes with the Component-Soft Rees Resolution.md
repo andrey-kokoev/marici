@@ -50,6 +50,7 @@ The chart transition introduces no defect:
 \boxed{
 [\operatorname{Rees}_{(q,y)},\lambda\partial_\lambda]=0.
 }
+\]
 
 ## Distinction of directions
 
@@ -62,4 +63,3 @@ the false commutator that would result from identifying them.
 
 - Entries 2176 and 2219
 - `research/benincasa/checkers/soft_rees_score_commutation.rs`
-

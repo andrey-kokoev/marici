@@ -37,7 +37,7 @@ changes sign at the unique physical root
 49y^4+98y^3-8y-4=0,
 \]
 
-corresponding to (C_*=1.08411717002567\ldots\).  Below that reserve,
+corresponding to \(C_*=1.08411717002567\ldots\).  Below that reserve,
 the cubic gate requires positive flux; above it, negative flux is permitted
 only up to the explicit budget.
 

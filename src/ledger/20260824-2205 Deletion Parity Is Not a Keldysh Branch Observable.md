@@ -35,6 +35,7 @@ Therefore
 \text{deletion parity is a weighted-geometry orientation character,
 not a declared Keldysh outcome.}
 }
+\]
 
 ## Correction to the dilation lane
 
@@ -52,4 +53,3 @@ unpacking of the published Keldysh–Schwinger construction.
 
 - Benincasa–Dian, arXiv:2401.05207, equations (2.13)–(2.14), (4.66)–(4.71)
 - `research/benincasa/checkers/deletion_parity_provenance.rs`
-

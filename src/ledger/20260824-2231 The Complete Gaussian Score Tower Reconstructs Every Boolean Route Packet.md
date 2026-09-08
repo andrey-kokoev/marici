@@ -30,6 +30,7 @@ This is the upper Boolean zeta transform. Möbius inversion reconstructs
 v_S
 =\sum_{T\supseteq S}(-1)^{|T|-|S|}M_T.
 }
+\]
 
 Hence all mixed Gaussian responses through order \(|E|\), including the
 zeroth scalar value, reconstruct the entire Boolean route packet exactly.
@@ -49,4 +50,3 @@ high-order score insertions remains sector-dependent.
 
 - Entries 2227–2230
 - `research/benincasa/checkers/boolean_score_tomography.rs`
-

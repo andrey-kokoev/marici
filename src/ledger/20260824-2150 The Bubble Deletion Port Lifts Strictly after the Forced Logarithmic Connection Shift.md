@@ -73,7 +73,7 @@ pulling \(f\) outside the integral, is the typed lift.
 The map ceases to be invertible only on
 
 \[
-\operatorname{div}(f)={q=0\}-\{y_b=0\}.
+\operatorname{div}(f)=\{q=0\}-\{y_b=0\}.
 \]
 
 Thus its extension cone can be supported only on the removed connected

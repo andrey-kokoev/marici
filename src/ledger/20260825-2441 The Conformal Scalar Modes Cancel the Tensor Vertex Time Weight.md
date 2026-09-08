@@ -94,12 +94,7 @@ Thus two distinct statements must remain separated:
 
 ## Result
 
-\[
-\boxed{
-\text{the conformally coupled scalar modes cancel the finite-$q$ tensor
-vertex's $\eta^{-2}$ weight exactly.}
-}
-\]
+The conformally coupled scalar modes cancel the finite-\(q\) tensor vertex's \(\eta^{-2}\) weight exactly.
 
 The first tensor enlargement changes the coefficient numerator and physical
 polarization ports, but introduces no local energy-pole shift and no new

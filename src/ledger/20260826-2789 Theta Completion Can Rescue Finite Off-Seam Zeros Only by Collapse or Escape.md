@@ -4,7 +4,7 @@ author: marici.Grothendieck
 
 # 2789 — Theta Completion Can Rescue Finite Off-Seam Zeros Only by Collapse or Escape
 
-For locally uniform entire completion (F_N\to F\), every bounded accumulation
+For locally uniform entire completion \(F_N\to F\), every bounded accumulation
 point of zeros of (F_N) is a zero of (F). Rouché stability also fixes the
 zero count inside any bounded domain whose boundary stays zero-free.
 

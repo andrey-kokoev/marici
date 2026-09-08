@@ -76,6 +76,7 @@ The selected covariance also obeys the source stationarity equation
 \boxed{
 \text{A degenerate Gaussian frequency enlarges the source-frame stabilizer but does not create a covariance-lens modulus.}
 }
+\]
 
 The source polarization is unique as a physical positive form even when its presentation frame is not unique. The residual \(U(2)\) freedom is gauge internal to the source factorization.
 
@@ -87,6 +88,7 @@ This sharpens the cross-sector architecture:
 \longrightarrow
 \text{unique physical lens modulo source-frame gauge}.
 }
+\]
 
 ## Provenance
 

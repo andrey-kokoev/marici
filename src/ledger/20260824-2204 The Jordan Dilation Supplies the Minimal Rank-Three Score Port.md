@@ -40,6 +40,7 @@ The required preaggregation detector now has a canonical finite model:
 +\text{ parity readout}
 +\text{ three edge scores}.
 }
+\]
 
 This confirms algebraic realizability and minimal rank. It does not prove
 physical realization: no such sampler, ancilla, or parity observable has
@@ -54,4 +55,3 @@ whose measured parity is \(\chi\).
 
 - Entries 2197 and 2200–2203
 - `research/benincasa/checkers/deletion_edge_score_port.rs`
-

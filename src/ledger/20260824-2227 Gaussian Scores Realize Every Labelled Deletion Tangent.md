@@ -22,6 +22,7 @@ For every labelled edge,
 \boxed{
 \partial_{\log K_e}\log K_S=1_{e\in S}.
 }
+\]
 
 Thus the direct sum of normalized quadratic scores realizes the full labelled
 deletion tangent space before the physical momentum-function pullback:
@@ -45,4 +46,3 @@ graph- and coefficient-specific calculation.
 
 - Entries 2211–2216 and 2226
 - `research/benincasa/checkers/all_edge_gaussian_scores.rs`
-

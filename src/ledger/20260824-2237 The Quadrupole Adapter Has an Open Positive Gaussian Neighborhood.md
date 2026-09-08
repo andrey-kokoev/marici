@@ -26,6 +26,7 @@ throughout the open cone
 \boxed{
 a_0>\sqrt{u^2+v^2}.
 }
+\]
 
 The isotropic state \((u,v)=(0,0)\) lies in its interior. The quadrupole
 scores are therefore honest tangent observables of nearby positive states,
@@ -49,4 +50,3 @@ Gaussian sector while remaining invisible in the isotropic sector.
 
 - Entries 2235–2236
 - `research/benincasa/checkers/anisotropic_gaussian_positivity.rs`
-

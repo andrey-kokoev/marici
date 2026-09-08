@@ -43,7 +43,7 @@ with logarithmic form
 \alpha_{32}\cdot dH=d\log\frac{X_3}{X_2}.
 \]
 
-Its cyclic orbit spans (A_2\) and sums to zero.
+Its cyclic orbit spans \(A_2\) and sums to zero.
 
 In a two-root basis, the cyclic action is
 

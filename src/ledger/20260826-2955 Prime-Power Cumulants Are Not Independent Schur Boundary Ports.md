@@ -28,7 +28,7 @@ unauthorized cross terms.
 The additive entire theta Schur section and the multiplicative labelled Euler
 determinant are legitimate realizations of different variance.  Their native
 comparison belongs at determinant-line level.  Moreover, prime-power length
-is not a well-founded state grade: every (L_s^k\) is a closed return to the
+is not a well-founded state grade: every \(L_s^k\) is a closed return to the
 same prime mode, so the proposed strictly raising triangularity law is false.
 
 The next legitimate object is a source-derived comparison between the theta

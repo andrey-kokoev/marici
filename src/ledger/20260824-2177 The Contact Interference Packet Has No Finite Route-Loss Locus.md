@@ -47,6 +47,7 @@ Therefore
 \boxed{
 V(\ell_iC_i-1,C_i)=\varnothing
 }
+\]
 
 on the finite affine source base. Equivalently, (C_i) is a unit wherever
 the contact chart is defined. It has poles on (ell_i=0), not zeros.
@@ -66,6 +67,7 @@ Since (C_jC_k) has no finite zero,
 \text{the packet never degenerates to route loss on the finite
 component-soft blowup.}
 }
+\]
 
 The finite branch is therefore classified completely as destructive
 interference, including its exceptional component-soft specialization.
