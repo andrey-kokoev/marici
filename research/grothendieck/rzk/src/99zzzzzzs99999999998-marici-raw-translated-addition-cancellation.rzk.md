@@ -35,6 +35,47 @@ explicit integer cross-product cancellation identity.
                       (marici-int-add
                         (marici-scale-by-positive-denominator a e)
                         (marici-scale-by-positive-denominator b d)) d)
+                    (marici-scale-by-positive-denominator
+                      (marici-int-negate a)
+                      (marici-positive-product-predecessor d e)))
+                  (marici-int-positive-denominator e))
+                (marici-int-mul
+                  (marici-int-add
+                    (marici-scale-by-positive-denominator
+                      (marici-int-add
+                        (marici-scale-by-positive-denominator a e)
+                        (marici-scale-by-positive-denominator b d)) d)
+                    (marici-int-negate
+                      (marici-scale-by-positive-denominator a
+                        (marici-positive-product-predecessor d e))))
+                  (marici-int-positive-denominator e))
+                (marici-scale-by-positive-denominator b
+                  (marici-positive-product-predecessor
+                    (marici-positive-product-predecessor d e) d))
+                (ap MariciInt MariciInt
+                  (marici-scale-by-positive-denominator
+                    (marici-int-negate a)
+                    (marici-positive-product-predecessor d e))
+                  (marici-int-negate
+                    (marici-scale-by-positive-denominator a
+                      (marici-positive-product-predecessor d e)))
+                  (\ scaled → marici-int-mul
+                    (marici-int-add
+                      (marici-scale-by-positive-denominator
+                        (marici-int-add
+                          (marici-scale-by-positive-denominator a e)
+                          (marici-scale-by-positive-denominator b d)) d)
+                      scaled)
+                    (marici-int-positive-denominator e))
+                  (marici-scale-by-positive-denominator-negate a
+                    (marici-positive-product-predecessor d e)))
+                (concat MariciInt
+                (marici-int-mul
+                  (marici-int-add
+                    (marici-scale-by-positive-denominator
+                      (marici-int-add
+                        (marici-scale-by-positive-denominator a e)
+                        (marici-scale-by-positive-denominator b d)) d)
                     (marici-int-negate
                       (marici-scale-by-positive-denominator a
                         (marici-positive-product-predecessor d e))))
@@ -116,7 +157,7 @@ explicit integer cross-product cancellation identity.
                         (marici-int-positive-denominator d)
                         (marici-int-positive-denominator e))
                       (marici-int-positive-denominator d))
-                    (marici-nested-positive-denominator-product d e))))
+                    (marici-nested-positive-denominator-product d e)))))
           )
 ```
 
