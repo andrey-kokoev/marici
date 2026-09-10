@@ -1,5 +1,27 @@
 # Marici Agent Instructions
 
+## Stacks Project search
+
+When investigating the Stacks Project source from Marici, use the read-only
+`stacks:search` passthrough rather than assuming `--term` covers every phrase:
+
+```bash
+pnpm --silent run stacks:search -- --combined "derived hom"
+pnpm --silent run stacks:search -- --term --text "derived hom"
+pnpm --silent run stacks:search -- --text --kind label --refs-to 01II schemes
+```
+
+`--combined` searches source text, definition terms, structural records, and
+references to matching labels/tags. Explicit modes are additive and
+`--refs-to` is repeatable. The passthrough lives at
+`scripts/stacks-search.mjs`, defaults to the sibling `../stacks-project`
+checkout, and accepts `STACKS_PROJECT_ROOT` and `STACKS_PYTHON` overrides. See
+`scripts/search.py --help` for the complete option list.
+
+## PDF search
+
+Use `pnpm pdf:search` to search the page-indexed PDFs under `references/`.
+
 ## Canonical team identities
 
 Use these canonical identities and research responsibilities throughout this

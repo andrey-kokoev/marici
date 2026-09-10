@@ -6,6 +6,9 @@ open import Cubical.Data.Empty using (⊥)
 open import DGPyramidStructuralPrediction
 open import DGPyramidNormalizationDualityDilation
 open import DGPyramidAllDegreeEndpointTangential
+open import DGPyramidReflectedConormalButterfly
+open import DGPyramidAugmentedResidueCandidateAudit
+open import DGPyramidPhysicalEndpointPullback
 
 -- Specification of the smallest target on which the reference quadratic
 -- short-Rees experiment is well typed.  No inhabitant is manufactured from
@@ -57,6 +60,7 @@ record ReferenceQuadraticDefectExperiment {ℓ : Level}
   (Duality : FullConductorTwoGradeDualityCertificate {ℓ})
   (EndpointClasses : SupportedEndpointClassCertificate {ℓ})
   (Tangential : TangentialDualityScalarPairingCertificate {ℓ})
+  (EndpointPullback : PhysicalEndpointPullbackCertificate {ℓ})
   : Type (ℓ-suc ℓ) where
   field
     ReferenceQuadraticSource TargetHomComplex : Type ℓ
@@ -77,6 +81,9 @@ record ReferenceQuadraticDefectExperiment {ℓ : Level}
     supportedEndpointNullClassesNotPromotedToPhysicalConnectors : Type ℓ
     primitiveGenericSupportedClassRetained : Type ℓ
     scalarTangentialReadoutDoesNotReplaceTwoGradeTarget : Type ℓ
+    sameTargetPrimitiveEndpointPullbackIsNotUsed : Type ℓ
+    eulerEvaluatedEndpointComparisonIsNotUsed : Type ℓ
+    endpointRelativeOperationKernelIsRetained : Type ℓ
     primaryCoordinateIsUnit : Type ℓ
     reciprocalECoordinateIsUnit : Type ℓ
     reciprocalRCoordinateIsZero : Type ℓ
@@ -101,4 +108,12 @@ record EnhancedPhysicalCollarConstructionBoundary {ℓ : Level}
     principalLineRepairPasses : Type ℓ
     MissingNormalCechEndpointQDifferential : Type ℓ
     missingChainTarget : MissingNormalCechEndpointQDifferential
+    reflectedConormalButterflyBoundary :
+      ReflectedConormalButterflyConstructionBoundary {ℓ}
+    reducedRoadBaseNullCandidate : ReducedRoadBaseNullCandidate {ℓ}
+    augmentedResidueSelectionGate :
+      AugmentedResidueSelectionGate reducedRoadBaseNullCandidate
+    physicalEndpointPullback : PhysicalEndpointPullbackCertificate {ℓ}
+    endpointComparisonDeformationFibre :
+      EndpointComparisonDeformationFibre physicalEndpointPullback
     noReferenceHomBeforeTargetDifferential : Type ℓ

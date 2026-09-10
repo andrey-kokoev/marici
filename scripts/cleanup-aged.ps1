@@ -15,6 +15,11 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
 $repo = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path
+$gitCommand = Get-Command git.exe -ErrorAction SilentlyContinue
+$gitPath = if ($gitCommand) { $gitCommand.Source } else { Join-Path ${env:ProgramFiles} 'Git\cmd\git.exe' }
+if (-not (Test-Path -LiteralPath $gitPath -PathType Leaf)) {
+  throw "Could not resolve git.exe; checked PATH and '$gitPath'."
+}
 $cutoff = (Get-Date).ToUniversalTime().AddMinutes(-$OlderThanMinutes)
 $maxPathsPerCommit = 200
 $temporaryPattern = '(^|/)(tmp|temp|\.check-tmp[^/]*)(/|$)|(^|/).*\.(tmp|bak|swp)$|(^|/)tmp\.json$'
@@ -35,7 +40,6 @@ $commitMessages = @{
 function Invoke-Git {
   param([Parameter(ValueFromRemainingArguments)][string[]]$Arguments)
 
-  $gitPath = (Get-Command git.exe -ErrorAction Stop).Source
   $startInfo = [System.Diagnostics.ProcessStartInfo]::new()
   $startInfo.FileName = $gitPath
   $startInfo.UseShellExecute = $false
@@ -75,7 +79,6 @@ function Invoke-GitQuiet {
 function Invoke-GitAdd {
   param([string[]]$Paths)
 
-  $gitPath = (Get-Command git.exe -ErrorAction Stop).Source
   $startInfo = [System.Diagnostics.ProcessStartInfo]::new()
   $startInfo.FileName = $gitPath
   $startInfo.UseShellExecute = $false
@@ -111,7 +114,8 @@ function Invoke-GitAdd {
 }
 
 function Get-DirtyRecords {
-  $raw = [string]::Join('', (& git -C $repo -c core.quotepath=false status --porcelain=v1 -z -uall))
+  $statusOutput = @(& $gitPath -C $repo -c core.quotepath=false status --porcelain=v1 -z -uall)
+  $raw = if ($statusOutput.Count -eq 0) { '' } else { [string]::Join('', $statusOutput) }
   if ($LASTEXITCODE -ne 0) { throw 'git status failed' }
 
   foreach ($item in ($raw -split [char]0 | Where-Object { $_ })) {

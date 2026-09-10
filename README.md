@@ -29,21 +29,9 @@ invocation, is documented in narada/docs/deployment/site-ui-and-wrangler.md.
 
 ## Stacks Project search
 
-Marici exposes the Stacks Project structural and mathematical search index through
-`stacks:search`:
+See `AGENTS.md` for the agent-oriented search workflow and
+`scripts/stacks-search.mjs` for the passthrough entry point.
 
-```bash
-pnpm run stacks:search -- --kind theorem --query "Noetherian"
-pnpm run stacks:search -- --combined "derived hom" --limit 20
-pnpm run stacks:search -- --math "\\to" --limit 20
-pnpm --silent run stacks:search -- --kind theorem --file "algebraization.tex" --json
-```
-
-The passthrough lives at `scripts/stacks-search.mjs` and uses the sibling
-`../stacks-project` checkout by default. Set `STACKS_PROJECT_ROOT` to point at a
-different checkout, or `STACKS_PYTHON` to select a Python executable. Arguments
-are forwarded to `stacks-project/scripts/search.py` unchanged. Use `pnpm --silent`
-for machine-readable JSON so pnpm lifecycle output does not precede the result.
 
 ## Public epistemic graph
 

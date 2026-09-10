@@ -21,9 +21,24 @@ function render(){{clear();if(mode==='span'){{const ns=view.span.nodes;const gro
 function resize(){{const d=document.querySelector('#scene'),w=d.clientWidth,h=d.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h)}}window.addEventListener('resize',resize);for(const id of ['span','dual'])document.querySelector('#'+id).onclick=()=>{{mode=id==='span'?'span':'requirement_dual';document.querySelector('#span').classList.toggle('active',mode==='span');document.querySelector('#dual').classList.toggle('active',mode!=='span');render()}};document.querySelector('#simulate').onclick=()=>{{simulated=!simulated;document.querySelector('#simulate').classList.toggle('active',simulated);if(JSON.stringify(payload.contract)!==sourceSnapshot)throw Error('simulation mutated contract')}};resize();render();(function loop(){{controls.update();renderer.render(scene,camera);requestAnimationFrame(loop)}})();
 </script></body></html>'''
 
+def write_rh_net_viewer(source, output):
+    """Render one RH net contract path (or mapping) to an HTML output path."""
+    contract = (json.loads(Path(source).read_text(encoding="utf-8"))
+                if not isinstance(source, dict) else source)
+    output = Path(output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(render_rh_net(contract), encoding="utf-8")
+    return {
+        "passed": True,
+        "output": str(output),
+        "bytes": output.stat().st_size,
+        "renderer": "three-css3d",
+    }
+
+
 def main():
     root=Path(__file__).resolve().parents[3]
-    contract=json.loads((root/'research/aspect/contracts/theta-rh-interaction-net-state.v2.json').read_text(encoding='utf-8'))
-    out=root/'research/aspect/results/rh_net_viewer.html';out.write_text(render_rh_net(contract),encoding='utf-8')
-    print(json.dumps({'output':str(out.relative_to(root)),'bytes':out.stat().st_size,'passed':True}))
+    source=root/'research/aspect/contracts/theta-rh-interaction-net-state.v2.json'
+    out=root/'research/aspect/results/rh_net_viewer.html'
+    print(json.dumps(write_rh_net_viewer(source, out)))
 if __name__=='__main__':main()

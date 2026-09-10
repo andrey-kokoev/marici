@@ -51,6 +51,7 @@ open import DGPyramidConductorFormalTower
 open import DGPyramidStructuralPrediction
 open import DGPyramidNormalizationDualityDilation
 open import DGPyramidAllDegreeEndpointTangential
+open import DGPyramidPhysicalEndpointPullback
 open import DGPyramidSupportedTraceDuality
 open import DGPyramidConductorChannels
 open import DGPyramidJointConductorCone
@@ -130,6 +131,7 @@ record PartialMariciPacket {ℓ : Level} (P : DGPyramidBoundary {ℓ})
     allDegreeConductorComparison : AllDegreeConductorComparisonCertificate {ℓ}
     supportedEndpointClasses : SupportedEndpointClassCertificate {ℓ}
     tangentialDualityScalarPairing : TangentialDualityScalarPairingCertificate {ℓ}
+    physicalEndpointPullback : PhysicalEndpointPullbackCertificate {ℓ}
     endpointCompleteTCellPyramid : EndpointCompleteTCellPyramidCertificate {ℓ}
     supportedOccurrenceTrace : SupportedOccurrenceTraceCertificate {ℓ}
     wholeKoszulGysin : WholeKoszulGysinCertificate {ℓ}
@@ -546,6 +548,11 @@ record PartialMariciPacket {ℓ : Level} (P : DGPyramidBoundary {ℓ})
     endpointScalarComparisonWitness :
       EndpointScalarComparisonCompatibility allDegreeConductorComparison
         supportedEndpointClasses tangentialDualityScalarPairing
+
+    PhysicalEndpointPullbackCompatibility :
+      PhysicalEndpointPullbackCertificate {ℓ} → Type ℓ
+    physicalEndpointPullbackWitness :
+      PhysicalEndpointPullbackCompatibility physicalEndpointPullback
 
     EndpointCompleteDescentCompatibility :
       EndpointCompleteTCellPyramidCertificate {ℓ} →

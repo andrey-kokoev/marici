@@ -110,6 +110,9 @@ G4_HOSTILE_IDS=[
  "seam_scalar_substitutes_for_maximal_isotropic_state",
  "pointwise_kernel_inclusion_substitutes_for_module_length"]
 G4_OPEN={
+ "conservative_green_complex","exact_evans_history_domain",
+ "three_port_block_domain_membership","five_port_arithmetic_summability",
+ "maximal_isotropic_evans_domain",
  "prime_shell_adjoint_residual_family","global_fourier_poisson_response_intertwining",
  "evans_to_conservative_green_chain_map",
  "holomorphic_mapping_cone_complement","local_module_length_preservation",
@@ -126,6 +129,12 @@ G4_NEGATIVE_GATES={
  "range_closure_equals_exact_range":False,
  "local_coercivity_implies_global_confinement":False}
 G4_INTERFACE_FIELDS=("coefficient_object","completion","topology","quotient","authority")
+G4_GREEN_REQUIRED_INTERFACE_FIELDS=[
+ "radial_history_carrier","first_order_differential_and_domain",
+ "zero_separation_trace","moving_shell_endpoint_traces",
+ "function_valued_wronskian_incidence","forward_shell_synthesis",
+ "hermitian_adjoint_and_analytic_transpose_returns","polarized_green_metric",
+ "arithmetic_loading_and_codiagonal","all_jet_compatible_laplace_readout"]
 def _g4_cut_sets(by, terminal):
     """Return the unresolved frontier and singleton minimal blockers for an AND dependency net."""
     memo={}
@@ -149,6 +158,8 @@ def compile_g4_rh_net_state(c):
     if len(by)!=len(nodes) or None in by:return fail("constructor_identity","constructor ids must be unique")
     interface=c.get("interface_descriptors",{}).get("g4_common")
     if not isinstance(interface,dict) or any(not interface.get(x) for x in G4_INTERFACE_FIELDS):return fail("interface_descriptor","shared G4 interface is incomplete")
+    green=by.get("conservative_green_complex",{})
+    if green.get("required_interface_fields")!=G4_GREEN_REQUIRED_INTERFACE_FIELDS:return fail("green_interface_contract","conservative Green cell must declare the complete radial-history conformance interface")
     for cell,deps in G4_TOPOLOGY.items():
         if cell not in by:return fail("g4_topology","required corrected-G4 cell is absent",constructor=cell)
         n=by[cell]
@@ -254,4 +265,3 @@ def compile_rh_net_state(c):
       "next_parallel_constructors":frontier,
       "explanation":"The programme has a typed partial net with source-authorized arithmetic-to-analytic crossings and transport, but no closed reduction class reaching the RH terminal evaluator."
     }
-
