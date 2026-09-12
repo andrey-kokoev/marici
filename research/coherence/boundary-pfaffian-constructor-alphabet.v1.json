@@ -1,0 +1,102 @@
+{
+  "schema": "marici.coherence.boundary-pfaffian-constructor-alphabet.v1",
+  "scope": "finite ordered half-line residual theory",
+  "objects": [
+    "oriented_residual_line",
+    "stationary_hyperbolic_double",
+    "broken_graph_fiber",
+    "jump_line",
+    "pfaffian_line"
+  ],
+  "constructors": [
+    {
+      "id": "translate",
+      "arity": 1,
+      "variance": "covariant",
+      "source": "stationary_hyperbolic_double",
+      "target": "stationary_hyperbolic_double",
+      "parameter": "z_nonzero",
+      "action": "diag(z,z^-1)",
+      "stationary_word_generator": true
+    },
+    {
+      "id": "reverse",
+      "arity": 1,
+      "variance": "involutive",
+      "source": "stationary_hyperbolic_double",
+      "target": "stationary_hyperbolic_double",
+      "action": "swap(in,out)",
+      "stationary_word_generator": true
+    },
+    {
+      "id": "ordered_sew",
+      "arity": 2,
+      "variance": "out_left_times_in_right",
+      "source": "oriented_residual_line_pair",
+      "target": "pfaffian_line",
+      "parameter": "positive_gap",
+      "action": "q_out(left) exp(-t gap) q_in(right)",
+      "stationary_word_generator": false
+    },
+    {
+      "id": "refine_break",
+      "arity": 1,
+      "variance": "covariant_exact_extension",
+      "source": "broken_graph_fiber_B",
+      "target": "broken_graph_fiber_B_union_c",
+      "parameter": "new_break_c",
+      "action": "0 -> D_B -> D_(B union c) -> C_c -> 0",
+      "stationary_word_generator": false
+    },
+    {
+      "id": "right_extend",
+      "arity": 1,
+      "variance": "covariant_varying_fiber",
+      "source": "broken_graph_fiber_B",
+      "target": "broken_graph_fiber_a_plus_B_union_0",
+      "parameter": "positive_shift_a",
+      "action": "extension_by_zero",
+      "stationary_word_generator": false
+    },
+    {
+      "id": "left_compress",
+      "arity": 1,
+      "variance": "relative_covariant",
+      "source": "broken_graph_fiber_B",
+      "target": "broken_graph_fiber_(B_minus_a)_positive",
+      "parameter": "positive_shift_a",
+      "action": "left_shift_with_discarded_boundary_cofiber",
+      "stationary_word_generator": false
+    },
+    {
+      "id": "endpoint_observe",
+      "arity": 1,
+      "variance": "contravariant_readout",
+      "source": "broken_graph_fiber",
+      "target": "scalar",
+      "action": "f maps_to f(0+)",
+      "stationary_word_generator": false
+    }
+  ],
+  "relations": [
+    {"id": "translation_product", "uses": ["translate"], "law": "T(z) T(w) = T(zw)"},
+    {"id": "reversal_involution", "uses": ["reverse"], "law": "R R = I"},
+    {"id": "dihedral_relation", "uses": ["reverse", "translate"], "law": "R T(z) R = T(z^-1)"},
+    {"id": "sewing_associativity_even_cuts", "uses": ["ordered_sew"], "law": "contiguous even sewing is associative"},
+    {"id": "right_jump_naturality", "uses": ["right_extend", "refine_break"], "law": "J_(a+c) S_a = J_c"},
+    {"id": "left_jump_naturality_surviving", "uses": ["left_compress", "refine_break"], "law": "J_(c-a) R_a = J_c for c>a"},
+    {"id": "endpoint_to_jump", "uses": ["right_extend", "endpoint_observe"], "law": "J_a S_a = ev_0"}
+  ],
+  "protocols": {
+    "stationary_dihedral": ["translate", "reverse"],
+    "ordered_factorization": ["ordered_sew"],
+    "graph_recollement": ["refine_break", "right_extend", "left_compress", "endpoint_observe"]
+  },
+  "forbidden_collapses": [
+    "treat_ordered_sew_as_unary_word_generator",
+    "treat_refine_break_as_endomorphism_of_one_graph_fiber",
+    "discard_left_compress_cofiber",
+    "identify_reverse_with_identity",
+    "infer_full_protocol_stabilization_from_stationary_dihedral"
+  ]
+}
