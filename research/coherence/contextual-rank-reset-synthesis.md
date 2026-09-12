@@ -159,6 +159,18 @@ H^1(\mathbb R),
 
 with kernel sections \(k_x(s)=e^{-|s-x|}\).
 
+At every finite context set \(S\), the minimal realization factors canonically as
+
+\[
+E_S
+\xrightarrow{\;1-\partial^2\;}
+F_S
+\longrightarrow
+L_-\oplus L_+,
+\]
+
+where \(E_S\) is the Green kernel span and \(F_S\) is the equally ranked family of labelled flux seams. The first arrow is an isomorphism after fixed normalization; the second is the two-moment quotient and has kernel dimension \(|S|-2\) once \(|S|\ge2\). Thus rank reset occurs at endpoint-only observation, not in the differential law.
+
 The hyperbolic double is recovered by the two asymptotic charges
 
 \[
@@ -185,6 +197,18 @@ Adding a breakpoint is not an equivalence. It is an exact jump extension
 \]
 
 Right extension transports jump triangles exactly and retypes the old endpoint as a new seam jump. Left compression is natural only relatively: crossed seams remain in its declared compression cofiber.
+
+For the second-order massive law, this graph target must be refined from broken \(H^1\) to piecewise \(H^2\). Every seam then has two typed channels:
+
+\[
+\operatorname{Seam}(x)
+=
+\mathbb C_x^{\rm value,odd}
+\oplus
+\mathbb C_x^{\rm flux,even}.
+\]
+
+The Green innovations land in the flux-even summand. Applying the Green resolvent identifies the full value/flux seam double with the incoming/outgoing asymptotic double by an invertible, translation/reflection-equivariant position-dependent transfer. For several seams, the resulting endpoint map is exactly the two-moment quotient above.
 
 ## Categorical skeleton
 
@@ -257,7 +281,7 @@ and contextual behavior preservation. Three concrete modules now supply finite i
 - continuity of determinant/Pfaffian lines over an infinite configuration completion;
 - a general Agda proof of the chain minimalization theorem at arbitrary matrix size;
 - a universal higher functor including graph recollement;
-- extension of the RKHS realization from scalar shift contexts to the full varying-graph constructor alphabet;
+- extension from the scalar value/flux graph comparison to the complete Pfaffian varying-graph constructor;
 - any physical realization.
 
 ### Rejected or corrected
@@ -270,12 +294,29 @@ and contextual behavior preservation. Three concrete modules now supply finite i
 - claiming static rank-one sewing behavior determines the complete context type;
 - calling the metric, parity-polarized construction an ordinary TQFT.
 
-## Next executable program
+## Resolution of the realization question
 
-The finite-context and realization-rank gates are closed. The next nonredundant program is:
+The minimal realization induced by independently executable labelled symmetry directions is now determined:
 
-1. define the scalar Green RKHS as a graded/pro residual object over finite context sets;
-2. formulate transition maps between finite Gram realizations and prove their compatibility;
-3. connect those transitions to the varying-breakpoint graph recollement diagram;
-4. generalize the concrete Agda chain proof from sizes three, four, and six to arbitrary odd/even size;
-5. test determinant/Pfaffian-line continuity only after the pro-transition maps are explicit.
+```text
+finite context set S:
+  E_S = span of Green kernel sections, dimension |S|
+
+nested finite contexts:
+  coherent isometric inclusions and orthogonal projections
+
+complete dense signed-log context set:
+  H1(R), the massive Green RKHS
+
+endpoint-only quotient:
+  the two-dimensional hyperbolic double
+```
+
+No finite-dimensional realization can preserve the complete independently labelled protocol. The canonical infinite realization is \(H^1(\mathbb R)\); the finite-depth alternative is its coherent Green Gram ind/pro system. A finite residual is valid only after the explicit two-moment quotient authorizes forgetting labelled seams.
+
+## Next program beyond this objective
+
+1. generalize the concrete Agda chain proof from sizes three, four, and six to arbitrary odd/even size;
+2. extend the scalar value/flux graph comparison to the complete Pfaffian varying-graph constructor;
+3. formulate determinant/Pfaffian-line continuity over the resulting ind/pro system;
+4. keep any physical realization behind a separate source-authority gate.
