@@ -1,0 +1,58 @@
+# Residual rank-reset instance for finite sewing
+
+## Construction
+
+`agda/BoundaryPfaffianResidualRankResetInstance.agda` instantiates the abstract `RankResetSystem` with the recursive odd metric words from `BoundaryPfaffianResidualFold`.
+
+The types are:
+
+```text
+Primitive     = OddMetric
+Defect        = OddMetric
+Residual      = ResidualSummary
+NextPrimitive = ResidualSummary
+```
+
+Exposure is the identity, reconciliation computes the alternating incoming/outgoing products, and retyping preserves that summary literally.
+
+The certificate is now the polarized pair
+
+\[
+\tau(X)=(q_{\rm out}(X),q_{\rm in}(X)).
+\]
+
+Its first coordinate is the Pfaffian torsion of the canonical left-to-right hyperbolic contraction; its second is the reversed polarization. Certificate and residual have the same carrier but distinct roles: one is retained evidence of contraction, while the other is the state exposed to future sewing.
+
+The module proves separately that both the certificate and residual commute with reversal by swapping their two coordinates.
+
+## Admitted contexts
+
+A frozen future context consists of:
+
+```text
+(separating gap, right residual block)
+```
+
+and observation is ordered sewing:
+
+\[
+\operatorname{Observe}(X;(g,Y))
+=q_{\rm out}(X)gq_{\rm in}(Y).
+\]
+
+`sewingValidity` proves that replacing an odd metric word by its residual summary preserves this observation for every such context.
+
+`residualBehaviorPreserved` is the instantiated abstract commuting-square theorem. It proves that direct summarization and exposure/reconciliation/retyping give the same future sewing behavior.
+
+## Scope
+
+This closes one protocol-relative rank reset constructively while retaining a reversal-closed polarized torsion certificate. It does not establish sufficiency under graph refinement, independently labelled shifts, or the complete context tower. Those require larger target types, as shown by the context-rank audits.
+
+## Verification
+
+```text
+agda --transliterate \
+  -i research/voevodsky/agda \
+  -i C:/Users/andrey/tools/cubical-agda/cubical-0.9 \
+  research/voevodsky/agda/BoundaryPfaffianResidualRankResetInstance.agda
+```
