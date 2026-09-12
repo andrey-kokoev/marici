@@ -22,7 +22,7 @@ The word `dimension` must be replaced by three separate ranks.
 |---|---|---|
 | constructor rank | independent discrete generators admitted by the source | number of selected prime axes |
 | orbit rank | independent continuous symmetry directions seen after representation | one logarithmic translation generator |
-| realization rank | minimal state dimension reproducing complete admitted behavior | one for oriented sewing; generically two after reversal |
+| realization rank | minimal state dimension reproducing complete admitted behavior | one for oriented sewing; two for stationary reversal; unbounded for independent labelled signed shifts |
 
 Prime transport illustrates the distinction:
 
@@ -32,7 +32,7 @@ M(p)=\operatorname{diag}(p,p^{-1})
 \qquad A=\operatorname{diag}(1,-1).
 \]
 
-Arbitrarily many prime generators map to one continuous orbit direction. The discrete valuation action remains faithful by unique factorization, while stationary incoming/outgoing behavior occupies a two-dimensional carrier.
+Arbitrarily many prime generators map to one continuous orbit direction. The discrete valuation action remains faithful by unique factorization, while stationary incoming/outgoing behavior occupies a two-dimensional carrier. If independently labelled signed shifts remain executable contexts, however, that finite carrier is only a protocol quotient and the complete realization is infinite-dimensional.
 
 ## Finite mathematical core
 
@@ -122,6 +122,53 @@ R^2=I,
 
 They preserve the hyperbolic metric and generate the displayed \(O(1,1)\)/Clifford module. Pfaffian reversal of an odd microscopic block descends exactly to this residual charge swap.
 
+## Complete labelled-shift realization
+
+For the fixed reciprocal boundary source
+
+\[
+f(x)=e^{-|x|},
+\]
+
+the context matrix indexed by a finite negation-closed displacement set is
+
+\[
+H_{uv}=e^{-|x_u+x_v|}.
+\]
+
+Negating the column indices turns it into the Laplace Gram matrix
+
+\[
+K_{uv}=e^{-|x_u-x_v|}.
+\]
+
+Its Fourier density \(2/(1+\xi^2)\) is strictly positive, so every finite matrix on distinct displacements is invertible. For \(d\) multiplicatively independent labelled shifts at depth \(k\),
+
+\[
+\operatorname{rank}H_{d,k}
+=\sum_{j=0}^d2^j\binom dj\binom kj.
+\]
+
+Thus the complete realization rank is unbounded. Its canonical minimal realization is the massive Green RKHS
+
+\[
+H^1(\mathbb R),
+\qquad
+\langle f,g\rangle=\frac12\int(f\bar g+f'\bar g')dx,
+\]
+
+with kernel sections \(k_x(s)=e^{-|s-x|}\).
+
+The hyperbolic double is recovered by the two asymptotic charges
+
+\[
+q_+(f)=\lim_{s\to+\infty}e^sf(s),
+\qquad
+q_-(f)=\lim_{s\to-\infty}e^{-s}f(s).
+\]
+
+These are continuous on the projective exponential test domain but unbounded on \(H^1(\mathbb R)\). Hence the finite double is a canonical equivariant quotient interface, not a bounded Hilbert quotient or invariant subsystem. Ordinary sections form a contractible affine space, but no translation-equivariant section exists.
+
 ## Graph and refinement layer
 
 Signed log-prime shifts do not preserve one locally finite broken-Sobolev line. The correct finite object is a varying graph bundle
@@ -156,7 +203,11 @@ The Cubical Agda module `BoundaryPfaffianRankReset.agda` checks the abstract squ
 Min ~= Retype o Reconcile o Expose
 ```
 
-and contextual behavior preservation. It does not instantiate the fields with the finite Pfaffian model or assert automatic self-recursion.
+and contextual behavior preservation. Three concrete modules now supply finite instances:
+
+- `BoundaryPfaffianFiniteChain.agda` constructs the three-point residual, four-point closure, and odd--odd six-point sewing;
+- `BoundaryPfaffianResidualFold.agda` constructs arbitrary finite pair extension, alternating charges, sewing, and reversal;
+- `BoundaryPfaffianResidualRankResetInstance.agda` instantiates the abstract square for all admitted future sewing contexts with a reversal-closed polarized certificate.
 
 ## Claim ledger
 
@@ -181,21 +232,32 @@ and contextual behavior preservation. It does not instantiate the fields with th
 - permutation covariance;
 - elimination comparison cocycles;
 - trace-fiber and refinement incidence counts;
-- context-rank growth under reversal.
+- context-rank growth under reversal;
+- full exact ranks through depth three for four independent signed prime shifts;
+- asymptotic quotient sections and framed scalar-closure hostiles.
 
-### Constructed abstractly but not yet instantiated end-to-end
+### Proved for the complete labelled-shift context family
 
-- ordinary categorical source and skew-boundary target;
-- rank-reset validity square in Cubical Agda;
-- varying graph diagram as the target of the full Pfaffian sewing operation.
+- strict positive definiteness of the exponential-distance kernel;
+- full finite-depth Hankel rank for any multiplicatively independent labels;
+- unbounded complete realization rank;
+- minimal Green RKHS realization on \(H^1(\mathbb R)\);
+- continuous equivariant two-charge quotient on the exponential rigging;
+- nonexistence of an equivariant section into the Hilbert realization.
+
+### Constructed formally
+
+- abstract rank-reset validity square in Cubical Agda;
+- concrete finite chain residual and Pfaffian sewing identities;
+- recursive alternating-charge residual fold;
+- reversal-compatible finite rank-reset instance for ordered sewing contexts.
 
 ### Open
 
-- stabilization under the complete constructor alphabet;
-- infinite-prime and unbounded-depth completion;
-- continuity of determinant/Pfaffian lines over that completion;
-- an Agda construction of the chain minimalization theorem;
+- continuity of determinant/Pfaffian lines over an infinite configuration completion;
+- a general Agda proof of the chain minimalization theorem at arbitrary matrix size;
 - a universal higher functor including graph recollement;
+- extension of the RKHS realization from scalar shift contexts to the full varying-graph constructor alphabet;
 - any physical realization.
 
 ### Rejected or corrected
@@ -210,10 +272,10 @@ and contextual behavior preservation. It does not instantiate the fields with th
 
 ## Next executable program
 
-Before adding more conceptual layers:
+The finite-context and realization-rank gates are closed. The next nonredundant program is:
 
-1. define the admitted constructor alphabet explicitly;
-2. compute finite context Hankel ranks by depth;
-3. test stabilization and congruence under every generator;
-4. instantiate `BoundaryPfaffianRankReset.agda` with the finite chain model;
-5. only then formulate the stable/higher completion.
+1. define the scalar Green RKHS as a graded/pro residual object over finite context sets;
+2. formulate transition maps between finite Gram realizations and prove their compatibility;
+3. connect those transitions to the varying-breakpoint graph recollement diagram;
+4. generalize the concrete Agda chain proof from sizes three, four, and six to arbitrary odd/even size;
+5. test determinant/Pfaffian-line continuity only after the pro-transition maps are explicit.
