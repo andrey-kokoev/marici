@@ -87,21 +87,14 @@ For an interior insertion, the finite realization extension is
 \to\mathbb C\,r_{x\mid S}\to0.
 \]
 
-This is the Hilbert/Gram counterpart of the broken-Sobolev breakpoint extension
+This has the same extension rank and interval locality as the broken-Sobolev breakpoint extension
 
 \[
 0\to\mathcal D_S\to\mathcal D_{S\cup\{x\}}
-\to\mathbb C_x\to0.
+\to\mathbb C_x\to0,
 \]
 
-The quotient cells have the same locality and rank:
-
-```text
-broken-domain side: new seam jump at x
-Green-state side:   new interpolation innovation at x
-```
-
-They are not literally the same functional: one is a trace jump and the other is a Green-orthogonal spline. But the massive operator sends the spline to a distribution supported at the three local breakpoints \(a,x,b\), providing the comparison bridge between them.
+but it is not yet a comparison with that exact sequence. The broken-domain quotient records a value jump, whereas every Green innovation is continuous and has zero value jump. The massive operator instead detects its derivative kink. Therefore the two quotient cells require a larger value/flux seam target before they can be related functorially.
 
 ## Boundary insertions
 
