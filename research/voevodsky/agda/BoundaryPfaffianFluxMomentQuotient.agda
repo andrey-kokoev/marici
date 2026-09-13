@@ -116,6 +116,23 @@ module FluxMoments {ℓ} (R : CommRing ℓ) where
     ; plus = plusAppend X Y i
     }
 
+  negateFluxes : FluxFamily → FluxFamily
+  negateFluxes noFlux = noFlux
+  negateFluxes (seam yInv y flux X) =
+    seam yInv y (- flux) (negateFluxes X)
+
+  minusNegate : (X : FluxFamily) →
+    minusMoment (negateFluxes X) ≡ - minusMoment X
+  minusNegate noFlux = solve! R
+  minusNegate (seam yInv y flux X) =
+    cong ((- flux) · yInv +_) (minusNegate X) ∙ solve! R
+
+  plusNegate : (X : FluxFamily) →
+    plusMoment (negateFluxes X) ≡ - plusMoment X
+  plusNegate noFlux = solve! R
+  plusNegate (seam yInv y flux X) =
+    cong ((- flux) · y +_) (plusNegate X) ∙ solve! R
+
   swapEndpoints : EndpointDouble → EndpointDouble
   swapEndpoints q = record { minus = plus q ; plus = minus q }
 
@@ -239,6 +256,26 @@ module FluxMoments {ℓ} (R : CommRing ℓ) where
     ; plusVanishes = plusAppend X Y ∙
         cong₂ _+_ (MomentKernel.plusVanishes kX)
                   (MomentKernel.plusVanishes kY) ∙ solve! R
+    }
+
+  sectionDifference : TwoSeamFrame → TwoSeamFrame →
+    EndpointDouble → FluxFamily
+  sectionDifference F G q =
+    appendFluxes (endpointSection F q) (negateFluxes (endpointSection G q))
+
+  sectionDifferenceInKernel : (F G : TwoSeamFrame) (q : EndpointDouble) →
+    MomentKernel (sectionDifference F G q)
+  sectionDifferenceInKernel F G q = record
+    { minusVanishes = minusAppend (endpointSection F q)
+        (negateFluxes (endpointSection G q)) ∙
+        cong₂ _+_ (sectionMinus F q)
+          (minusNegate (endpointSection G q) ∙ cong -_ (sectionMinus G q)) ∙
+        solve! R
+    ; plusVanishes = plusAppend (endpointSection F q)
+        (negateFluxes (endpointSection G q)) ∙
+        cong₂ _+_ (sectionPlus F q)
+          (plusNegate (endpointSection G q) ∙ cong -_ (sectionPlus G q)) ∙
+        solve! R
     }
 
   kernelRescales : (zInv z : Carrier) (X : FluxFamily) →

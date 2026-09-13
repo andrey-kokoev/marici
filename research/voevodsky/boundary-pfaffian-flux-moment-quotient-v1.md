@@ -43,6 +43,15 @@ d=a^{-1}b-b^{-1}a.
 
 Thus the endpoint observation is constructively split-surjective whenever two labelled positions have invertible moment determinant. No field axiom or hidden division operation is used.
 
+The module also defines additive negation of flux families. For any two admissible frames \(F,G\), it constructs the difference between their sections and proves
+
+\[
+\operatorname{Section}_F(q)-\operatorname{Section}_G(q)
+\in\ker\operatorname{Observe}.
+\]
+
+Hence frame-dependent lifts represent the same endpoint class, with their exact discrepancy retained in the two-moment kernel.
+
 ## Additive composition
 
 Finite labelled families concatenate. Agda proves associativity and the empty-family unit law, then proves that endpoint observation is a monoid homomorphism:
