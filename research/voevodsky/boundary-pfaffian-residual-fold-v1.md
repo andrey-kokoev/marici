@@ -41,6 +41,17 @@ For summaries \(X,Y\), sewing is
 
 Therefore the two-charge summary is a sufficient statistic under arbitrary further pair extension in the finite ordered-chain protocol.
 
+## Arbitrary odd--odd closure
+
+The module also defines recursively presented even metric words and their adjacent torsion. Joining two arbitrary odd words \(X,Y\) across a gap \(g\) gives an even word. Structural induction proves
+
+\[
+\tau_{\rm even}(X\star_gY)
+=q_{\rm out}(X)gq_{\rm in}(Y).
+\]
+
+This generalizes the separate three-plus-three calculation to arbitrary finite odd sizes. It proves the arbitrary-size alternating-product sewing theorem; identifying this recursively defined adjacent torsion with the full matrix Pfaffian at every size remains the outstanding general Pfaffian formalization step.
+
 ## Constructive reversal
 
 Because the metric word is stored by right extension, reversal is implemented by reversing pair order and swapping the two gaps in each pair. Agda proves

@@ -145,3 +145,28 @@ module ResidualFold {ℓ} (R : CommRing ℓ) where
     sew X gap (pairAction Y e o) ≡
     o · sew X gap Y
   sewAfterRightExtension X Y e o gap = solve! R
+
+  -- Even metric words are obtained by closing an odd word with one gap and
+  -- then adjoining gap pairs.  Their torsion is the adjacent even product.
+  data EvenMetric : Type ℓ where
+    closeOdd : OddMetric → Carrier → EvenMetric
+    extendEvenRight : EvenMetric → Carrier → Carrier → EvenMetric
+
+  evenTorsion : EvenMetric → Carrier
+  evenTorsion (closeOdd X closingGap) = outgoing X · closingGap
+  evenTorsion (extendEvenRight X ignoredGap selectedGap) =
+    evenTorsion X · selectedGap
+
+  joinOdd : OddMetric → Carrier → OddMetric → EvenMetric
+  joinOdd X gap singleton = closeOdd X gap
+  joinOdd X gap (extendRight Y e o) =
+    extendEvenRight (joinOdd X gap Y) e o
+
+  -- Arbitrary odd--odd sewing computes the adjacent Pfaffian torsion of the
+  -- joined even word.  This generalizes the concrete three-plus-three proof.
+  joinOddTorsion : (X Y : OddMetric) (gap : Carrier) →
+    evenTorsion (joinOdd X gap Y) ≡
+    sew (summarize X) gap (summarize Y)
+  joinOddTorsion X singleton gap = solve! R
+  joinOddTorsion X (extendRight Y e o) gap =
+    cong (_· o) (joinOddTorsion X Y gap) ∙ solve! R
