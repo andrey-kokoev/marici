@@ -111,3 +111,30 @@ module Chain {ℓ} (R : CommRing ℓ) where
   twoOddResidualsGiveSixAmplitude : (x y g u v : Carrier) →
     sewThreeResiduals x y g u v ≡ sixAdjacentAmplitude x y g u v
   twoOddResidualsGiveSixAmplitude x y g u v = solve! R
+
+  -- Full first-row Pfaffian expansion of the six-point chain.  Each grouped
+  -- parenthesis is the four-point Pfaffian of the corresponding minor.
+  sixChainPfaffian : Carrier → Carrier → Carrier → Carrier → Carrier → Carrier
+  sixChainPfaffian x y g u v =
+    x · (g · v + (- ((g · u) · (u · v))) + (g · u · v) · u) +
+    (- ((x · y) ·
+      ((y · g) · v + (- ((y · g · u) · (u · v))) +
+       (y · g · u · v) · u))) +
+    (x · y · g) ·
+      (y · v + (- ((y · g · u) · (g · u · v))) +
+       (y · g · u · v) · (g · u)) +
+    (- ((x · y · g · u) ·
+      (y · (u · v) + (- ((y · g) · (g · u · v))) +
+       (y · g · u · v) · g))) +
+    (x · y · g · u · v) ·
+      (y · u + (- ((y · g) · (g · u))) + (y · g · u) · g)
+
+  sixPfaffianIsAdjacent : (x y g u v : Carrier) →
+    sixChainPfaffian x y g u v ≡ sixAdjacentAmplitude x y g u v
+  sixPfaffianIsAdjacent x y g u v = solve! R
+
+  sixRankResetTriangle : (x y g u v : Carrier) →
+    sixChainPfaffian x y g u v ≡ sewThreeResiduals x y g u v
+  sixRankResetTriangle x y g u v =
+    sixPfaffianIsAdjacent x y g u v ∙
+    sym (twoOddResidualsGiveSixAmplitude x y g u v)

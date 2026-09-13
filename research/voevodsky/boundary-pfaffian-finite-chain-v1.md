@@ -74,6 +74,16 @@ The module also contracts two independent three-point residuals across a separat
 
 which is the six-point adjacent amplitude. Thus residual sufficiency survives a nontrivial odd-block/odd-block composition rather than only sewing to a singleton.
 
+`sixChainPfaffian` independently encodes the complete 15-matching six-point Pfaffian through its five first-row minor groups. Agda normalizes that full polynomial to \(xgv\). `sixRankResetTriangle` then proves
+
+\[
+\operatorname{Pf}(M_6)
+=
+\operatorname{Sew}(u_{x,y},u_{u,v};g).
+\]
+
+This strengthens the earlier sewing calculation: the microscopic side is now the complete six-point Pfaffian, not only the cross-block contraction formula.
+
 ## Significance
 
 The module separates the universal algebraic mechanism from the half-line selection theorem:
