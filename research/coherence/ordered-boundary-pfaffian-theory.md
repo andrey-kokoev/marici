@@ -61,7 +61,7 @@ spans the canonical null line.
 
 ## Minimal model
 
-A determinant-one triangular congruence reduces the chain form to
+After localizing the selected adjacent weights, a determinant-one triangular congruence reduces the chain form to
 
 \[
 M\cong
@@ -70,7 +70,7 @@ H(x_0)\oplus H(x_2)\oplus\cdots\oplus\mathbb K^{n\bmod2},
 H(x)=\begin{pmatrix}0&x\\-x&0\end{pmatrix}.
 \]
 
-The hyperbolic pairs are contractible after passage to the associated skew complex. Their weights survive in the Pfaffian determinant line. The odd line survives in homology.
+The hyperbolic pairs are contractible after passage to the associated localized skew complex. Their weights survive in the Pfaffian determinant line. The odd line survives in homology. Over an integral or general commutative base where a selected weight is not a unit, the corresponding pair need not be contractible and may retain cokernel torsion; the Pfaffian polynomial identity remains valid nonetheless.
 
 Thus the two outputs are
 

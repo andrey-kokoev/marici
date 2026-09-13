@@ -2,7 +2,7 @@
 
 ## Core statement
 
-A presented structure is reduced relative to an admitted context family. Contractible relations contribute a torsion certificate; persistent homology inherits incoming and outgoing interfaces. The resulting typed residual is reusable exactly to the extent that its complete contextual behavior factors through those interfaces.
+A presented structure is reduced relative to an admitted context family and coefficient regime. Relations that are contractible there contribute a torsion certificate; persistent homology inherits incoming and outgoing interfaces. Over an integral base, nonunit pair weights may retain arithmetic cokernel torsion and become contractible only after explicit localization. The resulting typed residual is reusable exactly to the extent that its complete contextual behavior factors through those interfaces.
 
 ```text
 presented structure
@@ -56,7 +56,7 @@ Endpoint evaluation on exponentials yields the chain kernel
 M_{ij}(t)=\operatorname{sgn}(a_j-a_i)e^{-t|a_j-a_i|}.
 \]
 
-Its even Pfaffian is the adjacent minimum-matching amplitude; its odd Pfaffian cofactors span the residual line. Exact triangular congruence reduces it to adjacent hyperbolic pairs plus one zero line at odd size.
+Its even Pfaffian is the adjacent minimum-matching amplitude; its odd Pfaffian cofactors span the residual line. After localizing the selected gap weights, exact triangular congruence reduces it to adjacent hyperbolic pairs plus one zero line at odd size. The polynomial Pfaffian/cofactor identities themselves require no localization.
 
 Thus:
 
@@ -242,7 +242,7 @@ The expanded executable interface is frozen in `boundary-pfaffian-constructor-al
 
 - chain-kernel Pfaffian adjacent-matching identity;
 - odd Pfaffian-cofactor null vector;
-- adjacent hyperbolic normal form;
+- adjacent hyperbolic normal form after explicit inversion of selected gap weights;
 - even-cut factorization and unit;
 - odd--odd sewing through a rank-one cross block;
 - even action on odd residual lines;
@@ -287,13 +287,14 @@ The expanded executable interface is frozen in `boundary-pfaffian-constructor-al
 ### Open
 
 - continuity of determinant/Pfaffian lines over an infinite configuration completion;
-- a general Agda proof of the chain minimalization theorem at arbitrary matrix size;
+- a general Agda proof of the chain minimalization theorem at arbitrary matrix size with explicit selected-gap unit witnesses;
 - a universal higher functor including graph recollement;
 - extension from the scalar value/flux graph comparison to the complete Pfaffian varying-graph constructor;
 - any physical realization.
 
 ### Rejected or corrected
 
+- asserting prescribed adjacent hyperbolic contractibility over a bare commutative ring;
 - identifying powers alone with a simplicial nerve;
 - treating the first degree-zero anticommutator as a two-form curvature;
 - claiming the six-face P4 compression was a complete intersection pairing;
@@ -324,7 +325,7 @@ No finite-dimensional realization can preserve the complete independently labell
 
 ## Next program beyond this objective
 
-1. generalize the concrete Agda chain proof from sizes three, four, and six to arbitrary odd/even size;
+1. generalize the concrete Agda chain proof from sizes three, four, and six to arbitrary odd/even size, separating ring-generic Pfaffian identities from unit-dependent minimalization;
 2. extend the scalar value/flux graph comparison to the complete Pfaffian varying-graph constructor;
 3. formulate determinant/Pfaffian-line continuity over the resulting ind/pro system;
 4. keep any physical realization behind a separate source-authority gate.
