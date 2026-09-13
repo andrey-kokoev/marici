@@ -35,6 +35,37 @@ module FluxMoments {ℓ} (R : CommRing ℓ) where
     ; plus = plusMoment X
     }
 
+  appendFluxes : FluxFamily → FluxFamily → FluxFamily
+  appendFluxes noFlux Y = Y
+  appendFluxes (seam yInv y flux X) Y =
+    seam yInv y flux (appendFluxes X Y)
+
+  addEndpoints : EndpointDouble → EndpointDouble → EndpointDouble
+  addEndpoints p q = record
+    { minus = minus p + minus q
+    ; plus = plus p + plus q
+    }
+
+  minusAppend : (X Y : FluxFamily) →
+    minusMoment (appendFluxes X Y) ≡ minusMoment X + minusMoment Y
+  minusAppend noFlux Y = solve! R
+  minusAppend (seam yInv y flux X) Y =
+    cong (flux · yInv +_) (minusAppend X Y) ∙ solve! R
+
+  plusAppend : (X Y : FluxFamily) →
+    plusMoment (appendFluxes X Y) ≡ plusMoment X + plusMoment Y
+  plusAppend noFlux Y = solve! R
+  plusAppend (seam yInv y flux X) Y =
+    cong (flux · y +_) (plusAppend X Y) ∙ solve! R
+
+  observationAppend : (X Y : FluxFamily) →
+    observeEndpoints (appendFluxes X Y) ≡
+    addEndpoints (observeEndpoints X) (observeEndpoints Y)
+  observationAppend X Y i = record
+    { minus = minusAppend X Y i
+    ; plus = plusAppend X Y i
+    }
+
   swapEndpoints : EndpointDouble → EndpointDouble
   swapEndpoints q = record { minus = plus q ; plus = minus q }
 
@@ -99,6 +130,17 @@ module FluxMoments {ℓ} (R : CommRing ℓ) where
   kernelReflects X k = record
     { minusVanishes = minusAfterReflection X ∙ MomentKernel.plusVanishes k
     ; plusVanishes = plusAfterReflection X ∙ MomentKernel.minusVanishes k
+    }
+
+  kernelAppends : (X Y : FluxFamily) →
+    MomentKernel X → MomentKernel Y → MomentKernel (appendFluxes X Y)
+  kernelAppends X Y kX kY = record
+    { minusVanishes = minusAppend X Y ∙
+        cong₂ _+_ (MomentKernel.minusVanishes kX)
+                  (MomentKernel.minusVanishes kY) ∙ solve! R
+    ; plusVanishes = plusAppend X Y ∙
+        cong₂ _+_ (MomentKernel.plusVanishes kX)
+                  (MomentKernel.plusVanishes kY) ∙ solve! R
     }
 
   kernelRescales : (zInv z : Carrier) (X : FluxFamily) →

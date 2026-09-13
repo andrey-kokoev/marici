@@ -26,6 +26,18 @@ q_+ = \sum_i J_i y_i.
 
 The analytic factor \(-1/2\) is intentionally omitted, so the construction remains valid without assuming that two is invertible.
 
+## Additive composition
+
+Finite labelled families concatenate. The module proves that endpoint observation is a monoid homomorphism:
+
+\[
+\operatorname{Observe}(X\mathbin{+\!+}Y)
+=
+\operatorname{Observe}(X)+\operatorname{Observe}(Y).
+\]
+
+It also constructs closure of the two-moment kernel under concatenation. Thus locally invisible flux packets remain invisible under disjoint additive assembly.
+
 ## Symmetry
 
 Reflection swaps direct and reciprocal position weights while preserving flux. Agda proves:
@@ -50,7 +62,7 @@ q_-=0,
 \qquad q_+=0.
 \]
 
-The module constructs proofs that this kernel is preserved by both reflection and rescaling. Hence the exact information discarded by endpoint observation is a symmetry-stable typed relation.
+The module constructs proofs that this kernel is preserved by reflection, rescaling, and additive concatenation. Hence the exact information discarded by endpoint observation is a symmetry-stable compositional typed relation.
 
 This formally realizes the algebraic part of the finite sequence
 
