@@ -139,6 +139,31 @@ module FluxMoments {ℓ} (R : CommRing ℓ) where
     cong (seam (zInv · yInv) (z · y) flux)
       (rescalePreservesAppend zInv z X Y)
 
+  rescaleIdentity : (X : FluxFamily) → rescaleFluxes 1r 1r X ≡ X
+  rescaleIdentity noFlux = refl
+  rescaleIdentity (seam yInv y flux X) i =
+    seam (inverseIdentity i) (directIdentity i) flux (rescaleIdentity X i)
+    where
+    inverseIdentity : 1r · yInv ≡ yInv
+    inverseIdentity = solve! R
+    directIdentity : 1r · y ≡ y
+    directIdentity = solve! R
+
+  rescaleComposition :
+    (zInv₁ z₁ zInv₂ z₂ : Carrier) (X : FluxFamily) →
+    rescaleFluxes zInv₁ z₁ (rescaleFluxes zInv₂ z₂ X) ≡
+    rescaleFluxes (zInv₁ · zInv₂) (z₁ · z₂) X
+  rescaleComposition zInv₁ z₁ zInv₂ z₂ noFlux = refl
+  rescaleComposition zInv₁ z₁ zInv₂ z₂ (seam yInv y flux X) i =
+    seam (inverseWeightPath i) (directWeightPath i) flux
+      (rescaleComposition zInv₁ z₁ zInv₂ z₂ X i)
+    where
+    inverseWeightPath : zInv₁ · (zInv₂ · yInv) ≡
+      (zInv₁ · zInv₂) · yInv
+    inverseWeightPath = solve! R
+    directWeightPath : z₁ · (z₂ · y) ≡ (z₁ · z₂) · y
+    directWeightPath = solve! R
+
   minusAfterRescale : (zInv z : Carrier) (X : FluxFamily) →
     minusMoment (rescaleFluxes zInv z X) ≡ zInv · minusMoment X
   minusAfterRescale zInv z noFlux = solve! R

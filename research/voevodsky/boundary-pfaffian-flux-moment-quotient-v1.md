@@ -45,7 +45,9 @@ Reflection swaps direct and reciprocal position weights while preserving flux. A
 - reflection of flux families is involutive;
 - the endpoint observation transforms by swapping \(q_-\) and \(q_+\).
 
-Reflection and rescaling both preserve concatenation. Rescaling position weights by \((z^{-1},z)\) gives
+Reflection and rescaling both preserve concatenation. The module proves the identity and composition laws for rescaling, so these maps form a genuine multiplicative action rather than an unstructured family of endomorphisms.
+
+Rescaling position weights by \((z^{-1},z)\) gives
 
 \[
 (q_-,q_+)\mapsto(z^{-1}q_-,zq_+),
