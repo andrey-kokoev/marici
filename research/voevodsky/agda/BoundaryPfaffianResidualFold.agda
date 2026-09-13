@@ -210,6 +210,44 @@ module ResidualFold {ℓ} (R : CommRing ℓ) where
     cong (_· LocalizedEvenMetric.closingGap X)
       (localizedTorsionIsOutgoing (LocalizedEvenMetric.oddPart X))
 
+  -- Scalar line coordinates for refining one selected gap.  The new selected
+  -- factors are the two outer gaps; the old selected factor is rho.
+  selectedOldTorsion : Carrier → Carrier → Carrier
+  selectedOldTorsion rest rho = rest · rho
+
+  selectedNewTorsion : Carrier → Carrier → Carrier → Carrier
+  selectedNewTorsion rest alpha beta = rest · alpha · beta
+
+  selectedRefinementCorrespondence :
+    (rest rho alpha gamma beta : Carrier) →
+    rho ≡ alpha · gamma · beta →
+    rho · selectedNewTorsion rest alpha beta ≡
+    (alpha · beta) · selectedOldTorsion rest rho
+  selectedRefinementCorrespondence rest rho alpha gamma beta factorization =
+    solve! R
+
+  selectedLocalizedTransition :
+    (rest rho alpha beta : Carrier) (uRho : GapUnit rho) →
+    selectedNewTorsion rest alpha beta ≡
+    (alpha · beta · GapUnit.inverse uRho) · selectedOldTorsion rest rho
+  selectedLocalizedTransition rest rho alpha beta uRho =
+    sym (insertUnit ∙ normalize)
+    where
+    insertUnit :
+      (alpha · beta · GapUnit.inverse uRho) · selectedOldTorsion rest rho ≡
+      (rest · alpha · beta) · (GapUnit.inverse uRho · rho)
+    insertUnit = solve! R
+    normalize :
+      (rest · alpha · beta) · (GapUnit.inverse uRho · rho) ≡
+      selectedNewTorsion rest alpha beta
+    normalize =
+      cong ((rest · alpha · beta) ·_) (GapUnit.inverseLaw uRho) ∙
+      solve! R
+
+  unselectedRefinementTransition :
+    (rest gamma : Carrier) → rest · gamma ≡ gamma · rest
+  unselectedRefinementTransition rest gamma = solve! R
+
   joinOdd : OddMetric → Carrier → OddMetric → EvenMetric
   joinOdd X gap singleton = closeOdd X gap
   joinOdd X gap (extendRight Y e o) =

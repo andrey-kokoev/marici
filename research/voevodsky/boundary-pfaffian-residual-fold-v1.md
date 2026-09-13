@@ -15,6 +15,19 @@ A second type, `LocalizedOddMetric`, has the same recursion but requires a `GapU
 
 `LocalizedEvenMetric` additionally requires a unit witness for the final selected closing gap. It therefore carries exactly the hypotheses needed to contract every prescribed hyperbolic pair, with no inverses required for unselected gaps. Its localized torsion is proved equal to the ordinary even alternating torsion.
 
+The module formalizes both versions of paired refinement:
+
+- over a bare commutative ring, the selected-gap cross relation
+  \[
+  \rho\tau_{\rm new}=\alpha\beta\tau_{\rm old};
+  \]
+- given `GapUnit rho`, the localized forward transition
+  \[
+  \tau_{\rm new}=\alpha\beta\rho^{-1}\tau_{\rm old}.
+  \]
+
+The unselected-gap transition remains polynomial. Thus correspondence-before-localization and transport-after-localization are separated in the formal types.
+
 Its residual summary contains two charges. They satisfy
 
 \[
