@@ -42,6 +42,16 @@ Agda proves that \(e_2'\) pairs trivially with both \(e_0\) and \(e_1\), leaving
 
 No unit witness is used by the earlier cofactor kernel equations. The module therefore keeps ring-generic Pfaffian algebra and unit-dependent contractible minimalization formally separate.
 
+The same construction is now proved for an arbitrary remote chain vector with suffix profile \(s\):
+
+\[
+e_s'=e_s+x^{-1}s\,e_0-s\,e_1.
+\]
+
+Agda proves that every such vector becomes orthogonal to the selected first pair. It also expands the pairing of two transformed remote vectors and proves that all correction terms cancel, leaving their original suffix pairing unchanged.
+
+This is the size-independent elimination step needed for induction: one localized hyperbolic pair splits off, and the remaining chain form is preserved exactly.
+
 ## Four-point closure
 
 For adjacent weights \(x,y,z\), the module defines the complete four-point Pfaffian expression

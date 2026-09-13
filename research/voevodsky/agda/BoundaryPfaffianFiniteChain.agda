@@ -117,6 +117,52 @@ module Chain {ℓ} (R : CommRing ℓ) where
     ; thirdPairing₁Vanishes = localizedPairingWith₁Vanishes x y ux
     }
 
+  -- Generic first-pair elimination for a remote chain vector with suffix
+  -- profile s.  The same formulas used at size three work at every size.
+  remoteCoefficient₀ : (x s : Carrier) → SelectedGapUnit x → Carrier
+  remoteCoefficient₀ x s ux = inverse ux · s
+
+  remoteCoefficient₁ : Carrier → Carrier
+  remoteCoefficient₁ s = - s
+
+  remotePairingWith₀Vanishes :
+    (x s : Carrier) (ux : SelectedGapUnit x) →
+    x · s + remoteCoefficient₁ s · x ≡ 0r
+  remotePairingWith₀Vanishes x s ux = solve! R
+
+  remotePairingWith₁Vanishes :
+    (x s : Carrier) (ux : SelectedGapUnit x) →
+    s + remoteCoefficient₀ x s ux · (- x) ≡ 0r
+  remotePairingWith₁Vanishes x s ux =
+    normalize ∙ useInverse ∙ cancel
+    where
+    normalize : s + remoteCoefficient₀ x s ux · (- x) ≡
+      s + (- (s · (inverse ux · x)))
+    normalize = solve! R
+    useInverse : s + (- (s · (inverse ux · x))) ≡
+      s + (- (s · 1r))
+    useInverse = cong (λ z → s + (- (s · z))) (inverseLaw ux)
+    cancel : s + (- (s · 1r)) ≡ 0r
+    cancel = solve! R
+
+  -- Expanding the pairing of two transformed remote vectors shows that all
+  -- correction terms cancel, so the untouched suffix chain form survives.
+  transformedRemotePairing :
+    (x sᵢ sⱼ aᵢⱼ : Carrier) → SelectedGapUnit x → Carrier
+  transformedRemotePairing x sᵢ sⱼ aᵢⱼ ux =
+    aᵢⱼ +
+    remoteCoefficient₀ x sⱼ ux · (- (x · sᵢ)) +
+    remoteCoefficient₁ sⱼ · (- sᵢ) +
+    remoteCoefficient₀ x sᵢ ux · (x · sⱼ) +
+    remoteCoefficient₁ sᵢ · sⱼ +
+    remoteCoefficient₀ x sᵢ ux · remoteCoefficient₁ sⱼ · x +
+    remoteCoefficient₁ sᵢ · remoteCoefficient₀ x sⱼ ux · (- x)
+
+  transformedRemotePairingPreserved :
+    (x sᵢ sⱼ aᵢⱼ : Carrier) (ux : SelectedGapUnit x) →
+    transformedRemotePairing x sᵢ sⱼ aᵢⱼ ux ≡ aᵢⱼ
+  transformedRemotePairingPreserved x sᵢ sⱼ aᵢⱼ ux = solve! R
+
   -- Four-point Pfaffian.  The two non-adjacent matching terms cancel.
   fourChainPfaffian : Carrier → Carrier → Carrier → Carrier
   fourChainPfaffian x y z =
