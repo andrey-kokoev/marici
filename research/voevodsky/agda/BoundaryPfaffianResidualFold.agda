@@ -14,6 +14,29 @@ module ResidualFold {ℓ} (R : CommRing ℓ) where
     singleton : OddMetric
     extendRight : OddMetric → Carrier → Carrier → OddMetric
 
+  record GapUnit (x : Carrier) : Type ℓ where
+    field
+      inverse : Carrier
+      inverseLaw : inverse · x ≡ 1r
+
+  -- A localized word carries a unit witness for every selected even-indexed
+  -- gap.  Unselected odd-indexed gaps need no inverse.
+  data LocalizedOddMetric : Type ℓ where
+    localizedSingleton : LocalizedOddMetric
+    localizedExtendRight :
+      LocalizedOddMetric → (evenGap : Carrier) → GapUnit evenGap →
+      (oddGap : Carrier) → LocalizedOddMetric
+
+  eraseLocalization : LocalizedOddMetric → OddMetric
+  eraseLocalization localizedSingleton = singleton
+  eraseLocalization (localizedExtendRight X e ue o) =
+    extendRight (eraseLocalization X) e o
+
+  localizedSelectedTorsion : LocalizedOddMetric → Carrier
+  localizedSelectedTorsion localizedSingleton = 1r
+  localizedSelectedTorsion (localizedExtendRight X e ue o) =
+    localizedSelectedTorsion X · e
+
   outgoing : OddMetric → Carrier
   outgoing singleton = 1r
   outgoing (extendRight X evenGap oddGap) = outgoing X · evenGap
@@ -21,6 +44,12 @@ module ResidualFold {ℓ} (R : CommRing ℓ) where
   incoming : OddMetric → Carrier
   incoming singleton = 1r
   incoming (extendRight X evenGap oddGap) = incoming X · oddGap
+
+  localizedTorsionIsOutgoing : (X : LocalizedOddMetric) →
+    localizedSelectedTorsion X ≡ outgoing (eraseLocalization X)
+  localizedTorsionIsOutgoing localizedSingleton = refl
+  localizedTorsionIsOutgoing (localizedExtendRight X e ue o) =
+    cong (_· e) (localizedTorsionIsOutgoing X)
 
   prependPair : Carrier → Carrier → OddMetric → OddMetric
   prependPair evenGap oddGap singleton =
@@ -152,10 +181,34 @@ module ResidualFold {ℓ} (R : CommRing ℓ) where
     closeOdd : OddMetric → Carrier → EvenMetric
     extendEvenRight : EvenMetric → Carrier → Carrier → EvenMetric
 
+  -- An even localized word additionally requires the final selected closing
+  -- gap to be a unit, so every hyperbolic pair can be contracted.
+  record LocalizedEvenMetric : Type ℓ where
+    field
+      oddPart : LocalizedOddMetric
+      closingGap : Carrier
+      closingGapUnit : GapUnit closingGap
+
+  eraseEvenLocalization : LocalizedEvenMetric → EvenMetric
+  eraseEvenLocalization X =
+    closeOdd (eraseLocalization (LocalizedEvenMetric.oddPart X))
+      (LocalizedEvenMetric.closingGap X)
+
+  localizedEvenTorsion : LocalizedEvenMetric → Carrier
+  localizedEvenTorsion X =
+    localizedSelectedTorsion (LocalizedEvenMetric.oddPart X) ·
+    LocalizedEvenMetric.closingGap X
+
   evenTorsion : EvenMetric → Carrier
   evenTorsion (closeOdd X closingGap) = outgoing X · closingGap
   evenTorsion (extendEvenRight X ignoredGap selectedGap) =
     evenTorsion X · selectedGap
+
+  localizedEvenTorsionCorrect : (X : LocalizedEvenMetric) →
+    localizedEvenTorsion X ≡ evenTorsion (eraseEvenLocalization X)
+  localizedEvenTorsionCorrect X =
+    cong (_· LocalizedEvenMetric.closingGap X)
+      (localizedTorsionIsOutgoing (LocalizedEvenMetric.oddPart X))
 
   joinOdd : OddMetric → Carrier → OddMetric → EvenMetric
   joinOdd X gap singleton = closeOdd X gap

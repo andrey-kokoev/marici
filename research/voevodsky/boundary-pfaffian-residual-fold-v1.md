@@ -11,6 +11,10 @@ singleton : OddMetric
 extendRight : OddMetric -> evenGap -> oddGap -> OddMetric
 ```
 
+A second type, `LocalizedOddMetric`, has the same recursion but requires a `GapUnit` witness for every selected even-indexed gap. Its erasure forgets those witnesses and returns the underlying metric word. Agda proves that its recursively accumulated selected torsion equals the outgoing alternating product after erasure.
+
+`LocalizedEvenMetric` additionally requires a unit witness for the final selected closing gap. It therefore carries exactly the hypotheses needed to contract every prescribed hyperbolic pair, with no inverses required for unselected gaps. Its localized torsion is proved equal to the ordinary even alternating torsion.
+
 Its residual summary contains two charges. They satisfy
 
 \[
