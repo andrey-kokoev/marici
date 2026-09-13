@@ -4,6 +4,7 @@ module BoundaryPfaffianResidualRankResetInstance where
 open import Cubical.Foundations.Prelude
 open import Cubical.Data.Sigma using (_×_; _,_)
 open import Cubical.Algebra.CommRing
+open import Cubical.Tactics.CommRingSolver
 open import BoundaryPfaffianRankReset
 open import BoundaryPfaffianResidualFold
 
@@ -77,6 +78,52 @@ module Instance {ℓ} (CR : CommRing ℓ) where
   runContext (observeWith gap Y) X = sew X gap Y
   runContext (extendWith e o C) X = runContext C (pairAction X e o)
   runContext (reverseThen C) X = runContext C (reverseSummary X)
+
+  -- Every context program normalizes to one weighted polarized readout.
+  data PolarizedReadout : Type ℓ where
+    readOut : Carrier → PolarizedReadout
+    readIn : Carrier → PolarizedReadout
+
+  evaluateReadout : PolarizedReadout → ResidualSummary → Carrier
+  evaluateReadout (readOut weight) X = weight · out X
+  evaluateReadout (readIn weight) X = weight · inn X
+
+  extendReadout : Carrier → Carrier → PolarizedReadout → PolarizedReadout
+  extendReadout e o (readOut weight) = readOut (weight · e)
+  extendReadout e o (readIn weight) = readIn (weight · o)
+
+  reverseReadout : PolarizedReadout → PolarizedReadout
+  reverseReadout (readOut weight) = readIn weight
+  reverseReadout (readIn weight) = readOut weight
+
+  compileContext : ContextProgram → PolarizedReadout
+  compileContext (observeWith gap Y) = readOut (gap · inn Y)
+  compileContext (extendWith e o C) = extendReadout e o (compileContext C)
+  compileContext (reverseThen C) = reverseReadout (compileContext C)
+
+  compileExtendCorrect :
+    (e o : Carrier) (P : PolarizedReadout) (X : ResidualSummary) →
+    evaluateReadout P (pairAction X e o) ≡
+    evaluateReadout (extendReadout e o P) X
+  compileExtendCorrect e o (readOut weight) X = solve! CR
+  compileExtendCorrect e o (readIn weight) X = solve! CR
+
+  compileReverseCorrect :
+    (P : PolarizedReadout) (X : ResidualSummary) →
+    evaluateReadout P (reverseSummary X) ≡
+    evaluateReadout (reverseReadout P) X
+  compileReverseCorrect (readOut weight) X = refl
+  compileReverseCorrect (readIn weight) X = refl
+
+  contextNormalization : (C : ContextProgram) (X : ResidualSummary) →
+    runContext C X ≡ evaluateReadout (compileContext C) X
+  contextNormalization (observeWith gap Y) X = solve! CR
+  contextNormalization (extendWith e o C) X =
+    contextNormalization C (pairAction X e o) ∙
+    compileExtendCorrect e o (compileContext C) X
+  contextNormalization (reverseThen C) X =
+    contextNormalization C (reverseSummary X) ∙
+    compileReverseCorrect (compileContext C) X
 
   completeFiniteValidity : ContextualValidity residualRankReset
   completeFiniteValidity = record
