@@ -170,3 +170,15 @@ module ResidualFold {ℓ} (R : CommRing ℓ) where
   joinOddTorsion X singleton gap = solve! R
   joinOddTorsion X (extendRight Y e o) gap =
     cong (_· o) (joinOddTorsion X Y gap) ∙ solve! R
+
+  -- Reversing both odd blocks and their order preserves the resulting even
+  -- torsion.  This is arbitrary-size Pfaffian reversal at the fold level.
+  joinedTorsionReversal : (X Y : OddMetric) (gap : Carrier) →
+    evenTorsion (joinOdd (reverseMetric Y) gap (reverseMetric X)) ≡
+    evenTorsion (joinOdd X gap Y)
+  joinedTorsionReversal X Y gap =
+    joinOddTorsion (reverseMetric Y) (reverseMetric X) gap ∙
+    cong₂ (λ A B → sew A gap B)
+      (summarizeReversal Y) (summarizeReversal X) ∙
+    sewingReversal (summarize X) (summarize Y) gap ∙
+    sym (joinOddTorsion X Y gap)

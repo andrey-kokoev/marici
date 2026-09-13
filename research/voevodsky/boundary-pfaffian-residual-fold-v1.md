@@ -50,7 +50,17 @@ The module also defines recursively presented even metric words and their adjace
 =q_{\rm out}(X)gq_{\rm in}(Y).
 \]
 
-This generalizes the separate three-plus-three calculation to arbitrary finite odd sizes. It proves the arbitrary-size alternating-product sewing theorem; identifying this recursively defined adjacent torsion with the full matrix Pfaffian at every size remains the outstanding general Pfaffian formalization step.
+This generalizes the separate three-plus-three calculation to arbitrary finite odd sizes. The module further proves
+
+\[
+\tau_{\rm even}(Y^{\rm op}\star_gX^{\rm op})
+=
+\tau_{\rm even}(X\star_gY),
+\]
+
+by composing metric reversal, summary reversal, contravariant sewing, and odd--odd torsion reconstruction. Thus arbitrary-size even closure is formally reversal invariant at the fold level.
+
+These results prove the arbitrary-size alternating-product sewing theorem; identifying this recursively defined adjacent torsion with the full matrix Pfaffian at every size remains the outstanding general Pfaffian formalization step.
 
 ## Constructive reversal
 
