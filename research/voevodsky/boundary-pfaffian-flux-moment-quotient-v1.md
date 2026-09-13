@@ -28,7 +28,7 @@ The analytic factor \(-1/2\) is intentionally omitted, so the construction remai
 
 ## Additive composition
 
-Finite labelled families concatenate. The module proves that endpoint observation is a monoid homomorphism:
+Finite labelled families concatenate. Agda proves associativity and the empty-family unit law, then proves that endpoint observation is a monoid homomorphism:
 
 \[
 \operatorname{Observe}(X\mathbin{+\!+}Y)
@@ -45,13 +45,19 @@ Reflection swaps direct and reciprocal position weights while preserving flux. A
 - reflection of flux families is involutive;
 - the endpoint observation transforms by swapping \(q_-\) and \(q_+\).
 
-Rescaling position weights by \((z^{-1},z)\) gives
+Reflection and rescaling both preserve concatenation. Rescaling position weights by \((z^{-1},z)\) gives
 
 \[
 (q_-,q_+)\mapsto(z^{-1}q_-,zq_+),
 \]
 
-proved recursively for arbitrary finite families.
+proved recursively for arbitrary finite families. The module also proves the dihedral conjugation law
+
+\[
+R\,M(z^{-1},z)=M(z,z^{-1})\,R
+\]
+
+on complete labelled families, not only after endpoint observation.
 
 ## Kernel stability
 

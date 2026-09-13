@@ -40,6 +40,17 @@ module FluxMoments {ℓ} (R : CommRing ℓ) where
   appendFluxes (seam yInv y flux X) Y =
     seam yInv y flux (appendFluxes X Y)
 
+  appendAssociative : (X Y Z : FluxFamily) →
+    appendFluxes (appendFluxes X Y) Z ≡ appendFluxes X (appendFluxes Y Z)
+  appendAssociative noFlux Y Z = refl
+  appendAssociative (seam yInv y flux X) Y Z =
+    cong (seam yInv y flux) (appendAssociative X Y Z)
+
+  appendRightUnit : (X : FluxFamily) → appendFluxes X noFlux ≡ X
+  appendRightUnit noFlux = refl
+  appendRightUnit (seam yInv y flux X) =
+    cong (seam yInv y flux) (appendRightUnit X)
+
   addEndpoints : EndpointDouble → EndpointDouble → EndpointDouble
   addEndpoints p q = record
     { minus = minus p + minus q
@@ -80,6 +91,13 @@ module FluxMoments {ℓ} (R : CommRing ℓ) where
   reflectionInvolutive (seam yInv y flux X) =
     cong (seam yInv y flux) (reflectionInvolutive X)
 
+  reflectionPreservesAppend : (X Y : FluxFamily) →
+    reflectFluxes (appendFluxes X Y) ≡
+    appendFluxes (reflectFluxes X) (reflectFluxes Y)
+  reflectionPreservesAppend noFlux Y = refl
+  reflectionPreservesAppend (seam yInv y flux X) Y =
+    cong (seam y yInv flux) (reflectionPreservesAppend X Y)
+
   minusAfterReflection : (X : FluxFamily) →
     minusMoment (reflectFluxes X) ≡ plusMoment X
   minusAfterReflection noFlux = refl
@@ -104,6 +122,22 @@ module FluxMoments {ℓ} (R : CommRing ℓ) where
   rescaleFluxes zInv z noFlux = noFlux
   rescaleFluxes zInv z (seam yInv y flux X) =
     seam (zInv · yInv) (z · y) flux (rescaleFluxes zInv z X)
+
+  reflectionConjugatesRescaling : (zInv z : Carrier) (X : FluxFamily) →
+    reflectFluxes (rescaleFluxes zInv z X) ≡
+    rescaleFluxes z zInv (reflectFluxes X)
+  reflectionConjugatesRescaling zInv z noFlux = refl
+  reflectionConjugatesRescaling zInv z (seam yInv y flux X) =
+    cong (seam (z · y) (zInv · yInv) flux)
+      (reflectionConjugatesRescaling zInv z X)
+
+  rescalePreservesAppend : (zInv z : Carrier) (X Y : FluxFamily) →
+    rescaleFluxes zInv z (appendFluxes X Y) ≡
+    appendFluxes (rescaleFluxes zInv z X) (rescaleFluxes zInv z Y)
+  rescalePreservesAppend zInv z noFlux Y = refl
+  rescalePreservesAppend zInv z (seam yInv y flux X) Y =
+    cong (seam (zInv · yInv) (z · y) flux)
+      (rescalePreservesAppend zInv z X Y)
 
   minusAfterRescale : (zInv z : Carrier) (X : FluxFamily) →
     minusMoment (rescaleFluxes zInv z X) ≡ zInv · minusMoment X
