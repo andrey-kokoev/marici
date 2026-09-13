@@ -26,6 +26,6 @@ def main():
    c=[rng.randrange(0,12) for _ in range(n)];vals=stream(c)
    for k in range(n//2+1):assert vals[k]==brute(c,k)
    cases+=1
- result={'schema':'marici.coherence.streaming-tropical-torsion-recurrence.v1','cases':cases,'all_exact':True,'state_per_grade':['zero_k: latest edge absent','one_k: latest edge selected'],'update':['new_zero_k=min(zero_k,one_k)','new_one_k=zero_(k-1)+edge_cost'],'full_spectrum_state_growth':'two boundary states for each k up to floor(n/2)','interpretation':'fixed torsion grade has rank two recurrence; complete integral torsion spectrum has graded unbounded size'}
+ result={'schema':'marici.coherence.streaming-tropical-torsion-recurrence.v1','cases':cases,'all_exact':True,'state_per_grade':['zero_k: latest edge absent','one_k: latest edge selected'],'update':['new_zero_k=min(zero_k,one_k)','new_one_k=zero_(k-1)+edge_cost'],'full_spectrum_state_growth':'two boundary states for each k up to floor(n/2)','interpretation':'there are two boundary states per grade, with triangular coupling from grade k-1 to k; complete spectrum has graded unbounded size'}
  Path(__file__).with_name('streaming-tropical-torsion-recurrence.v1.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
 if __name__=='__main__':main()

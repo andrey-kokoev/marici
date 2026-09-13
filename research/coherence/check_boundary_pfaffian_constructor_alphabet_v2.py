@@ -4,11 +4,11 @@ import json
 from pathlib import Path
 p=Path(__file__).with_name('boundary-pfaffian-constructor-alphabet.v2.json');d=json.loads(p.read_text())
 ids=[x['id'] for x in d['constructors']];assert len(ids)==len(set(ids))
-required={'refine_seam','massive_apply','green_resolve','endpoint_moments','include_contexts','project_contexts','green_determinant_transition','paired_pfaffian_correspondence','paired_pfaffian_transition','integral_torsion_reconcile','localize_torsion'}
+required={'refine_seam','massive_apply','green_resolve','endpoint_moments','include_contexts','project_contexts','green_determinant_transition','paired_pfaffian_correspondence','paired_pfaffian_transition','integral_torsion_reconcile','localize_torsion','tropical_torsion_update'}
 assert required<=set(ids)
 cofiber=next(x for x in d['constructors'] if x['id']=='refine_seam')['cofiber'];assert 'value_jump_line_odd' in cofiber and 'flux_jump_line_even' in cofiber
 forbidden=set(d['forbidden_collapses']);assert 'identify_green_determinant_line_with_pfaffian_line' in forbidden
-rids={x['id'] for x in d['relations']};assert {'massive_green_factorization','ind_pro_triangle','determinant_cocycle','paired_pfaffian_correspondence','paired_pfaffian_transition','moment_kernel_stability','integral_pfaffian_divisor_classification'}<=rids
+rids={x['id'] for x in d['relations']};assert {'massive_green_factorization','ind_pro_triangle','determinant_cocycle','paired_pfaffian_correspondence','paired_pfaffian_transition','moment_kernel_stability','integral_pfaffian_divisor_classification','graded_tropical_recurrence'}<=rids
 for relation in d['relations']:
  assert 'evidence' in relation and (p.parent/relation['evidence']).exists(), relation['id']
  if 'formal_evidence' in relation: assert (p.parent/relation['formal_evidence']).exists(), relation['id']

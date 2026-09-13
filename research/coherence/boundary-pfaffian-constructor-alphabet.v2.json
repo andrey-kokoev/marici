@@ -34,7 +34,8 @@
     {"id":"paired_pfaffian_correspondence","source":"common_remaining_factor","target":"pfaffian_line_even_S_pair_even_T","condition":"T adds two ordered points","action":"r maps to (r rho,r alpha beta) for a selected gap; the image satisfies rho tau_new = alpha beta tau_old","coefficient_regime":"ring_generic"},
     {"id":"paired_pfaffian_transition","source":"pfaffian_line_even_S","target":"pfaffian_line_even_T","condition":"T adds two ordered points","action":"multiply by internal gap or its inverse according to pair parity","coefficient_regime":"localized_selected_gaps"},
     {"id":"integral_torsion_reconcile","source":"integral_chain_skew_form","target":"integral_alternating_torsion_module plus primitive_odd_null_line","action":"compute Pfaffian divisors D_k and elementary divisors d_k=D_k/D_(k-1)","coefficient_regime":"ring_generic"},
-    {"id":"localize_torsion","source":"integral_alternating_torsion_module","target":"localized_contractible_pairs","action":"invert selected gaps; all alternating elementary divisors become units","coefficient_regime":"localized_selected_gaps"}
+    {"id":"localize_torsion","source":"integral_alternating_torsion_module","target":"localized_contractible_pairs","action":"invert selected gaps; all alternating elementary divisors become units","coefficient_regime":"localized_selected_gaps"},
+    {"id":"tropical_torsion_update","source":"graded_two_boundary_state_family_n plus prime_gap_valuation","target":"graded_two_boundary_state_family_n_plus_1","action":"Z'_k=min(Z_k,O_k); O'_k=Z_(k-1)+c","coefficient_regime":"ring_generic"}
   ],
   "relations": [
     {"id":"dihedral_relation","law":"R T(z) R = T(z^-1)","evidence":"dihedral-context-hankel-stabilization.v1.json"},
@@ -47,12 +48,13 @@
     {"id":"paired_pfaffian_correspondence","law":"two-point refinement is presented by a common remaining factor and satisfies the cross-multiplied relation","evidence":"ring-generic-paired-pfaffian-correspondence.v1.json","obstruction_evidence":"nonunit-pfaffian-correspondence-fibers.v1.json","formal_evidence":"../voevodsky/agda/BoundaryPfaffianResidualFold.agda"},
     {"id":"paired_pfaffian_transition","law":"two-point refinement multiplies Pfaffian torsion by the parity-selected internal factor after localization","evidence":"paired-refinement-line-transitions.v1.json"},
     {"id":"moment_kernel_stability","law":"two-moment kernel is stable under assembly, translation, and reflection","evidence":"multiseam-asymptotic-quotient.v1.json","formal_evidence":"../voevodsky/agda/BoundaryPfaffianFluxMomentQuotient.agda"},
-    {"id":"integral_pfaffian_divisor_classification","law":"alternating Smith factors are d_k=D_k/D_(k-1), with odd cofactor gcd controlling primitive null scaling","evidence":"integral-chain-pfaffian-divisors.v1.json"}
+    {"id":"integral_pfaffian_divisor_classification","law":"alternating Smith factors are d_k=D_k/D_(k-1), with odd cofactor gcd controlling primitive null scaling","evidence":"integral-chain-pfaffian-divisors.v1.json"},
+    {"id":"graded_tropical_recurrence","law":"prime-local divisor spectra update with two boundary states per grade and coupling from grade k-1 to k","evidence":"streaming-tropical-torsion-recurrence.v1.json"}
   ],
   "protocols": {
     "stationary_endpoint": ["translate","reverse","endpoint_moments"],
     "ordered_pfaffian": ["ordered_sew","paired_pfaffian_correspondence","paired_pfaffian_transition"],
-    "integral_reconciliation": ["integral_torsion_reconcile","localize_torsion"],
+    "integral_reconciliation": ["integral_torsion_reconcile","tropical_torsion_update","localize_torsion"],
     "green_ind_pro": ["include_contexts","project_contexts","green_determinant_transition"],
     "second_order_recollement": ["refine_seam","massive_apply","green_resolve"]
   },

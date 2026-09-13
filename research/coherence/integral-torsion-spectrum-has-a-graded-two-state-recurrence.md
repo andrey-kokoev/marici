@@ -1,4 +1,4 @@
-# The integral torsion spectrum has a graded two-state recurrence
+# The integral torsion spectrum has two boundary states per grade
 
 ## Streaming path matching
 
@@ -38,7 +38,7 @@ v_p(D_k)=\min(Z_k,O_k).
 
 ## Rank by grade
 
-At each fixed matching grade \(k\), only two boundary states are needed. But the complete divisor spectrum contains all grades
+There are two boundary states at each matching grade \(k\), but grade \(k\) is not autonomous: the update of \(O_k\) reads \(Z_{k-1}\). The recurrence is lower-triangular in grade. The complete divisor spectrum contains all grades
 
 \[
 0\le k\le\lfloor n/2\rfloor.
@@ -47,11 +47,12 @@ At each fixed matching grade \(k\), only two boundary states are needed. But the
 Hence its streaming state grows with configuration size:
 
 ```text
-fixed grade k:       two-state tropical recurrence
+per grade k:         two boundary coordinates
+cross-grade coupling: k-1 -> k
 all torsion grades:  graded family of growing total size
 ```
 
-This is an arithmetic analogue of the contextual realization split: finite local transition width coexists with unbounded complete state dimension.
+This is an arithmetic analogue of the contextual realization split: finite local transition width in edge position and grade coexists with unbounded complete state dimension. It must not be described as a closed rank-two realization at one fixed grade.
 
 ## Self-recursion
 
