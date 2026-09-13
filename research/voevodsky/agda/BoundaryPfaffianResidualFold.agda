@@ -51,6 +51,79 @@ module ResidualFold {ℓ} (R : CommRing ℓ) where
   localizedTorsionIsOutgoing (localizedExtendRight X e ue o) =
     cong (_· e) (localizedTorsionIsOutgoing X)
 
+  -- Nonempty coordinate words for the complete odd Pfaffian cofactor state.
+  data CoordinateWord : Type ℓ where
+    singleCoordinate : Carrier → CoordinateWord
+    prependCoordinate : Carrier → CoordinateWord → CoordinateWord
+
+  firstCoordinate : CoordinateWord → Carrier
+  firstCoordinate (singleCoordinate x) = x
+  firstCoordinate (prependCoordinate x xs) = x
+
+  lastCoordinate : CoordinateWord → Carrier
+  lastCoordinate (singleCoordinate x) = x
+  lastCoordinate (prependCoordinate x xs) = lastCoordinate xs
+
+  scaleCoordinates : Carrier → CoordinateWord → CoordinateWord
+  scaleCoordinates a (singleCoordinate x) = singleCoordinate (a · x)
+  scaleCoordinates a (prependCoordinate x xs) =
+    prependCoordinate (a · x) (scaleCoordinates a xs)
+
+  appendCoordinate : CoordinateWord → Carrier → CoordinateWord
+  appendCoordinate (singleCoordinate x) y =
+    prependCoordinate x (singleCoordinate y)
+  appendCoordinate (prependCoordinate x xs) y =
+    prependCoordinate x (appendCoordinate xs y)
+
+  appendTwoCoordinates : CoordinateWord → Carrier → Carrier → CoordinateWord
+  appendTwoCoordinates xs y z = appendCoordinate (appendCoordinate xs y) z
+
+  firstScale : (a : Carrier) (xs : CoordinateWord) →
+    firstCoordinate (scaleCoordinates a xs) ≡ a · firstCoordinate xs
+  firstScale a (singleCoordinate x) = refl
+  firstScale a (prependCoordinate x xs) = refl
+
+  firstAppend : (xs : CoordinateWord) (y : Carrier) →
+    firstCoordinate (appendCoordinate xs y) ≡ firstCoordinate xs
+  firstAppend (singleCoordinate x) y = refl
+  firstAppend (prependCoordinate x xs) y = refl
+
+  lastAppend : (xs : CoordinateWord) (y : Carrier) →
+    lastCoordinate (appendCoordinate xs y) ≡ y
+  lastAppend (singleCoordinate x) y = refl
+  lastAppend (prependCoordinate x xs) y = lastAppend xs y
+
+  cofactorCoordinates : OddMetric → CoordinateWord
+  cofactorCoordinates singleton = singleCoordinate 1r
+  cofactorCoordinates (extendRight X e o) =
+    appendTwoCoordinates
+      (scaleCoordinates o (cofactorCoordinates X))
+      (- (outgoing X · e · o))
+      (outgoing X · e)
+
+  cofactorFirstIsIncoming : (X : OddMetric) →
+    firstCoordinate (cofactorCoordinates X) ≡ incoming X
+  cofactorFirstIsIncoming singleton = refl
+  cofactorFirstIsIncoming (extendRight X e o) =
+    firstAppend
+      (appendCoordinate (scaleCoordinates o (cofactorCoordinates X))
+        (- (outgoing X · e · o)))
+      (outgoing X · e) ∙
+    firstAppend (scaleCoordinates o (cofactorCoordinates X))
+      (- (outgoing X · e · o)) ∙
+    firstScale o (cofactorCoordinates X) ∙
+    cong (o ·_) (cofactorFirstIsIncoming X) ∙
+    solve! R
+
+  cofactorLastIsOutgoing : (X : OddMetric) →
+    lastCoordinate (cofactorCoordinates X) ≡ outgoing X
+  cofactorLastIsOutgoing singleton = solve! R
+  cofactorLastIsOutgoing (extendRight X e o) =
+    lastAppend
+      (appendCoordinate (scaleCoordinates o (cofactorCoordinates X))
+        (- (outgoing X · e · o)))
+      (outgoing X · e)
+
   prependPair : Carrier → Carrier → OddMetric → OddMetric
   prependPair evenGap oddGap singleton =
     extendRight singleton evenGap oddGap

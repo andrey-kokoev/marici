@@ -40,6 +40,20 @@ q_{\rm in}(\operatorname{extend}(X,e,o))=q_{\rm in}(X)o.
 
 Thus repeated extension computes the alternating products of even- and odd-indexed gaps.
 
+## Complete cofactor coordinate fold
+
+The module now constructs a nonempty `CoordinateWord` for the full odd cofactor state, not only its two boundary charges. Starting from the singleton coordinate \((1)\), pair extension by gaps \((e,o)\) applies
+
+```text
+old coordinates -> o * old coordinates
+append           -> -q_out * e * o
+append endpoint  ->  q_out * e
+```
+
+This is the recursive form of the closed alternating cofactor monomials. Agda proves that the first resulting coordinate is exactly \(q_{\rm in}\) and the last is exactly \(q_{\rm out}\) for every odd metric word.
+
+The remaining arbitrary-size matrix task is to prove directly that this coordinate word is annihilated by the full chain matrix and equals the recursive Pfaffian-minor definition. The coordinate construction itself and its boundary identifications are now formal.
+
 ## Constructed laws
 
 The module proves:
