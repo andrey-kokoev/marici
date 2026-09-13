@@ -7,10 +7,13 @@ A presented structure is reduced relative to an admitted context family and coef
 ```text
 presented structure
 -> contextual defect
--> contractible part + residual
--> torsion certificate + typed interface
+-> integral torsion module + free residual
+-> optional selected-gap localization
+-> contractible pairs + Pfaffian certificate + typed interface
 -> minimal reusable realization
 ```
+
+The shorter “contractible part plus residual” pipeline is the localized specialization of this coefficient-portable form.
 
 This is atemporal. The arrows express factorization and dependence, not physical succession.
 
@@ -58,12 +61,21 @@ M_{ij}(t)=\operatorname{sgn}(a_j-a_i)e^{-t|a_j-a_i|}.
 
 Its even Pfaffian is the adjacent minimum-matching amplitude; its odd Pfaffian cofactors span the residual line. After localizing the selected gap weights, exact triangular congruence reduces it to adjacent hyperbolic pairs plus one zero line at odd size. The polynomial Pfaffian/cofactor identities themselves require no localization.
 
-Thus:
+Thus, after selected-gap localization:
 
 ```text
 even rank -> Pfaffian torsion
 odd rank  -> one residual homology line
 ```
+
+Over an integral base, the pre-localized output is richer. Its alternating Smith factors are determined by Pfaffian divisors
+
+\[
+D_k=\gcd_{|S|=2k}|\operatorname{Pf}M_S|,
+\qquad d_k=D_k/D_{k-1}.
+\]
+
+Primewise, \(v_p(D_k)\) is the minimum cost of a size-\(k\) matching in the path weighted by gap valuations. At odd size the top divisor is the gcd scale of the cofactor null vector; dividing by it produces the primitive free residual line.
 
 ## Residual recurrence
 
@@ -241,8 +253,12 @@ The expanded executable interface is frozen in `boundary-pfaffian-constructor-al
 ### Proved algebraically in the documented finite model
 
 - chain-kernel Pfaffian adjacent-matching identity;
+- closed alternating-product formula for every odd Pfaffian cofactor;
+- integral alternating Smith classification by Pfaffian divisors;
+- prime-local reduction of divisor valuations to minimum weighted path matchings;
 - odd Pfaffian-cofactor null vector;
 - adjacent hyperbolic normal form after explicit inversion of selected gap weights;
+- ring-generic paired refinement correspondence and its localized line transition;
 - even-cut factorization and unit;
 - odd--odd sewing through a rank-one cross block;
 - even action on odd residual lines;
