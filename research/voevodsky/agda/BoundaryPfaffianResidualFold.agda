@@ -45,6 +45,20 @@ module ResidualFold {ℓ} (R : CommRing ℓ) where
   reverseMetric (extendRight X e o) =
     prependPair o e (reverseMetric X)
 
+  reversePrependPair : (e o : Carrier) (X : OddMetric) →
+    reverseMetric (prependPair e o X) ≡
+    extendRight (reverseMetric X) o e
+  reversePrependPair e o singleton = refl
+  reversePrependPair e o (extendRight X a b) =
+    cong (prependPair b a) (reversePrependPair e o X)
+
+  reverseMetricInvolutive : (X : OddMetric) →
+    reverseMetric (reverseMetric X) ≡ X
+  reverseMetricInvolutive singleton = refl
+  reverseMetricInvolutive (extendRight X e o) =
+    reversePrependPair o e (reverseMetric X) ∙
+    cong (λ Y → extendRight Y e o) (reverseMetricInvolutive X)
+
   reverseOutgoing : (X : OddMetric) →
     outgoing (reverseMetric X) ≡ incoming X
   reverseOutgoing singleton = refl

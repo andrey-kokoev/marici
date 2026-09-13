@@ -51,6 +51,14 @@ q_{\rm out}(X^{\rm op})=q_{\rm in}(X),
 q_{\rm in}(X^{\rm op})=q_{\rm out}(X).
 \]
 
+The module first proves the structural lemma that reversing a prepended gap pair is the same as appending the swapped pair. Induction then proves the full metric-word identity
+
+\[
+(X^{\rm op})^{\rm op}=X.
+\]
+
+This is an equality of recursively presented odd configurations, not merely equality of their observed charges.
+
 At summary level, reversal is the literal swap
 
 \[
@@ -58,7 +66,7 @@ At summary level, reversal is the literal swap
 =(q_{\rm in},q_{\rm out}).
 \]
 
-The module proves that this swap is involutive and that summarization commutes with metric-word reversal. It also proves the contravariant sewing law
+The module proves that this swap is involutive, that summarization commutes with metric-word reversal, and that summary involution is induced by the constructed metric-word involution. It also proves the contravariant sewing law
 
 \[
 \operatorname{sew}(Y^{\rm op},g,X^{\rm op})
