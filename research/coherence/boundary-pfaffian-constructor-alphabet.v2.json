@@ -29,7 +29,7 @@
     {"id":"include_contexts","source":"finite_green_state_S","target":"finite_green_state_T","condition":"S subset T","action":"isometric kernel-span inclusion"},
     {"id":"project_contexts","source":"finite_green_state_T","target":"finite_green_state_S","condition":"S subset T","action":"Green orthogonal projection"},
     {"id":"green_determinant_transition","source":"green_determinant_line_S","target":"green_determinant_line_T","action":"multiply by innovation norm squared"},
-    {"id":"paired_pfaffian_correspondence","source":"pfaffian_line_even_S_pair_even_T","target":"polynomial_refinement_relation","condition":"T adds two ordered points","action":"rho tau_new = alpha beta tau_old for a selected gap; tau_new = gamma tau_old otherwise","coefficient_regime":"ring_generic"},
+    {"id":"paired_pfaffian_correspondence","source":"common_remaining_factor","target":"pfaffian_line_even_S_pair_even_T","condition":"T adds two ordered points","action":"r maps to (r rho,r alpha beta) for a selected gap; the image satisfies rho tau_new = alpha beta tau_old","coefficient_regime":"ring_generic"},
     {"id":"paired_pfaffian_transition","source":"pfaffian_line_even_S","target":"pfaffian_line_even_T","condition":"T adds two ordered points","action":"multiply by internal gap or its inverse according to pair parity","coefficient_regime":"localized_selected_gaps"}
   ],
   "relations": [
@@ -40,7 +40,7 @@
     {"id":"ind_pro_triangle","law":"project(S,T) project(T,U) = project(S,U)","evidence":"green-gram-pro-system.v1.json"},
     {"id":"state_retraction","law":"project(S,T) include(S,T) = identity","evidence":"green-gram-pro-system.v1.json"},
     {"id":"determinant_cocycle","law":"det_transition(S,U) = det_transition(T,U) det_transition(S,T)","evidence":"green-gram-determinant-transitions.v1.json"},
-    {"id":"paired_pfaffian_correspondence","law":"two-point refinement satisfies the cross-multiplied Pfaffian relation over a bare ring","evidence":"ring-generic-paired-pfaffian-correspondence.v1.json","formal_evidence":"../voevodsky/agda/BoundaryPfaffianResidualFold.agda"},
+    {"id":"paired_pfaffian_correspondence","law":"two-point refinement is presented by a common remaining factor and satisfies the cross-multiplied relation","evidence":"ring-generic-paired-pfaffian-correspondence.v1.json","obstruction_evidence":"nonunit-pfaffian-correspondence-fibers.v1.json","formal_evidence":"../voevodsky/agda/BoundaryPfaffianResidualFold.agda"},
     {"id":"paired_pfaffian_transition","law":"two-point refinement multiplies Pfaffian torsion by the parity-selected internal factor after localization","evidence":"paired-refinement-line-transitions.v1.json"},
     {"id":"moment_kernel_stability","law":"two-moment kernel is stable under assembly, translation, and reflection","evidence":"multiseam-asymptotic-quotient.v1.json","formal_evidence":"../voevodsky/agda/BoundaryPfaffianFluxMomentQuotient.agda"}
   ],

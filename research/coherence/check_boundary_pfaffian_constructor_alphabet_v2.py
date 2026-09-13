@@ -13,6 +13,7 @@ for relation in d['relations']:
  assert 'evidence' in relation and (p.parent/relation['evidence']).exists(), relation['id']
  if 'formal_evidence' in relation: assert (p.parent/relation['formal_evidence']).exists(), relation['id']
  if 'coefficient_obstruction_evidence' in relation: assert (p.parent/relation['coefficient_obstruction_evidence']).exists(), relation['id']
+ if 'obstruction_evidence' in relation: assert (p.parent/relation['obstruction_evidence']).exists(), relation['id']
 regimes=set(d['coefficient_regimes'])
 for constructor in d['constructors']:
  if 'coefficient_regime' in constructor: assert constructor['coefficient_regime'] in regimes
