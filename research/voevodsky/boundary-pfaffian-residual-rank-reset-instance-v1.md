@@ -79,6 +79,24 @@ for every program and residual summary.
 
 Consequently arbitrary program depth creates no additional state coordinate: extensions only modify the scalar weight, while reversal toggles which of the two charges is read. This is the constructive upper-bound half of the stationary realization-rank-two theorem.
 
+## Joint faithfulness
+
+Two explicit programs are constructed:
+
+```text
+outgoingProbe
+incomingProbe = reverseThen(outgoingProbe)
+```
+
+Agda proves that they read \(q_{\rm out}\) and \(q_{\rm in}\) exactly. It then proves `twoProbesFaithful`: if two residual summaries agree under both probes, the summaries are equal.
+
+Thus the two normal-form polarizations are jointly faithful. Combined with context normalization, this gives an operational exactness result:
+
+```text
+all finite contexts factor through two charges,
+and two admitted contexts recover those two charges.
+```
+
 ## Scope
 
 This closes the complete finite ordered/reversal context protocol constructively while retaining a reversal-closed polarized torsion certificate. It does not establish sufficiency under graph refinement or independently labelled signed shifts. Those require larger target types, as shown by the context-rank audits.

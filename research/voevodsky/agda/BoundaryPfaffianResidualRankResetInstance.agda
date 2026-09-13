@@ -125,6 +125,32 @@ module Instance {ℓ} (CR : CommRing ℓ) where
     contextNormalization C (reverseSummary X) ∙
     compileReverseCorrect (compileContext C) X
 
+  unitResidual : ResidualSummary
+  unitResidual = summarize singleton
+
+  outgoingProbe : ContextProgram
+  outgoingProbe = observeWith 1r unitResidual
+
+  incomingProbe : ContextProgram
+  incomingProbe = reverseThen outgoingProbe
+
+  outgoingProbeReads : (X : ResidualSummary) →
+    runContext outgoingProbe X ≡ out X
+  outgoingProbeReads X = solve! CR
+
+  incomingProbeReads : (X : ResidualSummary) →
+    runContext incomingProbe X ≡ inn X
+  incomingProbeReads X = solve! CR
+
+  twoProbesFaithful : (X Y : ResidualSummary) →
+    runContext outgoingProbe X ≡ runContext outgoingProbe Y →
+    runContext incomingProbe X ≡ runContext incomingProbe Y →
+    X ≡ Y
+  twoProbesFaithful X Y outEqual inEqual i = record
+    { out = (sym (outgoingProbeReads X) ∙ outEqual ∙ outgoingProbeReads Y) i
+    ; inn = (sym (incomingProbeReads X) ∙ inEqual ∙ incomingProbeReads Y) i
+    }
+
   completeFiniteValidity : ContextualValidity residualRankReset
   completeFiniteValidity = record
     { Context = ContextProgram
