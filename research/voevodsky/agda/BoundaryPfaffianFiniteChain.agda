@@ -56,6 +56,67 @@ module Chain {ℓ} (R : CommRing ℓ) where
     ; kernelRow₂ = row₂Vanishes x y
     }
 
+  record SelectedGapUnit (x : Carrier) : Type ℓ where
+    field
+      inverse : Carrier
+      inverseLaw : inverse · x ≡ 1r
+
+  open SelectedGapUnit public
+
+  -- The determinant-one triangular basis change fixes e0,e1 and replaces
+  -- e2 by e2 + x^-1 y e0 - y e1.  Its last vector is orthogonal to the pair.
+  localizedThirdCoefficient₀ : (x y : Carrier) → SelectedGapUnit x → Carrier
+  localizedThirdCoefficient₀ x y ux = inverse ux · y
+
+  localizedThirdCoefficient₁ : Carrier → Carrier
+  localizedThirdCoefficient₁ y = - y
+
+  localizedPairingWith₀ : (x y : Carrier) → SelectedGapUnit x → Carrier
+  localizedPairingWith₀ x y ux =
+    x · y + localizedThirdCoefficient₁ y · x
+
+  localizedPairingWith₁ : (x y : Carrier) → SelectedGapUnit x → Carrier
+  localizedPairingWith₁ x y ux =
+    y + localizedThirdCoefficient₀ x y ux · (- x)
+
+  localizedPairingWith₀Vanishes :
+    (x y : Carrier) (ux : SelectedGapUnit x) →
+    localizedPairingWith₀ x y ux ≡ 0r
+  localizedPairingWith₀Vanishes x y ux = solve! R
+
+  localizedPairingWith₁Vanishes :
+    (x y : Carrier) (ux : SelectedGapUnit x) →
+    localizedPairingWith₁ x y ux ≡ 0r
+  localizedPairingWith₁Vanishes x y ux =
+    normalize ∙ useInverse ∙ cancel
+    where
+    normalize : localizedPairingWith₁ x y ux ≡
+      y + (- (y · (inverse ux · x)))
+    normalize = solve! R
+    useInverse : y + (- (y · (inverse ux · x))) ≡
+      y + (- (y · 1r))
+    useInverse = cong (λ z → y + (- (y · z))) (inverseLaw ux)
+    cancel : y + (- (y · 1r)) ≡ 0r
+    cancel = solve! R
+
+  record LocalizedThreeNormalForm (x y : Carrier) (ux : SelectedGapUnit x) :
+    Type ℓ where
+    field
+      survivingBlockWeight : Carrier
+      blockIsSelectedGap : survivingBlockWeight ≡ x
+      thirdPairing₀Vanishes : localizedPairingWith₀ x y ux ≡ 0r
+      thirdPairing₁Vanishes : localizedPairingWith₁ x y ux ≡ 0r
+
+  localizedThreeNormalForm :
+    (x y : Carrier) (ux : SelectedGapUnit x) →
+    LocalizedThreeNormalForm x y ux
+  localizedThreeNormalForm x y ux = record
+    { survivingBlockWeight = x
+    ; blockIsSelectedGap = refl
+    ; thirdPairing₀Vanishes = localizedPairingWith₀Vanishes x y ux
+    ; thirdPairing₁Vanishes = localizedPairingWith₁Vanishes x y ux
+    }
+
   -- Four-point Pfaffian.  The two non-adjacent matching terms cancel.
   fourChainPfaffian : Carrier → Carrier → Carrier → Carrier
   fourChainPfaffian x y z =

@@ -30,6 +30,18 @@ The `ThreeChainResidual` record retains:
 - their identification with the canonical cofactors;
 - all three row-vanishing certificates.
 
+## Localized three-point normal form
+
+`SelectedGapUnit x` stores an explicit inverse and proof \(x^{-1}x=1\). Under exactly this hypothesis, the module constructs the determinant-one triangular replacement
+
+\[
+e_2' = e_2+x^{-1}y\,e_0-y\,e_1.
+\]
+
+Agda proves that \(e_2'\) pairs trivially with both \(e_0\) and \(e_1\), leaving the selected block \(H(x)\) and one zero line. This is a concrete localized hyperbolic normal-form witness.
+
+No unit witness is used by the earlier cofactor kernel equations. The module therefore keeps ring-generic Pfaffian algebra and unit-dependent contractible minimalization formally separate.
+
 ## Four-point closure
 
 For adjacent weights \(x,y,z\), the module defines the complete four-point Pfaffian expression
