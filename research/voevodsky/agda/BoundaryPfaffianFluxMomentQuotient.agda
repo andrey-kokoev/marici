@@ -35,6 +35,45 @@ module FluxMoments {ℓ} (R : CommRing ℓ) where
     ; plus = plusMoment X
     }
 
+  -- Two seams split the endpoint quotient whenever their moment determinant
+  -- is a unit.  This is the algebraic distinct-position hypothesis.
+  record TwoSeamFrame : Type ℓ where
+    field
+      aInv a bInv b determinantInv : Carrier
+      determinantInverse :
+        determinantInv · (aInv · b + (- bInv · a)) ≡ 1r
+
+  open TwoSeamFrame public
+
+  endpointSection : TwoSeamFrame → EndpointDouble → FluxFamily
+  endpointSection F q =
+    seam (aInv F) (a F)
+      (determinantInv F · (b F · minus q + (- bInv F · plus q)))
+      (seam (bInv F) (b F)
+        (determinantInv F · ((- a F) · minus q + aInv F · plus q))
+        noFlux)
+
+  sectionMinus : (F : TwoSeamFrame) (q : EndpointDouble) →
+    minusMoment (endpointSection F q) ≡ minus q
+  sectionMinus F q =
+    solve! R ∙
+    cong (_· minus q) (determinantInverse F) ∙
+    solve! R
+
+  sectionPlus : (F : TwoSeamFrame) (q : EndpointDouble) →
+    plusMoment (endpointSection F q) ≡ plus q
+  sectionPlus F q =
+    solve! R ∙
+    cong (_· plus q) (determinantInverse F) ∙
+    solve! R
+
+  endpointSectionRightInverse : (F : TwoSeamFrame) (q : EndpointDouble) →
+    observeEndpoints (endpointSection F q) ≡ q
+  endpointSectionRightInverse F q i = record
+    { minus = sectionMinus F q i
+    ; plus = sectionPlus F q i
+    }
+
   appendFluxes : FluxFamily → FluxFamily → FluxFamily
   appendFluxes noFlux Y = Y
   appendFluxes (seam yInv y flux X) Y =

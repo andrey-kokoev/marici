@@ -26,6 +26,23 @@ q_+ = \sum_i J_i y_i.
 
 The analytic factor \(-1/2\) is intentionally omitted, so the construction remains valid without assuming that two is invertible.
 
+## Constructive two-seam section
+
+For two seam frames \((a^{-1},a)\) and \((b^{-1},b)\), define the moment determinant
+
+\[
+d=a^{-1}b-b^{-1}a.
+\]
+
+`TwoSeamFrame` requires explicit data \(d^{-1}\) and a proof \(d^{-1}d=1\). Under exactly this unit hypothesis, the module constructs flux coefficients for every endpoint pair and proves
+
+\[
+\operatorname{Observe}(\operatorname{Section}(q_-,q_+))
+=(q_-,q_+).
+\]
+
+Thus the endpoint observation is constructively split-surjective whenever two labelled positions have invertible moment determinant. No field axiom or hidden division operation is used.
+
 ## Additive composition
 
 Finite labelled families concatenate. Agda proves associativity and the empty-family unit law, then proves that endpoint observation is a monoid homomorphism:
@@ -78,7 +95,7 @@ This formally realizes the algebraic part of the finite sequence
 labelled flux family -> endpoint double
 ```
 
-but does not yet prove finite-dimensional surjectivity or kernel rank, which require hypotheses on distinct/invertible position weights.
+The module proves split surjectivity under the explicit invertible two-seam determinant hypothesis. It does not yet compute the kernel rank for arbitrary finite families, which would require a developed finite free-module rank library.
 
 ## Verification
 
