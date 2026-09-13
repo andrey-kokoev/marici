@@ -12,5 +12,11 @@ rids={x['id'] for x in d['relations']};assert {'massive_green_factorization','in
 for relation in d['relations']:
  assert 'evidence' in relation and (p.parent/relation['evidence']).exists(), relation['id']
  if 'formal_evidence' in relation: assert (p.parent/relation['formal_evidence']).exists(), relation['id']
-out={'schema':'marici.coherence.boundary-pfaffian-constructor-alphabet-v2-check.v1','constructors':len(ids),'relations':len(rids),'protocols':len(d['protocols']),'two_seam_channels':True,'green_pfaffian_lines_distinct':True,'all_required_relations_present':True,'all_relations_have_existing_evidence':True}
+ if 'coefficient_obstruction_evidence' in relation: assert (p.parent/relation['coefficient_obstruction_evidence']).exists(), relation['id']
+regimes=set(d['coefficient_regimes'])
+for constructor in d['constructors']:
+ if 'coefficient_regime' in constructor: assert constructor['coefficient_regime'] in regimes
+assert next(x for x in d['constructors'] if x['id']=='green_resolve')['coefficient_regime']=='green_normalized'
+assert next(x for x in d['constructors'] if x['id']=='paired_pfaffian_transition')['coefficient_regime']=='localized_selected_gaps'
+out={'schema':'marici.coherence.boundary-pfaffian-constructor-alphabet-v2-check.v1','constructors':len(ids),'relations':len(rids),'protocols':len(d['protocols']),'coefficient_regimes':len(regimes),'two_seam_channels':True,'green_pfaffian_lines_distinct':True,'all_required_relations_present':True,'all_relations_have_existing_evidence':True,'coefficient_requirements_typed':True}
 Path(__file__).with_name('boundary-pfaffian-constructor-alphabet-v2-check.v1.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

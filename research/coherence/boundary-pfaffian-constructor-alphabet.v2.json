@@ -2,6 +2,11 @@
   "schema": "marici.coherence.boundary-pfaffian-constructor-alphabet.v2",
   "supersedes": "marici.coherence.boundary-pfaffian-constructor-alphabet.v1",
   "scope": "ordered Pfaffian residuals plus second-order Green graph recollement",
+  "coefficient_regimes": {
+    "ring_generic": "commutative ring",
+    "localized_selected_gaps": "every selected Pfaffian pair weight has an explicit unit witness",
+    "green_normalized": "commutative algebra with an explicit inverse of two"
+  },
   "objects": [
     "oriented_residual_line",
     "stationary_hyperbolic_double",
@@ -16,21 +21,21 @@
   "constructors": [
     {"id":"translate","source":"stationary_hyperbolic_double","target":"stationary_hyperbolic_double","action":"diag(z,z^-1)"},
     {"id":"reverse","source":"stationary_hyperbolic_double","target":"stationary_hyperbolic_double","action":"swap(in,out)"},
-    {"id":"ordered_sew","source":"oriented_residual_line_pair","target":"pfaffian_line","action":"q_out(left) gap q_in(right)"},
+    {"id":"ordered_sew","source":"oriented_residual_line_pair","target":"pfaffian_line","action":"q_out(left) gap q_in(right)","coefficient_regime":"ring_generic"},
     {"id":"refine_seam","source":"piecewise_h2_graph_fiber_B","target":"piecewise_h2_graph_fiber_B_union_c","cofiber":"value_jump_line_odd plus flux_jump_line_even"},
-    {"id":"massive_apply","source":"finite_green_state_S","target":"labelled_flux_family_S","action":"kernel coefficient u_c maps to flux jump -2u_c"},
-    {"id":"green_resolve","source":"value_flux_seam_family","target":"stationary_hyperbolic_double","action":"sum of position-dependent Green transfer matrices"},
+    {"id":"massive_apply","source":"finite_green_state_S","target":"labelled_flux_family_S","action":"kernel coefficient u_c maps to flux jump -2u_c","coefficient_regime":"ring_generic"},
+    {"id":"green_resolve","source":"value_flux_seam_family","target":"stationary_hyperbolic_double","action":"sum of position-dependent Green transfer matrices","coefficient_regime":"green_normalized"},
     {"id":"endpoint_moments","source":"labelled_flux_family","target":"stationary_hyperbolic_double","action":"J maps to weighted reciprocal/direct moments"},
     {"id":"include_contexts","source":"finite_green_state_S","target":"finite_green_state_T","condition":"S subset T","action":"isometric kernel-span inclusion"},
     {"id":"project_contexts","source":"finite_green_state_T","target":"finite_green_state_S","condition":"S subset T","action":"Green orthogonal projection"},
     {"id":"green_determinant_transition","source":"green_determinant_line_S","target":"green_determinant_line_T","action":"multiply by innovation norm squared"},
-    {"id":"paired_pfaffian_transition","source":"pfaffian_line_even_S","target":"pfaffian_line_even_T","condition":"T adds two ordered points","action":"multiply by internal gap or its inverse according to pair parity"}
+    {"id":"paired_pfaffian_transition","source":"pfaffian_line_even_S","target":"pfaffian_line_even_T","condition":"T adds two ordered points","action":"multiply by internal gap or its inverse according to pair parity","coefficient_regime":"localized_selected_gaps"}
   ],
   "relations": [
     {"id":"dihedral_relation","law":"R T(z) R = T(z^-1)","evidence":"dihedral-context-hankel-stabilization.v1.json"},
     {"id":"seam_reflection_parity","law":"(value,flux) maps to (-value,flux)","evidence":"value-flux-seam-symmetry.v1.json"},
     {"id":"massive_green_factorization","law":"endpoint_moments o massive_apply = direct Green asymptotic observation","evidence":"finite-context-realization-factorization.v1.json"},
-    {"id":"green_transfer_covariance","law":"green_resolve intertwines seam relocation/reflection with translate/reverse","evidence":"seam-to-asymptotic-green-transfer.v1.json"},
+    {"id":"green_transfer_covariance","law":"green_resolve intertwines seam relocation/reflection with translate/reverse","evidence":"seam-to-asymptotic-green-transfer.v1.json","coefficient_obstruction_evidence":"characteristic-two-seam-transfer-obstruction.v1.json"},
     {"id":"ind_pro_triangle","law":"project(S,T) project(T,U) = project(S,U)","evidence":"green-gram-pro-system.v1.json"},
     {"id":"state_retraction","law":"project(S,T) include(S,T) = identity","evidence":"green-gram-pro-system.v1.json"},
     {"id":"determinant_cocycle","law":"det_transition(S,U) = det_transition(T,U) det_transition(S,T)","evidence":"green-gram-determinant-transitions.v1.json"},
@@ -49,6 +54,8 @@
     "discard_labelled_fluxes_before_endpoint_only_protocol_is_declared",
     "infer_uniform approximation from small unnormalized innovation norm",
     "treat a section of endpoint_moments as equivariant",
-    "identify equal-rank two-dimensional carriers without the Green transfer"
+    "identify equal-rank two-dimensional carriers without the Green transfer",
+    "apply normalized Green transfer when two is not invertible",
+    "claim adjacent hyperbolic contractibility without selected-gap unit witnesses"
   ]
 }
