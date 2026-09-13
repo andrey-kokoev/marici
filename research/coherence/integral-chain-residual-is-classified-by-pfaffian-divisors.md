@@ -98,7 +98,18 @@ The complete integral output is therefore not one scalar torsion. It consists of
 - its cofactor divisibility scale;
 - ordered framing data if later localization must recover adjacent pairs.
 
-After inverting all selected gaps, each \(d_k\) becomes a unit and the arithmetic cokernel disappears, leaving the framed localized hyperbolic decomposition.
+After inverting all selected gaps, each \(d_k\) becomes a unit. Indeed, every \(D_k\), and hence every elementary divisor, divides the terminal adjacent Pfaffian product (or, at odd size, a maximal cofactor equal to such a selected product). Once that product is a unit, all its factors are units. The arithmetic cokernel disappears, leaving the framed localized hyperbolic decomposition.
+
+This produces a canonical coefficient-change route
+
+```text
+integral skew chain
+-> alternating torsion module plus primitive odd line
+-> selected-gap localization
+-> contractible framed pairs plus residual line
+```
+
+The first arrow is Smith/Pfaffian reconciliation; the second is not information preserving over the integral base, but records exactly which torsion is killed.
 
 ## Verification
 
