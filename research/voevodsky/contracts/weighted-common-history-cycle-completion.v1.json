@@ -1,0 +1,51 @@
+{
+  "schema": "marici.voevodsky.weighted-common-history-cycle-completion.v1",
+  "status": "conditional_weighted_Hilbert_completion_not_source_weighted",
+  "history_bound": "research/voevodsky/common_radial_history_has_a_cutoffwise_half_line_L2_bound_20260911.md",
+  "augmented_transition": "research/voevodsky/contracts/common-history-augmented-observer-transition.v1.json",
+  "edge_system": {
+    "index": "countable persistent oriented edges e_n, n>=0",
+    "interval_length": "ell_n>0",
+    "history_column": "b_n(s)=integral_[A_n,B_n] Phi_1(v)Phi_1(v+s+D)dv",
+    "column_bound": "||b_n||_L2(R+)<=ell_n ||Phi_1||_infinity ||Phi_1||_2"
+  },
+  "weight": {
+    "summable_budget": "q_n=2^(-(n+1)), sum q_n=1",
+    "edge_weight": "alpha_n=ell_n^2/q_n=2^(n+1)ell_n^2",
+    "source_norm": "||c||_w^2=sum_n alpha_n |c_n|^2",
+    "warning": "edge enumeration and q_n are synthetic choices, not source calibration"
+  },
+  "completion": {
+    "source": "H_w=ell2(alpha)",
+    "history_target": "L2(R_+)",
+    "synthesis": "B c=sum_n c_n b_n",
+    "bound": "||Bc||_2<=||Phi_1||_infinity||Phi_1||_2 ||c||_w",
+    "convergence": "absolute in L2 by weighted Cauchy-Schwarz",
+    "operator_norm_bound": "||B||<=||Phi_1||_infinity||Phi_1||_2"
+  },
+  "canonical_kernel_port": {
+    "kernel": "K=ker B is closed because B is bounded",
+    "projection": "P_K:H_w->K is the weighted orthogonal projection",
+    "augmented_observer": "O=(B,P_K):H_w->L2(R_+) direct_sum K",
+    "faithful": true,
+    "forest_independence": "no spanning forest is needed after completion; finite forest coordinates present finite bases of subspaces of K"
+  },
+  "metric": {
+    "source": "weighted Hilbert norm on H_w",
+    "kernel_port": "induced weighted norm on K",
+    "history": "requires calibrated covariance before physical whitening",
+    "status": "structural synthetic metric only"
+  },
+  "claim_boundary": {
+    "bounded_completed_history_operator": true,
+    "faithful_augmented_completed_observer": true,
+    "weights_source_derived": false,
+    "minimal_completed_kernel_port_claimed": false,
+    "source_topology_identified": false,
+    "physical_calibration": false
+  },
+  "next_required_object": {
+    "id": "source_weight_or_weight_independence_theorem",
+    "acceptance": "derive alpha_n or an equivalent topology from shell provenance/noise, or prove the downstream invariant is unchanged under an admitted equivalence class of summable budgets"
+  }
+}

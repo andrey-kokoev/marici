@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+"""Check dimensional closure and evidence references of the G4 variance frontier."""
+import hashlib,json,platform
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];FIX=ROOT/'research/voevodsky/fixtures/g4_variance_tetrahedron_materialization_frontier.v1.json';OUT=ROOT/'research/voevodsky/results/g4_variance_tetrahedron_materialization_frontier.json';D=json.loads(FIX.read_text());cells={x['id']:x for x in D['cells']}
+expected_dims={0:4,1:6,2:4,3:1};counts={d:sum(x['dimension']==d for x in cells.values()) for d in expected_dims}
+refs=[x['evidence'] for x in D['cells'] if 'evidence' in x]+[x['evidence'] for x in D['internal_realized_evidence']]
+closure_ok=True;blocked_boundary_ok=True
+for x in cells.values():
+ for b in x.get('boundary',[]):closure_ok &= b in cells and cells[b]['dimension']==x['dimension']-1
+ if x['status']=='blocked' and x.get('boundary'):blocked_boundary_ok &= any(cells[b]['status'] in {'blocked','missing'} for b in x['boundary'])
+materialized={x['id'] for x in cells.values() if x['status']=='candidate'}
+checks={'tetrahedral_cell_counts':counts==expected_dims,'all_boundaries_dimensionally_typed':closure_ok,'all_blocked_cells_have_blocked_or_missing_boundary':blocked_boundary_ok,'all_evidence_paths_exist':all((ROOT/r).is_file() for r in refs),'realized_connected_subcomplex_exact':materialized=={'V2','V4','E24'},'no_face_promoted':all(cells[f]['status']=='blocked' for f in ('F1','F2','F3','F4')),'bulk_blocked':cells['Theta']['status']=='blocked','reciprocal_sewing_not_mistyped_as_dual_realization':D['internal_realized_evidence'][0]['placement'].endswith('not E43'),'first_source_state_gate_retained':D['disposition']['first_missing_typed_datum']=='V1 state_object_ref for A6','parallel_source_response_gate_retained':D['disposition']['parallel_missing_typed_datum']=='V3 response_object_ref for A6dual'}
+out={'schema':'marici.voevodsky.g4-variance-tetrahedron-materialization-frontier-check.v1','passed':all(checks.values()),'checks':checks,'observed':{'cell_counts':counts,'candidate_subcomplex':sorted(materialized),'blocked_faces':[f for f in ('F1','F2','F3','F4') if cells[f]['status']=='blocked'],'first_missing_typed_datum':D['disposition']['first_missing_typed_datum'],'parallel_missing_typed_datum':D['disposition']['parallel_missing_typed_datum']},'disposition':'Finite evidence materializes only the realized pairing edge V2-E24-V4. No tetrahedral face is executable; E43 cannot be inferred from internal reciprocal sewing.','claim_boundary':D['claim_boundary'],'execution_receipt':{'command':'python research/voevodsky/checkers/check_g4_variance_tetrahedron_materialization_frontier.py','python':platform.python_version(),'fixture_sha256':hashlib.sha256(FIX.read_bytes()).hexdigest(),'checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}}
+OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+'\n');print(json.dumps(out,indent=2,sort_keys=True));raise SystemExit(0 if out['passed'] else 1)

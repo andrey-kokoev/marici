@@ -1,0 +1,57 @@
+{
+  "schema": "marici.voevodsky.radial-positive-mass-spectral-convergence-tower.v1",
+  "status": "synthetic_positive_mass_finite_mode_convergence_not_source_continuum",
+  "predecessor": "research/voevodsky/contracts/radial-galerkin-mass-pencil-tower.v1.json",
+  "fork": {
+    "replaces": "exact Schur coherence with singular mass",
+    "retains": "the N=12 generalized response I+L_cycle_12",
+    "new_goal": "positive mass and finite-mode spectral convergence"
+  },
+  "geometry": {
+    "circle_length": 12,
+    "level": "N_ell=12 times 2^ell",
+    "mesh_width": "h_ell=12/N_ell",
+    "unit": "dimensionless_synthetic_length"
+  },
+  "pencil": {
+    "stiffness": "A_ell=h_ell^-1 L_cycle_N + h_ell I_N",
+    "mass": "B_ell=h_ell I_N",
+    "formula": "A_ell-lambda B_ell",
+    "mass_positive_definite": true,
+    "generalized_response": "B_ell^-1 A_ell=I_N+h_ell^-2 L_cycle_N",
+    "base_readback": "at N=12 and h=1, B_0=I and B_0^-1 A_0=I+L_cycle_12"
+  },
+  "spectrum": {
+    "finite": "lambda_(N,k)=1+(N^2/36) sin(pi k/N)^2",
+    "continuum_target": "lambda_k=1+(pi k/6)^2",
+    "quantifiers": "for every fixed integer k, lambda_(N,k) tends to lambda_k as N tends through 12 times powers of two",
+    "multiplicity": "k and N-k pair for nonzero non-N/2 modes",
+    "claim_strength": "fixed_mode_spectral_convergence"
+  },
+  "Evans": {
+    "finite_stage": "D_N(lambda)=det(A_N-lambda B_N)",
+    "zero_set": "the finite generalized spectrum",
+    "normalization": "stagewise only",
+    "no_global_determinant": true,
+    "warning": "finite-mode eigenvalue convergence does not imply convergence of unnormalized determinants or RH factors"
+  },
+  "transition_residual": {
+    "exact_Schur": false,
+    "exact_resolvent_compression": false,
+    "reason": "positive mass on inserted nodes introduces lambda-dependent eliminated dynamics",
+    "replacement": "modewise convergence estimate"
+  },
+  "claim_boundary": {
+    "positive_mass": true,
+    "base_response_preserved": true,
+    "fixed_mode_limit_proved": true,
+    "uniform_all_mode_convergence_claimed": false,
+    "operator_norm_resolvent_convergence_claimed": false,
+    "continuum_source_identified": false,
+    "physical_binding": false
+  },
+  "next_required_object": {
+    "id": "resolvent_convergence_topology",
+    "acceptance": "declare interpolation/projection into L2 of the length-12 circle and prove strong or norm resolvent convergence with quantified domain; do not infer it from fixed-mode samples"
+  }
+}

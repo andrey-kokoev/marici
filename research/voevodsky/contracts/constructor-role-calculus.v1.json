@@ -1,0 +1,176 @@
+{
+  "schema": "marici.voevodsky.constructor-role-calculus.v1",
+  "claim_boundary": "Typed signatures reject invalid constructor substitutions before scalar response comparison; this contract does not certify implementation-specific morphisms.",
+  "signature_fields": [
+    "source",
+    "target",
+    "arity",
+    "variance",
+    "support",
+    "required_cells",
+    "source_rung",
+    "target_metric"
+  ],
+  "substitution_order": [
+    "source_target",
+    "arity_variance",
+    "support_labels",
+    "required_cells",
+    "numeric_equality"
+  ],
+  "roles": {
+    "subgroup_restriction": {
+      "arity": "functor",
+      "variance": "contravariant_in_group_homomorphism",
+      "carrier_effect": "unchanged",
+      "required_cells": ["group_action_restriction"]
+    },
+    "quotient_descent": {
+      "arity": "functor_on_admissible_subcategory",
+      "variance": "factor_action_through_surjection",
+      "carrier_effect": "unchanged_only_if_kernel_trivial",
+      "required_cells": ["kernel_triviality_or_declared_invariant_coinvariant_constructor"]
+    },
+    "comparison_cell": {
+      "arity": "linear",
+      "variance": "covariant_same_acting_group",
+      "required_cells": ["equivariance", "domain_transport"]
+    },
+    "presentation_lift": {
+      "arity": "extension_datum",
+      "variance": "subgroup_to_larger_group",
+      "required_cells": ["restriction_comparison", "existence_witness"]
+    },
+    "projective_presentation_lift": {
+      "arity": "extension_datum",
+      "variance": "central_extension_action",
+      "required_cells": ["restriction_comparison", "explicit_cocycle"]
+    },
+    "forward_synthesis": {
+      "arity": "linear",
+      "variance": "fixed_before_return_parameter",
+      "source_rung": "labelled_source",
+      "target_metric": "declared_graph_or_ambient",
+      "required_cells": ["cutoff_naturality", "label_support", "response_naturality"]
+    },
+    "determinant_counterterm": {
+      "arity": "bilinear_or_multilinear",
+      "variance": "may_depend_on_return_parameter",
+      "source_rung": "graded_tensor_source",
+      "target_metric": "scalar_determinant_line",
+      "required_cells": ["determinant_expansion", "counterterm_cancellation"]
+    },
+    "essential_observer": {
+      "arity": "linear",
+      "variance": "forward_observation",
+      "source_rung": "hilbert_or_graph",
+      "required_cells": ["positive_invertible_calkin_gramian"]
+    },
+    "finite_defect_repair": {
+      "arity": "linear",
+      "variance": "forward_observation",
+      "required_cells": ["finite_defect", "injective_on_complement_kernel"]
+    },
+    "symmetry_orbit_observer": {
+      "arity": "finite_row",
+      "variance": "source_action_before_observation",
+      "required_cells": ["averaged_gramian"]
+    },
+    "real_comparison": {
+      "arity": "antilinear_involution",
+      "variance": "same_metric_rung",
+      "required_cells": ["involution", "domain_transport", "metric_compatibility"]
+    },
+    "graph_adjoint": {
+      "arity": "reverse_linear",
+      "variance": "graph_metric",
+      "source_rung": "graph",
+      "required_cells": ["graph_inner_product_identity"]
+    },
+    "ambient_adjoint": {
+      "arity": "reverse_linear",
+      "variance": "ambient_metric",
+      "source_rung": "ambient",
+      "required_cells": ["ambient_inner_product_identity"]
+    },
+    "boundary_trace": {
+      "arity": "linear",
+      "variance": "graph_to_boundary",
+      "source_rung": "graph",
+      "required_cells": ["graph_continuity", "green_identity"]
+    },
+    "thick_bulk_complement": {
+      "arity": "linear",
+      "variance": "bulk_forward_observation",
+      "source_rung": "graph",
+      "required_cells": ["fixed_scale", "uniform_local_mass", "graph_lower_bound"]
+    },
+    "relative_phase_observer": {
+      "arity": "cycle_relational",
+      "variance": "oriented_loop",
+      "required_cells": ["frame_transport", "gauge_invariance", "stable_phase_embedding"]
+    }
+  },
+  "admitted_compositions": [
+    ["subgroup_restriction", "comparison_cell"],
+    ["presentation_lift", "subgroup_restriction"],
+    ["essential_observer", "finite_defect_repair"],
+    ["boundary_trace", "finite_defect_repair"],
+    ["thick_bulk_complement", "comparison_cell"]
+  ],
+  "forbidden_promotions": [
+    {
+      "from": "presentation_lift",
+      "to": "essential_observer",
+      "reason": "unitary or phase bookkeeping preserves zero lower modulus"
+    },
+    {
+      "from": "boundary_trace",
+      "to": "essential_observer",
+      "condition": "finite_dimensional_boundary_and_infinite_dimensional_graph_source",
+      "reason": "finite rank has zero Calkin class"
+    },
+    {
+      "from": "determinant_counterterm",
+      "to": "forward_synthesis",
+      "reason": "source arity and return-parameter variance mismatch"
+    },
+    {
+      "from": "graph_adjoint",
+      "to": "ambient_adjoint",
+      "reason": "different metric rungs; inclusion adjoint inserts inverse graph metric"
+    },
+    {
+      "from": "real_comparison",
+      "to": "symmetry_orbit_observer",
+      "reason": "coherence mate requires an independent Gramian test"
+    }
+  ],
+  "worked_example": {
+    "group_transfer": ["subgroup_restriction", "comparison_cell"],
+    "sewing_law": "C_u F^2=W_u C_u",
+    "fixed_fiber_real": "J_u=diag(1,u^2)K",
+    "graph_metric": "G_D=I+D^*D",
+    "rung_relation": "bar_U^*=U^(*D)G_D^-1",
+    "essential_complement": "real reciprocal-even thick bulk multiplier diag(M_w,M_w)",
+    "finite_phase_complement": "P(z)=(z+z^-1)/2 and Q(z)=(z-z^-1)/(2i)"
+  },
+  "deliberate_failures": [
+    {
+      "id": "mixed_counterterm_as_forward_loading",
+      "expected_first_failure": "source_target"
+    },
+    {
+      "id": "trace_as_infinite_graph_essential_observer",
+      "expected_first_failure": "required_cells"
+    },
+    {
+      "id": "graph_adjoint_as_ambient_adjoint",
+      "expected_first_failure": "source_target"
+    },
+    {
+      "id": "fourier_half_turn_as_quotient_image_of_generator_square",
+      "expected_first_failure": "required_cells"
+    }
+  ]
+}

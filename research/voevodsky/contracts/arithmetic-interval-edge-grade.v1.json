@@ -1,0 +1,48 @@
+{
+  "schema": "marici.voevodsky.arithmetic-interval-edge-grade.v1",
+  "status": "explicit_source_label_grade_candidate_not_G4_selected",
+  "source": "research/nima/a-spanning-forest-cycle-port-is-the-minimal-finite-observer-completing-common-radial-history.md",
+  "completion_source": "research/nima/a-greedy-global-forest-completes-the-cycle-observer-on-the-projective-edge-source.md",
+  "edge": {
+    "labels": "(n,p,q) with n>=1 and primes p,q>=2 at fixed ratio block D",
+    "interval": "[log(np),log(nq)] with orientation retained",
+    "length": "ell_e=|log(q/p)|"
+  },
+  "grade": {
+    "symbol": "W_star(e)",
+    "definition": "log(n p q)",
+    "nonnegative": true,
+    "proper": "for each R, n p q<=exp(R) admits only finitely many integer/prime triples",
+    "reciprocal_invariance": "W_star(n,p,q)=W_star(n,q,p)",
+    "orientation_independence": true
+  },
+  "ordering": {
+    "primary": "nondecreasing n p q",
+    "tie_break": "lexicographic (n,min(p,q),max(p,q),orientation)",
+    "well_order": true,
+    "reciprocal_policy": "reciprocal pair is adjacent under the unoriented tie keys"
+  },
+  "length_domination": {
+    "first": "|log(q/p)|<=log p+log q<=log(n p q)=W_star",
+    "exponential": "for every delta>0, W_star<=exp(delta W_star)/delta",
+    "conclusion": "ell_e<=delta^-1 exp(delta W_star(e))",
+    "history_bound": "B_D is continuous from the W_star projective exponential source to L2(R_+)"
+  },
+  "compatibility": {
+    "greedy_forest": "the explicit order supplies the previously required admissible well-order",
+    "reciprocal_reflection": "preserves grade and unoriented pair position while swapping orientation",
+    "chord_port": "continuous in every q_delta seminorm by the prior greedy-forest theorem"
+  },
+  "claim_boundary": {
+    "source_labels_used": true,
+    "mathematically_admissible_grade": true,
+    "identical_to_prior_unspecified_W_claimed": false,
+    "canonical_G4_grade_claimed": false,
+    "noise_calibration_claimed": false,
+    "physical_weight_claimed": false
+  },
+  "next_required_object": {
+    "id": "G4_grade_readback_or_grade_independence",
+    "acceptance": "source owner either identifies W_star with the intended edge grade/order, or proves the completed observer and downstream bounded maps are independent within a cofinal class of admissible proper grades"
+  }
+}

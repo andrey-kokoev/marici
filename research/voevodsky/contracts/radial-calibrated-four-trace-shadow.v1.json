@@ -1,0 +1,76 @@
+{
+  "schema": "marici.voevodsky.radial-calibrated-four-trace-shadow.v1",
+  "status": "synthetic_shadow_complete_not_aspect_trace_binding",
+  "source": "research/voevodsky/contracts/radial-synthetic-calibration-companion.v1.json",
+  "comparison_target": {
+    "space": "R^4",
+    "ordered_coordinates": ["P_shadow", "Q_shadow", "M_shadow", "J_shadow"],
+    "Real_parity": ["even", "odd", "even", "odd"],
+    "warning": "names_are_type_guides_only_not_source_derived_identifications_with_Aspect_P_Q_M_J"
+  },
+  "comparison": {
+    "symbol": "C_shadow",
+    "source_dimension": 26,
+    "target_dimension": 4,
+    "formulas": {
+      "P_shadow": "(1/12) sum_j Re(psi_j)",
+      "Q_shadow": "(1/12) sum_j Im(psi_j)",
+      "M_shadow": "Re(product_j U_j)",
+      "J_shadow": "Im(product_j U_j)"
+    },
+    "matrix_rows": [
+      {"nonzero_indices": [0,2,4,6,8,10,12,14,16,18,20,22], "value": "1/12"},
+      {"nonzero_indices": [1,3,5,7,9,11,13,15,17,19,21,23], "value": "1/12"},
+      {"nonzero_indices": [24], "value": "1"},
+      {"nonzero_indices": [25], "value": "1"}
+    ],
+    "rank": 4,
+    "kernel_dimension": 22
+  },
+  "gauge_typing": {
+    "Wilson_rows": "invariant_under_vertex_U1_gauge",
+    "bulk_mean_rows": "defined_only_in_retained_local_frames",
+    "unframed_bulk_descent": false,
+    "full_vertex_gauge_target_representation_on_R4": null
+  },
+  "orientation_reversal": {
+    "source": "reverse_ring_orientation_and_conjugate_Wilson_holonomy",
+    "target": "diag(1,1,1,-1)",
+    "equivariant": true
+  },
+  "Real_structure": {
+    "source": "alternating_conjugation_signs_on_bulk_quadratures_plus_1_minus_1_on_Wilson",
+    "target": "diag(1,-1,1,-1)",
+    "equivariant": true
+  },
+  "covariance_pushforward": {
+    "source_model": "Sigma=diag(nu^2 I_24,0.02^2 I_2)",
+    "formula": "Sigma_trace=C_shadow Sigma C_shadow^T",
+    "result": "diag(nu^2/12,nu^2/12,0.02^2,0.02^2)",
+    "positive_definite_condition": "nu>0"
+  },
+  "metric_disposition": {
+    "trace_metric": "positive_definite_on_R4",
+    "pullback_to_R26": "positive_semidefinite_rank_4",
+    "record_kernel": "bulk_fluctuations_with_zero_separate_real_and_imaginary_means",
+    "full_record_metric_preserved": false,
+    "classification": "pseudometric_on_R26_metric_on_R26_mod_kernel"
+  },
+  "units": {
+    "P_shadow": "dimensionless_optical_amplitude",
+    "Q_shadow": "dimensionless_optical_amplitude",
+    "M_shadow": "dimensionless",
+    "J_shadow": "dimensionless"
+  },
+  "provenance": {
+    "constructor": "marici.Voevodsky",
+    "source_owner": "marici.Aspect",
+    "source_files_modified": false,
+    "authority_granted": false,
+    "physical_binding": false
+  },
+  "next_required_object": {
+    "id": "source_derived_four_trace_sampling_map",
+    "acceptance": "Aspect trace spaces and evaluation maps must be typed; sampled trace family must be jointly injective on the intended calibrated quotient or the 22-dimensional residual kernel must be retained"
+  }
+}

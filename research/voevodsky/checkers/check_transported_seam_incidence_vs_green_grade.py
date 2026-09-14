@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+"""Exact seam-tail transport and Green-grade nonidentification audit."""
+import hashlib,json,platform
+from fractions import Fraction as Q
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];FIX=ROOT/'research/voevodsky/fixtures/transported_seam_incidence_vs_green_grade.v1.json';OUT=ROOT/'research/voevodsky/results/transported_seam_incidence_vs_green_grade.json';D=json.loads(FIX.read_text());src=[Q(x) for x in D['source']];chi=[Q(x) for x in D['odd_character']];N=D['depth']
+def at(i):return src[i] if 0<=i<len(src) else Q(0)
+def tail(j):return [at(j+d) for d in range(len(src))]
+def left(u):return u[1:]+[Q(0)]
+tails=[tail(j) for j in range(N+2)];E=[at(j)**2 for j in range(N+1)];J=[2*at(j)*sum(at(j+d)*chi[d] for d in range(len(chi))) for j in range(N+1)];K=[sum(J[:m]) for m in range(N+2)];ratios=[J[j]/E[j] for j in range(N+1) if E[j]!=0]
+checks={'tail_state_transport_exact':all(left(tails[j])==tails[j+1] for j in range(N+1)),'common_grade_count':len(E)==len(J)==N+1,'seam_increment_is_tail_bilinear':J==[Q(66),Q(-45),Q(-6),Q(4)],'seam_cumulative_telescopes':all(K[m+1]-K[m]==J[m] for m in range(N+1)),'no_grade_independent_scalar_link':len(set(ratios))>1,'green_atomic_values_nonnegative':all(x>=0 for x in E),'seam_values_have_both_signs':any(x>0 for x in J) and any(x<0 for x in J),'separate_link_retained':D['disposition']['required_link'].startswith('retain')}
+out={'schema':'marici.voevodsky.transported-seam-incidence-vs-green-grade-check.v1','passed':all(checks.values()),'checks':checks,'computed':{'green_atomic_E':list(map(str,E)),'seam_atomic_J':list(map(str,J)),'candidate_scalar_ratios_J_over_E':list(map(str,ratios)),'seam_cumulative_K':list(map(str,K)),'tail_states':[list(map(str,u)) for u in tails]},'disposition':'Green and seam defects share exact grade transport, but their readouts are inequivalent: Green is diagonal energy and seam is a signed bilinear tail character. The common defect object must retain both plus an independently derived linking operator.','claim_boundary':D['claim_boundary'],'execution_receipt':{'command':'python research/voevodsky/checkers/check_transported_seam_incidence_vs_green_grade.py','python':platform.python_version(),'fixture_sha256':hashlib.sha256(FIX.read_bytes()).hexdigest(),'source_sha256':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in D['sources']},'checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}}
+OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+'\n');print(json.dumps(out,indent=2,sort_keys=True));raise SystemExit(0 if out['passed'] else 1)

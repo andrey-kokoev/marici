@@ -1,0 +1,14 @@
+{
+  "schema":"marici.voevodsky.full-log-jet-tower-recovers-finite-valuation-register.v1",
+  "claim_boundary":"Exact finite theorem that logarithmic character jets of orders zero through N recover the complete depth-N valuation register by a Vandermonde transform. No fixed finite jet order recovers the unbounded completed register.",
+  "sources":[
+    "research/voevodsky/fixtures/valuation_boundary_log_jet_rank_audit.v1.json",
+    "references/2609.04839v1.pdf"
+  ],
+  "depth":3,
+  "atomic_polynomial":"g_N(q)=sum_(k=0)^N c_k q^k",
+  "jet_tower":"m_r=((q d/dq)^r g_N)(1)=sum_(k=0)^N k^r c_k for 0<=r<=N, with 0^0=1",
+  "matrix":"V_N[r,k]=k^r",
+  "inverse":"finite Vandermonde/Mobius reconstruction of each c_k from all moments m_0,...,m_N",
+  "disposition":{"finite_register":"fully reconstructed at matched jet order N","cutoff_naturality":"depth extension appends one atomic coordinate and requires one additional jet","completion":"the full infinite moment/pro-jet object is required; no globally fixed derivative depth is faithful"}
+}

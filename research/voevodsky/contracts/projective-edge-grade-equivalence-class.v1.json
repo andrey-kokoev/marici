@@ -1,0 +1,41 @@
+{
+  "schema": "marici.voevodsky.projective-edge-grade-equivalence-class.v1",
+  "status": "grade_equivalence_criterion_not_prior_grade_readback",
+  "reference": "research/voevodsky/contracts/arithmetic-interval-edge-grade.v1.json",
+  "projective_space": "C_exp(W)=intersection_(delta>0) ell1(exp(delta W))",
+  "equivalence": {
+    "criterion": "there exist a,b>0 and A,B>=0 with a W-A<=V<=b W+B on every edge",
+    "conclusion": "C_exp(W) and C_exp(V) are the same locally convex space with cofinal seminorm families",
+    "seminorm_transport": "q_delta^V<=exp(delta B) q_(delta b)^W and q_delta^W<=exp(delta A/a) q_(delta/a)^V"
+  },
+  "arithmetic_examples": {
+    "sum_grade": "W_sum=log n+log p+log q=W_star",
+    "max_grade": "W_max=max(log n,log p,log q)",
+    "comparison": "W_max<=W_star<=3 W_max",
+    "reciprocal_invariant": true,
+    "same_projective_topology": true
+  },
+  "transport": {
+    "greedy_forest_order": "topology equivalence does not identify different edge orders",
+    "bounded_history": "continuous under either equivalent grade",
+    "cycle_port": "continuous under either equivalent grade for one fixed greedy order",
+    "downstream_topological_statements": "transport",
+    "numerical_metric": "not selected"
+  },
+  "properness_boundary": {
+    "statement": "properness alone does not imply grade equivalence",
+    "hostile_grade": "V(e_m)=log(1+W_star(e_m))",
+    "witness": "c_m=exp(-sqrt(W_star(e_m))) on a subsequence W_star(e_m)=m",
+    "behavior": "the witness is rapidly decreasing for V but not exponentially decreasing for W_star"
+  },
+  "claim_boundary": {
+    "cofinal_grade_class_constructed": true,
+    "prior_unspecified_W_in_class_proved": false,
+    "edge_order_independence_proved": false,
+    "physical_or_noise_weight_selected": false
+  },
+  "next_required_object": {
+    "id": "prior_grade_comparability_readback",
+    "acceptance": "state the intended W and prove coarse two-sided affine comparison with W_star; properness alone is insufficient"
+  }
+}

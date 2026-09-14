@@ -1,0 +1,55 @@
+{
+  "schema": "marici.voevodsky.radial-indexed-sampled-trace-tower.v1",
+  "status": "synthetic_trace_tower_not_completed_source_carrier",
+  "base_stage": "research/voevodsky/contracts/radial-jointly-faithful-sampled-four-trace.v1.json",
+  "index": "integers N>=12 ordered by <=",
+  "node_system": {
+    "first_12": "r_j=(j+1/2)/12 for j=0,...,11",
+    "successors": "a fixed duplicate-free enumeration of dyadic rationals in (0,1) not among the first 12",
+    "density": "the full countable sequence is dense in (0,1)",
+    "physical_radius_claimed": false
+  },
+  "stage": {
+    "symbol": "T_N",
+    "space": "R^N_P direct_sum R^N_Q direct_sum R_M direct_sum R_J",
+    "dimension": "2N+2",
+    "coordinate_schema": "P(r_0),...,P(r_(N-1)),Q(r_0),...,Q(r_(N-1)),M,J",
+    "Real_parity": "P,M even; Q,J odd"
+  },
+  "transition": {
+    "projection": "pi_(M,N):T_M->T_N forgets P,Q samples with index >=N and retains M,J",
+    "composition": "pi_(L,N)=pi_(M,N) pi_(L,M) for N<=M<=L",
+    "section": "iota_(N,M) zero-pads new P,Q samples and retains M,J",
+    "section_warning": "zero-padding is coordinate bookkeeping, not source interpolation",
+    "split_law": "pi_(M,N) iota_(N,M)=I_(2N+2)"
+  },
+  "covariance": {
+    "stage": "Sigma_N=diag(nu^2 I_(2N),0.02^2 I_2)",
+    "projective_compatibility": "Sigma_N=pi_(M,N) Sigma_M pi_(M,N)^T",
+    "positive_definite": "nu>0",
+    "completion_warning": "compatible finite covariances do not alone produce a boundedly invertible covariance on an infinite completion"
+  },
+  "faithfulness": {
+    "each_stage": "faithful only on its declared 2N+2 retained coordinate record",
+    "finite_source_rank_bound": "no T_N can be faithful on every source subspace of rank greater than 2N+2",
+    "inverse_limit_continuous_scalar_functions": "dense point values are injective on continuous P,Q functions if the inverse-limit element is known to arise from such functions",
+    "surjectivity_warning": "an arbitrary compatible sample sequence need not extend to a continuous function",
+    "all_jet_warning": "dense point values do not identify derivative jets without analytic or differential reconstruction data"
+  },
+  "response_compatibility": {
+    "existing_cycle_family": "K_N=diag(I+L_cycle_N,I+L_cycle_N,2I_2)",
+    "status": "not_projectively_compatible",
+    "residual": "the closing edge at stage M couples retained node 0 to a forgotten node, so pi K_M differs from K_N pi",
+    "consequence": "the coherent trace tower does not yet extend the finite response/Evans/RH chain"
+  },
+  "claim_boundary": {
+    "inverse_limit_constructed_as_topological_space": false,
+    "source_conservativity_proved": false,
+    "response_tower_constructed": false,
+    "physical_binding": false
+  },
+  "next_required_object": {
+    "id": "projectively_compatible_response_tower",
+    "acceptance": "declare K_N and transition maps with pi K_M=K_N pi, preserve the N=12 response or state its supersession, and prove covariance/Real/orientation compatibility"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "marici.voevodsky.common-history-augmented-observer-transition.v1",
+  "status": "cutoffwise_augmented_transition_with_structural_not_calibrated_cycle_metric",
+  "history_bound": "research/voevodsky/common_radial_history_has_a_cutoffwise_half_line_L2_bound_20260911.md",
+  "cycle_tower": "research/voevodsky/contracts/nested-spanning-forest-cycle-port-tower.v1.json",
+  "scope": "one fixed ratio D with nested oriented interval graphs",
+  "history_transition": {
+    "edge_inclusion": "i_ji:C1(G_i)->C1(G_j) zero-pads new edges",
+    "target": "the same L2(R_+) separation-history space",
+    "target_transition": "identity",
+    "naturality": "B_j i_ji=B_i because old interval labels and kernels are unchanged",
+    "bound_constants": "C_i=sqrt(L_i S_i)||Phi_1||_infinity||Phi_1||_2",
+    "monotonicity": "C_i<=C_j when support diameter and total edge length are nondecreasing"
+  },
+  "augmented_transition": {
+    "observer": "O_i=(B_i,Z_i)",
+    "target": "L2(R_+) direct_sum C^(beta_1(G_i))",
+    "target_inclusion": "identity on history plus zero-padding on persistent chord coordinates",
+    "naturality": "O_j i_ji=(identity direct_sum chord_inclusion) O_i",
+    "cutoffwise_faithful": true
+  },
+  "cycle_metric": {
+    "ambient_edge_form": "W_i=diag(w_e:e in E_i) with w_e>0 and persistent old weights",
+    "fundamental_cycle_matrix": "F_i:C^(beta_1)->C1(G_i)",
+    "coordinate_Gram": "Q_i=F_i^* W_i F_i",
+    "forest_change": "if F_i'=F_i T then Q_i'=T^* Q_i T",
+    "forest_independence": "the norm of the represented cycle is unchanged when coordinates transform by T^-1",
+    "cutoff_compatibility": "old-cycle Gram is the principal block of Q_j when old fundamental cycles persist and old edge weights are unchanged",
+    "calibration_warning": "choice of edge weights remains structural/synthetic until source covariance is supplied"
+  },
+  "claim_boundary": {
+    "history_transition_constructed": true,
+    "augmented_cutoffwise_naturality_constructed": true,
+    "forest_coordinate_invariance_constructed": true,
+    "edge_weights_source_calibrated": false,
+    "uniform_history_bound_constructed": false,
+    "completed_observer_constructed": false
+  },
+  "next_required_object": {
+    "id": "uniform_or_weighted_cutoff_completion",
+    "acceptance": "prove bounded L_i S_i, or introduce source-derived cutoff weights and a completed Hilbert direct/inverse limit with bounded augmented observer"
+  }
+}

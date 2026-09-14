@@ -1,0 +1,25 @@
+{
+  "schema":"marici.voevodsky.permutohedron-tetrahedral-subdivision-duality.v1",
+  "ground_set":["S","R","Sdual","Rdual"],
+  "claim_boundary":"Exact finite combinatorial duality between the boundary of the order-four permutohedron and the barycentric subdivision of the tetrahedral boundary. This does not yet transport Marici constructor, observation, mate, or filler semantics.",
+  "dictionary":{
+    "permutohedron_vertex":"permutation p",
+    "subdivision_maximal_triangle":"initial-subset flag {p1} < {p1,p2} < {p1,p2,p3}",
+    "permutohedron_edge":"one adjacent swap",
+    "subdivision_shared_wall":"two maximal flags differing at one rank",
+    "permutohedron_facet":"nonempty proper subset I, containing schedules whose first |I| entries form I",
+    "subdivision_vertex":"the subset I",
+    "permutohedron_bulk":"cone from the full-set vertex over the subdivided tetrahedral boundary"
+  },
+  "expected":{
+    "schedules":24,
+    "adjacent_swap_edges":36,
+    "proper_nonempty_subsets":14,
+    "square_facets":6,
+    "hexagonal_facets":8,
+    "permutohedron_boundary_f_vector":[24,36,14],
+    "subdivided_boundary_f_vector":[14,36,24],
+    "subdivided_bulk_f_vector":[15,50,60,24]
+  },
+  "reopening_condition":"Assign every ground-set element and every subset stratum its source-derived A6/A7 interface and prove that the incidence duality preserves evaluation."
+}

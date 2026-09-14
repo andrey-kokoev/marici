@@ -1,0 +1,42 @@
+{
+  "schema": "marici.voevodsky.forest-presentation-cycle-groupoid.v1",
+  "status": "finite_cycle_presentation_groupoid_not_completed_source_groupoid",
+  "predecessor": "research/voevodsky/reciprocal_reflection_does_not_preserve_an_oriented_greedy_forest_20260911.md",
+  "objects": {
+    "type": "spanning forests T of one finite oriented graph G",
+    "presentation": "F_T:C^(beta_1(G))->Z_1(G) sends chord coordinates to fundamental cycles",
+    "canonical_target": "cycle space Z_1(G)=ker boundary"
+  },
+  "arrows": {
+    "definition": "C_(U<-T)=F_U^-1 F_T",
+    "integral": true,
+    "identity": "C_(T<-T)=I",
+    "inverse": "C_(T<-U)=C_(U<-T)^-1",
+    "composition": "C_(V<-U) C_(U<-T)=C_(V<-T)",
+    "meaning": "coordinate change only; represented edge cycle is unchanged"
+  },
+  "reciprocal_functor": {
+    "edge_action": "R_G permutes reciprocal oriented edges and preserves the boundary kernel",
+    "object_action": "T maps to R_G(T)",
+    "coordinate_arrow": "R_T=F_(R T)^-1 R_G F_T",
+    "involution": "R_(R T) R_T=I",
+    "naturality": "R_U C_(U<-T)=C_(R U<-R T) R_T"
+  },
+  "metric": {
+    "ambient": "positive edge form W with R_G^* W R_G=W",
+    "presentation": "Q_T=F_T^* W F_T",
+    "arrow_congruence": "Q_T=C_(U<-T)^* Q_U C_(U<-T)",
+    "reciprocal_isometry": "Q_T=R_T^* Q_(R T) R_T"
+  },
+  "claim_boundary": {
+    "finite_graph_groupoid_constructed": true,
+    "cutoff_groupoid_completion_constructed": false,
+    "edge_form_source_calibrated": false,
+    "canonical_forest_selected": false,
+    "physical_quotient_claimed": false
+  },
+  "next_required_object": {
+    "id": "cutoff_forest_groupoid_pseudofunctor",
+    "acceptance": "combine graph inclusions with forest-change arrows and verify interchange coherence; then supply source-calibrated reflection-invariant edge forms or retain metric as structural"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schema":"marici.voevodsky.g4-variance-tetrahedron-materialization-frontier.v1",
+  "claim_boundary":"Maps existing finite p=2 radial evidence into the role-level variance tetrahedron. Candidate means source-side finite construction, not comparison with a canonical G4 object.",
+  "cells":[
+    {"id":"V1","dimension":0,"role":"S = A6 global-law state","status":"missing","evidence":"research/voevodsky/fixtures/a6_global_law_interface_audit.v1.json","residual":"A6 state_object_ref absent"},
+    {"id":"V2","dimension":0,"role":"R = finite p=2 realization-state candidate","status":"candidate","evidence":"research/voevodsky/fixtures/prime_two_theta_history_partial_transfer.v1.json","residual":"global completion and canonical G4 comparison absent"},
+    {"id":"V3","dimension":0,"role":"Sdual = A6 global-law response","status":"missing","evidence":"research/voevodsky/fixtures/a6_global_law_interface_audit.v1.json","residual":"A6 response object and source pairing absent"},
+    {"id":"V4","dimension":0,"role":"Rdual = finite radial response candidate","status":"candidate","evidence":"research/voevodsky/fixtures/prime_two_radial_boundary_form_candidate.v1.json","residual":"global continuous/restricted dual and canonical G4 comparison absent"},
+    {"id":"E12","dimension":1,"boundary":["V1","V2"],"role":"T_real","status":"blocked","residual":"V1 and exact arithmetic-loading row absent"},
+    {"id":"E43","dimension":1,"boundary":["V4","V3"],"role":"T_real dual","status":"blocked","residual":"V3 and source/realized pairing comparison absent"},
+    {"id":"E13","dimension":1,"boundary":["V1","V3"],"role":"source pairing","status":"blocked","residual":"both source endpoints absent"},
+    {"id":"E24","dimension":1,"boundary":["V2","V4"],"role":"realized Green pairing","status":"candidate","evidence":"research/voevodsky/fixtures/prime_two_radial_boundary_form_candidate.v1.json","residual":"only finite source candidate; pullback from canonical G4 metric absent"},
+    {"id":"E14","dimension":1,"boundary":["V1","V4"],"role":"mixed realized-response mate","status":"blocked","residual":"V1 absent"},
+    {"id":"E23","dimension":1,"boundary":["V2","V3"],"role":"mixed source-response mate","status":"blocked","residual":"V3 absent"},
+    {"id":"F1","dimension":2,"boundary":["E43","E24","E23"],"role":"realized mate coherence","status":"blocked","residual":"E43 and E23 absent; maximal-isotropic sewing graph supplies only internal realized-side candidate evidence"},
+    {"id":"F2","dimension":2,"boundary":["E13","E43","E14"],"role":"source mate coherence","status":"blocked","residual":"complete boundary absent"},
+    {"id":"F3","dimension":2,"boundary":["E12","E24","E14"],"role":"observation naturality","status":"blocked","residual":"E12 and E14 absent"},
+    {"id":"F4","dimension":2,"boundary":["E12","E23","E13"],"role":"constructor naturality","status":"blocked","residual":"complete boundary absent"},
+    {"id":"Theta","dimension":3,"boundary":["F1","F2","F3","F4"],"role":"tower-cotower compatibility filler","status":"blocked","residual":"no complete face exists"}
+  ],
+  "internal_realized_evidence":[
+    {"id":"reciprocal_sewing","evidence":"research/voevodsky/fixtures/prime_two_reciprocal_boundary_sewing_candidate.v1.json","placement":"structure internal to V2,V4,E24; not E43"},
+    {"id":"maximal_isotropic_graph","evidence":"research/voevodsky/fixtures/prime_two_maximal_isotropic_sewing_graph_candidate.v1.json","placement":"candidate ingredient for F1 after E43 and E23 exist; not a completed F1"}
+  ],
+  "disposition":{"highest_materialized_dimension":1,"constructed_connected_subcomplex":["V2","V4","E24"],"first_missing_typed_datum":"V1 state_object_ref for A6","parallel_missing_typed_datum":"V3 response_object_ref for A6dual","no_face_executable":true}
+}

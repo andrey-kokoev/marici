@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+"""Exact two-port orientation ambiguity under an irregular codiagonal."""
+import hashlib,json,platform
+from fractions import Fraction as Q
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];FIX=ROOT/'research/voevodsky/fixtures/two_endpoint_to_split_irregular_distribution_ambiguity.v1.json';OUT=ROOT/'research/voevodsky/results/two_endpoint_to_split_irregular_distribution_ambiguity.json';D=json.loads(FIX.read_text())
+A=[[Q(1),Q(0)],[Q(0),Q(1)]];B=[[Q(0),Q(1)],[Q(1),Q(0)]];c=[Q(1),Q(1)]
+def rowmat(r,m):return [sum(r[k]*m[k][j] for k in range(2)) for j in range(2)]
+def det(m):return m[0][0]*m[1][1]-m[0][1]*m[1][0]
+checks={'two_green_endpoint_slots':len(D['green_endpoint_basis'])==2,'two_split_irregular_slots':len(D['split_irregular_basis'])==2,'orientation_A_isomorphism':abs(det(A))==1,'orientation_B_isomorphism':abs(det(B))==1,'maps_are_distinct':A!=B,'codiagonal_preserved_by_A':rowmat(c,A)==c,'codiagonal_preserved_by_B':rowmat(c,B)==c,'scalar_observer_cannot_choose_orientation':rowmat(c,A)==rowmat(c,B),'other_irregular_ports_retained_in_schema':all(x in D['disposition']['full_defect_object'] for x in ['O_-1','O_infinity','regular evaluations']),'mate_not_promoted':'first_missing_typed_datum' in D['disposition']}
+out={'schema':'marici.voevodsky.two-endpoint-to-split-irregular-distribution-ambiguity-check.v1','passed':all(checks.values()),'checks':checks,'computed':{'orientation_A':[[str(x) for x in r] for r in A],'orientation_B':[[str(x) for x in r] for r in B],'codiagonal_after_A':list(map(str,rowmat(c,A))),'codiagonal_after_B':list(map(str,rowmat(c,B)))},'disposition':'The Green endpoint pair has the correct dimension for the split irregular coefficient pair, but the admitted scalar codiagonal is invariant under endpoint exchange. A source-derived orientation is required before defining B_X,s or the mate.','claim_boundary':D['claim_boundary'],'execution_receipt':{'command':'python research/voevodsky/checkers/check_two_endpoint_to_split_irregular_distribution_ambiguity.py','python':platform.python_version(),'fixture_sha256':hashlib.sha256(FIX.read_bytes()).hexdigest(),'pdf_sha256':hashlib.sha256((ROOT/D['pdf_source']).read_bytes()).hexdigest(),'checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}}
+OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+'\n');print(json.dumps(out,indent=2,sort_keys=True));raise SystemExit(0 if out['passed'] else 1)

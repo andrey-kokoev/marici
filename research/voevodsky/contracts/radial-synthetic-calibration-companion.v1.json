@@ -1,0 +1,159 @@
+{
+  "schema": "marici.voevodsky.radial-synthetic-calibration-companion.v1",
+  "status": "synthetic_complete_not_physical",
+  "claim_boundary": {
+    "synthetic_metric_instantiated": true,
+    "physical_calibration_loaded": false,
+    "hardware_identity_bound": false,
+    "laboratory_units_claimed": false,
+    "continuum_radial_limit_claimed": false
+  },
+  "sources": [
+    {
+      "path": "research/aspect/contracts/radial-synthetic-calibration-adapter.v1.json",
+      "role": "owner_assessed_reuse_boundary"
+    },
+    {
+      "path": "research/aspect/contracts/optical-pair-stiffness-flux-cell.v1.json",
+      "role": "twelve_node_dimensionless_optical_fixture"
+    },
+    {
+      "path": "research/aspect/contracts/comparison-loop-hardware-binding.v1.json",
+      "role": "synthetic_uncertainty_and_record_metadata"
+    },
+    {
+      "path": "research/aspect/fixtures/hardware-bound-pushforward-synthetic-packet.v1.json",
+      "role": "synthetic_provenance_scaffold_only"
+    }
+  ],
+  "source_object": {
+    "type": "retained_dimensionless_ring_lattice",
+    "node_count": 12,
+    "nodes": "Z/12Z",
+    "orientation": "increasing_node_index_mod_12",
+    "radial_coordinate": {
+      "formula": "r_j=(j+1/2)/12",
+      "unit": "dimensionless_lattice_fraction",
+      "interpretation": "synthetic_ordered_bin_coordinate_not_physical_radius"
+    },
+    "bulk_field": {
+      "symbol": "psi",
+      "fiber": "C",
+      "shape": [12],
+      "source_port": "complex_field"
+    },
+    "edge_connection": {
+      "symbol": "U",
+      "fiber": "U(1)",
+      "shape": [12],
+      "source": "Peierls_phase_edges"
+    }
+  },
+  "admitted_quotient": {
+    "status": "synthetic_declared",
+    "gauge_group": "U(1)^12/U(1)_diagonal",
+    "action": {
+      "bulk": "psi_j -> g_j psi_j",
+      "edge": "U_j -> g_(j+1) U_j g_j^-1"
+    },
+    "equivalence": "same_orbit_under_declared_vertex_gauge",
+    "bulk_record_policy": "local_frames_are_retained_so_gauge_covariant_bulk_coordinates_are_not_quotiented_from_the_record",
+    "moduli": "edge_connections_mod_vertex_gauge",
+    "cycle_rank": 1
+  },
+  "record_map": {
+    "status": "synthetic_instantiated",
+    "bulk": {
+      "formula": "R_X(psi)=(Re psi_0,Im psi_0,...,Re psi_11,Im psi_11)",
+      "dimension": 24,
+      "frame_policy": "declared_local_node_frames_retained",
+      "interpolation": "none_retained_lattice"
+    },
+    "wilson": {
+      "orientation": "0->1->...->11->0",
+      "holonomy": "z=product_(j=0)^11 U_j",
+      "flux_normalization": "z=exp(2 pi i synthetic_loop_flux)",
+      "formula": "R_M(z)=(Re z,Im z)",
+      "dimension": 2,
+      "Real_variance": ["even", "odd"]
+    },
+    "joint": {
+      "formula": "R(psi,U)=(R_X(psi),R_M(product U_j))",
+      "dimension": 26
+    }
+  },
+  "units": {
+    "bulk_components": "dimensionless_optical_amplitude",
+    "edge_phase": "radian_by_synthetic_convention",
+    "synthetic_loop_flux": "turn_fraction_with_2pi_radian_normalization",
+    "wilson_quadratures": "dimensionless",
+    "radial_coordinate": "dimensionless_lattice_fraction",
+    "event_indices_and_tags": "metadata_only_not_metric_coordinates"
+  },
+  "covariance": {
+    "status": "synthetic_instantiated",
+    "model": "centered_independent_Gaussian_location_surrogate",
+    "fixture_parameter": "noise=nu",
+    "bulk_block": {
+      "shape": [24, 24],
+      "formula": "Sigma_X=nu^2 I_24",
+      "admissible_fixtures": {
+        "coherent_candidate": "nu=0.01",
+        "pseudogap_hostile": "nu=0.11",
+        "normal_hostile": "nu=0.02",
+        "moderate_noise_candidate": "nu=0.24",
+        "strong_noise_hostile": "nu=0.50"
+      }
+    },
+    "wilson_block": {
+      "shape": [2, 2],
+      "formula": "Sigma_M=0.02^2 I_2",
+      "source_field": "statistical_quadrature",
+      "qualification": "budget_reinterpreted_as_synthetic_standard_deviation_by_this_companion_not_by_Aspect_source"
+    },
+    "cross_block": {
+      "shape": [24, 2],
+      "formula": "zero",
+      "qualification": "synthetic_independence_assumption"
+    },
+    "joint": {
+      "shape": [26, 26],
+      "formula": "Sigma=diag(Sigma_X,Sigma_M)",
+      "positive_definite_condition": "nu>0"
+    }
+  },
+  "noise_whitened_metric": {
+    "formula": "d^2=||Delta R_X||^2/nu^2+||Delta R_M||^2/0.02^2",
+    "bulk_weight": "nu^-2",
+    "wilson_weight": 2500,
+    "cross_term": 0,
+    "product_status": "exact_under_synthetic_independence_assumption"
+  },
+  "Real_structure": {
+    "bulk": "psi_j -> conjugate(psi_j)",
+    "edge": "U_j -> conjugate(U_j)",
+    "wilson": "(P,Q)->(P,-Q)",
+    "covariance_compatibility": "Sigma_commutes_with_diag(I_24,1,-1)"
+  },
+  "provenance": {
+    "status": "synthetic_instantiated",
+    "model_id": "optical-pair-stiffness-flux-cell",
+    "seed": 731,
+    "source_claim_boundary": "dimensionless_optical_analogue_not_material_superconductivity",
+    "hardware_packet_status": "synthetic_reference",
+    "adapter_owner": "marici.Voevodsky",
+    "source_owner": "marici.Aspect",
+    "authority_granted": false
+  },
+  "acceptance_tests": [
+    "joint_covariance_positive_definite_for_every_declared_fixture",
+    "Wilson_holonomy_gauge_invariant",
+    "bulk_record_gauge_covariance_requires_retained_frames",
+    "Real_even_odd_variance",
+    "noise_whitened_metric_positive_on_record_differences",
+    "zero_cross_block_yields_exact_product",
+    "rank_loss_detected_if_imaginary_Wilson_quadrature_removed",
+    "physical_promotion_refused"
+  ],
+  "physical_reopening_condition": "replace synthetic covariance, units, record maps, quotient, and provenance with source-authorized calibrated counterparts"
+}

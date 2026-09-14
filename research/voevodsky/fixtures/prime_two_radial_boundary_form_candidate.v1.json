@@ -1,0 +1,39 @@
+{
+  "schema": "marici.voevodsky.prime-two-radial-boundary-form-candidate.v1",
+  "claim_boundary": "This is the canonical finite boundary-triple form on the retained radial source feature. It is not an identification with the polarized metric of the canonical G4 carrier.",
+  "source_fixture": "research/voevodsky/fixtures/prime_two_theta_history_partial_transfer.v1.json",
+  "boundary_basis": ["q_plus", "p_plus", "q_minus", "p_minus"],
+  "boundary_extraction": {
+    "q_plus": {"rho0_plus": "1"},
+    "p_plus": {"e_plus_0": "1", "w_plus_0": "-1/2"},
+    "q_minus": {"rho0_minus": "1"},
+    "p_minus": {"e_minus_0": "1", "w_minus_0": "-1/2"}
+  },
+  "green_matrix": [
+    ["0", "-1", "0", "0"],
+    ["1", "0", "0", "0"],
+    ["0", "0", "0", "1"],
+    ["0", "0", "-1", "0"]
+  ],
+  "orientation": {
+    "plus": "<p_f,q_g>-<q_f,p_g>",
+    "minus": "opposite half-line orientation",
+    "wall_pair": ["-rho0_plus", "+rho0_minus"]
+  },
+  "return_lanes": {
+    "hermitian_green": "conjugate transpose relative to iJ",
+    "analytic_evans": "transpose relative to J",
+    "real_structure_comparison": "unresolved"
+  },
+  "required_hostiles": [
+    "same_orientation_on_both_half_lines",
+    "wronskian_coefficient_zero",
+    "delete_wall_coordinate",
+    "identify_hermitian_and_analytic_returns"
+  ],
+  "unresolved_comparison": {
+    "id": "g4_green_metric",
+    "first_missing_typed_datum": "owner-reviewed pullback from the canonical G4 polarized metric to this four-coordinate boundary form",
+    "acceptance_test": "the pullback equals the displayed Green matrix and separately transports Hermitian adjoint and analytic transpose"
+  }
+}

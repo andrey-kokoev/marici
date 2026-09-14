@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+"""Verify integral exactness after typing the Aspect record lattice as im(R)."""
+from hashlib import sha256
+from itertools import product
+from pathlib import Path
+import json
+import math
+import sympy as s
+ROOT=Path(__file__).resolve().parents[3];PACKET=ROOT/'research/voevodsky/same_parity_record_lattice_repairs_the_aspect_readout_integrally.md';RESULT=ROOT/'research/voevodsky/results/same_parity_record_lattice.json';SOURCE=ROOT/'research/aspect/contracts/relative-cech-de-rham-interferometer.v1.json'
+a=json.loads(SOURCE.read_text(encoding='utf-8'));R=s.Matrix(a['readouts']['complementary_phase_sensitive']);Lambda=s.Matrix.hstack(s.Matrix([1,1]),s.Matrix([-1,1]));z=s.Matrix(a['target_relative_cocycle']);record=R*z;coords=Lambda.inv()*record;samples=[(u,v) for u,v in product(range(-4,5),repeat=2)];checks={'record_basis_equals_readout':Lambda==R,'route_to_record_coordinates_identity':Lambda.inv()*R==s.eye(2),'image_parity_equivalence_samples':all(((u-v)%2==0)==all(x.q==1 for x in Lambda.inv()*s.Matrix([u,v])) for u,v in samples),'closed_record_exact':record==s.Matrix([0,2]),'closed_record_basis_coords':coords==s.Matrix([1,1]),'closed_record_primitive_in_L':math.gcd(*map(abs,map(int,coords)))==1,'ambient_half_vector_excluded':not all(x.q==1 for x in Lambda.inv()*s.Matrix([0,1])),'dark_and_complement_integer_on_L':all(all(v.q==1 for v in Lambda*s.Matrix([m,n])) for m,n in product(range(-3,4),repeat=2)),'conductor_defect_retained':'conductor two-primary defect remains unchanged' in PACKET.read_text(encoding='utf-8'),'physical_lattice_unverified':'remaining issue is physical authority for that record lattice' in PACKET.read_text(encoding='utf-8')};checks={k:bool(v) for k,v in checks.items()}
+result={'schema':'marici.voevodsky.same-parity-record-lattice.v1','packet_sha256':sha256(PACKET.read_bytes()).hexdigest(),'source_sha256':sha256(SOURCE.read_bytes()).hexdigest(),'record_lattice_basis':[[1,-1],[1,1]],'membership':'u=v mod 2','route_map_in_record_coordinates':[[1,0],[0,1]],'closed_record_ambient':[0,2],'closed_record_lattice_coordinates':[1,1],'checks':checks,'passed':all(checks.values()),'disposition':{'route_readout_integrality':'repaired by typed codomain','physical_record_lattice':'unverified','conductor_defect':'unchanged'}}
+RESULT.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8');print(json.dumps({'passed':result['passed'],'checks':checks,'disposition':result['disposition']}));raise SystemExit(0 if result['passed'] else 1)

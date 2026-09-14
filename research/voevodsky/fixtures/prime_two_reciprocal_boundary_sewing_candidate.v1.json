@@ -1,0 +1,30 @@
+{
+  "schema": "marici.voevodsky.prime-two-reciprocal-boundary-sewing-candidate.v1",
+  "claim_boundary": "This is the unique signed sheet swap preserving the finite source boundary Green matrix under the declared coordinate convention. It is not identified with the unexposed G4 sewing operator.",
+  "boundary_form_fixture": "research/voevodsky/fixtures/prime_two_radial_boundary_form_candidate.v1.json",
+  "basis": ["q_plus", "p_plus", "q_minus", "p_minus"],
+  "sewing_matrix": [
+    ["0", "0", "1", "0"],
+    ["0", "0", "0", "-1"],
+    ["1", "0", "0", "0"],
+    ["0", "-1", "0", "0"]
+  ],
+  "coordinate_action": {
+    "q_plus": "q_minus",
+    "p_plus": "-p_minus",
+    "q_minus": "q_plus",
+    "p_minus": "-p_plus"
+  },
+  "requirements": {
+    "involution": true,
+    "length_preserving": true,
+    "green_form_preserving": true,
+    "wall_even": true,
+    "momentum_odd": true
+  },
+  "unresolved_comparison": {
+    "id": "g4_reciprocal_sewing",
+    "first_missing_typed_datum": "canonical G4 boundary sewing matrix",
+    "acceptance_test": "its pullback equals the displayed signed sheet swap and its contragredient action preserves the response dual"
+  }
+}

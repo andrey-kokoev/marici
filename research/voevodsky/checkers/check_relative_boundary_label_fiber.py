@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+"""Audit the unresolved signed-label fiber for the two support generators."""
+from hashlib import sha256
+from itertools import permutations,product
+from pathlib import Path
+import json
+import sympy as s
+ROOT=Path(__file__).resolve().parents[3];PACKET=ROOT/'research/voevodsky/relative_boundary_labels_narrow_but_do_not_identify_aspect_support.md';RESULT=ROOT/'research/voevodsky/results/relative_boundary_label_fiber.json';SOURCE=ROOT/'research/benincasa/enhanced-conductor-unimodular-gluing.json'
+a=json.loads(SOURCE.read_text(encoding='utf-8'));Phi=s.Matrix(a['Phi_exc']);q=[Phi[:,0],Phi[:,2]];labels=['delta23(1)','delta13(1)'];candidates=[]
+for perm in permutations(labels):
+ for signs in product([-1,1],repeat=2): candidates.append({'assignment':{'+ +'.replace(' ',''): {'relative_label':perm[0],'sign':signs[0]},'-+':{'relative_label':perm[1],'sign':signs[1]}}})
+x1,x2,X1,X2,Y=s.symbols('x1 x2 X1 X2 Y');S1=x1+X1+Y;S2=x2+X2+Y;S3=x1+x2+X1+X2;p23={x1:Y-X1,x2:-X2-Y};p13={x1:-X1-Y,x2:Y-X2};p12={x1:-X1-Y,x2:-X2-Y};text=PACKET.read_text(encoding='utf-8');checks={'q1_is_pp_column':q[0]==s.Matrix([1,1,1]),'q2_is_minus_plus_column':q[1]==s.Matrix([1,-1,-1]),'signed_bijection_count':len(candidates)==8,'labels_distinct':len(set(labels))==2,'p23_incidence':s.simplify(S2.subs(p23))==0 and s.simplify(S3.subs(p23))==0 and s.simplify(S1.subs(p23))==2*Y,'p13_incidence':s.simplify(S1.subs(p13))==0 and s.simplify(S3.subs(p13))==0 and s.simplify(S2.subs(p13))==2*Y,'p12_separation':s.simplify(S1.subs(p12))==0 and s.simplify(S2.subs(p12))==0 and s.simplify(S3.subs(p12))==-2*Y,'generic_distinctness_axis':all(any(s.simplify((p-q).subs({X1:0,X2:0,Y:1}))!=0 for p,q in zip(a,b)) for a,b in [(list(p23.values()),list(p13.values())),(list(p23.values()),list(p12.values())),(list(p13.values()),list(p12.values()))]),'common_support_map_absent':'first missing typed object is the common support map' in text,'factor_two_nonpromotion':'It is not evidence for an identification' in text,'no_physical_promotion':'none has physical authority' in text};checks={k:bool(v) for k,v in checks.items()}
+result={'schema':'marici.voevodsky.relative-boundary-label-fiber.v1','packet_sha256':sha256(PACKET.read_bytes()).hexdigest(),'source_sha256':sha256(SOURCE.read_bytes()).hexdigest(),'occurrence_vectors':{'++':[1,1,1],'-+':[1,-1,-1]},'relative_labels':labels,'signed_bijection_count':len(candidates),'candidates':candidates,'checks':checks,'passed':all(checks.values()),'disposition':{'support_type':'two restrictions from one active one-boundary class','common_support_map':'missing','candidate_fiber':'8 signed bijections','physical_status':'unverified'}}
+RESULT.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8');print(json.dumps({'passed':result['passed'],'candidate_count':len(candidates),'checks':checks,'disposition':result['disposition']}));raise SystemExit(0 if result['passed'] else 1)

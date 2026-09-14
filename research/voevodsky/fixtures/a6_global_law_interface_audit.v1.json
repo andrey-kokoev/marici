@@ -1,0 +1,27 @@
+{
+  "schema": "marici.voevodsky.a6-global-law-interface-audit.v1",
+  "claim_boundary": "This audit tests whether the pyramid materializes A6 sufficiently to define a finite realization transport. It does not infer an operator from semantic labels.",
+  "pyramid_model": "public/experiments/typed-reconciler-cube/coherence-lattice.toml",
+  "rung": {"id":"A6","label":"law of compositions"},
+  "incoming_transport": {"id":"C1_5","transport":"T_gamma","content_target":"K_global"},
+  "outgoing_transport": {"id":"C1_6","transport":"T_real","content_source":"K_global","content_target":"K_fiber","status":"required"},
+  "required_a6_slots": [
+    {"id":"state_object_ref","status":"missing","acceptance_test":"path or graph id defining the A6 carrier and coefficient object"},
+    {"id":"operator_domain_ref","status":"missing","acceptance_test":"typed domain and codomain of K_global"},
+    {"id":"finite_p2_j2_basis_ref","status":"missing","acceptance_test":"ordered basis retaining prime, grade, shell, pair orientation, endpoint and response jets"},
+    {"id":"operator_matrix_ref","status":"missing","acceptance_test":"exact K_global matrix on the finite p=2, J=2 basis"},
+    {"id":"sewing_ref","status":"partial","acceptance_test":"restriction of the retained Fourier-Poisson sewing to the same finite basis"},
+    {"id":"green_form_ref","status":"missing","acceptance_test":"source form J_A6 against which T_real can be tested"},
+    {"id":"completion_ref","status":"partial","acceptance_test":"one completion theorem on the declared A6 carrier, not distributed compatibility claims"}
+  ],
+  "pyramid_readback": {
+    "realization_status":"schema_only",
+    "transport_status":"uninstantiated",
+    "K_global_status":"symbolic_content_label"
+  },
+  "disposition": {
+    "finite_T_real_executable": false,
+    "first_missing_typed_datum":"state_object_ref for A6",
+    "reopening_condition":"materialize the A6 carrier, then its finite p=2, J=2 basis and K_global matrix"
+  }
+}

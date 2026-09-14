@@ -1,0 +1,19 @@
+{
+  "schema":"marici.voevodsky.tetrahedral-typed-contraction-signature.v1",
+  "claim_boundary":"Candidate incidence-level contraction signature for the local tower-cotower tetrahedron. It does not yet identify the source-derived Marici contractions or prove that every evaluation move is admitted.",
+  "vertex_order":["S","R","Sdual","Rdual"],
+  "variance":{"S":"positive","R":"positive","Sdual":"negative","Rdual":"negative"},
+  "principal_edges":{"S,R":"forward_transport","Sdual,Rdual":"contragredient_transport"},
+  "cross_edges":{"S,Sdual":"source_pairing","R,Rdual":"realized_pairing","S,Rdual":"mixed_pairing","R,Sdual":"mixed_pairing"},
+  "contraction_rule":{
+    "cells":"all nonempty subsets of the four typed vertices",
+    "elementary_arrow":"proper typed face inclusion sigma -> tau",
+    "consumed_interface":"oriented boundary of tau not already contained in sigma",
+    "produced_interface":"the cell tau with its inherited variance profile",
+    "complete_schedule":"maximal flag vertex < edge < face < bulk",
+    "equivalences_to_localize":"adjacent maximal flags related through a shared codimension-one subflag"
+  },
+  "bulk":{"vertices":["S","R","Sdual","Rdual"],"boundary":"F1-F2+F3-F4"},
+  "expected":{"cells":15,"complete_schedules":24,"barycentric_f_vector":[15,50,60,24],"completed_betti":[1,0,0,0],"unfilled_boundary_betti":[1,0,1]},
+  "reopening_condition":"Replace incidence-only consumed and produced interfaces by the exact constructor, observation, mate, and filler maps from the A6/A7 source contracts."
+}

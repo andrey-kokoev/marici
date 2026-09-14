@@ -1,0 +1,28 @@
+{
+  "schema":"marici.voevodsky.tetrahedral-semantic-subset-assignment.v1",
+  "claim_boundary":"Role-level semantic assignment from the Boolean subset poset to the proposed tower-cotower tetrahedron. It types dimensions and incidence but does not construct the A6/A7 maps represented by the named cells.",
+  "atoms":[
+    {"id":"1","cell":"V1","semantic":"S","variance":"positive","role":"abstract source state"},
+    {"id":"2","cell":"V2","semantic":"R","variance":"positive","role":"realization-fiber state"},
+    {"id":"3","cell":"V3","semantic":"Sdual","variance":"negative","role":"source response"},
+    {"id":"4","cell":"V4","semantic":"Rdual","variance":"negative","role":"realized response"}
+  ],
+  "edges":{
+    "12":{"cell":"E12","role":"forward realization transport"},
+    "34":{"cell":"E43","role":"contragredient response transport","orientation":"4->3"},
+    "13":{"cell":"E13","role":"source pairing"},
+    "24":{"cell":"E24","role":"realized Green pairing"},
+    "14":{"cell":"E14","role":"mixed realized-response mate"},
+    "23":{"cell":"E23","role":"mixed source-response mate"}
+  },
+  "faces":{
+    "234":{"cell":"F1","coefficient":1,"role":"realized mate coherence"},
+    "134":{"cell":"F2","coefficient":-1,"role":"source mate coherence"},
+    "124":{"cell":"F3","coefficient":1,"role":"observation naturality"},
+    "123":{"cell":"F4","coefficient":-1,"role":"constructor naturality"}
+  },
+  "bulk":{"subset":"1234","cell":"Theta","role":"tower-cotower compatibility filler","boundary":"F1-F2+F3-F4"},
+  "schedule_semantics":"A permutation p gives the maximal flag {p1} < {p1,p2} < {p1,p2,p3} < {1,2,3,4}. It orders dimension-building inclusions; its four atoms are endpoint types, not four freely commuting Marici operations.",
+  "known_boundary":"The assignment corrects the prior placeholder claim that a,b,c,d directly denote constructor, observation, mate, and filler. Those roles occupy different cellular dimensions.",
+  "reopening_condition":"Supply state objects for S,R,Sdual,Rdual and exact maps or higher cells for all six edges, four faces, and Theta."
+}

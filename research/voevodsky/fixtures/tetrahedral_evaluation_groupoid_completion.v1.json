@@ -1,0 +1,21 @@
+{
+  "schema":"marici.voevodsky.tetrahedral-evaluation-groupoid-completion.v1",
+  "claim_boundary":"Finite cellular test of the local tetrahedral evaluation component. It does not prove contractibility of the unrestricted evaluation infinity-category.",
+  "vertices":["S","R","Sdual","Rdual"],
+  "edges":[["S","R"],["S","Sdual"],["S","Rdual"],["R","Sdual"],["R","Rdual"],["Sdual","Rdual"]],
+  "oriented_faces":[
+    {"id":"F1","vertices":["R","Sdual","Rdual"],"coefficient":1},
+    {"id":"F2","vertices":["S","Sdual","Rdual"],"coefficient":-1},
+    {"id":"F3","vertices":["S","R","Rdual"],"coefficient":1},
+    {"id":"F4","vertices":["S","R","Sdual"],"coefficient":-1}
+  ],
+  "bulk":{"id":"Theta","boundary":"F1-F2+F3-F4"},
+  "surroundings":[
+    {"id":"full_bulk","include_dimensions":[0,1,2,3],"expected_betti":[1,0,0,0],"meaning":"contractible local component"},
+    {"id":"boundary_only","include_dimensions":[0,1,2],"expected_betti":[1,0,1],"meaning":"unfilled coherent boundary retains a degree-two obstruction"},
+    {"id":"edges_only","include_dimensions":[0,1],"expected_betti":[1,3],"meaning":"pairwise comparisons do not remove three independent cycles"},
+    {"id":"vertices_only","include_dimensions":[0],"expected_betti":[4],"meaning":"four presentations remain disconnected without comparison paths"}
+  ],
+  "simplification_law":"After localization of the declared evaluation equivalences, the full local component may be replaced by one evaluation exactly when its completed nerve is contractible.",
+  "reopening_condition":"Materialize the typed contraction signature and map its complete schedules into this cellular presentation."
+}

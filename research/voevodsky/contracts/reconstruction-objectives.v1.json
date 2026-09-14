@@ -1,0 +1,134 @@
+{
+  "schema": "marici.voevodsky.reconstruction-objectives.v1",
+  "claim_boundary": "The contract types reconstruction claims and their admissible promotion data; it does not by itself prove any lower bound.",
+  "context_fields": [
+    "source",
+    "metric_rung",
+    "vertical_subspace",
+    "descent_map",
+    "descended_carrier",
+    "moduli_object"
+  ],
+  "objectives": {
+    "reconstruct_quotient": {
+      "domain": "source_mod_vertical_equivalence",
+      "metric": "quotient_norm_or_declared_quotient_metric",
+      "required_tests": [
+        "observer_constant_on_vertical_cosets",
+        "lower_bound_in_quotient_metric"
+      ],
+      "allowed_kernel": "vertical_subspace"
+    },
+    "reconstruct_source": {
+      "domain": "source",
+      "metric": "declared_source_or_graph_metric",
+      "required_tests": [
+        "quotient_direction_control",
+        "vertical_essential_control",
+        "finite_residual_kernel_identified",
+        "finite_repair_injective_on_residual"
+      ],
+      "allowed_kernel": "zero"
+    },
+    "reconstruct_product": {
+      "domain": "source_times_moduli",
+      "metric": "explicit_product_metric",
+      "required_tests": [
+        "source_observer_lower_bound",
+        "moduli_observer_lower_lipschitz_bound",
+        "bulk_moduli_cross_terms_declared"
+      ],
+      "allowed_kernel": "zero_mod_declared_moduli_equivalence"
+    }
+  },
+  "promotion_rules": [
+    {
+      "from": "reconstruct_quotient",
+      "to": "reconstruct_source",
+      "requires": [
+        "vertical_essential_observer",
+        "finite_defect_repair",
+        "stable_block_row_theorem"
+      ]
+    },
+    {
+      "from": "reconstruct_source",
+      "to": "reconstruct_product",
+      "requires": [
+        "separately_constructed_moduli_object",
+        "stable_moduli_observer",
+        "explicit_product_metric",
+        "product_lower_bound_theorem"
+      ]
+    }
+  ],
+  "non_promotions": [
+    {
+      "premise": "stable_quotient_observer",
+      "forbidden_conclusion": "stable_source_observer",
+      "unless": "vertical_subspace_is_zero_or_vertical_complement_is_proved"
+    },
+    {
+      "premise": "source_observer_injective",
+      "forbidden_conclusion": "stable_source_observer",
+      "unless": "positive_lower_bound_is_proved"
+    },
+    {
+      "premise": "stable_source_observer",
+      "forbidden_conclusion": "stable_product_observer",
+      "unless": "moduli_metric_and_stable_moduli_observer_are_supplied"
+    },
+    {
+      "premise": "gauge_fixed_parameter",
+      "forbidden_conclusion": "reconstructed_moduli_class",
+      "unless": "gauge_invariance_and_moduli_separation_are_proved"
+    },
+    {
+      "premise": "finite_moduli_reconstruction",
+      "forbidden_conclusion": "essential_bulk_observability",
+      "unless": "independent_positive_calkin_gramian_is_proved"
+    }
+  ],
+  "countermodels": [
+    {
+      "id": "quotient_does_not_reconstruct_source",
+      "source": "R2",
+      "vertical_subspace": "span(e1)",
+      "descent_map": "p(x1,x2)=x2",
+      "observer": "B=identity_R",
+      "quotient_lower_bound": 1,
+      "source_kernel": "span(e1)",
+      "expected_first_failure": "vertical_essential_control"
+    },
+    {
+      "id": "injective_does_not_imply_stable",
+      "source": "l2(N)",
+      "observer": "diag(1/n)",
+      "kernel": "zero",
+      "lower_modulus": 0,
+      "expected_first_failure": "positive_lower_bound_is_proved"
+    },
+    {
+      "id": "source_does_not_reconstruct_product",
+      "source": "R",
+      "moduli_object": "U1",
+      "observer": "identity_R_on_source_only",
+      "product_collision": "(x,m1) and (x,m2)",
+      "expected_first_failure": "stable_moduli_observer"
+    }
+  ],
+  "worked_example": {
+    "source": "radial_graph_hilbert_space",
+    "metric_rung": "graph",
+    "coherent_descent": "boundary_sewing_and_declared_quotient_channel",
+    "vertical_essential_observer": "real_reciprocal_even_thick_bulk_multiplier",
+    "finite_defect_repair": "compact_analytic_channel_restricted_to_residual_kernel",
+    "moduli_object": "H1(sewing_graph;U1)",
+    "moduli_observer": "real_even_and_real_odd_phase_quadratures",
+    "comparison_cells": [
+      "W_u",
+      "J_u",
+      "G_u_to_v"
+    ]
+  }
+}

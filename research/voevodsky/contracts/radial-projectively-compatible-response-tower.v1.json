@@ -1,0 +1,54 @@
+{
+  "schema": "marici.voevodsky.radial-projectively-compatible-response-tower.v1",
+  "status": "synthetic_compatible_response_tower_not_geometric_completion",
+  "trace_tower": "research/voevodsky/contracts/radial-indexed-sampled-trace-tower.v1.json",
+  "base_response": "research/voevodsky/contracts/radial-sampled-trace-response-operator.v1.json",
+  "stage": {
+    "index": "N>=12",
+    "space": "T_N=R^N_P direct_sum R^N_Q direct_sum R_M direct_sum R_J",
+    "operator": "K_N",
+    "base_blocks": "I_12+L_cycle_12 on the first 12 P samples and first 12 Q samples",
+    "successor_blocks": "2 I_(N-12) on each newly added P and Q coordinate",
+    "Wilson_block": "2 I_2",
+    "formula": "K_N=diag(A_12,2I_(N-12),A_12,2I_(N-12),2I_2)",
+    "base_readback": "K_12 equals K_syn exactly"
+  },
+  "transition_coherence": {
+    "projection": "pi_(M,N) K_M=K_N pi_(M,N)",
+    "section": "K_M iota_(N,M)=iota_(N,M) K_N",
+    "green": "pi_(M,N) H_M(lambda)=H_N(lambda) pi_(M,N) off spectrum",
+    "Real": "J_N K_N=K_N J_N and pi J_M=J_N pi",
+    "orientation": "only the distinguished 12-cycle orientation is retained; successor coordinates carry no geometric orientation action"
+  },
+  "Evans_tower": {
+    "pencil": "K_N(lambda)=K_N-lambda I_(2N+2)",
+    "determinant": "D_N(lambda)=D_12(lambda)(2-lambda)^(2(N-12))",
+    "transition_ratio": "D_M/D_N=(2-lambda)^(2(M-N))",
+    "new_zero": "no new zero location; multiplicity at lambda=2 grows by 2 per added node"
+  },
+  "RH_tower": {
+    "contour": "|lambda|=1/2",
+    "jump": "V_N(lambda)=K_N(lambda)K_N(0)^-1",
+    "factors": "G_N,+ = V_N and G_N,-=I",
+    "projection": "pi V_M=V_N pi",
+    "winding": 0,
+    "partial_indices": "all zero at every finite stage"
+  },
+  "covariance": {
+    "stage": "Sigma_N=diag(nu^2 I_(2N),0.02^2 I_2)",
+    "response_transport": "K_N Sigma_N K_N^T",
+    "projective_compatibility": true
+  },
+  "claim_boundary": {
+    "preserves_base_N12": true,
+    "new_coordinate_response_source_derived": false,
+    "geometric_locality_across_new_nodes": false,
+    "inverse_limit_bounded_operator_constructed": false,
+    "source_RH_claimed": false,
+    "physical_binding": false
+  },
+  "next_required_object": {
+    "id": "source_local_response_transition",
+    "acceptance": "derive successor-coordinate couplings from the source shell/jet operator and prove transition coherence, or replace forgetful projections by source-correct renormalized transitions"
+  }
+}

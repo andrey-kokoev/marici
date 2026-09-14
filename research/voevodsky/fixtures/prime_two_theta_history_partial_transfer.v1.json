@@ -1,0 +1,77 @@
+{
+  "schema": "marici.voevodsky.prime-two-theta-history-partial-transfer.v1",
+  "claim_boundary": "This is the source-side finite feature map and bilateral codiagonal through jet order two. It is not the missing arithmetic loading into the canonical G4 Green carrier.",
+  "prime": 2,
+  "ordered_theta_pair": [1, 2],
+  "shell_Y_bounds": [1, 2],
+  "jet_range": [0, 1, 2],
+  "source_basis": [
+    "adams2",
+    "rho0_plus",
+    "e_plus_0", "e_plus_1", "e_plus_2",
+    "w_plus_0", "w_plus_1", "w_plus_2",
+    "rho0_minus",
+    "e_minus_0", "e_minus_1", "e_minus_2",
+    "w_minus_0", "w_minus_1", "w_minus_2"
+  ],
+  "target_rows": [
+    {"id":"adams2","entries":{"adams2":"1"},"authority":"Adams doubling"},
+    {"id":"wall_plus","entries":{"rho0_plus":"-1"},"authority":"oriented radial feature"},
+    {"id":"wall_minus","entries":{"rho0_minus":"1"},"authority":"oriented radial feature"},
+    {"id":"e_plus_0","entries":{"e_plus_0":"1"},"authority":"retained Laplace jet"},
+    {"id":"e_plus_1","entries":{"e_plus_1":"1"},"authority":"retained Laplace jet"},
+    {"id":"e_plus_2","entries":{"e_plus_2":"1"},"authority":"retained Laplace jet"},
+    {"id":"w_plus_0","entries":{"w_plus_0":"1"},"authority":"retained Laplace jet"},
+    {"id":"w_plus_1","entries":{"w_plus_1":"1"},"authority":"retained Laplace jet"},
+    {"id":"w_plus_2","entries":{"w_plus_2":"1"},"authority":"retained Laplace jet"},
+    {"id":"e_minus_0","entries":{"e_minus_0":"1"},"authority":"retained reciprocal Laplace jet"},
+    {"id":"e_minus_1","entries":{"e_minus_1":"1"},"authority":"retained reciprocal Laplace jet"},
+    {"id":"e_minus_2","entries":{"e_minus_2":"1"},"authority":"retained reciprocal Laplace jet"},
+    {"id":"w_minus_0","entries":{"w_minus_0":"1"},"authority":"retained reciprocal Laplace jet"},
+    {"id":"w_minus_1","entries":{"w_minus_1":"1"},"authority":"retained reciprocal Laplace jet"},
+    {"id":"w_minus_2","entries":{"w_minus_2":"1"},"authority":"retained reciprocal Laplace jet"},
+    {"id":"codiagonal_0","entries":{"e_plus_0":"1","e_minus_0":"1","w_plus_0":"-1/2","w_minus_0":"-1/2"},"authority":"bilateral radial codiagonal"},
+    {"id":"codiagonal_1","entries":{"e_plus_1":"1","e_minus_1":"1","w_plus_1":"-1/2","w_minus_1":"-1/2"},"authority":"bilateral radial codiagonal"},
+    {"id":"codiagonal_2","entries":{"e_plus_2":"1","e_minus_2":"1","w_plus_2":"-1/2","w_minus_2":"-1/2"},"authority":"bilateral radial codiagonal"},
+    {"id":"schur_plus_z^-1","entries":{"rho0_plus":"1","e_plus_0":"1","w_plus_0":"-1/2"},"authority":"radial Stokes resolvent identity"},
+    {"id":"schur_plus_z^0","entries":{"e_plus_0":"2","e_plus_1":"1","w_plus_1":"-1/2"},"authority":"radial Stokes resolvent identity"},
+    {"id":"schur_plus_z^1","entries":{"e_plus_1":"2","e_plus_2":"1","w_plus_2":"-1/2"},"authority":"radial Stokes resolvent identity"},
+    {"id":"schur_minus_z^-1","entries":{"rho0_minus":"1","e_minus_0":"1","w_minus_0":"-1/2"},"authority":"reciprocal radial Stokes resolvent identity"},
+    {"id":"schur_minus_z^0","entries":{"e_minus_0":"2","e_minus_1":"1","w_minus_1":"-1/2"},"authority":"reciprocal radial Stokes resolvent identity"},
+    {"id":"schur_minus_z^1","entries":{"e_minus_1":"2","e_minus_2":"1","w_minus_2":"-1/2"},"authority":"reciprocal radial Stokes resolvent identity"}
+  ],
+  "fixed_values": {
+    "adams2": "1/16",
+    "endpoint_relative_adams2": "-1/(16*pi)"
+  },
+  "source_range_constraints": [
+    {"id":"plus_apparent_pole_cancellation","entries":{"rho0_plus":"1","e_plus_0":"1","w_plus_0":"-1/2"},"equals":"0","authority":"Laplace transform of the radial Stokes identity at z=0"},
+    {"id":"minus_apparent_pole_cancellation","entries":{"rho0_minus":"1","e_minus_0":"1","w_minus_0":"-1/2"},"equals":"0","authority":"reciprocal Laplace transform of the radial Stokes identity at z=0"}
+  ],
+  "return_lanes": {
+    "hermitian": "conjugate_transpose",
+    "analytic_evans": "transpose",
+    "comparison_authorized": false
+  },
+  "required_hostiles": [
+    "drop_pair_orientation",
+    "delete_upper_endpoint",
+    "delete_lower_endpoint",
+    "change_wronskian_coefficient_to_zero",
+    "identify_adjoint_with_transpose",
+    "drop_positive_jet",
+    "replace_history_by_adams_scalar"
+  ],
+  "unresolved_target_rows": [
+    {
+      "id": "g4_arithmetic_loading",
+      "first_missing_typed_datum": "owner-reviewed formula from the retained radial-history feature and Adams grade to the canonical G4 arithmetic port",
+      "acceptance_test": "an explicit row with source locator, endpoint normalization, reciprocal sign, and all-jet compatibility"
+    },
+    {
+      "id": "g4_green_metric",
+      "first_missing_typed_datum": "owner-reviewed polarized metric on the canonical G4 history carrier",
+      "acceptance_test": "Hermitian Green identity and independent analytic-transpose comparison"
+    }
+  ]
+}

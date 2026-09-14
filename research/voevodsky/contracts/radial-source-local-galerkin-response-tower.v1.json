@@ -1,0 +1,52 @@
+{
+  "schema": "marici.voevodsky.radial-source-local-galerkin-response-tower.v1",
+  "status": "synthetic_local_galerkin_tower_not_source_shell_binding",
+  "predecessor": "research/voevodsky/contracts/radial-projectively-compatible-response-tower.v1.json",
+  "index": "levels ell>=0 with N_ell=12 times 2^ell",
+  "supersession": {
+    "reason": "decoupled successor modes preserve algebraic projections but destroy radial locality",
+    "retained": "the exact N=12 response",
+    "replaced": "all N>=13 stages and forgetful coordinate transitions"
+  },
+  "mesh": {
+    "nodes": "uniform cyclic subdivision of the original 12-cycle",
+    "edge_weight": "2^ell on every level-ell edge",
+    "mass": "unit mass only at the 12 original vertices and zero mass at inserted vertices",
+    "physical_radius_claimed": false
+  },
+  "scalar_response": {
+    "formula": "A_ell=L_weighted_cycle_ell+M_original",
+    "base": "A_0=I_12+L_cycle_12",
+    "positive_definite": true,
+    "locality": "nearest-neighbor edges on each refined cycle"
+  },
+  "joint_response": {
+    "formula": "K_ell=diag(A_ell,A_ell,2I_2)",
+    "Real": "P block even, Q block odd, M even, J odd",
+    "Wilson": "unchanged from base"
+  },
+  "transition": {
+    "harmonic_extension": "E_ell maps each coarse vertex value to itself and each inserted midpoint to the average of its two coarse endpoints",
+    "restriction": "R_ell selects the even-index refined vertices",
+    "split": "R_ell E_ell=I",
+    "energy_coherence": "E_ell^T A_(ell+1) E_ell=A_ell",
+    "Schur_coherence": "Schur_original(A_(ell+1))=A_ell",
+    "Green_compression": "R_ell A_(ell+1)^-1 R_ell^T=A_ell^-1"
+  },
+  "Evans_boundary": {
+    "warning": "Schur coherence at lambda=0 does not imply the same identity for A-lambda I because inserted coordinates carry spectral mass under the pencil",
+    "consequence": "a compatible Green operator at zero is constructed; a full parameter-dependent Evans/RH tower requires a declared mass matrix pencil"
+  },
+  "claim_boundary": {
+    "base_response_preserved": true,
+    "radial_locality_synthetic": true,
+    "source_shell_operator_identified": false,
+    "continuum_limit_constructed": false,
+    "parameter_dependent_tower_constructed": false,
+    "physical_binding": false
+  },
+  "next_required_object": {
+    "id": "galerkin_mass_matrix_pencil",
+    "acceptance": "declare compatible finite-element mass matrices B_ell and test Schur or resolvent coherence for A_ell-lambda B_ell without claiming a continuum limit"
+  }
+}

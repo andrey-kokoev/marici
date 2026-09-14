@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+"""Separate the top-sector residue boundary from its physical occurrence covector."""
+import json
+from pathlib import Path
+R=Path(__file__).resolve().parents[3];B=R/'research/benincasa'
+top=json.loads((B/'top-sector-residue-boundary.json').read_text())
+c15=json.loads((R/'research/voevodsky/results/C15_canonical_physical_mixed_detector.json').read_text())
+census=json.loads((R/'research/voevodsky/results/two_ended_valg_physical_candidate_census.json').read_text())
+boundary=top['mixed_to_q_second_residues'];physical=c15['physical_covector']
+extcols=c15['extension_columns'];v=[extcols[k][3] for k in c15['mixed_basis']]
+checks={'prior_survivor_named':census['survivor']=='top-sector triple logarithmic residue','geometric_boundary_is_odd':boundary==[1,-1],'physical_occurrence_covector_is_even':physical==[1,1],'vectors_differ':boundary!=physical,'physical_valg_projection_zero':c15['physical_symmetric_image']['v_alg_projection']=='0','counterfactual_odd_projection_nonzero':c15['counterfactual_antisymmetric_image']['v_alg_projection']!='0','literal_log_form':top['literal_logarithmic_representative'].startswith('dlog(q_g1)')}
+assert all(checks.values()),checks
+out={'schema':'marici.voevodsky.top-sector-triple-Leray-v-alg-pairing-audit.v1','triple_tube':{'representative':top['literal_logarithmic_representative'],'ordered_local_torus_integral':'(2*pi*i)^3 times the scalar triple residue','normal_jacobian':top['normal_jacobian']},'two_distinct_vectors':{'denominator_complex_boundary':boundary,'physical_occurrence_covector':physical},'typing':'The odd vector is the oriented boundary/second-residue incidence in the logarithmic denominator complex. The physical coefficient system independently weights the two mixed source occurrences equally. The universal Leray-torus factor multiplies the scalar residue and does not replace the occurrence covector by the boundary incidence vector.','marked_extension_v0_columns':v,'physical_projection':c15['physical_symmetric_image']['v_alg_projection'],'counterfactual_projection':c15['counterfactual_antisymmetric_image']['v_alg_projection'],'status':'rejected as a physical v_alg channel','correction_to_prior_census':'The top-sector candidate survives de Rham incidence and orientation gates, but not the physical occurrence-pairing gate. Calling it the surviving physical candidate was premature.','next_nonredundant_route':'Seek a source operation whose physical occurrence covector itself is exchange-odd; geometric boundary signs alone are insufficient.','checks':checks,'passed':True}
+d=R/'research/voevodsky/results/top_sector_triple_leray_valg_pairing_audit.json';d.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'status':out['status'],'boundary':boundary,'physical':physical,'projection':'0'}))

@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+"""Verify two commuting site-exchanged index-two factors of the conductor map."""
+from hashlib import sha256
+from pathlib import Path
+import json
+import sympy as s
+from sympy.matrices.normalforms import smith_normal_form
+from sympy.polys.domains import ZZ
+ROOT=Path(__file__).resolve().parents[3];PACKET=ROOT/'research/voevodsky/conductor_parity_defect_factors_into_two_site_exchanged_relative_type_steps.md';RESULT=ROOT/'research/voevodsky/results/two_relative_type_conductor_factors.json';INTER=ROOT/'research/benincasa/orientation-twisted-conductor-rees-intertwiner.json'
+a=json.loads(INTER.read_text(encoding='utf-8'));J=s.Matrix(a['intertwiner_matrix_row_major']);J1=s.Matrix([[2,0,1],[0,1,0],[0,0,1]]);J2=s.Matrix([[1,0,0],[0,2,1],[0,0,1]]);S=s.Matrix([[0,1,0],[1,0,0],[0,0,1]]);C=s.Matrix([[0,-1,1,0],[1,0,0,0],[1,1,0,1],[-1,0,1,-1]]);smith=lambda M:[abs(int(smith_normal_form(M,domain=ZZ)[i,i])) for i in range(min(M.shape))];stab=lambda M:s.diag(M,s.ones(1,1));checks={'factorization_both_orders':J1*J2==J and J2*J1==J,'factors_commute':J1*J2==J2*J1,'factor_determinants':J1.det()==2 and J2.det()==2,'factor_smith':smith(J1)==[1,1,2] and smith(J2)==[1,1,2],'product_smith':smith(J)==[1,2,2],'site_exchanges_factors':S*J1*S==J2 and S*J2*S==J1,'product_site_invariant':S*J*S==J,'relative_matrix_smith':smith(C)==[1,1,1,2],'stabilized_match':smith(stab(J1))==smith(C) and smith(stab(J2))==smith(C),'no_geometric_promotion':'geometric and physical realization remains absent' in PACKET.read_text(encoding='utf-8')};checks={k:bool(v) for k,v in checks.items()}
+result={'schema':'marici.voevodsky.two-relative-type-conductor-factors.v1','packet_sha256':sha256(PACKET.read_bytes()).hexdigest(),'source_sha256':sha256(INTER.read_bytes()).hexdigest(),'J1':[list(map(int,J1.row(i))) for i in range(3)],'J2':[list(map(int,J2.row(i))) for i in range(3)],'factor_smith_invariants':[1,1,2],'product_smith_invariants':[1,2,2],'relative_stabilized_smith_invariants':[1,1,1,2],'checks':checks,'passed':all(checks.values()),'disposition':{'arithmetic_factorization':'verified','site_exchange':'swaps factors','relative_matrix_match':'Smith type after stabilization','geometric_realization':'missing','physical_status':'unverified'}}
+RESULT.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8');print(json.dumps({'passed':result['passed'],'checks':checks,'disposition':result['disposition']}));raise SystemExit(0 if result['passed'] else 1)

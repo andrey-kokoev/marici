@@ -1,0 +1,64 @@
+{
+  "schema": "marici.voevodsky.radial-synthetic-rh-factorization.v1",
+  "status": "synthetic_finite_matrix_RH_factorization_not_source_RH",
+  "source": "research/voevodsky/contracts/radial-synthetic-evans-family.v1.json",
+  "contour": {
+    "symbol": "Gamma",
+    "definition": "|lambda|=1/2",
+    "orientation": "counterclockwise_parameter_orientation",
+    "physical_time_meaning": false,
+    "spectral_separation": "all zeros of D_syn lie on the positive real axis at lambda>=1, hence Gamma is disjoint"
+  },
+  "jump": {
+    "symbol": "V(lambda)",
+    "definition": "V(lambda)=K(lambda) K(0)^-1",
+    "type": "GL(26,C) on Gamma",
+    "determinant": "det V(lambda)=D_syn(lambda)/D_syn(0)",
+    "winding": 0,
+    "derivation": "finite synthetic Evans pencil"
+  },
+  "factorization": {
+    "convention": "V=G_minus^-1 G_plus",
+    "inside_factor": "G_plus(lambda)=K(lambda) K(0)^-1",
+    "outside_factor": "G_minus(lambda)=I_26",
+    "inside_domain": "|lambda|<1/2",
+    "outside_domain": "|lambda|>1/2 including infinity",
+    "normalization": {
+      "G_plus_at_zero": "I_26",
+      "G_minus_at_infinity": "I_26"
+    },
+    "partial_indices": "all_zero",
+    "reconstruction": "G_minus^-1 G_plus=V exactly on Gamma"
+  },
+  "symmetry": {
+    "Real": "conjugate(V(lambda))=V(conjugate(lambda))",
+    "orientation_operator": "O V(lambda)=V(lambda) O",
+    "Real_factor_compatibility": true,
+    "orientation_factor_compatibility": true
+  },
+  "green_relation": {
+    "formula": "V(lambda)^-1=K(0) H_syn(lambda)",
+    "domain": "Gamma and the interior disk",
+    "verified": true
+  },
+  "units": {
+    "lambda": "dimensionless_synthetic_spectral_parameter",
+    "jump": "dimensionless_operator_ratio"
+  },
+  "claim_boundary": {
+    "nontrivial_exterior_factor_claimed": false,
+    "singular_integral_RH_solved": false,
+    "infinite_dimensional_RH_claimed": false,
+    "Aspect_RH_identification": false,
+    "physical_scattering_claimed": false
+  },
+  "hostile_tests": {
+    "contour_through_lambda_1": "rejected_because_jump_becomes_singular",
+    "radius_above_first_zero": "may_change_winding_and_partial_indices",
+    "massless_family_at_origin": "normalization_K0_inverse_undefined"
+  },
+  "next_required_object": {
+    "id": "source_RH_comparison_or_nontrivial_jump",
+    "acceptance": "either identify the synthetic sampled pencil with a source-derived trace/response family, or provide a nontrivial source jump whose factorization is not tautologically inherited from K(lambda)"
+  }
+}

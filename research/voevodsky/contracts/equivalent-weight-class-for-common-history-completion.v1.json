@@ -1,0 +1,49 @@
+{
+  "schema": "marici.voevodsky.equivalent-weight-class-for-common-history-completion.v1",
+  "status": "conditional_weight_equivalence_not_source_selection",
+  "predecessor": "research/voevodsky/contracts/weighted-common-history-cycle-completion.v1.json",
+  "weights": {
+    "reference": "alpha_n=2^(n+1)ell_n^2",
+    "alternative": "beta_n>0",
+    "admissibility": "there exist constants 0<m<=M<infinity with m alpha_n<=beta_n<=M alpha_n for every n"
+  },
+  "comparison": {
+    "identity": "I:H_alpha->H_beta",
+    "upper_bound": "||I||<=sqrt(M)",
+    "inverse_bound": "||I^-1||<=1/sqrt(m)",
+    "condition_number": "at most sqrt(M/m)",
+    "criterion": "the weighted Hilbert topologies are boundedly isomorphic exactly when both ratio bounds hold"
+  },
+  "transport": {
+    "bounded_history": "B bounded on H_alpha implies B bounded on H_beta with ||B||_beta<=||B||_alpha/sqrt(m)",
+    "kernel": "the algebraic and closed kernel set is unchanged under the identity comparison",
+    "quotient_topology": "equivalent",
+    "faithfulness": "(B,P_kernel) remains faithful, although the orthogonal projection depends on the weight",
+    "bounded_operator": "T transports by I T I^-1 with condition-number loss",
+    "similarity_spectrum": "preserved for bounded operators under this declared similarity"
+  },
+  "metric_strength": {
+    "norm_comparison": "m||c||_alpha^2<=||c||_beta^2<=M||c||_alpha^2",
+    "topology": "invariant within the admissible class",
+    "zero_distance_and_convergence": "invariant",
+    "numerical_distances": "not invariant unless beta=alpha",
+    "orthogonality": "not invariant",
+    "noise_whitening": "not physically calibrated by equivalence alone"
+  },
+  "hostile_boundary": {
+    "unbounded_ratio": "beta_n=(n+1)alpha_n makes I:H_alpha->H_beta unbounded",
+    "vanishing_ratio": "beta_n=alpha_n/(n+1) makes the inverse unbounded",
+    "consequence": "different completions may contain different sequences and cannot be silently identified"
+  },
+  "claim_boundary": {
+    "admissible_equivalence_class_constructed": true,
+    "preferred_weight_selected": false,
+    "physical_covariance_selected": false,
+    "numerical_metric_invariance_claimed": false,
+    "unbounded_operator_spectrum_transport_claimed": false
+  },
+  "next_required_object": {
+    "id": "source_weight_comparability",
+    "acceptance": "derive a candidate source/noise weight beta_n and prove uniform upper and lower ratio bounds against alpha, or accept a different completion with explicit nontransportable conclusions"
+  }
+}

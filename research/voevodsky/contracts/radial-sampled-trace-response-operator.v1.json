@@ -1,0 +1,74 @@
+{
+  "schema": "marici.voevodsky.radial-sampled-trace-response-operator.v1",
+  "status": "synthetic_invertible_response_not_source_K_binding",
+  "source": "research/voevodsky/contracts/radial-jointly-faithful-sampled-four-trace.v1.json",
+  "domain": {
+    "space": "R^12_P direct_sum R^12_Q direct_sum R_M direct_sum R_J",
+    "order": "P_0,...,P_11,Q_0,...,Q_11,M,J",
+    "coordinate_schema_id": "radial-sampled-trace-order-P12-Q12-M-J.v1",
+    "dimension": 26,
+    "topology": "finite_dimensional_dimensionless_sample_space"
+  },
+  "operator": {
+    "symbol": "K_syn",
+    "bulk_block": {
+      "formula": "A=I_12+L_cycle",
+      "cycle_laplacian": "(L f)_j=2 f_j-f_(j-1)-f_(j+1)",
+      "applied_to": ["P", "Q"],
+      "mass_square": 1
+    },
+    "Wilson_block": {
+      "formula": "B=2 I_2",
+      "applied_to": ["M", "J"]
+    },
+    "joint": "K_syn=diag(A,A,B)",
+    "rank": 26,
+    "self_adjoint": true,
+    "positive_definite": true
+  },
+  "green_response": {
+    "symbol": "H_syn",
+    "formula": "H_syn=K_syn^-1",
+    "left_inverse": true,
+    "right_inverse": true,
+    "kernel_dimension": 0
+  },
+  "Real_structure": {
+    "target_involution": "diag(I_12,-I_12,1,-1)",
+    "commutation": "J K_syn=K_syn J",
+    "green_commutation": "J H_syn=H_syn J"
+  },
+  "orientation_reversal": {
+    "action": "j_maps_to_minus_j_on_P_and_Q_M_fixed_J_negated",
+    "commutation": "O K_syn=K_syn O",
+    "green_commutation": "O H_syn=H_syn O"
+  },
+  "covariance_transport": {
+    "input": "Sigma_trace",
+    "response": "Sigma_response=K_syn Sigma_trace K_syn^T",
+    "green": "Sigma_green=H_syn Sigma_trace H_syn^T",
+    "precision_rule": "for invertible T, Precision_out=T^-T Precision_in T^-1",
+    "metric_isometry_under_joint_transport": true,
+    "warning": "holding covariance fixed would not make K_syn an isometry"
+  },
+  "determinant_and_kernel": {
+    "determinant": "det(A)^2 det(B)>0",
+    "acceptance": "exact elimination verifies rank 26 and two-sided inverse",
+    "massless_hostile_residual": "replacing A by L_cycle creates one constant zero mode in each of P and Q"
+  },
+  "units": {
+    "operator": "dimensionless_synthetic_response",
+    "response_coordinates": "same_as_input_trace_coordinates"
+  },
+  "claim_boundary": {
+    "Aspect_K_identification": false,
+    "Aspect_H_K_identification": false,
+    "Evans_function_constructed": false,
+    "RH_factorization_constructed": false,
+    "physical_binding": false
+  },
+  "next_required_object": {
+    "id": "synthetic_evans_family",
+    "acceptance": "declare a parameter-dependent K_syn(lambda), its analytic domain, determinant normalization, Real symmetry, zero-locus multiplicity, and Green resolvent away from zeros"
+  }
+}

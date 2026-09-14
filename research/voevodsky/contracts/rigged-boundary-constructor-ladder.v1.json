@@ -1,0 +1,206 @@
+{
+  "schema": "marici.voevodsky.rigged-boundary-constructor-ladder.v1",
+  "claim_boundary": "This contract validates constructor signatures and eligibility gates; it does not construct a sector-specific test topology or prove continuity.",
+  "pairing_convention": {
+    "required": true,
+    "allowed": ["continuous_dual", "continuous_antidual"],
+    "rule": "one convention per composable formula"
+  },
+  "rungs": {
+    "test_domain": {
+      "symbol": "Phi_D",
+      "structure": "declared_locally_convex_space"
+    },
+    "graph_hilbert": {
+      "symbol": "E_D",
+      "structure": "Hilbert_space_with_graph_metric"
+    },
+    "ambient_hilbert": {
+      "symbol": "H",
+      "structure": "Hilbert_space"
+    },
+    "graph_dual": {
+      "symbol": "E_D_prime",
+      "structure": "continuous_graph_dual"
+    },
+    "test_dual": {
+      "symbol": "Phi_D_prime",
+      "structure": "continuous_test_dual"
+    },
+    "boundary": {
+      "symbol": "B",
+      "structure": "declared_topological_boundary_space"
+    },
+    "boundary_hilbert": {
+      "symbol": "B_H",
+      "structure": "chosen_Hilbert_realization_of_boundary"
+    },
+    "boundary_dual": {
+      "symbol": "B_prime",
+      "structure": "continuous_boundary_dual"
+    }
+  },
+  "ladder": [
+    ["test_domain", "graph_hilbert", "continuous_dense_inclusion"],
+    ["graph_hilbert", "ambient_hilbert", "continuous_dense_inclusion"],
+    ["ambient_hilbert", "graph_dual", "Riesz_induced_inclusion"],
+    ["graph_dual", "test_dual", "continuous_inclusion"]
+  ],
+  "constructors": {
+    "test_trace": {
+      "source": "test_domain",
+      "target": "boundary",
+      "linearity": "linear",
+      "requires": ["test_topology_continuity"],
+      "calkin_eligible": false
+    },
+    "continuous_transpose": {
+      "source": "boundary_dual",
+      "target": "test_dual",
+      "linearity": "pairing_convention_dependent",
+      "requires": ["test_trace", "fixed_dual_pairings"],
+      "calkin_eligible": false
+    },
+    "graph_trace": {
+      "source": "graph_hilbert",
+      "target": "boundary_hilbert",
+      "linearity": "linear",
+      "requires": ["graph_norm_bounded_extension"],
+      "calkin_eligible": false,
+      "gramian_calkin_eligible": true
+    },
+    "graph_adjoint": {
+      "source": "boundary_hilbert",
+      "target": "graph_hilbert",
+      "linearity": "reverse_linear_under_fixed_convention",
+      "requires": ["graph_trace", "graph_Riesz_map", "boundary_Riesz_map"],
+      "calkin_eligible": false
+    },
+    "ambient_trace": {
+      "source": "ambient_hilbert",
+      "target": "boundary_hilbert",
+      "linearity": "linear",
+      "requires": ["ambient_norm_bounded_extension"],
+      "calkin_eligible": false,
+      "gramian_calkin_eligible": true
+    },
+    "ambient_adjoint": {
+      "source": "boundary_hilbert",
+      "target": "ambient_hilbert",
+      "linearity": "reverse_linear_under_fixed_convention",
+      "requires": ["ambient_trace", "ambient_Riesz_map", "boundary_Riesz_map"],
+      "calkin_eligible": false
+    },
+    "boundary_distribution": {
+      "source": "boundary_dual_element",
+      "target": "test_dual_element",
+      "linearity": "element_constructor",
+      "requires": ["continuous_transpose"],
+      "calkin_eligible": false
+    },
+    "graph_observer_gramian": {
+      "source": "graph_hilbert",
+      "target": "graph_hilbert",
+      "linearity": "positive_bounded_endomorphism",
+      "requires": ["bounded_graph_observer", "graph_adjoint"],
+      "calkin_eligible": true
+    },
+    "ambient_observer_gramian": {
+      "source": "ambient_hilbert",
+      "target": "ambient_hilbert",
+      "linearity": "positive_bounded_endomorphism",
+      "requires": ["bounded_ambient_observer", "ambient_adjoint"],
+      "calkin_eligible": true
+    }
+  },
+  "comparison_package": {
+    "required_maps": [
+      "test_map",
+      "graph_map",
+      "ambient_map",
+      "graph_dual_map",
+      "test_dual_map",
+      "boundary_map"
+    ],
+    "required_cells": [
+      "inclusion_naturality",
+      "dual_pairing_naturality",
+      "trace_naturality",
+      "Green_pairing_naturality",
+      "Real_test_continuity",
+      "Real_dual_naturality"
+    ],
+    "prohibition": "ambient_invertibility_does_not_fill_other_rungs"
+  },
+  "riesz_bridge": {
+    "formula": "gamma_D_prime compose R_B = R_D compose gamma_D_star_D",
+    "requires": [
+      "graph_trace",
+      "graph_Riesz_map",
+      "boundary_Riesz_map",
+      "fixed_pairing_convention"
+    ],
+    "forbids": "continuous_transpose_equals_graph_adjoint_without_Riesz_maps"
+  },
+  "eligibility_rules": [
+    {
+      "claim": "graph_Calkin_class",
+      "requires": ["bounded_endomorphism_of_graph_hilbert_rung"]
+    },
+    {
+      "claim": "ambient_Calkin_class",
+      "requires": ["bounded_endomorphism_of_ambient_hilbert_rung"]
+    },
+    {
+      "claim": "essential_graph_observer",
+      "requires": ["positive_invertible_graph_Calkin_gramian"]
+    },
+    {
+      "claim": "finite_defect_repair",
+      "requires": ["bounded_graph_trace", "injective_on_exact_finite_residual"]
+    }
+  ],
+  "forbidden_promotions": [
+    {
+      "from": "test_trace",
+      "to": "ambient_trace",
+      "first_failure": "ambient_norm_bounded_extension"
+    },
+    {
+      "from": "continuous_transpose",
+      "to": "graph_adjoint",
+      "first_failure": "missing_Riesz_maps"
+    },
+    {
+      "from": "boundary_distribution",
+      "to": "Hilbert_Calkin_class",
+      "first_failure": "not_a_bounded_Hilbert_endomorphism"
+    },
+    {
+      "from": "ambient_invertible_comparison",
+      "to": "rigged_ladder_comparison",
+      "first_failure": "test_and_dual_continuity_unproved"
+    },
+    {
+      "from": "finite_dimensional_graph_trace",
+      "to": "essential_graph_observer",
+      "first_failure": "zero_graph_Calkin_class"
+    },
+    {
+      "from": "graph_adjoint",
+      "to": "ambient_adjoint",
+      "first_failure": "metric_rung_mismatch"
+    }
+  ],
+  "worked_example": {
+    "ambient_hilbert": "L2(0,infinity)",
+    "graph_hilbert": "H1(0,infinity)",
+    "trace": "gamma(f)=f(0)",
+    "graph_trace_bounded": true,
+    "ambient_trace_bounded": false,
+    "transpose_image": "boundary_delta_in_test_dual",
+    "graph_gramian_rank": 1,
+    "graph_Calkin_class": "zero",
+    "essential_bulk_complement": "bounded_multiplier_satisfying_uniform_local_mass"
+  }
+}

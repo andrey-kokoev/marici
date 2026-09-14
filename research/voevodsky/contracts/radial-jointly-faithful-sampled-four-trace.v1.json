@@ -1,0 +1,80 @@
+{
+  "schema": "marici.voevodsky.radial-jointly-faithful-sampled-four-trace.v1",
+  "status": "synthetic_faithful_shadow_not_source_trace_binding",
+  "predecessor": "research/voevodsky/contracts/radial-calibrated-four-trace-shadow.v1.json",
+  "source": "research/voevodsky/contracts/radial-synthetic-calibration-companion.v1.json",
+  "problem": "four_scalar_trace_shadow_has_22_dimensional_kernel",
+  "trace_family": {
+    "sample_domain": "{r_j=(j+1/2)/12 : j in Z/12Z}",
+    "P_shadow": {
+      "formula": "P(r_j)=Re(psi_j)",
+      "dimension": 12,
+      "Real_parity": "even"
+    },
+    "Q_shadow": {
+      "formula": "Q(r_j)=Im(psi_j)",
+      "dimension": 12,
+      "Real_parity": "odd"
+    },
+    "M_shadow": {
+      "formula": "M=Re(product_j U_j)",
+      "dimension": 1,
+      "Real_parity": "even"
+    },
+    "J_shadow": {
+      "formula": "J=Im(product_j U_j)",
+      "dimension": 1,
+      "Real_parity": "odd"
+    }
+  },
+  "comparison": {
+    "symbol": "C_sample",
+    "source_order": "Re psi_0,Im psi_0,...,Re psi_11,Im psi_11,Re W,Im W",
+    "target_order": "P(r_0),...,P(r_11),Q(r_0),...,Q(r_11),M,J",
+    "coordinate_schema_id": "radial-sampled-trace-order-P12-Q12-M-J.v1",
+    "matrix": "the corresponding 26_by_26 permutation matrix",
+    "rank": 26,
+    "kernel_dimension": 0,
+    "inverse": "interleave P and Q samples then append M,J",
+    "jointly_faithful": true
+  },
+  "gauge_typing": {
+    "Wilson_samples": "invariant_under_vertex_U1_gauge",
+    "bulk_samples": "gauge_covariant_in_retained_local_frames",
+    "unframed_bulk_descent": false,
+    "claim": "faithful_on_framed_bulk_record_times_Wilson_quotient"
+  },
+  "Real_structure": {
+    "source": "bulk_complex_conjugation_and_Wilson_conjugation",
+    "target": "P_and_M_fixed_Q_and_J_negated",
+    "equivariant": true
+  },
+  "orientation_reversal": {
+    "source": "j_maps_to_minus_j_on_bulk_and_Wilson_conjugation",
+    "target": "P(r_j)_maps_to_P(r_minus_j),Q(r_j)_maps_to_Q(r_minus_j),M_fixed,J_negated",
+    "equivariant": true
+  },
+  "covariance_transport": {
+    "formula": "Sigma_trace=C_sample Sigma C_sample^T",
+    "diagonal_source_result": "diag(nu^2 I_12,nu^2 I_12,0.02^2,0.02^2)",
+    "precision_transport": "Sigma_trace^-1=C_sample Sigma^-1 C_sample^T",
+    "metric_isometry": true,
+    "perturbed_covariance_policy": "transport_full_matrix_by_same_congruence_without_dropping_cross_terms"
+  },
+  "units": {
+    "P_and_Q": "dimensionless_optical_amplitude",
+    "M_and_J": "dimensionless",
+    "sample_coordinate": "dimensionless_lattice_fraction"
+  },
+  "disposition": {
+    "scalar_shadow": "superseded_for_metric_transport",
+    "sampled_shadow": "faithful_synthetic_metric_isometry",
+    "continuum_claim": false,
+    "Aspect_trace_identification": false,
+    "physical_binding": false
+  },
+  "next_required_object": {
+    "id": "sampled_trace_to_radial_response_operator",
+    "acceptance": "an evaluable K or H_K family on the 26 sampled trace coordinates with Real and orientation equivariance, declared domain, and a determinant or kernel test"
+  }
+}

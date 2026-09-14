@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+"""Exact Dirichlet-coefficient audit of the Gaussian norm chart."""
+import hashlib,json,platform
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];FIX=ROOT/'research/voevodsky/fixtures/gaussian_norm_prime_two_local_false_positive.v1.json';OUT=ROOT/'research/voevodsky/results/gaussian_norm_prime_two_local_false_positive.json';D=json.loads(FIX.read_text());X=D['cutoff']
+def divisors(n):return [d for d in range(1,n+1) if n%d==0]
+def chi4(d):return 0 if d%2==0 else (1 if d%4==1 else -1)
+def gaussian(n):return sum(chi4(d) for d in divisors(n))
+coeff={n:{'riemann':1,'gaussian':gaussian(n)} for n in range(1,X+1)};powers=[1,2,4,8,16]
+checks={'all_two_power_coefficients_match':all(coeff[n]['gaussian']==coeff[n]['riemann']==1 for n in powers),'first_global_mismatch_at_three':coeff[3]=={'riemann':1,'gaussian':0},'split_prime_five_has_multiplicity_two':coeff[5]=={'riemann':1,'gaussian':2},'gaussian_coefficients_nonnegative':all(v['gaussian']>=0 for v in coeff.values()),'global_sequences_differ':any(v['gaussian']!=v['riemann'] for v in coeff.values()),'prime_two_declared_false_positive':D['disposition']['prime_two_chart_test']=='local false positive','compression_not_promoted':'requires a source-derived' in D['disposition']['common_Riemann_channel']}
+out={'schema':'marici.voevodsky.gaussian-norm-prime-two-local-false-positive-check.v1','passed':all(checks.values()),'checks':checks,'computed':{'coefficients_1_to_16':{str(n):v for n,v in coeff.items()},'matching_two_powers':powers,'mismatch_indices':[n for n,v in coeff.items() if v['gaussian']!=v['riemann']]},'disposition':'The Q(i) norm chart is indistinguishable from the Riemann channel on the entire prime-two tower but fails globally beginning at prime three. The prime-two endpoint map therefore cannot select the common global defect chart.','claim_boundary':D['claim_boundary'],'execution_receipt':{'command':'python research/voevodsky/checkers/check_gaussian_norm_prime_two_local_false_positive.py','python':platform.python_version(),'fixture_sha256':hashlib.sha256(FIX.read_bytes()).hexdigest(),'source_sha256':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in D['sources']},'checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}}
+OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+'\n');print(json.dumps(out,indent=2,sort_keys=True));raise SystemExit(0 if out['passed'] else 1)

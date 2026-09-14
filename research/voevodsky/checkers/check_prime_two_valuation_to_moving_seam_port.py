@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+"""Exact depth-three valuation-index to discrete moving-seam comparison."""
+import hashlib,json,platform
+from fractions import Fraction
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];FIX=ROOT/'research/voevodsky/fixtures/prime_two_valuation_to_moving_seam_port.v1.json';OUT=ROOT/'research/voevodsky/results/prime_two_valuation_to_moving_seam_port.json';D=json.loads(FIX.read_text());src=[Fraction(x) for x in D['discrete_source']];chi=[Fraction(x) for x in D['odd_character']];N=D['depth']
+def at(a,i):return a[i] if 0<=i<len(a) else Fraction(0)
+def window(m):return sum(2*at(src,q)*at(src,q+d)*at(chi,d) for q in range(m) for d in range(len(src)))
+windows=[window(m) for m in range(N+2)];increments=[windows[m+1]-windows[m] for m in range(N+1)];responses=[at(src,m)*2*sum(at(src,m+d)*at(chi,d) for d in range(len(src))) for m in range(N+1)]
+indices=[(2**k,k,k) for k in range(N+1)]
+checks={'prime_power_valuation_indices':all(n==2**v==2**m for n,v,m in indices),'prime_multiplication_matches_valuation_and_seam_addition':all((2**i)*(2**j)==2**(i+j) for i in range(N+1) for j in range(N+1-i)),'empty_window_zero':windows[0]==0,'all_window_increments_equal_local_response':increments==responses,'telescoping_to_terminal_window':sum(increments)==windows[N+1],'finite_port_constructed_only':D['disposition']['finite_moving_seam_port']=='constructed on k=0,1,2,3','continuous_quadrature_not_promoted':'quadrature' in D['disposition']['remaining_gate']}
+out={'schema':'marici.voevodsky.prime-two-valuation-to-moving-seam-port-check.v1','passed':all(checks.values()),'checks':checks,'computed':{'indices_2power_valuation_seam_grade':[list(x) for x in indices],'windows':list(map(str,windows)),'increments':list(map(str,increments)),'local_responses':list(map(str,responses))},'disposition':'The selected 2-valuation chain extends exactly to a discrete moving-seam response port. The prime-power-to-continuous quadrature and archimedean remainder remain absent.','claim_boundary':D['claim_boundary'],'execution_receipt':{'command':'python research/voevodsky/checkers/check_prime_two_valuation_to_moving_seam_port.py','python':platform.python_version(),'fixture_sha256':hashlib.sha256(FIX.read_bytes()).hexdigest(),'source_sha256':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in D['sources']},'checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}}
+OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+'\n');print(json.dumps(out,indent=2,sort_keys=True));raise SystemExit(0 if out['passed'] else 1)

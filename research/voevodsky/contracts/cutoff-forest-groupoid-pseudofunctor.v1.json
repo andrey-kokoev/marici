@@ -1,0 +1,36 @@
+{
+  "schema": "marici.voevodsky.cutoff-forest-groupoid-pseudofunctor.v1",
+  "status": "finite_nested_cutoff_coherence_not_unbounded_completion",
+  "predecessor": "research/voevodsky/contracts/forest-presentation-cycle-groupoid.v1.json",
+  "cutoff_category": {
+    "objects": "finite nested oriented graphs G_D",
+    "arrows": "edge-preserving inclusions j_DE:G_D->G_E",
+    "cycle_map": "J_DE:Z_1(G_D)->Z_1(G_E) by zero extension"
+  },
+  "presentation_fibers": {
+    "over_D": "groupoid of forest cycle presentations F_(D,T)",
+    "vertical_arrow": "C_(D,U<-T)=F_(D,U)^-1 F_(D,T)",
+    "horizontal_arrow": "I_(E,T'<-D,T)=F_(E,T')^-1 J_DE F_(D,T)"
+  },
+  "coherence": {
+    "interchange": "C_(E,U'<-T') I_(E,T'<-D,T)=I_(E,U'<-D,U) C_(D,U<-T)",
+    "cutoff_composition": "I_(F,T''<-E,T') I_(E,T'<-D,T)=I_(F,T''<-D,T)",
+    "identity": "I_(D,T<-D,T)=identity",
+    "interpretation": "all paths represent the same canonical included cycle"
+  },
+  "reciprocal": {
+    "condition": "cutoff inclusions commute with reciprocal edge involutions",
+    "naturality": "R_(E,T') I_(E,T'<-D,T)=I_(E,RT'<-D,RT) R_(D,T)"
+  },
+  "claim_boundary": {
+    "finite_nested_cutoff_pseudofunctor_constructed": true,
+    "arbitrary_non_nested_cutoff_comparison_constructed": false,
+    "completed_projective_colimit_constructed": false,
+    "source_cutoff_graphs_instantiated": false,
+    "metric_calibrated": false
+  },
+  "next_required_object": {
+    "id": "source_cutoff_instantiation_and_continuity",
+    "acceptance": "instantiate J_DE from the declared arithmetic cutoff graphs, verify uniform grade-controlled continuity, and only then extend the pseudofunctor to the projective completion"
+  }
+}

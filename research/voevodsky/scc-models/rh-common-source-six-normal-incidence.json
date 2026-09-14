@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "rh-common-source-six-normal-incidence",
+    "owner": "marici.Voevodsky",
+    "classification": "candidate",
+    "stratum": "global restricted-product theta/Tate source before Fourier sewing; static six-direction incidence stratum with current rank 4 and a two-dimensional odd residual",
+    "inputs": [
+      "research/voevodsky/marici_rh_common_source_packet_20260908.json"
+    ],
+    "checks": [
+      {
+        "id": "rh-common-source-packet-freeze",
+        "path": "research/voevodsky/check_marici_rh_common_source_packet_20260908.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [],
+    "consumes": [
+      "theta-static-incidence-rank-4",
+      "six-normal-target-rank-6",
+      "xi-bordered-endpoint-incidence"
+    ],
+    "provides": [
+      "frozen-common-source-packet",
+      "typed-four-residual-frontier"
+    ],
+    "missing_constructors": [
+      "two-independent-source-authorized-level-zero-incidences",
+      "common-closed-domain",
+      "uniform-observer-lower-margin"
+    ],
+    "next_falsifier": "delete either proposed new incidence and require rank to fall below six without changing the existing four static directions"
+  }
+}

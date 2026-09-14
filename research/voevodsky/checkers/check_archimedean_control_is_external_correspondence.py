@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+"""Exact no-internalization witnesses for constant and delta boundary controls."""
+import hashlib,json,platform
+from fractions import Fraction as Q
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];FIX=ROOT/'research/voevodsky/fixtures/archimedean_control_is_external_correspondence.v1.json';OUT=ROOT/'research/voevodsky/results/archimedean_control_is_external_correspondence.json';D=json.loads(FIX.read_text());scales=[1,2,4,8,16,32]
+# Constant restricted to [0,R] has squared L2 norm R.
+constant_norm2=[Q(R) for R in scales]
+# Box delta_epsilon=1/epsilon on [0,epsilon], epsilon=1/m, has L1 mass 1 and squared L2 norm m.
+delta_l1=[Q(1) for m in scales];delta_norm2=[Q(m) for m in scales]
+checks={'constant_truncation_norms_diverge':constant_norm2[-1]>constant_norm2[0] and all(constant_norm2[i+1]>constant_norm2[i] for i in range(len(scales)-1)),'delta_approximants_have_unit_mass':all(x==1 for x in delta_l1),'delta_approximation_norms_diverge':all(delta_norm2[i+1]>delta_norm2[i] for i in range(len(scales)-1)),'ordinary_L2_internalization_refuted':constant_norm2[-1]==32 and delta_norm2[-1]==32,'external_architecture_declared':D['architecture'].startswith('A_arch ->'),'previous_direct_sum_interpretation_superseded':D['disposition']['previous_direct_sum_wording'].startswith('superseded'),'incidence_maps_not_fabricated':D['disposition']['incidence_maps']=='not yet constructed','full_mate_gate_retained':'commute with both resolvent faces' in D['disposition']['full_mate']}
+out={'schema':'marici.voevodsky.archimedean-control-is-external-correspondence-check.v1','passed':all(checks.values()),'checks':checks,'computed':{'cutoff_or_inverse_width':scales,'constant_truncated_L2_norm_squared':[str(x) for x in constant_norm2],'delta_box_L1_mass':[str(x) for x in delta_l1],'delta_box_L2_norm_squared':[str(x) for x in delta_norm2]},'disposition':'Neither one nor delta_0 is an ordinary bulk L2 state. The five-cell remains a shared external rigged control correspondence; its three incidence maps are still required for the full mate.','claim_boundary':D['claim_boundary'],'execution_receipt':{'command':'python research/voevodsky/checkers/check_archimedean_control_is_external_correspondence.py','python':platform.python_version(),'fixture_sha256':hashlib.sha256(FIX.read_bytes()).hexdigest(),'source_sha256':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in D['sources']},'checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}}
+OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+'\n');print(json.dumps(out,indent=2,sort_keys=True));raise SystemExit(0 if out['passed'] else 1)

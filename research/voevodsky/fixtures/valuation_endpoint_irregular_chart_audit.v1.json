@@ -1,0 +1,16 @@
+{
+  "schema":"marici.voevodsky.valuation-endpoint-irregular-chart-audit.v1",
+  "claim_boundary":"Endpoint-locus audit comparing the source-derived valuation/seam charts with the relative-trace irregular loci {-1,0,infinity}. It corrects the unsupported inference that both Green endpoint projectors automatically form the two coefficients of one split irregular germ.",
+  "sources":[
+    "research/voevodsky/fixtures/prime_two_valuation_to_moving_seam_port.v1.json",
+    "references/Beyond edoscope for the relative trace formula 2.pdf"
+  ],
+  "pdf_locator":"PDF pages 42-44: regular locus is P1 minus {-1,0,infinity}; Fourier transport routes C2 at zero to D4 at infinity, C5 at infinity to D2 at zero, and C4 at -1 to D5 at infinity.",
+  "valuation_charts":[
+    {"id":"expanding","coordinate":"xi_k=2^k","primitive_k0":"xi=1 regular","completion_k_to_infinity":"xi=infinity irregular"},
+    {"id":"contracting","coordinate":"xi_k=q^k with 0<|q|<1","primitive_k0":"xi=1 regular","completion_k_to_infinity":"xi=0 irregular"}
+  ],
+  "unsupported_shift":"xi_k=2^k-1 would place k=0 at zero, but no admitted source currently selects this affine translation as the comparison chart.",
+  "asymptotic_routing":["C2@0 --Fourier,gamma(eta,-t,psi)--> D4@infinity","C5@infinity --Fourier--> D2@0","C4@-1 --Fourier,gamma(eta,-2s,psi)--> D5@infinity"],
+  "disposition":{"primitive_endpoint":"regular at xi=1 in both source-derived charts","terminal_completion":"irregular at infinity or zero according to expanding or contracting chart","previous_two_irregular_slot_candidate":"not source-derived","first_missing_typed_datum":"authorized base-coordinate chart relating valuation/seam labels to the relative-trace projective-line coordinate"}
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "marici.voevodsky.radial-synthetic-evans-family.v1",
+  "status": "finite_dimensional_synthetic_evans_not_source_RH",
+  "source": "research/voevodsky/contracts/radial-sampled-trace-response-operator.v1.json",
+  "analytic_family": {
+    "parameter": "lambda in C",
+    "formula": "K(lambda)=K_syn-lambda I_26",
+    "domain": "entire affine matrix pencil",
+    "type": "26_by_26_complex_matrix",
+    "Real_law": "conjugate(K(lambda))=K(conjugate(lambda))",
+    "orientation_commutation": "O K(lambda)=K(lambda) O"
+  },
+  "Evans_function": {
+    "symbol": "D_syn(lambda)",
+    "definition": "det(K_syn-lambda I_26)",
+    "normalization": "monic_degree_26_in_lambda",
+    "product": "(2-lambda)^2 product_(k=0)^11 (3-lambda-2 cos(2 pi k/12))^2",
+    "degree": 26,
+    "Real_symmetry": "D_syn(conjugate(lambda))=conjugate(D_syn(lambda))",
+    "zero_meaning": "lambda is an eigenvalue of K_syn",
+    "multiplicity": "algebraic multiplicity in this finite matrix pencil"
+  },
+  "green_resolvent": {
+    "symbol": "H_syn(lambda)",
+    "definition": "K(lambda)^-1",
+    "domain": "C minus zero_set(D_syn)",
+    "pole_set": "zero_set(D_syn)",
+    "identity": "K(lambda) H_syn(lambda)=H_syn(lambda) K(lambda)=I"
+  },
+  "spectral_boundary": {
+    "bulk_eigenvalues": "3-2 cos(2 pi k/12), k=0,...,11, each repeated in P and Q",
+    "Wilson_eigenvalue": "2 with multiplicity 2 before collision accounting",
+    "positive_real_spectrum": true,
+    "massless_comparison": "removing bulk mass shifts two constant bulk eigenvalues from 1 to 0"
+  },
+  "claim_boundary": {
+    "finite_matrix_determinant_only": true,
+    "Fredholm_determinant_claimed": false,
+    "Aspect_Evans_identification": false,
+    "source_RH_factorization_claimed": false,
+    "physical_spectrum_claimed": false
+  },
+  "next_required_object": {
+    "id": "synthetic_RH_jump_factorization",
+    "acceptance": "declare a contour disjoint from the Evans zero set, an invertible jump derived from the resolvent, normalized factors, Real/orientation symmetry, and exact reconstruction"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "marici.voevodsky.product-cutoff-arithmetic-edge-system.v1",
+  "status": "explicit_admissible_cutoff_candidate_not_prior_cutoff_readback",
+  "predecessors": [
+    "research/voevodsky/contracts/arithmetic-interval-edge-grade.v1.json",
+    "research/voevodsky/contracts/cutoff-forest-groupoid-pseudofunctor.v1.json"
+  ],
+  "edge_system": {
+    "labels": "admitted fixed-ratio edges e=(n,p,q)",
+    "endpoints": "log(np), log(nq)",
+    "grade": "W_star(e)=log(npq)",
+    "cutoff": "E_N={e:npq<=N}",
+    "vertices": "all endpoints incident to E_N"
+  },
+  "properties": {
+    "finite": "only finitely many positive-integer/prime triples have npq<=N",
+    "nested": "N<=M implies E_N subset E_M",
+    "exhaustive": "every finite-labelled edge lies in E_N for N>=npq",
+    "reciprocal_closed": "(n,p,q) and (n,q,p) enter at the same cutoff",
+    "grade_sublevel": "E_N={e:W_star(e)<=log N}",
+    "zero_extension_isometric": "q_delta^(M)(j_NM c)=q_delta^(N)(c)",
+    "cycle_natural": "boundary_M j_NM=i_NM boundary_N, hence cycles map to cycles",
+    "greedy_natural": "one global product-then-lexicographic order restricts to every E_N"
+  },
+  "history_continuity": {
+    "interval_bound": "ell_e<=delta^-1 exp(delta W_star(e))",
+    "uniformity": "the constant delta^-1 is independent of N",
+    "conclusion": "all finite history maps have one cutoff-independent q_delta bound and extend to C_exp(W_star)"
+  },
+  "claim_boundary": {
+    "admissible_arithmetic_cutoff_constructed": true,
+    "identical_to_prior_unspecified_cutoff_claimed": false,
+    "all_admitted_shell_labels_enumerated": false,
+    "fixed_ratio_multiplicity_resolved": false,
+    "physical_calibration_claimed": false
+  },
+  "next_required_object": {
+    "id": "shell_label_admission_readback",
+    "acceptance": "provide the actual admitted tuple predicate and fixed-ratio multiplicities; restrict the product sublevels to it and verify reciprocal closure/exhaustion"
+  }
+}

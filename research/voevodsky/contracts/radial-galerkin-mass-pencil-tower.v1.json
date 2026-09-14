@@ -1,0 +1,59 @@
+{
+  "schema": "marici.voevodsky.radial-galerkin-mass-pencil-tower.v1",
+  "status": "synthetic_regular_singular_mass_pencil_not_continuum_operator",
+  "predecessor": "research/voevodsky/contracts/radial-source-local-galerkin-response-tower.v1.json",
+  "stage": {
+    "level": "ell>=0 with N_ell=12 times 2^ell",
+    "stiffness": "A_ell=L_weighted_cycle_ell+M_original",
+    "mass": "B_ell=M_original: identity on the 12 original vertices and zero on inserted vertices",
+    "pencil": "P_ell(lambda)=A_ell-lambda B_ell",
+    "base_readback": "B_0=I_12 and P_0(lambda)=I+L_cycle_12-lambda I"
+  },
+  "mass_typing": {
+    "positive_semidefinite": true,
+    "rank": 12,
+    "singular_for_levels_above_zero": true,
+    "interpretation": "inserted vertices are static elimination coordinates with no independent spectral mass",
+    "warning": "not the standard finite-element L2 mass matrix"
+  },
+  "transition": {
+    "harmonic_extension": "E_ell as in predecessor",
+    "mass_energy": "E_ell^T B_(ell+1) E_ell=B_ell",
+    "pencil_energy": "E_ell^T P_(ell+1)(lambda) E_ell=P_ell(lambda)",
+    "Schur_pencil": "Schur_original(P_(ell+1)(lambda))=P_ell(lambda)",
+    "resolvent_compression": "R_ell P_(ell+1)(lambda)^-1 R_ell^T=P_ell(lambda)^-1 off the finite spectrum"
+  },
+  "Evans": {
+    "raw": "det P_ell(lambda)",
+    "degree": 12,
+    "elimination_factor": "lambda-independent determinant of the inserted-vertex block",
+    "normalized": "Dhat_ell(lambda)=det P_ell(lambda)/det P_ell(0)",
+    "stage_invariance": "Dhat_(ell+1)=Dhat_ell",
+    "finite_zero_set": "identical to the base 12-cycle bulk zero set",
+    "infinite_eigenvalues": "N_ell-12 generalized directions carried by ker B_ell"
+  },
+  "joint_extension": {
+    "bulk": "two identical P/Q pencils",
+    "Wilson": "2I_2-lambda I_2",
+    "normalized_Evans": "Dhat_bulk(lambda)^2 times ((2-lambda)/2)^2",
+    "stage_invariant": true
+  },
+  "RH": {
+    "contour": "|lambda|=1/2",
+    "jump": "V_ell(lambda)=P_ell(lambda)P_ell(0)^-1",
+    "factorization": "G_plus=V_ell, G_minus=I",
+    "compressed_resolvent_and_normalized_determinant": "stage coherent"
+  },
+  "claim_boundary": {
+    "regular_pencil_claimed": true,
+    "positive_definite_mass_claimed": false,
+    "standard_finite_element_mass_claimed": false,
+    "continuum_spectral_convergence_claimed": false,
+    "source_shell_binding": false,
+    "physical_binding": false
+  },
+  "next_required_object": {
+    "id": "positive_mass_renormalized_transition_or_singular_mass_acceptance",
+    "acceptance": "either justify static zero-mass inserted coordinates from source, or construct positive mass matrices with a weaker spectral convergence theorem rather than exact Schur coherence"
+  }
+}

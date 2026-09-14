@@ -1,0 +1,42 @@
+{
+  "schema": "marici.voevodsky.radial-extended-norm-resolvent-convergence.v1",
+  "status": "synthetic_extended_norm_resolvent_at_minus_one_not_source_continuum",
+  "predecessor": "research/voevodsky/contracts/radial-positive-mass-spectral-convergence-tower.v1.json",
+  "continuum": {
+    "Hilbert_space": "L2 of the dimensionless circle R/(12Z)",
+    "operator": "A=1-partial_x^2 with periodic H2 domain",
+    "Fourier_eigenvalues": "mu_k=1+(pi k/6)^2 for k in Z"
+  },
+  "discrete_comparison": {
+    "space": "C^N with B_N=h I inner product",
+    "embedding": "I_N sends mass-normalized discrete Fourier modes to continuum Fourier modes with |k|<N/2, with the Nyquist convention fixed at even N",
+    "projection": "I_N^* is Fourier truncation followed by discrete synthesis",
+    "discrete_eigenvalues": "mu_N,k=1+(N^2/36) sin(pi k/N)^2",
+    "isometry": true
+  },
+  "resolvent": {
+    "point": -1,
+    "continuum": "R=(-1-A)^-1 equivalently -(A+1)^-1; sign is irrelevant to norm error",
+    "extended_discrete": "R_N=I_N (A_N+1)^-1 I_N^* with zero action on omitted Fourier modes",
+    "exact_error": "maximum of represented-mode reciprocal-eigenvalue discrepancies and the first omitted continuum reciprocal eigenvalue",
+    "convergence": "operator norm error tends to zero",
+    "tested_rate": "quadratic under dyadic refinement"
+  },
+  "symmetry": {
+    "Real": "complex conjugation sends Fourier k to -k and commutes with both resolvents",
+    "orientation": "circle reflection sends k to -k and commutes with both resolvents"
+  },
+  "claim_boundary": {
+    "one_resolvent_point": true,
+    "extended_norm_resolvent_convergence": true,
+    "uniform_spectral_projector_convergence_claimed": false,
+    "Evans_determinant_convergence_claimed": false,
+    "RH_factor_convergence_claimed": false,
+    "source_radial_operator_identified": false,
+    "physical_length_claimed": false
+  },
+  "source_blocker": {
+    "first_missing_object": "source-derived comparison from the diagonal-shell/all-jet carrier to this periodic L2 circle operator",
+    "acceptance": "declare the source Hilbert topology, operator domain, trace embedding, and prove that the source response intertwines with 1-partial_x^2 or replace this synthetic continuum target"
+  }
+}
