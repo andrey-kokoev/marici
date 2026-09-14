@@ -1,0 +1,110 @@
+{
+  "schema": "marici.scc.theta-rh-g4-radial-interface.v1",
+  "status": "declared",
+  "authority": {
+    "basis": "operator-authorized cross-locus completion while marici.Aspect is unavailable",
+    "implementer": "marici.Voevodsky",
+    "does_not_imply": [
+      "marici.Aspect authorship",
+      "mechanical identity transfer",
+      "RH proof",
+      "closure of downstream G4 constructors"
+    ]
+  },
+  "predecessor_contract": "research/aspect/contracts/theta-rh-interaction-net-state.v2.json",
+  "amends_constructor": "conservative_green_complex",
+  "interface": {
+    "radial_history_carrier": {
+      "source": "L2(R)",
+      "target": "L2(R_+) direct-sum L2(R_+)",
+      "comparison": "C_u q = (q(r), u q(-r))",
+      "phase_condition": "abs(u)=1",
+      "comparison_class": "unitary"
+    },
+    "first_order_differential_and_domain": {
+      "whole_line": "partial_t",
+      "radial_double": "diag(partial_r,-partial_r)",
+      "intertwining": "C_u partial_t = diag(partial_r,-partial_r) C_u",
+      "wall_domain": "Lambda_u={(c,u c): c in C}"
+    },
+    "sewing": {
+      "fourier_presentation_operator": "F",
+      "fourier_law": "F^4=I",
+      "reciprocal_radial_operator": "W_u=[[0,u^-1],[u,0]]",
+      "radial_law": "W_u^2=I",
+      "source_half_turn": "R=F^2",
+      "comparison_law": "C_u F^2=W_u C_u",
+      "quarter_turn_not_identified_with_radial_swap": true,
+      "metaplectic_lift_role": "optional line-valued presentation bookkeeping only"
+    },
+    "green_structure": {
+      "boundary_matrix": "diag(-1,1)",
+      "wall": "Lambda_u",
+      "maximal_isotropic": true,
+      "orientation_reversal": "W_u^* J_partial W_u=-J_partial"
+    },
+    "real_comparison": {
+      "source_conjugation": "J_V",
+      "target_conjugation": "J_u=diag(1,u^2) K",
+      "transport_law": "J_u C_u=C_u K_whole_line",
+      "involution_law": "J_u^2=I",
+      "wall_law": "J_u Lambda_u=Lambda_u",
+      "reciprocal_law": "J_u W_u=W_u J_u",
+      "synthesis_reality": "J_u U_rad=U_rad J_V on the declared target rung",
+      "graph_metric": "G_D=I+D^*D on the radial graph domain",
+      "inclusion_adjoint": "i^*=G_D^-1 for i:E_D->H_rad",
+      "graph_transpose_formula": "U_rad^(top_D)=J_V U_rad^(*D) J_u",
+      "graph_real_metric_readback": "J_V U_rad^(*D)=U_rad^(*D) J_u",
+      "graph_conclusion": "U_rad^(top_D)=U_rad^(*D)",
+      "ambient_realization": "bar_U_rad=i U_rad",
+      "ambient_transpose_formula": "bar_U_rad^top=J_V bar_U_rad^* J_u",
+      "ambient_real_metric_readback": "J_V bar_U_rad^*=bar_U_rad^* J_u",
+      "ambient_conclusion": "bar_U_rad^top=bar_U_rad^*",
+      "rung_comparison": "bar_U_rad^*=U_rad^(*D) G_D^-1",
+      "no_cross_metric_equality": "U_rad^(*D) and bar_U_rad^* have different domains and are not identified",
+      "family_conjugation_qualification": "bare coefficientwise conjugation exchanges the u and conjugate(u) fibers; J_u is the fixed-fiber fold-transported Real structure",
+      "scope": "separate Real-compatible ambient and graph metrics; primitive distributional rows remain on the rigged dual"
+    },
+    "arithmetic_loading": {
+      "coefficient": "c_p=2(log p) sum_{k>=1} p^(-k/2) Phi'(k log p)",
+      "sign": "c_p<0",
+      "normalized_incidence": "S_theta e_p=eta_p e_p",
+      "completed_loading": "L_rad=direct_sum_p c_p U_p^(theta->rad)",
+      "finite_cutoff_declaration": "U_X^G4=P_X L_rad",
+      "properties": [
+        "prime diagonal",
+        "grade preserving",
+        "cutoff natural",
+        "convergent in declared Green graph and rapid-radial seminorms",
+        "commutes with oriented radial codiagonal",
+        "commutes with all declared Laplace jets",
+        "compact on the infinite Euler odd Hilbert source",
+        "not uniformly coercive on the infinite Euler odd Hilbert source"
+      ],
+      "excluded_coefficient": "the mixed primitive-square determinant counterterm is not forward shell loading"
+    },
+    "response_preservation": {
+      "zero_separation_trace": "transported by C_u",
+      "moving_shell_endpoint_traces": "transported labelwise by C_u",
+      "function_valued_wronskian_incidence": "retained on the radial graph carrier",
+      "oriented_laplace_cocycle": "retained and compatible with every declared jet",
+      "four_presentation_response": "retained under F; not collapsed to W_u"
+    }
+  },
+  "evidence": [
+    "research/voevodsky/the_canonical_fold_constructs_the_fourier_half_turn_to_radial_swap_comparison_20260910.md",
+    "research/voevodsky/the_radial_real_structure_closes_the_internal_transpose_adjoint_square_20260910.md",
+    "research/voevodsky/correction_the_forward_euler_to_radial_loading_arrow_is_already_constructed_internally_20260910.md",
+    "research/voevodsky/the_phase_twisted_real_structure_preserves_every_radial_wall_fiber_20260910.md",
+    "research/voevodsky/the_graph_adjoint_and_ambient_adjoint_are_related_by_the_graph_metric_operator_not_equal_by_default_20260910.md",
+    "research/nima/the-radial-synthesis-has-a-canonical-real-comparison-but-adjoint-equals-transpose-only-on-the-fixed-real-locus.md",
+    "research/nima/arithmetic-loading-commutes-with-the-oriented-radial-codiagonal-under-one-explicit-prime-majorant.md",
+    "research/nima/every-prime-power-euler-to-theta-incidence-has-the-same-strict-sign.md",
+    "research/nima/source-audit-blocks-the-fourier-quarter-turn-identification-for-the-tail-phase.md"
+  ],
+  "residuals": [
+    "The predecessor contract remains otherwise unchanged.",
+    "Downstream Evans, global-response, mapping-cone, module-length, confinement, and RH-terminal constructors remain open until separately checked against this amendment.",
+    "No uniform infinite-source lower margin follows from the compact loading."
+  ]
+}

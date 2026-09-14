@@ -1,0 +1,42 @@
+{
+  "schema": "marici.aspect.optical-ring-carrier-chain-map.v1",
+  "status": "bounded_synthetic_source_derived_chain_map",
+  "source_package": "research/aspect/contracts/optical-pair-stiffness-flux-cell.v1.json",
+  "source_chain": {
+    "C1": "R-span of oriented ring edges e_j=(j -> j+1 mod 12)",
+    "C0": "R-span of optical sites v_j, 0<=j<12",
+    "differential": "d_C(e_j)=v_(j+1 mod 12)-v_j",
+    "support": "finite 12-cycle",
+    "boundary": "periodic; edge e_11 crosses the declared cut from 11 to 0"
+  },
+  "target_chain": {
+    "S1": "R-span of calibrated synthetic adjacent-route difference records delta_j",
+    "S0": "R-span of calibrated synthetic site I-quadrature records q_j",
+    "differential": "d_S(delta_j)=q_(j+1 mod 12)-q_j",
+    "support": "same retained 12 labels",
+    "boundary": "periodic with the same cut"
+  },
+  "map": {
+    "F1": "F1(e_j)=delta_j",
+    "F0": "F0(v_j)=q_j",
+    "source_generator_action": "label-preserving basis map",
+    "chain_identity": "d_S F1 = F0 d_C"
+  },
+  "physical_readout": {
+    "status": "synthetic_readout_schema_not_laboratory_detector",
+    "R0": "q_j -> retained I quadrature at optical site j",
+    "R1": "delta_j -> oriented adjacent-route I difference; sum_j delta_j is the loop/Wilson channel",
+    "units": "dimensionless",
+    "calibration_authority": null
+  },
+  "carrier_contraction": {
+    "domain": "spanning-tree subcomplex T with edges e_0,...,e_10 and reduced zero-chains",
+    "root": "v_0",
+    "h0": "h0(v_j-v_0)=sum_(k=0)^(j-1)e_k for 1<=j<12",
+    "target_h0": "hS(q_j-q_0)=sum_(k=0)^(j-1)delta_k",
+    "descent": "F1 h0 = hS F0 on reduced zero-chains",
+    "full_cycle_contraction": false,
+    "obstruction": "the retained cycle z=sum_j e_j generates H1 and cannot be contracted without quotienting the Wilson channel"
+  },
+  "claim_boundary": "finite synthetic optics chain map; no apparatus calibration, natural shell map, or physical realization"
+}

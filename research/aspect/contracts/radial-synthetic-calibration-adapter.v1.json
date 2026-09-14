@@ -1,0 +1,41 @@
+{
+  "schema": "marici.aspect.radial-synthetic-calibration-adapter.v1",
+  "status": "synthetic_only_unbound",
+  "sources": [
+    "research/aspect/contracts/comparison-loop-hardware-binding.v1.json",
+    "research/aspect/fixtures/hardware-bound-pushforward-synthetic-packet.v1.json",
+    "research/aspect/contracts/optical-pair-stiffness-flux-cell.v1.json"
+  ],
+  "radial_tuple": {
+    "record_map": {
+      "status": "partially_instantiated_synthetic",
+      "reused": ["run_id", "compiler_id", "coincidence_window_id", "event_id", "settings", "outcomes", "no_click_flags", "time_tag", "setting_health", "photon_bins", "electron_bins", "target_classes", "local_frames", "reset_id", "tdgl_equation_label", "node_count", "dt", "settling_steps", "measurement_steps", "seed", "fixture_parameters", "port_names"]
+    },
+    "covariance": {
+      "status": "uninstantiated",
+      "reused_as_metadata_only": ["rotation_systematic", "terminal_phase", "differential_loss", "statistical_quadrature", "total_fringe", "angle_standard_error_field", "phase_standard_error_field", "fixture_noise", "loss_monitor_port"],
+      "reason": "scalar budgets and noise amplitudes are not a covariance matrix, kernel, or pushforward law"
+    },
+    "units": {
+      "status": "dimensionless_partial_only",
+      "reused": ["discrete_indices", "dimensionless_outcomes", "dimensionless_optical_noise", "synthetic_loop_flux"],
+      "unbound": ["time_tag_unit", "angle_unit", "phase_unit", "loss_unit", "radial_length", "energy", "kelvin", "physical_flux"]
+    },
+    "admitted_quotient": {
+      "status": "uninstantiated",
+      "reason": "bins, coincidence windows, resets, winding sectors, and loop closure are partitions or labels, not authorized equivalence relations"
+    },
+    "provenance": {
+      "status": "instantiated_synthetic",
+      "reused": ["synthetic_reference", "run_id", "compiler_id", "coincidence_window_id", "local_a_field_list", "local_b_field_list", "frame_ids", "reset_ids", "fixture_ids", "seed", "dimensionless_optical_analogue_not_material_superconductivity"]
+    }
+  },
+  "missing_adapter": {
+    "record_to_radial_bulk": null,
+    "loop_to_wilson": null,
+    "required_obligations": ["event_or_lattice_to_radial_coordinate_map", "field_interpolation_or_retained_lattice_declaration", "gauge_group_and_action", "frame_transport", "loop_orientation", "Wilson_normalization", "units_conversion", "covariance_pushforward", "quotient_equivalence_and_descent", "calibration_authority"]
+  },
+  "physical_binding": null,
+  "calibration_authority": null,
+  "physical_promotion": false
+}
