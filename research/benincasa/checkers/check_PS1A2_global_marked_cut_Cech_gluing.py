@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+"""PS1A2: test the integral Cech compatibility of the three weighted Leray germs."""
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3]
+germs=json.loads((ROOT/'research/benincasa/results/PS1A1_matching_source_Leray_germs.json').read_text());chain=json.loads((ROOT/'research/benincasa/three-cut-relative-chain-pairing-certificate.json').read_text())
+v=germs['correction_vector'];total=sum(v);m=total//3;deviation=[x-m for x in v]
+# Vertex order c,a,b. Edge incidence columns ca=(-1,1,0), cb=(-1,0,1), ab=(0,-1,1).
+edge=[deviation[1],deviation[2],0];incidence=[-edge[0]-edge[1],edge[0]-edge[2],edge[1]+edge[2]]
+checks={'three_cut_nerve':len(chain['marked_cuts'])==3,'integer_diagonal_average':total%3==0,'deviation_sum_zero':sum(deviation)==0,'integral_edge_solution':incidence==deviation,'local_packet_exact':germs['resolution']=='++','overlap_currents_not_materialized':'pairwise_overlap_currents' not in chain and 'continued_overlap_currents' not in chain}
+assert all(checks.values()),checks
+out={'schema':'marici.benincasa.PS1A2-global-marked-cut-Cech-gluing.v1','prospective_action':'PS1A2_global_marked_cut_Cech_gluing','outcome_contract':{'++':'integral Cech lattice compatibility and source-derived pair/triple overlap currents produce one global current','+-':'integral Cech compatibility holds but overlap currents are not geometrically materialized','-+':'weighted germ vector has an integral Cech obstruction','--':'simultaneous-cut nerve is untyped'},'vertex_order':['q_G12/c','q_G23/a','q_G31/b'],'local_vector':v,'diagonal_global_component':[m,m,m],'zero_sum_deviation':deviation,'edge_order':['ca','cb','ab'],'integral_edge_coefficients':edge,'incidence_of_edges':incidence,'resolution':'+-','positive_result':'The weighted local vector has no integral lattice obstruction: it is an integral diagonal germ plus the Cech boundary of an integral pair-overlap 1-cochain.','remaining_gap':'The required analytically continued pair-overlap currents and their triple-overlap compatibility are not present in the frozen physical-chain packet.','next':'PS1A2a materialize the three source-oriented pair-overlap currents, then evaluate the displayed edge coefficients and triple boundary.','checks':checks,'passed':True};p=ROOT/'research/benincasa/results/PS1A2_global_marked_cut_Cech_gluing.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'resolution':'+-','diagonal':m,'edge_coefficients':edge,'next':'PS1A2a_pair_overlap_currents'}))

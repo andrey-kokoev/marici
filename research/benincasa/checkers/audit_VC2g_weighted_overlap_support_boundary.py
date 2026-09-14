@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+"""VC2g: pre-audit support and physical-boundary descent of degree-15 overlaps."""
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3]
+weighted=json.loads((ROOT/'research/benincasa/results/G12_polynomial_weighted_overlap_span.json').read_text())
+overlap=json.loads((ROOT/'research/benincasa/results/G12_coefficient_overlap_representatives.json').read_text())
+gm=json.loads((ROOT/'research/benincasa/physical-normal-gauss-manin-lift.json').read_text())
+cech=json.loads((ROOT/'research/benincasa/physical-normal-lift-cech-coherence.json').read_text())
+d=weighted['minimum_weight_degree'];denominator_radial_degree=10+1+1+4*3 # K^(5/2), B12, g3, four cubics
+max_numerator_degree=2+d;coefficient_decay=denominator_radial_degree-max_numerator_degree
+checks={'weighted_membership_passed':weighted['resolution']=='++','minimum_degree_15':d==15,'weights_are_polynomials':weighted['weight_ring'].startswith('Q[a,b,c]'),'finite_support_unchanged':all('/' not in c['formula'] for c in overlap['columns']),'generic_radial_coefficient_decay':coefficient_decay==7,'three_dimensional_absolute_tail_margin':coefficient_decay>3,'GM_signed_minor_boundary_unproved':'signed-minor boundary' in gm['scope_warning'],'Cech_physical_period_uncomputed':'physical period rank' in cech['scope_warning']}
+assert all(checks.values()),checks
+out={'schema':'marici.benincasa.VC2g-weighted-overlap-support-boundary-audit.v1','prospective_action':'VC2g_support_boundary_pre_audit','affine_support':{'status':'pass','reason':'Degree-15 polynomial weights add no finite denominator or irreducible pole support.'},'generic_infinity_power_count':{'denominator_degree':denominator_radial_degree,'maximum_weighted_overlap_numerator_degree':max_numerator_degree,'coefficient_decay_power':coefficient_decay,'status':'generic power-count pass in three fiber dimensions'},'relative_boundary':{'status':'unresolved','reason':'Existing Gauss-Manin/Cech certificates explicitly omit tangency to all signed-minor boundaries and do not compute physical period rank. Polynomial support preservation does not imply vanishing of Stokes terms on those boundaries.'},'resolution':'+-','implication':{'premise':'VC2g outcome +-','relation':'entails','conclusion':'weighted_overlap_support_admissible_but_physical_boundary_unproved'},'interface_added':'weighted_overlap_affine_support_admissible','interface_withheld':'support_boundary_admissible','next':'Construct signed-minor boundary restrictions of the six weighted overlap representatives before exact rational reconstruction.','checks':checks,'passed':True};p=ROOT/'research/benincasa/results/VC2g_weighted_overlap_support_boundary_audit.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'resolution':'+-','finite_support':'pass','decay':coefficient_decay,'boundary':'unresolved','next':out['next']}))

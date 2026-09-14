@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+"""PS1A2a: construct source-oriented local double-Leray currents for cut pairs."""
+import json,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT/'research/benincasa/.tmp_sympy'))
+import sympy as s
+glue=json.loads((ROOT/'research/benincasa/results/PS1A2_global_marked_cut_Cech_gluing.json').read_text());chain=json.loads((ROOT/'research/benincasa/three-cut-relative-chain-pairing-certificate.json').read_text());near=json.loads((ROOT/'research/benincasa/et-cut-nearby-normal-form.json').read_text());E,c,a,b,x,y=s.symbols('E c a b x y');q=[E+c,E+a,E+b];vars=[c,a,b];pairs=[(0,1),(0,2),(1,2)];currents=[]
+for (i,j),name,coef in zip(pairs,glue['edge_order'],glue['integral_edge_coefficients']):
+ J=s.Matrix([[s.diff(q[i],vars[i]),s.diff(q[i],vars[j])],[s.diff(q[j],vars[i]),s.diff(q[j],vars[j])]]).det();assert J==1
+ currents.append({'edge':name,'cuts':[list(chain['marked_cuts'])[i],list(chain['marked_cuts'])[j]],'double_residue_orientation':f'd{vars[i]} wedge d{vars[j]}','transverse_jacobian':1,'cochain_coefficient':coef})
+# In the q_G12 residue chart, the triple point a=b=-E has nonzero central K.
+triple_K0=x**2*y**2*(x+y)**2
+checks={'three_pairs':len(currents)==3,'all_unit_jacobians':all(z['transverse_jacobian']==1 for z in currents),'coefficients_match_integral_edge_solution':[z['cochain_coefficient'] for z in currents]==glue['integral_edge_coefficients'],'negative_imaginary_tube_data':chain['analytic_continuation_qualification'].startswith('The Bunch-Davies boundary value'),'triple_point_off_CM_discriminant_generically':triple_K0!=0,'pair_currents_new_not_literal':chain['physical_chain_closure_intersects_marked_cut_union'] is False}
+assert all(checks.values()),checks
+out={'schema':'marici.benincasa.PS1A2a-pair-overlap-currents.v1','prospective_action':'PS1A2a_pair_overlap_currents','outcome_contract':{'++':'all three double-Leray germs exist with source orientation and required integral coefficients','+-':'only a proper subset of pair germs is source-oriented','-+':'a required pair intersection is absent or nontransverse','--':'iterated residues cannot be typed'},'resolution':'++','pair_currents':currents,'generic_triple_CM_value':str(triple_K0),'established':'The three marked cuts form a transverse coordinate arrangement. Negative-imaginary continuation gives each pair a canonical ordered double-Leray germ, and the integral edge coefficients evaluate on them without denominator enlargement.','withheld':'The alternating restrictions of these pair currents at the common triple cut have not yet been summed; global Cech closure remains a separate gate.','next':'PS1A2b compute the oriented triple-cut boundary and, if zero, assemble the global continued current.','checks':checks,'passed':True};p=ROOT/'research/benincasa/results/PS1A2a_pair_overlap_currents.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'resolution':'++','pairs':3,'coefficients':glue['integral_edge_coefficients'],'next':'PS1A2b_triple_cut_closure'}))

@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+"""VC2k: construct the local BD-continued endpoint collar germs."""
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3]
+unique=(ROOT/'research/benincasa/published_boundary_value_leray_uniqueness.md').read_text()
+bound=json.loads((ROOT/'research/benincasa/results/VC2g1_degree17_signed_minor_restrictions.json').read_text())
+bd=json.loads((ROOT/'research/voevodsky/results/BD_marked_top_physical_readout.json').read_text())
+rows={x['face']:x for x in bound['restrictions']};pair=[int(rows['a=0']['second_order_coefficient']),int(rows['b=0']['second_order_coefficient'])]
+checks={'convex_tube_unique':'convex tube' in unique and 'transported inside' in unique,'orientation_multiplicity_fixed':'orientation and multiplicity' in unique,'residue_chain_signed_minors':'all source-required signed minors' in unique,'endpoint_coefficients_opposite':pair==[-165888,165888],'BD_chain_integral':bd['integral_target']['cellular_e6_coefficient']==1,'independent_MV_still_requested':'independent integral Mayer--Vietoris realization was requested' in bd['comparison_gate']['status']}
+assert all(checks.values()),checks
+out={'schema':'marici.benincasa.VC2k-BD-continued-endpoint-collar.v1','prospective_action':'VC2k_BD_continued_endpoint_collar','construction':'Restrict the uniquely continued negative-imaginary Cayley-Menger residue germ to the two exchanged signed-minor endpoint collars a=0 and b=0, inheriting Leray orientation and multiplicity one.','normalized_local_collar_coefficients':pair,'exchange_relation':'the two local collar germs are exchanged with opposite orientation','resolution':'+-','positive_result':'Canonical local BD-continued endpoint collar germs exist and retain exactly opposite coefficients.','remaining_gap':'The local germs have not been assembled into one global integral relative current; the independent Mayer-Vietoris comparison requested by the existing BD packet is still absent.','interfaces_added':['local_BD_endpoint_collar_germs','local_opposite_collar_pairing'],'interface_withheld':'global_BD_endpoint_collar_current','next':'Construct the integral Mayer-Vietoris gluing of the two collar germs and verify its boundary equals the algebraic mapping-cylinder correction.','checks':checks,'passed':True};p=ROOT/'research/benincasa/results/VC2k_BD_continued_endpoint_collar.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'resolution':'+-','pair':pair,'next':out['next']}))
