@@ -1,0 +1,34 @@
+{
+  "schema":"marici.variance-aware-evaluation-complex.v1",
+  "sheets":[
+    {"id":"plus","label":"C⁺ · state/constructor variance","z":-2.15,"color":6602239},
+    {"id":"minus","label":"C⁻ · response/contragredient variance","z":2.15,"color":16758879}
+  ],
+  "vertices":[
+    {"id":"S","sheet":"plus","position":[-2.8,0,-2.15],"label":"S · abstract source"},
+    {"id":"R","sheet":"plus","position":[2.8,0,-2.15],"label":"R · realization"},
+    {"id":"Rdual","sheet":"minus","position":[2.8,0,2.15],"label":"R∨ · realized response"},
+    {"id":"Sdual","sheet":"minus","position":[-2.8,0,2.15],"label":"S∨ · source response"}
+  ],
+  "principal":[
+    {"id":"T","from":"S","to":"R","label":"T · forward evaluation","detail":"Forward realization or evaluation transport on the positive-variance sheet."},
+    {"id":"Tdual","from":"Rdual","to":"Sdual","label":"T∨ · response pullback","detail":"Contragredient transport on the negative-variance sheet. It requires a declared pairing and topology."}
+  ],
+  "pairings":[
+    {"id":"P_SS","from":"S","to":"Sdual","label":"source pairing"},
+    {"id":"P_RR","from":"R","to":"Rdual","label":"realized pairing"},
+    {"id":"P_SR","from":"S","to":"Rdual","label":"mixed realized response"},
+    {"id":"P_RS","from":"R","to":"Sdual","label":"mixed source response"}
+  ],
+  "faces":[
+    {"id":"F4","vertices":["S","R","Sdual"],"sign":-1,"label":"constructor naturality"},
+    {"id":"F3","vertices":["S","R","Rdual"],"sign":1,"label":"observation naturality"},
+    {"id":"F2","vertices":["S","Sdual","Rdual"],"sign":-1,"label":"source mate coherence"},
+    {"id":"F1","vertices":["R","Sdual","Rdual"],"sign":1,"label":"realized mate coherence"}
+  ],
+  "paths":[
+    {"id":"p_constructor","vertices":["S","R","Sdual"],"label":"realize → source-response compare"},
+    {"id":"p_observation","vertices":["S","Rdual","Sdual"],"label":"realized-response compare → pull back"}
+  ],
+  "residual":{"id":"r_boundary","formula":"F1 − F2 + F3 − F4","filler":"Θ : r_boundary ⇒ 0","status":"required"}
+}

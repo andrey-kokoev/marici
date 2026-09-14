@@ -1,0 +1,24 @@
+{
+  "schema":"marici.tower-cotower-tetrahedron.v1",
+  "vertices":[
+    {"id":"V1","label":"S · abstract source","position":[-2.6,1.6,0],"status":"partial"},
+    {"id":"V2","label":"R · realization fiber","position":[2.6,1.6,0],"status":"candidate"},
+    {"id":"V3","label":"S∨ · source response","position":[0,-1.8,2.35],"status":"partial"},
+    {"id":"V4","label":"R∨ · realized response","position":[0,-1.8,-2.35],"status":"candidate"}
+  ],
+  "edges":[
+    {"id":"E12","kind":"tower","label":"A0 → … → A7","detail":"Forward realization tower from combinatorial source to realization-fiber coherence.","rungs":["A0 combinatorics","A1 scalar coherence","A2 constructor coherence","A3 closure coherence","A4 network semantics","A5 parameter-dependent law","A6 law of compositions","A7 realization-fiber coherence"]},
+    {"id":"E43","kind":"cotower","label":"A7∨ → … → A0∨","detail":"Contragredient response cotower. Its maps require declared pairings and topology.","rungs":["A7∨ realized response","A6∨ global-law response","A5∨ parameter response","A4∨ network response","A3∨ closure response","A2∨ constructor response","A1∨ scalar response","A0∨ combinatorial response"]},
+    {"id":"E13","kind":"mate","label":"source pairing","detail":"Pairs source states with source responses."},
+    {"id":"E24","kind":"mate","label":"realized Green pairing","detail":"Candidate Green pairing on the realization fiber."},
+    {"id":"E14","kind":"mate","label":"mixed realized response","detail":"Evaluates source states in realized-response coordinates; comparison required."},
+    {"id":"E23","kind":"mate","label":"mixed source response","detail":"Evaluates realized states in source-response coordinates; comparison required."}
+  ],
+  "faces":[
+    {"id":"F4","vertices":["V1","V2","V3"],"label":"constructor naturality","detail":"Compares realization after the global constructor with the realized constructor after realization."},
+    {"id":"F3","vertices":["V1","V2","V4"],"label":"observation naturality","detail":"Compares realized observation with transport of the source observation."},
+    {"id":"F2","vertices":["V1","V3","V4"],"label":"source mate coherence","detail":"Connects source pairing to the response cotower."},
+    {"id":"F1","vertices":["V2","V3","V4"],"label":"realized mate coherence","detail":"Carries the residual in realization-fiber response coordinates."}
+  ],
+  "cell3":{"id":"T1234","label":"tower–cotower compatibility","detail":"A filler requires F1 − F2 + F3 − F4 to vanish or be equipped with its declared higher witness.","status":"required"}
+}
