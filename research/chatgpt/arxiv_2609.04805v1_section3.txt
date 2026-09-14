@@ -1,0 +1,278 @@
+id="S3" class="ltx_section">
+3. Derived Cyclic Cohomology
+3.1. The Modular Class and Shifted Graded Traces
+Recall that the modular class of a Q-manifold is the obstruction to the existence of a Q-invariant Berezin volume, see [6, 7] for a review. A Q-manifold is said to be unimodular if the modular class vanishes, which by definition means that we can find Berezin volumes such that . Note that although the modular class requires a choice of Berezin volume to define, it is independent of this choice and has a cohomological understanding. For applications of modular classes of Q-manifolds in the theory of Lie algebroids, the reader may consult Grabowski [15, 16]. We remark that within the BV-formalism, the vanishing of the modular class implies that there is no ‘one-loop anomaly’ in the corresponding semiclassical quantum theory, see [6, Remark 4.7] and/or [30, Section 6.1], for example.
+Proposition 3.1.
+Let be a unimodular Q-manifold that is superoriented55
+5
+By a superoriented supermanifold we mean a supermanifold whose reduced manifold is orientable and an orientation has been chosen, and which possesses an atlas where the standard Jacobian of the even coordinates and the Berezinian of the coordinate transformations are strictly positive. For details of orientations of supermanifolds see Shander [40]. and compact. Then the Berezin integral with respect to a Q-invariant Berezin volume acts as a shifted graded trace on the derived associative algebra.
+Proof.
+Starting with , we observe that if is unimodular and we pick the Q-invariant Berezin volume, this reduces to
+where we have used the fact that is compact. We then consider , which produces
+This is equivalent to , and hence the integral acts as a shifted graded trace.
+∎
+Example 3.1.
+Let be a compact and oriented manifold; then is a Q-manifold. The canonical Berezin volume (locally this is just the coordinate Berezin volume) is invariant under the de Rham differential. Thus, is unimodular. Then is a shifted trace over the derived associative algebra given by .
+As we have established that the Berezin integral can act as a shifted trace, the question of a derived version of Connes’ cyclic cohomology arises.
+3.2. Derived Cyclic Cohomology of Q-manifolds
+In this subsection, we apply cyclic cohomology to Q-manifolds via the derived associative algebra. Recall that cyclic cohomology was developed by Connes [10] and acts as a generalisation of de Rham cohomology to associative algebras. For a very accessible introduction, the reader may consult Connes [11, Chapter 3], Khalkhali [21], or Weibel [47, Chapter 9]. Kastler [20, Chapter 3] developed Hochschild and cyclic cohomology for -graded associative algebras. Thus, by employing the shifted grading to the derived product, we may freely employ Kastler’s constructions and results with minimal amendment.
+Let NFSVec be the category of nuclear Fréchet super vector spaces (see Carmeli et al. [9, C.2.]). By definition, morphisms in this category are continuous linear maps. We define -cochains as elements of
+Note that is a nuclear Fréchet algebra (see [9, Chapter 4.5]). Thus, the projective topology is used to construct the completed tensor product in the definition of -cochains. Via Grothendieck’s fundamental theorem of nuclear spaces, other ‘reasonable’ topologies can also be used, such as the injective topology; however, all such completed tensor products coincide (see [41, Chapter 50]).
+In differential geometry, the space of distributions, understood as dual objects to functions, is defined using functions with compact support. On a compact (super)manifold there is, of course, no difference between and . Note that, for non-compact Q-manifolds, we may consider the derived associative algebra of compactly supported functions . The complication in doing so is that the underlying vector space is an LF-space, i.e., a strict inductive limit of Fréchet spaces, rather than a Fréchet space itself (see [41, Chapter 13]). While it remains a nuclear space, working with completed projective tensor products of LF-spaces is significantly more complicated than the Fréchet case. Thus, to avoid complications with defining -cochains (), we will not insist on compactly supported functions in the definition, and in practice will work with compact supermanifolds.
+It is irrelevant if one considers the standard or shifted grading with the -cochains, as long as one is consistent. Conventionally, we will consider the standard Grassmann parity. The shifted grading can then be applied when required in the formulas to keep track of the sign factors. For pure elements we will write . In general, a cochain will be inhomogeneous in grading. We view -cochains as generalised currents via direct analogy with de Rham currents66
+6
+See Current, Encyclopedia of Mathematics, http://encyclopediaofmath.org/index.php?title=Current&oldid=56194, (accessed 16/07/2026).
+The shifted cyclic permutation operator is defined as
+The space of derived cyclic n-cochains consists of -cochains that are invariant under , i.e., .
+The Hochschild coboundary operator (see [20]) is defined as
+(3.1)
+The result may be directly established. Moreover, it can be shown that the space of derived cyclic cochains is invariant under the Hochschild coboundary operator, i.e., (see [20]). Note that the Hochschild coboundary operator is itself continuous as it is defined in terms of a continuous linear map and the operations within the derived associative algebra are continuous.
+Observation 3.1.
+If all () are Q-exact, i.e., are all in , then for any and all .
+The derived cyclic complex of is the subcomplex of the derived Hochshild complex given by
+(3.2)
+Definition 3.1.
+The cohomology of the derived cyclic complex (3.2) is referred to as the derived cyclic cohomology of the Q-manifold , and will be denoted , . A derived cyclic n-cocycle is a -closed derived cyclic -cochain. The resulting classes in the derived cyclic cohomology we refer to as derived cyclic classes, and we denote them as .
+Example 3.2.
+Consider a trivial Q-manifold . The derived product is a zero product, i.e., for all . In turn, the Hochschild coboundary operator is a zero map, and so all derived cochains are -closed. Thus, .
+Suppose is a morphism of Q-manifolds. Recall that Proposition 2.2 established that is a morphism of the derived associative algebras. The pushforward of a derived -cochain is defined as
+(3.3)
+where . As does not change the parity (shifted or otherwise), we have ; thus the pushforward restricts to derived cyclic -cochains. That is
+As is a morphism of the derived associative algebras, applying the Hochschild coboundary operator to , one can quickly observe that as standard . Thus, the pushforward is a cochain map between the derived cyclic complexes. This implies that the pushforward descends to the cohomology:
+(3.4)
+Thus, we have established the following.
+Theorem 3.1.
+The assignments and define a covariant functor ().
+Note that we usually have the cohomology of a space being a contravariant functor. However, the derived cyclic cohomology is a cohomology theory of the algebra of functions on a Q-manifold, and thus a covariant functor when considered as a cohomology theory of Q-manifolds.
+Corollary 3.1.
+If the Q-manifolds and are Q-diffeomorphic, i.e., there is an isomorphism in QMan between them, then , . Conversely, if any of the derived cyclic cohomology groups are not isomorphic, then the Q-manifolds cannot be Q-diffeomorphic.
+Theorem 3.1 (together with Corollary 3.1) establishes that derived cyclic cohomology is a genuine algebraic invariant of a Q-manifold.
+Proposition 3.2.
+Let be a Q-manifold and let be the odd tangent bundle equipped with the de Rham differential. Then there is a canonical morphism
+for all .
+Proof.
+The ‘odd anchor’ , which is canonical and exists for all Q-manifolds, is a morphism between the respective derived associative algebras (see Example 2.6). Then, via Theorem 3.1, we know such a morphism induces a morphism between the derived cyclic cochains that descends to the derived cyclic cohomology. We then set
+∎
+Definition 3.2.
+Let be a Q-manifold and let be the canonical morphism defined in Proposition 3.2. We refer to as an anchored derived cyclic class or, for brevity, an anchored class when no confusion can arise.
+Proposition 3.3.
+Let be a Q-manifold, then all -closed cochains satisfy .
+Proof.
+Let for be arbitrary (homogeneous) functions. Directly from the Hochschild coboundary operator (3.1), setting (the constant unit function) and using we obtain for -closed cochains
+Then sending for , noting that , we obtain
+(3.5)
+As the functions are arbitrary, the above can be written as .
+∎
+Any representative of a derived cyclic class is of the form , where . The -exact term is, of course, cohomologically trivial. Thus, elements of for are interpreted as equivalence classes of classically BRST-invariant shifted cyclic multi-functionals. In particular, once we have found a derived cyclic -cocycle, its derived cyclic class measures if is cohomologically trivial, i.e., if . As , Proposition 3.3 tells us that is BRST-invariant, however itself need not be BRST-invariant.
+Note that the cyclic property has not been used to deduce the invariance, and so the derived Hochschild cohomology groups have a similar interpretation, however, now without the shifted cyclic property.
+A -cochain, , is a shifted graded trace if and only if for all and . Moreover, directly we observe that , and so shifted graded traces define derived cyclic -cocycles (there are no -cochains and so non--exactness is guaranteed).
+Lemma 3.1.
+Let be a Q-manifold. A -cochain is a derived cyclic -cocycle if and only if .
+Proof.
+If , then for all . Setting we obtain . Thus, is a shifted graded trace and so is a derived cyclic -cocycle. Conversely, if for all and , setting (the constant unit function) we obtain . Thus, as arbitrary, we have .
+∎
+Proposition 3.4.
+Let be a unimodular, superoriented, compact Q-manifold, and let be a Q-invariant Berezin volume. Then the Berezin integral is a derived cyclic -cocycle.
+Proof.
+Given the conditions on , we have , and thus, via Lemma 3.1, we conclude that the Berezin integral (with respect to a Q-invariant Berezin volume) is a derived cyclic -cocycle.
+∎
+Proposition 3.4 can also be seen as a direct corollary of Proposition 3.1.
+To set some notation, we define as the algebra map sending a function to its germ at . Similarly, we define , which is heuristically ‘throwing away the odd coordinates’, and is the standard evaluation map at .
+The homological vector field induces a derivation at the levels of stalks, which we denote as . We then define the associated (odd) tangent vector at as
+Proposition 3.5.
+Let be a Q-manifold and be a point such that . then the -cochain is a derived cyclic -cocycle.
+Proof.
+Let be arbitrary. Then, using the standard properties of sheaves and restrictions, etc., we see that
+where the last equality is by hypothesis. As is arbitrary, we have , and via Lemma (3.1), is a derived cyclic -cocycle.
+∎
+Example 3.3.
+Consider a supermanifold considered as a trivial Q-manifold, i.e., the homological vector field is the zero vector field. Thus, . Any -cochain satisfies trivially. Thus, .
+Example 3.4.
+Consider the odd line , which we equip with a global coordinate , and a canonical homological vector field given by . Functions on are of the form , where . Observe that and , and so . That is, the standard cohomology is trivial.
+As is unimodular, superoriented (trivially) and compact , Proposition 3.4 immediately tells us that
+the standard Berezin integral on is a derived cyclic -cocycle. Observe that
+Thus, is non-trivial.
+Any derived cyclic -cocycle is a linear functional and so is determined by its outputs on . We set and . Thus, . We know from Lemma 3.1 that . In the current setting, we have
+This forces : meaning that , but is not constrained. Thus, . That is, any other derived cyclic -cocycle is a scalar multiple of the standard Berezin integral on . This implies that the space of cyclic -cocycles is isomorphic to . As there are no cyclic -cochains, we conclude that
+Example 3.5.
+Consider which employ coordinates , with . The de Rham differential in these coordinates is . The standard cohomology, once form degree has been included, corresponds to the de Rham cohomology. Recall, and , while all higher de Rham cohomology groups are trivial. Note is unimodular, superorientable and compact. Functions on are of the form . Any cyclic -cochain decomposes into even and odd parts (here defined with respect to the original grading) as
+Enforcing the condition implies that . Thus, must annihilate exact forms, implying , for some . There is no constraint on . Then we have
+as the general form of a cyclic -cocycle. We then conclude that
+Example 3.6.
+Continuing Example 2.2, let be a higher Poisson manifold. Then a cyclic -cocycle satisfies , for all . Any odd Poisson trace, i.e, a functional that satisfies for all , is a cyclic -cocycle. Moreover, defining the Hamiltonian vector field , we observe that any odd Poisson trace satisfies .
+Example 3.7.
+Consider , where is a non-singular homological vector field. Then via Shander–Vaintrob [39, 43] we know there is a Q-diffeomorphism rendering , where is the global coordinate on .
+Any function is of the form . We know that any derived cyclic -cocycle must satisfy . Thus, , and therefore must annihilate functions in . This implies that is determined by its action on the odd sector . As there are no further conditions, we conclude that
+Example 3.8.
+Consider where is taken to be non-singular. Then via Shander–Vaintrob [39, 43], we may equip the supermanifold with (global) coordinates , with and , and . We write . Then . We know that any derived cyclic -cocycle must satisfy . Thus, . We then define and thus
+The above examples, while modest in scope, clearly demonstrate that derived cyclic cohomology is quite independent from the standard cohomology of a Q-manifold.
+We expect, in general, calculating the derived cyclic cohomology and explicitly presenting cyclic -cocycles for Q-manifolds without extra structure to be very difficult. It is important to note that the derived associative algebra is non-unital and so many of the standard methods of calculating cyclic cohomology, for example Connes’ SBI sequence, will not directly apply to derived cyclic cohomology. We will comment on this a little further in our concluding remarks. In Subsection 3.3 we explore the derived cyclic cohomology of the odd line extending Example 3.4. We will present derived cyclic -cocycles for regular foliations via their foliation Lie algebroid in Subsection 3.6. Further examples are left open for future work.
+3.3. Derived Cyclic Cohomology of the Odd Line
+Consider the odd line , which we equip with a global coordinate , and a canonical homological vector field given by . The derived product of two functions and ( and ) is . Defining the linear map , we can write the derived product as . As a super vector space, has a canonical basis . In turn, this implies we can write the Hochschild coboundary operator, setting each as
+(3.6)
+Theorem 3.2.
+Let the odd line be equipped with a global coordinate , and the canonical homological vector field given by . Then
+Proof.
+Let us set . We decompose derived -cochains , via the number of ’s that appear in the input tuple and write
+As only when , contracting an argument via (see (3.6)) preserves . Thus, we may restrict the Hochschild coboundary operator .
+:
+We will show that this sector does not contribute to the derived cyclic cohomology. For any and all () and , we claim that the operator
+(3.7)
+satisfies the following:
+i):
+;
+ii):
+.
+Together, establishing these will complete this part of the proof.
+i):
+We need to demonstrate that , where the sign factor is .
+Using the shifted cyclic property of , we can move to the first entry. Taking care with the sign factors, we arrive at
+ii):
+This is equivalent to being derived cyclic cochain contraction operator; that is, . Directly from (3.6) and (3.7), decomposing the expression to if the insertion of is before of after the removal of , we have
+(3.8)
+In the above in in the position in the sums.
+Next we evaluate
+To do this, we set and understand sitting on the position with respect to the new labelling. We now expand as before, taking care with which element is removed. There are three distinct cases:
+1.:
+: The removed element is . The inserted element shifts to index in the arguments of . The overall coefficient then becomes .
+2.:
+: The removed element is the inserted . This leaves the sequence unchanged. Given , the coefficient is .
+3.:
+: The removed element is , where . The inserted element remains at index . The overall coefficient becomes .
+Combining these three cases, we arrive at
+(3.9)
+Comparing (3.8) and (3.9), observe the relative minus signs between many (but not all) of the similar terms. Examining , we see that
+•:
+The first sum of (where ) cancels the second sum of (where , bounded differently but referencing identical terms with opposite signs).
+•:
+The components of the third sum of cancel the first sum of .
+The remaining terms produce
+(3.10)
+Note that each term of the sum in (3.10) is only non-zero when . As , the summation counts the number of occurrences of in the argument sequence and scales by that integer. By the definition of , cochains act on arguments with occurrences of . Since the sequence contains total arguments, it must contain exactly instances of .
+Using this deduction in (3.10), we have
+In other words, and so a derived cyclic cochain contraction operator.
+:
+The shifted cyclic condition means . Thus, if is odd, then . For even, applying the Hochschild coboundary operator, we obtain
+Consequently, only the -cochains with even contribute to the cohomology. Moreover, every such cochain is a cocycle and cannot have a -primitive. Taking care with the Grassmann parity, we have shown that
+∎
+Corollary 3.2.
+Let be the (standard) cyclic cohomology of the real numbers. There are isomorphisms for .
+We stress that the results in this subsection do not depend on the choice of odd coordinate. Specifically, any coordinate change is of the form , with . Then (which is just the rescaling ) is a Q-diffeomorphism and via Theorem 3.1 we know the derived cyclic cohomology is unchanged.
+Recall that the (-graded) cyclic cohomology of is
+Thus, while clearly related, the derived and standard cyclic cohomologies are not isomorphic. Moreover, , i.e., completely trivial.
+3.4. Derived Cyclic Cocycles on Double Q-manifolds
+Given a double Q-manifold , we define a pencil of homological vector fields as , with . This pencil interpolates between the two initial homological vector fields. We then have a pencil of derived associative algebras with the derived product being defined as
+(3.11)
+with . We then define the obvious pencil of Hochschild coboundary operators and derived cyclic cohomology groups. Then, the derived cyclic -cocycles, from Proposition 3.3, satisfies
+for all . To analyse this condition, we define
+(3.12)
+where is the set of sequences of length consisting of copies of the index and copies of the index . Using the binomial expansion and relabelling, we obtain
+(3.13)
+Proposition 3.6.
+Let be a double Q-manifold, then all -closed cochains satisfy
+for each .
+Proof.
+The equation (3.13) holds order by order in . Thus, isolating these terms establishes the proposition.
+∎
+For instance, one can quickly deduce that for a derived cyclic -cocycle
+For derived cyclic -cocycles we deduce that
+Similarly, for derived cyclic -cocycles we deduce that
+We will denote the derived cyclic cocycles as .
+Example 3.9.
+Let be a pure even finite-dimensional Lie algebra. The supermanifold we consider is , where . We equip with (global) coordinates , which in physical language are Faddeev–Popov ghosts, Faddeev–Popov anti-ghosts, and Nakanishi–Lautrup auxiliary fields, respectively; recall we have suppressed ghost number. We can then identify . The BRST differential and the anti-BRST differential
+define a double Q-manifold . Here are the structure constants of the Lie algebra. Note that the first terms of and are just the Chevalley–Eilenberg differential of the Lie algebra . Then via Proposition 2.8, we have a pair of compatible derived algebras on .
+All derived cyclic -cocycles are both BRST and anti-BRST invariant, i.e., and . Any derived cyclic -cocycle satisfies
+for all .
+As a concrete case, consider . In this case we have and . Expanding a function as . We then have
+Then, as all derived cyclic -cocycles are both BRST and anti-BRST invariant, we have a series of conditions
+i)
+,
+ii)
+,
+iii)
+,
+iv)
+.
+These conditions place constraints on the first three terms of the evaluation of . Specifically, they are determined by the value of at . Thus, we have
+with and . Finally, is unconstrained, as such a term can never be generated by or .
+Thus, we have deduced that
+3.5. Applications to Lie Algebras: The Relation with Lie Algebra Homology
+In this subsection, we will consider a pure even finite dimensional Lie algebra . For details of the homology and cohomology of Lie algebras, the reader may consult Weibel [47, Chapter 7]. Let us choose a basis , such that . Shifting the parity of the vector space (now considered as a linear supermanifold), we obtain a Q-manifold , where, in coordinates,
+(3.14)
+is recognised as the Chevalley–Eilenberg differential. Note . We remark that is equivalent to the Jacobi identity for the Lie bracket. Borrowing language from physics, the coordinates are Faddeev–Popov ghosts.
+Clearly, we have the derived associative algebra associated with any Lie algebra. The derived -cochains are
+Note that the algebra is finite dimensional, and so the completed tensor product coincides with the algebraic tensor product, meaning we lose no generality considering linear maps between the finite-dimensional super vector spaces. Via Lemma 3.1, all derived cyclic -cocycles satisfy . The canonical pairing between and allows us to define the Chevalley–Eilenberg boundary operator via
+(3.15)
+Then using the canonical isomorphism , we identify derived cyclic -cocycles with Lie algebra (homology) cycles. More formally, we have established the following.
+Proposition 3.7.
+Let be a (pure even) finite dimensional Lie algebra of dimension . Then
+where are the Lie algebra cycle groups, and we assign Grassmann parity of (mod ) to elements of the Lie algebra -cycle group.
+Example 3.10.
+For any abelian Lie algebra of dimension , as the Chevalley–Eilenberg boundary operator is the zero map
+Example 3.11.
+Consider the -dimensional Heisenberg algebra given by generators and non-vanishing Lie bracket . Note is central. Then . Observe that , and so . From the algebra we see that and . Thus, . Finally, , thus . In total we have
+While , we do not have a simple generalisation of Proposition 3.7 for and non-abelian Lie algebras. In particular, for the case, we have -exact cochains to contend with when calculating the derived cyclic cohomology, and this prevents a simple decomposition relating it to the Lie algebra homology.
+3.6. Applications to Regular Foliations: Generalised Currents
+Let be a pure even manifold and let be an integrable subbundle defining a regular foliation of . This defines the foliation Lie algebroid of the regular foliation. Sections of are vector fields tangent to . The Lie bracket is the restriction of the standard Lie bracket of vector fields, and the anchor is the inclusion map (and so it is injective). Moreover, the orbit foliation of the anchor is precisely the foliation . Conversely, any Lie algebroid with an injective anchor map is isomorphic to a foliation Lie algebroid.
+The corresponding Q-manifold picture is as follows. The supermanifold is (the parity reversed vector bundle), and so is identified with leaf-wise (pseudo-)differential forms . The homological vector field is the restriction of the de Rham differential to the leaves of the foliation, i.e., . The derived product is then , with . The modular class of a foliation Lie algebroid (see Subsection 3.1) is the obstruction to the existence of a global, strictly positive, nowhere-vanishing transverse invariant volume. In classical language, the modular class of a foliation Lie algebroid is known as the Reeb class.
+Moving to derived cyclic cohomology of the foliation, the derived -cochains are elements of
+Some comments:
+i)
+Derived -cochains are generalised foliation currents; we recover classical foliation currents when restricting to leaf-wise top-forms with compact support.
+ii)
+Derived cyclic -cocycles, via Lemma 3.1 (or Proposition 3.3), satisfy . A foliation current that vanishes on leaf-wise exact forms is a closed foliation current (or a holonomy-invariant transverse current), see Ruelle & Sullivan [37]. Thus, derived cyclic -cocycles are generalised closed foliation currents.
+iii)
+Derived cyclic -cocycles () are interpreted as generalised closed foliation multiform currents. Their precise interpretation in terms of classical foliation theory is currently unclear. As far as the author is aware, multilinear functionals of leaf-wise differential forms have not been considered before.
+Example 3.12.
+Consider the torus which we equip with angular coordinates . The foliation we consider is the horizontal foliation given by . The associated foliation Lie algebroid has adapted coordinates . The homological vector field is given by . As any leaf-wise (pseudo-)differential form has the structure , we observe that as there are no non-zero leaf-wise -forms. We remark this also implies that . We will fix an orientation.
+Let be a derived cyclic -cocycle. We have the decomposition . Furthermore, we know that .
+•
+is unconstrained as there are no leaf-wise -forms, i.e., functions are never -exact.
+•
+must annihilate -derivatives. Via the standard theory of distributions on (which is obviously compact), we know that any functional that vanishes on exact one-forms must be a multiple of the integral over . Thus,
+where is a transverse invariant measure (via [37]). That is, is a classical Ruelle–Sullivan current.
+To construct a derived cyclic -cocycle, we set and fix some transverse invariant measure . That is, we will set to be a classical Ruelle–Sullivan current. We then select a vector field tangent to the leaves . The leaf-wise Lie derivative is defined as . We write . Note that for , we have . Then, for we see that
+Via the Fundamental Theorem of Calculus applied to the closed loop , . Thus, is invariant under the leaf-wise Lie derivative. We then define
+As the only non-zero components of the functional are related to and , we will consider . Note that using the shifted grading . Via inspection, we see that , and thus is shifted cyclic.
+Checking the action of the Hochschild coboundary operator, we have by definition
+By construction, is only non-zero if both entries contain zero-forms (functions). However, , and are one-forms. Thus, , and so is a derived cyclic -cocycle.
+Example 3.12 suggests a method of constructing derived cyclic -cocycles for more general regular foliations provided the modular class of the foliation Lie algebroid vanishes. Suppose and the leaves of the foliation are of dimension . We set . We will take compact to avoid having to employ differential forms with compact support. We assume that is orientable and an orientation has been chosen. For clarity, let us employ adapted coordinates on . We select a classical Ruelle–Sullivan current, i.e., we define (locally)
+(3.16)
+As we take to be compact, , where , where . Suppose that for any we have a collection of vector fields tangent to the leaves that pairwise commute, i.e. . We then define
+(3.17)
+Note that the Lie derivatives (as vector fields on ) are (shifted) even. We observe that the above is an application of Connes’ construction of a cyclic -cocycle from an invariant trace and commuting derivations (see [10]). Thus, defines a derived cyclic -cocycle.
+We remark that Connes applied cyclic cohomology to the noncommutative convolution algebra constructed from the holonomy groupoid of a foliation (see [11]). The derived cyclic cohomology is quite different and built from functionals of leaf-wise pseudo-differential forms.
+Example 3.13.
+Let be a compact manifold with a free and proper action of the Lie group . By the Quotient Manifold Theorem, the orbit space is a smooth manifold and is a smooth submersion; we of course obtain a principal bundle. In particular, we have a regular foliation whose leaves are diffeomorphic to . It is a standard result that the Reeb class of such foliations vanishes - the foliation can be equipped with an auxiliary invariant metric rendering the foliation a Riemannian foliation. The Lie algebra of is . By choosing an ordered basis compatible with the integral lattice , we construct a global frame of fundamental vector fields on using the standard method. These vector fields are tangent to the foliation and all pairwise commute, i.e, is abelian. For , we define all the possible subsets consisting of elements. We then define via (3.17). For , we define . Any change of ordered basis for is implemented on the fundamental vector fields via . Note . Thus, under change of the ordered basis we have . Thus, the derived cyclic -cocycle is canonical up to an overall sign (the orientation of ). From a starting basis, we have chosen an orientation of , and we may consider changes of bases that respect the orientation and so . With this restriction, the derived cyclic -cocycle is canonical (up to the choice of classical current).
+Example 3.13 generalises as follows. Suppose we have a free and proper action of a compact Lie group on a compact manifold . As standard, we have a principal -bundle. The modular class of the associated foliation Lie algebroid vanishes; one can equip the foliation with an auxiliary invariant metric which can be used to construct a transverse invariant volume form and, in turn, a classical Ruelle–Sullivan current. The Cartan subalgebra (the largest abelian Lie algebra within ) generates a set of pairwise commuting vector fields via a choice of basis. Here is the rank of . We can then build derived cyclic -cocycles up to degree . The derived cyclic cocycle is canonical up to a non-zero scalar multiple determined by the choice of ordered basis of the Cartan subalgebra, i.e., up to the determinant of the change of ordered basis, and a choice of the classical current.
+3.7. Applications to Deformations: Infinitesimal Deformations of Q-manifolds
+Let be a Q-manifold and let be an odd (infinitesimal) symmetry, i.e., an odd vector field that satisfies . It is well known that the deformation problem for homological vector fields is controlled by the differential Lie algebra . That is, we can infinitesimally deform using an odd (infinitesimal) symmetry, i.e., using an odd vector field that is -closed. We will return to this shortly.
+Suppose we select a (non-zero) . From this specified pair, we construct a derived cyclic -cochain
+(3.18)
+A quick calculation, which we omit, shows that , and so is indeed shifted cyclic.
+Lemma 3.2.
+Let be a Q-manifold and be an odd infinitesimal symmetry. The derived cyclic -cochain is a derived cyclic -cocycle.
+Proof.
+From the definition of the Hochschild coboundry operator (3.1), we have
+Then using and Lemma 3.1, i.e., , we obtain
+∎
+Using an odd infinitesimal symmetry, we can infinitesimally deform as
+(3.19)
+where and we drop terms and higher. Directly we see that
+Thus, up to first-order in , . The derived product is similarly deformed
+and leads to a deformed Hochschild coboundary operator which we denote as (which is well-defined dropping terms and higher).
+Suppose we wish to look for an infinitesimally deformed derived cyclic -cocycle , with . By definition, we have that (to first-order).
+Lemma 3.3.
+Let be a Q-manifold, and be an odd infinitesimal symmetry. Assuming is an infinitesimally deformed derived cyclic -cocycle, then is -exact.
+Proof.
+Expanding and retaining only the zeroth and first-order in terms we have
+Then using and the definition of (3.18), we have
+Thus, as and are arbitrary, we have , and the lemma is established.
+∎
+Theorem 3.3.
+Let be a Q-manifold, be an odd infinitesimal symmetry, and be a derived cyclic -cocycle. Then an infinitesimally deformed derived cyclic -cocycle exists if and only if the derived cyclic class is zero.
+Proof.
+Lemma 3.2 established that is a derived cyclic -cocycle, and so defines a derived cyclic class . Lemma 3.3 establishes that if exists, then , which directly implies that the relevant derived cyclic class is zero. Conversely, if for some , i.e, is zero, then we may define such that .
+∎
+Definition 3.3.
+The derived cyclic class defined by the derived cyclic -cocycle (see (3.18)) is referred to as the deformation class of along .
