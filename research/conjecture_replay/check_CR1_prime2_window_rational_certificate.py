@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+"""Audit the exact rational implication chain for the prime-two window margin."""
+import json
+from fractions import Fraction as F
+from pathlib import Path
+from evidence_policy import write_result
+R=Path(__file__).resolve().parents[2]
+# Consequences of the source-certified outward normal-CDF bounds.
+da=2*(F(968,1000)-F(89,100))*(F(362,1000)+F(17,1000))+2*(1-F(967,1000))*(F(1,2)+F(17,1000))
+a_lower=(2*F(89,100)-1)**2
+rhs_lower=8*F(1,2)**2*F(3,5)
+checks={'a_lower_gt_0_6':a_lower>F(3,5),'d_upper_exact_0_093246':da==F(93246,1000000),'d_upper_lt_0_1':da<F(1,10),'mass_rhs_gt_1_2':rhs_lower==F(6,5),'strict_margin_gt_1_1':rhs_lower-F(1,10)>F(11,10)-F(1,10**9)};assert all(checks.values())
+out={'schema':'marici.conjecture-replay.CR1-prime2-window-rational-certificate.v1','passed':True,'claim_status':'proved','evidence':[{'class':'SOURCE_DERIVED','claim':'Ten-term alternating erf series with rational enclosures certify the required five outward normal-CDF bounds.','source':'research/nima/alternating-erf-series-give-rational-certificates-for-the-five-normal-bounds.md'},{'class':'SOURCE_DERIVED','claim':'The retained theta history uses the frozen source normalization M_Phi=xi(1/2)<1/2.','source':'research/nima/the-retained-history-graph-realizes-the-g1-1-shifted-squares-with-the-theta-mass-bound.md'},{'class':'SYMBOLIC','claim':'Exact Fraction arithmetic verifies that the outward scalar bounds imply a_2>0.6, d_2^2<0.1, and the strict theta-mass Schur inequality.','checker':'research/conjecture_replay/check_CR1_prime2_window_rational_certificate.py'}],'outcome':'++ proof-level coarse p=2 window margin','checks':checks,'inputs':['Phi_N(u)>0.89','0.967<Phi_N(3u/2)<0.968','Q(u/(2sqrt3))<0.362','Q(sqrt3 u)<0.017','M_Phi<1/2'],'bounds':{'a_2':'>0.6084>0.6','g_win_2':'<0.093246<0.1','8(1-M_Phi)^2 a_2':'>1.2','margin':'>1.1'},'relation_to_pilot':'The numerical value g_win,2 approximately 0.0613563 is not promoted to a certified decimal interval; only the displayed coarse rational bounds are proved.','all_primes':'Together with the established monotone envelope for p>=3, the local theta-mass Schur-loading inequality is prime-uniform, conditional only on the already isolated constructor identification.','fixture_effect':'For p=2 the odd window diagonal is rigorously bounded in [0,0.1); p=3 is covered by the stronger monotone p>=3 certificate.','remaining':'This proves local coercive survival, not G4 target equality or the common-basis jump/history entries.','next':'use_the_1_over_8_history_lower_bound_and_window_upper_bound_to_form_a_coarse_finite_tail_block_interval'}
+write_result(R/'research/conjecture_replay/results/CR1_prime2_window_rational_certificate.json',out);print(json.dumps({'passed':True,'a2_lower':float(a_lower),'gwin2_upper':float(da),'mass_rhs_lower':float(rhs_lower)}))

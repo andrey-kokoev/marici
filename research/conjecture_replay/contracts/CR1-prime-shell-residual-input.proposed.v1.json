@@ -1,0 +1,22 @@
+{
+  "schema": "marici.conjecture-replay.CR1-prime-shell-residual-input.proposed.v1",
+  "status": "required_input_contract",
+  "purpose": "Freeze the five-port source adjoint before evaluating it on Xi-divisor Evans jets.",
+  "required": {
+    "port_order": ["ordinary_tail", "regular_derivative", "wall", "reciprocal", "ordered_link"],
+    "component_maps": "five explicit B_j matrices/functionals at every finite prime cutoff",
+    "source_metrics": "five explicit G_j with domains and variance",
+    "joint_adjoint": "B_Sigma_dagger y=sum_j B_j^* G_j y_j",
+    "polarized_stokes_wronskian_comparison": "completed and source-normalized",
+    "stratified_fourier_poisson_contragredient": "defined on primitive, square, connected, wall, and response strata",
+    "cutoff_naturality": true,
+    "jet_domain": "all Evans parameter jets below local Xi multiplicity"
+  },
+  "forbidden": [
+    "fit component coefficients after inspecting Xi zeros",
+    "identify portwise boundedness with joint-adjoint normalization",
+    "invert the superexponentially vanishing raw Stokes/Wronskian factor by hand",
+    "replace stratified contragredient transport by scalar functional-equation symmetry"
+  ],
+  "finite_output": "For every consecutive prime shell and jet, emit all five summands and their exact normalized sum."
+}

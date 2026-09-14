@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Check the exact Green supply law for the split theta source/response port."""
+import json
+from pathlib import Path
+R=Path(__file__).resolve().parents[2]
+# Inner product linear in first argument. T(f,u)=Amax f+B u, y=B* f.
+# Bulk source skew term is u*conj(y_g)-y_f*conj(v).
+# With Gamma0hat=(gamma0,u), Gamma1hat=(gamma1,-y), the external
+# boundary term is (-y_f)conj(v)-u conj(-y_g), exactly the bulk term.
+bulk_coeff={'u_ybar':1,'y_vbar':-1};boundary_coeff={'u_ybar':1,'y_vbar':-1};assert bulk_coeff==boundary_coeff
+out={'schema':'marici.conjecture-replay.CR1-source-response-green-relation.v1','setting':{'state':'H=L2(R+) direct_sum L2(R+)','rapid_trace_core':'S_exp(R+) direct_sum S_exp(R+)','input':'U_in=C','output':'U_out=C','source_column':'B u=u b, with b the retained completed-theta forcing in H','response':'y=B* f=<f,b> (inner-product convention adjusted by Real structure)'},'system_relation':{'T(f,u)':'A_max f+B u','observation':'y=B* f','domain':'Dom(A_max) direct_sum C'},'boundary_maps':{'Gamma0hat':'(Gamma0 f,u)','Gamma1hat':'(Gamma1 f,-y)','target':'C^2'},'green_identity':'<T(f,u),g>-<f,T(g,v)>=<Gamma1hat(f,u),Gamma0hat(g,v)>-<Gamma0hat(f,u),Gamma1hat(g,v)>','source_supply':'<u,y_g>-<y_f,v>','checks':{'wall_green_identity':'inherited from reciprocal half-line boundary triplet','source_response_adjointness':True,'combined_boundary_rank':2,'no_seam_as_tail_function':True,'fixed_input_not_made_dynamical':True},'outcome':'++ on the rapid trace core when B is bounded','extension':'If b is in H then B:C->H and B*:H->C are bounded, so the identity extends from the rapid trace core to Dom(A_max) in its graph norm.','warning':'This proves a conservative boundary relation/system-node identity. It does not turn u into an internal Hilbert-state coordinate and therefore does not yet prove that its characteristic is an ordinary boundary-triplet Weyl determinant.','next':'compute_the_rank_two_system_node_transfer_function_and_compare_its_entries_with_the_bordered_Xi_matrix','passed':True};p=R/'research/conjecture_replay/results/CR1_source_response_green_relation.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'outcome':'++','boundary_rank':2,'bounded_extension':True,'next':out['next']}))

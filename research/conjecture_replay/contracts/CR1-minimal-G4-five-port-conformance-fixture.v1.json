@@ -1,0 +1,53 @@
+{
+  "schema": "marici.conjecture-replay.CR1-minimal-G4-five-port-conformance-fixture.v1",
+  "status": "source_expected_values_complete_target_readback_open",
+  "shell": {"left_prime": 2, "right_prime": 3, "a": "log 2", "b": "log 3"},
+  "grades": [
+    {"k": 1, "class": "primitive_projective"},
+    {"k": 2, "class": "square_Hilbert_Schmidt"}
+  ],
+  "orientations": ["forward", "reciprocal"],
+  "source_values": {
+    "ordinary": "R_nm(z)=Laplace_t integral_a^b Phi_n(u)Phi_m(u+t)du",
+    "endpoint": "E_nm(z)=one_half Laplace_t[Phi_n(b)Phi_m(b+t)-Phi_n(a)Phi_m(a+t)]",
+    "linking": "W_nm(z)=Laplace_t integral_a^b[Phi_n_prime(u)Phi_m(u+t)-Phi_n(u)Phi_m_prime(u+t)]du",
+    "Stokes": "z R_nm-rho_nm(0)=E_nm-one_half W_nm",
+    "wall": "right_plus_left trace=(Phi(0),u Phi(0)) in Lambda_u",
+    "quarter_turn": "F_pair^4=I and F_pair^2=reciprocal reflection",
+    "loading": "w_(p,k)=k^-1 p^(-k/2)",
+    "Xi_seam": "Phi(0) tau(z) after shell-tree retraction",
+    "archimedean_expected": "oriented radial response with A_z(G_theta)=2xi(s), endpoint constant 1, and scalar bridge H(s)=[A_z(G_theta)-1]/[s(s-1)]; state-level G4 metric identification remains a target readback"
+  },
+  "target_readback_slots": {
+    "linking_metric_image": {
+      "status": "source_Riesz_image_closed_target_transport_open",
+      "value": "-1/2 (k_0 wedge k_1), k_0=Riesz(gamma_0), k_1=Riesz(eta)",
+      "missing": "G4 graph-Riesz transport and compatible rigged-transpose transport of -1/2(delta_0 wedge 1); no ambient L2 Riesz image exists"
+    },
+    "reciprocal_response_value": {
+      "status": "boundary_wall_packet_closed_full_function_response_open",
+      "value": "W_u v_plus=v_plus, W_u v_minus=-v_minus; forward/reciprocal Green cross-pairings are -2/+2",
+      "missing": "function-valued Wronskian response under the Fourier quarter-turn F"
+    },
+    "joint_graph_adjoint_value": {
+      "status": "finite_fold_and_complete_source_boundary_metric_constructed_target_readback_open",
+      "value": "T_X=I_endpoint direct sum I_label direct sum C_u; exact G_boundary,X=G_wall direct sum G_tail,2 direct sum G_tail,3 with lower bound 0.054",
+      "missing": "T_X(source range)=range(G4_joint_X) and entrywise target identity T_X^*G_G4,X T_X=G_boundary,X"
+    },
+    "archimedean_endpoint_value": {
+      "status": "source_direction_observation_and_cross_wall_metric_closed_target_readback_open",
+      "value": "O_s(r_theta,s)=H(s), with coherent/transverse Green pairing <(1,u),J(1,-u)>=-2",
+      "missing": "target confirmation that the joint adjoint retains this transverse wall dual and normalization"
+    }
+  },
+  "acceptance": [
+    "all target slots non-null and source-located",
+    "target Stokes residual equals zero as a function-valued identity",
+    "primitive and square grades remain distinct",
+    "reciprocal orientation and Real structure commute",
+    "graph and response metrics remain two-rung typed",
+    "all parameter jets commute",
+    "no coefficient is fitted at Xi zeros"
+  ],
+  "terminal": {"conforms": false, "rh_implication": false}
+}

@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+import json,sys
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];sys.path.insert(0,str(R/'research/conjecture_net'))
+from composite_arrow_tests import ArrowPath,OUTCOMES
+from path_polarity_constraints import *
+design=json.loads((R/'research/conjecture_replay/results/degree15_composite_arrow_test_design.json').read_text());paths=tuple(ArrowPath(x['name'],tuple(x['arrows'])) for x in design['prospective_test']['paths'])
+problem=PolarityExistenceProblem(paths,(PathPolarityConstraint('direct','*+'),PathPolarityConstraint('factored','*+')),require_coherence=True)
+arrows={a for p in paths for a in p.arrows};domains={a:OUTCOMES for a in arrows};analysis=problem.analyze(domains);raw=4**len(arrows);survive=analysis['satisfying_assignments'];pct={'assignment_space_after_typing_coherence_and_solution_constraint':100*(survive-raw)/raw,'constituent_tests_executed':-100.0}
+out={'schema':'marici.conjecture-replay.degree15-path-polarity-constraint.v1','target_condition':'a physical solution requires both alternative path composites to be *+ and equal','domains':'all four outcomes remain prospectively open for every constituent arrow','analysis':analysis,'interpretation':'The solution polarity is possible but not forced before the exact degree-15 packet is observed. Witness assignments are frozen examples only, not evidence.','metric_projection':{'base':'unconstrained four-way assignments','percent_change_from_previous_base':pct,'absolute_values_omitted_by_policy':True},'next_update_rule':'After each constituent outcome, rerun propagation. impossible rejects the route; forced establishes the required terminal polarity conditional on arrow contracts; possible schedules the arrow with greatest domain reduction per cost.','passed':analysis['status']=='possible'};p=R/'research/conjecture_replay/results/degree15_path_polarity_constraint.json';p.write_text(json.dumps(out,indent=2,default=list)+'\n');print(json.dumps({'passed':out['passed'],'status':analysis['status'],'typed':analysis['typed_assignments'],'satisfying':survive,'percent_delta':pct}))

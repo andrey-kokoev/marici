@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+"""Separate sourced fields from conjectural laws in the proposed G4 amendment."""
+import json
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];p=json.loads((R/'research/voevodsky/proposed_theta_rh_g4_pair_response_amendment_v1.json').read_text());i=p['pair_response_interface']
+sourced=['source_carrier','target_carrier','relative_haar_comparison','prime_equivariance','energy_multiplier','mellin_multiplier','ordered_orientation','wall_domain','radial_density','radial_stokes','combined_response','all_jets','shell_concatenation']
+conjectural=['joint_adjoint_law','evans_divisor_law'];assert all(k in i for k in sourced+conjectural);assert p['status']=='proposal_not_published_not_authoritative'
+out={'schema':'marici.conjecture-replay.proposed-G4-pair-response-evidence-audit.v1','outcome':'+-','source_derived_fields':sourced,'source_derived_count':len(sourced),'conjectural_fields':conjectural,'conjectural_count':len(conjectural),'publication_authority':False,'p2_q3_status':'The radial Stokes target is evaluable, but metric readback into the fixed joint adjoint is not: evaluating the missing port would instantiate joint_adjoint_law by definition.','xi_adic_status':'all Laplace jets exist, but preservation by the G4 comparison is exactly evans_divisor_law and remains unproved','promotion_verdict':'DO_NOT_PUBLISH','minimal_next_falsifier':'Obtain an independently defined G4 joint adjoint and compare its p=2,q=3 response with R_fg+2E_fg before imposing Xi cancellation.','passed':True};q=R/'research/conjecture_replay/results/proposed_G4_pair_response_evidence_audit.json';q.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'outcome':'+-','sourced':'13/15','conjectural':conjectural,'publish':False}))

@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+import json,sys
+from dataclasses import asdict,replace
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];sys.path.insert(0,str(R/'research/conjecture_net'));from event_log import *
+from graph_metrics import MetricAction,MetricGraph,percent_change
+prior=json.loads((R/'research/conjecture_replay/results/PS1M2_admitted_authoritative_metrics.json').read_text());q=prior['projection'];p=Projection(q['graph_digest'],q['state_id'],frozenset(q['interfaces']),frozenset(q['facts']),q['sunk_cost'],frozenset(tuple(x) for x in q['resolved_actions']),tuple(q['event_ids']));snap=prior['metric_projection']['after_snapshot'];src=R/'research/benincasa/results/PS1M2a_degree15_to_nearby_column_map.json';x=json.loads(src.read_text())
+def act(z):return MetricAction(z['name'],frozenset(z['dependencies']),frozenset(z['requires']),frozenset(z['outcome_domain']),z['status'],z['terminal'])
+bg=MetricGraph(tuple(act(z) for z in snap['actions']),frozenset(snap['interfaces']),tuple(frozenset(c) for c in snap['coherence_constraints']));before=bg.metrics();s1=digest({'parent':p.state_id,'PS1M2a':'-+'});ev=ResolutionEvent('PS1M2a_materialize_degree15_to_nearby_column_map',digest(x['outcome_contract']),p.graph_digest,p.state_id,'-+',('++','+-','--'),(f'{src.relative_to(R).as_posix()}#{digest(x)}',),1.,(('runtime','subsecond'),('unmapped_columns','6039')),StateDelta(add_interfaces=('nearby_comparison_underdetermined_by_frozen_data',),add_facts=('PS1M2a=-+',)),(('PS1M2a=-+','entails','nearby packet is not a typed second degree-15 realization'),),('canonical_degree15_to_nearby_map',),s1,'2026-09-11T00:02:00Z');pruned=('PS1M2b_apply_projection_and_augment',);g1=digest({'parent':p.graph_digest,'prune':pruned,'rewire':'PS1M3'});top=TopologyEvent(p.graph_digest,'remove',(),pruned,(),('PS1M2a -> PS1M3',),g1,'projection application is unreachable; census can still close with an unresolved comparison',(ev.event_id,),'2026-09-11T00:02:01Z');log=EventLog.resume(p).append(ev).append(top)
+aa=[]
+for a in bg.actions:
+ if a.name=='PS1M2a_materialize_degree15_to_nearby_column_map':aa.append(replace(a,status='resolved'))
+ elif a.name in pruned:aa.append(replace(a,status='pruned'))
+ elif a.name=='PS1M3_compare_realization_classes':aa.append(replace(a,dependencies=frozenset({'PS1M2a_materialize_degree15_to_nearby_column_map'})))
+ else:aa.append(a)
+ag=MetricGraph(tuple(aa),bg.interfaces|{'nearby_comparison_underdetermined_by_frozen_data'},bg.coherence_constraints);after=ag.metrics();pct=percent_change(before,after)
+out={'schema':'marici.conjecture-replay.PS1M2a-admitted-authoritative-metrics.v1','events':[{'event_id':e.event_id,**asdict(e)} for e in (ev,top)],'projection':asdict(log.project()),'scope':'post-PS1 moduli classification; PS1 remains ++','metric_projection':{'derived_metric_schema':'research/conjecture_net/graph_metrics.py','before_snapshot':snap,'after_snapshot':{'actions':[asdict(a) for a in ag.actions],'interfaces':sorted(ag.interfaces),'coherence_constraints':[sorted(c) for c in ag.coherence_constraints]},'before':before,'after':after,'percent_change_from_previous_base':pct},'next_recommendation':'PS1M3_compare_realization_classes','passed':True};(R/'research/conjecture_replay/results/PS1M2a_admitted_authoritative_metrics.json').write_text(json.dumps(out,indent=2,default=list)+'\n');print(json.dumps({'passed':True,'outcome':'-+','percent_delta':pct,'next':out['next_recommendation']}))

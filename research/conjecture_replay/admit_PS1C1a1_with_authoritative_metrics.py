@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+import json,sys
+from dataclasses import asdict,replace
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];sys.path.insert(0,str(R/'research/conjecture_net'));from event_log import *
+from graph_metrics import MetricAction,MetricGraph,percent_change
+prior=json.loads((R/'research/conjecture_replay/results/PS1C1a_corrected_replan.json').read_text());q=prior['projection'];p=Projection(q['graph_digest'],q['state_id'],frozenset(q['interfaces']),frozenset(q['facts']),q['sunk_cost'],frozenset(tuple(x) for x in q['resolved_actions']),tuple(q['event_ids']));src=R/'research/benincasa/results/PS1C1a1_higher_normal_lift_executability.json';x=json.loads(src.read_text())
+base=json.loads((R/'research/conjecture_replay/results/authoritative_PS1_graph_metrics.json').read_text())['graph_snapshot']
+def action(z):return MetricAction(z['name'],frozenset(z['dependencies']),frozenset(z['requires']),frozenset(z['outcome_domain']),z['status'],z['terminal'])
+before_graph=MetricGraph(tuple(action(z) for z in base['actions']),frozenset(base['interfaces']),tuple(frozenset(c) for c in base['coherence_constraints']));before=before_graph.metrics()
+s1=digest({'parent':p.state_id,'PS1C1a1':'--'});ev=ResolutionEvent('PS1C1a1_higher_normal_relative_coefficient_lift',digest(x['outcome_contract']),p.graph_digest,p.state_id,'--',('++','+-','-+'),(f'{src.relative_to(R).as_posix()}#{digest(x)}',),1.,(('runtime','subsecond'),('status','executability audit')),StateDelta(add_interfaces=('moving_Theta101_coefficient_missing',),add_facts=('PS1C1a1=--',)),(('PS1C1a1=--','entails','materialize moving coefficient first'),),('higher_normal_relative_coefficient_lift',),s1,'2026-09-11T00:01:38Z');children=tuple(x['refinement']);g1=digest({'parent':p.graph_digest,'refine':children});ref=RefinementEvent(p.graph_digest,'PS1C1a1_higher_normal_relative_coefficient_lift',children,digest({'sequence':children}),tuple(zip(children,children[1:])),digest({'all_required':True}),g1,'coefficient packet must precede image test and normal-order iteration',(ev.event_id,),'2026-09-11T00:01:39Z');log=EventLog.resume(p).append(ev).append(ref)
+after_actions=[]
+for a in before_graph.actions:
+ if a.name=='PS1C1a1_higher_normal_relative_coefficient_lift':after_actions.append(replace(a,status='resolved'))
+ elif a.name=='PS1C1b_orientation_twisted_GM_connection':after_actions.append(replace(a,dependencies=frozenset({children[-1]})))
+ else:after_actions.append(a)
+after_actions.extend((MetricAction(children[0],frozenset({'PS1C1a_central_residue_totalization'}),frozenset({'central_wall_residue_totalization'})),MetricAction(children[1],frozenset({children[0]})),MetricAction(children[2],frozenset({children[1]}))))
+after_graph=MetricGraph(tuple(after_actions),before_graph.interfaces|{'moving_Theta101_coefficient_missing'},before_graph.coherence_constraints);after=after_graph.metrics();pct=percent_change(before,after)
+out={'schema':'marici.conjecture-replay.PS1C1a1-admitted-authoritative-metrics.v1','events':[{'event_id':e.event_id,**asdict(e)} for e in (ev,ref)],'projection':asdict(log.project()),'metric_projection':{'derived_metric_schema':'research/conjecture_net/graph_metrics.py','before_snapshot':{'actions':[asdict(a) for a in before_graph.actions],'interfaces':sorted(before_graph.interfaces),'coherence_constraints':[sorted(c) for c in before_graph.coherence_constraints]},'after_snapshot':{'actions':[asdict(a) for a in after_graph.actions],'interfaces':sorted(after_graph.interfaces),'coherence_constraints':[sorted(c) for c in after_graph.coherence_constraints]},'before':before,'after':after,'percent_change_from_previous_base':pct},'next_recommendation':children[0],'passed':True};(R/'research/conjecture_replay/results/PS1C1a1_admitted_authoritative_metrics.json').write_text(json.dumps(out,indent=2,default=list)+'\n');print(json.dumps({'passed':True,'outcome':'--','percent_delta':pct,'next':out['next_recommendation']}))

@@ -1,0 +1,55 @@
+{
+  "schema": "marici.conjecture-net.off-by-one-and-projection-boundary-audit.v1",
+  "findings": [
+    {
+      "severity": "fixed",
+      "area": "EventLog.project(through)",
+      "finding": "Negative and greater-than-length event counts previously inherited Python slicing semantics. through is now validated as an event count in [0,len(events)]."
+    },
+    {
+      "severity": "fixed",
+      "area": "EventLog continuation",
+      "finding": "Constructing EventLog from only prior graph/state reset interfaces, facts, sunk cost, resolved actions, and event IDs. EventLog.resume now preserves the complete cumulative projection."
+    },
+    {
+      "severity": "historical-warning",
+      "area": "replay artifacts",
+      "finding": "12 scripts use the legacy graph/state-only continuation pattern; their projection fields are segment-local rather than cumulative. Immutable events remain valid, but those projection metrics must not be read as global totals.",
+      "files": [
+        "research/conjecture_replay/admit_B_with_coherence_metrics.py",
+        "research/conjecture_replay/admit_G_and_falsify_coherence_pyramid.py",
+        "research/conjecture_replay/admit_NET3_composite_arrow_test.py",
+        "research/conjecture_replay/admit_NET4_path_polarity_constraint.py",
+        "research/conjecture_replay/admit_NET5_coherence_pyramid.py",
+        "research/conjecture_replay/admit_NET6_split_codomain_pyramid.py",
+        "research/conjecture_replay/admit_R_degree15_with_coherence_metrics.py",
+        "research/conjecture_replay/admit_VC2f_resolution.py",
+        "research/conjecture_replay/admit_VC2g1_degree17_resolution.py",
+        "research/conjecture_replay/admit_VC2m1_with_percent_metrics.py",
+        "research/conjecture_replay/admit_X_exchange_with_percent_metrics.py",
+        "research/conjecture_replay/refine_VC2m_next_rung.py"
+      ]
+    },
+    {
+      "severity": "passed",
+      "area": "degree filtration",
+      "finding": "range(16) correctly covers degrees 0 through 15, and the exact solution contains a weight monomial of total degree 15."
+    },
+    {
+      "severity": "fixed",
+      "area": "coherence layer domains",
+      "finding": "Unknown, empty, invalid, or duplicate per-layer arrow domains are now rejected instead of being silently overwritten or failing late."
+    }
+  ],
+  "checks": {
+    "through_zero_valid": true,
+    "through_negative_rejected": true,
+    "through_len_plus_one_rejected": true,
+    "degree_count_16": true,
+    "degree_endpoint_15": true,
+    "exact_solution_reaches_degree_15": true,
+    "all_tests_pass_separately": true
+  },
+  "global_projection_repair_required": true,
+  "passed": true
+}

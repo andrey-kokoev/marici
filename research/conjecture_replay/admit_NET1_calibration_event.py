@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+import json,sys
+from dataclasses import asdict
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];sys.path.insert(0,str(R/'research/conjecture_net'));from event_log import *
+prior=json.loads((R/'research/conjecture_replay/results/VC2e_admitted_resolution.json').read_text());p=prior['projection'];g0=p['graph_digest'];s0=p['state_id'];g1=digest({'parent':g0,'add':'NET1_calibrate_branch_probabilities'});cal=R/'research/conjecture_replay/results/branch_probability_calibration.json';evidence=f'{cal.relative_to(R).as_posix()}#{digest(json.loads(cal.read_text()))}'
+top=TopologyEvent(g0,'add',('NET1_calibrate_branch_probabilities',),(),(),(),g1,'same action was previously only an objective-assessment candidate',(), '2026-09-11T00:00:07Z')
+s1=digest({'parent':s0,'NET1':'+-'});ev=ResolutionEvent('NET1_calibrate_branch_probabilities',digest({'metric':['Brier','log_loss'],'validation':'leave-one-out'}),g1,s0,'+-',('++','-+','--'),(evidence,),0.1,(('runtime','subsecond'),('records','10')),StateDelta(add_interfaces=('aggregate_branch_posterior_fitted_but_not_validated',),add_facts=('NET1=+-',)),(('NET1=+-','entails','aggregate_branch_posterior_fitted_but_not_validated'),),('planner_reliability_improved',),s1,'2026-09-11T00:00:08Z');log=EventLog(g0,s0).append(top).append(ev)
+out={'schema':'marici.conjecture-replay.NET1-admitted-calibration-event.v1','events':[{'event_id':top.event_id,**asdict(top)},{'event_id':ev.event_id,**asdict(ev)}],'projection':asdict(log.project()),'disposition':'Do not replace uniform planning priors with the aggregate posterior for reliability claims.','passed':True};(R/'research/conjecture_replay/results/NET1_admitted_calibration_event.json').write_text(json.dumps(out,indent=2,default=list)+'\n');print(json.dumps({'passed':True,'outcome':'+-','disposition':out['disposition']}))

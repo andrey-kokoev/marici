@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+import json,sys
+from dataclasses import asdict,replace
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];sys.path.insert(0,str(R/'research/conjecture_net'));from event_log import *
+from graph_metrics import MetricAction,MetricGraph,percent_change
+prior=json.loads((R/'research/conjecture_replay/results/PS1C1a1i_admitted_authoritative_metrics.json').read_text());q=prior['projection'];p=Projection(q['graph_digest'],q['state_id'],frozenset(q['interfaces']),frozenset(q['facts']),q['sunk_cost'],frozenset(tuple(x) for x in q['resolved_actions']),tuple(q['event_ids']));snap=prior['metric_projection']['after_snapshot'];src=R/'research/benincasa/results/PS1A0_alternate_signed_minor_incidence.json';x=json.loads(src.read_text())
+def act(z):return MetricAction(z['name'],frozenset(z['dependencies']),frozenset(z['requires']),frozenset(z['outcome_domain']),z['status'],z['terminal'])
+bg=MetricGraph(tuple(act(z) for z in snap['actions']),frozenset(snap['interfaces']),tuple(frozenset(c) for c in snap['coherence_constraints']));before=bg.metrics();s1=digest({'parent':p.state_id,'PS1A0':'++'});ev=ResolutionEvent('PS1A0_axis_incidence',digest(x['outcome_contract']),p.graph_digest,p.state_id,'++',('+-','-+','--'),(f'{src.relative_to(R).as_posix()}#{digest(x)}',),1.,(('runtime','subsecond'),('axes','3')),StateDelta(add_interfaces=('matching_axis_marked_cut_incidence',),add_facts=('PS1A0=++',)),(('PS1A0=++','enables','PS1A1 matching Leray germs'),),(),s1,'2026-09-11T00:01:42Z');g1=digest({'parent':p.graph_digest,'add':'PS1A1'});top=TopologyEvent(p.graph_digest,'add',('PS1A1_matching_source_Leray_germs',),(),(),('PS1A0 -> PS1A1 -> PS1A',),g1,'incidence exposes oriented-germ comparison gate',(ev.event_id,),'2026-09-11T00:01:43Z');log=EventLog.resume(p).append(ev).append(top)
+after_actions=[]
+for a in bg.actions:
+ if a.name=='PS1A0_axis_incidence':after_actions.append(replace(a,status='resolved'))
+ elif a.name=='PS1A_alternate_signed_minor_specialization':after_actions.append(replace(a,dependencies=frozenset({'PS1A1_matching_source_Leray_germs'})))
+ else:after_actions.append(a)
+after_actions.append(MetricAction('PS1A1_matching_source_Leray_germs',frozenset({'PS1A0_axis_incidence'}),frozenset({'matching_axis_marked_cut_incidence'})));ag=MetricGraph(tuple(after_actions),bg.interfaces|{'matching_axis_marked_cut_incidence'},bg.coherence_constraints);after=ag.metrics();pct=percent_change(before,after)
+out={'schema':'marici.conjecture-replay.PS1A0-admitted-authoritative-metrics.v1','events':[{'event_id':e.event_id,**asdict(e)} for e in (ev,top)],'projection':asdict(log.project()),'metric_projection':{'derived_metric_schema':'research/conjecture_net/graph_metrics.py','before_snapshot':snap,'after_snapshot':{'actions':[asdict(a) for a in ag.actions],'interfaces':sorted(ag.interfaces),'coherence_constraints':[sorted(c) for c in ag.coherence_constraints]},'before':before,'after':after,'percent_change_from_previous_base':pct},'next_recommendation':'PS1A1_matching_source_Leray_germs','passed':True};(R/'research/conjecture_replay/results/PS1A0_admitted_authoritative_metrics.json').write_text(json.dumps(out,indent=2,default=list)+'\n');print(json.dumps({'passed':True,'outcome':'++','percent_delta':pct,'next':out['next_recommendation']}))

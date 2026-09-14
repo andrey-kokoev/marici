@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+"""Prospectively replan after the polynomial filtered-lowering obstruction."""
+import hashlib,json,sys
+from datetime import datetime,timezone
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];sys.path.insert(0,str(R/'research/conjecture_net'))
+from interpretation_planner import Action,Branch,Decoder,Effect,Implication,Planner,Proposition,State,OUTCOMES
+files=['research/voevodsky/results/exchange_odd_physical_operation_census_closure.json','research/benincasa/results/filtered_IBP_normal_crossing_core.json','research/benincasa/results/G12_divisor_pivot_acyclicity.json','research/benincasa/results/G12_scalar_polynomial_Hermite_equation.json','research/benincasa/results/G12_four_component_Hermite_image.json']
+freeze=[{'path':p,'sha256':hashlib.sha256((R/p).read_bytes()).hexdigest(),'bytes':(R/p).stat().st_size} for p in files]
+def act(name,cost,req,add):
+ branches={}
+ for o in OUTCOMES:
+  added=frozenset(add) if o=='++' else frozenset({f'{name}:{o}'})
+  conclusion=next(iter(added))
+  implication=Implication(Proposition('branch',(name,o),scope='action-resolution'),'entails',Proposition(conclusion,scope='planner-interface'),'branch certificate satisfying the frozen outcome contract')
+  branches[o]=Branch(.25,Effect(add=added), (implication,))
+ return Action(name,cost,frozenset(req),branches)
+actions=[act('VC1_controlled_rational_primitive_enlargement',9,['polynomial_lowering_obstructed'],['filtered_IBP_lowering']),act('VC2_multistage_relative_primitive_complex',14,['local_IBP_core'],['filtered_IBP_lowering']),act('VC3_apply_lowering_and_project',4,['filtered_IBP_lowering','physical_odd_shape_response'],['physical_valg_channel']),act('VC4_integral_normalization',7,['physical_valg_channel'],['integral_valg']),act('VC5_Smith_validation',3,['integral_valg','physical_e6'],['two_channel_physical_readout'])]
+dec=Decoder('VC5_Smith_validation',None,frozenset({'integral_valg','physical_e6','two_channel_physical_readout'}),'two_channel_physical_readout')
+initial=State(frozenset(),frozenset({'polynomial_lowering_obstructed','local_IBP_core','physical_odd_shape_response','physical_e6','marked_extension'}));v=Planner(actions,[dec],dec.target,require_implications=True).solve_expected(initial)
+contracts={'VC1_controlled_rational_primitive_enlargement':{'++':'rational primitives lower to simple poles, preserve the relative boundary, and introduce no support','+-':'algebraic lowering exists but boundary/support descent fails','-+':'allowed rational poles do not remove the stable residual','--':'coefficient ring or admissibility conditions cannot be typed'},'VC2_multistage_relative_primitive_complex':{'++':'finite coherent multistage lowering is constructed','+-':'local stages lower poles but fail global coherence','-+':'a persistent higher-pole quotient class survives','--':'complex cannot be typed with current source data'}}
+checks={'sources_frozen':all(x['bytes']>0 for x in freeze),'VC1_ranked_first':v.first_action=='VC1_controlled_rational_primitive_enlargement','application_requires_lowering':actions[2].requires==frozenset({'filtered_IBP_lowering','physical_odd_shape_response'}),'no_silent_enlargement':'filtered_IBP_lowering' not in initial.interfaces,'contracts_frozen_before_execution':set(contracts)=={'VC1_controlled_rational_primitive_enlargement','VC2_multistage_relative_primitive_complex'}};assert all(checks.values()),checks
+out={'schema':'marici.conjecture-replay.filtered-lowering-replan.v1','frozen_at_utc':datetime.now(timezone.utc).isoformat(),'source_freeze':freeze,'initial_interfaces':sorted(initial.interfaces),'actions':[{'name':a.name,'cost':a.cost,'requires':sorted(a.requires),'branches':{o:{'adds':sorted(a.branches[o].effect.add),'implications':[{'premise':{'name':i.premise.name,'args':list(i.premise.args),'positive':i.premise.positive,'scope':i.premise.scope},'relation':i.relation,'conclusion':{'name':i.conclusion.name,'args':list(i.conclusion.args),'positive':i.conclusion.positive,'scope':i.conclusion.scope},'evidence_requirement':i.evidence_requirement} for i in a.branches[o].implications]} for o in OUTCOMES}} for a in actions],'outcome_contracts':contracts,'prospective_policy':{'first_action':v.first_action,'success_probability_under_uniform_model':v.success,'expected_cost_with_abandonment':v.expected_cost},'model_warning':'Uniform outcome probabilities are bookkeeping priors, not calibrated scientific probabilities. The policy ranking is principally cost-sensitive.','commitment':'Execute VC1 first by declaring a bounded rational pole budget, solving the enlarged sparse image problem, and separately auditing new support and relative-boundary descent.','checks':checks,'passed':True}
+d=R/'research/conjecture_replay/results/filtered_lowering_replan.json';d.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'first':v.first_action,'success':v.success,'cost':v.expected_cost,'commitment':out['commitment']}))

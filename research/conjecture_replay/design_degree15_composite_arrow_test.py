@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+import json,sys
+from dataclasses import asdict
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];sys.path.insert(0,str(R/'research/conjecture_net'))
+from composite_arrow_tests import *
+# Direct and factored physical-descent routes share the expensive exact reconstruction.
+costs={'R_exact_degree15':8.,'D_direct_physical_pairing':3.,'X_exchange_transport':0.2,'B_signed_minor_restriction':2.,'G_relative_gluing':5.}
+t=CompositeArrowTest('VC3_degree15_physical_descent_commuting_square',(ArrowPath('direct',('R_exact_degree15','D_direct_physical_pairing')),ArrowPath('factored',('R_exact_degree15','X_exchange_transport','B_signed_minor_restriction','G_relative_gluing'))),costs,14.)
+t.validate();separate_info_per_cost=2*len(costs)/sum(costs.values());joint=t.information_per_cost();pct={'execution_count':100*(1-5)/5,'estimated_total_cost':t.cost_reduction_percent(),'information_per_cost':100*(joint-separate_info_per_cost)/separate_info_per_cost}
+out={'schema':'marici.conjecture-replay.degree15-composite-arrow-test-design.v1','prospective_test':{'name':t.name,'paths':[asdict(p) for p in t.paths],'individual_costs':costs,'joint_cost':t.joint_cost,'shared_computation':'R_exact_degree15 is executed once and its coefficient packet feeds both paths','evaluation':'compose observed four-valued arrows on each path; require equal composites'},'nonidentification_guard':'A pass certifies commuting-path coherence, not every constituent arrow. A failure returns all arrows in the two-path symmetric support for adaptive localization.','metric_projection':{'base':'five separate arrow tests','percent_change_from_previous_base':pct,'absolute_values_omitted_by_policy':True,'estimate_warning':'prospective engineering costs and uniform four-way entropy, not calibrated information gain'},'execution_gate':'Wait for an exact degree-15 coefficient packet; then freeze constituent outcome contracts before observing restrictions.','passed':True};p=R/'research/conjecture_replay/results/degree15_composite_arrow_test_design.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'test':t.name,'percent_delta':pct,'gate':out['execution_gate']}))
