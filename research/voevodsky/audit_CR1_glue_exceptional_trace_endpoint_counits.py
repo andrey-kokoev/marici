@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Audit endpoint-counit gluing of the primitive exceptional trace."""
+import json,subprocess,tempfile
+from pathlib import Path
+R=Path(__file__).resolve().parents[2]
+def run(n):
+ s=R/'research/voevodsky'/n;e=Path(tempfile.gettempdir())/(s.stem+'.exe');subprocess.run(['rustc','--edition=2021','-D','warnings','-O',str(s),'-o',str(e)],check=True);return json.loads(subprocess.check_output([str(e)],text=True))
+sy=run('check_d03_first_flip_line_valued_syzygy.rs');mx=run('check_positive_mixed_rees_top.rs');f=sy['factorization_test'];m=mx['factorization_test']
+checks={'endpoint_line_rank1':f['solution_module']=='R*(x5,X_D03)','primitive':f['primitive_orientation']=='+(x5,X_D03)','dual_normalized':len(f['ideal_dual_normalization'])==2,'mixed_d2':m['mixed_absolute_d_squared']=='passed','generic_Q_retained':m['generic_Q_leg']=='retained as q_Sigma','absolute_gluing_fails':m['formal_q_kill_absolute'].startswith('failed'),'BC_unconstructed':m['D3_costalk_Beck_Chevalley']=='unconstructed','spatial_identification_missing':any('spatial identification' in x for x in sy['unconstructed'])}
+assert all(checks.values()),checks
+out={'schema':'marici.voevodsky.CR1-glue-exceptional-trace-endpoint-counits.v1','action':'CR1PK1a2a1_glue_exceptional_trace_to_endpoint_counits','outcome':'-+','available':['primitive saturated endpoint-functional line R*(x5,X_D03)','dual evaluations normalize both endpoints without localization','D3-stable mixed block retaining qSigma and all three special galleries'],'obstruction':'the only primitive qSigma cancellation is endpoint-relative; absolutely its square is x1*b1+x3*b3+x5*b5, and no spatial/Beck-Chevalley map supplies the correction','missing':'D3-equivariant marked extraordinary-costalk comparison lifting all three tag maps and Tor1 copies','next':'CR1PK1a2a1a_construct_D3_equivariant_marked_costalk_BC','metric_delta':{'formal_coherence_survivors_percent':0.0,'geometrically_certified_complete_paths_percent':0.0,'new_typed_interfaces':1,'newly_blocked_descendant_branches':1},'checks':checks,'passed':True};p=R/'research/voevodsky/results/CR1_glue_exceptional_trace_endpoint_counits.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'outcome':'-+','survivors':32,'new_interfaces':1,'next':out['next']}))

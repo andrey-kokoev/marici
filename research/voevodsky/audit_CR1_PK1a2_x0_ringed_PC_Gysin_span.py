@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Audit the x0-side two-edge bivariant/Gysin span."""
+import json,subprocess,tempfile
+from pathlib import Path
+R=Path(__file__).resolve().parents[2]
+def run(n):
+ s=R/'research/voevodsky'/n;e=Path(tempfile.gettempdir())/(s.stem+'.exe');subprocess.run(['rustc','--edition=2021','-D','warnings','-O',str(s),'-o',str(e)],check=True);return json.loads(subprocess.check_output([str(e)],text=True))
+t=run('check_d03_two_edge_bivariant_trace.rs');p=run('check_d03_product_rees_occurrence_square.rs');f=t['factorization_test'];q=p['factorization_test']
+checks={'primitive_two_edge':f['primitive_concatenation']=='x1*e_c+X_D*e_r','middle_cancels':'cancels exactly' in f['shared_m_coefficient'],'normal_d2':f['d_squared']=='ZERO','no_torsion':f['torsion']=='NONE','target_Q_nonzero':f['p03']=='NONZERO primitive','product_Rees_exact':q['positive_Tor'].startswith('ZERO'),'all_four_peripheral':q['peripheral_boundary'].startswith('all four'),'spatial_pushforward_missing':any('nearby-cycle' in x for x in t['unconstructed'])}
+assert all(checks.values()),checks
+out={'schema':'marici.voevodsky.CR1-PK1a2-x0-ringed-PC-Gysin-span.v1','action':'CR1PK1a2_construct_x0_ringed_PC_Gysin_span','outcome':'+-','proved':['integral primitive x0-side two-edge coefficient correspondence','exact shared-middle lcm cancellation','full lower and double-overlap normal Cech terms with d2=0','torsion-free product-Rees occurrence square','nonzero primitive p03 and local target-Q collar attachment'],'missing':['exceptional-fibre nearby-cycle/extraordinary pushforward','universal corner selection retaining both deformation parameters','promotion to spatial alpha03 with endpoint/polarity coherence'],'new_interfaces':['x0_two_edge_bivariant_trace','primitive_product_Rees_p03_peripheral_lift'],'next':'CR1PK1a2a_construct_x0_exceptional_fibre_nearby_pushforward','metric_delta':{'formal_coherence_survivors_percent':0.0,'geometrically_certified_complete_paths_percent':0.0,'new_typed_interfaces':2,'resolved_descendant_actions':1},'checks':checks,'passed':True};pout=R/'research/voevodsky/results/CR1_PK1a2_x0_ringed_PC_Gysin_span.json';pout.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'outcome':'+-','new_interfaces':2,'survivors':32,'next':out['next']}))

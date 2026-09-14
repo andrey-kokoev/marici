@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+"""Final executable audit of the external nearby-cycle specialization gate."""
+import json
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];files=list((R/'research/voevodsky').glob('check_*.rs'));text='\n'.join(p.read_text() for p in files)
+positive_patterns=['global_sp_constructed":true','sp_G_constructed":true','sp_G(e_F)=[1]","status":"proved']
+checks={'checker_count':len(files),'no_positive_sp_construction':not any(x in text.replace(' ','') for x in positive_patterns),'undefined_sp_certified':'arrow_status":"UNDEFINED' in text,'gallery_Q_zero_certified':'gallery_source_kernel_Q_rank":0' in text,'target_unit_certified':'local_shifted_generator":"[1]' in text,'external_construction_requested':'external deformation/nearby-cycle' in text}
+assert all(v for k,v in checks.items() if k!='checker_count'),checks
+out={'schema':'marici.voevodsky.CR1-external-nearby-cycle-specialization-audit.v1','prospective_action':'CR1A1a1i1a1a2i1a1a2b1a1a1a1a1_construct_external_nearby_cycle_specialization','resolution':'--','searched_checkers':len(files),'available':['local extraordinary costalk R --U_D03--> R','nonzero shifted unit [1] after principal-ideal dual evaluation','global filtered blowup SDR and transported e_F'],'certified_obstruction':'the only marked gallery source factors through F1 and has relative-Q rank zero','missing':'an external six-functor nearby-cycle/deformation construction of sp_G with sp_G(e_F)=[1]','repository_construction_found':False,'executable_continuation_found':False,'effect_on_Agda':'CR1PhysicalSourcePackage remains uninhabited; RHCR1GalleryQNoGo prevents substituting ordinary gallery restriction','checks':checks,'passed':True};p=R/'research/voevodsky/results/CR1_external_nearby_cycle_specialization_audit.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'resolution':'--','searched':len(files),'executable_continuation':False}))

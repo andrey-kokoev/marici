@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+"""Final evidence audit for a nearby/vanishing-cycle D03 specialization."""
+import json
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];files=list((R/'research/voevodsky').glob('check_*.rs'));relevant=[];positive=[]
+for p in files:
+ s=p.read_text()
+ if 'nearby-cycle' in s or 'nearby cycle' in s or 'vanishing-cycle' in s:relevant.append(p.name)
+ if 'nearby_cycle_specialization":"PASS' in s.replace(' ','') or 'sp_G_constructed":true' in s.replace(' ',''):positive.append(p.name)
+checks={'relevant_evidence_exists':len(relevant)>0,'no_positive_specialization':not positive,'global_audit_negative':json.loads((R/'research/voevodsky/results/CR1_external_nearby_cycle_specialization_audit.json').read_text())['repository_construction_found'] is False,'local_target_exists':json.loads((R/'research/voevodsky/results/CR1_marked_extraordinary_Q_leg.json').read_text())['target']['shifted_generator']=='[1]'}
+assert all(checks.values()),(relevant,positive,checks)
+out={'schema':'marici.voevodsky.CR1SP2-nearby-vanishing-cycle-specialization.v1','action':'CR1SP2_nearby_vanishing_cycle_specialization','outcome':'--','searched_checkers':len(files),'relevant_mentions':relevant,'positive_constructions':positive,'available':['local log-blowup relative carrier','Cartier residue +1','transported Yoneda e_F','target shifted generator [1]'],'missing':'a nearby/vanishing-cycle functor and its extraordinary pull-push map from e_F to the D03 costalk','parent_resolution':{'action':'construct_external_nearby_cycle_specialization','aggregation':'existential *+','branch_outcomes':{'DNC':'--','nearby_cycles':'--','Ext1_Gysin':'-+','Cousin':'-+','non_gallery_Q':'-+'},'outcome':'-+'},'metric_delta':{'active_local_specialization_branches':-1,'blocked_specialization_branches':1,'executable_specialization_paths':-1,'geometrically_certified_complete_paths_percent':0.0},'final_metrics':{'formal_signed_coherence_assignments':32,'executable_specialization_paths':0,'geometrically_certified_complete_paths':0,'active_specialization_branches':0,'blocked_specialization_branches':5,'typed_interfaces_accumulated':17},'next_required_input':'new external six-functor nearby-cycle, supported-Cousin, or geometric Ext1-Gysin construction','checks':checks,'passed':True};p=R/'research/voevodsky/results/CR1SP2_nearby_vanishing_cycle_specialization.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'outcome':'--','parent':'-+','active_branches':0,'executable_paths':0,'formal_assignments':32}))

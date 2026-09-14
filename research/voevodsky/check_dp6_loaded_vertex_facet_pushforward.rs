@@ -208,8 +208,10 @@ fn main() {
         )
         .unwrap()
         .1;
-        let restricted_sign = if permutation[0] < permutation[1] { 1 } else { -1 };
-        assert_eq!(transported, restricted_sign * source);
+        // Transport also acts on the orientation of the ambient three-axis
+        // volume.  Comparing only the relative order of the first two axes
+        // misses the even 3-cycles (for example [2,0,1]).
+        assert_eq!(transported, permutation_sign(permutation) * source);
     }
 
     // Choosing either contraction order supplies one unit pivot per literal

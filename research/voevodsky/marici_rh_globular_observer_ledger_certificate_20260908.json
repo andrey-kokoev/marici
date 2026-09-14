@@ -1,0 +1,152 @@
+{
+  "acceptance_test": "the map types all endpoint ports on the same preparation, commutes with the established theta and endpoint restrictions, and supplies evidence locators independent of target-rank data",
+  "active_frontier": [
+    "endpoint-incidence-24"
+  ],
+  "cells": [
+    {
+      "id": "theta-incidence",
+      "kind": "source-incidence",
+      "rung": 0,
+      "source": "global-source",
+      "status": "proved",
+      "target": "theta-source"
+    },
+    {
+      "id": "xi-null-fibre",
+      "kind": "derived-zero-fibre",
+      "rung": 0,
+      "source": "theta-source",
+      "status": "proved",
+      "target": "relative-null"
+    },
+    {
+      "id": "fourier-observer",
+      "kind": "joint-readout",
+      "rung": 0,
+      "source": "theta-source",
+      "status": "proved-algebraically",
+      "target": "theta-source"
+    },
+    {
+      "id": "endpoint-incidence-24",
+      "kind": "source-incidence",
+      "rung": 0,
+      "source": "global-source",
+      "status": "missing-common-source-leg",
+      "target": "endpoint-conductor"
+    },
+    {
+      "id": "framed-endpoint-local",
+      "kind": "24-local-maps",
+      "rung": 0,
+      "source": "endpoint-conductor",
+      "status": "proved",
+      "target": "endpoint-conductor"
+    },
+    {
+      "id": "global-fourier-sewing",
+      "kind": "comparison",
+      "rung": 1,
+      "source": "theta-incidence",
+      "status": "proved-before-cutoff",
+      "target": "fourier-observer"
+    },
+    {
+      "id": "finite-cutoff-BC",
+      "kind": "comparison",
+      "rung": 1,
+      "source": "theta-incidence",
+      "status": "falsified-rank-one-leakage",
+      "target": "fourier-observer"
+    },
+    {
+      "id": "xi-bordered-endpoint",
+      "kind": "comparison",
+      "rung": 1,
+      "source": "xi-null-fibre",
+      "status": "proved-target-incidence-only",
+      "target": "framed-endpoint-local"
+    },
+    {
+      "id": "relative-null-endpoint-BC",
+      "kind": "coherence",
+      "rung": 2,
+      "source": "global-fourier-sewing",
+      "status": "missing",
+      "target": "xi-bordered-endpoint"
+    },
+    {
+      "id": "endpoint-P24-detector",
+      "kind": "coherence-detector",
+      "rung": 2,
+      "source": "framed-endpoint-local",
+      "status": "proved-diagnostic",
+      "target": "xi-bordered-endpoint"
+    },
+    {
+      "id": "green-current",
+      "kind": "dynamic-incidence",
+      "rung": 0,
+      "source": "global-source",
+      "status": "proved-conditional-response",
+      "target": "green-work"
+    },
+    {
+      "id": "boundary-work-promotion",
+      "kind": "promotion-to-green-work",
+      "rung": 3,
+      "source": "relative-null-endpoint-BC",
+      "status": "missing",
+      "target": "endpoint-P24-detector"
+    },
+    {
+      "id": "positive-bulk",
+      "kind": "positivity",
+      "rung": 0,
+      "source": "global-source",
+      "status": "independent-open-admission",
+      "target": "green-work"
+    },
+    {
+      "id": "completion-domain",
+      "kind": "resource-domain",
+      "rung": 0,
+      "source": "global-source",
+      "status": "open-uniform-margin",
+      "target": "completed-sewing"
+    }
+  ],
+  "checks": 58,
+  "downstream": [
+    "completion-domain",
+    "relative-null-endpoint-BC",
+    "boundary-work-promotion"
+  ],
+  "first_missing_typed_object": "a source-authorized map from the frozen global theta/Tate preparation to the marked endpoint/conormal preparation, with a joint-acquisition capability for theta/Fourier and endpoint observers",
+  "next_object": "the common-source endpoint incidence; completion and higher coherence remain downstream",
+  "nodes": [
+    "global-source",
+    "theta-source",
+    "relative-null",
+    "completed-sewing",
+    "endpoint-conductor",
+    "green-work"
+  ],
+  "prohibitions": [
+    "do not combine observer families before common-source transport",
+    "do not promote a diagnostic residual without a promotion cell",
+    "do not infer positivity from conformance",
+    "do not impose finite Fourier Beck-Chevalley",
+    "do not let higher rungs manufacture missing level-zero incidence"
+  ],
+  "residual_policy": {
+    "approximation": "bound and converge",
+    "local-transition": "trivialize before descent",
+    "observer-invisibility": "prove joint faithfulness",
+    "positive-residual": "preserve and prove positive",
+    "presentation": "quotient"
+  },
+  "schema": "marici.rh.globular-observer-ledger.v1",
+  "status": "typed"
+}

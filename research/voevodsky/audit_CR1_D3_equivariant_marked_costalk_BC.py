@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Audit D3-equivariant lifting of the marked gallery costalk map."""
+import json,subprocess,tempfile
+from pathlib import Path
+R=Path(__file__).resolve().parents[2]
+def run(n):
+ s=R/'research/voevodsky'/n;e=Path(tempfile.gettempdir())/(s.stem+'.exe');subprocess.run(['rustc','--edition=2021','-D','warnings','-O',str(s),'-o',str(e)],check=True);return json.loads(subprocess.check_output([str(e)],text=True))
+tag=run('check_d03_whole_gallery_tag_gysin.rs');rot=run('check_three_rotated_gallery_top_gluing.rs');c=tag['checks']
+checks={'whole_gallery_map':c['whole_gallery_BM_class']=='PASS','positive_tag':c['entry94_D03_tag']=='PASS +t3','orientation':c['induced_boundary_orientation']=='PASS -xi','full_PC_missing':c['full_PC_extraordinary_costalk']=='NOT CONSTRUCTED','rotated_not_bounded':'not bounded' in rot['claim'],'exact_D3_blocker':'D3-equivariant' in rot['exact_blocker']}
+assert all(checks.values()),checks
+out={'schema':'marici.voevodsky.CR1-D3-equivariant-marked-costalk-BC.v1','action':'CR1PK1a2a1a_construct_D3_equivariant_marked_costalk_BC','outcome':'-+','proved':['canonical whole-gallery associated-grade BM/Gysin class on D03','orientation-normalized value -[xi] -> +t3','edge representatives cohomologous modulo internal vertices','no x3 or integer inversion'],'obstruction':'the rotated generic sum is not bounded relative to the four endpoints; quotienting by B_short also removes all three special galleries','missing':'variance-correct full PC extraordinary-costalk lift before D3 rotation','new_interfaces':['D03_supported_associated_grade_gallery_Gysin','positive_D03_tag_orientation_normalization'],'refinement':['CR1PK1a2a1a1_construct_single_D03_full_PC_costalk_lift','CR1PK1a2a1a2_rotate_full_lift_to_F14_F25','CR1PK1a2a1a3_verify_D3_endpoint_coherence'],'metric_delta':{'formal_coherence_survivors_percent':0.0,'geometrically_certified_complete_paths_percent':0.0,'new_typed_interfaces':2,'newly_blocked_descendant_branches':1},'checks':checks,'passed':True};p=R/'research/voevodsky/results/CR1_D3_equivariant_marked_costalk_BC.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'outcome':'-+','survivors':32,'new_interfaces':2,'next':out['refinement'][0]}))

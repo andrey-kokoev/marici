@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Audit identification of the intrinsic interior target with literal entry143 Q."""
+import json,subprocess,tempfile
+from pathlib import Path
+R=Path(__file__).resolve().parents[2]
+def run(n):
+ s=R/'research/voevodsky'/n;e=Path(tempfile.gettempdir())/(s.stem+'.exe');subprocess.run(['rustc','--edition=2021','-D','warnings','-O',str(s),'-o',str(e)],check=True);return json.loads(subprocess.check_output([str(e)],text=True))
+l=run('check_cross_polytope_literal_support_no_go.rs');i=run('check_conductor_cross_polytope_interior_gysin.rs')
+checks={'interior_unit':i['interior_counit']==1,'unsupported_edges':l['distinct_cross_sheet_unsupported_edges']==6,'empty_faces':l['triple_support_empty_faces']==8,'no_edge_corestrictions':not l['ordinary_cross_edge_corestrictions_exist'],'no_face_corestrictions':not l['ordinary_face_corestrictions_exist'],'extraordinary_required':l['extraordinary_cross_edge_and_face_maps_required'],'no_global_nogo':not l['global_extraordinary_correspondence_no_go'],'literal_missing':not i['literal_entry143_interior_map_constructed']}
+assert all(checks.values()),checks
+out={'schema':'marici.voevodsky.CR1-interior-target-literal-entry143-Q.v1','action':'CR1QCOUN1b_identify_interior_target_with_literal_entry143_Q','outcome':'-+','available':['intrinsic reflection-odd interior Gysin of unit value','literal entry143 Q top'],'obstruction':'all eight cross-polytope faces have empty triple support and six cross-sheet edges are unsupported, so no ordinary face-poset corestriction reaches literal Q','scope':'this is not a no-go for extraordinary cross-edge/face maps','refinement':['CR1QCOUN1b1_construct_six_extraordinary_cross_edge_maps','CR1QCOUN1b2_construct_eight_extraordinary_empty_support_face_maps','CR1QCOUN1b3_glue_relative_interior_to_literal_Q'],'next':'CR1QCOUN1c_verify_endpoint_framing','metric_delta':{'active_literal_Q_identifications':-1,'blocked_literal_Q_identifications':1,'new_typed_interfaces':0,'ordinary_support_routes_eliminated':1},'checks':checks,'passed':True};p=R/'research/voevodsky/results/CR1_interior_target_literal_entry143_Q.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'outcome':'-+','unsupported_edges':6,'empty_faces':8,'ordinary_routes':0,'next':out['next']}))

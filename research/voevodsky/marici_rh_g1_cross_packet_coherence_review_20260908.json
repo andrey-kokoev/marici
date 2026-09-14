@@ -1,0 +1,47 @@
+{
+  "schema": "marici.rh.g1-cross-packet-coherence-review.v1",
+  "status": "coherent_closure_recommendation_no_ledger_mutation",
+  "selected_object": "prime/grade-labelled source-retained saturated joint graph",
+  "gates": {
+    "G1.1": {
+      "verdict": "coherent closure candidate",
+      "constructor": "retained causal-history graph with reciprocal quarter-turn outputs",
+      "lower_bound": "Q_+^*Q_+, Q_-^*Q_- >= I/8",
+      "compression": "V_src^* iT V_src = i tau [[0,-1],[1,0]], tau=-||Phi||_2^2"
+    },
+    "G1.2": {
+      "verdict": "coherent closure candidate on retained graph only",
+      "constructor": "strict endpoint lift and closed reciprocal half-density histories",
+      "radical": "zero on retained joint graph after compatible even zero-trace quotient",
+      "excluded": "output-only codiagonal has dense nonclosed range"
+    },
+    "G1.3": {
+      "verdict": "coherent closure candidate",
+      "constructor": "Gamma_12 direct-sum Gamma_>=3",
+      "orientation": "S_12=diag(-1,+1)",
+      "margin": ">0.244",
+      "tail": "separate nuclear connected return before fibrewise grade codiagonal"
+    },
+    "G1.4": {
+      "verdict": "coherent closure candidate",
+      "off_prime_block": "P_q G P_p=0 for p!=q",
+      "condition": "terminal scalar evaluator occurs after polarization"
+    }
+  },
+  "constructor_order": [
+    "retain prime and grade source idempotents",
+    "form causal/window/cut/Wronskian graph outputs",
+    "form polarized direct-sum Green form",
+    "apply within-prime grade codiagonal",
+    "apply terminal cross-prime scalar evaluator only after G1"
+  ],
+  "compatibility": {
+    "domains": "common retained graph domains; no output-only range claim",
+    "idempotents": "all G1 maps commute with prime cutoffs; grade mixing only within fixed prime",
+    "radicals": "source identity coordinate prevents radical collapse; declared even zero-trace quotient is compatible",
+    "frame_note": "real Hadamard resolved-port frame and complex reciprocal quarter-turn frame are distinct faithful readouts, not competing constructor orders"
+  },
+  "ledger_mutation_authorized": false,
+  "rh_claim": false,
+  "later_gates": "G2-G4 remain open"
+}

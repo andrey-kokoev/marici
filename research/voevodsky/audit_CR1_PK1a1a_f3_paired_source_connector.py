@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Audit available constructions of the f3-paired endpoint source connector."""
+import json,subprocess,tempfile
+from pathlib import Path
+R=Path(__file__).resolve().parents[2]
+def run(n):
+ s=R/'research/voevodsky'/n;e=Path(tempfile.gettempdir())/(s.stem+'.exe');subprocess.run(['rustc','--edition=2021','-D','warnings','-O',str(s),'-o',str(e)],check=True);return json.loads(subprocess.check_output([str(e)],text=True))
+g=run('check_d03_generic_incidence_pairing_obstruction.rs');m=run('check_marked_exit_yoneda_census.rs')
+checks={'primitive_incidence_pairing_fails':g['factorization_test']['primitive_k_plus_or_minus_one'].startswith('FAIL'),'smallest_solution_x3_loaded':'k=x3' in g['factorization_test']['smallest_monomial_solution'],'marked_exit_zero':m['carrier_homology']['marked_composite']=='zero','qSigma_nonzero':m['carrier_homology']['qSigma_primitive'],'variance_mismatch':'not H1' in m['ext_typing']['variance'],'extraordinary_dual_outside_scope':g['factorization_test']['principal_ideal_dual'].startswith('OUTSIDE SCOPE')}
+assert all(checks.values()),checks
+out={'schema':'marici.voevodsky.CR1-PK1a1a-f3-paired-source-connector.v1','action':'CR1PK1a1a_construct_f3_paired_source_connector','outcome':'-+','proved':['matching source/target incidences fix the orientation sign','smallest legal chain solution has connector coefficient x3','support carrier transgression is saturated rank two','qSigma is a separate primitive norm class'],'obstructions':['no primitive unit connector over unlocalized coefficients','the marked-exit composite of the support connector is zero','e_F pullback remains Ext2 and does not become the qSigma H1 class'],'forbidden_shortcuts':['invert x3 and erase conductor support','rebrand principal-ideal dual evaluation as a global incidence map'],'refinement':['CR1PK1a1a1_construct_one_road_prequotient_graph_multi_DNC_correspondence','CR1PK1a1a2_verify_localization_triangle_nonzero_Q_leg','CR1PK1a1a3_compare_f3_reflection_of_source_connectors'],'checks':checks,'passed':True};p=R/'research/voevodsky/results/CR1_PK1a1a_f3_paired_source_connector.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'outcome':'-+','marked_exit':'zero','primitive_connector':False,'next':out['refinement'][0]}))

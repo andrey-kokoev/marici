@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Audit and orbit-refine the eight cross-polytope face BC maps."""
+import json,subprocess,tempfile
+from pathlib import Path
+R=Path(__file__).resolve().parents[2]
+def run(n):
+ s=R/'research/voevodsky'/n;e=Path(tempfile.gettempdir())/(s.stem+'.exe');subprocess.run(['rustc','--edition=2021','-D','warnings','-O',str(s),'-o',str(e)],check=True);return json.loads(subprocess.check_output([str(e)],text=True))
+c=run('check_conductor_cross_polytope_carrier.rs');n=run('check_cross_polytope_equivariant_top_trace_no_go.rs');p=run('check_d03_plus_excess_beck_chevalley.rs')
+f=p['factorization_test'];checks={'faces8':c['faces']==8,'carrier_exact':c['d1_smith_nonzero_all_ones'] and c['d2_smith_nonzero_all_ones'],'D3_reflection':c['D3'] and c['reflection'],'orbits':n['face_orbits']==[2,6],'plus_local_excess':f['excess_complex'].startswith('PASS'),'plus_BC_untyped':f['beck_chevalley'].startswith('INCONCLUSIVE'),'maps_missing':not c['loaded_face_BC_maps_constructed'],'six_functor_missing':not c['six_functor_realization_constructed']}
+assert all(checks.values()),checks
+out={'schema':'marici.voevodsky.CR1-eight-loaded-face-BC-maps.v1','action':'CR1QCOUN1a_construct_eight_loaded_face_BC_maps','outcome':'--','available':['integral eight-face carrier with primitive H2 class','D3 and reflection action','canonical local eta-wedge excess map on the marked plus/D03 face'],'missing':'six-functor loaded face maps; the local excess map has no augmented dual-block/Cousin source kernel','orbit_refinement':{'face_orbits':[2,6],'children':['CR1QCOUN1a1_construct_pure_sheet_face_BC_representative','CR1QCOUN1a2_construct_mixed_sheet_face_BC_representative','CR1QCOUN1a3_extend_by_D3_reflection_and_check_boundaries'],'aggregation':'both representatives ++, then equivariant extension ++'},'next':'CR1QCOUN1a1_construct_pure_sheet_face_BC_representative','metric_delta':{'active_face_BC_actions':2,'declared_face_actions':3,'new_typed_interfaces':0,'resolved_parent_actions':1,'formal_face_assignment_reduction':'4^8 to two orbit representatives before coherence'},'checks':checks,'passed':True};q=R/'research/voevodsky/results/CR1_eight_loaded_face_BC_maps.json';q.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'outcome':'--','faces':8,'orbits':[2,6],'active_representatives':2,'next':out['next']}))

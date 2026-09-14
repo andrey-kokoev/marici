@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Construct the first vertex after the normalization-sheet source."""
+import json,subprocess,tempfile
+from pathlib import Path
+R=Path(__file__).resolve().parents[2]
+def run(n):
+ s=R/'research/voevodsky'/n;e=Path(tempfile.gettempdir())/(s.stem+'.exe');subprocess.run(['rustc','--edition=2021','-D','warnings','-O',str(s),'-o',str(e)],check=True);return json.loads(subprocess.check_output([str(e)],text=True))
+c=run('check_conductor_road_endpoint_pullback.rs');p=run('check_physical_polarity_butterfly.rs');f=c['factorization_test'];e=p['exact_test']
+checks={'pullback_d2':f['d_squared']=='PASS','D3':f['D3_covariance'].startswith('PASS'),'primitive_H1':f['homology'].startswith('H1=Z_or'),'torsionfree':'no torsion' in f['homology'],'polarity_trivial':f['once_polarity_loaded_homology']=='Z_triv','loaded_H1_zero':p['exact_test']['integral_LHS']['loaded_H1']=='0','loaded_H2_Z2':p['exact_test']['integral_LHS']['loaded_H2']=='Z/2','spatial_not_claimed':'not an asserted support-PC realization' in c['assumptions'][-1]}
+assert all(checks.values()),checks
+out={'schema':'marici.voevodsky.CR1-alpha-path-endpoint-homotopy-pullback.v1','action':'CR1ALPHA1_construct_polarity_loaded_endpoint_homotopy_pullback','outcome':'++','source':'S_sh^{norm,reg}: two normalization sheets with conductor difference','constructed_vertex':{'name':'C_partial_coeff tensor L_pol','complex_ranks':[1,4,5,1],'homology_before_loading':'H1=Z_or only, primitive and torsion-free','homology_after_relative_polarity_loading':'primitive line Z_triv','D3_equivariant':True},'path_next':'CR1ALPHA2_construct_mixed_variance_normalization_sheet_kernel','boundary':'This is the exact coefficient/carrier homotopy pullback; its lift to one support-PC category is the next map, not part of this vertex construction.','produces':['polarity_loaded_endpoint_homotopy_pullback'],'metric_delta':{'resolved_alpha_path_vertices':1,'remaining_alpha_path_edges':-1,'new_typed_interfaces':1,'local_gate_entropy_bits':-2.0},'checks':checks,'passed':True};q=R/'research/voevodsky/results/CR1_alpha_path_endpoint_homotopy_pullback.json';q.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'outcome':'++','vertex':out['constructed_vertex']['name'],'ranks':[1,4,5,1],'next':out['path_next']}))

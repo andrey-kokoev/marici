@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Audit transport of the proved x3 edge packet to x4 under physical f3."""
+import json,subprocess,tempfile
+from pathlib import Path
+R=Path(__file__).resolve().parents[2]
+def run(name):
+ src=R/'research/voevodsky'/name;exe=Path(tempfile.gettempdir())/(src.stem+'.exe');subprocess.run(['rustc','--edition=2021','-D','warnings','-O',str(src),'-o',str(exe)],check=True);return json.loads(subprocess.check_output([str(exe)],text=True))
+refl=run('check_d03_physical_reflection_edge_purity.rs');cox=run('check_d03_toric_cox_cousin_trace.rs')
+f=refl['factorization_test'];checks={'x3_occurrence_map':cox['checks']['x3_occurrence_Koszul_Cech_Gysin']=='PASS','target_edge_exchange':f['edge_exchange'].startswith('x3<->x4'),'purity_natural':f['cartier_purity_naturality']=='strict','lower_Cech_natural':f['lower_koszul_cech'].startswith('all'),'target_square':f['loaded_target_square']=='identity','source_connector_absent':any('support/Yoneda' in x or 'source connector' in x for x in refl['counterevidence'])}
+assert all(checks.values()),checks
+out={'schema':'marici.voevodsky.CR1-PK1a1-x4-ringed-PC-Gysin-span.v1','action':'CR1PK1a1_construct_x4_ringed_PC_Gysin_span','outcome':'-+','outcome_contract':{'++':'f3 transports both source span and target Gysin map to x4','+-':'x4 span is typed but an orientation/coherence comparison remains','-+':'target x4 packet is canonically transported but the reflected source connector is absent','--':'neither source nor target x4 packet exists'},'proved':['strict semilinear f3 on the absolute support-PC target','x3<->x4 Cartier edge exchange','purity, Tor, Bockstein, endpoint, and lower Cech naturality','target reflection square is identity after retained polarity sign'],'missing':'f3-paired endpoint-coherent source/Yoneda connector with a nonzero Q leg','consequence':'target symmetry cannot manufacture the x4 ringed-PC Gysin span','refinement':['CR1PK1a1a_construct_f3_paired_source_connector','CR1PK1a1b_compare_reflected_source_target_square'],'checks':checks,'passed':True};p=R/'research/voevodsky/results/CR1_PK1a1_x4_ringed_PC_Gysin_span.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'outcome':'-+','target_x4':True,'source_connector':False,'next':out['refinement'][0]}))

@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Audit the exceptional-fibre pushforward in the labelled double-Rees model."""
+import json,subprocess,tempfile
+from pathlib import Path
+R=Path(__file__).resolve().parents[2]
+def run(n):
+ s=R/'research/voevodsky'/n;e=Path(tempfile.gettempdir())/(s.stem+'.exe');subprocess.run(['rustc','--edition=2021','-D','warnings','-O',str(s),'-o',str(e)],check=True);return json.loads(subprocess.check_output([str(e)],text=True))
+t=run('check_d03_central_exceptional_trace.rs');q=run('check_d03_global_log_blowup_relative_q.rs');f=t['factorization_test']
+checks={'labelled_double_fibre':'canonically P' in t['claim'],'Cartier_cancel':f['Cartier_cancellation'].endswith('=O'),'chain_map':f['cellular_differentials'].startswith('PASS'),'primitive_trace':f['relative_BM_top'].endswith('+1'),'legal_target':'e_r=' in f['target'],'global_Q_zero':q['result']['exceptional_gallery']['relative_Q_image']=='zero','global_gluing_missing':any('global gluing' in x for x in t['unconstructed'])}
+assert all(checks.values()),checks
+out={'schema':'marici.voevodsky.CR1-x0-exceptional-fibre-nearby-pushforward.v1','action':'CR1PK1a2a_construct_x0_exceptional_fibre_nearby_pushforward','outcome':'+-','proved':['canonical labelled double exceptional fibre P1_occ x P1_norm','Cartier cancellation O(-1,-1)[1] tensor O(1,1)[-1] = O','strict cellular normal-fibre integration','crossed-corner modes killed by normal degree','primitive BM trace k=+1 to the legal e_r target'],'unresolved':['identification as a global nearby-cycle extraordinary pushforward','gluing to endpoint counits and other roads','nonzero global Q source leg; the canonical exceptional gallery still has zero Q image'],'new_interfaces':['local_double_Rees_normal_fibre_pushforward','primitive_positive_e_r_BM_trace'],'next':'CR1PK1a2a1_glue_exceptional_trace_to_endpoint_counits','metric_delta':{'formal_coherence_survivors_percent':0.0,'geometrically_certified_complete_paths_percent':0.0,'new_typed_interfaces':2,'resolved_descendant_actions':1},'checks':checks,'passed':True};p=R/'research/voevodsky/results/CR1_x0_exceptional_fibre_nearby_pushforward.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'passed':True,'outcome':'+-','primitive_trace':1,'survivors':32,'next':out['next']}))

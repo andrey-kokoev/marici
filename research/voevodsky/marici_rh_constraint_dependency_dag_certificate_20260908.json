@@ -1,0 +1,247 @@
+{
+  "checks": 37,
+  "critical_path": [
+    "freeze-source",
+    "endpoint-incidence",
+    "common-completed-domain",
+    "global-fourier-sewing",
+    "completed-endpoint-observation",
+    "relative-null-endpoint-coherence",
+    "identify-coherence-boundary",
+    "promote-boundary-to-D-bw",
+    "prove-promoted-vanishing",
+    "hermitian-confinement"
+  ],
+  "edges": [
+    {
+      "from": "freeze-source",
+      "to": "theta-incidence"
+    },
+    {
+      "from": "freeze-source",
+      "to": "endpoint-incidence"
+    },
+    {
+      "from": "theta-incidence",
+      "to": "common-completed-domain"
+    },
+    {
+      "from": "endpoint-incidence",
+      "to": "common-completed-domain"
+    },
+    {
+      "from": "common-completed-domain",
+      "to": "global-fourier-sewing"
+    },
+    {
+      "from": "global-fourier-sewing",
+      "to": "relative-null-fibre"
+    },
+    {
+      "from": "global-fourier-sewing",
+      "to": "completed-endpoint-observation"
+    },
+    {
+      "from": "endpoint-incidence",
+      "to": "completed-endpoint-observation"
+    },
+    {
+      "from": "relative-null-fibre",
+      "to": "relative-null-endpoint-coherence"
+    },
+    {
+      "from": "completed-endpoint-observation",
+      "to": "relative-null-endpoint-coherence"
+    },
+    {
+      "from": "relative-null-endpoint-coherence",
+      "to": "identify-coherence-boundary"
+    },
+    {
+      "from": "identify-coherence-boundary",
+      "to": "promote-boundary-to-D-bw"
+    },
+    {
+      "from": "promote-boundary-to-D-bw",
+      "to": "prove-promoted-vanishing"
+    },
+    {
+      "from": "relative-null-fibre",
+      "to": "prove-promoted-vanishing"
+    },
+    {
+      "from": "common-completed-domain",
+      "to": "positive-bulk-admission"
+    },
+    {
+      "from": "prove-promoted-vanishing",
+      "to": "hermitian-confinement"
+    },
+    {
+      "from": "positive-bulk-admission",
+      "to": "hermitian-confinement"
+    },
+    {
+      "from": "hermitian-confinement",
+      "to": "finite-six-normal-diagnostics"
+    },
+    {
+      "from": "completed-endpoint-observation",
+      "to": "finite-six-normal-diagnostics"
+    }
+  ],
+  "forbidden_reversals": [
+    [
+      "finite-six-normal-diagnostics",
+      "global-fourier-sewing"
+    ],
+    [
+      "relative-null-endpoint-coherence",
+      "endpoint-incidence"
+    ],
+    [
+      "promote-boundary-to-D-bw",
+      "identify-coherence-boundary"
+    ],
+    [
+      "hermitian-confinement",
+      "positive-bulk-admission"
+    ]
+  ],
+  "next_ready_task": "endpoint-incidence: construct the common-source leg from the global theta/Tate source before completion",
+  "parallel_branches": [
+    [
+      "theta-incidence",
+      "endpoint-incidence"
+    ],
+    [
+      "completed-endpoint-observation",
+      "relative-null-fibre"
+    ],
+    [
+      "positive-bulk-admission",
+      "relative-null-endpoint-coherence"
+    ]
+  ],
+  "rule": "finite diagnostics are downstream evidence and may not be used to manufacture global sewing or source incidence",
+  "schema": "marici.rh.constraint-dependency-dag.v1",
+  "status": "typed",
+  "tasks": [
+    {
+      "depends_on": [],
+      "id": "freeze-source",
+      "status": "established",
+      "topological_index": 0
+    },
+    {
+      "depends_on": [
+        "freeze-source"
+      ],
+      "id": "theta-incidence",
+      "status": "established",
+      "topological_index": 1
+    },
+    {
+      "depends_on": [
+        "freeze-source"
+      ],
+      "id": "endpoint-incidence",
+      "status": "open-common-source-leg",
+      "topological_index": 2
+    },
+    {
+      "depends_on": [
+        "theta-incidence",
+        "endpoint-incidence"
+      ],
+      "id": "common-completed-domain",
+      "status": "open",
+      "topological_index": 3
+    },
+    {
+      "depends_on": [
+        "common-completed-domain"
+      ],
+      "id": "global-fourier-sewing",
+      "status": "established-before-cutoff",
+      "topological_index": 4
+    },
+    {
+      "depends_on": [
+        "global-fourier-sewing"
+      ],
+      "id": "relative-null-fibre",
+      "status": "established-algebraically",
+      "topological_index": 5
+    },
+    {
+      "depends_on": [
+        "global-fourier-sewing",
+        "endpoint-incidence"
+      ],
+      "id": "completed-endpoint-observation",
+      "status": "open",
+      "topological_index": 6
+    },
+    {
+      "depends_on": [
+        "relative-null-fibre",
+        "completed-endpoint-observation"
+      ],
+      "id": "relative-null-endpoint-coherence",
+      "status": "open",
+      "topological_index": 7
+    },
+    {
+      "depends_on": [
+        "relative-null-endpoint-coherence"
+      ],
+      "id": "identify-coherence-boundary",
+      "status": "open",
+      "topological_index": 8
+    },
+    {
+      "depends_on": [
+        "identify-coherence-boundary"
+      ],
+      "id": "promote-boundary-to-D-bw",
+      "status": "open",
+      "topological_index": 9
+    },
+    {
+      "depends_on": [
+        "promote-boundary-to-D-bw",
+        "relative-null-fibre"
+      ],
+      "id": "prove-promoted-vanishing",
+      "status": "open",
+      "topological_index": 10
+    },
+    {
+      "depends_on": [
+        "common-completed-domain"
+      ],
+      "id": "positive-bulk-admission",
+      "status": "open-independent",
+      "topological_index": 11
+    },
+    {
+      "depends_on": [
+        "prove-promoted-vanishing",
+        "positive-bulk-admission"
+      ],
+      "id": "hermitian-confinement",
+      "status": "machine-checked-conditional",
+      "topological_index": 12
+    },
+    {
+      "depends_on": [
+        "hermitian-confinement",
+        "completed-endpoint-observation"
+      ],
+      "id": "finite-six-normal-diagnostics",
+      "status": "established-object-deferred-use",
+      "topological_index": 13
+    }
+  ]
+}
