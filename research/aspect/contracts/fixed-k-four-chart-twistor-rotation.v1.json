@@ -1,0 +1,38 @@
+{
+  "schema": "marici.scc.fixed-k-four-chart-twistor-rotation.v1",
+  "status": "constructed_on_transported_common_graph_topology",
+  "source": "research/voevodsky/the-retained-four-chart-graph-has-an-explicit-order-four-twistor-rotation.md",
+  "parameter": {
+    "name": "k",
+    "meaning": "fixed parameter indexing one retained common graph M_k; it is held constant during chart rotation",
+    "cross_dimension_seam": false
+  },
+  "common_carrier": {
+    "base": "M_k",
+    "charts": ["V_tilde_1,k", "V_tilde_2,k", "V_tilde_3,k", "V_tilde_4,k"],
+    "chart_maps": "e_i,k:M_k isomorphism V_tilde_i,k",
+    "twistor_carrier": "T_k=coproduct_(i in Z/4) V_tilde_i,k",
+    "topology": "each chart has topology transported from M_k"
+  },
+  "operator": {
+    "name": "tau_k",
+    "action": "tau_k(e_i,k(m))=e_(i+1 mod 4),k(m)",
+    "inverse": "tau_k^-1(e_i,k(m))=e_(i-1 mod 4),k(m)",
+    "fourth_power": "tau_k^4=id_T_k",
+    "continuous": true,
+    "homeomorphism": true
+  },
+  "edge_restrictions": {
+    "C12": "e_2,k e_1,k^-1",
+    "C23": "e_3,k e_2,k^-1",
+    "C34": "e_4,k e_3,k^-1",
+    "C41": "e_1,k e_4,k^-1"
+  },
+  "claim_boundary": {
+    "scalar_trace_inverted": false,
+    "unanchored_output_topology_identified": false,
+    "ordinary_positive_Hilbert_equivalence_added": false,
+    "rh_implication": false
+  },
+  "supersedes_for_common_graph_question": "research/aspect/results/fixed_k_quarter_rotation_circuit_audit.json"
+}

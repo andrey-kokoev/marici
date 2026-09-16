@@ -1,0 +1,41 @@
+{
+  "schema": "marici.scc.fixed-k-four-chart-twistor-rotation.v2",
+  "predecessor": "research/aspect/contracts/fixed-k-four-chart-twistor-rotation.v1.json",
+  "status": "abstract_common_graph_rotation_constructed_semilocal_identification_open",
+  "source": "research/voevodsky/the-retained-four-chart-graph-has-an-explicit-order-four-twistor-rotation.md",
+  "abstract_common_graph": {
+    "base": "M_k",
+    "carrier": "T_k=coproduct_(i in Z/4) V_tilde_i,k",
+    "operator": "tau_k(e_i,k(m))=e_(i+1 mod 4),k(m)",
+    "inverse": "tau_k^-1(e_i,k(m))=e_(i-1 mod 4),k(m)",
+    "fourth_power": "tau_k^4=id",
+    "projection_squares": "q_(i+1)=C_i,i+1 q_i on the retained observer-generated graph",
+    "projection_evidence": "definitional_not_independent_identification"
+  },
+  "additive_tate_orbit": {
+    "carrier": "bilateral additive-Tate boundary carrier",
+    "operator": "F_k",
+    "fourth_power": "F_k^4=id",
+    "character_projectors": 4,
+    "orbit_forms": "Dcal_i,k(x,y)=Q_k(F_k^(i-1)x,F_k^(i-1)y)",
+    "boundary_hilbert_form_invariant": true,
+    "completed_weil_form_invariant": "not_constructed"
+  },
+  "semilocal_chart_identification": {
+    "required_maps": ["chi_1,k", "chi_2,k", "chi_3,k", "chi_4,k"],
+    "map_type": "natural isometries Dcal_i,k -> V_i,k",
+    "constructed": false,
+    "adjacent_C_maps_identified_with_F_k_restrictions": false,
+    "first_open_field": "chi_1,k"
+  },
+  "typing_correction": "D_i,k=F_k^(i-1)m are vectors, not presentation objects; orbit nodes must be Hermitian-form presentations Dcal_i,k.",
+  "topology": {
+    "transported_common_graph_continuity": true,
+    "independent_product_subspace_continuity": "open_inverse_estimate"
+  },
+  "claim_boundary": {
+    "scalar_trace_inverted": false,
+    "semilocal_four_chart_twistor_identified": false,
+    "rh_implication": false
+  }
+}
