@@ -2,7 +2,13 @@
 
 Requires mpmath. This is a numerical falsifier, not an interval proof.
 """
-import mpmath as mp
+import sys
+from pathlib import Path
+try:
+    import mpmath as mp
+except ModuleNotFoundError:
+    sys.path.insert(0, str(Path(__file__).parents[2] / "flavor" / ".venv" / "Lib" / "site-packages"))
+    import mpmath as mp
 
 mp.mp.dps = 40
 
