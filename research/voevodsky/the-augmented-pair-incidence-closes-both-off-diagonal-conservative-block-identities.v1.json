@@ -1,0 +1,53 @@
+{
+  "schema": "marici.voevodsky.augmented-pair-off-diagonal-block-comparison.v1",
+  "status": "off_diagonal_entries_constructed_diagonals_open",
+  "sources": [
+    "research/voevodsky/augmented-adams-two-separation-history-bridge-adoption-packet.v1.json",
+    "research/voevodsky/the-finite-conservative-cone-stabilizes-canonically-by-the-separation-history-module.v1.json",
+    "research/voevodsky/correction-the-radial-block-must-be-permuted-before-comparison-with-the-euler-first-conservative-cone.v1.json"
+  ],
+  "carriers": {
+    "pair": "P_pair,X",
+    "augmented_euler": "E_X tensor K_X with generator e_(p,2) tensor rho_g",
+    "radial_generated": "H_rad,gen,X=direct sum of shell-labelled spans of rho_g",
+    "augmented_history": "H_X tensor K_X"
+  },
+  "maps": {
+    "Q_sep": "Q_sep g=e_(p,2) tensor rho_g",
+    "B_sep": "B_sep=B_X tensor I_K",
+    "base_column": "B_X e_(p,2)=b_(p,2)",
+    "history_comparison": "j_H(rho_g in shell p)=-b_(p,2) tensor rho_g"
+  },
+  "boundedness": {
+    "finite_cutoff": true,
+    "completed_upper_bound": "||j_H rho||^2=sum_p ||b_(p,2)||^2||rho_p||^2 <= (sup_p||b_(p,2)||^2)sum_p||rho_p||^2",
+    "bounded": true,
+    "bounded_inverse_claimed": false,
+    "reason_no_inverse": "Euler half-density columns decay with p"
+  },
+  "lower_left_identity": {
+    "equation": "j_H U_rad=-B_sep Q_sep",
+    "generator_check": "both sides send g in shell p to -b_(p,2) tensor rho_g",
+    "status": "exact on finite labelled core and continuous completion wherever Q_sep and U_rad use the declared direct-sum norms"
+  },
+  "upper_right_identity": {
+    "radial_return": "N_rad,an=U_rad^top",
+    "conservative_return": "B_sep^dagger=B_X^dagger tensor I_K",
+    "equation": "Q_sep^top N_rad,an=-B_sep^dagger j_H",
+    "status": "forced by analytic contragredient uniqueness from the lower-left identity under the declared tensor pairings"
+  },
+  "sign": "The minus sign is the fixed off-diagonal sign in C_X=[[A0,-B^dagger],[-B,D0]]; it is not fitted from an Evans value.",
+  "entrywise_progress": {
+    "off_diagonal_forward_incidence": "closed",
+    "off_diagonal_return": "closed by contragredient uniqueness",
+    "arithmetic_diagonal": "open: Q_sep B_border versus A0 Q_sep",
+    "history_diagonal": "open: j_H A_rad versus D0_sep j_H"
+  },
+  "faithful_semantics": "Because j_H has no uniform inverse, retain Graph(j_H) or the larger source-response joint graph; do not identify radial and conservative histories by Hilbert-space isomorphism.",
+  "claim_boundary": {
+    "requires_item_5_owner_adoption_for_authoritative_use": true,
+    "full_item_6_closed": false,
+    "rh_implication": false
+  },
+  "disposition": "The augmented separation-history construction is sufficient to identify both off-diagonal conservative entries exactly, including the return by transpose uniqueness. Item 6 is reduced to its two diagonal identities; no off-diagonal normalization remains free."
+}

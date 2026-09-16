@@ -1,0 +1,58 @@
+{
+  "schema": "marici.voevodsky.finite-broken-h1-history-wall-domain.v1",
+  "status": "finite_domain_constructor",
+  "motivation": "repair the mismatch between whole-line H1 Evans histories and wall-extended prime cut columns",
+  "finite_wall_set": "A_X={0} union {log p:p<=X}, retaining both the global seam and prime cut endpoints",
+  "carrier": {
+    "name": "H_wall,X",
+    "definition": "functions f in L2(R) whose restrictions to components of R\\A_X lie in H1, with finite one-sided traces at every a in A_X",
+    "jump": "[f]_a=f(a+)-f(a-)",
+    "norm": "||f||_wall,X^2=||f||_L2^2+||partial_t^reg f||_L2^2+sum_(a in A_X)|[f]_a|^2",
+    "complete": true,
+    "reason_complete": "finite orthogonal sum of H1 interval pieces with continuous trace maps and a finite jump quadratic form"
+  },
+  "extended_differential": {
+    "name": "D_wall,X",
+    "formula": "D_wall,X f=(partial_t^reg f,([f]_a)_(a in A_X))",
+    "target": "L2(R) direct_sum C^(A_X)",
+    "distributional_readback": "partial_t f=partial_t^reg f+sum_a [f]_a delta_a",
+    "closed": true
+  },
+  "two_required_subcarriers": {
+    "evans": {
+      "embedding": "H1(R)->H_wall,X",
+      "jump_coordinates": "all zero, including the global seam at 0",
+      "isometric_up_to_declared_norm": true
+    },
+    "prime_cut_columns": {
+      "form": "c_a is piecewise H1 with its endpoint discontinuity at a retained as [c_a]_a",
+      "membership": "c_(log p) belongs to H_wall,X for p<=X",
+      "uniform_native_norm": "recovers ||Phi||_2^2+||Phi'||_2^2+|Phi(0)|^2 under the source-centered translation convention"
+    }
+  },
+  "green_identity": {
+    "statement": "integration by parts on each interval component produces the ordinary endpoint terms plus the finite jump pairing at A_X",
+    "consequence": "regular derivative and wall rows are one closed graph operation rather than separately normalized distributions"
+  },
+  "incidence": {
+    "map": "B_X:E_X->H_wall,X, e_p maps to p^(-1/2)c_(log p)",
+    "bounded": true,
+    "finite_reason": "finite source and finite wall set",
+    "adjoint": "defined uniquely by the source metric and H_wall,X graph pairing"
+  },
+  "relation_to_current_c_fp": {
+    "old_history_domain": "H1(R)",
+    "embedding": "zero-jump closed subspace of H_wall,X",
+    "not_equal": true,
+    "owner_action": "replace/enlarge the C_FP history domain and trace map, then recheck maximal isotropy and the block adjoint"
+  },
+  "completion_requirements": [
+    "choose a countable-wall weight for jumps at log p",
+    "prove B is bounded/Hilbert-Schmidt in the resulting wall graph norm",
+    "prove local finiteness and closedness of the countable broken-domain differential",
+    "extend Fourier-Poisson sewing to wall coordinates",
+    "prove the completed Green boundary relation remains maximal isotropic"
+  ],
+  "disposition": "At every finite cutoff, the broken-H1 history-plus-wall graph is the explicit common domain previously missing: it contains both unchanged Evans histories and raw prime cut columns, and totalizes derivative plus wall distributions in one closed operator. Adoption by the conservative cone and countable completion remain open.",
+  "rh_implication": false
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "marici.voevodsky.finite-polarized-radial-to-conservative-block-comparison.v1",
+  "sources": [
+    "research/nima/transfer-audit-the-finite-synthesis-adjoint-pair-canonically-splits-radial-propagation-from-wronskian-linking.md",
+    "research/aspect/contracts/g4-conservative-green-owner-worksheet.v2.json"
+  ],
+  "radial_block": {
+    "matrix": "T_X(z)=[[A_rad(z),U_X^rad],[N_X,an^rad,B_X(z)]]",
+    "entries": {
+      "A_rad": "D_t-z with skew incidence D_t rho=e-W/2 and retained wall domain",
+      "U": "U_X^rad:V_X^shell->H_X^rad",
+      "N": "N_X,an^rad=(U_X^rad)^top:H_X^rad_dual->V_X^shell_dual",
+      "B": "border operator retaining rho(0), endpoint coordinates, and additional 2E"
+    }
+  },
+  "conservative_candidate": {
+    "matrix": "C_X(z)=[[A0_X(z),-B_X^dagger],[-B_X,D0_X(z)]]",
+    "entries": {
+      "A0": "history/open-loop block",
+      "B": "arithmetic incidence",
+      "B_dagger": "adjoint in the declared seam/source metrics",
+      "D0": "arithmetic/boundary diagonal block"
+    }
+  },
+  "required_carrier_identifications": {
+    "j_E": "H_X^rad -> E_X^cons, because A0 is the first prime-loop block",
+    "j_H": "V_X^shell -> H_X^cons, because D0 is the second boundary-history block",
+    "duals": "contragredients j_E^top and j_H^top from the declared nondegenerate pairings"
+  },
+  "four_entrywise_identifications": [
+    "j_E A_rad = A0_X j_E",
+    "j_E U_X^rad = -B_X^dagger j_H",
+    "j_H N_X,an^rad = -B_X j_E",
+    "j_H B_X(border) = D0_X j_H"
+  ],
+  "off_diagonal_reduction": "Once the carrier pairings are identified and the upper-right identity holds, contragredient uniqueness forces the lower-left identity; it is a verification, not an independent fitted coefficient.",
+  "block_defect": {
+    "definition": "Delta_block=I_target T_X-C_X I_source",
+    "components": ["delta_A", "delta_U", "delta_N", "delta_B"],
+    "acceptance": "all components zero on the finite labelled core, with delta_N forced by delta_U after pairing compatibility"
+  },
+  "schur_warning": {
+    "radial": "S_rad=B_X-N_X A_rad^(-1)U_X",
+    "conservative": "S_cons=D0_X-B_X A0_X^(-1)B_X^dagger",
+    "statement": "S_rad=S_cons or equality of the scalar R+2E readout does not imply any of the four entrywise identities",
+    "reason": "simultaneous changes of realization basis and compensating border terms preserve a transfer/Schur function while changing internal incidence and metrics"
+  },
+  "current_status": {
+    "A_rad_source_defined": true,
+    "U_rad_finite_source_defined": true,
+    "N_rad_analytic_transpose_defined_relative_to_radial_pairings": true,
+    "bordered_schur_readout_defined": true,
+    "A0_exact_common_domain_locator": false,
+    "B_and_B_dagger_pair_shell_generator_images": false,
+    "D0_border_coordinate_action": false,
+    "carrier_identifications_j_E_j_H": false,
+    "entrywise_comparison_testable": false
+  },
+  "minimal_owner_packet": [
+    "finite bases and Gram matrices for H_X^cons and E_X^cons",
+    "entrywise A0_X,B_X,B_X^dagger,D0_X on those bases",
+    "generator matrices for j_E and j_H",
+    "common closed-domain declaration",
+    "cutoff bonding maps"
+  ],
+  "disposition": "The finite comparison target is now an exact four-entry block square. Existing records determine the radial side and the conservative block pattern, but not the conservative entries or carrier identifications needed to form Delta_block. Equality of R+2E is only a Schur-level check and cannot replace this packet.",
+  "rh_implication": false
+}

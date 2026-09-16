@@ -1,0 +1,59 @@
+{
+  "schema": "marici.voevodsky.c-fp-complete-response-trace-joint-graph.v1",
+  "status": "analytic_conservative_response_attachment_constructed_pending_owner_adoption",
+  "sources": [
+    "research/voevodsky/the-history-wall-orbit-is-a-response-rigging-around-c-fp-not-its-operator-domain.v1.json",
+    "research/voevodsky/the-horizontal-fourier-equalizer-is-closed-and-source-recovering-but-trivializes-presentation-shift.v1.json",
+    "research/voevodsky/the-countable-prime-wall-broken-h1-domain-is-closed-and-the-half-density-incidence-is-hilbert-schmidt.v1.json"
+  ],
+  "source_graph_domain": {
+    "state": "H1(R) with C_FP graph norm",
+    "arithmetic": "U with norm sum_p log(p)|x_p|^2",
+    "product": "X_resp=H1(R) direct_sum U"
+  },
+  "response_trace": {
+    "formula": "Tr_joint(u,x)=J_orb(i u+B x)",
+    "maps": {
+      "i": "zero-jump embedding H1(R)->H_wall",
+      "B": "Hilbert-Schmidt prime cut incidence U->H_wall",
+      "J_orb": "isometric horizontal four-presentation embedding H_wall->H_hor subset H_orb"
+    },
+    "bounded": true,
+    "horizontal": "P_hor Tr_joint=Tr_joint",
+    "all_four_presentations_coherent": true
+  },
+  "image_warning": {
+    "statement": "ran(Tr_joint) need not be closed",
+    "reason": "the arithmetic wall-jump diagonal carries decaying p^(-1/2) coefficients and is compact/noncoercive; no bounded inverse from response image to U follows",
+    "consequence": "do not demand a response-image right inverse as the conservative adoption criterion"
+  },
+  "faithful_joint_graph": {
+    "definition": "G_Tr={(u,x,Tr_joint(u,x)):(u,x) in X_resp}",
+    "ambient": "X_resp direct_sum H_hor",
+    "closed": true,
+    "reason": "graph of a bounded operator",
+    "complemented": true,
+    "projection": "(u,x,y) maps to (u,x,Tr_joint(u,x))",
+    "source_recovery": "projection G_Tr->X_resp is an isomorphism",
+    "radical_zero": "any positive source-separating graph norm retains ||u||_H1^2+||x||_U^2"
+  },
+  "green_linking_attachment": {
+    "form": "pull back the continuous regular-plus-half-density-wall linking form along Tr_joint",
+    "continuous": true,
+    "does_not_require_closed_response_image": true
+  },
+  "reciprocal_attachment": {
+    "ambient_sewing": "use Graph(T_orb) on H_orb_minus direct_sum H_orb_plus",
+    "physical_coherence": "require both traces lie in H_hor via P_hor",
+    "qualification": "presentation shift is gauge-trivial on H_hor; nontrivial sewing remains ambient"
+  },
+  "effect_on_item_2": {
+    "analytic_response_rigging_attached": true,
+    "complete_state_plus_incidence_trace_typed": true,
+    "closed_faithful_carrier": true,
+    "owner_identification_with_C_FP_G4": false
+  },
+  "owner_action": "Adopt G_Tr as the complete response graph of C_FP/G4 and verify the existing cone Green identity and boundary trace agree with this pullback on a common core.",
+  "disposition": "The conservative response attachment can be constructed without changing Dom(D0) and without a false closed-range claim. The bounded state-plus-incidence trace has a closed complemented source-retaining joint graph, which is the correct carrier for adoption under the selected faithful semantics.",
+  "rh_implication": false
+}

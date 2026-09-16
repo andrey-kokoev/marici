@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "marici.aspect.u-g4-owner-construction-packet.schema.v1",
+  "title": "Authoritative independent G4 forward-incidence packet",
+  "type": "object",
+  "required": ["schema", "owner", "authority", "source_carrier", "target_carrier", "pairings", "forward_map", "placement", "provenance", "independence", "completion", "claim_boundary"],
+  "properties": {
+    "schema": {"const": "marici.aspect.u-g4-owner-construction-packet.v1"},
+    "owner": {"type": "string", "minLength": 1},
+    "authority": {
+      "type": "object",
+      "required": ["basis", "scope", "reviewer"],
+      "properties": {"basis": {"type": "string"}, "scope": {"const": "G4 arithmetic/radial forward incidence"}, "reviewer": {"type": "string"}},
+      "additionalProperties": false
+    },
+    "source_carrier": {"$ref": "#/$defs/carrier"},
+    "target_carrier": {"$ref": "#/$defs/carrier"},
+    "pairings": {
+      "type": "object",
+      "required": ["source", "target", "nondegeneracy_certificate"],
+      "properties": {"source": {"$ref": "#/$defs/exactObject"}, "target": {"$ref": "#/$defs/exactObject"}, "nondegeneracy_certificate": {"type": "string"}},
+      "additionalProperties": false
+    },
+    "forward_map": {
+      "type": "object",
+      "required": ["name", "domain", "codomain", "formula", "generator_images", "derivation_checker"],
+      "properties": {"name": {"const": "U_G4"}, "domain": {"type": "string"}, "codomain": {"type": "string"}, "formula": {"type": "string"}, "generator_images": {"type": "array", "minItems": 1}, "derivation_checker": {"type": "string"}},
+      "additionalProperties": false
+    },
+    "placement": {
+      "type": "object",
+      "required": ["prime", "power", "grade", "shell", "ordered_pair", "theta", "reciprocal", "linking", "contragredient"],
+      "additionalProperties": {"type": "string"}
+    },
+    "provenance": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["output", "source_equation", "source_path"]}},
+    "independence": {
+      "type": "object",
+      "required": ["construction_dependencies", "forbidden_dependencies", "comparison_is_postconstruction", "audit_checker"],
+      "properties": {"construction_dependencies": {"type": "array"}, "forbidden_dependencies": {"type": "array", "contains": {"const": "T_pair_to_border"}}, "comparison_is_postconstruction": {"const": true}, "audit_checker": {"type": "string"}},
+      "additionalProperties": false
+    },
+    "completion": {"type": "object", "required": ["topology", "cutoff_naturality", "jet_domain", "growth_or_rigging"]},
+    "claim_boundary": {"type": "object", "required": ["forward_map_authoritative", "comparison_proved", "rh_implication"]}
+  },
+  "$defs": {
+    "carrier": {"type": "object", "required": ["name", "definition", "basis_or_coordinates", "topology", "domain_conditions"], "additionalProperties": false, "properties": {"name": {"type": "string"}, "definition": {"type": "string"}, "basis_or_coordinates": {"type": "array", "minItems": 1}, "topology": {"type": "string"}, "domain_conditions": {"type": "string"}}},
+    "exactObject": {"type": "object", "required": ["formula", "coordinate_matrix", "units_or_normalization"], "additionalProperties": false, "properties": {"formula": {"type": "string"}, "coordinate_matrix": {"type": "array", "minItems": 1}, "units_or_normalization": {"type": "string"}}}
+  },
+  "additionalProperties": false
+}

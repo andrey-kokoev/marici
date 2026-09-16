@@ -1,0 +1,37 @@
+{
+  "schema": "marici.voevodsky.incidence-range-connection-domain-correction.v1",
+  "corrects": "research/voevodsky/a-canonical-finite-range-connection-makes-the-stabilized-conservative-diagonal-act-on-separation-history.v1.json",
+  "sources": [
+    "research/aspect/results/c_fp_history_carrier_identification.v1.json",
+    "research/nima/the-exact-evans-graph-norm-closes-the-uniform-mixed-seam-pairing-but-not-its-cancellation.md",
+    "research/nima/the-five-port-residual-is-topologically-defined-but-not-yet-source-normalized-as-one-g4-adjoint.md"
+  ],
+  "current_conservative_history": {
+    "carrier": "H=L2(R)",
+    "differential_domain": "Dom(D0)=H1(R), modulo the still-open exact sign/parameter convention",
+    "incidence": "B:E->H is bounded/Hilbert-Schmidt",
+    "important": "bounded incidence into H does not imply ran(B) subset Dom(D0)"
+  },
+  "cut_columns": {
+    "form": "b_p=p^(-1/2)c_(log p)",
+    "c_a": "wall-extended cut atom with regular derivative plus endpoint delta retained as a separate wall coordinate",
+    "native_norm": "||c_a||_G^2=||Phi||_2^2+||Phi'||_2^2+|Phi(0)|^2",
+    "domain": "wall-extended Green graph, not automatically the whole-line H1(R) domain of the current C_FP history block"
+  },
+  "failure_of_previous_connection": {
+    "required": "P_X Dom(D0) subset Dom(D0), where ran(P_X)=span{b_p:p<=X}",
+    "observed": "no source record places every wall-extended b_p in H1(R); the endpoint delta is precisely why a separate wall coordinate was retained",
+    "consequence": "(I-P_X)D0(I-P_X) is not presently a typed operator on the C_FP domain",
+    "verdict": "finite connection formula is conditional, not constructed for the current conservative cone"
+  },
+  "conceptual_error": "The proposal conflated the wall-extended five-port pairing graph with the single unlabelled C_FP history carrier H=L2(R), Dom H1(R).",
+  "legal_repairs": [
+    "enlarge conservative history to a wall-extended graph H_wall containing the cut columns and expose its closed differential",
+    "replace raw cut columns by source-derived H1 regularizations while retaining wall atoms in an explicit boundary summand and prove incidence equivalence",
+    "construct a connection on the complete history-plus-wall carrier rather than projecting L2 onto raw incidence columns",
+    "prove unexpectedly that the completed centered joint columns have H1 representatives after wall totalization"
+  ],
+  "revised_hostile": "Before any generalized-Gram eigenvalue audit, verify membership b_p in Dom(D0) and compute the full history-plus-wall graph Gram. Failure at one p rejects the projection connection immediately.",
+  "disposition": "The finite range-connection idea is algebraically valid only under a domain premise that is absent and likely false for raw cut columns. On the current C_FP carrier it must be treated as retracted/conditional. The next constructor is a common history-plus-wall domain, not a projection bound.",
+  "rh_implication": false
+}

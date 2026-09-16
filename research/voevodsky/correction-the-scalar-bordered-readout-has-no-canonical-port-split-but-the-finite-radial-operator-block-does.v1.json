@@ -1,0 +1,31 @@
+{
+  "schema": "marici.voevodsky.scalar-versus-operator-reciprocal-linking-split-correction.v1",
+  "corrects": "research/voevodsky/the-bordered-stokes-readout-does-not-canonically-split-into-reciprocal-and-linking-ports.v1.json",
+  "fresh_source": "research/nima/transfer-audit-the-finite-synthesis-adjoint-pair-canonically-splits-radial-propagation-from-wronskian-linking.md",
+  "correction": {
+    "scalar_statement_retained": "The scalar identity ell_RL=R+2E alone has an affine family of decompositions and cannot identify two scalar port functionals.",
+    "overstatement_retracted": "It is false that no prior source-derived reciprocal/linking split exists at all.",
+    "operator_statement": "At finite cutoff on the source-generated radial range, the operator architecture canonically separates reciprocal return from linking incidence."
+  },
+  "canonical_finite_operator_split": {
+    "forward": "U_X^rad:V_X^shell->H_X^rad",
+    "reciprocal_hermitian": "N_X^rad=(U_X^rad)^*",
+    "reciprocal_analytic": "N_X,an^rad=(U_X^rad)^top",
+    "linking": "fixed skew interior incidence -W/2 in D_t rho=e-W/2",
+    "border": "rho(0) and moving-endpoint coordinates, including the additional 2E term",
+    "block": "T_X(z)=[[D_t-z,U_X^rad],[N_X^rad,B_X(z)]]",
+    "schur_target": "B_X(z)-N_X^rad(D_t-z)^(-1)U_X^rad evaluates to R+2E"
+  },
+  "why_no_contradiction": "The canonical split is an operator-block decomposition before Schur scalarization. Once only the scalar R+2E is retained, the locations of propagation, skew Wronskian incidence, and border terms are forgotten, producing the affine ambiguity previously proved.",
+  "remaining_comparison": [
+    "identify the conservative radial sector with D_t-z on the same finite carrier",
+    "identify its analytic return with (U_X^rad)^top under the declared pairings",
+    "verify the skew block pulls back to -W/2",
+    "verify the border retains rho(0), E, and additional 2E",
+    "compare the full polarized block matrix rather than only its Schur scalar",
+    "prove cutoff completion"
+  ],
+  "next_executable": "Materialize the finite polarized pullback matrix of the bordered radial block in the same basis as the candidate conservative G4 block; scalar shell cancellation is insufficient.",
+  "disposition": "The correct frontier is not to invent scalar port projectors. Use the already canonical finite synthesis/transpose/skew/border operator split and seek an entrywise polarized block comparison with conservative G4.",
+  "rh_implication": false
+}

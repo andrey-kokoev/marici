@@ -1,0 +1,49 @@
+{
+  "schema": "marici.voevodsky.radial-to-history-wall-zero-extension.v1",
+  "status": "analytic_dynamic_intertwiner_constructed",
+  "source": "research/voevodsky/the-countable-prime-wall-broken-h1-domain-is-closed-and-the-half-density-incidence-is-hilbert-schmidt.v1.json",
+  "radial_domain": {
+    "carrier": "H1(R_+)",
+    "differential": "partial_r",
+    "border": "rho(0)"
+  },
+  "history_wall_target": {
+    "carrier": "H_wall with wall set containing 0 and log-prime endpoints",
+    "operator": "D_wall f=(f'_reg,([f]_a)_a)"
+  },
+  "positive_zero_extension": {
+    "name": "J_+",
+    "formula": "(J_+rho)(t)=0 for t<0 and rho(t) for t>0",
+    "jump_coordinates": "[J_+rho]_0=rho(0), and [J_+rho]_(log p)=0",
+    "regular_derivative": "(J_+rho)'_reg=J_+(rho')",
+    "norm_identity": "||J_+rho||_wall^2=||rho||_L2(R+)^2+||rho'||_L2(R+)^2+|rho(0)|^2",
+    "continuous_closed_range": true
+  },
+  "intertwining": {
+    "exact_graph_identity": "D_wall J_+ rho=(J_+ partial_r rho, rho(0) delta_0-coordinate)",
+    "parameterized": "(D_wall-z)J_+rho=(J_+(partial_r-z)rho,rho(0))",
+    "meaning": "the apparent failure of zero extension to commute with differentiation is exactly the retained bordered initial-value atom, not an error term"
+  },
+  "negative_orientation": {
+    "name": "J_-^u",
+    "formula": "(J_-^u rho)(t)=u rho(-t) for t<0 and 0 for t>0",
+    "regular_derivative": "-u rho'(-t)",
+    "jump_at_zero": "-u rho(0) under [f]_0=f(0+)-f(0-)",
+    "use": "the doubled radial operator diag(partial_r,-partial_r) maps by J_+ direct_sum J_-^u into the two oriented history-wall lanes with the declared wall relation"
+  },
+  "pair_response_application": {
+    "rho_g": "localized ordered-pair correlation history",
+    "map": "j_H(rho_g)=J_+rho_g, with reciprocal leg J_-^u when retained",
+    "all_jets": "zero extension is parameter independent and commutes with every z derivative",
+    "shell_naturality": true
+  },
+  "effect_on_item_3": {
+    "radial_to_wall_differential_intertwiner": true,
+    "border_atom_retained": true,
+    "requires_artificial_incidence_range_projection": false,
+    "identification_with_old_D0=I-A": false
+  },
+  "remaining_owner_comparison": "Adopt the history-wall realization of the conservative history diagonal, or prove that the old D0 block is conjugate to D_wall-z with its explicit wall output. The analytic intertwiner itself is complete.",
+  "disposition": "The correct dynamic intertwiner is canonical zero extension, not a tensor-range connection. It sends the radial derivative to the broken history differential and turns the radial initial value into the wall jump at zero. Item 3 is analytically closed up to conservative identification of D0.",
+  "rh_implication": false
+}

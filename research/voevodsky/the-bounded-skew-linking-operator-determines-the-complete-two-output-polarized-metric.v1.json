@@ -1,0 +1,51 @@
+{
+  "schema": "marici.voevodsky.two-output-polarized-linking-metric.v1",
+  "status": "analytic_two_output_metric_constructed_pending_conservative_identification",
+  "sources": [
+    "research/voevodsky/the-continuous-wronskian-form-has-a-unique-bounded-skew-operator-and-can-be-added-without-changing-the-old-green-boundary-form.v1.json",
+    "research/nima/five-port-prime-shell-source-locator-table.md"
+  ],
+  "one_leg_operator": {
+    "J_link": "bounded operator on H_orb representing omega_link",
+    "hermitian": "J_link^*=-J_link",
+    "analytic": "J_link^top=-J_link",
+    "normalized": "K_link=-J_link/2"
+  },
+  "two_output_carrier": "Y_link=H_orb^(forward) direct_sum H_orb^(reciprocal)",
+  "polarized_metric_operator": {
+    "formula": "G_link=[[0,K_link],[-K_link,0]]",
+    "hermitian_self_adjoint": "G_link^*=G_link because K_link^*=-K_link",
+    "analytic_symmetric": "G_link^top=G_link because K_link^top=-K_link",
+    "bounded": true,
+    "norm_bound": "||G_link||<=||K_link||"
+  },
+  "pairing": {
+    "formula": "<(f_plus,f_minus),G_link(g_plus,g_minus)>=<f_plus,K_link g_minus>-<f_minus,K_link g_plus>",
+    "role": "complete forward/reciprocal polarized two-output linking metric",
+    "diagonal_warning": "it is an off-diagonal polarization; no positive one-leg norm or scalar Wronskian coefficient determines it alone"
+  },
+  "orientation": {
+    "slot_swap": "S(f_plus,f_minus)=(f_minus,f_plus)",
+    "law": "S^* G_link S=-G_link",
+    "meaning": "ordered slot reversal flips linking orientation"
+  },
+  "fourier": {
+    "assumption": "J_link was constructed by summing transported presentation forms",
+    "law": "G_link commutes with simultaneous quarter-turn transport up to the declared reciprocal orientation",
+    "all_presentations": true
+  },
+  "wall_and_regular_content": {
+    "regular": "represented by omega_reg",
+    "wall": "represented by the p^(-1/2)-weighted jump/average-trace term",
+    "combined": "both occur in the same K_link and cannot be independently renormalized"
+  },
+  "effect_on_five_port_table": {
+    "linking_topology": "closed",
+    "odd_scalar": "retained as -1/2",
+    "complete_polarized_two_output_metric": "constructed analytically",
+    "old_G4_metric_identification": "open"
+  },
+  "hostile": "Any proposed two-output metric with diagonal linking blocks or with S^*GS=+G fails ordered orientation before Evans evaluation.",
+  "disposition": "The formerly missing complete polarized two-output linking metric is forced by the bounded skew Riesz operator. Its block matrix is bounded, Hermitian self-adjoint, analytic-transpose symmetric, and odd under slot exchange. Only identification with the old conservative linking port remains.",
+  "rh_implication": false
+}

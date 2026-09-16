@@ -1,0 +1,38 @@
+{
+  "schema": "marici.voevodsky.combined-reciprocal-linking-shell-row.v1",
+  "sources": [
+    "research/voevodsky/one-seam-differential-of-the-bivariate-response-cancels-the-ordinary-plus-endpoint-evans-shell-identically.md",
+    "research/nima/the-radial-stokes-identity-fixes-the-exact-combined-diagonal-reciprocal-linking-section.md",
+    "research/aspect/contracts/u-g4-owner-construction-packet.v5.json"
+  ],
+  "bivariate_response": {
+    "A_Phi": "A_Phi(c,t)=integral_-infinity^c Phi(x)Phi(x+t)dx",
+    "seam_derivative": "partial_c A_Phi(c,t)=Phi(c)Phi(c+t)",
+    "shell_difference": "Delta_(a,b)F=F(b)-F(a)"
+  },
+  "native_evans_rows": {
+    "ordinary": "I_0(z)=-Laplace_t[Delta_(a,b) A_Phi(.,t)]=-R(z)",
+    "derivative_wall": "I_end(z)=-Laplace_t[Delta_(a,b) partial_c A_Phi(.,t)]=-2E(z)",
+    "sign_reconciliation": "The previously written integral integral_a^b Phi(t)u_z(t)dt equals -R under u_z(c)=-integral_0^infinity exp(-zt)Phi(c+t)dt; there is no sign conflict."
+  },
+  "combined_reciprocal_linking": {
+    "definition": "I_RL(z)=Laplace_t[Delta_(a,b)(1+partial_c)A_Phi(.,t)]",
+    "bordered_formula": "I_RL(z)=R(z)+2E(z)=[rho(0)+E(z)-W(z)/2]/z+2E(z)",
+    "z0": "removable by zR-rho(0)=E-W/2",
+    "all_jets": "partial_z^j I_RL=(-1)^j integral_0^infinity t^j exp(-zt)Delta_(a,b)(1+partial_c)A_Phi(.,t)dt",
+    "shell_naturality": "Delta_(a,c)=Delta_(a,b)+Delta_(b,c)"
+  },
+  "strict_packet_identity": {
+    "equation": "I_0+I_end+I_RL=0",
+    "holds": "parameterwise before Xi specialization and after every z derivative",
+    "status": "constructed inside adopted U_G4:=T_pair_to_border packet"
+  },
+  "remaining_independent_conservative_gate": {
+    "individual_split": "I_RL=I_recip+I_link is not uniquely determined by the sum",
+    "metric_transport": "no independent identification of these two evaluations with the pre-existing conservative five-port B_recip^dagger and B_link^dagger rows",
+    "B_Sigma_residual_proved": false,
+    "reason": "the strict packet adopted the analytic return; it did not identify the old conservative joint-column metrics and codiagonal"
+  },
+  "disposition": "All native shell functions are now explicit and cancel identically in the strict adopted packet. The only remaining noncircular question is whether the independently fixed conservative reciprocal/linking rows and metrics realize this combined section; absent that identification, this is not an RH proof.",
+  "rh_implication": false
+}

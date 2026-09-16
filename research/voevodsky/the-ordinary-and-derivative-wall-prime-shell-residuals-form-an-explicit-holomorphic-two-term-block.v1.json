@@ -1,0 +1,44 @@
+{
+  "schema": "marici.voevodsky.prime-shell-ordinary-endpoint-block.v1",
+  "sources": [
+    "research/voevodsky/the-ordinary-prime-shell-port-is-explicitly-the-theta-tail-on-the-adjacent-logarithmic-window.v1.json",
+    "research/nima/the-derivative-wall-shell-pair-is-explicit-in-both-variance-lanes-but-not-yet-a-g4-adjoint-row.md"
+  ],
+  "shell": {
+    "left": "a=log p",
+    "right": "b=log q",
+    "condition": "p<q consecutive primes"
+  },
+  "analytic_transpose_lane": {
+    "ordinary": "I_0(z)=integral_a^b Phi(t)u_z(t)dt",
+    "derivative_plus_wall": "I_end(z)=Phi(b)u_z(b)-Phi(a)u_z(a)",
+    "combined": "I_0(z)+I_end(z)",
+    "jets": "partial_z^j(I_0+I_end)=integral_a^b Phi(t)partial_z^j u_z(t)dt+Phi(b)partial_z^j u_z(b)-Phi(a)partial_z^j u_z(a)"
+  },
+  "outgoing_evans_history": {
+    "formula": "u_z(t)=-exp(zt) integral_t^infinity exp(-zr)Phi(r)dr",
+    "differential_equation": "partial_t u_z=z u_z+Phi",
+    "expanded_endpoint_identity": "I_end=integral_a^b Phi'(t)u_z(t)dt+z I_0+integral_a^b Phi(t)^2dt"
+  },
+  "hermitian_lane": {
+    "derivative_plus_wall": "Phi(b) conjugate(u_z(b))-Phi(a) conjugate(u_z(a))",
+    "warning": "not holomorphic in z and therefore not used for Xi multiplicity jets"
+  },
+  "distributional_origin": {
+    "shell_column": "Phi(t)1_(a,b](t)",
+    "distributional_derivative": "Phi'(t)1_(a,b](t)+Phi(a)delta_a-Phi(b)delta_b",
+    "consequence": "regular derivative and wall atoms must be transported together; splitting and renormalizing them independently changes the source row"
+  },
+  "prime_2_3_fixture": {
+    "ordinary": "integral_log2^log3 Phi(t)u_z(t)dt",
+    "endpoint": "Phi(log3)u_z(log3)-Phi(log2)u_z(log2)",
+    "combined": "their exact sum"
+  },
+  "remaining_native_shell_functions": [
+    "reciprocal response",
+    "ordered linking response"
+  ],
+  "remaining_g4_transport": "The common source metric coefficient transporting the derivative-wall native block into the conservative codiagonal is still absent.",
+  "disposition": "Two of the five native ports are now one explicit holomorphic block: the ordinary integral plus the forced endpoint difference. Only reciprocal and linking shell functions remain unevaluated natively, although conservative common-metric placement remains open.",
+  "rh_implication": false
+}

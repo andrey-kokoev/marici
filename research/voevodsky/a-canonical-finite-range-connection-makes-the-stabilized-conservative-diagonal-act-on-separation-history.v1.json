@@ -1,0 +1,46 @@
+{
+  "schema": "marici.voevodsky.finite-range-separation-connection.v1",
+  "status": "finite_source_derived_candidate_pending_conservative_owner_adoption",
+  "sources": [
+    "research/voevodsky/inert-separation-history-stabilization-cannot-intertwine-the-radial-differential.v1.json",
+    "research/nima/the-closed-loop-boundary-cone-has-an-exact-schur-kernel-and-relative-determinant.md"
+  ],
+  "finite_data": {
+    "incidence": "B_X:E_X->H_X",
+    "metrics": "declared nondegenerate finite E_X and H_X metrics",
+    "incidence_range": "R_X=ran(B_X), a closed finite-dimensional subspace",
+    "range_projector": "P_X is the metric-orthogonal projector onto R_X; if B_X has source radical, use the Moore-Penrose projector B_X(B_X^dagger B_X)^+B_X^dagger"
+  },
+  "history_extension": {
+    "carrier": "H_X tensor K_X, with K_X the shell-labelled separation-history module",
+    "separation_generator": "A_sep=D_t-z on its finite source-generated graph domain",
+    "dynamic_diagonal": "D0_dyn=((I-P_X)D0_X(I-P_X)) tensor I_K + I_H tensor A_sep",
+    "connection_relative_to_inert_extension": "Gamma_X=D0_dyn-(D0_X tensor I_K)"
+  },
+  "generated_range_check": {
+    "input": "b_p tensor rho_g with b_p in R_X",
+    "projector_law": "P_X b_p=b_p",
+    "calculation": "D0_dyn(b_p tensor rho_g)=b_p tensor A_sep rho_g",
+    "result": "the base conservative drift is removed on incidence columns and radial separation dynamics acts exactly on the second factor"
+  },
+  "history_intertwiner": {
+    "source_generated_radial_carrier": "retain shell labels so U_rad g determines its p-labelled rho_g component",
+    "definition": "j_H(U_rad g)=-b_p tensor rho_g",
+    "identity": "j_H A_rad=D0_dyn j_H on every finite labelled generator and hence their span"
+  },
+  "source_independence": {
+    "uses_only": ["B_X", "D0_X", "declared metrics", "A_sep", "finite shell labels"],
+    "uses_xi_zeros": false,
+    "uses_evans_residual": false,
+    "fits_cancellation_coefficients": false
+  },
+  "structural_cost": {
+    "old_D0_preserved_exactly_on_complement": "only if P_X reduces D0_X",
+    "otherwise": "the construction uses the canonical compression (I-P_X)D0_X(I-P_X), not the original full D0_X",
+    "owner_choice_required": "adopt compressed dynamic extension or expose a pre-existing covariant history diagonal whose connection agrees on R_X"
+  },
+  "adjoint_boundary": "For Hermitian conservative symmetry, A_sep and the compressed complement block must use their declared adjoints/domains; the analytic-transpose Evans lane remains separately typed.",
+  "completion_boundary": "Uniform boundedness of P_X and graph estimates for Gamma_X as X grows are not proved. The construction is finite-cutoff only.",
+  "disposition": "At every finite cutoff there is a canonical metric-derived connection that closes the radial history intertwining on the incidence-generated range. It is non-fitted and explicit, but it modifies/compresses the old history diagonal and therefore requires conservative-owner adoption plus a uniform completion theorem.",
+  "rh_implication": false
+}

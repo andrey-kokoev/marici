@@ -1,0 +1,41 @@
+{
+  "schema": "marici.voevodsky.inert-separation-stabilization-differential-obstruction.v1",
+  "corrects_scope_of": "research/voevodsky/the-finite-conservative-cone-stabilizes-canonically-by-the-separation-history-module.v1.json",
+  "status": "arithmetic_carrier_extension_valid_history_intertwining_generically_impossible",
+  "setup": {
+    "augmented_pair_generator": "Q_X^sep g=e_(p,2) tensor rho_g",
+    "base_incidence": "B_X e_(p,2)=b_p in H_X",
+    "stabilized_incidence": "(B_X tensor I)Q_X^sep g=b_p tensor rho_g",
+    "forced_history_map_on_generated_range": "j_H(U_rad g)=-b_p tensor rho_g"
+  },
+  "inert_diagonal_test": {
+    "proposed_history_diagonal": "D0_sep=D0_X tensor I_K",
+    "left_side": "j_H A_rad(U_rad g)=-b_p tensor A_sep rho_g",
+    "right_side": "(D0_X tensor I)j_H(U_rad g)=-(D0_X b_p) tensor rho_g",
+    "required_identity": "b_p tensor A_sep rho_g=(D0_X b_p) tensor rho_g for every retained pair density rho_g",
+    "verdict": "false generically",
+    "reason": "the left side differentiates the separation-history factor while the inert stabilization acts only on the base conservative-history factor; the family rho_g is not a single common eigenline"
+  },
+  "consequence": "C_X tensor I_K repairs carrier size and preserves adjoints/Schur algebra, but cannot by itself represent radial dynamics or close j_H A_rad=D0_sep j_H.",
+  "minimal_dynamic_repairs": [
+    {
+      "shape": "tensor-sum diagonal",
+      "formula": "D0_dyn=D0_X tensor I_K + I_H tensor A_sep",
+      "extra_condition": "D0_X b_p=0 on the incidence range, or compensate the base action explicitly"
+    },
+    {
+      "shape": "range/complement extension",
+      "formula": "on closure span{b_p tensor K_p}, set D0_dyn=I on b_p factor tensor A_sep; retain D0_X tensor I on a declared invariant complement",
+      "extra_condition": "construct bounded projections and prove closed-domain compatibility"
+    },
+    {
+      "shape": "connection-corrected tensor product",
+      "formula": "D0_dyn=D0_X tensor I+I tensor A_sep+Gamma",
+      "extra_condition": "derive Gamma from source transport so Gamma(b_p tensor rho)=-(D0_X b_p) tensor rho on the generated range"
+    }
+  ],
+  "forbidden_repair": "define Gamma only by solving the Evans/Xi cancellation equation",
+  "next_owner_datum": "the action of the conservative history diagonal on b_p tensor rho_g, including whether separation translation is a tensor-sum connection, a range restriction, or a nontrivial covariant derivative",
+  "disposition": "The remaining history intertwiner is not administrative. It forces the conservative diagonal to act on separation history. Inert tensor stabilization cannot do so; a source-derived dynamic extension or connection is required before the augmented cone can represent the radial block.",
+  "rh_implication": false
+}

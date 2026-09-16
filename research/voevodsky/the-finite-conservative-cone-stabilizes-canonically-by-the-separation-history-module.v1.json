@@ -1,0 +1,53 @@
+{
+  "schema": "marici.voevodsky.separation-history-stabilized-conservative-cone.v1",
+  "status": "finite_functorial_construction_conditional_on_base_cone",
+  "sources": [
+    "research/voevodsky/the-minimal-faithful-pair-to-cyclic-square-target-is-adams-two-tensored-with-separation-history.v1.json",
+    "research/nima/the-closed-loop-boundary-cone-has-an-exact-schur-kernel-and-relative-determinant.md"
+  ],
+  "base_cone": {
+    "carrier": "E_X direct_sum H_X",
+    "matrix": "C_X=[[A0_X,-B_X^dagger],[-B_X,D0_X]]",
+    "assumption": "finite cutoff with declared nondegenerate E_X and H_X pairings"
+  },
+  "stabilizing_module": {
+    "name": "K_X=direct_sum over admitted shells H_sep,p",
+    "role": "retain full theta-pair separation densities and all Laplace moments",
+    "pairing": "chosen source-derived separation-history pairing G_K; no scalar moment quotient"
+  },
+  "stabilized_carriers": {
+    "arithmetic": "E_X^sep=E_X tensor K_X",
+    "history": "H_X^sep=H_X tensor K_X",
+    "total": "(E_X tensor K_X) direct_sum (H_X tensor K_X)",
+    "pairing": "G_E tensor G_K on arithmetic and G_H tensor G_K on history"
+  },
+  "stabilized_entries": {
+    "A0_sep": "A0_X tensor I_K",
+    "D0_sep": "D0_X tensor I_K",
+    "B_sep": "B_X tensor I_K",
+    "B_sep_dagger": "B_X^dagger tensor I_K",
+    "matrix": "C_X^sep=C_X tensor I_K"
+  },
+  "adjoint_check": "With tensor product pairings, (B_X tensor I_K)^dagger=B_X^dagger tensor I_K; hence the off-diagonal conservative sign and contragredient relation are preserved without new coefficients.",
+  "schur_check": {
+    "formula": "S_E^sep=(A0_X-B_X^dagger D0_X^(-1)B_X) tensor I_K",
+    "kernel": "ker(S_E^sep)=ker(S_E) tensor K_X at finite cutoff",
+    "warning": "stabilization repeats the base spectral condition over separation histories; it does not identify theta-pair densities with base Euler states"
+  },
+  "pair_bridge_embedding": {
+    "formula": "e_(p,2) tensor rho_g lies in E_X tensor K_X after including the Adams-two shell line in E_X",
+    "result": "the arithmetic carrier mismatch is repaired for the augmented candidate",
+    "faithful_carrier": "retain Graph(Q_X^sep) rather than quotienting by a moment functional"
+  },
+  "remaining_crossing": {
+    "missing": "j_H:H_rad,pair -> H_X tensor K_X intertwining A_rad with D0_X tensor I_K and U_rad with -(B_X tensor I_K)Q_X^sep",
+    "equations": [
+      "j_H A_rad=(D0_X tensor I_K)j_H",
+      "j_H U_rad=-(B_X tensor I_K)Q_X^sep"
+    ],
+    "not_supplied_by_tensor_stabilization": true
+  },
+  "completion_boundary": "At finite X all tensor identities are algebraic and bounded. Infinite-cutoff projective/nuclear completion requires separate uniform seminorm and domain estimates.",
+  "disposition": "The old conservative cone admits a canonical finite separation-history stabilization C_X tensor I. This extends its pairings and adjoint without choices and receives the augmented cyclic-square bridge. It isolates the sole remaining finite comparison as the history intertwiner j_H; tensor stabilization does not manufacture that analytic incidence identity.",
+  "rh_implication": false
+}

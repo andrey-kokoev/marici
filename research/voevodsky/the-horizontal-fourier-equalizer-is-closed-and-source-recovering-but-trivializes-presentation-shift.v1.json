@@ -1,0 +1,43 @@
+{
+  "schema": "marici.voevodsky.horizontal-fourier-equalizer.v1",
+  "status": "horizontal_descent_constructed_with_role_qualification",
+  "source": "research/voevodsky/the-four-presentation-orbit-completion-makes-fourier-unitary-without-forcing-prime-walls-to-be-fourier-invariant.v1.json",
+  "presentations": {
+    "carrier": "H_orb=direct_sum_(j=0)^3 H^(j)",
+    "transitions": "F_j:H^(j)->H^(j+1 mod 4), unitary transported Fourier maps",
+    "cycle": "F_3 F_2 F_1 F_0=I"
+  },
+  "equalizer": {
+    "name": "H_hor",
+    "definition": "{(h_0,h_1,h_2,h_3):h_(j+1)=F_j h_j for all j mod 4}",
+    "parametrization": "J_tilde(f)=(f,F_0f,F_1F_0f,F_2F_1F_0f)",
+    "identity": "H_hor=ran(J_tilde)",
+    "closed": true,
+    "reason": "it is the simultaneous kernel of bounded difference maps h_(j+1)-F_jh_j",
+    "source_recovery": "projection to h_0 is inverse to J_tilde",
+    "norm": "||J_tilde f||_orb=2||f||_(0)"
+  },
+  "orthogonal_projection": {
+    "formula": "P_hor(h)_j=F_(0->j) f_bar, where f_bar=(1/4)sum_(j=0)^3 F_(0->j)^(-1)h_j",
+    "properties": ["P_hor^2=P_hor", "P_hor^*=P_hor", "ran(P_hor)=H_hor"]
+  },
+  "incidence_descent": {
+    "orbit_incidence": "B_orb=(1/2)J_tilde B",
+    "already_horizontal": "P_hor B_orb=B_orb",
+    "descended_incidence": "identified with B under source recovery",
+    "hilbert_schmidt_norm_preserved": true
+  },
+  "presentation_shift_qualification": {
+    "orbit_shift": "T_orb advances all four presentation labels with their transition maps",
+    "on_equalizer": "T_orb restricted to H_hor is the identity",
+    "meaning": "horizontal descent treats Fourier presentation change as gauge equivalence",
+    "warning": "the descended equalizer does not carry a nontrivial quarter-turn merely from T_orb; claiming both full presentation identification and a nontrivial descended T_orb confuses gauge transition with physical Fourier symmetry"
+  },
+  "two_legal_roles": [
+    "Use H_hor as the single physical state carrier, with presentation shift gauge-trivial and sewing expressed before descent.",
+    "Retain H_orb for nontrivial quarter-turn sewing, and use P_hor only as the physical coherence projector/readout rather than replacing H_orb."
+  ],
+  "preferred_for_g4": "retain H_orb and its nontrivial sewing graph, while imposing P_hor coherence on admitted source states; this preserves both response transport and one-state descent without falsely inducing a nontrivial action on the quotient",
+  "disposition": "Horizontal descent is analytically closed: the coherent four-presentation states form a closed complemented source-recovering equalizer and the arithmetic incidence lands in it. The price is exact: presentation shift becomes identity on the equalizer. Nontrivial G4 sewing must remain on the ambient orbit carrier or come from an additional physical operator.",
+  "rh_implication": false
+}

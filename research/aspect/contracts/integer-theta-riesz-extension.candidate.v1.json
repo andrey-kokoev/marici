@@ -1,0 +1,58 @@
+{
+  "schema": "marici.scc.integer-theta-riesz-extension.candidate.v1",
+  "status": "canonical_source_derived_extension_pending_owner_adoption",
+  "sources": [
+    "research/conjecture_replay/contracts/CR1-weighted-Riesz-U-theta-rad.candidate.v1.json",
+    "research/nima/every-completed-theta-pair-shell-is-a-product-weighted-ratio-translate-of-one-base-correlation-kernel.md",
+    "research/aspect/contracts/pair-theta-carrier.candidate.v1.json"
+  ],
+  "one_leg_carrier": {
+    "name": "Theta_Zplus",
+    "basis": "f_n, n>=1, representing the completed theta atom Phi_n",
+    "spectral_location": "t_n=log n",
+    "topology": "pullback of the declared weighted-relative Riesz graph topology"
+  },
+  "one_leg_map": {
+    "name": "U_Zplus^(theta->rad)",
+    "formula": "f_n maps to m_(log n)",
+    "characterization": "<m_(log n),h>_rel=h(log n)",
+    "uniqueness": "weighted-relative Riesz uniqueness",
+    "prime_power_restriction": "f_(p^k) maps to m_(k log p)",
+    "extends_existing_candidate": true,
+    "does_not_choose_prime_factor_decomposition": true
+  },
+  "pair_extension": {
+    "analytic_transpose_lane": "f_n tensor f_m maps to m_(log n) tensor m_(log m)",
+    "hermitian_lane": "f_n tensor conjugate(f_m) maps to m_(log n) tensor conjugate(m_(log m))",
+    "ordered_slots_retained": true,
+    "ratio_translation": "log(m/n)=log m-log n",
+    "product_half_density": "(nm)^(-1/2)",
+    "canonical_after_one_leg_Riesz": true
+  },
+  "arithmetic_loading_relation": {
+    "Euler_support": "prime-power subcarrier n=p^k",
+    "coefficient": "2(log p)p^(-k/2)Phi'(k log p)",
+    "general_integer_atoms_receive_Euler_coefficient": false,
+    "reason": "integer extension supplies the comparison carrier; arithmetic loading remains supported only on prime powers"
+  },
+  "independence": {
+    "uses_T_pair_to_border": false,
+    "uses_Evans_residual": false,
+    "uses_desired_G4_equality": false,
+    "source_equations_only": true
+  },
+  "remaining_owner_actions": [
+    "adopt Theta_Zplus and its pair tensor as the authoritative G4 forward source carrier",
+    "expose exact nondegenerate pairing matrices or a coordinate-free nondegeneracy certificate",
+    "adopt/derive the radial-to-bordered target identification independently",
+    "freeze entrywise provenance and completion domain"
+  ],
+  "synthesized_disposition": {
+    "source_carrier_identification_mathematically_canonical": true,
+    "source_carrier_identification_authoritative": false,
+    "target_identification_constructed_independently": false,
+    "authoritative_U_G4_constructed": false,
+    "irreducible_current_blocker": "owner adoption plus target-side pairing/identification authority",
+    "rh_implication": false
+  }
+}

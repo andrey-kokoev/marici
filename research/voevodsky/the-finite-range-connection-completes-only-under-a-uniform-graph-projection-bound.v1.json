@@ -1,0 +1,44 @@
+{
+  "schema": "marici.voevodsky.finite-range-connection-completion-gate.v1",
+  "sources": [
+    "research/voevodsky/a-canonical-finite-range-connection-makes-the-stabilized-conservative-diagonal-act-on-separation-history.v1.json",
+    "research/aspect/results/c_fp_history_carrier_identification.v1.json"
+  ],
+  "history_operator": {
+    "carrier": "H=L2(R)",
+    "domain": "Dom(D0) represented on the first-order history graph H1(R)",
+    "finite_incidence_range": "R_X=span{b_p:p<=X}",
+    "projection": "P_X:H->R_X, orthogonal in the declared H metric"
+  },
+  "necessary_domain_gate": {
+    "condition": "P_X Dom(D0) subset Dom(D0) for every X",
+    "reason": "otherwise (I-P_X)D0(I-P_X) is not defined on a common graph domain"
+  },
+  "uniform_completion_gate": {
+    "graph_norm": "||h||_D0^2=||h||^2+||D0 h||^2",
+    "condition": "sup_X ||P_X||_(Dom(D0),graph -> Dom(D0),graph)<infinity",
+    "equivalent_estimate": "||D0 P_X h|| <= C(||h||+||D0 h||), uniformly in X",
+    "purpose": "control the connection correction -P_XD0-D0P_X+P_XD0P_X on the common graph domain"
+  },
+  "strong_limit_gate": {
+    "condition": "P_X converges strongly in the graph norm to a projection P_infinity and the compressed forms/operators converge on a common core",
+    "result_if_satisfied": "D0_dyn,X converges to ((I-P_infinity)D0(I-P_infinity)) tensor I + I tensor A_sep on the stabilized completion"
+  },
+  "easy_sufficient_case": {
+    "condition": "P_X reduces D0 for every X and the nested projections converge strongly",
+    "consequence": "[D0,P_X]=0, graph norm of P_X is at most one, and the compressed diagonal is the direct restriction of D0 to R_X^perp plus separation dynamics on R_X"
+  },
+  "current_evidence": {
+    "B_Sigma_hilbert_schmidt": true,
+    "columns_b_p_in_L2": true,
+    "first_order_graph_domain_for_each_b_p": "partially source-supported",
+    "uniform_graph_projection_bound": false,
+    "D0_reducing_incidence_ranges": false,
+    "strong_graph_limit": false
+  },
+  "nonimplication": "Hilbert-Schmidt or compact incidence does not imply uniform graph-norm boundedness of its finite range projections; the graph norm sees derivatives and seam traces absent from the ambient L2 projection norm.",
+  "cheapest_hostile": "compute the largest generalized eigenvalue of the finite Gram pair (G_D0,X,G_H,X), where G_H,X=(<b_p,b_q>) and G_D0,X=(<b_p,b_q>+<D0b_p,D0b_q>); divergence rejects uniform graph completion of P_X",
+  "matrix_test": "lambda_max(G_H,X^(-1/2) G_D0,X G_H,X^(-1/2)) bounded uniformly in X, interpreted on the nonradical range",
+  "disposition": "The finite connection has an exact completion criterion. The next executable evidence is a two-Gram generalized-eigenvalue audit of the incidence columns. Current Hilbert-Schmidt summability is insufficient to pass it.",
+  "rh_implication": false
+}

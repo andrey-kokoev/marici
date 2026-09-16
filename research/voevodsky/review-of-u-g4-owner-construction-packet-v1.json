@@ -1,0 +1,67 @@
+{
+  "schema": "marici.voevodsky.u-g4-owner-construction-review.v1",
+  "reviewed_packet": "research/aspect/contracts/u-g4-owner-construction-packet.v1.json",
+  "reviewer": "marici.Voevodsky",
+  "verdict": "not_yet_type_correct_or_independence_certified",
+  "positive_findings": {
+    "integer_theta_source_extension": "canonical candidate f_n -> m_(log n) avoids arbitrary prime factorization",
+    "ordered_pair_lanes": "analytic and Hermitian tensor lanes are explicitly distinguished",
+    "target_graph_strategy": "retaining q in Graph(J_RL) makes target nondegeneracy structurally plausible",
+    "comparison_deferred": true,
+    "rh_not_promoted": true
+  },
+  "blocking_findings": [
+    {
+      "id": "B1-pair-to-radial-domain-mismatch",
+      "severity": "fatal_typing",
+      "packet_claim": "U_G4(x)=(U_pair x,J_RL U_pair x)",
+      "observed_types": {
+        "U_pair_output": "tensor of weighted-relative Riesz vectors m_(log n) tensor m_(log m)",
+        "J_RL_domain": "Dom(D_rad) inside the weighted-relative doubled one-variable radial graph L2(R_+) direct-sum L2(R_+)"
+      },
+      "missing_arrow": "C_pair_rad : completed Riesz tensor-pair carrier -> Dom(D_rad)",
+      "consequence": "J_RL U_pair is not presently composable"
+    },
+    {
+      "id": "B2-source-pairing-nondegeneracy-not-checked",
+      "severity": "certificate_gap",
+      "packet_claim": "tensor weighted-relative pairing is nondegenerate",
+      "checker_behavior": "accepts the claim when a literal substring occurs",
+      "missing_certificate": "definition of the completed tensor pairing, its dual carrier, and proof that its radical is zero after projective completion"
+    },
+    {
+      "id": "B3-target-trace-continuity-and-removability-declared-only",
+      "severity": "analytic_domain_gap",
+      "packet_claim": "J_RL is defined on Dom(D_rad) with continuous endpoint/Wronskian traces and removable z=0 continuation",
+      "missing_certificate": "closed/continuous trace estimates on the declared graph norm and a holomorphic divisibility proof for rho0+E-W/2 by z"
+    },
+    {
+      "id": "B4-independence-check-is-not-transitive",
+      "severity": "provenance_gap",
+      "checker_behavior": "searches forbidden strings only in forward_map, immediate provenance, and dependency labels",
+      "missing_certificate": "recursive dependency closure showing that source equations defining J_RL and the radial response traces were obtained without T_pair_to_border or its equivalent rho/e/w/rho crossing"
+    },
+    {
+      "id": "B5-authority-status-is-pending",
+      "severity": "authority_gap",
+      "packet_state": "operator-adopted-pending-review",
+      "message_identity_state": "Aspect message is self-claimed with authority_granted=false",
+      "consequence": "independent mathematical review cannot itself upgrade owner authority"
+    }
+  ],
+  "minimal_repair": [
+    "Construct C_pair_rad on generators and prove its continuity into Dom(D_rad)",
+    "Replace U_G4 formula by (C_pair_rad U_pair x, J_RL C_pair_rad U_pair x)",
+    "Provide actual source radical-zero and target trace/closed-graph certificates",
+    "Run recursive provenance audit for J_RL and all traces",
+    "Obtain explicit operator/owner adoption after repaired packet freeze"
+  ],
+  "comparison_permission": false,
+  "reason_comparison_not_permitted": "the proposed forward map is not yet composable on its declared carriers",
+  "claim_boundary": {
+    "rejects_candidate_architecture": false,
+    "rejects_integer_riesz_extension": false,
+    "certifies_U_G4": false,
+    "rh_implication": false
+  }
+}

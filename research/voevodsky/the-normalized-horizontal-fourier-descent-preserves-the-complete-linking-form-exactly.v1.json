@@ -1,0 +1,45 @@
+{
+  "schema": "marici.voevodsky.horizontal-descent-linking-isometry.v1",
+  "status": "horizontal_linking_compatibility_constructed",
+  "sources": [
+    "research/voevodsky/the-horizontal-fourier-equalizer-is-closed-and-source-recovering-but-trivializes-presentation-shift.v1.json",
+    "research/voevodsky/the-bounded-skew-linking-operator-determines-the-complete-two-output-polarized-metric.v1.json"
+  ],
+  "normalized_embedding": {
+    "formula": "J_orb f=(f,Ff,F^2f,F^3f)/2",
+    "range": "H_hor",
+    "isometry": true
+  },
+  "transported_linking": {
+    "one_presentation": "omega_link on H_wall",
+    "orbit": "omega_orb(h,g)=sum_(j=0)^3 omega_link,j(h_j,g_j)",
+    "transport_law": "omega_link,j(F^j f,F^j g)=omega_link(f,g)"
+  },
+  "exact_pullback": {
+    "calculation": "omega_orb(J_orb f,J_orb g)=(1/4)sum_(j=0)^3 omega_link,j(F^j f,F^j g)=omega_link(f,g)",
+    "identity": "J_orb^top omega_orb J_orb=omega_link",
+    "no_factor_four": true,
+    "reason": "the 1/2 normalization on each of two arguments exactly cancels the four presentation sum"
+  },
+  "reducing_property": {
+    "projector": "P_hor",
+    "invariance": "the orbit linking operator commutes with the cyclic presentation transport and preserves H_hor",
+    "compression": "J_link,hor=P_hor J_link,orb restricted to H_hor",
+    "skew": true,
+    "bounded": true
+  },
+  "two_output_metric": {
+    "ambient": "G_link,orb=[[0,K],[-K,0]]",
+    "horizontal": "compress each leg by P_hor",
+    "pullback": "the resulting forward/reciprocal metric equals the original one-presentation polarized linking metric under J_orb",
+    "orientation": "slot swap remains anti-isometric"
+  },
+  "interpretation": "Although presentation shift becomes gauge-trivial on H_hor, the physical linking observable does not vanish or acquire multiplicity four; it descends exactly through normalized averaging.",
+  "effect_on_checklist": {
+    "item_1": "horizontal descent compatible with linking",
+    "item_4": "completed linking form descends without normalization anomaly",
+    "remaining": "old conservative metric identification"
+  },
+  "disposition": "The horizontal equalizer and completed linking form are mutually compatible. Normalized four-presentation descent preserves the ordered Wronskian form exactly, and the horizontal subspace is reducing for its bounded skew operator. There is no four-copy anomaly.",
+  "rh_implication": false
+}

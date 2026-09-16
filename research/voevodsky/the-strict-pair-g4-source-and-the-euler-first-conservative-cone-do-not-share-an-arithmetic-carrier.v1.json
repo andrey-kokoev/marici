@@ -1,0 +1,63 @@
+{
+  "schema": "marici.voevodsky.strict-pair-versus-euler-cone-carrier-obstruction.v1",
+  "sources": [
+    "research/aspect/contracts/u-g4-owner-construction-packet.v5.json",
+    "research/aspect/contracts/g4-conservative-green-owner-worksheet.v2.json",
+    "research/voevodsky/prior_research_canonical_response_split_and_remaining_crossing_20260908.md",
+    "research/voevodsky/correction-the-radial-block-must-be-permuted-before-comparison-with-the-euler-first-conservative-cone.v1.json"
+  ],
+  "strict_packet_source": {
+    "name": "P_pair",
+    "content": "rapid projective ordered theta-pair carrier",
+    "retained_labels": ["integer pair n,m", "ratio", "shell", "grade", "slot orientation", "reciprocal reflection"],
+    "faithful": true
+  },
+  "conservative_source": {
+    "name": "E after declared radical quotients",
+    "content": "Euler/prime-loop arithmetic carrier on which A0=I-L acts",
+    "incidence": "B:E->H",
+    "pair_labels_retained": false
+  },
+  "failed_naive_identification": {
+    "map_needed": "j_E:V_X^shell->E_X^cons",
+    "status": "not_constructed",
+    "reason": "ordered pair-shell generators are not the same basis as prime-loop generators, and the pair carrier generally has many ratio/orientation/product-scale generators over one prime shell",
+    "consequence": "the identity j_E B_border=A0 j_E and both off-diagonal squares are not typeable as a conjugacy on a common arithmetic carrier"
+  },
+  "known_missing_bridge": {
+    "chain": "C_theta tensor conjugate(C_theta) -> localized theta pair shell -> ran(S_2 tensor S_2) -> Euler cyclic-square/bordered reciprocal-linking carrier",
+    "principal_arrow": "T_(theta->cyc2,p)",
+    "requirements": [
+      "preserve full finite-shell kernel",
+      "preserve ratio orientation and all parameter jets",
+      "respect divisible-by-four reciprocal-balanced total grades",
+      "supply endpoint normalization",
+      "avoid definition from leading p^-2 asymptotics"
+    ]
+  },
+  "three_possible_comparison_shapes": [
+    {
+      "shape": "faithful embedding",
+      "requirement": "enlarge E_cons to a pair-labelled Euler carrier E_pair and construct injective j_E:P_pair->E_pair"
+    },
+    {
+      "shape": "quotient comparison",
+      "requirement": "declare a source-derived quotient Q:P_pair->E_cons and prove the discarded kernel is gauge for the conservative objective",
+      "warning": "loses faithful pair labels and cannot be silently identified with strict packet semantics"
+    },
+    {
+      "shape": "joint graph",
+      "requirement": "retain P_pair together with its Euler image Graph(Q), compare conservative blocks on the graph, and keep source projection"
+    }
+  ],
+  "preferred_shape": "joint graph, because it preserves the strict packet's faithful source while allowing an Euler-loop readout",
+  "revised_order_of_work": [
+    "construct the finite pair-to-Euler cyclic-square bridge Q_X",
+    "retain Graph(Q_X) with source projection",
+    "extend or pull back A0,B,B^dagger to that graph",
+    "then form the corrected four-entry block defect",
+    "only afterward pass to cutoff completion and Xi jets"
+  ],
+  "disposition": "The next blocker precedes conservative entry comparison: strict P_pair and old Euler E are different arithmetic carriers. A source-derived pair-to-cyclic-square bridge, preferably retained as a joint graph, is required before any entrywise G4/cone comparison is meaningful.",
+  "rh_implication": false
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "marici.voevodsky.radial-conservative-block-order-correction.v1",
+  "corrects": "research/voevodsky/the-finite-polarized-radial-block-compares-to-the-conservative-pencil-by-four-entrywise-identities.v1.json",
+  "reason": "The radial source writes its block in history-first order H_rad direct-sum V_shell, while the conservative cone is Euler-first E direct-sum H. The prior crosswalk matched diagonal entries without applying the block swap and therefore paired D_t-z with the prime-loop block incorrectly.",
+  "history_first_radial_block": "T_X=[[A_rad,U],[N,B_border]] on H_rad direct-sum V_shell",
+  "swap": "P(h,v)=(v,h)",
+  "euler_first_radial_block": "P T_X P^(-1)=[[B_border,N],[U,A_rad]] on V_shell direct-sum H_rad",
+  "conservative_block": "C_X=[[A0,-B_cons^dagger],[-B_cons,D0]] on E_cons direct-sum H_cons",
+  "carrier_identifications": {
+    "j_E": "V_X^shell -> E_X^cons",
+    "j_H": "H_X^rad -> H_X^cons"
+  },
+  "correct_four_identities": [
+    "j_E B_border = A0_X j_E",
+    "j_E N_X,an^rad = -B_cons,X^dagger j_H",
+    "j_H U_X^rad = -B_cons,X j_E",
+    "j_H A_rad = D0_X j_H"
+  ],
+  "contragredient_reduction": "Under pairing-compatible j_E,j_H, either off-diagonal identity forces the other by analytic transpose uniqueness.",
+  "semantic_alignment": {
+    "shell_or_arithmetic_diagonal": "B_border corresponds to A0=I-L, not D_t-z",
+    "history_diagonal": "A_rad=D_t-z corresponds to D0=I-A",
+    "forward_incidence": "U_X^rad corresponds to -B_cons",
+    "return": "N_X,an^rad corresponds to -B_cons^dagger"
+  },
+  "current_testability": false,
+  "missing": [
+    "finite generator matrices for A0,D0,B_cons,B_cons^dagger",
+    "pairing-compatible j_E,j_H",
+    "common parameter/sign convention identifying D_t-z with I-A",
+    "entrywise border-to-prime-loop identification"
+  ],
+  "disposition": "Any future block comparison must first permute the history-first radial realization into Euler-first cone order. Schur formulas must be recomputed in that same order; otherwise diagonal and incidence roles are reversed.",
+  "rh_implication": false
+}

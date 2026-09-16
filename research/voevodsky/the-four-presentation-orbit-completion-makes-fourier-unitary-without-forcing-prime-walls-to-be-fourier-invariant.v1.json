@@ -1,0 +1,46 @@
+{
+  "schema": "marici.voevodsky.four-presentation-prime-wall-orbit-completion.v1",
+  "status": "analytic_fourier_orbit_constructor",
+  "source": "research/voevodsky/the-countable-prime-wall-broken-h1-domain-is-closed-and-the-half-density-incidence-is-hilbert-schmidt.v1.json",
+  "obstruction": {
+    "statement": "the fixed wall space H_wall is not proved invariant under Fourier transform",
+    "reason": "its norm controls piecewise derivative and jumps at {log p}, but not the position moment t f needed to control a derivative of Fourier(f); Fourier images of wall deltas are global oscillatory response tails, not jumps at prime logarithms",
+    "forbidden_shortcut": "declare Fourier unitary on H_wall merely because it is unitary on ambient L2"
+  },
+  "four_presentations": {
+    "base": "H^(0)=H_wall",
+    "transported": "H^(j) is the completion of F^j(H_wall core) with transported norm ||F^j f||_(j):=||f||_wall, j=1,2,3",
+    "important": "the four copies are presentation-labelled carriers; their norms are transported rather than identified with one fixed broken-H1 norm"
+  },
+  "orbit_carrier": {
+    "name": "H_orb=H^(0) direct_sum H^(1) direct_sum H^(2) direct_sum H^(3)",
+    "norm": "sum_j ||h_j||_(j)^2",
+    "quarter_turn": "T_orb(h_0,h_1,h_2,h_3)=(F^(-3)h_3,Fh_0,Fh_1,Fh_2), with each displayed F interpreted as the defining isometry between adjacent transported presentations",
+    "laws": ["T_orb is unitary", "T_orb^4=I", "all four response presentations retained"]
+  },
+  "horizontal_source_graph": {
+    "map": "J_orb f=(f,Ff,F^2f,F^3f)/2",
+    "isometry": true,
+    "quarter_covariance": "T_orb J_orb f=J_orb(Ff) whenever f and its orbit are read in the transported source presentations",
+    "source_recovery": "2 times projection to presentation zero recovers f"
+  },
+  "incidence_lift": {
+    "map": "B_orb=J_orb B:U->H_orb",
+    "hilbert_schmidt": true,
+    "ideal_norm": "||B_orb||_2=||B||_2 under the 1/2 normalization",
+    "wall_handling": "prime jumps remain explicit in presentation zero; Fourier-transformed oscillatory tails live in transported response presentations rather than being mis-typed as prime-wall jumps"
+  },
+  "sewing_graph": {
+    "relation": "Lambda_orb=Graph(T_orb) in H_orb_minus direct_sum H_orb_plus",
+    "maximal_isotropic": "follows from unitarity under the standard -I direct_sum I Green form",
+    "defect": "d_T(x,y)=y-T_orb x"
+  },
+  "remaining_physical_descent": [
+    "construct the horizontal equalizer identifying four presentations as one state without replacing them by an independent direct sum",
+    "transport reciprocal signs and Real structure across all strata",
+    "show conservative C_FP trace lands in the sewing graph",
+    "prove ordered linking form continuity on the orbit carrier"
+  ],
+  "disposition": "Fourier sewing can be made rigorously unitary by retaining four transported presentation spaces. This avoids the false requirement that the prime-wall broken-H1 norm itself be Fourier invariant. The orbit graph closes analytic sewing, while horizontal physical-state descent and linking remain separate.",
+  "rh_implication": false
+}

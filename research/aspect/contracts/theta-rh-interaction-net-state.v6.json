@@ -1,0 +1,31 @@
+{
+  "schema": "marici.scc.rh-interaction-net-state-contract.v6",
+  "predecessor": "research/aspect/contracts/theta-rh-interaction-net-state.v5.json",
+  "relation": "reduces_final_return_gate_by_contragredient_uniqueness",
+  "pairing_assumption": "declared source and target pairings are nondegenerate",
+  "uniqueness": {
+    "statement": "a forward map T has a unique contragredient T^top",
+    "consequence": "forward equality implies contragredient equality",
+    "independent_return_coefficients_required": false,
+    "independent_block_unitary_required": false
+  },
+  "owner_acceptance_test": {
+    "steps": [
+      "expose authoritative G4 forward arithmetic/radial incidence U_G4 and its pairings",
+      "prove the source square U_G4=T_pair_to_border",
+      "confirm the Evans lower row uses U_G4^top"
+    ],
+    "then": "U_G4^top=T_pair_to_border^top automatically"
+  },
+  "current_state": {
+    "U_G4_exposed": false,
+    "pairings_exposed": false,
+    "forward_square_testable": false,
+    "return_identity": "untestable",
+    "reason": "current authoritative G4 contract exposes no U_G4"
+  },
+  "sole_remaining_cell": "one forward-map identification, not an independent return-coefficient gate",
+  "rh_bearing": true,
+  "self_admission_permitted": false,
+  "rh_implication": false
+}

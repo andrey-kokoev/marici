@@ -1,0 +1,53 @@
+{
+  "schema": "marici.voevodsky.cyclic-trace-bordered-response-square.v1",
+  "status": "variance_correct_function_valued_pair_euler_response_square_constructed",
+  "sources": [
+    "research/voevodsky/the-variance-correct-pair-to-euler-bridge-lands-in-a-function-valued-cyclic-trace-ideal.v1.json",
+    "research/aspect/contracts/polarized-pair-to-bordered-radial-crossing.v1.json"
+  ],
+  "pair_response": {
+    "generator_packet": "beta_g(z)=(rho_g(0),E_g(z),W_g(z),R_g(z))",
+    "relation": "zR_g-rho_g(0)=E_g-W_g/2",
+    "readout": "ell_RL beta_g=R_g+2E_g"
+  },
+  "operator_valued_response": {
+    "map": "Q_B(g)=P_p tensor beta_g for a generator in shell p",
+    "target": "I_1(E) completed_tensor B_border",
+    "prime_label_retained_before_trace": true,
+    "all_jets_and_shell_bonding_retained": true
+  },
+  "cyclic_action": {
+    "map": "R_2(s)(A tensor beta)=Tr_E(L(s)^2 A) beta",
+    "generator_value": "R_2(s)(P_p tensor beta_g)=p^(-2s)beta_g",
+    "border_compatibility": "the scalar p^(-2s) commutes with rho0,E,W,R, the Stokes relation, removable z=0 continuation, and every z derivative"
+  },
+  "commuting_square": {
+    "top_then_right": "g -> P_p tensor beta_g -> p^(-2s)beta_g",
+    "left_then_bottom": "g -> beta_g -> p^(-2s)beta_g",
+    "identity": "R_2(s) Q_B = M_(p^-2s) T_pair_to_border shellwise",
+    "readout_identity": "ell_RL R_2(s)Q_B(g)=p^(-2s)(R_g+2E_g)"
+  },
+  "density_level": {
+    "ordinary": "Tr(L^2(P_p tensor rho_g))=p^(-2s)rho_g",
+    "laplace": "Laplace commutes with the trace because the prime factor is scalar and the response is nuclear/rapid on the source-generated range",
+    "no_information_loss_before_final_trace": true
+  },
+  "variance": {
+    "state_space": "primitive E unchanged",
+    "grade_two": "appears only through L(s)^2 inside Tr",
+    "bordered_response": "coefficient object, not promoted to an Euler state sector"
+  },
+  "what_this_closes": [
+    "full density-level pair-to-Euler cyclic response comparison",
+    "compatibility with bordered Stokes coordinates",
+    "all z-jets and shell cutoffs",
+    "prime-diagonal Adams-two factor"
+  ],
+  "what_remains": [
+    "identify the old conservative C_FP response functional with this operator-valued bordered trace",
+    "graded determinant-line assembly and anomaly normalization",
+    "independent old five-port codiagonal comparison"
+  ],
+  "disposition": "The determinant-line version of the pair-to-Euler comparison now commutes with the complete bordered response, not merely the ordinary density or leading coefficient. This is the strongest variance-correct replacement for item 5; it still does not manufacture a primal conservative block state.",
+  "rh_implication": false
+}

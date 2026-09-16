@@ -1,0 +1,40 @@
+{
+  "schema": "marici.voevodsky.prime-wall-wronskian-continuity-audit.v1",
+  "status": "regular_skew_form_closed_full_wall_totalization_open",
+  "source": "research/voevodsky/the-countable-prime-wall-broken-h1-domain-is-closed-and-the-half-density-incidence-is-hilbert-schmidt.v1.json",
+  "regular_form": {
+    "definition": "omega_reg(f,g)=integral_R (f'_reg conjugate(g)-f conjugate(g'_reg))dt",
+    "analytic_lane": "remove conjugation in the second slot",
+    "bound": "|omega_reg(f,g)| <= ||f'_reg||_2||g||_2+||f||_2||g'_reg||_2 <= ||f||_wall||g||_wall",
+    "continuous": true,
+    "skew": true
+  },
+  "orbit_extension": {
+    "definition": "omega_orb((f_j),(g_j))=sum_j omega_reg,j(f_j,g_j), where each form is transported from presentation zero",
+    "bound": "|omega_orb(f,g)| <= ||f||_orb||g||_orb",
+    "quarter_turn_invariant": true,
+    "continuous": true
+  },
+  "distributional_wall_terms": {
+    "formal_expression": "sum_(a in A)([f]_a conjugate(g(a)_avg)-f(a)_avg conjugate([g]_a))",
+    "problem": "H_wall controls the jump sequence in ell2(A), but does not control the average trace sequence (f(a)_avg)_a in ell2(A)",
+    "countermechanism": "even a globally H1 zero-jump function can have non-square-summable samples at the exponentially numerous points log p; zero jump norm gives no trace-sequence penalty",
+    "conclusion": "the full distributional Wronskian/linking form is not a continuous bilinear form on the currently declared H_wall"
+  },
+  "why_finite_cutoffs_work": "For A_X finite, all trace evaluations are continuous and the finite wall sum is bounded, but the constants need not be uniform as X grows.",
+  "legal_repairs": [
+    "augment the domain norm by a source-derived weighted trace term sum_p nu_p|f(log p)_avg|^2 and use the dual jump weight nu_p^(-1)",
+    "retain wall traces in a separate boundary carrier paired with jumps rather than forcing the form onto H_wall alone",
+    "restrict the linking form to the source-generated rapid theta/Evans subspace and prove a uniform trace majorant there",
+    "renormalize shellwise before summation using a source-fixed local boundary metric"
+  ],
+  "preferred_repair": "separate boundary carrier: H_wall direct_sum T_A, with explicit trace map gamma and its dual jump carrier; this preserves the bulk Hilbert-Schmidt norm and avoids imposing an artificial prime-sampling condition on all H1 histories",
+  "effect_on_item_4": {
+    "regular_ordered_wronskian": "closed on completed orbit carrier",
+    "wall_corrected_ordered_linking": "open",
+    "full_item_closed": false
+  },
+  "next_hostile": "compute finite-cutoff operator norms of the trace-to-wall pairing; boundedness in X is required before any scalar linking cancellation is promoted to the completed conservative adjoint.",
+  "disposition": "The interior skew Wronskian form extends continuously and Fourier-equivariantly to the orbit completion. The endpoint/wall correction does not: jump ell2 control alone has no dual control of average traces. Item 4 therefore requires a separate trace boundary carrier or an additional weighted sampling theorem.",
+  "rh_implication": false
+}

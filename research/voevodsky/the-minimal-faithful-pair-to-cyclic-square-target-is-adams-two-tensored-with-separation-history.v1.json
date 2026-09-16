@@ -1,0 +1,51 @@
+{
+  "schema": "marici.voevodsky.adams-two-separation-history-bridge.v1",
+  "status": "source_derived_candidate_not_conservative_owner_adopted",
+  "sources": [
+    "research/nima/a-single-adams-two-cyclic-square-coordinate-cannot-reproduce-the-finite-shell-autocorrelation-density.md",
+    "research/nima/correction-adams-two-is-only-an-order-matched-euler-target-until-the-completed-theta-pair-shell-maps-to-the-cyclic-square-carrier.md",
+    "research/aspect/contracts/polarized-pair-to-bordered-radial-crossing.v1.json"
+  ],
+  "finite_source": {
+    "name": "P_pair,X",
+    "generator": "g_(p,p_plus;n,m,orientation)",
+    "response_density": "rho_g(t)=integral_(log p)^(log p_plus) Phi_n(x)Phi_m(x+t)dx"
+  },
+  "augmented_euler_target": {
+    "name": "E_cyc2,sep,X",
+    "definition": "direct_sum over admitted prime shells p of (C e_(p,2)) tensor H_sep,p, with ordered-pair labels retained in the coefficient graph",
+    "adams_factor": "e_(p,2) is the source-authorized second cyclic grade",
+    "history_factor": "H_sep,p is the completed rapid separation-density space containing every rho_g and all t-moments",
+    "bare_cyclic_square_projection": "forget H_sep,p after an explicitly declared moment functional; not faithful and not used to define the bridge"
+  },
+  "bridge": {
+    "name": "Q_X^sep",
+    "formula_on_generator": "Q_X^sep g_(p,p_plus;n,m,orientation)=e_(p,2) tensor rho_g",
+    "linear": true,
+    "shell_natural": true,
+    "ordered_orientation_retained": true,
+    "all_laplace_jets_retained": "partial_z^j Laplace(rho_g)=(-1)^j Laplace(t^j rho_g)",
+    "does_not_use_leading_asymptotic_match": true,
+    "does_not_use_xi_zeros": true
+  },
+  "faithful_realization": {
+    "carrier": "Graph(Q_X^sep)={(x,Q_X^sep x):x in P_pair,X}",
+    "source_projection": "pi_pair(x,Q_X^sep x)=x",
+    "injective": true,
+    "reason": "faithfulness comes from retained source coordinate, not from claiming density synthesis has zero kernel"
+  },
+  "minimality": {
+    "bare_e_p2_insufficient": "one scalar cannot retain the complete density or its moment jets",
+    "separation_history_sufficient": "Laplace transform and every parameter jet factor through H_sep,p",
+    "claim": "among the three previously listed viable architectures, this realizes Adams-two tensored with a retained separation-history module"
+  },
+  "required_conservative_extension": {
+    "arithmetic_loop": "extend A0 on each shell as A0,euler tensor I_Hsep, or provide a source-derived nontrivial history action",
+    "incidence": "define B_aug on e_(p,2) tensor rho_g into the conservative history carrier",
+    "adjoint": "derive B_aug^dagger from the augmented source and target pairings",
+    "border": "transport rho0,E,W,R without applying a bare cyclic-square scalar projection"
+  },
+  "normalization_boundary": "No endpoint coefficient or p^-2/4 scalar is inserted into Q_X^sep. Such normalization belongs to the later conservative incidence/border comparison; inserting it here from the desired Schur value would be fitted.",
+  "disposition": "A finite pair-to-cyclic-square bridge can be constructed without losing the shell density by augmenting Adams grade two with separation history and retaining its joint graph. This repairs the arithmetic carrier type in a faithful candidate architecture, but the old conservative cone has not adopted or extended to this augmented carrier.",
+  "rh_implication": false
+}

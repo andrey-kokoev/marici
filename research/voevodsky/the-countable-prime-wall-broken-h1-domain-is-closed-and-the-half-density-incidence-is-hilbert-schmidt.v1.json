@@ -1,0 +1,56 @@
+{
+  "schema": "marici.voevodsky.countable-prime-wall-broken-h1-completion.v1",
+  "status": "analytic_domain_and_incidence_completion_constructed",
+  "source": "research/voevodsky/the-finite-broken-h1-history-wall-graph-is-a-common-domain-for-evans-histories-and-prime-cut-columns.v1.json",
+  "wall_set": {
+    "A": "{0} union {log p:p prime}",
+    "local_finiteness": "every compact interval meets A in finitely many points",
+    "no_finite_accumulation": true
+  },
+  "completed_carrier": {
+    "name": "H_wall",
+    "definition": "f in L2(R), piecewise H1 on the components of R\\A, with f'_reg in L2 and jump sequence ([f]_a) in ell2(A)",
+    "norm": "||f||_wall^2=||f||_L2^2+||f'_reg||_L2^2+sum_(a in A)|[f]_a|^2",
+    "dense_core": "compactly supported functions that are H1 on finitely many wall intervals",
+    "finite_cutoff_maps": "restriction to the walls A_X is contractive and compatible under X<Y"
+  },
+  "closedness": {
+    "operator": "D_wall f=(f'_reg,([f]_a)_a)",
+    "target": "L2(R) direct_sum ell2(A)",
+    "claim": "D_wall is closed",
+    "proof_outline": "a graph-Cauchy sequence converges in L2, its regular derivatives converge intervalwise, and its ell2 jump vectors converge; one-dimensional trace continuity on each locally finite interval identifies the limiting jumps",
+    "completeness": "H_wall is the graph Hilbert space of D_wall"
+  },
+  "embedded_evans_domain": {
+    "map": "H1(R)->H_wall",
+    "jump_sequence": "zero",
+    "closed_subspace": true
+  },
+  "prime_cut_incidence": {
+    "source": "U with ||x||_U^2=sum_p log(p)|x_p|^2",
+    "columns": "b_p=p^(-1/2)c_(log p)",
+    "cut_norm": "||c_(log p)||_wall^2=C_cut^2=||Phi||_2^2+||Phi'||_2^2+|Phi(0)|^2, independent of p",
+    "hilbert_schmidt_sum": "sum_p ||b_p||_wall^2/log(p)=C_cut^2 sum_p 1/(p log p)<infinity",
+    "conclusion": "B:U->H_wall is Hilbert-Schmidt",
+    "adjoint": "(B^dagger f)_p=p^(-1/2)<c_(log p),f>_wall/log p"
+  },
+  "distributional_totalization": {
+    "readback": "partial_t f=f'_reg+sum_a[f]_a delta_a in distributions",
+    "meaning": "all regular-derivative and prime-wall contributions are retained by one closed countable graph"
+  },
+  "what_this_closes": [
+    "countable broken-domain completion",
+    "cutoff-uniform incidence ideal bound",
+    "common domain containing Evans histories and prime cut columns",
+    "source-metric adjoint for the history-plus-wall incidence"
+  ],
+  "still_open": [
+    "Fourier-Poisson action on the ell2 prime-wall jump coordinates",
+    "maximal-isotropic sewing for the completed history-plus-wall boundary relation",
+    "ordered linking skew form continuity on H_wall",
+    "adoption as the conservative C_FP history domain",
+    "dynamic separation-history intertwiner"
+  ],
+  "disposition": "The finite common history-plus-wall domains admit a canonical unweighted ell2 prime-wall completion. The differential is closed and the half-density prime incidence is Hilbert-Schmidt with the exact convergent sum over 1/(p log p). The next obstruction is sewing/linking structure, not analytic domain closure.",
+  "rh_implication": false
+}

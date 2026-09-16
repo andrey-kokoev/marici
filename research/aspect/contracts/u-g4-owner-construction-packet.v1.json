@@ -1,0 +1,81 @@
+{
+  "schema": "marici.aspect.u-g4-owner-construction-packet.v1",
+  "owner": "repository-operator",
+  "authority": {
+    "basis": "operator adoption of Theta_Zplus, ordered-pair tensor, weighted-relative radial precursor, and integer-theta Riesz source map",
+    "scope": "G4 arithmetic/radial forward incidence",
+    "reviewer": "pending-independent-review"
+  },
+  "source_carrier": {
+    "name": "ThetaPair_Zplus",
+    "definition": "completed ordered tensor of integer theta atoms f_n tensor f_m with shell, ratio, grade, and orientation labels",
+    "basis_or_coordinates": ["f_n tensor f_m", "ratio D=log(m/n)", "shell (p_j,p_(j+1))", "grade W_D(j,k)"],
+    "topology": "projective product-grade completion with weighted-relative Riesz pullback topology",
+    "domain_conditions": "admitted finite shell packets and their projective completion"
+  },
+  "target_carrier": {
+    "name": "B_G4",
+    "definition": "Graph(J_RL) over the weighted-relative doubled radial graph",
+    "basis_or_coordinates": ["q", "rho0", "E", "W", "R+2E"],
+    "topology": "graph topology induced by G_D and bordered-response norm",
+    "domain_conditions": "q in Dom(D_rad) with continuous endpoint/Wronskian traces and removable z=0 Stokes continuation"
+  },
+  "pairings": {
+    "source": {
+      "formula": "tensor weighted-relative pairing; analytic lane bilinear and Hermitian lane conjugates the second factor",
+      "coordinate_matrix": [["G_rel tensor G_rel"]],
+      "units_or_normalization": "Riesz normalization <m_t,h>_rel=h(t)"
+    },
+    "target": {
+      "formula": "<q,q'>_G_D + <J_RL q,J_RL q'>_border",
+      "coordinate_matrix": [["G_D", 0], [0, "G_border"]],
+      "units_or_normalization": "G_D=I+D_rad^*D_rad; bordered coordinates use Stokes normalization (+1,+1,-1/2,+2)"
+    },
+    "nondegeneracy_certificate": "research/aspect/checkers/check_u_g4_owner_construction_packet.py"
+  },
+  "forward_map": {
+    "name": "U_G4",
+    "domain": "ThetaPair_Zplus",
+    "codomain": "B_G4",
+    "formula": "U_G4(x)=(U_pair x,J_RL U_pair x)",
+    "generator_images": [
+      {"generator":"f_n tensor f_m","image":"(m_(log n) tensor m_(log m), J_RL(m_(log n) tensor m_(log m)))","lane":"analytic_transpose"},
+      {"generator":"f_n tensor conjugate(f_m)","image":"(m_(log n) tensor conjugate(m_(log m)), J_RL(m_(log n) tensor conjugate(m_(log m))))","lane":"hermitian"}
+    ],
+    "derivation_checker": "research/aspect/checkers/check_u_g4_owner_construction_packet.py"
+  },
+  "placement": {
+    "prime": "Euler loading only on n=p^k",
+    "power": "spectral location k log p",
+    "grade": "W_D(j,k) and logarithmic translation grade retained",
+    "shell": "consecutive increasing prime shell retained",
+    "ordered_pair": "first and second theta slots remain ordered",
+    "theta": "f_n maps to unique m_(log n)",
+    "reciprocal": "D-to-minus-D block reflection with slot exchange",
+    "linking": "ordered Wronskian W enters with coefficient -1/2",
+    "contragredient": "unique transpose relative to declared nondegenerate pairings"
+  },
+  "provenance": [
+    {"output":"f_n -> m_(log n)","source_equation":"<m_t,h>_rel=h(t)","source_path":"research/conjecture_replay/contracts/CR1-weighted-Riesz-U-theta-rad.candidate.v1.json"},
+    {"output":"pair tensor lanes","source_equation":"ordered analytic tensor and conjugate-second-factor Hermitian tensor","source_path":"research/aspect/contracts/integer-theta-riesz-extension.candidate.v1.json"},
+    {"output":"radial graph metric and domain","source_equation":"G_D=I+D^*D on doubled radial wall domain","source_path":"research/aspect/contracts/theta-rh-g4-radial-interface.v1.json"},
+    {"output":"bordered readout","source_equation":"zR-rho0=E-W/2 and R+2E","source_path":"research/aspect/contracts/g4-radial-to-bordered-target.v1.json"}
+  ],
+  "independence": {
+    "construction_dependencies": ["weighted-relative Riesz theorem", "integer theta translation", "radial graph/Stokes data"],
+    "forbidden_dependencies": ["T_pair_to_border", "Evans residual", "desired forward equality"],
+    "comparison_is_postconstruction": true,
+    "audit_checker": "research/aspect/checkers/check_u_g4_owner_construction_packet.py"
+  },
+  "completion": {
+    "topology": "source projective completion to target graph completion",
+    "cutoff_naturality": "prime/shell cutoffs commute with retained labels and radial loading",
+    "jet_domain": "holomorphic Stokes continuation with all parameter jets",
+    "growth_or_rigging": "weighted-relative Riesz graph and rapid-radial seminorm completion"
+  },
+  "claim_boundary": {
+    "forward_map_authoritative": "operator-adopted-pending-review",
+    "comparison_proved": false,
+    "rh_implication": false
+  }
+}

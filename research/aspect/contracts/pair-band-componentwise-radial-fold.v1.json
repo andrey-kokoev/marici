@@ -1,0 +1,43 @@
+{
+  "schema": "marici.aspect.pair-band-componentwise-radial-fold.v1",
+  "status": "constructed_to_two_copy_folded_radial_range",
+  "sources": [
+    "research/aspect/results/pair_band_graph_norm_majorant.v1.json",
+    "research/aspect/contracts/theta-rh-g4-radial-interface.v1.json",
+    "research/conjecture_replay/results/CR1_finite_fold_comparison_arrow.json"
+  ],
+  "source": "H1(R)_W direct-sum H1(R)_J",
+  "single_history_fold": {
+    "formula": "C_u q=(q(r),u q(-r))",
+    "inverse_on_range": "q(t)=f_plus(t) for t>=0; q(t)=u^-1 f_minus(-t) for t<0",
+    "differential": "C_u partial_t=diag(partial_r,-partial_r)C_u",
+    "wall": "trace belongs to Lambda_u={(c,u c)}",
+    "unitary": true
+  },
+  "componentwise_map": {
+    "name": "F_WJ_rad=C_u direct-sum C_u",
+    "formula": "(W,J) maps to ((W(r),uW(-r)),(J(r),uJ(-r)))",
+    "target": "G_rad^W direct-sum G_rad^J",
+    "continuous": true,
+    "cutoff_uniform": true,
+    "injective_on_folded_range": true,
+    "both_wall_conditions_automatic": true
+  },
+  "B1_effect": {
+    "source_derived_radial_component_assignment": "closed_after_retaining_W_and_J_as_separate_history legs",
+    "wall_domain_admission": "closed_componentwise",
+    "pair_to_two_copy_radial_map": "constructed",
+    "pair_to_original_single_radial_graph": "not_constructed"
+  },
+  "remaining_mismatch": {
+    "packet_v1_target": "one doubled radial graph G_rad",
+    "constructed_target": "two copies G_rad^W direct-sum G_rad^J",
+    "required_resolution": "either owner adopts the two-history target or supplies a source-derived contraction from (W,J) to one whole-line history",
+    "J_RL_domain_on_two_history_target_exposed": false
+  },
+  "claim_boundary": {
+    "C_pair_rad_for_original_packet_complete": false,
+    "comparison_permitted": false,
+    "rh_implication": false
+  }
+}

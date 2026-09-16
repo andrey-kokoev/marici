@@ -1,0 +1,49 @@
+{
+  "schema": "marici.voevodsky.prime-half-density-wall-wronskian-continuity.v1",
+  "status": "completed_linking_form_constructed_on_history_wall_carrier",
+  "predecessor": "research/voevodsky/the-regular-wronskian-form-is-continuous-on-the-prime-wall-domain-but-the-full-wall-linking-form-is-not-yet-defined.v1.json",
+  "wall_points": "a_p=log p",
+  "weighted_trace": {
+    "map": "gamma_1/2(f)=(p^(-1/2) f(a_p)_avg)_p",
+    "target": "ell2(primes)",
+    "claim": "gamma_1/2:H_wall->ell2 is continuous"
+  },
+  "sampling_proof": {
+    "local_intervals": "choose disjoint intervals I_p around log p with length delta_p comparable to the minimum adjacent logarithmic prime gap",
+    "prime_gap_bound": "consecutive odd primes differ by at least 2, hence delta_p >= c/p after harmless treatment of finitely many small primes",
+    "one_dimensional_trace": "delta_p |f(log p +/-)|^2 <= C integral_(I_p)(|f|^2+|f'_reg|^2)",
+    "weighted_consequence": "p^(-1)|f(log p)_avg|^2 <= C integral_(I_p)(|f|^2+|f'_reg|^2)",
+    "sum": "sum_p p^(-1)|f(log p)_avg|^2 <= C(||f||_2^2+||f'_reg||_2^2) <= C||f||_wall^2"
+  },
+  "jump_map": {
+    "definition": "j(f)=([f]_(log p))_p",
+    "target": "ell2(primes)",
+    "bound": "||j(f)||_ell2<=||f||_wall"
+  },
+  "wall_linking_form": {
+    "definition": "omega_wall(f,g)=sum_p([f]_(log p) conjugate(p^(-1/2)g(log p)_avg)-p^(-1/2)f(log p)_avg conjugate([g]_(log p)))",
+    "analytic_lane": "omit conjugations",
+    "bound": "|omega_wall(f,g)| <= C||f||_wall||g||_wall",
+    "skew": true,
+    "global_seam": "the wall at 0 contributes one additional finite-dimensional bounded term"
+  },
+  "complete_linking": {
+    "definition": "omega_link=omega_reg+omega_wall",
+    "continuous": true,
+    "source_normalization": "the p^(-1/2) factor is the already declared arithmetic half-density, not a fitted convergence weight"
+  },
+  "orbit_extension": {
+    "definition": "transport omega_link to each H^(j) and sum over four presentations",
+    "continuous": true,
+    "quarter_turn_invariant": true,
+    "horizontal_restriction": "continuous on H_hor"
+  },
+  "claim_boundary": {
+    "item_4_analytic_continuity": true,
+    "identification_with_old_conservative_linking_metric": false,
+    "conservative_owner_adoption": false,
+    "xi_divisibility": false
+  },
+  "disposition": "The missing dual trace control is supplied canonically by the existing prime half-density. Weighted logarithmic-prime sampling is bounded on the broken-H1 carrier, so the full regular-plus-wall ordered Wronskian form extends continuously to the completed four-presentation orbit. Item 4 is analytically closed; only conservative metric identification remains.",
+  "rh_implication": false
+}

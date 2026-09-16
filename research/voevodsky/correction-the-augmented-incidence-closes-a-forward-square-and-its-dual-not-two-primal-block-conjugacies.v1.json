@@ -1,0 +1,46 @@
+{
+  "schema": "marici.voevodsky.augmented-off-diagonal-comparison-variance-correction.v1",
+  "corrects": "research/voevodsky/the-augmented-pair-incidence-closes-both-off-diagonal-conservative-block-identities.v1.json",
+  "status": "forward_square_retained_primal_return_claim_retracted",
+  "fresh_type_audit": {
+    "U_rad": "V_pair->H_rad",
+    "Q_sep": "V_pair->E_cons,aug",
+    "j_H": "H_rad->H_cons,aug",
+    "B_cons": "E_cons,aug->H_cons,aug"
+  },
+  "valid_forward_square": {
+    "equation": "j_H U_rad=-B_cons Q_sep",
+    "status": "generatorwise exact on the labelled source-generated range"
+  },
+  "valid_contragredient_square": {
+    "equation": "U_rad^top j_H^top=-Q_sep^top B_cons^top",
+    "with_names": "N_rad,an j_H^top=-Q_sep^top B_cons^dagger",
+    "status": "forced by transpose uniqueness"
+  },
+  "retracted_equation": {
+    "old": "Q_sep^top N_rad,an=-B_cons^dagger j_H",
+    "reason": "domains and codomains do not compose in that order; the transpose reverses both comparison maps"
+  },
+  "primal_upper_right_conjugacy": {
+    "desired_if_blocks_are_identified": "Q_sep N_rad,an=-B_cons^dagger j_H",
+    "currently_typeable": false,
+    "requirements": "identify primal and dual carriers through declared Riesz maps and supply suitable inverse/unitary comparison maps; Q_sep and j_H are only bounded forward graph maps and j_H is explicitly noncoercive"
+  },
+  "diagonal_notation_correction": {
+    "radial_block_entry": "B_X^rad(z):V_pair->V_pair is an as-yet-unexposed endpoint/border diagonal operator",
+    "bordered_carrier": "B_border={(rho0,E,W,R)} is a response target, not this endomorphism",
+    "readout": "R+2E is a scalar/response functional, not B_X^rad",
+    "invalid_old_expression": "Q_sep B_border=A0 Q_sep",
+    "correct_required_expression": "Q_sep B_X^rad=A0 Q_sep, after B_X^rad is independently defined"
+  },
+  "revised_item_6": {
+    "forward_off_diagonal_square": "closed",
+    "dual_contragredient_square": "closed",
+    "primal_upper_right_block_conjugacy": "open/untyped",
+    "radial arithmetic diagonal B_X^rad": "not exposed",
+    "history diagonal": "analytic zero-extension response intertwiner exists, conservative D0 identification open",
+    "full_entrywise_equality": false
+  },
+  "disposition": "The augmented construction closes one forward incidence square and its correctly reversed dual square. It does not provide two primal block conjugacies because the comparison maps are not invertible Riesz identifications. Moreover, the bordered response carrier was incorrectly used as a diagonal operator. Item 6 remains substantially open until B_X^rad and variance-correct comparison maps are exposed.",
+  "rh_implication": false
+}

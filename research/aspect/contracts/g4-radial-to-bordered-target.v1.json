@@ -1,0 +1,44 @@
+{
+  "schema": "marici.aspect.g4-radial-to-bordered-target.v1",
+  "status": "operator_authorized_independent_constructor_for_review",
+  "authority": "repository operator directive in current session",
+  "sources": [
+    "research/aspect/contracts/theta-rh-g4-radial-interface.v1.json",
+    "research/aspect/contracts/integer-theta-riesz-extension.candidate.v1.json"
+  ],
+  "radial_precursor": {
+    "name": "G_rad",
+    "carrier": "weighted-relative doubled radial graph",
+    "differential": "D_rad=diag(partial_r,-partial_r)",
+    "wall_domain": "Lambda_u={(c,u c):c in C}",
+    "metric": "G_D=I+D_rad^*D_rad"
+  },
+  "border_operator": {
+    "name": "J_RL",
+    "domain": "Dom(D_rad) with continuous endpoint and Wronskian traces",
+    "coordinates": ["rho0", "E", "W", "R"],
+    "stokes_relation": "zR-rho0=E-W/2",
+    "formula": "J_RL(q)(z)=(rho0(q)+E(q)-W(q)/2)/z+2E(q)",
+    "z0_rule": "use the removable holomorphic continuation forced by the Stokes numerator",
+    "all_jet_action": "differentiate the holomorphic continuation parameterwise"
+  },
+  "authoritative_target": {
+    "name": "B_G4",
+    "definition": "Graph(J_RL)={(q,J_RL q):q in Dom(J_RL)}",
+    "coordinates": ["q", "rho0", "E", "W", "R+2E"],
+    "topology": "graph topology induced by G_D and the bordered-response norm",
+    "pairing": "<q,q'>_G_D + <J_RL q,J_RL q'>_border",
+    "nondegenerate_reason": "the retained q coordinate and positive G_D term separate every nonzero graph vector",
+    "border_projection": "pi_border(q,J_RL q)=J_RL q"
+  },
+  "independence": {
+    "construction_uses_T_pair_to_border": false,
+    "construction_uses_Evans_residual": false,
+    "construction_uses_desired_equality": false,
+    "derivation_basis": "radial differential, wall/endpoint traces, Stokes relation, and graph metric"
+  },
+  "claim_boundary": {
+    "comparison_with_T_pair_to_border_performed": false,
+    "rh_implication": false
+  }
+}

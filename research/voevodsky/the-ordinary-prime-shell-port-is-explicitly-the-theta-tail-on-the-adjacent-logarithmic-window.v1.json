@@ -1,0 +1,46 @@
+{
+  "schema": "marici.voevodsky.ordinary-prime-shell-port.v1",
+  "source_records": [
+    "research/nima/the-five-port-residual-is-topologically-defined-but-not-yet-source-normalized-as-one-g4-adjoint.md",
+    "research/voevodsky/prior_research_evans_divisibility_and_green_promotion_boundary_20260908.md"
+  ],
+  "ordinary_column": {
+    "prime_column": "b_p^(0)(t)=p^(-1/2) Phi(t) 1_[0,log p](t)",
+    "source_adjoint_weight": "1/log p",
+    "topology": "ordinary history port on the retained wall graph"
+  },
+  "consecutive_shell": {
+    "definition": "s_(p,q)^(0)=q^(1/2)b_q^(0)-p^(1/2)b_p^(0), for consecutive primes p<q",
+    "simplification": "s_(p,q)^(0)(t)=Phi(t) 1_(log p,log q](t)",
+    "reason": "the half-density factors cancel exactly and the nested initial windows subtract"
+  },
+  "evans_histories": {
+    "u_minus": "u_-(t;z)=integral_-infinity^t exp(z(t-r))Phi(r)dr",
+    "u_plus": "u_+(t;z)=-integral_t^infinity exp(z(t-r))Phi(r)dr"
+  },
+  "ordinary_shell_residual": {
+    "minus_lane": "S_(p,q),-^(0)(z)=integral_(log p)^(log q) conjugate_or_transpose(Phi(t)) u_-(t;z) dt",
+    "plus_lane": "S_(p,q),+^(0)(z)=integral_(log p)^(log q) conjugate_or_transpose(Phi(t)) u_+(t;z) dt",
+    "pairing_rule": "use conjugation only in the Hermitian lane; use the analytic bilinear transpose in the holomorphic lane",
+    "jet_formula": "partial_z^j S^(0)(z)=integral_(log p)^(log q) Phi(t) partial_z^j u(t;z)dt",
+    "status": "fully_source_normalized_and_executable_once_Phi_normalization_and_z_are supplied"
+  },
+  "prime_2_3_fixture": {
+    "shell_vector": "Phi(t) 1_(log 2,log 3](t)",
+    "residual": "integral_(log 2)^(log 3) Phi(t)u(t;z)dt",
+    "interpretation": "first of the five required normalized summands"
+  },
+  "noncancellation_boundary": {
+    "ordinary_component_known_nonzero": true,
+    "saturated_five_port_residual_can_vanish": false,
+    "codiagonal_sum_can_still_vanish": "only by source-authorized cancellation against derivative, wall, reciprocal, and linking ports",
+    "remaining_unknowns": [
+      "regular-derivative shell summand in common metric",
+      "wall shell summand in common metric",
+      "stratified reciprocal shell summand",
+      "ordered-link shell summand after polarized metric transport"
+    ]
+  },
+  "disposition": "The ordinary row of the requested five-port hostile is no longer an abstract B_0 entry: for every consecutive shell it is exactly the theta tail restricted to the adjacent logarithmic window. Four source-normalized summands remain before the codiagonal residual can be tested.",
+  "rh_implication": false
+}

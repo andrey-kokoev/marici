@@ -1,0 +1,63 @@
+{
+  "schema": "marici.scc.pair-theta-carrier.candidate.v1",
+  "status": "source_derived_candidate_pending_g4_owner_adoption",
+  "sources": [
+    "research/nima/every-completed-theta-pair-shell-is-a-product-weighted-ratio-translate-of-one-base-correlation-kernel.md",
+    "research/voevodsky/actual_consecutive_prime_fixed_ratio_grade_and_reflection_20260912.md",
+    "research/voevodsky/one_leg_relative_haar_tensor_constructs_the_pair_modular_colligation_20260908.md"
+  ],
+  "carrier": {
+    "name": "ThetaPair",
+    "generator": "g_(D,j,k)^rightarrow",
+    "labels": {
+      "ratio_block": "D=log(a/b) for reduced positive integers a,b",
+      "theta_pair": "(n,m)=(kb,ka)",
+      "shell": "consecutive increasing primes (p_j,p_(j+1))",
+      "ordered_slots": ["n", "m"],
+      "grade": "W_D(j,k)=log(k b p_j p_(j+1))"
+    },
+    "realization": "g_(D,j,k)^rightarrow maps to Phi_(kb) tensor Phi_(ka) on shell [log(kbp_j),log(kbp_(j+1))]",
+    "topology": "projective completion by product-grade sublevel seminorms q_delta^D",
+    "finite_cutoff": "E_(D,N)={(j,k):k b p_j p_(j+1)<=N}"
+  },
+  "operations": {
+    "swap": "R g_(D,j,k)^rightarrow=g_(-D,j,k)^rightarrow with theta slots exchanged",
+    "swap_grade_shift": "W_(-D)(j,k)=W_D(j,k)+D",
+    "swap_continuity": "q_delta^(-D)(R c)=exp(delta D) q_delta^D(c)",
+    "common_dilation": "(n,m)->(pn,pm) preserves ratio and translates shell by log p",
+    "half_density": "product amplitude (nm)^(-1/2)=exp(-ell_Sigma/2)",
+    "relative_Haar": "J_pair=J tensor I with amplitude multiplier p^(1/2) and energy multiplier p"
+  },
+  "pair_kernel": {
+    "base": "K_[A,B](d)=integral_A^B Phi_1(v)Phi_1(v+d)dv",
+    "generator_response": "rho_nm^[a,b](t)=(nm)^(-1/2) K_[a+log n,b+log n](t+log(m/n))",
+    "product_ratio_separated": true,
+    "slot_orientation_retained": true
+  },
+  "candidate_source_map": {
+    "name": "iota_pair_theta",
+    "domain": "projective ordered-pair shell carrier P",
+    "codomain": "ThetaPair",
+    "generator_action": "label-identical inclusion of each admitted (D,j,k,n,m,shell,orientation) generator",
+    "injective_by_labels": true,
+    "surjectivity_claimed": false
+  },
+  "compatibility": {
+    "retains_prime_shell": true,
+    "retains_product_and_ratio_grade": true,
+    "retains_ordered_pair": true,
+    "retains_reciprocal_reflection": true,
+    "cutoff_natural": true,
+    "does_not_collapse_to_single_leg_basis": true
+  },
+  "missing_for_authority": [
+    "G4 owner adoption of ThetaPair as forward-loading source",
+    "pair-level extension of U_p^(theta->rad) or an owner incidence from ThetaPair",
+    "nondegenerate pairing matrices on the completed carrier"
+  ],
+  "claim_boundary": {
+    "authoritative_G4_source": false,
+    "U_G4_constructed": false,
+    "rh_implication": false
+  }
+}

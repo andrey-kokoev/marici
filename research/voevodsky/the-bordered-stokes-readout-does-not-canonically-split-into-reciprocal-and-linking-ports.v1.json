@@ -1,0 +1,43 @@
+{
+  "schema": "marici.voevodsky.bordered-readout-port-splitting-no-go.v1",
+  "inputs": [
+    "research/aspect/contracts/polarized-pair-to-bordered-radial-crossing.v1.json",
+    "research/aspect/contracts/u-g4-owner-construction-packet.v5.json",
+    "research/voevodsky/the-combined-reciprocal-linking-shell-row-is-explicit-and-closes-the-strict-packet-residual-identically.v1.json"
+  ],
+  "known_combined_functional": {
+    "carrier": "B_border={(rho0,E,W,R):zR-rho0=E-W/2}",
+    "functional": "ell_RL(rho0,E,W,R)=R+2E",
+    "shell_value": "I_RL=ell_RL(T_pair_to_border x)"
+  },
+  "splitting_problem": "find ell_recip and ell_link with ell_recip+ell_link=ell_RL",
+  "affine_ambiguity": {
+    "transformation": "for every continuous holomorphic shell-natural functional h on B_border, ell_recip'=ell_recip+h and ell_link'=ell_link-h",
+    "sum_unchanged": true,
+    "all_jets_unchanged": true,
+    "shell_concatenation_unchanged": true,
+    "xi_behavior_unchanged": true,
+    "consequence": "the Stokes identity and strict packet determine only the sum, not either port"
+  },
+  "explicit_nonuniqueness_family": {
+    "parameter": "alpha in C",
+    "one_split": "ell_recip^(alpha)=R+alpha E",
+    "other_split": "ell_link^(alpha)=(2-alpha)E",
+    "sum": "R+2E",
+    "note": "this family already respects continuity, holomorphy, jets, and shell additivity whenever R and E do"
+  },
+  "why_W_coefficient_does_not_fix_split": {
+    "stokes_substitution": "R=(rho0+E-W/2)/z",
+    "observation": "the -W/(2z) term occurs inside R after eliminating the constrained coordinate",
+    "consequence": "calling W the linking coordinate does not decide whether its induced contribution belongs to reciprocal propagation or linking return"
+  },
+  "minimal_authoritative_datum": {
+    "option_projectors": "continuous complementary idempotents Pi_recip,Pi_link on the bordered response dual, commuting with shell bonding, z-jets, reciprocal involution, and Real structure",
+    "option_functionals": "directly declare ell_recip and ell_link with source provenance and ell_recip+ell_link=ell_RL",
+    "option_grading": "declare a reciprocal/linking grading whose two spectral projectors separate ell_RL",
+    "metric_requirement": "transport each selected functional with its own fixed Green metric so the joint adjoint is B_recip^*G_recip+B_link^*G_link"
+  },
+  "hostile": "Any proposed split chosen only after evaluating Evans or Xi data is non-authoritative; alpha may not be fitted to force cancellation.",
+  "disposition": "No further analytic manipulation of the bordered Stokes equation can recover the two conservative rows separately. Their sum is canonical and complete, but an independent port projector, grading, or pair of source-provenanced functionals is necessary and sufficient for the five-port adjoint comparison.",
+  "rh_implication": false
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "marici.voevodsky.old-green-versus-ordered-linking-hostile.v1",
+  "status": "common_core_equality_rejected_augmentation_required",
+  "source": "research/aspect/contracts/theta-rh-interaction-net-state.v7.json",
+  "fresh_state": {
+    "item_2_response_graph_adopted": true,
+    "item_5_augmented_response_bridge_adopted": true,
+    "open_gate": "old cone Green identity and G_Tr pullback agreement on a common core"
+  },
+  "common_core": "C_c^infinity(R) contained in H1(R), with zero wall jumps",
+  "old_first_order_green_form": {
+    "formula": "Sigma_D(f,g)=<partial_t f,g>+<f,partial_t g>, up to the declared slot/sign convention",
+    "on_compact_core": "Sigma_D(f,g)=integral partial_t(f conjugate(g))=0"
+  },
+  "ordered_linking_form": {
+    "formula": "omega_reg(f,g)=integral(f' conjugate(g)-f conjugate(g'))dt",
+    "wall_term_on_core": "zero",
+    "not_zero_generically": true
+  },
+  "explicit_hostile": {
+    "choose": "nonconstant real f in C_c^infinity(R), g=f'",
+    "old_green": "Sigma_D(f,f')=0",
+    "linking": "omega_reg(f,f')=integral((f')^2-f f'')dt=2 integral(f')^2dt>0",
+    "conclusion": "the pullback ordered linking form cannot equal the old boundary Green form even on the smooth common core"
+  },
+  "interpretation": "The old Green form is the symmetric integration-by-parts boundary concomitant of the differential. The ordered Wronskian is a separate skew interior polarization. Continuity of both does not identify them.",
+  "required_v7_correction": {
+    "invalid_gate": "verify old cone Green identity equals the linking pullback",
+    "valid_gate_options": [
+      "augment the conservative form as Sigma_aug=Sigma_old direct_sum omega_link on an explicitly enlarged response sector",
+      "place omega_link in an off-diagonal incidence/skew block while keeping Sigma_old as the boundary form",
+      "supply a source operator J_link such that omega_link(f,g)=<J_link f,g> and declare its exact block position"
+    ],
+    "must_recheck": ["closedness", "maximal isotropy", "adjoint signs", "domain invariance"]
+  },
+  "effect_on_checklist": {
+    "item_2_carrier_adoption": "closed by v7",
+    "item_2_green_readback": "not closed and equality formulation rejected",
+    "item_4_continuity": "remains closed",
+    "item_6_linking_block_placement": "open"
+  },
+  "disposition": "The adopted response graph is compatible as a carrier, but its ordered linking form is not the old first-order boundary Green form. A one-line compact-support hostile proves equality impossible. Conservative closure requires an augmented/skew block placement, not a readback equality.",
+  "rh_implication": false
+}

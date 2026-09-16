@@ -1,0 +1,55 @@
+{
+  "schema": "marici.voevodsky.function-valued-cyclic-trace-pair-euler-bridge.v1",
+  "status": "variance_correct_determinant_line_bridge_constructed",
+  "source": "research/voevodsky/correction-adams-two-separation-history-is-a-labelled-response-module-not-an-euler-loop-state-carrier.v1.json",
+  "primitive_euler_space": {
+    "carrier": "E with orthogonal prime basis e_p",
+    "loop": "L(s)e_p=p^(-s)e_p",
+    "prime_projector": "P_p=|e_p><e_p|"
+  },
+  "target": {
+    "name": "Cyc2_sep",
+    "definition": "trace-class diagonal operator ideal I_1(E) completed_tensor H_sep",
+    "elements": "function-valued diagonal cyclic observables sum_p P_p tensor rho_p",
+    "ontology": "operator/trace module, not a new boundary state sector"
+  },
+  "bridge": {
+    "name": "Q_tr",
+    "generator_formula": "Q_tr g_(p,p_plus;n,m,orientation)=P_p tensor rho_g",
+    "rho_g": "full localized ordered-pair separation density",
+    "linear": true,
+    "shell_and_orientation_retained": true,
+    "all_moment_jets_retained": true,
+    "cutoff_natural": true
+  },
+  "cyclic_square_readout": {
+    "formula": "R_cyc2(s)(A)=Tr_E(L(s)^2 A)",
+    "generator_value": "R_cyc2(s)(P_p tensor rho_g)=p^(-2s)rho_g",
+    "scalar_adams_coordinate": "compose further with a declared separation functional; no such scalarization is used in Q_tr",
+    "variance": "grade two occurs as L^2 inside a trace, exactly as required by cyclic-return ontology"
+  },
+  "continuity": {
+    "finite_cutoff": "automatic",
+    "projective_completion": "requires sum_p ||rho_p||_Hsep finite in the trace-projective norm, or the corresponding declared nuclear weighting",
+    "source_generated_range": "the rapid theta shell estimates provide nuclear/superexponential label decay for each admitted completed packet",
+    "claim": "continuous on the declared rapid projective source-generated trace ideal"
+  },
+  "faithfulness": {
+    "output_alone": "prime projectors separate shell primes and H_sep retains densities; any remaining synthesis relations are not assumed absent",
+    "safe_carrier": "Graph(Q_tr) retains the full ordered-pair source coordinate"
+  },
+  "comparison_with_invalid_state_lift": {
+    "invalid": "treat e_(p,2) tensor rho as an independent Euler state",
+    "valid": "treat P_p tensor rho as a function-valued observable evaluated by Tr(L^2 -)",
+    "benefit": "preserves full separation history without adding a physical state channel"
+  },
+  "effect_on_checklist": {
+    "item_5_original_state_adoption": "rejected as variance-invalid",
+    "item_5_determinant_line_replacement": "analytically constructed",
+    "item_6_primal_operator_block": "not supplied because Cyc2_sep is an observable module, not the cone state E",
+    "item_7": "can compare scalar/function-valued cyclic readouts after the conservative response trace is exposed"
+  },
+  "next_gate": "construct the conservative response functional on the same trace ideal and compare it with A maps to Tr(L(s)^2 A), including endpoint/Wronskian border data and graded determinant variance",
+  "disposition": "The correct pair-to-Euler bridge exists at the cyclic-observable level: pair densities become prime-diagonal trace-class operators, and Adams two is evaluation by L(s)^2 under the trace. This preserves both source ontology and all separation data, but cannot serve as a primal C_FP state-space conjugacy.",
+  "rh_implication": false
+}

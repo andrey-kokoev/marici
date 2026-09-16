@@ -1,0 +1,52 @@
+{
+  "schema": "marici.aspect.u-g4-owner-construction-worksheet.v1",
+  "status": "awaiting_independent_g4_owner_input",
+  "output_packet_schema": "research/aspect/contracts/u-g4-owner-construction-packet.schema.v1.json",
+  "owner_fill_only": {
+    "owner": null,
+    "authority_basis": null,
+    "target_carrier_definition": null,
+    "target_basis_or_coordinates": null,
+    "target_topology_and_domain": null,
+    "source_pairing_matrix": null,
+    "target_pairing_matrix": null,
+    "pairing_nondegeneracy_certificate": null,
+    "U_G4_formula": null,
+    "U_G4_generator_images": null,
+    "U_G4_derivation_checker": null,
+    "entrywise_source_provenance": null,
+    "completion_topology_and_growth": null
+  },
+  "read_only_context": {
+    "candidate_source_carrier": "projective ordered-pair carrier",
+    "required_label_order": ["prime", "power", "logarithmic_grade", "shell", "ordered_pair", "theta", "reciprocal_pole"],
+    "frozen_contragredient_rule": "unique relative to independently supplied nondegenerate source and target pairings",
+    "comparison_map_locator": "research/aspect/contracts/polarized-pair-to-bordered-radial-crossing.v1.json",
+    "comparison_map_name": "T_pair_to_border",
+    "weakest_acceptance_test": "((U_G4-T_pair_to_border)^top e_Evans) belongs to tau O(U_ar) in the declared completed rigging"
+  },
+  "construction_firewall": {
+    "forbidden_inputs": [
+      "T_pair_to_border",
+      "research/aspect/contracts/polarized-pair-to-bordered-radial-crossing.v1.json",
+      "research/voevodsky/r-zeta-u-g4-transfer-record-v3.json",
+      "Evans comparison residuals",
+      "fitted equality coefficients"
+    ],
+    "allowed_only_after_construction": ["typing comparison", "forward defect", "Xi-ideal divisibility", "Evans jet evaluation"],
+    "derivation_rule": "Every U_G4 generator image must cite an owner-side G4 source equation and locator independent of all forbidden inputs."
+  },
+  "promotion_gate": {
+    "all_owner_fields_non_null": false,
+    "independence_audit_passed": false,
+    "output_packet_schema_valid": false,
+    "comparison_permitted": false
+  },
+  "operator_instructions": [
+    "Assign owner and authority without authorizing the desired equality.",
+    "Fill owner_fill_only from G4-side derivation records.",
+    "Run the independence checker before generating the packet.",
+    "Only after packet freeze may a separate process read T_pair_to_border."
+  ],
+  "rh_implication": false
+}

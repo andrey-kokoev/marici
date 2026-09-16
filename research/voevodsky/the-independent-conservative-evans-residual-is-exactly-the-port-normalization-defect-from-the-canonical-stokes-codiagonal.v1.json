@@ -1,0 +1,48 @@
+{
+  "schema": "marici.voevodsky.conservative-evans-port-normalization-defect.v1",
+  "status": "exact_reduction_not_divisibility_proof",
+  "sources": [
+    "research/voevodsky/the-combined-reciprocal-linking-shell-row-is-explicit-and-closes-the-strict-packet-residual-identically.v1.json",
+    "research/nima/the-joint-column-adjoint-fixes-the-five-port-codiagonal-uniquely.md",
+    "research/conjecture_replay/contracts/CR1-prime-shell-residual-input.proposed.v1.json"
+  ],
+  "canonical_codiagonal": {
+    "native_ports": ["ordinary", "regular_derivative", "wall", "reciprocal", "ordered_link"],
+    "equation": "C_can y_Ev=I0+Iend+I_RL=0",
+    "strength": "parameterwise on the common holomorphic domain, for every shell and every z-jet"
+  },
+  "old_conservative_codiagonal": {
+    "equation": "C_old y=sum_j B_j^* G_j y_j",
+    "status": "source-normalized ordinary row known; final transported derivative/wall, reciprocal, and linking metric identifications not all exposed"
+  },
+  "normalization_defect": {
+    "definition": "K=C_old-C_can",
+    "identity": "r_old(z)=C_old y_Ev(z)=K y_Ev(z), because C_can y_Ev(z)=0",
+    "jets": "partial_z^j r_old=K partial_z^j y_Ev when K is parameter independent; include derivatives of K if the old metrics depend holomorphically on z"
+  },
+  "shell_form": {
+    "definition": "K_(p,q)=C_old,(p,q)-C_can,(p,q)",
+    "residual": "S_old,(p,q)(z)=K_(p,q)y_Ev,(p,q)(z)",
+    "hostile": "one shell, Xi zero, and multiplicity jet with nonzero K_(p,q)y_Ev rejects conservative promotion"
+  },
+  "xi_reduction": {
+    "equivalence": "r_old belongs to tau O(U_ar) iff K y_Ev belongs to tau O(U_ar)",
+    "interpretation": "item 7 is no longer a cancellation search among five unknown analytic functions; all functions are canonical and the only unknown is the fixed old-to-canonical port metric/placement comparison"
+  },
+  "known_zero_defect_parts": {
+    "ordinary_native_function": "identified",
+    "derivative_wall_native_totalization": "identified",
+    "combined_reciprocal_linking_native_function": "identified",
+    "warning": "native equality does not set the corresponding K component to zero until the old conservative metric and source codiagonal placement are compared"
+  },
+  "minimal_comparison_packet": [
+    "old five port Gram/orientation matrices G_j at one finite cutoff",
+    "canonical port evaluation matrix in the same source and response bases",
+    "entrywise difference K_X",
+    "proof of cutoff naturality",
+    "holomorphic growth class of K y_Ev/tau"
+  ],
+  "relation_to_item_6": "The port-normalization operator K is the lower-row/response-trace shadow of the full entrywise block defect. Full item 6 implies K=0 and hence item 7, but item 7 only requires K to annihilate the Evans Xi-jet module modulo tau.",
+  "disposition": "The independent conservative Evans problem has been reduced exactly to a fixed normalization/placement defect. Canonical Stokes cancellation supplies the reference codiagonal; no analytic response term remains to be invented. Proving Xi divisibility still requires the old conservative port matrices or an owner theorem identifying them with the canonical codiagonal.",
+  "rh_implication": false
+}

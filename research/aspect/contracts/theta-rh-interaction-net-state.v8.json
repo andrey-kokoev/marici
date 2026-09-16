@@ -1,0 +1,71 @@
+{
+  "schema": "marici.scc.rh-interaction-net-state-contract.v8",
+  "predecessor": "research/aspect/contracts/theta-rh-interaction-net-state.v7.json",
+  "relation": "execute_post_v7_variance_and_linking_corrections",
+  "authority": {
+    "basis": "direct operator instruction: check messages, execute",
+    "external_review_required": false
+  },
+  "v7_retractions": {
+    "E_cyc2_sep_as_conservative_arithmetic_state_carrier": true,
+    "Q_sep_as_state_level_conservative_bridge": true,
+    "item_5_closed_by_that_adoption": true,
+    "reason": "p^(-2s) is the cyclic return L(s)^2 on primitive e_p, not an independent Euler state e_(p,2)"
+  },
+  "variance_correct_item_5": {
+    "primitive_state_retained": "E with basis e_p and L(s)e_p=p^(-s)e_p",
+    "observable_target": "I_1(E) completed_tensor B_border",
+    "map": "Q_B(g_shell-p)=P_p tensor beta_g, P_p=|e_p><e_p|, beta_g=(rho0,E,W,R)",
+    "cyclic_readout": "R_2(s)(A tensor beta)=Tr(L(s)^2 A) beta",
+    "shell_value": "p^(-2s) beta_g",
+    "border_relation_preserved": "zR-rho0=E-W/2",
+    "readout_preserved": "ell_RL=R+2E",
+    "status": "variance_correct_determinant_line_response_bridge_adopted",
+    "not_a_conservative_state_sector": true,
+    "sources": [
+      "research/voevodsky/correction-adams-two-separation-history-is-a-labelled-response-module-not-an-euler-loop-state-carrier.v1.json",
+      "research/voevodsky/the-variance-correct-pair-to-euler-bridge-lands-in-a-function-valued-cyclic-trace-ideal.v1.json",
+      "research/voevodsky/the-cyclic-trace-bridge-commutes-with-the-complete-bordered-pair-response.v1.json"
+    ]
+  },
+  "linking_augmentation": {
+    "J_link": "unique bounded skew operator representing the continuous regular-plus-half-density wall linking form on H_orb",
+    "K_link": "-J_link/2",
+    "two_output_metric": "G_link=[[0,K_link],[-K_link,0]]",
+    "Hermitian": true,
+    "analytic_transpose_symmetric": true,
+    "slot_swap_anti_oriented": true,
+    "horizontal_descent_preserves_exactly": true,
+    "placement": "bounded response-coordinate augmentation of closed G_Tr; Dom(D0) unchanged",
+    "old_boundary_green_form_identification": false,
+    "old_conservative_linking_metric_identification": "open",
+    "sources": [
+      "research/voevodsky/the-ordered-linking-form-cannot-be-identified-with-the-old-first-order-boundary-green-form.v1.json",
+      "research/voevodsky/the-continuous-wronskian-form-has-a-unique-bounded-skew-operator-and-can-be-added-without-changing-the-old-green-boundary-form.v1.json",
+      "research/voevodsky/the-bounded-skew-linking-operator-determines-the-complete-two-output-polarized-metric.v1.json",
+      "research/voevodsky/the-normalized-horizontal-fourier-descent-preserves-the-complete-linking-form-exactly.v1.json"
+    ]
+  },
+  "corrected_block_status": {
+    "prior_augmented_Q_sep_block_squares": "withdrawn_as_conservative_state_block_claims",
+    "analytic_response_incidence_square": "retained only on the appropriate response/observable typing",
+    "old_D0_action_and_sign": "owner data missing",
+    "old_reciprocal_linking_matrices_in_G_Tr_basis": "owner data missing",
+    "independent_B_X_rad_endomorphism": "owner data missing",
+    "full_block_equality": false
+  },
+  "terminal_gate": {
+    "formula": "K y_Ev modulo tau",
+    "status": "open_RH_bearing"
+  },
+  "claim_boundary": {
+    "G_Tr_adoption_retained": true,
+    "invalid_state_grade_adoption_retracted": true,
+    "variance_correct_trace_ideal_bridge_adopted": true,
+    "linking_augmentation_adopted": true,
+    "old_metric_identified": false,
+    "full_G4_block_identified": false,
+    "evans_membership": false,
+    "rh_implication": false
+  }
+}
