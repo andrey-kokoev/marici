@@ -1,0 +1,38 @@
+{
+  "schema": "marici.voevodsky.tate-dark-line-rvm-winding.v1",
+  "status": "archimedean_projective_winding_closed",
+  "source": "research/voevodsky/the-archimedean-tate-cocycle-rotates-the-dark-line-and-replaces-plain-sheet-swap-by-a-modular-reciprocal-involution.v1.json",
+  "seam": {
+    "parameter": "s=1/2+i t",
+    "chi_infinity": "chi_infinity(s)=pi^(-s/2)Gamma(s/2)",
+    "riemann_siegel_theta": "vartheta(t)=Im log Gamma(1/4+i t/2)-(t/2)log pi, with the continuous branch vartheta(0)=0",
+    "tate_cocycle": "gamma_infinity(1/2+i t)=conjugate(chi_infinity)/chi_infinity=exp(-2 i vartheta(t))"
+  },
+  "dark_line": {
+    "representative": "d_infinity(t)=(exp(i vartheta(t)),-exp(-i vartheta(t)))/sqrt(2)",
+    "projective_phase": "its relative reciprocal phase is 2 vartheta(t) modulo 2pi, while its unoriented line angle contributes vartheta(t) modulo pi",
+    "connection": "(1/(2i)) d log gamma_infinity=-d vartheta"
+  },
+  "exact_derivative": {
+    "formula": "vartheta'(t)=0.5 Re psi(1/4+i t/2)-0.5 log pi",
+    "meaning": "the modular dark-line connection is the standard archimedean zero-counting density"
+  },
+  "asymptotic": {
+    "theta": "vartheta(T)=T/2 log(T/(2pi))-T/2-pi/8+O(1/T)",
+    "winding": "vartheta(T)/pi=T/(2pi)log(T/(2pi))-T/(2pi)-1/8+O(1/T)",
+    "counting": "1+vartheta(T)/pi=T/(2pi)log(T/(2pi))-T/(2pi)+7/8+O(1/T)",
+    "match": "this is exactly the smooth Riemann-von Mangoldt term; the remaining S(T) must come from the arithmetic/reactive relative phase"
+  },
+  "orientation": {
+    "qualification": "depending on whether crossings count reactive-minus-dark or dark-minus-reactive, the Maslov orientation changes the overall sign",
+    "calibration": "one source-oriented crossing fixes this sign; the magnitude and asymptotic density are invariant"
+  },
+  "consequences": {
+    "positive": "the modular reciprocal dark channel has sufficient superlinear projective winding; it passes the prior O(T) model-selection hostile",
+    "decomposition": "archimedean dark-line rotation supplies the smooth count, while prime boundary feedback must supply S(T) and exact crossing locations",
+    "warning": "gauging the dark line to a constant vector without retaining G_infinity^(-1)dG_infinity deletes the entire T log T term"
+  },
+  "next_gate": "derive the arithmetic reactive-line phase and prove that its relative winding against d_infinity contributes S(T), with cutoff-stable convergence and no fitted zero-free scalar phase.",
+  "conclusion": "The archimedean Tate cocycle does more than preserve reciprocal coherence: its dark-line Maslov winding is precisely the smooth Riemann-von Mangoldt counting law, including the 7/8 constant after the standard counting offset.",
+  "rh_implication": false
+}

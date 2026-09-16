@@ -1,0 +1,48 @@
+{
+  "schema": "marici.voevodsky.correction.five-cell-representation-vs-coaugmentation.v1",
+  "status": "multi_anchor_bridge_overclaim_retracted_missing_pointed_coaugmentation_restored",
+  "corrects": "research/voevodsky/correction-the-fixed-forcing-vector-is-only-the-bulk-anchor-the-complete-evans-pair-bridge-is-the-pointed-five-cell-fourier-module.v1.json",
+  "fresh_state": [
+    "research/voevodsky/fixtures/five_cell_linear_endpoint_tail_representation_target.v1.json",
+    "research/nima/the-linear-five-cell-comparison-map-already-exists-only-its-green-polarization-is-missing.md",
+    "research/voevodsky/the-independent-xi-criterion-needs-a-comonoidal-bridge-from-the-linear-evans-source-to-the-pair-g4-source.v1.json"
+  ],
+  "type_check": {
+    "known": "rho_5:M_5->H_bulk direct-sum H_end direct-sum H_tail is a fixed linear representation on M_5=span(Phi,one,delta_0,K,V)",
+    "needed": "a coaugmentation/point eta:1->M_5, or a genuine source coaction U_Ev->U_Ev tensor M_5",
+    "error": "writing v maps to direct-sum_eta v tensor eta silently chooses the sum Phi+one+delta_0+K+V with unit coefficients and/or changes the target to five parallel copies",
+    "not_supplied_by_rho": "a representation out of M_5 does not define a canonical map into M_5"
+  },
+  "coevaluation_warning": {
+    "temptation": "replace the point by a basis coevaluation sum eta_i tensor eta_i^vee",
+    "problem": "this lands in M_5 tensor M_5^vee, not M_5, and requires the very dual pairing/Green polarization that remains open",
+    "consequence": "the missing quadratic metric cannot be used to define the bridge and then be claimed as a consequence of that bridge"
+  },
+  "Fourier_decomposition": {
+    "bulk_orbit": "span(Phi), F=+1",
+    "endpoint_orbit": "span(one,delta_0), F swaps the basis",
+    "tail_orbit": "span(K,V), F(K)=V and F(V)=-K",
+    "free_seed": "eta_0=a Phi+b one+c delta_0+d K+e V; its chart orbit eta_j=F^j eta_0 is coherent for every five coefficients",
+    "underdetermination": "C4 coherence alone fixes none of the relative bulk/endpoint/tail amplitudes"
+  },
+  "what_remains_valid": {
+    "Phi": "is the canonical anchor for the forcing-reservoir subchannel only",
+    "one_delta": "provide fixed normalized endpoint columns once a source map selects them",
+    "K_V": "provide the oriented tail plane once selected",
+    "rho_5": "proves a nondegenerate order-four target representation, not Evans source placement"
+  },
+  "minimal_missing_datum": {
+    "name": "epsilon_Ev or delta_Ev",
+    "type": "U_Ev->U_Ev tensor M_5",
+    "requirements": [
+      "source-derived coefficients across the Phi, endpoint, and tail orbit summands",
+      "Xi-linear and multiplicity-preserving",
+      "C4/Tate coaction law",
+      "boundary compatibility with the two stable Evans histories",
+      "no definition using the desired Green cancellation or an Xi zero"
+    ]
+  },
+  "next_test": "Inspect the independent Evans source differential for literal coefficient maps into the five named cells. If it contains only the theta forcing Phi and two history traces but no K/V or one/delta_0 coaction columns, then the complete pair bridge is absent rather than merely unnormalized.",
+  "conclusion": "The five-cell module is the correct target for a bridge, but it is not itself that bridge. A representation rho_5 and a Fourier orbit do not supply the required coaugmentation. The source-derived pointed/coaction map from the independent Evans carrier remains the first missing typed object.",
+  "rh_implication": false
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "marici.voevodsky.theta-forcing-reservoir-gram-factorization.v1",
+  "status": "one_sided_polarized_conservative_factorization_closed",
+  "source": "research/nima/rh-tail-flow-polarization-constructs-the-two-height-boundary-pairing.md",
+  "setup": {
+    "fixed_forcing": "Phi in L2(0,infinity)",
+    "tail_feature": "G_z in L2(0,infinity)",
+    "bulk_kernel": "K_tail(w,z)=<G_w,G_z>",
+    "forcing_reservoir": "F(w,z)=<Phi,G_z>+<G_w,Phi>"
+  },
+  "sum_difference_ports": {
+    "input": "I_z=(Phi+G_z)/sqrt(2)",
+    "output": "O_z=(Phi-G_z)/sqrt(2)",
+    "identity": "<I_w,I_z>-<O_w,O_z>=<Phi,G_z>+<G_w,Phi>=F(w,z)",
+    "properties": ["source-derived", "two-height polarized", "no Xi specialization", "bounded on the declared tail graph rigging"]
+  },
+  "green_factorization": {
+    "prior_identity": "(z+conj(w))K_tail(w,z)=conj(G_w(0))G_z(0)-F(w,z)",
+    "substitution": "conj(G_w(0))G_z(0)+<O_w,O_z>-<I_w,I_z>=(z+conj(w))K_tail(w,z)",
+    "port_form": "<Y_w,Y_z>-<I_w,I_z>=(z+conj(w))K_tail(w,z), with Y_z=(G_z(0),O_z)",
+    "interpretation": "the endpoint plus difference port is the outgoing channel, and the sum port is the incoming channel, up to the globally frozen Green orientation"
+  },
+  "lurking_isometry": {
+    "statement": "after Cayley transport of the half-plane factor, the displayed identity supplies the exact Gram equality needed to define an isometry on the span of source vectors",
+    "not_scalar": "the output retains the full L2 tail-forcing difference, avoiding the endpoint-only no-go",
+    "minimality": "one full tail feature plus one fixed forcing vector suffices for the one-sided factorization"
+  },
+  "doubled_system_gate": {
+    "constructed": "apply the same factorization independently to both reciprocal stable tails",
+    "remaining": "prove that Tate/Fourier reciprocal sewing maps the combined incoming sum ports unitarily onto the combined outgoing endpoint-plus-difference ports, including wall and arithmetic labels",
+    "confinement_if_closed": "for a sewn zero-state the boundary norm difference vanishes, leaving 2 Re(z) times the positive doubled tail norm equal to zero"
+  },
+  "relation_to_previous_repairs": {
+    "scalar_h_equals_m": "superseded as a conservative realization because it discarded the tail feature",
+    "canonical_Stokes": "not used; this is a polarized two-height factorization before scalar codiagonalization",
+    "dark_channel": "the reciprocal doubled seam quotient can now impose destructive endpoint radiation cancellation while retaining positive bulk tail energy"
+  },
+  "next_exact_test": "Write the reciprocal sewing action on (I_+,I_-) and (G_+(0),O_+;G_-(0),O_-) and verify equality of their full Gram operators, not only scalar norms or endpoint sums.",
+  "conclusion": "The previously unresolved mixed forcing reservoir does admit a canonical input-minus-output Gram factorization: it is the elementary sum/difference polarization of the fixed theta forcing and the full tail state. The RH-bearing frontier moves to unitary reciprocal sewing of these complete ports.",
+  "rh_implication": false
+}

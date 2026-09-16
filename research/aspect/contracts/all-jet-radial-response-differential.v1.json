@@ -1,0 +1,40 @@
+{
+  "schema": "marici.aspect.all-jet-radial-response-differential.v1",
+  "status": "source_side_operator_constructed",
+  "carrier": {
+    "name": "B_jet",
+    "elements": "compatible towers ((h_k(0),H_k(z)))_(h in {rho,e,w},k>=0) with h_k=partial_t^k h and H_k=Laplace(h_k)",
+    "seminorms": "all finite derivative, polynomial lag-moment, compact-z, shell, and rapid ordered-label seminorms",
+    "source_generation": "ordered rapid theta pairs localized to shells"
+  },
+  "operator": {
+    "name": "B_X^jet",
+    "lag_action": "(h_k)_(k>=0) maps to (h_(k+1))_(k>=0)",
+    "laplace_action": "(h_k(0),H_k(z)) maps to (h_(k+1)(0), z H_k(z)-h_k(0))",
+    "continuous": true,
+    "reason": "each target seminorm is one of the defining higher source seminorms; projective continuity permits a finite index shift",
+    "cutoff_natural": true,
+    "shell_natural": true,
+    "all_parameter_jets": true,
+    "slot_orientation_preserved": true
+  },
+  "finite_packet_projection": {
+    "map": "retain (rho_0,E,W,R)",
+    "intertwines_stokes_readout": true,
+    "intertwines_full_B_X_jet": false,
+    "obstruction": "e(0),w(0), and higher derivative border atoms are discarded"
+  },
+  "relation_to_conservative_diagonal": {
+    "A0": "I-L(s)",
+    "intertwiner_Q": "not constructed",
+    "equation_Q_Bjet_equals_A0_Q": "open",
+    "B_X_jet_is_authoritative_G4_diagonal": false
+  },
+  "claim_boundary": {
+    "source_dynamic_operator_constructed": true,
+    "finite_B_X_rad_constructed": false,
+    "conservative_identification": false,
+    "evans_membership": false,
+    "rh_implication": false
+  }
+}

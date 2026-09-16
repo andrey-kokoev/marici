@@ -1,0 +1,44 @@
+{
+  "schema": "marici.voevodsky.odd-source-even-endpoint-pauli-sewing.v1",
+  "status": "source_sign_obstruction_absorbed_kinematically_full_feedback_identity_open",
+  "two_sheet_coordinates": {
+    "exchange": "R_0=[[0,1],[1,0]]",
+    "source_amplitudes": "c=(c_+,c_-)",
+    "reflection_law": "c_-=-c_+",
+    "source_line": "L_src=span(1,-1), the -1 parity line of R_0",
+    "endpoint_match": "a_-=a_+ at an Xi zero",
+    "endpoint_line": "L_end=span(1,1), the +1 parity line of R_0"
+  },
+  "green_geometry": {
+    "flux_metric": "Sigma=diag(1,-1)",
+    "source_isotropic": "(1,-1)^*Sigma(1,-1)=0",
+    "endpoint_isotropic": "(1,1)^*Sigma(1,1)=0",
+    "maximality": "each is a one-dimensional maximal isotropic line in C^2"
+  },
+  "pauli_sewing": {
+    "operator": "Z=diag(1,-1)",
+    "unitary": "Z^*Z=I",
+    "line_map": "Z(1,-1)=(1,1)",
+    "parity_relation": "Z R_0=-R_0 Z",
+    "meaning": "the sewing changes reciprocal parity exactly once, converting the odd forcing amplitude into the even matched endpoint channel"
+  },
+  "full_forcing_ports": {
+    "with_amplitude": "I_z(c)=(c Phi+G_z(c))/sqrt(2), O_z(c)=(c Phi-G_z(c))/sqrt(2)",
+    "reflected_state": "G_-=-R G_+ when c_-=-c_+",
+    "transport": "I_-=-R I_+ and O_-=-R O_+",
+    "norms": "reflection with the minus phase is unitary on the full L2 forcing-port carrier"
+  },
+  "compatibility": {
+    "source_sign": "retained rather than identified away",
+    "endpoint_Xi_relation": "even matching retained",
+    "unitary_intertwiner": "Pauli Z supplies the finite parity-changing seam map",
+    "relation_to_prior_pauli_module": "this is the same algebraic role as the response quarter-turn/Pauli covariance, now applied to source-versus-endpoint parity lines"
+  },
+  "remaining_gate": {
+    "not_yet": "a single unitary feedback operator on the complete doubled colligation ports whose restriction is Z on amplitude/endpoint lines and -R on forcing-history features",
+    "test": "assemble its block matrix and verify the polarized Gram identity on arbitrary pairs of source-generated states, not only on the Xi kernel line",
+    "danger": "linewise isometry does not guarantee compatibility of mixed endpoint-forcing pairings"
+  },
+  "conclusion": "The reflected source-sign obstruction is not fatal: the odd source line and even Xi endpoint line are both maximal isotropic and are canonically related by Pauli Z. This provides the finite parity-changing component required of reciprocal feedback. The unresolved part is its extension over the mixed full-tail ports.",
+  "rh_implication": false
+}

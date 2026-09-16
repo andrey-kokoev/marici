@@ -1,0 +1,38 @@
+{
+  "schema": "marici.voevodsky.combined-positive-horn-vs-evans-membership.v1",
+  "status": "formal_horn_derived_membership_not_derived_numerically_hostile",
+  "derived_structures": [
+    "signed 1234 tetrahedral coherence",
+    "positive lifts of H123 and H124",
+    "common-bulk equation for the two polarity seams at finite packet level",
+    "Schur-Douglas equivalence between block positivity and C>=bb*",
+    "signed graph/spectral endpoint coupling on a common source core",
+    "maximal-isotropic response graph on its source-generated essential image"
+  ],
+  "non_derivable_step": {
+    "statement": "the unchanged transverse Evans trace belongs to the source-generated positive response/filler graph",
+    "equivalents": [
+      "B_Sigma^dagger u_z=0 at every Xi zero",
+      "the endpoint Green Riesz map b factors contractively through the actual common bulk C on the Evans cyclic subspace",
+      "the positive-horn Schur complement vanishes/has the required sign on the unchanged Evans kernel state"
+    ],
+    "reason": "the canonical Stokes section and the transverse two-history Evans section are different sections; parameterwise cancellation of the former does not imply response-graph membership of the latter"
+  },
+  "fresh_scout": {
+    "checker": "research/voevodsky/checkers/check_first_xi_zero_evans_adjoint_hilbert_residual.py",
+    "precision_digits": 40,
+    "first_zero_ordinate": "14.13472514173469379045725198356247",
+    "xi_root_residual": "5.95290236434e-44",
+    "adjoint_hilbert_residual_cutoff_50": "-0.150851219058739200687179708292",
+    "cutoff_stability_30_40_50": true,
+    "certification": "not interval certified"
+  },
+  "reconciliation": {
+    "finite_fixture": "proves existence of abstract finite positive packets with a common bulk and Schur margin, not identification with the arithmetic Evans state",
+    "tetrahedral_G4_closure": "applies to the canonical codiagonal Stokes section, whose Evans readout is globally zero",
+    "transverse_Xi_section": "retains tau(z)=Xi_centered(z), but does not inherit the canonical Stokes adjoint cancellation",
+    "consequence_if_scout_certified": "the unchanged Evans state cannot be the state filling the existing positive horn; a divisor-preserving modified-history comparison is necessary"
+  },
+  "next": "interval-certify the first-zero nonzero Hilbert residual, then mark unchanged-Evans membership in the combined positive horn as rejected and formulate the required modified-history chain map separately",
+  "rh_implication": false
+}

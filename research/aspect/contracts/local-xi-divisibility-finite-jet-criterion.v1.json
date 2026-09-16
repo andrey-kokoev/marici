@@ -1,0 +1,51 @@
+{
+  "schema": "marici.aspect.local-xi-divisibility-finite-jet-criterion.v1",
+  "status": "exact_local_module_criterion_constructed",
+  "local_data": {
+    "point": "z0",
+    "tau": "holomorphic scalar with tau(z)=(z-z0)^m g(z), g(z0)!=0",
+    "multiplicity": "m=m(z0)<infinity",
+    "residual": "holomorphic U_ar-valued germ r_U(z)=B_Sigma^dagger y(z)"
+  },
+  "joint_adjoint": {
+    "typed_output": "H_G=direct-sum of ordinary, derivative, wall, reciprocal, linking ports",
+    "formula": "B_Sigma^dagger y=sum_j B_j^* G_j y_j",
+    "codiagonal": "Sigma_U:U_ar^5->U_ar is ordinary source addition",
+    "factorization": "B_Sigma^dagger=Sigma_U tilde_B^dagger",
+    "adjustable_after_adjoint": false
+  },
+  "equivalent_conditions": [
+    "r_U belongs to tau O_z0(U_ar)",
+    "r_U belongs to (z-z0)^m O_z0(U_ar)",
+    "partial_z^j r_U(z0)=0 for every 0<=j<m",
+    "the order-(m-1) Taylor jet of r_U is zero in U_ar tensor C[z-z0]/((z-z0)^m)"
+  ],
+  "division": {
+    "quotient": "h_U(z)=r_U(z)/tau(z)",
+    "holomorphic_if_jet_vanishes": true,
+    "reason": "remove the finite Taylor polynomial and divide by (z-z0)^m, then multiply by the holomorphic unit g^(-1)",
+    "growth_claim": false
+  },
+  "cutoff": {
+    "P_X": "orthogonal finite-prime source projection",
+    "naturality": "(B_Sigma P_X)^dagger=P_X B_Sigma^dagger",
+    "necessary_shell_tests": "every retained consecutive-prime shell jet vanishes",
+    "finite_cutoff_sufficiency": "yes for the projected residual",
+    "infinite_completion_sufficiency": "requires convergence in U_ar for each retained jet"
+  },
+  "relation_to_boundary_jet_shear": {
+    "same_order": "m",
+    "response_boundary_coordinates_needed": "a_0,...,a_(m-1)",
+    "global_all_jet_similarity_needed": false
+  },
+  "source": "research/nima/the-joint-column-adjoint-fixes-the-five-port-codiagonal-uniquely.md",
+  "claim_boundary": {
+    "local_finite_jet_criterion": true,
+    "joint_codiagonal_unique_given_rows": true,
+    "five_rows_source_normalized": false,
+    "residual_jets_vanish": false,
+    "growth_divisibility": false,
+    "evans_membership": false,
+    "rh_implication": false
+  }
+}

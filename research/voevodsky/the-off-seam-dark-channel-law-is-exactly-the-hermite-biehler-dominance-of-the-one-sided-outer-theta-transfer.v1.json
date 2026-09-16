@@ -1,0 +1,44 @@
+{
+  "schema": "marici.voevodsky.dark-channel-hermite-biehler-equivalence.v1",
+  "status": "off_seam_positive_law_identified_exactly_not_proved",
+  "fresh_source": "research/nima/the-one-sided-theta-transfer-is-outer-but-not-bounded-below.md",
+  "one_sided_transfer": {
+    "m(z)": "integral_0^infinity Phi(q)exp(-zq)dq",
+    "domain": "Re(z)>0",
+    "known": ["m is H-infinity and outer", "m has no zeros in Re(z)>0", "m has nonzero finite seam boundary values", "m is not bounded below"]
+  },
+  "completed_evans": {
+    "identity": "tau(z)=m(z)+m(-z)",
+    "dark_crossing": "tau(z)=0 iff m(z)/m(-z)=-1 whenever m(-z) is nonzero"
+  },
+  "hermite_biehler_law": {
+    "E(z)": "m(-z)",
+    "E_sharp(z)": "m(z) under reciprocal reflection",
+    "strict_dominance": "|m(-z)|>|m(z)| for Re(z)>0",
+    "Schur_ratio": "S_dark(z)=m(z)/m(-z), with |S_dark(z)|<1",
+    "seam": "for z=i t and real even Phi, m(-it)=conjugate(m(it)), hence |S_dark(it)|=1"
+  },
+  "confinement": {
+    "proof": "if tau(z)=0 in Re(z)>0 then S_dark(z)=-1, contradicting |S_dark(z)|<1; reciprocal symmetry excludes Re(z)<0",
+    "conclusion": "strict Hermite-Biehler dominance implies every Xi zero lies on the seam"
+  },
+  "equivalence_strength": {
+    "qualification": "with the known one-sided outerness/zero-freeness and standard real-entire reciprocal hypotheses, this is the de Branges/Hermite-Biehler formulation of the RH confinement gate",
+    "not_from_outerness": "outerness of m alone does not compare m(z) with m(-z)",
+    "not_from_scalar_phase": "boundary unimodularity alone does not imply interior Schur contractivity without a positive kernel or maximum-principle growth control"
+  },
+  "positive_kernel_target": {
+    "formula": "K_HB(w,z)=[m(-z)conjugate(m(-w))-m(z)conjugate(m(w))]/(z+conjugate(w))",
+    "criterion": "K_HB positive definite on Re(z)>0 implies the Schur ratio and supplies a de Branges reproducing-kernel space",
+    "source_role": "this is the precise two-height positive Green identity required of the doubled reciprocal theta system"
+  },
+  "relation_to_dark_channel": {
+    "radiation": "1-|S_dark(z)|^2 is the off-seam radiation defect",
+    "dark_seam": "on the seam the defect closes and Xi zeros are phase crossings S_dark=-1",
+    "lower_rung": "the exact two-history determinant supplies the crossing section",
+    "rung_four_RH_content": "positivity of K_HB supplies the missing orientation/confinement coherencer"
+  },
+  "next_executable_test": "Evaluate finite Gram matrices [K_HB(z_i,z_j)] for source-selected off-seam points and search for a negative eigenvalue; a single negative packet falsifies this direct positive-law route, while finite positivity does not prove the completed theorem.",
+  "conclusion": "The unknown conservative law has a canonical exact form: Hermite-Biehler dominance between the two reciprocal one-sided theta transfers. Its positive two-height kernel is the dark-channel radiation law. Proving it is essentially the RH-strength theorem, but it is now an explicit operator-kernel target rather than an unspecified positivity request.",
+  "rh_implication": false
+}

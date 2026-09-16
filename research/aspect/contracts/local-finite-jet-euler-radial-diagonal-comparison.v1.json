@@ -1,0 +1,52 @@
+{
+  "schema": "marici.aspect.local-finite-jet-euler-radial-diagonal-comparison.v1",
+  "status": "local_finite_order_comparison_constructed",
+  "parameter_region": {
+    "U": "open critical strip Re(s)>0",
+    "lambda_p": "1-p^(-s)",
+    "nonvanishing": true,
+    "compact_uniform_bound": "for compact K with Re(s)>=epsilon>0, |lambda_p(s)|>=1-2^(-epsilon) for every prime p"
+  },
+  "order_m_packet": {
+    "purpose": "compare root/module data through parameter order m-1",
+    "boundary_coordinates": "a_0,...,a_(m-1)",
+    "projected_shift": "S_m(a_0,...,a_(m-1))=(a_1,...,a_(m-1),0)",
+    "augmented_operator": "A_aug,p^[m](q,a)=(lambda_p q-a_0,S_m a)",
+    "qualification": "top lag-jet leakage first enters beyond the retained m-step calculation"
+  },
+  "shear": {
+    "ell_p,m(a)": "-sum_(k=0)^(m-1) a_k/lambda_p^(k+1)",
+    "C_p,m(q,a)": "(q+ell_p,m(a),a)",
+    "inverse": "(q-ell_p,m(a),a)",
+    "identity": "C_p,m A_aug,p^[m] C_p,m^(-1)=lambda_p direct-sum S_m",
+    "holomorphic": true,
+    "compact_shell_uniform": true,
+    "bound": "finite polynomial in (1-2^(-epsilon))^(-1) of degree m"
+  },
+  "assembly": {
+    "finite_shell_cutoff": "direct sum of C_p,m",
+    "cutoff_uniform_on_compacts": true,
+    "prime_labels_retained": true,
+    "boundary_provenance_retained_before_shear": true,
+    "Euler_factor": "lambda_p is separated from a nilpotent boundary-jet block"
+  },
+  "module_consequence": {
+    "boundary_block": "S_m is nilpotent and contributes no lambda_p=0 divisor on Re(s)>0",
+    "Euler_diagonal_local_root_data": "unchanged by the finite holomorphic similarity",
+    "Xi_module_identification": false,
+    "reason": "this compares radial boundary augmentation with the zero-free Euler shell diagonal only; it does not prove the Evans residual or identify the Xi divisor"
+  },
+  "dependencies": [
+    "research/aspect/contracts/boundary-jet-augmented-euler-intertwiner.v1.json",
+    "research/aspect/results/boundary_jet_relative_summand_elimination_audit.v1.json",
+    "research/aspect/results/boundary_jet_finite_shear.check.v1.json"
+  ],
+  "claim_boundary": {
+    "finite_order_diagonal_comparison": true,
+    "global_all_jet_similarity": false,
+    "old_D0_identification": false,
+    "full_G4_block": false,
+    "evans_membership": false,
+    "rh_implication": false
+  }
+}

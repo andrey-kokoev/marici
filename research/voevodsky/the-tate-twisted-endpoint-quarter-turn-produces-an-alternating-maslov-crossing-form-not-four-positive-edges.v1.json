@@ -1,0 +1,33 @@
+{
+  "schema": "marici.voevodsky.endpoint-quarter-turn-Maslov-sign.v1",
+  "status": "exact_rank_two_calculation_rejects_unoriented_four_positive_crossings",
+  "setup": {
+    "green_metric": "J=diag(-1,1)",
+    "sewing_lagrangian": "Lambda_t=span((1,t)), |t|=1",
+    "tate_quarter_turn": "F_g=[[0,g^-1],[-g,0]], |g|=1, F_g^2=-I",
+    "transported_line": "F_g Lambda_t=span((g^-1 t,-g))"
+  },
+  "crossing_calculation": {
+    "form": "B_t,g(x,y)=<(x,tx), J F_g(y,ty)>=-conj(x)(g^-1 t+conj(t)g)y",
+    "phase_ratio": "u=t/g",
+    "scalar": "B_t,g=-2 Re(u) times the standard scalar pairing",
+    "intersection": "Lambda_t intersects F_g Lambda_t nontrivially iff t^2=-g^2 iff u=+i or -i",
+    "equivalence": "for unit phases, transversality iff Re(u) is nonzero iff the crossing form is nondegenerate"
+  },
+  "sign": {
+    "positive_orientation": "B_t,g is positive iff Re(t/g)<0",
+    "negative_orientation": "B_t,g is negative iff Re(t/g)>0",
+    "not_formal": "F_g^2=-I and balanced endpoint inertia imply exchange and nondegeneracy away from u=+-i, but do not choose the positive chamber"
+  },
+  "cycle": {
+    "subspaces": "F_g^2 Lambda_t=Lambda_t, so the four-step C4 orbit has period two as unoriented Lagrangian lines",
+    "ordered_crossing": "reversing the consecutive ordered pair reverses the Hermitian crossing sign",
+    "consequence": "the four cyclic edges alternate Maslov orientation; they cannot all carry the same positive crossing form without an additional chirality/orientation twist"
+  },
+  "architectural_consequence": "The C4-selected complement can supply the missing Green dual partner, but positivity belongs to an oriented/chiral edge, not to the bare defect quotient and not uniformly to all four unoriented edges. The Tate/metaplectic cocycle must include the sign local system that turns the alternating Maslov forms into one transported positive convention.",
+  "relation_to_relative_Xi_lift": "Passing modulo the Xi ideal or a common positive-Gram radical does not remove this sign issue; the Green sewing graph is Lagrangian, not radical. The relative Evans comparison must retain the oriented mapping-cone pairing.",
+  "verification_note": "The existing SymPy checker could not run in the current environment because sympy is unavailable; the displayed rank-two formulas are direct exact algebra.",
+  "next_test": "Locate the declared C4/Tate orientation line in the endpoint pair packet and verify that its transition sign is -1 on each reversal, so epsilon_j B(Lambda_j,Lambda_(j+1)) transports as one positive form. If no such sign line is source-derived, the positive-complement route fails.",
+  "conclusion": "The quarter-turn does produce the required transverse complement generically, but its crossing form has chamber-dependent and cyclically alternating sign. A source-derived Maslov/chirality local system is mandatory before this complement can serve as the positive apex.",
+  "rh_implication": false
+}

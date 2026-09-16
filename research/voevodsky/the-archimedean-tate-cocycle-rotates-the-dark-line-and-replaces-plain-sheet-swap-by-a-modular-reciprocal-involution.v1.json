@@ -1,0 +1,46 @@
+{
+  "schema": "marici.voevodsky.archimedean-modular-dark-involution.v1",
+  "status": "archimedean_reciprocal_geometry_explicit_plain_swap_corrected",
+  "fresh_sources": [
+    "research/nima/the-tate-gamma-ratio-is-the-canonical-sewing-modulus-candidate.md",
+    "research/grothendieck/archimedean-Poisson-reciprocity-closes-without-RH-force.md"
+  ],
+  "tate_cocycle": {
+    "gamma_infinity(s)": "pi^(s-1/2) Gamma((1-s)/2)/Gamma(s/2)",
+    "involution": "gamma_infinity(1-s)=gamma_infinity(s)^(-1)",
+    "seam": "for s=1/2+i t, |gamma_infinity(s)|=1"
+  },
+  "modular_reciprocal_involution": {
+    "formula": "R_infinity(s)=[[0,gamma_infinity(s)^(-1)],[gamma_infinity(s),0]]",
+    "square": "R_infinity(s)^2=I",
+    "seam_property": "R_infinity(s) is Hermitian unitary when |gamma_infinity|=1",
+    "plain_swap": "R_0=[[0,1],[1,0]]"
+  },
+  "gauge": {
+    "formula": "G_infinity(s)=diag(gamma_infinity(s)^(-1/2),gamma_infinity(s)^(1/2))",
+    "conjugacy": "R_infinity=G_infinity R_0 G_infinity^(-1)",
+    "qualification": "square-root branches are local on the seam/open-strip charts; the line bundle formulation avoids a global branch choice"
+  },
+  "rotating_lines": {
+    "coherent": "r_infinity(s) proportional to (gamma_infinity^(-1/2),gamma_infinity^(1/2))",
+    "dark": "d_infinity(s) proportional to (gamma_infinity^(-1/2),-gamma_infinity^(1/2))",
+    "meaning": "archimedean propagation rotates both projective lines by the Tate phase; the dark line is persistent but not constant in the ungauged endpoint basis"
+  },
+  "correct_parity_gate": {
+    "wrong_global_test": "[R_0,F_X(s)]=0 in an ungauged basis containing the Tate cocycle",
+    "correct_test": "[R_infinity(s),F_X(s)]=0, or equivalently [R_0,G_infinity^(-1)F_X G_infinity]=0",
+    "effect": "the complete reactive operator must preserve the Tate-rotated dark/coherent lines"
+  },
+  "relation_to_counting": {
+    "archimedean_phase": "the winding of gamma_infinity supplies the smooth Riemann-von-Mangoldt phase contribution",
+    "prime_phase": "the arithmetic return must supply the fluctuating relative winding",
+    "warning": "gauging R_infinity to constant swap must retain the connection G_infinity^(-1)dG_infinity; dropping it erases the archimedean counting term"
+  },
+  "scope": {
+    "closed": "archimedean reciprocal involution and its seam dark line",
+    "open": "operator-level proof that the complete reactive F_X commutes with R_infinity and the radiation row is supported on its + line",
+    "not_RH": "the Tate cocycle is zero-free and supplies coherence/winding, not the Xi divisor"
+  },
+  "conclusion": "The archimedean endpoint does not generically break dark-channel protection; it twists the parity frame by a canonical unitary Tate cocycle. All finite commutator tests must use this modular involution rather than the constant sheet swap.",
+  "rh_implication": false
+}

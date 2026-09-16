@@ -1,0 +1,45 @@
+{
+  "schema": "marici.voevodsky.projected-multiplier-quotient-contraquotient-Douglas-apex.v1",
+  "status": "architecture_preexisting_exact_split_constructed_two_inequalities_open",
+  "source": "research/voevodsky/projecting-the-reflected-multiplier-onto-the-physical-endpoint-cokernel-gives-an-exact-rank-two-remainder-and-a-single-complementary-contraction-test.md",
+  "dictionary": {
+    "ambient_map": "T_S,L=M_Theta_S^*",
+    "source_fixed_endpoint": "E_L=span{exp(x/2),exp(-x/2)}",
+    "quotient_bulk": "R_bulk=P_bulk T_S,L, P_bulk=I-P_end",
+    "contraquotient_endpoint": "R_end=P_end T_S,L",
+    "exact_split": "||T f||^2=||R_bulk f||^2+||R_end f||^2"
+  },
+  "individual_coherencers": {
+    "prime_transition": "T_(S+q)=M_phi_q^* T_S",
+    "bulk": "R_bulk,S+q=P_bulk M_phi_q^* T_S",
+    "endpoint": "R_end,S+q=P_end M_phi_q^* T_S",
+    "meaning": "both quotient and contraquotient transport under the same prime transition while endpoint space remains fixed"
+  },
+  "combined_quotient": {
+    "leakage": "L=P_bulk T",
+    "first_gate": "L*L<=I",
+    "defect": "D=(I-L*L)^(1/2)",
+    "common_bulk": "G(f)=||D f||^2",
+    "interpretation": "D is the positive combined quotient after removing the transported bulk leakage"
+  },
+  "upward_apex": {
+    "block": "[[D^2,R_end^*],[R_end,I_endpoint]]>=0 in the normalized orientation",
+    "Schur": "R_end^* R_end<=D^2",
+    "Douglas": "R_end=C D for a contraction C",
+    "parity": "after retaining endpoint-even energy in the bulk, only the endpoint-odd rank-one channel remains hostile"
+  },
+  "match_to_proposed_order": [
+    "split quotient bulk and endpoint contraquotient",
+    "transport each with its own prime coherencer",
+    "form the common defect/combined quotient D",
+    "then lift upward through the Douglas contraction C"
+  ],
+  "open_theorems": [
+    "||P_bulk M_Theta_S^*||<=1 on the source-fixed harmonic complement",
+    "R_end^*R_end<=I-L*L",
+    "uniform cutoff/prime convergence of D,R_end,C"
+  ],
+  "noncircularity": "Choosing endpoint space from expansive singular vectors would force the inequalities but is forbidden; E_L is fixed independently as ker(partial_x^2-1/4)^*.",
+  "conclusion": "The exact analytic implementation of the user's quotient/contraquotient-first proposal already exists. Its split and separate coherencers are unconditional. The upward map is precisely the Schur-Douglas contraction, and its two norm inequalities—not categorical assembly—are the unresolved positive theorem.",
+  "rh_implication": false
+}

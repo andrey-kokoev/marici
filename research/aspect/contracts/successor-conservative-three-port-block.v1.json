@@ -1,0 +1,52 @@
+{
+  "schema": "marici.aspect.successor-conservative-three-port-block.v1",
+  "status": "closed_successor_block_assembled_residual_open",
+  "carrier": "H=L2(R) direct-sum C_theta direct-sum U_ar",
+  "domain": "H1(R) direct-sum C_theta direct-sum Dom(D_U(z))",
+  "diagonal": {
+    "history": "D0_diff(z)=partial_q-z",
+    "theta": "0",
+    "arithmetic": "D_U(z), the previously declared closed densely defined arithmetic pencil"
+  },
+  "bounded_couplings": {
+    "V": "C_theta->H, V1=Phi",
+    "B_Sigma": "U_ar->H, Hilbert-Schmidt",
+    "V_dagger": "H->C_theta",
+    "B_Sigma_dagger": "H->U_ar"
+  },
+  "operator": "G_succ(z)=[[partial_q-z,-V,-B_Sigma],[-V^dagger,0,0],[-B_Sigma^dagger,0,D_U(z)]]",
+  "closedness": {
+    "statement": "G_succ(z) is closed on the displayed domain",
+    "reason": "the diagonal history and arithmetic operators are closed and every off-diagonal coupling is bounded",
+    "compact_parameter_family": "holomorphic wherever D_U(z) is a holomorphic closed family"
+  },
+  "response_attachment": {
+    "state_incidence_trace": "Tr_joint(u,x)=J_orb(iu+B_Sigma x)",
+    "graph": "G_Tr",
+    "metric": "successor boundary Green direct-sum G_link response metric",
+    "changes_operator_domain": false,
+    "pair_response": "Q_B:P_pair->I_1(E) completed_tensor B_border remains an observable/determinant-line bridge, not a new state coupling"
+  },
+  "Evans_vector": {
+    "state": "Psi_z=(u_z,1,0)",
+    "domain_membership": true,
+    "history_row": "zero because (partial_q-z)u_z=Phi=V1",
+    "remaining_rows": ["-V^dagger u_z", "-B_Sigma^dagger u_z"],
+    "reduction": "B_Sigma^dagger u_z=0 implies V^dagger u_z=0 because Phi lies in closure ran(B_Sigma)",
+    "sole_residual": "B_Sigma^dagger u_z"
+  },
+  "sources": [
+    "research/nima/the-three-port-evans-vector-is-in-the-conservative-block-domain-before-the-arithmetic-adjoint-equation-is-solved.md",
+    "research/nima/distinct-seam-walls-make-the-centered-incidence-injective-and-exclude-an-exact-theta-lift.md",
+    "research/nima/the-seam-weighted-incidence-supplies-a-bounded-g4-crossing-without-diagonalizing-theta-over-primes.md",
+    "research/aspect/contracts/successor-conservative-green-linking-metric.v1.json"
+  ],
+  "claim_boundary": {
+    "closed_successor_operator_block": true,
+    "response_rigging_attached": true,
+    "pair_observable_promoted_to_state": false,
+    "arithmetic_residual_vanishing": false,
+    "evans_membership": false,
+    "rh_implication": false
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "marici.aspect.polarized-prime-cell-required-input.v1",
+  "status": "minimal_non_circular_input_contract",
+  "primewise": true,
+  "before_Xi_specialization": true,
+  "basis": {
+    "source": "required ordered even/odd source basis",
+    "G4_output": "required ordered reciprocal/link output basis",
+    "basis_changes": "must be declared explicitly"
+  },
+  "comparison": {
+    "T_p": "diag(alpha_p,lambda_p)",
+    "lambda_p": "fixed by the completed polarized Stokes/Wronskian comparison",
+    "alpha_p": "must be derived from source even response; fitting forbidden"
+  },
+  "metrics": {
+    "G_S": "required full 2x2 Hermitian source metric",
+    "G_W": "required full 2x2 Hermitian G4 output metric",
+    "entries_required": ["two diagonal energies", "complex mixed entry and conjugate"],
+    "determinants_only_sufficient": false
+  },
+  "mechanical_test": {
+    "identity": "G_S=T_p^* G_W T_p",
+    "entrywise": true,
+    "performed_before_Evans_or_Xi": true,
+    "pass_effect": "freezes reciprocal/linking adjoint normalization and makes the five-port shell residual executable",
+    "fail_effect": "rejects the proposed successor-to-G4 metric comparison without touching RH"
+  },
+  "forbidden": [
+    "choose alpha_p from Evans cancellation",
+    "fit any metric entry at Xi zeros",
+    "replace entrywise equality by determinant equality",
+    "identify scalar Fourier sewing with polarized metric transport"
+  ],
+  "source": "research/voevodsky/the-response-graph-does-not-discharge-evans-membership-without-the-missing-polarized-prime-cell.md",
+  "claim_boundary": {
+    "input_schema_complete": true,
+    "input_values_exposed": false,
+    "prime_cell_verified": false,
+    "evans_residual_executable": false,
+    "rh_implication": false
+  }
+}

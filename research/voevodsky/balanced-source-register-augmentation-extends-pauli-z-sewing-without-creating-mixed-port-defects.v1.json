@@ -1,0 +1,37 @@
+{
+  "schema": "marici.voevodsky.balanced-source-register-pauli-extension.v1",
+  "status": "pauli_line_sewing_extended_to_typed_port_gram_identity",
+  "source_identity": {
+    "base": "<Y_w,Y_z>-<I_w,I_z>=(z+conj(w))<G_w,G_z>",
+    "base_ports": "Y=(G(0),O) in C_end direct-sum L2_tail and I in L2_tail"
+  },
+  "balanced_augmentation": {
+    "source_register": "C_src^2 for reciprocal amplitudes c=(c_+,c_-)",
+    "augmented_input": "Y_tilde=(c,Y)",
+    "augmented_output": "I_tilde=(Zc,I)",
+    "Pauli": "Z=diag(1,-1)",
+    "identity": "<Y_tilde_w,Y_tilde_z>-<I_tilde_w,I_tilde_z>=<Y_w,Y_z>-<I_w,I_z> because Z^*Z=I"
+  },
+  "mixed_pairings": {
+    "typing": "C_src, C_end, and L2_tail are orthogonal typed summands before feedback",
+    "result": "all source-to-endpoint and source-to-tail mixed Gram entries are zero on both sides",
+    "consequence": "the Pauli restriction introduces no untested mixed-port terms; its extension is the direct sum Z on C_src with the existing tail lurking isometry"
+  },
+  "reciprocal_lines": {
+    "odd_input": "c in span(1,-1)",
+    "even_output": "Zc in span(1,1)",
+    "Xi_endpoint": "the endpoint match also occupies the even line, so parity types now agree at the feedback interface"
+  },
+  "minimality": {
+    "why_balanced": "adding the amplitude register on only one side would change the Green defect by ||c||^2 and destroy conservation",
+    "why_typed": "embedding cPhi directly into the same unlabelled L2 port would create nonzero mixed pairings and require a new Gram calculation",
+    "no_new_divisor": "the source register is transported by a constant unitary and contributes only a determinant unit"
+  },
+  "remaining_feedback_gate": {
+    "closed": "finite source-parity component and every mixed pairing involving that component",
+    "open": "identify the doubled tail lurking-isometry transfer's boundary feedback with the Xi endpoint-match relation on the source-generated span",
+    "exact_test": "write the transfer output I_tilde(z) and impose the endpoint feedback; its Schur complement must equal the already constructed two-row Evans determinant -tau(z), not an identically zero Stokes codiagonal"
+  },
+  "conclusion": "Pauli Z extends consistently once the source amplitude is retained as a balanced orthogonal register on both sides of the Green identity. No mixed defect remains from the parity change. The only unresolved comparison is now the tail-transfer feedback Schur complement versus the exact Xi seam mismatch.",
+  "rh_implication": false
+}

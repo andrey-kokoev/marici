@@ -1,0 +1,45 @@
+{
+  "schema": "marici.voevodsky.correction.stable-vs-reciprocal-doubling.v1",
+  "status": "two_port_pauli_feedback_identification_retracted_four_sector_carrier_required",
+  "corrects": [
+    "research/voevodsky/the-odd-source-amplitude-and-even-endpoint-lines-are-unitarily-intertwined-by-the-pauli-z-sewing.v1.json",
+    "research/voevodsky/balanced-source-register-augmentation-extends-pauli-z-sewing-without-creating-mixed-port-defects.v1.json"
+  ],
+  "distinction": {
+    "stable_doubling": "u_-(.;z) and u_+(.;z) are left- and right-stable histories at the same parameter z; both satisfy (partial_q-z)u=c Phi with the same amplitude c",
+    "reciprocal_doubling": "reflection relates a z-history to a -z-history and reverses the forcing amplitude: u_(rec,-z)=-R u_z",
+    "error": "the prior Pauli records treated these two independent binary indices as one two-dimensional boundary index"
+  },
+  "correct_carrier": {
+    "stable_factor": "B_st=span{left-stable,right-stable} isomorphic to C^2",
+    "reciprocal_factor": "B_rec=span{z-sheet,-z-sheet} isomorphic to C^2",
+    "full": "B_fb=B_st tensor B_rec isomorphic to C^4 before any sourced quotient",
+    "involutions": "R_st=sigma_x tensor I and R_rec=I tensor sigma_x commute"
+  },
+  "source_and_evans_types": {
+    "same_parameter_source": "the forcing amplitude lies on the stable-even vector e_st=(1,1)",
+    "Evans_mismatch": "the stable-odd covector d_st^top=(1,-1) reads u_-(0;z)-u_+(0;z)=tau(z)",
+    "reciprocal_source_sign": "the z/-z sheet relation lies in the reciprocal-odd sector e_rec^-=(1,-1)",
+    "typed_packet": "source parity is e_st^+ tensor e_rec^-; the Xi mismatch acts by d_st^- tensor the appropriate reciprocal chart functional"
+  },
+  "pauli_role": {
+    "valid": "Z_rec acts on B_rec and converts reciprocal odd/even parity as required by Green orientation",
+    "invalid": "Z_rec does not convert the stable-even forcing coordinate into the stable-odd Evans mismatch; those live in different tensor factors",
+    "consequence": "the earlier linewise C^2 unitary does not by itself define the Xi feedback relation"
+  },
+  "four_sector_matrix_order": ["left,z", "right,z", "left,-z", "right,-z"],
+  "next_exact_block_test": {
+    "task": "write the 4x4 feedback/sewing matrix with separate R_st and Tate-twisted R_rec actions",
+    "requirements": [
+      "same-sign forcing across left/right stable halves",
+      "opposite source sign across reciprocal parameter sheets",
+      "stable endpoint mismatch equal to tau(z)",
+      "Tate modular reciprocal phase",
+      "unitarity/maximal isotropy in the tensor-product Green metric"
+    ],
+    "reduction_rule": "a two-dimensional quotient is admissible only after proving a source relation that identifies one tensor factor without killing d_st"
+  },
+  "connection_to_tetrahedral_geometry": "The four-sector carrier gives an analytic reason four presentations/tetrahedral faces persist: two binary sewings—stable endpoint and reciprocal parameter—must cohere rather than be collapsed into one Pauli pair.",
+  "conclusion": "The attempted 2x2 feedback Schur complement was under-typed. Xi endpoint matching and reciprocal forcing anti-orientation belong to commuting, independent doublings. The correct minimal feedback object is 4x4; constructing its coherence square is the next nonredundant gate.",
+  "rh_implication": false
+}

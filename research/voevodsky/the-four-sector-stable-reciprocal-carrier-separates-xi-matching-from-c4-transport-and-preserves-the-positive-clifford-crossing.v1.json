@@ -1,0 +1,51 @@
+{
+  "schema": "marici.voevodsky.four-sector-stable-reciprocal-Clifford-C4.v1",
+  "status": "exact_tensor_factor_coherence_closed_analytic_evans_observer_open",
+  "fresh_input": "research/voevodsky/correction-stable-half-line-and-reciprocal-parameter-doublings-are-independent-so-the-feedback-carrier-is-four-dimensional.v1.json",
+  "carrier": {
+    "space": "B_fb=B_st tensor B_rec",
+    "ordered_basis": ["left,z", "right,z", "left,-z", "right,-z"],
+    "dimension": 4
+  },
+  "stable_factor": {
+    "swap": "S_st=sigma_x tensor I",
+    "green_sign": "J_st=sigma_z tensor I",
+    "relations": ["S_st^2=J_st^2=I", "S_st J_st+J_st S_st=0"],
+    "matching_chirality": "Lambda_st^+=ker(S_st-I)=span((1,1)) tensor B_rec",
+    "mismatch_covector": "d_st^-=(1,-1)^top; tau=0 is exactly membership in Lambda_st^+"
+  },
+  "stable_clifford_apex": {
+    "quarter_turn": "F_st=J_st S_st=(sigma_z sigma_x) tensor I",
+    "laws": ["F_st^2=-I", "F_st^4=I", "F_st maps stable-plus chirality to stable-minus chirality"],
+    "positive_crossing": "for lambda,mu in Lambda_st^+, <lambda,J_st F_st mu>=<lambda,S_st mu>=<lambda,mu>",
+    "strictness": "<lambda,J_st F_st lambda>=||lambda||^2>0 for lambda nonzero"
+  },
+  "reciprocal_factor": {
+    "Tate_involution": "R_g=I tensor [[0,g^-1],[g,0]], |g|=1",
+    "reciprocal_sign": "Z_rec=I tensor sigma_z",
+    "quarter_turn": "F_rec=Z_rec R_g",
+    "laws": ["R_g^2=I", "Z_rec R_g+R_g Z_rec=0", "F_rec^2=-I", "F_rec^4=I"]
+  },
+  "commuting_coherencers": {
+    "factor_separation": ["[S_st,R_g]=0", "[J_st,R_g]=0", "[F_st,F_rec]=0"],
+    "metric_transport": "F_rec is unitary and commutes with J_st and S_st",
+    "crossing_naturality": "<F_rec lambda,J_st F_st F_rec mu>=<lambda,J_st F_st mu>",
+    "consequence": "the positive stable Clifford crossing is transported unchanged around the reciprocal C4/Tate cycle"
+  },
+  "source_parity": {
+    "stable": "equal forcing uses e_st^+=(1,1)",
+    "reciprocal": "opposite reciprocal orientation uses e_rec^-=(1,-1)",
+    "combined": "e_st^+ tensor e_rec^- lies in the positive stable matching chirality while retaining reciprocal oddness",
+    "nonconflation": "Xi matching and reciprocal parity are simultaneous compatible conditions on different tensor factors"
+  },
+  "categorical_result": {
+    "two_channels": "stable quotient/contraquotient and reciprocal quotient/contraquotient",
+    "separate_coherencers": "F_st and F_rec",
+    "common_four_sector_carrier": "their tensor product with commuting actions",
+    "positive_apex": "the J_st-F_st crossing on stable matching chirality",
+    "C4_law": "F_rec transports that positive apex isometrically"
+  },
+  "remaining_analytic_gate": "Construct the common-domain observer from the reciprocally doubled Rosenbrock histories into B_fb with stable trace exactly (u_-(0),u_+(0)) on each reciprocal chart, prove its tail/bulk completion is noncollapsing, and show the source Tate transport is the displayed R_g. The finite four-sector algebra does not supply this observer.",
+  "conclusion": "Keeping the two binary indices separate resolves the apparent conflict: tau=0 selects stable-plus chirality, reciprocal oddness remains in the other factor, the stable Clifford crossing is strictly positive, and the reciprocal C4 quarter-turn preserves it. The proposed quotient-then-cohere-then-positive order is algebraically consistent on the correct four-sector carrier. Its Xi application is now isolated to one analytic source-placement theorem.",
+  "rh_implication": false
+}

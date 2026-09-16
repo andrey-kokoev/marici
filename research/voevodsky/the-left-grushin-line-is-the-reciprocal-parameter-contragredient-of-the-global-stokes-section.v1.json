@@ -1,0 +1,41 @@
+{
+  "schema": "marici.voevodsky.reciprocal-contragredient-left-grushin-line.v1",
+  "status": "left_line_reduced_to_one_arithmetic_reciprocity_identity",
+  "pencil": "G(z)=[[partial_q-z,-V,-B],[-V^top,0,0],[-B^top,0,D_U(z)]] under the analytic bilinear transpose",
+  "calculation": {
+    "history": "(partial_q-z)^top=-partial_q-z",
+    "couplings": "the displayed off-diagonal pairs transpose into each other",
+    "sign_involution": "S=diag(1,-1,-1)",
+    "required_arithmetic_identity": "D_U(z)^top=-D_U(-z)",
+    "full_identity": "G(z)^top=-S G(-z) S"
+  },
+  "left_section": {
+    "right_section": "Psi_z=(u_z,1,0), G(z)Psi_z=0",
+    "formula": "phi_z=S Psi_(-z)=(u_(-z),-1,0)",
+    "verification": "G(z)^top phi_z=-S G(-z)Psi_(-z)=0",
+    "covector": "Lambda_z=-phi_z^top with respect to the declared source pairing",
+    "normalization_vector": "v=e_theta=(0,1,0)",
+    "normalization": "Lambda_z(v)=1"
+  },
+  "holomorphy": {
+    "condition": "z maps to u_z is holomorphic in the completed history rigging",
+    "consequence": "z maps to Lambda_z is holomorphic for the analytic transpose convention",
+    "Hermitian_warning": "for Hilbert adjoints the corresponding parameter is -conjugate(z), producing an anti-holomorphic dual; determinant-line construction must use analytic transpose or the holomorphic dual bundle"
+  },
+  "grushin_consequence": {
+    "operator": "mathcal G(z)=[[G(z),e_theta],[ell_theta,0]]",
+    "source_normalized": true,
+    "Xi_specialization_used": false,
+    "remaining_first_gate": "prove D_U(z)^top=-D_U(-z) on the declared arithmetic domain, including closure and parameter convention"
+  },
+  "claim_boundary": {
+    "history_and_coupling_contragredience": true,
+    "left_line_if_arithmetic_reciprocity": true,
+    "arithmetic_reciprocity_exposed": false,
+    "Fredholm_index": false,
+    "determinant_class": false,
+    "Xi_identification": false
+  },
+  "conclusion": "The Grushin left line is not a new arbitrary datum. All non-arithmetic blocks force it to be the sign-twisted reciprocal-parameter transpose of the global Stokes section. Its existence is reduced to the single native arithmetic pencil identity D_U(z)^top=-D_U(-z).",
+  "rh_implication": false
+}

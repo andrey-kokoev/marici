@@ -1,0 +1,47 @@
+{
+  "schema": "marici.voevodsky.reciprocal-two-port-dark-channel.v1",
+  "status": "finite_matrix_mechanism_classified_source_commutator_open",
+  "fresh_sources": [
+    "research/nima/correction-a-persistent-dark-line-is-allowed-only-the-closed-state-crossing-must-be-discrete.md",
+    "research/nima/rank-one-radiation-reduces-the-seam-divisor-to-one-scalar-feshbach-function.md",
+    "research/nima/infinite-seam-zeros-require-a-symmetry-protected-dark-channel.md"
+  ],
+  "correction": "The desired dark line should not appear only at Xi ordinates. With two reciprocal boundary amplitudes and one shared radiation output, a one-dimensional dark line persists at every regular seam parameter; only its reactive phase matching is discrete.",
+  "two_port_kinematics": {
+    "boundary": "B=C^2 with reciprocal exchange R=[[0,1],[1,0]]",
+    "shared_radiation_row": "Y(x)=gamma(x)[1,1]",
+    "radiation_form": "W=Y^*Y=|gamma|^2[[1,1],[1,1]]",
+    "coherent_vector": "r=(1,1)/sqrt(2), W r=2|gamma|^2 r",
+    "dark_vector": "d=(1,-1)/sqrt(2), W d=0",
+    "rank": "rank W=1 when gamma !=0"
+  },
+  "reactive_operator": {
+    "definition": "F_X(x)=Theta_X(x)-Re M_(+,X)(x)",
+    "endpoint_basis": "F=[[a,b],[conj(b),d0]] for a Hermitian seam law",
+    "parity_commutator": "[R,F]=0 iff a=d0 and b is real (equivalently the coherent/dark off-diagonal entry vanishes)",
+    "dark_radiative_mixing": "beta=<d,F r>=(a-d0+b-conj(b))/2",
+    "protected_condition": "beta identically zero by source reciprocal parity, not by parameter-dependent diagonalization"
+  },
+  "feshbach": {
+    "general": "E=a_dark-|beta|^2/(c_rad-i w)",
+    "protected": "if beta=0 then det(F-iW)=a_dark(c_rad-iw)",
+    "zero_free_factor": "c_rad-iw is nonzero whenever w=2|gamma|^2>0",
+    "divisor": "all seam zeros reduce to a_dark(x)=<d,F_X(x)d>=0"
+  },
+  "next_exact_finite_tests": [
+    "prove the two reciprocal outputs feed one common radiation evaluator, giving Y=gamma[1,1]",
+    "compute the complete cutoff reactive matrix F_X including wall, endpoint, prime, square, connected, and archimedean terms",
+    "verify [R,F_X(x)]=0 symbolically before Xi specialization",
+    "verify w_X(x)>0 on the coherent line",
+    "compare the independently derived dark scalar a_dark,X with the finite Xi Evans section up to a zero-free factor",
+    "check relative projective/Maslov winding has Riemann-von Mangoldt asymptotics"
+  ],
+  "revised_priority": {
+    "reactive_parity_commutator": "10/10",
+    "shared_output_rank_one_factorization": "9/10",
+    "dark_scalar_source_derivation": "9/10",
+    "radiation_rank_only": "6/10 because persistent rank-one darkness is kinematic and does not locate zeros"
+  },
+  "conclusion": "The lower-rung coherent/disagreement split already supplies the shape of the dark channel. The new rung-four spectral content is the exact commutation of the complete reactive return with reciprocal exchange and the identification of its dark eigenvalue with the Xi Evans section. The cheapest decisive calculation is [R,F_X]=0 entrywise at finite cutoff.",
+  "rh_implication": false
+}

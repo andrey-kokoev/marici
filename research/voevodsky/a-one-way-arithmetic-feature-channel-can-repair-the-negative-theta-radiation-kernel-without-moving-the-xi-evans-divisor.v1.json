@@ -1,0 +1,44 @@
+{
+  "schema": "marici.voevodsky.one-way-positive-feature-divisor-preserving-repair.v1",
+  "status": "minimal_repair_architecture_and_quantitative_lower_bounds_derived",
+  "inputs": [
+    "research/voevodsky/results/the-direct-one-sided-theta-hermite-biehler-kernel-has-negative-finite-packets.numeric.v1.json",
+    "research/aspect/boundary-mode-lift-determinant-control.md"
+  ],
+  "bare_defect": {
+    "kernel": "K_0(w,z)=[m(-z)conj(m(-w))-m(z)conj(m(w))]/(z+conj(w))",
+    "failure": "K_0 is not positive definite"
+  },
+  "feature_repair": {
+    "source_feature": "h(z) valued in an independently constructed arithmetic/endpoint Hilbert space E",
+    "augmented_kernel": "K_aug(w,z)=K_0(w,z)+<h(w),h(z)>_E/(z+conj(w))",
+    "positivity_target": "K_aug>=0 on every finite packet",
+    "diagonal_necessity": "||h(z)||_E^2 >= |m(z)|^2-|m(-z)|^2 whenever the right side is positive"
+  },
+  "observed_minimum_amplitudes": [
+    {"z":"0.1+20i","squared_deficit":"5.331620633942431e-7","required_norm_at_least":"0.0007301794734133815"},
+    {"z":"1.2+20i","squared_deficit":"5.770074091407135e-6","required_norm_at_least":"0.002402097852171542"}
+  ],
+  "divisor_preservation": {
+    "boundary_lift_principle": "a decoupled or one-way triangular auxiliary feature changes the positive defect/realization space but leaves the original scalar transmission determinant unchanged",
+    "two_way_warning": "a two-way coupling contributes a Schur term b E^-1 c and generically moves the Xi zeros",
+    "allowed_block_shape": "[[F_Xi,B],[0,E]] or [[F_Xi,0],[C,E]] with E zero-free",
+    "determinant": "det lifted = det(E) det(F_Xi), so the Xi divisor is preserved up to the zero-free factor det(E)"
+  },
+  "logical_role": {
+    "Xi_detector": "the existing two-history Rosenbrock row remains the transmission-zero section",
+    "positive_orientation": "the one-way arithmetic feature supplies the missing positive Green/radiation defect",
+    "separation": "divisor compilation and positive-energy orientation are distinct arrows, avoiding the failed unchanged-state adjoint promotion"
+  },
+  "source_authority_gate": {
+    "required": "derive h from prime, square, endpoint, connected, and archimedean currents before evaluating the negative packets",
+    "forbidden": "take h to be an abstract square root of the negative part of K_0, which merely fits positivity",
+    "finite_test": "assemble the source feature Gram H_X=[<h(z_i),h(z_j)>] and verify H_X >= -[(z_i+conj(z_j))K_0(z_j,z_i)] in the correctly normalized Pick form"
+  },
+  "completion": {
+    "need": "uniform finite-packet positivity, cutoff-compatible feature maps, and a noncollapsing transverse lower bound",
+    "warning": "pointwise diagonal repair alone does not ensure Gram positivity"
+  },
+  "conclusion": "The failed bare Hermite-Biehler route does not require changing the Xi Evans determinant. The minimal viable repair is a source-derived one-way arithmetic feature channel: it can add the missing positive two-height kernel while triangularity protects the Xi divisor. This cleanly separates spectral detection from conservative orientation.",
+  "rh_implication": false
+}

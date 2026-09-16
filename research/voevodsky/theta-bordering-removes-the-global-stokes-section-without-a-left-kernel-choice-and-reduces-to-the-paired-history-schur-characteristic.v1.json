@@ -1,0 +1,55 @@
+{
+  "schema": "marici.voevodsky.theta-bordered-grushin-schur-reduction.v1",
+  "status": "exact_algebraic_reduction_constructed",
+  "fresh_sources": [
+    "research/aspect/contracts/successor-conservative-three-port-block.v1.json",
+    "research/nima/the-paired-history-characteristic-is-the-arithmetic-source-law-plus-a-weyl-function.md"
+  ],
+  "decomposition": {
+    "carrier": "X=X_0 direct-sum C_theta with X_0=H direct-sum U_ar",
+    "three_port": "D(z)=[[P(z),-w],[-w^dagger,0]]",
+    "paired_block": "P(z)=[[partial_q-z,-B_Sigma],[-B_Sigma^dagger,D_U(z)]]",
+    "theta_column": "w=(V,0)^top"
+  },
+  "canonical_bordering": {
+    "theta_vector": "e_theta=(0,1)",
+    "theta_covector": "ell_theta(x,a)=a",
+    "operator": "G_theta(z)=[[D(z),e_theta],[ell_theta,0]]",
+    "expanded_matrix": "[[P,-w,0],[-w^dagger,0,1],[0,1,0]] on X_0 direct-sum C_theta direct-sum C_aux",
+    "source_normalization": "ell_theta(Psi_z)=1"
+  },
+  "invertibility_proof": {
+    "equations": [
+      "P x-w a=f",
+      "-w^dagger x+b=g",
+      "a=c"
+    ],
+    "forward": "if P is invertible, x=P^-1(f+w c), a=c, b=g+w^dagger x gives the unique solution",
+    "reverse": "if P has nonzero x in its kernel, (x,0,w^dagger x) lies in ker G_theta; surjectivity failure of P likewise propagates by the first equation",
+    "equivalence": "G_theta(z) is invertible iff P(z) is invertible"
+  },
+  "determinant_reduction": {
+    "finite_dimensional_identity": "det G_theta(z)=-det P(z), independent of w",
+    "Fredholm_version": "the determinant line of the theta-bordered operator canonically identifies, up to the fixed border orientation unit, with det P(z)",
+    "meaning": "the globally null theta/Stokes branch is removed without constructing a left kernel section"
+  },
+  "history_schur_reduction": {
+    "resolvent_chart": "where partial_q-z is invertible",
+    "characteristic": "M_U(z)=D_U(z)+B_Sigma^dagger(partial_q-z)^(-1)B_Sigma, with signs adjusted to the declared block convention",
+    "equivalence": "P(z) invertible iff M_U(z) invertible",
+    "determinant_target": "det_rel M_U(z)=c(z)Xi(z), c nowhere zero"
+  },
+  "corrections": {
+    "left_global_section_required": false,
+    "arithmetic_minus_z_transpose_required": false,
+    "reason": "the retained theta coordinate supplies both fixed border maps and direct block elimination identifies the transverse pencil"
+  },
+  "remaining_gates": [
+    "prove P(z) is a holomorphic Fredholm family of fixed index zero in the completed rigging",
+    "construct the correct graded arithmetic D_U rather than using the asymptotically mismatched raw Cayley law as the full diagonal",
+    "prove determinant-class/regularized determinant control and cutoff convergence",
+    "identify det_rel M_U with Xi up to a holomorphic unit"
+  ],
+  "conclusion": "The minimal transverse pencil is exactly the theta-deleted paired history-arithmetic block P. Canonical theta bordering removes the global Stokes section algebraically and needs no guessed left cokernel line.",
+  "rh_implication": false
+}

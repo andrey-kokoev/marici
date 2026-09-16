@@ -1,0 +1,44 @@
+{
+  "schema": "marici.voevodsky.green-sewing-clifford-C4-positive-crossing.v1",
+  "status": "canonical_positive_lagrangian_complement_constructed_analytic_identification_open",
+  "input": "research/voevodsky/the-sewing-graph-is-the-positive-chirality-of-a-canonical-clifford-involution.md",
+  "operators": {
+    "green_sign": "J=diag(I,-I)",
+    "sewing_chirality": "S_T=[[0,T*],[T,0]] for unitary T",
+    "relations": ["J*=J", "S_T*=S_T", "J^2=S_T^2=I", "J S_T+S_T J=0"]
+  },
+  "canonical_twistor": {
+    "definition": "F_C=J S_T",
+    "adjoint": "F_C*=-F_C",
+    "unitary": true,
+    "square": "F_C^2=-I",
+    "fourth_power": "F_C^4=I",
+    "meaning": "F_C is an intrinsic complex/Clifford quarter-turn constructed from Green orientation and sewing, with no quotient or phase fitting"
+  },
+  "lagrangians": {
+    "sewn": "Lambda_+=ker(S_T-I)=Graph(T)",
+    "defect": "Lambda_-=ker(S_T+I)=Graph(-T)",
+    "transport": "F_C Lambda_+=J Lambda_+=Lambda_- and F_C Lambda_-=-Lambda_+",
+    "direct_sum": "P=Lambda_+ orthogonal-direct-sum Lambda_- in the ambient Hilbert metric",
+    "green": "each Lambda_+ and Lambda_- is maximal isotropic and they pair nondegenerately"
+  },
+  "positive_crossing": {
+    "green_pairing": "[x,y]_J=<x,Jy>",
+    "formula": "for lambda,mu in Lambda_+, [lambda,F_C mu]_J=<lambda,mu>",
+    "positivity": "[lambda,F_C lambda]_J=||lambda||^2>0 for nonzero lambda",
+    "interpretation": "the ordered seam-to-defect crossing has a canonical positive Hermitian form even though no Green form descends to P/Lambda_+"
+  },
+  "relation_to_user_hypothesis": {
+    "confirmed": "the necessary complement is selected by an order-four twistor living in the same cycle geometry as sewing",
+    "refined": "the twistor is not quotient descent; it is the Clifford product of the Green and sewing involutions, acting on the retained phase space",
+    "quotient": "P/Lambda_+ is represented canonically by the negative-chirality projection P_- only after the ambient Hilbert polarization is retained"
+  },
+  "remaining_analytic_cell": {
+    "identity": "identify the source Fourier/Tate quarter-turn on the completed history-response carrier with F_C (or a source-unitary conjugate) and prove the bulk Green identity uses the positive crossing [.,F_C.]_J",
+    "Evans": "prove the transverse Evans section enters this Clifford crossing identity modulo tau, including multiplicity jets",
+    "not_implied": "the algebraic Clifford positivity alone does not connect Re(z) to the Xi crossing"
+  },
+  "next_test": "On the existing finite prime-two response fixture, construct J, S_T, and F_C; verify F_C^2=-I and compare its four matrix blocks with the admitted Fourier/Tate response action. The first block mismatch identifies the exact missing comparison cell.",
+  "conclusion": "The positive complement was already latent in the derived structures. Green sign and sewing chirality anticommute, so their product is a canonical C4 quarter-turn carrying the sewn Lagrangian to the defect Lagrangian. Its Green crossing form is exactly the positive Hilbert norm. The remaining theorem is source identification of this intrinsic Clifford twistor with the analytical Fourier/Tate twistor on the Evans mapping cone.",
+  "rh_implication": false
+}

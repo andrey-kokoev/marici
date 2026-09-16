@@ -1,0 +1,45 @@
+{
+  "schema": "marici.aspect.regular-derivative-wall-port-split.v1",
+  "status": "source_normalized_endpoint_split_constructed",
+  "cut_atom": "c_a(q)=1_(q<=a) Phi(a-q)",
+  "distributional_identity": "D c_a=-1_(q<a)Phi'(a-q)-Phi(0)delta_a",
+  "ports": {
+    "regular_derivative": {
+      "map": "B_1(a)=-1_(q<a)Phi'(a-q) in L2(R)",
+      "pairing": "I_a^(1)(u)=integral B_1(a)(q) conjugate(u(q)) dq",
+      "variance": "ordinary Hilbert/analytic-transpose lane as separately declared"
+    },
+    "wall": {
+      "map": "B_wall(a)=-Phi(0)delta_a retained as a boundary coordinate",
+      "pairing": "I_a^(wall)(u)=-Phi(0) conjugate(u(a))",
+      "domain": "H1 wall graph, where evaluation at a is continuous"
+    }
+  },
+  "shell_difference": {
+    "definition": "B_j^[a,b]=B_j(b)-B_j(a) for j in {1,wall}",
+    "sum": "I^[a,b](1)+I^[a,b](wall)=<D c_b-D c_a,u> with regular and delta pieces separately retained",
+    "native_wall_values": "-Phi(0)u(b)+Phi(0)u(a)",
+    "radial_endpoint_identification": "comparison with Phi(b)u(b)-Phi(a)u(a)=-2E(z) remains open because the cut-atom and moving-seam conventions differ",
+    "relative_coefficient_fitted": false,
+    "shell_concatenation": true
+  },
+  "continuity": {
+    "regular": "bounded from the source cut family into L2 derivative port",
+    "wall": "bounded into the trace dual of the H1 wall graph",
+    "centered_arithmetic": "after p^(-1/2)/(log p) weighting, both residual sequences lie in U_ar",
+    "all_Evans_parameter_jets": true
+  },
+  "source": "research/nima/the-five-port-residual-is-topologically-defined-but-not-yet-source-normalized-as-one-g4-adjoint.md",
+  "effect": {
+    "I1_individual_exposed": true,
+    "Iwall_individual_exposed": true,
+    "endpoint_aggregate_only": false,
+    "reciprocal_link_split": "open"
+  },
+  "claim_boundary": {
+    "endpoint_two_ports_frozen": true,
+    "five_port_joint_adjoint_complete": false,
+    "Evans_residual_vanishing": false,
+    "rh_implication": false
+  }
+}

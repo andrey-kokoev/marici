@@ -1,0 +1,51 @@
+{
+  "schema": "marici.voevodsky.normalized-two-sided-grushin-reduction.v1",
+  "status": "reduced_pencil_constructed_conditionally_exact_missing_transversality_identified",
+  "setup": {
+    "pencil": "D(z):X_1->X_0, closed holomorphic Fredholm family on the constructed G4 domain",
+    "right_global_section": "Psi(z) with D(z)Psi(z)=0 and Psi(z) nonzero",
+    "left_global_section": "Lambda(z) in ker D(z)^dagger, supplied candidate-wise by the contragredient response branch",
+    "normalizations": "ell(z)Psi(z)=1 and Lambda(z)v(z)=1"
+  },
+  "projections": {
+    "domain": "Q_X(z)=I-Psi(z)ell(z)",
+    "codomain": "Q_Y(z)=I-v(z)Lambda(z)",
+    "laws": ["Q_X Psi=0", "Lambda Q_Y=0", "D Q_X=D", "Q_Y D=D"]
+  },
+  "reduced_pencil": {
+    "formula": "D_red(z)=D(z)|_(ker ell(z)):ker ell(z)->ker Lambda(z)",
+    "equivalent": "D_red=Q_Y D Q_X between the projected bundles",
+    "meaning": "remove the parameterwise Stokes right kernel and its contragredient left cokernel before spectral scalarization"
+  },
+  "grushin_operator": {
+    "formula": "G(z)=[[D(z),v(z)],[ell(z),0]]:X_1 direct-sum C -> X_0 direct-sum C",
+    "equivalence": "G(z) invertible iff D_red(z) invertible, provided the declared splittings and two-sided kernel relations hold",
+    "advantage": "fixed square Fredholm index and no quotient-bundle coordinate ambiguity"
+  },
+  "xi_candidate": {
+    "determinant": "E_red(z)=det_F G(z), or the corresponding determinant-line section",
+    "required_identification": "E_red(z)=c(z)Xi(z), with c holomorphic and nowhere zero",
+    "kernel_correspondence": "Xi(z)=0 iff D_red(z) has a nontrivial transverse kernel state",
+    "multiplicity": "order of E_red equals algebraic multiplicity of the transverse characteristic value under analytic Fredholm hypotheses"
+  },
+  "minimum_proof_obligations": [
+    "D(z) is a holomorphic Fredholm family of fixed index zero in the declared rigging",
+    "Psi, Lambda, ell, and v are holomorphic and source-derived, with the two normalizations",
+    "the global Stokes right and left lines have constant rank one off the discrete transverse spectrum",
+    "G(z)-G(z_ref) is determinant class or admits a sourced regularized determinant",
+    "finite-shell Grushin determinants converge locally uniformly without spectral pollution",
+    "E_red/Xi extends holomorphically and is nowhere zero"
+  ],
+  "noncircularity": {
+    "allowed": "choose ell and v by fixed source coordinates, e.g. the retained theta coordinate and its declared dual, before Xi specialization",
+    "forbidden": "choose a complement, left section, or normalization by fitting Xi zeros",
+    "important": "the canonical Stokes identity supplies only the removable global line; it does not establish the determinant identification"
+  },
+  "current_executable_frontier": {
+    "first_test": "verify that the retained theta coordinate ell(Psi)=1 and its contragredient dual define bounded holomorphic splittings on the completed domain",
+    "second_test": "compute the finite-shell Grushin Schur complement and test whether its zero set is nontrivial rather than identically zero",
+    "third_test": "compare that independently normalized finite-shell determinant with finite Euler/Xi sections before passage to completion"
+  },
+  "conclusion": "The global Stokes kernel does not end the spectral route; it dictates a two-sided Grushin reduction. This is the minimal nontrivial determinant candidate. No Xi or RH implication is claimed until the reduced determinant identification and completion theorem are proved.",
+  "rh_implication": false
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "marici.voevodsky.pair-bridge-multiplicity-no-go-and-pointed-repair.v1",
+  "status": "naive_coproduct_rejected_minimal_pointed_bridge_typed",
+  "naive_candidates": {
+    "Hilbert_rank_one": "v maps to v tensor conjugate(v)",
+    "analytic_square": "v maps to v tensor v",
+    "label_group_like": "sum a_n[n] maps to sum a_n([n] tensor [n])"
+  },
+  "failures": {
+    "Hilbert_rank_one": "quadratic/nonlinear and anti-holomorphic in one parameter lane; a scalar Evans factor tau becomes |tau|^2",
+    "analytic_square": "quadratic/nonlinear; tau becomes tau^2 and every zero multiplicity doubles",
+    "label_group_like": "linear but retains only diagonal label pairs (n,n), whereas the radial correlation uses all ordered pairs (n,m); it does not reproduce the polarized theta pair current",
+    "conclusion": "none is a divisor- and multiplicity-preserving linear chain map from the Evans source to the full pair source"
+  },
+  "minimal_possible_shape": {
+    "anchor": "a source-derived pointed vector/functional eta in one tensor leg",
+    "map": "Delta_eta(v)=v tensor eta (or eta tensor v, with ordered reciprocal orientation retained)",
+    "linearity": true,
+    "holomorphy": true,
+    "multiplicity": "tau maps to tau times eta, so divisor multiplicities are unchanged when eta is nonzero/zero-free",
+    "pair_completion": "the opposite ordered leg and Hermitian polarization may be added after the linear chain comparison, not by diagonalizing v"
+  },
+  "C4_coherence": {
+    "strict_invariant_anchor": "Delta_eta F=(F tensor conjugate(F))Delta_eta would require conjugate(F)eta=eta in the Hermitian lane",
+    "likely_issue": "the complete order-four response contains nontrivial +/-i sectors, so an invariant anchor may not exist on the required cyclic component",
+    "twisted_anchor": "allow a four-cycle eta_j with eta_(j+1)=conjugate(F)eta_j and a Tate-cocycle coherencer after four steps",
+    "categorical_form": "a pointed C4-equivariant module/comodule, not an unpointed cocommutative diagonal"
+  },
+  "relation_to_existing_source": {
+    "V1": "the pyramid source already uses polarized convolution-square observers, so pair objects are legitimate there",
+    "remaining": "one must identify a distinguished one-leg anchor whose pair response is the bordered T_PB channel and whose induced Evans map preserves tau rather than tau^2",
+    "forbidden": "choose eta from a known Xi zero or normalize it by cancellation of the tested residual"
+  },
+  "next_test": "Decompose candidate source anchors into the four Fourier-character sectors. Determine whether a zero-free cyclic anchor orbit eta_0,...,eta_3 exists with the Tate fourfold phase and whether the resulting one-leg pair-to-border map sends the stable endpoint mismatch exactly to a nonzero multiple of tau.",
+  "conclusion": "The missing bridge cannot be the ordinary group-like diagonal. Divisor multiplicity forces it to be linear in exactly one Evans leg. Categorically, the needed object is a pointed, possibly Tate-twisted C4 orbit of anchors supplying a one-leg polarization map into the ordered-pair G4 carrier.",
+  "rh_implication": false
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "marici.voevodsky.quotient-contraquotient-C4-balanced-inertia.v1",
+  "status": "general_operator_criterion_derived_completed_balance_open",
+  "setup": {
+    "operator": "D=D* on Hilbert space H",
+    "Jordan_parts": "D=D_+-D_-, D_+D_-=0",
+    "spectral_subspaces": "H=H_+ direct-sum H_0 direct-sum H_-"
+  },
+  "cross_relations": {
+    "kernels": "ker D_+=H_0 direct-sum H_- and ker D_-=H_0 direct-sum H_+",
+    "closed_ranges": "closure ran D_+=H_+ and closure ran D_-=H_-",
+    "before_reduction": "ker D_+=closure ran D_- iff H_0=0, and similarly with signs exchanged",
+    "null_reduction": "on H_red=H/H_0 (equivalently H_0^perp), ker(D_+ red)=closure ran(D_- red) and ker(D_- red)=closure ran(D_+ red)"
+  },
+  "C4_exchange": {
+    "desired": "a unitary F with F H_+=H_-, F H_-=H_+, and F^2=-I",
+    "existence": "equivalent to unitary isomorphism H_+ isomorphic to H_-",
+    "finite_dimension": "equivalent to inertia_+(D)=inertia_-(D)",
+    "infinite_dimension": "requires equality of Hilbert dimensions plus compatibility with domains, cutoff bonds, Real/Tate structure, and spectral multiplicity",
+    "noncanonical": "balanced dimensions guarantee some F but do not identify it with the source Fourier/Tate twistor"
+  },
+  "finite_fixture": {
+    "operator": "the two-primitive signed packet D4",
+    "inertia": [1,1,0],
+    "result": "null-free and balanced, hence the observed quotient-contraquotient quarter cycle exists",
+    "warning": "this is a structural consequence of its 2x2 balanced inertia, not yet evidence that completed bulk polarities are balanced"
+  },
+  "correct_order": [
+    "form the two spectral polarity features",
+    "identify and quotient the common zero subspace H_0",
+    "compare quotient of one polarity with closed contraquotient range of the other",
+    "test balanced inertia/multiplicity",
+    "only then construct/identify the C4 coherencer and positive apex"
+  ],
+  "completed_RH_relevance": {
+    "endpoint_swap": "has balanced finite inertia (1,1) and is a natural location for this cycle",
+    "full_Weil_bulk": "need not have balanced inertia; under positivity its negative subspace should disappear, so a global polarity-exchanging C4 on the full form would be the wrong requirement",
+    "typing_rule": "apply the quotient-contraquotient C4 cycle to the boundary/endpoint defect block, not automatically to the completed bulk energy operator"
+  },
+  "next_test": "Compute inertia and common nullity of each finite source-selected endpoint/relative-boundary packet under refinement. Require balanced nonzero indices only in the boundary block, exact transport of H_0, and stability of the induced quarter-turn; reject if imbalance grows or if F mixes the positive bulk with the endpoint negative line.",
+  "conclusion": "The finite quotient-contraquotient result generalizes after quotienting the common zero spectral space. A C4 coherencer exists precisely under balanced polarized inertia. This likely belongs to the rank-two endpoint boundary, while imposing it on the full Weil bulk would conflict with the intended positive completion.",
+  "rh_implication": false
+}

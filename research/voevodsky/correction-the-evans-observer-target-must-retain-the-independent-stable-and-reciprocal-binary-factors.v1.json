@@ -1,0 +1,43 @@
+{
+  "schema": "marici.voevodsky.correction.Evans-observer-four-sector-target.v1",
+  "status": "five_cell_only_target_under_typed_four_sector_obstruction",
+  "corrects": "research/voevodsky/the-evans-to-five-cell-map-should-be-a-linear-observer-of-the-rosenbrock-state-not-a-tensor-coaction.v1.json",
+  "fresh_source": "research/voevodsky/correction-stable-half-line-and-reciprocal-parameter-doublings-are-independent-so-the-feedback-carrier-is-four-dimensional.v1.json",
+  "independent_indices": {
+    "stable": "B_st=span(left-stable,right-stable), comparing u_-(.;z) and u_+(.;z) at the same z",
+    "reciprocal": "B_rec=span(z-sheet,-z-sheet), comparing z with its reflected parameter chart",
+    "full": "B_fb=B_st tensor B_rec, dimension four before any sourced quotient",
+    "commuting_involutions": "R_st=sigma_x tensor I and R_rec=I tensor sigma_x"
+  },
+  "typed_source_data": {
+    "forcing": "e_st^+=(1,1) in B_st: the same amplitude drives both stable halves",
+    "Evans_readout": "d_st^-=(1,-1)^top on B_st: d_st^- tau_boundary=tau(z)",
+    "reciprocal_sign": "e_rec^-=(1,-1) in B_rec for the z/-z forcing relation",
+    "combined_source_parity": "e_st^+ tensor e_rec^-"
+  },
+  "problem_with_five_cell_only_map": {
+    "observation": "the proposed B_Ev sent one two-history Rosenbrock state directly to one five-cell C4 representation",
+    "failure": "unless the five-cell target explicitly retains which coordinates carry stable mismatch and which carry reciprocal Fourier rotation, this identifies the two independent binary indices",
+    "Pauli_warning": "a reciprocal Pauli Z can change reciprocal parity but cannot turn the stable-even forcing vector into the stable-odd Evans mismatch"
+  },
+  "corrected_bridge_type": {
+    "domain": "the reciprocal doubling of the two-stable-history Rosenbrock pencil, with coordinates (left,z),(right,z),(left,-z),(right,-z)",
+    "target": "a four-sector response carrier retaining B_st tensor B_rec, decorated by bulk/tail coefficient cells; not an unqualified two-dimensional endpoint plane",
+    "map": "componentwise bulk incidence, stable endpoint trace, and reciprocal tail/Fourier observers, with the two commuting naturality squares checked separately"
+  },
+  "minimum_matrix_test": {
+    "basis": ["left,z", "right,z", "left,-z", "right,-z"],
+    "requirements": [
+      "same forcing sign across left/right",
+      "opposite forcing orientation across z/-z charts",
+      "stable mismatch equals tau(z)",
+      "Tate-twisted reciprocal phase acts only on B_rec",
+      "R_st and R_rec commute",
+      "the tensor-product Green form makes the declared feedback graph maximal isotropic"
+    ],
+    "quotient_rule": "reduce to a two-dimensional endpoint carrier only after a source-derived relation removes one factor while proving that d_st^- survives"
+  },
+  "impact_on_current_objective": "The two quotient/contraquotient channels and their C4 coherencers must be formed on this four-sector carrier. Performing the common-radical quotient on a conflated two-sector model can erase the actual Xi mismatch or mistake reciprocal parity for stable matching.",
+  "conclusion": "A linear observer remains the right map kind, but its previously proposed target was under-typed. The independent stable and reciprocal doublings force a four-sector bridge before the positive Clifford apex. The next executable construction is the 4x4 tensor-product sewing/Green block, not the two-dimensional five-cell endpoint comparison.",
+  "rh_implication": false
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "marici.aspect.canonical-stokes-rung4-counterflow-homotopy.v1",
+  "status": "successor_rung4_filler_constructed_legacy_transport_open",
+  "cell": {
+    "name": "H_St",
+    "source": "ordered prime-shell radial Stokes graph with full radial state retained",
+    "target": "five-port successor counterflow quotient",
+    "oriented_boundary": ["ordinary_tail", "derivative_wall", "combined_reciprocal_linking"]
+  },
+  "boundary_identity": {
+    "ordinary": "I0=-R",
+    "derivative_wall": "Iend=-2E",
+    "reciprocal_linking": "IRL=R+2E",
+    "sum": "I0+Iend+IRL=0",
+    "strength": "parameterwise on the common holomorphic domain, shellwise, and after every finite parameter derivative"
+  },
+  "homotopy_interpretation": {
+    "equation": "partial H_St=C_can y_Ev=0",
+    "successor_residual": "r_can=C_can y_Ev",
+    "null_homotopic": true,
+    "coefficient_fitting": false,
+    "reason": "all three boundary sections are fixed before Xi specialization by the radial Stokes identity"
+  },
+  "quotient_control": {
+    "full_radial_state_retained": true,
+    "codiagonal_kernel_on_source_range": "interval cycles Z_1(G)",
+    "theta_ray_meets_interval_cycles": false,
+    "hidden_balanced_endpoint_wronskian_class": false
+  },
+  "finite_multiplicity": {
+    "for_z0_of_order_m": "partial_z^j r_can(z0)=0 for 0<=j<m",
+    "Xi_local_divisibility": true,
+    "all_jet_global_contraction": false
+  },
+  "legacy_firewall": {
+    "C_old": "original conservative codiagonal",
+    "K": "C_old-C_can",
+    "old_residual": "r_old=K y_Ev",
+    "H_St_transported_to_old_complex": false,
+    "required": "a source-authorized comparison 2-cell annihilating K on the Evans Xi-jet module"
+  },
+  "sources": [
+    "research/voevodsky/the-combined-reciprocal-linking-shell-row-is-explicit-and-closes-the-strict-packet-residual-identically.v1.json",
+    "research/nima/the-radial-codiagonal-kernel-is-exactly-the-internal-endpoint-wronskian-balance-on-the-minimal-graph.md",
+    "research/nima/retaining-the-full-radial-state-collapses-the-composite-kernel-to-interval-cycles.md",
+    "research/aspect/contracts/local-xi-divisibility-finite-jet-criterion.v1.json"
+  ],
+  "claim_boundary": {
+    "successor_counterflow_homotopy": true,
+    "successor_local_Evans_residual_zero": true,
+    "legacy_residual_zero": false,
+    "legacy_homotopy_transport": false,
+    "independent_RH_evidence": false,
+    "rh_implication": false
+  }
+}

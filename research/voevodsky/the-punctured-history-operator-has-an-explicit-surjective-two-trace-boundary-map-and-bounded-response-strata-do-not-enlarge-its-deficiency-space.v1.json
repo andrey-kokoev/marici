@@ -1,0 +1,40 @@
+{
+  "schema": "marici.voevodsky.punctured-history-boundary-triple.v1",
+  "status": "history_boundary_surjectivity_closed_response_strata_separated",
+  "operator": {
+    "minimal": "A_min=partial_q on {f in H1(R):f(0)=0}",
+    "maximal": "A_max=partial_q on H1((-infinity,0)) direct-sum H1((0,infinity))",
+    "trace": "gamma(f)=(f(0-),f(0+)) in C^2"
+  },
+  "explicit_right_inverse": {
+    "formula": "R(a,b)(q)=a exp(q) for q<0 and b exp(-q) for q>0",
+    "trace_identity": "gamma R=I_(C^2)",
+    "norms": "||R(a,b)||_L2^2=(|a|^2+|b|^2)/2 and ||partial_q R(a,b)||_L2^2=(|a|^2+|b|^2)/2",
+    "graph_bound": "||R(a,b)||_H1^2=|a|^2+|b|^2",
+    "consequence": "gamma is onto and has a norm-one right inverse in this graph normalization"
+  },
+  "green_form": {
+    "identity": "<A_max f,g>+<f,A_max g>=f(0-)conj(g(0-))-f(0+)conj(g(0+))",
+    "matrix": "J_boundary=diag(1,-1)",
+    "continuous_wall": "Lambda_cont={(c,c)} is maximal isotropic",
+    "extension": "Dom(A_cont)={f in Dom(A_max):f(0-)=f(0+)}=H1(R)"
+  },
+  "deficiency_classification": {
+    "quotient": "Dom(A_max)/Dom(A_min) is isomorphic to C^2 by gamma",
+    "no_hidden_history_deficiency": true,
+    "uniform_cutoff_issue": "none for the single fixed history wall; the right inverse is cutoff independent"
+  },
+  "response_strata_firewall": {
+    "fact": "G_Tr, J_link, arithmetic prime/square/connected labels, and other response coordinates are bounded graph attachments that leave Dom(partial_q) and the first-order Green boundary form unchanged",
+    "consequence": "they do not become additional deficiency coordinates of A_min merely by being retained as response ports",
+    "correction": "a boundary carrier containing wall, endpoint, prime, square, connected, and infinity strata can be a system/response boundary space, but it is not the deficiency boundary triple of the punctured history derivative unless a new unbounded operator with those traces is explicitly constructed"
+  },
+  "effect_on_spectral_route": {
+    "history_boundary_triple_gate": "closed",
+    "source_sewing": "continuity wall is a maximal-isotropic extension",
+    "remaining": "construct the finite/system Rosenbrock boundary input-output map coupling the external arithmetic response to this C^2 history trace, and prove its Evans determinant is Xi up to a unit",
+    "radiation_test": "must be performed on the system boundary pencil, not attributed to nonexistent extra derivative deficiency directions"
+  },
+  "conclusion": "Joint trace surjectivity for the actual punctured first-order history operator is explicit and uniformly bounded. The larger stratified response carrier should not be conflated with its deficiency space; bounded response augmentation does not alter deficiency indices.",
+  "rh_implication": false
+}

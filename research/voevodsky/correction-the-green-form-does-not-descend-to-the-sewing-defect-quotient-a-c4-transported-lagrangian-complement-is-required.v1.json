@@ -1,0 +1,37 @@
+{
+  "schema": "marici.voevodsky.correction.green-form-vs-sewing-quotient.v1",
+  "status": "quotient_positive-form_claim_retracted_C4-complement_role_isolated",
+  "setup": {
+    "phase_space": "P=H_- direct-sum H_+",
+    "green_form": "J=(-I) direct-sum I",
+    "sewing": "Lambda=Graph(T) for unitary T",
+    "defect_quotient": "D=P/Lambda with coordinate d_T(x_-,x_+)=x_+-T x_-"
+  },
+  "descent_no_go": {
+    "isotropy": "J restricted to Lambda x Lambda is zero",
+    "descent_requirement": "for J to define a form on P/Lambda, J(lambda,p)=0 for every lambda in Lambda and p in P, i.e. Lambda must lie in rad(J)",
+    "failure": "J is nondegenerate, so rad(J)=0 while Lambda is nonzero",
+    "maximal_lagrangian": "Lambda^perp_J=Lambda; the symplectic/Krein reduction Lambda^perp/Lambda is therefore zero",
+    "conclusion": "the nontrivial defect quotient carries no canonical inherited Green form"
+  },
+  "categorical_correction": {
+    "wrong": "put a positive Hermitian filler directly on the sewing quotient D",
+    "right": "retain the extension/mapping-cone object Lambda -> P -> D together with the shifted dual boundary pairing",
+    "needed_extra": "a source-derived complementary Lagrangian Lambda' or equivalent splitting/polarization pairing D with Lambda"
+  },
+  "C4_role": {
+    "candidate": "a quarter-turn transports Lambda to Lambda_1=F Lambda; if Lambda and Lambda_1 are transverse, Lambda_1 supplies the missing complement",
+    "cycle": "Lambda_j=F^j Lambda for j in Z/4, with Tate/metaplectic cocycle retained",
+    "required_law": "each consecutive pair is a typed hyperbolic/Lagrangian pair and the induced complement identifications satisfy fourfold coherence",
+    "positive_form_candidate": "the Maslov/crossing form obtained from the ordered pair (Lambda_j,Lambda_(j+1)), not the quotient form of Lambda_j alone",
+    "warning": "transversality and sign of this crossing form are not consequences of F^4=I or endpoint maximal isotropy"
+  },
+  "Evans_interpretation": {
+    "Xi": "tau=0 means the reactive line meets the dark/sewing Lagrangian",
+    "absolute_residual": "the Hilbert residual measures pairing with a complementary direction and therefore need not vanish merely because the state lies on the Lagrangian intersection",
+    "confinement_gate": "show the C4/Tate-selected crossing form is positive off seam and that its relative boundary on the Evans mapping cone is tau-divisible"
+  },
+  "next_exact_test": "Construct Lambda_1=F Lambda using the admitted response quarter-turn; compute Lambda cap Lambda_1 and the operator-valued crossing Gram J(lambda,F mu). A nontrivial kernel or an indefinite finite packet rejects the C4-selected positive-complement route.",
+  "conclusion": "The missing categorical datum is indeed tied to quotient change, but the quotient alone cannot carry the Green metric. A maximal-isotropic sewing graph has zero reduction and is not a radical. Positivity can only come from the ordered relation between successive C4-transported Lagrangians—a Maslov/crossing-form coherencer around the four-cycle.",
+  "rh_implication": false
+}

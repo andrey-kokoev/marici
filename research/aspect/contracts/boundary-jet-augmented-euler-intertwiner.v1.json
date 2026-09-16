@@ -1,0 +1,51 @@
+{
+  "schema": "marici.aspect.boundary-jet-augmented-euler-intertwiner.v1",
+  "status": "exact_augmented_intertwiner_constructed",
+  "shell_parameter": "lambda_p(s)=1-p^(-s)",
+  "source": {
+    "carrier": "B_jet lag-response tower",
+    "operator": "D_jet:(h_k,H_k) maps to (h_(k+1), zH_k-h_k(0))",
+    "locator": "research/aspect/contracts/all-jet-radial-response-differential.v1.json"
+  },
+  "target": {
+    "carrier": "E_aug,p=C_q direct-sum J_boundary, where J_boundary is the projective sequence space of boundary jets a=(a_0,a_1,...)",
+    "interpretation": "q is the Euler/Laplace observable and a_k are boundary-response coordinates, not new Euler states",
+    "operator": "A_aug,p(q,a_0,a_1,...)=(lambda_p q-a_0,a_1,a_2,...)",
+    "projection_to_euler": "pi_q A_aug=lambda_p pi_q-pi_0",
+    "boundary_shift": "S_boundary(a)_k=a_(k+1)"
+  },
+  "intertwiner": {
+    "name": "J_p",
+    "formula": "J_p(h)=(H_0(lambda_p),(h_k(0))_(k>=0))",
+    "identity": "J_p D_jet=A_aug,p J_p",
+    "first_coordinate_check": "H_1(lambda_p)=lambda_p H_0(lambda_p)-h_0(0)",
+    "boundary_coordinates_check": "partial_t^(k)(partial_t h)(0)=h_(k+1)(0)",
+    "continuous": true,
+    "holomorphic_in_s": true,
+    "shellwise": true,
+    "cutoff_natural": true
+  },
+  "relative_cone_reading": {
+    "strict_scalar_square_defect": "pi_q J_p D_jet-lambda_p pi_q J_p=-gamma_0",
+    "boundary_differential": "gamma_0 is absorbed by the upper-right -pi_0 entry of A_aug,p",
+    "meaning": "the failed scalar square is the projection of an exact augmented square"
+  },
+  "assembly": {
+    "finite_X": "direct sum over shells p<=X",
+    "projective_completion": "coordinatewise continuous under rapid shell and all-jet seminorms",
+    "preserves_border_provenance": true,
+    "does_not_promote_boundary_jets_to_Euler_states": true
+  },
+  "remaining": {
+    "identify_A_aug_with_old_conservative_diagonal": false,
+    "construct_old_D0_sign_readback": false,
+    "old_metric_identification": false,
+    "Evans_residual": false
+  },
+  "claim_boundary": {
+    "exact_source_side_augmented_square": true,
+    "authoritative_B_X_rad": false,
+    "full_G4_block": false,
+    "rh_implication": false
+  }
+}

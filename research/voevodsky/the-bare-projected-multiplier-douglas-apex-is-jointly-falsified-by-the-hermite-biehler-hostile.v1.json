@@ -1,0 +1,31 @@
+{
+  "schema": "marici.voevodsky.projected-multiplier-Douglas-vs-HB-hostile.v1",
+  "status": "conjunction_numerically_falsified_gate_localization_open",
+  "inputs": [
+    "research/voevodsky/projecting-the-reflected-multiplier-onto-the-physical-endpoint-cokernel-gives-an-exact-rank-two-remainder-and-a-single-complementary-contraction-test.md",
+    "research/voevodsky/results/the-direct-one-sided-theta-hermite-biehler-kernel-has-negative-finite-packets.numeric.v1.json"
+  ],
+  "operator_algebra": {
+    "split": "T^*T=R_bulk^*R_bulk+R_end^*R_end",
+    "bulk_defect": "D^2=I-R_bulk^*R_bulk",
+    "gate_1": "R_bulk^*R_bulk<=I",
+    "gate_2": "R_end^*R_end<=D^2",
+    "equivalence": "gate_1 and gate_2 together imply and, when D is defined, are equivalent to T^*T<=I"
+  },
+  "HB_identification": {
+    "scalar_transfer": "S_dark(z)=m(z)/m(-z)",
+    "full_contractivity": "|S_dark(z)|<=1 on Re(z)>0 is the scalar fiber shadow of T^*T<=I",
+    "hostile": "at z=0.1+20i, |m(z)/m(-z)|=1.0001205788467300135>1",
+    "kernel_diagonal": "K_HB(z,z)=-2.665810316971215686420073e-6"
+  },
+  "consequence": {
+    "rejected_if_certified": "the conjunction of complementary bulk contractivity and endpoint Douglas absorption for the bare reflected one-sided theta multiplier",
+    "disjunction": "at least one of gate_1 or gate_2 fails on a source packet approximating the hostile evaluation direction",
+    "not_localized": "the scalar HB scout does not determine whether expansion lies entirely in the fixed endpoint harmonic subspace or leaks into P_bulk"
+  },
+  "categorical_meaning": "The quotient/contraquotient-first order is valid, but the final upward arrow cannot be the full-contractivity Douglas apex of the bare theta multiplier. A successful combined quotient must retain an additional arithmetic/common-bulk feature before the endpoint Schur test, or weaken the target from full contractivity to a relative crossing balance.",
+  "next_test": "Build a finite Paley-Wiener packet concentrated near z=0.1+20i, project its reflected multiplier image onto E_L=span(exp(x/2),exp(-x/2)), and separately evaluate ||R_bulk f||^2-||f||^2 and ||R_end f||^2-<f,D^2 f>. This localizes the failed gate without changing the fixed endpoint projection.",
+  "certification": "HB hostile is high-precision numerical, not interval-certified; separated first-zero residual pieces have independent Arb certification but concern a different test",
+  "conclusion": "The categorical ordering survives, but its bare analytic apex does not. Since the two Douglas gates recombine to full Schur/Hermite-Biehler contractivity, the observed HB hostile forces failure of at least one gate. The missing arithmetic filler must enter before the final Douglas comparison.",
+  "rh_implication": false
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "marici.voevodsky.fixed-forcing-pointed-Evans-pair-bridge.v1",
+  "status": "linear_multiplicity_preserving_C4_bridge_constructed_boundary_identification_open",
+  "fresh_inputs": [
+    "research/voevodsky/a-group-like-or-rank-one-diagonal-cannot-preserve-the-xi-evans-multiplicity-the-pair-bridge-must-be-pointed-and-one-leg-linear.v1.json",
+    "research/voevodsky/the-mixed-theta-forcing-reservoir-has-an-exact-source-derived-sum-difference-gram-factorization.v1.json",
+    "research/voevodsky/the-independent-xi-criterion-needs-a-comonoidal-bridge-from-the-linear-evans-source-to-the-pair-g4-source.v1.json"
+  ],
+  "anchor": {
+    "choice": "the already source-derived fixed theta forcing vector Phi",
+    "why_not_fitted": "Phi is the forcing term in the tail differential/Green identity and is defined before Xi specialization",
+    "nonzero": "required by the existing one-sided forcing-reservoir construction",
+    "role": "pointed tensor-unit-like anchor in exactly one ordered pair leg"
+  },
+  "bridge": {
+    "hermitian_lane_schematic": "Delta_Phi(v)=v tensor conjugate(Phi)",
+    "analytic_transpose_lane": "Delta_Phi^an(v)=v tensor Phi",
+    "linearity": "complex-linear in v in the correctly selected lane",
+    "warning": "do not add v tensor conjugate(v), and do not identify the opposite ordered leg before taking the contragredient/Hermitian readout"
+  },
+  "Xi_multiplicity": {
+    "formula": "Delta_Phi(tau(z)v(z))=tau(z) Delta_Phi(v(z))",
+    "consequence": "every Xi zero and every divisor jet retains its original multiplicity; no tau^2 or |tau|^2 appears",
+    "noncollapse_condition": "Phi nonzero implies the algebraic one-leg tensor map is injective on an ordinary algebraic tensor carrier; completion injectivity must be checked in the selected tensor norm"
+  },
+  "forcing_readout": {
+    "pairing": "evaluation of the ordered leg gives <Phi,G_z>; its contragredient opposite leg gives <G_w,Phi>",
+    "Hermitian_sum": "<Phi,G_z>+<G_w,Phi>",
+    "identity": "this is exactly the forcing reservoir already polarized by I=(Phi+G)/sqrt(2), O=(Phi-G)/sqrt(2)"
+  },
+  "C4_orbit": {
+    "definition": "eta_0=Phi, eta_(j+1)=conjugate(F) eta_j and Delta_j(v)=v tensor eta_j",
+    "one_step": "(F tensor conjugate(F)) Delta_j(v)=Delta_(j+1)(Fv)",
+    "four_step": "eta_4=conjugate(F)^4 Phi=Phi for a strict F^4=I action; for a metaplectic/Tate action the returned scalar is retained as the declared line-valued cocycle",
+    "zero_free_orbit": "unitarity of F preserves ||eta_j||=||Phi||, so no orbit anchor vanishes"
+  },
+  "what_is_closed": [
+    "a source-derived pointed anchor",
+    "linearity in the Evans state",
+    "Xi multiplicity preservation",
+    "formal C4 comonoidality over the four anchor charts",
+    "recovery of the complete mixed forcing cross term after contragredient assembly"
+  ],
+  "remaining_gate": "Compute T_PB Delta_Phi on the normalized wall/jump endpoint columns and compare it with the independent two-history Evans transmission column. The bridge is admitted for the Xi application only if this source-fixed image equals the required relative boundary modulo tau and the selected completed tensor map is noncollapsing.",
+  "decision_rule": "A mismatch cannot be repaired by rescaling Phi using an Xi zero; only a normalization already forced by the tail equation is admissible.",
+  "conclusion": "The previously abstract pointed bridge has a canonical candidate already present in the analytic source: tensor the linear Evans history with the fixed forcing vector Phi in one ordered leg, and generate the other charts by its C4 orbit. This solves the variance and multiplicity obstruction and explains the forcing reservoir. The decisive unresolved test is its normalized endpoint image under T_PB.",
+  "rh_implication": false
+}

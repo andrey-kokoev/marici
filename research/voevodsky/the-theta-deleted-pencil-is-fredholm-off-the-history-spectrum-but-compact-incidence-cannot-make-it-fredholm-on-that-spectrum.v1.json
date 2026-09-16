@@ -1,0 +1,44 @@
+{
+  "schema": "marici.voevodsky.theta-deleted-pencil-fredholm-region.v1",
+  "status": "fredholm_region_classified_coordinate_identification_required",
+  "fresh_sources": [
+    "research/aspect/contracts/successor-conservative-three-port-block.v1.json",
+    "research/nima/the-paired-history-characteristic-is-the-arithmetic-source-law-plus-a-weyl-function.md"
+  ],
+  "operator": {
+    "formula": "P(z)=[[A-z,-B],[-B^dagger,D_U(z)]]",
+    "history": "A=partial_q on H1(R) subset L2(R), skew-adjoint with spectrum iR",
+    "incidence": "B=B_Sigma is Hilbert-Schmidt and therefore compact"
+  },
+  "off_history_spectrum": {
+    "condition": "z notin iR, equivalently Re(z) != 0",
+    "history_inverse": "(A-z)^-1 exists and ||(A-z)^-1||<=1/|Re z|",
+    "schur": "M_U(z)=D_U(z)+B^dagger(A-z)^-1B",
+    "result": "P(z) is Fredholm/invertible iff M_U(z) is, whenever D_U and the domains satisfy the stated closed-family hypotheses",
+    "index": "if D_U(z) is Fredholm then ind P(z)=ind D_U(z); in particular index zero for invertible D_U"
+  },
+  "on_history_spectrum": {
+    "condition": "z in iR",
+    "assume": "D_U(z) boundedly invertible (or split off its finite Fredholm defect)",
+    "elimination": "P(z) is Fredholm iff A-z-B D_U(z)^-1 B^dagger is Fredholm",
+    "compactness": "B D_U^-1 B^dagger is compact",
+    "essential_spectrum": "compact perturbation preserves the essential spectrum of A-z",
+    "result": "since 0 lies in essential spectrum(A-z), P(z) is not Fredholm"
+  },
+  "determinant_consequence": {
+    "valid_region": "the history resolvent components Re(z)>0 and Re(z)<0",
+    "invalid_without_new_rigging": "a Fredholm determinant continued through z in iR",
+    "possible_repairs": [
+      "use exponential weights that move the essential history spectrum while proving weight-independent determinant continuation",
+      "use limiting-absorption/scattering determinants rather than an ordinary Fredholm determinant",
+      "use a boundary Evans determinant built from stable/unstable subspaces instead of the full bilateral operator"
+    ]
+  },
+  "coordinate_gate": {
+    "problem": "the prime-delay record uses s=1/2-i z and Im(z)>0, while the paired-history resolvent record uses Re(z)!=0; the same letter z is not yet proven to denote the same centered coordinate",
+    "required": "freeze one map s->z_hist(s) and determine whether the critical line maps into iR or into the history resolvent",
+    "importance": "if Xi zeros map to iR, ordinary Fredholm determinant-class control is impossible in the current unweighted L2 history carrier; if they map off iR, the Schur route remains available there"
+  },
+  "conclusion": "The transverse reduction has fixed index zero automatically only off the bilateral history spectrum. Compact arithmetic incidence cannot repair Fredholmness on that spectrum. The immediate gate is an exact spectral-coordinate convention, followed by either ordinary Schur determinants off-spectrum or a scattering/weighted construction on-spectrum.",
+  "rh_implication": false
+}

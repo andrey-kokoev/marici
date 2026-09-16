@@ -1,0 +1,42 @@
+{
+  "schema": "marici.voevodsky.reciprocal-cayley-green-orientation.v1",
+  "status": "reciprocal_sign_uniquely_fixed_for_the_zero_free_arithmetic_complement",
+  "source": "research/nima/the-prime-labelled-direct-sum-is-a-strict-schur-arithmetic-network.md",
+  "prime_pair": {
+    "positive_loop": "q_+(s)=p^(-s)",
+    "negative_loop": "q_-(s)=p^(-(1-s))",
+    "reciprocity": "q_+(1-s)=q_-(s)",
+    "seam": "at s=1/2+i t, q_-(s)=conjugate(q_+(s))"
+  },
+  "cayley": {
+    "theta(q)": "i(1+q)/(1-q)",
+    "conjugation_law": "theta(conjugate(q))=-conjugate(theta(q))"
+  },
+  "same_sign_failure": {
+    "law": "D_same=diag(theta(q_+),theta(q_-))",
+    "seam_real_part": "if theta(q_+)=u+i v then Re D_same=diag(u,-u)",
+    "parity": "R_partial Re(D_same) R_partial=-Re(D_same)",
+    "consequence": "unless u=0, the reactive law mixes coherent and dark parity sectors"
+  },
+  "opposite_green_sign": {
+    "law": "D_rec=diag(theta(q_+),-theta(q_-))",
+    "seam_value": "D_rec=diag(theta(q_+),conjugate(theta(q_+)))",
+    "seam_real_part": "Re D_rec=u I",
+    "parity": "[R_partial,Re D_rec]=0",
+    "off_seam_reciprocity": "R_partial D_rec(1-s)R_partial=-D_rec(s)",
+    "interpretation": "the minus is the opposite Green orientation of the reciprocal sheet, not a fitted phase"
+  },
+  "uniqueness": {
+    "allowed_sheet_signs": "epsilon_+,epsilon_- in {+1,-1}",
+    "condition": "the seam Hermitian/reactive real part commutes with exchange for generic q_+",
+    "result": "epsilon_-=-epsilon_+; the relative sign is forced, up to one overall Green sign"
+  },
+  "scope": {
+    "proved": "the strict prime-delay Cayley complement can respect dark-channel parity only with opposite reciprocal Green signs",
+    "not_proved": "that this raw Cayley complement is the complete arithmetic diagonal or has the required p^-2 endpoint normalization",
+    "retained_warning": "prior asymptotic work rejects the raw Cayley law as the full diagonal reciprocal response coefficient; it remains admissible as a zero-free passive complement"
+  },
+  "next_assembly_test": "Apply the same exchange-plus-Green-sign audit to endpoint, square, connected, and archimedean reactive terms. Every complete seam term must have equal parity-diagonal real parts, or paired anti-oriented contributions whose total does.",
+  "conclusion": "Reciprocal parity already fixes the arithmetic complement's sheet sign. Using the same Cayley sign on both sheets breaks the protected dark channel; opposite Green orientation makes its seam reactive part scalar and parity preserving.",
+  "rh_implication": false
+}

@@ -1,0 +1,40 @@
+{
+  "schema": "marici.voevodsky.correction.reflection-state-phase-green-dependence.v1",
+  "status": "odd_source_register_claim_retracted_reciprocal_double_no_go_proved",
+  "corrects": [
+    "research/voevodsky/natural-reflection-of-the-forced-history-reverses-the-source-amplitude-so-reciprocal-doubling-does-not-cancel-the-forcing-reservoir.v1.json",
+    "research/voevodsky/the-odd-source-amplitude-and-even-endpoint-lines-are-unitarily-intertwined-by-the-pauli-z-sewing.v1.json",
+    "research/voevodsky/balanced-source-register-augmentation-extends-pauli-z-sewing-without-creating-mixed-port-defects.v1.json"
+  ],
+  "exact_reflection": {
+    "start": "(partial_q-z)u_z=c Phi",
+    "identity": "(partial_q+z)R u_z=-c Phi",
+    "canonical_same_amplitude_solution": "u_(-z)=-R u_z satisfies (partial_q+z)u_(-z)=c Phi",
+    "correction": "the reciprocal solution may retain the same source amplitude c; the necessary minus belongs to the state phase. Assigning it to an independent odd source register was a gauge choice, not a forced new port."
+  },
+  "green_identities": {
+    "define": "a=Re(z), N=||u_z||^2=||u_(-z)||^2, P=Re(c<Phi,u_z>) with the frozen pairing convention",
+    "z_sheet": "2a N=-2P",
+    "minus_z_pairing": "Re(c<Phi,u_(-z)>)=-P",
+    "minus_z_sheet": "-2a N=+2P",
+    "dependence": "the -z identity is exactly minus the z identity"
+  },
+  "linear_combination_no_go": {
+    "sum": "0=0",
+    "difference": "4aN=-4P, merely the original forced Green identity",
+    "conclusion": "reciprocal doubling and endpoint maximal isotropy provide no independent equation eliminating P; they cannot by themselves imply aN=0"
+  },
+  "surviving_four_sector_geometry": {
+    "valid": "stable-half and reciprocal-parameter indices remain distinct, and the four-sector matching plane is maximal isotropic",
+    "invalidated": "the claim that a Pauli Z odd-source register supplies the missing bulk cancellation",
+    "Pauli_status": "it may be a useful coordinate convention, but it adds no new Green equation unless an independently sourced port has that parity"
+  },
+  "minimal_remaining_law": {
+    "required": "an independent arithmetic/forcing boundary equation whose real pairing on a kernel state is +P (or otherwise cancels P) while contributing a nonnegative source energy",
+    "schematic": "2a E_ar(x)+2P=0",
+    "combined": "with 2aN=-2P this gives 2a(N+E_ar(x))=0",
+    "source_requirement": "the arithmetic equation and E_ar must be derived before Xi specialization and must preserve the Evans determinant"
+  },
+  "conclusion": "The four-sector endpoint geometry is coherent, but reciprocal reflection only duplicates the forced Green law with opposite sign. The missing dark-channel law is genuinely an additional positive arithmetic balance, not a Pauli retyping of the existing source amplitude.",
+  "rh_implication": false
+}

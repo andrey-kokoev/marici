@@ -1,0 +1,48 @@
+{
+  "schema": "marici.voevodsky.two-stable-history-rosenbrock-xi.v1",
+  "status": "exact_xi_transmission_pencil_constructed",
+  "source": "research/nima/the-two-sided-theta-history-mismatch-is-an-exact-evans-lift-of-the-xi-section.md",
+  "spaces": {
+    "state": "X_st=H1_st((-infinity,0)) direct-sum H1_st((0,infinity)), with the endpoint-decaying/stable half-line conditions in the appropriate holomorphic charts",
+    "input": "C_theta",
+    "output": "L2((-infinity,0)) direct-sum L2((0,infinity)) direct-sum C_seam"
+  },
+  "rosenbrock_pencil": {
+    "formula": "R_Xi(z)(f_-,f_+,c)=((partial_q-z)f_- - c Phi_-, (partial_q-z)f_+ - c Phi_+, f_-(0)-f_+(0))",
+    "internal_generator": "the direct sum of the two stable half-line history generators",
+    "input_incidence": "c maps to (c Phi_-,c Phi_+)",
+    "boundary_output": "C(f_-,f_+)=f_-(0)-f_+(0)",
+    "direct_term": "zero"
+  },
+  "schur_transfer": {
+    "stable_solutions": [
+      "u_-(q;z)=integral_(-infinity)^q exp(z(q-r))Phi(r)dr",
+      "u_+(q;z)=-integral_q^(infinity) exp(z(q-r))Phi(r)dr"
+    ],
+    "transfer": "E_Xi(z)=C(u_-(z),u_+(z))",
+    "identity": "E_Xi(z)=integral_R exp(-zr)Phi(r)dr=tau(z)=Xi_centered(z)"
+  },
+  "kernel_theorem": {
+    "at_zero": "if tau(z0)=0, (u_-(z0),u_+(z0),1) is a nonzero kernel vector",
+    "away_from_zero": "if tau(z)!=0, the seam equation forces c=0; stable uniqueness then forces f_-=f_+=0",
+    "equivalence": "ker R_Xi(z) nonzero iff tau(z)=0",
+    "qualification": "the surjectivity/cokernel statement needed for full bounded invertibility depends on the precise stable Banach rigging, but the transmission-kernel equivalence is exact"
+  },
+  "multiplicity": {
+    "statement": "the scalar transmission section is tau itself, so its analytic order equals Xi multiplicity",
+    "root_chain": "z derivatives of the stable histories provide the corresponding Rosenbrock root chain"
+  },
+  "noncircularity": {
+    "Phi": "the completed theta forcing is fixed before zero specialization",
+    "operators": "differential, incidence, and seam mismatch maps are source-defined",
+    "Xi_entry": "Xi is not inserted as a diagonal operator entry; it is computed as the Schur transfer"
+  },
+  "relation_to_constructed_G4": {
+    "distinction": "R_Xi retains the uncancelled seam mismatch as its output, whereas the canonical G4 Stokes codiagonal sums three fixed rows to zero for every z",
+    "required_comparison": "to make G4 independently Xi-detecting, attach or retain this seam-mismatch Rosenbrock output as a transverse characteristic rather than codiagonalizing it away",
+    "no_second_G4": "this is an internal transverse output of the same theta-history source, not a comparison with any old realization"
+  },
+  "remaining_RH_gate": "prove a source-derived conservative/positive boundary law forcing every transmission zero of R_Xi onto the fixed seam; this is the confinement theorem and is not implied by the determinant identity",
+  "conclusion": "Prior history formulas already construct the desired finite-boundary Rosenbrock pencil and identify its transmission determinant exactly with Xi. The spectral-identification problem is closed at the triangular theta-history level. The substantive remaining theorem is conservative positivity/confinement of its transmission zeros.",
+  "rh_implication": false
+}

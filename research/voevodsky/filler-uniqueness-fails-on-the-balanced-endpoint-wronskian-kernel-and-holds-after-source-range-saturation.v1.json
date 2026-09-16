@@ -1,0 +1,48 @@
+{
+  "schema": "marici.voevodsky.rung4-filler-rigidity.v1",
+  "status": "unconditional_uniqueness_rejected_conditional_rigidity_proved",
+  "source": "research/aspect/results/rung4_nearby_tetrahedra_enrichment_search.v1.json",
+  "fixed_boundary_data": {
+    "source": "ordered pair carrier P_pair",
+    "target": "full oriented radial response with rho, endpoint e, and Wronskian w coordinates",
+    "constraints": ["same radial-state projection", "same canonical Stokes codiagonal", "same Fourier/reciprocal and shell-label covariance"]
+  },
+  "difference_of_fillers": {
+    "fillers": "F_1,F_2:P_pair->B_full",
+    "defect": "D=F_1-F_2",
+    "radial_constraint": "P_rho D=0",
+    "codiagonal_constraint": "C_can D=0",
+    "consequence": "ran(D) subset N_bal"
+  },
+  "balanced_kernel": {
+    "definition": "N_bal={(rho=0,e_+=w_+/2,e_-=w_-/2)}",
+    "nonzero": true,
+    "meaning": "internal endpoint-Wronskian redistribution invisible to both retained radial projection and canonical codiagonal"
+  },
+  "explicit_nonuniqueness": {
+    "construction": "for any continuous shell-natural reciprocal-equivariant map ell:P_pair->W_bal, define D_ell(x)=(0,ell_+(x)/2,ell_+(x);ell_-(x)/2,ell_-(x))",
+    "properties": ["P_rho D_ell=0", "C_can D_ell=0", "all jets and shell bonding preserved when ell preserves them"],
+    "family": "F_alpha=F_0+alpha D_ell, alpha in C",
+    "conclusion": "neighboring face equations alone do not make the filler space contractible or singleton"
+  },
+  "conditional_rigidity": {
+    "extra_hypothesis": "every admissible filler factors through the same source-generated full-response map U, equivalently ran(D) subset ran(U)",
+    "recovery_property": "ran(U) intersect N_bal={0}, obtained when ker(P_rho U)=ker(U)=Z_1(G)",
+    "proof": "ran(D) subset N_bal from fixed faces and ran(D) subset ran(U) from common factorization, hence ran(D)={0}",
+    "conclusion": "F_1=F_2"
+  },
+  "minimal_missing_rigidity_datum": {
+    "name": "source_range_saturation",
+    "statement": "the legacy filler U_G4 and canonical T_PB land in the same source-generated full-response range, or their difference does",
+    "equivalent_square": "there exists a common source map U_full and fixed response projections through which both fillers factor",
+    "not_implied_by": ["scalar Stokes cancellation", "Fourier covariance", "shell naturality", "Xi divisor agreement"]
+  },
+  "cohomological_reading": {
+    "relative_filler_space": "Hom_cov(P_pair,N_bal)",
+    "unconditional_obstruction": "generally nonzero",
+    "after_saturation": "Hom_cov(P_pair,ran(U) intersect N_bal)=0"
+  },
+  "effect_on_legacy_gate": "To infer U_G4=T_PB from neighboring tetrahedra, it suffices to prove source-range saturation. This is weaker and more geometric than comparing every port coefficient, but it remains an independent old-G4 range theorem.",
+  "disposition": "Rigidity does not fall out from the boundary faces alone because the balanced endpoint-Wronskian kernel supports an affine family of fillers. It does fall out immediately after one exact saturation statement: both fillers must live in the recovered source-generated full-response range, whose intersection with that kernel is zero.",
+  "rh_implication": false
+}

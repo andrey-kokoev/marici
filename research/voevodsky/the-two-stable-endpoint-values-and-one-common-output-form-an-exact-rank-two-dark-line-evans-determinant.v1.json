@@ -1,0 +1,50 @@
+{
+  "schema": "marici.voevodsky.two-stable-endpoint-dark-line-evans.v1",
+  "status": "exact_source_derived_two_line_xi_geometry_constructed",
+  "setup": {
+    "stable_endpoints": "a_-(z)=u_-(0;z), a_+(z)=u_+(0;z)",
+    "evans_identity": "a_-(z)-a_+(z)=tau(z)=Xi_centered(z)",
+    "boundary_space": "C^2 with coordinates corresponding to the two reciprocal stable histories"
+  },
+  "rows": {
+    "common_radiation": "y=(1,1)",
+    "reactive": "r(z)=(a_-(z),a_+(z))",
+    "matrix": "F_Ev(z)=[[1,1],[a_-(z),a_+(z)]]"
+  },
+  "determinant": {
+    "calculation": "det F_Ev(z)=a_+(z)-a_-(z)=-tau(z)",
+    "consequence": "the boundary-line crossing divisor is exactly Xi, with all multiplicities",
+    "zero_condition": "tau(z)=0 iff r(z) is proportional to y iff ker r(z)=ker y"
+  },
+  "dark_channel": {
+    "radiation_kernel": "ker y=span(1,-1)",
+    "at_zero": "r(z0)=a_-(z0)(1,1), so the reactive kernel equals the persistent radiation-dark line",
+    "transverse_radiation": "y(1,1)^top=2 is nonzero"
+  },
+  "critical_seam_reality": {
+    "assume": "Phi is real and even and z=i t",
+    "half_transform": "A(t)=integral_0^infinity exp(-i t q)Phi(q)dq",
+    "endpoints": "a_-(it)=conjugate(A(t)), a_+(it)=-A(t)",
+    "Xi_value": "tau(it)=2 Re A(t)",
+    "at_Xi_zero": "A(t) is purely imaginary and r(it) is a scalar multiple of (1,1)"
+  },
+  "source_provenance": {
+    "radiation_row": "fixed common seam evaluator",
+    "reactive_row": "computed from the independently defined left/right stable Poisson solutions",
+    "no_prime_phase_continuation": "the entire theta transform already includes the completed arithmetic data through Poisson normalization",
+    "no_zero_fitting": true
+  },
+  "relation_to_archimedean_modular_frame": {
+    "ungauged": "the constant row y is the common-evaluator frame of the theta-history Rosenbrock system",
+    "Tate_frame": "transport both rows by the same invertible modular gauge G_infinity; determinant changes only by det(G_infinity), a zero-free seam unit",
+    "divisor_invariant": true
+  },
+  "logical_boundary": {
+    "closed": "source-derived rank-two boundary Evans determinant, persistent dark line, exact Xi crossings, and multiplicity",
+    "not_closed": "a positive conservative law proving that every complex crossing parameter must lie on the unitary reciprocal seam",
+    "reason": "the same entire determinant has its zeros wherever Xi does; representing them as line crossings does not itself confine them"
+  },
+  "next_gate": "construct an off-seam positive/contractive extension of the two rows whose equality of kernel lines is impossible when Re(z) !=0, without assuming the Xi zero set or replacing the source rows by a fitted Schur realization.",
+  "conclusion": "The desired dark-channel boundary law already exists at the two-stable-history level: common radiation and stable-endpoint reactive rows have determinant exactly Xi. The unresolved RH content is exclusively the positive off-seam exclusion law, not the arithmetic phase or crossing divisor.",
+  "rh_implication": false
+}

@@ -1,0 +1,40 @@
+{
+  "schema": "marici.voevodsky.wronskian-cone-to-response-defect-comparison.v1",
+  "status": "prior_structures_identified_exact_comparison_cell_open",
+  "prior_structures": {
+    "relative_history": "Cone(C)=ker(C) direct-sum Dom(C) direct-sum Ran(C), C=partial_u^2-1/4, with Wronskian-Lagrange connecting morphism partial_C:Ran(C)->ker(C)^*",
+    "normalized_boundary": "partial_C(Phi)=(1/2,1/2), partial_C(Phi')=(1/4,-1/4)",
+    "response_defect": "P_boundary/Graph(T) isomorphic to H with coordinate d_T(x_-,x_+)=x_+-T x_-",
+    "divisor_quotient": "holomorphic response defects are compared modulo tau O(H); chain promotion requires d_T(e(z))=tau(z)h(z)"
+  },
+  "missing_cell": {
+    "name": "kappa_Wr_Ev",
+    "type": "transported Wronskian boundary carrier (ker C)^* -> response defect carrier P_boundary/Graph(T)",
+    "required_identity": "d_T(e_Ev(z))-kappa_Wr_Ev(partial_C(history_z))=tau(z)h(z)",
+    "meaning": "the unchanged Hilbert adjoint residual need not vanish as an absolute representative; it must equal the relative connecting-boundary contribution modulo the Xi ideal"
+  },
+  "coherence_shape": {
+    "upper_route": "theta precursor -> completion mapping cone -> Wronskian connecting boundary -> kappa_Wr_Ev -> response defect quotient",
+    "lower_route": "theta precursor -> two-stable-history Evans trace -> response defect quotient",
+    "coherencer": "a homotopy between these routes after quotient by tau O(H), retaining multiplicity jets",
+    "not": "ordinary quotient descent of C4 to C2"
+  },
+  "C4_warning": {
+    "known": "the Fourier/radial relation C_u F^2=W_u C_u is subgroup restriction plus enriched comparison, not quotient descent",
+    "allowed": "C4/Tate transport may act on the mapping-cone and defect diagrams if it carries each radical/boundary subobject into the next and kappa is natural",
+    "required_fourfold_law": "the four transported kappa cells close with the declared metaplectic/Tate cocycle"
+  },
+  "interpretation_of_numeric_hostile": {
+    "absolute_test": "the value -0.150851... rejects d_T(e_Ev)=0 for the tested unchanged Hilbert row",
+    "relative_test": "not yet evaluated because kappa_Wr_Ev(partial_C(history)) was omitted",
+    "decision_rule": "if the corrected residual remains nonzero modulo tau at one certified Xi zero, this relative repair is rejected"
+  },
+  "next_executable": [
+    "express the first-zero Hilbert residual in the even/odd wall basis dual to (omega_-,omega_+)",
+    "compute the transported image of partial_C(Phi) and partial_C(Phi') under the existing radial/response comparison maps",
+    "subtract that source-fixed column before taking the Xi-ideal quotient",
+    "test the corrected scalar/vector residual at the first Xi zero without fitting any coefficient"
+  ],
+  "conclusion": "Prior work already contains the changing-quotient ingredients: a relative completion mapping cone with Wronskian connecting morphism and a response sewing defect quotient modulo the Xi ideal. The genuinely missing categorical datum is the comparison cell between them, natural under the C4/Tate presentation cycle. This is narrower and testable; calling the radial C4 relation quotient descent would be a type error.",
+  "rh_implication": false
+}

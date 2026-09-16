@@ -1,0 +1,43 @@
+{
+  "schema": "marici.voevodsky.correction.complete-pointed-five-cell-Evans-pair-bridge.v1",
+  "status": "single_anchor_claim_retracted_multi_anchor_linear_bridge_typed",
+  "corrects": "research/voevodsky/the-fixed-theta-forcing-vector-supplies-the-minimal-pointed-one-leg-evans-to-pair-bridge-and-its-c4-orbit.v1.json",
+  "fresh_sources": [
+    "research/voevodsky/fixtures/five_cell_linear_endpoint_tail_representation_target.v1.json",
+    "research/aspect/contracts/polarized-prime-cell-required-input.v2.json",
+    "research/nima/the-linear-five-cell-comparison-map-already-exists-only-its-green-polarization-is-missing.md"
+  ],
+  "why_Phi_alone_fails": {
+    "five_cell_basis": ["Phi", "one", "delta_0", "K", "V"],
+    "target_assignment": "Phi maps only to bulk_Phi; one maps to w_theta; delta_0 maps to j_theta; K and V map to the two oriented tail coordinates",
+    "consequence": "Delta_Phi recovers the mixed forcing reservoir but cannot by itself reproduce the normalized wall, odd endpoint, and oriented tail columns required by T_PB"
+  },
+  "complete_pointed_bridge": {
+    "carrier": "M_5=span(Phi,one,delta_0,K,V) with the already fixed linear five-cell representation rho_5",
+    "one_leg_map": "Delta_5(v) is the ordered direct sum of v tensor eta over the source-labelled anchors eta in M_5; equivalently v tensor id_(M_5) before applying rho_5",
+    "linearity": "linear in v because every second leg is fixed/source-labelled",
+    "Xi_multiplicity": "Delta_5(tau v)=tau Delta_5(v)",
+    "no_diagonal": "no v tensor conjugate(v) and no label-group-like restriction to equal pair labels"
+  },
+  "Fourier_orbits": {
+    "bulk": "Phi maps to Phi",
+    "endpoint": "one maps to delta_0 and delta_0 maps to one",
+    "tail": "K maps to V and V maps to -K",
+    "order": "the direct sum is an exact order-four Fourier module; the endpoint orbit supplies the half-cycle while the oriented tail orbit supplies the genuine +/-i sector"
+  },
+  "normalized_columns": {
+    "wall": "rho_5(one)=w_theta=(1/2,1/2)",
+    "odd": "rho_5(delta_0)=j_theta=(1/4,-1/4)",
+    "wall_identity": "-1_boundary=-2 w_theta",
+    "odd_return": "B j_theta=-(1/2)H_K",
+    "forcing": "rho_5(Phi)=bulk_Phi"
+  },
+  "noncollapse": "The five target coordinates are linearly independent by the declared nondegenerate representation fixture; completion injectivity and uniform prime closure remain separate.",
+  "remaining_metric_gate": {
+    "local": "prove the source Green polarization on the four window matrix units and its equality with the completed analytic Green form after radical descent",
+    "off_diagonal": "the unresolved entries are the real cross-correlation and oriented imaginary linking; linear endpoint normalization does not determine them",
+    "v17_qualification": "under faithful-joint-graph semantics this single-metric equality is optional globally, but a positive mapping-cone form still must retain and control precisely this metric discrepancy"
+  },
+  "conclusion": "The fixed forcing vector Phi is one necessary anchor, not the whole bridge. The complete multiplicity-preserving Evans-to-pair candidate is the already existing five-cell Fourier module used as a pointed one-leg tensor factor. Its linear and C4 data, including wall and jump normalization, are fixed. The unresolved content is quadratic Green compatibility/relative cone positivity, not endpoint column construction.",
+  "rh_implication": false
+}

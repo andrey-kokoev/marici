@@ -1,0 +1,38 @@
+{
+  "schema": "marici.voevodsky.Xi-unitary-tail-feedback-equivalence.v1",
+  "status": "exact_circularity_boundary_identified",
+  "fresh_inputs": [
+    "research/voevodsky/the-mixed-theta-forcing-reservoir-has-an-exact-source-derived-sum-difference-gram-factorization.v1.json",
+    "research/voevodsky/cayley-transport-of-the-tail-green-factorization-constructs-the-one-sided-lurking-isometry-and-fixes-port-orientation.v1.json",
+    "research/voevodsky/the-odd-source-amplitude-and-even-endpoint-lines-are-unitarily-intertwined-by-the-pauli-z-sewing.v1.json"
+  ],
+  "one_sided_identity": {
+    "formula": "<Y_eta,Y_zeta>-<I_eta,I_zeta>=(zeta+conj(eta))<G_eta,G_zeta>",
+    "diagonal": "||Y_z||^2-||I_z||^2=2 Re(z)||G_z||^2",
+    "ports": "Y_z=(G_z(0),(Phi-G_z)/sqrt(2)); I_z=(Phi+G_z)/sqrt(2)"
+  },
+  "reciprocal_pair": {
+    "reflection": "G_-=-R G_+, I_-=-R I_+, O_-=-R O_+",
+    "endpoint_at_Xi_zero": "a_-=a_+",
+    "parity_intertwiner": "Z=diag(1,-1) maps the odd source amplitude line to the even endpoint line",
+    "kinematic_scope": "these laws preserve the separate endpoint and history norms but do not establish the mixed full-port feedback relation"
+  },
+  "feedback_implication": {
+    "assumption": "the source-generated doubled Xi port pair lies in a unitary/maximal-isotropic feedback graph U, so ||Y_dbl||=||I_dbl||",
+    "green_consequence": "0=||Y_dbl||^2-||I_dbl||^2=2 Re(z)(||G_+||^2+||G_-||^2)",
+    "using_reflection": "0=4 Re(z)||G_+||^2",
+    "noncollapse": "if G_+ is nonzero, Re(z)=0"
+  },
+  "converse_on_Xi_states": {
+    "statement": "if Re(z)=0, the Green identity gives equal input/output Gram values on each source-generated Xi vector; on any family where the full two-height cross-Gram identities also hold, the generator rule extends to an isometry and then to a unitary after defect complements",
+    "qualification": "diagonal norm equality alone is insufficient for a family; polarized pairwise equality is required"
+  },
+  "logical_boundary": {
+    "equivalence": "Xi feedback admission plus tail noncollapse implies critical-line confinement; proving admission for every nontrivial Xi state therefore contains the RH-bearing theorem rather than a merely formal coherence check",
+    "not_enough": ["Pauli Z on parity lines", "reflection unitarity on history rows", "endpoint equality at a Xi zero", "the one-sided lurking isometry"],
+    "forbidden_shortcut": "assemble block-diagonal Z and -R and call it feedback without checking endpoint-history mixed Gram entries"
+  },
+  "best_next_reduction": "Compute the mixed feedback defect kernel E(w,z)=<Y_w^dbl,Y_z^dbl>-<I_w^dbl,I_z^dbl> after imposing the exact Xi reciprocal determinant relation. By Green polarization it must reduce to (z+conj(w)) times the doubled tail Gram. Any claimed categorical cancellation must explicitly annihilate this kernel; on the diagonal that claim is already confinement.",
+  "conclusion": "The Pauli and Hadamard coherencers solve the kinematic parity problem, but full Xi-state feedback admission is exactly the positivity/confinement gate. It cannot be discharged as formal C4 coherence without circularly assuming the vanishing of the Green defect.",
+  "rh_implication": false
+}

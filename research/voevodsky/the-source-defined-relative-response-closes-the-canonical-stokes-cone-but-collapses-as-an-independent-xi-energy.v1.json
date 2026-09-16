@@ -1,0 +1,32 @@
+{
+  "schema": "marici.voevodsky.canonical-Stokes-relative-response-vs-independent-Xi.v1",
+  "status": "relative_cone_boundary_closed_but_RH_channel_collapses",
+  "fresh_sources": [
+    "research/aspect/contracts/theta-rh-interaction-net-state.v17.json",
+    "research/voevodsky/one-seam-differential-of-the-bivariate-response-cancels-the-ordinary-plus-endpoint-evans-shell-identically.md",
+    "research/voevodsky/v17-selects-the-faithful-joint-graph-so-the-four-matrix-unit-isometry-is-not-the-required-coherencer.v1.json"
+  ],
+  "canonical_response": {
+    "section": "R_RL(a,b;z)=integral_0^infinity exp(-zt) Delta_(a,b)(1+partial_c) A_Phi(c,t) dt",
+    "identity": "I^(0)+I^(end)+R_RL=0",
+    "strength": ["parameterwise", "all z-jets", "shell-concatenating", "source-derived", "not fitted to Xi zeros"],
+    "v17_form": "-R-2E+(R+2E)=0"
+  },
+  "what_it_closes": "R_RL is a valid relative mapping-cone boundary for the canonical pair-to-border/Stokes realization T_PB. Its defect class is zero before quotienting by tau, hence also zero modulo the Xi ideal.",
+  "ablation": {
+    "observation": "the cancellation holds for every z, whether or not tau(z)=0",
+    "therefore": "any proposed positive energy whose only boundary input is this canonical defect vanishes identically on the whole canonical family",
+    "noncollapse_failure": "it cannot distinguish Xi states, off-seam states, multiplicities, or Re(z); its zero set is all parameters rather than the Xi divisor",
+    "logical_status": "canonical Stokes cancellation is definitional coherence, not an independent Xi/RH criterion"
+  },
+  "architecture_fork": {
+    "closed_non_RH_branch": "canonical Stokes history -> R_RL correction -> zero mapping-cone defect -> Clifford positive graph",
+    "open_RH_branch": "independent two-history Evans/Xi section -> faithful joint Green graph -> relative sewing defect -> transverse positive cone form",
+    "missing_arrow": "a source-derived, divisor-preserving map from the independent Xi Evans section into the faithful joint graph/mapping cone, not merely reuse of the canonical Stokes section"
+  },
+  "effect_on_Qp_linear": "The Q_p^lin four-matrix-unit isometry is optional under v17's faithful-joint-graph semantics. Even if proved, it would compare two metric observations; it would not turn the universally zero canonical defect into an independent Xi criterion.",
+  "decision_rule": "Reject any proposed final lift if replacing tau by an arbitrary holomorphic section leaves its cancellation proof unchanged. An RH-bearing lift must use tau essentially in the chain differential or source placement and retain nonzero transverse energy away from its divisor.",
+  "next_executable": "Audit the independent two-history Evans carrier for an explicit chain map into the v17 faithful joint graph. Require (i) tau enters essentially, (ii) its defect is tau-divisible but not identically zero, and (iii) the cone energy is nonzero on at least one source test with tau nonzero. If no such map is declared, the Xi application is presently untyped.",
+  "conclusion": "The relative-response repair succeeds exactly for the canonical Stokes cone, but that success is too strong and collapses the prospective RH detector. The positive quotient/contraquotient architecture is coherent; its application to Xi remains blocked by absence of an independent, noncollapsing Evans-to-faithful-joint-graph map.",
+  "rh_implication": false
+}

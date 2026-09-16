@@ -1,0 +1,37 @@
+{
+  "schema": "marici.voevodsky.C34-theta-tail-common-Hadamard-polarization.v1",
+  "status": "common_algebraic_coherencer_identified_component_comparisons_open",
+  "C34_pair": {
+    "components": "common row C and oriented relative row J2 D",
+    "signed_boundary": "C*J2D+D*J2C",
+    "positive_ports": "A_+=(C+J2D)/sqrt(2), A_-=(C-J2D)/sqrt(2)",
+    "identity": "A_+*A_+-A_-*A_-=C*J2D+D*J2C"
+  },
+  "theta_tail_pair": {
+    "components": "fixed forcing Phi and tail state G_z",
+    "forcing_reservoir": "<Phi,G_z>+<G_w,Phi>",
+    "positive_ports": "I_z=(Phi+G_z)/sqrt(2), O_z=(Phi-G_z)/sqrt(2)",
+    "identity": "<I_w,I_z>-<O_w,O_z>=<Phi,G_z>+<G_w,Phi>"
+  },
+  "shared_coherencer": {
+    "operator": "the same 2x2 Hadamard sum/difference transform",
+    "naturality": "any componentwise comparison kappa_0:C->Phi and kappa_1:J2D->G intertwines the positive ports automatically",
+    "derived_boundary": "the signed cross-pairing equality then follows by polarization; it need not be imposed as a third independent scalar identity"
+  },
+  "categorical_shape": {
+    "seam_common": "compare the C34 common module/contraquotient row C with the fixed theta forcing leg Phi",
+    "seam_difference": "compare the C34 relative quotient row J2D with the full theta tail state G",
+    "coherencer_between_seams": "Hadamard naturality square",
+    "up": "the induced map between the two positive port pairs (A_+,A_-) and (I,O)",
+    "base_shadow": "equality of the signed Weil cross current and the mixed tail forcing reservoir"
+  },
+  "why_this_matters": "Both previously mysterious signed terms are cross pairings, not standalone energies. Comparing only their scalar signed readouts loses the two component maps and makes the filler appear underdetermined.",
+  "remaining_source_tests": [
+    "construct kappa_0 on the relative/pro common row without assigning a finite norm to C",
+    "construct kappa_1 on the Hilbert-Schmidt/tail row with cutoff and C4/Tate covariance",
+    "verify endpoint/Wronskian boundary compatibility and Xi-adic multiplicity",
+    "prove the induced positive-port map survives completion and is noncollapsing on the Evans class"
+  ],
+  "conclusion": "The requested two seams plus coherencer are visible verbatim: C->Phi and J2D->G are the two seams, and the universal Hadamard polarization is their coherencer. Their quotient/cross readout is the arithmetic-forcing cancellation identity. The unknown content is now only the two componentwise source comparisons, especially the divergent common-row comparison.",
+  "rh_implication": false
+}

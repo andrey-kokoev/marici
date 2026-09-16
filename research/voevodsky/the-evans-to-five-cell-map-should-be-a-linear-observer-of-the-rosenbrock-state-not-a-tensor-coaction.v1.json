@@ -1,0 +1,40 @@
+{
+  "schema": "marici.voevodsky.Rosenbrock-state-to-five-cell-observer-map.v1",
+  "status": "correct_linear_bridge_type_identified_component_maps_partly_constructed_joint_chain_law_open",
+  "fresh_sources": [
+    "research/nima/the-two-sided-theta-history-mismatch-is-an-exact-evans-lift-of-the-xi-section.md",
+    "research/voevodsky/the-two-stable-history-sections-form-a-source-derived-rosenbrock-pencil-whose-transmission-determinant-is-exactly-xi.v1.json",
+    "research/nima/moving-seam-transport-and-complete-endpoint-pushforward-form-an-exact-metric-natural-transformation.md",
+    "research/voevodsky/fixtures/five_cell_linear_endpoint_tail_representation_target.v1.json"
+  ],
+  "typing_correction": {
+    "unnecessary_demand": "A copying map U_Ev->U_Ev tensor M_5 is not required if the complete Evans Rosenbrock state itself has linear bulk, endpoint-trace, and tail observers.",
+    "correct_domain": "X_st direct-sum C_theta, with state (f_-,f_+,c)",
+    "correct_target": "the represented five-cell response carrier bulk_Phi direct-sum endpoint_plane direct-sum tail_plane",
+    "correct_map_kind": "one linear observer/natural transformation, not a diagonal or coaugmentation"
+  },
+  "candidate_components": {
+    "bulk": "B_bulk(f_-,f_+,c)=c bulk_Phi, induced by the source incidence c maps to c(Phi_-,Phi_+)",
+    "endpoint": "B_end=H_partial tau_boundary(f_-,f_+), the complete wall/jump trace; its normalized coefficient images are w_theta and j_theta",
+    "tail": "B_tail=(K(f_-,f_+),V(f_-,f_+)), retaining the two oriented history/tail coordinates rather than scalar-compressing them",
+    "assembled": "B_Ev=B_bulk direct-sum B_end direct-sum B_tail"
+  },
+  "linearity_and_Xi": {
+    "linearity": "source incidence, endpoint trace, Hadamard wall/jump conversion, and tail observers are each linear",
+    "seam_output": "C(f_-,f_+)=f_-(0)-f_+(0)",
+    "Evans_identity": "on the stable section i(z)=(u_-(z),u_+(z),1), C i(z)=tau(z)",
+    "multiplicity": "z derivatives of i(z) are carried linearly, so no tau^2 or absolute-square multiplicity distortion is introduced"
+  },
+  "available_naturality": {
+    "endpoint": "moving-seam transport plus complete endpoint pushforward is an exact metric natural transformation and is Fourier-saturated",
+    "coefficient_C4": "Phi is fixed, one swaps with delta_0, and (K,V) quarter-turn as K->V->-K",
+    "still_to_identify": "the analytic tail observers of the two stable histories with the fixture's K,V coefficient cells on one common closed domain"
+  },
+  "joint_chain_gate": {
+    "required_square": "B_Ev R_Xi(z) equals the five-cell pair/bordered differential applied to B_Ev(f_-,f_+,c), with seam mismatch retained as the transverse output",
+    "why_nontrivial": "the component maps exist at different construction stages and domains; their direct sum is not a chain map until source normalization, wall graph closure, and tail orientation agree",
+    "positive_followup": "only after this square may the faithful joint Green graph and Clifford positive crossing be applied to the Xi kernel state"
+  },
+  "conclusion": "The independent Evans carrier already contains the data that the five cells observe: constant forcing amplitude, two endpoint traces, and two oriented history coordinates. Therefore the bridge should be assembled as a linear observer of the Rosenbrock state, avoiding any forbidden copying. The open theorem is the common-domain chain/naturality square, especially identification of the analytic tail pair with K,V and retention of the seam mismatch as a transverse output.",
+  "rh_implication": false
+}

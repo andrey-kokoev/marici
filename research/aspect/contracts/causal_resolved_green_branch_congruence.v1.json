@@ -1,0 +1,48 @@
+{
+  "schema": "marici.aspect.causal-resolved-green-branch-congruence.v1",
+  "status": "explicit_bounded_branch_congruence_constructed",
+  "coordinates": "wall-tail pair (f,g) with g=Bf on the represented graph",
+  "mass": "M=M_Phi>=0",
+  "forms": {
+    "resolved_matrix": "G_res=diag(1+M^2,1)",
+    "causal_graph_matrix": "G_graph=[[1+M^2,M],[M,1]]",
+    "causal_energy": "||(f)||^2+||Mf+g||^2",
+    "resolved_energy": "(1+M^2)||f||^2+||g||^2"
+  },
+  "congruence": {
+    "T": "[[1/sqrt(1+M^2),0],[M,1]]",
+    "identity": "T^* G_res T=G_graph",
+    "inverse": "[[sqrt(1+M^2),0],[-M*sqrt(1+M^2),1]]",
+    "bounded_invertible": true,
+    "parameter_free": true
+  },
+  "graph_action": {
+    "formula": "(f,Bf) maps to (f/sqrt(1+M^2), Mf+Bf)",
+    "interpretation": "resolved wall plus centered tail is sent to the causal full history output",
+    "labels_preserved": true,
+    "prime_independent": true,
+    "common_rapid_core_preserved": true,
+    "closed_graphs_carried_isomorphically": true
+  },
+  "orientation": {
+    "extension": "T direct-sum identity on the independently typed odd/quarter-turn port",
+    "real_even_shear": true,
+    "odd_phase_changed": false,
+    "reciprocal_order_changed": false,
+    "qualification": "this preserves the existing odd orientation; it does not create or prove the Pauli module covariance"
+  },
+  "calculation": {
+    "G_res_times_T": "[[sqrt(1+M^2),0],[M,1]]",
+    "result_entries": ["1+M^2", "M", "M", "1"],
+    "det_T": "1/sqrt(1+M^2)"
+  },
+  "dependency": "research/voevodsky/prior-research-exposes-two-distinct-theta-green-branches-separated-by-an-explicit-wall-tail-cross-operator.md",
+  "claim_boundary": {
+    "branch_congruence_constructed": true,
+    "branch_forms_identical_without_transport": false,
+    "four_Stieltjes_theta_units_proved": false,
+    "pauli_covariance_proved": false,
+    "evans_membership": false,
+    "rh_implication": false
+  }
+}

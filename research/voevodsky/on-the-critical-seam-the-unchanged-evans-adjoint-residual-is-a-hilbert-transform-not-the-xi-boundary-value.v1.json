@@ -1,0 +1,35 @@
+{
+  "schema": "marici.voevodsky.seam-evans-adjoint-hilbert-transform.v1",
+  "status": "exact_fourier_representation_reduces_promotion_to_independent_conjugate_boundary_condition",
+  "setup": {
+    "history": "A=partial_q on L2(R)",
+    "forcing": "Phi real rapidly decreasing",
+    "seam_parameter": "z=i t",
+    "equation": "(A-i t)u_(it)=Phi",
+    "Xi_condition": "tau(i t)=widehat(Phi)(t)=0, in the declared Fourier-Laplace convention"
+  },
+  "fourier_solution": {
+    "formula": "widehat(u_(it))(xi)=widehat(Phi)(xi)/(i(xi-t))",
+    "regularity": "at a Xi zero the numerator vanishes at xi=t, removing the apparent pole to the order supplied by the zero multiplicity",
+    "qualification": "normalization constants depend on the Fourier convention and do not affect vanishing"
+  },
+  "adjoint_residual": {
+    "formula": "V^dagger u_(it)=<Phi,u_(it)>=-i c_F integral_R |widehat(Phi)(xi)|^2/(xi-t) dxi",
+    "interpretation": "a Hilbert-transform boundary value of the nonnegative spectral density |widehat(Phi)|^2",
+    "Green_identity": "its real part vanishes automatically on the seam, but its imaginary part is the displayed principal-value integral",
+    "key_distinction": "widehat(Phi)(t)=0 does not imply H(|widehat(Phi)|^2)(t)=0"
+  },
+  "promotion_criterion": {
+    "unchanged_history_enters_minimal_paired_Green_kernel": "requires both widehat(Phi)(t)=0 and H(|widehat(Phi)|^2)(t)=0, plus the arithmetic adjoint rows",
+    "strength": "strictly stronger than the Xi seam-zero condition unless a new source identity relates the value and conjugate boundary data",
+    "not_supplied_by": ["functional equation", "zero endpoint mismatch", "maximal isotropy", "canonical Stokes codiagonal cancellation"]
+  },
+  "finite_test": {
+    "at_each_certified_Xi_ordinate": "evaluate the principal-value integral of |widehat(Phi)(xi)|^2/(xi-t)",
+    "nonzero_result": "falsifies unchanged-state promotion into the minimal adjoint-complete Green pencil",
+    "zero_result": "is evidence for an additional conjugate-boundary identity but does not establish all ordinates or completion"
+  },
+  "architectural_consequence": "The source-derived Rosenbrock Xi pencil remains valid, but its natural kernel state generally cannot be reused unchanged as the kernel of the minimal conservative paired pencil. A viable conservative realization must add a source-derived arithmetic coordinate that cancels this Hilbert-transform residual while preserving the seam mismatch divisor, or use a different positive boundary law.",
+  "conclusion": "On the seam, the missing lower Green equation is not another copy of Xi=0. It is an independent Hilbert-transform condition. This makes the exact obstruction computationally testable and prevents endpoint mismatch from being mistaken for adjoint promotion.",
+  "rh_implication": false
+}

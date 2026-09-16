@@ -1,0 +1,37 @@
+{
+  "schema": "marici.voevodsky.source-range-saturation-projector-criterion.v1",
+  "status": "analytic_saturation_criterion_constructed_legacy_input_absent",
+  "source": "research/voevodsky/filler-uniqueness-fails-on-the-balanced-endpoint-wronskian-kernel-and-holds-after-source-range-saturation.v1.json",
+  "canonical_range": {
+    "forward": "T_PB:P_pair->B_full",
+    "range": "R_can=ran(T_PB) with retained full radial/source response",
+    "radial_projection": "P_rho:B_full->B_rho",
+    "recovery": "P_rho restricted to R_can is injective and has the declared continuous inverse on its image"
+  },
+  "canonical_projector": {
+    "formula": "Pi_can=T_PB (P_rho T_PB)^(-1) P_rho on responses whose radial coordinate lies in ran(P_rho T_PB)",
+    "laws": ["Pi_can^2=Pi_can", "ran(Pi_can)=R_can", "P_rho Pi_can=P_rho", "ker(Pi_can) contains the balanced endpoint-Wronskian redistribution directions"],
+    "joint_graph_version": "when the source coordinate x is explicitly retained, Pi_can(x,b)=(x,T_PB x), which is bounded and needs no inverse of an output-only map"
+  },
+  "legacy_saturation_test": {
+    "input": "an independently exposed U_G4^old:P_pair->B_full with the same radial projection",
+    "defect": "S_old=(I-Pi_can)U_G4^old",
+    "equivalence": "S_old=0 iff ran(U_G4^old) subset R_can",
+    "then": "same radial projection plus S_old=0 implies U_G4^old=T_PB"
+  },
+  "balanced_kernel_relation": {
+    "fixed_faces": "same radial and Stokes faces force ran(U_G4^old-T_PB) subset N_bal",
+    "projector_test": "S_old extracts precisely the component not reconstructed by canonical source-range recovery",
+    "rigidity": "R_can intersect N_bal={0} converts saturation into filler uniqueness"
+  },
+  "weaker_evans_test": {
+    "condition": "S_old^top e_Ev belongs to tau O(U_ar)",
+    "meaning": "legacy filler may fail global saturation only in directions invisible on the Evans Xi-jet module",
+    "strict_special_case": "S_old=0"
+  },
+  "what_is_now_explicit": "The missing range theorem is one projector-defect equation, not an existential statement about fillers.",
+  "missing_input": "No repository record exposes the independent legacy U_G4^old or its full-response radial projection, so S_old cannot yet be evaluated.",
+  "hostile": "Any nonzero (I-Pi_can)U_G4^old generator image is a concrete failure of source-range saturation even if all scalar Stokes readouts agree.",
+  "disposition": "Filler rigidity has an explicit analytic witness: the canonical source-recovery projector Pi_can. Proving the old-to-new transition reduces to showing its transverse projector defect vanishes, globally or modulo Xi on Evans. The formula is complete; only the legacy forward map remains absent.",
+  "rh_implication": false
+}

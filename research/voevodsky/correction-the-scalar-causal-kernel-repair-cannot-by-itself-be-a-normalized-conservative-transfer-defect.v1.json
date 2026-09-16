@@ -1,0 +1,29 @@
+{
+  "schema": "marici.voevodsky.correction.scalar-causal-repair-not-conservative-defect.v1",
+  "status": "positive_repair_retained_conservative_realization_claim_rejected",
+  "corrects": "research/voevodsky/the-causal-one-sided-theta-transfer-gives-an-exact-positive-kernel-repair-but-confinement-still-requires-a-green-balance-identity.v1.json",
+  "positive_fact_retained": "K_aug(w,z)=m(-z)conj(m(-w))/(z+conj(w)) is a positive kernel on the right half-plane",
+  "scalar_schur_no_go": {
+    "hypothesis": "there exists a scalar Schur transfer theta with 1-conj(theta(w))theta(z)=(z+conj(w))K_aug(w,z)=conj(E(w))E(z), where E(z)=m(-z)",
+    "diagonal": "|theta(z)|^2+|E(z)|^2=1",
+    "vector": "v(z)=(theta(z),E(z)) has norm one",
+    "mixed_identity": "<v(w),v(z)>=1 for every w,z",
+    "cauchy_schwarz": "equality forces v(z)=v(w) for every w,z",
+    "contradiction": "E=m(-z) is nonconstant",
+    "conclusion": "no normalized scalar conservative colligation has K_aug as its complete transfer-defect kernel"
+  },
+  "meaning": {
+    "algebraic": "adding h=m cancels the sampled negative kernel and can be placed in a triangular determinant-preserving block",
+    "not_dynamical": "that operation does not supply a lurking isometry or Green balance",
+    "reason": "pointwise/source-derived positive feature addition is weaker than a polarized input-output defect identity"
+  },
+  "required_enlargement": {
+    "feature": "the full tail-state map G_z(q), not only its endpoint scalar m(z)",
+    "kernel": "K_tail(w,z)=integral_0^infinity conjugate(G_w(q))G_z(q)dq",
+    "known_identity": "(z+conj(w))K_tail=endpoint_product-mixed_forcing_reservoir",
+    "next_gate": "factor the complete mixed forcing reservoir, including arithmetic, seam, wall, and archimedean currents, as an independently supplied input-minus-output Gram difference"
+  },
+  "architectural_consequence": "Any viable conservative repair needs at least a nontrivial state-space feature dimension carrying the tail flow and typed forcing currents. A single endpoint auxiliary scalar can preserve the divisor or repair a finite Gram, but cannot do both and close the normalized conservative identity by itself.",
+  "conclusion": "The scalar causal feature is a useful positivity majorant, not the missing conservative law. The exact frontier returns to the polarized two-height tail-flow factorization, now with a concrete proof that endpoint-only repair is insufficient.",
+  "rh_implication": false
+}

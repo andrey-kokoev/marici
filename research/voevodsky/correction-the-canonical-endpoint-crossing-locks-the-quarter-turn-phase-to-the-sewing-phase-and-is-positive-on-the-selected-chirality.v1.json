@@ -1,0 +1,35 @@
+{
+  "schema": "marici.voevodsky.correction.canonical-endpoint-crossing-phase-lock.v1",
+  "status": "canonical_positive_crossing_closed_alternation_reinterpreted_as_chirality",
+  "corrects": "research/voevodsky/the-tate-twisted-endpoint-quarter-turn-produces-an-alternating-maslov-crossing-form-not-four-positive-edges.v1.json",
+  "fresh_sources": [
+    "research/voevodsky/the-green-sign-times-sewing-chirality-is-the-canonical-c4-quarter-turn-and-selects-a-positive-lagrangian-crossing-form.v1.json",
+    "research/voevodsky/correction-the-clifford-quarter-turn-on-doubled-phase-space-is-induced-by-the-response-twistor-not-an-operator-to-identify-with-it.v1.json",
+    "research/voevodsky/checkers/check_tate_twisted_endpoint_quotient_contraquotient_c4.py"
+  ],
+  "correction": {
+    "overgeneralization": "The previous calculation treated the sewing phase t and quarter-turn phase g as independent and therefore found a chamber sign -/+ Re(t/g).",
+    "source_lock": "In the canonical Clifford construction they are not independent: S_T=[[0,T*],[T,0]] and F_C=J S_T. On a scalar Tate fiber T=g, so the quarter-turn uses exactly the sewing phase.",
+    "green_convention": "With the source convention J=diag(I,-I), Lambda_+=Graph(T), not the opposite-sign J used in the scout."
+  },
+  "exact_identity": {
+    "operators": "S_T=[[0,T*],[T,0]], J=diag(I,-I), F_C=J S_T",
+    "relations": ["S_T^2=J^2=I", "J S_T+S_T J=0", "F_C^2=-I"],
+    "selected_crossing": "for lambda in Lambda_+=ker(S_T-I)=Graph(T), [lambda,F_C mu]_J=<lambda,J F_C mu>=<lambda,S_T mu>=<lambda,mu>",
+    "positivity": "[lambda,F_C lambda]_J=||lambda||^2>0"
+  },
+  "alternation_reinterpreted": {
+    "negative_chirality": "on Lambda_-=ker(S_T+I), [lambda,F_C lambda]_J=-||lambda||^2",
+    "meaning": "the sign alternation is exactly the +/- chirality grading, not a missing arbitrary orientation choice",
+    "scope": "the positive apex uses the ordered Lambda_+ to Lambda_- crossing; it does not require all four cyclic edges to be positive simultaneously"
+  },
+  "typing": {
+    "T": "acts on H_resp and is source-derived from Fourier response",
+    "F_C": "acts on H_resp direct-sum H_resp and is functorially induced after graphing",
+    "no_external_identification": "T need not be identified or conjugated with F_C"
+  },
+  "remaining_gate": "Only relative Evans membership remains: construct Tr_mod with P_- Tr_mod in tau O(H_resp direct-sum H_resp), where P_-=(I-S_T)/2. Absolute unchanged-trace membership is already numerically hostile.",
+  "verification_note": "The existing symbolic checker could not execute because SymPy is absent, but its displayed matrices give the same exact scalar specialization F=Z R and phase lock T=gamma.",
+  "conclusion": "The source already contains the required orientation datum as Green sign times sewing chirality. The canonical phase lock removes the arbitrary Maslov chamber. Positive complement construction is closed; the nonformal problem is the divisor-preserving modified Evans map into its positive chirality graph.",
+  "rh_implication": false
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "marici.voevodsky.correction.clifford-vs-response-quarter-turn.v1",
+  "status": "ill_typed_identification_retracted_induced_boundary_twistor_closed",
+  "corrects": "research/voevodsky/the-green-sign-times-sewing-chirality-is-the-canonical-c4-quarter-turn-and-selects-a-positive-lagrangian-crossing-form.v1.json",
+  "response_operator": {
+    "symbol": "T",
+    "space": "H_resp",
+    "origin": "R(Fourier g)=T R(g)",
+    "properties": ["unitary", "T^4=I", "source-derived on the complete response essential image"]
+  },
+  "phase_operator": {
+    "symbol": "F_C=J S_T",
+    "space": "P_boundary=H_resp direct-sum H_resp",
+    "S_T": "[[0,T*],[T,0]]",
+    "properties": ["unitary", "skew-adjoint", "F_C^2=-I", "exchanges Graph(T) and Graph(-T)"]
+  },
+  "typing_correction": "T and F_C act on different spaces. F_C is functorially induced from T after graphing/doubling; no matrix equality or conjugacy between them is required unless an additional identification H_resp isomorphic to H_resp direct-sum H_resp is independently supplied.",
+  "closed_fact": "The analytical Fourier-response action already supplies the T entering S_T, so the Clifford/Lagrangian complement construction is complete on the response essential image.",
+  "positive_crossing_scope": "For lambda in Graph(T), [lambda,F_C lambda]_J=||lambda||^2. This is positivity of the response graph's canonical normal/complement pairing, not a Green conservation identity for an Evans history.",
+  "remaining_gate": {
+    "unchanged": "Tr_Evans(z) belongs to Graph(T) modulo the declared relative correction/Xi ideal",
+    "absolute_version": "P_- Tr_Evans(z)=0 at Xi zeros; numerically hostile for the tested unchanged Hilbert adjoint row",
+    "relative_version": "construct a modified trace or mapping-cone boundary whose defect P_- Tr_mod(z) is tau-divisible",
+    "warning": "the intrinsic F_C positivity cannot manufacture this membership because it is defined only after the graph and defect components are known"
+  },
+  "finite_fixture": "research/voevodsky/results/prime_two_clifford_c4_from_sewing.json verifies the induced algebra only; its stated lack of an independent 8x8 Fourier action is not a blocker because no such same-space comparison is required.",
+  "conclusion": "The C4 positive complement is real and already derived, but it is downstream of the response twistor. It does not supply the missing Evans-to-response map. The categorical gap is a relative membership/chain-map cell into the sewn graph, not identification of two quarter-turn operators.",
+  "rh_implication": false
+}

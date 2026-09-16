@@ -1,0 +1,50 @@
+{
+  "schema": "marici.voevodsky.evans-pair-lift-C4-radical-cocycle.v1",
+  "status": "categorical_obstruction_class_derived_source_vanishing_open",
+  "setup": {
+    "pair_carrier": "P",
+    "polarized_maps": "q_+:P->Q_+, q_-:P->Q_-",
+    "joint_map": "q=(q_+,q_-):P->Q_+ direct-sum Q_-",
+    "common_kernel": "K=ker(q)=ker(q_+) intersection ker(q_-)",
+    "joint_image": "Q_joint=im(q) isomorphic to P/K",
+    "Evans_class": "e_j in Q_joint in each C4 chart j"
+  },
+  "lift_fiber": {
+    "definition": "Lift(e_j)={x in P:q(x)=e_j}",
+    "shape": "if inhabited, Lift(e_j) is a K-torsor: every two lifts differ by a unique element of K",
+    "meaning": "the two polarized quotients determine the pair state only modulo the common radical"
+  },
+  "C4_transport": {
+    "operator": "F_j:P_j->P_(j+1), carrying K_j to K_(j+1)",
+    "quotient_action": "bar(F)_j e_j=e_(j+1)",
+    "chosen_lift_defect": "c_j=F_j x_j-x_(j+1) in K_(j+1)",
+    "cocycle": "the four c_j form a radical-valued cyclic 1-cocycle; changing lifts x_j by k_j in K_j changes c_j by the corresponding coboundary",
+    "obstruction": "a coherent C4 lift exists iff the cocycle class [c] vanishes, with the fourfold equation twisted by the declared Tate/metaplectic phase"
+  },
+  "coherencer": {
+    "base": "two polarized quotient observations agree on the Evans class",
+    "two_seams": "the selected lifts into the plus and minus pair presentations",
+    "between_seams": "their difference lies in K",
+    "higher_cell": "a choice of radical correction k_j trivializing c_j around the C4 cycle",
+    "categorical_name": "equivariant descent/lifting coherencer for a torsor over the intersection radical"
+  },
+  "positive_apex": {
+    "descent_requirement": "the one-leg pair energy must annihilate K or be constant on each lift torsor before it defines an energy on Q_joint",
+    "if_not": "a choice of lift changes the energy, so positivity at the apex is not quotient-invariant",
+    "strict_gate": "after radical descent and coherent lift, the state must have nonzero quotient energy"
+  },
+  "testable_finite_form": {
+    "matrices": "given finite q_+,q_-,F, compute K=ker stack(q_+,q_-)",
+    "lift": "solve q x_j=e_j",
+    "residual": "compute c_j=F x_j-x_(j+1) and reduce modulo im(F-I) on K (or the Tate-twisted cyclic coboundary)",
+    "outcomes": {
+      "nonzero_class": "no C4-coherent pair lift exists for that Evans packet",
+      "zero_class": "constructs a coherent lift but does not yet prove completion or positivity",
+      "empty_fiber": "the Evans class is not in the joint pair image at all"
+    }
+  },
+  "relation_to_RH": "Vanishing of this algebraic cocycle is a source-comparison theorem, not yet RH, provided it is proved before evaluating the positive modular defect. Confinement enters only after the descended one-leg energy and Xi-cycle boundary equality are established.",
+  "next": "Extract finite q_+, q_-, and Fourier/Tate F matrices from the two-polarity packet and evaluate the affine-fiber cocycle for the source Evans endpoint/mismatch column.",
+  "conclusion": "The proposed quotient order exposes a precise missing coherencer: not an equality of representatives, but trivialization of a C4 radical-valued torsor cocycle. This is the categorical datum that can be sought independently of the later positive modular argument.",
+  "rh_implication": false
+}

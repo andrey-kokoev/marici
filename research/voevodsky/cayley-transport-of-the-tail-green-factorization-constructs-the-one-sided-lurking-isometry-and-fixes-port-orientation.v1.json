@@ -1,0 +1,36 @@
+{
+  "schema": "marici.voevodsky.tail-green-cayley-lurking-isometry.v1",
+  "status": "one_sided_lurking_isometry_constructed_port_orientation_corrected",
+  "source": "research/voevodsky/the-mixed-theta-forcing-reservoir-has-an-exact-source-derived-sum-difference-gram-factorization.v1.json",
+  "half_plane_identity": {
+    "formula": "<Y_eta,Y_zeta>-<I_eta,I_zeta>=(zeta+conj(eta))<G_eta,G_zeta>",
+    "ports": "Y_zeta=(G_zeta(0),(Phi-G_zeta)/sqrt(2)); I_zeta=(Phi+G_zeta)/sqrt(2)",
+    "orientation_correction": "for the standard contractive colligation convention, Y is the input port and I is the output port; the earlier prose naming them oppositely is retracted"
+  },
+  "cayley": {
+    "disk_coordinate": "w=(zeta-alpha)/(zeta+alpha), alpha>0",
+    "feature": "F(w)=sqrt(2alpha)/(1-w) G_zeta=(zeta+alpha)G_zeta/sqrt(2alpha)",
+    "identity": "(1-conj(v)w)<F(v),F(w)>=(zeta+conj(eta))<G_eta,G_zeta>"
+  },
+  "lurking_map": {
+    "generator_rule": "[w F(w)e ; Y(w)e] maps to [F(w)e ; I(w)e]",
+    "Gram_check": "<F(v),F(w)>+<I(v),I(w)> = conj(v)w<F(v),F(w)>+<Y(v),Y(w)>",
+    "result": "the rule is isometric on the linear span of source-labelled generator vectors",
+    "extension": "it extends uniquely to the closures of the initial and final spans; a unitary colligation on ambient spaces follows after adjoining the standard orthogonal defect complements"
+  },
+  "transfer": {
+    "meaning": "the one-sided theta tail is a source-derived conservative system node in disk coordinates",
+    "two_height": true,
+    "coefficient_fitting": false,
+    "Xi_specialization": false
+  },
+  "doubled_reciprocal": {
+    "direct_sum": "take the orthogonal direct sum of the plus and minus one-sided isometries",
+    "Tate_transport": "conjugate reciprocal boundary coordinates by the unitary seam Tate gauge G_infinity",
+    "preserves_isometry": "yes on the seam because |gamma_infinity|=1",
+    "remaining_nonformal_cell": "identify the Xi seam-mismatch boundary relation as a maximal-isotropic/unitary feedback relation for this doubled colligation, with the complete arithmetic labels retained"
+  },
+  "confinement_logic": "Once the Xi crossing state satisfies that feedback relation, the half-plane Green identity and nonzero positive tail feature force Re(zeta)=0. Merely having the two-row determinant -tau does not prove that it lies in this feedback domain.",
+  "conclusion": "The forcing-reservoir factorization does construct a genuine lurking isometry. Cayley transport fixes the correct generator map and shows that the endpoint-plus-difference port is the colligation input while the sum port is its output. The sole remaining state-level gate is admissibility of the Xi seam relation as conservative feedback.",
+  "rh_implication": false
+}

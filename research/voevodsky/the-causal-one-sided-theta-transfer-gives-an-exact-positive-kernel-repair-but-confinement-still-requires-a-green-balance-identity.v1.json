@@ -1,0 +1,37 @@
+{
+  "schema": "marici.voevodsky.causal-theta-exact-kernel-repair.v1",
+  "status": "exact_positive_repair_constructed_confinement_not_implied",
+  "bare_kernel": "K_0(w,z)=[m(-z)conj(m(-w))-m(z)conj(m(w))]/(z+conj(w))",
+  "source_feature": {
+    "choice": "h(z)=m(z)",
+    "provenance": "m is the already constructed causal one-sided theta transfer, outer and zero-free on Re(z)>0",
+    "not_fitted": "the feature is fixed by the original half-line theta history, not by diagonalizing a sampled negative Gram matrix"
+  },
+  "exact_repair": {
+    "formula": "K_aug=K_0+m(z)conj(m(w))/(z+conj(w))",
+    "simplification": "K_aug(w,z)=m(-z)conj(m(-w))/(z+conj(w))",
+    "positivity": "K_aug is positive definite because 1/(z+conj(w)) is the right-half-plane Hardy kernel and multiplication by m(-z) is a feature multiplier on every finite packet",
+    "strict_finite_packets": "for distinct points and nonzero m(-z_i), the Cauchy Gram is positive definite"
+  },
+  "triangular_realization": {
+    "Xi_block": "F_Xi(z), the exact two-stable-history Rosenbrock boundary matrix",
+    "auxiliary": "E(z), source-fixed and zero-free",
+    "reverse_one_way_lift": "F_lift(z)=[[F_Xi(z),0],[C_m(z),E(z)]]",
+    "determinant": "det F_lift=det(E)det(F_Xi), so its divisor remains Xi",
+    "kernel_lift": "if F_Xi x=0 then (x,-E^-1 C_m x) is a lifted kernel state, allowing the auxiliary channel to observe the Xi state"
+  },
+  "critical_firewall": {
+    "not_yet_proved": "that the positive kernel K_aug is the Green energy kernel of the same lifted Rosenbrock operator",
+    "reason": "an arbitrary triangular observation can be positive and divisor-preserving without making the generator conservative or tying Re(z) to the observed norm",
+    "required_identity": "F_lift(w)^* J_out F_lift(z)-J_in=(z+conj(w)) H(w)^*H(z), with all signs and source ports fixed",
+    "confinement": "only this polarized Green/lurking-isometry identity would turn a nonzero lifted kernel state into Re(z)=0"
+  },
+  "relation_to_prior_no_go": {
+    "unchanged_adjoint_promotion": "not reused",
+    "state": "the auxiliary coordinate changes according to -E^-1 C_m x",
+    "saturated_direct_sum": "not claimed to vanish componentwise; cancellation remains in the Rosenbrock boundary equation"
+  },
+  "next_falsifier": "Insert the source-derived reverse-triangular causal observation into the two-height tail-flow identity and compute the residual of the proposed Green balance. If nonzero at one pair (w,z), positivity and divisor preservation do not form one conservative realization.",
+  "conclusion": "There is an exact non-fitted positive-kernel repair: add back the causal one-sided theta feature. It preserves the Xi divisor through a reverse one-way lift and observes its kernel state. The remaining difficult cell is no longer positivity abstractly, but equality of this repaired kernel with the polarized Green defect of the lifted source system.",
+  "rh_implication": false
+}

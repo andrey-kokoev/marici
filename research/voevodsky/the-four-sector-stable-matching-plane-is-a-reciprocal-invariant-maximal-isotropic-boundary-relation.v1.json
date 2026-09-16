@@ -1,0 +1,49 @@
+{
+  "schema": "marici.voevodsky.four-sector-stable-reciprocal-boundary-relation.v1",
+  "status": "four_sector_boundary_geometry_closed_bulk_feedback_open",
+  "basis": ["left,z", "right,z", "left,-z", "right,-z"],
+  "involutions": {
+    "stable_exchange": "R_st swaps coordinates 1<->2 and 3<->4",
+    "reciprocal_exchange": "R_rec swaps coordinates 1<->3 and 2<->4",
+    "commutation": "R_st R_rec=R_rec R_st"
+  },
+  "green_metric": {
+    "formula": "Sigma_4=diag(1,-1,1,-1)=I_rec tensor diag(1,-1)_st in the displayed block order",
+    "meaning": "left-minus-right endpoint flux on each reciprocal parameter sheet"
+  },
+  "stable_matching_plane": {
+    "definition": "Lambda_st={(a,a,b,b):a,b in C}",
+    "projector_equation": "(I-R_st)x=0",
+    "isotropic": "x^*Sigma_4 y=0 for all x,y in Lambda_st",
+    "dimension": "dim Lambda_st=2=half dim C^4",
+    "maximal_isotropic": true
+  },
+  "reciprocal_naturality": {
+    "invariance": "R_rec Lambda_st=Lambda_st",
+    "Tate_twist": "replace R_rec by its block Tate-modular conjugate; because the cocycle acts equally on left/right stable coordinates within each sheet, Lambda_st remains invariant",
+    "consequence": "stable endpoint sewing and reciprocal parameter transport form a strict commuting square on the four-sector boundary carrier"
+  },
+  "Xi_state": {
+    "z_sheet": "tau(z)=0 iff (u_-(0;z),u_+(0;z)) lies in span(1,1)",
+    "minus_z_sheet": "tau(-z)=tau(z) by evenness, so the reciprocal endpoint pair also lies in span(1,1)",
+    "combined": "the four endpoint values lie in Lambda_st at every Xi zero"
+  },
+  "source_parity": {
+    "stable": "forcing has the same amplitude on left/right halves and therefore belongs to the stable-even sector",
+    "reciprocal": "reflection changes its sign between z and -z sheets, giving reciprocal-odd parity",
+    "Pauli": "Z_rec=diag(1,1,-1,-1) changes only reciprocal parity and commutes with R_st, so it preserves Lambda_st"
+  },
+  "what_is_closed": [
+    "correct four-sector typing",
+    "maximal isotropy of Xi endpoint matching",
+    "compatibility of stable matching with reciprocal exchange and Tate modular transport",
+    "separation of stable and reciprocal Pauli actions"
+  ],
+  "remaining": {
+    "bulk": "show the doubled tail/forcing generator has the J-skew Green identity with boundary form Sigma_4",
+    "feedback": "show its source-generated Xi kernel section lands in Lambda_st without an uncancelled forcing-port residual",
+    "positivity": "prove the parameter term is a positive complete norm after reciprocal doubling"
+  },
+  "conclusion": "The four-dimensional correction does not enlarge the boundary mystery: Xi matching is exactly a reciprocal-invariant maximal-isotropic two-plane. The remaining RH-strength content is entirely in the bulk forcing cancellation and positive J-Green identity, not endpoint sewing.",
+  "rh_implication": false
+}

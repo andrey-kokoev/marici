@@ -1,0 +1,52 @@
+{
+  "schema": "marici.scc.rh-interaction-net-state-contract.v9",
+  "predecessor": "research/aspect/contracts/theta-rh-interaction-net-state.v8.json",
+  "relation": "adopts_source_derived_boundary_jet_augmented_radial_diagonal",
+  "authority": {
+    "basis": "direct operator instruction: proceed",
+    "scope": "successor radial-response diagonal; no identification with an unspecified legacy conservative diagonal",
+    "external_review_required": false
+  },
+  "radial_diagonal": {
+    "source_contract": "research/aspect/contracts/boundary-jet-augmented-euler-intertwiner.v1.json",
+    "carrier": "E_aug,p=C_q direct-sum J_boundary for each shell p",
+    "definition": "B_X^rad,aug=direct_sum_(p<=X) A_aug,p",
+    "A_aug,p": "(q,a_0,a_1,...) maps to ((1-p^(-s))q-a_0,a_1,a_2,...)",
+    "boundary_jets_are_response_coordinates": true,
+    "boundary_jets_are_new_Euler_states": false,
+    "finite_cutoff_natural": true,
+    "projective_completion_continuous": true,
+    "holomorphic_in_s": true,
+    "all_jet_compatible": true
+  },
+  "exact_diagonal_square": {
+    "map": "J_X=direct_sum_(p<=X) J_p",
+    "source_operator": "B_X^jet",
+    "identity": "J_X B_X^jet=B_X^rad,aug J_X",
+    "status": "closed_source_side_and_adopted_for_successor_response_diagonal",
+    "scalar_projection_defect": "pi_q J_X B_X^jet-(I-L)pi_q J_X=-gamma_0",
+    "meaning": "the unaugmented Euler square is only the quotient/projection of the exact bordered square"
+  },
+  "compatibility_with_v8": {
+    "primitive_Euler_state_E_retained": true,
+    "cyclic_trace_ideal_bridge_retained": true,
+    "G_Tr_retained": true,
+    "G_link_retained": true,
+    "Dom_D0_unchanged": true
+  },
+  "legacy_comparison": {
+    "old_B_X_rad_identified": false,
+    "old_A0_augmented_by_boundary_tower": false,
+    "old_D0_action_sign_exposed": false,
+    "old_metric_matrices_exposed": false,
+    "full_entrywise_block_equality": false
+  },
+  "next_gate": "construct or expose the conservative boundary-response extension A0_aug and compare it with B_X^rad,aug; alternatively prove the boundary tower is a contractible relative summand",
+  "claim_boundary": {
+    "successor_radial_response_diagonal_constructed": true,
+    "legacy_conservative_diagonal_identified": false,
+    "full_G4_block_identified": false,
+    "evans_membership": false,
+    "rh_implication": false
+  }
+}

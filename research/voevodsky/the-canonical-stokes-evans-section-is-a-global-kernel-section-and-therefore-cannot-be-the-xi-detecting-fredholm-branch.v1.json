@@ -1,0 +1,42 @@
+{
+  "schema": "marici.voevodsky.global-canonical-evans-kernel-no-go.v1",
+  "status": "proved_from_constructed_G4_rows",
+  "setup": {
+    "pencil": "D_G4(z), the closed constructed analytical G4 block",
+    "Evans_section": "Psi_z=(u_z,1,0)",
+    "parameter_domain": "the common holomorphic domain on which the history solution and Stokes rows are defined"
+  },
+  "rowwise_identity": {
+    "history_row": "(partial_q-z)u_z-Phi=0",
+    "theta_row": "vanishes by the declared arithmetic-adjoint/source-range relation",
+    "arithmetic_row": "C y_Ev=I0+Iend+IRL=-R-2E+(R+2E)=0",
+    "strength": "parameterwise, shellwise, after completion, and under every finite z derivative"
+  },
+  "theorem": {
+    "statement": "D_G4(z)Psi_z=0 for every z in the common domain, not merely for z in div(Xi)",
+    "nonzero": "Psi_z is nonzero because its theta coordinate equals 1",
+    "consequence": "D_G4(z) is noninvertible throughout that domain"
+  },
+  "fredholm_determinant_no_go": {
+    "assume": "D_G4(z) is represented by a holomorphic Fredholm/determinant-class pencil whose determinant section det_F D_G4(z) detects invertibility",
+    "then": "det_F D_G4(z)=0 identically on every connected component",
+    "incompatibility": "det_F D_G4(z)=c(z)Xi(z) with c holomorphic and nowhere zero is impossible because Xi is not identically zero"
+  },
+  "xi_divisibility_semantics": {
+    "true_statement": "the canonical residual is zero and hence belongs to Xi O(U_ar)",
+    "information_content": "none about the Xi divisor, because the same vanishing holds off the divisor",
+    "multiplicity": "all jets vanish for the stronger reason that the residual is identically zero"
+  },
+  "required_repair_for_independent_detection": [
+    "use a different source-derived pencil or quotient in which the global Stokes kernel section is removed before forming the determinant",
+    "or define an Evans function on the transverse/cokernel determinant line rather than from the identically null canonical codiagonal",
+    "then prove its determinant section equals a nonvanishing factor times Xi and that its kernel states satisfy the closed Green boundary condition"
+  ],
+  "hostiles": [
+    "claim that identically zero residual detects the discrete Xi divisor",
+    "claim finite Xi-jet vanishing is independent when every parameter jet already vanishes",
+    "attach a Fredholm determinant to the unreduced pencil and identify it with Xi"
+  ],
+  "conclusion": "The tetrahedral analytical construction is closed, but its canonical Evans section is a global gauge/Stokes kernel section. It cannot itself be the Xi-detecting spectral branch. The correct next object is a transverse reduced pencil or determinant line, not another tetrahedral face.",
+  "rh_implication": false
+}

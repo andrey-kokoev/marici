@@ -1,0 +1,47 @@
+{
+  "schema": "marici.voevodsky.reciprocal-boundary-triple-reactive-parity.v1",
+  "status": "inheritance_theorem_proved_source_hypotheses_partially_exposed",
+  "setup": {
+    "bulk_involution": "R_X on the reciprocal doubled state carrier",
+    "boundary_exchange": "R_partial=[[0,1],[1,0]] on the two-port boundary carrier",
+    "reference_generator": "A_X",
+    "trace_pair": "Gamma_0,Gamma_1",
+    "arithmetic_boundary_law": "Theta_X(z)"
+  },
+  "hypotheses": [
+    "R_X A_X=A_X R_X on the complete common domain",
+    "Gamma_j R_X=R_partial Gamma_j for j=0,1",
+    "the Poisson solution gamma_X(z) is unique on the chosen resolvent/radiation chart",
+    "R_partial Theta_X(x)=Theta_X(x)R_partial on the seam"
+  ],
+  "weyl_inheritance": {
+    "poisson": "Gamma_0 gamma_X(z)=I and (A_X-z)gamma_X(z)=0",
+    "derivation": "R_X gamma_X(z)=gamma_X(z)R_partial by uniqueness",
+    "weyl": "M_X(z)=Gamma_1 gamma_X(z)",
+    "conclusion": "R_partial M_X(z)=M_X(z)R_partial, and the same holds for nontangential boundary values M_(+,X)(x)"
+  },
+  "reactive_parity": {
+    "definition": "F_X(x)=Theta_X(x)-Re M_(+,X)(x)",
+    "conclusion": "[R_partial,F_X(x)]=0",
+    "parity_frame": "Hadamard transform diagonalizes R_partial and therefore F_X",
+    "dark_mixing": "<d,F_X r>=0 identically"
+  },
+  "radiation": {
+    "if_shared_output": "Y_X=gamma_X[1,1]",
+    "then": "W_X=Im M_(+,X)=Y_X^*Y_X is supported on the coherent + parity line and has the disagreement - parity line as its persistent kernel",
+    "protected_factorization": "det(F_X-iW_X)=a_dark,X(c_rad,X-iw_X)"
+  },
+  "bulk_test_equivalence": {
+    "J_skew_block": "for doubled A_0, the mixed part of A_0^*J+J A_0 vanishes iff A_(+-)=A_(-+)^*",
+    "interpretation": "this is the state-space precursor of boundary reactive parity",
+    "currently_closed_piece": "the constructed three-port incidence uses B_Sigma and B_Sigma^dagger as a contragredient pair",
+    "still_required": [
+      "reciprocal equivariance of the complete arithmetic diagonal D_U and endpoint/archimedean attachments",
+      "trace equivariance for the complete system boundary map",
+      "one-common-output factorization of the seam radiation row"
+    ]
+  },
+  "finite_falsifier": "At any cutoff, compute R_partial F_X-F_X R_partial; one nonzero endpoint, archimedean, or arithmetic contribution breaks symmetry protection and turns proposed Xi states into leaky resonances.",
+  "conclusion": "The dark-channel protection law need not be guessed at the boundary. It follows functorially from reciprocal equivariance of the complete boundary triple and arithmetic sewing. The active constructor gate is now upstream and entrywise: establish reciprocal covariance of D_U plus endpoint/archimedean attachments; the B/B^dagger mixed block is already in the required contragredient form.",
+  "rh_implication": false
+}
