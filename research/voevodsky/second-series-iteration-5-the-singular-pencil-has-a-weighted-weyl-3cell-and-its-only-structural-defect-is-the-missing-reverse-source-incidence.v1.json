@@ -1,0 +1,51 @@
+{
+  "schema": "marici.voevodsky.higher-horn-audit.second-series.iteration-5.v1",
+  "status": "weighted_Weyl_identity_derived_singular_weight_noncollapse_closed_symmetry_open",
+  "fresh_sources": [
+    "research/grothendieck/the-tail-boundary-system-is-a-singular-pencil-not-a-deficiency-family.md",
+    "research/grothendieck/the-source-forcing-has-a-canonical-rigged-transpose-before-any-hilbert-adjoint.md",
+    "research/nima/the-complete-boundary-triple-turns-source-sewing-into-a-skew-adjoint-extension.md"
+  ],
+  "descriptor_setup": {
+    "pencil": "A-zP with A=A^times as a rigged selfadjoint relation and P=P^times>=0",
+    "homogeneous_solutions": "(A_max-zP) gamma_P(z)c=0",
+    "boundary_response": "M_P(z)c=Gamma_1 gamma_P(z)c after Gamma_0 gamma_P(z)c=c"
+  },
+  "weighted_3cell": {
+    "identity": "M_P(z)-M_P(w)^*=(z-conjugate(w)) gamma_P(w)^* P gamma_P(z)",
+    "derivation": "apply the Green identity to the two homogeneous descriptor solutions; the spectral terms differ by z-conjugate(w) and retain P",
+    "diagonal": "Im M_P(z)=(Im z) gamma_P(z)^*P gamma_P(z)",
+    "difference_from_ordinary": "the positive apex is the P-weighted energy, not the full Hilbert norm"
+  },
+  "singular_weight": {
+    "tail_weight": "P=diag(I_history,0_source)",
+    "null_sector": "the frozen constant source coordinate has zero spectral weight",
+    "Evans_state": "Psi_z=(u_z,1)",
+    "weighted_energy": "<P Psi_z,Psi_z>=||u_z||^2",
+    "strictness": "u_z cannot vanish because the forced equation would imply Phi=0",
+    "conclusion": "although P is singular, every nonzero forced Evans state has strictly positive P-weight"
+  },
+  "conditional_confinement": {
+    "characteristic": "C_Theta,P(z)=Theta-M_P(z)",
+    "assume": "Theta=Theta^* and C_Theta,P(z)c=0",
+    "identity": "0=<c,Im C c>=-(Im z)||P^(1/2)gamma_P(z)c||^2",
+    "result": "Im z=0 for the Evans state",
+    "meaning": "singularity alone does not obstruct the positivity argument; only P-null characteristic states would escape"
+  },
+  "actual_symmetry_defect": {
+    "raw_tail": "the source forcing is one-way/triangular, with B_Phi:C->E but no reverse row",
+    "formal_problem": "A is not selfadjoint as a relation, so the weighted Weyl identity acquires an interior asymmetry residual",
+    "canonical_reverse": "the rigged transpose B_Phi^times:E'->C, lambda maps to lambda(Phi), exists independently of a Hilbert metric",
+    "required_completion": "insert B_Phi and B_Phi^times as opposite off-diagonal entries on the test-dual rigging, then prove a closed selfadjoint linear-relation realization",
+    "operator_shadow": "this is precisely the missing conservative lower incidence/backreaction row previously denoted B^dagger"
+  },
+  "defective_identity": {
+    "raw_form": "M_raw(z)-M_raw(w)^*=(z-conj(w))gamma(w)^*Pgamma(z)+R_asym(z,w)",
+    "residual": "R_asym is the pairing defect between the forward source incidence and the absent/retyped reverse incidence",
+    "target": "B_Phi^times makes R_asym=0 at the rigged level; a Green metric is needed only to realize its Hilbert shadow"
+  },
+  "higher_coherence_effect": "The higher 3-cell survives passage from regular operators to singular descriptor systems by replacing the norm with P-energy. The missing top coherence is exactly the symmetrization mate between forward forcing and rigged transpose. It is not necessary to give the frozen source coordinate artificial spectral weight.",
+  "next_iteration": "Write the 2x2 rigged descriptor block with B_Phi and B_Phi^times, compute its Green identity explicitly, and identify whether the source-channel equation imposed by the reverse row is compatible with the Evans normalization c=1 or introduces an additional arithmetic balance condition.",
+  "iteration_result": "The singular pencil admits the correct weighted Weyl identity in principle, and the Evans state has strictly positive weighted energy. The decisive obstruction is not singular P but failure of the raw triangular source operator to be selfadjoint. The canonical rigged transpose supplies the only variance-correct reverse row; its resulting source-channel equation is the next gate.",
+  "rh_implication": false
+}

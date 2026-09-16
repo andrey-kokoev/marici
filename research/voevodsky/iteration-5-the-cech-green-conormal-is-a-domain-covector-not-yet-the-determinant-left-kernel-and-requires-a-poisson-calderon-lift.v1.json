@@ -1,0 +1,48 @@
+{
+  "schema": "marici.voevodsky.higher-horn-audit.iteration-5.v1",
+  "status": "boundary_to_interior_promotion_gate_identified_as_Poisson_Calderon_lift",
+  "fresh_sources": [
+    "research/voevodsky/the-c34-common-difference-pair-and-the-theta-forcing-tail-pair-share-the-same-hadamard-cross-polarization.v1.json",
+    "research/nima/finite-synthesis-and-its-adjoint-form-the-reciprocal-linking-pair-on-the-source-generated-range.md",
+    "research/nima/reflection-trace-and-graph-differentiation-close-the-remaining-evans-residual-port-riggings.md",
+    "research/nima/the-closed-loop-cone-domain-imposes-the-maximal-isotropic-fourier-poisson-relation.md"
+  ],
+  "Green_identity_typing": {
+    "schematic": "<C psi,chi>-<psi,C^times chi>=<Tr psi,J_partial Tr chi>",
+    "domain": "Tr psi belongs to Lambda_plus=Graph(T)",
+    "annihilator": "J_partial Lambda_plus=Lambda_minus=ran(delta_T^*) represents the conormal/annihilator of the sewn domain"
+  },
+  "correction": {
+    "previous_temptation": "identify delta_T^*v directly with the determinant left-kernel covector phi",
+    "wrong_type": "delta_T^*v is a boundary covector, while phi is an interior dual solution in ker(C^times)",
+    "actual_role": "the Cech/Clifford normal specifies boundary data for a dual problem; it does not solve the dual bulk equation"
+  },
+  "required_lift": {
+    "Poisson_operator": "P_s^times: admissible boundary conormals -> ker(C_max(s)^times) or the appropriate defect space",
+    "Calderon_condition": "Tr_partial P_s^times(delta_T^*v) has the prescribed conormal component and lies in the dual Cauchy-data space",
+    "candidate_left_state": "phi=P_s^times(delta_T^*v)",
+    "triangle_equation": "cofactor_C(dot C_f)=B_f^times(P_s^times(delta_T^*v)) tensor c_det"
+  },
+  "existence_obstruction": {
+    "Cauchy_data": "not every boundary conormal is the trace of a homogeneous dual solution",
+    "criterion": "delta_T^*v must lie in the appropriate Calderon range, modulo boundary data of the restricted adjoint domain",
+    "Fredholm_version": "at a determinant zero the admissible conormal and the left defect space must have matching determinant-line incidence"
+  },
+  "interior_residual": {
+    "Evans": "all regular derivative, wall, reciprocal, ordinary, and linking ports are bounded and source-summable",
+    "open_vector": "B_Sigma^dagger u_z=I^(0)+I^(1)+I^(wall)+I^(recip)+I^(link)",
+    "meaning": "this vector is the explicit failure of the endpoint-normal data to extend to the required interior left-kernel/chain state",
+    "not_domain": "the obstruction is no longer trace regularity; it is exact bulk cancellation coefficient by coefficient"
+  },
+  "C34_relation": {
+    "common": "kappa_0:C_common->Phi",
+    "difference": "kappa_1:J2 D->G_history",
+    "Hadamard": "if both component maps exist, the signed C34 cross current maps automatically to the theta forcing reservoir",
+    "interpretation": "kappa_1 is the likely source-level realization of the Poisson lift on the difference row, while kappa_0 fixes its non-Hilbert common boundary normalization",
+    "still_open": "neither componentwise map has been constructed on the completed source carriers"
+  },
+  "finite_range_warning": "Finite synthesis and its adjoint give a Poisson-like lift on the finite source-generated range, but polar normalization loses uniform boundedness at completion. It cannot be promoted to P_s^times without a completion-stable range/domain theorem.",
+  "next_iteration": "Formulate the Calderon-range obstruction as a quotient class: project delta_T^*v to boundary conormals modulo traces of dual homogeneous solutions. Compare this class with the five-port residual and determine whether the C34 Hadamard difference row gives an explicit null-homotopy.",
+  "iteration_result": "The endpoint Cech-Clifford identity closes orientation but stops at the boundary cotangent space. The determinant cofactor needs an interior left-kernel covector. The missing edge between them is a Poisson/Calderon lift, and its concrete obstruction is the already typed five-port Evans residual. This locates the missing shared triangle one analytic layer more precisely.",
+  "rh_implication": false
+}

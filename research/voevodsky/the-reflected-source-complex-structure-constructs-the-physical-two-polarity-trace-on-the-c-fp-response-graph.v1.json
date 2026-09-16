@@ -1,0 +1,49 @@
+{
+  "schema": "marici.voevodsky.reflected-source-physical-trace-comparison.v1",
+  "status": "analytic_comparison_constructed_on_X_resp",
+  "correction": "No comparison Dom(C_FP)->Dom(H) is needed. The bounded response attachment A=Tr_joint already has source X_resp=Dom(C_FP)_graph direct_sum U and target H_hor. The earlier Q_plus/Q_minus construction was on the wrong graph and is withdrawn as the C_FP construction.",
+  "source": {
+    "space": "X_resp=Dom(C_FP)_graph direct_sum U",
+    "reciprocity": "R_src(u,x)=(u reflected in the radial coordinate, x) (or the declared unitary reciprocal label transport on U)",
+    "assumptions_checked_by_the_declared_norms": "R_src is unitary on H1(R) direct_sum U and R_src^2=I",
+    "complex_structure": "K_src=i R_src",
+    "laws": "K_src is unitary and K_src^2=-I"
+  },
+  "positive_trace": {
+    "name": "A=Tr_plus",
+    "formula": "A(u,x)=J_orb(iota u+B x)",
+    "typing": "A:X_resp->H_hor",
+    "bounded": true
+  },
+  "negative_trace": {
+    "formula": "Tr_minus=-Tr_plus K_src=-i A R_src",
+    "construction": "The source is first reciprocally reflected, which changes the one-sided causal history into the reflected anti-causal history; the factor -i fixes the Clifford orientation.",
+    "typing": "Tr_minus:X_resp->H_hor",
+    "bounded_norm": "||Tr_minus||=||Tr_plus||",
+    "not_duplicate": "Tr_minus is sourced through the distinct reflected anti-causal source transport. Equality with a scalar duplicate would require the extra symmetry A R_src=lambda A, which is neither assumed nor inferred."
+  },
+  "physical_trace": {
+    "formula": "Tr_phys x=(Tr_plus x,Tr_minus x)",
+    "typing": "Tr_phys:X_resp->H_hor tensor C^2_pol",
+    "bound": "||Tr_phys x||^2=||A x||^2+||A R_src x||^2 <=2||A||^2||x||_Xresp^2"
+  },
+  "reciprocal_square": {
+    "physical_quarter_turn": "J_phys(h_plus,h_minus)=(-h_minus,h_plus)",
+    "component_identities": [
+      "Tr_plus K_src=-Tr_minus",
+      "Tr_minus K_src=Tr_plus"
+    ],
+    "intertwining": "Tr_phys K_src=J_phys Tr_phys",
+    "reason_for_complex_structure": "An involution cannot intertwine nontrivially with J_phys: if Tr_phys R_src=J_phys Tr_phys and R_src^2=I, then Tr_phys=-Tr_phys. The source transport in the quarter-turn square must therefore be K_src=iR_src, not bare reflection."
+  },
+  "green_form": {
+    "Sigma": "diag(I,-I)",
+    "trace_range_identity": "<Tr_phys K_src x,Sigma Tr_phys K_src y>=-<Tr_phys x,Sigma Tr_phys y>",
+    "domain": "all x,y in X_resp",
+    "derivation": "the reciprocal square and J_phys^* Sigma J_phys=-Sigma",
+    "scope": "This proves anti-isometry for the pulled-back physical Green form on the actual trace range. Identification with an independently normalized cone Green boundary form remains a separate equality, not part of this analytic comparison."
+  },
+  "half_density_normalization": "The phase -i has modulus one, so the reflected channel retains the norm and endpoint half-density normalization of A. Its endpoint orientation is reversed by R_src; no second fitted amplitude is introduced.",
+  "remaining_typed_residual": "Compatibility with the full C_FP action requires the operator relation K_src Dom(C_FP)=Dom(C_FP) and the intended commute/anticommute law between K_src and C_FP on its common core. H1 graph-norm invariance proves bounded domain transport but does not by itself choose that operator law.",
+  "rh_implication": false
+}

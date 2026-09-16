@@ -1,0 +1,43 @@
+{
+  "schema": "marici.voevodsky.target-equivalence.requirement-2-audit.v1",
+  "requirement": "quotient-contraquotient compatibility",
+  "verdict": "finite_boundary_analytic_realization_closed_completed_target_open",
+  "analytic_packet": {
+    "D_plus": "(1/125)[[1,3],[3,9]]",
+    "D_minus": "(1/125)[[81,-27],[-27,9]]",
+    "radicals": {"R_plus": "span(-3,1)", "R_minus": "span(1,3)"},
+    "ranges": {"V_plus": "span(1,3)", "V_minus": "span(3,-1)"},
+    "quarter_turn": "F=[[0,-1],[1,0]], F^2=-I"
+  },
+  "exact_coherences": [
+    "F(R_plus)=R_minus",
+    "F(R_minus)=R_plus projectively",
+    "F(V_plus)=V_minus",
+    "F(V_minus)=V_plus projectively",
+    "R_plus intersection R_minus=0"
+  ],
+  "tetrahedral_reading": "The same F coherently exchanges both quotient objects H/R_plus <-> H/R_minus and contraquotient objects ran(D_plus) <-> ran(D_minus); faithfulness of the joint quotient follows from the zero radical intersection.",
+  "Hadamard_refinement": {
+    "common": "C retains the shared source-volume contraquotient",
+    "difference": "D retains the relative trace-ideal quotient",
+    "pairing": "C^*J2D+D^*J2C=Delta Q",
+    "warning": "the common row cannot be discarded before the cross pairing"
+  },
+  "Tate_twist": {
+    "formula": "R_gamma=[[0,gamma^-1],[gamma,0]], Z=diag(1,-1), F_gamma=Z R_gamma",
+    "laws": "R_gamma^2=I, ZR_gamma+R_gamma Z=0, F_gamma^2=-I",
+    "qualification": "algebraic for gamma nonzero; orthogonal/unitary only when |gamma|=1"
+  },
+  "open": [
+    "identify these finite radicals and ranges with the source-selected completed theta/Weil boundary packet",
+    "prove balanced inertia and closed-range compatibility through cutoff completion",
+    "construct the missing pair-to-Euler joint graph Q_X without deleting its source kernel",
+    "show the same quarter-turn respects the Poisson/Weyl realization"
+  ],
+  "verification": {
+    "passed": "python research/voevodsky/checkers/check_two_polarity_quotient_contraquotient_coherencers.py",
+    "environment_blocked": "check_tate_twisted_endpoint_quotient_contraquotient_c4.py requires unavailable sympy; its displayed 2x2 identities are direct algebra"
+  },
+  "disposition": "Requirement 2 may be marked closed as a finite boundary tetrahedron, but not as a completed target-equivalence requirement. Its completion now depends on requirements 6 and 7 rather than further finite quotient algebra.",
+  "rh_implication": false
+}

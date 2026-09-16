@@ -1,0 +1,43 @@
+{
+  "schema": "marici.voevodsky.finite-wall-Douglas-range-no-go.v1",
+  "status": "native_wall_Douglas_route_rejected_exactly",
+  "sources": [
+    "research/voevodsky/the-native-broken-h1-riesz-columns-are-piecewise-exponential-so-they-cannot-equal-theta-cut-incidence-columns.v1.json",
+    "research/voevodsky/the-finite-broken-h1-history-wall-graph-is-a-common-domain-for-evans-histories-and-prime-cut-columns.v1.json",
+    "research/nima/the-wall-extended-cut-atom-green-norm-is-label-independent.md"
+  ],
+  "finite_stage": {
+    "walls": "A_X={0} union {log p:p<=X}",
+    "trace": "Gamma_X:H_wall,X->C^(A_X), taking the retained wall jump coordinates",
+    "incidence": "B_X e_p=p^(-1/2)c_(log p)"
+  },
+  "Riesz_range": {
+    "fact": "every vector in ran(Gamma_X^*) is a finite linear combination of native wall-jump Riesz vectors",
+    "ODE": "on every open component interval of R\\A_X, each such vector satisfies -k''+k=0",
+    "shape": "piecewise span{exp(t),exp(-t)}"
+  },
+  "theta_range": {
+    "cut_column": "c_a consists of g_a(t)=Phi(t+a) and h_a(t)=1_(t<=a)Phi(a-t), with regular derivative built from Phi' and jump -Phi(0)",
+    "curvature": "on a wall-free interval its nonzero profile is a translate/reflection of the completed theta forcing Phi",
+    "not_ODE": "Phi is not a solution of -Phi''+Phi=0 on an open interval; by analyticity, such an identity would force Phi to be a global two-exponential function, contradicting its superexponential theta decay and nonzero value",
+    "consequence": "for every retained prime p, c_(log p) is not in ran(Gamma_X^*)"
+  },
+  "Douglas": {
+    "proposed": "B_X B_X^*<=Gamma_X^* Gamma_X",
+    "range_consequence": "finite-dimensional Douglas factorization would imply ran(B_X) subset ran(Gamma_X^*) and B_X=Gamma_X^* C_X for a contraction C_X",
+    "contradiction": "B_X contains the nonzero theta cut column p^(-1/2)c_(log p), which is not in ran(Gamma_X^*)",
+    "verdict": "the inequality fails at every nonempty finite prime cutoff under the native broken-H1 wall metric"
+  },
+  "no_numeric_spectrum_needed": "The range obstruction is exact and stronger than finding a negative numerical eigenvalue. Any finite Gram discretization that appears positive has projected away the theta curvature or enlarged the wall-Riesz range implicitly.",
+  "architectural_consequence": {
+    "rejected": ["native adjoint equality B=Gamma^*", "native Douglas absorption BB^*<=Gamma^*Gamma"],
+    "survives": [
+      "source-pulled metric whose Riesz map is built from the theta cut synthesis",
+      "faithful direct-sum/joint graph retaining wall Riesz and theta incidence as independent positive legs",
+      "an enlarged observer including interior theta-profile functionals, not wall jumps alone"
+    ]
+  },
+  "next": "Use the already constructed labelled source comparison J(q_(k log p))=u_(p,k), whose range is closed and forms are bibounded, as the metric transport. Test the ordered Wronskian/linking form for continuity and radical annihilation on that source-generated range; do not attempt further native-wall Douglas fits.",
+  "conclusion": "The native wall observer is too small even after all prime jumps are retained. Its adjoint range consists of piecewise exponential Green kernels, while arithmetic incidence consists of theta cut profiles. Therefore neither equality nor Douglas domination can build the positive apex from wall traces alone. The common positive carrier must retain the full labelled theta-cut synthesis or an equivalent source-pulled metric.",
+  "rh_implication": false
+}

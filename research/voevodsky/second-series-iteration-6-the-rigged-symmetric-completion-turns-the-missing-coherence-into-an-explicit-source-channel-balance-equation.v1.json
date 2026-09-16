@@ -1,0 +1,50 @@
+{
+  "schema": "marici.voevodsky.higher-horn-audit.second-series.iteration-6.v1",
+  "status": "symmetric_descriptor_block_written_source_balance_exposed_unchanged_Evans_promotion_conditional",
+  "fresh_sources": [
+    "research/grothendieck/the-source-forcing-has-a-canonical-rigged-transpose-before-any-hilbert-adjoint.md",
+    "research/nima/the-three-port-schur-reduction-is-one-dressed-theta-weyl-scalar-over-a-coercive-arithmetic-complement.md",
+    "research/voevodsky/correction-four-sector-clifford-positivity-does-not-cancel-the-forcing-pairing-the-required-apex-is-an-independent-arithmetic-balance.v1.json"
+  ],
+  "minimal_rigged_block": {
+    "space": "E_history direct-sum C_source, mapped to E_history' direct-sum C",
+    "operator": "A_a=[[D0,B_Phi],[B_Phi^times,a]]",
+    "weight": "P=diag(I_history,0)",
+    "pencil": "A_a-zP",
+    "symmetry": "the cross terms are transpose mates in the fixed test-dual pairing; A_a is rigged symmetric when D0 and a have the declared symmetry"
+  },
+  "kernel_equations": {
+    "history": "(D0-z)u+c Phi=0",
+    "source": "B_Phi^times(u)+a c=0",
+    "normalization": "a nonzero kernel vector may be scaled to c=1; c=1 is not itself an operator equation",
+    "Evans": "the independently constructed Evans history solves the first row with c=1"
+  },
+  "new_balance": {
+    "condition_for_unchanged_Evans": "B_Phi^times(u_z)+a(z)=0",
+    "Hermitian_shadow": "<Phi,u_z>+a(z)=0, with real-part convention in the energy identity",
+    "meaning": "the reverse incidence does not merely symmetrize notation; it creates a genuinely new source-channel equation",
+    "forbidden_repair": "define a(z) after the fact as -B_Phi^times(u_z); this manufactures the characteristic from the Evans state"
+  },
+  "three_port_completion": {
+    "variables": "theta amplitude c, arithmetic complement x, history u",
+    "history_row": "(D0-z)u+B x+V c=0",
+    "arithmetic_row": "B^dagger u+D_U(z)x=0",
+    "theta_row": "V^dagger u+D_theta(z)c=0",
+    "elimination": "x=-Q_U(z)^-1 B^dagger R_H(z)V c and the remaining theta equation is F_theta(z)c=0",
+    "comparison": "the scalar source-balance equation is exactly the dressed theta Schur characteristic F_theta=0"
+  },
+  "unchanged_vs_dressed": {
+    "unchanged": "setting x=0 preserves the original Evans history but requires B^dagger u_z=0, the open five-port shell cancellation",
+    "dressed": "allowing x nonzero solves the reverse row but changes the history by R_H Bx",
+    "consequence": "one cannot simultaneously demand the unchanged Evans history and use arithmetic backreaction unless the independent residual vanishes"
+  },
+  "weighted_Green_identity": {
+    "cross_cancellation": "the B_Phi/B_Phi^times terms cancel in <A Psi,Chi>-<Psi,A Chi> by transpose duality",
+    "remaining": "only the history Green boundary and (z-conjugate(w))<u_w,u_z> survive",
+    "result": "the symmetric block has the weighted Weyl 3-cell once its domain and boundary trace are complete"
+  },
+  "higher_coherence_effect": "The missing top mate is now an explicit equation rather than an abstract comparison: the backward/transpose face forces the source-channel balance. The forward Evans face and backward conservative face share a kernel precisely when that equation holds. This is the algebraic content of filling their common triangle.",
+  "next_iteration": "Compare the minimal scalar a(z) and the three-port dressed F_theta(z) with the determinant-line Xi section. Determine whether source grading and reciprocal covariance constrain their ratio to a nowhere-zero unit, or whether an arbitrary holomorphic diagonal remains.",
+  "iteration_result": "Rigged symmetrization succeeds formally, but it necessarily adds a source equation. On the normalized Evans state that equation is the missing forcing balance. The arithmetic complement can absorb it only by dressing the history. Therefore the exact independent gate is equivalence between the original Xi Evans kernel and the dressed symmetric descriptor kernel, not existence of the transpose alone.",
+  "rh_implication": false
+}

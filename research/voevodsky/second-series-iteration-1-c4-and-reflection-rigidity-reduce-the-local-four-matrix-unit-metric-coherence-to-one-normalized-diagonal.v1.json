@@ -1,0 +1,46 @@
+{
+  "schema": "marici.voevodsky.higher-horn-audit.second-series.iteration-1.v1",
+  "status": "conditional_quadratic_rigidity_theorem_derived",
+  "fresh_sources": [
+    "research/nima/contracts/g4-linking-fourier-poisson-candidate.v1.json",
+    "research/nima/the-first-adams-four-matrix-unit-test-is-specified-but-not-yet-evaluable.md",
+    "research/nima/the-resolved-four-matrix-unit-test-reduces-to-one-mixed-tail-pairing.md"
+  ],
+  "linear_data": {
+    "Q": "[[1/2,1/4],[1/2,-1/4]]",
+    "induced_quarter_turn": "F=[[0,-1/2],[2,0]]",
+    "reflection_parity": "P=diag(1,-1)",
+    "relations": ["F^2=-I", "P^2=I", "PF=-FP"]
+  },
+  "metric_defect": {
+    "definition": "Delta=G_St-Q^*G_theta Q on the even/odd source plane",
+    "target": "Delta=0 is exactly the four-matrix-unit Green-form coherencer",
+    "Hermitian_general": "Delta=[[a,c],[conj(c),d]]"
+  },
+  "C4_constraint": {
+    "assumption": "both independently constructed forms are invariant under the same transported quarter-turn, hence F^* Delta F=Delta",
+    "solution": "a=4d and c=-conj(c)",
+    "meaning": "C4 invariance reduces a Hermitian four-entry defect to one real diagonal parameter and one purely imaginary oriented parameter"
+  },
+  "reflection_constraint": {
+    "assumption": "both forms have the declared even/odd reflection covariance, hence P^* Delta P=Delta",
+    "consequence": "c=0",
+    "remaining": "Delta=a diag(1,1/4)"
+  },
+  "normalization": {
+    "fixed_even_column": "w_theta=(1/2,1/2) has norm one in endpoint metric 2I",
+    "criterion": "one independently verified even-wall diagonal equality forces a=0",
+    "result": "Delta=0, including the odd diagonal and both off-diagonal matrix units"
+  },
+  "theorem": "If the Stieltjes and theta-history Green forms are separately invariant under the source-identified F and reflection P, and agree on the normalized even wall generator, then Q is automatically an isometry on the full local endpoint plane.",
+  "why_not_yet_closed": {
+    "missing_covariance": "the repository has endpoint F_C and linear Q, but has not proved that the complete theta-history form and independent Stieltjes form are both invariant under this same transported F on a common domain",
+    "parity_domain": "reflection orthogonality must hold for the full relative Green forms, not an auxiliary Hilbert metric",
+    "completion": "the argument is finite/local and requires cutoff-natural closed forms",
+    "fixture": "the synthetic G4 candidate cannot authorize these assumptions"
+  },
+  "higher_coherence_effect": "The supposedly four independent metric 2-cells are the orbit of one cell under the dihedral Clifford relations. Once the linear comparison intertwines F and P, top-level coherence can force the remaining matrix units from one source normalization. This is a concrete instance where a higher symmetry coherence collapses lower coherence data without fitting coefficients.",
+  "next_iteration": "Audit the two source forms for the exact identities G(Fx,Fy)=G(x,y) and G(Px,Py)=G(x,y). If one form is symplectic/skew rather than Hermitian under F, derive the corrected covariance sign and recompute the invariant defect space.",
+  "iteration_result": "The local metric gate may be much smaller than prior audits stated. Under the already suggested dihedral C4/reflection action, the full four-matrix-unit equality follows from covariance and one even-wall norm. The open content moves from four integrations to proving that both independent Green forms carry the same symmetry representation.",
+  "rh_implication": false
+}

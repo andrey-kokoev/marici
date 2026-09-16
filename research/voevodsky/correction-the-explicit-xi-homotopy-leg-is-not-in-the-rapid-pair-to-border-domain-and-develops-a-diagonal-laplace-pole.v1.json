@@ -1,0 +1,37 @@
+{
+  "schema": "marici.voevodsky.correction.relative-Evans-pair-homotopy-domain.v1",
+  "status": "algebraic_relative_lift_retained_bordered_chain_lift_not_constructed",
+  "corrects": "research/voevodsky/the-fixed-forcing-leg-and-the-exact-history-mismatch-construct-the-relative-evans-to-pair-lift-modulo-xi.v1.json",
+  "algebraic_identity": {
+    "valid": "Phi tensor u_- - Phi tensor u_+ = tau(z)(Phi tensor exp(zq))",
+    "scope": "an algebraic/exponential-distribution history module large enough to contain exp(zq)",
+    "not_yet": "the rapid projective pair carrier on which T_pair_to_border and its entire Laplace jets were constructed"
+  },
+  "domain_obstruction": {
+    "homotopy_leg": "h_z(q)=exp(zq)",
+    "failure": "h_z is not a rapidly decaying theta/history vector on the full line or positive tail",
+    "tensor": "Phi tensor h_z therefore need not belong to the declared rapid projective pair module",
+    "consequence": "Xi-divisibility before applying the bordered functor does not imply Xi-divisibility after it unless the functor extends continuously to this exponential homotopy leg"
+  },
+  "explicit_shell_pole": {
+    "two_parameters": "use z for the Evans history and zeta for the bordered Laplace readout",
+    "correlation": "rho_(Phi,h_z)^[a,b](t)=exp(zt) A_[a,b](z), where A_[a,b](z)=integral_a^b Phi(x)exp(zx)dx",
+    "Laplace": "R_(Phi,h_z)(zeta)=A_[a,b](z)/(zeta-z) for Re(zeta-z)>0, followed by meromorphic continuation",
+    "diagonal": "at zeta=z the defining integral is A_[a,b](z) integral_0^infinity 1 dt and diverges",
+    "generic_nonzero": "A_[a,b](z) is not identically zero for a nonzero theta forcing and a nonempty shell"
+  },
+  "effect_on_mod_tau": {
+    "formal_difference": "T_border(Delta_-)-T_border(Delta_+)=tau(z) A_[a,b](z)/(zeta-z) in the off-diagonal two-parameter region",
+    "problem": "restriction to the physical diagonal zeta=z is not a holomorphic tau multiple; it has an unresolved diagonal pole",
+    "multiplicity": "pointwise equality at tau(z0)=0 survives for the zero-order glued history, but a holomorphic mapping-cone lift preserving all divisor jets does not follow"
+  },
+  "legal_repairs": [
+    "retain z and zeta as independent parameters, construct the two-variable mapping cone, and prove a source-prescribed diagonal finite-part/residue cancellation",
+    "modify the homotopy by a cutoff/relative-tail subtraction that lies in the bordered graph domain while preserving its boundary tau",
+    "define the pair-to-border operation on an exponential rigging with a renormalized Laplace transform and verify Stokes, C4, and positivity there"
+  ],
+  "noncircularity_rule": "The diagonal pole subtraction must be fixed by the Green/Stokes source convention before Xi specialization; multiplying by tau and declaring the value zero at its zeros is not a holomorphic extension when the quotient still has 1/(zeta-z).",
+  "next_test": "Compare the existing bivariate moving-seam response with the meromorphic kernel tau(z)A_[a,b](z)/(zeta-z). Determine whether its (1+partial_c) Stokes boundary supplies exactly the required diagonal finite part without erasing the independent Xi channel.",
+  "conclusion": "Fixing Phi in one tensor leg gives the correct algebraic variance and a formal Xi-divisible difference, but the explicit homotopy coefficient is an exponential generalized mode outside the rapid bordered domain. Its Laplace image has a pole on the physical parameter diagonal. The relative Evans-to-pair lift therefore remains open at a precise two-parameter renormalized-domain gate.",
+  "rh_implication": false
+}

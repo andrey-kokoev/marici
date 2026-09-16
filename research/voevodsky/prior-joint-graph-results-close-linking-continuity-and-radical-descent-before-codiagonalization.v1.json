@@ -1,0 +1,49 @@
+{
+  "schema": "marici.voevodsky.joint-graph-linking-radical-closure.v1",
+  "status": "pre_codiagonal_positive_carrier_closed_post_codiagonal_gate_open",
+  "prior_sources": [
+    "research/voevodsky/prime-half-density-makes-the-countable-wall-wronskian-form-continuous.v1.json",
+    "research/voevodsky/the-continuous-wronskian-form-has-a-unique-bounded-skew-operator-and-can-be-added-without-changing-the-old-green-boundary-form.v1.json",
+    "research/nima/retaining-the-source-coordinate-closes-the-global-rigged-joint-graph.md",
+    "research/voevodsky/the-ordered-linking-form-cannot-be-identified-with-the-old-first-order-boundary-green-form.v1.json"
+  ],
+  "continuity": {
+    "weighted_trace": "gamma_(1/2)(f)=(p^(-1/2)f(log p)_avg)_p is bounded H_wall->ell2(primes)",
+    "jump": "j(f)=([f]_(log p))_p is bounded H_wall->ell2(primes)",
+    "linking": "omega_link=omega_reg+omega_wall is a continuous skew form on H_wall and its four-presentation orbit",
+    "normalization": "p^(-1/2) is the existing arithmetic half-density, not a convergence fit"
+  },
+  "placement": {
+    "Riesz": "omega_link(f,g)=<J_link f,g> on H_orb with unique bounded skew-adjoint J_link",
+    "coefficient": "K_link=-J_link/2, fixed by the radial source equation",
+    "block_role": "an interior skew response block on the faithful response graph",
+    "not": "the old symmetric first-order Green boundary form"
+  },
+  "hostile_to_form_identification": {
+    "compact_core": "for nonconstant real compactly supported f and g=f', the old Green boundary form is zero",
+    "linking": "omega_reg(f,f')=2 integral |f'|^2>0",
+    "conclusion": "old Green and ordered linking forms cannot be identified; direct-sum/skew-block augmentation is mandatory"
+  },
+  "faithful_joint_graph": {
+    "map": "x maps to (x,Ax,Cx), retaining the source coordinate",
+    "closed": true,
+    "cutoff_completion": "finite labelled packets converge in the product rigged topology",
+    "positive_form": "contains the source norm/seminorm family as a direct summand",
+    "common_radical": "zero",
+    "linking_descent": "automatic because every continuous form annihilates the zero radical"
+  },
+  "impact_on_open_gates": {
+    "closed": [
+      "ordered Wronskian/linking continuity",
+      "canonical skew block placement",
+      "radical annihilation on the retained faithful graph",
+      "global closedness and cutoff compatibility before output pushforward"
+    ],
+    "not_needed": "native wall-adjoint equality or native wall Douglas domination",
+    "open": "the output codiagonal/pushout that forgets the source coordinate may have nonclosed range and a nonzero kernel; positivity and radical descent must be retested there"
+  },
+  "architectural_reading": "The user's order is validated most cleanly by retaining both quotient/contraquotient observations and the source coordinate through the common joint graph. At that stage positivity and radical independence are exact. The dangerous operation is the later codiagonal that attempts to turn the faithful relative object into one scalar/conservative output.",
+  "next_test": "Materialize the source-generated codiagonal D(x,Ax,Cx)=Ax+T Cx (with the fixed K_link block included), compute ker D on finite packets, and test whether the positive joint energy is constant on its fibers. If not, no positive form descends after source forgetting; the apex must remain graph-valued.",
+  "conclusion": "Prior work closes the linking and radical gates on the correct faithful carrier. The common radical is zero because the source coordinate is retained. The remaining quotient problem begins only after codiagonalization/source forgetting, where compact incidence can reintroduce nonclosed range and nontrivial fibers.",
+  "rh_implication": false
+}

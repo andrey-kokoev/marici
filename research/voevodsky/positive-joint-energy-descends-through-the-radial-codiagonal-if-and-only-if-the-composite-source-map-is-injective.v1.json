@@ -1,0 +1,49 @@
+{
+  "schema": "marici.voevodsky.positive-energy-codiagonal-descent-criterion.v1",
+  "status": "exact_descent_criterion_reduces_to_cycle_quotient_plus_balance_transversality",
+  "fresh_sources": [
+    "research/nima/the-full-oriented-radial-feature-is-faithful-while-its-codiagonal-needs-a-separate-kernel-audit.md",
+    "research/nima/the-composite-radial-kernel-is-an-extension-of-interval-cycles-by-realized-endpoint-wronskian-balances.md",
+    "research/nima/common-history-forces-the-interval-cycle-quotient-but-does-not-make-it-a-green-radical.md",
+    "research/nima/contracts/g4-radial-interface-candidate.v1.json"
+  ],
+  "setup": {
+    "source": "C",
+    "full_feature": "U:C->X",
+    "codiagonal": "D:X->Y",
+    "positive_energy": "E_C(c)=||c||_src^2+||Uc||_X^2, or any positive-definite retained-joint-graph form",
+    "composite": "K=DU"
+  },
+  "descent_theorem": {
+    "claim": "E_C is constant on fibers of K iff ker(K)={0}",
+    "necessity": "if k in ker(K), then k and 0 lie in the same fiber; descent requires E_C(k)=E_C(0)=0; positive definiteness gives k=0",
+    "sufficiency": "if K is injective, every fiber is a singleton",
+    "consequence": "a positive-definite source-retaining energy cannot descend through any nontrivial codiagonal quotient"
+  },
+  "kernel_sequence": {
+    "exact": "0->ker(U)->ker(DU)->ran(U) intersect N_bal->0",
+    "balance": "N_bal=ker(D) consists of complete endpoint-Wronskian balances",
+    "injectivity_criterion": "DU injective iff ker(U)=0 and ran(U) intersect N_bal={0}"
+  },
+  "common_history": {
+    "kernel": "ker(U)=Z_1(G), the interval-cycle space, before source-cycle quotient",
+    "therefore": "positive joint energy cannot descend through DU on the unquotiented polarized source whenever Z_1(G) is nonzero",
+    "correct_order": "first quotient C by Z_1(G), then use the injective common-history realization, then test balance transversality ran(U_bar) intersect N_bal={0}"
+  },
+  "radical_correction": {
+    "wrong": "claim that the source-retaining positive energy annihilates interval cycles",
+    "reason": "it contains ||c||_src^2 and therefore has zero radical",
+    "right": "interval cycles are a feature kernel authorizing a prior quotient, not the Green radical of the faithful graph",
+    "postquotient_gate": "a descended positive energy exists only if the source range realizes no nonzero endpoint-Wronskian balance"
+  },
+  "Xi_scope": "The completed-theta source ray is known to miss the interval-cycle kernel, but that does not establish balance transversality for the full polarized quotient or the independent Evans lift.",
+  "verification": {
+    "command": "python research/nima/checkers/check_g4_radial_interface_conformance.py",
+    "result": "passed",
+    "hostiles_rejected": 9,
+    "qualification": "synthetic interface-shape conformance only; no Green nondegeneracy or Xi cancellation"
+  },
+  "next_test": "Compute ran(U_bar) intersect N_bal on finite polarized packets after exact interval-cycle quotient. Equivalently solve U_bar c=(0,e_+,2e_+;0,e_-,2e_-) and report whether any nonzero c survives. This is the sole remaining algebraic descent gate before metric/conservative identification.",
+  "conclusion": "The energy-descent condition is sharper than radical annihilation: because the faithful joint energy is positive definite, descent through the codiagonal is possible only when the composite source readout is injective. The required order is exactly cycle quotient first, endpoint-Wronskian balance transversality second, positive apex third.",
+  "rh_implication": false
+}

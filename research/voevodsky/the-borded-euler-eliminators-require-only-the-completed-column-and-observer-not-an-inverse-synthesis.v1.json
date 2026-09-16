@@ -1,0 +1,45 @@
+{
+  "schema": "marici.voevodsky.completed-bordered-Euler-eliminator-criterion.v1",
+  "status": "exact_eliminators_written_no_valid_completion_failure_yet_identified",
+  "sources": [
+    "research/nima/the-euler-endpoint-coboundary-has-a-canonical-bordered-determinant-lift.md",
+    "research/nima/the-exact-theta-cut-columns-close-the-seam-trace-class-return-hypothesis.md",
+    "research/nima/euler-half-density-forces-collapse-of-the-weighted-synthesis-gram-margin.md",
+    "research/nima/the-subtracted-outgoing-trace-is-an-unbounded-wall-cocycle-not-a-finite-schur-block.md"
+  ],
+  "finite_factorization": {
+    "border": "D=[[I,u],[E,0]], J=Eu",
+    "left_eliminator": "L=[[I,0],[-E,1]]",
+    "right_eliminator": "R=[[I,-u],[0,1]]",
+    "identity": "L D R=I direct-sum (-J)",
+    "inverses": "L^-1=[[I,0],[E,1]], R^-1=[[I,u],[0,1]]"
+  },
+  "completion_criterion": {
+    "necessary_and_sufficient_for_same_banach_pair": "u:C->V is a continuous completed column and E:V->C is a continuous completed observer on the chosen common domain/topology",
+    "does_not_require": ["a lower frame bound for Euler synthesis", "an inverse of synthesis", "polar normalization G^-1/2", "a Hilbert adjoint identifying all grades"],
+    "consequence": "collapse of the weighted synthesis Gram margin does not obstruct this particular triangular scalarization"
+  },
+  "evidence_audit": {
+    "centered_incidence": "the exact theta-cut incidence B is Hilbert-Schmidt in the seam metric, and its reciprocal return is trace class on the declared chart",
+    "withdrawn_obstruction": "the former 1/log(p) outgoing wall column divergence was explicitly withdrawn for the completed centered constructor and cannot witness failure of R",
+    "remaining_unknown": "the aggregate Euler coboundary column u_X(G), not merely each incidence column or B as an operator, must converge for the specific completed source vector G; E must be continuous on that aggregate column's carrier"
+  },
+  "important_separation": {
+    "noninvertible_synthesis": "prevents completion-stable Morita recovery of arithmetic labels from analytic images",
+    "border_elimination": "only removes one already formed column and one observer",
+    "therefore": "the former may fail while the latter remains bounded and stably scalar"
+  },
+  "exact_next_test": {
+    "column": "compute sup_(X,K)||u_(X,K)(G)||_V and graph-norm Cauchy convergence of u_(X,K)(G)",
+    "observer": "compute the operator/graph bound |E v|<=C||v||_V on the closure containing those columns",
+    "outcomes": {
+      "both_hold": "the completed border is still equivalent to I direct-sum (-J), so it cannot supply C_FP",
+      "column_fails": "the right triangular eliminator R is the boundary anomaly",
+      "observer_fails": "the left triangular eliminator L is the boundary anomaly",
+      "domain_only_failure": "record the exact v in Dom(D) whose image under L or R leaves the conservative domain"
+    }
+  },
+  "warning": "Do not nominate B or B^dagger from Gram collapse or the withdrawn outgoing-wall packet. Only failure of u or E in the exact factorization above is relevant to this bordered complex.",
+  "conclusion": "The two eliminators are elementary and expose a sharper gate. Current prior results do not yet prove that either one fails for the corrected centered constructor. Indeed Hilbert-Schmidt theta-cut incidence makes bounded scalarization plausible. The nontrivial conservative wrap must therefore be supported by an aggregate-column, observer-domain, or separate Green-pairing obstruction—not by inverse synthesis failure.",
+  "rh_implication": false
+}

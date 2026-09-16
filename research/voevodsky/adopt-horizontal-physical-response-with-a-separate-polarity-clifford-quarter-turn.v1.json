@@ -1,0 +1,25 @@
+{
+  "schema": "marici.voevodsky.architecture.horizontal-response-separate-physical-C4.v1",
+  "status": "adopted_for_current_search",
+  "response_carrier": "H_hor, the closed complemented source-recovering four-presentation equalizer",
+  "presentation_action": "gauge trivial on H_hor",
+  "physical_carrier": "H_phys=H_hor tensor C^2_pol",
+  "physical_quarter_turn": {
+    "operator": "J_phys=I_Hhor tensor [[0,-1],[1,0]]",
+    "laws": "J_phys^*=J_phys^-1, J_phys^2=-I, J_phys^4=I",
+    "role": "exchange Green polarities/quotient-contraquotient lines, not Fourier presentation labels"
+  },
+  "indefinite_green_form": {
+    "polarity": "Sigma=I_Hhor tensor diag(1,-1)",
+    "exchange": "J_phys^* Sigma J_phys=-Sigma",
+    "meaning": "the quarter-turn swaps positive and negative boundary polarities"
+  },
+  "trace_requirement": {
+    "needed": "Tr_phys=(Tr_+,Tr_-):X_resp->H_hor tensor C^2_pol",
+    "equivariance": "Tr_- R_src = J_phys Tr_+ after typing the reciprocal source transport",
+    "warning": "duplicating one horizontal trace into both polarity slots would fit the symmetry and is forbidden"
+  },
+  "effect": "Fourier orbit completion is used only to construct H_hor and its norm. The nontrivial C4 coherencer is the independently sourced endpoint/Green polarity operator, eliminating the earlier conflict between equalization and presentation shift.",
+  "next_test": "Construct Tr_- independently by reflected anti-causal half-density history, then verify the reciprocal trace square and the Green anti-isometry before forming common/difference channels.",
+  "rh_implication": false
+}

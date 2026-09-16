@@ -1,0 +1,41 @@
+{
+  "schema": "marici.voevodsky.higher-horn-audit.iteration-2.v1",
+  "status": "missing_RDG_triangle_reduced_to_left_kernel_Green_duality",
+  "fresh_sources": [
+    "research/nima/the-closed-loop-boundary-cone-has-an-exact-schur-kernel-and-relative-determinant.md",
+    "research/nima/the-endpoint-current-border-is-a-boundary-witness-not-the-completed-rh-readout.md",
+    "research/grothendieck/the-source-forcing-has-a-canonical-rigged-transpose-before-any-hilbert-adjoint.md"
+  ],
+  "closed_loop": {
+    "operator": "C(s)=[[A0(s),-B(s)^dagger],[-B(s),D0(s)]]",
+    "right_kernel": "on an invertible open-loop chart, x in ker(I-K_rel) lifts to psi=(x,G Bx) in ker C",
+    "determinant": "the relative determinant of C is det(I-K_rel), with the bare Euler block entering the completed determinant line contravariantly"
+  },
+  "determinant_cofactor_edge": {
+    "finite_formula": "d det(C)[dot C]=Tr(adj(C) dot C)",
+    "simple_zero": "adj(C)=c psi tensor phi, where psi spans ker C and phi spans ker C^times",
+    "line_valued_version": "the canonical cofactor is a section of ker(C) tensor ker(C^times) tensor the complementary determinant line; choosing c or normalized left/right vectors is not intrinsic"
+  },
+  "Green_edge": {
+    "source_column": "B_f:C->E, c maps to c f",
+    "canonical_return": "B_f^times:E'->C, lambda maps to lambda(f)",
+    "metric_independence": "B_f^times exists before any Hilbert Riesz map",
+    "Green_realization": "a conservative rigging would map a right kernel state psi to a dual state lambda_psi in E' and evaluate B_f^times(lambda_psi)"
+  },
+  "triangle_equation": {
+    "determinant_route": "dot C_f -> cofactor_C(dot C_f)=<phi,dot C_f psi> in determinant-line notation",
+    "Green_route": "psi -> lambda_psi -> B_f^times(lambda_psi)=lambda_psi(f)",
+    "required_identification": "phi restricted to the forcing variation equals the rigged Green dual lambda_psi, including determinant-line normalization and reciprocal orientation",
+    "boxed": "cofactor_C(dot C_f) = B_f^times(lambda_psi) tensor c_det"
+  },
+  "why_scalar_Xi_is_insufficient": "Xi determines the determinant divisor and algebraic multiplicity but not the left-kernel covector phi. The Green forcing pairing requires exactly that missing covector. Two pencils can have the same Xi determinant and right-kernel dimension while carrying different left kernels and hence different forcing boundaries.",
+  "simple_vs_multiple": {
+    "simple": "identify the rank-one cofactor tensor psi tensor phi with psi tensor lambda_psi",
+    "multiple": "identify the full determinant-line cofactor/minor complex with the dual Jordan/root-chain complex; ordinary adjugate may vanish and is insufficient"
+  },
+  "relation_to_residue": "The diagonal residue tau A supplies a scalar exact boundary but no left-kernel covector. Its promotion to the R-D-G triangle requires A to be the evaluation of the determinant cofactor covector on the exponential homotopy variation, not merely an equal scalar function.",
+  "independence_condition": "lambda_psi must come from the independently defined Green/test-dual pairing, while phi comes from the determinant cone. Proving they agree is the mate cell; defining one from the other would reproduce the independence failure of the synthetic Stokes G4.",
+  "next_iteration": "At one finite cutoff and a simple zero, write the Schur left kernel explicitly. If phi_E is a left kernel of I-K_rel and phi_H is forced by the other block row, compare <phi,dot C_f psi> term-by-term with B_f^times(lambda_psi). This will expose the exact metric/domain coefficient that remains unsourced.",
+  "iteration_result": "The first missing shared triangle is now analytically represented. It is not equality of two scalar readouts; it is equality between the determinant cone's left-kernel cofactor covector and the independently rigged Green dual of its right-kernel state. This is the precise 2-cell required before a literal 4-horn can form.",
+  "rh_implication": false
+}

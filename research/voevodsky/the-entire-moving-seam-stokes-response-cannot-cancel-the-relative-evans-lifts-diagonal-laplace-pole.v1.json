@@ -1,0 +1,44 @@
+{
+  "schema": "marici.voevodsky.moving-seam-response-vs-diagonal-Laplace-pole.v1",
+  "status": "existing_bivariate_Stokes_repair_rejected_for_relative_Evans_pair_lift",
+  "sources": [
+    "research/voevodsky/correction-the-explicit-xi-homotopy-leg-is-not-in-the-rapid-pair-to-border-domain-and-develops-a-diagonal-laplace-pole.v1.json",
+    "research/voevodsky/one-seam-differential-of-the-bivariate-response-cancels-the-ordinary-plus-endpoint-evans-shell-identically.md"
+  ],
+  "pole_term": {
+    "formula": "H(z,zeta)=tau(z) A_[a,b](z)/(zeta-z)",
+    "residue": "Res_(zeta=z) H=tau(z)A_[a,b](z)",
+    "generic": "A_[a,b] is not identically zero and is not source-known to be divisible by tau"
+  },
+  "moving_seam_response": {
+    "formula": "R_RL(z)=integral_0^infinity exp(-zt) Delta_[a,b](1+partial_c)A_Phi(c,t)dt",
+    "regularity": "holomorphic/entire wherever the sourced shell sections are, because its density remains rapidly decaying",
+    "identity": "I^(0)+I^(end)+R_RL=0 parameterwise and jetwise"
+  },
+  "noncancellation": {
+    "Laurent_reason": "adding a holomorphic function of (z,zeta) cannot change the coefficient of (zeta-z)^(-1)",
+    "required_residue": "pole removal would require tau(z)A_[a,b](z)=0 identically, not merely at isolated Xi zeros",
+    "false": "tau and A_[a,b] are nonzero holomorphic functions",
+    "conclusion": "the existing entire R_RL response cannot regularize the exponential homotopy's diagonal pole"
+  },
+  "path_dependence": {
+    "approach": "let z approach an Xi zero z0 and zeta-z=epsilon",
+    "local": "if tau(z)=tau'(z0)(z-z0)+..., then H is approximately tau'(z0)A(z0)(z-z0)/epsilon",
+    "limits": ["epsilon fixed then z->z0 gives 0", "epsilon=z-z0 gives tau'(z0)A(z0)", "epsilon=o(z-z0) diverges"],
+    "meaning": "setting tau(z0)=0 before the diagonal hides a nonremovable two-variable singularity and does not define a holomorphic mapping-cone section"
+  },
+  "categorical_separation": {
+    "R_RL": "closes the canonical rapid Stokes branch, whose defect is identically zero",
+    "Evans_homotopy": "belongs to an exponential generalized-eigenmode extension and carries resolvent residue",
+    "cannot_identify": "the two sections live in different completion/domain classes even though both use one seam differential"
+  },
+  "surviving_routes": [
+    "keep zeta independent and formulate confinement through a two-variable residue/current rather than diagonal evaluation",
+    "find a source-derived homotopy whose correlation density decays after subtracting its exponential asymptote",
+    "enlarge the target by an explicit pole/residue line and retain the residue tau(z)A_[a,b](z) as a boundary coordinate"
+  ],
+  "preferred_relative_repair": "Use a bordered meromorphic module O(*Delta) with exact sequence O -> O(*Delta) -> O_Delta (residue). The exponential homotopy maps to the residue line rather than being assigned a finite diagonal value. Any positive apex must then include and control this residue coordinate.",
+  "next_test": "Construct the diagonal-residue extension for one shell and transport the C4/Tate action to its residue line. Check whether the residue tau A is null-homotopic through the Xi wall differential without quotienting away A or losing multiplicity.",
+  "conclusion": "The bivariate moving-seam Stokes section is too regular to cancel the relative lift's pole. The correct relative object must remember the diagonal residue as a separate boundary/contraquotient coordinate. This restores a well-typed lift but enlarges the positive apex by one residue line.",
+  "rh_implication": false
+}

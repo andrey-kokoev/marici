@@ -1,0 +1,46 @@
+{
+  "schema": "marici.voevodsky.simple-pole-residue-hyperbolic-Clifford-block.v1",
+  "status": "minimal_positive_residue_extension_constructed",
+  "source": "research/voevodsky/the-diagonal-residue-of-the-relative-evans-pair-homotopy-is-exact-through-the-xi-wall-differential.v1.json",
+  "simple_pole_module": {
+    "normal_coordinate": "delta=zeta-z",
+    "principal_part": "p(z)/delta modulo holomorphic germs",
+    "residue": "Res_Delta(p/delta)=p, with the chosen conormal orientation",
+    "coefficient_space": "H_res, the completed shell-labelled holomorphic residue carrier"
+  },
+  "hyperbolic_double": {
+    "space": "P_res=H_res direct-sum H_res with coordinates (pole coefficient,residue)",
+    "residue_graph": "Lambda_res={(p,p):p in H_res}",
+    "chirality": "S_res=[[0,I],[I,0]], Lambda_res=ker(S_res-I)",
+    "green_sign": "J_res=diag(I,-I)",
+    "relations": ["S_res^2=J_res^2=I", "S_res J_res+J_res S_res=0"]
+  },
+  "positive_crossing": {
+    "quarter_turn": "F_res=J_res S_res",
+    "laws": ["F_res^*=-F_res", "F_res^2=-I", "F_res^4=I"],
+    "formula": "for lambda,mu in Lambda_res, [lambda,F_res mu]_(J_res)=<lambda,J_res F_res mu>=<lambda,S_res mu>=<lambda,mu>",
+    "strict": "[lambda,F_res lambda]=||lambda||^2=2||p||^2>0 for p nonzero"
+  },
+  "Evans_residue": {
+    "coefficient": "p_[a,b](z)=tau(z)A_[a,b](z)",
+    "lift": "lambda_Ev=(p_[a,b],p_[a,b]) in Lambda_res",
+    "Xi_exactness": "p=d_Xi(A) and vanishes on the Xi divisor, while its chain homotopy coefficient A is retained outside the positive residue norm",
+    "role": "the block makes the meromorphic extension positive/coherent but is not the noncollapsing Xi energy"
+  },
+  "C4_conormal_transport": {
+    "parameter_exchange": "if a chart sends delta to -delta, the principal coefficient coordinate changes by -1",
+    "residue_orientation": "the oriented residue coordinate changes by the same conormal sign",
+    "operator": "epsilon I on both hyperbolic coordinates, epsilon=+/-1, optionally multiplied by the unit Tate/metaplectic phase",
+    "compatibility": "this scalar unitary commutes with S_res,J_res,F_res and preserves Lambda_res and its positive crossing",
+    "fourfold": "closure reduces to the already declared product of conormal and Tate phase characters"
+  },
+  "sum_with_endpoint": {
+    "endpoint_block": "the stable sewing graph Clifford crossing",
+    "residue_block": "Lambda_res with the crossing above",
+    "combined": "orthogonal direct sum remains positive and C4-covariant because the factors carry separate typed orientations"
+  },
+  "minimality": "A single residue quotient has no inherited nondegenerate Green form. Doubling it by its pole-coefficient presentation is the minimal graph construction that supplies a Lagrangian, a complementary chirality, and a positive crossing without choosing a fitted metric coefficient.",
+  "remaining_RH_gate": "The residue block vanishes on Xi and only repairs relative coherence. Critical-line confinement still requires the independent arithmetic/common-bulk energy to be nonzero and its Green equation to cancel the theta forcing pairing.",
+  "conclusion": "The pole-residue extension admits the same canonical Clifford mechanism as endpoint sewing. Pole coefficient and oriented residue form the positive chirality graph of a swap; Green sign times swap gives an order-four quarter-turn and an exact positive crossing. This closes the positive realization of the relative homotopy residue, but not the RH-bearing bulk balance.",
+  "rh_implication": false
+}

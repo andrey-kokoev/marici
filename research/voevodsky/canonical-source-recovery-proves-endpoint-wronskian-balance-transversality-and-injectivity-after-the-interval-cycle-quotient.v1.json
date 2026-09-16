@@ -1,0 +1,45 @@
+{
+  "schema": "marici.voevodsky.canonical-radial-balance-transversality.v1",
+  "status": "canonical_postcycle_codiagonal_injectivity_closed",
+  "prior_sources": [
+    "research/voevodsky/filler-uniqueness-fails-on-the-balanced-endpoint-wronskian-kernel-and-holds-after-source-range-saturation.v1.json",
+    "research/voevodsky/source-range-saturation-is-equivalent-to-vanishing-of-one-canonical-response-projector-defect.v1.json",
+    "research/nima/the-composite-radial-kernel-is-an-extension-of-interval-cycles-by-realized-endpoint-wronskian-balances.md",
+    "research/aspect/contracts/theta-rh-interaction-net-state.v17.json"
+  ],
+  "canonical_map": {
+    "forward": "T_PB:P_pair->B_full",
+    "radial_projection": "P_rho:B_full->B_rho",
+    "recovery": "P_rho restricted to R_can=ran(T_PB) is injective with the declared continuous inverse on its source-generated image",
+    "codiagonal": "D:B_full->B_return with N_bal=ker(D) consisting of rho=0 and e=w/2 in each orientation"
+  },
+  "transversality_proof": {
+    "take": "b=T_PB x in R_can intersect N_bal",
+    "balance_implies": "P_rho b=0",
+    "recovery_implies": "b=0, because P_rho is injective on R_can",
+    "therefore": "R_can intersect N_bal={0}"
+  },
+  "kernel_consequence": {
+    "general_sequence": "0->ker(T_PB)->ker(D T_PB)->R_can intersect N_bal->0",
+    "feature_kernel": "ker(T_PB)=Z_1(G), the interval-cycle source kernel in the common-history presentation",
+    "result": "ker(D T_PB)=Z_1(G)",
+    "postquotient": "D T_PB is injective on P_pair/Z_1(G)"
+  },
+  "positive_energy_descent": {
+    "source_quotient": "first pass to P_bar=P_pair/Z_1(G)",
+    "output_range": "Y_can=ran(D T_PB)",
+    "definition": "E_Y(D T_PB x)=E_P([x])",
+    "well_defined": "yes by postquotient injectivity",
+    "positive": "yes if E_P is positive definite on P_bar",
+    "topology": "use the source-pulled/range topology transported by the injective map; no ambient closed-range or bounded output inverse is asserted"
+  },
+  "filler_rigidity": {
+    "fact": "two fillers with the same radial and Stokes faces differ through N_bal",
+    "canonical_saturation": "if both factor through R_can, their difference lies in R_can intersect N_bal=0",
+    "conclusion": "the canonical filler is unique inside the source-generated saturated range"
+  },
+  "v17_effect": "Version 17 has no independent legacy G4 map. Therefore the unavailable legacy projector defect is irrelevant to internal canonical rigidity; T_PB itself supplies the admitted forward realization.",
+  "remaining_Xi_gate": "This closes positive descent for the canonical pair source, not placement of the independent two-stable-history Rosenbrock Xi state in P_bar. The Evans-to-canonical-pair comparison must still preserve tau, multiplicities, C4/Tate transport, and nonzero quotient energy.",
+  "conclusion": "The endpoint-Wronskian balance intersection is not open for the canonical source-generated response: source recovery forces it to vanish. After the exact interval-cycle quotient, the canonical codiagonal is injective and transports the positive energy to its range in the source-pulled topology. The quotient/coherencer/positive-apex chain is therefore complete on P_pair; only the independent Xi source-placement arrow remains.",
+  "rh_implication": false
+}

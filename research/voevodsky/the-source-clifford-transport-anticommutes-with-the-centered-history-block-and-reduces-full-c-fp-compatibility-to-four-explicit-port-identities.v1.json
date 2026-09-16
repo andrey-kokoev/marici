@@ -1,0 +1,38 @@
+{
+  "schema": "marici.voevodsky.c-fp-source-clifford-compatibility.v1",
+  "status": "history_identity_proved_full_three_port_identity_reduced_to_explicit_unverified_rows",
+  "typing_correction": "C_FP acts on H_tot=L2(R) direct_sum C_theta direct_sum U_ar with domain H1(R) direct_sum C_theta direct_sum Dom(D_U). The previously defined K_src on H1(R) direct_sum U was not yet an operator on Dom(C_FP), so the displayed C_FP K_src equation was untyped.",
+  "three_port_operator": "C_FP=[[A,V,B],[V^*,0,0],[B^*,0,D_U]] on the declared three-port domain, with signs adjusted only by the frozen row convention.",
+  "candidate_reciprocity": {
+    "involution": "R_hat=diag(R_H,s_theta,R_U), where (R_H u)(t)=u(-t), s_theta is plus or minus one, and R_U is a unitary involution preserving Dom(D_U)",
+    "source_clifford": "K_hat=i R_hat",
+    "laws": "K_hat^2=-I and K_hat preserves Dom(C_FP) exactly when R_U preserves Dom(D_U)"
+  },
+  "history_calculation": {
+    "centered_block": "A=partial_t under the centered convention",
+    "identity": "R_H partial_t R_H=-partial_t",
+    "conclusion": "A K_hat=-K_hat A on H1(R)",
+    "qualification": "For A=partial_t+cI, reflection gives R_H A R_H=-partial_t+cI, so exact anticommutation requires c=0. This is why the centered convention matters."
+  },
+  "full_anticommutation_test": {
+    "target_identity": "C_FP K_hat=-K_hat C_FP",
+    "equivalent_rows": [
+      "R_H A=-A R_H",
+      "R_H V=-V s_theta",
+      "R_H B=-B R_U",
+      "R_U D_U=-D_U R_U"
+    ],
+    "adjoint_rows": "The V^* and B^* identities follow from the corresponding bounded incidence identities when all involutions are unitary.",
+    "theta_consequence": "Since V1=Phi and the completed theta forcing is reflection-even, R_H V=V. Therefore the anticommuting convention forces s_theta=-1.",
+    "arithmetic_consequence": "The incidence condition requires the complete arithmetic columns to occur in reciprocal-odd pairs: R_H b_p=-B R_U e_p. A single unpaired cut column does not satisfy this identity merely from boundedness.",
+    "diagonal_consequence": "The arithmetic pencil must satisfy R_U D_U=-D_U R_U on Dom(D_U). No recovered source currently supplies this identity."
+  },
+  "trace_comparison": {
+    "trace": "Tr_phys=(A_resp,-A_resp K_hat) after restricting K_hat to the response-source coordinates accepted by A_resp",
+    "square": "Tr_phys K_hat=J_phys Tr_phys",
+    "green": "The pulled-back polarized Green form is anti-invariant under K_hat on the actual trace range.",
+    "dependency": "This trace square is analytic once K_hat is typed; compatibility with the full conservative operator holds exactly when the four displayed port identities hold."
+  },
+  "disposition": "The centered history row selects epsilon=-1. The theta row is compatible after assigning odd source sign to the theta scalar. The full C_FP anticommutation theorem is not established because reciprocal pairing of B and anticommutation of D_U have not been supplied.",
+  "rh_implication": false
+}

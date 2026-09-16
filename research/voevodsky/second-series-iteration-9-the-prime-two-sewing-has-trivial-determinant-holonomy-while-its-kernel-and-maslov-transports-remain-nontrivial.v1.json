@@ -1,0 +1,45 @@
+{
+  "schema": "marici.voevodsky.higher-horn-audit.second-series.iteration-9.v1",
+  "status": "endpoint_determinant_character_computed_scalar_blindness_to_orientation_proved",
+  "fresh_sources": [
+    "research/voevodsky/fixtures/prime_two_reciprocal_boundary_sewing_candidate.v1.json",
+    "research/voevodsky/radial_sewing_networks_are_classified_by_relative_phase_holonomy_not_vertex_phases_20260910.md",
+    "research/voevodsky/checkers/check_c4_orientation_torsor_defect_lift.py"
+  ],
+  "prime_two_sewing": {
+    "action": "q_plus<->q_minus and p_plus<->-p_minus",
+    "matrix": "W=[[0,0,1,0],[0,0,0,-1],[1,0,0,0],[0,-1,0,0]]",
+    "determinant": 1,
+    "calculation": "the q transposition has determinant -1 and the signed p transposition also has determinant -1, so their product is +1",
+    "consequence": "W and its contragredient contribute no ordinary determinant-line phase"
+  },
+  "phase_transport": {
+    "orientation_preserving_edge": "H_e=diag(z_e^-1,z_e)",
+    "determinant": "det H_e=1 for every z_e in U(1)",
+    "cycle": "all relative U(1) holonomies are invisible to ordinary determinant, although the operator transport retains them",
+    "classification": "the phases survive in H^1(graph;U(1)), not in the determinant character"
+  },
+  "C4": {
+    "quarter_turn": "F_C^2=-I on an even-dimensional doubled endpoint space and F_C^4=I",
+    "determinant": "det F_C=1 in the prime-two 8-dimensional realization",
+    "Maslov": "successive ordered crossing signs alternate even though the total four-step determinant holonomy is trivial",
+    "orientation_line": "the local sign belongs to a Maslov/Pfaffian/metaplectic line finer than the ordinary determinant line"
+  },
+  "transition_consequence": {
+    "if_frames": "for reciprocal frame changes L,R made from W and W^(-*)",
+    "scalar": "Det(L)Det(R)=1 in the ungraded endpoint block",
+    "kernel": "c_+=R^-1c_- and phi_+=phi_-L^-1 remain nontrivial",
+    "meaning": "the determinant section can glue trivially while the adjugate and Poisson kernel sheaves still require a nontrivial mate"
+  },
+  "higher_coherence_warning": "The scalar Cech defect eta=1 is automatic for determinant-one sewing and cannot certify the kernel defects a=0 or p=0. This gives an explicit finite example of why the fourth-level scalar wrap forgets the orientation data needed to initialize the next phase.",
+  "metaplectic_gate": {
+    "need": "choose the source-derived lift of W to the orientation/Pfaffian line",
+    "fourfold": "the product of four lifted edge characters must be +1 for a closed C4 object",
+    "ambiguity": "ordinary determinant cannot distinguish the two possible square-root signs",
+    "source": "the conormal/Maslov orientation local system, not a post hoc determinant square root, must select the lift"
+  },
+  "authority_boundary": "The displayed W is a candidate finite source boundary sewing and is explicitly not identified with an unexposed independent G4 sewing operator. The determinant calculation is exact for this fixture only.",
+  "next_iteration": "Assemble the ten-iteration result into a dimension ladder: identify what scalarization forgets at each descent and what opposite-face data must be retained to seed the next phase. State the minimal executable constructor contract for a genuine 4-simplex rather than another metaphorical horn.",
+  "iteration_result": "Prime-two reciprocal sewing has determinant one, as do all orientation-preserving radial phase transports. Therefore scalar determinant descent erases precisely the phase and Maslov information carried by kernel/cofactor transport. The opposite fifth face must retain an orientation/Pfaffian line in addition to the scalar determinant line if it is to seed the next positive phase.",
+  "rh_implication": false
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "marici.voevodsky.theta-completion-quadratic-graph-margin.v1",
+  "status": "source_derived_strict_derivative_margin_constructed_full_Birman_loading_bound_open",
+  "fresh_sources": [
+    "research/nima/a-quadratic-history-graph-gives-a-sharp-strict-loading-margin-conditionally.md",
+    "research/nima/the-full-history-graph-repairs-infrared-inversion-but-has-zero-strict-contraction-margin.md",
+    "research/nima/the-wronskian-lagrange-boundary-map-is-the-relative-connecting-morphism-for-the-killed-wall.md",
+    "research/nima/the-naive-identity-metric-augmentation-necessarily-crosses-eigenvalue-one.md"
+  ],
+  "source_operator": {
+    "completion": "C=partial_q^2-1/4",
+    "provenance": "the completed theta source and its Wronskian connecting morphism are already defined on the relative graph of C",
+    "metric": "G_C=I+C^*C",
+    "claim": "unlike an arbitrarily inserted T^2 term, this second-order graph metric is source-derived from the existing theta completion differential"
+  },
+  "Fourier_calculation": {
+    "let": "T=D^*D>=0 for D=partial_q, with spectral variable lambda>=0",
+    "C_symbol": "-(lambda+1/4)",
+    "metric_symbol": "g_C(lambda)=1+(lambda+1/4)^2=lambda^2+(1/2)lambda+17/16",
+    "normalized_derivative": "K_C=D G_C^-1/2",
+    "square_symbol": "r_C(lambda)=lambda/[1+(lambda+1/4)^2]"
+  },
+  "sharp_margin": {
+    "critical_point": "r_C'(lambda)=0 iff lambda^2=17/16, hence lambda_*=sqrt(17)/4",
+    "maximum": "sup r_C=(sqrt(17)-1)/8",
+    "operator_norm": "||K_C||<=sqrt((sqrt(17)-1)/8), approximately 0.625",
+    "strict_margin": "1-||K_C|| is approximately 0.375"
+  },
+  "comparison": {
+    "H1_graph": "lambda/(1+lambda) tends to one at high frequency, so no strict margin",
+    "completion_graph": "lambda/[1+(lambda+1/4)^2] tends to zero at both zero and infinity and has the strict interior maximum above",
+    "meaning": "the same second-order operator that creates the killed-wall Wronskian boundary also supplies the ultraviolet coercivity missing from the first-order history graph"
+  },
+  "Evans_domain": {
+    "at_Xi": "the glued Evans history has superexponential regularity; differentiating its forced first-order equation places it in the C graph domain under the standard theta derivative bounds",
+    "positive_weight": "a nonzero Evans history therefore has nonzero G_C energy",
+    "qualification": "a uniform graph-domain statement for the full off-divisor two-chart family still needs the relative/meromorphic rigging"
+  },
+  "Birman_scope": {
+    "closed": "strict contraction for the normalized first-derivative incidence in the source completion metric",
+    "not_closed": "the full arithmetic synthesis U contains ordinary, wall, reciprocal, linking, prime, and grade components and is not equal to D",
+    "required": "factor each full loading through the C graph and bound the joint row, including cross terms, by a constant below one",
+    "warning": "the identity-metric prime augmentation has a forced off-seam eigenvalue-one crossing and cannot be rescued by this derivative estimate alone"
+  },
+  "higher_coherence_clue": "The completion differential plays two levels at once: its boundary concomitant supplies the Wronskian 2-cell, while its graph square supplies the strict chamber margin needed after the conservative mate. This is a concrete mechanism by which the terminal object of one coherence phase seeds positivity in the next.",
+  "next_test": "Express the fixed even wall and odd Wronskian incidence columns as bounded maps into Dom(C) with the G_C graph norm. Compute the 2x2 normalized loading Gram and test whether its largest eigenvalue is below one uniformly in the prime label before adding connected grades.",
+  "conclusion": "A previously conditional quadratic-margin proposal has a natural source candidate: the graph metric of the actual theta completion differential C=partial^2-1/4. It gives an exact strict first-derivative bound. This does not yet prove the full Birman-Schwinger chamber, but it supplies the first non-fitted coercive component and links the Wronskian boundary phase to the next positive phase.",
+  "rh_implication": false
+}

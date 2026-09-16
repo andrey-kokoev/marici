@@ -1,0 +1,44 @@
+{
+  "schema": "marici.voevodsky.correction.graph-margin-number-interpretation.v1",
+  "status": "numerology_rejected_constants_derived_and_normalization_dependence_exposed",
+  "corrects": [
+    "research/voevodsky/the-source-completion-differential-supplies-a-canonical-second-order-graph-metric-with-an-explicit-strict-first-derivative-margin.v1.json",
+    "research/voevodsky/correction-the-completion-graph-margin-is-an-interior-bound-while-wall-loading-requires-a-broken-domain-poisson-lift.v1.json"
+  ],
+  "units": {
+    "coordinate": "q is logarithmic radial scale and is treated as dimensionless",
+    "operators": "D=partial_q and C=partial_q^2-1/4 are dimensionless in this normalization",
+    "graph_metric": "||f||^2+||Cf||^2 fixes the relative coefficient of two equivalent graph norms to one; changing that coefficient changes the numerical contraction bound"
+  },
+  "interior_constant": {
+    "spectral_variable": "lambda>=0 is the eigenvalue of D^*D",
+    "mass": "m=1/2, so m^2=1/4 and m^4=1/16",
+    "ratio_squared": "r(lambda)=lambda/[1+(lambda+m^2)^2]",
+    "critical_equation": "lambda^2=1+m^4=17/16",
+    "critical_lambda": "sqrt(17)/4",
+    "maximum": "(sqrt(17)-1)/8",
+    "norm": "sqrt((sqrt(17)-1)/8)=0.624810...",
+    "number_theory": "17=16+1 comes only from the unit graph term and the fourth power of the half-density mass; 8 appears after algebraic simplification"
+  },
+  "boundary_constant": {
+    "chosen_lift": "R_1(a,b)=a exp(q) on q<0 and b exp(-q) on q>0",
+    "derivative_rate": "|D R_1|=|R_1|",
+    "completion_rate": "C R_1=(1-1/4)R_1=(3/4)R_1",
+    "ratio": "||DR_1||/sqrt(||R_1||^2+||CR_1||^2)=1/sqrt(1+(3/4)^2)=4/5",
+    "origin": "the 3-4-5 triangle is arithmetic from rates 1 and 3/4"
+  },
+  "general_lift": {
+    "family": "R_kappa uses exp(kappa q) on the left and exp(-kappa q) on the right, kappa>0",
+    "C_rate": "kappa^2-1/4",
+    "ratio_squared": "kappa^2/[1+(kappa^2-1/4)^2]",
+    "consequence": "4/5 is specific to kappa=1, chosen because it is a convenient norm-one H1 trace lift; it is not intrinsic to the boundary quotient"
+  },
+  "categorical_nonrelation": {
+    "C4": "no relation is established between 4/5 and the order-four Fourier/Clifford cycle",
+    "simplex": "17, 8, 4, and 5 do not count simplex faces or coherence dimensions",
+    "test": "rescaling the graph metric or choosing another Poisson right inverse changes the constants while leaving all C4 and simplicial identities unchanged"
+  },
+  "correct_claim_boundary": "These calculations prove that particular normalized incidence operators are strict contractions in particular graph norms. They do not supply a source-invariant Birman-Schwinger chamber margin until the exact Green metric and canonical Poisson normalization are fixed by the source construction.",
+  "conclusion": "The apparent powers of two are algebraic consequences of the half-density mass 1/2 and unit graph-norm coefficient. The 4/5 is a 3-4-5 normalization arising from the convenient exponential lift of rate one. Neither number currently has simplex or C4 significance.",
+  "rh_implication": false
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "marici.voevodsky.Aaug-vs-CFP-first-unmatched-row.v1",
+  "status": "exact_block_shape_comparison_localizes_missing_conservative_completion",
+  "fresh_sources": [
+    "research/aspect/contracts/boundary-jet-augmented-euler-intertwiner.v1.json",
+    "research/aspect/contracts/g4-conservative-green-owner-worksheet.v2.json",
+    "research/nima/the-closed-loop-boundary-cone-has-an-exact-schur-kernel-and-relative-determinant.md"
+  ],
+  "operators": {
+    "forward_augmented": "A_aug(q,a)=(lambda_p q-pi_0 a, S a), lambda_p=1-p^(-s)",
+    "matrix": "A_aug=[[lambda_p,-pi_0],[0,S]]",
+    "conservative_candidate": "C_FP=[[A0,-B^dagger],[-B,D0]], A0=I-L, D0=I-A"
+  },
+  "upper_row": {
+    "Euler_diagonal": "on prime p, A0=I-L acts by lambda_p=1-p^(-s), matching A_aug exactly",
+    "boundary_return": "A_aug has -pi_0 a, the retained zeroth boundary atom",
+    "conditional_identification": "the upper rows agree if the seam-metric adjoint B^dagger restricted to the jet response equals pi_0",
+    "status": "algebraic shape and sign match; metric-adjoint/source normalization B^dagger=pi_0 remains to be proved"
+  },
+  "lower_row": {
+    "A_aug": "(0,S): there is no return from the Euler observable q into the boundary-history coordinates",
+    "C_FP": "(-B,D0): conservative completion requires the source incidence backreaction -Bq",
+    "first_unmatched_entry": "B:E->H",
+    "history_match": "D0 may restrict to the boundary-jet shift S only after a separate domain/sign identification"
+  },
+  "meaning": "J_p D_jet=A_aug J_p is an exact triangular forward chain square. It is not yet a conservative Green block because it contains the boundary-to-Euler observation pi_0 but omits its metric adjoint Euler-to-history incidence B.",
+  "relation_to_Evans": {
+    "triangular_success": "explains why the Xi Rosenbrock mismatch and all boundary jets transport exactly",
+    "conservative_failure": "the promoted Evans state must also solve the lower adjoint/source equation involving B",
+    "known_residual": "this is the same obstruction measured by the nonzero B_Sigma^dagger u_z/five-port residual; endpoint cancellation of the upper row cannot remove it"
+  },
+  "positive_apex": "Adding -B as the adjoint mate of -pi_0 is precisely the passage from a quotient/forward coherencer to the positive/conservative apex. Its existence and sign require the conservative Green metric; it cannot be inferred from the linear chain square alone.",
+  "next_exact_test": "On one finite prime shell, use the declared arithmetic and boundary Green pairings to compute the adjoint pi_0^dagger. Compare pi_0^dagger with the source cut-incidence column B. If unequal, the boundary-augmented square needs an additional Wronskian/linking sector; if equal, set D0=S on the jet core and verify the 2x2 Green symmetry directly.",
+  "conclusion": "The first unmatched conservative row is now explicit. Prior work closes the upper Euler-minus-boundary row, while the lower arithmetic incidence/backreaction row is absent. This is exactly where the independent arithmetic forcing balance must enter and why the triangular Xi chain does not yet lift to the positive cone.",
+  "rh_implication": false
+}

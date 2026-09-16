@@ -1,0 +1,34 @@
+{
+  "schema": "marici.voevodsky.broken-H1-wall-Riesz-vs-theta-cut.v1",
+  "status": "native_full_wall_adjoint_identification_rejected",
+  "source": "research/voevodsky/the-countable-prime-wall-broken-h1-domain-is-closed-and-the-half-density-incidence-is-hilbert-schmidt.v1.json",
+  "model_calculation": {
+    "carrier": "H1((-infinity,0)) direct-sum H1((0,infinity)) with norm ||f||_2^2+||f'_reg||_2^2+|f(0+)-f(0-)|^2",
+    "functional": "j(f)=f(0+)-f(0-)",
+    "Riesz_ansatz": "k_-(x)=A exp(x) for x<0; k_+(x)=B exp(-x) for x>0",
+    "boundary_coefficients": "<f,k>_wall=(2A-B)f(0-)+(2B-A)f(0+)",
+    "solution": "A=-1/3, B=1/3",
+    "Riesz_vector": "k_j(x)=-(1/3)exp(x) on x<0 and +(1/3)exp(-x) on x>0"
+  },
+  "general_wall_set": {
+    "Euler_Lagrange": "away from every retained wall, each native Riesz column solves -k''+k=0",
+    "shape": "piecewise linear combinations of exp(x) and exp(-x), with matching/jump conditions determined by the wall Gram",
+    "countable_case": "additional walls change coefficients and interval matching but not the homogeneous exponential equation between walls"
+  },
+  "theta_incidence": {
+    "column": "b_p=p^(-1/2)c_(log p)",
+    "profile": "a translated completed-theta cut atom with regular derivative built from Phi' and a wall jump -Phi(0)",
+    "incompatibility": "the completed theta profile does not solve -c''+c=0 on each wall-free interval; it has Gaussian/theta curvature rather than homogeneous exponential curvature",
+    "conclusion": "Gamma^(star wall)e_p cannot equal b_p for the native unweighted broken-H1 metric"
+  },
+  "strength": "This rejects not only the fixed-boundary pi_0 adjoint but also the proposed repair using the complete prime-wall jump operator Gamma under the currently declared native wall norm.",
+  "remaining_options": [
+    "define a source-pulled reproducing-kernel metric whose wall Riesz columns are the theta cuts and independently prove positivity/equivalence",
+    "retain Gamma^(star wall) and B as distinct observer/incidence legs in a faithful joint graph",
+    "change the differential graph norm to the source theta operator whose Green kernel has c_(log p) as representers"
+  ],
+  "Douglas_route": "Under the faithful-joint-graph option, the relevant gate is no longer equality Gamma^*=B but bounded factorization B=Gamma^* C or domination BB^*<=Gamma^*Gamma (with the correctly typed source metrics). Existing Hilbert-Schmidt boundedness of B does not imply this range inequality.",
+  "next_test": "At finite wall set A_X, assemble the exact piecewise-exponential Gram matrix of native wall Riesz columns and the theta-cut Gram matrix <b_p,b_q>_wall. Compute the generalized Schur/Douglas residual and range inclusion. This is executable without any Xi specialization and will decide whether a bounded coherencer can replace the rejected adjoint equality.",
+  "conclusion": "The native complete-wall adjoint still does not produce the arithmetic incidence. Its Riesz vectors are forced by the H1 metric to be piecewise exponential, whereas B is theta-shaped. Any positive apex must therefore use a nontrivial metric transport or a genuine Douglas comparison between distinct legs.",
+  "rh_implication": false
+}

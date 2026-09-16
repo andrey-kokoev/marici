@@ -1,0 +1,43 @@
+{
+  "schema": "marici.voevodsky.higher-horn-audit.iteration-3.v1",
+  "status": "finite_left_kernel_computed_same_state_identification_rejected_off_seam",
+  "fresh_sources": [
+    "research/nima/the-closed-loop-cone-domain-imposes-the-maximal-isotropic-fourier-poisson-relation.md",
+    "research/nima/the-complete-finite-rh-operator-must-be-a-two-sided-linking-block.md",
+    "research/grothendieck/reciprocal-fourier-sewing-preserves-the-corona-sign.md"
+  ],
+  "block_calculation": {
+    "cone": "C=[[A,-B^dagger],[-B,D]] with D invertible and G=D^-1",
+    "right": "psi=(x,y), y=G Bx, and (A-B^dagger G B)x=0",
+    "left": "phi=(alpha,beta), beta=alpha B^dagger G, and alpha(A-B^dagger G B)=0",
+    "qualification": "for non-selfadjoint parameter families the displayed left formulas use the appropriate transpose/dual products, not an unlicensed same-Hilbert-space adjoint"
+  },
+  "forcing_variation": {
+    "variation": "dot C_f=[[0,-dot B_f^dagger],[-dot B_f,0]]",
+    "cofactor_pairing": "<phi,dot C_f psi>=-alpha(dot B_f^dagger y)-beta(dot B_f x)",
+    "selfadjoint_seam": "if phi is the Green/Riesz dual of psi and dot B_f x=f, this becomes the oriented two-sided forcing pairing, conventionally -2 Re<y,f>",
+    "meaning": "the determinant cofactor and Green forcing row coincide automatically only after a valid duality identification of left and right states"
+  },
+  "reciprocal_correction": {
+    "natural_law": "the source construction is reciprocal, so the expected operator relation is C(s)^dagger conjugate to C(1-conjugate(s)), not C(s)^dagger=C(s) for arbitrary s",
+    "left_state": "a left kernel covector at s is naturally transported from a right kernel state at 1-conjugate(s)",
+    "consequence": "off the critical seam, determinant cofactors pair two reciprocal states; they do not canonically identify a state with its own positive Green dual",
+    "on_seam": "s=1-conjugate(s) only when Re(s)=1/2, where the reciprocal pair can become one self-dual state"
+  },
+  "noncircular_form": {
+    "wrong": "assume same-state selfadjointness at an Xi zero and infer it lies on the seam",
+    "right": "retain psi_s and psi_(1-conjugate(s)) as two independently transported states, derive their relative Green identity, and show the alternating boundary vanishes",
+    "target_identity": "(2 Re(s)-1) E_rel(psi_s,psi_reflected)=Boundary_plus-minus",
+    "confinement": "if the boundary is independently zero and E_rel is strictly positive/nonzero, then Re(s)=1/2"
+  },
+  "orientation_obstruction": {
+    "Fourier_fact": "the direct and reciprocal corona limits have the same sign",
+    "therefore": "Fourier sewing alone adds rather than cancels their Green boundaries",
+    "needed": "a source-derived Cech/mapping-cone incidence delta(a,b)=a-F^-1 b supplies the alternating sign",
+    "effect": "this incidence is part of the missing R-D-G triangle, not a consequence of determinant or reciprocal symmetry"
+  },
+  "higher_coherence_reading": "The triangle must compare a determinant cofactor built from right/left reciprocal kernel towers with a Green boundary built from the same two towers and an independently oriented relative incidence. The top tetrahedral mate can only be formed after this two-state triangle commutes.",
+  "next_iteration": "Build the abstract two-state complex K_s direct-sum K_(1-conjugate(s)) with diagonal positive energy and Cech differential (1,-F^-1). Compute its Green boundary and identify exactly which term must equal the cofactor variation. Check whether the existing endpoint C4/Clifford block supplies the required alternating incidence without reusing Stokes cancellation.",
+  "iteration_result": "The finite Schur computation shows that the missing determinant covector is naturally the reciprocal left state. Same-state cofactor/Green equality is valid only on the seam and cannot be assumed. The noncircular missing coherence is a two-state reciprocal Green identity with independently sourced alternating incidence.",
+  "rh_implication": false
+}

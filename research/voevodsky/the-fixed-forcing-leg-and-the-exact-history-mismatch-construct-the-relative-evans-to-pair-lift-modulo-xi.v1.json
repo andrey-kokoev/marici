@@ -1,0 +1,52 @@
+{
+  "schema": "marici.voevodsky.relative-Evans-to-pair-lift-by-fixed-forcing-leg.v1",
+  "status": "relative_linear_pair_lift_constructed_completion_and_arithmetic_balance_open",
+  "prior_sources": [
+    "research/nima/the-two-sided-theta-history-mismatch-is-an-exact-evans-lift-of-the-xi-section.md",
+    "research/nima/the-exact-evans-history-lies-in-the-whole-line-maximal-isotropic-domain-without-a-limiting-absorption-limit.md",
+    "research/voevodsky/the-polarized-pair-kernel-has-a-canonical-linear-crossing-to-the-bordered-radial-response.md",
+    "research/grothendieck/theta-tail-and-seam-have-one-common-source-trace.md",
+    "research/voevodsky/canonical-source-recovery-proves-endpoint-wronskian-balance-transversality-and-injectivity-after-the-interval-cycle-quotient.v1.json"
+  ],
+  "construction": {
+    "fixed_leg": "the completed theta forcing Phi, defined before Xi specialization",
+    "history_legs": "u_-(q;z) and u_+(q;z)",
+    "maps": "Delta_-(z)=Phi tensor u_-(z), Delta_+(z)=Phi tensor u_+(z) in the analytic-transpose lane; use Phi tensor conjugate(u) in the Hermitian lane",
+    "linearity": "linear in the Evans history because Phi is fixed",
+    "not_copying": "no map u->u tensor u"
+  },
+  "Xi_ideal_coherence": {
+    "history_identity": "u_-(q;z)-u_+(q;z)=exp(zq) tau(z)",
+    "pair_identity": "Delta_-(z)-Delta_+(z)=tau(z)(Phi tensor exp(zq))",
+    "consequence": "[Delta_-]=[Delta_+] in the holomorphic pair module modulo tau",
+    "coherencer": "Phi tensor exp(zq) is the explicit chain-homotopy coefficient",
+    "multiplicity": "at a zero z0 of order m, derivatives through order m-1 of the two pair lifts agree; the m-th mismatch detects tau^(m)(z0)"
+  },
+  "bordered_image": {
+    "crossing": "T_pair_to_border applied to Phi tensor u gives rho_(Phi,u), endpoint e_(Phi,u), Wronskian w_(Phi,u), and Laplace response R_(Phi,u)",
+    "ordinary_port": "rho_(Phi,u)(t)=integral_shell Phi(x)u(x+t)dx is exactly the source shape of the Evans ordinary history overlap",
+    "endpoint_and_linking": "e and w are forced from the same pair by partial_t rho=e-w/2, so wall/endpoint/linking coefficients are not independently fitted",
+    "all_jets": "the pair-to-border map is continuous on its declared rapid/projective domain and commutes with z derivatives"
+  },
+  "domain": {
+    "at_Xi_zero": "u_-=u_+=u_z belongs to H1(R) and decays faster than every chosen exponential; the equation u'=zu+Phi propagates regularity to the rapid history core under the standard theta estimates",
+    "relative_family": "off the divisor the two half-line histories remain separate; their failure to glue is exactly tau times the explicit exponential homotopy leg",
+    "remaining_check": "materialize the precise projective seminorm estimate placing the relative holomorphic family Phi tensor u_+/- in the completed pair module, rather than only pointwise at Xi zeros"
+  },
+  "C4_Tate": {
+    "charted_anchor": "Phi_j=F^j Phi and Delta_j(v)=Phi_j tensor v_j",
+    "one_step": "(F tensor F)Delta_j(v)=Delta_(j+1)(Fv)",
+    "four_step": "closes strictly for F^4=I or in the declared metaplectic/Tate phase line",
+    "qualification": "the analytic history reflection/transport must be checked on the relative exponential homotopy coefficient"
+  },
+  "quotient_and_noncollapse": {
+    "cycle_quotient": "the source-fixed completed-theta ray is known to meet the interval-cycle kernel trivially after shell reconstruction",
+    "canonical_codiagonal": "post-cycle T_PB followed by D is injective on the canonical source-generated range",
+    "tensor_nonzero": "at an Xi zero, Phi is nonzero and the augmented Evans state has source coordinate 1, so the pair lift is nonzero provided the completed tensor embedding is separated"
+  },
+  "what_this_repairs": "It supplies the previously missing relative Evans-to-pair arrow without a group-like diagonal, five-cell coaugmentation, or absolute response-graph membership. Equality is required only modulo the Xi ideal, exactly as the mapping-cone formulation predicted.",
+  "remaining_positive_gate": "Identify the cyclic/determinant-line arithmetic return of this lifted pair with the independent conservative forcing cancellation +2 Re<Phi,u_z>, and prove the transported quotient energy is nonzero in the completed topology. This is still the Green/arithmetic balance theorem, not formal pair coherence.",
+  "next_test": "For one shell [log p,log p_plus], substitute f=Phi and g=u_+/- into the explicit rho,e,w formulas. Verify coefficientwise that the difference of the two bordered packets is tau times T_pair_to_border(Phi tensor exp(zq)); then compare that explicit tau-multiple with the Evans mapping-cone boundary convention.",
+  "conclusion": "The relative/quotient-lift formulation succeeds at the linear analytic level: fixing one theta forcing leg turns the Evans history into an ordered pair, and the exact stable-history mismatch makes the two lifts equal modulo Xi with full multiplicity. The categorical lift is therefore no longer absent; the remaining theorem is positive arithmetic balance after this lift.",
+  "rh_implication": false
+}

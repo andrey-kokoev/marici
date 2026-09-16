@@ -1,0 +1,42 @@
+{
+  "schema": "marici.voevodsky.boundary-evaluation-graph-adjoint-vs-prime-incidence.v1",
+  "status": "simple_Aaug_to_CFP_adjoint_completion_rejected",
+  "fresh_sources": [
+    "research/voevodsky/the_doubled_half_line_derivative_realizes_the_full_rigged_green_real_boundary_ladder_20260911.md",
+    "research/voevodsky/correction-the-incidence-range-connection-is-not-typed-on-the-current-c-fp-history-domain.v1.json",
+    "research/voevodsky/zero-extension-into-the-history-wall-graph-intertwines-the-radial-differential-and-retains-the-border-atom.v1.json",
+    "research/voevodsky/the-continuous-wronskian-form-has-a-unique-bounded-skew-operator-and-can-be-added-without-changing-the-old-green-boundary-form.v1.json"
+  ],
+  "boundary_adjoint": {
+    "graph": "H1(R_+) with <f,g>_H1=integral f conjugate(g)+integral f' conjugate(g')",
+    "trace": "pi_0 f=f(0)",
+    "Riesz_vector": "k_0(r)=exp(-r)",
+    "identity": "pi_0 f=<f,k_0>_H1",
+    "therefore": "pi_0^(star D)(a)=a exp(-r)"
+  },
+  "conservative_incidence": {
+    "column": "B e_p=b_p=p^(-1/2)c_(log p)",
+    "cut_atom": "c_a is the wall-extended translated theta cut column with regular derivative and a separate endpoint jump -Phi(0) at a",
+    "domain": "history-plus-wall graph; raw c_a is not automatically in the old whole-line H1 domain"
+  },
+  "mismatch": {
+    "support_and_shape": "exp(-r) is the graph-Riesz representative of evaluation at the fixed radial boundary zero; c_(log p) is a prime-dependent translated theta cut profile with its wall atom at log p",
+    "prime_dependence": "pi_0^(star D) is independent of p, whereas B e_p varies with log p and carries p^(-1/2)",
+    "conclusion": "B is not pi_0^(star D) under the displayed native graph metric",
+    "rejected_completion": "one cannot turn A_aug=[[lambda_p,-pi_0],[0,S]] into C_FP merely by filling the lower-left entry with the native adjoint of pi_0 and identifying it with the existing B"
+  },
+  "distributional_warning": "The transpose of pi_0 is delta_0 in the test dual, while its graph adjoint is exp(-r). Neither is the prime cut column B e_p; substituting delta_0 as an ambient L2 adjoint is invalid.",
+  "linking_sector": {
+    "existing": "K_link=-J_link/2 is a bounded skew Wronskian response block",
+    "limitation": "because it is skew and preserves the old symmetric Green boundary form, it cannot by itself change the native symmetric adjoint pi_0^(star D) into B",
+    "role": "it may supply the ordered linking component in an enlarged direct-sum response carrier, but a separate metric/source incidence comparison is still required"
+  },
+  "legal_repairs": [
+    "use a source-pulled metric on the retained joint graph for which the adjoint of the complete boundary observation is B",
+    "enlarge the boundary observation from pi_0 to the full prime-labelled wall trace so its graph adjoint has one Riesz column per log p",
+    "retain B and pi_0 as distinct legs in a faithful joint graph and prove positivity by a block Schur/Douglas inequality rather than equality"
+  ],
+  "next_test": "Construct the full wall-evaluation operator Gamma=(gamma_(log p))_p on the countable broken-H1 graph and compute Gamma^(star G). Compare its p-th Riesz column with p^(-1/2)c_(log p) in the full history-plus-wall Gram, including cross-wall entries. This is the correct adjoint test; the single pi_0 test is definitively negative.",
+  "conclusion": "The upper triangular augmented Euler square and the old conservative incidence do not form an adjoint pair in the native H1 metric. The failure is structural and prime-labelled, not a missing sign. The positive apex must retain the complete wall observation/source metric or use a joint-graph Douglas completion.",
+  "rh_implication": false
+}

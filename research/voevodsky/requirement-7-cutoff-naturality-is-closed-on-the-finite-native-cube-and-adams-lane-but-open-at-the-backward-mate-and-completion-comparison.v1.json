@@ -1,0 +1,48 @@
+{
+  "schema": "marici.voevodsky.target-equivalence.requirement-7-audit.v1",
+  "requirement": "cutoff naturality of the indirect boundary/Weyl equivalence",
+  "verdict": "partial_not_one_down",
+  "closed": {
+    "finite_native_cube": {
+      "maps": ["direct-sector dynamics", "reciprocal-sector dynamics", "common-frame equalizer", "endpoint-jet observation"],
+      "bonding": "zero-padding of labels and truncation of jets",
+      "result": "all squares commute for nested finite packets",
+      "checker": "research/nima/checkers/check_rh_finite_equalizer_coherence_cube.py",
+      "fresh_result": "passed for cutoff sizes 1 through 4; incidence drift hostile breaks naturality"
+    },
+    "Adams_lane": {
+      "source": "research/nima/correction-adams-stability-is-already-constructed-as-a-weighted-projective-semigroup-not-a-uniform-hilbert-equivalence.md",
+      "result": "grade reindexing, Euler cocycle, Fourier saturation, prime cutoffs, and typed grade cutoffs are projectively natural",
+      "warning": "no two-sided Hilbert lower bound is required or true"
+    },
+    "Fourier_saturation": {
+      "result": "exact Fourier-natural bonding lifts termwise to the four-orbit saturated Gram without additional norm loss"
+    }
+  },
+  "open": {
+    "mate_square": {
+      "equation": "j_XY^D mu_X = mu_Y j_XY^N",
+      "reason": "the independent backward Green defect B_X,s and hence mu_X are not constructed",
+      "fixture": "research/voevodsky/fixtures/rh_forward_backward_beck_chevalley_mate_cell.v1.json"
+    },
+    "completion_comparison": {
+      "map": "colim_X Eq(D_+,X,D_-,X) -> Eq(colim_X D_+,X, colim_X D_-,X)",
+      "gates": ["continuity in the labelled projective topology", "source-derived limit topology for growing jets", "equalizer/completion interchange", "compact-local uniform inverse margin"]
+    },
+    "oriented_lines": {
+      "risk": "finite determinant and Pfaffian trivializations can be exact but their potentials can escape at the derived limit",
+      "needed": "separate bounded compatible contractions for both line systems"
+    }
+  },
+  "dependency_update": "Requirement 7 cannot be marked complete before requirement 6 because naturality of the absent Poisson/Weyl mate is part of requirement 7. The finite naturality lane should continue in parallel, but final closure occurs after construction of requirement 6 and before higher associativity.",
+  "next_exact_test": "Once B_X,s is instantiated, evaluate Delta_XY=j_XY^D mu_X-mu_Y j_XY^N coefficientwise before codiagonalization. A single old-label coefficient changed by cutoff extension falsifies the square.",
+  "verification": {
+    "commands": [
+      "python research/nima/checkers/check_rh_finite_equalizer_coherence_cube.py",
+      "python research/voevodsky/checkers/check_rh_forward_backward_beck_chevalley_mate_cell.py"
+    ],
+    "passed": true,
+    "interpretation": "the first checker closes finite native naturality; the second confirms that mate naturality remains explicitly missing"
+  },
+  "rh_implication": false
+}

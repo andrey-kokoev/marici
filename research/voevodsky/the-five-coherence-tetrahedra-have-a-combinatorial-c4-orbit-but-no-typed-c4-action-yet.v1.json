@@ -1,0 +1,47 @@
+{
+  "schema": "marici.voevodsky.five-coherence-tetrahedra-symmetry-audit.v1",
+  "status": "combinatorial_symmetry_constructed_typed_symmetry_unconstructed",
+  "global_vertices": {
+    "S": "source/provenance realization",
+    "A": "forward analytic realization",
+    "R": "reciprocal realization",
+    "C": "Clifford/polarity realization",
+    "G": "Green-adjoint boundary realization"
+  },
+  "faces_by_omitted_vertex": {
+    "F_S": "Conservative Transport Coherence",
+    "F_A": "Arithmetic Pencil Coherence",
+    "F_R": "Endpoint Polarity Coherence",
+    "F_C": "Green-Stokes-Adjoint Coherence",
+    "F_G": "Arithmetic Polarity Coherence"
+  },
+  "combinatorial_actions": {
+    "sigma_AR": "swap A and R; induced face swap F_A<->F_R",
+    "sigma_CG": "swap C and G; induced face swap F_C<->F_G",
+    "klein_orbits": ["{F_S}", "{F_A,F_R}", "{F_C,F_G}"],
+    "candidate_C4": "fix S and cycle A->C->R->G->A",
+    "candidate_C4_face_orbits": ["{F_S}", "{F_A,F_C,F_R,F_G}"]
+  },
+  "ten_shared_triangles": {
+    "F_S intersect F_A": "[R,C,G]",
+    "F_S intersect F_R": "[A,C,G]",
+    "F_S intersect F_C": "[A,R,G]",
+    "F_S intersect F_G": "[A,R,C]",
+    "F_A intersect F_R": "[S,C,G]",
+    "F_A intersect F_C": "[S,R,G]",
+    "F_A intersect F_G": "[S,R,C]",
+    "F_R intersect F_C": "[S,A,G]",
+    "F_R intersect F_G": "[S,A,C]",
+    "F_C intersect F_G": "[S,A,R]"
+  },
+  "typed_action_requirements": [
+    "assign one common typed carrier to every occurrence of each global vertex",
+    "assign one common typed map to every shared edge",
+    "prove the two incident tetrahedra induce the same comparison cell on every one of the ten shared triangles",
+    "lift the vertex permutation to domain-preserving operator transports",
+    "retain the central sign associated with J_phys^2=-I as a coherent signed action"
+  ],
+  "strongest_current_residual": "The labels A,R,C,G presently classify roles rather than common typed carriers. No transport identifies the arithmetic pencil tetrahedron with the endpoint polarity tetrahedron, and no transport identifies the Green-Stokes-adjoint tetrahedron with the arithmetic polarity tetrahedron. Therefore the face permutations are automorphisms of the abstract simplex boundary only.",
+  "disposition": "The combinatorial boundary admits the proposed Klein and C4 contractions. Analytic contraction is unauthorized until the ten shared triangles are typed and the proposed face exchanges are realized by domain-preserving transports. The immediate lower-level task is shared-triangle typing, beginning with [S,A,C], the intersection of endpoint polarity and arithmetic polarity coherence.",
+  "rh_implication": false
+}

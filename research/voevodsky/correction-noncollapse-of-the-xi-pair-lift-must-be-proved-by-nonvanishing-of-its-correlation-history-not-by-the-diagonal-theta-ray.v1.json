@@ -1,0 +1,34 @@
+{
+  "schema": "marici.voevodsky.correction.Xi-pair-noncollapse-correlation-proof.v1",
+  "status": "incorrect_ray_argument_retracted_global_correlation_nonvanishing_replacement",
+  "corrects": "research/voevodsky/the-pointwise-xi-pair-lift-is-nonzero-after-cycle-quotient-and-has-strict-positive-canonical-energy.v1.json",
+  "typing_correction": {
+    "wrong": "apply the known statement that the source-fixed completed-theta ray misses interval cycles directly to Phi tensor u_z",
+    "reason": "Phi tensor u_z is an off-diagonal forcing-history pair depending on z, not the previously tested diagonal completed-theta source ray",
+    "still_valid": "Phi tensor u_z is nonzero before the common-history quotient"
+  },
+  "correct_criterion": {
+    "common_history": "the pair lift survives the interval-cycle quotient iff its synthesized correlation history is nonzero",
+    "global_correlation": "rho_z(t)=integral_R Phi(x)u_z(x+t)dx",
+    "shells": "rho_z=sum_[a,b] rho_z^[a,b] over the exact shell decomposition",
+    "consequence": "rho_z nonzero implies at least one shell component survives, hence the global pair class is not an interval cycle"
+  },
+  "Fourier_proof": {
+    "history_equation": "(partial_q-z)u_z=Phi",
+    "transform": "(i xi-z) u_hat_z(xi)=Phi_hat(xi), with removable interpretation at a common zero",
+    "correlation_transform": "rho_hat_z(xi)=Phi_hat(-xi) u_hat_z(xi)=Phi_hat(-xi)Phi_hat(xi)/(i xi-z)",
+    "analytic_nonvanishing": "Phi is nonzero and rapidly decaying, so Phi_hat is a nonzero entire function; its real-axis zeros are discrete unless it vanishes identically",
+    "result": "the numerator product is nonzero on an open dense real set and division by the linear factor cannot make the function identically zero",
+    "therefore": "rho_hat_z and rho_z are not identically zero"
+  },
+  "critical_seam_qualification": "If z=i xi_0 lies on the Fourier axis, existence of the two-ended H1 solution forces the numerator zero needed to remove the apparent history multiplier pole. Away from xi_0 the product remains nonzero, so the correlation is still nonzero.",
+  "noncollapse_conclusion": {
+    "cycle_quotient": "[Phi tensor u_z] is nonzero in the common-history quotient",
+    "canonical_codiagonal": "injectivity after cycle quotient then preserves it",
+    "energy": "the source-pulled canonical positive energy is strictly positive on the lifted Xi state"
+  },
+  "scope": "This proves global noncollapse under the bilateral correlation/common-history synthesis. It does not assert that every individual prime shell correlation is nonzero or that an arbitrary alternative source quotient has the same kernel.",
+  "next_test": "Record the exact Fourier convention and verify rho_hat=Phi_hat(-xi)Phi_hat(xi)/(i xi-z) against the declared analytic-transpose versus Hermitian pair lane; the nonvanishing argument works in either lane with the corresponding conjugation.",
+  "conclusion": "Noncollapse survives, but for a different reason: the forcing-history correlation has a nonzero Fourier transform. The diagonal-ray shortcut was invalid. This replacement directly tests the actual common-history quotient used by the Xi pair lift.",
+  "rh_implication": false
+}

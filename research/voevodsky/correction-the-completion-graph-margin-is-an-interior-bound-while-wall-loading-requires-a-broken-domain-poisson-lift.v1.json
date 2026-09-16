@@ -1,0 +1,36 @@
+{
+  "schema": "marici.voevodsky.correction.theta-completion-graph-vs-wall-lift.v1",
+  "status": "interior_margin_retained_wall_domain_conflation_retracted_explicit_broken_lift_bound_computed",
+  "corrects": "research/voevodsky/the-source-completion-differential-supplies-a-canonical-second-order-graph-metric-with-an-explicit-strict-first-derivative-margin.v1.json",
+  "domain_correction": {
+    "interior": "G_C=I+C^*C with C=partial_q^2-1/4 on the unpunctured whole-line H2 domain",
+    "wall": "nonzero left/right endpoint values belong to the maximal broken domain H2((-infinity,0)) direct-sum H2((0,infinity)) and its boundary quotient",
+    "wrong": "treat the wall columns w_theta,j_theta themselves as ordinary vectors in the unpunctured Dom(C)",
+    "reason": "the wall modes exp(+/-q/2) are generalized kernel directions and are not global L2 vectors; arbitrary endpoint traces require broken-domain lifts"
+  },
+  "retained_interior_bound": {
+    "formula": "||D(I+C^*C)^-1/2||^2 <= (sqrt(17)-1)/8",
+    "scope": "global interior vectors in the unpunctured C graph domain",
+    "not_scope": "boundary quotient coordinates or lifts with a derivative jump at q=0"
+  },
+  "explicit_broken_lift": {
+    "lift": "R(a,b)(q)=a exp(q) for q<0 and b exp(-q) for q>0",
+    "trace": "(R(0-),R(0+))=(a,b)",
+    "halfline_C": "C R=(3/4)R on each open half-line",
+    "L2": "||R(a,b)||^2=(|a|^2+|b|^2)/2",
+    "derivative": "||D R(a,b)||^2=(|a|^2+|b|^2)/2",
+    "C_graph": "||R(a,b)||_(I+C*C)^2=(25/32)(|a|^2+|b|^2)",
+    "normalized_derivative_ratio": "||DR||^2/||R||_Cgraph^2=16/25",
+    "norm": "||D R||/||R||_Cgraph=4/5<1"
+  },
+  "interpretation": "The canonical exponential Poisson lift still has a strict derivative margin, but its constant is 4/5, not the sharper whole-line spectral constant. The discrepancy records the puncture/jump boundary rather than an analytic error.",
+  "combined_system_metric": {
+    "necessary": "retain interior C-graph energy, boundary endpoint metric, and the chosen Poisson lift as separate typed blocks",
+    "overlap": "cross terms between the lift range and zero-trace interior domain must be handled by the overlap operator K=Gamma R0-I or an orthogonalized Poisson decomposition",
+    "conditional_bound": "if the decomposition is Green-orthogonal, the derivative loading norm is at most max(4/5,sqrt((sqrt(17)-1)/8))=4/5",
+    "not_yet": "orthogonality and the full prime/reciprocal/linking loading bound"
+  },
+  "next_test": "Decompose the broken maximal domain as Dom(C_min) plus ran(R) using the explicit trace right inverse. Compute the C-graph cross operator between these summands. If it can be eliminated by a uniformly bounded triangular correction, use the resulting orthogonalized lift to evaluate the even wall and odd jump loading Gram.",
+  "conclusion": "The source completion differential still supplies strict interior coercivity, and the explicit boundary Poisson lift separately has strict ratio 4/5. But wall coordinates cannot be inserted directly into the whole-line C graph. The correct chamber calculation is a boundary-triple decomposition with an overlap correction, exactly matching the prior joint-trace architecture.",
+  "rh_implication": false
+}

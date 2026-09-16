@@ -1,0 +1,31 @@
+{
+  "schema": "marici.voevodsky.physical-two-polarity-analytic-trace.v1",
+  "status": "constructed_on_common_closed_history_graph_CFP_domain_identification_open",
+  "history": {
+    "domain": "Dom(H) with graph norm ||x||^2+||Hx||^2",
+    "channels": "Q_plus=(I+iH)/sqrt(2), Q_minus=(I-iH)/sqrt(2)",
+    "doubled_observer": "A_hist x=(Q_plus x,Q_minus x)"
+  },
+  "horizontal_lift": {
+    "isometry": "J_hor=(1/2)J_tilde:H_wall->H_hor",
+    "traces": "Tr_plus=J_hor Q_plus, Tr_minus=J_hor Q_minus",
+    "physical_trace": "Tr_phys x=(Tr_plus x,Tr_minus x) in H_hor tensor C2_pol"
+  },
+  "analytic_laws": {
+    "norm": "||Tr_phys x||^2=||x||^2+||Hx||^2",
+    "bounded": true,
+    "injective": "Tr_phys x=0 implies x=0",
+    "cutoff": "label diagonality makes the identity exact at every finite cutoff and after projective completion"
+  },
+  "polarity": {
+    "reciprocal_involution": "if RHR=-H, then R Q_plus=Q_minus R and R Q_minus=Q_plus R",
+    "sheet_swap": "S=[[0,1],[1,0]]",
+    "sheet_sign": "Z=diag(1,-1)",
+    "physical_quarter_turn": "J_phys=Z S or its orientation-negative convention; J_phys^2=-I",
+    "meaning": "reciprocity exchanges the independently signed channels; the sheet sign converts exchange into the Clifford quarter-turn"
+  },
+  "independence": "Tr_minus is not a duplicate of Tr_plus: their difference is sqrt(2)i J_hor Hx, while their sum is sqrt(2)J_hor x.",
+  "scope_gap": "This constructs the requested analytic map on the admitted common closed history graph. To type it literally as Dom(C_FP)->H_phys still requires identifying the C_FP history graph with this H graph, or supplying a bounded graph comparison on a common core.",
+  "conclusion": "The two-polarity trace exists analytically and is an exact graph isometry after horizontal lifting. The remaining obstruction is no longer the negative trace; it is conservative owner/domain identification and the independent arithmetic backreaction B.",
+  "rh_implication": false
+}

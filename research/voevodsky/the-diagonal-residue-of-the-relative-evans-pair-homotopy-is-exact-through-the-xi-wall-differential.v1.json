@@ -1,0 +1,44 @@
+{
+  "schema": "marici.voevodsky.diagonal-residue-Evans-Xi-homotopy.v1",
+  "status": "residue_level_relative_chain_lift_closed_positive_residue_metric_open",
+  "source": "research/voevodsky/the-entire-moving-seam-stokes-response-cannot-cancel-the-relative-evans-lifts-diagonal-laplace-pole.v1.json",
+  "two_variable_module": {
+    "parameters": "Evans z and Laplace zeta",
+    "diagonal": "Delta={zeta=z}",
+    "sequence": "0->O->O(*Delta)->O_Delta->0",
+    "residue_coordinate": "Res_Delta(A(z)/(zeta-z))=A(z), up to the frozen orientation sign"
+  },
+  "relative_pair_difference": {
+    "before_border": "Delta_--Delta_+=tau(z)(Phi tensor exp(zq))",
+    "after_shell_border": "R(Delta_-)-R(Delta_+)=tau(z)A_[a,b](z)/(zeta-z)",
+    "residue": "r_[a,b](z)=tau(z)A_[a,b](z)",
+    "A": "A_[a,b](z)=integral_a^b Phi(x)exp(zx)dx is entire"
+  },
+  "Xi_chain_homotopy": {
+    "wall_complex": "O --multiplication_by_tau--> O",
+    "homotopy_coefficient": "A_[a,b](z)",
+    "identity": "r_[a,b]=tau A_[a,b]=d_Xi(A_[a,b])",
+    "consequence": "the diagonal residue class vanishes in O/tau O without assigning a value to the singular principal part",
+    "multiplicity": "because A is holomorphic, all divisor jets below the multiplicity of tau vanish; no path-dependent diagonal limit is used"
+  },
+  "shell_and_cutoff": {
+    "concatenation": "A_[a,c]=A_[a,b]+A_[b,c]",
+    "therefore": "residue homotopies concatenate exactly",
+    "prime_cutoff": "finite shell sums commute with residue and multiplication by tau"
+  },
+  "C4_Tate": {
+    "functoriality": "a parameter-independent Fourier/Tate transport commuting with the two-variable bordered map acts on principal parts and residues",
+    "orientation": "zeta-z changes sign if the transport exchanges parameter order, so the residue line must carry the corresponding conormal orientation character",
+    "fourfold": "the product of the conormal sign and declared metaplectic/Tate phase must return to one after four charts",
+    "open_check": "the exact chart convention has not yet been read off from the admitted response transport"
+  },
+  "positive_scope": {
+    "closed": "relative Evans-to-bordered comparison in the residue quotient modulo tau",
+    "not_closed": "a positive norm on the meromorphic principal-part/residue extension compatible with the C34 common row",
+    "warning": "the residue tau A is chain-exact, but a positive-definite energy cannot annihilate it away from the Xi divisor; positivity must be placed after restriction/derived quotient or on a hyperbolic pole-residue pair"
+  },
+  "noncollapse": "The residue coordinate is supposed to vanish on Xi and therefore cannot itself witness noncollapse. Noncollapse must come from the retained source/pair coordinate, which survives the interval-cycle quotient and canonical codiagonal by source recovery.",
+  "next_test": "Determine the C4 action on the diagonal conormal d(zeta-z) and combine it with the Tate phase. Then construct the minimal hyperbolic pole-residue block whose boundary pairing is Res_Delta and test whether its positive chirality is compatible with the existing Clifford endpoint crossing.",
+  "conclusion": "Retaining the diagonal residue repairs the domain failure. Although the exponential homotopy has no diagonal Laplace value, its residue is tau times the entire shell transform A and is therefore explicitly null-homotopic through the Xi wall differential. The relative chain lift closes at residue level; positive realization of the pole-residue extension is the next gate.",
+  "rh_implication": false
+}

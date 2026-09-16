@@ -1,0 +1,54 @@
+{
+  "schema": "marici.voevodsky.higher-horn-audit.iteration-10.v1",
+  "status": "local_linear_RL_to_endpoint_candidate_and_C4_intertwiner_constructed_metric_and_bulk_identification_open",
+  "fresh_sources": [
+    "research/voevodsky/correction-the-polarized-prime-cell-has-no-free-alpha-only-four-parameter-free-matrix-unit-identities.md",
+    "research/nima/the-first-adams-normalization-frontier-is-a-typed-comparison-not-an-unknown-scalar.md",
+    "research/nima/all-local-linear-adams-data-are-fixed-the-remaining-gate-is-quadratic-functoriality.md",
+    "research/nima/the-wronskian-lagrange-boundary-map-is-the-relative-connecting-morphism-for-the-killed-wall.md"
+  ],
+  "fixed_columns": {
+    "even": "w_theta=(1/2,1/2)^T",
+    "odd": "j_theta=(1/4,-1/4)^T",
+    "source": "partial_C(Phi)=w_theta and partial_C(Phi')=j_theta in the ordered wall basis",
+    "no_parameters": "both columns, signs, and relative scale are source-fixed"
+  },
+  "local_comparison_matrix": {
+    "source_basis": "(even wall generator, odd Wronskian/redistribution generator)",
+    "target_basis": "two ordered endpoint polarities",
+    "Q": "[[1/2,1/4],[1/2,-1/4]]",
+    "determinant": "-1/4",
+    "rank": 2,
+    "meaning": "the fixed Wronskian boundary module maps isomorphically onto the local two-polarity endpoint plane before metric completion"
+  },
+  "target_quarter_turn": {
+    "sewing": "S=[[0,1],[1,0]] in the untwisted local frame",
+    "Green_sign": "J=diag(1,-1)",
+    "F": "J S=[[0,1],[-1,0]]",
+    "actions": ["F w_theta=2 j_theta", "F j_theta=-(1/2) w_theta"]
+  },
+  "induced_source_C4": {
+    "formula": "F_src=Q^-1 F Q",
+    "matrix": "[[0,-1/2],[2,0]]",
+    "square": "F_src^2=-I",
+    "fixed_vectors": "ker(F_src-I)=0",
+    "intertwining": "F Q=Q F_src",
+    "interpretation": "the factor 2 and 1/2 are not arbitrary Tate phases; they are forced by the relative normalization of the even wall and odd Wronskian columns"
+  },
+  "relation_to_split_torsor": {
+    "candidate": "identify the local reciprocal-linking anti-diagonal generator with the odd source generator carried by j_theta",
+    "support": "j_theta is exactly the ordered odd endpoint line and Q is invertible",
+    "qualification": "one quarter-turn exchanges odd and even lines, so the C4 object is the four-chart transported family, not an endomorphism of one fixed odd line",
+    "remaining": "the fixture still lacks separate reciprocal and linking response rows proving that their redistribution h maps to this odd generator"
+  },
+  "higher_horn_effect": "At local linear level, the formerly absent comparison edge has a canonical candidate Q with an invariant-free induced C4 action. Therefore any C4-coherent lift through the summed radial response is locally unique once the reciprocal-linking redistribution is identified with the Wronskian odd line.",
+  "still_open": [
+    "the four matrix-unit equality transporting the independent Stieltjes and theta-history Green forms",
+    "the map from separate reciprocal/linking ports to the odd Wronskian generator",
+    "cutoff-compatible completion of the local comparisons",
+    "the Calderon/cofactor bulk identity with the independent Evans forcing pairing"
+  ],
+  "ten_iteration_synthesis": "The prospective 4-horn was initially one dimension premature. The missing shared R-D-G triangle decomposes into: endpoint Cech orientation (closed), boundary conormal to interior Calderon lift (obstruction class identified), coarse Stokes cancellation (closed), typed reciprocal-linking lift (now locally unique conditional on the fixed Q comparison), and determinant left-kernel/Green dual equality (open).",
+  "next_program": "Materialize separate reciprocal and linking rows at prime two, map their anti-diagonal through Q^-1 to the odd source coordinate, and run the four matrix-unit Green-form comparison. This is the smallest test that can promote the local linear edge to the missing typed triangular face.",
+  "rh_implication": false
+}

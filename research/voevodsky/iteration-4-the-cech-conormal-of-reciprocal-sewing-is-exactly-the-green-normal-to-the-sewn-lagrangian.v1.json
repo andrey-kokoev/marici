@@ -1,0 +1,46 @@
+{
+  "schema": "marici.voevodsky.higher-horn-audit.iteration-4.v1",
+  "status": "two_state_alternating_incidence_and_positive_normal_identified",
+  "fresh_sources": [
+    "research/voevodsky/the-green-sign-times-sewing-chirality-is-the-canonical-c4-quarter-turn-and-selects-a-positive-lagrangian-crossing-form.v1.json",
+    "research/voevodsky/the-tate-twisted-endpoint-quarter-turn-produces-an-alternating-maslov-crossing-form-not-four-positive-edges.v1.json",
+    "research/voevodsky/correction-four-sector-clifford-positivity-does-not-cancel-the-forcing-pairing-the-required-apex-is-an-independent-arithmetic-balance.v1.json",
+    "research/grothendieck/reciprocal-fourier-sewing-preserves-the-corona-sign.md"
+  ],
+  "two_chart_complex": {
+    "carrier": "P=H_minus direct-sum H_plus",
+    "sewing": "T:H_minus->H_plus unitary",
+    "inclusion": "i_T(v)=(v,Tv)",
+    "Cech_differential": "delta_T(a,b)=a-T^*b",
+    "exactness": "ker(delta_T)=Graph(T)=Lambda_plus"
+  },
+  "conormal_identity": {
+    "adjoint": "delta_T^*(v)=(v,-Tv)",
+    "Green_sign": "J=diag(I,-I)",
+    "identity": "delta_T^*=J i_T",
+    "image": "ran(delta_T^*)=Graph(-T)=Lambda_minus",
+    "meaning": "the Cech alternating conormal is exactly the Green-normal/negative-chirality complement to the sewn graph"
+  },
+  "Clifford_relation": {
+    "chirality": "S_T=[[0,T^*],[T,0]]",
+    "quarter_turn": "F_C=J S_T",
+    "on_sewn_state": "F_C i_T(v)=J i_T(v)=delta_T^*(v)",
+    "positive_crossing": "[i_T(v),F_C i_T(w)]_J=<i_T(v),i_T(w)>=2<v,w>",
+    "result": "the alternating incidence and positive normal are not two fitted structures; both are induced by source sewing T plus Green orientation J"
+  },
+  "orientation": {
+    "same_corona_sign": "Fourier transport sends both terminal corona states to the same vector",
+    "cancellation": "delta_T(c,Tc)=0 because the second restriction enters with the Cech minus sign",
+    "C4": "successive unoriented Maslov crossings alternate sign; the conormal/orientation local system transports the chosen positive edge convention",
+    "independence": "T comes from reciprocal Fourier-Poisson sewing and J from Green orientation, so this sign does not reuse the Evans Stokes cancellation"
+  },
+  "effect_on_missing_RDG_triangle": {
+    "closed_edge": "the Green dual candidate of a sewn reciprocal state is canonically its Cech conormal delta_T^*v=J i_T(v)",
+    "remaining_equation": "the determinant left-kernel cofactor covector phi must equal, up to its determinant-line factor, delta_T^*v under the complete trace/rigging map",
+    "typed_form": "phi = Tr_partial^times(delta_T^* v) tensor c_det, or equivalently cofactor_C(dot C_f)=B_f^times(Tr_partial^times delta_T^*v) tensor c_det"
+  },
+  "scope_boundary": "This closes reciprocal orientation and endpoint-normal positivity. It does not identify the C34 bulk arithmetic cross current with the forcing pairing, and the dependent z/-z Green equations still cannot prove confinement.",
+  "next_iteration": "Pull delta_T^* through the complete boundary trace using the Green identity. Compute whether the induced interior dual state is the formal left Schur kernel from iteration 3. Any discrepancy is an interior bulk term; compare that term with the C34 common/difference cross current.",
+  "iteration_result": "The required alternating relative incidence is already canonically encoded by the endpoint sewing geometry: its adjoint is the Green normal, and the Clifford quarter-turn carries the sewn state to exactly that conormal. The missing triangle is no longer blocked by an orientation choice; it is blocked by promotion of this boundary conormal to the determinant cone's interior left-kernel covector and by the independent bulk forcing comparison.",
+  "rh_implication": false
+}
