@@ -1,0 +1,57 @@
+{
+  "schema": "marici.voevodsky.fourth-chart-analytic-dossier.v1",
+  "claim_boundary": "The phrase fourth chart names two non-equivalent analytical targets. The complete response chart is invertible on its essential image in the transported response topology. The source-forgetting Euler-weighted Hilbert record has zero lower margin. Neither statement proves physical positive prolate-to-Tate completion, external G4 identification, or RH-strength positivity.",
+  "common_source": {
+    "test_core": "Schwartz/Bruhat-Schwartz observer core",
+    "retained_graph_domain": "D_ret, the jointly closed graph completion retaining the source coordinate",
+    "labelled_hilbert_rung": "H_0",
+    "warning": "These topologies are not interchangeable without a comparison theorem."
+  },
+  "charts": {
+    "complete_response": {
+      "formula": "S4_resp(g)=R(g)=(B_g,Q_g,A_g,C_g)",
+      "components": {"B_g(a)": "g(a)", "Q_g(a)": "Fourier(g)(a)", "A_g(a)": "integral_{-infinity}^a g(x) dx", "C_g(a)": "pv integral exp(-2 pi i a x) g(x)/x dx"},
+      "target_topology": "product response topology with B carrying the source Schwartz topology",
+      "kernel": "zero",
+      "range": "essential image of R",
+      "inverse": "R4(B,Q,A,C)=B",
+      "inverse_status": "continuous_on_essential_image",
+      "lower_bound_status": "tautological in transported response norm because the B coordinate retains g",
+      "classification": "valid_analytic_chart"
+    },
+    "retained_graph": {
+      "formula": "Jx=(x,A_1x,...,A_mx)",
+      "target_topology": "joint graph topology retaining source coordinate",
+      "kernel": "zero",
+      "inverse": "projection to retained source coordinate",
+      "inverse_status": "continuous",
+      "classification": "valid_graph_chart"
+    },
+    "source_forgetting_hilbert_record": {
+      "formula": "U4 on H_0 after forgetting the source coordinate",
+      "target_topology": "analytic four-port Hilbert norm",
+      "kernel": "not the decisive issue",
+      "lower_margin": "inf_{||c||_{H_0}=1} ||U4 c||_an = 0",
+      "inverse_status": "no bounded inverse established; zero lower margin obstructs it",
+      "classification": "not_a_valid_bounded_hilbert_chart"
+    },
+    "radial_augmented_record": {
+      "formula": "tilde(q4)=(q4,partial,tr_0,D_w_infinity^+)",
+      "source": "radial H1 field",
+      "lower_bound_status": "bounded below only on the radial H1 model",
+      "limitation": "does not imply labelled-source Hilbert recovery",
+      "classification": "valid_radial_observer_not_labelled_chart_inverse"
+    }
+  },
+  "selection_rule": {
+    "presentation_coherence": "use complete_response or retained_graph",
+    "bounded_labelled_hilbert_recovery": "currently unavailable for the source-forgetting record",
+    "physical_positive_completion": "requires separate Mosco/Douglas/Schur analysis"
+  },
+  "authoritative_sources": [
+    "research/voevodsky/consolidated-four-presentation-analytic-pyramid-position.md",
+    "research/voevodsky/all-seam-flux-makes-the-function-valued-v4-faithful-and-gives-an-analytic-c41.md",
+    "research/voevodsky/the-retained-common-domain-exists-but-does-not-supply-hilbert-observability.md",
+    "research/voevodsky/the-archimedean-defect-weight-gives-a-uniform-tail-coercive-augmentation-and-analytic-c41.md"
+  ]
+}

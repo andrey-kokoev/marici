@@ -1,0 +1,37 @@
+{
+  "schema": "marici.voevodsky.quotient-chart-transport-analytical-realization-interface.v1",
+  "constructor": "realize_directed_edges_from_source_quotients",
+  "partial": true,
+  "input": {
+    "source": "one Hilbert or graph-Hilbert source X",
+    "charts": "bounded maps Si:X->Ei",
+    "kernels": "Ni=ker(Si)",
+    "quotient_charts": "bar(Si):X/Ni->ran(Si)"
+  },
+  "intrinsic_quotient_chart": {
+    "status": "automatic",
+    "target_norm": "||Sx||_quot=inf_{n in ker S}||x+n||_X",
+    "result": "bar(S):X/ker(S)->ran(S) is isometric"
+  },
+  "certificate": {
+    "physical_quotient_chart": ["kernel_closed", "physical_range_closed", "quotient_norm_equivalent_to_physical_norm", "induced_chart_bounded_below"],
+    "directed_edge_i_j": ["Ni_subset_Nj", "source_and_target_typed", "form_descends_through_Ni"],
+    "invertible_edge_i_j": ["Ni_equals_Nj", "both_induced_charts_bounded_below"],
+    "relation_i_j": ["closed_source_generated_relation_or_declared_closure"]
+  },
+  "construction": {
+    "quotient_projection": "pi_i:X->X/Ni",
+    "induced_chart": "bar(Si)[x]=Si x",
+    "directed_edge": "Cij(Si x)=Sj x",
+    "factorization": "Sj=Cij Si",
+    "composition": "Nikernel inclusion chain implies Cjk Cij=Cik",
+    "incomparable_case": "Rij={(Si x,Sj x):x in X} subset Ei direct_sum Ej"
+  },
+  "classification": {
+    "Ni_equals_Nj": "invertible chart comparison",
+    "Ni_strict_subset_Nj": "directed quotient edge",
+    "kernels_incomparable": "linear relation/span; no canonical operator"
+  },
+  "form_gate": "A form q descends to X/Ni only if Ni is contained in its radical (or the equivalent sesquilinear invariance condition holds).",
+  "claim_boundary": "Kernel inclusion constructs an internal quotient edge automatically in the intrinsic quotient norms. Equality with an independently normalized physical quotient is precisely a norm-equivalence/closed-range comparison theorem, with form descent checked separately."
+}

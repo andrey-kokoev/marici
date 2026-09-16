@@ -1,0 +1,51 @@
+{
+  "schema": "marici.voevodsky.four-chart-transport-analytical-realization-interface.v1",
+  "constructor": "realize_pyramid_from_source_charts",
+  "partial": true,
+  "input": {
+    "source": "one common Hilbert or graph-Hilbert source X",
+    "charts": ["S1:X->E1", "S2:X->E2", "S3:X->E3", "S4:X->E4"],
+    "essential_images": "Ei=ran(Si) with declared image norms"
+  },
+  "certificate": [
+    "common_source_domain",
+    "all_charts_bounded",
+    "all_ranges_closed",
+    "all_charts_bounded_below_on_declared_source_quotient",
+    "bounded_image_inverses",
+    "source_and_endpoint_provenance",
+    "independent_physical_edges_agree_with_transport"
+  ],
+  "construction": {
+    "inverse": "Ri=(Si|X_to_Ei)^(-1)",
+    "edge": "Cij=Sj Ri",
+    "triangle": "Cjk Cij=Cik",
+    "inverse_edge": "Cji Cij=id_Ei",
+    "tetrahedron": "Ckl(Cjk Cij)=(Ckl Cjk)Cij=Sl Ri"
+  },
+  "coordinate_output": {
+    "first_elementary_conductor_tetrahedron": {
+      "AB": "S_B R_A",
+      "AC": "S_C R_A",
+      "AD": "S_D R_A",
+      "BC": "S_C R_B",
+      "BD": "S_D R_B",
+      "CD": "S_D R_C"
+    }
+  },
+  "current_state": {
+    "first_three_chart_inverses": true,
+    "complete_response_fourth_chart_inverse": true,
+    "retained_common_graph_domain": true,
+    "source_forgetting_hilbert_fourth_chart_bounded_below": false,
+    "internal_response_edge_realization": true,
+    "external_physical_edge_identification": false
+  },
+  "fourth_chart_dossier": "research/voevodsky/fourth-chart-analytic-dossier.json",
+  "first_missing_gate_by_target": {
+    "internal_response_presentation": "none",
+    "source_forgetting_labelled_Hilbert_record": "positive lower modulus",
+    "external_physical_positive_realization": "independent physical-edge comparison and positive completion evidence"
+  },
+  "claim_boundary": "The constructor generates the internal complete-response edges and strict fillers. It does not turn the zero-margin source-forgetting Hilbert record into an invertible chart, identify external physical kernels, prove positive prolate-to-Tate completion, or imply RH-strength closure."
+}

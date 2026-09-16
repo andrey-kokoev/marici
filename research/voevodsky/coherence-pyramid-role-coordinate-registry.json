@@ -1,0 +1,55 @@
+{
+  "schema": "marici.voevodsky.coherence-pyramid-role-coordinate-registry.v1",
+  "claim_boundary": "Coordinate assignments marked proposed are indexing hypotheses, not analytical realizations. A mapping is promoted only with a typed source, target, and comparison certificate.",
+  "coordinate_systems": {
+    "first_elementary_conductor_tetrahedron": {
+      "vertices": {
+        "A": [6, 0, 1, 0],
+        "B": [5, 0, 2, 0],
+        "C": [5, 1, 1, 0],
+        "D": [5, 0, 1, 1]
+      },
+      "source": "research/voevodsky/the-first-elementary-conductor-tetrahedron-has-four-transfer-equations-and-one-higher-coherence-equation.md"
+    },
+    "abstract_cech_tetrahedron": {
+      "vertices": ["V1", "V2", "V3", "V4"]
+    },
+    "source_quotient_lattice": {
+      "vertices": ["X", "X_mod_N"],
+      "order": "kernel inclusion"
+    }
+  },
+  "edge_instances": [
+    {"id": "AB", "coordinate_system": "first_elementary_conductor_tetrahedron", "source": "A", "target": "B", "transfer": "d_13(A)", "role": "under_embedding", "status": "proposed", "expected_analytic_form": "bounded form-preserving Green inclusion with radical compatibility"},
+    {"id": "AC", "coordinate_system": "first_elementary_conductor_tetrahedron", "source": "A", "target": "C", "transfer": "d_12(A)", "role": "vertical_restriction", "status": "proposed", "expected_analytic_form": "source-compatible restriction preserving ports and observer core"},
+    {"id": "AD", "coordinate_system": "first_elementary_conductor_tetrahedron", "source": "A", "target": "D", "transfer": "d_14(A)", "role": "closed_form_comparison", "status": "proposed", "expected_analytic_form": "endpoint-compatible closed-form comparison with domain and radical descent"},
+    {"id": "BC", "coordinate_system": "first_elementary_conductor_tetrahedron", "source": "B", "target": "C", "transfer": "d_32(B)", "role": "closed_form_comparison", "status": "proposed", "expected_analytic_form": "spectral-to-source form-domain isometry on the declared core"},
+    {"id": "BD", "coordinate_system": "first_elementary_conductor_tetrahedron", "source": "B", "target": "D", "transfer": "d_34(B)", "role": "closed_form_comparison", "status": "proposed", "expected_analytic_form": "spectral-to-endpoint Green comparison preserving endpoint channel"},
+    {"id": "CD", "coordinate_system": "first_elementary_conductor_tetrahedron", "source": "C", "target": "D", "transfer": "d_24(C)", "role": "vertical_restriction", "status": "proposed", "expected_analytic_form": "mixed conductor-endpoint restriction or Gysin transfer"},
+    {"id": "C34_relative_to_physical", "coordinate_system": "abstract_cech_tetrahedron", "source": "V3", "target": "V4", "transfer": "physical prolate to Tate boundary", "role": "closed_form_comparison", "status": "candidate", "expected_analytic_form": "Mosco convergence of centered physical relative forms to q_|A_S| on the phase-energy completion"},
+    {"id": "source_to_kernel_quotient", "coordinate_system": "source_quotient_lattice", "source": "X", "target": "X_mod_N", "transfer": "pi_N:X->X/N", "role": "over_quotient", "status": "candidate", "expected_analytic_form": "bounded surjection with closed identified kernel N, exact quotient sequence, and descended form when N lies in the radical"}
+  ],
+  "face_instances": [
+    {"id": "ABC", "coordinate_system": "first_elementary_conductor_tetrahedron", "vertices": ["A", "B", "C"], "boundary_edges": ["AB", "BC", "AC"], "equation": "d_32(B) d_13(A) = d_12(A)", "role": "composition_comparison", "status": "signature_role_missing", "expected_analytic_form": "equality of the composite and direct closed maps on one invariant common core, followed by equality of closures"},
+    {"id": "ABD", "coordinate_system": "first_elementary_conductor_tetrahedron", "vertices": ["A", "B", "D"], "boundary_edges": ["AB", "BD", "AD"], "equation": "d_34(B) d_13(A) = d_14(A)", "role": "composition_comparison", "status": "signature_role_missing", "expected_analytic_form": "spectral-to-endpoint composition cell with domain and endpoint compatibility"},
+    {"id": "ACD", "coordinate_system": "first_elementary_conductor_tetrahedron", "vertices": ["A", "C", "D"], "boundary_edges": ["AC", "CD", "AD"], "equation": "d_24(C) d_12(A) = d_14(A)", "role": "beck_chevalley", "status": "proposed", "expected_analytic_form": "invertible source-restriction/endpoint-transfer Beck-Chevalley comparison"},
+    {"id": "BCD", "coordinate_system": "first_elementary_conductor_tetrahedron", "vertices": ["B", "C", "D"], "boundary_edges": ["BC", "CD", "BD"], "equation": "d_24(C) d_32(B) = d_34(B)", "role": "beck_chevalley", "status": "proposed", "expected_analytic_form": "mixed conductor-endpoint Beck-Chevalley comparison with certificate transport"},
+    {"id": "C34_completion_square", "coordinate_system": "abstract_cech_tetrahedron", "vertices": ["V3", "V4"], "boundary_edges": ["C34_relative_to_physical"], "equation": "complete then compare = compare then complete", "role": "completion_comparison", "status": "candidate", "expected_analytic_form": "Mosco-compatible completion square with stable radical and positive reduced minimum modulus"}
+  ],
+  "conditional_global_constructor": {
+    "interface": "research/voevodsky/four-chart-transport-analytical-realization-interface.json",
+    "formula": "C_ij=S_j R_i",
+    "covers_edge_instances": ["AB", "AC", "AD", "BC", "BD", "CD"],
+    "covers_face_instances": ["ABC", "ABD", "ACD", "BCD"],
+    "current_status": "blocked",
+    "minimal_blockers": ["fourth_chart_bounded_below", "fourth_chart_common_graph_domain", "independent_physical_edge_comparison"]
+  },
+  "conditional_quotient_constructor": {
+    "interface": "research/voevodsky/quotient-chart-transport-analytical-realization-interface.json",
+    "formula": "C_ij(S_i x)=S_j x when ker(S_i) is contained in ker(S_j)",
+    "covers_edge_instances": ["source_to_kernel_quotient"],
+    "current_status": "candidate",
+    "minimal_blockers": ["closed_kernel_and_range", "quotient_lower_bound", "form_radical_compatibility"]
+  },
+  "allowed_statuses": ["proposed", "candidate", "realized", "blocked", "falsified", "signature_role_missing"]
+}
