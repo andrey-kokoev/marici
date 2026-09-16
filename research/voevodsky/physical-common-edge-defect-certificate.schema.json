@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "marici.voevodsky.physical-common-edge-defect-certificate.v1",
+  "type": "object",
+  "required": ["regulator", "basis", "G_T", "G_0", "D_plus", "graph_control_B", "epsilon"],
+  "properties": {
+    "regulator": {"type": "object"},
+    "basis": {"type": "array", "items": {"type": "string"}},
+    "G_T": {"$ref": "#/$defs/matrix"},
+    "G_0": {"$ref": "#/$defs/matrix"},
+    "D_plus": {"$ref": "#/$defs/matrix"},
+    "graph_control_B": {"$ref": "#/$defs/matrix"},
+    "epsilon": {"type": "string"},
+    "source_evidence": {"type": "string"}
+  },
+  "$defs": {
+    "matrix": {
+      "type": "array",
+      "items": {"type": "array", "items": {"type": "string"}}
+    }
+  }
+}

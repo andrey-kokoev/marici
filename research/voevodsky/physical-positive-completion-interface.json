@@ -1,0 +1,59 @@
+{
+  "schema": "marici.voevodsky.physical-positive-completion-interface.v1",
+  "constructor": "connect_internal_charts_to_physical_positive_completion",
+  "partial": true,
+  "ordered_gates": [
+    {
+      "id": "internal_response_chart",
+      "status": true,
+      "evidence": "research/voevodsky/fourth-chart-analytic-dossier.json"
+    },
+    {
+      "id": "exact_positive_regulator_alignment",
+      "status": true,
+      "evidence": "research/voevodsky/the-transported-eight-leg-krein-readout-gives-an-exact-global-positive-regulator-alignment.md"
+    },
+    {
+      "id": "phase_energy_absolute_target",
+      "status": true,
+      "evidence": "research/voevodsky/the-local-phase-energy-completion-turns-the-tate-form-into-a-bounded-self-adjoint-multiplier.md"
+    },
+    {
+      "id": "target_adapted_packet_filtration",
+      "status": true,
+      "evidence": "research/voevodsky/the-bounded-phase-energy-multiplier-admits-an-asymptotically-reducing-finite-packet-filtration.md"
+    },
+    {
+      "id": "source_labelled_residual_correspondence_system",
+      "status": true,
+      "evidence": "research/voevodsky/physical-residual-correspondence-system.json"
+    },
+    {
+      "id": "packet_independent_physical_common_subfeature",
+      "status": false,
+      "expected_analytic_form": "For C_alpha=G_alpha^T-(D_alpha)_+ and a graph-control form B_alpha, prove the canonical relative negative modulus ||(B_alpha^(-1/2) C_alpha B_alpha^(-1/2))_-|| tends to zero. Adding that modulus times B_alpha gives an exact finite-stage common factor before observer compression."
+    },
+    {
+      "id": "uniform_physical_residual_tail_bound",
+      "status": false,
+      "expected_analytic_form": "For the target-adapted projections P_n, sup_{alpha>=alpha_n} ||(I-P_n) R_alpha^(1/2) P_n|| -> 0, together with uniform graph-core recovery."
+    },
+    {
+      "id": "positive_sonin_endpoint_coupling",
+      "status": false,
+      "expected_analytic_form": "The parity-reduced Schur-Douglas inequality C_k >= b_k b_k^* on the declared endpoint graph domain."
+    },
+    {
+      "id": "physical_absolute_form_mosco_convergence",
+      "status": false,
+      "depends_on": [
+        "packet_independent_physical_common_subfeature",
+        "uniform_physical_residual_tail_bound",
+        "positive_sonin_endpoint_coupling"
+      ],
+      "expected_analytic_form": "Mosco convergence of the global minimalized physical residual form to q_|A_S| with the selected Sonin/endpoint sector."
+    }
+  ],
+  "first_open_gate": "packet_independent_physical_common_subfeature",
+  "claim_boundary": "This interface records the current dependency order. It does not infer an open gate from completion of earlier gates."
+}
