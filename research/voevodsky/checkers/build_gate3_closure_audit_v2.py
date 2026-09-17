@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+"""Conservative Gate-3 audit after complex-contour continuation work."""
+import json
+from pathlib import Path
+root=Path(__file__).parents[1]/'results'
+def load(n):return json.loads((root/n).read_text())
+poly=load('stored_polynomial_positivity_assembly_L0649_L065.json');dec=load('gate3_source_remainder_decomposition_L0649_L065.json');e10=load('gate3_E10_pivot17_128.json');e8=load('gate3_E8_pivot17_from_E10.json');e6=load('gate3_final_strong_pivot_E6_from_E8.json');out={'schema':'marici.voevodsky.gate3-closure-audit-v2','stored_polynomial_closed':poly['passed_stored_polynomial'],'stored_critical_lower':poly['stored_polynomial_minimum_lower'],'continuation_chain':{'E10_pivot17_magnitude_budget_passes_conditionally':e10['passed_conditionally'],'E8_transfer_passes_conditionally':e8['passed_conditionally'],'E6_final_strong_pivot_passes_conditionally':e6['passed_conditionally']},'source_error_budget':{'allocated':dec['allocated_total_source_error'],'conditional_final_lower':dec['conditional_final_critical_lower']},'unproved_conditions':['direct interval derivative bound |p17 prime| <= 0.04188 on E10','direct no-pole certificates for recursive pivots 0-16 through E10','directed analytic E2 residual-Gram interpolation tail bound'],'gate3_closed':False,'reason':'secant safety factors and sampled contour bounds are not directed derivative enclosures','rh_proved':False};p=root/'gate3_closure_audit_v2.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));assert not out['gate3_closed']
