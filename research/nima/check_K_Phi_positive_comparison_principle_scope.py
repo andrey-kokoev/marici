@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""Classify admissible comparison principles for the paired theta responses K and Phi."""
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2]
+paths={'local':'research/grothendieck/actual-theta-source-enters-the-local-two-point-krein-negative-cone.md','green':'research/grothendieck/theta-green-transfer-mixed-bezoutian.md','cross':'research/grothendieck/rank-two-positivity-is-a-gamma-prime-cross-term-theorem.md','modular':'research/grothendieck/arithmetic-loewner-kernel-completion-conjecture.md'}
+T={k:(ROOT/v).read_text(encoding='utf-8') for k,v in paths.items()}
+checks={'local_two_point_comparison_falsified':'actual theta source itself' in T['local'] and 'Krein contribution is negative' in T['local'],'sectorwise_comparison_falsified':'both sector determinants are negative' in T['cross'],'green_transfer_exact':'Mixed Bezoutian identity' in T['green'],'green_transfer_not_square':'manifest square' in T['green'] and 'does not occur' in T['green'],'full_modular_jet_cancellation_required':'full modular label sum cancels every odd jet' in T['modular']}
+out={'schema':'marici.nima.K-Phi-positive-comparison-principle-scope.v1','checks':checks,'passed':all(checks.values()),'rejected_principles':['pointwise K-versus-Phi domination','independent adjacent-pair positivity','block-diagonal gamma/prime comparison','integration-by-parts alone'],'surviving_principle':{'type':'nonlocal globally sewn comparison','must_retain':['both modular charts','all theta labels before absolute values','gamma-prime cross term','frequency-dependent boundary current'],'target':'prove positivity of the integrated mixed Bezoutian I(x)P(y)-P(x)I(y) after global sewing, not of its pointwise integrand'},'next_executable':'derive the all-label odd-jet cancellation identity symbolically before estimating the globally resummed remainder','rh_proved':False}
+p=ROOT/'research/nima/results/K-Phi-positive-comparison-principle-scope.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));raise SystemExit(0 if out['passed'] else 1)

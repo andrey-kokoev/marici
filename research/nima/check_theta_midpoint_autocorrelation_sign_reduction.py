@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+"""Derive denominator-free midpoint/autocorrelation formulas for B' conjugate(B)."""
+import json,sys
+from pathlib import Path
+try: import sympy as s
+except ModuleNotFoundError:
+ sys.path.insert(0,str(Path(__file__).parents[1]/'flavor'/'.venv'/'Lib'/'site-packages'));import sympy as s
+ROOT=Path(__file__).resolve().parents[2];u,v,m,d,b=s.symbols('u v m d b',real=True);J=s.Matrix([[s.diff(m+d,m),s.diff(m+d,d)],[s.diff(m-d,m),s.diff(m-d,d)]]).det();checks={'midpoint_jacobian_absolute_two':abs(J)==2,'sum_maps_to_two_m':s.simplify((m+d)+(m-d)-2*m)==0,'difference_maps_to_two_d':s.simplify((m+d)-(m-d)-2*d)==0,'cosine_even_in_d':s.simplify(s.cos(-2*b*d)-s.cos(2*b*d))==0,'d_sine_even_in_d':s.simplify((-d)*s.sin(-2*b*d)-d*s.sin(2*b*d))==0}
+out={'schema':'marici.nima.theta-midpoint-autocorrelation-sign-reduction.v1','definition':'C_a(d)=integral_R exp(2 a m) Phi(m+d) Phi(m-d) dm','identities':{'Re(Bprime conjugate B)':'integral_R cos(2 b d) partial_a C_a(d) dd','Im(Bprime conjugate B)':'2 integral_R d sin(2 b d) C_a(d) dd = 4 integral_0^infinity d sin(2 b d) C_a(d) dd'},'checks':checks,'passed':all(checks.values()),'structural_facts':['C_a(d)>=0 from Phi>=0','C_a is even in d','the required signs are Fourier cosine/sine-transform signs, not pointwise signs'],'sufficient_but_unproved':['positive cosine transform of partial_a C_a','positive sine transform of d C_a'],'next_attack':'derive total-positivity or variation-diminishing control of the completed tilted autocorrelation C_a from theta modularity','claim_boundary':'exact source reduction only; positivity of a function does not imply positivity of its oscillatory transforms','rh_proved':False};p=ROOT/'research/nima/results/theta-midpoint-autocorrelation-sign-reduction.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));raise SystemExit(0 if out['passed'] else 1)

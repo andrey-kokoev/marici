@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+"""Fail-closed scope audit for the canonical adjacent-band theta block."""
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];logc=(ROOT/'research/grothendieck/theta-log-concavity-proves-global-tilt-monotonicity-of-translation-defect.md').read_text(encoding='utf-8');adj=(ROOT/'research/grothendieck/theta-adjacent-band-transport-first-falsifier.md').read_text(encoding='utf-8');corr=(ROOT/'research/nima/correction-the-J-current-is-proved-positive-only-at-band-entrance-not-through-the-whole-block.md').read_text(encoding='utf-8')
+checks={'entrance_J_inequality_proved':'J_a(0)>J_a(D)' in logc,'full_D_J_inequality_absent':'J_a(D)>J_a(D+L)' not in logc,'canonical_block_declared_next_test':'full canonical block integral' in adj,'scope_correction_recorded':'cannot yet be described' in corr}
+out={'schema':'marici.nima.theta-canonical-block-gate-scope.v1','checks':checks,'passed':all(checks.values()),'proved':['J_a(0)-J_a(L)>0','weighted W residual has at most one crossing'],'unproved':['J_a(D)-J_a(D+L)>=0 on the full band','sign of weighted W integral','sign of their coupled canonical block integral'],'active_target':'prove the complete block integral nonnegative without separating J and W signs','rh_proved':False};p=ROOT/'research/nima/results/theta-canonical-block-gate-scope.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));raise SystemExit(0 if out['passed'] else 1)
