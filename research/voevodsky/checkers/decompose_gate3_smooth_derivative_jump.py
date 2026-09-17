@@ -10,7 +10,7 @@ except ModuleNotFoundError:
  from scipy.special import eval_legendre
 from numpy.polynomial.legendre import legval
 root=Path(__file__).parents[1]/'results';base=np.load(root/'regularized_union_tail_maps_L0649_L065.npz');Z=base['packet']-base['tail_maps'][4];L=.6495;k=np.arange(1000);sc=np.sqrt((2*k+1)/(2*L));dend=k*(k+1)/(2*L)
-dp=np.array([legval(1,Z[:,j]*sc*dend) for j in range(40)]);dm=np.array([legval(-1,Z[:,j]*sc*dend*((-1.)**(k+1))) for j in range(40)])
+dp=np.array([legval(1,Z[:,j]*sc*dend) for j in range(40)]);dm=np.array([legval(-1,Z[:,j]*sc*dend) for j in range(40)])
 atoms=[]
 for p in (2,3):
  a=math.log(p);c=math.log(p)/math.sqrt(p);atoms += [((L-a)/L,.5*c*L*dp),((-L+a)/L,-.5*c*L*dm)]
