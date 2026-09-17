@@ -31,6 +31,6 @@ for n in range(1000,M):
   else:
    p={n+2:1/(2*n+3),n:-1/(2*n+3)-1/(2*n-1),n-2:1/(2*n-1)}
    for _ in range(m-1):p=integ(p)
-   c+=(-1)**(m+1)*A*D*ev(y,p)
+   c+=A*D*ev(y,p)
  sq+=c*c
 out={'schema':'marici.voevodsky.L075-complete-boundary-jet-order6-scout.v1','endpoint_scaled_derivatives_0_6':ds,'finite_range':[1000,M],'coefficientwise_combined_norm':math.sqrt(sq),'passed_scout':math.sqrt(sq)<4.3e-9,'passed':False,'remaining':'directed evaluation, analytic tail after M, and seven-times-continuous remainder','rh_proved':False};p=root/'L075_complete_boundary_jet_order6_scout.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));assert out['passed_scout']

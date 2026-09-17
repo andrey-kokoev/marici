@@ -25,7 +25,7 @@ def jet(n):
   else:
    p={n+2:1/(2*n+3),n:-1/(2*n+3)-1/(2*n-1),n-2:1/(2*n-1)}
    for _ in range(m-1):p=integ(p)
-   z+=(-1)**(m+1)*math.sqrt(L*(2*n+1)/2)/(2*n+1)*D*sum(c*eval_legendre(k,y) for k,c in p.items() if k>=0)
+   z+=math.sqrt(L*(2*n+1)/2)/(2*n+1)*D*sum(c*eval_legendre(k,y) for k,c in p.items() if k>=0)
  return z
 rows=[]
 for a,b in ((1000,1100),(1100,1200)):
