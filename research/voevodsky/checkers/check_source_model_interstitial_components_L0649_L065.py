@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Source/model component discrepancies at eight interstitial degree-16 nodes."""
+import json,sys,math
+from pathlib import Path
+try: import numpy as np
+except ModuleNotFoundError:
+ sys.path.insert(0,str(Path(__file__).parents[2]/'flavor'/'.venv'/'Lib'/'site-packages'));import numpy as np
+root=Path(__file__).parents[1]/'results';items=[(.6490096073597984,'L0649010'),(.6490842651938487,'L0649084'),(.6492222148834902,'L0649222'),(.6494024548389919,'L0649402'),(.6495975451610081,'L0649598'),(.6497777851165098,'L0649778'),(.6499157348061513,'L0649916'),(.6499903926402016,'L0649990')];C=np.load(root/'degree8_complete_lower_matrix_L0649_L065.npz')['coefficients'];P=np.load(root/'moving_frame_polynomial_L0649_L065.npz')['frame'];lim=json.loads((root/'source_to_moving_bundle_error_contract_L0649_L065.json').read_text())['required_source_error_components'];rows=[]
+for L,tag in items:
+ t=(L-.6495)/.0005;H=np.load(root/f'physical_regularized_residual_gram_{tag}_degree16_refined_matrices.npz')['lower_form'];M=np.polynomial.chebyshev.chebval(t,C);p=np.polynomial.chebyshev.chebval(t,P);p/=np.linalg.norm(p);E=(H-M+H.T-M.T)/2;Q=np.eye(40)-np.outer(p,p);rows.append({'tag':tag,'critical':abs(float(p@E@p)),'cross':float(np.linalg.norm(Q@E@p)),'robust':float(np.linalg.norm(Q@E@Q,2)),'source_margin':float(np.linalg.eigvalsh((H+H.T)/2)[0])})
+mx={k:max(x[k] for x in rows) for k in ('critical','cross','robust')};out={'schema':'marici.voevodsky.source-model-interstitial-components-L0649-L065.v1','rows':rows,'maxima':mx,'target_ratios':{'critical':mx['critical']/lim['critical_diagonal_max'],'cross':mx['cross']/lim['critical_robust_cross_max'],'robust':mx['robust']/lim['robust_block_max']},'all_interstitial_nodes_within_targets':all(mx[k]<lim[{'critical':'critical_diagonal_max','cross':'critical_robust_cross_max','robust':'robust_block_max'}[k]] for k in mx),'minimum_interstitial_source_margin':min(x['source_margin'] for x in rows),'passed':False,'reason_not_certificate':'floating interstitial nodes; interval remainder between 17 nodes open','rh_proved':False};p=root/'source_model_interstitial_components_L0649_L065.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
