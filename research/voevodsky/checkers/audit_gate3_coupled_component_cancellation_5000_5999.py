@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+import json,sys
+from pathlib import Path
+try: import numpy as np
+except ModuleNotFoundError:
+ sys.path.insert(0,str(Path(__file__).parents[2]/'flavor'/'.venv'/'Lib'/'site-packages'));import numpy as np
+root=Path(__file__).parents[1]/'results';d=np.load(root/'regularized_union_continuum_residual_L06495_5000_5999_components.npz');J=np.load(root/'continuum_residual_jump_smooth_L06495_5000_5999.npz')['jump'];parts={'prime_minus_value_jump':d['prime']-J,'gamma':d['gamma'],'endpoint':d['endpoint']};S=sum(parts.values());rows={k:float(np.linalg.norm(v,2)) for k,v in parts.items()};tri=sum(rows.values());coupled=float(np.linalg.norm(S,2));reconstruction=float(np.linalg.norm(S-(d['residual']-J),2));out={'schema':'marici.voevodsky.gate3-coupled-component-cancellation-5000-5999.v1','component_operator_norms':rows,'triangle_sum':tri,'coupled_smooth_norm':coupled,'cancellation_factor':tri/coupled,'reconstruction_error':reconstruction,'passed_reconstruction':reconstruction<1e-12,'arb_port_order':['prime coefficient minus exact value-jump kernel','analytic gamma coefficient','endpoint rank-two coefficient','sum three rows','take row/block norm'],'passed':False,'remaining':'replace all three floating component evaluators with directed Arb enclosures','rh_proved':False};p=root/'gate3_coupled_component_cancellation_5000_5999.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));assert out['passed_reconstruction']
