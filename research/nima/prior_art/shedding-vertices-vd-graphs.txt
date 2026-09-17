@@ -1,0 +1,745 @@
+arXiv:1606.04447v2 [math.CO] 28 Aug 2018
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+JONATHAN BAKER, KEVIN N. VANDER MEULEN, AND ADAM VAN TUYL
+Abstract. We focus our attention on well-covered graphs that are vertex decomposable. We show that for many known families of these vertex decomposable graphs, the set of shedding vertices forms a dominating set. We then construct three new infinite families of well-covered graphs, none of which have this property. We use these results to provide a minimal counterexample to a conjecture of Villarreal regarding Cohen-Macaulay graphs.
+1. Introduction
+In this paper we focus on well-covered graphs G that have the additional property of being vertex decomposable (see Definition 2.1). A subset D of the vertex set V of G is a dominating set if every vertex x  V \ D is adjacent to a vertex of D. We observe that for most of the known constructions of pure vertex decomposable graphs, the set of shedding vertices Shed(G) is a dominating set. The next result summarizes some of our findings.
+Theorem 1.1. Suppose that G is a pure vertex decomposable graph. If G is
+(i) a bipartite graph, or (ii) a chordal graph, or (iii) a very well-covered graph, or (iv) a vertex-transitive graph, or (v) a Cameron-Walker graph, or (vi) a clique-whiskered graph, or (vii) a graph with girth at least five,
+then Shed(G) is a dominating set.
+In particular, (i) is Corollary 6.4, (ii) is Theorem 4.3, (iii) is Theorem 6.3, (iv) is Theorem 4.1, (v) is Corollary 5.2, (vi) is Theorem 5.3, and (vii) Theorem 7.3.
+The fact that Shed(G) is a dominating set for all these known vertex decomposable graphs led us to question if this is a feature of all pure vertex decomposable graphs. Pursuing that question eventually led us to develop three new infinite families of (vertex decomposable) well-covered graphs. These infinite families fail to have the property that Shed(G) is a dominating set and, as we show at the end of the paper, provide new counterexamples and insight to a conjecture of Villarreal.
+2010 Mathematics Subject Classification. 05C69, 05C75, 13D02, 13F55. Key words and phrases. well-covered graph, vertex decomposable graph, dominating set, shedding vertices, Cohen-Macaulay graph. Last updated: March 5, 2018.
+1
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+2
+
+We outline the structure of this paper. Section 2 introduces the definition of pure vertex decomposable graphs and Section 3 describes the set of shedding vertices with some introductory tools for identifying them. Section 4 develops our results for the chordal and vertex-transitive pure vertex decomposable graphs. In Section 5, we consider two constructions of pure vertex decomposable graphs, and show that any pure vertex decomposable graph G constructed via either construction satisfies the property that Shed(G) is a dominating set. In Section 6, we consider all the very well-covered graphs that are vertex decomposable. In Section 7, we focus on all pure vertex decomposable graphs with girth at least five. In Section 8, we describe three infinite families of graphs where each graph G is pure vertex decomposable, but Shed(G) is not a dominating set. In Section 9, we show how to take a graph G which is pure vertex decomposable but Shed(G) is not a dominating set and duplicate a vertex to construct a larger graph with the same properties. We conclude with Section 10, describing how our results provide new counterexamples for a conjecture of Villarreal. Via a computer search, we find the smallest pure vertex decomposable graph G for which Shed(G) is not a dominating set. As part of our computer search, we also show that the set of pure vertex decomposable graphs is the same as the set of Cohen-Macaulay graphs for all the graphs on 10 vertices or fewer. The fact that a minimal counterexample requires at least nine vertices and that the standard constructions, as described in Theorem 1.1, do not provide any counterexamples, make the new constructions in Section 8 relevant for any further analysis of the relationship between dominating sets and vertex decomposability.
+
+2. Vertex Decomposable Graphs
+Let G be a finite simple graph with vertex set V = {x1, . . . , xn} and edge set E. We may sometimes write V (G), respectively E(G), for V , respectively E, if we wish to highlight that we are discussing the vertices, respectively edges, of G. A subset W  V is an independent set if no two vertices of W are adjacent. An independent set W is a maximal independent set if there is no independent set U such that W is a proper subset of U. If W  V is an independent set, then V \ W is a a vertex cover. A vertex cover C is a minimal vertex cover if V \ C is a maximal independent set. A graph is well-covered if all the maximal independent sets have the same cardinality, or equivalently, if every minimal vertex cover has the same cardinality. For example, if Pn is the path graph on n  2 vertices, then Pn is well-covered if and only if n = 2 or n = 4. The graphs in Figure 1 are well-covered graphs.
+w
+u
+
+Figure 1. Two well-covered graphs.
+For any x  V , let G \ x denote the graph G with the vertex x and incident edges removed. The collection of neighbours of a vertex x  V in G, is the set N(x) = {y | {x, y}  E}. The closed neighbourhood of a vertex x is N[x] = N(x)  {x}. We sometimes write
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+3
+
+NG(x) or NG[x] to highlight which graph G we are considering. For S  V , we let G \ S denote the graph obtained by removing all the vertices of S and their incident edges.
+
+Definition 2.1. A graph G is pure vertex decomposable if G is well-covered and
+
+(i) G consists of isolated vertices, or G is empty, or (ii) there exists a vertex x  V , called a shedding vertex, such that G \ x and G \ N[x]
+are pure vertex decomposable.
+
+For example, the first graph, C4, in Figure 1 is not pure vertex decomposable since the deletion on any vertex gives the path P3 which is not well-covered and hence not pure vertex decomposable. The second graph G in Figure 1 is pure vertex decomposable: G \ u is the pure vertex decomposable graph P4 and G \ N[u] is an isolated vertex.
+If G is pure vertex decomposable, then the set of shedding vertices is denoted by:
+Shed(G) = {x  V | G \ x and G \ N[x] are pure vertex decomposable}.
+For example, Shed(G) = {u, w} for the pure vertex decomposable graph in Figure 1.
+Remark 2.2. The study of vertex decomposable graphs lies in the intersection of combinatorial algebraic topology and combinatorial commutative algebra. In particular, Dochtermann-Engstr쮗m [8] and Woodroofe [27] independently showed that vertex decomposability of an independence complex is a useful tool for exploring algebraic properties of an edge ideal of a graph. The independence complex of a graph G, denoted Ind(G), is the simplicial complex
+Ind(G) = {W  V | W is an independent set}.
+Vertex decomposability was first introduced by Provan and Billera [22] for simplicial complexes. Our definition of pure vertex decomposability is equivalent to the statement that the independence complex of a graph G is a pure vertex decomposable simplicial complex. One can use [8, Lemma 2.4] to show the equivalence of definitions. Provan and Billera's definition required that the simplicial complex be pure (which translates in the graph case to the condition that G is well-covered).
+Remark 2.3. A non-pure version of vertex decomposability was introduced by Bj쮗rner and Wachs [3]. A graph is simply called vertex decomposable if Ind(G) satisfies Bj쮗rnerWachs's definition. Specifically, we say G is vertex decomposable if
+(i) G consists of isolated vertices, or G is empty, or (ii) there exists a vertex x  V such that
+(a) G \ x and G \ N[x] are vertex decomposable, and (b) no independent set of G \ N[x] is a maximal independent set of G \ x.
+One can show that G is pure vertex decomposable if and only if G is well-covered and vertex decomposable. It should be noted that verifying that these two statements are equivalent is subtle. The proof in both directions is by induction on the number of vertices. To show that G is pure vertex decomposable implies that G is well-covered and vertex decomposable, one needs to treat the cases that the shedding vertex is either connected or an isolated vertex as a separate cases. For the converse direction, one needs condition (ii) - (b) to verify that G \ x is a well-covered graph.
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+4
+
+Example 2.4. Expanding upon the above remark, we point out that definition of a pure vertex decomposable graph allows for more vertices to be shedding vertices than the definition of vertex decomposable since isolated vertices can be shedding vertices. Consider the well-covered graph G in Figure 2. Then the vertex z is a shedding vertex
+
+z x4 x3 x5
+x1 x2
+
+Figure 2. A pure vertex decomposable graph.
+according to the pure vertex decomposable definition since G \ z = G \ N[z] is also a pure vertex decomposable graph. However, z is not a shedding vertex according to the vertex decomposable definition since z fails to satisfy condition (ii) - (b); indeed, since G \ N[z] = G \ z, every maximal independent set of G \ N[z] is a maximal independent set of G \ z. Note that G is vertex decomposable since every vertex xi for i = 1, . . . , 5 is a shedding vertex with respect to Bj쮗rner and Wach's definition.
+Remark 2.5. We want to highlight that the term shedding vertex appears to have two different usages in the literature. In Bj쮗rner-Wach's definition, x is a shedding vertex if it satisfies both conditions of (ii) given in Remark 2.3. In other papers, e.g. [2] and [27], a vertex x is a shedding vertex of a graph if it only satisfies condition (b). Some care must be taken when applying results from other papers.
+The next lemma indicates that when considering vertex decomposable graphs, it is sufficient to focus on connected graphs.
+Lemma 2.6 ([27, Lemma 20]). Suppose G and H are disjoint graphs. Then G  H is (pure) vertex decomposable if and only if G and H are each (pure) vertex decomposable.
+By adapting a construction of Biermann, Francisco, H`a, and Van Tuyl [1], we are able to make pure vertex decomposable graphs from any given graph. For any graph G, let S  V , and after relabeling, let S = {x1, . . . , xs}. We let G  W (S) denote the graph with the vertex set V  {z1, . . . , zs} and edge set E  {{xi, zi} | i = 1, . . . , s}. The graph G  W (S) is called the whiskered graph at S since we are adding leaves or "whiskers" to all the vertices of S.
+Theorem 2.7. [1, Corollary 4.6] Let G be a graph and S  V . If the induced graph on V \ S is a chordal graph, then G  W (S) is vertex decomposable. In particular, if the induced graph on V \ S is a well-covered chordal graph, then G  W (S) is pure vertex decomposable.
+Corollary 2.8. If G is any graph with vertex set V, then G  W (V ) is pure vertex decomposable.
+Remark 2.9. Corollary 2.8 implies that G  W (V ) is a Cohen-Macaulay graph (see Section 10). Villarreal [25] was the first to show that a whiskered graph is a CohenMacaulay graph.
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+5
+
+3. Shedding vertices
+
+Technically, a vertex x is a shedding vertex of a pure vertex decomposable graph G if and only if G \ x and G \ N[x] are both pure vertex decomposable. However, as noted in the next lemma, to determine if x is a shedding vertex, it is enough to determine if G \ x is a pure vertex decomposable graph. The lemma is a direct consequence of known results, such as [18, Theorem 3.30] or [22, Proposition 2.3], as illustrated in the proof.
+Theorem 3.1. Suppose G is pure vertex decomposable. Then G \ N[x] is pure vertex decomposable for all x  V and Shed(G) = {x  V | G \ x is pure vertex decomposable}.
+
+Proof. The graph G \ N[x] is pure vertex decomposable if and only if the independence complex Ind(G \ N[x]) is a pure vertex decomposable simplicial complex. It can be shown that Ind(G \ N[x]) equals the simplicial complex
+link(x) = {H  (V \ x) | H = , H  x is an independent set.},
+the link of the element x in Ind(G). Then one uses [22, Proposition 2.3], or [18, Theorem 3.30], which shows that every link of a pure vertex decomposable simplicial complex is also pure vertex decomposable.
+
+We now provide some tools that enable us to identify some elements of Shed(G). For any W  V , the induced graph of G on W , denoted G[W ], is the graph with vertex set W and edge set {e  E | e  W }. The complete graph on n vertices, denoted Kn, is the graph on the vertices {x1, . . . , xn} with edge set {{xi, xj} | i = j}. A clique in G is an induced subgraph of G that is isomorphic to Km for some m  1.
+Definition 3.2. A vertex x  V is a simplicial vertex if the induced graph on N(x) is a clique; equivalently the vertex x appears in exactly one maximal clique of the graph. A simplex is a clique containing at least one simplicial vertex of G. A graph G is simplicial if every vertex of G is a simplicial vertex or adjacent to one.
+Example 3.3. (i) A vertex x is a leaf if it has degree one. Since a leaf has exactly one neighbour, which is a K1, it is a simplicial vertex.
+(ii) The graph in Figure 3 is simplicial. The simplicial vertices are x1, x2, x3 and x4, and each vertex is either a simplicial vertex or adjacent to one.
+
+x1
+
+x2 x3
+
+x4 x5 x6 x7
+
+Figure 3. A simplicial graph
+
+Lemma 3.4. Suppose G is well-covered. If x is a simplicial vertex, then for every y  N(x), the graph G \ y is also well-covered.
+Proof. Let H be a maximal independent set of G \ y. Then H is also an independent set of G. If H was not maximal in G, then H  {y} must still be independent in G.
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+6
+
+This implies (N[x] \ {y})  H = . But then H  {x} would be an independent set of G \ y, contradicting the maximality of H. So H is also a maximal independent set of G, and since G is well-covered, all the maximal independent sets of G \ y have the same cardinality.
+Lemma 3.5. Let G be a pure vertex decomposable graph. If x is a simplicial vertex, then N(x)  Shed(G).
+
+Proof. Let N (x) = {y1, . . . , yd} where d  1. By Theorem 3.1], it is enough to show that G \ y1 is pure vertex decomposable.
+Let A0 = G, and for i = 1, . . . , d, we then define
+Ai = Ai-1 \ yi and Bi = Ai-1 \ NAi-1 [yi].
+Our goal is to show that A1 = A0 \ y1 = G \ y1 is a pure vertex decomposable graph.
+We first note that for each i = 1, . . . , d,
+Bi = Ai-1 \ NAi-1 [yi] = ((((G \ y1) \ y2) � � � ) \ yi-1) \ NAi-1 [yi]
+= G \ NG[yi]
+because {y1, . . . , yi-1}  NG[yi] for each i = 1, . . . , d. It follows from Theorem 3.1 that each graph Bi is pure vertex decomposable.
+Note that x is a simplicial vertex for each graph Ai for i = 0, . . . , d - 1. Since yi  NAi-1(x) for i = 1, . . . , d, it follows by repeated use of Lemma 3.4 that each graph Ai = Ai-1 \ yi for i = 1, . . . , d is a well-covered graph. Next, we note that Ad = ((((G \ y1) \ y2) � � � ) \ yd) = (G \ NG[x])  {x}. Theorem 3.1 implies that (G \ NG[x]) is pure vertex decomposable, and since an isolated vertex is pure vertex decomposable, Lemma 2.6 implies that Ad is vertex decomposable.
+Because Ad = Ad-1 \ yd and Bd = Ad-1 \ NAd-1[yd] are pure vertex decomposable, then by definition, Ad-1 is pure vertex decomposable. But then because Ad-1 and Bd-1 are pure vertex decomposable, then so is Ad-2, and so on. In particular, A1 = G \ y1 is pure vertex decomposable, as desired.
+Remark 3.6. It is easier to find examples of non-pure vertex decomposable graphs for which the shedding vertices do not constitute a dominating set than it is for pure vertex decomposable graphs. For example, the graph G on five vertices and five edges consisting of a pendant leaf vertex attached to C4 is not well-covered, but G is vertex decomposable in the non-pure sense. Further, the vertex adjacent to the pendant leaf is the only shedding vertex but this is not a dominating set.
+
+4. Vertex-transitive and chordal graphs
+In this section, we show that the set of shedding vertices for vertex-transitive graphs and chordal graphs is a dominating set. A graph G is a vertex-transitive graph if for every x1, x2  V there is a graph automorphism f : V  V such that f (x1) = x2. We then have the following result.
+Theorem 4.1. Suppose G is a vertex-transitive graph. If G is pure vertex decomposable, then Shed(G) is a dominating set.
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+7
+
+Proof. If G is pure vertex decomposable, then there exists some vertex i such that G \ i is pure vertex decomposable. By the symmetry of a vertex-transitive graph G, G \ j is isomorphic to G \ i for all i = j. But then Shed(G) = V , and hence Shed(G) is a dominating set.
+
+A chordal graph is a graph G such that every induced cycle in G has length three. We have the following classification of pure vertex decomposable chordal graphs.
+
+Theorem 4.2. Let G be a chordal graph. Then the following are equivalent:
+(i) G is pure vertex decomposable; (ii) G is well-covered; (iii) Every vertex of G belongs to exactly one simplex of G.
+
+Proof. ((ii)  (i)) Woodroofe ([27, Corollary 7]) (and independently, Dochtermann and Engstr쮗m [8]) showed that every chordal graph is also vertex decomposable. Now use Remark 2.3.
+((ii)  (iii)) This is [21, Theorem 2].
+
+We can now prove the following result.
+
+Theorem 4.3. Suppose G is a chordal graph. If G is pure vertex decomposable, then Shed(G) is a dominating set.
+
+Proof. Since G is pure vertex decomposable, by Theorem 4.2, every vertex of G belongs to exactly one simplex of G. Thus every vertex is either a simplicial vertex or adjacent to a simplicial vertex. By Lemma 3.5, each vertex adjacent to a simplicial vertex is a shedding vertex. Hence Shed(G) is a dominating set.
+
+5. Vertex Decomposable Constructions
+Given a graph G, there are some known constructions (see [6, 16]) that enable one to build a new pure vertex decomposable graph that contains G as an induced subgraph. In this section, we show that the resulting graph for the corresponding construction in [6] and [16] has the property that its set of shedding vertices is a dominating set.
+5.1. Appending cliques. We first consider a construction of Hibi, Higashitani, Kimura, and O'Keefe [16] that builds a pure vertex decomposable graph by appending a clique at each vertex. More precisely, let G be a graph with vertex set V (G) = {x1, . . . , xn} and edge set E(G). Let k1, . . . , kn be n positive integers with ki  2 for i = 1, . . . , n. We now construct a graph G = (V (G), E(G)) with
+V (G) = {x1,1, x1,2, . . . , x1,k1}  {x2,1, . . . , x2,k2}  � � �  {xn,1, . . . , xn,kn}
+and edge set
+n
+E(G) = {{xi,1, xj,1} | {xi, xj}  E(G)}  {{xi,j, xi,l} | 1  j < l  ki} .
+i=1
+That is, G is the graph obtained from G by attaching a clique of size ki at the vertex xi.
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+8
+
+Starting from any graph G, the graph G will always be a pure vertex decomposable graph by [16, Theorem 1]. Moreover, the shedding set of any graph G arising from this construction is a dominating set.
+
+Theorem 5.1. Given any graph G, the pure vertex decomposable graph G has the property that Shed(G) is a dominating set.
+
+Proof. For any i  {1, . . . , n}, xi,ki = xi,1 because ki  2. The vertex xi,ki is a simplicial vertex, so by Lemma 3.5 xi,1  N (xi,ki)  Shed(G). Thus T = {x1,1, . . . , xn,1}  Shed(G), and T is a dominating set of G.
+
+Hibi et al. [16] developed the above construction to study Cameron-Walker graphs. A graph G is a Cameron-Walker graph if the induced matching number G equals the matching number of G (see [16] for precise definitions). One of the main results of [16] is the fact that a Cameron-Walker graph G is a pure vertex decomposable graph if and only if G = H for some graph H (with some hypotheses on the ki's that appear in the construction of H). Consequently, we can immediately deduce the following corollary.
+Corollary 5.2. Suppose G is a Cameron-Walker graph. If G is pure vertex decomposable, then Shed(G) is a dominating set.
+5.2. Clique-whiskering. A second construction of pure vertex decomposable graphs is due to Cook and Nagel [6]. Let G be a graph on the vertex set V = {x1, . . . , xn}. A clique vertex partition of V is a set  = {W1, . . . , Wt} of disjoint subsets that partition V such that each induced graph G[Wi] is a clique. A clique-whiskered graph G constructed from the graph G with clique partition  = {W1, . . . , Wt} is the graph with V (G) = {x1, . . . , xn, w1, . . . , wt} and E(G) = E  {{x, wi} | x  Wi}. In other words, for each clique in the partition , we add a new vertex wi, and join wi to all the vertices in the clique.
+Note that if G is the graph obtained from G by appending cliques with k1 = � � � = kn = 2, then G is isomorphic to the clique-whiskered graph G using the clique partition  = {{x1}, {x2}, . . . , {xn}}.
+Cook and Nagel ([6, Theorem 3.3]) showed that for any graph G and any clique partition  of G, the graph G is always pure vertex decomposable. Like the previous construction, any graph constructed via this method has Shed(G) as a dominating set.
+Theorem 5.3. Let G be a graph with clique partition . The pure vertex decomposable graph G has the property that Shed(G) is a dominating set.
+
+Proof. If  = {W1, . . . , Wt}, then the vertex set of G is {x1, . . . , xn, w1, . . . , wt}. Every vertex xi belongs to some clique Wj. So, in G, the vertex xi is adjacent to wj. By
+construction, wj is adjacent only to the vertices of Wj, and since Wj is a clique, wj is a simplicial vertex. Thus by Lemma 3.5, xi  N (wj)  Shed(G). Thus {x1, . . . , xn}  Shed(G), and this subset forms a dominating set.
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+9
+
+6. Very well-covered graphs
+
+A well-covered graph is very well-covered if every maximal independent set has cardinality |V |/2. Very well-covered graphs are known [10] to have a perfect matching with a neighbour connectedness property. A matching is a subset of edges of G that do not share any common endpoints. A matching is perfect if the set of vertices in the edges of the matching are all of the vertices Given M is a perfect matching of G, we let M(x) denote the vertex matched with x. The matching M has the neighbour connectedness property if for every vertex x of G, if y  N(x) and y = M(x) then y  N(M(x)) and y  N(z) for every z  N(M(x)).
+Lemma 6.1. [10, Theorem 1.2] A graph G is very well-connected if and only if G has at least one perfect matching M and every perfect matching has the neighbour connectedness property.
+Theorem 6.2 ([19, Theorem 3.2] and [7, Theorem 0.2]). If G is very well-covered then the following are equivalent:
+(1) G is pure vertex decomposable; (2) G is Cohen-Macaulay; (3) G has a unique perfect matching.
+
+If M is a perfect matching in G, we say an even cycle C is M-alternating if half of the edges of C are in M. In the following argument, we use that fact that if G has an M-alternating even cycle, then G does not have a unique perfect matching.
+Theorem 6.3. Let G be a very well-covered graph. If G is pure vertex decomposable, then Shed(G) is a dominating set.
+
+Proof. Suppose G is a very well-covered pure vertex decomposable graph. Since G is pure vertex decomposable, G has a unique perfect matching M (by Theorem 6.2) that has the neighbour connectedness property (Lemma 6.1).
+
+Let
+
+S=
+
+N (z).
+
+z is a leaf of G We claim that S is a dominating set. We demonstrate this by showing that if S is not dominating, then G has an M-alternating even cycle, contradicting the fact that G has a unique perfect matching.
+
+Suppose there exists a vertex w such that w  S and w is not adjacent to any vertex
+in S. In particular, w has a neighbour x1 distinct from M(w). (For convenience, we let x0 = M(w).) Now M(x1) is not a leaf since w is not adjacent to any vertex in S. Thus there exists a vertex x2 = x1 adjacent to M(x1). If x2 = x0, then G has an M-alternating four-cycle. Thus assume x2 = x0. Note that by the neighbour connectedness property, x2  N (x1), and x2  N (w). Also, by the neighbour connectedness property, M(x2) is not adjacent to w or M(x1).
+
+Again, since w is not adjacent to any vertex in S, there exists a vertex x3 = x2 that is adjacent to M(x2). If x3  {x1, x0} then G has an M-alternating four-cycle. Thus assume
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+10
+
+x3  {x1, x0}. By the neighbour connectedness property, x3 is not adjacent to x1 or x2, and x3 is adjacent to w and M(x1). By the neighbour conectedness property, M(x3) is not adjacent to any vertex in {w, M(x1), M(x2)}.
+Repeating the argument, we can obtain a sequence of vertices x1, x2, x3, . . .  N (w) with xi adjacent to M (xi-1) for all i > 1. Further, w is not adjacent to M (x1), M (x2), M (x3), � � � by the neighbour connectedness property. Thus xi = M(xj) for any i and j. Since G is finite, there must exist some i > 1 such that xi = xj for some j with 0  j < i. Thus G has an M -alternating even cycle {xj, M (xj ), xj+1, M (xj+1), . . . , xi-1, M (xi-1), xj}.
+Therefore S is a dominating set. By Lemma 3.5, S  Shed(G). Therefore Shed(G) is a dominating set.
+
+Corollary 6.4. Suppose G is a bipartite graph. If G is pure vertex decomposable, then Shed(G) is a dominating set.
+
+Proof. If G is pure vertex decomposable, then G is well-covered. In that case, since G is bipartite, G is very well-covered. The result now follows from Theorem 6.3.
+Remark 6.5. As we noted in the previous proof, the class of very well-covered graphs contains the family of well-covered bipartite graphs. Theorem 6.2 can be viewed as a generalization of results first proved about well-covered bipartite graphs. Herzog and Hibi gave a combinatorial classification of Cohen-Macaulay bipartite graphs in [15, Corollary 9.1.14]. The classification of very well-covered graphs in Theorem 6.2 generalizes Herzog and Hibi's work. Van Tuyl [24] showed that a bipartite graph is well-covered and vertex decomposable if and only if it is Cohen-Macaulay.
+
+7. Graphs with girth at least five
+We now consider all pure vertex decomposable graphs with girth five or larger. Vertex decomposable graphs from this class were independently classified by Biyikoglu and Civan [2] and Hoang, Minh, and Trung [17]. Both of these results relied on the classification of well-covered graphs with girth five or larger due to Finbow, Hartnell, and Nowakowski [11].
+To state the required classification, we first review the relevant background. The girth of a graph G is the number of vertices of a smallest induced cycle of G. If G has no cycles, then we say G has infinite girth. A pendant edge is an edge that is incident to a leaf.
+An induced 5-cycle B is said to be basic if no pair of adjacent vertices in B have degree three or larger in G. A graph G is in the class PC if V can be partitioned into subsets V = P  C where P contains all the vertices incident with pendant edges and the pendant edges form a perfect matching of P , and where C contains the vertices of basic 5-cycles, and these basic 5-cycles form a partition of C.
+We then have the following classification (see the cited papers for additional equivalent statements).
+Theorem 7.1 ([2, 17]). Let G be a connected graph of girth at least 5. If G is well-covered, then the following are equivalent:
+(i) G is vertex decomposable;
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+11
+
+(ii) G is either an isolated vertex or in the class PC.
+
+We first prove a lemma.
+Lemma 7.2. Let B be a basic 5-cycle of a well-covered graph G  PC. If B has a vertex x adjacent to two vertices of B of degree two in G, then x  Shed(G).
+
+Proof. The statement of the lemma is embedded in [17] in their proof of Theorem 7.1 that was stated above. In particular, [17, Lemma 2.2] (which is used to prove [17, Theorem 2.4]) shows that if a graph G is in SC, a class that contains the graphs of PC, then G is vertex decomposable. Moreover, to prove this fact, the authors show that the vertex x in our statement is the required shedding vertex. As an aside, a similar argument is found in [11, Lemma 5] for extendable vertices. One could also use [27, Lemma 16], but note that the definition of a shedding vertex is not the same as our usage; one still needs to show that G \ x and G \ N[x] are vertex decomposable (see Remark 2.5).
+Theorem 7.3. Let G be a graph with girth of at least five. If G is pure vertex decomposable, then Shed(G) is a dominating set.
+
+Proof. If G is vertex decomposable, by Theorem 7.1, G is either a single vertex or G  PC. Because the statement is vacuous for a single vertex, we can assume that G  PC. Let V = P  C be the corresponding partition of G and let x be a vertex of G.
+Suppose x  P . Then x is either a leaf or adjacent to a leaf y. So by Lemma 3.5, x is a shedding vertex of G or adjacent to one.
+Suppose x  C. Then there is a basic 5-cycle B such that x  V (B). If x is adjacent to two vertices of degree two, then x  Shed(G) by Lemma 7.2. So suppose that there exists y  V (B) adjacent to x such that y has degree at least three. Because B is a basic 5-cycle, y must be adjacent to two vertices of degree two. By Lemma 7.2, y  Shed(G). Hence x is adjacent to a shedding vertex. Therefore every vertex in C is a shedding vertex of G or adjacent to one.
+
+8. Three new vertex decomposable graphs
+In this section we will construct three infinite family of graphs. Each family will have the property that all members are pure vertex decomposable, but Shed(G) is not a dominating set. In particular, for each construction, the vertices in Shed(G) are part of a clique of vertices Z, none of which is adjacent to any vertex in a non-empty set X.
+8.1. Construction 1. Fix m integers ki  2, and suppose that k1 + � � � + km = n. We define Dn(k1, . . . , km) to be the graph on the 5n vertices
+V = X  Y  Z = {x1, . . . , x2n}  {y1, . . . , y2n}  {z1, . . . , zn}
+with the edge set given by the following conditions:
+(i) the induced graph on Z is a complete graph Kn; (ii) Y is an independent set, i.e., G[Y ] = K2n, where H denotes the complement of
+the graph H;
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+12
+
+(iii) the induced graph G[X] is Kk1,k1  � � �  Kkm,km where the vertices of G[X] are labeled so that the i-th complete bipartite graph has bipartition
+
+{x2w+1, x2w+3, . . . , x2(w+ki)-1}  {x2w+2, x2w+4, . . . , x2(w+ki)}
+with w = =1 i-1 k where w = 0 if i = 1; (iv) {xj, yj} are edges for 1  j  2n; and (v) {zj, y2j} and {zj, y2j-1} are edges for 1  j  n.
+
+Roughly speaking, the graph Dn(k1, . . . , km) is formed by "joining" m complete bipartite graphs to a complete graph Kn by first passing through an independent set of vertices Y . Going forward, it is useful to make the observation that the induced graph G[X  Y ] has a perfect matching given by the edges {xj, yj} for j = 1, . . . , 2n.
+
+Example 8.1. To illustrate our construction, the graph D5(2, 3) is given in Figure 4.
+
+z3
+
+z5
+
+Z z4
+
+z1 z2
+
+y2
+
+y4
+
+y6
+
+y8
+
+y10
+
+Y
+
+y1
+
+y3
+
+y5
+
+y7
+
+y9
+
+x2
+
+x4
+
+x6
+
+x8
+
+x10
+
+X
+
+x1
+
+x3
+
+x5
+
+x7
+
+x9
+
+Figure 4. The graph D5(2, 3).
+
+We now show that the graphs Dn(k1, . . . , km) are all well-covered. In what follows, we write (G) to denote the cardinality of a maximal independent set in G.
+Lemma 8.2. The graph Dn(k1, . . . , km) is well-covered.
+Proof. Let G = Dn(k1, . . . , km). It suffices to show that every maximal independent set has the same cardinality.
+We can partition V into n sets of five vertices, namely, {x2i-1, x2i, y2i-1, y2i, zi} for 1  i  n. The induced graph on each such set is a five cycle. Since (C5) = 2, it follows that (G)  2n. On the other hand, Y is a maximal independent set of vertices with |Y | = 2n, so (G) = 2n.
+Let H be any maximal independent set with |H| < 2n. If H  Z = , then because there are 2n edges of the form {xj, yj}, there exists an i such that neither xi nor yi belong
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+13
+
+to H. But then H  {yi} is an independent set since yi is only adjacent to a vertex in Z and xi. This contradicts the fact that H is a maximal independent set.
+So, there exists a zi  H  Z. Because G[Z] is a complete graph, H  Z = {zi}. Thus each edge {xj, yj} for j = 2i or 2i - 1 has a vertex in H, otherwise H  {yj} is a larger independent set. Because |H|  2n - 1, we have already accounted for all the vertices in H. So, neither x2i nor x2i-1 are in H. Hence x2i, respectively x2i-1, is adjacent to some vertex xl  H, respectively xk  H. Further, x2i-1, xl, x2i, xk all belong to the same complete bipartite graph Kkr,kr. Then l must be odd since 2i is even and k must be even since 2i - 1 is odd. However, then xk is adjacent to xl, contradicting the fact that xk, xl  H. Thus H cannot be a maximal independent set if |H| < 2n, and so every maximal independent set has cardinality 2n. Therefore G is well-covered.
+
+We now show that any graph made via our construction is pure vertex decomposable, and furthermore, we determine its set of shedding vertices.
+Theorem 8.3. If G = Dn(k1, . . . , km) then G is pure vertex decomposable and Shed(G) = Z.
+
+Proof. Let G = Dn(k1, . . . , km). By Lemma 8.2, G is well-covered. We show that G is pure vertex decomposable by first working through four claims.
+Claim 1: For each i = 1, . . . , n, Gi = (((G \ z1) \ z2) � � � \ zi) is a well-covered graph.
+Fix some i  {1, . . . , n}. Let H be any maximal independent set of Gi. Since {x1, x2}, . . . , {x2i-1, x2i} are edges of Gi, for each j = 1, . . . , i, H contains at most one of x2j-1 and x2j. Then H contains at least one of y2j-1 or y2j for each j = 1, . . . , i, since H is maximal and y2j-1 and y2j are leaves in Gi. But then H is also a maximal independent set of G since each vertex z1, . . . , zi of G is adjacent to at least one vertex in H. Because G is well-covered, |H| = (G). So Gi is also well-covered.
+Claim 2: The graph Gn is pure vertex decomposable.
+The graph Gn is the same as the induced graph G[X Y ]. So Gn is the graph of m disjoint graphs, where the j-th connected component is the complete bipartite graph Kkj,kj with whiskers at every vertex. Now use Corollary 2.8 and Lemma 2.6 to finish the proof.
+Claim 3: For each i = 1, . . . , n, Ni = Gi-1 \ N [zi] is a well-covered graph.
+For a fixed i, suppose that x2i-1 and x2i appear in the complete bipartite graph Kkj,kj . Then the graph Ni consists of m disjoint graphs: m - 1 of these graphs are the complete bipartite graphs with whiskers at every vertex, and the m-th graph is the graph Kkj,kj with whiskers at every vertex except x2i-1 and x2i. Note that m - 1 graphs are well-covered as was argued in Claim 2. The m-th graph is also well-covered: let S = V (Kkj,kj \{x2i-1, x2i}) and apply Theorem 2.7 to Kkj,kj  W (S). Therefore Ni is well-covered.
+Claim 4: For each i = 1, . . . , n, Ni is pure vertex decomposable.
+As shown in the previous proof, Ni is made up of m disjoint graphs, where each graph is either a complete bipartite graph with whiskers at every vertex, or a complete bipartite graph with whiskers at every vertex except at two adjacent vertices. It follows from Theorem 2.7 that in both cases, each disjoint graph is pure vertex decomposable. By Lemma 2.6, it then follows that Ni is pure vertex decomposable.
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+14
+
+Thus we have established Claims 1-4. By definition, G is pure vertex decomposable if we can show that G1 and N1 are pure vertex decomposable. But G1 is pure vertex decomposable if we can show that G2 and N2 are vertex decomposable. Continuing in this fashion, to show that G is pure vertex decomposable, it suffices to show that Gn and N1, . . . , Nn are all pure vertex decomposable. But this was shown in Claims 1-4. So G is pure vertex decomposable.
+We next observe that Shed(G) = Z. Note that to show G is pure vertex decomposable, we showed that z1  Shed(G). By graph symmetry, zj  Shed(G) for any zj  Z. So Z  Shed(G).
+Next, we show Y  Shed(G) = . Let y  Y . After relabeling, assume that y = y2n. Then {y1, . . . , y2n-1, x2n} and {z1, x1, y3, . . . , y2n-2, x2n-1} are maximal independent sets, in G \ y, of cardinality 2n and 2n - 1 respectively. Thus G \ y is not well-covered and so y  Shed(G).
+Finally, we show that X  Shed(G) = . Again, we show that for any x  X, the graph G \ x is not well-covered. After relabeling, assume x = x1. The set Y is an independent set of G \ x of cardinality 2n. Note that since k1  2, the vertex x3 is adjacent to x2 and x4. It follows that L = {z1, x3, y4, . . . , y2n} is a maximal independent set of G \ x with 2n - 1 vertices.
+Thus Shed(G) = Z, as desired.
+
+The graphs constructed in this subsection give us the first family of graphs G for which Shed(G) is not a dominating set, since no vertex in X is adjacent to any vertex in Z.
+Corollary 8.4. If G = Dn(k1, . . . , km) then Shed(G) is not a dominating set.
+
+8.2. Construction 2. Next we construct a graph G = Fm with vertex set V = X Y Z with X = {x1, . . . , x2m}, Y = {y1, y2}, and Z = {z1, z2, z3} and edge set given by the following conditions:
+(i) the induced subgraph G[X] is the m-partite graph K2,2,...,2, whose complement is the matching with edges {x2i-1, x2i}, 1  i  m;
+(ii) y1 is adjacent to z1 and each x2i-1, 1  i  m; (iii) y2 is adjacent to z2 and each x2i for 1  i  m; and (iv) the induced subgraph on Z is K3.
+Note that if we let X1 = {x1, x3, . . . , x2m-1}  {y1} and X2 = {x2, x4, . . . , x2m}  {y2}, then G[X1] and G[X2] are both cliques isomorphic to Km+1.
+Example 8.5. Two examples of Construction 2 are drawn below. In particular, the graph F2 is in Figure 5, and the graph F3 is drawn in Figure 6.
+Theorem 8.6. The graph Fm is well-covered for m  2.
+
+Proof. Note that we can partition the vertex set of G = Fm into X1, X2 and Z. Further, G[X1], G[X2] and G[Z] are all complete graphs. Hence, any maximal independent set will have cardinality 3 or fewer. Let H be an independent set of G. Suppose Z  H = . Then
+H  {z3} is an independent set since z3 is only adjacent to vertices in Z. Thus Z  H = . Suppose X1  H = . If y2 is in H or H  X2 = , let x = x1. Otherwise let x = x2k-1
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+15
+
+z3
+
+Z
+
+z1
+
+z2
+
+Y
+
+y1
+
+X x3
+
+x1 x2
+
+y2 x4
+
+Figure 5. The graph F2.
+
+z3
+
+Z
+
+z1
+
+z2
+
+Y
+
+y1
+
+X x3
+
+x1 x2
+
+y2 x4
+
+x5
+
+x6
+
+Figure 6. The graph F3.
+if x2k is a vertex in H. Then H  {x} is an independent set. Thus X1  H =  and by symmetry X2  H = .
+Therefore all maximal independent sets of G must have cardinality 3, so Fm is wellcovered.
+Lemma 8.7. Given m  2, if G = Fm, then G[X  Y ] is pure vertex decomposable.
+Proof. Since G[X  Y ] is a clique-whiskered graph, it is pure vertex decomposable by [6, Theorem 3.3].
+Lemma 8.8. Given m  2, and G = Fm. Let S = X  {y1}. Then G[S] is pure vertex decomposable.
+Proof. Let H = G[S]. Note that y1 is a simplicial vertex of H. Let x be a vertex adjacent to y1. The graph H \ NH [x] is a single isolated vertex and hence is pure vertex decomposable.
+Note that H is well-covered with (H) = 2. Thus H \ x is well-covered by Lemma 3.4. Using Lemma 3.4 we can continue to remove vertices adjacent to y1 while maintaining a
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+16
+
+well-covered graph until we obtain the graph with isolated vertex y1 and complete graph on vertex set X2 \ y2. This resultant graph is a union of two complete graphs and hence is pure vertex decomposable by Lemma 2.6. Therefore H \ x is pure vertex decomposable.
+Since H \ NH[x] is an isolated vertex, it is pure vertex decomposable. Therefore x is a shedding vertex of H and H is pure vertex decomposable.
+
+Given  = (G), define ir to be the number of independent sets of G of cardinality r for 1  r   with i0 = 1. Define the h-vector hG = (h0, h1, . . . , h) by
+hk = (-1)k-r k  - r ir . r=0 k - r
+As noted in [26, Theorem 5.4.8], if a graph is Cohen-Macaulay, then the h-vector is a non-negative vector.1 Since every pure vertex decomposable graph is Cohen-Macaulay, we have the following restatement which we will use to limit the cardinality of Shed(Fm).
+Lemma 8.9 ([26, Theorem 5.4.8]). If G is a pure vertex decomposable graph, then hG is a non-negative vector.
+Theorem 8.10. For all m  2, Fm is pure vertex decomposable and Shed(Fm) = {z1, z2}.
+
+Proof. We first show that if v  {z1, z2} then Fm \ v is not pure vertex decomposable.
+Suppose that v  X. By the symmetry of the graph, we can assume v = x1. Then {y1, y2, z3} and {x2, z1} are maximal independent sets of different cardinality in Fm \ v. Thus Fm \ v is not well-covered and hence not pure vertex decomposable.
+Next we consider a vertex in v  Y . By symmetry, assume v = y1. We will show that Fm \ v is not vertex decomposable by showing that its h-vector has a negative entry. We first calculate the number ir of independent sets of cardinality r in Fm \ v, for 1  r  . Note that (Fm \ v) = 3. There are 2m + 4 vertices in Fm \ v so i1 = 2m + 4. An independent set of cardinality 2 can be of the form {y2, xi}, {y2, z} {z, xi} or {xi, xj} for some xi, xj  X and z  Z. There are m, 2, 6m and m such different independent sets respectively. Thus i2 = 8m + 2. An independent set of cardinality 3 must have one vertex in Z, one in X2 and one in X1 \ y1 since these sets partition the vertex set, and induce complete subgraphs, of Fm \ v . There are m maximal independent sets containing z2 and for each z  Z \ z2, there are 2m maximal independent sets containing z. Thus i3 = 5m. Therefore (i0, i1, i2, i3) = (1, 2m + 4, 8m + 2, 5m). But this implies that the h-vector has h3 = 1 - m. Hence h3 < 0 for m > 1 and by Lemma 8.9, Fm \ v is not pure vertex decomposable. Thus no vertex in Y can be a shedding vertex of Fm if Fm is pure vertex decomposable.
+Since {z1, x1, x2} and {y1, y2} are maximal independent sets with different cardinalities in Fm \ z3, Fm \ z3 is not well-covered and hence not pure vertex decomposable.
+Therefore, if Fm \ v is pure vertex decomposable, then v  {z1, z2}.
+Now suppose v = z1. We claim that Fm\v is pure vertex decomposable. The graph Fm\ NFm[z1] is the graph G[S] described in Lemma 8.8 and so it is pure vertex decomposable and hence well-covered.
+1Note that the f -vector (f0, f1, . . . , f-1) described in [26] is (i1, i2, . . . , i) with f-1 = 1.
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+17
+
+Next we claim that the graph G = Fm \ z1 is well-covered. We can partition the vertices of G into the sets Z \ z1  X1  X2. Since each part in the vertex partition induces a complete graph, we can construct an independent set of cardinality at most 3. Thus (G)  3. Using an argument similar to Lemma 8.6, one can show that every maximal independent set of G is of cardinality 3 and hence G = Fm \ z1 is well-covered.
+We show that G = Fm \z1 is pure vertex decomposable by showing that z2 is a shedding vertex of G. First G \ NFm[z2] = Fm \ NFm[z2] since z1 is adjacent to z2, and Fm \ NFm[z2] is isomorphic to Fm \ NFm[z1]. Thus G \ NFm[z2] is pure vertex decomposable. Next, G \ z2 = Fm \ {z1, z2} has an isolated vertex z3 and a component described in Lemma 8.7 and so is pure vertex decomposable by Lemma 2.6.
+Therefore Fm \ NFm[z1] and Fm \ z1 are well-covered, so Fm is pure vertex decomposable and it follows that z1 (and z2 by symmetry) are shedding vertices of Fm.
+
+Corollary 8.11. For all m  2, Shed(Fm) is not a dominating set.
+
+Proof. Since each vertex in X is not adjacent to a shedding vertex of Fm, Shed(Fm) is not a dominating set.
+
+8.3. Construction 3. We finish this section by describing another family of pure vertex decomposable graphs whose set of shedding vertices fails to be a dominating set. Unlike the previous constructions, for the sake of brevity, we only sketch out the details of the proof.
+Fix an integer n  1. Let
+X = {x1,1, x1,2}  {x2,1, x2,2}  . . .  {xn,1, xn,2}, Y = {y1,1, y1,2, y1,3}  {y2,1, y2,2, y2,3}  . . .  {yn,1, yn,2, yn,3}, and Z = {z1,1, z1,2, z1,3}  . . .  {zn,1, zn,2, zn,3}.
+We define the graph Ln to be the graph on 8n + 1 vertices V = X  Y  Z  {w}. with the edge set given by the following conditions:
+(i) for each i = 1, . . . , n, the induced graph on {xi,1, xi,2, yi,1, yi,2, yi,3} is a 5-cycle with edges {yi,1, yi,2}, {yi,2, yi,3}, {y1,3, xi,2}, {xi,2, xi,1}, {xi,1, yi,1};
+(ii) {zi,1, yi,1}, {zi,2, yi,2}, and {zi,3, yi,3} are edges for i = 1, . . . , n, forming a matching between Y and Z; and
+(iii) the induced graph on Z  {w} is the complete graph K3n+1.
+Example 8.12. The graph L1 is given in Figure 7 and L2 in Figure 8.
+
+We then have the following theorem, whose proof we only sketch.
+Theorem 8.13. For any integer n  1, Ln is pure vertex decomposable, but Shed(Ln) is not a dominating set.
+
+Proof. Suppose G = Ln. To show that G is well-covered, show that every maximal independent set has cardinality 2n + 1.
+To show that G is pure vertex decomposable, one can do induction on n. For n = 1, one can show that G is pure vertex decomposable directly. For n  2, let G1 = G \ zn,1,
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+18
+
+w
+
+z1,1
+
+z1,3
+
+z1,2
+
+y1,2
+
+y1,1
+
+y1,3
+
+x1,1 x1,2 Figure 7. The graph L1.
+w
+
+z1,1
+
+z2,3
+
+z1,2
+
+z2,2
+
+z1,3
+
+z2,1
+
+y1,2
+
+y2,2
+
+y1,1
+
+y1,3 y2,1
+
+y2,3
+
+x1,1 x1,2
+
+x2,1 x2,2
+
+Figure 8. The graph L2.
+G2 = G1 \ zn,2 and G3 = G2 \ zn,3. Furthermore, let N1 = G \ N [zn,1], N2 = G1 \ N [zn,2], and N3 = G2 \ N [zn,3].
+First show that all of the graphs G1, G2, G3, N1, N2 and N3 are well-covered. We note that N1, N2, and N3 are isomorphic because of the symmetry of the graph, and each graph consist of n connected components, where (n - 1) of these components are five cycles, and the last is the path of four vertices. All of these components are vertex decomposable, thus so is Ni. The graph G3 consists of two components, Ln-1 and a five cycle. By induction, these graphs are pure vertex decomposable. Using these facts, we can show that G is pure vertex decomposable.
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+19
+
+Note to show that G is vertex decomposable, we show that Z  Shed(G). The next step of the proof is to show that X  Shed(G) =  and Y  Shed(G) =  by showing that if we remove any vertex v  X  Y , then G \ v is not well-covered. This shows that Shed(G) is not a dominating set since the vertices of X are only adjacent to vertices in Y , but no vertex of Y belongs to Shed(G).
+
+9. Graph expansions
+In this section we briefly describe a way to extend any pure vertex decomposable graph whose shedding set is not a dominating set, to build a larger graph with the same property by adding one vertex at a time. The technique involves duplicating a vertex in the shedding set.
+Theorem 9.1. Suppose G is a pure vertex decomposable graph and Shed(G) is not a dominating set. For any x  Shed(G), let H be the graph with V (H) = V (G)  {x} and E(H) = E(G)  {{x, y} | y  N[x]}. Then H is pure vertex decomposable and Shed(H) is not a dominating set.
+To prove Theorem 9.1, we use a result of [20]. First we define a graph expansion. Let G be a graph on the vertex set {x1, . . . , xn} and let (s1, . . . , sn) be an n-tuple of positive integers. The graph expansion of G, denoted G(s1,...,sn), is the graph on the vertex set
+{x1,1, . . . , x1,s1}  {x2,1, . . . , x2,s2}  . . .  {xn,1, . . . , xn,sn}
+with edge set {{xi,j, xk,l} | {xi, xk}  E(G) or i = k}. Moradi and Khosh-Ahang [20, Theorem 2.7] showed that vertex decomposability is invariant under graph expansion, that is, G is vertex decomposable if and only if G(s1,...,sn) is vertex decomposable. Note that a similar construction of "twinning" can be found in [27]. Moradi and Khosh-Ahang's construction can be viewed as repeated twinning.
+Proof. (of Theorem 9.1) Suppose G is a pure vertex decomposable graph with V = {x1, . . . , xn} and Shed(G) is not a dominating set of G. Suppose x  Shed(G) and H is a graph with V (H) = V  {x} and E(H) = E(G)  {{x, y} | y  N [x]}. Without loss of generality, assume x = x1. Note that H = G(2,1,...,1) and hence H is pure vertex decomposable since vertex decomposability is preserved under graph expansion, as well as the well-covered property.
+Observe that x, x  Shed(H), since H \ x and H \ x are both isomorphic to G and G is pure vertex decomposable.
+Suppose y  V but y  Shed(G). We claim y  Shed(H). Suppose y  Shed(H). Then H \ y is pure vertex decomposable. Note that H \ y is a graph expansion of (H \ y) \ x and hence (H \ y) \ x is pure vertex decomposable. Now, (H \ y) \ x is isomorphic to G \ y, so G \ y is pure vertex decomposable. But this contradicts the fact that G \ y is not pure vertex decomposable if y  Shed(G). Thus y  Shed(H).
+In particular, Shed(H) \ {x}  Shed(G). It follows that Shed(H) is not a dominating set of H since a dominating set of H that includes both x and x would essentially be a dominating set of G (since having both x and x in a dominating set is redundant).
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+20
+
+It may be worth noting that it is also possible to construct pure vertex decomposable graphs G for which Shed(G) is a dominating set via graph expansion. As observed in the proof above, the vertex x that gets duplicated as well as its duplicate x are both in the set of shedding vertices in the graph expansion. It follows that if every vertex is duplicated at least once on a pure vertex decomposable graph, the resulting graph will be pure vertex decomposable with every vertex in its shedding set. Consequently, many graph expansions G have Shed(G) as a dominating set:
+
+Theorem 9.2. If G is any pure vertex decomposable graph and si  2 for 1  i  n, then G(s1,s2,...,sn) is pure vertex decomposable and Shed G(s1,s2,...,sn) is a dominating set.
+
+10. Exploring Villarreal's conjecture
+This paper was partially motivated by a conjecture of R. Villarreal [25] about CohenMacaulay graphs. (Every Cohen-Macaulay graph is well-covered.) In particular, Villarreal [25] introduced the notion of an edge ideal of G, that is, in the polynomial ring R = k[x1, . . . , xn] over a field k, let I(G) denote the square-free quadratic monomial ideal I(G) = xixj | {xi, xj}  E . A graph G is Cohen-Macaulay if the quotient ring R/I(G) is a Cohen-Macaulay ring, that is, the depth of R/I(G) equals the Krull dimension of R/I(G). The goal of [25] was to determine necessary and sufficient conditions for a graph to be Cohen-Macaulay. Based upon computer experiments on all graphs on six or fewer vertices, Villarreal proposed a two-part conjecture:
+Conjecture 10.1 ([25, Conjectures 1 and 2]). Let G be a Cohen-Macaulay graph and let
+S = {x  V | G \ x is a Cohen-Macaulay graph}.
+Then (i) S = , and (ii) S is a dominating set of G.
+Notice that (ii) will not hold if (i) does not hold. It is known that Conjecture 10.1 (i) is false. One example is due to Terai [26, Exercise 6.2.24]. However Terai's example depends upon the characteristic of the field k. Earl et al. [9] found an example of a circulant graph G on 16 vertices with the property that G is Cohen-Macaulay in all characteristics, but there is no vertex x such that G \ x is Cohen-Macaulay.
+Although Conjecture 10.1 is false in general, Villarreal's work suggests that there may exist some nice subset of Cohen-Macaulay graphs for which the Conjecture 10.1 still holds, particularly the subset of Cohen-Macaulay graphs for which S = . Since pure vertex decomposable graphs are Cohen-Macaulay (pure vertex decomposable complexes are shellable complexes [22, Corollary 2.9], and shellable complexes are Cohen-Macaulay) and since Shed(G) =  for pure vertex decomposable graphs G, we thought that, as a variation of Conjecture 10.1, it would be reasonable to question if Shed(G) is a dominating set of G when G is pure vertex decomposable. The number of positive answers to our question, as observed in Theorem 1.1, initially suggested a positive answer for all pure vertex decomposable graphs. However, our examples in Section 8 demonstrate that the answer is not positive in general.
+We conclude with some computational observations. We used Macaulay2 [13] and the packages EdgeIdeals [12], Nauty [4], and SimplicialDecomposability [5] for our
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+21
+
+computations. For all connected graphs G on 10 or fewer vertices, we checked whether the graph was (a) well-covered, (b) Cohen-Macaulay, (c) pure vertex decomposable, and (d) if the graph was pure vertex decomposable, whether Shed(G) is a dominating set. Table 1 summarizes our findings. The first column is the number of vertices, while the second column is the number of connected graphs on n vertices, and the third column is the number of well-covered graphs on n vertices. The second column is sequence A001349 in the OEIS, and the third column is sequence A2226525 in the OEIS [23].
+As part of this computer experiment, we counted the number of Cohen-Macaulay graphs. The fourth and fifth columns of Table 1 count the number of Cohen-Macaulay graphs, respectively, the number of pure vertex decomposable graphs. Our computations imply the following result:
+
+Observation 10.2. Let G be a graph with 10 or fewer vertices. Then G is CohenMacaulay if and only if G is pure vertex decomposable.
+
+It is not true that all graphs that are Cohen-Macaulay are pure vertex decomposable (see, e.g., [9] for a graph on 16 vertices that is Cohen-Macaulay, but not pure vertex decomposable). However, we currently do not know the smallest such example. Our computations reveal that the minimal such example has at least 11 vertices.
+The last column counts the number of pure vertex decomposable graphs G for which Shed(G) is not a dominating set. Among the 17 graphs G on 9 vertices for which Shed(G) is not a dominating set, we found that the graph F2 (see Figure 5) has the least number of edges.
+
+Vertices Connected
+
+Graphs
+
+1
+
+1
+
+2
+
+1
+
+3
+
+2
+
+4
+
+6
+
+5
+
+21
+
+6
+
+112
+
+7
+
+853
+
+8
+
+11117
+
+9
+
+261080
+
+10 11716571
+
+Table 1. Number of
+
+composable graphs
+
+Well- Cohen- Pure Vertex Shed(G) not
+
+Covered Macaulay Decomposable Dominating
+
+1
+
+1
+
+1
+
+0
+
+1
+
+1
+
+1
+
+0
+
+1
+
+1
+
+1
+
+0
+
+3
+
+2
+
+2
+
+0
+
+6
+
+5
+
+5
+
+0
+
+27
+
+20
+
+20
+
+0
+
+108
+
+82
+
+82
+
+0
+
+788
+
+565
+
+565
+
+0
+
+9035
+
+5688
+
+5688
+
+17
+
+196928 102039
+
+102039
+
+942
+
+well-covered, Cohen-Macaulay, and pure vertex de-
+
+Observation 10.3. Conjecture 10.1 is true for all Cohen-Macaulay graphs on eight or
+fewer vertices. The graph F2 on nine vertices and 13 edges is the minimal counterexample to Conjecture 10.1.
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+22
+
+Rationale for Observation 10.3: Let G be any Cohen-Macaulay graph and let
+
+S = {x  V | G \ x is a Cohen-Macaulay graph}.
+
+If G is also pure vertex decomposable and if x  Shed(G), then G \ x is pure vertex decomposable, so G \ x is Cohen-Macaulay. So, we always have Shed(G)  S.
+If G is a Cohen-Macaulay graph on eight or fewer vertices, it is also pure vertex decomposable by Remark 10.2. Also, our computations imply that Shed(G) is a dominating set for all such graphs and hence S is also a dominating set.
+In our proof Theorem 8.10, we showed that F2 is a pure vertex decomposable graph. Furthermore, for every vertex x  V (F2) \ Shed(F2), the graph F2 \ x is either not wellcovered (and thus not Cohen-Macaulay) or not Cohen-Macaulay. So, Shed(F2) = S, and thus F2 is a counterexample to Conjecture 10.1 by Corollary 8.11 since the shedding set is never dominating. The minimality in our statement follows via our computations: of the counterexamples on nine vertices, F2 has the least number of edges.
+Acknowledgements. We would like to thank Nuno Alves for pointing out a gap in our original proof of Lemma 3.5, and the referees for helpful suggestions and improvements. Research supported in part by NSERC. This work was made possible by the facilities of the Shared Hierarchical Academic Research Computing Network (SHARCNET: www.sharcnet.ca) and Compute/Calcul Canada. The third author wrote part of this paper at the Vietnam Institute for Advanced Study in Mathematics (VIASM), and would like to thank the institute for their hospitality and support during his stay.
+
+References
+[1] J. Biermann, C. Francisco, T. Ha`, A. Van Tuyl, Colorings of simplicial complexes and vertex decomposability. J. Commut. Algebra 7 (2015) 337-352.
+[2] T. Biyikoglu, Y. Civan, Vertex-decomposable graphs, codismantlability, Cohen-Macaulayness, and Castelnuovo-Mumford regularity. Electron. J. Combin. 21 (2014) Paper 1.1 (17 pages).
+[3] A. Bj쮗rner, M. Wachs, Shellable nonpure complexes and posets. II. Trans. Amer. Math. Soc. 349 (1997) 3945-3975.
+[4] D. Cook II, Nauty in Macaulay2. J. Softw. Algebra Geom. 3 (20l1) 1-4. [5] D. Cook II, Simplicial Decomposability. J. Softw. Algebra Geom. 2 (2010) 20-23. [6] D. Cook II, U. Nagel, Cohen-Macaulay graphs and face vectors of flag complexes. SIAM J. Discrete
+Math. 26 (2012) 89-101. [7] M. Crupi, G. Rinaldo, N. Terai, Cohen-Macaulay edge ideal whose height is half the number of
+vertices, Nagoya Math. J. 201 (2011) 117-131. [8] A. Dochtermann, A. Engstr쮗m, Algebraic properties of edge ideals via combinatorial topology. Elec-
+tron. J. Combin. 16 (2009) Research Paper 2. [9] J. Earl, K.N. Vander Meulen, A. Van Tuyl, Independence complexes of well-covered circulant graphs.
+Exp. Math. 25 (2016) 441-451. [10] O. Favaron, Very well covered graphs, Disc. Math. 42 (1982) 177-187. [11] A. Finbow, B. Hartnell, R.J. Nowakowski, A characterization of well covered graphs of girth 5 or
+greater. J. Combin. Theory, Ser. B 57 (1993) 44-68. [12] C. Francisco, A. Hoefel, A. Van Tuyl, EdgeIdeals: a package for (hyper)graphs. J. Softw. Algebra
+Geom. 1 (2009) 1-4. [13] D. R. Grayson, M. E. Stillman, Macaulay2, a software system for research in algebraic geometry.
+http://www.math.uiuc.edu/Macaulay2/
+
+SHEDDING VERTICES OF VERTEX DECOMPOSABLE WELL-COVERED GRAPHS
+
+23
+
+[14] J. Herzog, T. Hibi, Distributive lattices, bipartite graphs and Alexander duality. J. Algebraic Combin. 22 (2005) 289-302.
+[15] J. Herzog, T. Hibi, Monomial Ideals. GTM 260, Springer, 2011. [16] T. Hibi, A. Higashitani, K. Kimura, A. B. O'Keefe, Algebraic study on Cameron-Walker graphs. J.
+Algebra 422 (2015) 257-269. [17] D. T. Hoang, N. C. Minh, T. N. Trung, Cohen-Macaulay graphs with large girth. J. Algebra Appl.
+14 (2015) 1550112 (16 pages). [18] J. Jonsson, Simplicial Complexes of Graphs. LNM 1928, Springer, 2008. [19] M. Mahmoudi, A. Mousivand, M. Crupi, G. Rinaldo, N. Terai, S. Yassemi, Vertex decomposability
+and regularity of very well-covered graphs. J. Pure Appl. Algebra 215 (2011) 2473-2480. [20] S. Moradi, F. Khosh-Ahang, Expansion of a simplicial complex, J. Algebra Appl. 15 (2016) 165004
+(15 pages). [21] E. Prisner, J. Topp, P. D. Vestergaard, Well-covered simplicial, chordal and circular arc graphs. J.
+Graph Theory 21 (1996) 113-119. [22] J. S. Provan, L. J. Billera, Decompositions of simplicial complexes related to diameters of convex
+polyhedra. Math. Oper. Res. 5 (1980) 576-594. [23] N. J. A. Sloane, editor, The On-Line Encyclopedia of Integer Sequences, published electronically at
+https://oeis.org (2016). [24] A. Van Tuyl, Sequentially Cohen-Macaulay bipartite graphs: vertex decomposability and regularity.
+Arch. Math. (Basel) 93 (2009) 451-459. [25] R.H. Villarreal, Cohen-Macaulay graphs. Manuscripta Math. 66 (1990) 277-293. [26] R.H. Villarreal, Monomial Algebras. Marcel Dekker, 2001. [27] R. Woodroofe, Vertex decomposable graphs and obstructions to shellability. Proc. Amer. Math. Soc.
+137 (2009) 3235-3246.
+
+Brock University, Hamilton, ON, Canada L8K 1V7 E-mail address: jb16ok@brocku.ca
+Department of Mathematics, Redeemer University College, Ancaster, ON, Canada L9K 1J4
+E-mail address: kvanderm@redeemer.ca
+Department of Mathematics and Statistics, McMaster University, Hamilton, ON, Canada L8S 4L8
+E-mail address: vantuyl@math.mcmaster.ca
+
+

@@ -1,0 +1,1753 @@
+arXiv:1108.1776v4 [math.CO] 27 Feb 2013
+
+SUBWORD COMPLEXES, CLUSTER COMPLEXES, AND GENERALIZED
+MULTI-ASSOCIAHEDRA
+CESAR CEBALLOS, JEAN-PHILIPPE LABBE´ , AND CHRISTIAN STUMP
+Abstract. In this paper, we use subword complexes to provide a uniform approach to finite type cluster complexes and multi-associahedra. We introduce, for any finite Coxeter group and any nonnegative integer k, a spherical subword complex called multi-cluster complex. For k = 1, we show that this subword complex is isomorphic to the cluster complex of the given type. We show that multi-cluster complexes of types A and B coincide with known simplicial complexes, namely with the simplicial complexes of multi-triangulations and centrally symmetric multitriangulations respectively. Furthermore, we show that the multi-cluster complex is universal in the sense that every spherical subword complex can be realized as a link of a face of the multi-cluster complex.
+1. Introduction
+Cluster complexes were introduced by S. Fomin and A. Zelevinsky to encode exchange graphs of cluster algebras [FZ03]. N. Reading then showed that the definition of cluster complexes can be extended to all finite Coxeter groups [Rea07a, Rea07b]. In this article, we present a new combinatorial description of cluster complexes using subword complexes. These were introduced by A. Knutson and E. Miller, first in type A to study the combinatorics of determinantal ideals and Schubert polynomials [KM05], and then for all Coxeter groups in [KM04]. We provide, for any finite Coxeter group W and any Coxeter element c  W , a subword complex which is isomorphic to the c-cluster complex of the corresponding type, and we thus obtain an explicit type-free characterization of c-clusters. This characterization generalizes a description for crystallographic types obtained by K. Igusa and R. Schiffler in the context of cluster categories [IS10]. The present approach allows us to define a new family of simplicial complexes by introducing an additional parameter k, such that one obtains c-cluster complexes for k = 1. In type A, this simplicial complex turns out to be isomorphic to the simplicial complex of multi-triangulations of a convex polygon which was described by C. Stump in [Stu11] (see also [SS12]), and, in a similar manner, by V. Pilaud and M. Pocchiola in the framework of sorting networks [PP12]. In type B, we obtain that this simplicial complex is isomorphic to the simplicial complex of centrally symmetric multi-triangulations of a regular convex polygon. Therefore, we call them multi-cluster complexes. Besides, there is a "naive" way of generalizing the cluster complex by considering the simplicial complex of sets of almost positive roots which do not contain any k + 1 pairwise not compatible roots. In fact, this alternative definition lacks basic properties of the cluster complex, see Remark 2.9. The multi-cluster complexes introduced in this paper are different from generalized cluster complexes as defined by S. Fomin and N. Reading [FR05]. In the generalized cluster complex, the vertices are given by the simple negative roots together with several distinguished copies of the positive roots, while the vertices of the multi-cluster complex correspond to the positive roots together with several distinguished copies of the simple negative roots. Multi-cluster complexes turn out to be intimately related to Auslander-Reiten
+2000 Mathematics Subject Classification. Primary 05E45; Secondary 20F55, 13F60. Key words and phrases. Subword complex, cluster complex, generalized associahedron, multi-triangulation, Auslander-Reiten quiver, Coxeter-Catalan combinatorics. supported by DFG via the Research Training Group "Methods for Discrete Structures" and the Berlin Mathematical School. supported by a FQRNT Doctoral scholarship. partially supported by a CRM-ISM postdoctoral fellowship and the DFG via the Research Group "Methods for Discrete Structures".
+1
+
+2
+
+C. CEBALLOS, J.-P. LABBE´ , AND C. STUMP
+
+quivers and repetition quivers [GR97]. In particular, the Auslander-Reiten translate on facets of multi-cluster complexes in types A and B corresponds to cyclic rotation of (centrally symmetric) multi-triangulations. Furthermore, multi-cluster complexes uniformize questions about multitriangulations, subword complexes, and cluster complexes. One important example concerns the open problem of realizing the simplicial complexes of (centrally symmetric) multi-triangulations and spherical subword complexes as boundary complexes of convex polytopes.
+In Section 2, we recall the various objects in question, namely multi-triangulations, subword complexes, and cluster complexes. Moreover, the main results are presented and the multi-cluster complex is defined (Definition 2.5). In Section 3, we study flips on spherical subword complexes and present two natural isomorphisms between subword complexes whose word differ by commutation or by rotation of letters. In Section 4, we prove that the multi-cluster complex is independent of the choice of the Coxeter element (Theorem 2.6). Section 5 contains a proof that the multicluster complex is isomorphic to the cluster complex for k = 1 (Theorem 2.2). In Section 6, we discuss possible generalizations of associahedra using subword complexes; we review known results about polytopal realizations, prove polytopality of multi-cluster cluster complexes of rank 2 (Theorem 6.1), and prove that the multi-cluster complex is universal in the sense that every spherical subword complex is the link of a face of a multi-cluster complex (Theorem 2.15). Section 7 contains a combinatorial description of the sorting words of the longest element of finite Coxeter groups (Theorem 7.2), and an alternative definition of multi-cluster complexes in terms of the strong intervening neighbors property (Theorem 2.7). In Section 8, we connect multi-cluster complexes to Auslander-Reiten quivers and repetition quivers, and use this connection to introduce an action on vertices and facets of multi-cluster complexes generalizing the natural rotation action on multi-triangulations in type A. Finally, in Section 9, we discuss open problems and questions arising in the context of multi-cluster complexes.
+In a subsequent paper, C. Stump and V. Pilaud study the geometry of subword complexes and use the theory developed in the present paper to describe the connections to Coxeter-sortable elements, and how to recover Cambrian fans, Cambrian lattices, and the generalized associahedra purely in terms of subword complexes [PS11].
+
+2. Definitions and main results
+In this section, we review the essential notions concerning multi-triangulations, subword complexes and cluster complexes of finite type and present the main results. Throughout the paper, (W, S) denotes a finite Coxeter system of rank n, and c denotes a Coxeter element, i.e., the product of the generators in S in some order. The smallest integer h for which ch = 1  W is called Coxeter number. Coxeter elements of W are in bijection with (acyclic) orientations of the Coxeter graph of W : a non-commuting pair s, t  S has the orientation s - t if and only if s comes before t in c, i.e., s comes before t in any reduced expression for c [Shi97]. In the simply-laced types A, D, and E, this procedure yields a quiver c associated to a given Coxeter element c, where by quiver we mean a directed graph without loops or two-cycles. For two examples, see Figure 1 on page 19. The length function on W is given by (w) = min{r : w = a1 · · · ar, ai  S}. An expression for w of minimal length is called reduced. The unique longest element in W is denoted by w, its length is given by (w) = N := nh/2. We refer the reader to [Hum92] for further definitions and a detailed introduction to finite Coxeter groups. Next, we adopt some writing conventions: in order to emphasize the distinction between words and group elements, we write words in the alphabet S as a sequence between brackets (a1, a2, . . . , ar) and use square letters such as w to denote them, and we write group elements as a concatenation of letters a1a2 · · · ar using normal script such as w to denote them.
+2.1. Multi-triangulations. Let m be the simplicial complex with vertices being diagonals of a convex m-gon and faces being subsets of non-crossing diagonals. Its facets correspond to triangulations (i.e., maximal subsets of diagonals which are mutually non-crossing). This simplicial complex is the boundary complex of the dual associahedron [Hai84, Lee89, GKZ08, Lod04, HL07, CSZ11],
+
+SUBWORD COMPLEXES, CLUSTER COMPLEXES, AND GENERALIZED MULTI-ASSOCIAHEDRA
+
+3
+
+we refer to the recent book [MHPS12] for a detailed treatment of the history of associahedra. The complex m can be generalized using a positive integer k with 2k+1  m: define a (k+1)-crossing to be a set of k + 1 diagonals which are pairwise crossing. A diagonal is called k-relevant if it is contained in some (k + 1)-crossing, that is, if there are at least k vertices of the m-gon on each side of the diagonal. The complex m,k is the simplicial complex of (k + 1)-crossing free sets of k-relevant diagonals. Its facets are given by k-triangulations (i.e., maximal subsets of diagonals which do not contain a (k + 1)-crossing), without considering k-irrelevant diagonals. The reason for restricting the set of diagonals is that including all diagonals that are not k-relevant would yield the join of m,k and an mk-simplex. This simplicial complex has been studied by several authors, see e.g. [DKM02, Jon05, JW07, Kra06, Nak00, Rub11, Stu11]; an interesting recent treatment of k-triangulations using complexes of star polygons can be found in [PS09]. We refer to this simplicial complex as the simplicial complex of multi-triangulations.
+In [Stu11], the following description of m,k is exhibited: let Sn+1 be the symmetric group generated by the n simple transpositions si = (i i + 1) for 1  i  n, where n = m - 2k - 1. The k-relevant diagonals of a convex m-gon are in bijection with (positions of) letters in the word
+
+Q = (sn, . . . , s1, · · · sn, . . . , s1, sn, . . . , s1, sn, . . . , s2, · · · sn, sn-1, sn)
+
+k times sn,...,s1
+
+of length kn +
+
+n+1 2
+
+=
+
+m 2
+
+- mk.
+
+If the vertices of the m-gon are cyclically labeled by the
+
+integers from 0 to m - 1, the bijection sends the i-th letter of Q to the i-th k-relevant diagonal in
+
+lexicographic order. Under this bijection, a collection of k-relevant diagonals forms a facet of m,k
+
+if and only if the complement of the corresponding subword in Q forms a reduced expression for
+
+the permutation [n + 1, . . . , 2, 1]  Sn+1. A similar approach which admits various possibilities
+
+for the word Q was described in [PP12] in the context of sorting networks. We present these
+
+general bijections in the context of this paper in Section 2.4.
+
+Example 2.1. For m = 5 and k = 1, we get Q = (q1, q2, q3, q4, q5) = (s2, s1, s2, s1, s2). By cyclically labeling the vertices of the pentagon with the integers {0, . . . , 4}, the bijection sends the (position of the) letter qi to the i-th entry of the list of ordered diagonals [0, 2], [0, 3], [1, 3], [1, 4], [2, 4]. On one hand, two cyclically consecutive diagonals in the list form a triangulation of the pentagon. On the other hand, the complement of two cyclically consecutive letters of Q form a reduced expression for [3, 2, 1] = s1s2s1 = s2s1s2  S3.
+
+The main objective of this paper is to describe and study a natural generalization of multitriangulations to finite Coxeter groups.
+
+2.2. Subword complexes. Let Q = (q1, . . . , qr) be a word in the generators S of W and let   W . The subword complex (Q, ) was introduced by A. Knutson and E. Miller in order to study Gr¨obner geometry of Schubert varieties, see [KM05, Definition 1.8.1], and was further studied in [KM04]. It is defined as the simplicial complex whose faces are given by subwords P of Q for which the complement Q \ P contains a reduced expression of . Note that subwords come with their embedding into Q; two subwords P and P  representing the same word are considered to be different if they involve generators at different positions within Q. In Example 2.1, we have seen an instance of a subword complex with Q = (q1, q2, q3, q4, q5) = (s2, s1, s2, s1, s2) and  = s1s2s1 = s2s1s2. In this case, (Q, ) has vertices {q1, . . . , q5} and facets
+{q1, q2}, {q2, q3}, {q3, q4}, {q4, q5}, {q5, q1}.
+Subword complexes are known to be vertex-decomposable and hence shellable [KM04, Theorem 2.5]. Moreover, they are topologically spheres or balls depending on the Demazure product of Q. Let Q be the word obtained by adding s  S at the end of a word Q. The Demazure product (Q) is recursively defined by
+
+(Q) = µs µ
+
+if (µs) > (µ), if (µs) < (µ),
+
+4
+
+C. CEBALLOS, J.-P. LABBE´ , AND C. STUMP
+
+where µ = (Q) is the Demazure product of Q, and where the Demazure product of the empty word is defined to be the identity element in W . A subword complex (Q, ) is a sphere if and only if (Q) = , and a ball otherwise [KM04, Corollary 3.8].
+
+2.3. Cluster complexes. In [FZ03], S. Fomin and A. Zelevinsky introduced cluster complexes
+associated to finite crystallographic root systems. This simplicial complex along with the gen-
+eralized associahedron has become the object of intensive studies and generalizations in various
+contexts in mathematics, see for instance [CFZ02, MRZ03, Rea07a, HLT11]. A generator s  S
+is called initial or final in a Coxeter element c if (sc) < (c) or (cs) < (c), respectively. The
+group W acts naturally on the real vector space V with basis  = {s : s  S}, whose elements are called simple roots. Let  denote a root system for W , and let +   be the set of positive roots for the simple system . Furthermore, let -1 = +  - be the set of almost positive roots. We denote by W s the maximal standard parabolic subgroup generated by S \ {s}, and by  s the associated subroot system. For s  S, the involution s : -1 - -1 is given by
+
+s() =  s()
+
+if -    \ {s}, otherwise.
+
+N. Reading showed that the definition of cluster complexes can be extended to all finite root systems and enriched with a parameter c being a Coxeter element [Rea07a]. These c-cluster complexes are defined using a family c of c-compatibility relations on -1, see [RS11, Section 5]. This family is characterized by the following two properties:
+(i) for s  S and   -1,
+-s c      s -1 ,
+(ii) for 1, 2  -1 and s being initial in c,
+1 c 2  s(1) scs s(2).
+A maximal subset of pairwise c-compatible almost positive roots is called c-cluster. The c-cluster complex is the simplicial complex whose vertices are the almost positive roots and whose facets are c-clusters. It turns out that all c-cluster complexes for the various Coxeter elements are isomorphic, see [MRZ03, Proposition 4.10] and [Rea07a, Proposition 7.2]. In crystallographic types, they are moreover isomorphic to the cluster complex as defined in [FZ03].
+
+2.4. Main results. We are now in the position to state the main results of this paper and to
+define the central object, the multi-cluster complex. Let c = (c1, . . . , cn) be a reduced expression for a Coxeter element c  W , and let w(c) = (w1, . . . , wN ) be the lexicographically first subword of c which represents a reduced expression for the longest element w  W . The word w(c) is called c-sorting word for w, see [Rea07a]. The first theorem (proved in Section 5) gives a description of the cluster complex as a subword complex.
+
+Theorem 2.2. The subword complex (cw(c), w) is isomorphic to the c-cluster complex. The isomorphism is given by sending the letter ci of c to the negative root -ci, and the letter wi of w(c) to the positive root w1 · · · wi-1(wi ).
+
+As an equivalent statement, we obtain the following explicit description of the c-compatibility relation.
+
+Corollary 2.3. A subset C of -1 is a c-cluster if and only if the complement of the corresponding subword in cw(c) = (c1, . . . , cn, w1, . . . , wN ) represents a reduced expression for w.
+
+This description was obtained independently by K. Igusa and R. Schiffler [IS10] for finite crystallographic root systems in the context of cluster categories [IS10, Theorem 2.5]. They use results of W. Crawley-Beovey and C.M. Ringel saying that the braid group acts transitively on isomorphism classes of exceptional sequences of modules over a hereditary algebra, see [IS10, Section 2]. K. Igusa and R. Schiffler then show combinatorially that the braid group acting on sequences of elements in any Coxeter group W of rank n acts as well transitively on all sequences of n reflections whose product is a given Coxeter element [IS10, Theorem 1.4]. They then deduce Corollary 2.3
+
+SUBWORD COMPLEXES, CLUSTER COMPLEXES, AND GENERALIZED MULTI-ASSOCIAHEDRA
+
+5
+
+in crystallographic types from these two results, see [IS10, Theorem 2.5]. The present approach holds uniformly for all finite Coxeter groups, and is developed purely in the context of Coxeter group theory. We study the connections to the work of K. Igusa and R. Schiffler more closely in Section 8. In the particular case of bipartite Coxeter elements, as defined in Section 8.3 below, a similar description as in Corollary 2.3 was as well obtained by T. Brady and C. Watt in [BW08] in the context of the geometry of noncrossing partitions1.
+
+Example 2.4. Let W be the Coxeter group of type B2 generated by S = {s1, s2} and let c = c1c2 = s1s2. Then the word cw(c) is (c1, c2, w1, w2, w3, w4) = (s1, s2, s1, s2, s1, s2). The corresponding list of almost positive roots is
+
+[-1, -2, 1, 1 + 2, 1 + 22, 2].
+
+The subword complex (cw(c), w) is an hexagon with facets being any two cyclically consecutive letters. The corresponding c-clusters are
+
+{-1, -2}, {-2, 1}, {1, 1 + 2}, {1 + 2, 1 + 22}, {1 + 22, 2}, {2, -1}.
+
+Inspired by results in [Stu11] and [PP12], we generalize the subword complex in Theorem 2.2 by considering the concatenation of k copies of the word c. In type A, this generalization coincides with the description of the complex m,k given in [PP12] in a different language.
+
+Definition
+
+2.5.
+
+The
+
+multi-cluster
+
+complex
+
+k
+c
+
+(W
+
+)
+
+is
+
+the
+
+subword
+
+complex
+
+(ckw(c), w).
+
+Multi-cluster complexes are in fact independent of the Coxeter element c. In particular, we reobtain that all c-cluster complexes are isomorphic (see Section 4 for the proof).
+
+Theorem
+
+2.6.
+
+All
+
+multi-cluster
+
+complexes
+
+k
+c
+
+(W
+
+)
+
+for
+
+the
+
+various
+
+Coxeter
+
+elements
+
+are
+
+isomor-
+
+phic.
+
+The following two results give alternative descriptions of multi-cluster complexes. A word Q =
+(q1, . . . , qr) in S has the intervening neighbors property, if all non-commuting pairs s, t  S alternate within Q, see [EE09, Section 3] and [Spe09, Proposition 2.1]. Let  : S  S be the involution given by (s) = w-1sw, and extend  to words as (Q) = ((q1), . . . , (qr)). We say that Q has the strong intervening neighbors property (SIN-property), if Q(Q) = (q1, . . . , qr, (q1), . . . , (qr)) has the intervening neighbors property, and if in addition the Demazure product (Q) is w. Two words coincide up to commutations if they can be obtained from each other by a sequence of inter-
+changes of consecutive commuting letters. The next theorem (proved in Section 7) characterizes all words that are equal to ckw(c) up to commutations.
+
+Theorem 2.7. A word in S has the SIN-property if and only if it is equal to ckw(c), up to commutations, for some Coxeter element c and some non-negative integer k.
+
+The following proposition gives a different description of the facets of the multi-cluster complex. It generalizes results in [BW08, Section 8] (see also [ABMW06, Section 2.6]), and as well in [IS10, Lemma 3.2]. In [BW08], the authors consider the case k = 1 with bipartite Coxeter elements (see Section 8.3 for the definition). In [IS10], the authors consider the case k = 1 for crystallographic types with arbitrary Coxeter elements. Set ckw(c) = (q1, q2, . . . , qkn+N ). For an index 1  i  kn + N , set the reflection ti to be q1q2 . . . qi-1qiqi-1 . . . q2q1. E.g., in Example 2.4, we obtain the sequence
+(t1, t2, t3, t4, t5, t6) = (s1, s1s2s1, s2s1s2, s2, s1, s1s2s1).
+
+Proposition
+
+2.8.
+
+A
+
+collection
+
+{q1 , . . . , qkn }
+
+of
+
+letters
+
+in
+
+ck w (c)
+
+forms
+
+a
+
+facet
+
+of
+
+k
+c
+
+(W
+
+)
+
+if
+
+and
+
+only if
+
+tkn · · · t2 t1 = ck.
+
+Proof. The proof follows the lines of the proof of [IS10, Lemma 3.2]. A direct calculation shows
+
+that t1 · · · tkn q1q2 · · · qkn+N equals the product of all letters in cw(c) not in {q1 , . . . , qkn}.
+
+We
+
+get
+
+that
+
+{q1 , . . . , qkn }
+
+is
+
+a
+
+facet
+
+of
+
+k
+c
+
+(W
+
+)
+
+if
+
+and
+
+only
+
+if
+
+t1
+
+· · · tkn q1q2
+
+· · · qkn+N
+
+= w.
+
+As
+
+q1q2 · · · qkn+N = ckw, the statement follows.
+
+1We thank an anonymous referee for pointing us to this result.
+
+6
+
+C. CEBALLOS, J.-P. LABBE´ , AND C. STUMP
+
+We have seen in Section 2.1 that the multi-cluster complex of type Am-2k-1 is isomorphic to the simplicial complex whose facets correspond to k-triangulations of a convex m-gon,
+ck(Am-2k-1) = m,k.
+Thus, the multi-cluster complex extends the concept of multi-triangulations to finite Coxeter groups and provides a unifying approach to multi-triangulations and cluster complexes.
+
+Remark 2.9. Note that there is as well a "naive" way of extending the notion of cluster complexes. Consider the simplicial complex on the set of almost positive roots whose faces are given by the sets which do not contain any subset of k + 1 pairwise not compatible roots. In type A, this complex gives rise to the simplicial complex of multi-triangulations of a convex polygon as desired. However, this simplicial complex lacks basic properties of cluster complexes in general; in type B3, it is not pure. In this case, the maximal faces have cardinality 6 or 7. A similar phenomenon was observed in [PP12, Remark 29], where the authors suggest that subword complexes of type A (viewed as pseudoline arrangements) are the right objects to define "multi-pseudotriangulations", and explain that the approach using pairwise crossings does not work.
+
+The dictionary for type A is presented in Table 1. The general bijection between k-relevant diagonals of the m-gon and (positions of) letters of the word Q = ckw(c) of type Am-2k-1 is given as follows. Label the vertices of the m-gon from 0 to m - 1 in clockwise direction, and let
+n = m - 2k - 1 for simplicity. For i  {1, 2, . . . , n}, denote by pi the position of the generator si in c, and let
+
+ai =
+
+j  {1, 2, . . . , n} : j < i and pj < pj+1 mod(m),
+
+bi = -k - 1 - j  {1, 2, . . . , n} : j < i and pj > pj+1 mod(m).
+
+The bijection sends the -th copy of a generator si in Q to the k-relevant diagonal obtained by rotating  - 1 times the diagonal [ai, bi] in clockwise direction. Under this bijection, a collection of k-relevant diagonals is a facet of m,k if and only if the corresponding subword in Q is a facet of kc (Am-2k-1).
+
+vertices: facets:
+simplices:
+ridges:
+
+m,k
+k-relevant diagonals of a convex m-gon maximal sets of k-relevant diagonals without (k + 1)-crossings sets of k-relevant diagonals without (k + 1)-crossings flips between two k-triangulations
+
+k
+c (Am-2k-1)
+letters of Q = ckw(c) P  Q such that Q \ P is a reduced expression for w
+P  Q such that Q \ P contains a reduced expression for w facet flips using Lemma 3.3
+
+Table 1. The correspondence between the concepts of diagonals, multi-
+triangulations and flips of multi-triangulations in m,k, and the multi-cluster complex kc (Am-2k-1).
+
+Also in type B, we obtain a previously known object, namely the simplicial complex m,k sym of centrally symmetric k-triangulations of a regular convex 2m-gon. The vertices of this complex are pairs of centrally symmetric k-relevant diagonals, and a collection of vertices form a face if and only if the corresponding diagonals do not contain a (k + 1)-crossing. This simplicial complex was studied in algebraic and combinatorial contexts in [SW09, RS10]. We refer to Section 6.3 for a proof of Theorem 2.10.
+Theorem 2.10. The multi-cluster complex kc (Bm-k) is isomorphic to the simplicial complex of centrally symmetric k-triangulations of a regular convex 2m-gon.
+The description of the simplicial complex of centrally symmetric multi-triangulations as a subword complex provides straightforward proofs of non-trivial results about centrally symmetric multi-triangulations.
+
+SUBWORD COMPLEXES, CLUSTER COMPLEXES, AND GENERALIZED MULTI-ASSOCIAHEDRA
+
+7
+
+Corollary 2.11. The following properties of centrally symmetric multi-triangulations of a regular convex 2m-gon hold.
+(i) All centrally symmetric k-triangulations of a regular convex 2m-gon contain exactly mk relevant (centrally) symmetric pairs of diagonals, of which k are diameters.
+(ii) For any centrally symmetric k-triangulation T and any k-relevant symmetric pair of diagonals d  T , there exists a unique k-relevant symmetric pair of diagonals d not in T such that T  = (T \{d})  {d} is again a centrally symmetric k-triangulation. The operation of interchanging a symmetric pair of diagonals between T and T  is called symmetric flip.
+(iii) All centrally symmetric k-triangulations of a 2m-gon are connected by symmetric flips.
+The dictionary between the type B multi-cluster complex and the simplicial complex of centrally symmetric k-triangulations of a regular convex 2m-gon is presented in Table 2.
+
+vertices: facets:
+simplices: ridges:
+
+m,k sym
+k-relevant symmetric pairs of diagonals of a regular convex 2m-gon
+maximal sets of k-relevant centrally symmetric diagonals without (k + 1)-crossings
+sets of k-relevant symmetric pairs of diagonals without (k + 1)-crossings
+symmetric flips between two centrally symmetric k-triangulations
+
+ck (Bm-k) letters of Q = ckw(c) = cm
+P  Q such that Q \ P is a reduced expression for w P  Q such that Q \ P contains a reduced expression for w facet flips using Lemma 3.3
+
+Table 2. The generalization of the concept of diagonals, multi-triangulations and flips of multi-triangulations to the Coxeter group of type Bn.
+
+The bijection between k-relevant symmetric pairs of diagonals of a regular convex 2m-gon and (positions of) letters of the word Q = ckw(c) = cm of type Bn, where n = m - k and (s1s2)4 = (sisi+1)3 = 1 for 1 < i < n, is given as follows. Label the vertices of the 2m-gon from 0 to 2m - 1 in clockwise direction. For i  [n], denote by pi the position of the generator si in c, and let
+
+ai =
+
+|{j  [n] : j < i and pj < pj+1}|,
+
+bi = m - |{j  [n] : j < i and pj > pj+1}|.
+
+The bijection sends the -th copy of a generator si in Q to the k-relevant symmetric pair of diago-
+nals obtained by rotating  - 1 times the symmetric pair [ai, bi]sym := [ai, bi], [ai + m, bi + m] in clockwise direction (observe that both diagonals coincide for i = 1). Under this bijection, a collection of k-relevant symmetric pairs of diagonals is a facet of m,k sym if and only if the corresponding subword in Q is a facet of kc (Bm-k).
+
+Example 2.12. Let m = 5 and k = 2, and let W be the Coxeter group of type B3 generated by S = {s1, s2, s3} where (s1s2)4 = (s2s3)3 = (s1s3)2 = 1. The multi-cluster complex 2c (B3) is isomorphic to the simplicial complex of centrally symmetric 2-triangulations of a regular convex 10-gon. In the particular case where the Coxeter element c = c1c2c3 = s1s2s3, the bijection between 2-relevant symmetric pairs and the letters of the word Q = c2w(c) = (s1, s2, s3)5 is given by
+
+s1 [0, 5]
+
+s2
+[1, 5] [6, 0]
+
+s3
+[2, 5] [7, 0]
+
+s1 [1, 6]
+
+s2
+[2, 6] [7, 1]
+
+s3
+[3, 6] [8, 1]
+
+s1 [2, 7]
+
+s2
+[3, 7] [8, 2]
+
+s3
+[4, 7] [9, 2]
+
+s1 [3, 8]
+
+s2
+[4, 8] [9, 3]
+
+s3
+[5, 8] [0, 3]
+
+s1 [4, 9]
+
+s2
+[5, 9] [0, 4]
+
+s3
+[6, 9] . [1, 4]
+
+For instance, the first appearance of the letter s3 is mapped to the symmetric pair of diagonals [2, 5]sym = [2, 5], [7, 0] , while the third appearance of s1 is mapped to the symmetric pair of
+diagonals [2, 7]sym = [2, 7] . The centrally symmetric k-triangulations can be easily described using the subword complex approach. For example, the symmetric pairs of diagonals at positions {3, 5, 7, 9, 13, 15} form a facet of m,k sym, and the symmetric flips are interpreted using Lemma 3.3.
+
+8
+
+C. CEBALLOS, J.-P. LABBE´ , AND C. STUMP
+
+Using algebraic techniques, D. Soll and V. Welker proved that m,k sym is a (mod 2)-homologysphere [SW09, Theorem 10]. The subword complex description in Theorem 2.10 and the results by A. Knutson and E. Miller [KM04, Theorem 2.5 and Corollary 3.8] imply the following stronger
+result.
+
+Corollary 2.13. The simplicial complex of centrally symmetric k-triangulations of a regular convex 2m-gon is a vertex-decomposable simplicial sphere.
+
+This result together with the proof of [SW09, Conjecture 13] given in [RS10]2 implies the following conjecture by D. Soll and V. Welker.
+
+Corollary 2.14 ([SW09, Conjecture 17]). For the term-order defined in [SW09, Section 7], the initial ideal in (In,k) of the determinantal ideal In,k defined in [SW09, Section 3] is spherical.
+
+We finish this section by describing all spherical subword complexes in terms of faces of multicluster complexes (see Section 6.5 for the proofs). This generalizes the universality of the multiassociahedron presented in [PS12, Proposition 5.6] to finite Coxeter groups.
+
+Theorem 2.15. A simplicial sphere can be realized as a subword complex of a given finite type
+
+W
+
+if
+
+and
+
+only
+
+if
+
+it
+
+is
+
+the
+
+link
+
+of
+
+a
+
+face
+
+of
+
+a
+
+multi-cluster
+
+complex
+
+k
+c
+
+(W
+
+).
+
+The previous theorem can be obtained for any family of subword complexes, for which arbitrary large powers of c appear as subwords. However, computations seem to indicate that the multicluster complex maximizes the number of facets among subword complexes (Q, w) with word Q of the same size. We conjecture that this is true in general, see Conjecture 9.8. We also obtain the following corollary.
+
+Corollary 2.16. The following two statements are equivalent.
+(i) Every spherical subword complex of type W is polytopal. (ii) Every multi-cluster complex of type W is polytopal.
+
+3. General results on spherical subword complexes
+Before proving the main results, we discuss several properties of spherical subword complexes in general which are not specific to multi-cluster complexes. Throughout this section, we let Q = (q1, . . . , qr) be a word in S and  = (Q).
+3.1. Flips in spherical subword complexes.
+Lemma 3.1 (Knutson-Miller). Let F be a facet of (Q, (Q)). For any vertex q  F , there exists a unique vertex q  Q \ F such that F \ {q}  {q} is again a facet.
+Proof. This follows from the fact that (Q, (Q)) is a simplicial sphere [KM04, Corollary 3.8]. See [KM04, Lemma 3.5] for an analogous reformulation.
+Such a move between two adjacent facets is called flip. Next, we describe how to find the unique vertex q / F corresponding to q  F . For this, we introduce the notion of root functions.
+Definition 3.2. The root function rF : Q   associated to a facet F of (Q, ) sends a letter q  Q to the root rF (q) := wq(q)  , where wq  W is given by the product of the letters in the prefix of Q \ F = (qi1 , . . . , qi ) that appears on the left of q in Q, and where q is the simple root associated to q.
+Lemma 3.3. Let F , q and q be as in Lemma 3.1. The vertex q is the unique vertex not in F for which rF (q)  {±rF (q)}.
+
+2The proof appeared in Section 7 in the arxiv version, see http://arxiv.org/abs/0904.1097v2.
+
+SUBWORD COMPLEXES, CLUSTER COMPLEXES, AND GENERALIZED MULTI-ASSOCIAHEDRA
+
+9
+
+Proof. Since qi1 . . . qi is a reduced expression for  = (Q), the set {rF (qi1 ), . . . , rF (qi )} is equal to the inversion set inv() = {i1 , qi1 (i2 ), . . . , qi1 · · · qi-1 (i )} of , which only depends on  and not on the chosen reduced expression. In particular, any two elements in this set are distinct.
+Notice that the root rF (q) for q  F is, up to sign, also contained in inv(), otherwise it would contradict the fact that the Demazure product of Q is . If we insert q into the reduced expression of , the exchange property in Coxeter groups implies that we have to delete the unique letter q
+that corresponds to the same root, with a positive sign if it appears on the right of q in Q, or with
+a negative sign otherwise. The resulting word is again a reduced expression for .
+
+Remark 3.4. In the case of cluster complexes, this description can be found in [IS10, Lemma 2.7].
+
+Example 3.5. As in Example 2.4, consider the Coxeter group of type B2 generated by S = {s1, s2} with c = c1c2 = s1s2 and cw(c) = (c1, c2, w1, w2, w3, w4) = (s1, s2, s1, s2, s1, s2). Consider the facet F = {c2, w1}, we obtain
+
+rF (c1) = 1, rF (c2) = s1(2) = 1 + 2, rF (w1) = s1(1) = -1,
+
+rF (w2) = s1(2) = 1 + 2, rF (w3) = s1s2(1) = 1 + 22, rF (w4) = s1s2s1(2) = 2.
+
+Since rF (c2) = rF (w2), the letter c2 in F flips to w2. As w2 appears on the right of c2, both roots have the same sign. Similarly, the letter w1 flips to c1, because rF (c1) = -rF (w1). In this case, the roots have different signs because c1 appear on the left of w1.
+
+The following lemma describes the relation between the root functions of two facets connected by a flip.
+
+Lemma 3.6. Let F and F  = F \ {q}  {q} be two adjacent facets of the subword complex (Q, (Q)), and assume that q appears on the left of q in Q. Then, for every letter p  Q,
+
+rF  (p) =
+
+tq(rF (p)) rF (p)
+
+if p is between q and q, or p = q, otherwise.
+
+Here, tq = wqqwq-1 where wq is the product of the letters in the prefix of Q\F that appears on the left of q in Q. By construction, tq is the reflection in W orthogonal to the root rF (q) = wq(q).
+
+Proof.
+
+Let
+
+p
+
+be
+
+a
+
+letter
+
+in
+
+Q,
+
+and
+
+wp,
+
+w
+p
+
+be the products of the letters in the prefixes of Q\F
+
+and
+
+Q\F  that appear on the left of p. Then, by definition rF (p) = wp(p) and rF  (p) = wp (p). We
+
+consider the following three cases:
+
+-
+
+If
+
+p
+
+is
+
+on
+
+the
+
+left
+
+of
+
+q
+
+or
+
+p = q,
+
+then
+
+wp
+
+=
+
+w
+p
+
+and
+
+rF (p) = rF  (p).
+
+-
+
+If p is between q
+
+and q
+
+or
+
+p
+
+=
+
+q,
+
+then
+
+w
+p
+
+can be
+
+obtained from wp
+
+by adding the
+
+letter q
+
+at its corresponding position. This addition is the result of multiplying wp by tq = wqqwq-1
+
+on
+
+the
+
+left,
+
+i.e.
+
+w
+p
+
+=
+
+tq wp .
+
+Therefore,
+
+rF (p)
+
+=
+
+tq(rF  (p)).
+
+- If p is on the right of q, consider the reflection tq = wq qw-q1 where wq is the product of the letters in the prefix of Q\F that appears on the left of q. By the same argument,
+
+one
+
+obtains
+
+that
+
+w
+p
+
+=
+
+tqtq wp.
+
+In addition, tq = tq because they correspond to the
+
+unique reflection orthogonal to the roots rF (q) and rF (q), which are up to sign equal by
+
+Lemma
+
+3.3.
+
+Therefore,
+
+w
+p
+
+=
+
+wp
+
+and
+
+rF  (p)
+
+=
+
+rF (p).
+
+3.2. Isomorphic spherical subword complexes. We now reduce the study of spherical subword complexes in general to the case where (Q) =  = w, and give two operations on the word Q giving isomorphic subword complexes.
+Theorem 3.7. Every spherical subword complex (Q, ) is isomorphic to (Q, w), for some word Q such that (Q) = w.
+
+10
+
+C. CEBALLOS, J.-P. LABBE´ , AND C. STUMP
+
+Proof. Let r be a reduced word for -1w = (Q)-1w  W . Moreover, define the word Q as the concatenation of Q and r. By construction, the Demazure product of Q is w, and every reduced expression of w in Q must contain all the letters in r. The reduced expressions of w in Q are given by reduced expressions of  in Q together with all the letters in r. Therefore, the subword complexes (Q, ) and (Q, w) are isomorphic.
+Recall the involution  : S  S given by (s) = w-1sw. This involution was used in [BHLT09] to characterize isometry classes of the c-generalized associahedra. Define the rotated word Qs or the rotation of Q = (s, q2, . . . , qr) along the letter s as (q2, . . . , qr, (s)). The following two propositions are direct consequences of the definition of subword complexes.
+Proposition 3.8. If two words Q and Q coincide up to commutations, then (Q, ) = (Q, ).
+Proof. The isomorphism between (Q, ) and (Q, ) is induced by reordering the letters of Q to obtain Q.
+Proposition 3.9. Let Q = (s, q2, . . . , qr). Then (Q, w) = (Q , w).
+s
+Proof. The isomorphism between (Q, w) and (Qs , w) is induced by sending qi to qi for 2  i  r and the initial s to the final (s). The results follows using the fact that sw = w(s).
+
+Theorem 3.7 and Proposition 3.9 give an alternative viewpoint on spherical subword complexes. First, we can consider  to be the longest element w  W . Second, (Q, w) does not depend on the word Q but on the bi-infinite word
+
+Q = ··· Q
+
+(Q)
+
+Q
+
+···
+
+= . . . q1, . . . , qr, (q1), . . . , (qr), q1, . . . , qr, . . . .
+
+Taking any connected subword in Q of length r gives rise to an isomorphic spherical subword complex.
+
+4. Proof of Theorem 2.6
+In this section, we prove that all multi-cluster complexes for the various Coxeter elements are isomorphic. This result relies on the theory of sorting words and sortable elements introduced by N. Reading in [Rea07a]. The c-sorting word for w  W is the lexicographically first (as a sequence of positions) subword of c = ccc . . . which is a reduced word for w. We use the following result of D. Speyer.
+Lemma 4.1 ([Spe09, Corollary 4.1]). The longest element w  W can be expressed as a reduced prefix of c up to commutations.
+The next lemma unifies previously known results; the first statement it trivial, the second statement can be found in [Spe09, Section 4], and the third statement is equivalent to [HLT11, Lemma 1.6].
+Lemma 4.2. Let s be initial in c and let p = (s, p2, . . . , pr) be a prefix of c up to commutations. Then,
+(i) (p2, . . . , pr) is a prefix of (c) up to commutations, where c denotes a word for the Coxeter element c = scs,
+(ii) if p = sp2 · · · pr is reduced then p is the c-sorting word for p up to commutations, (iii) if sp2 · · · prs is reduced for some s  S then p is a prefix of the c-sorting word for ps up to
+commutations.
+Proposition 4.3. Let s be initial in c and let w(c) = (s, w2, . . . , wN ) be the c-sorting word of w up to commutations. Then, (w2, . . . , wN , (s)) is the scs-sorting word of w up to commutations.
+
+SUBWORD COMPLEXES, CLUSTER COMPLEXES, AND GENERALIZED MULTI-ASSOCIAHEDRA 11
+Proof. By Lemma 4.1, the element w can be written as a prefix of c. By Lemma 4.2, this prefix is equal to the c-sorting of w, which we denote by w(c). Let scs denote the word for the Coxeter element scs. By Lemma 4.2 (i), the word (w2, . . . , wN ) is a prefix of (scs) and by (ii) it is the scs-sorting word for w2 · · · wN . By definition of , the word (w2, . . . , wN , (s)) is a reduced expression for w. Lemma 4.2 (iii) with the word (w2, . . . , wN ) and (s) implies that (w2, . . . , wN , (s)) is the scs-sorting word for w up to commutations.
+Remark 4.4. In [RS11], N. Reading and D. Speyer present a uniform approach to the theory of sorting words and sortable elements. This approach uses an anti-symmetric bilinear form which is used to extend many results to infinite Coxeter groups. In particular, the previous proposition can be easily deduced from [RS11, Lemma 3.8].
+We are now in the position to prove that all multi-cluster complexes for the various Coxeter elements are isomorphic.
+Proof of Theorem 2.6. Let c and c be two Coxeter elements such that c = scs for some initial letter s of c, and let c and c denote reduced words for c and c, respectively. Moreover, let Qc = ckw(c), and Qc = (c)kw(c). By Proposition 3.8, we can assume that Qc = (s, c2, . . . , cn)k · (s, w2, . . . , wN ), and by Proposition 4.3, we can also assume that Qc = (c2, . . . , cn, s)k · (w2, . . . , wN , (s)). Therefore, Qc = (Qc) , and Proposition 3.9 implies that the
+s
+subword complexes (Qc, w) and (Qc, w) are isomorphic. Since any two Coxeter elements can be obtained from each other by conjugation of initial letters (see [GP00, Theorem 3.1.4]), the result follows.
+
+5. Proof of Theorem 2.2
+In this section, we prove that the subword complex (cw(c), w) is isomorphic to the c-cluster complex. As in Theorem 2.2, we identify letters in cw(c) = (c1, . . . , cn, w1, . . . , wN ) with almost positive roots using the bijection Lrc : cw(c) -~ -1 given by
+
+Lrc(q) =
+
+-ci w1w2 · · · wi-1(wi )
+
+if q = ci for some 1  i  n, if q = wi for some 1  i  N.
+
+In [Rea07a] this map was used to establish a bijection between c-sortable elements and c-clusters. Note that under this bijection, letters of cw(c) correspond to almost positive roots and subwords of cw(c) correspond to subsets of almost positive roots. We use this identification to simplify several statements in this section. Observe, that for the particular facet F0 of (cw(c), w) corresponding to the prefix c of cw(c), we have that
+Lrc(q) = rF0 (q) for every q  w(c)  cw(c),
+where rF0 (q) is the root function as defined in Definition 3.2. We interpret the two parts (i) and (ii) in the definition of c-compatibility (see Section 2.3), in Theorem 5.1 and Theorem 5.7. Proving these two conditions yields a proof of Theorem 2.2. The majority of this section is devoted to the proof of the initial condition. The proof of the recursive condition follows afterwards.
+
+5.1. Proof of condition (i). The following theorem implies that (cw(c), w) satisfies the initial condition.
+Theorem 5.1. {-s, } is a face of the subword complex (cw(c), w) if and only if    s -1.
+We prove this theorem in several steps.
+Lemma 5.2. Let F be a facet of the subword complex (cw(c), w) such that ci  F . Then (i) for every q  F with q = ci, rF (q)   ci . (ii) for every q  cw(c), rF (q)   ci if and only if Lrc(q)  ( ci )-1.
+
+12
+
+C. CEBALLOS, J.-P. LABBE´ , AND C. STUMP
+
+Proof. For the proof of (i) notice that if F = c then the result is clear. Now suppose the result is true for a given facet F with ci  F , and consider the facet F  = F \ {p}  {p} obtained by flipping a letter p = ci in F . Since all the facets containing ci are connected by flips which do not involve the letter ci, then it is enough to prove the result for the facet F . By hypothesis, since p  F and p = ci then rF (p)   ci . Then, the reflection tp orthogonal to rF (p) defined in Lemma 3.6 satisfies tp  W ci . Using Lemma 3.6 we obtain that for every q  cw(c),
+rF  (q)   ci  rF (q)   ci .
+If q  F  and q = ci then (q  F and q = ci) or q = p. In the first case, rF (q) is contained in  ci by hypothesis, and consequently rF  (q)   ci . By Lemma 3.3, the second case q = p implies that rF (q) = ±rF (p). Again since rF (p) belongs to  ci by hypothesis, the root rF  (q) belongs to  ci .
+For the second part of the lemma, notice that the set {q  cw(c) : rF (q)   ci } is invariant for every facet F containing ci. In particular, if F = c this set is equal to {q  cw(c) : Lrc(q)  ( ci )-1}. Therefore, rF (q)   ci if and only if Lrc(q)  ( ci )-1.
+
+Proposition 5.3. If a facet F of (cw(c), w) contains ci and q = ci, then Lrc(q)  ( ci )-1.
+
+Proof. This proposition is a direct consequence of Lemma 5.2.
+
+Next, we consider the parabolic subgroup W ci obtained by removing the generator ci from S.
+
+Lemma 5.4. Let c be the Coxeter element of the parabolic subgroup W ci obtained from c by
+
+removing the generator ci. Consider the word Q = cw(c) obtained by deleting the letter ci from
+
+Q = cw(c), and let Q = cw(c).
+
+Then,
+
+the subword complexes
+
+(Q, w)
+
+and
+
+(Q
+
+
+
+,
+
+w
+
+
+)
+
+are
+
+isomorphic.
+
+Proof. Since every facet F of (Q, w) can be seen as a facet F  {ci} of (cw(c), w) which contains ci, then for every q  F we have that Lrc(q)  ( ci )-1 by Proposition 5.3. This means
+
+that only the letters of Q that correspond to roots in ( ci )-1 appear in the subword complex (Q, w). The letters in Q are in bijection, under the map Lrc, with the almost positive roots
+
+( ci )-1. Let  be the map that sends a letter q  Q corresponding to a root in ( ci )-1 to the letter in Q corresponding to the same root. We will prove that  induces an isomorphism
+
+between
+
+the
+
+subword
+
+complexes
+
+(Q, w)
+
+and
+
+(Q
+
+
+
+,
+
+w
+
+
+).
+
+In other words, we show that F is
+
+a
+
+facet
+
+of
+
+(Q, w)
+
+if
+
+and
+
+only
+
+if
+
+(F )
+
+is
+
+a
+
+facet
+
+of
+
+(Q
+
+
+
+,
+
+w
+
+
+).
+
+Let rF
+
+and r (F ) be the root
+
+functions associated to F and (F ) in Q and Q respectively. Then, for every q  Q such that
+
+Lrc(q)  ( ci )-1, we have
+
+()
+
+rF (q) = r (F )((q)).
+
+If F = c then (F ) = c and the equality () holds by the definition of . Moreover, if () holds
+
+for a facet F then it is true for a facet F  obtained by flipping a letter in F . This follows by
+
+applying Lemma 3.6 and using the fact that the positive roots ( ci )-1 in Q and Q appear in
+
+the same order, see [Rea07a, Prop. 3.2]. Finally, Lemma 3.3 and () imply that the map  sends
+
+flips
+
+to
+
+flips.
+
+Since
+
+c
+
+and
+
+(c)
+
+are
+
+facets
+
+of
+
+(Q, w)
+
+and
+
+(Q
+
+
+
+,
+
+w
+
+
+)
+
+respectively,
+
+and
+
+all
+
+facets
+
+are
+
+connected
+
+by
+
+flips,
+
+F
+
+is
+
+a
+
+facet
+
+of
+
+(Q, w)
+
+if
+
+and
+
+only
+
+if
+
+(F )
+
+is
+
+a
+
+facet
+
+of
+
+(Q
+
+
+
+,
+
+w
+
+
+).
+
+The next lemma states that every letter in cw(c) is indeed a vertex of (cw(c), w).
+
+Lemma 5.5. Every letter in cw(c) is contained in some facet of (cw(c), w).
+
+Proof. Write the word Q = cw(c) as the concatenation of c and the c-factorization of w, i.e., Q = ccK1 cK2 · · · cKr , where Ki  S for 1  i  r and cI , with I  S, is the Coxeter element of WI obtained from c by keeping only letters in I. Since w is c-sortable, see [Rea07a, Corollary 4.4], the sets Ki form a decreasing chain of subsets of S, i.e., Kr  Kr-1  · · ·  K1  S. This implies that the word ccK1 . . . cKi . . . cKr contains a reduced expression for w for any 1  i  r. Thus, all letters in cKi are indeed vertices.
+
+SUBWORD COMPLEXES, CLUSTER COMPLEXES, AND GENERALIZED MULTI-ASSOCIAHEDRA 13
+
+Proposition 5.6. For every q  cw(c) satisfying Lrc(q)  ( ci )-1, there exists a facet of (cw(c), w) that contains both ci and q.
+
+Proof. Consider the parabolic subgroup W ci obtained by removing the letter ci from S, and let Q
+
+and Q be the words as defined in Lemma 5.4.
+
+Since
+
+(Q, w)
+
+and
+
+(Q
+
+
+
+,
+
+w
+
+
+)
+
+are
+
+isomorphic,
+
+applying Lemma 5.5 to (Q, w ) completes the proof.
+
+Proof of Theorem 5.1. Taking ci = s, -s = Lrc(ci) and  = Lrc(q) the two directions of the equivalence follow from Propositions 5.3 and 5.6.
+
+5.2. Proof of condition (ii). The following theorem proves condition (ii).
+
+Theorem 5.7. Let 1, 2  -1 and s be an initial letter of a Coxeter element c. Then, {1, 2} is a face of the subword complex (cw(c), w) if and only if {s(1), s(2)} is a face of the subword complex (cw(c), w), with c = scs.
+
+Proof. Let Q = cw(c), s be initial in c and Qs be the rotated word of Q, as defined in Section 3.2. By Proposition 4.3, the word Q is equal to cw(c) up to commutations, and by
+s
+Proposition 3.9 the subword complexes (cw(c), w) and (cw(c), w) are isomorphic. For every letter q  cw(c), we denote by q the corresponding letter in cw(c) obtained from the previous isomorphism. We write q1 c q2 if and only if {q1, q2} is a face of (cw(c), w). In terms of almost positive roots this is written as
+Lrc(q1) c Lrc(q2)  Lrscs(q1 ) scs Lrscs (q2 ) .
+Note that the bijection Lrscs can be described using Lrc. Indeed, it is not hard to check that Lrscs(q) = s(Lrc(q)) for all q  Q. Therefore,
+Lrc(q1) c Lrc(q2)  s(Lrc(q1)) scs s(Lrc(q2)).
+Taking 1 = Lrc(q1) and 2 = Lrc(q2) we get the desired result.
+
+6. Generalized multi-associahedra and polytopality of spherical subword complexes
+In this section, we discuss the polytopality of spherical subword complexes and present what is known in the particular cases of cluster complexes, simplicial complexes of multi-triangulations, and simplicial complexes of centrally symmetric multi-triangulations. We then prove polytopality of multi-cluster complexes of rank 2. Finally, we show that every spherical subword complex is the link of a face of a multi-cluster complex, and consequently reduce the question of realizing spherical subword complexes to the question of realizing multi-cluster complexes. We use the term generalized multi-associahedron for the dual of a polytopal realization of a multi-cluster complex - but the existence of such realizations remains open in general, see Table 3. The subword complex approach provides new perspectives and methods for finding polytopal realizations. In a subsequent paper, C. Stump and V. Pilaud obtain a geometric construction of a class of subword complexes containing generalized associahedra purely in terms of subword complexes [PS11].
+6.1. Generalized associahedra. We have seen that for k = 1, the multi-cluster complex 1c(W ) is isomorphic to the c-cluster complex. S. Fomin and A. Zelevinsky conjectured the existence of polytopal realizations of the cluster complex in [FZ03, Conjecture 1.12]. F. Chapoton, S. Fomin, and A. Zelevinsky then proved this conjecture by providing explicit inequalities for the defining hyperplanes of generalized associahedra [CFZ02]. N. Reading constructed c-Cambrian fans, which are complete simplicial fans coarsening the Coxeter fan, see [Rea06]. In [RS09], N. Reading and D. Speyer prove that these fans are combinatorially isomorphic to the normal fan of the polytopal realization in [CFZ02]. C. Hohlweg, C. Lange and H. Thomas then provided a family of cgeneralized associahedra having c-Cambrian fans as normal fans by removing certain hyperplanes from the permutahedron [HLT11]. V. Pilaud and C. Stump recovered c-generalized associahedra by giving explicit vertex and hyperplane descriptions purely in terms of the subword complex approach introduced in the present paper [PS11].
+
+14
+
+C. CEBALLOS, J.-P. LABBE´ , AND C. STUMP
+
+simplicial complex generated by
+triangulations (classical)
+multi-triangulations [Jon05, Kra06, PS09, PP12, Stu11]
+centrally symmetric multi-triangulations [SW09, RS10]
+clusters [FZ03, Rea06, Rea07a, Rea07b]
+multi-clusters (present paper)
+
+polytopal realization of the dual
+associahedron [Hai84, Lee89, GKZ08, Lod04, HL07, CSZ11]
+multi-associahedron (existence conjectured)
+multi-associahedron of type B (existence conjectured)
+generalized associahedron [CFZ02, HL07, Ste12, PS11]
+generalized multi-associahedron (existence conjectured)
+
+Table 3. Dictionary for generalized concepts of triangulations and associahedra.
+
+6.2. Multi-associahedra of type A. In type An for n = m - 2k - 1, the multi-cluster complex kc (An) is isomorphic to the simplicial complex m,k of k-triangulations of a convex m-gon. This simplicial complex is conjectured to be realizable as the boundary complex of a polytope3. It was studied in many different contexts, see [PS09, Section 1] for a detailed description of previous work on multi-triangulations. Apart from the most simple cases, very little is known about its polytopality. Nevertheless, this simplicial complex possesses very nice properties which makes this conjecture plausible. Indeed, the subword complex approach provides a simple description of the 1-skeleton of a possible multi-associahedron (see Lemma 3.3), and gives a new and very simple proof that it is a vertex-decomposable triangulated sphere [Stu11, Theorem 2.1], see also [Jon03]. Below, we survey the known polytopal realizations of m,k as boundary complexes of convex polytopes. The simplicial complex m,k, or equivalently the multi-cluster complex kc (An) for n = m - 2k - 1, is the boundary complex of
+- a point, if k = 0, - an n-dimensional dual associahedron, if k = 1, - a k-dimensional simplex, if n = 1, - a 2k-dimensional cyclic polytope on 2k + 3 vertices, if n = 2, see [PS09, Section 8], - a 6-dimensional simplicial polytope, if n = 3 and k = 2, see [BP09].
+The case n = 2 is also a direct consequence of the rank 2 description in Section 6.4. Further unsuccessful attempts to realize m,k come from various directions in discrete geometry.
+(a) A generalized construction of the polytope of pseudo-triangulations [RSS03] using rigidity of pseudo-triangulations [Pil10, Section 4.2 and Remark 4.82].
+(b) A generalized construction of the secondary polytope. As presented in [GKZ08], the secondary polytope of a point configuration can be generalized using star polygons [Pil10, Section 4.3].
+(c) The brick polytope of a sorting network [PS12]. This new approach brought up a large family of spherical subword complexes which are realizable as the boundary of a polytope. In particular it provides a new perspective on generalized associahedra [PS11]. Unfortunately, this polytope fails to realize the multi-associahedron.
+6.3. Multi-associahedra of type B. We start by proving Theorem 2.10 which says that the multi-cluster complex kc (Bm-k) is isomorphic to the simplicial complex of centrally symmetric k-triangulations of a regular convex 2m-gon. This simplicial complex was studied in [SW09, RS10]. We then present what is known about its polytopality. The new approach using subword complexes provides in particular very simple proofs of Corollaries 2.11, 2.13 and 2.14.
+Proof of Theorem 2.10. Let S = {s0, s1, . . . , sm-k-1} be the generators of Bm-k, where s0 is the generator such that (s0s1)4 = 1  W , and the other generators satisfy the same relations as in type Am-k-1. Then, embed the group Bm-k in the group A2(m-k)-1 by the standard
+3As far as we know, the first reference to this conjecture appears in [Jon05, Section 1].
+
+SUBWORD COMPLEXES, CLUSTER COMPLEXES, AND GENERALIZED MULTI-ASSOCIAHEDRA 15
+
+folding technique:
+
+replace s0
+
+by
+
+s
+m-k
+
+and si
+
+by s
+
+s
+
+m-k+i m-k-i
+
+for 1  i  m - k - 1,
+
+where
+
+the
+
+set
+
+S
+
+=
+
+{
+
+s
+
+ 1
+
+,
+
+.
+
+.
+
+.
+
+,
+
+s
+
+ 2(m-
+
+k
+
+)-
+
+1
+
+}
+
+generates
+
+the
+
+group
+
+A2(m-k)-1 .
+
+The multi-cluster complex
+
+kc (Bm-k)
+
+now
+
+has
+
+an
+
+embedding
+
+into
+
+the
+
+multi-cluster
+
+complex
+
+k
+c
+
+(A2(
+
+m
+
+-
+
+k
+
+)
+
+-
+
+1
+
+),
+
+where
+
+c
+
+is
+
+the
+
+Coxeter element of type A2(m-k)-1 corresponding to c in Bm-k; the corresponding subcomplex has the property that 2(m - k) generators (all of them except sm-k) always come in pairs. Using the correspondence between k-triangulations and facets of the multi-cluster complex described
+
+in
+
+Section
+
+2.4,
+
+the
+
+facets
+
+of
+
+kc (Bm-k)
+
+considered
+
+in
+
+k
+c
+
+(A2(
+
+m
+
+-
+
+k
+
+)
+
+-
+
+1
+
+)
+
+correspond
+
+to
+
+centrally
+
+symmetric multi-triangulations.
+
+Here, we present the few cases for which this simplicial complex is known to be polytopal. The multi-cluster complex kc (Bm-k) is the boundary complex of
+- an (m - 1)-dimensional dual cyclohedron (or type B associahedron), if k = 1, see [Sim03, HL07],
+- an (m - 1)-dimensional simplex, if k = m - 1, - a (2m - 4)-dimensional cyclic polytope on 2m vertices, if k = m - 2, see [SW09].
+The case k = m - 2 also follows from the rank 2 description in Section 6.4.
+
+6.4. Generalized multi-associahedra of rank 2. We now prove that multi-cluster complexes of rank 2 can be realized as boundary complexes of cyclic polytopes. In other words, we show the existence of rank 2 multi-associahedra. This particular case was known independently by D. Armstrong4.
+Theorem 6.1 (Type I2(m) multi-associahedra). The multi-cluster complex kc (I2(m)) is isomorphic to the boundary complex of a 2k-dimensional cyclic polytope on 2k + m vertices. The multi-associahedron of type I2(m) is the simple polytope given by the dual of a 2k-dimensional cyclic polytope on 2k + m vertices.
+Proof. This is obtained by Gale's evenness criterion on the word Q = (a, b, a, b, a, . . . ) of length 2k +m: Let F be a facet of kc (I2(m)), and take two consecutive letters x and y in the complement of F . Since the complement of F is a reduced expression of w, then x and y must represent different generators. Since the letters in Q are alternating, it implies that the number of letters between x and y is even.
+6.5. Generalized multi-associahedra. Recall from Section 2.2 that a subword complex (Q, ) is homeomorphic to a sphere if and only if the Demazure product (Q) = , and to a ball otherwise. This motivates the question whether spherical subword complexes can be realized as boundary complexes of polytopes [KM04, Question 6.4.]. We show that it is enough to consider multi-cluster complexes to prove polytopality for all spherical subword complexes, and we characterize simplicial spheres that can be realized as subword complexes in terms of faces of multi-cluster complexes.
+Lemma 6.2. Every spherical subword complex (Q, w) is the link of a face of a multi-cluster complex (ckw(c), w).
+Proof. Observe that any word Q in S can be embedded as a subword of Q = ckw(c), for k less than or equal to the size of Q, by assigning the i-th letter of Q within the i-th copy of c. Since the Demazure product (Q) is equal to w, the word Q contains a reduced expression for w. In other words, the set Q \ Q is a face of (Q, w). The link of this face in (Q, w) consists of subwords of Q - viewed as a subword of Q - whose complements contain a reduced expression of w. This corresponds exactly to the subword complex (Q, w).
+We now prove that simplicial spheres realizable as subword complexes are links of faces of multi-cluster complexes.
+Proof of Theorem 2.15. For any spherical subword complex (Q, ), we have that the Demazure product (Q) equals . By Theorem 3.7, (Q, ) is isomorphic to a subword complex of the form (Q, w). Using the previous lemma we obtain that (Q, ) is the link of a face of a multi-cluster
+
+4Personal communication.
+
+16
+
+C. CEBALLOS, J.-P. LABBE´ , AND C. STUMP
+
+complex. The other direction follows since the link of a subword (i.e., a face) of a multi-cluster complex is itself a subword complex, corresponding to the complement of this subword.
+Finally we prove that the question of polytopality of spherical subword complexes is equivalent to the question of polytopality of multi-cluster complexes.
+Proof of Corollary 2.16. On one hand, if every spherical subword complex is polytopal then clearly every multi-cluster complex is polytopal. On the other hand, suppose that every spherical subword complex is polytopal. Every spherical subword complex is the link of a face of a multi-cluster complex. Since the link of a face of a polytope is also polytopal, Theorem 2.15 implies that every spherical subword complex is polytopal.
+
+7. Sorting words of the longest element and the SIN-property
+
+In this section, we give a simple combinatorial description of the c-sorting words of w, and prove that a word Q coincides up to commutations with ckw(c) for some non-negative integer k
+if and only if Q has the SIN-property as defined in Section 2.4. This gives us an alternative way of
+defining multi-cluster complexes in terms of words having the SIN-property. Recall the involution  : S  S from Section 4 defined by (s) = w-1sw. The sorting word of w has the following important property.
+
+Proposition 7.1. The sorting word w(c) is, up to commutations, equal to a word with suffix ((c1), . . . , (cn)), where c = c1 · · · cn.
+
+Proof. As w has a c-sorting word having c = (c1, . . . , cn) as a prefix, the corollary is obtained by applying Proposition 4.3 n times.
+
+Given a word w in S, define the function w : S  N given by w(s) being the number of occurrences of the letter s in w.
+
+Theorem 7.2. Let w(c) be the c-sorting word of w and let s, t be neighbors in the Coxeter graph such that s comes before t in c. Then
+
+w(c)(s) =
+
+w (c) (t) w(c)(t) + 1
+
+if (s) comes before (t) in c, if (s) comes after (t) in c.
+
+Proof. Sorting words of w have intervening neighbors, see [Spe09, Proposition 2.1] for an equivalent formulation. Therefore s and t alternate in w(c), with s coming first. Thus, w(c)(s) = w(c)(t) if and only if the last t comes after the last s. Using Proposition 7.1, this means that s appears before t in (c) or equivalently (s) appear before (t) in c. Otherwise, the last s will
+appear after the last t.
+
+It is known that if  is the identity on S, or equivalently if w = -1, then the c-sorting word
+h
+of w is given by w(c) = c 2 , where h denotes the Coxeter number given by the order of any Coxeter element. In the case where  is not the identity on S (that is when W is of types An (n  2), Dn (n odd), E6 and I2(m) (m odd), see [BB05, Exercise 10 of Chapter 4]), the previous theorem gives simple way to obtain the sorting words of w.
+
+Algorithm 7.3. Let W be an irreducible finite Coxeter group, and let c = c1c2 · · · cn be a Coxeter element.
+(i) Since the Coxeter diagram is connected, one can use Theorem 7.2 to compute w(c)(s) for all s depending on m := w(c)(c1);
+(ii) using that the number of positive roots equals nh/2, one obtains m and thus all w(c)(s) using
+2 · w(c)(s) = nh.
+sS
+(iii) using that w(c) = cK1 cK2 · · · cKr where Ki  S for 1  i  r and cI , with I  S, is the Coxeter element of WI obtained from c by keeping only letters in I, we obtain that cKi is the product of all s for which w(c)(s)  i.
+
+SUBWORD COMPLEXES, CLUSTER COMPLEXES, AND GENERALIZED MULTI-ASSOCIAHEDRA 17
+
+This algorithm provides an explicit description of the sorting words of the longest element w of any finite Coxeter group using nothing else than Coxeter group theory. This answers a question raised in [HLT11, Remark 2.3] and simplifies a step in the construction of the c-generalized associahedron. We now give two examples of how to use this algorithm.
+
+Example 7.4. Let W = A4 and S = {s1, s2, s3, s4} with the labeling of the graph shown in
+
+Figure 1 on page 19. Moreover, let c = s1s3s2s4. Fix w(c)(s1) = m. Since s1 comes before
+
+s2 in c and that (s1) = s4 comes after (s2) = s3, the letter s1 appears one more time than
+
+the letter s2 in w(c), i.e., w(c)(s2) = m - 1. Repeating the same argument gives w(c)(s3) =
+
+m and
+
+w (c) (s4 )
+
+=
+
+m - 1.
+
+Summing
+
+up
+
+these
+
+values
+
+gives
+
+the
+
+equality
+
+4m - 2
+
+=
+
+n·h 2
+
+=
+
+4·5 2
+
+=
+
+10,
+
+and thus m = 3. Finally, the c-sorting word is w(c) = (s1, s3, s2, s4|s1, s3, s2, s4|s1, s3).
+
+Example 7.5. Let W = E6 and S = {s1, s2, . . . , s6} with the labeling of the graph shown in
+
+Figure 1 on page 19. Moreover, let c = s3s5s4s6s2s1. Fix w(c)(s6) = m. Repeating the
+
+same procedure from the previous example and using that (s6) = s6, (s3) = s3, (s2) = s5,
+
+(s1) = s4, one get w(c)(s1) = w(c)(s2) = m - 1, w(c)(s3) = w(c)(s6) = m, w(c)(s4) =
+
+w(c)(s5) = m + 1.
+
+As
+
+the
+
+sum
+
+equals
+
+nh 2
+
+=
+
+6·12 2
+
+= 36,
+
+we
+
+obtain
+
+m = 6.
+
+Finally,
+
+the
+
+c-sorting
+
+word is (c5|s3, s5, s4, s6|s5, s4).
+
+Remark 7.6. Propositions 4.3 and 7.1 have the following computational consequences. Denote by rev(w) the reverse of a word w. First, up to commutations, we have
+
+w(c) = rev(w((rev(c)))). Second, we also have, up to commutation,
+ch = w(c) rev(w(rev(c))). Third, for all s  S,
+
+w(c)(s) + w(rev(c))(s) = w(c)(s) + w(c)((s)) = h. We are now in the position to prove Theorem 2.7.
+
+Proof of Theorem 2.7. Suppose that a word Q has the SIN-property, then it has complete support
+by definition, and it contains, up to commutations, some word c = (c1, . . . , cn) for a Coxeter element c as a prefix. Moreover, the word ((c1), . . . , (cn)) is a suffix of Q, up to commutations. Observe that a word has intervening neighbors if and only if it is a prefix of c up to commutations,
+see [EE09, Section 3]. In view of Lemma 4.1 and the equality (Q) = w, the word Q has, up to commutations, w(c) as a prefix. If the length of Q equals w the proof ends here with k = 0. Otherwise, the analogous argument for rev(Q) gives that the word rev(Q) has, up to commutations,
+w((rev(c))) as a prefix. By Remark 7.6, the word w((rev(c))) is, up commutations, equal to the reverse of w(c). Therefore, Q has the word w(c) also as a suffix. Since c = (c1, . . . , cn) is a prefix of Q and of w(c), and Q has intervening neighbors, Q coincides with ckw(c) up to commutations. Moreover, if Q is equal to ckw(c) up to commutations, it has intervening neighbors, and a suffix ((c1), . . . , (cn)), up to commutations, by Proposition 7.1. This implies that the word Q has the SIN-property.
+
+Remark 7.7. In light of Theorem 2.7 and Section 3.2, starting with a word Q having the SINproperty suffices to construct a multi-cluster complex, and choosing a particular connected subword
+in the bi-infinite word Q, defined in Section 3.2, corresponds to choosing a particular Coxeter element.
+
+We finish this section with a simple observation on the bi-infinite word Q. For any letter q in the word Q(Q), let q be the root obtained by applying the prefix wq of Q(Q) before q to the simple root q. To obtain roots for all letters in Q, repeat this association periodically.
+Proposition 7.8. Let Q be a word in S having the SIN-property, and let q, q be two consecutive occurrences of the same letter s in Q. Then
+
+q + q = -aspp,
+p
+
+18
+
+C. CEBALLOS, J.-P. LABBE´ , AND C. STUMP
+
+where the sum ranges over the collection of letters p in Q between q and q corresponding to neighbors of s in the Coxeter graph, and where (ast)s,tS is the corresponding Cartan matrix.
+Proof. Without loss of generality, we can assume that q is the first letter in some occurrence of Q, as otherwise, we can shift Q accordingly. Let w s be the product of all neighbors of s in the Coxeter graph (in any order, as they all commute). The result follows from a direct calculation.
+
+q + q = s + sw s (s) = s + s s + -aspp = -asps(p) = -aspp,
+
+p
+
+p
+
+p
+
+where the first equality comes from the fact that Q has the SIN-property, the second comes from the fact that p(s) = s - aspp, and that any two neighbors of s in the Coxeter graph commute, while the last two are trivial calculations.
+
+8. Multi-cluster complexes, Auslander-Reiten quivers, and repetition quivers
+In this section, we connect multi-cluster complexes to Auslander-Reiten quivers and repetition quivers. This approach emphasizes that the multi-cluster complex can be seen as a cyclic object which does not depend on a particular choice of a Coxeter element. In type A, this approach corresponds to considering subword complexes on a Mo¨bius strip, see [PP12]. We use this connection to introduce an action on vertices and facets of multi-cluster complexes generalizing the natural rotation action on multi-triangulations in type A.
+Auslander-Reiten and repetition quivers play a crucial role in Auslander-Reiten theory which studies the representation theory of Artinian rings and quivers. The Auslander-Reiten quiver  of a quiver  encodes the irreducible morphisms between isomorphism classes of indecomposable representations of right modules over k. These were introduced by M. Auslander and I. Reiten in [AR74, AR75]. We also refer to [ARS95, Gab80] for further background. We use these connections to describe a natural cyclic action on multi-cluster complexes generalizing the rotation of the polygon in types A and B, see Theorems 8.8 and 8.10.
+8.1. The Auslander-Reiten quiver. In types A, D and E, sorting words of w are intimately related to Auslander-Reiten quivers. Starting with a quiver c associated to a Coxeter element c (as described in Section 2), one can construct combinatorially the Auslander-Reiten quiver c , see [B´ed99, Section 2.6]. R. B´edard then shows how to obtain all reduced expressions for w adapted to c (i.e., the words equal to w(c) up to commutations) using the Auslander-Reiten quiver and a certain tableau. K. Igusa and R. Schiffler use these connections in order to obtain their description of cw(c), see [IS10, Sections 2.1-2.3]. Conversely, given the c-sorting word w(c), one can recover the Auslander-Reiten quiver c , see [Zel05, Proposition 1.2] and the discussion preceding it. Algorithm 7.3 thus provides a way to construct the Auslander-Reiten quiver in finite types using only Coxeter group theory; it uses results on admissible sequences [Spe09] and words with intervening neighbors [EE10].
+Algorithm 8.1. The following fourth step added to Algorithm 7.3 yields the Auslander-Reiten quiver c of c.
+(iv) The vertices of c are the letters of w(c) and two letters q, q of w(c) are linked by an arrow q - q in c if and only if q and q are neighbors in the Coxeter graph and q comes directly before q in w(c) when restricted to the letters q and q.
+Figure 1 shows two examples of Auslander-Reiten quivers and how to obtain it using this algorithm.
+8.2. The repetition quiver. Next, we define the repetition quiver.
+Definition 8.2 ([Kel10, Section 2.2]). The repetition quiver Z of a quiver  consists of vertices (i, v) for a vertex v of  and i  Z. The arrows of Z are given by (i, v) - (i, v) and (i, v) - (i + 1, v), for any arrow v - v in .
+
+SUBWORD COMPLEXES, CLUSTER COMPLEXES, AND GENERALIZED MULTI-ASSOCIAHEDRA 19
+
+s4
+
+s4
+
+s4
+
+s3
+
+s3
+
+s3
+
+s3
+
+s2
+
+s2
+
+s2
+
+s1
+
+s1
+
+s1
+
+s1
+
+s1 s3 s2 s4
+
+c w(c) = (s1, s3, s2, s4|s1, s3, s2, s4|s1, s3)
+
+s4 s5 s3 s6 s2 s1
+s3 s5 s6 s2 s4 s1
+
+s4
+
+s4
+
+s4
+
+s4
+
+s4
+
+s4
+
+s5
+
+s5
+
+s5
+
+s5
+
+s5
+
+s5
+
+s3 s6 s3 s6 s3 s6 s3 s6 s3 s6 s3 s6
+
+s2
+
+s2
+
+s2
+
+s2
+
+s2
+
+s1
+
+s1
+
+s1
+
+s1
+
+s1
+
+c w(c) = (c5|s3, s5, s4, s6|s5, s4)
+
+s4 s5
+
+Figure 1. Two examples of Auslander-Reiten quivers of types A4 and E6.
+For a Coxeter element c, the repetition quiver Zc turns out to be a bi-infinite sequence of Auslander-Reiten quivers c and (c) linked at the initial c and the final (c). More precisely, the repetition quiver Zc can be obtained applying the procedure described in Algorithm 8.1 to the bi-infinite word
+w(c) = · · · w(c) (w(c)) w(c) (w(c)) · · · .
+As discussed in Remark 7.7, the word w(c) does not depend on the choice of a Coxeter element. Therefore, the repetition quiver is independent of the choice of Coxeter element, as expected. The repetition quiver comes equipped with the Auslander-Reiten translate  given by  (i, v) = (i-1, v). A second natural map acts on the vertices of the repetition quiver: the shift operation [1] : Zc - Zc which sends a vertex in w(c) or (w(c)) to the corresponding vertex in the next (to the right) copy of (w(c)) or of w(c) respectively. In Figure 2, we present an example of a repetition quiver of type A4. Copies of the Auslander-Reiten quivers c and (c) are separated by dashed arrows. The Auslander-Reiten translate  sends a vertex to the one located directly to its left. One orbit of the shift operation shown in bold, we have (4, s1) = [1](1, s4) = [2](-1, s1).
+Remark 8.3. Vertices in the Auslander-Reiten quiver correspond to (isomorphism classes of) indecomposable representations of c, and thus have a dimension vector attached. By the knitting algorithm, the dimension vector at a vertex V = (i, v) of c plus the dimension vector at the vertex  (V ) equals the sum of all dimension vectors at vertices V  for which  (V ) - V  - V are arrows in c , see [GR97, Section 10.2]. This procedure is intimately related to the SINproperty, which ensures that this sum is indeed over all neighbors of v. Moreover, Proposition 7.8 implies that this property holds as well for the root q attached to a letter q in the bi-infinite sequence Q. This yields the well known property that the dimension vector and the corresponding root coincide.
+
+20
+
+C. CEBALLOS, J.-P. LABBE´ , AND C. STUMP
+
+(-2, s4) (-1, s4) (0, s4)
+
+(1, s4)
+
+(2, s4)
+
+(3, s4)
+
+(4, s4)
+
+(-2, s3) (-1, s3) (0, s3)
+
+(1, s3)
+
+(2, s3)
+
+(3, s3)
+
+(4, s3)
+
+(5, s3)
+
+(-2, s2) (-1, s2) (0, s2)
+
+(1, s2)
+
+(2, s2)
+
+(3, s2)
+
+(4, s2)
+
+(-2, s1) (-1, s1) (0, s1)
+
+(1, s1)
+
+(2, s1)
+
+(3, s1)
+
+(4, s1)
+
+(5, s1)
+
+c
+
+(c)
+
+c
+
+Figure 2. The repetition quiver of type A4 with the quiver c associated to the Coxeter element c = s1s3s2s4.
+
+The following proposition describes words for the multi-cluster complex using the repetition quiver, the Auslander-Reiten translate, and the shift operation.
+Proposition 8.4. Let c be a quiver corresponding to a Coxeter element c. Words for the multicluster complex are obtained from the bi-infinite word w(c) by setting  k = [1]. Choosing a particular fundamental domain for this identification corresponds to choosing a particular Coxeter element. In other words, words for multi-cluster complexes are obtained by a choice of linear extension of a fundamental domain of the identification  k = [1] in the repetition quiver.
+Proof. With the identification [1]V =  kV in the repetition quiver, a fundamental domain will consist of k copies of c and one copy of the Auslander-Reiten quiver c . This fundamental domain is exactly the quiver formed from the word ckw(c) using Algorithm 8.1. As linear extensions of this quiver correspond to words equal to ckw(c) up to commutations, the result follows.
+The red and the blue boxes in Figure 2 mark two particular choices of a fundamental domain for the multi-cluster complex of type A4 with k = 1 corresponding to the Coxeter elements s1s2s3s4 and s1s3s2s4 respectively.
+8.3. The Auslander-Reiten translate on multi-cluster complexes. The Auslander-Reiten translate gives a cyclic action on the vertices and facets of a multi-cluster complex. This action corresponds to natural actions on multi-triangulations in types A and B, and is well studied in the case of cluster complexes.
+Definition 8.5. Let Q = ckw(c). The permutation  : Q -~ Q is given by sending a letter qi = s to the next occurrence of s in Q, if possible, and to the first occurrence of (s) in Q otherwise.
+Observe that in types ADE, the operation  corresponds to the inverse of the Auslander-Reiten translate,  =  -1 when considered within the repetition quiver.
+Proposition 8.6. The permutation  induces a cyclic action on the facets of (Q, w).
+Proof. By Proposition 3.9, the subword complexes (Q, w) and (Qs , w) are isomorphic for an initial letter s in Q. Proposition 4.3 asserts that ckw(c) and the rotated word obtained from ckw(c) by rotating n times are equal up to commutations. By construction,  is the automorphism of (Q, w) given by inverse rotation of c.
+Example 8.7. As in Example 7.4, consider c = s1s3s2s4 and Q = cw(c) = (qi : 1  i  14) = (c2|s1s3s2s4|s1, s3). After rotating along all letters in c from the right, we obtain the word (s3s1s4s2|c2|s1, s3), so we have to reorder the initial 4 letters using commutations to obtain again (c3|s1, s3). Therefore,  permutes the letter of Q along the permutation of the indices given by
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 5 6 7 8 9 10 11 12 13 14 2 1 4 3 .
+
+SUBWORD COMPLEXES, CLUSTER COMPLEXES, AND GENERALIZED MULTI-ASSOCIAHEDRA 21
+
+Here is an example of an orbit of .
+{q1, q2, q3, q4}  {q5, q6, q7, q8}  {q9, q10, q11, q12}  {q13, q14, q2, q1}  {q4, q3, q6, q5}  {q8, q7, q10, q9}  {q12, q11, q14, q13}  {q1, q2, q3, q4}.
+To relate the permutation  to clusters, we recall the definition of bipartite Coxeter elements; consider a bipartition of the set S = S-  S+ such that any two generators in S commute (this is possible since the graph of the Coxeter group is a tree), then form the Coxeter element c = c-c+, where c = sS s. Using the bijection Lrc between letters in cw(c) and almost positive roots, the cyclic action induced by  is equal to the action induced by the tropical Coxeter element
+
+c :=
+
+s
+
+s
+
+sS- sS+
+
+on almost positive roots, see Section 2.3 for the definition of s, and [Arm09, Section 5.2] for more details about tropical Coxeter elements. In the case of cluster complexes, S. Fomin and N. Reading
+computed the order of  [FR07, Theorem 4.14]. Since the words cw(c) are all connected via rotation along initial letters, the order of  does not depend on a specific choice of Coxeter element.
+
+Theorem 8.8. For Q = ckw(c), the order of  is given by
+
+ord() = k + h/2 2k + h
+
+if w = -1, if w = -1.
+
+Proof. To obtain the order of this action, we consider the length of Q divided by the length of c if w  -1, and twice the length of Q divided by the length of c otherwise. We have already seen in Algorithm 7.3 that the length of Q is given by kn + nh/2. As the length of c is given by n, the result follows.
+
+Remark 8.9. The action induced by the tropical Coxeter element on facets of the cluster complex was shown by S.-P. Eu and T.-S. Fu to exhibit a cyclic sieving phenomenon [EF08]. Therefore, the cyclic action induced by  exhibits a cyclic sieving phenomenon for facets of the cluster complex (cw(c), w) and any Coxeter element c.
+Finally, for types A and B, the cyclic action  : Q-~Q corresponds to the cyclic action induced by rotation of the associated polygons.
+Theorem 8.10. Let Q = ckw(c). In type Am-2k-1, the cyclic action  on letters in Q corresponds to the cyclic action induced by rotation on the set of k-relevant diagonals of a convex m-gon. In type Bm-k, the cyclic action  corresponds to the cyclic action induced by rotation on the set of k-relevant centrally symmetric diagonals of a regular convex 2m-gon.
+Proof. The simplicial complex of k-triangulations of a convex m-gon is isomorphic to the multicluster complex of type Am-2k-1, so the order of  is given by 2k + h = 2k + m - 2k = m as expected. The simplicial complex of centrally symmetric k-triangulations of a regular convex 2mgon is isomorphic to the multi-cluster complex of type Bm-k, so the order of  equals k + h/2 = k + m - k = m, as well. In type A, the result follows from the correspondence between letters in Q and k-relevant diagonals in the m-gon as described in Section 2.4. In type B, the result follows from the correspondence between letters in Q and k-relevant centrally symmetric diagonals in the 2m-gon as described in Section 2.4.
+
+9. Open problems
+We discuss open problems and present several conjectures. We start with two open problems concerning counting formulas for multi-cluster complexes.
+Open Problem 9.1. Find multi-Catalan numbers counting the number of facets in the multicluster complex.
+
+22
+
+C. CEBALLOS, J.-P. LABBE´ , AND C. STUMP
+
+Although a formula in terms of invariants of the group for the number of facets of the generalized cluster complex defined by S. Fomin and N. Reading is known [FR05, Proposition 8.4], a general formula in terms of invariants of the group for the multi-cluster complex is yet to be found. An explicit formula for type A can be found in [Jon05, Corollary 17]. In type B, a formula was conjectured in [SW09, Conjecture 13] and proved in [RS10]5. In the dihedral type I2(m), the number of facets of the multi-cluster complex is equal to the number of facets of a 2k-dimensional cyclic polytope on 2k +m vertices. These three formulas can be reformulated in terms of invariants of the Coxeter groups of type A, B and I2 as follows,
+di + h + 2j , 0j<k 1in di + 2j
+where d1  . . .  dn are the degrees of the corresponding group, and h is its Coxeter number. In general, this product is not an integer. The smallest example we are aware of is type D6 with k = 5. Therefore, this product cannot count facets of the multi-cluster complex in general. The cyclic action  (see Definition 8.5) on multi-cluster complexes might be useful to solve Open Problem 9.1, it gives rise to the following generalization.
+
+Open Problem 9.2. Find multi-Catalan polynomials f (q) such that the triple
+
+facets of (ckw(c), w) , f (q), 
+
+exhibits the cyclic sieving phenomenon as defined by V. Reiner, D. Stanton, and D. White in [RSW04].
+
+In types A, B, and I2, there is actually a natural candidate for f (q), namely
+[di + h + 2j]q , 0j<k 1in [di + 2j]q
+where [m]q = 1 + q + . . .+ qm-1 is a q-analogue of the integer m. In the case of multi-triangulations and centrally symmetric multi-triangulations, this triple is conjectured to exhibit the cyclic sieving phenomenon.6 The counting formula in types A, B and I2 can be enriched with a parameter m such that it reduces for k = 1 to the Fuss-Catalan numbers counting the number of facets in the generalized cluster complexes. The next open problem raises the question of finding a family of simplicial complexes that includes the generalized cluster complexes of S. Fomin and N. Reading and the multi-cluster complexes.
+
+Open Problem 9.3. Construct a family of simplicial complexes which simultaneously contains generalized cluster complexes and multi-cluster complexes.
+
+The next open problem concerns a possible representation theoretic description of the multicluster complex in types ADE. For k = 1, one can describe the compatibility by saying that V c V  if and only dim(Ext1(V, V )) = 0, see [BMR+06].
+Open Problem 9.4. Describe the multi-cluster complex within the repetition quiver using similar methods.
+
+The following problem extends the diameter problem of the associahedron to the family of multi-cluster complexes, see [Pil10, Section 2.3.2] for further discussions in the case of multitriangulations.
+
+Open Problem 9.5. Find the diameter of the facet-adjacency graph of the multi-cluster com-
+
+plex
+
+k
+c
+
+(W
+
+).
+
+Finally, we present several combinatorial conjectures on the multi-cluster complexes. We start with a conjecture concerning minimal non-faces.
+
+Conjecture
+
+9.6.
+
+Minimal
+
+non-faces
+
+of
+
+the
+
+multi-cluster
+
+complex
+
+k
+c
+
+(W
+
+)
+
+have
+
+cardinality
+
+k + 1.
+
+5The proof appeared in Section 7 in the arxiv version, see http://arxiv.org/abs/0904.1097v2. 6Personal communication with V. Reiner.
+
+SUBWORD COMPLEXES, CLUSTER COMPLEXES, AND GENERALIZED MULTI-ASSOCIAHEDRA 23
+
+Since w is c-sortable, we have ckw(c) = ckcK1 cK2 · · · cKr with Kr  . . .  K2  K1. This implies that the complement of any k letters still contains a reduced expression for w. In other words, minimal non-faces have at least cardinality k + 1. Moreover, using the connection to multitriangulations and centrally symmetric triangulations, we see that the conjecture holds in types A and B. It also holds in the case of dihedral groups: it is not hard to see that the faces of the multi-cluster complex are given by subwords of ckw(c) = (a, b, a, b, . . . ) which do not contain k + 1 pairwise non-consecutive letters (considered cyclically). The conjecture was moreover tested for all multi-cluster complexes of rank 3 and 4 with k = 2.
+In types A and I2(m), there is a binary compatibility relation on the letters of ckw(c) such that the faces of the multi-cluster complex can be described as subsets avoiding k + 1 pairwise not compatible elements. We remark that this is not possible in general: in type B3 with k = 2, as in Example 2.12, 2c(B3) is isomorphic to the simplicial complex of centrally symmetric 2-triangulations of a regular convex 10-gon. Every pair of elements in the set A = {[1, 4]sym, [4, 7]sym, [7, 10]sym} is contained in a minimal non-face. But since A does not contain a 3-crossing, it forms a face of 2c(B3).
+Theorem 2.7 gives an alternative way of defining multi-cluster complexes as subword complexes (Q, w) where the word Q has the SIN-property. It seems that this definition covers indeed all subword complexes isomorphic to multi-cluster complexes.
+Conjecture 9.7. Let Q be a word in S with complete support and   W . The subword complex (Q, ) is isomorphic to a multi-cluster complex if and only if Q has the SIN-property and  = (Q) = w.
+The fact that  = (Q) is indeed necessary so that the subword complex is a sphere. It remains to show that  = w and that Q has the SIN-property. One reason for this conjecture is that if Q does not have the SIN-property then it seems that the subword complex (Q, w) has fewer facets than required. Indeed, we conjecture that multi-cluster complexes maximize the number of facets among all subword complexes with a word Q of a given size.
+
+Conjecture 9.8. Let Q be any word in S with kn + N letters (where N denotes the length of w)
+
+and (Q, w) be the corresponding subword complex. The number of facets of (Q, w) is less
+
+than
+
+or
+
+equal
+
+to
+
+the
+
+number
+
+of
+
+facets
+
+of
+
+the
+
+multi-cluster
+
+complex
+
+k
+c
+
+(W
+
+).
+
+Moreover, if both
+
+numbers are equal, then the word Q has the SIN-property.
+
+We remark that the previous two conjectures hold for the dihedral types I2(m). In this case, the multi-cluster complex is isomorphic to the boundary complex of a cyclic polytope, which is a polytope that maximizes the number of facets among all polytopes in fixed dimension on a given number of vertices, see e.g. [Zie95]. Moreover, we present below a simple polytope theory argument in order to show that if a word does not satisfy the SIN-property, then the corresponding subword complex has strictly less facets than the multi-cluster complex. First note that Corollary 2.16 and Theorem 6.1 imply that all spherical subword complexes of type I2(m) are polytopal. By the upper bound theorem, a polytope has as many facets as a cyclic polytope if and only if it is neighborly, see e.g. [Zie95]. Therefore, it is enough to prove that if Q = (q1, . . . , qr) with r = 2k + m is a word in S = {a, b} containing two consecutive letters that are equal, then the subword complex (Q, w) is not neighborly. Since this is a 2k-dimensional complex, this is equivalent to show that there is a set of k letters of Q which do not form a face. By applying rotation of letters and Proposition 3.9, we can assume without loss of generality that the last two letters of Q are equal. Among the first 2k + 1 letters of Q, one of the generators a or b appears no more than k times. The set of these no more than k letters is not a face of the subword complex. The reason is that the reduced expressions in the complement of this set in Q have length at most m - 1, which is one less than the length of w.
+
+In view of Corollary 2.16, the following conjecture restricts the study of [KM04, Question 6.4]. Conjecture 9.9. The multi-cluster complex is the boundary complex of a simplicial polytope.
+
+24
+
+C. CEBALLOS, J.-P. LABBE´ , AND C. STUMP
+
+In types A and B, this conjecture coincides with the conjecture on the existence of the corresponding multi-associahedra, see [Jon05, SW09], and Theorem 6.1 shows that this conjecture is true for dihedral groups.
+
+Acknowledgments
+The authors would like to thank Hugh Thomas for pointing them to the results in [IS10], and Christophe Hohlweg, Carsten Lange, Vincent Pilaud, Hugh Thomas and Gu¨nter M. Ziegler for important comments and remarks on preliminary versions of this article. The first two authors are thankful to Drew Armstrong, Carsten Lange, Emerson Leon, Ezra Miller, Vincent Pilaud and Luis Serrano for useful discussions that took place during the 23rd FPSAC Conference in Reykjavik. They are particularly grateful to Carsten Lange and Emerson Leon for numerous fruitful discussions that took place in the Arnimallee 2 Villa in Berlin.
+We used the computer algebra system Sage [S+12] for implementing the discussed objects, and to test the conjectures.
+
+References
+
+[ABMW06] [AR74]
+[AR75] [Arm09] [ARS95] [BB05] [B´ed99] [BHLT09] [BMR+06] [BP09]
+[BW08] [CFZ02] [CSZ11] [DKM02] [EE09] [EE10] [EF08] [FR05] [FR07] [FZ03] [Gab80]
+
+Christos A. Athanasiadis, Thomas Brady, Jon McCammond, and Colum Watt, h-vectors of generalized associahedra and noncrossing partitions, Int. Math. Res. Not. 2006 (2006), 28 pp. Maurice Auslander and Idun Reiten, Almost split sequences. II, Proceedings of the International Conference on Representations of Algebras (Carleton Univ., Ottawa, Ont., 1974), Paper No. 2, Carleton Univ., 1974, pp. 13 Carleton Math. Lecture Notes, No. 9.
+, Representation theory of Artin algebras. III. Almost split sequences, Comm. Algebra 3 (1975), 239-294. Drew Armstrong, Generalized noncrossing partitions and combinatorics of Coxeter groups, Mem. Amer. Math. Soc. 202 (2009), no. 949, x+159. Maurice Auslander, Idun Reiten, and Sverre O. Smalø, Representation theory of Artin algebras, Cambridge Studies in Advanced Mathematics, vol. 36, Cambridge University Press, Cambridge, 1995. Anders Bjo¨rner and Francesco Brenti, Combinatorics of Coxeter groups, no. 231, Springer-Verlag GTM, 2005. Robert B´edard, On commutation classes of reduced words in Weyl groups, European Journal of Combinatorics 20 (1999), no. 6, 483-505. Nantel Bergeron, Christophe Hohlweg, Carsten E.M.C. Lange, and Hugh Thomas, Isometry classes of generalized associahedra, S´em. Lothar. Combin. B61Aa (2009), 13pp. Aslak Bakke Buan, Robert Marsh, Markus Reineke, Idun Reiten, and Gordana Todorov, Tilting theory and cluster combinatorics, Adv. Math. 204 (2006), no. 2, 572-618. Ju¨rgen Bokowski and Vincent Pilaud, On symmetric realizations of the simplicial complex of 3crossing-free sets of diagonals of the octagon, Proc. 21th Canadian Conference on Comput. Geom., 2009, pp. 41-44. Thomas Brady and Colum Watt, Lattices in finite real reflection groups, Trans. Amer. Math. Soc. 360 (2008), 1983-2005. Fr´ed´eric Chapoton, Sergey Fomin, and Andrei Zelevinsky, Polytopal realizations of generalized associahedra, Canad. Math. Bull. 45 (2002), no. 4, 537-566. Cesar Ceballos, Francisco Santos, and Gu¨nter M. Ziegler, Many non-equivalent realizations of the associahedron, arXiv:1109.5544 (2011), 28 pages. Andreas Dress, Jack H. Koolen, and Vincent Moulton, On line arrangements in the hyperbolic plane, European J. Combin. 23 (2002), no. 5, 549-557. Henrik Eriksson and Kimmo Eriksson, Conjugacy of Coxeter elements, Electron. J. Combin. 16 (2009), no. 2, R4 7pp. Henrik Eriksson and Kimmo Eriksson, Words with intervening neighbours in infinite Coxeter groups are reduced, Electron. J. Combin. 17 (2010), no. 1, N9 7pp. Sen-Peng Eu and Tung-Shan Fu, The cyclic sieving phenomenon for faces of generalized cluster complexes, Adv. in Appl. Math. 40 (2008), no. 3, 350-376. Sergey Fomin and Nathan Reading, Generalized cluster complexes and Coxeter combinatorics, Int. Math. Res. Notices 2005 (2005), no. 44, 2709-2757.
+, Root systems and generalized associahedra, Geometric combinatorics, IAS/Park City Math. Ser., vol. 13, Amer. Math. Soc., Providence, RI, 2007, p. 63-131. Sergey Fomin and Andrei Zelevinsky, Y-Systems and generalized associahedra, Ann. Math. 158 (2003), no. 3, 977-1018. Peter Gabriel, Auslander-Reiten sequences and representation-finite algebras, Representation Theory I, vol. 831, Springer Berlin Heidelberg, 1980, pp. 1-71.
+
+SUBWORD COMPLEXES, CLUSTER COMPLEXES, AND GENERALIZED MULTI-ASSOCIAHEDRA 25
+
+[GKZ08] [GP00] [GR97] [Hai84] [HL07] [HLT11] [Hum92] [IS10] [Jon03] [Jon05] [JW07] [Kel10]
+[KM04] [KM05] [Kra06] [Lee89] [Lod04] [MHPS12] [MRZ03] [Nak00] [Pil10]
+[PP12] [PS09] [PS11] [PS12] [Rea06] [Rea07a] [Rea07b] [RS09] [RS10] [RS11] [RSS03]
+
+I. M Gelfand, M. M Kapranov, and A. V Zelevinsky, Discriminants, resultants and multidimensional determinants, Modern Birkh¨auser Classics, Birkh¨auser Boston Inc., 2008. Meinolf Geck and G¨otz Pfeiffer, Characters of finite Coxeter groups and Iwahori-Hecke algebras, Oxford University Press, 2000. Peter Gabriel and Andrei V. Roiter, Representations of finite-dimensional algebras, Springer-Verlag, Berlin, 1997. Mark Haiman, Constructing the associahedron, unpublished (1984). Christophe Hohlweg and Carsten E.M.C. Lange, Realizations of the associahedron and cyclohedron, Discrete & Computational Geometry 37 (2007), no. 4, 517-543. Christophe Hohlweg, Carsten E.M.C. Lange, and Hugh Thomas, Permutahedra and generalized associahedra, Adv. Math. 226 (2011), no. 1, 608-640. James E. Humphreys, Reflection groups and Coxeter groups, Cambridge Studies in Advanced Mathematics. 29. (Cambridge University Press), 1992. Kiyoshi Igusa and Ralf Schiffler, Exceptional sequences and clusters, J. Algebra 323 (2010), no. 8, 2183-2202. Jakob Jonsson, Generalized triangulations of the n-gon, Unpublished manuscript, abstract in Mathematisches Forschungsinstitut Oberwolfach, Report No. 16/2003, 2003. Jakob Jonsson, Generalized triangulations and diagonal-free subsets of stack polyominoes, J. Comb. Theory, Ser. A 112 (2005), no. 1, 117-142. Jakob Jonsson and Volkmar Welker, A spherical initial ideal for Pfaffians, Ill. J. Math. 51 (2007), no. 4, 1397-1407. Bernhard Keller, Cluster algebras, quiver representations and triangulated categories, Triangulated categories, London Math. Soc. Lecture Note Ser., vol. 375, Cambridge Univ. Press, Cambridge, 2010, pp. 76-160. Allen Knutson and Ezra Miller, Subword complexes in Coxeter groups, Adv. Math. 184 (2004), no. 1, 161-176. Allen Knutson and Ezra Miller, Gr¨obner geometry of Schubert polynomials, Ann. Math. (2) 161 (2005), no. 3, 1245-1318. Christian Krattenthaler, Growth diagrams, and increasing and decreasing chains in fillings of Ferrers shapes, Adv. Appl. Math. 37 (2006), no. 3, 404-431. Carl W. Lee, The associahedron and triangulations of the n-gon, European J. Combin. 10 (1989), no. 6, 551-560. Jean-Louis Loday, Realization of the Stasheff polytope, Archiv der Mathematik 83 (2004), no. 3, 267- 278. Folkert Mu¨ller-Hoissen, Jean Marcel Pallo, and Jim Stasheff (eds.), Associahedra, Tamari lattices and related structures, Progress in Mathematics, vol. 299, Birkh¨auser Boston Inc., Boston, MA, 2012. Robert Marsh, Markus Reineke, and Andrei Zelevinsky, Generalized associahedra via quiver representations, Trans. Amer. Math. Soc. 355 (2003), no. 10, 4171-4186. Tomoki Nakamigawa, A generalization of diagonal flips in a convex polygon, Theor. Comput. Sci. 235 (2000), no. 2, 271-282. Vincent Pilaud, Multitriangulations, pseudotriangulations and some problems of realization of polytopes, Ph.D. thesis, Universit´e Paris 7 and Universidad de Cantabria, 2010, pp. 312, available at http://www.lix.polytechnique.fr/ pilaud/documents/reports/theseVPilaud.pdf. Vincent Pilaud and Michel Pocchiola, Multitriangulations, pseudotriangulations and primitive sorting networks, Discrete Comput. Geom. 48 (2012), no. 1, 142-191. Vincent Pilaud and Francisco Santos, Multitriangulations as complexes of star polygons, Discrete Comput. Geom. 41 (2009), no. 2, 284-317. Vincent Pilaud and Christian Stump, Brick polytopes of spherical subword complexes: A new approach to generalized associahedra, preprint (2011), available at arXiv:abs/1111.3349. Vincent Pilaud and Francisco Santos, The brick polytope of a sorting network, European J. Combin. 33 (2012), 632-662. Nathan Reading, Cambrian lattices, Adv. Math. 205 (2006), no. 2, 313-353.
+, Clusters, Coxeter-sortable elements and noncrossing partitions, Trans. Amer. Math. Soc. 359 (2007), no. 12, 5931-5958.
+, Sortable elements and Cambrian lattices, Algebra universalis 56 (2007), no. 3-4, 411-437. Nathan Reading and David E Speyer, Cambrian fans, J. Eur. Math. Soc. 11 (2009), no. 2, 407-447. Martin Rubey and Christian Stump, Crossings and nestings in set partitions of classical types, Electron. J. Combin. 17 (2010), no. 1, R120. Nathan Reading and David E. Speyer, Sortable elements in infinite Coxeter groups, Trans. Amer. Math. Soc. 363 (2011), no. 2, 699-761. Gu¨nter Rote, Francisco Santos, and Ileana Streinu, Expansive motions and the polytope of pointed pseudo-triangulations, Discrete and computational geometry, Algorithms Combin., vol. 25, Springer, Berlin, 2003, pp. 699-736.
+
+26
+
+C. CEBALLOS, J.-P. LABBE´ , AND C. STUMP
+
+[RSW04] [Rub11] [S+12] [Shi97] [Sim03] [Spe09] [SS12] [Ste12] [Stu11] [SW09] [Zel05] [Zie95]
+
+Vic Reiner, Dennis Stanton, and Dennis White, The cyclic sieving phenomenon, J. Combin. Theory Ser. A 108 (2004), 17-50. Martin Rubey, Increasing and decreasing sequences in fillings of moon polyominoes, Adv. Appl. Math. 47 (2011), no. 1, 57-87. William A. Stein et al., Sage Mathematics Software (Version 4.8), The Sage Development Team, 2012, http://www.sagemath.org. Jian-Yi Shi, The enumeration of Coxeter elements, J. Algebraic Combin. 6 (1997), no. 2, 161-171. Rodica Simion, A type-B associahedron, Adv. in Appl. Math. 30 (2003), no. 1-2, 2-25. David E Speyer, Powers of Coxeter elements in infinite groups are reduced, Proc. Amer. Math. Soc. 137 (2009), no. 4, 1295-1302. Luis Serrano and Christian Stump, Maximal fillings of moon polyominoes, simplicial complexes, and Schubert polynomials, Electron. J. Combin. 19 (2012). Salvatore Stella, Polyhedral models for generalized associahedra via coxeter elements, Journal of Algebraic Combinatorics (2012), 1-38. Christian Stump, A new perspective on k-triangulations, J. Comb. Theory, Ser. A 118 (2011), no. 6, 1794-1800. Daniel Soll and Volkmar Welker, Type-B generalized triangulations and determinantal ideals, Discrete Math. 309 (2009), no. 9, 2782-2797. Shmuel Zelikson, Auslander-Reiten quivers and the Coxeter complex, Algebras and Representation Theory 8 (2005), no. 1, 35-55. Gu¨nter M. Ziegler, Lectures on Polytopes, Graduate Texts in Mathematics, vol. 152, Springer-Verlag, New York, 1995, Revised edition, 1998; seventh updated printing 2007.
+
+(C. Ceballos) Inst. Mathematics, FU Berlin, Arnimallee 2, 14195 Berlin, Germany. E-mail address: ceballos@math.fu-berlin.de
+(J.-P. Labb´e) Inst. Mathematics, FU Berlin, Arnimallee 2, 14195 Berlin, Germany. E-mail address: labbe@math.fu-berlin.de
+(C. Stump) Institut fu¨r Algebra, Zahlentheorie, Diskrete Mathematik, Leibniz Universita¨t Hannover, Germany
+E-mail address: stump@math.uni-hannover.de
+
+
