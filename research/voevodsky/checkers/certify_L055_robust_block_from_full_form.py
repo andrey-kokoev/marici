@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+"""Register the existing directed L=.55 full-form evidence as a robust-block certificate."""
+import json
+from pathlib import Path
+root=Path(__file__).parents[1]/'results';finite=json.loads((root/'two_prime_full_rank160_preconditioned_arb.json').read_text());budget=json.loads((root/'two_prime_fixed_window_combined_budget.json').read_text());assert finite['passed'] and budget['passed'];floor=budget['conditional_certified_lower_bound'];out={'schema':'marici.voevodsky.L055-robust-block-certificate.v1','L':0.55,'rank160_arb_passed':finite['passed'],'even_preconditioned_gershgorin_lower':finite['parity_blocks']['even']['minimum_gershgorin_lower'],'odd_preconditioned_gershgorin_lower':finite['parity_blocks']['odd']['minimum_gershgorin_lower'],'tail_floor':budget['tail_floor'],'full_form_lower_bound':floor,'robust_complement_lower_bound':floor,'logic':'a lower bound for the complete form restricts to every robust complement','arithmetic_conditions':budget['conditions'],'passed':floor>0,'rh_proved':False};p=root/'L055_robust_block_certificate.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));assert out['passed']
