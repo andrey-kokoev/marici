@@ -151,11 +151,14 @@
   | nima-four-independent-six-point-families-certified
   | nima-three-independent-eight-point-towers-certified
   | nima-three-independent-ten-point-towers-certified
+  | nima-three-independent-sixteen-point-towers-certified
+  | nima-three-independent-twentyfour-point-towers-certified
+  | nima-three-independent-fortyeight-point-towers-certified
   | nima-physical-ninety-two-span-awaits-final-interval-certificate
 
 #define nima-current-finite-packet-amplitude-evidence
   : NimaFinitePacketAmplitudeEvidence
-  := nima-three-independent-ten-point-towers-certified
+  := nima-three-independent-fortyeight-point-towers-certified
 
 #data NimaFinitePacketAmplitudeBoundary
   := nima-one-nested-six-point-family-only
