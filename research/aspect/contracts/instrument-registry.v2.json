@@ -1,0 +1,43 @@
+{
+  "schema": "marici.aspect.instrument-registry.v2",
+  "predecessor": "research/aspect/contracts/instrument-registry.v1.json",
+  "relation": "adds_coherence_tetrahedron_simulated_instrument",
+  "added_instruments": [
+    {
+      "id": "instrument.coherence-tetrahedron-simulator.v1",
+      "label": "coherence tetrahedron finite simulator",
+      "family": "cross-sector-compiler",
+      "packet": "research/aspect/coherence-tetrahedron-simulated-instrument.md",
+      "object_kind": "bridge",
+      "interaction_net_topology": "four_port_sewing_plus_dark_port_and_reference_augmentation",
+      "model_status": "exact_finite_model",
+      "profile_status": "proposed",
+      "scc_instrument_profile": {
+        "scale": "finite_system",
+        "carrier": "split",
+        "action": "typed",
+        "observation": "faithful",
+        "estimate": "uniform"
+      },
+      "assessment_regime": {
+        "scale": "finite symbolic Clark, Stokes, Grushin, and Douglas fixtures",
+        "truncation": "four oriented sewing inputs, three dark-port inputs, one three-mode kernel fixture, and one two-mode passivity fixture",
+        "access": "complex amplitudes and retained port labels",
+        "calibration": "exact common phase frame in the symbolic model",
+        "binding": "simulation only; no apparatus execution"
+      },
+      "verification": {
+        "checker": "research/aspect/checkers/check_coherence_tetrahedron_instrument.py",
+        "result": "research/aspect/results/coherence_tetrahedron_instrument.json"
+      },
+      "factor_residuals": {
+        "completion": ["truncation_limited"],
+        "authority": ["simulation_only", "constructor_authority_open"]
+      },
+      "readout": "Clark pair, canonical dark-port leakage, augmented kernel determinant, and Douglas passivity defect",
+      "first_open_gate": "bind the source-authorized complex ports and reference augmentation to a calibrated instrument",
+      "simulation_status": "passed"
+    }
+  ],
+  "claim_boundary": "This extension registers one exact finite simulation and does not modify or promote the global coherence-pyramid realization registry."
+}
