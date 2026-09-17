@@ -8,7 +8,7 @@ d={k:json.loads((R/f).read_text()) for k,f in files.items()}
 records={
  'convolution_product':{'number':1,'target_dimensions':['4:q chart/successor'],'status':'proved_canonical','quotient':'product label becomes transported monoidal presentation','boundary':'not direct oriented-radial Fourier'},
  'visible_tail':{'number':2,'target_dimensions':['8:R regulator/completion','face 4x8:q x R'],'status':'proved_retained','quotient':'block decomposition becomes atlas data','boundary':'visible-only compression is lossy; no ninth axis'},
- 'operator_graph':{'number':3,'target_dimensions':['5:L convolution successor','7:O observation','8:R completion'],'status':'proved_closed_conditional_source','quotient':'closed domain and graph are identical presentations','boundary':'arithmetic joint closability missing'},
+ 'operator_graph':{'number':3,'target_dimensions':['5:L convolution successor','7:O observation','8:R completion'],'status':'proved_in_retained_graph_scope','quotient':'closed domain and graph are identical presentations','boundary':'uniform infinite-family Hilbert topology and native historical inverse topology not claimed'},
  'polarity':{'number':4,'target_dimensions':['3:D polarity'],'status':'proved_signed','quotient':'two sheets become a Real C2 orbit','boundary':'orientation action retained; positive quotient conditional'},
  'four_charts':{'number':5,'target_dimensions':['4:q chart/successor'],'status':'proved_canonical_conditional_historical','quotient':'one base chart plus C4/stable monodromy','boundary':'native historical fourth-chart inverse missing'},
 }

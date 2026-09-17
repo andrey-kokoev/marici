@@ -10,7 +10,7 @@ The dimension numbering is
 |---:|---|---|---|---|
 | 1 | convolution ↔ pointwise product | **4 — `q` chart/successor** | Proved in canonical Pontryagin model | Product label becomes transported monoidal structure; direct oriented-radial Fourier comparison is rejected |
 | 2 | full carrier ↔ visible plus retained tail | **8 — `R` regulator/completion**, especially the **`q x R` face (4×8)** | Proved on retained carrier | Block decomposition is atlas data; visible-only compression remains lossy; this does not create dimension 9 |
-| 3 | operator domain ↔ retained operator graph | **5 — `L`**, **7 — `O`**, and **8 — `R`** | Proved for closed/jointly closed families | Arithmetic source-pulled version remains conditional on joint closability |
+| 3 | operator domain ↔ retained operator graph | **5 — `L`**, **7 — `O`**, and **8 — `R`** | Proved in the retained-graph scope | Arithmetic joint closability follows by dependency induction; uniform infinite-family Hilbert topology is not claimed |
 | 4 | positive polarity ↔ negative polarity | **3 — `D` polarity** | Proved on minimal generated signed carriers | Becomes a Real/dagger `C2` action; orientation and positive-quotient conditions remain |
 | 5 | four Fourier charts ↔ one periodic base object | **4 — `q` chart/successor** | Proved canonically; historical native version conditional | Retain `C4` monodromy, or `q^4=Sigma` in the stable lift |
 

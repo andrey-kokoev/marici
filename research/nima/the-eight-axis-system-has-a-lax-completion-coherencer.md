@@ -1,6 +1,6 @@
-# The eight-axis system has a conditional lax completion coherencer
+# The eight-axis system has a lax completion coherencer
 
-Conditional on joint closability of the arithmetic source-pulled operator family, let `Q_X` be the finite seven-axis diagram on
+Using joint closability of the arithmetic source-pulled operator family, let `Q_X` be the finite seven-axis diagram on
 
 \[
 (H,V,D,q,L,C,O)
@@ -41,7 +41,7 @@ A_X=P_X\mathcal F(P_Y-P_X)+P_X\mathcal F(I-P_Y).
 
 The `QDLO` graph estimate makes this cell continuous. Rooted convolution, marked Laurent cuts, admitted degree multipliers, and retained observation preserve the shell identity. Hence the modification axioms involving the six strict directions reduce to the proved transport identities, while iterated regulator refinement reduces to associative addition of shells.
 
-This assembles the eighth coherencer as a lax cubical object conditional on that joint-closability gate. It does not construct a strict 8-cube: the leakage cell is explicitly nonzero. Strictification would contradict the finite cutoff witness.
+This constructs the eighth coherencer as a lax cubical object in the declared retained-graph scope. It does not construct a strict 8-cube: the leakage cell is explicitly nonzero. Strictification would contradict the finite cutoff witness.
 
 The construction is scoped to projective exponential/Laurent completion, forward realization, admitted graph multipliers, transverse marked cuts, and retained source coordinates. It does not include arbitrary completed observers, nontransverse loaded divisors, a reverse realization equivalence, or bare-`L2` endpoint evaluation.
 

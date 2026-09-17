@@ -1,4 +1,4 @@
-# Eighth completion axis: conditional status after graph-closability audit
+# Eighth completion axis: final retained-graph status
 
 ## Theorem in the declared scope
 
@@ -43,11 +43,11 @@ The leakage cell is nonzero, so no strict finite-cutoff 8-cube is claimed.
 2. Physical cut extends through the minimal projective Laurent localization.
 3. Forward realization extends to retained graph completion; no inverse is asserted.
 4. Convolution successor and retained observation have a faithful common joint graph.
-5. Pulling that graph back along arithmetic synthesis gives the minimal candidate source completion. Faithfulness remains conditional on joint closability; retaining the source coordinate alone does not exclude vertical graph vectors.
+5. Pulling that graph back along arithmetic synthesis gives the minimal faithful source completion. Joint closability follows by dependency induction from continuity of `U_4` and closability of the admitted multiplier and retained observation.
 6. Rooted convolution preserves the pulled-back graph for admitted multipliers.
 7. Marked transverse cuts preserve it for admitted Laurent multipliers.
 8. Fourier leakage is continuous on the `QDLO` graph and its shell cocycle survives all admitted transports.
-9. These data assemble into a conditional lax eighth coherencer, pending arithmetic joint closability.
+9. These data assemble into the lax eighth coherencer in the declared retained-graph scope.
 
 ## Nonclaims
 

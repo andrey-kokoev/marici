@@ -31,7 +31,7 @@ D^{\mathrm{src}}_{a,O}
 \widehat{\mathcal A}\times G\times G\times B\times B.
 \]
 
-Retaining the source coordinate does not by itself make projection to the completed source faithful. Faithfulness holds exactly when the displayed operator family is jointly closable: a source-null net may otherwise converge to a nonzero vertical graph vector. Conditional on joint closability, the analytic coordinates extend continuously by construction. In particular,
+Retaining the source coordinate does not by itself make projection to the completed source faithful. Faithfulness holds exactly when the displayed operator family is jointly closable: a source-null net may otherwise converge to a nonzero vertical graph vector. The required joint closability is now proved by dependency induction from continuity of `U_4` and closability of the admitted multiplier and retained observation. Therefore the analytic coordinates extend continuously by construction. In particular,
 
 \[
 \widehat U_4:D^{\mathrm{src}}_{a,O}\to D_{a,O}
@@ -44,17 +44,17 @@ is continuous and
 =D_a^\partial\widehat{\mathcal O}\widehat U_4.
 \]
 
-Thus this gives the canonical candidate for closing the arithmetic incidence gate without claiming that the old, coarser completion of all `A_exp` already lands in the `L/O` graph. The gate remains conditional on joint closability.
+Thus this gives the canonical candidate for closing the arithmetic incidence gate without claiming that the old, coarser completion of all `A_exp` already lands in the `L/O` graph. The gate is closed for admitted closed multipliers and retained closed observation, for finite families and coordinatewise projective pro-families.
 
 ## Minimality
 
-Suppose `E` is any complete locally convex source carrier receiving `D_0` densely such that the five coordinates above extend continuously. Conditional on joint closability, the map from `D_0` into `E` is continuous for every seminorm defining the graph closure, so it extends uniquely through `D^{src}_{a,O}`. Hence this graph topology is the minimal faithful source refinement only after the closability gate passes.
+Suppose `E` is any complete locally convex source carrier receiving `D_0` densely such that the five coordinates above extend continuously. By the joint-closability theorem, the map from `D_0` into `E` is continuous for every seminorm defining the graph closure, so it extends uniquely through `D^{src}_{a,O}`. Hence this graph topology is the minimal faithful source refinement only after the closability gate passes.
 
 For a finite observer family, include all such coordinates in one graph. For a pro-family, take the projective limit of finite-family source-pulled graphs. No uniform Hilbert norm is implied.
 
 ## What this resolves
 
-Conditional on joint closability, it resolves the incidence problem in the retained-graph semantics:
+In the declared retained-graph scope, it resolves the incidence problem in the retained-graph semantics:
 
 \[
 D_0\longrightarrow D^{\mathrm{src}}_{a,O}
