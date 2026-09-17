@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+"""Propagate the 64-point complex-ellipse scout into the degree-8 remainder budget."""
+import json
+from pathlib import Path
+root=Path(__file__).parents[1]/'results';d=json.loads((root/'complex_schur_ellipse_L0649_L065_scout64.json').read_text());rho=4.;m=8;margin=1.917267980160517e-11;M=6e-9;factor=4*rho**(-m)/(rho-1);rem=factor*M;node=1e-12;lower=margin-rem-node;out={'schema':'marici.voevodsky.chebyshev-ellipse-budget-from-scout64.v1','sampled_maximum':d['maximum_sampled_schur_abs'],'adopted_boundary_target':M,'sampled_minimum_robust_singular':d['minimum_sampled_robust_singular'],'remainder_factor':factor,'conditional_analytic_remainder':rem,'node_allocation':node,'conditional_lower':lower,'conditions':['directed enclosure |S(z)|<=6e-9 on the full rho=4 boundary','directed robust-block invertibility on that boundary','directed real Lobatto node values'],'passed_conditionally':lower>0,'passed':False,'rh_proved':False};p=root/'chebyshev_ellipse_budget_from_scout64.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));assert lower>0

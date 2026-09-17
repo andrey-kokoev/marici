@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+"""Tail-map interpolation tolerance from the regularized Schur margin."""
+import json,math,sys
+from pathlib import Path
+try: import numpy as np
+except ModuleNotFoundError:
+ sys.path.insert(0,str(Path(__file__).parents[2]/'flavor'/'.venv'/'Lib'/'site-packages'));import numpy as np
+root=Path(__file__).parents[1]/'results';names=['gamma_floor_L0649_rank1000_midpoint.npz','gamma_floor_L0649038_rank1000_midpoint.npz','gamma_floor_L0649146_rank1000_midpoint.npz','gamma_floor_L0649309_rank1000_midpoint.npz','gamma_floor_L06495_rank1000_midpoint.npz','gamma_floor_L0649691_rank1000_midpoint.npz','gamma_floor_L0649854_rank1000_midpoint.npz','gamma_floor_L0649962_rank1000_midpoint.npz','gamma_floor_L065_rank1000_midpoint.npz'];An=max(float(np.linalg.norm(np.load(root/n)['matrix'],2)) for n in names);alpha=1.067569476012246;margin=1.918863145047285e-11;allocation=margin/2;max_res=math.sqrt(alpha*allocation);max_map=max_res/An;rho=5.;degree=8;factor=4*rho**(-degree)/(rho-1);M=.5;rem=factor*M;res=An*rem;correction=res*res/alpha;lower=margin-correction
+out={'schema':'marici.voevodsky.tail-map-chebyshev-remainder-budget-L0649-L065.v1','maximum_sampled_operator_norm':An,'complement_floor':alpha,'regularized_schur_margin':margin,'half_margin_residual_allowance':max_res,'maximum_tail_map_operator_error_for_half_margin':max_map,'ellipse_rho':rho,'degree':degree,'chebyshev_remainder_factor':factor,'trial_complex_tail_map_norm_bound':M,'conditional_tail_map_remainder':rem,'conditional_residual_norm':res,'conditional_schur_correction':correction,'conditional_lower':lower,'condition':'directed analytic tail map norm <=0.5 on rho=5 ellipse and complement invertibility there','passed_conditionally':correction<allocation,'passed':False,'rh_proved':False};p=root/'tail_map_chebyshev_remainder_budget_L0649_L065.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));assert out['passed_conditionally']

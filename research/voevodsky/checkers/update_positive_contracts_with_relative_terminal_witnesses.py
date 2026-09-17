@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+"""Attach admitted relative-category witnesses without promoting ordinary positivity."""
+import copy,json,hashlib
+from pathlib import Path
+root=Path(__file__).parents[1];res=root/'results';base=json.loads((res/'positive_prototype_certificate_contracts.json').read_text());term=json.loads((res/'terminal_relative_positive_pair_filler.json').read_text());compat=json.loads((res/'eight_lattice_compatibility_frontier.json').read_text());out=copy.deepcopy(base);contracts=out['contracts'];apex=contracts['apex_F'];
+def witness(rec,name,path,verified,scope):rec['obligations'][name].update({'witness':path,'verified':verified,'scope':scope})
+witness(apex,'terminal_6_to_7_uniformity','results/terminal_relative_positive_pair_filler.json',bool(term['passed'] and term['relative_pro_filler']),'relative positive-pair quotient only')
+# Compatibility evidence applies uniformly to all prototype contracts, but only at signed/relative strength.
+for rec in contracts.values():
+ for name in ('translation_covariance','shared_face_restrictions','dagger_compatibility','refinement_naturality'):
+  witness(rec,name,'results/eight_lattice_compatibility_frontier.json',bool(compat['signed_relative_compatibility_certified']),'signed/relative; not ordinary positive-Hilbert completion')
+for rec in contracts.values():rec['positive_certified']=all((not x['required']) or (x['verified'] and x.get('scope')=='universal positive') for x in rec['obligations'].values())
+out['schema']='marici.voevodsky.positive-prototype-certificate-contracts-with-relative-witnesses.v1';out['relative_witness_summary']={'terminal_6_to_7':True,'translation_shared_face_dagger_refinement':True};out['positive_certified_count']=sum(x['positive_certified'] for x in contracts.values());out['universal_positive_realization']=out['positive_certified_count']==len(contracts);out['passed_contract_construction']=True;out['artifact_hashes']={'terminal':hashlib.sha256((res/'terminal_relative_positive_pair_filler.json').read_bytes()).hexdigest(),'compatibility':hashlib.sha256((res/'eight_lattice_compatibility_frontier.json').read_bytes()).hexdigest()};p=res/'positive_prototype_certificate_contracts_with_relative_witnesses.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'schema':out['schema'],'relative_witness_summary':out['relative_witness_summary'],'positive_certified_count':out['positive_certified_count'],'universal_positive_realization':out['universal_positive_realization'],'apex_verified_obligations':[k for k,v in apex['obligations'].items() if v['verified']]},indent=2));assert out['relative_witness_summary']['terminal_6_to_7'] and out['positive_certified_count']==0

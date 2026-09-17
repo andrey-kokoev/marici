@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+"""Cross-check analytical registration of the complete eight-lattice tetrahedron."""
+import hashlib,json
+from pathlib import Path
+root=Path(__file__).parents[1];res=root/'results'
+files=['esd7_tetrahedron_prototype_registry.json','esd7_explicit_analytical_census.json','seven_transition_triangle_prototypes.json','seven_transition_tetrahedron_prototypes.json']
+d={n:json.loads((res/n).read_text()) for n in files};reg=d[files[0]];cen=d[files[1]];tri=d[files[2]];tet=d[files[3]]
+checks={'all_source_registries_pass':all(x['passed'] for x in d.values()),'343_registered_tetrahedra':reg['tetrahedron_count']==343==len(reg['cells']),'343_census_tetrahedra':len(cen['tetrahedra'])==343,'registry_ids_unique':len({x['id'] for x in reg['cells']})==343,'all_registered_forms_nonempty':all(x['analytical_form'] and len(x['face_prototypes'])==4 for x in reg['cells']),'all_census_cells_have_forms':all(x['form'] for k in ('edges','triangles','tetrahedra') for x in cen[k]),'eight_triangle_prototypes':tri['prototype_count']==8,'twelve_tetrahedron_prototypes':tet['critical_triple_count']==12,'scope_is_signed_relative':reg['scope']=='finite regulators and signed/relative analytical forms'}
+out={'schema':'marici.voevodsky.eight-lattice-analytical-registration.v1','checks':checks,'counts':{'vertices':len(cen['vertices']),'edges':len(cen['edges']),'triangles':len(cen['triangles']),'tetrahedra':len(cen['tetrahedra']),'triangle_prototypes':tri['prototype_count'],'tetrahedron_prototypes':tet['critical_triple_count']},'artifacts':{n:hashlib.sha256((res/n).read_bytes()).hexdigest() for n in files},'scope':'registration of finite-regulator signed/relative analytical forms; not positive-filler certification','passed':all(checks.values())};p=res/'eight_lattice_analytical_registration.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));assert out['passed']

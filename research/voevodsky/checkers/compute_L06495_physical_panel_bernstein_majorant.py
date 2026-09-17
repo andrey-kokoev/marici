@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+"""Conservative Bernstein remainder ledger for order-1100 physical panels."""
+import json,math
+from pathlib import Path
+L=.6495;points=sorted(set([-L,L,L-math.log(2),-L+math.log(2),L-math.log(3),-L+math.log(3)]));h=max(b-a for a,b in zip(points[:-1],points[1:]));semi=.02;s=2*semi/h;rho=s+math.sqrt(1+s*s);Q=1100;# Polynomial-polynomial terms of degree <=1998 are exact. Bound only cross/entire terms.
+poly_majorant=500*rho**1000;band_majorant=1e6*math.exp(250*semi);endpoint_majorant=10*math.exp(L/2+semi/2);M=2*poly_majorant*(band_majorant+endpoint_majorant)+(band_majorant+endpoint_majorant)**2;per_panel=4*M*rho**(-2*Q)/(rho-1);total=(len(points)-1)*per_panel;out={'schema':'marici.voevodsky.L06495-physical-panel-Bernstein-majorant.v1','maximum_panel_length':h,'ellipse_semiminor':semi,'rho':rho,'gauss_order':Q,'polynomial_product_exact_degree':2*Q-1,'actual_polynomial_product_degree_upper':1998,'cross_entire_majorant':M,'per_panel_remainder':per_panel,'total_panel_remainder':total,'allocated_budget':1e-13,'passed':total<1e-13,'rh_proved':False};p=Path(__file__).parents[1]/'results'/'L06495_physical_panel_Bernstein_majorant.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));assert out['passed']

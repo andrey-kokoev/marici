@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+"""Propagate unit-panel Bernstein synthesis error in critical/robust coordinates."""
+import json,math
+from pathlib import Path
+L=.6495;cols_robust=39;point=3.0e-13;ec=math.sqrt(2*L)*point;er=math.sqrt(2*L*cols_robust)*point;crit_out=1.6401623209996532e-7;rob_out=1.8316876996878346;cross=ec*rob_out+er*crit_out+ec*er;critical=2*crit_out*ec+ec*ec;beta=9.283483768844039e-9;margin=2.0011384533532996e-11;# Entire physical-panel order-900 remainder allocation in the critical scalar.
+physical=1e-13;correction=critical+physical+cross*cross/beta;out={'schema':'marici.voevodsky.L06495-range-quadrature-analytic-budget.v1','frequency_pointwise_column_error':point,'critical_synthesis_L2_error':ec,'robust_synthesis_operator_error':er,'critical_gram_error':critical,'critical_robust_cross_error':cross,'physical_panel_critical_allocation':physical,'total_critical_schur_correction':correction,'critical_margin':margin,'correction_to_margin_ratio':correction/margin,'passed':correction<margin/10,'scope':'uses established unit-panel Bernstein estimate with L=.6495 inflation; physical entire-panel allocation still requires formal majorant ledger','rh_proved':False};p=Path(__file__).parents[1]/'results'/'L06495_range_quadrature_analytic_budget.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));assert out['passed']

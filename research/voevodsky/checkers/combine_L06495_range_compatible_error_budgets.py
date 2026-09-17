@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+"""Combine all presently quantified L=.6495 range-compatible perturbations."""
+import json
+from pathlib import Path
+root=Path(__file__).parents[1]/'results'
+def load(n):return json.loads((root/n).read_text())
+r=load('L06495_critical_robust_cross_roundoff_budget.json');c=load('L06495_critical_roundoff_budget.json');q=load('L06495_range_quadrature_analytic_budget.json');t=load('degree16_tail_map_budget_L0649_L065.json');s=load('source_matrix_refinement_range_components_L06495.json');margin=r['critical_margin'];items={'critical_roundoff':c['critical_gram_error_budget'],'critical_robust_cross_schur':r['cross_schur_correction'],'analytic_quadrature':q['total_critical_schur_correction'],'tail_map_interpolation':t['schur_correction'],'source_matrix_assembly_4x_refinement':4*s['range_compatible_source_correction']};total=sum(items.values());lower=margin-total;out={'schema':'marici.voevodsky.L06495-range-compatible-combined-budget.v1','floating_complete_residual_margin':margin,'error_items':items,'total_modeled_error':total,'conditional_lower':lower,'fraction_of_margin_spent':total/margin,'unclosed_conditions':['directed finite source-matrix and tail-map node assembly','implementation-level special-function validation','directed complex-ellipse continuation over the full slab'],'passed_conditionally':lower>0,'passed':False,'rh_proved':False};p=root/'L06495_range_compatible_combined_budget.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));assert out['passed_conditionally']
