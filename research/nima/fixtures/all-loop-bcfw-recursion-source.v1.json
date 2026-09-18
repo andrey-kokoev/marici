@@ -1,0 +1,28 @@
+{
+  "schema": "marici.nima.all-loop-bcfw-recursion-source.v1",
+  "paper": {
+    "arxiv": "1008.2958",
+    "source": "research/sources/nima/papers/six-point-nmhv/1008.2958/all_loop__v2_penult.tex",
+    "location": "lines 607-628, equation loop_level_BCFW"
+  },
+  "recursion": {
+    "target": "M_(n,k,l)(1,...,n)",
+    "inverse_soft": "M_(n-1,k,l)(1,...,n-1)",
+    "factorization": "sum [j j+1 n-1 n 1] M_R(1,...,j,I_j) M_L(I_j,j+1,...,n_hat_j)",
+    "forward_limit": "integral_GL(2) [AB n-1 n 1] M_(n+2,k+1,l-1)(1,...,n_hat_AB,A_hat,B)",
+    "constraints": [
+      "n_L+n_R=n+2",
+      "k_L+k_R=k-1",
+      "l_L+l_R=l"
+    ],
+    "shifted_twistors": {
+      "n_hat_j": "(n-1 n) intersect (j j+1 1)",
+      "I_j": "(j j+1) intersect (n-1 n 1)",
+      "n_hat_AB": "(n-1 n) intersect (AB 1)",
+      "A_hat": "(AB) intersect (n-1 n 1)"
+    },
+    "loop_symmetrization": "Beyond one loop, equal-weight full symmetrization in all loop lines (AB)_l.",
+    "contour": "The GL(2) contour takes simple residues placing A and B at (AB) intersect (n-1 n 1)."
+  },
+  "claim_boundary": "This fixture records the source recursion contract. It does not evaluate the GL(2) residues or materialize a complete higher-loop integrand."
+}
