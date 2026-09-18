@@ -15,13 +15,14 @@
 | Incidence lift | Exact bounded `x_z` with `B x_z=Phi` | Ruled out for current centered `B_Sigma`; separate theta port required |
 | Pair-source incidence | Projective pair lift and continuous map `B_rad` | Partial: interior estimates and endpoint typing closed; heat/projective compatibility identified |
 | Transverse Xi pencil | Two-history Rosenbrock pencil with transfer `tau` | Closed: exact divisor and multiplicities constructed |
-| Fourier–Poisson transport | Stratified reciprocal response transport | Analytically closed; G4 sewing/source line identification open |
+| Fourier–Poisson transport | Stratified reciprocal response transport | Closed: source-derived sewing constructed; v17 canonically adopts `U_G4=T_pair->border` |
 | Linking metric | Complete polarized two-output Wronskian metric | Closed analytically; relative-cone insertion remains |
 | Archimedean/connected carrier | Common interval operator and completed anomaly line | Partial: normalization/cocycle closed; common `K_a` and line trivialization open |
 | Green coordinate metric | Complete polarized feature space with `G_src B_G=C_G^*` | Partial: enlarged space defined; cross-block source assembly open |
 | Conservative symmetrizer | Source-derived nondegenerate law for transported joint generator | Open on enlarged Green coordinate space |
-| Conservative promotion | Attach a conservative positive boundary law to the transverse Xi pencil | Open after symmetrizer; RH-bearing gate |
-| Lower residual | Component of the conservative promotion equation | Subsumed by promotion |
-| Spectral constraint | Green confinement applied to conservatively symmetrized Xi state | Open after symmetrizer/promotion |
+| Six-port Hopf coherence | Unit/counit, product/coproduct, realization/dual realization and typed extensions | Closed algebraically; does not imply Xi energy-cycle closure |
+| Conservative promotion | Couple the transverse Xi section to the positive relative-Haar route energy | Reduced to `delta_p(z)=0` on Xi states; RH-equivalent |
+| Lower residual | Component of the conservative promotion equation | Subsumed by the RH-equivalent energy-cycle law |
+| Spectral constraint | Green confinement of the promoted Xi state | Follows immediately if the energy-cycle law is supplied |
 
 Closed foundations: finite prime-shell cube coherence, Hadamard reconstruction, Gaussian-pair Laplace recurrence, endpoint-flux cancellation, fixed/projective diagonal faithfulness, countable shell detection, bounded synthetic attenuation model, and strict-core refinement coherence.
