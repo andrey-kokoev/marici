@@ -22,6 +22,19 @@ checkout, and accepts `STACKS_PROJECT_ROOT` and `STACKS_PYTHON` overrides. See
 
 Use `pnpm pdf:search` to search the page-indexed PDFs under `references/`.
 
+## Coherence and route-comparison work
+
+Before executing work involving competing presentations, chart transitions, transported attachments, commuting routes, descent, or readout compatibility, classify the active obligation with Aspect's Stratified Coherence Compiler (SCC). Start with `research/aspect/scc/README.md`; inspect available models with:
+
+```bash
+python research/aspect/scc/scc.py models
+python research/aspect/scc/scc.py dashboard --markdown
+```
+
+Use `scc.py categorical <diagram.json>` for typed route and coherence-cell comparisons and `scc.py inverse <diagram.json> <claim-id>` for missing-witness analysis. Register project work in an owner-local `research/<owner>/scc-models/*.json` manifest rather than editing Aspect's registry.
+
+Name the applicable coherence obligation before downstream execution: forward realization, attachment transport, route/coherencer compatibility, or readout descent. Do not substitute downstream readout or pushforward analysis for an unresolved upstream route-coherence cell. SCC output is a bounded compiler result, not a truth certificate; retain the declared stratum, unsupported cells, and residual witnesses.
+
 ## Canonical team identities
 
 Use these canonical identities and research responsibilities throughout this

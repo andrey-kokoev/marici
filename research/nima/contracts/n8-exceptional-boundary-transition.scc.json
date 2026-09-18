@@ -1,0 +1,48 @@
+{
+  "id": "n8-exceptional-boundary-transition",
+  "objects": [
+    {"id": "history7_G_alpha2_boundary"},
+    {"id": "history11_E_alpha5_boundary"},
+    {"id": "decorated_positroid_boundary"}
+  ],
+  "arrows": [
+    {"id": "direct_G_identification", "source": "history7_G_alpha2_boundary", "target": "decorated_positroid_boundary", "map_token": "ambient_Gr2_8_identification"},
+    {"id": "boundary_orientation", "source": "decorated_positroid_boundary", "target": "decorated_positroid_boundary", "map_token": "log_orientation_plus_one"},
+    {"id": "G_to_E_transition", "source": "history7_G_alpha2_boundary", "target": "history11_E_alpha5_boundary", "map_token": "ambient_Gr2_8_identification"},
+    {"id": "E_identification", "source": "history11_E_alpha5_boundary", "target": "decorated_positroid_boundary", "map_token": "log_orientation_plus_one"}
+  ],
+  "cells": [
+    {
+      "id": "exceptional_chart_route_coherence",
+      "kind": "chart_transition_orientation_triangle",
+      "routes": [
+        ["direct_G_identification", "boundary_orientation"],
+        ["G_to_E_transition", "E_identification"]
+      ],
+      "threshold": "exact_symbolic_transition_and_log_jacobian_sign",
+      "witness": "research/nima/results/n8-GE-boundary-transition.json"
+    }
+  ],
+  "obstructions": [],
+  "impact_edges": [],
+  "higher_coherence": [],
+  "promotions": [],
+  "claims": [
+    {
+      "id": "full_history_source_orientation",
+      "requires": [
+        "exact_ambient_Gr2_8_transition",
+        "logarithmic_transition_jacobian_plus_one",
+        "positive_chamber_separation"
+      ]
+    }
+  ],
+  "available_witnesses": [
+    "exact_ambient_Gr2_8_transition",
+    "logarithmic_transition_jacobian_plus_one",
+    "positive_chamber_separation"
+  ],
+  "experiments": [],
+  "fibers": [],
+  "functors": []
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "n8-exceptional-boundary-transition",
+    "owner": "marici.Nima",
+    "classification": "ambient_Grassmannian_route_coherent_but_positive_boundary_chambers_disjoint",
+    "stratum": "the coarse shared positroid boundary assigned to history 7 seed G alpha2=0 and history 11 seed E alpha5=0",
+    "inputs": [
+      "research/nima/contracts/n8-exceptional-boundary-transition.scc.json",
+      "research/nima/checkers/check_n8_exceptional_boundary_transition_scc.py",
+      "research/nima/results/n8-GE-boundary-transition.json",
+      "research/nima/results/n8-full-history-boundary-cancellation.json",
+      "research/nima/results/eight-point-history-positroid-matching.json"
+    ],
+    "checks": [
+      {
+        "id": "check_n8_exceptional_boundary_transition_scc",
+        "path": "research/nima/checkers/check_n8_exceptional_boundary_transition_scc.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [],
+    "consumes": [
+      "n8_history_chart_embeddings",
+      "coarse_shared_boundary_key",
+      "local_dlog_residue_orientations"
+    ],
+    "provides": [
+      "exact_ambient_Gr2_8_transition",
+      "positive_chamber_separation",
+      "logarithmic_transition_jacobian_plus_one",
+      "refined_source_boundary_split"
+    ],
+    "missing_constructors": [],
+    "next_falsifier": "Search for an alternative positive birational branch of the exact transition equations; uniqueness of the solved rational transition currently excludes one."
+  }
+}
