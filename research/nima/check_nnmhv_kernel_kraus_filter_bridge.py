@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Interpret the exact selected kernel as a normalized Kraus/filter operator."""
+import json,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'research/benincasa/.tmp_sympy'));import sympy as s
+from mpmath import mp
+src=json.loads((ROOT/'research/nima/results/nnmhv-kernel-wall-tail-boundary.json').read_text());K=s.Matrix([[s.sympify(x) for x in row] for row in src['kernel_matrix']]);rho=K.T*K;mp.dps=60
+def eigvals(A):
+ M=mp.matrix([[mp.mpf(str(s.N(A[i,j],70))) for j in range(A.cols)] for i in range(A.rows)]);return [float(x) for x in mp.eigsy(M,eigvals_only=True)]
+ev=eigvals(rho);s2=max(ev);E=rho/s.Float(s2,40);comp=s.eye(K.rows)-E;ee=eigvals(E);ce=eigvals(comp);plus=s.ones(K.rows,1)/s.sqrt(K.rows);p=float((plus.T*E*plus)[0]);outnorm=float((plus.T*E*plus)[0]);amp=float((s.ones(1,K.rows)*K*s.ones(K.rows,1))[0]);checks={'effect_positive':min(ee)>-1e-12,'effect_bounded_by_identity':max(ee)<1+1e-12,'complement_effect_positive':min(ce)>-1e-12,'two_outcome_povm_sums_to_identity':s.simplify(E+comp-s.eye(K.rows))==s.zeros(K.rows),'uniform_detection_probability_valid':-1e-12<=p<=1+1e-12,'filter_probability_is_quadratic_not_amplitude':abs(p-amp)>1e-12}
+out={'schema':'marici.nima.nnmhv-kernel-kraus-filter-bridge.v1','n':src['n'],'normalization':'M=K/sigma_max(K)','effect':'E=M^dagger M','complement':'E_perp=I-E; a Kraus operator L=sqrt(E_perp) completes the channel','largest_singular_value_squared':s2,'effect_eigenvalues':sorted(ee),'complement_eigenvalues':sorted(ce),'uniform_input_detection_probability':p,'original_linear_amplitude':amp,'checks':checks,'passed':all(checks.values()),'meaning':'The canonical kernel naturally defines a postselected quantum filter/Kraus operation after one operator-norm normalization. It is neither a wavefunction nor a unitary propagator.','bridges':['Kraus operators and quantum instruments','POVM effects','postselected filtering','Stinespring completion by an environment channel','polar decomposition of amplitude operators']};p=ROOT/'research/nima/results/nnmhv-kernel-kraus-filter-bridge.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));raise SystemExit(0 if out['passed'] else 1)

@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+"""Polar decomposition of exact physical and untransported endpoint kernels."""
+import json,sys,math
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'research/benincasa/.tmp_sympy'));import sympy as s
+from mpmath import mp
+src=json.loads((ROOT/'research/nima/results/nnmhv-kernel-wall-tail-boundary.json').read_text());mp.dps=60
+def mat(field):return mp.matrix([[mp.mpf(str(s.N(s.sympify(x),70))) for x in row] for row in src[field]])
+def polar(A):
+ R=A.T*A;vals,Q=mp.eigsy(R);P=Q*mp.diag([mp.sqrt(x) for x in vals])*Q.T;U=A*P**-1;err=max(abs((U.T*U-mp.eye(A.rows))[i,j]) for i in range(A.rows) for j in range(A.cols));angle=mp.acos(max(-1,min(1,(sum(U[i,i] for i in range(3))-1)/2)));return U,P,[mp.sqrt(x) for x in vals],err,angle
+K=mat('kernel_matrix');K0=mat('kernel_without_upper_boundary_transport');U,P,sv,err,ang=polar(K);U0,P0,sv0,err0,ang0=polar(K0);f=lambda x:float(x);checks={'physical_polar_orthogonal':err<mp.mpf('1e-40'),'unupdated_polar_orthogonal':err0<mp.mpf('1e-40'),'positive_singular_values':all(x>0 for x in sv+sv0),'proper_rotations':mp.det(U)>0 and mp.det(U0)>0,'boundary_changes_rotation':abs(ang-ang0)>mp.mpf('1e-8'),'boundary_changes_filter_spectrum':max(abs(a-b) for a,b in zip(sv,sv0))>mp.mpf('1e-8')}
+out={'schema':'marici.nima.nnmhv-kernel-polar-filter-rotation.v1','decomposition':'K=U P, P=sqrt(K^dagger K), U in SO(3)','without_boundary':{'rotation_angle_radians':f(ang0),'singular_values':[f(x) for x in sv0],'orthogonality_error':f(err0)},'with_boundary':{'rotation_angle_radians':f(ang),'singular_values':[f(x) for x in sv],'orthogonality_error':f(err)},'boundary_rotation_shift':f(ang-ang0),'checks':{k:bool(v) for k,v in checks.items()},'passed':all(bool(v) for v in checks.values()),'meaning':'The non-normal amplitude kernel factors uniquely into a positive filter and a proper endpoint-space rotation. Boundary transport modifies both attenuation strengths and coherent mixing without causing spectral singularity.','bridges':['polar decomposition','quantum filter followed by unitary/orthogonal mixing','non-Hermitian but invertible dynamics','singular-value attenuation channels','boundary-controlled geometric rotation']};p=ROOT/'research/nima/results/nnmhv-kernel-polar-filter-rotation.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));raise SystemExit(0 if out['passed'] else 1)
