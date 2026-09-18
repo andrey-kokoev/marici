@@ -1,0 +1,1093 @@
+{
+  "schema": "marici.aspect.independent-g4-bordered-response-interface.v1",
+  "status": "compatibility_target_specified_constructor_not_supplied",
+  "purpose": "Typed target for comparing a future independently admitted arithmetic U_G4_ind with T_pair_to_border; this contract does not assert that U_G4_ind exists.",
+  "source_carrier": {
+    "name": "P_pair",
+    "basis_order": [
+      "q1",
+      "q2"
+    ],
+    "common_core": "D_pair=Dom(J_wall_tail) intersect Dom(J_derivative_tail) intersect Dom(J_fourth_grade) intersect Dom(J_forcing)",
+    "completion": "rapid projective ordered-pair completion",
+    "pairing": "<lambda,x>_P, conjugate-linear in lambda and linear in x"
+  },
+  "target_carrier": {
+    "name": "B_border_full",
+    "basis_order": [
+      "rho0",
+      "E",
+      "W",
+      "R",
+      "wall_tail",
+      "derivative_tail",
+      "fourth_grade",
+      "forcing"
+    ],
+    "border_relation": "z R-rho0=E-W/2",
+    "channel_order": [
+      "wall_tail",
+      "derivative_tail",
+      "fourth_grade",
+      "forcing"
+    ],
+    "pairing": "sum of declared channel pairings plus the bordered (rho0,E,W,R) pairing; conjugate-linear in the first argument",
+    "topology": "closed graph topology of all displayed coordinates on the common core"
+  },
+  "variance": {
+    "analytic_return": "contragredient transpose T^x defined by <T^x beta,x>_P=<beta,T x>_B",
+    "hilbert_return": "Hilbert adjoint T* only on a separately declared Hilbert rung",
+    "prohibition": "analytic transpose and Hilbert adjoint may not be identified without an explicit Real/completion comparison"
+  },
+  "domain_and_closure": {
+    "comparison_core": "D_pair",
+    "required": [
+      "U_G4_ind and T_pair_to_border have the same typed source and target",
+      "both maps are closable on D_pair",
+      "their closures have the same domain",
+      "the bordered relation is preserved by both closures"
+    ]
+  },
+  "radical_and_descent": {
+    "radical": "N_B={b in B_border_full : <c,b>_B=0 for every c in D_pair_response}",
+    "quotient": "B_phys=closure(B_border_full/N_B)",
+    "required": [
+      "each map preserves N_B",
+      "each return annihilates N_B in the declared variance lane",
+      "the induced quotient maps are continuous",
+      "equality is tested both on the retained full graph and, separately, after quotient descent"
+    ]
+  },
+  "ordered_mixed_tables": [
+    {
+      "ordered_pair": [
+        "q1",
+        "q1"
+      ],
+      "shape": [
+        4,
+        4
+      ],
+      "entries": [
+        {
+          "id": "B[q1,q1;wall_tail,wall_tail]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "wall_tail",
+          "column_channel": "wall_tail",
+          "formula": "<J_wall_tail(q1), G_wall_tail,wall_tail J_wall_tail(q1)>_wall_tail,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit source-derived kernel or form formula for G_wall_tail,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;wall_tail,derivative_tail]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "wall_tail",
+          "column_channel": "derivative_tail",
+          "formula": "<J_wall_tail(q1), G_wall_tail,derivative_tail J_derivative_tail(q1)>_wall_tail,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit source-derived kernel or form formula for G_wall_tail,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;wall_tail,fourth_grade]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "wall_tail",
+          "column_channel": "fourth_grade",
+          "formula": "<J_wall_tail(q1), G_wall_tail,fourth_grade J_fourth_grade(q1)>_wall_tail,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit source-derived kernel or form formula for G_wall_tail,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;wall_tail,forcing]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "wall_tail",
+          "column_channel": "forcing",
+          "formula": "<J_wall_tail(q1), G_wall_tail,forcing J_forcing(q1)>_wall_tail,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit formula and domain for J_forcing on q1",
+            "explicit source-derived kernel or form formula for G_wall_tail,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;derivative_tail,wall_tail]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "derivative_tail",
+          "column_channel": "wall_tail",
+          "formula": "<J_derivative_tail(q1), G_derivative_tail,wall_tail J_wall_tail(q1)>_derivative_tail,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit source-derived kernel or form formula for G_derivative_tail,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;derivative_tail,derivative_tail]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "derivative_tail",
+          "column_channel": "derivative_tail",
+          "formula": "<J_derivative_tail(q1), G_derivative_tail,derivative_tail J_derivative_tail(q1)>_derivative_tail,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit source-derived kernel or form formula for G_derivative_tail,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;derivative_tail,fourth_grade]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "derivative_tail",
+          "column_channel": "fourth_grade",
+          "formula": "<J_derivative_tail(q1), G_derivative_tail,fourth_grade J_fourth_grade(q1)>_derivative_tail,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit source-derived kernel or form formula for G_derivative_tail,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;derivative_tail,forcing]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "derivative_tail",
+          "column_channel": "forcing",
+          "formula": "<J_derivative_tail(q1), G_derivative_tail,forcing J_forcing(q1)>_derivative_tail,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit formula and domain for J_forcing on q1",
+            "explicit source-derived kernel or form formula for G_derivative_tail,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;fourth_grade,wall_tail]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "fourth_grade",
+          "column_channel": "wall_tail",
+          "formula": "<J_fourth_grade(q1), G_fourth_grade,wall_tail J_wall_tail(q1)>_fourth_grade,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit source-derived kernel or form formula for G_fourth_grade,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;fourth_grade,derivative_tail]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "fourth_grade",
+          "column_channel": "derivative_tail",
+          "formula": "<J_fourth_grade(q1), G_fourth_grade,derivative_tail J_derivative_tail(q1)>_fourth_grade,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit source-derived kernel or form formula for G_fourth_grade,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;fourth_grade,fourth_grade]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "fourth_grade",
+          "column_channel": "fourth_grade",
+          "formula": "<J_fourth_grade(q1), G_fourth_grade,fourth_grade J_fourth_grade(q1)>_fourth_grade,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit source-derived kernel or form formula for G_fourth_grade,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;fourth_grade,forcing]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "fourth_grade",
+          "column_channel": "forcing",
+          "formula": "<J_fourth_grade(q1), G_fourth_grade,forcing J_forcing(q1)>_fourth_grade,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit formula and domain for J_forcing on q1",
+            "explicit source-derived kernel or form formula for G_fourth_grade,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;forcing,wall_tail]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "forcing",
+          "column_channel": "wall_tail",
+          "formula": "<J_forcing(q1), G_forcing,wall_tail J_wall_tail(q1)>_forcing,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q1",
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit source-derived kernel or form formula for G_forcing,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;forcing,derivative_tail]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "forcing",
+          "column_channel": "derivative_tail",
+          "formula": "<J_forcing(q1), G_forcing,derivative_tail J_derivative_tail(q1)>_forcing,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q1",
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit source-derived kernel or form formula for G_forcing,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;forcing,fourth_grade]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "forcing",
+          "column_channel": "fourth_grade",
+          "formula": "<J_forcing(q1), G_forcing,fourth_grade J_fourth_grade(q1)>_forcing,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q1",
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit source-derived kernel or form formula for G_forcing,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q1;forcing,forcing]",
+          "row_generator": "q1",
+          "column_generator": "q1",
+          "row_channel": "forcing",
+          "column_channel": "forcing",
+          "formula": "<J_forcing(q1), G_forcing,forcing J_forcing(q1)>_forcing,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q1",
+            "explicit formula and domain for J_forcing on q1",
+            "explicit source-derived kernel or form formula for G_forcing,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        }
+      ]
+    },
+    {
+      "ordered_pair": [
+        "q1",
+        "q2"
+      ],
+      "shape": [
+        4,
+        4
+      ],
+      "entries": [
+        {
+          "id": "B[q1,q2;wall_tail,wall_tail]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "wall_tail",
+          "column_channel": "wall_tail",
+          "formula": "<J_wall_tail(q1), G_wall_tail,wall_tail J_wall_tail(q2)>_wall_tail,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit source-derived kernel or form formula for G_wall_tail,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;wall_tail,derivative_tail]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "wall_tail",
+          "column_channel": "derivative_tail",
+          "formula": "<J_wall_tail(q1), G_wall_tail,derivative_tail J_derivative_tail(q2)>_wall_tail,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit source-derived kernel or form formula for G_wall_tail,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;wall_tail,fourth_grade]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "wall_tail",
+          "column_channel": "fourth_grade",
+          "formula": "<J_wall_tail(q1), G_wall_tail,fourth_grade J_fourth_grade(q2)>_wall_tail,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit source-derived kernel or form formula for G_wall_tail,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;wall_tail,forcing]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "wall_tail",
+          "column_channel": "forcing",
+          "formula": "<J_wall_tail(q1), G_wall_tail,forcing J_forcing(q2)>_wall_tail,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit formula and domain for J_forcing on q2",
+            "explicit source-derived kernel or form formula for G_wall_tail,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;derivative_tail,wall_tail]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "derivative_tail",
+          "column_channel": "wall_tail",
+          "formula": "<J_derivative_tail(q1), G_derivative_tail,wall_tail J_wall_tail(q2)>_derivative_tail,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit source-derived kernel or form formula for G_derivative_tail,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;derivative_tail,derivative_tail]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "derivative_tail",
+          "column_channel": "derivative_tail",
+          "formula": "<J_derivative_tail(q1), G_derivative_tail,derivative_tail J_derivative_tail(q2)>_derivative_tail,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit source-derived kernel or form formula for G_derivative_tail,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;derivative_tail,fourth_grade]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "derivative_tail",
+          "column_channel": "fourth_grade",
+          "formula": "<J_derivative_tail(q1), G_derivative_tail,fourth_grade J_fourth_grade(q2)>_derivative_tail,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit source-derived kernel or form formula for G_derivative_tail,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;derivative_tail,forcing]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "derivative_tail",
+          "column_channel": "forcing",
+          "formula": "<J_derivative_tail(q1), G_derivative_tail,forcing J_forcing(q2)>_derivative_tail,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit formula and domain for J_forcing on q2",
+            "explicit source-derived kernel or form formula for G_derivative_tail,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;fourth_grade,wall_tail]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "fourth_grade",
+          "column_channel": "wall_tail",
+          "formula": "<J_fourth_grade(q1), G_fourth_grade,wall_tail J_wall_tail(q2)>_fourth_grade,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit source-derived kernel or form formula for G_fourth_grade,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;fourth_grade,derivative_tail]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "fourth_grade",
+          "column_channel": "derivative_tail",
+          "formula": "<J_fourth_grade(q1), G_fourth_grade,derivative_tail J_derivative_tail(q2)>_fourth_grade,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit source-derived kernel or form formula for G_fourth_grade,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;fourth_grade,fourth_grade]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "fourth_grade",
+          "column_channel": "fourth_grade",
+          "formula": "<J_fourth_grade(q1), G_fourth_grade,fourth_grade J_fourth_grade(q2)>_fourth_grade,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit source-derived kernel or form formula for G_fourth_grade,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;fourth_grade,forcing]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "fourth_grade",
+          "column_channel": "forcing",
+          "formula": "<J_fourth_grade(q1), G_fourth_grade,forcing J_forcing(q2)>_fourth_grade,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit formula and domain for J_forcing on q2",
+            "explicit source-derived kernel or form formula for G_fourth_grade,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;forcing,wall_tail]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "forcing",
+          "column_channel": "wall_tail",
+          "formula": "<J_forcing(q1), G_forcing,wall_tail J_wall_tail(q2)>_forcing,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q1",
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit source-derived kernel or form formula for G_forcing,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;forcing,derivative_tail]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "forcing",
+          "column_channel": "derivative_tail",
+          "formula": "<J_forcing(q1), G_forcing,derivative_tail J_derivative_tail(q2)>_forcing,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q1",
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit source-derived kernel or form formula for G_forcing,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;forcing,fourth_grade]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "forcing",
+          "column_channel": "fourth_grade",
+          "formula": "<J_forcing(q1), G_forcing,fourth_grade J_fourth_grade(q2)>_forcing,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q1",
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit source-derived kernel or form formula for G_forcing,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q1,q2;forcing,forcing]",
+          "row_generator": "q1",
+          "column_generator": "q2",
+          "row_channel": "forcing",
+          "column_channel": "forcing",
+          "formula": "<J_forcing(q1), G_forcing,forcing J_forcing(q2)>_forcing,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q1",
+            "explicit formula and domain for J_forcing on q2",
+            "explicit source-derived kernel or form formula for G_forcing,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        }
+      ]
+    },
+    {
+      "ordered_pair": [
+        "q2",
+        "q1"
+      ],
+      "shape": [
+        4,
+        4
+      ],
+      "entries": [
+        {
+          "id": "B[q2,q1;wall_tail,wall_tail]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "wall_tail",
+          "column_channel": "wall_tail",
+          "formula": "<J_wall_tail(q2), G_wall_tail,wall_tail J_wall_tail(q1)>_wall_tail,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit source-derived kernel or form formula for G_wall_tail,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;wall_tail,derivative_tail]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "wall_tail",
+          "column_channel": "derivative_tail",
+          "formula": "<J_wall_tail(q2), G_wall_tail,derivative_tail J_derivative_tail(q1)>_wall_tail,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit source-derived kernel or form formula for G_wall_tail,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;wall_tail,fourth_grade]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "wall_tail",
+          "column_channel": "fourth_grade",
+          "formula": "<J_wall_tail(q2), G_wall_tail,fourth_grade J_fourth_grade(q1)>_wall_tail,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit source-derived kernel or form formula for G_wall_tail,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;wall_tail,forcing]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "wall_tail",
+          "column_channel": "forcing",
+          "formula": "<J_wall_tail(q2), G_wall_tail,forcing J_forcing(q1)>_wall_tail,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit formula and domain for J_forcing on q1",
+            "explicit source-derived kernel or form formula for G_wall_tail,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;derivative_tail,wall_tail]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "derivative_tail",
+          "column_channel": "wall_tail",
+          "formula": "<J_derivative_tail(q2), G_derivative_tail,wall_tail J_wall_tail(q1)>_derivative_tail,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit source-derived kernel or form formula for G_derivative_tail,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;derivative_tail,derivative_tail]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "derivative_tail",
+          "column_channel": "derivative_tail",
+          "formula": "<J_derivative_tail(q2), G_derivative_tail,derivative_tail J_derivative_tail(q1)>_derivative_tail,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit source-derived kernel or form formula for G_derivative_tail,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;derivative_tail,fourth_grade]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "derivative_tail",
+          "column_channel": "fourth_grade",
+          "formula": "<J_derivative_tail(q2), G_derivative_tail,fourth_grade J_fourth_grade(q1)>_derivative_tail,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit source-derived kernel or form formula for G_derivative_tail,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;derivative_tail,forcing]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "derivative_tail",
+          "column_channel": "forcing",
+          "formula": "<J_derivative_tail(q2), G_derivative_tail,forcing J_forcing(q1)>_derivative_tail,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit formula and domain for J_forcing on q1",
+            "explicit source-derived kernel or form formula for G_derivative_tail,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;fourth_grade,wall_tail]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "fourth_grade",
+          "column_channel": "wall_tail",
+          "formula": "<J_fourth_grade(q2), G_fourth_grade,wall_tail J_wall_tail(q1)>_fourth_grade,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit source-derived kernel or form formula for G_fourth_grade,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;fourth_grade,derivative_tail]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "fourth_grade",
+          "column_channel": "derivative_tail",
+          "formula": "<J_fourth_grade(q2), G_fourth_grade,derivative_tail J_derivative_tail(q1)>_fourth_grade,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit source-derived kernel or form formula for G_fourth_grade,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;fourth_grade,fourth_grade]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "fourth_grade",
+          "column_channel": "fourth_grade",
+          "formula": "<J_fourth_grade(q2), G_fourth_grade,fourth_grade J_fourth_grade(q1)>_fourth_grade,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit source-derived kernel or form formula for G_fourth_grade,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;fourth_grade,forcing]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "fourth_grade",
+          "column_channel": "forcing",
+          "formula": "<J_fourth_grade(q2), G_fourth_grade,forcing J_forcing(q1)>_fourth_grade,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit formula and domain for J_forcing on q1",
+            "explicit source-derived kernel or form formula for G_fourth_grade,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;forcing,wall_tail]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "forcing",
+          "column_channel": "wall_tail",
+          "formula": "<J_forcing(q2), G_forcing,wall_tail J_wall_tail(q1)>_forcing,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q2",
+            "explicit formula and domain for J_wall_tail on q1",
+            "explicit source-derived kernel or form formula for G_forcing,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;forcing,derivative_tail]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "forcing",
+          "column_channel": "derivative_tail",
+          "formula": "<J_forcing(q2), G_forcing,derivative_tail J_derivative_tail(q1)>_forcing,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q2",
+            "explicit formula and domain for J_derivative_tail on q1",
+            "explicit source-derived kernel or form formula for G_forcing,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;forcing,fourth_grade]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "forcing",
+          "column_channel": "fourth_grade",
+          "formula": "<J_forcing(q2), G_forcing,fourth_grade J_fourth_grade(q1)>_forcing,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q2",
+            "explicit formula and domain for J_fourth_grade on q1",
+            "explicit source-derived kernel or form formula for G_forcing,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q1;forcing,forcing]",
+          "row_generator": "q2",
+          "column_generator": "q1",
+          "row_channel": "forcing",
+          "column_channel": "forcing",
+          "formula": "<J_forcing(q2), G_forcing,forcing J_forcing(q1)>_forcing,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q2",
+            "explicit formula and domain for J_forcing on q1",
+            "explicit source-derived kernel or form formula for G_forcing,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        }
+      ]
+    },
+    {
+      "ordered_pair": [
+        "q2",
+        "q2"
+      ],
+      "shape": [
+        4,
+        4
+      ],
+      "entries": [
+        {
+          "id": "B[q2,q2;wall_tail,wall_tail]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "wall_tail",
+          "column_channel": "wall_tail",
+          "formula": "<J_wall_tail(q2), G_wall_tail,wall_tail J_wall_tail(q2)>_wall_tail,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit source-derived kernel or form formula for G_wall_tail,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;wall_tail,derivative_tail]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "wall_tail",
+          "column_channel": "derivative_tail",
+          "formula": "<J_wall_tail(q2), G_wall_tail,derivative_tail J_derivative_tail(q2)>_wall_tail,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit source-derived kernel or form formula for G_wall_tail,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;wall_tail,fourth_grade]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "wall_tail",
+          "column_channel": "fourth_grade",
+          "formula": "<J_wall_tail(q2), G_wall_tail,fourth_grade J_fourth_grade(q2)>_wall_tail,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit source-derived kernel or form formula for G_wall_tail,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;wall_tail,forcing]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "wall_tail",
+          "column_channel": "forcing",
+          "formula": "<J_wall_tail(q2), G_wall_tail,forcing J_forcing(q2)>_wall_tail,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit formula and domain for J_forcing on q2",
+            "explicit source-derived kernel or form formula for G_wall_tail,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;derivative_tail,wall_tail]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "derivative_tail",
+          "column_channel": "wall_tail",
+          "formula": "<J_derivative_tail(q2), G_derivative_tail,wall_tail J_wall_tail(q2)>_derivative_tail,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit source-derived kernel or form formula for G_derivative_tail,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;derivative_tail,derivative_tail]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "derivative_tail",
+          "column_channel": "derivative_tail",
+          "formula": "<J_derivative_tail(q2), G_derivative_tail,derivative_tail J_derivative_tail(q2)>_derivative_tail,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit source-derived kernel or form formula for G_derivative_tail,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;derivative_tail,fourth_grade]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "derivative_tail",
+          "column_channel": "fourth_grade",
+          "formula": "<J_derivative_tail(q2), G_derivative_tail,fourth_grade J_fourth_grade(q2)>_derivative_tail,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit source-derived kernel or form formula for G_derivative_tail,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;derivative_tail,forcing]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "derivative_tail",
+          "column_channel": "forcing",
+          "formula": "<J_derivative_tail(q2), G_derivative_tail,forcing J_forcing(q2)>_derivative_tail,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit formula and domain for J_forcing on q2",
+            "explicit source-derived kernel or form formula for G_derivative_tail,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;fourth_grade,wall_tail]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "fourth_grade",
+          "column_channel": "wall_tail",
+          "formula": "<J_fourth_grade(q2), G_fourth_grade,wall_tail J_wall_tail(q2)>_fourth_grade,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit source-derived kernel or form formula for G_fourth_grade,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;fourth_grade,derivative_tail]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "fourth_grade",
+          "column_channel": "derivative_tail",
+          "formula": "<J_fourth_grade(q2), G_fourth_grade,derivative_tail J_derivative_tail(q2)>_fourth_grade,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit source-derived kernel or form formula for G_fourth_grade,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;fourth_grade,fourth_grade]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "fourth_grade",
+          "column_channel": "fourth_grade",
+          "formula": "<J_fourth_grade(q2), G_fourth_grade,fourth_grade J_fourth_grade(q2)>_fourth_grade,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit source-derived kernel or form formula for G_fourth_grade,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;fourth_grade,forcing]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "fourth_grade",
+          "column_channel": "forcing",
+          "formula": "<J_fourth_grade(q2), G_fourth_grade,forcing J_forcing(q2)>_fourth_grade,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit formula and domain for J_forcing on q2",
+            "explicit source-derived kernel or form formula for G_fourth_grade,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;forcing,wall_tail]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "forcing",
+          "column_channel": "wall_tail",
+          "formula": "<J_forcing(q2), G_forcing,wall_tail J_wall_tail(q2)>_forcing,wall_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q2",
+            "explicit formula and domain for J_wall_tail on q2",
+            "explicit source-derived kernel or form formula for G_forcing,wall_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;forcing,derivative_tail]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "forcing",
+          "column_channel": "derivative_tail",
+          "formula": "<J_forcing(q2), G_forcing,derivative_tail J_derivative_tail(q2)>_forcing,derivative_tail",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q2",
+            "explicit formula and domain for J_derivative_tail on q2",
+            "explicit source-derived kernel or form formula for G_forcing,derivative_tail",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;forcing,fourth_grade]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "forcing",
+          "column_channel": "fourth_grade",
+          "formula": "<J_forcing(q2), G_forcing,fourth_grade J_fourth_grade(q2)>_forcing,fourth_grade",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q2",
+            "explicit formula and domain for J_fourth_grade on q2",
+            "explicit source-derived kernel or form formula for G_forcing,fourth_grade",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        },
+        {
+          "id": "B[q2,q2;forcing,forcing]",
+          "row_generator": "q2",
+          "column_generator": "q2",
+          "row_channel": "forcing",
+          "column_channel": "forcing",
+          "formula": "<J_forcing(q2), G_forcing,forcing J_forcing(q2)>_forcing,forcing",
+          "source_requirements": [
+            "explicit formula and domain for J_forcing on q2",
+            "explicit formula and domain for J_forcing on q2",
+            "explicit source-derived kernel or form formula for G_forcing,forcing",
+            "orientation, conjugation, and parameter dependence"
+          ],
+          "default_zero_allowed": false
+        }
+      ]
+    }
+  ],
+  "coefficient_acceptance": {
+    "required_count": 64,
+    "rule": "Every ordered generator pair and every ordered channel pair has an explicit source formula. Missing entries fail; absence is not interpreted as zero.",
+    "volterra_rule": "No Volterra compression may be imported unless a proved comparison identifies its domain, pairing, channel order, radical, and all 64 coefficients with this target."
+  },
+  "constructor_acceptance": [
+    "supply U_G4_ind by a source formula on D_pair",
+    "supply all J_r and G_r,s formulas with domain and orientation",
+    "prove the four ordered 4-by-4 tables equal the target tables",
+    "prove common-domain closure and bordered-relation preservation",
+    "prove contragredient compatibility in the analytic lane",
+    "prove radical preservation and quotient descent",
+    "exhibit any nonzero discrepancy as a named coefficient residual"
+  ],
+  "claim_boundary": {
+    "target_interface_complete": true,
+    "independent_arithmetic_constructor_exists": false,
+    "comparison_performed": false,
+    "undeclared_cross_terms_zero": false,
+    "volterra_comparison_proved": false,
+    "rh_implication": false
+  }
+}
