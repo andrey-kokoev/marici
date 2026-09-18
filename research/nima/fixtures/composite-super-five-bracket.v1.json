@@ -1,0 +1,38 @@
+{
+  "schema": "marici.nima.composite-super-five-bracket.v1",
+  "sources": [
+    {
+      "arxiv": "1008.2958",
+      "role": "super line-plane intersection and five-bracket conventions"
+    },
+    {
+      "arxiv": "1212.5605",
+      "role": "N2MHV products containing constructed five-bracket arguments"
+    }
+  ],
+  "public_api": {
+    "supertwistor": "SuperTwistor(z, chi)",
+    "external": "external_supertwistor(label,z)",
+    "projective_scaling": "scale_supertwistor(alpha,twistor)",
+    "constructed_point": "super_line_plane_point(a,b,c,d,e)",
+    "five_bracket": "super_five_bracket(vertices)",
+    "full_degree_eight_product": "multiply_super_five_brackets(left,right)",
+    "selected_degree_eight_component": "super_five_bracket_product_component(left,right,pairs)"
+  },
+  "grassmann_conventions": {
+    "five_bracket_key": "(i1,i2,i3,i4) represents chi_i1^1 chi_i2^2 chi_i3^3 chi_i4^4",
+    "product_key": "four ordered label-pairs, one pair per SU(4) component",
+    "nilpotence": "repeated identical generators vanish",
+    "degree": {
+      "five_bracket": 4,
+      "two_factor_product": 8
+    }
+  },
+  "verified_source_examples": [
+    "[1,2,3,(45)cap(678),8]",
+    "[1,2,3,(45)cap(678),(456)cap(78)]",
+    "[1,2,3,(45)cap(678),8] [4,5,6,7,8]",
+    "phi [1,2,3,(45)cap(789),(46)cap(789)] [(45)cap(123),(46)cap(123),7,8,9]"
+  ],
+  "claim_boundary": "Supports rational constructed-twistor classes; the quadratic four-mass psi class remains outside this interface."
+}

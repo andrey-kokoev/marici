@@ -1,0 +1,27 @@
+{
+  "schema": "marici.nima.momentum-twistor-plane-plane-intersection-line.v1",
+  "paper": {
+    "arxiv": "1008.2958",
+    "source": "research/sources/nima/papers/six-point-nmhv/1008.2958/all_loop__v2_penult.tex",
+    "locations": [492, 493, 654]
+  },
+  "notation": "L=(abc) cap (xyz)",
+  "source_contraction": "<AB|L>=<Aabc><Bxyz>-<Babc><Axyz>",
+  "public_api": {
+    "scalar": "plane_plane_line_contraction(a,b,c,x,y,z,A,B)",
+    "dual_plucker": "plane_plane_line_dual_plucker(a,b,c,x,y,z)",
+    "basis": "plane_plane_line_basis(a,b,c,x,y,z)"
+  },
+  "dual_plucker_convention": {
+    "plane_covectors": "p(X)=<Xabc>, q(X)=<Xxyz>",
+    "matrix": "L=p^T q-q^T p",
+    "contraction": "A^T L B=<AB|L>",
+    "geometric_line": "ker(L)"
+  },
+  "weights": {
+    "degree_in_each_of_A_B_a_b_c_x_y_z": 1,
+    "GL4_determinant_weight": 2
+  },
+  "generic_rank": 2,
+  "degeneracy_policy": "basis constructor raises ValueError unless the dual Plucker matrix has rank two"
+}
