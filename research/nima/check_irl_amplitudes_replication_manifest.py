@@ -8,6 +8,8 @@ artifacts=[
  ('ABHY planar amplitudes n=5..14','abhy-biadjoint-replication-suite.json'),
  ('ABHY associahedron canonical forms n=5..10','abhy-associahedron-replication-suite.json'),
  ('ABHY scattering-form projectivity n=5..14','abhy-scattering-form-projectivity-suite.json'),
+ ('Double-partial factorization: all cyclic-order pairs n=4..7','exhaustive-double-partial-biadjoint-factorization.json'),
+ ('Planar one-loop MHV pre-integration canonical forms','one-loop-mhv-replication-suite.json'),
  ('NMHV momentum-twistor identities n=6..12','momentum-twistor-nmhv-replication-suite.json'),
  ('Momentum-twistor five-bracket covariance','momentum-twistor-covariance-suite.json'),
  ('NMHV identities on generic rational kinematics','nmhv-generic-kinematics-suite.json'),
