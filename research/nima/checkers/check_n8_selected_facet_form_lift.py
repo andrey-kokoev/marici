@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+"""Lift six selected scalar histories to their sourced n=8 Yangian/positroid representatives."""
+from pathlib import Path
+import json,sys
+ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT/'research/nima'))
+from nnmhv_coherence_paths import compile_nnmhv_histories,supports_component_23
+matches=json.loads((ROOT/'research/nima/results/eight-point-history-positroid-matching.json').read_text())['matches'];by={x['history_index']:x for x in matches}
+formula={'A':'[1,2,3,(456)cap(78),8] [4,5,6,7,8]','B':'[1,2,3,4,8] [4,5,6,7,8]','C':'[1,2,3,(45)cap(678),8] [4,5,6,7,8]','D':'[1,2,3,(45)cap(678),(456)cap(78)] [4,5,6,7,8]','E':'[1,2,3,4,(456)cap(78)] [4,5,6,7,8]','F':'[1,2,(23)cap(456),(234)cap(56),6] [2,3,4,5,6]','G':'[1,2,(34)cap(567),(345)cap(67),7] [3,4,5,6,7]','H':'[1,2,3,(345)cap(67),7] [3,4,5,6,7]'}
+rows=[]
+for hi,h in enumerate(compile_nnmhv_histories(8)):
+ if not supports_component_23(h):continue
+ q=by[hi];b1=h.outer_pair[1];b2=h.inner_pair[1]
+ rows.append({'history_index':hi,'history':{'outer_pair':list(h.outer_pair),'inner_pair':list(h.inner_pair),'boundary_updates':[{'side':u.side,'replacement_path':list(u.replacement_path)} for u in h.boundary_updates]},'positive_root':[b2-4,b1-4],'seed_type':q['seed_type'],'seed_formula':formula[q['seed_type']],'embedding':q['embedding'],'positroid_cell_key':q['cell_key'],'projective_form_ratio':q['form_ratio']})
+checks={'six_selected_histories':len(rows)==6,'all_have_unique_positroid_cells':len({json.dumps(r['positroid_cell_key'],sort_keys=True) for r in rows})==6,'all_have_sourced_superinvariant_formula':all(r['seed_formula'] for r in rows),'all_positive_roots_once':{tuple(r['positive_root']) for r in rows}=={(i,j) for i in range(1,4) for j in range(i,4)},'three_boundary_updated_simple_roots':sum(bool(r['history']['boundary_updates']) for r in rows)==3 and all(r['positive_root'][0]==r['positive_root'][1] for r in rows if r['history']['boundary_updates'])}
+out={'schema':'marici.nima.n8-selected-facet-form-lift.v1','rows':rows,'checks':checks,'passed':all(checks.values()),'established_lift':'Each selected scalar weight is a component evaluation of a unique sourced projective Yangian-invariant/positroid canonical superfunction representative.','missing_for_residues':'The source matcher provides momentum-twistor superfunctions and projective cell keys, but no positive cell-coordinate chart C(alpha), dlog alpha_1...dlog alpha_8 orientation, or boundary specialization alpha_e=0 for these embeddings. Those data are required to compute canonical-form residues on shared strata.','negative_simple_forms':'The three boundary corrections are differences between transported and untransported component evaluations. A canonical-form lift of that difference requires cell-coordinate representatives for both terms on a common oriented chart.'};p=ROOT/'research/nima/results/n8-selected-facet-form-lift.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));raise SystemExit(0 if out['passed'] else 1)
