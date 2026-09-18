@@ -26,6 +26,7 @@ export interface OddballRelease {
   label: string
   released_at: string
   status: 'historical' | 'current'
+  review_status?: 'pending' | 'reviewed'
   summary: string
   pins: { git_commit: string; git_commit_role: 'source_baseline'; ledger_sequence_ceiling: number }
   supersedes: string | null

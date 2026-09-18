@@ -16,7 +16,7 @@ const serialized = JSON.stringify(oddballReleases).replaceAll('<', '\\u003c')
         <p class="lede">Reproducible structures that deserve attention but have not earned promotion to shared objects or physical claims.</p>
       </div>
       <aside class="atlas-current" aria-label="Current oddball release">
-        <span>Current census</span><strong>v{currentOddballs.version}</strong><p>{currentOddballs.label}</p>
+        <span>Current census</span><strong>v{currentOddballs.version}</strong><p>{currentOddballs.label}</p>{currentOddballs.review_status && <p>Review: {currentOddballs.review_status}</p>}
       </aside>
     </header>
 
@@ -48,7 +48,7 @@ const serialized = JSON.stringify(oddballReleases).replaceAll('<', '\\u003c')
     {oddballReleases.map((release) => (
       <article class="atlas-version" data-oddball-version={release.version} hidden={release.version !== oddballRegistry.current}>
         <header class="release-header">
-          <div><p class="release-version">Census v{release.version} · {release.status}</p><h2>{release.label}</h2><p>{release.summary}</p></div>
+          <div><p class="release-version">Census v{release.version} · {release.status}{release.review_status ? ` · review ${release.review_status}` : ''}</p><h2>{release.label}</h2><p>{release.summary}</p></div>
           <dl class="release-pins">
             <div><dt>Released</dt><dd>{new Date(release.released_at).toLocaleDateString('en-US', { dateStyle: 'medium', timeZone: 'UTC' })}</dd></div>
             <div><dt>Source baseline</dt><dd><code>{release.pins.git_commit.slice(0, 12)}</code></dd></div>

@@ -2,6 +2,8 @@
 id: 1601
 date: 2026-08-22
 title: Determinant Functor Canonicality Does Not Fix the Theta Normalization
+draft: true
+publication_note: Duplicate entry number; withheld pending ledger-number reconciliation.
 ---
 
 # Determinant Functor Canonicality Does Not Fix the Theta Normalization

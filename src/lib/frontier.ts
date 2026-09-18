@@ -21,6 +21,24 @@ export interface FrontierSector {
   evidence: FrontierEvidence[]
 }
 
+export interface FrontierCurrentStatusItem {
+  status: string
+  name: string
+  strength: string
+  result_label: string
+  result: string
+  next_label: string
+  next: string
+}
+
+export interface FrontierCurrentStatus {
+  eyebrow: string
+  title: string
+  summary: string
+  items: FrontierCurrentStatusItem[]
+  verdict: string
+}
+
 export interface FrontierRelease {
   schema: 'marici.frontier-atlas.v1'
   version: string
@@ -28,6 +46,8 @@ export interface FrontierRelease {
   released_at: string
   status: 'historical' | 'current'
   summary: string
+  research_cutoff?: string
+  current_status?: FrontierCurrentStatus
   pins: {
     git_commit: string
     git_commit_role: 'source_baseline'
