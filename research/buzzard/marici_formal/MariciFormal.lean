@@ -1,4 +1,6 @@
 import MariciFormal.Sprint1
+import MariciFormal.CoherentResolution
+import MariciFormal.CoherentResolutionTransport
 import MariciFormal.Sprint2
 import MariciFormal.Sprint3
 import MariciFormal.AuditRecord
