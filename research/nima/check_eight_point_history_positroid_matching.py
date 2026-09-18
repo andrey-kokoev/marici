@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Match 20 sourced n=8 histories to classified rational G_+(2,8) cells."""
-import itertools,json,sys
+import itertools,json,sys,os
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'research/benincasa/.tmp_sympy'));sys.path.insert(0,str(ROOT/'research/nima'))
 import sympy as s
@@ -9,7 +9,7 @@ from dual_spinor_kinematics import momentum_conserving_kinematics,transport_spin
 from momentum_twistor_constructors import four_bracket
 from momentum_twistor_super import SuperTwistor,super_line_plane_point
 from nnmhv_coherence_paths import compile_nnmhv_histories,terminal_r_state
-n=8;lam,til,x=momentum_conserving_kinematics([(1,j*j+j+1) for j in range(1,n+1)],[(1,j**3+2*j+1) for j in range(1,n-1)]);eps=s.Matrix([[0,1],[-1,0]]);th=theta_coefficients(lam,n);Z={}
+n=8;shift=int(os.environ.get('N8_MATCH_SHIFT','0'));lam,til,x=momentum_conserving_kinematics([(1,j*j+j+1+shift*j) for j in range(1,n+1)],[(1,j**3+2*j+1+shift*j*j) for j in range(1,n-1)]);eps=s.Matrix([[0,1],[-1,0]]);th=theta_coefficients(lam,n);Z={}
 for j in range(1,n+1):
  lj=eps*lam[j];Z[j]=SuperTwistor(lam[j].col_join(x[j].T*lj),{k:s.factor((lj.T*v)[0]) for k,v in th[j].items() if (lj.T*v)[0]!=0})
 def bracket(vertices):
@@ -27,7 +27,7 @@ def mapped_point(token,mp):
 I456_78=(7,8,4,5,6);I45_678=(4,5,6,7,8);I23_456=(2,3,4,5,6);I234_56=(5,6,2,3,4);I34_567=(3,4,5,6,7);I345_67=(6,7,3,4,5)
 seeds={'A':((1,2,3,I456_78,8),(4,5,6,7,8)),'B':((1,2,3,4,8),(4,5,6,7,8)),'C':((1,2,3,I45_678,8),(4,5,6,7,8)),'D':((1,2,3,I45_678,I456_78),(4,5,6,7,8)),'E':((1,2,3,4,I456_78),(4,5,6,7,8)),'F':((1,2,I23_456,I234_56,6),(2,3,4,5,6)),'G':((1,2,I34_567,I345_67,7),(3,4,5,6,7)),'H':((1,2,3,I345_67,7),(3,4,5,6,7))};subsets=list(itertools.combinations(range(1,n+1),4));cands=[]
 def add_candidate(name,tag,V1,V2):
- q1,d1=bracket(V1);q2,d2=bracket(V2);form={S:s.factor(s.det(s.Matrix([[lam[j][0] for j in S],[lam[j][1] for j in S],[q1.get(j,0) for j in S],[q2.get(j,0) for j in S]]))/(d1*d2)) for S in subsets};cands.append((name,tag,form))
+ q1,d1=bracket(V1);q2,d2=bracket(V2);form={S:s.factor(s.det(s.Matrix([[lam[j][0] for j in S],[lam[j][1] for j in S],[q1.get(j,0) for j in S],[q2.get(j,0) for j in S]]))) for S in subsets};cands.append((name,tag,form,s.factor(1/(d1*d2))))
 for name,(L,R) in seeds.items():
  if name in 'ABCDE':
   for r in range(n):add_candidate(name,r,tuple(point(t,r) for t in L),tuple(point(t,r) for t in R))
@@ -48,13 +48,14 @@ def cell_key(name,embedding):
  cls=tuple(sorted(tuple(sorted(mp[j] for j in g)) for g in groups[name]));support={j for g in cls for j in g};zeros=tuple(j for j in range(1,9) if j not in support);return (cls,zeros)
 matches=[]
 for hi,h in enumerate(compile_nnmhv_histories(n)):
- _,o=generalized_r(lam,x,n,(),h.outer_pair,lam[h.outer_pair[0]-1].T*eps,lam[h.outer_pair[1]].T*eps);st=terminal_r_state(h);_,inn=generalized_r(lam,x,n,h.inner_prefix,h.inner_pair,transport_spinor(lam,x,st.lower_spinor.vertices),transport_spinor(lam,x,st.upper_spinor.vertices));H={S:s.factor(o['prefactor']*inn['prefactor']*s.det(s.Matrix([[lam[j][0] for j in S],[lam[j][1] for j in S],[o['xi_coefficients'].get(j,0) for j in S],[inn['xi_coefficients'].get(j,0) for j in S]]))) for S in subsets}
- for name,r,C in cands:
+ _,o=generalized_r(lam,x,n,(),h.outer_pair,lam[h.outer_pair[0]-1].T*eps,lam[h.outer_pair[1]].T*eps);st=terminal_r_state(h);_,inn=generalized_r(lam,x,n,h.inner_prefix,h.inner_pair,transport_spinor(lam,x,st.lower_spinor.vertices),transport_spinor(lam,x,st.upper_spinor.vertices));H={S:s.factor(s.det(s.Matrix([[lam[j][0] for j in S],[lam[j][1] for j in S],[o['xi_coefficients'].get(j,0) for j in S],[inn['xi_coefficients'].get(j,0) for j in S]]))) for S in subsets};hnorm=s.factor(o['prefactor']*inn['prefactor'])
+ for name,r,C,cnorm in cands:
   q=proportional(H,C)
-  if q is not None:matches.append({'history_index':hi,'seed_type':name,'embedding':r,'cell_key':cell_key(name,r),'form_ratio':str(q)})
+  if q is not None:
+   full=s.factor(hnorm*q**4/cnorm);matches.append({'history_index':hi,'seed_type':name,'embedding':r,'cell_key':cell_key(name,r),'linear_form_ratio':str(q),'form_ratio':str(full)})
 unique={}
 for m in matches:unique.setdefault((m['history_index'],m['cell_key']),m)
 matches=list(unique.values())
 for m in matches:m['cell_key']={'parallel_classes':[list(g) for g in m['cell_key'][0]],'zero_columns':list(m['cell_key'][1])}
-checks={'twenty_histories_matched_once':len(matches)==20 and sorted(m['history_index'] for m in matches)==list(range(20)),'all_matches_unique':len({m['history_index'] for m in matches})==20,'twenty_distinct_positroid_cells':len({str(m['cell_key']) for m in matches})==20,'only_sourced_rational_seed_types':all(m['seed_type'] in seeds for m in matches)}
-out={'schema':'marici.nima.eight-point-history-positroid-matching.v1','source':'1212.5605 Table g2n_yangian_invariants','matches':matches,'checks':checks,'passed':all(checks.values()),'scope':'Exact all-70 full one-SU(4) degree-four coefficients including five-bracket denominators; enough to identify each classified positroid canonical form projectively.'};p=ROOT/'research/nima/results/eight-point-history-positroid-matching.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));raise SystemExit(0 if out['passed'] else 1)
+checks={'twenty_histories_matched_once':len(matches)==20 and sorted(m['history_index'] for m in matches)==list(range(20)),'all_matches_unique':len({m['history_index'] for m in matches})==20,'all_full_canonical_forms_equal':all(m['form_ratio']=='1' for m in matches),'twenty_distinct_positroid_cells':len({str(m['cell_key']) for m in matches})==20,'only_sourced_rational_seed_types':all(m['seed_type'] in seeds for m in matches)}
+out={'schema':'marici.nima.eight-point-history-positroid-matching.v1','kinematic_shift':shift,'source':'1212.5605 Table g2n_yangian_invariants','matches':matches,'checks':checks,'passed':all(checks.values()),'scope':'Exact all-70 full one-SU(4) degree-four coefficients including five-bracket denominators; enough to identify each classified positroid canonical form projectively.'};p=ROOT/('research/nima/results/eight-point-history-positroid-matching.json' if shift==0 else f'research/nima/results/eight-point-history-positroid-matching-shift{shift}.json');p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));raise SystemExit(0 if out['passed'] else 1)

@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+"""Two-section normalization audit for corrected n=8 history/cell matching."""
+from pathlib import Path
+import json
+from fractions import Fraction
+ROOT=Path(__file__).resolve().parents[3];A=json.loads((ROOT/'research/nima/results/eight-point-history-positroid-matching.json').read_text());B=json.loads((ROOT/'research/nima/results/eight-point-history-positroid-matching-shift1.json').read_text());aa={x['history_index']:x for x in A['matches']};bb={x['history_index']:x for x in B['matches']};rows=[]
+for i in sorted(aa):
+ a,b=aa[i],bb[i];rows.append({'history_index':i,'full_ratio_section_0':a['form_ratio'],'full_ratio_section_1':b['form_ratio'],'linear_ratio_changes':Fraction(a['linear_form_ratio'])!=Fraction(b['linear_form_ratio'])})
+checks={'both_twenty_history_matches_passed':A['passed'] and B['passed'] and len(rows)==20,'all_full_ratios_unit_on_both_sections':all(r['full_ratio_section_0']==r['full_ratio_section_1']=='1' for r in rows),'linear_coordinate_ratios_change_as_expected':all(r['linear_ratio_changes'] for r in rows)};out={'schema':'marici.nima.n8-history-form-normalization-two-section.v2','sections':[A.get('kinematic_shift',0),B.get('kinematic_shift',1)],'rows':rows,'checks':checks,'passed':all(checks.values()),'conclusion':'After restoring the fourth power of the fermionic wedge determinant and separating bosonic prefactors, all 20 generalized-R histories equal their matched canonical cell forms with ratio one on both exact kinematic sections.','claim_boundary':'Two exact sections verify the corrected formula but do not replace a symbolic all-kinematics proof.'};p=ROOT/'research/nima/results/n8-history-form-ratio-kinematic-dependence.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({k:v for k,v in out.items() if k!='rows'},indent=2));raise SystemExit(0 if out['passed'] else 1)
