@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+"""Identify selected (2,3) shell support as a minimal right ideal."""
+import json,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'research/nima'));from nnmhv_coherence_paths import compile_nnmhv_histories
+def key(h):return (h.outer_pair,h.inner_pair,h.branch)
+def coord(h):return (h.inner_pair[0],h.inner_pair[1]-2) if h.branch=='left-nested' else (h.inner_pair[0],h.outer_pair[1]-1)
+rows=[]
+for N in range(7,13):
+ old={key(h) for h in compile_nnmhv_histories(N-1)};shell=[h for h in compile_nnmhv_histories(N) if key(h) not in old];block=[h for h in shell if h.outer_pair[0]==2];supported=[h for h in block if h.branch=='left-nested' and h.inner_pair[0]==3];coords=[coord(h) for h in supported];r=N-5;expected=[(3,q) for q in range(3,N-2)];rows.append({'N':N,'block_size':len(block),'r':r,'selected_shell_histories':len(supported),'matrix_coordinates':[list(x) for x in coords],'expected_first_row':[list(x) for x in expected],'is_first_row':coords==expected,'cumulative_selected_dimension':sum(k for k in range(1,r+1))})
+checks={'tested_N7_through_N12':len(rows)==6,'selected_support_is_first_matrix_row':all(r['is_first_row'] for r in rows),'shell_component_dimension_is_r':all(r['selected_shell_histories']==r['r'] for r in rows),'cumulative_dimension_is_triangular':all(r['cumulative_selected_dimension']==r['r']*(r['r']+1)//2 for r in rows)}
+out={'schema':'marici.nima.nnmhv-component-minimal-right-ideal.v1','identification':{'full_block':'A_r = End(C^r)','primitive_idempotent':'e = E_(3,3)','selected_shell':'e A_r = span{E_(3,q)}','hilbert_module_inner_product':'<psi,phi> = psi phi^dagger in e A_r e, identified with C','positive_norm':'||psi||^2 = sum_q |psi_q|^2'},'rows':rows,'checks':checks,'passed':all(checks.values()),'meaning':'The selected component is not a density matrix. It is a vector-like minimal right ideal of the full history C*-algebra; positive operators arise quadratically as psi^dagger psi.','claim_boundary':'The algebra fixes the Hilbert-module carrier and positive norm. A physical normalization and interpretation as measurement probability still require a chosen component state.'};p=ROOT/'research/nima/results/nnmhv-component-minimal-right-ideal.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({'schema':out['schema'],'identification':out['identification'],'checks':checks,'meaning':out['meaning'],'passed':out['passed']},indent=2));raise SystemExit(0 if out['passed'] else 1)
