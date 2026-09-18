@@ -28,9 +28,12 @@ and
 
 $$
 K_{\rm prime}(t,d)
-=-\frac1{2\sqrt{\pi t}}
+=-\frac1{4\sqrt{\pi t}}
 \sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}
- e^{-(\log n-d)^2/(4t)}.
+\left[
+ e^{-(\log n-d)^2/(4t)}+
+ e^{-(\log n+d)^2/(4t)}
+\right].
 $$
 
-This is the explicit independent target for the translate-Gram interface. The remaining comparison is with the separately placed bounded skew linking block, not an identification of the linking form with `Theta`.
+This real-character formula is superseded for the translate-Gram interface. Use the exact imaginary-continuation formula from `source-translate-weil-gram-is-imaginary-character-continuation-of-theta.md` instead.

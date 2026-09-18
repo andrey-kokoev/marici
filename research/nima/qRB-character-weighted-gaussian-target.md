@@ -13,8 +13,8 @@ $$
 =e^{t/4}\cosh(d/2).
 $$
 
-Unlike the shifted real Gaussian, this probe is the correct spectral representative of a translate Gram entry. Its Fourier transform is a translated centered Gaussian, so the prime terms acquire the character factor associated with the translation difference `d`.
+This direct real-character presentation is superseded for translate-Gram purposes. Its Fourier transform is a translated centered Gaussian, so the prime terms acquire the character factor associated with the translation difference `d`.
 
 The completed source target must therefore be evaluated by the endpoint, gamma, and prime terms using `h_(t,d)`, not by substituting `xi=d` into the shifted-Gaussian formula. Those two probes are not identical.
 
-Status: correct probe and endpoint normalization derived; full gamma/prime polarization formula remains to be expanded and compared with the relative linking block.
+Status: superseded; see the exact imaginary-continuation interface.
