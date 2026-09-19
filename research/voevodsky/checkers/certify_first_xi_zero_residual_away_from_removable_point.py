@@ -6,7 +6,16 @@ tail uses the deliberately coarse critical-line estimate
 Euler--Maclaurin |zeta(1/2+ix)|<=x, and Stirling's gamma remainder bound.
 Requires python-flint.
 """
-from flint import acb, acb_series, arb, ctx
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[3]
+try:
+    from flint import acb, acb_series, arb, ctx
+except ModuleNotFoundError:
+    sys.path.insert(0, str(ROOT / "research/flavor/.venv/Lib/site-packages"))
+    from flint import acb, acb_series, arb, ctx
 ctx.dps = 40
 
 
@@ -69,3 +78,24 @@ certified_upper = finite.real.upper() + central_hole_bound + tail_bound
 assert certified_upper < arb('-0.15084')
 print('certified full-integral upper bound =', certified_upper)
 print('CERTIFIED full first-zero Evans residual is strictly negative.')
+
+out = {
+    "schema": "marici.voevodsky.first-xi-zero-evans-residual.interval.v1",
+    "status": "certified_strictly_negative",
+    "first_zero_ordinate_enclosure": str(t),
+    "finite_subtotal_excluding_hole": str(finite.real),
+    "central_hole_absolute_bound": str(central_hole_bound),
+    "infinite_tail_absolute_bound": str(tail_bound),
+    "certified_full_integral_upper_bound": str(certified_upper),
+    "checks": {
+        "negative_main_interval": True,
+        "positive_finite_tail_bounded": True,
+        "removable_hole_controlled_by_derivative": True,
+        "infinite_tail_controlled": True,
+        "zero_excluded": True,
+    },
+    "conclusion": "The unchanged Evans adjoint Hilbert residual at the first Xi zero is rigorously nonzero and negative in the declared normalization.",
+    "claim_boundary": "This rejects membership of the unchanged Evans state in the tested minimal adjoint-complete positive horn. It does not reject modified sourced states and has no RH implication.",
+}
+result = ROOT / "research/voevodsky/results/first-xi-zero-unchanged-evans-adjoint-hilbert-residual.interval.v1.json"
+result.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
