@@ -1,0 +1,47 @@
+{
+  "schema": "marici.scc.realization-provenance-gate.v1",
+  "purpose": "Validate declared provenance for realization arrows and promotion dependencies without inferring ontology.",
+  "provenance_classes": [
+    "source_constructor",
+    "explicit_assumption",
+    "observer_fitted",
+    "unsupported"
+  ],
+  "arrow_requirements": {
+    "all": [
+      "id",
+      "source",
+      "target",
+      "provenance_class",
+      "completion_applicability"
+    ],
+    "source_constructor": [
+      "evidence_locator",
+      "source_formula_or_constructor_id"
+    ],
+    "completion_when_applicable": [
+      "completion_topology",
+      "bonding_maps",
+      "bonding_variance",
+      "completion_evidence_locator"
+    ]
+  },
+  "promotion_policy": {
+    "source_constructor": "eligible only after evidence locator resolution and applicable completion checks",
+    "explicit_assumption": "typed conditional use allowed; realization promotion refused",
+    "observer_fitted": "fit/scout use allowed; realization promotion refused",
+    "unsupported": "realization promotion refused",
+    "missing_provenance_class": "schema failure",
+    "unknown_provenance_class": "schema failure"
+  },
+  "dependency_policy": "Every dependency of a requested realization promotion is checked recursively as a declaration. One ineligible dependency refuses the promotion.",
+  "hostile": {
+    "id": "trace_and_square_trace_do_not_source_common_operator",
+    "declared_coordinates": ["Tr K", "Tr K^2"],
+    "free_coordinate": "connected_coordinate",
+    "required_classification": "unsupported",
+    "promotion_must_fail": true,
+    "source": "research/nima/results/evans-euler-comparison-structure-audit.json"
+  },
+  "claim_boundary": "This gate validates declarations and evidence presence. It does not infer whether an arrow is physically source-derived, prove evidence contents, or construct missing ontology."
+}

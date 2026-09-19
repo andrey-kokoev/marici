@@ -1,0 +1,72 @@
+{
+  "id": "evans-euler-comparison-structure",
+  "objects": [
+    {"id":"evans_source","type":"independent_transverse_source"},
+    {"id":"endpoint_packet","type":"based_translation_groupoid_packet"},
+    {"id":"euler_packet","type":"prime_refinement_graded_packet"},
+    {"id":"arch_packet","type":"archimedean_boundary_packet"},
+    {"id":"joint_response","type":"relative_joint_response_graph"},
+    {"id":"scalar_readout","type":"completed_scalar_section"}
+  ],
+  "arrows": [
+    {"id":"declared_F_Ev","source":"evans_source","target":"joint_response","map_token":"unsupported_evans_joint_chain_map"},
+    {"id":"endpoint_to_joint","source":"endpoint_packet","target":"joint_response","map_token":"endpoint_response_inclusion"},
+    {"id":"euler_to_joint","source":"euler_packet","target":"joint_response","map_token":"euler_determinant_inclusion"},
+    {"id":"arch_to_joint","source":"arch_packet","target":"joint_response","map_token":"arch_boundary_inclusion"},
+    {"id":"joint_readout","source":"joint_response","target":"scalar_readout","map_token":"packet_totalization"}
+  ],
+  "cells": [
+    {"id":"endpoint_inclusion_identity","kind":"typed_identity_fixture","routes":[["endpoint_to_joint"],["endpoint_to_joint"]]},
+    {"id":"euler_inclusion_identity","kind":"typed_identity_fixture","routes":[["euler_to_joint"],["euler_to_joint"]]}
+  ],
+  "obstructions": [
+    {"id":"common_operator_not_sourced","kind":"realization_fiber_mismatch"},
+    {"id":"evans_joint_map_only_declared","kind":"missing_source_constructor"},
+    {"id":"completion_variance_unfixed","kind":"completion_and_bonding_data_missing"}
+  ],
+  "fibers": [
+    {
+      "id":"endpoint_euler_common_operator_test",
+      "profile":"same_declared_primitive_and_square_scalar_coordinates",
+      "comparison_slots":["named_constructor_actions","observers","viewing_forms","authority","completion_topology","instrument_backaction"],
+      "pairs":[{
+        "left":"endpoint_packet","right":"euler_packet","same_profile":true,"invertible":false,
+        "slot_results":{
+          "named_constructor_actions":false,
+          "observers":true,
+          "viewing_forms":false,
+          "authority":false,
+          "completion_topology":false,
+          "instrument_backaction":false
+        }
+      }]
+    }
+  ],
+  "higher_coherence":[
+    {"id":"state_indexed_composition","degree":2,"state":"unsupported"},
+    {"id":"reciprocal_tate_completion","degree":3,"state":"unsupported"}
+  ],
+  "promotions":[
+    {
+      "id":"promote_common_operator_realization",
+      "requires_cells":["endpoint_inclusion_identity","euler_inclusion_identity"],
+      "requires_equivalences":[["endpoint_packet","euler_packet"]],
+      "evidence":[]
+    }
+  ],
+  "impact_edges":[
+    {"from":"endpoint_inclusion_identity","to":"promote_common_operator_realization"},
+    {"from":"euler_inclusion_identity","to":"promote_common_operator_realization"}
+  ],
+  "claims":[
+    {"id":"common_operator_claim","requires":["source_constructor_K_G_a","endpoint_euler_realization_equivalence","state_indexed_composition","completion_topology","noncollapse"]},
+    {"id":"packet_clutching_claim","requires":["source_constructor_F_Ev","endpoint_line","euler_line","arch_line","clutching_cell","completion_topology","noncollapse"]}
+  ],
+  "available_witnesses":["endpoint_line","euler_line","arch_line"],
+  "experiments":[
+    {"id":"equal_low_moments_unequal_det3_hostile","separates":["source_constructor_K_G_a","endpoint_euler_realization_equivalence"],"preregistered_threshold":"exact rational inequality"},
+    {"id":"compile_evans_joint_chain_map","separates":["source_constructor_F_Ev","clutching_cell","state_indexed_composition"],"preregistered_threshold":"typed source map with composable boundaries"},
+    {"id":"cutoff_variance_and_completion_test","separates":["completion_topology"],"preregistered_threshold":"declared bonding variance and Cauchy convergence"},
+    {"id":"full_packet_noncollapse_hostile","separates":["noncollapse"],"preregistered_threshold":"both response coordinates and monodromy retained"}
+  ]
+}

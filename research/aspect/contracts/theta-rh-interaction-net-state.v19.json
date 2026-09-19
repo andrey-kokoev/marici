@@ -1,0 +1,32 @@
+{
+  "schema": "marici.scc.rh-interaction-net-state-contract.v19",
+  "predecessor": "research/aspect/contracts/theta-rh-interaction-net-state.v18.json",
+  "relation": "adds_mandatory_realization_provenance_gate",
+  "realization_provenance_gate": {
+    "contract": "research/aspect/contracts/scc-realization-provenance-gate.v1.json",
+    "checker": "research/aspect/checkers/check_scc_realization_provenance_gate.py",
+    "result": "research/aspect/results/scc_realization_provenance_gate.json",
+    "status": "passed",
+    "classes": ["source_constructor", "explicit_assumption", "observer_fitted", "unsupported"],
+    "scope": "every realization arrow and every dependency of a realization promotion",
+    "source_constructor_requires": ["evidence locator", "source formula or constructor id"],
+    "completion_when_applicable_requires": ["topology", "bonding maps", "bonding variance", "evidence locator"],
+    "non_source_classes_promotable": false,
+    "ontology_inference": false
+  },
+  "hostile_disposition": {
+    "candidate": "common operator constrained only by Tr K and Tr K^2 while the connected coordinate remains free",
+    "classification": "unsupported",
+    "realization_promotion": false,
+    "source": "research/nima/results/evans-euler-comparison-structure-audit.json"
+  },
+  "claim_boundary": {
+    "declared_provenance_validation_added": true,
+    "missing_evidence_refused": true,
+    "observer_fit_promotion_refused": true,
+    "assumption_promotion_refused": true,
+    "ontology_inferred": false,
+    "physical_realization_inferred": false,
+    "rh_implication": false
+  }
+}

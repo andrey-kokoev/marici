@@ -35,6 +35,12 @@ Use `scc.py categorical <diagram.json>` for typed route and coherence-cell compa
 
 Name the applicable coherence obligation before downstream execution: forward realization, attachment transport, route/coherencer compatibility, or readout descent. Do not substitute downstream readout or pushforward analysis for an unresolved upstream route-coherence cell. SCC output is a bounded compiler result, not a truth certificate; retain the declared stratum, unsupported cells, and residual witnesses.
 
+## Analytical form-finding
+
+For analytical realizations, comparison maps, determinant packets, boundary forms, completions, or scalar readouts, follow [`research/analytical-form-finding-operating-rules.md`](research/analytical-form-finding-operating-rules.md).
+
+Use its governing order: source operation, type declaration, composition, transport, finite falsifier, completion topology, packet sewing, noncollapse, then scalar readout. In particular, preserve the full typed packet until sewing, base every state-dependent comparison, determine cutoff variance before choosing bonding maps, and do not derive a source object backward from its desired scalar readout.
+
 ## Canonical team identities
 
 Use these canonical identities and research responsibilities throughout this
