@@ -1,0 +1,76 @@
+{
+  "id": "rh-based-rung-five-homotopy-coherence-v1",
+  "kind": "based_homotopy_prism_filler",
+  "carrier": "b_z star (Delta^1 x Delta^3_[S,A,C,G])",
+  "dimension": 5,
+  "base": {
+    "id": "b_z",
+    "formula": "Delta_Xi(z)=Phi tensor u_z",
+    "conditions": ["b_z != 0", "E_p(b_z) > 0"],
+    "phase_edge": "identity_degeneracy"
+  },
+  "phase_vertices": [
+    "S_minus", "A_minus", "C_minus", "G_minus",
+    "S_plus", "A_plus", "C_plus", "G_plus"
+  ],
+  "rungs": [
+    {"degree": 1, "kind": "state_presentations", "state": "formed"},
+    {"degree": 2, "kind": "pair_interfaces", "state": "formed"},
+    {"degree": 3, "kind": "triangle_homotopies", "state": "partially_role_assigned"},
+    {"degree": 4, "kind": "tetrahedral_Toda_representative", "state": "formed_nonzero_residual"},
+    {"degree": 5, "kind": "homotopy_between_defining_systems", "state": "specified_not_constructed"}
+  ],
+  "oriented_prism_boundary": [
+    {"cell": "T_plus", "coefficient": 1, "state": "formed"},
+    {"cell": "T_minus", "coefficient": -1, "state": "formed"},
+    {"cell": "H_ACG", "coefficient": -1, "state": "local_relative_Green_witness_only"},
+    {"cell": "H_SCG", "coefficient": 1, "state": "unsupported_independent_Green_comparison"},
+    {"cell": "H_SAG", "coefficient": -1, "state": "local_cyclic_Green_witness_only"},
+    {"cell": "H_SAC", "coefficient": 1, "state": "verified_corrected_pair_trace_witness"}
+  ],
+  "rung_five_constructor": {
+    "id": "H5",
+    "type": "homotopy(d_minus,d_plus)",
+    "green_system_component": "eta_G",
+    "required_chain_identity": "partial H5 + H5 partial = T_plus - T_minus - H_ACG + H_SCG - H_SAG + H_SAC",
+    "required_bulk_identity": "C_z + delta eta_G = 0",
+    "status": "open"
+  },
+  "ordered_bulk_representative": {
+    "id": "C_z",
+    "formula": "<D K, z K>",
+    "scalar_shadow": "(1-p^(-2 Re z)) E_p(b_z)",
+    "status": "not_extended_to_complete_resolved_domain"
+  },
+  "finite_prime_test": {
+    "source_plane": ["e_1", "e_2"],
+    "required_matrix_units": ["E_11", "E_12", "E_21", "E_22"],
+    "required_target_gram": [
+      ["a+4*b+4*u", "a-4*b-4*i*v"],
+      ["a-4*b+4*i*v", "a+4*b-4*u"]
+    ],
+    "required_pauli_coordinates": ["a+4*b", "a-4*b", "4*v", "4*u"]
+  },
+  "naturality_requirements": [
+    "prime_restriction",
+    "cutoff_bonding",
+    "reciprocal_orientation",
+    "multiplicity_jet_transport",
+    "resolved_saturated_graph_preservation",
+    "even_bulk_radical_annihilation",
+    "valuation_transport_intertwining"
+  ],
+  "noncircularity": [
+    "construct_eta_G_before_Xi_zero_specialization",
+    "prove_matrix_identity_before_evaluation_on_b_z",
+    "do_not_define_H5_from_negative_scalar_residual",
+    "retain_independent_Green_bulk_codomain"
+  ],
+  "acceptance": "zero belongs to the source-authorized Toda bracket <S,A,C,G>",
+  "current_blockers": [
+    "H_SCG independent Green comparison",
+    "common Green codomain for H_ACG and H_SAG",
+    "completed ordered bulk polarization C_z",
+    "full radical descent of C_z"
+  ]
+}

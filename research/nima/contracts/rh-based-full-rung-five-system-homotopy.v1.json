@@ -1,0 +1,37 @@
+{
+  "id": "rh-based-full-rung-five-system-homotopy-v1",
+  "kind": "based_homotopy_between_complete_five_role_laws",
+  "role_simplex": "Delta^4_[S,A,R,C,G]",
+  "self_dual_facet": "d_2 Delta^4 = [S,A,C,G]",
+  "unbased_carrier": "Delta^1 x Delta^4_[S,A,R,C,G]",
+  "based_carrier": "b_z star (Delta^1 x Delta^4_[S,A,R,C,G])",
+  "dimension": 6,
+  "vertices": [
+    "b_z",
+    "S_minus", "A_minus", "R_minus", "C_minus", "G_minus",
+    "S_plus", "A_plus", "R_plus", "C_plus", "G_plus"
+  ],
+  "full_prism_boundary": [
+    {"cell": "K_plus_[S,A,R,C,G]", "coefficient": 1},
+    {"cell": "K_minus_[S,A,R,C,G]", "coefficient": -1},
+    {"cell": "H_[A,R,C,G]", "coefficient": -1, "reflection_pair": "H_[S,A,R,C]"},
+    {"cell": "H_[S,R,C,G]", "coefficient": 1, "reflection_pair": "H_[S,A,R,G]"},
+    {"cell": "H_[S,A,C,G]", "coefficient": -1, "reflection_pair": "self", "state": "active_self_dual_prism"},
+    {"cell": "H_[S,A,R,G]", "coefficient": 1, "reflection_pair": "H_[S,R,C,G]"},
+    {"cell": "H_[S,A,R,C]", "coefficient": -1, "reflection_pair": "H_[A,R,C,G]"}
+  ],
+  "reflection": {
+    "role_action": "[S,A,R,C,G] -> [G,C,R,A,S]",
+    "facet_pairs": [["d_0", "d_4"], ["d_1", "d_3"]],
+    "fixed_facet": "d_2"
+  },
+  "local_facet_contract": "research/nima/contracts/rh-based-rung-five-homotopy-coherence.v1.json",
+  "top_identity": "partial H5_full + H5_full partial = boundary(Delta^1 x Delta^4_[S,A,R,C,G])",
+  "acceptance": [
+    "all four reflected side prisms are source-authorized and paired",
+    "the d_2 side restricts to the local SACG rung-five contract",
+    "the common base is retained through every side prism",
+    "the full matrix-valued ordered bulk representative is null-homotopic before scalarization"
+  ],
+  "status": "specified_not_constructed"
+}

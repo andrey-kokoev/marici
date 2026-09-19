@@ -1,0 +1,49 @@
+{
+  "id": "rh-local-full-rung-five-residue-elimination-coherence-v1",
+  "kind": "refuted_residue_elimination_model",
+  "objects": {
+    "full_plant": "Sigma_[S,A,R,C,G]",
+    "local_plant": "Sigma_[S,A,C,G]",
+    "full_compensator": "H5_full",
+    "local_compensator": "H5_local"
+  },
+  "square": {
+    "top": "construct H5_full",
+    "left": "remove residue role R",
+    "right": "Schur_R",
+    "bottom": "construct H5_local",
+    "coherence_2cell": "eta_elim"
+  },
+  "required_identity": "H5_local = Schur_R(H5_full) up to eta_elim",
+  "storage_identity": "P_local = P_LL - P_LR P_RR^dagger P_RL",
+  "transfer_identity": "Theta_local(z) = Schur_R Theta_full(z)",
+  "ordered_bulk_identity": "C_local = Schur_R C_full",
+  "base_condition": "both routes retain the same nonzero b_z",
+  "rank_two_prime_test": {
+    "local_target": [
+      ["a+4*b+4*u", "a-4*b-4*i*v"],
+      ["a-4*b+4*i*v", "a+4*b-4*u"]
+    ],
+    "anomaly": "A_R = P_local - Schur_R(P_full)",
+    "simple_residue_rank_bound": "rank(A_R) <= 1",
+    "multiplicity_m_rank_bound": "rank(A_R) <= m"
+  },
+  "naturality": [
+    "prime labels",
+    "cutoff bonding",
+    "reciprocal reflection",
+    "multiplicity jets",
+    "resolved saturated topology",
+    "ordered bulk polarization",
+    "radical descent"
+  ],
+  "noncircularity": [
+    "construct full and local compensators independently",
+    "do not define the full residue block from the local target",
+    "compare matrix-valued forms before evaluation on b_z",
+    "retain the residue role until Schur elimination"
+  ],
+  "status": "refuted_wrong_source_type",
+  "refutation": "The residue carrier is an exact boundary stratum that vanishes on the Xi divisor; the full-to-SACG operation is the simplicial face restriction d_2, not energetic Schur elimination."
+
+}
