@@ -1,0 +1,70 @@
+{
+  "id": "rh-source-strata-separation-v1",
+  "objects": [
+    {"id": "unchanged_evans_source"},
+    {"id": "unchanged_prime_shell_trace"},
+    {"id": "unchanged_green_target"},
+    {"id": "corrected_pair_source"},
+    {"id": "augmented_jet_trace"},
+    {"id": "direct_residue_stage"},
+    {"id": "diagonal_residue"},
+    {"id": "retained_pair_state"},
+    {"id": "relative_c34_observer"},
+    {"id": "independent_arithmetic_bulk"}
+  ],
+  "arrows": [
+    {"id": "unchanged_shell_incidence", "source": "unchanged_evans_source", "target": "unchanged_prime_shell_trace", "map_token": "B_sigma_dagger"},
+    {"id": "unchanged_green_promotion", "source": "unchanged_prime_shell_trace", "target": "unchanged_green_target", "map_token": "shell_green_cancellation"},
+    {"id": "pair_to_jet", "source": "corrected_pair_source", "target": "augmented_jet_trace", "map_token": "pair_all_jet_chain"},
+    {"id": "jet_to_residue", "source": "augmented_jet_trace", "target": "diagonal_residue", "map_token": "diagonal_residue"},
+    {"id": "pair_to_direct_residue_stage", "source": "corrected_pair_source", "target": "direct_residue_stage", "map_token": "pair_all_jet_chain"},
+    {"id": "direct_stage_to_residue", "source": "direct_residue_stage", "target": "diagonal_residue", "map_token": "diagonal_residue"},
+    {"id": "pair_retention", "source": "corrected_pair_source", "target": "retained_pair_state", "map_token": "retain_pair_source"},
+    {"id": "arithmetic_loading", "source": "independent_arithmetic_bulk", "target": "relative_c34_observer", "map_token": "unsupported_lambda_ar"}
+  ],
+  "cells": [
+    {
+      "id": "corrected_pair_trace_membership",
+      "kind": "route_coherence",
+      "routes": [["pair_to_jet", "jet_to_residue"], ["pair_to_direct_residue_stage", "direct_stage_to_residue"]],
+      "threshold": "exact_zero"
+    }
+  ],
+  "obstructions": [
+    {"id": "unchanged_prime_shell_green_cancellation", "type": "falsified_cell"},
+    {"id": "pair_residue_to_pair_energy", "type": "noncollapse_obstruction"},
+    {"id": "arithmetic_loading", "type": "missing_source_authority"},
+    {"id": "external_bulk_balance", "type": "missing_comparison_cell"}
+  ],
+  "impact_edges": [
+    {"from": "unchanged_prime_shell_green_cancellation", "to": "unchanged_green_promotion"},
+    {"from": "pair_residue_to_pair_energy", "to": "external_bulk_balance"},
+    {"from": "arithmetic_loading", "to": "external_bulk_balance"}
+  ],
+  "higher_coherence": [
+    {"id": "internal_corrected_pair_facet", "degree": 3, "state": "verified", "witness": "corrected_pair_trace_membership"},
+    {"id": "external_characteristic_green_facet", "degree": 3, "state": "unsupported"},
+    {"id": "global_self_dual_middle_facet", "degree": 4, "state": "unsupported"}
+  ],
+  "promotions": [
+    {
+      "id": "corrected_pair_to_independent_bulk",
+      "requires_cells": ["corrected_pair_trace_membership", "external_bulk_balance"],
+      "requires_equivalences": [["retained_pair_state", "independent_arithmetic_bulk"]],
+      "evidence": [
+        {"id": "pair_trace_membership_evidence", "locator": "research/voevodsky/the-corrected-pair-trace-membership-closes-linearly-and-at-diagonal-residue-level-but-not-in-the-positive-Green-metric.md", "status": "verified"},
+        {"id": "source_derived_arithmetic_loading", "locator": "", "status": "unsupported"},
+        {"id": "independent_bulk_balance_evidence", "locator": "", "status": "unsupported"}
+      ]
+    }
+  ],
+  "claims": [
+    {"id": "corrected_pair_trace_membership_claim", "requires": ["pair_trace_membership_evidence"]},
+    {"id": "external_cg_identification_claim", "requires": ["source_derived_arithmetic_loading", "independent_bulk_balance_evidence"]}
+  ],
+  "available_witnesses": ["pair_trace_membership_evidence"],
+  "experiments": [
+    {"id": "source_loading_provenance_test", "separates": ["source_derived_arithmetic_loading"], "preregistered_threshold": "source formula with all retained grades"},
+    {"id": "independent_bulk_pairing_test", "separates": ["independent_bulk_balance_evidence"], "preregistered_threshold": "exact packet equality before scalarization"}
+  ]
+}

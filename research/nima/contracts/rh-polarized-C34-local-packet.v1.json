@@ -1,0 +1,64 @@
+{
+  "id": "rh-polarized-C34-local-packet-v1",
+  "objects": [
+    {"id": "fixed_forcing_pair"},
+    {"id": "polarized_mellin_packet"},
+    {"id": "relative_hardy_kernel"},
+    {"id": "ordered_wall_jump"},
+    {"id": "retained_wronskian_packet"},
+    {"id": "independent_green_bulk"}
+  ],
+  "arrows": [
+    {"id": "pair_polarization", "source": "fixed_forcing_pair", "target": "polarized_mellin_packet", "map_token": "rapid_times_pole_residue"},
+    {"id": "relative_kernel", "source": "polarized_mellin_packet", "target": "relative_hardy_kernel", "map_token": "hardy_relative_diagonal_cancellation"},
+    {"id": "sokhotski_boundary", "source": "relative_hardy_kernel", "target": "ordered_wall_jump", "map_token": "pv_wall_half_residue_jump"},
+    {"id": "direct_wall_jump_stage1", "source": "fixed_forcing_pair", "target": "polarized_mellin_packet", "map_token": "rapid_times_pole_residue"},
+    {"id": "direct_wall_jump_stage2", "source": "polarized_mellin_packet", "target": "relative_hardy_kernel", "map_token": "hardy_relative_diagonal_cancellation"},
+    {"id": "direct_wall_jump_stage3", "source": "relative_hardy_kernel", "target": "ordered_wall_jump", "map_token": "pv_wall_half_residue_jump"},
+    {"id": "weighted_hadamard_sewing", "source": "ordered_wall_jump", "target": "retained_wronskian_packet", "map_token": "fixed_half_amplitude"}
+  ],
+  "cells": [
+    {
+      "id": "polarized_boundary_route_coherence",
+      "kind": "route_coherence",
+      "routes": [
+        ["pair_polarization", "relative_kernel", "sokhotski_boundary"],
+        ["direct_wall_jump_stage1", "direct_wall_jump_stage2", "direct_wall_jump_stage3"]
+      ],
+      "threshold": "exact_zero"
+    }
+  ],
+  "obstructions": [
+    {"id": "singular_self_pairing", "type": "undefined_distribution_product"},
+    {"id": "residue_to_pair_energy", "type": "noncollapse_obstruction"},
+    {"id": "global_hermitian_bulk_balance", "type": "missing_comparison_cell"}
+  ],
+  "impact_edges": [
+    {"from": "singular_self_pairing", "to": "polarized_boundary_route_coherence"},
+    {"from": "residue_to_pair_energy", "to": "global_hermitian_bulk_balance"}
+  ],
+  "higher_coherence": [
+    {"id": "local_polarized_C34_packet", "degree": 3, "state": "verified", "witness": "polarized_boundary_route_coherence"},
+    {"id": "global_CG_bulk_comparison", "degree": 3, "state": "unsupported"},
+    {"id": "self_dual_middle_facet", "degree": 4, "state": "unsupported"}
+  ],
+  "promotions": [
+    {
+      "id": "local_packet_to_global_bulk",
+      "requires_cells": ["polarized_boundary_route_coherence", "global_hermitian_bulk_balance"],
+      "requires_equivalences": [["retained_wronskian_packet", "independent_green_bulk"]],
+      "evidence": [
+        {"id": "local_packet_sewing_evidence", "locator": "research/nima/the-Sokhotski-half-jump-has-the-Wronskian-quarter-column-normalization.md", "status": "verified"},
+        {"id": "global_bulk_balance_evidence", "locator": "", "status": "unsupported"}
+      ]
+    }
+  ],
+  "claims": [
+    {"id": "local_polarized_packet_claim", "requires": ["local_packet_sewing_evidence"]},
+    {"id": "global_bulk_balance_claim", "requires": ["global_bulk_balance_evidence"]}
+  ],
+  "available_witnesses": ["local_packet_sewing_evidence"],
+  "experiments": [
+    {"id": "independent_global_bulk_pairing", "separates": ["global_bulk_balance_evidence"], "preregistered_threshold": "exact Hermitian packet equality on the noncollapsed pair state"}
+  ]
+}
