@@ -1,0 +1,44 @@
+{
+  "schema": "marici.scc.coherence-pyramid-to-g4-linkage.v1",
+  "source_realization": {
+    "coverage": "research/voevodsky/results/complete_eight_node_analytical_coverage.json",
+    "completion": "research/voevodsky/results/esd7_simultaneous_relative_completion.json",
+    "compatibility": "research/voevodsky/results/eight_lattice_compatibility_frontier.json",
+    "construction_source": "research/nima/source-derivation-of-realization-choices.md",
+    "carrier": "localized signed/relative feature bicategory over the weighted trace-class moving-current pullback",
+    "strength": "one common coordinatewise-cofinal regulator sequence on a countable observer core"
+  },
+  "target_scc": {
+    "contract": "research/aspect/contracts/theta-rh-interaction-net-state.v18.json",
+    "generator": "admitted_G4.forward_realization",
+    "carrier": "T_PB:P_pair->B_border",
+    "required_readout": "canonical bordered coordinates rho0,E,W,R with contragredient return"
+  },
+  "candidate_link": {
+    "name": "C_esd7_to_G4",
+    "source": "N_* C[esd_7(Delta^3)] completed_tensor P_pair",
+    "target": "N_* C[esd_7(Delta^3)] completed_tensor Graph(T_PB)",
+    "formula": "id_N completed_tensor graph(T_PB): x completed_tensor p maps to x completed_tensor (p,T_PB(p))",
+    "readout": "id_N completed_tensor (rho0,E,W,R)",
+    "return": "id_N^top completed_tensor T_PB^top",
+    "source_derived": true,
+    "construction_principle": "The simplex-chain and channel factors remain separate; coherence acts on the first factor and the canonical G4 crossing acts on the second. No embedding of tetrahedral coordinates into selected channels is used."
+  },
+  "acceptance": {
+    "coverage_certificate": true,
+    "variance_compatibility": true,
+    "completion_compatibility": true,
+    "tensor_extended_source_carrier": true,
+    "graph_TPB_target": true,
+    "bordered_readout_intertwining": true,
+    "contragredient_return_intertwining": true
+  },
+  "external_nonrequirements": {
+    "positive_hilbert_terminal_realization": false,
+    "evans_state_placement": false,
+    "reason": "These are stronger physical/Evans promotions, not requirements for the signed/relative coherence-to-canonical-G4 tensor linkage."
+  },
+  "admission_rule": "All acceptance fields must be true and the candidate formula must be source-derived. External nonrequirements remain explicit nonclaims.",
+  "status": "signed_relative_coherence_tensor_link_to_canonical_g4_admitted",
+  "claim_boundary": "This is a factorwise SCC linkage to the canonical G4 crossing. It does not identify moving-current coordinates with arithmetic pair coordinates, construct a positive-Hilbert terminal object, or place the transverse Evans state."
+}

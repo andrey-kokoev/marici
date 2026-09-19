@@ -30,23 +30,29 @@ def main():
  sig,cells,overlay,reg=map(load,(SIG,CELLS,OVERLAY,REG))
  allowed=set(reg['allowed_statuses']);records=reg['realizations'];ids=[r['id'] for r in records]
  assert len(ids)==len(set(ids));assert all(r['status'] in allowed for r in records)
+ assert all(Path(ROOT.parents[1]/r['source']).exists() for r in records if r['status']=='realized')
  by={(r['kind'],r['id']):r for r in records}
  true={k for k,v in reg['current_certificates'].items() if v is True};reach=transitive_reach(reg['certificate_dependencies'])
  arrows=sig['one_generators'];edge_rows=[]
  for name,data in sorted(arrows.items()):
-  rec=by.get(('edge',name));required=data['required_certificates'];missing=minimal_missing(required,true,reach)
-  status=rec['status'] if rec else 'unregistered'
-  edge_rows.append({'id':name,'source_sort':data['source_sort'],'target_sort':data['target_sort'],'status':status,'analytically_realized':status=='realized','minimal_missing_certificates':missing,'evidence':rec.get('source') if rec else None})
+  rec=by.get(('edge',name));required=data['required_certificates']
+  supplied=set(rec.get('certificates',[])) if rec else set();missing=minimal_missing(required,true|supplied,reach)
+  status=rec['status'] if rec else 'unregistered';realized=status=='realized' and not missing
+  if status=='realized':
+   assert rec.get('typed_source') and rec.get('typed_target') and rec.get('map') and realized
+  edge_rows.append({'id':name,'source_sort':data['source_sort'],'target_sort':data['target_sort'],'status':status,'analytically_realized':realized,'minimal_missing_certificates':missing,'evidence':rec.get('source') if rec else None,'constructor':rec.get('constructor') if rec else None})
  face_rows=[]
  for name,data in sorted(cells['cells'].items()):
-  rec=by.get(('face',name));required=data['admission']+data.get('invertibility',[]);missing=minimal_missing(required,true,reach);status=rec['status'] if rec else 'unregistered'
-  face_rows.append({'id':name,'boundary':data['boundary'],'law':data['law'],'status':status,'analytically_realized':status=='realized','minimal_missing_certificates':missing,'evidence':rec.get('source') if rec else None})
+  rec=by.get(('face',name));required=data['admission']+data.get('invertibility',[]);supplied=set(rec.get('certificates',[])) if rec else set();missing=minimal_missing(required,true|supplied,reach);status=rec['status'] if rec else 'unregistered';realized=status=='realized' and not missing
+  if status=='realized': assert rec.get('typed_boundary') and rec.get('map') and realized
+  face_rows.append({'id':name,'boundary':data['boundary'],'law':data['law'],'status':status,'analytically_realized':realized,'minimal_missing_certificates':missing,'evidence':rec.get('source') if rec else None,'constructor':rec.get('constructor') if rec else None})
  law_rows=[]
  for name,required in sorted(cells['coherence_obligations'].items()):
-  rec=by.get(('law',name));status=rec['status'] if rec else 'unregistered'
-  law_rows.append({'id':name,'status':status,'verified':status=='realized','minimal_missing_certificates':minimal_missing(required,true,reach),'evidence':rec.get('source') if rec else None})
+  rec=by.get(('law',name));status=rec['status'] if rec else 'unregistered';supplied=set(rec.get('certificates',[])) if rec else set();missing=minimal_missing(required,true|supplied,reach);verified=status=='realized' and not missing
+  if status=='realized': assert rec.get('constructor') and verified
+  law_rows.append({'id':name,'status':status,'verified':verified,'minimal_missing_certificates':missing,'evidence':rec.get('source') if rec else None,'constructor':rec.get('constructor') if rec else None})
  dangling=[x for x in reg['external_fragments'] if x['status']=='realized_unlinked']
- checks={'all_signature_edges_censused':len(edge_rows)==len(arrows),'all_declared_faces_censused':len(face_rows)==len(cells['cells']),'all_laws_censused':len(law_rows)==len(cells['coherence_obligations']),'registry_ids_unique':len(ids)==len(set(ids)),'global_nonpromotion_respected':not overlay['global_status']['full_coherence_pyramid_equipment_verified'],'unlinked_realizations_exposed':bool(dangling)}
+ checks={'all_signature_edges_censused':len(edge_rows)==len(arrows),'all_declared_faces_censused':len(face_rows)==len(cells['cells']),'all_laws_censused':len(law_rows)==len(cells['coherence_obligations']),'registry_ids_unique':len(ids)==len(set(ids)),'realized_edge_records_typed_and_certified':all(x['analytically_realized'] for x in edge_rows if x['status']=='realized'),'realized_face_records_typed_and_certified':all(x['analytically_realized'] for x in face_rows if x['status']=='realized'),'realized_law_records_certified':all(x['verified'] for x in law_rows if x['status']=='realized'),'global_nonpromotion_respected':not overlay['global_status']['full_coherence_pyramid_equipment_verified'],'unlinked_realizations_exposed':bool(dangling)}
  out={'schema':'marici.voevodsky.coherence-pyramid-analytical-frontier.v1','summary':{'edges_total':len(edge_rows),'edges_without_analytic_realization':sum(not x['analytically_realized'] for x in edge_rows),'faces_total':len(face_rows),'faces_without_analytic_realization':sum(not x['analytically_realized'] for x in face_rows),'laws_total':len(law_rows),'laws_without_verification':sum(not x['verified'] for x in law_rows),'realized_but_unlinked_fragments':len(dangling)},'edges':edge_rows,'faces':face_rows,'laws':law_rows,'realized_but_unlinked_fragments':dangling,'checks':checks,'passed':all(checks.values()),'claim_boundary':'This scanner detects missing realizations only for declared computad generators and explicit registry links; it does not infer generators or proofs from prose.'}
  OUT.write_text(json.dumps(out,indent=2)+'\n',encoding='utf-8');print(json.dumps(out,indent=2))
 if __name__=='__main__':main()

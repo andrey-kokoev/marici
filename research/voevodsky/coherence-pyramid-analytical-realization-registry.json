@@ -12,13 +12,148 @@
     "comparison": ["descent", "completion"],
     "full_coherence_pyramid_equipment_verified": ["cross_sector_global_section_verified"]
   },
-  "realizations": [],
+  "realizations": [
+    {
+      "kind": "edge",
+      "id": "under_embedding",
+      "status": "realized",
+      "constructor": "bounded GL companion U between finite framed metric Green objects",
+      "typed_source": "finite_green(K_M,G_M,rad(G_M))",
+      "typed_target": "finite_green(K_N,G_N,rad(G_N))",
+      "map": "i_U:x maps to Ux, with G_M=U^T G_N U",
+      "certificates": ["typed_injection", "form_preservation", "radical_compatibility"],
+      "source": "research/voevodsky/results/framed_metric_markov_gl_equipment.json"
+    },
+    {
+      "kind": "edge",
+      "id": "over_quotient",
+      "status": "realized",
+      "constructor": "orthogonal frame-orbit descent to the faithful metric-transition coordinate",
+      "typed_source": "gauge_presentation(F_i,O_i,[(M_i,C_i)],pi_gauge)",
+      "typed_target": "carrier((M_i,C_i),metric ports,frame provenance)",
+      "map": "pi_gauge:(F_i,A_i) maps to (M_i=F_i F_i^T,C_i=F_i A_i F_(i+1)^T)",
+      "certificates": ["typed_surjection", "kernel_identification", "exactness"],
+      "source": "research/voevodsky/results/framed_to_metric_markov_descent.json"
+    },
+    {
+      "kind": "edge",
+      "id": "vertical_restriction",
+      "status": "realized",
+      "constructor": "ordered-subset source-derived Green restriction/compression",
+      "typed_source": "carrier(K_I,ordered vertex ports,Markov source)",
+      "typed_target": "carrier(K_J,retained ordered ports,compressed Markov source), J subset I",
+      "map": "r_J:K_I maps to its ordered principal compression K_J with eliminated vertices integrated by the source-derived Schur/Markov law",
+      "certificates": ["port_preservation", "source_compatibility"],
+      "source": "research/voevodsky/results/ordered_subset_markov_beck_chevalley.json"
+    },
+    {
+      "kind": "edge",
+      "id": "closed_form_comparison",
+      "status": "realized",
+      "constructor": "bounded GL congruence extended from finite compressions to completed quotient forms",
+      "typed_source": "quotient_form(q_G/rad(q_G),completion,coercivity modulus)",
+      "typed_target": "quotient_form(q_H/rad(q_H),completion,coercivity modulus)",
+      "map": "C_U:[x] maps to [Ux], extended by the uniform bound C^2(1+rho)/(1-rho)",
+      "certificates": ["domain_map", "radical_descent", "form_isometry", "dense_quotient_range"],
+      "source": "research/voevodsky/results/framed_metric_markov_completion.json"
+    },
+    {
+      "kind": "face", "id": "associator", "status": "realized",
+      "constructor": "strict reassociation of seam-compatible Markov amalgamation",
+      "typed_boundary": "((f compose g) compose h) => (f compose (g compose h)) on one typed varying-fiber Markov kernel",
+      "map": "identity on the common source-derived block kernel",
+      "certificates": ["both_parenthesizations_admitted", "same_typed_boundary", "certificate_bundle_equivalence"],
+      "source": "research/voevodsky/results/varying_fiber_markov_green.json"
+    },
+    {
+      "kind": "face", "id": "left_unitor", "status": "realized",
+      "constructor": "strict left identity for seam-compatible amalgamation",
+      "typed_boundary": "identity compose f => f", "map": "normalized identity kernel cell",
+      "certificates": ["typed_identity", "certificate_normalization"],
+      "source": "research/voevodsky/results/operator_valued_markov_restricted_equipment.json"
+    },
+    {
+      "kind": "face", "id": "right_unitor", "status": "realized",
+      "constructor": "strict right identity for seam-compatible amalgamation",
+      "typed_boundary": "f compose identity => f", "map": "normalized identity kernel cell",
+      "certificates": ["typed_identity", "certificate_normalization"],
+      "source": "research/voevodsky/results/operator_valued_markov_restricted_equipment.json"
+    },
+    {
+      "kind": "face", "id": "interchange", "status": "realized",
+      "constructor": "metric-congruence naturality across horizontal Markov composition",
+      "typed_boundary": "two-by-two grid of GL companions and seam-compatible amalgamations",
+      "map": "the two transported full block kernels are equal by congruence naturality",
+      "certificates": ["all_four_boundary_composites_admitted", "same_outer_boundary", "transported_certificate_bundle_equivalence"],
+      "source": "research/voevodsky/results/framed_metric_markov_gl_equipment.json"
+    },
+    {
+      "kind": "face", "id": "beck_chevalley", "status": "realized",
+      "constructor": "ordered-subset restriction versus source-derived amalgamation comparison",
+      "typed_boundary": "ordered-subset pullback/amalgamation mixed square",
+      "map": "identity comparison of the equal source-derived compressed kernels",
+      "certificates": ["typed_mixed_square", "pullback_exactness", "full_joint_amalgamation", "comparison_map", "transported_certificate_bundle_equivalence", "comparison_map_isomorphism", "inverse_preserves_certificates"],
+      "source": "research/voevodsky/results/ordered_subset_markov_beck_chevalley.json"
+    },
+    {
+      "kind": "face", "id": "completion_comparison", "status": "realized",
+      "constructor": "uniform bounded-GL finite-to-closed completion comparison",
+      "typed_boundary": "complete then apply GL companion => apply finite GL companion then complete",
+      "map": "unique continuous extension of the finite-compression congruence",
+      "certificates": ["common_core_square", "closed_limit_transport", "radical_transport", "coercivity_transport", "closed_domain_equivalence", "positive_bidirectional_minimum_modulus"],
+      "source": "research/voevodsky/results/framed_metric_markov_completion.json"
+    },
+    {
+      "kind": "face", "id": "composition_comparison", "status": "realized",
+      "constructor": "GL companion composition comparison",
+      "typed_boundary": "U_g compose U_f => U_(gf) on the common invariant finite kernel core",
+      "map": "literal equality U_g U_f=U_(gf), extended when uniformly bounded",
+      "certificates": ["two_composable_one_generators", "direct_one_generator", "same_typed_boundary", "common_invariant_core", "closed_composite_equality"],
+      "source": "research/voevodsky/results/operator_valued_markov_restricted_equipment.json"
+    },
+    {
+      "kind": "law", "id": "pentagon", "status": "realized",
+      "constructor": "strict Markov-amalgamation associator pentagon",
+      "certificates": ["four_composable_arrows", "five_associator_edges", "equal_composite_certificate_transport"],
+      "source": "research/voevodsky/results/varying_fiber_markov_green.json"
+    },
+    {
+      "kind": "law", "id": "triangle", "status": "realized",
+      "constructor": "normalized companion/unitor triangle",
+      "certificates": ["two_composable_arrows", "associator", "left_and_right_unitors", "equal_normal_form"],
+      "source": "research/voevodsky/results/operator_valued_markov_restricted_equipment.json"
+    },
+    {
+      "kind": "law", "id": "interchange_hexagon", "status": "realized",
+      "constructor": "GL metric-congruence interchange coherence",
+      "certificates": ["typed_two_by_two_grid", "both_composition_orders", "equal_outer_certificate"],
+      "source": "research/voevodsky/results/framed_metric_markov_gl_equipment.json"
+    },
+    {
+      "kind": "law", "id": "pasting", "status": "realized",
+      "constructor": "strict nested ordered-subset Beck-Chevalley pasting",
+      "certificates": ["two_composable_mixed_squares", "component_beck_chevalley_cells", "composite_cell", "equal_certificate_transport"],
+      "source": "research/voevodsky/results/ordered_subset_markov_beck_chevalley.json"
+    },
+    {
+      "kind": "law", "id": "completion_pasting", "status": "realized",
+      "constructor": "strict bounded-GL completion pseudofunctoriality",
+      "certificates": ["two_composable_completion_squares", "common_closed_domain", "stable_radical", "positive_composite_coercivity"],
+      "source": "research/voevodsky/results/framed_metric_markov_completion.json"
+    },
+    {
+      "kind": "law", "id": "composition_triangle_pasting", "status": "realized",
+      "constructor": "GL companion composition pentagon restricted to adjacent triangles",
+      "certificates": ["two_adjacent_composition_triangles", "shared_direct_edge", "common_invariant_core", "equal_closed_composite"],
+      "source": "research/voevodsky/results/operator_valued_markov_restricted_equipment.json"
+    }
+  ],
   "external_fragments": [
     {
       "id": "analytic_markov_equipment_fragment",
-      "status": "realized_unlinked",
+      "status": "realized",
       "source": "research/voevodsky/coherence-pyramid-analytic-fragment-registry-v2.json",
-      "reason": "Verified analytic equipment exists, but no typed map links its constructors to individual generators in the global computad signature."
+      "reason": "Its four edge constructors are linked above to the global computad signature at their declared Markov-equipment strength."
     },
     {
       "id": "relative_semilocal_sewing",
