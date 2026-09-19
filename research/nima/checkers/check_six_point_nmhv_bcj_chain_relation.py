@@ -4,12 +4,13 @@ import itertools
 import json
 from collections import defaultdict
 from pathlib import Path
+import sys
 
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / "research/benincasa/.tmp_sympy"))
 import sympy as sp
 
 from check_six_point_nmhv_ordering_relations import LABELS, LAM, amplitude, bracket, sij
-
-ROOT = Path(__file__).resolve().parents[3]
 RESULT = ROOT / "research/nima/results/six-point-nmhv-bcj-chain-relation.json"
 
 

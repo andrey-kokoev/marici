@@ -2,11 +2,12 @@ from __future__ import annotations
 import itertools,json
 from collections import defaultdict
 from pathlib import Path
+import sys
+ROOT=Path(__file__).resolve().parents[3]
+sys.path.insert(0,str(ROOT/'research/benincasa/.tmp_sympy'))
 import sympy as sp
 from check_six_point_nmhv_ordering_relations import sij
 from check_six_point_common_cross_order_complex import VERTICES,boundary,simplex_chain,scale_chain,sum_chain
-
-ROOT=Path(__file__).resolve().parents[3]
 RESULT=ROOT/"research/nima/results/six-point-minimal-bcj-chain-repair.json"
 
 def matrix_from_chains(chains,basis):return sp.Matrix([[c.get(k,0) for c in chains] for k in basis])
