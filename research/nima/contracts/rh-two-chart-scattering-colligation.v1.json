@@ -1,0 +1,57 @@
+{
+  "id": "rh-two-chart-scattering-colligation-v1",
+  "kind": "bordered_two_chart_scattering_colligation_with_coherence_controller",
+  "spectral_coordinate": "z=s-1/2",
+  "history_generator": "A=partial_q",
+  "charts": {
+    "left": {
+      "state": "u_-(q;z)=integral_-infinity^q exp(z(q-r)) Phi(r) dr",
+      "equation": "(partial_q-z)u_-=Phi",
+      "weight": "opposite exponential left weight eta"
+    },
+    "right": {
+      "state": "u_+(q;z)=-integral_q^infinity exp(z(q-r)) Phi(r) dr",
+      "equation": "(partial_q-z)u_+=Phi",
+      "weight": "opposite exponential right weight eta"
+    }
+  },
+  "weight_condition": "0<eta<theta_decay_rate and |Re(z)|<eta",
+  "seam_ports": ["B0", "Q0", "M", "J", "A0", "C0"],
+  "boundary_characteristic": {
+    "formula": "E_hist(z)=u_-(0;z)-u_+(0;z)=tau(z)",
+    "multiplicity_preserved": true
+  },
+  "defect_controller": {
+    "visible_defect": "D1=A0-(1/2)Q0-M",
+    "primitive": "K1=-(1/2)|q|+delta_0",
+    "identity": "partial_q K1=D1",
+    "Clark_output": "(-i D1,-i D1)"
+  },
+  "characteristic_complex": "odd-doubled Clark-Grushin two-term complex",
+  "green_complex": "bordered scattering Green relation retaining ordered bulk polarization",
+  "comparison": {
+    "id": "beta_CG_scatt",
+    "type": "chain map / quasi-isomorphism",
+    "requirements": [
+      "six-channel port preservation",
+      "Clark relative-kernel preservation",
+      "K1 compensator preservation",
+      "determinant orientation",
+      "prime and cutoff naturality",
+      "multiplicity-jet naturality"
+    ],
+    "status": "open"
+  },
+  "arithmetic_promotion": {
+    "equation": "B^dagger u_z + D_U(z)x_z=0",
+    "ordered_current_preserved": true,
+    "status": "open"
+  },
+  "rung_five_law": {
+    "identity": "C_z + delta eta_G=0",
+    "full_local_coherence": "d_2(H5_full) homotopic to H5_SACG",
+    "status": "open"
+  },
+  "confinement_implication": "if the scattering colligation is source-conservative on the corrected nonzero base, then (1-p^(-2 Re z))E_p(b_z)=0 and Re(z)=0",
+  "status": "architecture_constructed_source_comparison_open"
+}
