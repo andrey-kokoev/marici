@@ -1,0 +1,53 @@
+{
+  "id": "rh-two-phase-four-presentation-prism-v1",
+  "polytope": "Delta^1 x Delta^3",
+  "vertices": ["S-", "A-", "C-", "G-", "S+", "A+", "C+", "G+"],
+  "oriented_cellular_boundary": [
+    {"cell": "T_plus", "coefficient": 1, "status": "formed"},
+    {"cell": "T_minus", "coefficient": -1, "status": "formed"},
+    {"cell": "H_ACG", "coefficient": -1, "status": "unassigned"},
+    {"cell": "H_SCG", "coefficient": 1, "status": "unsupported"},
+    {"cell": "H_SAG", "coefficient": -1, "status": "unassigned"},
+    {"cell": "H_SAC", "coefficient": 1, "status": "candidate_verified"}
+  ],
+  "available_degree_three_witnesses": [
+    {
+      "id": "corrected_pair_trace_membership",
+      "source_contract": "rh-source-strata-separation-v1",
+      "state": "verified",
+      "candidate_prism_face": "H_SAC",
+      "assignment_status": "role_labels_not_frozen"
+    },
+    {
+      "id": "polarized_boundary_route_coherence",
+      "source_contract": "rh-polarized-C34-local-packet-v1",
+      "state": "verified",
+      "candidate_prism_face": "H_ACG",
+      "assignment_status": "lands_in_retained_wronskian_packet_not_independent_green_bulk"
+    }
+  ],
+  "missing_degree_three_witnesses": [
+    {
+      "id": "external_characteristic_green_facet",
+      "state": "unsupported",
+      "candidate_prism_face": "H_SCG",
+      "blocker": "no source-derived equivalence from retained pair state to independent arithmetic bulk"
+    },
+    {
+      "id": "source_analytic_green_facet",
+      "state": "unassigned",
+      "candidate_prism_face": "H_SAG",
+      "blocker": "no declared role-labelled triangle cell in the current contracts"
+    }
+  ],
+  "top_cell": {
+    "id": "homotopy_prism_filler",
+    "state": "not_formed",
+    "required_boundary_equation": "T_plus - T_minus - H_ACG + H_SCG - H_SAG + H_SAC = 0"
+  },
+  "residual": {
+    "candidate": "(1-p^(-2 Re z)) E_p(b_z)",
+    "assignment_status": "cannot_be_declared_as_sole_top_residual_until_all_four_side_faces_are_typed"
+  },
+  "verdict": "The prism combinatorics are exact, but the source inventory does not yet supply four role-labelled side homotopies."
+}
