@@ -1,0 +1,49 @@
+{
+  "schema": "marici.nima.evans-five-cell-chain-square-candidate.v1",
+  "status": "partial",
+  "source": {
+    "carrier": "X_st direct-sum C_theta",
+    "state": "(f_-,f_+,c)",
+    "common_closed_domain_locator": "research/voevodsky/the-two-stable-history-sections-form-a-source-derived-rosenbrock-pencil-whose-transmission-determinant-is-exactly-xi.v1.json#spaces.state",
+    "graph_norm_locator": "stable half-line H1 graph norms for partial_q-z, direct-summed with C_theta"
+  },
+  "target": {
+    "carrier": "bulk_Phi direct-sum endpoint_plane direct-sum tail_plane",
+    "basis": ["bulk_Phi", "endpoint_minus", "endpoint_plus", "tail_K", "tail_V"],
+    "five_cell_differential_matrix": null
+  },
+  "observer": {
+    "formula": "B_Ev(f_-,f_+,c)=(c bulk_Phi,H_partial tau_boundary(f_-,f_+),K(f_-,f_+),V(f_-,f_+))",
+    "bulk_formula": "c bulk_Phi",
+    "endpoint_formula": "H_partial tau_boundary(f_-,f_+)",
+    "K_formula": null,
+    "V_formula": null,
+    "matrix_on_common_basis": null
+  },
+  "source_pencil": {
+    "name": "R_Xi(z)",
+    "matrix_on_common_basis": "[[partial_q-z,0,-Phi_-],[0,partial_q-z,-Phi_+],[ev_0,-ev_0,0]] on H1_st(-infinity,0) direct-sum H1_st(0,infinity) direct-sum C_theta",
+    "holomorphic": true,
+    "source_locator": "research/voevodsky/the-two-stable-history-sections-form-a-source-derived-rosenbrock-pencil-whose-transmission-determinant-is-exactly-xi.v1.json#rosenbrock_pencil"
+  },
+  "required_identity": "B_Ev R_Xi(z)=d_5cell(z) B_Ev with seam mismatch retained as transverse output",
+  "continuity": {
+    "bulk": true,
+    "endpoint": true,
+    "tail_K": null,
+    "tail_V": null,
+    "assembled_graph_norm_bound": null
+  },
+  "coherence": {
+    "xi_multiplicity_linear": true,
+    "C4_coefficient_action": "Phi fixed; one swaps with delta_0; K maps to V; V maps to -K",
+    "analytic_tail_C4_intertwining": null,
+    "Tate_fourfold_phase": null
+  },
+  "prohibited_shortcuts": [
+    "define the observer only on known Xi zeros",
+    "divide by tau",
+    "replace the linear observer by v tensor v or v tensor conjugate(v)",
+    "infer the chain square from matching endpoint columns alone"
+  ]
+}

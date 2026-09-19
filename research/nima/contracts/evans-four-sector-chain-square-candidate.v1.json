@@ -1,0 +1,38 @@
+{
+  "schema": "marici.nima.evans-four-sector-chain-square-candidate.v1",
+  "status": "typed_four_sector_preflight",
+  "corrects": "research/nima/contracts/evans-five-cell-chain-square-candidate.v1.json",
+  "source": {
+    "carrier": "(B_st tensor B_rec) decorated by X_st direct-sum C_theta",
+    "basis": ["left,z", "right,z", "left,-z", "right,-z"],
+    "B_st_basis": ["left", "right"],
+    "B_rec_basis": ["z", "-z"],
+    "R_st": "sigma_x tensor I",
+    "R_rec": "I tensor sigma_x"
+  },
+  "distinguished_vectors": {
+    "stable_even_forcing": [1, 1],
+    "stable_odd_mismatch": [1, -1],
+    "reciprocal_odd_forcing": [1, -1],
+    "combined_forcing": [1, -1, 1, -1],
+    "combined_mismatch": [1, -1, -1, 1]
+  },
+  "target": {
+    "carrier": "four-sector response retaining stable and reciprocal indices, decorated by bulk/endpoint/oriented-tail cells",
+    "sector_differential_matrix": "R_4(z)=R_Xi(z) direct-sum R_Xi(-z), with the -z source incidence conjugated by reciprocal-odd sign; R_Xi(z)=[[partial_q-z,0,-Phi_-],[0,partial_q-z,-Phi_+],[ev_0,-ev_0,0]]",
+    "sector_differential_source": "research/voevodsky/the-two-stable-history-sections-form-a-source-derived-rosenbrock-pencil-whose-transmission-determinant-is-exactly-xi.v1.json",
+    "K_formula": null,
+    "V_formula": null,
+    "observer_matrix": null,
+    "green_form_matrix": null
+  },
+  "required_laws": [
+    "same forcing sign across left/right",
+    "opposite forcing orientation across z/-z",
+    "stable mismatch equals tau(z)",
+    "Tate phase acts only on B_rec",
+    "R_st R_rec=R_rec R_st",
+    "tensor-product Green form makes feedback graph maximal isotropic"
+  ],
+  "claim_boundary": "The four-sector type prevents conflating stable mismatch with reciprocal parity. No quotient to a two-dimensional endpoint plane is allowed before a sourced relation proves the stable-odd mismatch survives."
+}
