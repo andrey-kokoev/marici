@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""Freeze the current RH-programme frontier without conflating two comparison lanes."""
+from pathlib import Path
+import json
+R=Path(__file__).resolve().parents[3]
+def j(p):return json.loads((R/p).read_text())
+ev=j(Path('research/voevodsky/results/first_zero_evans_complete_certificate.json'));g4=j(Path('research/nima/results/independent-g4-interface-population-audit.json'))
+checks={'evans_certificate_dependency_closed':ev['all_dependency_checks_passed'],'evans_residual_certified_negative':ev['status']=='certified_strictly_negative' and ev['combined_upper_arb'].startswith('[-0.143'),'evans_does_not_claim_RH':not ev['rh_proved'],'g4_population_audit_passes':g4['passed'],'independent_slots_zero':g4['slot_counts']['independently_populated']==0,'all_g4_slots_explicit_residuals':g4['slot_counts']['explicit_residual']==64,'independent_comparison_not_executable':g4['comparison_status'].startswith('not executable')}
+out={'schema':'marici.nima.rh-programme-frontier.v1','checks':checks,'passed':all(checks.values()),'lane_dispositions':{'unchanged_evans_membership':'falsified at the first certified nontrivial zeta zero: the tested Hilbert residual is strictly negative','independent_g4_comparison':'undefined: the target has 64 slots but U_G4_ind populates none','definitional_g4':'retained only as a definition and not independent evidence'},'forbidden_inferences':['Do not infer RH is false from the unchanged-Evans residual.','Do not treat symbolic target templates as arithmetic coefficients.','Do not substitute the definitional U_G4 for U_G4_ind.','Do not reopen unchanged-Evans membership without changing the state or membership criterion by a sourced construction.'],'next_reopening_witness':'Either a sourced divisor-preserving modified-history state with a newly typed membership theorem, or an independent CR-derived arithmetic constructor populating the G4 interface.','claim_boundary':'This is a frontier certificate, not an RH proof or disproof.'}
+p=R/'research/nima/results/rh-programme-frontier.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));raise SystemExit(0 if out['passed'] else 1)

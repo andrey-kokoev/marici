@@ -6,14 +6,14 @@ import Mathlib.Tactic
 
 namespace MariciFormal
 
-/-- An unoriented polygon diagonal. Boundary-edge exclusion is deliberately
-separate: this predicate records only distinct, non-neighbouring endpoints. -/
+/-- A polygon diagonal in canonical endpoint order.  Modular adjacency excludes
+both ordinary boundary edges and the wrap-around edge `(0,n-1)`; `a.val < b.val`
+chooses one representative of the underlying unoriented diagonal. -/
 def PolygonDiagonal (n : ℕ) (a b : Fin n) : Prop :=
-  a ≠ b ∧ a.val + 1 ≠ b.val ∧ b.val + 1 ≠ a.val
+  a.val < b.val ∧ (a.val + 1) % n ≠ b.val ∧ (b.val + 1) % n ≠ a.val
 
-/-- Strict interlacing in the declared linear vertex order. This is the exact
-crossing convention used below; cyclic wrap-around is handled by reordering the
-four endpoints before applying it. -/
+/-- Strict interlacing in the declared linear vertex order.  The canonical
+ordering imposed by `PolygonDiagonal` makes this the usual crossing test. -/
 def DiagonalsCross {n : ℕ} (a b c d : Fin n) : Prop :=
   (a.val < c.val ∧ c.val < b.val ∧ b.val < d.val) ∨
   (c.val < a.val ∧ a.val < d.val ∧ d.val < b.val)
@@ -69,6 +69,14 @@ theorem vertexRatio_closed_holonomy (w : V → K) (hw : ∀ v, w v ≠ 0)
   simp only [vertexRatio]
   field_simp [hw a, hw b, hw c, hw d]
 
+/-- Vertex ratios also have unit holonomy around every pentagon. -/
+theorem vertexRatio_closed_holonomy_five (w : V → K) (hw : ∀ v, w v ≠ 0)
+    (a b c d e : V) :
+    vertexRatio w a b * vertexRatio w b c * vertexRatio w c d *
+      vertexRatio w d e * vertexRatio w e a = 1 := by
+  simp only [vertexRatio]
+  field_simp [hw a, hw b, hw c, hw d, hw e]
+
 /-- The exact two-step face residual. It vanishes precisely when direct and
 composite rank-one transports agree (for a nonzero coefficient). -/
 def triangleTransportResidual (rho : V → V → K) (a b c : V) (x : K) : K :=
@@ -118,6 +126,15 @@ theorem nonunit_square_not_vertexRatio
     ¬ ∃ w : V → K, (∀ v, w v ≠ 0) ∧ rho = vertexRatio w := by
   rintro ⟨w, hw, rfl⟩
   exact hhol (vertexRatio_closed_holonomy w hw a b c d)
+
+/-- Likewise, non-unit pentagon holonomy excludes a vertex-coboundary
+presentation. -/
+theorem nonunit_pentagon_not_vertexRatio
+    (rho : V → V → K) (a b c d e : V)
+    (hhol : rho a b * rho b c * rho c d * rho d e * rho e a ≠ 1) :
+    ¬ ∃ w : V → K, (∀ v, w v ≠ 0) ∧ rho = vertexRatio w := by
+  rintro ⟨w, hw, rfl⟩
+  exact hhol (vertexRatio_closed_holonomy_five w hw a b c d e)
 
 end RankOne
 

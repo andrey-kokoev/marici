@@ -1,0 +1,39 @@
+{
+  "id": "n8-exceptional-boundary-transition-refined",
+  "objects": [
+    {"id": "G_boundary_chart"},
+    {"id": "E_boundary_chart"},
+    {"id": "ambient_Gr2_8_boundary"},
+    {"id": "decorated_positroid_class"},
+    {"id": "G_positive_boundary_domain"},
+    {"id": "E_positive_boundary_domain"}
+  ],
+  "arrows": [
+    {"id": "G_literal_ambient", "source": "G_boundary_chart", "target": "ambient_Gr2_8_boundary", "map_token": "literal_Gr2_8_map"},
+    {"id": "G_to_E_literal_transition", "source": "G_boundary_chart", "target": "E_boundary_chart", "map_token": "exact_rational_transition_T"},
+    {"id": "E_literal_ambient", "source": "E_boundary_chart", "target": "ambient_Gr2_8_boundary", "map_token": "literal_Gr2_8_map_after_T"},
+    {"id": "ambient_orientation", "source": "ambient_Gr2_8_boundary", "target": "ambient_Gr2_8_boundary", "map_token": "log_jacobian_plus_one"},
+    {"id": "ambient_to_decorated", "source": "ambient_Gr2_8_boundary", "target": "decorated_positroid_class", "map_token": "decorated_column_quotient"},
+    {"id": "G_positive_inclusion", "source": "G_positive_boundary_domain", "target": "G_boundary_chart", "map_token": "positive_G_domain"},
+    {"id": "E_positive_inclusion", "source": "E_positive_boundary_domain", "target": "E_boundary_chart", "map_token": "positive_E_domain"}
+  ],
+  "cells": [],
+  "obstructions": [],
+  "impact_edges": [],
+  "higher_coherence": [],
+  "promotions": [],
+  "claims": [
+    {"id": "ambient_route_coherence", "requires": ["exact_rational_transition", "literal_Grassmannian_equality", "logarithmic_orientation_witness"]},
+    {"id": "decorated_class_agreement", "requires": ["ambient_route_coherence", "decorated_column_quotient_declared"]},
+    {"id": "positive_branch_incidence", "requires": ["positive_domain_overlap"]}
+  ],
+  "available_witnesses": ["exact_rational_transition", "literal_Grassmannian_equality", "logarithmic_orientation_witness", "ambient_route_coherence", "decorated_column_quotient_declared"],
+  "experiments": [],
+  "fibers": [],
+  "functors": [],
+  "semantic_lanes": {
+    "literal_grassmannian": {"equivalence": "C_E(T(a))=g(a)C_G(a); no column scaling D is used", "witness_fields": ["transition", "row_gauge", "log_jacobian"]},
+    "decorated_column": {"equivalence": "quotient after literal ambient identification", "witness_fields": ["decorated_permutation", "column_decoration_quotient"]},
+    "positive_domain": {"relation": "domain incidence, not ambient equality", "witness_fields": ["source_inequalities", "target_inequalities", "sign_image", "overlap_status"]}
+  }
+}

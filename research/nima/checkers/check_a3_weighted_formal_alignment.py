@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+"""Check alignment and exact claim boundary between Lean transport lemmas and A3 computations."""
+from pathlib import Path
+import json, subprocess
+R=Path(__file__).resolve().parents[3]
+lean=R/'research/buzzard/marici_formal/MariciFormal/CoherentResolutionTransport.lean'
+text=lean.read_text()
+comp=json.loads((R/'research/nima/results/a3-weighted-local-system-code-audit.json').read_text())
+kitaev=json.loads((R/'research/kitaev/results/coherent_resolution_twisted_css.json').read_text())
+build=subprocess.run(['lake','build'],cwd=R/'research/buzzard/marici_formal',capture_output=True,text=True)
+required=['vertexRatio_diagonal_transport','vertexRatio_closed_holonomy','vertexRatio_closed_holonomy_five','triangle_holonomy_obstructs_square_zero','nonunit_square_holonomy_obstruction','nonunit_pentagon_holonomy_obstruction','nonunit_square_not_vertexRatio','nonunit_pentagon_not_vertexRatio']
+checks={'lean_build_passes':build.returncode==0,'required_theorems_present':all(('theorem '+x in text) or ('@[simp] theorem '+x in text) for x in required),'no_sorry_admit_axiom':all(t not in text for t in ['sorry','admit','axiom']),'computational_audit_passes':comp['passed'],'kitaev_audit_passes':kitaev['passed'],'rank_alignment':list(comp['weighted_ranks'].values())==list(kitaev['a3_ranks'].values())==[13,8,1],'homology_alignment':comp['augmented_homology_dimensions']==[0,0,0,0] and kitaev['a3_h1_dimension']==0,'mod2_alignment':not comp['mod2']['all_gauge_values_F2_units'] and not kitaev['mod2_local_system_gauge_defined'],'defect_separated_from_flat_holonomy':kitaev['disposition']['negative_exchange_defect']=='untyped_obstruction_not_face_curvature'}
+out={'schema':'marici.nima.a3-weighted-formal-alignment.v1','checks':checks,'passed':all(checks.values()),'formalized_now':required,'formal_strength':'The Lean file proves componentwise rank-one diagonal transport, unit square and pentagon holonomy for vertex ratios, exclusion of vertex-ratio presentations by nonunit square/pentagon holonomy, and exact triangle/square/pentagon residual lemmas over a field.','computational_strength':'The exact A3 matrices prove full chain conjugacy, ranks (13,8,1), zero augmented homology over Q, failed direct F2 gauge descent, and an explicit hostile rank-one curvature.','remaining_formal_gap':'The checked Lean module does not yet package arbitrary cellular chain groups G_k and prove D_k^rho=G_(k-1)D_kG_k^{-1} and homology equivalence as a ChainComplex isomorphism; its PartialTriangulation definition also does not yet construct the strict-chain augmented complex or cone homotopy.','claim_boundary':'Formal acceptance is for the listed algebraic transport/holonomy lemmas, not yet the full arbitrary-m chain-complex theorem.'}
+p=R/'research/nima/results/a3-weighted-formal-alignment.json';p.write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));raise SystemExit(0 if out['passed'] else 1)

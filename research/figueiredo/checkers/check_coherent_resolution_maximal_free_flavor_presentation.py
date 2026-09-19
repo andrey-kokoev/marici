@@ -1,9 +1,10 @@
 import json
 from pathlib import Path
-
-import sympy as sp
+import sys
 
 ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / "research/benincasa/.tmp_sympy"))
+import sympy as sp
 source_checker = ROOT / "research/nima/checkers/check_a3_coherent_resolution.py"
 transport_path = ROOT / "research/nima/results/n8-boundary-completed-cluster-transport.json"
 out_path = ROOT / "research/figueiredo/results/coherent-resolution-maximal-free-flavor-presentation.json"
