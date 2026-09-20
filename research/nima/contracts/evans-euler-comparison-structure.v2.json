@@ -1,0 +1,44 @@
+{
+  "id": "evans-euler-comparison-structure-v2",
+  "objects": [
+    {"id":"evans_source","type":"based_transverse_evans_history"},
+    {"id":"endpoint_packet","type":"based_translation_groupoid_packet"},
+    {"id":"euler_packet","type":"prime_refinement_graded_packet"},
+    {"id":"arch_packet","type":"archimedean_boundary_packet"},
+    {"id":"joint_response","type":"based_density_haar_joint_graph"},
+    {"id":"determinant_packet","type":"endpoint_euler_archimedean_line_packet"},
+    {"id":"scalar_readout","type":"completed_scalar_section"}
+  ],
+  "arrows": [
+    {"id":"F_Ev","source":"evans_source","target":"joint_response","map_token":"fixed_forcing_correlation_tensor_graph"},
+    {"id":"endpoint_to_det","source":"endpoint_packet","target":"determinant_packet","map_token":"endpoint_line_inclusion"},
+    {"id":"euler_to_det","source":"euler_packet","target":"determinant_packet","map_token":"euler_line_inclusion"},
+    {"id":"arch_to_det","source":"arch_packet","target":"determinant_packet","map_token":"arch_line_inclusion"},
+    {"id":"joint_to_det","source":"joint_response","target":"determinant_packet","map_token":"unsupported_attachment_transport"},
+    {"id":"det_readout","source":"determinant_packet","target":"scalar_readout","map_token":"unsupported_completed_totalization"}
+  ],
+  "cells": [
+    {"id":"F_Ev_transport","kind":"verified_finite_transport_cell","routes":[["F_Ev"],["F_Ev"]]},
+    {"id":"endpoint_line_identity","kind":"typed_identity_fixture","routes":[["endpoint_to_det"],["endpoint_to_det"]]},
+    {"id":"euler_line_identity","kind":"typed_identity_fixture","routes":[["euler_to_det"],["euler_to_det"]]},
+    {"id":"arch_line_identity","kind":"typed_identity_fixture","routes":[["arch_to_det"],["arch_to_det"]]}
+  ],
+  "obstructions": [
+    {"id":"attachment_transport_missing","kind":"missing_source_constructor"},
+    {"id":"ambient_gaussian_douglas_hostile","kind":"cutoff_uniform_domination_failure"},
+    {"id":"completion_variance_unfixed","kind":"completion_and_bonding_data_missing"}
+  ],
+  "higher_coherence": [
+    {"id":"endpoint_euler_arch_clutching","degree":2,"state":"unsupported"},
+    {"id":"completed_noncollapse","degree":3,"state":"unsupported"}
+  ],
+  "claims": [
+    {"id":"packet_clutching_claim_v2","requires":["source_constructor_F_Ev","clutching_cell","completion_topology","noncollapse"]}
+  ],
+  "available_witnesses": ["source_constructor_F_Ev","endpoint_line","euler_line","arch_line","finite_transport_cell"],
+  "experiments": [
+    {"id":"arithmetic_module_douglas_hostile","separates":["clutching_cell"],"preregistered_threshold":"cutoff-independent B_L B_L^* <= C^2 A_L on the declared arithmetic source module"},
+    {"id":"cutoff_variance_and_completion_test","separates":["completion_topology"],"preregistered_threshold":"declared bonding variance and Cauchy convergence"},
+    {"id":"full_packet_noncollapse_hostile","separates":["noncollapse"],"preregistered_threshold":"both response coordinates and determinant monodromy retained"}
+  ]
+}
