@@ -209,9 +209,11 @@ The exact reconstruction with L=xi'/xi is asserted for the prescribed completed 
 
 Constructed here: a source-defined gamma operator with explicit cutoff bounds and closability, bounded endpoint resolvents, a common closed graph domain with the prime operator, the exact signed endpoint/gamma/prime form, and the two-sheet completed-theta comparison on the Euler chart.
 
+Subsequent comparison: Voevodsky's `the-trivial-sector-arithmetic-form-is-a-tate-compression-with-explicit-leakage.md` identifies the finite-place trivial-sector form as compression of the negative Tate multiplier, with the endpoint graph retained. It is not invariant-subspace intertwining. The companion `all-prime-tate-leakage-diverges-on-the-common-euler-source-domain.md` proves that the unregularized full-line operator images diverge in norm even on positive prepared Euler states, despite convergence of the half-line forms.
+
 Still separate:
 
-- identification with the independently specified semilocal Tate/endpoint operator and its domain;
+- a stronger domain identification, other angular sectors, or a separately specified regularized full-line comparison;
 - a positive-semidefinite packet inequality or stable inverse;
 - critical-line continuation of these operator realizations;
 - an identification of source bulk/forcing channels with gamma/prime channels;
