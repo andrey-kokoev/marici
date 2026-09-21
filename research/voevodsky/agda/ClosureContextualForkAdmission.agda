@@ -7,6 +7,8 @@ open import Cubical.Foundations.GroupoidLaws using (lUnit)
 open import ClosureFiniteGluingNormalization using (module LiftSpan)
 open import ClosureGeneralSpanCoherence using (module Composition)
 open import ClosureRotationAdmission using (module Admission)
+open import ClosureContextualPortCoherence using (postPort)
+import Cubical.HITs.Pushout.Base as PO
 
 module Contextual (K : Type) (Piece : K → Type) (Boundary : K → K → Type)
   (attachL : {a b : K} → Boundary a b → Piece a)
@@ -24,7 +26,7 @@ module Contextual (K : Type) (Piece : K → Type) (Boundary : K → K → Type)
 
   fromAdmitted : {a b : K} {w : Word a b} {p q : Bracket w} →
     A.Edges.Admitted w p q → Change p q
-  fromAdmitted edge = change (A.Edges.actionEquiv edge)
+  fromAdmitted {w = w} edge = change (A.Edges.actionEquiv w edge)
     (equivEq (funExt (A.Edges.square edge)))
 
   module Ports {a b : K} {w : Word a b} {p q : Bracket w} (e : Change p q) where
@@ -94,10 +96,30 @@ module Contextual (K : Type) (Piece : K → Type) (Boundary : K → K → Type)
     result : Change (fork p q) (fork p′ q′)
     result = change C.First.equivalence (equivEq (funExt square))
 
+    parentFirst : Ports.First left → Ports.First result
+    parentFirst port x = cong PO.inl (port x)
+
+    parentLast : Ports.Last right → Ports.Last result
+    parentLast port x = cong PO.inr (port x)
+
+    preserveFirst : (port : Ports.First left) → Ports.FirstCoherence left port →
+      Ports.FirstCoherence result (parentFirst port)
+    preserveFirst port coherence x = postPort PO.inl (equivFun (appendFrame u v))
+      (λ i → equivFun (normalization left i) (firstAt p x))
+      (cong (equivFun (normalize p′)) (port x)) (normalizeFirst p′ x) (normalizeFirst p x)
+      (appendFirst u v x) (coherence x)
+
+    preserveLast : (port : Ports.Last right) → Ports.LastCoherence right port →
+      Ports.LastCoherence result (parentLast port)
+    preserveLast port coherence x = postPort PO.inr (equivFun (appendFrame u v))
+      (λ i → equivFun (normalization right i) (lastAt q x))
+      (cong (equivFun (normalize q′)) (port x)) (normalizeLast q′ x) (normalizeLast q x)
+      (appendLast u v x) (coherence x)
+
     admitted : A.Edges.Admitted (u ++ v) (fork p q) (fork p′ q′)
     admitted = A.Edges.admitted (equivFun C.First.equivalence) square
 
-    retainsComparison : A.Edges.actionEquiv admitted ≡ C.First.equivalence
+    retainsComparison : A.Edges.actionEquiv (u ++ v) admitted ≡ C.First.equivalence
     retainsComparison = equivEq refl
 
   -- Specializations keep the sibling's actual identity map. Its higher

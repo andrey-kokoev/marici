@@ -63,4 +63,4 @@ This closure rechecks the arbitrary-subtree root theorem and its induction depen
 
 ## Remaining constructive gate
 
-Contextual whiskering under additional ancestors remains unproved. The next constructive task is endpoint-aware lifting for the chosen native rotations, retaining the port and normalization-square coherence required by the enclosing pushouts. Automatic admission of arbitrary selected higher witnesses is no longer an open conjecture: the regression disproves it.
+Update: [Coherent context admission](closure-coherent-context-admission.md) proves lifting through arbitrary finite contexts when both port witnesses and their higher normalization coherence are supplied. The remaining native-rotation task is constructing that complete port package for the chosen unrestricted root comparison, and identifying any separately implemented strict contextual maps. Automatic admission of arbitrary selected higher witnesses is not an open conjecture: the regression disproves it.
