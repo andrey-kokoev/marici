@@ -124,6 +124,7 @@ result = {
     "dependencies": "python standard library only",
     "tolerance": tolerance,
     "checks": checks,
+    "matrices": {"source_gram": gram(ft), "observer_gram": gram(f0), "signed_cross_readout": matmul(matmul(transpose(psi), j4), psi)},
     "passed": passed,
     "conclusion": (
         "The explicit finite-dimensional projection pair validates the four-leg relative isometry, Hadamard common/difference rotation, eight-leg ordered/skew readouts, and first dyadic defect split."
