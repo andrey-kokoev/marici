@@ -7,6 +7,7 @@ open import Cubical.Foundations.GroupoidLaws using (rUnit)
 import Cubical.HITs.Pushout.Base as PO
 open import ClosureFiniteGluingNormalization using (module LiftSpan)
 open import ClosureRotationAdmission using (module Admission)
+import ClosureSubtreeRotationAdmission as IndexedRotations
 open import ClosureSpanComparisonCoherence using
   (module MiddleRightNaturality; module RightComposition)
 
@@ -14,6 +15,7 @@ module Subtrees (K : Type) (Piece : K → Type) (Boundary : K → K → Type)
   (attachL : {a b : K} → Boundary a b → Piece a)
   (attachR : {a b : K} → Boundary a b → Piece b) where
   module A = Admission K Piece Boundary attachL attachR
+  module Reindex = IndexedRotations.Subtrees K Piece Boundary attachL attachR
   open A.N
 
   -- Both Q and R are arbitrary finite subtrees. A alone is a leaf.
@@ -93,6 +95,20 @@ module Subtrees (K : Type) (Piece : K → Type) (Boundary : K → K → Type)
     compatibleComparison : Presentations.pack rightTree forward ≡
       Presentations.Views.Cuts.canonical rightTree
     compatibleComparison = Presentations.agreesWithGenerated rightTree forward
+
+    -- Fill the previously exposed word-reindexing obligation on this entire
+    -- left-leaf family, retaining the actual realization transport map.
+    module Indexed = Reindex.ReindexRotation (leaf a) q r
+
+    abstract
+      reindexedSquare : Indexed.NormalizationSquare
+      reindexedSquare x =
+        sym (λ i → equivFun (Indexed.normalizationPath i)
+          (transport-filler Indexed.realizationPath (Nat.Source.associate x) i))
+        ∙ rotationSquare x
+
+    reindexedForward : Indexed.E.Admitted Indexed.leftTree Indexed.rightTree
+    reindexedForward = Indexed.admit reindexedSquare
 
 -- Variable left subtrees still require the reindexed append-associativity
 -- normalization square. This theorem does not silently assume that square.

@@ -9,7 +9,7 @@ open import ClosureFiniteGluingNormalization using (module LiftSpan)
 open import ClosureGluingReassociation using (module Chain)
 
 -- Associator naturality when BOTH the middle and right pieces change.
--- All four attachment maps remain explicit; no map need be invertible.
+-- Attachment maps need not be invertible; the realization frames are equivalences.
 module MiddleRightNaturality {A B C B′ C′ S T : Type}
   (f : S → A) (g : S → B) (h : T → B) (k : T → C)
   (g′ : S → B′) (h′ : T → B′) (k′ : T → C′)
@@ -74,3 +74,6 @@ module RightComposition {S A C C′ C″ : Type}
         (sym (cong-∙ include (λ z → h₂ (~ z) s) (λ z → equivFun d (h₁ (~ z) s)))
           ∙ cong (cong include)
             (sym (symDistr (cong (equivFun d) (λ z → h₁ z s)) (λ z → h₂ z s))))) j i
+
+  compositionEquivalence : compEquiv First.equivalence Second.equivalence ≡ Combined.equivalence
+  compositionEquivalence = equivEq (funExt compositionAt)
