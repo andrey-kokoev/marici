@@ -2,28 +2,34 @@ from __future__ import annotations
 
 import json
 
-import sympy as sp
+
+def matmul(a, b):
+    return tuple(tuple(sum(a[i][k] * b[k][j] for k in range(2)) for j in range(2)) for i in range(2))
+
+
+def matsub(a, b):
+    return tuple(tuple(a[i][j] - b[i][j] for j in range(2)) for i in range(2))
 
 
 def main() -> None:
-    identity = sp.eye(2)
-    sign = sp.diag(1, -1)
+    identity = ((1, 0), (0, 1))
+    sign = ((1, 0), (0, -1))
 
     # Bidegree (1,1) boundary exists, but its mixed square fails.
     f_weak = identity
     f_strong = sign
     source_base_change = identity
     target_base_change = identity
-    route_strengthen_after_transfer = target_base_change * f_weak
-    route_transfer_after_strengthen = f_strong * source_base_change
+    route_strengthen_after_transfer = matmul(target_base_change, f_weak)
+    route_transfer_after_strengthen = matmul(f_strong, source_base_change)
     assert route_strengthen_after_transfer != route_transfer_after_strengthen
-    mixed_residual = route_strengthen_after_transfer - route_transfer_after_strengthen
-    assert mixed_residual == sp.diag(0, 2)
+    mixed_residual = matsub(route_strengthen_after_transfer, route_transfer_after_strengthen)
+    assert mixed_residual == ((0, 0), (0, 2))
 
     # Immutable realization gives an identity mixed cell.
     immutable_f_weak = sign
     immutable_f_strong = sign
-    assert target_base_change * immutable_f_weak == immutable_f_strong * source_base_change
+    assert matmul(target_base_change, immutable_f_weak) == matmul(immutable_f_strong, source_base_change)
 
     # Higher certificate chains need compatible pasting of mixed cells.
     certificate_states = ("b0", "b1", "b2")
@@ -32,7 +38,7 @@ def main() -> None:
     mixed_01 = identity
     mixed_12 = identity
     mixed_02 = identity
-    assert mixed_12 * mixed_01 == mixed_02
+    assert matmul(mixed_12, mixed_01) == mixed_02
 
     required_fields = {
         "logical_generator_id",
