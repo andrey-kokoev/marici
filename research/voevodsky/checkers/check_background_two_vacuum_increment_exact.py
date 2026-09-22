@@ -35,8 +35,8 @@ intervals=[(i,j) for i in range(7) for j in range(i+2,7)]
 results=[]
 for i,j in intervals:
     if (i,j) in shared:continue
-    word=tuple(range(i,j));other=(word[1],word[0])+word[2:]
-    source={(word,(0,)*len(word)):1,(other,(0,)*len(word)):-1}
+    word=tuple(range(i,j));swapped=(word[1],word[0])+word[2:]
+    source={(word,(0,)*len(word)):1,(swapped,(0,)*len(word)):-1}
     contexts=0;overlaps=[]
     for pre in permutations(range(i)):
         for post in permutations(range(j,6)):
