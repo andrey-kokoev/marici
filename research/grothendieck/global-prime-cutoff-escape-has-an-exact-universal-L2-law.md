@@ -105,7 +105,7 @@ For general h this theorem does not presume that either endpoint functional exis
 
 ## 6. Scope
 
-The convergence of the convolved measures is strong on each FIXED L2 source. It is not claimed in L2 operator norm uniformly over all sources or frequency scales. The fixed archimedean operator is unbounded, so its negligible contribution likewise requires the fixed-domain-vector hypothesis.
+The convergence of the convolved measures is strong on each FIXED L2 source. The subsequent `fractional-source-priors-make-global-escape-uniform-and-quantitative.md` proves uniform quantitative convergence on every positive fractional Sobolev prior ball, using an explicit prime-measure tail discrepancy. It also proves that ordinary L2 operator-norm convergence fails already for the bounded first-prime part, by simultaneous high-frequency recurrence. The fixed archimedean operator is unbounded, so its negligible contribution likewise requires the fixed-domain-vector hypothesis.
 
 No nonzero source in this domain can have an ordinary weak-L2 convergent sequence of canonical finite-place responses: the exact coefficient forces unbounded norms. This says nothing about positivity of an arithmetic form, a self-adjoint all-prime realization, or actual-letter factorization.
 
