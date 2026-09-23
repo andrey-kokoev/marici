@@ -1,0 +1,9 @@
+# An open positive nine-point target sector is absent from the four-mass cell A
+
+The opposite-side positive composite neighbor V has physical column 2 `(0,w₂)` and physical column 3 zero. At **three exact strictly positive** V source points `w₂=1/20,1/40,1/100`, with other weights `(w₄,w₅,w₆,w₇,w₈,t,u)=(1,1,1,1,1,3,2)` and positive rank-six moment-curve external data at physical labels 1–9, every ordered 2×2 V source minor is nonnegative and the V-to-target **8×8 Jacobian is nonzero**.
+
+For each resulting target, the **entire algebraic two-sheet fibre** of the original four-mass A chart was reconstructed by the kernel-Grassmannian quadratic, including its nonpositive branches. The quadratic has two real sheets in every case, **neither strictly positive**. On one sheet both `w₂` and `w₄` are negative; the other has `w₂>0` but `w₄<0` (also other failed inequalities). The checker determines all eight positivity-inequality signs **exactly** from the algebraic roots, not by merely testing a selected inverse branch.
+
+Because V is target-regular and the A quadratic has two distinct real roots with strict nonpositive signs, continuity and the inverse function theorem yield **nonempty open target neighborhoods contained in the nine-point positive image but absent from the positive A image**. This is a direct positive-image **coverage obstruction** to using A's arbitrary-Y two-sheet trace alone as the full nine-point positive-image form. V itself remains a distinct candidate, and other cells may overlap or cancel; these controls do not establish exhaustive n=9 coverage or determine the global canonical form.
+
+Checker: `research/nima/checkers/check_nine_point_opposite_side_positive_target_zero_column_fibre.py`; certificate: `research/nima/results/nine-point-opposite-side-positive-target-zero-column-fibre.json`.

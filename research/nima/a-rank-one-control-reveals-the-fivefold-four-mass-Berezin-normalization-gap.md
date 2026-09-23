@@ -1,0 +1,11 @@
+# A rank-one control reveals a fivefold four-mass Berezin-normalization gap
+
+The primary source (arXiv:1312.2007, `The Superamplitude`) writes a product `d⁴φ₁⋯d⁴φₖ` but does not specify in that passage the monomial normalization of this Grassmann measure or all invariant-volume/five-bracket sign conventions. We checked the simplest independent `k=1,n=5` cell before attempting to calibrate the four-mass `k=2` equality.
+
+For generic exact moment-curve `z₁,…,z₅`, gauge `C=(1,c₂,c₃,c₄,c₅)` and solve the unique `Cz=0`. The pushforward at `Y0` gives `source_density/J_z = 1/(c₂c₃c₄c₅ det(z₂,z₃,z₄,z₅))`. Direct comparison with the conventional five-bracket `η₁⁴` coefficient, including all FIVE oriented four-bracket denominators, gives ratio **+1** in this rank-one source gauge. With ordered independent Grassmann generators `φ¹..⁴,η₁¹..⁴`, an explicit exterior product of `(Σ_A φ^Aη_{1A})⁴` has top coefficient **24**, so raw ordered Berezin extraction differs from that five-bracket component by 24.
+
+For the previously certified four-mass `k=2` source form, the independently derived ordered sixteen-generator top coefficient is **2880** and the raw extracted complete component divided by the starred ψ component is **+2880** at two distinct rational external targets. Crucially `2880/(24²)=5`. Therefore applying the SAME scalar `1/24` independently to each of the two `d⁴φ` rows leaves an extra factor five; a *row-factorized Berezin measure alone* cannot reconcile both controls. This is a precise normalization obstruction, **not** a claim that the primary source theorem is wrong: projective delta/invariant-volume conventions, cell contour orientations or five-bracket normalization may carry k-dependent factors. The four-pair cyclic residue's previously audited minus relative to the ordered published α chart must additionally be tracked separately.
+
+Next: inspect the source's projective δ and invariant volume normalization for the missing k-dependent factor, and compare a nontrivial k=2 residue with the sourced ψ expression. An explicit global `Y`-dependent target rational form and nine-point generalized-R history remain distinct open work.
+
+Checker: `research/nima/checkers/check_source_Berezin_rank_one_rank_two_normalization.py`; result: `research/nima/results/source-Berezin-rank-one-rank-two-normalization.json`.

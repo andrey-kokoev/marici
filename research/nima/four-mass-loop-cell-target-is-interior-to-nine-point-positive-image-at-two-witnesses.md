@@ -1,0 +1,11 @@
+# The positive loop-column source need not map to an image boundary
+
+The eight-point four-mass source with a zero physical column 3 is a boundary cell of `G_+(2,9)`, but **source boundary does not imply image boundary** for the rank-six `k=2,m=4` map. At two exact positive rank-six external witnesses, its regular target `Y₀` lies in the **interior** of the image of strictly positive nine-point `2×9` matrices.
+
+Let `Z₉` be the nine-row moment curve, and let `K` be an exact `3×9` basis of its left kernel. For a fixed positive point `C` on the embedded loop-column cell, `C+εTK` has **exactly the same `2×6` target matrix** as `C` for every `2×3` matrix `T`. The six transverse source normals are (i) the two entries of the formerly zero column 3 and (ii) the ordered pair minors `(1,2),(4,5),(6,7),(8,9)`, all zero at `C`. At each witness the exact `6×6` linearization from the entries of `T` to these normals is invertible. Solve it so every normal increases initially by `+1`; positivity of all remaining ordered minors is open. Explicit rational choices `ε=1/1000` and `ε=1/100`, respectively, give **ALL 36 ordered source two-minors strictly positive** without moving `Y₀` at all.
+
+Apply the earlier `SL(6)` chart change to the nine-row moment curve. All **84 ordered external six-minors remain strictly positive**, and the source target is the prior two-sheet regular `Y₀` point. At each new strictly positive preimage, an exact `8×8` Jacobian built from eight independent source-coordinate tangent vectors to the local Grassmannian target chart is NONZERO. A rank-eight submersion from an open positive source neighborhood maps onto a neighborhood of `Y₀`; consequently `Y₀` is **interior** to the nine-point positive top-cell image at these witnesses. It cannot be labelled an image-boundary face at these inputs simply because one representation uses a positroid boundary cell.
+
+This gives two explicit positive preimages of the same targets in addition to the two regular boundary-cell sheets. It does not determine all preimages, the canonical form of the full image, or any global image triangulation. Nor does it identify the four-mass ψ as the full nine-point amplitude residue.
+
+Checker: `research/nima/checkers/check_nine_point_four_mass_loop_image_interior.py`; certificate: `research/nima/results/nine-point-four-mass-loop-image-interior.json`.

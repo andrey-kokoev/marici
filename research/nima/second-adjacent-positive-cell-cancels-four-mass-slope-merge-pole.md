@@ -1,0 +1,11 @@
+# A second adjacent positive cell cancels the four-mass slope-merge pole
+
+The four-pair source has another internal dlog boundary at **`v=t−u=0`**, where its two right-hand column-pair slopes merge. A second explicit positive eight-dimensional nine-point cell cancels this boundary locally. Keep all the four-mass source columns except physical column 7: replace its lower component `w₆t` by `w₆u`. Physical columns **(7,8,9)** now form a positive triple-parallel block. In the sourced cyclic top-cell measure, the sixfold pole `(78)=0` replaces `(67)=0`; the neighbor has **23 strictly positive** and **13 identically zero** ordered minors for positive `w₂,w₄,w₅,w₆,w₇,w₈,u,v`.
+
+At `v=0` the two complete source matrices—and therefore their full fermionic numerators and target maps—coincide. In the top-chart normals, `(78)=g=w₆w₇(v−e)` replaces `(67)=w₅w₆e`; the change has `∂e/∂g=−1/(w₆w₇)`. Exact cyclic-measure residues give **opposite intrinsic eight-form densities** in the same source-coordinate order. The two target Jacobians share all seven columns tangent to the `v=0` boundary and differ only in the transverse `v` column. Cramer's cofactor identity therefore gives equal target-denominator factors for any transverse direction and **opposite pushed boundary residues for every SU(4) component** wherever the maps are regular.
+
+The checker verifies nonzero target Jacobians and residue cancellation for **three distinct exact positive boundary points**, with two transverse directions each. A necessary chart detail: the earlier target chart using the last two output columns degenerates when all four right-hand source columns align. The proof instead uses the regular target frame from output columns `(0,2)`. Confusing this chart singularity with a physical form pole would be incorrect.
+
+Together with the earlier `(45)↔(56)` cancellation at `w₄=0`, this gives **two independent local internal-facet adjacency relations** of the sourced four-mass cell. No exhaustive nine-point triangulation, cancellation of the remaining polar boundaries, or full image canonical form is established.
+
+Checker: `research/nima/checkers/check_nine_point_slope_merge_adjacent_cell_cancellation.py`; result: `research/nima/results/nine-point-slope-merge-adjacent-cell-cancellation.json`.

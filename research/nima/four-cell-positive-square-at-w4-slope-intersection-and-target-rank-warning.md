@@ -1,0 +1,9 @@
+# A four-cell positive square at the `w₄=0`, `t−u=0` intersection
+
+The original eight-cell **A** has separately established positive neighbors **B** (exchange cyclic pole `(45)` for `(56)` on `w₄=0`) and **C** (exchange `(67)` for `(78)` on `t−u=0`). Both moves can be made together: **D** has physical column 5 equal to `(−w₄/t,w₄)` and physical column 7 equal to `(−w₆,w₆u)`. All four source cells have nonnegative ordered minors on positive parameters. A has 24 positive/12 zero minors; B, C and D have 23 positive/13 zero minors.
+
+They form an exact square of full source matrices: **A=B** and **C=D** at `w₄=0`; **A=C** and **B=D** at `t−u=0`. At their common codimension-two corner all four source matrices and fermionic numerators agree. An independent simultaneous top-cell residue for D at cyclic poles `(12),(23),(34),(56),(78),(89)` gives the oriented intrinsic density **equal to A's**. In the same source coordinate order the four signs are **A −, B +, C +, D −**, so their formal common-corner source residues cancel with the square incidence pattern. The two exchanged top normals contribute two minus signs.
+
+**Important target warning:** A source-cell incidence square is **not** yet a pushed target-form corner theorem. In two exact positive corner controls with the fixed strictly positive moment-curve external data, the eight-dimensional source-to-target Jacobian ranks were **A:8, B:7, C:8, D:7**. Thus the naive inverse-Jacobian/cofactor proof at this corner is unavailable for B and D; a singular pushforward or an independent target contour analysis is needed. No claim of global image coverage or full nine-point form follows.
+
+Checker: `research/nima/checkers/check_nine_point_w4_slope_intersection_square.py`; result: `research/nima/results/nine-point-w4-slope-intersection-square.json`.

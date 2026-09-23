@@ -11,7 +11,7 @@ C=s.Matrix([weights,[weights[i]*t[i] for i in range(7)]])
 Y=C*Z;A=Y[:,[0,1]];B=A.inv()*Y[:,2:];parameters=(*w,u,v)
 J=B.reshape(8,1).jacobian(parameters)
 # R is a rational section of the source-to-target linear map.
-R=Z.T*(Z*Z.T).inv();assert Z*R==s.eye(6)
+R=(Z.T*Z).inv()*Z.T;assert R*Z==s.eye(6)
 a,b=s.symbols('a b')
 def delta(M,i,j):return s.det(M[:,[i,j]])
 def invert(Yvalue):
@@ -39,7 +39,7 @@ for ws,uu,vv in samples:
               'kernel_coefficients':list(map(str,ab)),'inverse_recovers_source':True,**canonical_density(values)})
 assert rows[0]['target_jacobian']=='102400/194481'
 report={'schema':'marici.nima.seven-point-chart-pushforward.v1',
- 'inverse':'Given a target representative Y, R=Z^T(ZZ^T)^-1, D0=YR. Every source representative mapping to Y is D0+[a,b]^T k, k spans ker(Z^T). The two prescribed minors (23),(56) are linear equations in a,b; nonzero constraint determinant gives a unique rational inverse.',
+ 'inverse':'Given a target representative Y, R=(Z^T Z)^-1 Z^T, D0=YR. Every source representative mapping to Y is D0+[a,b]^T k, k spans ker(Z^T). The two prescribed minors (23),(56) are linear equations in a,b; nonzero constraint determinant gives a unique rational inverse.',
  'canonical_density_assumption':'Product dlog w2..w7 times du/(u-2) wedge dv/(v-u), with coordinate orientation [w2..w7,u,v]. This is a candidate positive-chart canonical form; equality to the physical history has not been checked.',
  'target_coordinates':'B=(Y[:,0:2])^-1 Y[:,2:6], flattened row-major',
  'samples':rows,'scope':'Exact rational local inverse and candidate eight-form coefficients on a fixed moment-curve external Z; no equality with generalized-R or global triangulation.'}
