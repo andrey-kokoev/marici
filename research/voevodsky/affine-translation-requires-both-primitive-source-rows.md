@@ -1,0 +1,7 @@
+# Affine translation requires both primitive source rows
+
+Let y=x+t. The original source `0<=x<=L` becomes `t<=y<=L+t`, with BOTH primitive inequalities `-y<=-t` and `y<=L+t`; the target `x<=T` becomes `y<=T+t`. A proof `(a,b;c)` still satisfies b-a=1 and `(-t)a+(L+t)b+c=T+t`, because the added offset is t(b-a)=t. Thus proof multipliers and surplus transport unchanged, and the primitive-bound syzygy has bound `(-t)+(L+t)=L`. The zero-surplus normalizer `(a+c/L,b+c/L;0)` commutes STRICTLY with this complete change of coordinates, for positive and negative t alike.
+
+Fresh exact-rational `check_affine_translation_provenance.py` passes 132 checks. A false 'translate upper row only' shortcut fails in 60 tested cases; the checker refuses to type a translation omitting the lower primitive row. Concretely `(1,2;1)` proves x<=3 on `[0,1]` and proves y<=4 on `[1,2]` using BOTH translated bounds, while the upper-row-only inequality gives 2*2+1=5 rather than 4. This is a provenance constraint, not a failure of affine-coordinate naturality when the complete source presentation is retained.
+
+Together with positive row rescaling, this supports a scoped endpoint comparison invariant under certain source-presentation isomorphisms, while surplus-injecting operations remain lax. The free-path missing 4-cell and the independent analytic S,A,R,C,G role-map gate remain unresolved. Next, state a minimal algebraic criterion on general source-row transformations for transporting the syzygy, rather than overgeneralizing from one-dimensional affine examples.

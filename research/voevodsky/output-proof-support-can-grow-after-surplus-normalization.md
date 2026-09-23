@@ -1,0 +1,7 @@
+# Output proof support can grow after surplus normalization
+
+For nonnegative Farkas composition, independently derived output multiplier support equals the union of input supports with POSITIVE coefficients; an input with coefficient zero contributes no row dependency. Fresh `check_composite_support_rederivation.py` checks sixteen rational coefficient pairs on primitive x/y input proofs. This law is about proof matrices, not source-generation authorization.
+
+The key non-composition step is surplus normalization. The old slack proof `(0,1,0,0;c=1)` of x<=2 uses only primitive row x-high. Consuming its surplus with the independent y-cycle produces `(0,1,1,1;c=0)`, which also proves x<=2 but now depends on y-low and y-high. If y-high bound changes from 1 to 2, the old slack proof retains valid Farkas arithmetic while the normalized output certificate FAILS its bound equation. A cache that copies only the input's row-support list into its normalized output would miss this invalidation.
+
+Thus support must be recomputed on EVERY emitted proof vector and compared to declared dependencies. A derived proof may be more source-sensitive than its input even when it has less surplus. Both records still carry the old source-generation identity and neither gains new operational authority merely from arithmetic revalidation. Next test whether a zero-bound signed redistribution can REMOVE a row dependency again, and whether support changes along a proof-comparison path must be stored edge-by-edge rather than only at its endpoints. Analytic S,A,R,C,G remains deferred.

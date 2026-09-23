@@ -1,0 +1,7 @@
+# Inspected Site declarations do not name the Farkas row owner
+
+A fresh bounded read-only pass inspects `.narada/AGENTS.md`, Site README, config, role-plane declarations, MCP surface declarations and epistemic README, alongside the frozen Farkas row-attestation request. None of those inspected declarations names the exact `fixed-unit-square-farkas-rows:v1` issuer; the request retains `requested_owner=null`, `owner_event_id=null`. Fresh `check_bounded_source_directory_discovery.py` reports `OWNER_UNDISCOVERED_IN_INSPECTED_DECLARATIONS`. Site law states that code and artifacts outside `site_root` are not Narada knowledge merely from their location. A research author or graph actor cannot become a row source grant by directory path.
+
+This is a bounded search result, NOT proof of absence in every possible external trust registry. There is no authenticated issuer recipient in these inspected declarations, so sending an owner attestation request to a guessed participant would fabricate authority. If a separately admitted, source-scoped recipient appears later, the existing exact row manifest/request can support an evidence-bearing handoff under the owning surface.
+
+Next test a future directory entry as an explicitly TYPED candidate: distinguish a descriptive `contact` field from an admitted grant/verification endpoint and fail closed if a candidate has no cryptographic trust root, source-scope binding or active generation. Local mathematical research can proceed without claiming an owner or analytic S,A,R,C,G role map.

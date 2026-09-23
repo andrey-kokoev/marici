@@ -1,0 +1,7 @@
+# Two-client gossip detects shared forks only under authenticated exchange
+
+Two clients holding different sequence-2 heads for the SAME issuer/source/event/epoch can expose a fork by exchanging those heads. Fresh `check_two_client_fork_gossip.py` checks nine pairings of A head, B head and common sequence-1 head. Under explicitly ASSUMED authentic head provenance and delivered exchange, A versus B reports `OBSERVED_SAME_SLOT_FORK`. Equal observed heads report only equality of that pair, not global log uniqueness. A sequence-1 versus sequence-2 pair requires an extension witness. If delivery is absent there is no shared observation; if the gossip input is not authenticated, a conflicting string is not proof of issuer equivocation.
+
+The bounded offline-receipt result therefore has exact conditions: client gossip can DETECT a witnessed fork, but cannot certify absence of hidden forks, guarantee participation, or independently create trusted issuer keys. This conditional protocol neither authenticates a real Farkas source-row publisher nor grants present execution capability. Its witness should be retained as a pair of conflicting signed checkpoints, not collapsed to a single chosen head.
+
+Next freeze a fork-evidence retention packet and test omission of either head, a changed issuer scope and a forged transport claim. The offline evidence contract can then close locally without claiming an externally implemented anti-fork network. Analytic S,A,R,C,G remains deferred.

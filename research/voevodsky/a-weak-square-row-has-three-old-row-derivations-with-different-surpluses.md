@@ -1,0 +1,7 @@
+# A weak square row has three old-row derivations with different surpluses
+
+For the SAME redundant source row `x+y<=3` on the unit square, old upper rows `x<=1,y<=1` give proof A=(0,1,0,1;c=1). Add the source x-cycle (1,1,0,0) to consume its surplus and obtain B=(1,2,0,1;c=0); alternatively the y-cycle yields C=(0,1,1,2;c=0). All three prove the identical row normal/bound. Fresh `check_competing_weak_row_derivations.py` checks these exact packets and eight scaled substitutions. Replacing multiplier z on the weak row with A or B differs by z times the x-cycle and a compensating surplus decrease z.
+
+Consequently the nested surplus cocycle from the prior leaf is relative to CHOSEN derivations. The weak-row syntax alone does not determine the scalar grade or proof matrix. Minimum surplus still does not uniquely choose between B and C, and a second tie policy could be noncompositional. The A->B rewrite is a source-rooted candidate directed proof comparison, not an identity of derivation histories or a 2-cell already declared in the original Farkas category.
+
+Next test a SOURCE-ROOTED normal form on the whole family of x/y-cycle choices: can a deterministic lexicographic policy be stable under both positive row rescalings and source-row reordering, or is its first failed naturality square unavoidable without retaining original row identities? The analytic S,A,R,C,G assignment remains deferred.

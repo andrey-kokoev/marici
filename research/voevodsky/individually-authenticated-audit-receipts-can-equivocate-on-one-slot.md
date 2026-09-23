@@ -1,0 +1,7 @@
+# Individually authenticated audit receipts can equivocate on one slot
+
+Two toy event-A receipts have the SAME issuer, source, event, epoch and sequence 7, but DIFFERENT primitive-row digests. Both pass their individual local HMAC check because the conditional issuer signs each. Presented together, they trigger `EQUIVOCATION_SAME_SLOT`. A single process-local append-only slot map rejects the second conflicting commit, but an offline client shown only ONE of two forked receipts cannot establish that no other branch exists. Fresh `check_offline_receipt_equivocation.py` exercises both cases.
+
+The missing offline constructor is stronger than a receipt hash or signature: an independently trusted append-only commitment plus a consistency/anti-fork view that clients can check across observations, with issuer scope and source/event binding. A local log that simply declines a second commit is a useful implementation invariant, not proof that another issuer instance cannot publish a fork. HMAC here is a toy shared secret, not a real signature or authenticated Farkas source owner.
+
+This closes a bounded equivocation diagnostic and identifies an independent trust-root problem. Next test an explicit sequence-anchored hash-chain transcript with two competing heads; show that internal hash linkage detects mutation within one branch but cannot choose which fork is authoritative without an external checkpoint. Preserve mathematical proof validity, historical receipt authenticity and live authority as distinct questions. Analytic S,A,R,C,G mapping remains deferred.

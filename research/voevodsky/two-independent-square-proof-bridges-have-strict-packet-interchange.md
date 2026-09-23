@@ -1,0 +1,7 @@
+# Two independent square proof bridges have strict packet interchange
+
+Both target rows x<=2 and y<=2 have competing zero-surplus Farkas proofs on the irredundant unit square. For x, take X0=(1,2,0,0) and X1=(0,1,1,1); for y, Y0=(0,0,1,2) and Y1=(1,1,0,1). Combine them via a two-input postproof with positive coefficients k,ell and nonnegative post-surplus delta. Independently interpolate X at parameter t and Y at parameter s. The horizontal proof packet is `k((1-t)X0+tX1)+ell((1-s)Y0+sY1)` with surplus delta. Interpolating the four composed corner packets in x-then-y order or y-then-x order gives exactly the same vector: the mixed cross-difference is zero.
+
+Fresh `check_two_varying_square_proof_bridges.py` passes 128 exact rational interchange squares (64 with positive post-surplus), verifies sound normalization of the injected delta, and refuses combining a second proof with a foreign primitive root. These are STRICT packet equations; a fine proof-path control still sees two different orders of horizontal interpolation. No source-authenticated interchange 3-cell or higher coherence follows solely from equality of the vectors.
+
+This supports a bounded multiaffine *certificate calculus* on the fixed primitive square, not an arbitrary source-independent category. Next test a nonlinear continuation that depends on the chosen proof multipliers (e.g. a deterministic min-surplus or sparsity selector) and identify its first failure of packet-level interchange; avoid declaring every continuation affine merely because Farkas composition is.

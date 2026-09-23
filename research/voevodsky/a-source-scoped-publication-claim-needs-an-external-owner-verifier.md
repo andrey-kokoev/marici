@@ -1,0 +1,7 @@
+# A source-scoped publication claim needs an external owner verifier
+
+A typed negative/conditional gate now takes THREE different inputs: (1) an actual admitted Marici graph event, (2) locally verified Farkas source-row mathematics, and (3) a proposed row-source issuer/event binding. Fresh `check_source_scoped_publication_claim.py` uses the tracked graph event and the frozen unit-square row request. A caller who writes `issuer=marici.Voevodsky` and invents an event still receives `OWNER_ATTESTATION_UNVERIFIED`; sharing the graph actor's name is not source authority. Missing mathematical proof, changed manifest digest and omitted source-event binding have separate refusal codes.
+
+Even a positive result is explicitly CONDITIONAL on an independently provided owner verifier. The test's injected `lambda _:True` is a stub premise, not a real grant. Existing graph admission is only a coordination event (its record says `certifies_truth:false` and source authority is not granted). Locally checked rows show arithmetic truth relative to an assumed manifest, not who committed that manifest or whether a current capability exists.
+
+This closes the inspected graph-as-Farkas-publisher substitution question negatively. Next research should audit whether existing source-ownership documentation assigns an actual issuer for these Voevodsky Farkas rows and, if not, keep the mathematical publication as a separate non-authoritative artifact rather than request a graph-policy mutation. The analytic S,A,R,C,G map remains deferred.

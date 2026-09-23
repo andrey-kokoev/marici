@@ -1,0 +1,22 @@
+# Analytic five-role comparison audit: residue is a vertex, base is not
+
+## Authoritative types
+
+The ordered analytic role simplex in `research/nima/correction-the-residue-role-not-the-retained-base-is-the-fifth-vertex-of-the-full-four-simplex.md` is `[S,A,R,C,G]=Delta^4`. R is the omitted RESIDUE vertex of its self-dual `[S,A,C,G]` facet. The retained corrected state b_z=Delta_Xi(z) is a basepoint of every cell, NOT a fifth vertex. Thus the nine-vertex based cone `b_z * (Delta^1 x Delta^3_[SACG])` addresses the facet-level homotopy; the full-system based homotopy has eleven vertices `b_z * (Delta^1 x Delta^4_[SARCG])`. Treating nine vertices as the full five-role comparison is already a type/shape error.
+
+The analytic target `research/voevodsky/the-analytic-realization-of-the-prior-two-segal-baseline-is-the-waldhausen-s-construction-of-closed-cone-packages.md` proposes closed graph-domain packages with differential or closed relation, kernel/cokernel, reciprocal transport and independently admitted adjoint mate where present. Interval objects X_ij and cofiber triangles carry the comparison; a simplex of constraint presentations alone does not construct those operators. `research/nima/simplex-cones-vs-historical-graph-packages.md` establishes a sharp discriminator: bounded simplex-face cones are legitimate closed packages but acyclic, while a historical rectangular analytic edge has a one-dimensional cokernel. Matching combinatorial indexing is NOT quasi-isomorphism or preservation of defect.
+
+## Candidate correspondence and first missing map
+
+| Existing local constructor | Analytic target | Exact status |
+| --- | --- | --- |
+| four top staircase cells of `B*(Delta^1 x Delta^3)` with Farkas/base-change arrows | based self-dual SACG facet, not full SARCG system | matching labelled incidence only; no map assigning S,A,C,G source roles to the four constraint presentations |
+| retained nonempty triangle B and certified invariant refinement | corrected analytic base b_z=Delta_Xi(z) | base-preservation analogy, but no map B->analytic corrected-state carrier respecting source and completion |
+| affine normals/reference slack and proof-matrix composition | analytic residue R, relative jets, closed cone quotient | NO source-derived map from slack to an analytic residue jet or closed edge operator F_e; no kernel/cokernel or closed graph domain supplied |
+| nine live section-provider sessions, scope and revocable handle | closed analytic package with reciprocal/adjoint transports | live operational coherence on fixed polyhedral source only; neither adjoint mate nor analytic cofiber is built |
+
+The first missing typed constructor occurs already at the role assignment: a source-derived functor sending each S,A,C,G presentation, its actual analytic operators/relations and the retained base to a specified constraint/provider object with compatible source identity. Renaming four vertices is not such a functor. Even conditional on a role assignment, an analytic residue-edge map must preserve the historical nonzero kernel/cokernel (and closed-domain/adjoint structure), not turn it into an acyclic simplicial incidence cone or a scalar Farkas slack. Existing Farkas composition is exact in its OWN category and is not proof of this comparison.
+
+A discriminating acceptance test for a candidate is: give one historical edge operator F_e and its domain; compute its closed cone's kernel/cokernel and its image under a proposed polyhedral constraint/provider map, and show preservation of the nonzero cokernel class and retained base under one actual refinement. The countercontrol is the contractible simplex-face cone: a functor that sends the historical nonzero defect to that acyclic cone must be rejected. A second test requires reflection-paired facets and the fixed middle facet, not just dimension-five cones.
+
+SCC classification: forward realization is blocked by missing role-to-source map; static incidence shape succeeds only as combinatorics; route/coherencer and reciprocal/adjoint preservation cannot be promoted. This is a completed DOCUMENT/CONSTRUCTOR audit with an explicit obstruction to the naive identification, not a claim that every future analytic realization is impossible. Subsequent construction requires an authoritative edge-to-operator assignment and comparison map; absent it, defer that construction, do not manufacture an executable waiting leaf or request changes to another owner's files.

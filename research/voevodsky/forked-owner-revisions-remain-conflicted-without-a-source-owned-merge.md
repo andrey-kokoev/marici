@@ -1,0 +1,7 @@
+# Forked owner revisions remain conflicted without a source-owned merge
+
+A FICTIONAL denial event has two directly superseding events for the SAME proof-use action/request/manifest: one allow, one deny. Fresh `check_forked_owner_revisions.py` returns `CONFLICTING_REVISIONS` regardless of their graph order. The earlier denial remains recorded. A proposed resolution shape must explicitly cite BOTH child event IDs and be independently established as source-owned; a missing parent or missing source-owned assertion is refused. Even a complete fictional shape yields only `TEST_ONLY_MERGE_SHAPE_NOT_AUTHORIZED` because the script cannot validate a real issuer signature.
+
+The actual Farkas row owner has not sent a denial, allow or merge, and the prepared payload is still unsendable. Graph coordination chronology cannot select policy among incompatible source claims. A genuine issuer authority plane must resolve any future fork atomically before row-origin or proof-use publication can depend on it.
+
+The bounded handoff/ack branch is complete: receipt is not attestation, partial responses preserve action separation, revisions require explicit predecessor bindings, and forks require source-owned resolution. A nonredundant successor can model an AUDIT TRAIL for the unsent request and hypothetical responses, testing append-only event links and rejection of an overwritten denial, while keeping all synthetic fixtures distinct from real Site events. Analytic S,A,R,C,G deferred.

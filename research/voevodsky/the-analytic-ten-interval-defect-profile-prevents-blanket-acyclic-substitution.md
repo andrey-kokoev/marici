@@ -1,0 +1,7 @@
+# Ten-interval analytic defect profile prevents blanket acyclic substitution
+
+Fresh exact-rank checker `check_analytic_interval_defect_profile.py` imports the historical four-edge operator fixture and computes all ten closed bounded interval maps. The four generating edges have `(kernel,cokernel)` dimensions `(0,1),(1,0),(0,1),(1,0)`. Composite intervals are NOT uniformly of one type: `[0,2]=(1,1)`, `[0,3]=(1,2)`, `[0,4]=(1,1)`, `[1,3]=(1,1)`, `[1,4]=(1,0)`, and `[2,4]=(0,0)`. Thus one long interval is acyclic, while replacing EVERY edge with acyclic simplex-face cones would erase nontrivial generating and composite relative defects.
+
+The invariant is a graded per-interval signature, not one total alternating number: an isomorphism that exchanges kernel and cokernel or matches their sum would still change the analytic cofiber type. The reciprocal mate fixture preserves each interval rank and carries checked triple homotopies, so a candidate realization must respect interval typing and reciprocal transport rather than only four edge endpoint shapes. This is a precise target for the owner handoff's future assignment. It does not identify analytic S/A/C/G role labels with the polyhedral T_i or turn Farkas slack into homology.
+
+Command: `uv run --with sympy python research/voevodsky/checkers/check_analytic_interval_defect_profile.py`. Result: `research/voevodsky/results/analytic-interval-defect-profile.json`. No analytic completion or source-derived polyhedral functor is asserted.

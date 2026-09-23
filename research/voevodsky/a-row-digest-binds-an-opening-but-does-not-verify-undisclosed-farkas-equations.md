@@ -1,0 +1,7 @@
+# A row digest binds an opening but does not verify undisclosed Farkas equations
+
+Keep a digest of the complete ordered square row manifest and multiplier packet `(0,1,0,1)` targeting normal (1,1), bound 2. With the row matrix withheld, an ordinary checker cannot evaluate the Farkas normal/bound equations: fresh `check_digest_only_row_packet.py` returns `ROW_MATRIX_UNDISCLOSED`. Disclose the correct rows and the local digest/equation check succeeds. Disclose a manifest with only the UNUSED x-lower row changed: the selected packet still proves the same target, but the opening is refused as `MANIFEST_OPENING_MISMATCH`.
+
+A digest is a binding pointer to bytes under a fixed encoding, not the coefficients, a zero-knowledge proof of the row equations, or an issuer signature. Conditional upon an authenticated correct opening it supports local mathematical verification; without a separately admitted publisher identity the source-scoped row authority remains `UNAUTHENTICATED` even after the mathematics passes.
+
+The bounded retention-tiers audit is complete: explicit fields may be algebraically redundant, but neither a digest nor target equality substitutes for the omitted source matrix or historical event evidence. A nonredundant successor should test a source-matrix DISCLOSURE WITH A SIGNED OWNER ATTESTATION SCHEMA as an interface design only, with unknown issuer remaining fail-closed and no fabricated owner event. Identify minimum event-bound inputs required before a future real attestation could be verified. Analytic S,A,R,C,G remains deferred.

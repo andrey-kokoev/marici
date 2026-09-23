@@ -1,0 +1,7 @@
+# Farkas multiplier support detects omitted source dependencies
+
+Do not trust a proof packet's declared dependency list. For each archived Farkas leaf, independently derive the minimal primitive-row support from its nonzero multipliers, after first checking the exact source-normal and bound equations. On the four unit-square leaves, this computes a:{x-low,x-high}, b:{y-low,y-high}, c:{x-high}, d:{y-high}. Fresh `check_multiplier_derived_dependencies.py` refuses four omitted-dependency declarations, including an empty support falsely claimed for c or d. Hypothetically changing x-high to bound 2 invalidates exactly a/c; changing y-high to bound 2 invalidates exactly b/d. Both match the recomputed affected supports in this bounded fixture.
+
+This tightens the previous dependency DAG: an adversary cannot leave x-high out of a's support merely to keep it cached. An unchanged-row proof for b/d after x edit still has valid arithmetic, but its OLD source-generation identity remains old. It cannot be treated as a newly authorized record without independently binding it to the revised source. Conversely, a zero multiplier means that particular row's numeric bound does not enter the Farkas certificate; it does not mean the overall source chart or issuer identity is unchanged.
+
+Next test a nontrivial combination where a changed row has zero multiplier in one input but becomes nonzero after composition, ensuring support is rederived at EACH output and cannot be transported naively from a selected input. Analytic S,A,R,C,G correspondence remains deferred.

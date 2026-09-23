@@ -1,0 +1,7 @@
+# Same Farkas row hash does not migrate an issuer grant across generations
+
+A local FICTIONAL issuer fixture keeps the same exact Farkas row-manifest hash and event label while a registry moves from generation 1 to 2. Fresh `check_hypothetical_attestation_generation_replay.py` refuses the old event as `SUPERSEDED_GENERATION`. Merely rewriting the claim to generation 2 while recycling its event label fails `EVENT_GENERATION_REPLAY`; an old revocation snapshot fails `REVOCATION_VIEW_STALE`. A newly labelled event with matching synthetic live generation and revocation fields passes only a TEST-ONLY freshness predicate, explicitly `NOT_AUTHORIZED`.
+
+The real frozen attestation request still has no designated issuer, source event, authenticated trust root, signature verifier or revocation channel. Mathematical manifest equality therefore cannot migrate a grant or make any synthetic test event real. A full production check must obtain live atomic grant/generation/revocation evidence from an authorized issuer surface AND validate signed event bytes; no such recipient is present in the inspected evidence. No owner message is sent to an invented actor.
+
+Next test time-of-check/time-of-use drift even when a hypothetical live generation was read: if generation or revocation state changes between grant lookup and row-proof publication, require one atomic snapshot binding all verified fields to the same epoch. This remains a local model, not a real publication claim. Analytic S,A,R,C,G remains deferred.

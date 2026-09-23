@@ -1,0 +1,7 @@
+# Two row-witness paths agree on packets but retain distinct middle manifests
+
+Choose positive monomial row witnesses f:A->B and g:B->C for the square source. Their composite h:A->C has the same row presentation and transports both compared proof packets and their SIGNED difference exactly as the sequential route. Fresh `check_two_witness_comparison_paths.py` checks the exact rational equality and tests that sequential replay requires the B manifest digest; substituting C as the middle digest is refused.
+
+The two-step manifest record (A,B,C) and direct record (A,C) are DISTINCT paths despite equal final packets and signed delta. To replay the two-step observation, retain f and g, their endpoint manifests and B's intermediate manifest; h alone only reconstructs the mathematical endpoint, not the occurrence of B in the path. Neither path authenticates the row issuer or supplies higher proof-history equality.
+
+The partial-selector overlap branch now has a bounded mathematical comparison calculus: candidate coverage, signed deltas, additive telescoping, and positive row-witness naturality, with explicit history and authority exclusions. A nonredundant successor should test a ROW-DELETION bridge (split redundant retraction) on signed selector deltas: whether transport across a noninvertible presentation forgets a nonzero comparison and what extra kernel/path evidence is needed to distinguish it. Analytic S,A,R,C,G mapping remains deferred.

@@ -1,0 +1,7 @@
+# An independent proof-event swap needs an explicit certificate
+
+For the frozen square derivation event DAG Z->W,V->T (both W and V depend on Z; T depends on both), adjacent W,V may exchange temporal order after Z. Fresh `check_square_trace_swap.py` checks both linearizations and emits a certificate containing both synthetic event IDs, predecessor sets, common prefix digest, row manifest and source/target trace digests. It rejects adjacent Z/W and V/T swaps as dependent, plus a stale manifest or initially invalid trace. Thus a proposed trace relation can identify these two linearizations by an EXPLICIT independent-swap witness, not merely because their endpoints or DAGs coincide.
+
+This certificate is LOCAL and synthetic: it does not assert a recorded execution actually underwent a swap, does not promote DAG equality to arbitrary history equality, and does not grant a row publisher identity. Its independence criterion is the frozen derivation dependency graph; external temporal effects or side conditions would require their own edges before swapping were safe.
+
+Next test coherence of two commuting swaps involving THREE independent branch events: opposite swap orders can reach the same final trace, but their swap-proof paths differ. Determine whether a braid/commutation 2-cell is necessary and exactly which pairwise independence/manifest conditions gate it. Analytic S,A,R,C,G remains deferred.

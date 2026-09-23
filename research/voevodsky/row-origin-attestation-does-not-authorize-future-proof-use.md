@@ -1,0 +1,7 @@
+# Row-origin attestation does not authorize future proof use
+
+The frozen request explicitly lists TWO capabilities: `attest-primitive-row-origin` and `authorize-future-source-rooted-proof-use`. A local least-privilege test models them as independent set members. A fictional origin-only grant passes only the TEST-ONLY origin predicate and refuses proof use as `CAPABILITY_NOT_GRANTED`. A fictional combined grant can match either requested action, but revoking ONLY proof use rejects that action while leaving origin scope unchanged. A foreign row manifest is refused even when the issuer and action strings coincide. Fresh `check_source_capability_lattice.py` checks these cases.
+
+This is not a real authorization: owner and owner event remain unset in the actual request, and no live signed grant, trusted issuer or revocation route is present. A future issuer must authorize each action explicitly and bind it to ordered row manifest, source event, generation and revocation state. A statement that the square rows originate somewhere does not itself authorize all subsequent graph-backed proof publication.
+
+Next test capability DELEGATION: a hypothetical row-origin grant cannot be forwarded as proof-use authority by an intermediary unless a separately scoped delegation edge, issuer trust root, allowed action and expiry are all verified. Keep actual unknown owner fail-closed and analytic S,A,R,C,G mapping deferred.

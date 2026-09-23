@@ -1,0 +1,7 @@
+# Overlapping finite selectors can disagree with a typed signed comparison
+
+On the frozen square source, two finite candidate sets for weak row `x+y<=3` are {A,B} and {B,C}; they overlap in B. Suppose their explicit local selector rules choose A=(0,1,0,1;c1) and C=(0,1,1,2;c0). Both certify normal (1,1) and bound 3, but A != C, and their difference C-A has multiplier vector (0,0,1,1) with surplus -1. This SIGNED delta has zero total normal and bound; it is a comparison of valid packets, not a nonnegative proof by itself or an identification of their execution histories. Fresh `check_partial_selector_overlap.py` checks the equation and refuses target mismatch.
+
+Comparison also requires the same ordered source-row manifest, or a separately supplied positive row witness transporting one presentation into the other. Merely observing a common target cannot align mismatched row indices. This checker refuses differing manifests without a witness; it does not implement the witness case. Equality of mathematical row manifests still cannot grant an issuer identity: the result is explicitly LOCAL_MATH_ONLY.
+
+Next test composition of signed packet comparisons across THREE partial selectors: verify additive deltas and determine whether endpoint compatibility and overlap witnesses suffice or whether a retained middle-selector certificate is necessary for historical path replay. Analytic S,A,R,C,G mapping remains deferred.

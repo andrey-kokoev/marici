@@ -1,0 +1,7 @@
+# Checkpoint consistency refuses observed forks but not unseen forks
+
+Given a previously retained sequence-2 checkpoint for branch A, an A sequence-3 block links correctly; a sequence-3 block from branch B does not. A lower-sequence later observation is a rollback; a sequence-3 head presented after a sequence-1 checkpoint without its sequence-2 witness cannot establish extension. Fresh `check_checkpoint_consistency.py` passes these separate refusals after correcting a checker expectation that had accidentally inserted a second sequence-2 block into a would-be contiguous witness.
+
+But retaining only the common sequence-1 head permits either A or B to appear as a conditionally consistent later extension, provided the corresponding sequence-2 witness is shown. This is not a flaw in hash arithmetic: an earlier checkpoint before divergence does not select a later fork. A client can reject a fork relative to a head it actually pinned, but cannot prove no UNSEEN competing head exists from internal chain data alone.
+
+Every result is conditional on the authenticity of the originally observed checkpoint and the supplied witness bytes. A real owner-issued event-audit receipt would need independently governed checkpoint publication and cross-client anti-fork evidence; none is present for the local Farkas source. Next freeze a bounded two-client gossip comparison and quantify exactly what shared head observations suffice to catch this fork, versus isolated clients that remain uncertain. Analytic S,A,R,C,G correspondence remains deferred.

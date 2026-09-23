@@ -1,0 +1,7 @@
+# A hypothetical row issuer separates proof truth from revocable use
+
+A deliberately CONDITIONAL in-process row-attestation model binds a unit-square source ID, an exact primitive-row digest, event, generation and unpredictable token under one lock. Its resolve operation rejects foreign source/event, changed row statement, stale generation and revoked tokens. Admission also demands an `owner_verified` premise. Fresh `check_hypothetical_row_issuer.py` exercises each hostile and confirms that the primitive mathematical row digest remains unchanged after revocation: revocation removes future protected use, not truth of already checked inequalities.
+
+The `owner_verified` value is a TRUSTED INPUT in the test, not an externally authenticated review. Any untrusted caller allowed to pass True would bypass this toy premise. Thus this model does not appoint a real Farkas row owner, mint a real capability, assert an actual execution history or alter the Nima fixed-A/B archive vault. It specifies what an owning surface would have to bind atomically, and precisely where a real authority boundary must replace caller-supplied trust.
+
+A nonredundant next gate is to define an evidence-bearing owner request or source-attestation packet: exact source manifest, event identity, source-owner claim, verification method, capabilities and revocation policy. If no owner is admitted, the local calculus remains mathematical and execution-dependent operations are refused. The analytic S,A,R,C,G correspondence still requires its own authoritative role/edge/base map.

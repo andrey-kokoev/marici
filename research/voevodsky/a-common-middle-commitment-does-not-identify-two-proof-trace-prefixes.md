@@ -1,0 +1,7 @@
+# A common middle commitment does not identify two proof trace prefixes
+
+Two synthetic proof-record paths A->B_alpha->C->D and A->B_beta->C->D contain the SAME context-bound C event commitment, but different B commitments and consequently different trace-prefix hashes. Fresh `check_shared_commitment_distinct_paths.py` distinguishes `SHARED_C_JOIN_ONLY` from full path identity and refuses the latter as `PATH_IDENTITY_REFUSED`. Even two identical committed prefixes would show only equal encoded records in this local model, not observed occurrence execution.
+
+An edge claiming historical path agreement needs source and target trace hashes, ordered intervening event commitments, manifest context and authenticated openings/effects appropriate to the claim. A common endpoint, common intermediate C commitment, or the same mathematical proof packet does not provide the earlier B occurrence. This explicitly preserves the difference between existence of a linking commitment and equality of source-rooted replay histories.
+
+The bounded redaction branch is complete: opaque IDs cannot be recovered from row data, commitments can link fields but not disclose events, and partial openings do not upgrade whole paths. A nonredundant successor should test a PROVENANCE RETENTION POLICY for these minimal records: classify which fields are necessary for mathematical packet checking, local chain linkage and attested historical replay, and give a hostile field-deletion counterexample per tier. Analytic S,A,R,C,G mapping remains deferred.

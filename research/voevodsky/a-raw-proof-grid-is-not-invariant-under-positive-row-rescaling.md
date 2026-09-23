@@ -1,0 +1,7 @@
+# A raw proof grid is not invariant under positive row rescaling
+
+For the old square target normal (1,1), bound 3, the grid {0,1/2,1,3/2,2} on each multiplier and surplus contains six valid proof packets. Apply a positive row witness perm=(3,1,0,2), scales=(2,1/4,3,1). Transporting each proof multiplier by division by its new-row scale preserves its exact normal, bound and surplus. The correct new envelope has separate coordinate grids `old_grid/scale_j` and the unchanged surplus grid. Fresh `check_transported_square_envelope.py` checks all six source packets map bijectively to exactly six packets in that transported envelope.
+
+Blindly reusing the ORIGINAL raw grid after rescaling finds ZERO packets: all six valid transported proofs are dropped. For example an old x-high multiplier 1 becomes new x-high multiplier 4 when its row is scaled by 1/4. This is a change of catalogue coordinates, not disappearance of a proof, and must yield `OUT_OF_ENVELOPE` for the raw-grid search. The row witness and transformed grid are both needed for claims of cross-presentation catalogue completeness.
+
+Next check whether changing a row by a positive rational whose inverse produces new denominators beyond a GLOBAL fixed denominator cap yields an unavoidable finite raw-grid covariance obstruction, while a manifest-carried transported grid provides a local remedy. Keep owner attestation and analytic role mapping separate.

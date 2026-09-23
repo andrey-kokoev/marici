@@ -1,0 +1,7 @@
+# Local row anchors strengthen proof-DAG support without provider authentication
+
+A declared primitive row ID alone is forgeable. Freeze a locally trusted mathematical source manifest for the unit square: four row normals and bounds. Derive a SHA-256 digest for each exact row statement, verify four tagged leaf Farkas certificates against the manifest, and require each rotation-support node to reach those leaves in an acyclic DAG. Fresh `check_evidence_rooted_rotation.py` passes the anchored path and refuses changed upper bound under the SAME row ID, an omitted row, cyclic support and an unknown root.
+
+This is stronger than matching strings: a claimed source-row bound change is detected against a separately fixed local anchor, and support cannot justify itself by a cycle. But the manifest is an ASSUMED local mathematical source, not an authenticated external provider; a digest proves integrity relative to that assumption, not who published the row or which rotation actually ran. Likewise the DAG records dependency reachability; a separate syntax checker must verify every rotation edge, and no DAG can fabricate the missing pentagon higher filler.
+
+The immediate continuation is to combine leaf certificate checks, rotation edge validation and thin-projection synchronization into a single independent bounded verifier, with distinct failure codes for malformed mathematical proof, unsupported source, and untrusted execution claim. Analytic S,A,R,C,G mapping remains separate.

@@ -1,0 +1,7 @@
+# Two redundant square rows compose only with explicit surplus transport
+
+On the unit square adjoin R1:`x+y<=2` and then R2:`2x+y<=3`. R2 has exact source derivation R1+`x<=1`, so one can eliminate it via R1 and then eliminate R1 via the two old upper rows. Direct elimination sends R2 into two old x-upper rows plus one old y-upper row. Both routes yield the SAME old Farkas multiplier vector and surplus. Fresh `check_two_redundant_square_rows.py` verifies 18 exact rational cases across the exact and weaker scenarios.
+
+For the WEAKER R2:`2x+y<=4`, its chosen old-row derivation has bound 3, leaving one unit of slack. Eliminating multiplier w on R2 MUST raise Farkas surplus by w to preserve the target bound. Both staged and direct routes agree only when this grade is transported; the pure R2 proof has bound 4 while its old-row multiplier replacement has bound 3 without the extra c=1. This is the first failure of naively grade-preserving row deletion, not of semantic feasibility of the square.
+
+These are packet-level coherence and a typed surplus equation. The two elimination histories are not thereby identical higher cells, and no source-owner token moves with them. Next test a Farkas proof-input substitution where the chosen derivation of a redundant row itself has positive surplus: does the induced surplus satisfy a cocycle under three-stage elimination, and which dependency rows must be retained? Analytic S,A,R,C,G correspondence remains deferred.

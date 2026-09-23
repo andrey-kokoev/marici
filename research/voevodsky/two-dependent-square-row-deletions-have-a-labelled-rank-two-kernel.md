@@ -1,0 +1,7 @@
+# Two dependent square row deletions have a labelled rank-two kernel
+
+Adjoin exact redundant r1:`x+y<=2` and r2:`2x+y<=3` to the square source. Direct retraction sends `(a,x,b,y,z,w)` to `(a,x+z+2w,b,y+z+w)`. Deleting r1 then r2, or r2 through r1+x-high and then r1, gives the SAME old packet and bound. The signed kernel has dimension two, with labelled basis k1=(0,-1,0,-1,1,0) and k2=(0,-2,0,-1,0,1). Under r2-first elimination, its immediate killed vector is k2-k1; under r1-first, k1 is killed first. Thus kernel FILTRATIONS depend on order while the final kernel and old packet coincide.
+
+Fresh `check_two_split_row_kernel_filtration.py` verifies six nonnegative proofs of the same exact target, both deletion routes and the reconstruction `new=include(old)+z*k1+w*k2`. Its first run failed due to an incorrect unpack count in the test helper; the corrected run passes. One separately labelled coefficient per deleted row recovers these MATHEMATICAL packets from the old packet. It does not recover which deletion order or which row-derivation history was executed; that requires retained edge records and intermediate manifests.
+
+Next test a dependency CYCLE among two syntactically distinct redundant rows (same normal/bound) where choosing one as the other's derivation can create a non-well-founded replay path despite identical packet algebra. Demand acyclic source-rooted dependency provenance, not merely kernel rank. No owner authority or analytic mapping is implied.

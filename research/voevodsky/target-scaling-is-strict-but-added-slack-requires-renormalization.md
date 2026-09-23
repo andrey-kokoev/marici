@@ -1,0 +1,7 @@
+# Target scaling is strict; added slack requires renormalization
+
+With primitive rows `-x<=0` and `rho*x<=rho*L`, a proof `(a,b;c)` of `alpha*x<=U` has `rho*b-a=alpha`, `rho*L*b+c=U`. A positive target map with scale k>0 and added bound slack delta>=0 sends this proof to `(ka,kb;kc+delta)` for `(k alpha)*x<=kU+delta`. Positive row-presentation rescaling rho->sigma sends b to rho*b/sigma. The two operations commute STRICTLY as raw proof-packet transforms. Normalization in the final presentation gives `(V/L-beta,V/(sigma*L);0)` for beta=k alpha and V=kU+delta.
+
+The zero-slack part is homogeneous: normalization commutes strictly with target scaling. With delta>0, normalizing BEFORE adding slack leaves an unconsumed surplus delta, so a second normalization is necessary. Fresh `check_affine_target_farkas_square.py` verifies 48 combined squares: 24 strict homogeneous squares, 24 strict failures in positive-slack intermediate packets; it refuses k<=0 and delta<0. This is a typed comparison of positive target-row scaling plus public bound weakening, NOT a general affine change of variable x or a source-set change.
+
+These two behaviours explain the pattern without making every map lax: invertible positive row-presentation rescalings and homogeneous target scales respect the normalizer strictly; surplus-injecting source refinement or target weakening requires residual normalization. None of these packet equations adds a source-derived 4-cell to the free proof-history grammar or provides the missing analytic S,A,R,C,G role/edge/base map.

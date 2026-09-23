@@ -1,0 +1,7 @@
+# Source edits can break comparison paths with unchanged valid endpoints
+
+On the original unit square, start with zero-surplus proof P=(1,2,0,0) of x<=2. A signed zero-bound kernel step k=(-1,-1,1,1) yields Q=(0,1,1,1), then the reverse step returns to P. Every packet and both edge equations are valid on the OLD source. P itself depends only on x-low/x-high; the PATH also uses y-low/y-high through Q and k.
+
+If only y-high changes from y<=1 to y<=2, P is still a valid proof of x<=2 at BOTH ends of the loop. But Q's implied bound rises from 2 to 3 and k is no longer a zero-bound kernel direction. Fresh `check_intermediate_path_source_support.py` validates the old loop and rejects the new intermediate while confirming both endpoint proofs survive. An endpoint-only evidence cache would erroneously retain the comparison path. Its dependencies must include each intermediate proof and each labelled edge's primitive-row relation, even where those rows disappear again at the endpoint.
+
+This is mathematical path evidence, not an actual executed higher cell: the original Farkas 1-category has no admitted loop comparison and no owner-granted operation. The result sharply separates endpoint truth from transport/comparison validity under changing source manifests. Next freeze a minimal path-evidence DAG and test its independent replay and selective invalidation against x-high and y-high edits, with exact generation binding; do not infer analytic S,A,R,C,G roles.

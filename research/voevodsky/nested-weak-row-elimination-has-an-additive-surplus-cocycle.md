@@ -1,0 +1,7 @@
+# Nested weak-row elimination has an additive surplus cocycle
+
+On the unit square, adjoin R1:`x+y<=3`, R2:`2x+y<=5`, R3:`3x+y<=7`. Each chosen step eliminates the newest row through the previous row plus `x<=1`, leaving ONE unit of additional surplus per unit of that row's multiplier. For an initial proof using row multipliers z1,z2,z3, staged elimination transfers z3 into R2, then z2+z3 into R1, and finally z1+z2+z3 into old upper rows. Its net surplus increment is `z1+2z2+3z3`, exactly the direct old-row derivation deficit. Fresh `check_nested_redundant_surplus_cocycle.py` verifies 27 rational cases. The pure R3 proof has bound 7; old upper rows alone yield bound 4, so omitting surplus 3 is an explicit false certificate.
+
+This establishes a positive compositional surplus cocycle for the frozen CHOSEN derivation chain. It does not make the chain of proof paths equal to the direct path as higher cells. To replay the particular chain, retain the R1/R2/R3 row statements and their derivation edges, not merely the final old-row coefficients and summed surplus. Different derivation choices might yield the same target with different path records.
+
+Next test rewriting the same weak row using two different nonnegative old-row decompositions of equal normal but different bounds: determine whether the surplus cocycle depends on the chosen derivation, and whether a change of derivation can be compared with a typed source-rooted cell. Analytic S,A,R,C,G mapping remains deferred.

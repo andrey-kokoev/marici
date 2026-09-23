@@ -1,0 +1,7 @@
+# A hash chain detects mutation, not which audit fork is authoritative
+
+Construct a common genesis and audit-preparation block, then two distinct sequence-2 event-A blocks referring to the SAME parent but different primitive-row digests. Both complete hash chains verify internally. Changing one block's payload without changing its digest is detected as `MUTATED_BLOCK`; internal linkage does not choose between the two valid fork heads. Fresh `check_forked_audit_hash_chain.py` verifies both branches and the mutation hostile. With no externally trusted head, each returns `FORK_UNRESOLVED_NO_TRUSTED_HEAD`.
+
+If a sequence-2 head from branch A is supplied as a TRUSTED CHECKPOINT INPUT, branch A conditionally matches and branch B mismatches. That conditional check is not an authentication of the checkpoint itself. A client must obtain a trusted head and anti-fork/consistency evidence from an independently governed channel, not accept a head asserted by the same untrusted branch that supplied the log. Neither a row digest nor a chain digest establishes real issuer identity or a source-owner authorization.
+
+The bounded offline receipt analysis now separates internal integrity, joint equivocation detection and external anti-fork trust. Next test checkpoint consistency across two client observations (one old head and one later head), including a withheld intermediary and a rollback, without inventing a real checkpoint owner. Mathematical Farkas validity and analytic S,A,R,C,G correspondence remain distinct.

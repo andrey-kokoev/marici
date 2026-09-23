@@ -1,0 +1,7 @@
+# Conflicting row issuer claims cannot be ranked by graph order
+
+Two FICTIONAL actor claims use the same Farkas source label but different issuer IDs, generations, source events and ordered-row manifests. With no authenticated issuer registry they are `UNAUTHENTICATED_CLAIMS`; choosing whichever graph event arrived last would create authority from coordination order. Even if a hypothetical independent registry validated BOTH as simultaneously live, incompatible claims must report `CONFLICTING_LIVE_GRANTS`, not select one. Fresh `check_conflicting_issuer_fixtures.py` verifies both results are invariant under reversing claim order.
+
+A synthetic registry with exactly one live validated tuple and an explicitly matching designated tuple returns only `TEST_ONLY_REGISTRY_DESIGNATION_NOT_AUTHORIZED`. A designation inconsistent with the live tuple is refused. A real resolution would require a source-owned trust root, signed event bytes, current revocation/generation state and unambiguous action scope; none exists for the present row request. No owner recipient can be inferred from these invented fixtures.
+
+Next test CONFLICTING CAPABILITY scopes from the SAME hypothetical issuer and SAME manifest: two events may be individually valid yet differ in authorized actions. Refuse union unless an atomic live policy explicitly admits both and resolves precedence/revocation; distinguish conflict from narrowly scoped coexistence. Analytic S,A,R,C,G mapping remains deferred.

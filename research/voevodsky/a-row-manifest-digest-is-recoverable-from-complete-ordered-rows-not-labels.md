@@ -1,0 +1,7 @@
+# A row-manifest digest is recoverable from complete ordered rows, not labels
+
+For a FIXED local encoding version, full ordered primitive row coefficients/bounds and row names determine a row-manifest digest by recomputation. Erasing only the digest is a FORMAT loss, not an information-theoretic loss, provided the encoding rule and all ordered rows remain available. Fresh `check_manifest_erasure_ambiguity.py` verifies this for three different square-like row sources.
+
+If both ordered rows AND digest are erased, the same surviving names and multiplier tuple `(0,1,0,1)` can mean different targets: changing the x-upper row from x<=1 to 2x<=2 changes this packet from normal(1,1),bound2 to normal(2,1),bound3. More subtly, changing an UNUSED x-lower row to -2x<=0 leaves THIS packet's target unchanged while changing its source manifest. Hence neither target equality nor labels alone recover source-root identity; a manifest commitment or actual rows are needed for source-scoped comparison. The local hash also does not authenticate the publisher.
+
+Next test whether a digest ALONE, with full ordered row data erased, permits independent Farkas equation verification (it should not), and distinguish integrity binding upon later disclosure from verification of an undisclosed row matrix. Avoid mistaking collision-resistance assumptions for row-source issuer authority. Analytic S,A,R,C,G deferred.

@@ -1,0 +1,7 @@
+# Matching archive bytes restore math, not another provider's event authority
+
+Two hypothetical process-local archive providers expose identical 43-byte serialized primitive row payloads and the same row digest, but are bound to different events A and B. Initially either supports a fresh independent P->Q->P mathematical replay. After provider A is revoked and its bytes removed, provider B still supplies matching rows for NEW MATHEMATICAL replay; it refuses a request for event A's archive history. It also refuses a foreign source and changed row bytes. Fresh `check_dual_archive_substitution.py` passes these controls.
+
+The measured 43+43=86 bytes are TWO row-payload receipt fields only, not total retained storage. Provider objects, duplicate code, event records, archive manifests, heap and work are excluded. The model's process-local provider labels are stipulated, not independently authenticated real issuers. Equality of mathematical source bytes cannot transfer A's past event scope to B, recreate A's removed fine history or confer live Farkas authority.
+
+This closes a useful availability/provenance distinction. A nonredundant next branch is a retention-horizon stress test with independent mathematical replay and owner-event audit deadlines: how long must at least one row-byte provider remain available, and how long must a SPECIFIC event-bound provider or independently authorized handoff survive? Freeze those as task-specific service requirements rather than claim universal retention minimality. Analytic S,A,R,C,G mapping remains deferred.

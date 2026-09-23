@@ -1,0 +1,7 @@
+# A row-source grant must bind the complete ordered manifest and action
+
+A FICTIONAL grant scoped to the frozen four-row unit-square source ID, dimension 2, exact ordered manifest SHA-256 and action `attest-primitive-row-origin` cannot authorize a different dimension, a three-row subset, reversed row order or the distinct action `authorize-future-source-rooted-proof-use`. Fresh `check_row_source_grant_scope.py` refuses each attempt even though the source label or issuer string could remain unchanged. Exact fictional scope match returns only `TEST_ONLY_SCOPE_MATCH_NOT_AUTHORIZED`, not a real signature or grant.
+
+The actual frozen request still leaves owner and event unset; no independently admitted trust root or live signed grant is available. The bounded attestation-interface branch therefore defines a fail-closed predicate, not an authorized handoff recipient. No owner message is sent to an invented issuer. Row isomorphisms, local Farkas proof checks and graph transition admission cannot substitute for explicit source/role/event authorization.
+
+A nonredundant local successor can investigate POLICY COMPOSITION of the two requested capabilities: even if a future attestation covered primitive-row origin, source-rooted proof publication is a distinct capability requiring its own scope. Test a synthetic least-privilege grant lattice without claiming a live owner. Analytic S,A,R,C,G correspondence remains deferred until an authoritative role/edge/base mapping appears.

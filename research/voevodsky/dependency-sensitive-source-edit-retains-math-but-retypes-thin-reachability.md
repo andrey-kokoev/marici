@@ -1,0 +1,7 @@
+# Dependency-sensitive source edit retains math but retypes thin reachability
+
+After hypothetical `x<=1` -> `x<=2`, a proof-DAG dependency walk marks leaf a (uses x-low/x-high) and leaf c (uses x-high) stale; b and d depend only on unchanged y rows and their Farkas arithmetic remains valid. The ab, cd and combined proof nodes become stale through transitive dependency. The rotation syntax and thin BRACKET reachability depend only on ordered labels and remain valid, but the source-bound thin EVIDENCE node depends on the composite proof and becomes stale. Fresh `check_source_edit_dependency_cache.py` checks each status and refuses both an old-generation source-evidence request and a new-generation composite request before re-verification.
+
+The retained b/d verdict is MATHEMATICAL retention of their unchanged-row certificates, not renewal of old source-generation operational authority. To publish a new-generation source-bound proof record they would still require a new trusted source binding; the stale a/c claims cannot be salvaged by re-labelling. The thin reachability arrow is kept only after **retyping it as syntax**, never as evidence of an inclusion on the widened source.
+
+This is a bounded dependency calculation under a locally declared support DAG. Next hostile test must refuse a deliberately omitted x-high dependency and recompute dependencies from multiplier support rather than trust submitted declarations; also check a change of y-high independently. Neither prospective issuer admission nor the analytic S,A,R,C,G map is inferred.

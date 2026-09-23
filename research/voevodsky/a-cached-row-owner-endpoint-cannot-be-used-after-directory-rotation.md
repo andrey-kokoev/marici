@@ -1,0 +1,7 @@
+# A cached row-owner endpoint cannot be used after directory rotation
+
+A FICTIONAL directory at epoch 5 points to an old verifier address/key and source generation 1. If it rotates at epoch 6 to another endpoint/key/generation, a cached send is `DIRECTORY_SNAPSHOT_STALE`. A same-epoch binding mutation is `SAME_EPOCH_BINDING_CHANGED`, and a fresh but revoked entry is `DIRECTORY_ENTRY_REVOKED`. Fresh `check_directory_send_freshness.py` verifies these cases. Matching fictional send-time fields produce only `TEST_ONLY_ENDPOINT_FRESH_NOT_AUTHORIZED_TO_SEND`.
+
+Thus discovery and actual evidence-bearing owner communication require a current, atomically scoped, independently authenticated recipient at SEND time—not merely a name, cached address or mathematical row hash. In the real Farkas request owner and owner event remain null; no authenticated endpoint or live issuer trust root has appeared in the inspected Site declarations. No owner message is sent.
+
+The bounded source-root discovery branch is complete: inspected records leave the owner undiscovered, descriptive contacts are not verifiers and cached endpoints cannot be used after rotation. A nonredundant local successor should test an OWNER HANDOFF PAYLOAD for the exact row request without sending it: minimize exposed proof data while retaining the manifest, requested actions and evidence hashes; verify that unknown recipient remains an explicit unsendable state. Analytic S,A,R,C,G role mapping remains deferred.

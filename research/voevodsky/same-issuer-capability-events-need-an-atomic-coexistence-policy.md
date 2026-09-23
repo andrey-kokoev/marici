@@ -1,0 +1,7 @@
+# Same-issuer capability events need an atomic coexistence policy
+
+Two FICTIONAL source events from the same issuer, generation and ordered row manifest claim separate origin and proof-use actions. Without a live policy declaring BOTH events coexistent, their union is `ATOMIC_POLICY_UNAVAILABLE` or `COEXISTENCE_NOT_ADMITTED`; shared issuer/manifest alone does not union permissions. Fresh `check_same_issuer_action_events.py` allows a TEST-ONLY union under an explicit single-epoch coexistence fixture. If an allow and deny for proof use are simultaneously selected, it reports `CONFLICTING_ACTION_POLICY` instead of using graph order. Revoking the use event returns `EVENT_NOT_LIVE`, while an out-of-date epoch refuses the policy.
+
+These synthetic event objects have no real signature, registry or source grant; the actual row attestation request still has no issuer or owner event. Genuine action coexistence would require independently authenticated event bytes, ordered precedence/revocation semantics and one atomic live generation. No actor's self-claim or graph transition supplies that authority.
+
+Next test a SINGLE signed hypothetical source event that explicitly grants a capability set versus several separate events. Its action-set digest must bind exact rows, generation and event bytes; a partial event disclosure or capability-field edit must be refused. Keep all outcomes test-only and analytic mapping deferred.

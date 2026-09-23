@@ -1,0 +1,7 @@
+# A delegated row-origin grant cannot escalate to proof use
+
+In a FICTIONAL local capability model, the issuer's parent grant allows only `attest-primitive-row-origin`. An intermediary's proposed edge authorizing `authorize-future-source-rooted-proof-use` is rejected as `DELEGATION_ESCALATION`, even if issuer/delegate names and exact row manifest agree. Missing edge is separately `DELEGATION_EDGE_MISSING`; a foreign manifest or expired edge is refused. Fresh `check_source_capability_delegation.py` permits only a matching, unexpired origin-to-origin edge as `TEST_ONLY_SCOPE_MATCH_NOT_AUTHORIZED`.
+
+For an actual delegated use claim, every edge must be independently authenticated by an admitted trust root, restricted to its parent's actions and source generation, live at time of use and unrevoked; the final requested capability must occur in every necessary scope. None of this is available for the real row request, whose owner and source event are unset. A project actor cannot create proof-use authority by forwarding a weaker origin claim or by recording an epistemic graph transition.
+
+Next test TWO-HOP delegation intersection: a parent with two hypothetical actions, first edge narrower, and second edge re-expanding the set must be rejected even if it remains within the original parent set. This is structural least-privilege research, not real issuer communication or analytic S,A,R,C,G mapping.

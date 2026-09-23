@@ -1,0 +1,7 @@
+# A positive row isomorphism does not rebind an exact-manifest grant
+
+Starting from the frozen square manifest, scale the x-upper inequality from x<=1 to 2x<=2. Its proof multiplier for x<=1 changes from 1 to 1/2; exact target normal and bound remain (1,0;1). But canonical manifest hashes differ. Fresh `check_presentation_grant_rebind.py` refuses a HYPOTHETICAL grant bound to the old hash on the new presentation as `PRESENTATION_REBIND_REQUIRED`. A fictional pair of old/new hashes merely passes a TEST-ONLY field match, not a signature, current generation, or actual owner authorization.
+
+This is the clean mathematical/publication separation: positive row-coordinate isomorphism preserves proof equations, while source authority is tied to a particular issued manifest/event and cannot be moved by the checker. The real Farkas issuer remains unassigned, so no presentation rebind has been requested from a legitimate recipient or granted.
+
+The scoped local proof-use request branch is complete: packet and target-family envelopes remain unauthorized, and even exact mathematical row transport cannot transfer an issuer grant. A nonredundant successor should test a CONFLICTING FUTURE ATTESTATION fixture: two hypothetical issuers sign incompatible manifest generations for the same source label. Determine the fail-closed conflict state rather than picking one by graph event order. Analytic S,A,R,C,G correspondence remains deferred.

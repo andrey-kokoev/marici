@@ -1,0 +1,7 @@
+# Unknown proof-event effects must fail closed for trace swaps
+
+A row-derivation DAG can show two events incomparable while saying NOTHING about their read/write effects. Fresh `check_fail_closed_swap_footprints.py` treats a missing effect declaration as `UNKNOWN_EFFECT_FOOTPRINT` and refuses the swap. Explicitly declared pure footprints or bound disjoint footprints permit it in a synthetic local model. A read/write collision yields `EFFECT_CONFLICT`; a declaration tied to the wrong event or stale manifest yields `STALE_OR_WRONG_EVENT_FOOTPRINT`. Row dependency is checked separately.
+
+The local declaration must bind event identity, exact row manifest, read set, write set and assessment scope; an empty set is an affirmative synthetic purity claim, not the default value of missing evidence. Real-world observational equivalence would additionally require an authorized source for effect declarations and complete effect domains, neither supplied by graph actor admission or these local checker examples. Thus no actual event swap is authenticated here.
+
+The trace-swap branch is resolved at this bounded failure/permission gate. A nonredundant successor should examine proof EVENT REDACTION: when retained endpoint packets, derivation DAG and effect declarations are present but an intermediate event-ID record is erased, identify which swap claims remain checkable and which must become `UNVERIFIABLE_TRACE` rather than silently inferred. Analytic S,A,R,C,G remains deferred.

@@ -1,0 +1,7 @@
+# Revoking a shared delegation root invalidates both routes
+
+Two FICTIONAL routes to the same delegate, one origin-only and one proof-use-only, were structurally checked against the same root event at epoch 7. If that common root is revoked at epoch 8, BOTH earlier path checks are stale; a fresh epoch-8 view rejects the root as revoked. Rotating to a new root with the same row-manifest digest also does not migrate old edge records: they refer to the old root ID/epoch. Fresh `check_shared_root_revocation.py` tests all three cases.
+
+A union of independently checked permissions is valid at use time only if every constituent path and its common trust root share the SAME live atomic epoch and unrevoked binding. Mathematical identity of the row manifest and earlier graph admission cannot keep a revoked issuer path alive. This is only a synthetic predicate, since the real Farkas request still has no admitted issuer, trust root, signed delegation chain or revocation feed.
+
+The capability-separation branch is complete at the scoped least-privilege, chain-intersection and shared-root freshness gates. A nonredundant successor should examine a mathematical proof-use REQUEST OBJECT before authority exists: make an immutable requested action/row-generation/packet-digest envelope and demonstrate that generating such a request does not itself grant proof-use; refuse substitution of a different proof packet after the request. Analytic S,A,R,C,G mapping remains deferred.

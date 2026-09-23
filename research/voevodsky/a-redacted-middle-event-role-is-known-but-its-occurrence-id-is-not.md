@@ -1,0 +1,7 @@
+# A redacted middle event role is known but its occurrence ID is not
+
+Retain the source-rooted square DAG Z->W,V->T, all derived packets and explicit local pure-effect declarations. Redact the OPAQUE occurrence ID from the W position in a temporal trace while retaining its structural role W. Two complete traces differing only in W occurrence ID (`w#alpha` and `w#beta`) have the same redacted view and the same mathematical/effect evidence, but distinct complete trace hashes and distinct W/V swap certificates. Fresh `check_redacted_event_swap_replay.py` checks both completions and returns `UNVERIFIABLE_TRACE` rather than guessing an ID or calling the swap false.
+
+The DAG does imply that a W ROLE is needed for T. It does not authenticate WHICH occurrence executed. This is not a proof that the event never occurred. To replay a historical swap, retain occurrence IDs and linked source/target trace hashes in addition to row packets, DAG and complete effect declarations. Synthetic examples establish a logical information gap, not an observed external event or owner authorization.
+
+Next test whether a cryptographic COMMITMENT to the redacted ID (without preimage) suffices for equality checks of swap chains while remaining insufficient to reconstruct the event or validate its effect provenance. Separate comparison-by-commitment from replay-by-disclosed occurrence. Analytic S,A,R,C,G correspondence remains deferred.

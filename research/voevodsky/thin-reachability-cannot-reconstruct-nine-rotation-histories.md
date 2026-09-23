@@ -1,0 +1,7 @@
+# Thin reachability cannot reconstruct nine rotation histories
+
+The projection from tagged FREE rotation paths to thin Tamari reachability sends the nine distinct paths between the extreme five-leaf bracketings to ONE arrow. Fresh `check_thin_projection_replay.py` enumerates all nine exact words, verifies their common reachability image and primitive leaf-root requirement, and checks a representative set-theoretic section: it reconstructs one chosen word, not the other eight. No inverse on fine path records can exist, because the projection is noninjective. No claim is made that an arbitrary chosen section is functorial.
+
+The record/control boundary is therefore exact: public reachability factors through the thin projection; exact rotation-history replay does not. A caller wishing to replay the actual formal derivation must retain the tagged path alongside the thin arrow. If it subsequently claims the nine derivations equivalent, it requires a distinct higher-cell/quotient contract; no section or primitive leaf root recovers lost history from the reachability arrow.
+
+This closes the local thin-versus-fine comparison without constructing a pentagon filler for the original free presentation. The next nonredundant branch is to test source-rooted provenance of a separate tagged-path-plus-thin-arrow product record under composition, including a hostile root substitution and a requirement that no thin arrow be mistaken for an execution authorization. Analytic S,A,R,C,G remains deferred.

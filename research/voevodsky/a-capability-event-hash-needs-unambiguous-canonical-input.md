@@ -1,0 +1,7 @@
+# A capability event hash needs unambiguous canonical input
+
+For FICTIONAL row-source events, a strict local schema normalizes action-list order and JSON whitespace before hashing, so two representations of the same capability set yield one digest. Fresh `check_strict_capability_event_encoding.py` rejects duplicate JSON object keys, duplicate capabilities, unknown actions, a Boolean masquerading as an integer generation and unrecognized top-level fields. Ambiguous or silently ignored bytes must not enter a source-authorization commitment.
+
+This is only local encoding version 1; it neither specifies interoperable signature verification nor proves a real event existed. The actual Farkas owner remains unassigned, and no trust root has attested the normalized bytes. One must bind the encoding version and independently authenticated issuer/source event before treating any canonical hash as publication evidence.
+
+The conflicting issuer fixture branch is complete at fail-closed identity, coexistence and encoding checks. A nonredundant successor should test SOURCE-ROOT DISCOVERY under partial evidence: if an attestation request has no owner, compare explicit trusted directory entries against mere research-path author names, and determine whether a directory snapshot with no row-source entry can only yield `OWNER_UNDISCOVERED` rather than a globally nonexistent owner. Keep analytic S,A,R,C,G deferred.

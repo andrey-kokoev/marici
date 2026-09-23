@@ -1,0 +1,7 @@
+# A committed middle event links records without opening the occurrence
+
+A synthetic SHA-256 commitment binds a domain tag, row manifest, W role, trace slot, opaque event occurrence ID and nonce. The SAME commitment in one edge's target field and the next edge's source field can test record linkage by equality. Fresh `check_committed_redacted_event.py` verifies this and rejects wrong ID, nonce or context on an attempted opening. If ID/nonce are absent, the occurrence remains `UNVERIFIABLE_TRACE` despite equal commitment fields. A disclosed correct opening checks the local digest but still does not authenticate a real-world event or its effect issuer; absent attestation is separately `EFFECT_ATTESTATION_MISSING`.
+
+Commitment equality is not proof of preimage knowledge or historical execution. For small predictable IDs, a secret sufficiently unpredictable nonce is required even for a privacy interpretation, and this local checker makes no cryptographic protocol security claim beyond deterministic digest comparison. Graph admission and row-manifest agreement do not grant source authority.
+
+Next test a MIXED replay chain: one middle event opened and one merely committed. Determine exactly which adjacent edges can be checked for occurrence identity and which composite path claim must remain partial, while preserving mathematics and explicit `UNVERIFIABLE_TRACE` scope. Analytic S,A,R,C,G mapping deferred.
