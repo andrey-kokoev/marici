@@ -1,0 +1,94 @@
+{
+  "id": "rh-physical-readout-descent-v1",
+  "objects": [
+    {"id": "rho", "type": "completed-zeta divisor candidate"},
+    {"id": "reflected_rho", "type": "functional-equation reflected divisor candidate"},
+    {"id": "li_phase", "type": "nonzero complex Li coordinate"},
+    {"id": "reciprocal_phase", "type": "reciprocal Li coordinate"},
+    {"id": "evans_history", "type": "maximal-isotropic H1 history state"},
+    {"id": "green_state", "type": "conservative Green-kernel state"},
+    {"id": "apparatus_response", "type": "calibrated apparatus response packet"},
+    {"id": "positive_record", "type": "declared positive power or covariance record"}
+  ],
+  "arrows": [
+    {"id": "functional_reflection", "source": "rho", "target": "reflected_rho", "map_token": "reflection"},
+    {"id": "li_coordinate", "source": "rho", "target": "li_phase", "map_token": "reflection"},
+    {"id": "li_after_reflection", "source": "reflected_rho", "target": "reciprocal_phase", "map_token": "li"},
+    {"id": "reciprocal_coordinate", "source": "li_phase", "target": "reciprocal_phase", "map_token": "li"},
+    {"id": "evans_lift", "source": "rho", "target": "evans_history", "map_token": "exact-evans-history"},
+    {"id": "candidate_green_promotion", "source": "evans_history", "target": "green_state", "map_token": "not-constructed"},
+    {"id": "candidate_fourier_poisson_readout", "source": "green_state", "target": "apparatus_response", "map_token": "not-constructed"},
+    {"id": "candidate_positive_record", "source": "apparatus_response", "target": "positive_record", "map_token": "not-authorized"}
+  ],
+  "cells": [
+    {
+      "id": "li_reflection_reciprocity",
+      "kind": "route/coherencer compatibility",
+      "routes": [
+        ["functional_reflection", "li_after_reflection"],
+        ["li_coordinate", "reciprocal_coordinate"]
+      ],
+      "threshold": "exact_zero",
+      "witness": "research/voevodsky/rh-physical-readout-bridge.md"
+    }
+  ],
+  "obstructions": [
+    {"id": "prime_shell_residual_missing", "at": "evans_history"},
+    {"id": "evans_green_chain_map_missing", "at": "candidate_green_promotion"},
+    {"id": "fourier_poisson_intertwining_missing", "at": "candidate_fourier_poisson_readout"},
+    {"id": "positive_apparatus_calibration_missing", "at": "candidate_positive_record"}
+  ],
+  "claims": [
+    {
+      "id": "off_critical_zero_has_observable_passivity_defect",
+      "requires": [
+        "exact_li_modulus_identity",
+        "complete_prime_shell_adjoint_residual_family",
+        "evans_to_conservative_green_chain_map",
+        "global_fourier_poisson_response_intertwining",
+        "calibrated_positive_apparatus_readout"
+      ]
+    }
+  ],
+  "available_witnesses": [
+    "exact_li_modulus_identity"
+  ],
+  "experiments": [
+    {
+      "id": "prime_shell_adjoint_hostile",
+      "separates": ["complete_prime_shell_adjoint_residual_family"],
+      "preregistered_threshold": "every declared prime shell and multiplicity jet cancels exactly"
+    },
+    {
+      "id": "evans_green_chain_test",
+      "separates": ["evans_to_conservative_green_chain_map"],
+      "preregistered_threshold": "chain equation and Green form preservation hold exactly"
+    },
+    {
+      "id": "global_fourier_poisson_response_test",
+      "separates": ["global_fourier_poisson_response_intertwining"],
+      "preregistered_threshold": "response trace lies in the global maximal-isotropic sewing relation"
+    },
+    {
+      "id": "passive_apparatus_common_gain_reservoir_audit",
+      "separates": ["calibrated_positive_apparatus_readout"],
+      "preregistered_threshold": "common gain, complete ports, reservoir accounting, and uncertainty bounds are source-authorized"
+    }
+  ],
+  "promotions": [
+    {
+      "id": "arithmetic_signature_to_physical_record",
+      "requires_cells": ["li_reflection_reciprocity"],
+      "requires_equivalences": [],
+      "evidence": [
+        {"locator": "research/voevodsky/rh-physical-readout-bridge.json", "status": "verified"},
+        {"locator": "Evans-to-conservative-Green chain map", "status": "not_constructed"},
+        {"locator": "global Fourier-Poisson response intertwining", "status": "not_constructed"},
+        {"locator": "physical apparatus calibration", "status": "not_constructed"}
+      ]
+    }
+  ],
+  "impact_edges": [
+    {"from": "li_reflection_reciprocity", "to": "off_critical_zero_has_observable_passivity_defect"}
+  ]
+}
