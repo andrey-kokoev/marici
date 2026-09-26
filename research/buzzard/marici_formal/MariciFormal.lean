@@ -1,6 +1,7 @@
 import MariciFormal.Sprint1
 import MariciFormal.CoherentResolution
 import MariciFormal.PhysicsPredictions
+import MariciFormal.S4RepTheory
 import MariciFormal.CoherentResolutionTransport
 import MariciFormal.Sprint2
 import MariciFormal.Sprint3
