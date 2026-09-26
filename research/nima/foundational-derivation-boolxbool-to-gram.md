@@ -2544,3 +2544,88 @@ The Monster moonshine is the graded Gram trace on the Monster carrier,
 built from the Leech lattice Gram via the Z₂ orbifold. The fundamental
 connection is the S₄ Gram eigenvalue 12, which gives \(j(i) = 1728 = 12^3\)
 and, through modularity, all Fourier coefficients of j(τ).
+## Structural synthesis: from Newton to QM via fibration arities
+
+### The classical starting point
+
+Newtonian mechanics: a trajectory \(x(t)\) with velocity \(\dot{x}(t)\).
+Lagrangian: \(L(x, \dot{x}) = \frac12 m\dot{x}^2 - V(x)\).
+Hamiltonian: \(H(p, q) = p\dot{q} - L = \frac{p^2}{2m} + V(q)\), with
+\(p = \partial L/\partial \dot{q}\).
+
+The transition to quantum mechanics replaces \(p, q\) with operators and
+introduces the wavefunction \(\psi(q)\) with \(p = -i\hbar\partial/\partial q\).
+
+### Fibration arities as the underlying structure
+
+In our carrier framework, the classical \(q\) and \(p\) are replaced by
+**fibration arities** — the independent degrees of freedom encoded in the
+carrier's irrep decomposition.
+
+For the S₄ carrier (which gives the SM gauge group), the irrep
+decomposition is \(4 = 1 \oplus 1 \oplus 2\). The three arities are:
+
+| Arity | S₄ irrep | Physical role | Classical analog |
+|---|---|---|---|
+| 1 | Trivial (1) | U(1) charge, overall energy scale | Action \(S\) |
+| 2 | Sign (1) | CP phase, sterile sector | Phase \(\theta\) |
+| 3 | Doublet (2) | Position-momentum pair | \(q, p\) (canonical pair) |
+
+The three arities form a **fibred structure**: the doublet (arity 3) is
+the "input/output" pair (like \(q\) and \(p\)), the sign (arity 2) is the
+"internal phase" (like the wavefunction phase), and the trivial (arity 1)
+is the "overall scale" (like the action).
+
+### The Hamiltonian from fibration symmetry
+
+Instead of the standard Hamiltonian \(H(p, q, t)\), we have the
+**Gram Hamiltonian**:
+
+\[
+H_{\text{Gram}} = \sum_{i,j} G_{ij} \, e^{i(\theta_j - \theta_i)}
+\]
+
+where \(\theta_i\) are the fibration phases (the arities' internal phases).
+This generates time evolution via:
+
+\[
+\frac{dG_{ij}}{dt} = i\,[H, G_{ij}]
+\]
+
+The three arities give:
+\[
+\frac{d}{dt} \begin{pmatrix} \theta_1 \ \theta_2 \ \theta_{2'} \end{pmatrix}
+= \begin{pmatrix} \omega_1 & 0 & 0 \ 0 & \omega_2 & 0 \ 0 & 0 & \omega_2 \end{pmatrix}
+\begin{pmatrix} \theta_1 \ \theta_2 \ \theta_{2'} \end{pmatrix}
+\]
+
+where \(\omega_1\) (U(1) frequency) and \(\omega_2\) (SU(2) frequency) are
+the Gram eigenvalue ratios.
+
+### The Newton → QM route
+
+\[
+\begin{aligned}
+\text{Newton: } & \ddot{x} = F/m \
+\text{Lagrange: } & \delta\int L\,dt = 0 \
+\text{Hamilton: } & \dot{q} = \partial H/\partial p,\ \dot{p} = -\partial H/\partial q \
+\text{Schrödinger: } & i\hbar\dot{\psi} = H\psi \
+\text{Gram: } & i\,dG/dt = [H, G],\ H = \sum G_{ij} e^{i(\theta_j-\theta_i)}
+\end{aligned}
+\]
+
+At each stage, the fibration arity increases: Newton has one arity
+(position), Lagrange adds velocity (two arities), Hamilton adds
+momentum (three arities: q, p, t), QM adds the wavefunction phase
+(four arities), and the Gram adds the carrier structure (five arities:
+the three S₄ irreps plus the fibration phases).
+
+The **five arities** of the carrier framework:
+1. Carrier points (the \(N\) locations)
+2. Probe functions (the \(f_i\))
+3. Overlap matrix (the \(G_{ij}\))
+4. Fibration phases (the \(\theta_i\))
+5. Automorphism group (the \(S_N\))
+
+These replace the standard \(q, p, t\) with a structural fibration
+that is universal across all physical domains.
