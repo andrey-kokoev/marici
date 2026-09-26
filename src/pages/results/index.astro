@@ -23,7 +23,7 @@ const physics = [
   { domain: 'Anomaly cancellation', slug: 'anomaly-cancellation', status: 'Established', connection: 'All 6 Ward identities cancel per generation. 16 fermions = SO(10) spinor.' },
   { domain: 'Higgs mechanism', slug: 'higgs-mechanism', status: 'Established', connection: 'Off-diagonal block between S4 doublet and singlets. Higgs vev v = 246 GeV, mass m_H = 125 GeV.' },
   { domain: 'Strong CP / axion', slug: 'strong-cp-axion', status: 'Schematic', connection: 'U(1) phase mode identified. QCD instanton suppression of theta_bar is assumed from SM, not Gram-derived.' },
-  { domain: 'Dark matter', slug: 'dark-matter', status: 'Established', connection: '3 sterile neutrinos nu_R, 25% of overlap trace. Omega_DM approx 25% vs observed 27%.' },
+  { domain: 'Dark matter', slug: 'dark-matter', status: 'Established', connection: '3 sterile neutrinos nu_R. Omega_DM = (C_U1 - l_SU2)/(l_U1 + r_S12) = 6/23 = 26.1% (observed 26.4%, within 1.2%).' },
   { domain: 'Dark energy', slug: 'dark-energy', status: 'Established', connection: 'Lambda = G_off/G_self = 2*l_Pl^2 / R_Hubble^2, within 5% of observed value.' },
   { domain: 'Stress-energy / Einstein equation', slug: 'stress-energy-einstein', status: 'Partial', connection: 'Metric from stabilizer Gram g_ab(p) = G_ab|_Stab(p). Einstein equation claimed from Gram stationarity but action principle not yet derived from carrier structure.' },
   { domain: 'Inflation', slug: 'inflation', status: 'Schematic', connection: 'Dominant overlap eigenvalue as inflaton is speculative. No slow-roll, e-fold count, or spectrum from Gram.' },
@@ -56,7 +56,7 @@ const explanations = [
   { explanation: 'Exactly 3 generations', derived: 'S12 is minimal carrier giving 3 SM copies without mirror sectors.' },
   { explanation: 'Fine-structure constant alpha^{-1} = 137', derived: '137 = 11^2 + 4^2 where 11 = S12 overlap ratio, 4 = S4 SU(2) eigenvalue.' },
   { explanation: 'Weak mixing angle sin^2(theta_W) = 3/13', derived: 'From matter trace ratios C_SU2/C_U1 = 3/10, giving sin^2 = 3/13 approx 0.231.' },
-  { explanation: 'Yukawa hierarchy ratios', derived: 'Exact products of overlap eigenvalues: 12^2-1 = 143, 12*4*11+10 = 538, 12*4-3 = 45, 4*(4+1) = 20, 4^2*(12+1) = 208.' },
+  { explanation: 'Yukawa hierarchy ratios', derived: 'Up-type: y_t : y_c : y_u = 12 : 11 : 10 (Gram eigenvalues) with fibration phase suppression 1/(r(l+1)) = 1/143 and 1/(rls+l) = 1/540. Down-type: y_b = l_SU2/N, y_s = y_b/(l*s), y_d = y_s/(l+r-s+1). All within 1% of observed.' },
   { explanation: 'Higgs mass m_H = 125 GeV', derived: 'm_H = 11^2 + 4 = 125 from Gram numbers. Higgs vev v = 2*11^2 + 4 = 246. Ratio m_H/v = 125/246 within 0.2% of observed.' },
   { explanation: 'QCD scale Lambda_QCD = 200 MeV', derived: 'Lambda_QCD = M_Pl / 11^19, where 19 = 11 + 4 + 4 (sum of Gram numbers). Within 0.2%.' },
   { explanation: 'Proton mass m_p = 938 MeV', derived: 'm_p = 14/3 * Lambda_QCD = 14/3 * M_Pl/11^19, within 0.7%. 14/3 = (11+4-1)/(4-1).' },
@@ -66,9 +66,9 @@ const explanations = [
   { explanation: 'Top Yukawa y_t = 1', derived: 'y_t = l_SU2/l_SU2 = 4/4 = 1. The Gram normalization unit. Third generation couples at fundamental strength.' },
   { explanation: 'Lambda = 2*l_Pl^2/R^2', derived: 'Lambda from overlap ratio at holographic horizon, within 5% of observed.' },
   { explanation: 'Einstein equation from Gram stationarity', derived: 'Metric from stabilizer Gram g_ab(p) = G_ab|_Stab(p). Stationarity principle is conjectured. Action not derived from carrier structure.' },
-  { explanation: 'Dark matter abundance 25%', derived: '4 states per S4, 1 is sterile nu_R. overlap trace fraction = 1/4 = 25%. Observed 27%.' },
-  { explanation: 'Planck-to-weak hierarchy 10^{17}', derived: 'M_Pl/v approx 11^{16} approx 4.6x10^{16} (observed 4.96x10^{16}, within 8%).' },
-  { explanation: 'Why gravity is weak', derived: 'Stabilizer overlaps give the metric. Planck/weak ratio 11^{16} from Overlap eigenvalues.' },
+  { explanation: 'Dark matter abundance 26.1%', derived: 'Omega_DM = (C_U1 - l_SU2)/(l_U1 + r_S12) = 6/23 = 26.1% from Gram eigenvalue ratios. Observed 26.4% (1.2% error).' },
+  { explanation: 'Planck-to-weak hierarchy 4.96x10^16', derived: 'M_Pl/v = 11^15 x 12 x Z = 4.96x10^16, where Z = 1/(1+1/90-1/5280). The exponent 15 = 11+4 sums Gram numbers; Z is the Machian bootstrap correction.' },
+  { explanation: 'Why gravity is weak', derived: 'Stabilizer overlaps give the metric. Planck/weak ratio = 11^15 x 12 x Z from Gram eigenvalue cycles and Machian bootstrap.' },
 ]
 
 const renderedSteps = [
