@@ -1,0 +1,31 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import results from '../../data/results-physics.json'
+
+export async function getStaticPaths() {
+  return results.map((r) => ({
+    params: { slug: r.slug },
+    props: { entry: r },
+  }))
+}
+
+const { entry } = Astro.props
+---
+<SiteLayout title={`${entry.domain} · Carrier programme results · Marici`} description={entry.details}>
+  <section class="section-shell" aria-labelledby="result-title">
+    <header class="section-heading">
+      <div><p class="eyebrow">Carrier programme result</p><h1 id="result-title">{entry.domain}</h1></div>
+      <span class="status-pill">{entry.status}</span>
+    </header>
+    <article style="margin: 2rem 0; line-height: 1.6;">
+      <p>{entry.details}</p>
+      {entry.checker && (
+        <p style="margin-top: 1rem;"><strong>Verification:</strong> <a href={`/results/`} style="color: #8f8;">{entry.checker}</a></p>
+      )}
+      {entry.result && (
+        <p style="margin-top: 0.5rem;"><strong>Result data:</strong> <a href={`/results/`} style="color: #8f8;">{entry.result}</a></p>
+      )}
+    </article>
+    <p><a class="text-action" href="/results/">Back to all results</a></p>
+  </section>
+</SiteLayout>

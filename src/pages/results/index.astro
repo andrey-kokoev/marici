@@ -3,22 +3,22 @@ import SiteLayout from '../../layouts/SiteLayout.astro'
 import katex from 'katex'
 
 const physics = [
-  { domain: 'Quantum mechanics', status: 'Established', connection: 'Born rule from rank-1 factorization of the overlap matrix G_ij = psi_i* psi_j. N-path interference from I = sum G_ij exp(i(theta_j - theta_i)). Entanglement from overlap non-separability.' },
-  { domain: 'General relativity', status: 'Established', connection: 'Spatial metric from stabilizer overlaps g_ab(p) = G_ab. ADM constraints close on finite carrier with (+++-) signature. Continuum limit delta(x,y) constructed.' },
-  { domain: 'SM gauge group', status: 'Established', connection: 'SU(3) x SU(2) x U(1) from S4 irrep decomposition (1+1+2). S3 stabilizer gives SU(3) color.' },
-  { domain: '3 generations', status: 'Established', connection: 'S12 -> S4 x S4 x S4 branching gives exactly 3 SM copies. S12 is the minimal carrier for 3 generations.' },
-  { domain: 'CKM mixing', status: 'Established', connection: 'overlap misalignment between up-type and down-type eigenbases. theta12=13 deg, theta23=2.4 deg, theta13=0.5 deg.' },
-  { domain: 'PMNS mixing', status: 'Established', connection: 'overlap misalignment in lepton sector. theta12=34 deg, theta23=42 deg, theta13=8.6 deg.' },
-  { domain: 'Anomaly cancellation', status: 'Established', connection: 'All 6 Ward identities cancel per generation. 16 fermions = SO(10) spinor.' },
-  { domain: 'Higgs mechanism', status: 'Established', connection: 'Off-diagonal block between S4 doublet and singlets. Higgs vev v = 246 GeV, mass m_H = 125 GeV.' },
-  { domain: 'Strong CP / axion', status: 'Established', connection: 'U(1) phase mode of the carrier, QCD instantons relax theta_bar to 0 dynamically. Axion mass from m_pi f_pi / f_a.' },
-  { domain: 'Dark matter', status: 'Established', connection: '3 sterile neutrinos nu_R, 25% of overlap trace. Omega_DM approx 25% vs observed 27%.' },
-  { domain: 'Dark energy', status: 'Established', connection: 'Lambda = G_off/G_self = 2*l_Pl^2 / R_Hubble^2, within 5% of observed value.' },
-  { domain: 'Stress-energy / Einstein equation', status: 'Established', connection: 'Einstein equation G_mu_nu + Lambda g_mu_nu = 8piG T_mu_nu from Gram stationarity delta S/delta G_stab = 0. T_mu_nu from derivative of matter Gram action. All energy types (gravity, vacuum, matter) from single Gram principle.' },
-  { domain: 'Inflation', status: 'Established', connection: 'Dominant overlap eigenvalue as inflaton. Slow-roll from fibration phase evolution.' },
-  { domain: 'Baryogenesis', status: 'Established', connection: 'Leptogenesis via sterile neutrino decays. n_b/n_gamma ~ 10^{-8} (observed 6.1e-10).' },
-  { domain: 'Hawking radiation', status: 'Established', connection: 'Thermal overlaps at horizon: T_H = 1/(8 pi G M). Unitarity from overlap trace conservation.' },
-  { domain: 'Black hole interior', status: 'Established', connection: 'Singularity resolved by minimal carrier. Interior = Overlap matrix sign flip.' },
+  { domain: 'Quantum mechanics', slug: 'quantum-mechanics', status: 'Established', connection: 'Born rule from rank-1 factorization of the overlap matrix G_ij = psi_i* psi_j. N-path interference from I = sum G_ij exp(i(theta_j - theta_i)). Entanglement from overlap non-separability.' },
+  { domain: 'General relativity', slug: 'general-relativity', status: 'Established', connection: 'Spatial metric from stabilizer overlaps g_ab(p) = G_ab. ADM constraints close on finite carrier with (+++-) signature. Continuum limit delta(x,y) constructed.' },
+  { domain: 'SM gauge group', slug: 'sm-gauge-group', status: 'Established', connection: 'SU(3) x SU(2) x U(1) from S4 irrep decomposition (1+1+2). S3 stabilizer gives SU(3) color.' },
+  { domain: '3 generations', slug: '3-generations', status: 'Established', connection: 'S12 -> S4 x S4 x S4 branching gives exactly 3 SM copies. S12 is the minimal carrier for 3 generations.' },
+  { domain: 'CKM mixing', slug: 'ckm-mixing', status: 'Established', connection: 'overlap misalignment between up-type and down-type eigenbases. theta12=13 deg, theta23=2.4 deg, theta13=0.5 deg.' },
+  { domain: 'PMNS mixing', slug: 'pmns-mixing', status: 'Established', connection: 'overlap misalignment in lepton sector. theta12=34 deg, theta23=42 deg, theta13=8.6 deg.' },
+  { domain: 'Anomaly cancellation', slug: 'anomaly-cancellation', status: 'Established', connection: 'All 6 Ward identities cancel per generation. 16 fermions = SO(10) spinor.' },
+  { domain: 'Higgs mechanism', slug: 'higgs-mechanism', status: 'Established', connection: 'Off-diagonal block between S4 doublet and singlets. Higgs vev v = 246 GeV, mass m_H = 125 GeV.' },
+  { domain: 'Strong CP / axion', slug: 'strong-cp-axion', status: 'Established', connection: 'U(1) phase mode of the carrier, QCD instantons relax theta_bar to 0 dynamically. Axion mass from m_pi f_pi / f_a.' },
+  { domain: 'Dark matter', slug: 'dark-matter', status: 'Established', connection: '3 sterile neutrinos nu_R, 25% of overlap trace. Omega_DM approx 25% vs observed 27%.' },
+  { domain: 'Dark energy', slug: 'dark-energy', status: 'Established', connection: 'Lambda = G_off/G_self = 2*l_Pl^2 / R_Hubble^2, within 5% of observed value.' },
+  { domain: 'Stress-energy / Einstein equation', slug: 'stress-energy-einstein', status: 'Established', connection: 'Einstein equation G_mu_nu + Lambda g_mu_nu = 8piG T_mu_nu from Gram stationarity delta S/delta G_stab = 0. T_mu_nu from derivative of matter Gram action. All energy types (gravity, vacuum, matter) from single Gram principle.' },
+  { domain: 'Inflation', slug: 'inflation', status: 'Established', connection: 'Dominant overlap eigenvalue as inflaton. Slow-roll from fibration phase evolution.' },
+  { domain: 'Baryogenesis', slug: 'baryogenesis', status: 'Established', connection: 'Leptogenesis via sterile neutrino decays. n_b/n_gamma ~ 10^{-8} (observed 6.1e-10).' },
+  { domain: 'Hawking radiation', slug: 'hawking-radiation', status: 'Established', connection: 'Thermal overlaps at horizon: T_H = 1/(8 pi G M). Unitarity from overlap trace conservation.' },
+  { domain: 'Black hole interior', slug: 'black-hole-interior', status: 'Established', connection: 'Singularity resolved by minimal carrier. Interior = Overlap matrix sign flip.' },
 ]
 
 const math = [
@@ -80,7 +80,7 @@ const renderedSteps = [
     <div class="section-heading"><div><p class="eyebrow">Connected</p><h2 id="physics-title">Physics domains</h2></div></div>
     <table class="results-table">
       <thead><tr><th>Domain</th><th>Status</th><th>Connection</th></tr></thead>
-      <tbody>{physics.map((p) => (<tr><td>{p.domain}</td><td><span class="status-pill">{p.status}</span></td><td>{p.connection}</td></tr>))}</tbody>
+      <tbody>{physics.map((p) => (<tr><td><a href={`/results/${p.slug}/`} style="color:inherit;text-decoration:underline;text-underline-offset:2px;">{p.domain}</a></td><td><span class="status-pill">{p.status}</span></td><td>{p.connection}</td></tr>))}</tbody>
     </table>
   </section>
 
