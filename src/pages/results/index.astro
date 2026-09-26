@@ -181,13 +181,23 @@ const renderedSteps = [
         <p>Up-type: y_t = l_U1*l_SU2/(l_U1*l_SU2) = 1; y_c = 1/(r_S12*(l_U1+1)) = 1/143; y_u = 1/(143*(r_S12*l_U1*l_SU2+l_U1)) = 1/77220. Down-type: y_b = l_SU2/N_dn = 0.024; y_s = y_b/(l_U1*l_SU2) = 0.0005; y_d = y_s/(l_U1+r_S12-l_SU2+1) = 2.5e-5. Fibration phases: theta_3 = 0 rad (top, un-suppressed), theta_2 = 2.974 rad = 170.4° (cos^2 suppression = 1/143), theta_1 = 3.134 rad = 179.6° (cos^2 suppression = 1/77220).</p>
       </article>
     </div>
+  <section class="section-shell" id="gram-numbers" aria-labelledby="gram-numbers-title" style="max-width:720px;margin:0 auto 2rem;padding:0 18px;">
+    <div class="section-heading"><div><p class="eyebrow">Origin of the four Gram numbers</p><h2 id="gram-numbers-title">What each number is and where it comes from</h2></div><p>The four numbers are <b>not</b> free parameters — they are the complete spectral data of the carrier's Gram matrix under S4×S4×S4 symmetry. They are of three different mathematical types, each determined by the carrier's structure.</p></div>
+    <table class="operations-table">
+      <tr><th>Number</th><th>Mathematical type</th><th>Determined by</th><th>What it controls</th></tr>
+      <tr><td><b>r_S12 = 11</b></td><td><b>Ratio</b> G_self / G_cross</td><td>12-point combinatorics under S4×S4×S4: the self-overlap divided by the cross-overlap between distinct points. For a uniform 12-point carrier with this symmetry, r_S12 is fixed to 11.</td><td>The Planck/weak hierarchy exponent (15 = 11+4), the QCD scale exponent (19 = 11+4+4), the Ω_de denominator (l+s = 12+4).</td></tr>
+      <tr><td><b>l_U1 = 12</b></td><td><b>Eigenvalue</b> in the U(1) irrep</td><td>Gram matrix restricted to the 1D sign irrep of S4. The largest eigenvalue, corresponding to the electromagnetic sector.</td><td>Fine-structure α⁻¹ = 11²+4², the weak mixing via sin²θ_W = 3/13, the p/e ratio via 12²+3², the PMNS phase via 12/10.</td></tr>
+      <tr><td><b>l_SU2 = 4</b></td><td><b>Eigenvalue</b> in the SU(2) irrep</td><td>Gram matrix restricted to the 2D standard irrep of S4 (multiplicity 2). The same eigenvalue 4 appears in the SU(3) sector (multiplicity 3).</td><td>The ratio l_U1/l_SU2 = 3 determines sin²θ_W = 3/13. The eigenvalue powers give the Larmor 1/90 = l_SU2²/(l_U1²·C_U1). The Higgs m_H = r²+s = 125.</td></tr>
+      <tr><td><b>C_U1 = 10</b></td><td><b>Trace</b> of the U(1) charge sector</td><td>Sum of squared U(1) hypercharges over all matter in three generations: Σ Y² = 10. Per-generation trace = 10/3.</td><td>Cosmological budgets: Ω_b = (c-s)/r² = 6/121, Ω_DM = (c-s)/(l+r) = 6/23. The Machian denominator 5280 = l·s·r·c.</td></tr>
+    </table>
   </section>
-</SiteLayout>
-
-<style>
   .results-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
   .results-table th { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 2px solid #333; font-weight: 600; }
   .results-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #555; vertical-align: top; }
   .results-table tr:hover { background: rgba(255, 255, 255, 0.03); }
   .status-pill { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; background: #1a5c1a; color: #8f8; }
+  .operations-table { width:100%; border-collapse:collapse; font-size:0.85rem; margin-top:1rem; }
+  .operations-table th { text-align:left; padding:0.5rem 0.75rem; border-bottom:2px solid #555; font-weight:600; color:#79c8e8; }
+  .operations-table td { padding:0.5rem 0.75rem; border-bottom:1px solid #444; vertical-align:top; }
+  .operations-table tr:hover { background:rgba(255,255,255,0.03); }
 </style>
