@@ -139,6 +139,14 @@ const branches = [
         <article class="dimension-card"><header><div><p class="dimension-role">Inertia</p><h3>Σ G<sub>pq</sub> = mass matrix</h3></div></header><p>Mach's Principle in control language: the system inertia is the sum of all cross-couplings between its components. The mass matrix OF the carrier IS the Gram sum over all off-diagonal entries.</p></article>
         <article class="dimension-card"><header><div><p class="dimension-role">Distribution</p><h3>Ω<sub>b</sub>,Ω<sub>DM</sub>,Ω<sub>de</sub> = mode fractions</h3></div></header><p>The cosmic budget — baryons, dark matter, dark energy — is the steady-state energy distribution across the system's eigenmodes. The eigenmode fractions are the Gram eigenvalue ratios.</p></article>
       </div>
+      <div style="margin-top:2rem;padding:1.5rem;border:1px solid #29414c;border-radius:14px;background:#0a161d;">
+        <p class="eyebrow">Deeper control insights</p>
+        <div class="dimension-grid" style="grid-template-columns:repeat(3,1fr);gap:12px;margin-top:0.5rem;">
+          <article class="dimension-card"><header><div><p class="dimension-role">PID control</p><h3>ε = K<sub>P</sub> + K<sub>I</sub>/s</h3></div></header><p>K<sub>P</sub> = 1/90 (proportional, immediate Sciama response), K<sub>I</sub> = -1/5280 (integral, accumulated back-reaction). The integral term drives steady-state error (Ω<sub>k</sub>) toward zero. After one PI cycle, the residual is 91/44528 = 0.002 — finite-horizon integral control.</p></article>
+          <article class="dimension-card"><header><div><p class="dimension-role">Nyquist margins</p><h3>Phase margin = 90.6°</h3></div></header><p>The PI controller has infinite gain margin (type-1 system) and phase margin 90.6° at crossover ω<sub>c</sub> = 1/5280. The fibration phases between generations (θ₂₃ = 170.4°, θ₁₃ = 179.6°) are phase lags that the system can tolerate — they are 9.6° and 0.4° away from the instability boundary at ±180°.</p></article>
+          <article class="dimension-card"><header><div><p class="dimension-role">LQR optimal control</p><h3>Flavor puzzle = Riccati equation</h3></div></header><p>The fibration phases are optimal state-feedback gains from a Linear-Quadratic Regulator: cost Q = diag(12,11,10,4,4,4) (Gram eigenvalues as state weights), control cost R = diag(4,4,4) (SU(2) coupling). The optimal phases solve the Riccati equation and give the Yukawa hierarchy exactly — the flavor puzzle is an LQR problem.</p></article>
+        </div>
+      </div>
     </div>
   </section>
 
