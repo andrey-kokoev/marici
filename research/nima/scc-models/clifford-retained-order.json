@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-clifford-retained-order",
+    "owner": "marici.Nima",
+    "classification": "clifford_sign_recursion_realizes_a_commuting_source_sector_with_retained_lift_phase",
+    "stratum": "Declared Cl(2,0) representation of an active four-dimensional sector of the actual independent source swap actions. Finite word and reversal coherence, before physical readout selection.",
+    "inputs": ["research/nima/agda/RetainedComparisonSeries.agda", "research/nima/clifford-retained-order-recursion.md"],
+    "checks": [{"id": "clifford-retained-order", "path": "research/nima/checkers/check_clifford_retained_order.py"}],
+    "depends_on": [],
+    "consumes": ["actual_source_swap", "declared_euclidean_clifford_algebra"],
+    "provides": ["source_active_sector_intertwiner", "recursive_retained_lift_sign", "finite_forward_reversal_word_coherence"],
+    "missing_constructors": ["full_source_higher_witness_integration", "source_selection_of_clifford_lift_and_scalar_recurrence"],
+    "next_falsifier": "Lift products differ by 2J while their commutator vanishes. Longer histories can give real lift differences; a nonzero Clifford element can square to zero. Test claimed scalar inheritance and higher residues against these controls."
+  }
+}

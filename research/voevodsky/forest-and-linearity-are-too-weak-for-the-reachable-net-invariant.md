@@ -1,0 +1,7 @@
+# Forest and linearity are too weak for the reachable-net invariant
+
+Fresh `check_reachable_net_forest_invariant.py` checks all alpha-quotiented states from four tiny initial graphs, including individual eraser schedules. Every explored agent-level port graph is a forest with exactly one wire per live port and at most one COPY and one Q per output. Fresh adversarial `check_forest_invariant_insufficiency.py` then constructs a connected, fully wired TREE with one Q_B whose principal meets TRUE, while its auxiliary meets NIL and result meets OUT. It meets the coarse forest/linearity/one-Q conditions yet is STUCK: no Q_B--TRUE rule exists. This malformed graph is not claimed reachable from the intended constructor.
+
+Consequently an induction based solely on graph acyclicity and port degree cannot establish progress or unique normal form. The reachable invariant must track TYPED tail grammar: Q_B principal may meet K or budget NIL; Q_S/Q_R meet B0/B1 or support NIL; ERASE meets B0/B1/K/NIL; COPY meets B0/B1/support NIL, with channel-specific OUT attachment and allowed transient Q-to-COPY-auxiliary wires. The 15-rule coverage checker supplies the finite case list but not the inductive proof.
+
+Next encode a validator for this typed-tail grammar on every reachable alpha-state, deliberately reject the malformed Q_B--TRUE example, and test preservation by each local rewrite. Avoid elevating finite checks to a theorem for arbitrary finite n.

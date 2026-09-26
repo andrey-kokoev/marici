@@ -1,0 +1,9 @@
+# Whole-run layered certificate validation
+
+`check_whole_run_certificates.py` intercepts every production replacement, snapshots its input graph, checks exact hand-declared allocation-slot wiring, typed pair/signatures and pre/post allocator interval, then evaluates the separate pure replacement algorithm. Before mutation it verifies the reference left inputs unchanged; after production mutation it requires exact output graph equality. Public RET/ACK/observation roots are protected. No rule is skipped.
+
+Fresh execution covers777 mixed programs27977 replacements, all57 rule templates and1225 outside-to-outside splice cases in reachable program contexts. All comparisons pass. Thus the earlier separate-boundary synthetic checks now have a whole-execution counterpart, including cyclic gate contexts and recurrence. Counts are bounded seeded trajectories, not a proof over every program.
+
+Five reference/certificate suites were added after the signature audit in the standard closure, so its generated signature artifact is refreshed before consumers read it. All24 fresh subprocess suites pass. The checkers still trust the declarative manifest, signature table and constructor semantics; the initial graph is not independently recompiled, and authentic allocation history begins from that constructor. Production mutation remains nontransactional and unchanged.
+
+Next independent-validation milestone is offline replay: persist an initial graph plus per-step typed certificates and allocator witnesses, replay only through the manifest/pure kernel without importing the production reducer, and reject tampered or truncated histories when completion is claimed. Keep initial-graph provenance and rule-manifest version/digest explicit. This turns an in-process differential check into a portable audit artifact without mislabeling it a formal proof certificate.

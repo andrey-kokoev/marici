@@ -1,0 +1,26 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-index-identity-coherence",
+    "owner": "marici.Nima",
+    "classification": "checked_relative_index_transport_not_global_resolution_completeness",
+    "stratum": "Route/coherencer compatibility for a retained coded index and dependent fibre family in Cubical type theory; arbitrary declared index paths, with a nontrivial loop regression.",
+    "inputs": [
+      "research/nima/agda/IndexIdentityCoherence.agda",
+      "research/nima/agda/IndexIdentityCoherenceRegression.agda",
+      "research/nima/agda/SigmaPiComparisonDecomposition.agda",
+      "research/nima/agda/WholePackageSigmaPi.agda",
+      "research/nima/agda/ProofRelevantCoherenceClosure.agda",
+      "research/nima/results/agda-IndexIdentityCoherenceRegression.json",
+      "research/nima/checkers/check_cubical_agda.ps1"
+    ],
+    "checks": [
+      {"id": "nima-index-identity-receipt", "path": "research/nima/checkers/check_index_identity_receipt.py", "requires": []}
+    ],
+    "depends_on": [],
+    "consumes": ["declared coded index identity types", "dependent path transport"],
+    "provides": ["index-aware dependent sum comparison equivalence", "retained action certificates", "nontrivial loop and no-section regression"],
+    "missing_constructors": ["complete structural basis for all resolution comparisons"],
+    "next_falsifier": "Any change to the five named proof sources must invalidate the compiler receipt. Dropping the nonreflexive index loop must fail the proved Bool fibre comparison."
+  }
+}

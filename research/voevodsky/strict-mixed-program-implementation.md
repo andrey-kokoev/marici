@@ -1,0 +1,9 @@
+# Strict mixed set programs implemented
+
+`strict_set_program.py` compiles member/add/union-literal instructions once into GM/GA/GU gates. Every instruction, including the first, waits for DONE; an initial DONE starts the chain. Runtime enabledness uses only typed principal pairs. Diagnostic gate/release lists are not consulted by any rule. New fixed-arity ABc/ASc/ARc and ULc/U0c/U1c carry return wires and emit DONE on their terminal cases; query phases reuse the acknowledging membership implementation.
+
+Fresh `check_strict_set_program.py` covers all programs of length0..3 over six operation/operand choices and three input words: 777 runs, 11,624 rewrites. At every enabled gate no operation-owned COPY/query/eraser/update/union control remains. Release order, final DONE, retained word, ordered snapshots and total rule count all pass. The exact count is one release per instruction plus each isolated operation's established cost, evaluated at the current word length. Empty programs have zero rewrites and initial final DONE.
+
+This supplies the implementation bridge for `strict-mixed-operation-return-contract.md`. It does not formally verify Python or quantify over all scheduler orders: the test chooses one seeded random schedule per fixture. The code currently assumes constructor-controlled allocation and valid input graphs, and remains nontransactional for invalid mutation. Strict gate cycles preclude use of the old forest quotient on the whole graph.
+
+Critical next proof audit: check actual return-threading connections in every new update/union template, including ULc--N's direct splice plus DONE emission, and validate the common postcondition by cut projection. This is the narrow implementation/specification gap to close before declaring strict mixed sequencing complete at the same assurance level as the written individual-operation proofs.

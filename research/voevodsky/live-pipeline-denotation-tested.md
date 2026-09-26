@@ -1,0 +1,7 @@
+# Live pipeline denotation tested
+
+Fresh `pipeline_denotation.py` interprets the current graph without reducing it or consulting the original word/program. It recursively expands COPY and insertion/union output frontiers, interprets QB/QS/QR phases, and returns the virtual RET word plus all output snapshot values. Cache lifetime is one observation; a recursion guard rejects cyclic denotations.
+
+`check_pipeline_denotation.py` passes 74,868 intermediate observations in 1,287 six-stage runs under forward, reverse and seeded random individual-redex schedules. Pending and finished answers agree with a separate sequential oracle at every observation, not just at the final graph. This is the implementation bridge for the written denotational simulation, not proof-assistant certification or exhaustive program enumeration.
+
+Critical-path reassessment: the main remaining assurance gap is that the strongest public/private producer contracts and global coverage used by the written closure proof are not yet checked by one executable predicate. The old ceiling validators permit more graphs than that specification. Next implement exact stream ownership/coverage, including RET and every OUT, and deliberately forge public/private COPY wiring to test rejection. This targets the proof's actual premises rather than repeating final-output checks. New control capabilities remain lower priority until this correspondence is audited.

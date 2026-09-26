@@ -1,0 +1,7 @@
+# Runtime original/copy types track the termination rank through rewrites
+
+Fresh `check_runtime_original_copy_tags.py` attaches INTERNAL tags to actual constructed support/index nodes: initial original B/N chain is ORIGINAL, initial K budgets and every fresh B/N/K node are COPIED. The executable rewrite wrapper checks that COPY consumes ORIGINAL and Q/ERASE consume COPIED; it propagates tags to fresh nodes, checks typed ownership and strict decrease of the lexicographic (original,copied) node counts after every step. On 1,213 bounded runs n<=4 under a query-first schedule, 26,632 tag invariant checks pass with correct two-query answers. Relabelling the ORIGINAL head as COPIED is rejected.
+
+These tags express machine-level construction history only, not an authenticated real-world source issuer. The bounded checker does not prove the full recursive typed-tail grammar or arbitrary-n termination; nor does it cover every dynamic schedule. A plausible induction has two obligations: constructor creates exactly one typed original chain; each of the 15 rules either consumes its head through COPY or preserves it and never creates ORIGINAL nodes. Coupling that with the prior COPY wait and tail-typing obligations is necessary for a complete proof.
+
+Next exercise the tagged engine under ALL individual-redex schedules for n<=2 and test a forged tag on a non-head original tail. Then state a rule-local preservation lemma over arbitrary finite typed suffixes, explicitly excluding malformed but well-wired graphs.

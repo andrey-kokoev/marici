@@ -1,0 +1,7 @@
+# Query-phase auxiliary roles distinguish support from budget
+
+Fresh `check_phase_auxiliary_tail_types.py` extends the principal typed-pair and internal ORIGINAL/COPIED checks with phase-dependent auxiliary conditions: Q_B's auxiliary faces a copied support B0/B1/NIL principal or a COPY auxiliary while waiting; Q_S's auxiliary faces a budget K/NIL principal; Q_R has no auxiliary. This holds on 219 reachable alpha-states and 452 transitions across four small input graphs with every individual eraser/query/COPY choice. The checker rejects an incorrectly typed phase role, although it does not yet establish that the entire attached tails are finite well-formed chains.
+
+The role swap is caused by local rules: Q_B--K moves its saved support to Q_S.p and the remaining budget to Q_S.a; Q_S--B moves the remaining budget back to Q_B.p and the support successor to Q_B.a. Q_B--NIL moves its saved support to Q_R.p. Q_R--B/NIL produces a boolean, possibly emitting an eraser for the leftover support. Temporary saved support may still end at COPY.a/b.
+
+Next characterize each tail recursively, including shared COPY frontier: B.a or K.a successor must be respectively B/N or K/N, except that copied B tails may end at a COPY auxiliary and eraser attachment. Test this on all reachable tiny graphs; if false, retain the counterexample rather than calling local typing a complete grammar. Full arbitrary-n confluence remains open.

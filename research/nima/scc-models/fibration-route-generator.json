@@ -1,0 +1,22 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-fibration-route-generator",
+    "owner": "marici.Nima",
+    "classification": "bare_regrouping_flat_extra_transport_has_curvature",
+    "stratum": "Actual endpoint-fiber interchange and all row-based readouts. Separately declared degree-at-most-four polynomial abelian transport, not physical transport or a partition functional.",
+    "inputs": [
+      "research/nima/agda/TableFibrationCycle.agda",
+      "research/nima/agda/FibrationRouteInterchange.agda",
+      "research/nima/checkers/check_fibration_route_interchange.ps1",
+      "research/nima/results/agda-FibrationRouteInterchange.json"
+    ],
+    "checks": [{"id": "fibration-route-generator", "path": "research/nima/checkers/check_fibration_route_generator.py", "requires": ["sympy"]}],
+    "depends_on": [],
+    "consumes": [],
+    "provides": ["endpoint_fiber_interchange", "row_readout_route_compatibility", "polynomial_route_defect_curvature_example"],
+    "missing_constructors": ["source_defined_nontrivial_input_output_transport", "physical_generating_function_readout"],
+    "next_falsifier": "Try to obtain a nonzero row-readout defect from bare endpoint regrouping, recover the potential constant from the mixed route derivative, or identify that derivative with the quartic potential itself. All fail."
+  }
+}

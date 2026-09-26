@@ -1,0 +1,9 @@
+# Pending-aware public observation
+
+Added `ConditionalSetProgram.observe()`: returns immutable snapshot tuple with None=pending and bool=published value, a separate `complete` flag from ACK--DONE, and `word` only when complete. Empty completed support is (), not None. It neither schedules reductions nor validates arbitrary imported graphs. Clients must compare readiness against None, not test Boolean truthiness.
+
+Fresh prefix tests perform82 read-only observations, checking the entire object dictionary unchanged. Both conditional Boolean values are observed after PICK while deliberately withholding rejected-budget EA; selected insertion/JOIN finish, yet the successor remains unreleased and complete stays false. Ordinary negative membership is also visible before cleanup. Empty programs and pending programs without outputs distinguish no observations from completion. The624-run mixed conditional regression also passes unchanged.
+
+This closes the public timing obligation at the current written-proof/bounded-test level. Observe relies on constructor invariants and is not a general graph validator or thread-safe snapshot of concurrent mutation.
+
+Critical-path reassessment: finite data-dependent update sequencing is now available; adding more equivalent samples will not broaden expressivity. The next research leaf should specify a bounded repeat-until query/update construct with a finite unary fuel operand and explicit exhaustion outcome. This introduces genuine control backedges only if necessary; distinguish a compile-time unrolled finite list from a runtime repeated body. Establish ownership of retained support, each iteration's query cleanup, fuel consumption and final observation before implementing. Unbounded termination or unrestricted loop bodies are not established.

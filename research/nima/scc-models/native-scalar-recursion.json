@@ -1,0 +1,16 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-native-scalar-recursion",
+    "owner": "marici.Nima",
+    "classification": "native_arbitrary_even_multiplicity_scalar_tree_algorithm",
+    "stratum": "Massless phi4 trees at even n>=4, supplied Feynman rules and exact rational conserved non-pole kinematics. Independent native DAG construction/readout; finite computational checks through n=12, not a general Agda theorem.",
+    "inputs": ["research/nima/amplitudes/native_scalar_recursion.py", "research/nima/amplitudes/native_scalar_fibers.py", "research/nima/amplitudes/scalar_tree_baseline.py", "research/nima/amplitudes/scalar_eight_factorization.py"],
+    "checks": [{"id": "native-scalar-recursion-audit", "path": "research/nima/amplitudes/native_scalar_recursion_check.py", "requires": []}],
+    "depends_on": [], "consumes": [],
+    "provides": ["native_arbitrary_even_n_scalar_recursion", "retained_partition_DAG", "eight_point_individual_topology_weight_comparison", "twelve_point_computational_comparison"],
+    "missing_constructors": ["arbitrary_n_formal_correctness", "full_native_Resolve_amplitude_instantiation", "loop_measure"],
+    "next_falsifier": "Erase a partition, duplicate unordered blocks, attach a wrong or cyclic child, divide by the external-root pole, merge equal-valued distinct label subsets, truncate diagram choices, or claim finite tests establish general formal correctness."
+  }
+}

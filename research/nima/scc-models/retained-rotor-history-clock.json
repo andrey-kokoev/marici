@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-retained-rotor-history-clock",
+    "owner": "marici.Nima",
+    "classification": "unwrapped_phase_gives_affine_angular_clock_not_endpoint_elapsed_time",
+    "stratum": "Attachment transport and readout descent on explicitly lifted rotor/reverser histories in the declared Clifford module. Continuous path and starting lift remain input data, not consequences of a discrete word.",
+    "inputs": ["research/nima/checkers/check_clifford_retained_order.py", "research/nima/retained-rotor-phase-transport.md", "research/nima/retained-rotor-history-clock.md"],
+    "checks": [{"id": "retained-rotor-history-clock", "path": "research/nima/checkers/check_retained_rotor_history_clock.py", "requires": ["sympy"]}],
+    "depends_on": [],
+    "consumes": ["module_compatible_rotor_phase_transport", "retained_word_history"],
+    "provides": ["conditional_affine_angular_clock", "endpoint_clock_descent_obstruction", "orientation_transported_winding_controls"],
+    "missing_constructors": ["source_authorized_continuous_path_assignment", "response_to_implementer_identification", "physical_clock_reference_and_calibration"],
+    "next_falsifier": "The same primitive matrix e2 admits angular lifts differing by 2*pi; LL and the empty word share a clock reading but not history. An asserted native elapsed-time observable must specify its path, frame and comparison policy instead of descending from endpoint data."
+  }
+}

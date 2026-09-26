@@ -1,0 +1,7 @@
+# Dynamic family-schedule exhaustion on four tiny copy-query nets
+
+Fresh `check_dynamic_copy_query_family_schedules.py` exposes enabled COPY, Q1, Q2 and ERASE FAMILY choices at every step of the wired fixed-signature copier-plus-two-probes graph. It replays all dynamic family decision prefixes for four explicit fixtures: empty support (16 terminal schedules); support [0] (126); support [1] with mixed indices (413); support [1,0] with indices 1,0 (3,923). All 4,478 terminal family schedules reach the expected two Boolean outputs; the largest explored decision tree has 13,482 internal nodes and max path depth 12. The underlying engine checks wire incidence after every rewrite. The four-priority regression was rerun and passes.
+
+This is stronger than static priority sweeps but still NOT full arbitrary-redex confluence: simultaneous ERASE nodes within the same family are chosen in a fixed order, fresh agent IDs are not alpha-normalized for graph-state merging, and only four tiny fixtures were exhausted. The rapid increase in interleavings suggests quotienting independent rewrites rather than raw schedule enumeration.
+
+Next establish the local commuting-diamond property for disjoint active pairs at graph level, then use it to identify schedules differing only by independent steps. Check critical overlaps at COPY/query boundary separately; avoid inferring general confluence from finite enumeration alone.

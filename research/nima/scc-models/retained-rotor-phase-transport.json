@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-retained-rotor-phase-transport",
+    "owner": "marici.Nima",
+    "classification": "defining_module_fixes_weight_one_rotor_phase_and_sews_two_hj_charts",
+    "stratum": "Attachment transport in the already declared real Clifford defining module, its angular rotor action, and a specified phase connection with uncalibrated scale kappa. Full native continuous-source realization remains separate.",
+    "inputs": ["research/nima/checkers/check_clifford_retained_order.py", "research/nima/retained-rotor-generator.md", "research/nima/retained-rotor-phase-transport.md"],
+    "checks": [{"id": "retained-rotor-phase-transport", "path": "research/nima/checkers/check_retained_rotor_phase_transport.py", "requires": ["sympy"]}],
+    "depends_on": [],
+    "consumes": ["declared_clifford_lift", "conditional_continuous_even_rotor_family", "derived_angular_hamiltonian"],
+    "provides": ["module_compatible_rotor_phase_transport", "conditional_hamiltonian_constant_selection", "two_chart_classical_hj_sewing"],
+    "missing_constructors": ["source_authorized_analytic_enlargement", "history_clock_with_reversal_transport", "physical_phase_scale_calibration"],
+    "next_falsifier": "Weight five agrees at every finite signed sample but fails real-linear extension of the defining matrices. Counting both an angular Hamiltonian offset and the same retained module phase erases the full-period minus sign."
+  }
+}

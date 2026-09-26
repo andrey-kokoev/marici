@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-retained-rotor-generator",
+    "owner": "marici.Nima",
+    "classification": "ambient_even_rotor_flow_has_quadratic_generator_but_zero_offset_action_misses_retained_minus_sign",
+    "stratum": "Forward realization and attachment transport inside the declared real Clifford algebra with its reversion metric. Exponential enlargement is explicit; the finite source group itself remains discrete.",
+    "inputs": ["research/nima/checkers/check_clifford_retained_order.py", "research/nima/retained-rotor-generator.md"],
+    "checks": [{"id": "retained-rotor-generator", "path": "research/nima/checkers/check_retained_rotor_generator.py", "requires": ["sympy"]}],
+    "depends_on": [],
+    "consumes": ["declared_clifford_lift", "retained_word_history"],
+    "provides": ["conditional_continuous_even_rotor_family", "derived_angular_hamiltonian", "retained_sign_action_mismatch"],
+    "missing_constructors": ["lift_compatible_action_and_caustic_comparison", "source_authorized_analytic_enlargement", "physical_clock_and_energy_calibration"],
+    "next_falsifier": "The full adjoint period has zero full classical action at C=0 but retained lift -1. Any proposed HJ realization must reproduce that sign without silently selecting an energy offset or discarding caustic witnesses."
+  }
+}

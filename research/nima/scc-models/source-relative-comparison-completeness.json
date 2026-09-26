@@ -1,0 +1,26 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-source-relative-comparison-completeness",
+    "owner": "marici.Nima",
+    "classification": "checked_relative_witness_completeness_not_global_resolution_coherence",
+    "stratum": "Route/coherencer compatibility: identity witnesses between values of a fixed Code; supplied boundary-generator theory may contain distinct derivations with equal semantics.",
+    "inputs": [
+      "research/nima/agda/SourceRelativeComparisonCompleteness.agda",
+      "research/nima/agda/SourceRelativeComparisonCompletenessRegression.agda",
+      "research/nima/agda/SigmaPiComparisonDecomposition.agda",
+      "research/nima/agda/WholePackageSigmaPi.agda",
+      "research/nima/agda/ProofRelevantCoherenceClosure.agda",
+      "research/nima/agda/IndexIdentityCoherence.agda",
+      "research/nima/agda/IndexIdentityCoherenceRegression.agda",
+      "research/nima/results/agda-SourceRelativeComparisonCompletenessRegression.json",
+      "research/nima/checkers/check_cubical_agda.ps1"
+    ],
+    "checks": [{"id": "nima-source-relative-receipt", "path": "research/nima/checkers/check_source_relative_receipt.py", "requires": []}],
+    "depends_on": ["nima-index-identity-coherence"],
+    "consumes": ["coded index transport", "specified source witness decoder"],
+    "provides": ["local boundary-relative completeness theorem", "all-code completeness iff all-source completeness", "equivalence and comparison graph decomposition"],
+    "missing_constructors": ["a complete basis for the source theory of full resolution comparisons"],
+    "next_falsifier": "The set-only source theory must fail at the circle. Two source derivations with equal decoded paths must remain distinguishable."
+  }
+}

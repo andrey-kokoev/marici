@@ -1,0 +1,7 @@
+# Exact individual-redex diamonds
+
+Fresh `check_exact_individual_diamonds.py` explores the 11,278 exact tagged forest states summed over 141 inputs (n<=2, indices through n+2). For every pair of simultaneously enabled individual redexes, it checks disjoint agent sets, executes each first step using the existing production engine, checks that the other named redex remains enabled, and then executes the opposite second step. Both intermediate and final graphs pass the unified invariant. The two final graphs have equal exact tagged forest encodings in all **15,525 diamonds**.
+
+Coverage: COPY/Q1 3,944; COPY/Q2 3,944; Q1/Q2 5,663; E/Q1 790; E/Q2 790; E/E 178; COPY/E 216. E/E explicitly includes different individual erasers, rather than treating all erasers as one scheduling family. Fresh allocation names can differ between orders, so literal name equality is neither required nor assumed.
+
+This is bounded local commutation evidence, not an arbitrary-n confluence theorem. A symbolic argument must show that disjoint principal pairs remain active under each other's boundary rewiring, including when they share an auxiliary boundary wire; independent redexes need not live in separate connected components. Every rewrite must preserve its external interface and use globally fresh names. Next audit those properties in the low-level replacement routine and formulate the boundary-wire commuting lemma. Combine with invariant closure and decreasing rank only after their universal premises are justified; boolean semantic correctness is a further obligation.

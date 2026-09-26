@@ -1,0 +1,16 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-q-booleanity",
+    "owner": "marici.Nima",
+    "classification": "formal_boolean_reflection_with_proven_information_loss",
+    "stratum": "Small types and double-negation-stable propositions; negative target supplied; retained complete Q kept distinct from truth readout",
+    "inputs": ["research/nima/agda/QBooleanity.agda", "research/nima/agda/BooleanNandEquivalence.agda", "research/nima/results/agda-QBooleanity.json", "research/nima/results/q-booleanity-formal-audit.json", "research/nima/checkers/check_q_booleanity.ps1"],
+    "checks": [{"id": "q-booleanity-audit", "path": "research/nima/checkers/check_q_booleanity.py", "requires": []}],
+    "depends_on": [], "consumes": [],
+    "provides": ["wolfram_double_negation_equivalence", "stable_truth_boolean_algebra", "double_negation_reflection", "retained_choice_loss_obstruction"],
+    "missing_constructors": ["source_selected_nontrivial_predicate_on_complete_Q"],
+    "next_falsifier": "Require raw Q equivalence to its truth reflection; replace closed Boolean join with raw sum/union; evaluate raw complete-package inhabitation instead of a specified fibre."
+  }
+}

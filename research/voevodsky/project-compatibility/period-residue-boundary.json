@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "arithmetic": "exact sparse bivariate rational identities over Fraction",
+  "source_sha256": {
+    "research/voevodsky/project-compatibility/check_period_residue_boundary.py": "e17848a37e2bf633383b2673b8966f82c98332186ee1e57b9db37b603ccbf4ea",
+    "temp/arxiv-2408.16386-source/sections/applications.tex": "3e92460fe2e34dc21a537c784dab3b2fbcd9b7cfee9e7372f06971b50d8b6f9b",
+    "temp/arxiv-2408.16386-source/sections/method.tex": "32c332c1139a87397bf2824f46c7c8eff3d7ce48f902bae392ed61dd07900159",
+    "research/nima/total-energy-period-residue-interchange-dpc.md": "fe0c7c154d42fa6bbe88cecaa39f3b77c483e0e1f801543e583a9b787b08844e",
+    "research/nima/total-energy-amplitude-proportionality-typing-dpc.md": "0eefbf7937058e07608eafe478e93037fcfcebb3a8326c7719fdef3185dbc444",
+    "research/benincasa/cyclic_q_assembly_certificate.md": "54ee0e060f66fc3293a538bc309a5c6c7a6e58092e5f660e7a89a1c56cc2e2c5"
+  },
+  "source_unchanged": true,
+  "negative_control": {
+    "integrand": "1/E + 1/(E+y)^2",
+    "domain": "E>0; y in [0,1]",
+    "primitive": "y/E - 1/(E+y)",
+    "period": "2/E - 1/(E+1)",
+    "formal_integrand_residue": 1,
+    "integrated_formal_residue": 1,
+    "period_residue": 2,
+    "interchange_fails": true,
+    "cause": "moving pole y=-E collides with fixed endpoint y=0"
+  },
+  "positive_control": {
+    "integrand": "1/E",
+    "both_residues": 1
+  },
+  "boundary_layer": {
+    "kernel": "E/(E+y)^2",
+    "mass": "1/(1+E)",
+    "cumulative_mass": "delta/(E+delta)",
+    "mass_on_0_E": "1/2",
+    "blowup_y_Et_with_jacobian": "1/(1+t)^2",
+    "weak_star_limit": "delta_0",
+    "repaired_scaled_reading": "integral phi dy + phi(0)",
+    "total_variation_distance_to_delta_0": "1 + 1/(1+E)",
+    "rate_samples": [
+      {
+        "n": 10,
+        "E": "1/100",
+        "delta": "1/10",
+        "bound": "3241/11110"
+      },
+      {
+        "n": 100,
+        "E": "1/10000",
+        "delta": "1/100",
+        "bound": "3020401/101010100"
+      },
+      {
+        "n": 1000,
+        "E": "1/1000000",
+        "delta": "1/1000",
+        "bound": "3002004001/1001001001000"
+      },
+      {
+        "n": 10000,
+        "E": "1/100000000",
+        "delta": "1/10000",
+        "bound": "3000200040001/10001000100010000"
+      }
+    ],
+    "verification_boundary": "Rational identities and bound samples are machine checked; general continuous-test convergence and total variation argument are written mathematical proofs in endpoint-observation-completion.md, not a formalized analytic theorem."
+  },
+  "scope": "Counterexample to automatic interchange, not a counterexample to the frozen cosmological period; physical source completion remains unproved."
+}

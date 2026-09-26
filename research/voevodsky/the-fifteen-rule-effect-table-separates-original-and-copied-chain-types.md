@@ -1,0 +1,7 @@
+# The fifteen-rule effect table separates original and copied chain types
+
+Fresh `check_symbolic_original_copy_rule_types.py` writes a finite internal provenance-effect table for the 15 observed active-pair cases. COPY--B0/B1/NIL consumes one ORIGINAL head and creates two fresh COPIED heads (two B or two NIL); its fresh COPY inherits the remaining ORIGINAL tail. Q_B/Q_S/Q_R and ERASE consume one COPIED B/N/K head and create none of those counted nodes. The checker rejects E/Q meeting ORIGINAL and COPY meeting COPIED; 840 symbolic nonnegative-size substitutions confirm the lexicographic rank (live original nodes, live copied B/N/K nodes) strictly decreases under these effects.
+
+Here ORIGINAL/COPIED are construction-time TYPES, not evidence of a real issuer. This table is conditional on accurate mapping from the executable rules and on the stronger reachable-shape invariant that ensures each active pair carries those tags. It does not prove closure of the full port-graph grammar or normal forms for arbitrary finite supports.
+
+Next implement a runtime tag map propagated by every graph rewrite, audit that it matches the table on all reachable small states and adversarially reject relabelling of a copied node as original. Then formulate an inductive constructor grammar that ensures the tags and output channel tails persist under every rule; only after this can the termination argument become a theorem for the intended class.

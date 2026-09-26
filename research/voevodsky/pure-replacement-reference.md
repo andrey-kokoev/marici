@@ -1,0 +1,9 @@
+# Independent snapshot replacement reference
+
+Implemented `pure_replacement.py` without calling the production mutator. It validates full matching coverage, distinct principal-paired removed agents, protected roots, live-name freshness and exact boundary/fresh slot use. It computes outside peers from the original snapshot, constructs separate result dictionaries, reconnects the certificate and validates the result. Explicit ValueError checks do not depend on assertions. Inputs are never modified, including on rejection; returned port declarations are tuples.
+
+The evaluator is functional with respect to inputs, not an immutable Python object API: returned dictionaries remain mutable. It checks graph/port correctness, not the rule's semantic choice or allocation history. Fresh names need only be absent from the live graph; historical monotone freshness remains an additional premise. No arbitrary internal-wire rerouting beyond the supplied exposed-slot certificate is inferred.
+
+Fresh differential checks compare1508 production certificates across48 mixed programs, with exact types/wires agreement and unchanged input snapshots. A same-agent passive cyclic boundary splice succeeds with the expected output wire; four malformed certificate cases reject without input change. These tests separate substitution correctness from shared rule-generation semantics; they do not independently certify the57 rule templates.
+
+The production replace remains nontransactional and unchanged. This reference is not silently substituted into runtime execution. Next strengthen the reference certificate boundary with an explicit allocator high-water witness and typed rule/signature checks, then expand malformed/cyclic tests. The initial shared trust bottleneck is reduced, not eliminated; an independent reviewer has not yet checked this implementation.

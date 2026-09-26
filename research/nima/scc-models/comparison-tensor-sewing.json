@@ -1,0 +1,23 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-comparison-tensor-sewing",
+    "owner": "marici.Nima",
+    "classification": "normalized_tensor_additivity_selects_formal_logarithm_conditionally",
+    "stratum": "Actual finite source swap, counting pairing and independent multiplicative probes. Normalized overlap sewing; additive normalized formal scalar readout is an additional requirement. No global positive logarithm or physical field identification.",
+    "inputs": [
+      "research/nima/agda/ComparisonTensorSewing.agda",
+      "research/nima/agda/ComparisonMixedResidual.agda",
+      "research/nima/agda/RetainedComparisonSeries.agda",
+      "research/nima/checkers/check_comparison_tensor_sewing.ps1",
+      "research/nima/results/agda-ComparisonTensorSewing.json"
+    ],
+    "checks": [{"id": "comparison-tensor-sewing", "path": "research/nima/checkers/check_comparison_tensor_sewing.py", "requires": ["sympy"]}],
+    "depends_on": [],
+    "consumes": ["source_product_comparison", "mixed_residual_even_degree_tower"],
+    "provides": ["normalized_residual_tensor_sewing", "conditional_logarithmic_tower_weights", "finite_quartic_truncation_sewing_counterexample"],
+    "missing_constructors": ["physical_tensor_additivity_and_field_kinetic_readout", "physical_treatment_of_zero_and_negative_overlaps"],
+    "next_falsifier": "Test exact sewing for a finite quartic truncation, global finite extension through zero overlap, or invariance of the fourth derivative under a changed probe coordinate. All fail in explicit controls."
+  }
+}

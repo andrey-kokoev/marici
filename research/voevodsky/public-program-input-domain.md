@@ -1,0 +1,9 @@
+# Public program constructor domain
+
+Added shared explicit validation to StrictSetProgram, ConditionalSetProgram, ScanningSetProgram and standalone FuelScanner. Words/literals require exact integer0/1 (booleans and floats rejected); indices/fuel require exact nonnegative integers; instructions require known operations and exact operand arities. Finite iterables are materialized once before graph allocation, so nested one-shot operands remain usable. Invalid values raise ValueError; noniterable shapes can raise TypeError. These checks remain active under Python -O, unlike internal invariant assertions.
+
+Fresh check_public_inputs.py passes30 invalid cases with no graph types allocated before rejection, and a nested one-shot iterable semantic example, both normally and under -O. The11-suite recurrent closure also passes. Running production rewrites under -O is not endorsed: only public validation persistence is tested that way.
+
+Scope deliberately excludes old low-level research constructors, including RetainedMembership, ConditionalInsertion and raw cursor helpers; their legacy coercions/assertions remain. These are internal/prototype surfaces, not uniformly hardened APIs. Finite resource bounds are a caller premise: no maximum unary length or protection against infinite/side-effecting iterables is claimed. Validation may consume caller iterators; rejection is not rollback of caller-owned objects or transactional memory allocation.
+
+Next complete the public-boundary assurance by adding this validation suite to the standard closure and auditing the exported entrypoint contract, including inherited methods such as start/insert/run that may bypass the compiled-program discipline. Prefer a narrow documented facade or explicit rejection over claiming every inherited prototype method is a safe public operation.

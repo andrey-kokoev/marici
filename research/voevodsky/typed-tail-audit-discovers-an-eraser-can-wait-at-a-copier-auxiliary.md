@@ -1,0 +1,7 @@
+# Typed-tail audit discovers an eraser can wait at a copier auxiliary
+
+Fresh `check_typed_tail_grammar.py` audits 219 alpha-quotiented states and 452 transitions from four tiny wired copier/two-query inputs. It checks active-pair phase compatibility, principal versus COPY auxiliary port orientation, channel-specific output attachment, and one symmetric wire per live port; it rejects the earlier malformed Q_B--TRUE tree. The first proposed grammar FAILED on a reachable graph: ERASE can have its principal wired to a COPY auxiliary output while it waits for the next copied bit or NIL. The revised grammar admits that transient wait for Q_S/Q_R AND ERASE, and passes all checked transitions. Across states 59 such waits were counted (queries and erasers combined).
+
+This matters for the inductive proof: garbage cleanup can begin before copying finishes, so a grammar that forces detached eraser tails to be independent of COPY is false. The checker enforces only local typed neighbors and output roots; it does NOT yet validate the entire recursive shape of every tail or establish preservation for arbitrary finite input length.
+
+Next specify a dependency invariant for outstanding COPY auxiliary wires: each may face either a query or eraser waiting agent, and after the copier consumes its next original BIT/NIL the dependent port reconnects to the fresh copied head. Prove progress using the decreasing original-source rank, including when both outputs have waiting erasers. Then formalize the recursive tail grammar.

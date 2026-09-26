@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-retained-square-reversal",
+    "owner": "marici.Nima",
+    "classification": "actual_source_square_reversed_with_retained_section_and_schedules",
+    "stratum": "Route/coherence compatibility on ObserverCoherenceCube.Geometry's actual cubical square and section. No scalar readout.",
+    "inputs": ["research/nima/agda/RetainedSquareReversal.agda", "research/nima/agda/ObserverCoherenceCube.agda", "research/nima/results/agda-RetainedSquareReversal.json"],
+    "checks": [{"id": "retained-square-reversal", "path": "research/nima/checkers/check_retained_square_reversal.py"}],
+    "depends_on": [],
+    "consumes": ["retained_source_square", "actual_cubical_section"],
+    "provides": ["canonical_reversed_square_and_section", "source_and_schedule_recovery_after_reversal"],
+    "missing_constructors": ["comparison_with_independently_presented_backward_witnesses", "full_rules_three_through_five_witness_integration"],
+    "next_falsifier": "Compare the canonical reflected section with an independently specified backward section with the same boundaries. Do not replace that comparison by endpoint equality or relabel double reflection as full rule 3."
+  }
+}

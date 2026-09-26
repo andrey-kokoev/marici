@@ -1,0 +1,7 @@
+# A local overlap interface has exponentially many states under singleton probes
+
+Independent of Nima, define a labelled-contact calculus. A local `SUPPORT(S)--CONTACT(x)` interaction adds x to S; joining two pieces unions their supports. Future contexts can probe overlap with any singleton `{x}`. Fresh `check_local_overlap_interface_growth.py` exhaustively checks up to eight labels: a fixed two-label universe has four sufficient support states, whereas n available labels give 2^n pairwise distinguishable support states. For ANY distinct supports choose x in their symmetric difference; the singleton context reports different overlap. Cardinality alone already fails for `{0}` versus `{1}`.
+
+The set-union summary is compositional and exact; its bitset requires n bits as labels grow. The `CONTACT(x)` agent is parameterized by x, so this is a local-rewrite SPECIFICATION rather than a fixed finite-signature port-level interaction net. A finite label encoding could move the same information into wires and agents. This illustrates a precise continuation-sufficiency barrier for our own overlap machinery, without importing Nima's E/E_B structures.
+
+Next replace singleton probes with a stated restricted context class (e.g. symmetric total-overlap cardinality), derive its minimal continuation equivalence under joins, and check whether a smaller uniform invariant survives. Restriction must be justified by the programme's legitimate future observations, not chosen solely for compression.

@@ -1,0 +1,13 @@
+# Nima n=9 fork: completion is not contour determination
+
+Copied the requested net/checker/result/description into research/voevodsky, together with their41-module local import closure and required data artifacts (84 files total). `results/nima-barrier-fork-manifest.json` records source/destination hashes at copying. Output paths are rebased to research/voevodsky; original research/nima files are unchanged. Primary literature under research/sources remains a shared read-only dependency. Copied results are inherited evidence until rerun; subsequent regenerated files need not match the initial copy manifest.
+
+Fresh verification requires SymPy: ordinary Python lacked it; `uv run --with sympy python research/voevodsky/checkers/check_four_cell_completion_barrier_net.py` passed100 schedules2000 transitions, including all answers visible with one cleanup withheld and the global barrier blocked.
+
+Continued toward the amplitude rather than another barrier extension. `check_nine_point_barrier_contour_gap.py` recomputes the exact two-component family matrix at the supplied positive target. Columns are zero2/zero3 EB+FB pair sums; rows are chi3^4 chi5^4 and chi2^4 chi5^4. The matrix is diagonal with two nonzero rational entries, hence rank2, while local pole constraints on those two family coefficients have rank0. Weights (1,0) and (1,1) satisfy the same local cancellation/completion conditions yet give different component values. Exact entries and inverse are saved in results/nine-point-barrier-contour-gap.json.
+
+This makes the next derivation obligation explicit: supply an independently normalized physical contour or target component values to determine the two family weights, and establish whether additional cells contribute. Matrix inversion can recover candidate weights from such data but cannot manufacture the physical normalization or prove all-target/global validity. The prior off-face two-target check further shows the two family forms are not constant multiples; no scalar redundancy removes the issue.
+
+Next read the authored n=9 recursion/contour reference and existing history-normalization artifacts, identify the physical cell coefficients and any missing cells, then test the resulting candidate at both supplied positive targets before claiming progress on the full amplitude. Successor-body or source-return runtime work remains distinct from this mathematical obligation.
+
+Adding the fork's Python files invalidates the earlier recurrent-program closure source inventory. That prior freshness report should be regenerated if used; its previous pass is not represented here as fresh for the expanded folder. No independent review or completed n=9 amplitude is claimed.

@@ -1,0 +1,7 @@
+# Tagged rewrites survive individual-redex interleavings
+
+Fresh `check_tagged_individual_redex_schedules.py` applies the runtime ORIGINAL/COPIED checker to all individually enabled redex choices on four small constructed copier/two-query graphs: 219 alpha states, 452 transitions, and 1,756 tag checks during canonical replay. A deliberate forgery that retags a NON-HEAD original tail node as COPIED is now rejected. The earlier checker is also rerun after strengthening its validator to compare the complete remaining original suffix and its links, rather than the head alone: 1,213 bounded ordered runs and 26,632 checks still pass.
+
+The complete original suffix is constructor-marked and never introduced by a rewrite. COPY consumes its head and can create only COPIED heads; non-COPY rules consume COPIED nodes. This gives a candidate induction for type preservation and a conditional lexicographic termination proof, but a full reachable component grammar and all-schedule arbitrary-n confluence are still open. In particular the type checker alone cannot rule out a well-typed disconnected stuck component whose active head is the wrong phase.
+
+Next construct a local grammar for each output-rooted query component, including Q phases, copied B/K tails, temporary Q/E-to-COPY waits and detached eraser tails. Check malformed typed-but-stuck examples and preservation of that grammar under all 15 rules. Do not equate internal construction tags with external issuer provenance.

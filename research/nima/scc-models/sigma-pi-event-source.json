@@ -1,0 +1,19 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-sigma-pi-event-source",
+    "owner": "marici.Nima",
+    "classification": "exhaustive_binary_schedule_model_with_written_unbounded_coherence_argument",
+    "stratum": "Route/coherencer compatibility for one fixed finite binary-indexed source word; labels and full schedules retained. Exhaustive executable domain: primitive words of length at most six.",
+    "inputs": [
+      "research/nima/checkers/sigma_pi_event_source.py",
+      "research/nima/sigma-pi-event-source-completeness.md"
+    ],
+    "checks": [{"id": "nima-sigma-pi-event-source-check", "path": "research/nima/checkers/check_sigma_pi_event_source.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["fixed Bool-indexed SP -> PSS rule and reversible codec"],
+    "provides": ["source-derived event-poset comparison generator", "all-ideal and labelled-state graph agreement through source length six", "maximal-event contraction prism certificates"],
+    "missing_constructors": ["proof-assistant certification of arbitrary-word event-poset correspondence and cubical contraction", "extension to arbitrary dependent index/source coherence"],
+    "next_falsifier": "Delete an event predecessor or a higher cube while retaining lower data; the corresponding schedule or contraction certificate must be rejected."
+  }
+}

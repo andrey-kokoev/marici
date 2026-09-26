@@ -1,0 +1,7 @@
+# Fixed-signature port net implements destructive labelled membership
+
+An n-label support is an ordered B0/B1 agent chain, one node per possible label. A query label i is a unary K chain of length i. A fixed vocabulary B0,B1,K,N,Q_B,Q_SKIP,Q_READ,E,TRUE,FALSE,OUT suffices: Q_B consumes K first; Q_SKIP consumes one support bit and returns to Q_B; when K reaches NIL, Q_READ tests the next B0/B1 (out-of-range NIL returns false). Erasers consume the unused tail. Fresh `check_fixed_signature_membership_net.py` exhaustively executes 4,608 support/index cases for n=0..8 and indices 0..n+1. Each principal-pair rewrite audits that every live port has exactly one symmetric wire; the sole normal form is BOOL--OUT. Maximum observed rewrites: 19.
+
+This meets the finite-signature PORT-NET membership experiment with a destructive query. Each support still occupies n bit agents, consistent with the 2^n distinguishability lower bound. The implementation does not perform local SUPPORT union/insertion, preserve a support for a second query, prove arbitrary scheduling confluence, or speak to Nima's operations. An encoded label is a unary network, not a parameter on an agent.
+
+Next build a local in-place `add(i)` insertion/setting interaction on the B0/B1 chain, then test `probe(add(S,i),j)` against `probe(S,j) or i==j` for all small supports. Separate destructive query from a reusable observation contract; they cannot be conflated.

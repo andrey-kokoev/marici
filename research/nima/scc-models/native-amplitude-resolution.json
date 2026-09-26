@@ -1,0 +1,16 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-native-amplitude-resolution",
+    "owner": "marici.Nima",
+    "classification": "finite_expression_amplitude_native_Resolve_and_semiring_expansion",
+    "stratum": "All finite marked sum/product expressions with supplied coefficient algebra; semiring diagram expansion; actual six-point scalar fixture. Native Python DAG compiler checked through n=12, not universally certified.",
+    "inputs": ["research/nima/agda/NativeAmplitudeResolution.agda", "research/nima/agda/AmplitudeDiagramExpansion.agda", "research/nima/agda/ScalarAmplitudeResolveFixture.agda", "research/nima/amplitudes/native_scalar_program.py", "research/nima/results/agda-ScalarAmplitudeResolveFixture.json", "research/nima/results/native-amplitude-resolution-formal-audit.json"],
+    "checks": [{"id": "native-amplitude-resolution-audit", "path": "research/nima/amplitudes/native_scalar_program_check.py", "requires": []}],
+    "depends_on": [], "consumes": [],
+    "provides": ["actual_native_Resolve_amplitude_expression_construction", "translated_execution_readout_compatibility", "formal_finite_semiring_diagram_expansion", "actual_six_point_Resolve_amplitude", "native_DAG_expression_compiler_comparisons"],
+    "missing_constructors": ["general_partition_enumerator_certification", "Python_DAG_compiler_formal_correctness", "loop_measure"],
+    "next_falsifier": "Replace the expression's application tree with an unrelated scalar seed, alter its marked operator or weight, merge distinct diagram choices, introduce cyclic operands, or promote agreement of finite tests to an arbitrary-n proof of the Python compiler."
+  }
+}

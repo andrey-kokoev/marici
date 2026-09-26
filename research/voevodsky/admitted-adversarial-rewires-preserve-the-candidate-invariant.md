@@ -1,0 +1,7 @@
+# Admitted adversarial rewires preserve the candidate invariant in one-step tests
+
+Fresh `check_admitted_mutation_closure.py` reconstructs the 1,132 invariant-admitted two-wire mutation instances from four tiny reachable fixture spaces. For every live principal/principal consumer pair, it invokes the existing tagged production rewrite engine, stops after exactly one rewrite (or normal termination), asserts exactly one step occurred, and checks the unified invariant again. All 2,615 edges pass, covering all fifteen typed rule pairs, including two E--K cases. Mutations and edges are counted as instances, not distinct alpha classes.
+
+This differs from replaying constructor examples: some admitted graphs can change budget ownership or support connections and need not be reachable from their generating input. No original-input Boolean answer is asserted for these graphs. It is an adversarial local closure test, not exhaustive enumeration of all invariant-satisfying forests and not a universal preservation proof.
+
+Next remove dependence on provenance-blind canonicalization in the base-state exploration: establish that original/copied tags are reconstructible from the unique COPY source component under the invariant, or incorporate tags in the canonical signature. Then extend adversarial testing to constructor-independent generated typed forests, keeping progress, rank decrease, and Boolean semantic correctness distinct.

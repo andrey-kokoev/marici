@@ -1,0 +1,9 @@
+# Opt-in bounded replay intake
+
+Added `bounded_replay.audit_file(path, max_bytes=..., max_certificates=..., max_unary=..., max_rewrites=...)`, requiring all four explicit exact nonnegative integer caps. It reads at most max_bytes+1 bytes before JSON parsing; rejects over-limit files, duplicate JSON keys and nonfinite numeric literals; caps certificate count; normalizes declarations without unary graph expansion; caps declared unary operands and conservative source rewrite estimate before invoking semantic replay. Equality is accepted. Existing trusted direct replay commands remain unchanged and unbounded.
+
+Fresh tests accept the example exactly at all four thresholds, reject each one-below cap without invoking semantic replay, reject duplicate/nonfinite JSON and reject a Boolean policy value before opening the file. Seven rejection checks pass. The refreshed29-suite closure passes.
+
+Limits constrain named quantities only. Parsing bounded bytes may still use disproportionate memory or hit nesting/integer parser limits. Initial graph sizes, certificate payload shapes and per-step graph traversal costs are indirectly byte-bounded, not tightly work-bounded. Estimated source rewrites do not independently measure verifier CPU. This API is not a process sandbox or network-facing hostile-input service, and malformed nested shapes can still surface low-level exceptions.
+
+Critical-path reassessment: the programme now has a bounded intake path, structural source matching, legal replay and separate semantic comparison. Stop further policy accretion. Next consolidate the complete assurance/reproduction index and explicitly audit dependency freshness of reports (especially generated signature tables and manifest digests) so a review packet cannot accidentally pair new source with old evidence. A current-source hash comparison and fail-closed report freshness check is more valuable than additional parser options at this stage.

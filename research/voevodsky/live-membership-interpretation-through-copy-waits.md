@@ -1,0 +1,7 @@
+# Live membership interpretation through COPY waits
+
+Implemented import-safe `live_membership_semantics.py`: trace each OUT to its BOOL or Q, interpret budget K chains, and unfold a COPY auxiliary virtually through its original support at COPY.p. Q_B uses its remaining budget; Q_S uses remaining budget plus one; Q_R reads index zero. Cycle guards and phase/port assertions make misuse visible; this interpreter assumes the unified structural invariant rather than replacing it.
+
+Fresh `check_live_membership_semantics.py` checks both channel meanings on 11,278 exact tagged forest states and every one of 23,559 transitions, across all 141 extended tiny inputs. Every interpretation equals the original requested membership, including 1,448 occurrences of Q_S waiting directly at COPY. This tests intermediate states, not merely correct terminal Booleans.
+
+Next prove preservation of this denotation symbolically. The arithmetic equations for Q rules are direct, and COPY materialization preserves virtual words. The subtle noninterference obligation is that erasing one branch cannot change the other live query's virtual word: establish that erasers cannot consume original nodes or query-owned copied budget/support tails, although they can share a COPY component. Independent rooted branches and port linearity should supply that separation. Finite passing tests are not a universal semantics proof.

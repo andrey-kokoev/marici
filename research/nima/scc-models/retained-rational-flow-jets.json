@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-retained-rational-flow-jets",
+    "owner": "marici.Nima",
+    "classification": "native_rational_coefficients_give_coherent_formal_rotor_jets_and_a_formal_clock_not_real_time_evaluation",
+    "stratum": "Forward realization and attachment transport in an explicit formal x-adic completion of the chosen rational Clifford algebra. Real evaluation and native admission are separate gates.",
+    "inputs": ["research/nima/agda/FormalRotorCoefficients.agda", "research/nima/results/agda-FormalRotorCoefficients.json", "research/nima/checkers/check_clifford_retained_order.py", "research/nima/retained-rational-flow-jets.md"],
+    "checks": [{"id": "retained-rational-flow-jets", "path": "research/nima/checkers/check_retained_rational_flow_jets.py"}],
+    "depends_on": [],
+    "consumes": ["constructed_rational_component_coefficients", "declared_clifford_lift", "conditional_rational_cayley_rotors"],
+    "provides": ["coherent_formal_rotor_jets", "normalized_formal_cayley_clock", "signed_center_formal_composition"],
+    "missing_constructors": ["selected_packet_norm_convergence", "native_cayley_readout_admission", "physical_clock_calibration"],
+    "next_falsifier": "Finite nilpotent quotients cannot be evaluated at nonzero real time. Same-order differentiation and rectangular truncation also invalidate naive jet identities; prove a suitable completion and evaluation rather than substitute numerical time into formal records."
+  }
+}

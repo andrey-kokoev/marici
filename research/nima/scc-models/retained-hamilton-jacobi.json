@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-retained-hamilton-jacobi",
+    "owner": "marici.Nima",
+    "classification": "constant_lift_phases_leave_local_hj_unchanged_and_require_comparison_and_log_branch_data",
+    "stratum": "Attachment transport and readout descent: supplied smooth local classical HJ branches, fixed Clifford word lift, and conditional action-phase comparison. No source-to-trajectory realization is assumed proved.",
+    "inputs": ["research/nima/checkers/check_clifford_retained_order.py", "research/nima/phase-selection-from-coherence.md", "research/nima/retained-hamilton-jacobi.md"],
+    "checks": [{"id": "retained-hamilton-jacobi", "path": "research/nima/checkers/check_retained_hamilton_jacobi.py", "requires": ["sympy"]}],
+    "depends_on": [],
+    "consumes": ["declared_clifford_lift", "retained_word_history", "supplied_classical_action"],
+    "provides": ["conditional_action_branch_transport", "finite_cocycle_log_carry_control"],
+    "missing_constructors": ["source_to_classical_trajectory_realization", "source_derived_hamiltonian_and_clock", "full_native_witness_action_phase_realization"],
+    "next_falsifier": "A proposed endpoint-dependent comparison phase must transport momentum and energy as well. A claimed scalar action on coarse action labels must confront the absent multiplicative lift section and the nonzero principal-log carry."
+  }
+}

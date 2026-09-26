@@ -1,0 +1,9 @@
+# Strict mixed return-interface audit
+
+Freshly inspected production return threading and added `check_strict_return_interfaces.py`. The subclass intercepts actual `replace` arguments before mutation: every external boundary and fresh port must occur exactly once; inserted agent names must be distinct and absent from the live graph; each return slot must have exactly one target. Terminal update/union and no-tail query/eraser cases must route to DONE.p, continuing controllers to c, and deferred query cleanup to EA.r. No case may duplicate or silently drop the return obligation.
+
+All 4,599 replacements across 165 runs pass, covering all 20 gate/update/union typed pairs plus all 15 query/COPY/acknowledging-eraser cases. This is a concrete production-call audit, not symbolic verification of every possible context. The scope explicitly excludes malformed imported graphs and allocator corruption.
+
+The complementary common-postcondition argument remains the cut-interface one: while an operation is active its successor gate is passive and its dormant operand has no consumer; projection gives the isolated operation with passive RET/ACK. The verified return route either continues that operation or produces the one DONE on the same final step that establishes a complete output. No next controller is allocated before the gate consumes DONE. For update/union this uses completed input tails, not arbitrary pipeline frontiers.
+
+Next consolidate strict mixed sequencing into one theorem and test cut-interface correspondence for updates/union at DONE boundaries, or identify a counterexample. Avoid promoting the coverage table into a universal context theorem. Once this bridge is consolidated, the most useful new proof branch is data-dependent control (an actual Boolean-triggered branch), rather than continuing to enumerate redundant straight-line schedules.

@@ -1,0 +1,7 @@
+# Static interface audit of production templates
+
+Fresh `check_static_rewrite_interfaces.py` parses the executable scheduler without importing it. It extracts all ten `replace` call templates, corresponding to fifteen typed pairs via a manually reviewed source-order branch manifest. For each actual call it symbolically evaluates the connection/new-agent literals and verifies: removed agents are exactly the pair; every declared outside auxiliary slot occurs exactly once; every fresh local port occurs exactly once; fresh local agent slots are distinct from removed agents; no boundary-to-boundary splice occurs. All checks pass.
+
+This is stronger than a separately handwritten effect table because the connections are taken directly from production AST. It is not a full program verifier: the branch manifest's match to control flow is manually reviewed, allocation assignments and serial freshness are outside the audit, and malformed typed inputs may enter overly broad scheduler branches. The statement concerns the fifteen admitted pairs, not every possible graph accepted by the scheduler's candidate filter.
+
+Next audit `fresh` and constructor serial discipline, including caller-created graphs whose existing names exceed serial. Abstract commuting rewrites require fresh slots; mutable allocator state is not part of the graph invariant. Establish whether it is a separate execution invariant or require allocator collision avoidance. Until that bridge is closed, do not promote graph-level local commutation to an unrestricted executable-engine theorem.

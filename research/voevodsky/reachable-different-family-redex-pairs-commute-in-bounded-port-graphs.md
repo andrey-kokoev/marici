@@ -1,0 +1,7 @@
+# Reachable different-family redex pairs commute in bounded port graphs
+
+Fresh `check_reachable_family_diamonds.py` samples reachable graph prefixes from four static schedules across four small copier/two-query fixtures. At a prefix with two DISTINCT enabled families (COPY, Q1, Q2, ERASE), it runs both two-step orders and compares canonical live port graphs, including detached garbage components. All 105 tested diamonds agree modulo fresh agent IDs: Q1/Q2 29; COPY/Q1 28; COPY/Q2 28; Q2/ERASE 10; COPY/ERASE 8; Q1/ERASE 2. In none of these cases did taking one step disable the other. The underlying engine audits linear symmetric wires on each rewrite.
+
+Coverage is bounded and prefix-sampled. Multiple ERASE redexes within the SAME family, dynamically reached prefixes absent from the four sampled schedules, and arbitrary contexts remain untested. This supports a disjoint-redex commuting argument but does not prove global confluence. Note that a query temporarily connected to COPY auxiliary is NOT an active pair; the tested COPY/Q diamonds concern another enabled query interaction, not a principal-port overlap.
+
+Next inspect two simultaneously enabled ERASE redexes in detached tails and compare both step orders at graph level; then articulate a general commuting lemma from disjoint consumed agent sets and locally fresh replacement names, with explicit assumptions on external boundary wires.

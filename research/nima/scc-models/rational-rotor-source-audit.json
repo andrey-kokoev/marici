@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-rational-rotor-source-audit",
+    "owner": "marici.Nima",
+    "classification": "native_rational_coefficients_support_conditional_cayley_rotors_but_not_divisible_time_or_product_selection",
+    "stratum": "Forward realization and readout admission: actual constructed component rational arithmetic; conditional Clifford Cayley algebra; integration and native comparison policy remain separate obligations.",
+    "inputs": ["research/nima/agda/RationalRotorNumerators.agda", "research/nima/agda/RationalComponentArithmetic.agda", "research/nima/agda/NativeRationalComponentArithmetic.agda", "research/nima/agda/NativeTableRules.agda", "research/nima/checkers/check_clifford_retained_order.py", "research/nima/results/agda-RationalRotorNumerators.json", "research/nima/rational-rotor-source-audit.md"],
+    "checks": [{"id": "rational-rotor-source-audit", "path": "research/nima/checkers/check_rational_rotor_source_audit.py", "requires": ["sympy"]}],
+    "depends_on": [],
+    "consumes": ["declared_clifford_lift", "constructed_rational_component_coefficients"],
+    "provides": ["conditional_rational_cayley_rotors", "rational_square_root_refinement_obstruction", "explicit_source_product_admission_hostile"],
+    "missing_constructors": ["response_to_implementer_identification", "native_cayley_readout_admission", "flow_completion_and_path_policy"],
+    "next_falsifier": "J has no rational square root, and the explicit Cayley adjoint at t=1/2 breaks B1*B2=0 in the pointwise source algebra despite preserving the active counting norm. A claimed source flow must discharge these different gates rather than import a real parameter or product."
+  }
+}

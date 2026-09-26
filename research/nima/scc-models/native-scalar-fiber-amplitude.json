@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-native-scalar-fiber-amplitude",
+    "owner": "marici.Nima",
+    "classification": "independent_finite_weighted_table_amplitude_benchmark",
+    "stratum": "Massless real phi4 four/six-point trees at exact rational non-pole kinematics, supplied coupling and Feynman conventions. Generic finite fiber-readout compatibility and the actual six-point native weighted-table fixture formally checked; broader evaluator agreement computationally checked with a channel-bijection argument.",
+    "inputs": ["research/nima/amplitudes/native_scalar_fibers.py", "research/nima/amplitudes/scalar_tree_baseline.py", "research/nima/agda/FiniteFiberAmplitude.agda", "research/nima/agda/NativeScalarFiberFixture.agda", "research/nima/results/agda-NativeScalarFiberFixture.json"],
+    "checks": [{"id": "native-scalar-fiber-amplitude-check", "path": "research/nima/amplitudes/native_scalar_fibers_check.py", "requires": []}],
+    "depends_on": [],
+    "consumes": [],
+    "provides": ["independent_native_weighted_fiber_amplitude", "exact_four_and_six_point_channel_comparison", "formal_finite_readout_transport"],
+    "missing_constructors": ["actual_native_Resolve_amplitude_instantiation", "arbitrary_multiplicity_and_loop_measure"],
+    "next_falsifier": "Erase a channel, duplicate complementary splits, reverse the phase sign, alter a propagator or vertex weight, use an unweighted channel count, or claim the supplied coupling and propagator were derived from fibration."
+  }
+}

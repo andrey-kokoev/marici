@@ -1,0 +1,7 @@
+# Name-independent forest encoding
+
+Fresh test confirms an actual alpha-renaming counterexample to the old serializer: two unequal detached eraser chains reverse their serial-name ordering, changing the old signature. New `forest_canonical.py` rejects nonforests, encodes each tree from every vertex with both wire port labels, takes the minimum rooted encoding, and sorts component encodings. OUT1/OUT2 remain distinct kinds; tags can optionally be included.
+
+For finite port-labelled trees the recursive encoding determines the rooted tree up to kind/port isomorphism: each child includes its parent's port and its own entering port. Taking the minimum over all roots removes root choice; sorting components removes component order while retaining multiplicity. This supplies the structural reason for the name independence, not just a test claim. Current implementation is deliberately simple and recursive, not optimized for very long chains.
+
+Fresh `check_forest_canonical.py` passes 219 tag-aware renaming checks. The four fixtures retain 219 classes; the constructed unequal-garbage counterexample now has equal signatures under renaming. Extended historical counts have NOT been recomputed and old consumers have NOT been silently migrated. Next rerun the extended all-rule search with the new key, compare counts, and test pairwise commuting executable rewrites on the invariant-admitted state class. Universal preservation and confluence remain open.

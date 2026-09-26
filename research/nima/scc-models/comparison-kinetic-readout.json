@@ -1,0 +1,23 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-comparison-kinetic-readout",
+    "owner": "marici.Nima",
+    "classification": "counting_metric_readout_has_chart_invariant_tree_quartic_conditionally",
+    "stratum": "Actual swap and pointed source plane, counting metric from neighboring normalized overlap, and conditional Lorentzian scalar kinetic extension. F and U, spacetime and physical interpretation remain additional data.",
+    "inputs": [
+      "research/nima/agda/ComparisonKineticReadout.agda",
+      "research/nima/agda/ComparisonTensorSewing.agda",
+      "research/nima/agda/RetainedComparisonSeries.agda",
+      "research/nima/checkers/check_comparison_kinetic_readout.ps1",
+      "research/nima/results/agda-ComparisonKineticReadout.json"
+    ],
+    "checks": [{"id": "comparison-kinetic-readout", "path": "research/nima/checkers/check_comparison_kinetic_readout.py", "requires": ["sympy"]}],
+    "depends_on": [],
+    "consumes": ["normalized_comparison_logarithm", "finite_counting_pairing", "actual_swap_odd_line"],
+    "provides": ["source_selected_classical_scalar_plane", "neighbor_overlap_kinetic_metric", "three_chart_on_shell_quartic_agreement", "conformal_metric_sewing_counterexample"],
+    "missing_constructors": ["physical_spacetime_and_neighbor_probe_kinetic_identification", "physical_scale_and_quantum_mode_selection", "general_metric_uniqueness_beyond_conformal_ansatz"],
+    "next_falsifier": "Include derivative vertices when changing field coordinates: all three charts must give 16U/F^4. A P-invariant conformal metric can change this coefficient, but fails tensor-metric sewing. The full target also contains two massless even modes."
+  }
+}

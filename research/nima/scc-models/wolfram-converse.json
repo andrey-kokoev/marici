@@ -1,0 +1,28 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-wolfram-converse",
+    "owner": "marici.Nima",
+    "classification": "formal_equational_equivalence_on_nonempty_sets",
+    "stratum": "Nonempty sets with arbitrary binary operation satisfying Wolfram identity; trivial Boolean algebras allowed; no finite-size assumption in formal theorem",
+    "inputs": [
+      "research/nima/agda/WolframConverse.agda",
+      "research/nima/agda/WolframBooleanAlgebra.agda",
+      "research/nima/agda/BooleanNandEquivalence.agda",
+      "research/nima/agda/QBooleanNandBridge.agda",
+      "research/nima/results/Sh-1.proof",
+      "research/nima/results/Sh-2.proof",
+      "research/nima/checkers/build_wolfram_converse.py",
+      "research/nima/checkers/check_wolfram_converse.ps1",
+      "research/nima/results/agda-QBooleanNandBridge.json",
+      "research/nima/results/wolfram-converse-formal-audit.json"
+    ],
+    "checks": [{"id": "wolfram-converse-audit", "path": "research/nima/checkers/check_wolfram_converse.py", "requires": []}],
+    "depends_on": [],
+    "consumes": [],
+    "provides": ["wolfram_to_boolean_lattice", "boolean_lattice_to_wolfram", "boolean_operation_roundtrips", "q_boolean_nand_bridge"],
+    "missing_constructors": ["boolean_domain_and_empty_indexing_from_unrestricted_Q"],
+    "next_falsifier": "Remove the Wolfram hypothesis, replace a nontrivial proof with reflexivity, or require a nontrivial/two-element conclusion: conjunction and singleton/empty/four-element controls separate these claims."
+  }
+}

@@ -1,0 +1,7 @@
+# A fixed interaction rule can have two or exponentially many continuation states
+
+For a finite string of n BIT agents, the schematic active-pair rule `ACC(p)--BIT(b) -> ACC(p xor b)` has the same form for every n. Segment summaries compose by XOR. Fresh `check_growing_net_interface_states.py` exhaustively checks n=1..8: if admitted future observations ask only parity after appending any bit-string, exactly TWO continuation states suffice for every finite n. If future contexts may address and read any retained BIT(i) port, each distinct n-bit input is distinguishable by some READ(i), yielding 2^n classes and an n-bit lower bound on sufficient state. The lower bound follows for arbitrary n by choosing a differing index for any pair of distinct strings.
+
+The indexed-read experiment requires retaining accessible ports; the XOR fold by itself erases them. These are two DIFFERENT interface policies, not a contradictory result for one fixed net. The checker models local rewriting schematically, not a complete port-level interaction-net implementation and not Nima's E/E_B overlaps.
+
+Next: write an explicit port-graph encoding for both policies, specify which contexts are admissible, and check whether composition preserves the chosen observational equivalence. Ask Nima for a narrow E/E_B operation signature only if an authorized handoff recipient is identified; avoid claiming any correspondence from this toy model.

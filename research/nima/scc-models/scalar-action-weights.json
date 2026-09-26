@@ -1,0 +1,28 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-scalar-action-weights",
+    "owner": "marici.Nima",
+    "classification": "conditional_action_weight_derivation_with_coupling_nonuniqueness",
+    "stratum": "Forward realization from a declared local scalar action and formal Gaussian pairing to non-pole tree weights. Coefficient readout compatibility is checked; physical action/parameter selection by the bare Carrier is not inferred.",
+    "inputs": [
+      "research/nima/agda/ScalarActionDerivatives.agda",
+      "research/nima/agda/ScalarActionWeights.agda",
+      "research/nima/agda/ScalarSixFixture.agda",
+      "research/nima/agda/NativeScalarFiberFixture.agda",
+      "research/nima/agda/NativeRationalComponentArithmetic.agda",
+      "research/nima/agda/RationalComponentArithmetic.agda",
+      "research/nima/agda/SignedComponentArithmetic.agda",
+      "research/nima/amplitudes/native_scalar_fibers.py",
+      "research/nima/checkers/check_scalar_action_weights.ps1",
+      "research/nima/results/agda-ScalarActionWeights.json"
+    ],
+    "checks": [{"id": "scalar-action-weights", "path": "research/nima/checkers/check_scalar_action_weights.py", "requires": ["sympy"]}],
+    "depends_on": [],
+    "consumes": ["positive_denominator_fraction_quotient_operations", "native_coefficient_homomorphism_squares"],
+    "provides": ["formal_quadratic_and_quartic_variations", "general_nonzero_integer_kernel_inverse", "ten_source_channel_weight_equalities", "native_distinct_coupling_counterexample"],
+    "missing_constructors": ["source_selected_action_and_coupling", "source_selected_quantum_pairing_and_pole_prescription"],
+    "next_falsifier": "Check whether unit kinetic normalization, field parity and tree pole factorization exclude the second positive quartic coupling. They do not: the shared unweighted incidence has different amplitudes. Do not erase the coupling and then claim the complete marked sources agree."
+  }
+}

@@ -1,0 +1,11 @@
+# Finite conditional instruction integration
+
+`ConditionalSetProgram` extends the strict mixed compiler with `ifadd(i,t,f)`: query the current support, record its Boolean snapshot, then insert at t or f according to that Boolean. Completed alternative budgets are allocated once at compile time. A fixed GC(p,s,r,b,c,o,t,f) gate awaits DONE; release creates COPY/QB/WAIT with exactly the isolated conditional topology. Remaining phases reuse WAIT/PICK/JOIN/JOINR and the update/query rules without a host Boolean decision.
+
+Compilation uses temporary GM placeholders solely before execution, replacing them with GC while preserving outside peers and output roots. Runtime does not inspect instruction lists or release logs to enable work. There is one release per instruction; conditional cost includes its isolated2n+i+2k+l+10 plus that release.
+
+Fresh headless test passed624 runs20568 rewrites688 conditional releases, including consecutive conditionals and interleaving with member/add/union. All replacement port occurrences are audited. Gate order and absence of owned work at eligibility, oracle support/ordered snapshots, exact costs, and complete disjoint rooted-component coverage pass. This uses one seeded schedule per bounded fixture, not exhaustive schedule verification.
+
+The induction extension is one new case: GC's release instantiates the isolated conditional with completed input and budgets; the previously written conditional postcondition accounts for both selected update and rejected cleanup; its final DONE restores the same suffix-gate invariant as the ordinary operations. The constructor interface and cleanup postcondition, not a global forest assumption, support consecutive conditionals.
+
+Next highest-value proof work is consolidate that new induction case with a symbolic GC boundary audit and explicit public observation contract. Snapshot timing differs from ordinary membership: the conditional's OUT becomes Boolean at PICK after query completion, but before selected insertion completion; its final ACK includes both branch workloads. State that timing precisely before exposing a reusable instruction API. Arbitrary branch bodies, nested branch graph erasure and loops remain outside scope.

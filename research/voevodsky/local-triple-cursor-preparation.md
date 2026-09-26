@@ -1,0 +1,11 @@
+# Local three-cursor preparation
+
+`TripleCursor` uses the actual DC rules twice, connected by PREP and READY principal-DONE latches. Initial DC outputs attach to PREP.a/b and its acknowledgment to PREP.p. PREP--DONE holds the first chain at READY.a while launching a second DC on the other complete chain. Second outputs attach to READY.b/d, and its DONE to READY.p. READY--DONE splices those three held chains to query/insertion/retained-cursor roots and emits one final DONE.
+
+The two latch rules contain no host length value, scan, or call to a copy constructor during execution. Only the initial constructor converts the input integer to a unary chain. Runtime allocation is constant per rewrite, using the finite signature DC/PREP/READY/K/N/DONE. All outputs remain behind auxiliary latch ports until the final READY step, not merely until a head prefix is available.
+
+Proof: first DC terminates in n+1 steps with two disjoint complete chains. PREP is passive until its DONE; its one rewrite starts the second DC while the saved first chain remains passive. That DC terminates in n+1 steps with two further disjoint chains; READY then consumes its DONE and publishes the three complete outputs. Every old boundary and fresh port occurs once; the three outside-to-outside splices in READY preserve distinct linear peers even in a passive cyclic context. Total2n+4 steps. Final nodes are precisely the three length-n chains, their boundary roots and one DONE. The input and intermediate chain are consumed, not shared.
+
+Fresh audit passed130 runs8840 rewrites for n0..64 with separate roots and one passive four-port cyclic boundary. Tests check local phase order, no DC at latch eligibility, no public prefix exposure, disjoint final chains, exact node accounting and count. This supplements a written compositional argument, not formal implementation verification or arbitrary active-context safety.
+
+Next implement the fuel-bounded scanner using these rules as runtime phases. Preparation has now been delivered; further decomposition into isolated helper milestones is unnecessary. The controller must own complete support/cursor/fuel at its boundary, release each query only on READY completion, insert/increment on false, and consume unused cursors/fuel on true or exhaustion before final ACK. Keep the terminal outcome and support observation contract explicit.

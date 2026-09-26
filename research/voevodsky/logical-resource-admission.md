@@ -1,0 +1,11 @@
+# Optional logical admission policy
+
+ProgramRuntime accepts keyword-only limits mapping over constructor_peak_agents, constructor_agent_allocations, rewrite_bound, peak_agent_bound and total_fresh_name_bound. Omitted limits mean no admission cap. Names and exact nonnegative integer thresholds are checked before input consumption. Finite input normalization and preflight then precede any graph construction. Estimated values equal to limits are accepted; greater estimates raise AdmissionRejected with quantity/estimate/limit fields. One-shot inputs are compiled from the normalized plan, not reread from exhausted iterators.
+
+This is conservative admission: upper bounds may reject a program whose actual run would fit. Admission does not change rule semantics or add runtime aborts. The caller's advance step budget remains separate. Bounds depend on the current proved rule/constructor envelope, and are not independent operating-system enforcement.
+
+Tests cover five equality/one-below threshold pairs, four invalid policies before preflight, a huge scalar scan rejected with graph constructor mocked to fail if called, and a nested one-shot operand. All16 fresh closure suites pass. Default facade behavior remains compatible, though it now computes preflight before construction even without caps.
+
+Scope: finite input normalization may allocate or execute caller iterator code before admission. No byte/time limit, malicious-Python isolation, concurrent mutation safety or failed-rewrite rollback is provided. Direct low-level constructors bypass this optional facade policy.
+
+Critical-path reassessment: stop adding API policy variants. The current programme has written semantics, resource bounds and bounded sensitivity checks, but the central assurance gap is independent semantic validation of the combined recurrent rule system. Next build a bounded all-schedule explorer on raw named graphs (no cyclic forest quotient), targeted at short scan/conditional mixtures with competing query/COPY redexes. Report distinct terminal observables and verify they agree; keep bound-induced incompleteness explicit. This provides stronger evidence than more first-enabled profiles without claiming formal confluence.

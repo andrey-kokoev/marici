@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-phase-selection",
+    "owner": "marici.Nima",
+    "classification": "coherence_allows_both_phase_classes_clifford_inner_implementation_selects_nontrivial",
+    "stratum": "Actual finite swap action with normalized sign central extensions, and a supplied Hamiltonian-plane phase exponent. Tests phase selection separately from composition/reversal coherence and history retention.",
+    "inputs": ["research/nima/agda/PhaseLiftCocycle.agda", "research/nima/agda/RetainedComparisonSeries.agda", "research/nima/results/agda-PhaseLiftCocycle.json", "research/nima/results/agda-ComparisonKineticReadout.json"],
+    "checks": [{"id": "phase-selection", "path": "research/nima/checkers/check_phase_selection.py", "requires": ["sympy"]}],
+    "depends_on": [],
+    "consumes": ["actual_independent_swap_action", "declared_clifford_lift", "retained_word_history"],
+    "provides": ["exhaustive_finite_phase_classification", "fixed_clifford_inner_lift_constraint", "all_rate_translation_cocycle_proof"],
+    "missing_constructors": ["source_selection_of_associative_algebra_and_inner_implementation", "source_selection_of_nonzero_continuum_phase_scale"],
+    "next_falsifier": "Both trivial and Clifford phases pass the tested source-action and retention conditions. A proposed selector must exclude the trivial class using independently established source structure, not by presupposing anticommuting generators."
+  }
+}

@@ -1,0 +1,7 @@
+# The original support suffix stays owned by COPY in tested net runs
+
+Fresh `check_original_chain_separation.py` instruments 1,213 copier/two-query inputs (support length 0..4, both indices through n+2) under a query-first priority. It checks the invariant before AND after every local rewrite, 50,838 checks total: the live ORIGINAL B0/B1/NIL agents form a contiguous suffix; if any remain, COPY.p meets its head and each original B auxiliary leads to the next original principal. Once COPY disappears, no original node remains. No Q or ERASE principal ever meets an original support node. All tested runs reach correct answers.
+
+This separation is the critical missing premise for the lexicographic termination rank: only COPY consumes original nodes; other active pairs consume copied support/index/eraser-tail nodes. The instrumented test is still finite and uses one schedule. Inductive rule analysis suggests each COPY--B/N step consumes the head and reconnects a fresh COPY to the old original tail, while no other rule touches the original chain. That argument must be encoded against all typed boundary cases and the two-output dependency grammar before claiming a uniform theorem.
+
+Next test the separation invariant under all individual-redex schedules on small nets, and add a deliberately malformed graph with E.p wired to an original head. Confirm the validator refuses it even though port linearity and acyclicity can hold.

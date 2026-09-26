@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-retained-rotor-norm-completion",
+    "owner": "marici.Nima",
+    "classification": "selected_rational_rotor_packet_converges_in_declared_norm_and_recovers_retained_finite_signs",
+    "stratum": "Completion, comparison sewing and noncollapse for a selected rational Clifford rotor packet in its declared Archimedean reversion-norm completion. Native product/readout and active-dynamics admission remain separate.",
+    "inputs": ["research/nima/checkers/check_clifford_retained_order.py", "research/nima/agda/FormalRotorCoefficients.agda", "research/nima/results/agda-FormalRotorCoefficients.json", "research/nima/retained-rational-flow-jets.md", "research/nima/retained-rotor-norm-completion.md"],
+    "checks": [{"id": "retained-rotor-norm-completion", "path": "research/nima/checkers/check_retained_rotor_norm_completion.py"}],
+    "depends_on": [],
+    "consumes": ["coherent_formal_rotor_jets", "normalized_formal_cayley_clock", "signed_center_formal_composition"],
+    "provides": ["selected_packet_uniform_norm_completion", "controlled_finite_source_returns", "clock_boundary_continuity_control"],
+    "missing_constructors": ["native_cayley_readout_admission", "source_metric_and_product_selection", "physical_clock_calibration"],
+    "next_falsifier": "Clock values converge at the Cayley endpoint t=1, but their differentiated partial sums alternate between 0 and 2 there. Preserve separate value/derivative limits and do not promote norm convergence into native physical admission."
+  }
+}

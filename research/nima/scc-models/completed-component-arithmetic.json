@@ -1,0 +1,34 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-completed-component-arithmetic",
+    "owner": "marici.Nima",
+    "classification": "signed_and_rational_quotient_arithmetic_native_readout_compatibility",
+    "stratum": "Algebraic quotient descent and native readout compatibility for all finite expressions; actual six-point scalar fixture with supplied physical channel weights. No faithful physical realization of component decategorification asserted.",
+    "inputs": [
+      "research/nima/agda/ComponentArithmetic.agda",
+      "research/nima/agda/SignedComponentArithmetic.agda",
+      "research/nima/agda/RationalComponentArithmetic.agda",
+      "research/nima/agda/FaithfulComponentRing.agda",
+      "research/nima/agda/NativeCoefficientTransport.agda",
+      "research/nima/agda/NativeRationalComponentArithmetic.agda",
+      "research/nima/agda/NativeScalarFiberFixture.agda",
+      "research/nima/agda/NativeAmplitudeResolution.agda",
+      "research/nima/agda/AmplitudeDiagramExpansion.agda",
+      "research/nima/agda/negative/ComponentZeroDenominator.agda",
+      "research/nima/agda/negative/ComponentBadFractionCancellation.agda",
+      "research/nima/agda/negative/ComponentBadSignedCancellation.agda",
+      "research/nima/agda/negative/ComponentBadScalarReadout.agda",
+      "research/nima/checkers/check_completed_component_arithmetic.ps1",
+      "research/nima/results/agda-NativeRationalComponentArithmetic.json",
+      "research/nima/results/completed-component-arithmetic-formal-audit.json"
+    ],
+    "checks": [{"id": "completed-component-arithmetic-receipt", "path": "research/nima/checkers/check_completed_component_arithmetic_receipt.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["derived_component_word_semiring"],
+    "provides": ["signed_pair_quotient_operations", "positive_denominator_fraction_quotient_operations", "faithful_integer_and_rational_readouts", "native_coefficient_homomorphism_squares", "component_rational_six_point_amplitude"],
+    "missing_constructors": ["geometric_component_normal_form_authorization", "physical_coefficient_descent_from_full_Carrier", "arbitrary_n_Python_compiler_certification"],
+    "next_falsifier": "Admit a zero denominator, identify 2/4 with 1/3, identify 3-3 with one, or change the actual native scalar readout to 7/25. Each must fail compilation with its declared residual; stale local import hashes must invalidate the receipt."
+  }
+}

@@ -1,0 +1,9 @@
+# Runtime scan in finite mixed programs
+
+Implemented `ScanningSetProgram` with scan(cursor,fuel) alongside member/add/union/ifadd. GS--DONE creates exactly one FUEL controller with its prewired complete support, cursor and fuel; no iterations are unrolled. The constructor replaces compile-time member placeholders before any execution, retaining ordered output identities. The runtime reuses the actual scanner and conditional rules through cooperative inheritance.
+
+`observe()` returns ordered (type,value) slots: ('boolean',None/False/True) or ('scan',None/FOUND/EXHAUSTED), plus whole-program complete and final-only word. Thus negative Boolean, exhausted fuel and pending are not conflated. Outcome publication still precedes cleanup; successor release still depends exclusively on DONE.
+
+Fresh headless audit passes777 executions31883 rewrites, all programs through length3 over six instruction fixtures and three input words. It checks typed immutable prefix observations, instruction order, no owned work at gate eligibility, oracle final support/values and complete disjoint rooted final-node accounting. Tests include consecutive scans and mixtures with conditional insertion. These are bounded seeded schedules, not formal verification.
+
+The new gate has six external slots f,b,s,r,o,c mapped bijectively to FUEL.p,u,s,r,o,c. The scanner's already established common postcondition therefore fits the finite-program induction. Before exposing this as a consolidated theorem, next audit the combined runtime rule dispatch/signature closure and compile-time placeholder replacement across adjacent GC/GS gates. Multiple inheritance now assembles the rule families; regression alone does not demonstrate that a future signature collision cannot change dispatch. Record the finite combined signature, classify typed principal cases and check dispatch against that table rather than extending expressivity immediately.

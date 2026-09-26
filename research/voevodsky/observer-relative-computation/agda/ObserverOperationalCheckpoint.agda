@@ -1,0 +1,62 @@
+{-# OPTIONS --safe --cubical --guardedness #-}
+module ObserverOperationalCheckpoint where
+
+-- Explicit audit roots. The checker rejects missing or extra entries.
+import ObserverAdmissibleImages
+import ObserverCoherentImageAction
+import ObserverDirectionRecords
+import ObserverEndpointAction
+import ObserverExecutionBridge
+import ObserverGroupoidDescentEquivalence
+import ObserverGroupoidImageDescent
+import ObserverHigherWitnessDescent
+import ObserverNonuniqueHistory
+import ObserverInternalInterface
+import ObserverAccessClassification
+import ObserverInternalRestriction
+import ObserverInternalComparison
+import ObserverAnchoredRecords
+import ObserverAnchorChange
+import ObserverCodedAnchorDescent
+import ObserverComparisonCompression
+import ObserverJointRefinement
+import ObserverFiniteCyclicBoundary
+import ObserverSignedCyclicCover
+import ObserverBoundedCyclic
+import ObserverSignedNormalization
+import ObserverSignedBounded
+import ObserverSignedBoundAdmission
+import ObserverPhaseFamily
+import ObserverFiniteAdaptive
+import ObserverTraceLocal
+import ObserverRRCDSCBridge
+import ObserverRRCRecursiveBridge
+import ObserverRRCSourceAdmission
+import ObserverRRCWitnessSynthesis
+import ObserverRRCComparisonBridge
+import ObserverRRCGeneratedBridge
+import ObserverRRCDependentSynthesis
+import ObserverRRCCompletenessBoundary
+import ObserverRRCInternalInterface
+import ObserverRRCInternalRestriction
+import ObserverRRCDependentObserver
+import ObserverFaithfulRecovery
+import ObserverTransportRegression
+import ObserverOrientationPolicy
+import ObserverPolicyReconstruction
+import ObserverMachineElimination
+import ObserverMachineTransportRegression
+import ObserverPositivity
+import ObserverRestrictionInformation
+import ObserverSetImageDescent
+import ObserverSupportInvariance
+import ObserverTriangleCoherence
+import ObserverTriangleDescent
+import ObserverWitnessRegression
+
+import ResolutionNetInterpretation
+import ResolutionNetDependentSubstitution
+import ResolutionNetDependentInterface
+import ResolutionNetDependentMachine
+import ResolutionNetObservation
+import ResolutionNetObservationGluing

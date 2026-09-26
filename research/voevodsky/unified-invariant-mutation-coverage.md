@@ -1,0 +1,7 @@
+# Mutation coverage of the unified invariant
+
+Fresh `check_unified_invariant_mutations.py` enumerates both cross-reconnections for every pair of distinct wires in 219 reachable fixture states, plus each single provenance-tag flip. All rewires preserve symmetric full port incidence. Of 15,290 mutations, 14,158 are rejected: forest 5,649; output-peer 3,305; tail-port 2,619; origin-tags 1,106; origin-head 948; origin-chain 378; copy-peer 153. All single tag flips are rejected. The remaining 1,132 rewires pass the candidate invariant.
+
+Accepted mutations must NOT automatically be called bugs: an invariant describes a superset of constructor-reachable states and need not preserve the original input's Boolean semantics. They are valuable adversarial starting states for universal closure, however. The next highest-value test is to run each enabled *actual executable* rewrite on these accepted states and validate the result, rather than expanding the constructor sample again. Any failing edge refutes the proposed invariant's closure with an exact witness.
+
+This coverage records FIRST failing clauses only, not independent coverage of every clause: root/branch/source checks may be shadowed by earlier conditions. The original/copy tags and constructor-origin metadata were held fixed during rewires, so this is not a proof of sound alpha quotienting of tagged graphs. Universal preservation, quotient soundness, and semantic correctness remain open.

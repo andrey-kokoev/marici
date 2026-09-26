@@ -1,0 +1,7 @@
+# Every tested component has an output or eraser root
+
+Fresh `check_rooted_component_coverage.py` traverses 219 alpha states and 452 individual-redex transitions of four tiny copier/two-query inputs. Alongside the previously checked phase and finite-tail restrictions, every connected agent component has at least one live OUT1/OUT2 or ERASE node; each OUT_i connects to a matching Q_i phase or TRUE/FALSE. Twenty-three component instances have no OUT but contain ERASE: these detached garbage tails are legitimate and must not be excluded. A fully wired isolated B0--NIL--NIL component (no OUT or ERASE) is rejected although its B auxiliary obeys the local bit-tail grammar; that component has no enabled consumer.
+
+This root coverage is necessary but not sufficient for arbitrary-n progress: an eraser may share a component with the common COPY frontier, a component can have several roots, and the precise root-to-tail orientation plus permitted cross-frontier fan-out must be proved under each rewrite. Importantly Q_i may terminate while the other output or detached eraser remains active. Do not assume all roots are in distinct components or all outputs become boolean simultaneously.
+
+Next capture the directed port grammar at each root: OUT_i--Q_i/BOOL, each Q phase points to the correct recursively typed support/budget chain, ERASE points to B/K/N or waits at COPY auxiliary, and COPY owns the original suffix. Check a nonterminal-state active-redex predicate under this strengthened grammar and look for counterexamples.

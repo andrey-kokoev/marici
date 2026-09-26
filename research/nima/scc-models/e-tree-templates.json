@@ -1,0 +1,16 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-e-tree-templates",
+    "owner": "marici.Nima",
+    "classification": "inductive_source_templates_with_generic_substitution",
+    "stratum": "Finite inductive binary E-trees, explicit variable scopes and arities; generic grafting and staged template application; no autonomous node execution",
+    "inputs": ["research/nima/agda/ETreeSubstitution.agda", "research/nima/agda/ECurriedTemplates.agda", "research/nima/results/agda-ECurriedTemplates.json", "research/nima/results/e-tree-templates-formal-audit.json", "research/nima/checkers/check_e_tree_templates.ps1"],
+    "checks": [{"id": "e-tree-template-audit", "path": "research/nima/checkers/check_e_tree_templates.py", "requires": []}],
+    "depends_on": [], "consumes": [],
+    "provides": ["generic_substitution_unit_and_associativity", "scoped_partial_application_beta", "K_S_template_expansion_without_special_rewrite_axioms", "retained_application_input_recovery", "function_space_and_flattening_obstructions"],
+    "missing_constructors": ["source_derived_inductive_eliminator", "internal_typed_node_execution", "full_dependent_abstraction"],
+    "next_falsifier": "Confuse template expansion with execution of its node constructors; claim all functions are insertion templates; capture a remaining slot; erase the nesting boundary while claiming complete recovery."
+  }
+}

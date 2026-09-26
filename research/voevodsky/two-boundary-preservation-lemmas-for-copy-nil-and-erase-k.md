@@ -1,0 +1,9 @@
+# Two boundary preservation lemmas for COPY--NIL and ERASE--K
+
+`check_symbolic_copy_nil_erase_k_ports.py` audits five admitted consumer-side COPY auxiliary port roles (Q_B.a, Q_S.p, Q_R.p, E.p, B.a) in all 25 ordered pairs, plus the two K.a successor kinds (K.p/NIL.p) for ERASE--K. The script checks a symbolic interface, NOT arbitrary port graphs. The proofs below explicitly state its external premises.
+
+**COPY--NIL boundary lemma.** Assume COPY.p meets ORIGINAL NIL.p, each COPY.a/b meets one of those five roles, and deleting COPY leaves two DISJOINT externally rooted auxiliary-side components. COPY and original NIL are removed; each former auxiliary peer is linked to its own fresh COPIED NIL.p. The NIL nodes are unary and do not merge components. Each side retains its original OUT/ERASE root. The five roles accept NIL at their indicated port, so these boundary incidences remain typed. There is no original suffix after NIL. This rules out the previous unrooted-tail counterexample by hypothesis.
+
+**ERASE--K boundary lemma.** Assume E.p meets COPIED K.p and K.a meets the COPIED K/N successor principal. Removing E and K and inserting fresh E.p against that successor retains the eraser root in the same component, does not touch COPY or its original suffix, and shortens the budget tail. If the erased head was on a COPY output side, its side remains independently rooted by the fresh E. The K successor types both admit E.
+
+These are conditional local preservation statements for two of 15 rules. They do not show the constructor generates exactly the required global grammar, nor that the other thirteen rules preserve independent branch anchors, nor confluence. Next formalize the Q_S--N and Q_R--B splits, where a query's OUT root stays on the boolean side and a *new* eraser root must cover the detached tail; then cover the remaining templates.

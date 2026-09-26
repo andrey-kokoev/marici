@@ -1,0 +1,16 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-universal-substitution",
+    "owner": "marici.Nima",
+    "classification": "relative_universal_selection_with_context_sensitivity",
+    "stratum": "Small value types and all typed continuations; dependent families for E/P; full retained Q contexts treated separately at higher universe",
+    "inputs": ["research/nima/agda/UniversalSubstitution.agda", "research/nima/agda/BoundaryGeneratedQuestions.agda", "research/nima/results/agda-UniversalSubstitution.json", "research/nima/results/universal-substitution-formal-audit.json", "research/nima/checkers/check_universal_substitution.ps1"],
+    "checks": [{"id": "universal-substitution-audit", "path": "research/nima/checkers/check_universal_substitution.py", "requires": []}],
+    "depends_on": [], "consumes": [],
+    "provides": ["universal_reversibility_iff_equivalence", "dependent_sigma_pi_adjunctions", "sum_product_universal_selection", "value_full_context_separation"],
+    "missing_constructors": ["source_selection_of_preserved_context_structure", "derivation_of_all_rule_schemas_from_one_primitive"],
+    "next_falsifier": "Replace all continuation targets with propositions; drop existence or uniqueness from the universal property; confuse sound admission with admitting every eligible map; promote value equivalence to full retained equality."
+  }
+}

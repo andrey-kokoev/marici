@@ -1,0 +1,16 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-table-fibration",
+    "owner": "marici.Nima",
+    "classification": "marked_coordinate_fibration_with_structured_four_step_recovery",
+    "stratum": "Unordered labelled row types, three coordinate maps, homotopy fibers and dependent sums; reversed endpoint wiring specified separately",
+    "inputs": ["research/nima/agda/TableFibrationCycle.agda", "research/nima/results/agda-TableFibrationCycle.json", "research/nima/results/table-fibration-formal-audit.json", "research/nima/checkers/check_table_fibration.ps1"],
+    "checks": [{"id": "table-fibration-audit", "path": "research/nima/checkers/check_table_fibration.py", "requires": []}],
+    "depends_on": [], "consumes": [],
+    "provides": ["generic_total_fiber_equivalence", "three_marked_coordinate_recoveries", "structured_four_step_equivalence", "univalent_table_data_path", "endpoint_uniqueness_preservation", "unmarked_recovery_obstruction"],
+    "missing_constructors": ["orientation_selection_from_fibration_alone", "full_original_Q_rule_generation"],
+    "next_falsifier": "Drop the coordinate marker, erase enclosed labels, deduplicate by nonunique row labels, claim endpoint swap is forced, or equate returned table data with a complete retained operation derivation."
+  }
+}

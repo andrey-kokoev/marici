@@ -1,0 +1,7 @@
+# A small destructive threshold query normalizes as a linear port graph
+
+Fresh `check_full_unary_query_port_graph.py` instantiates explicit agent ports and symmetric wires for unary count and budget chains, Q_B/Q_C phase agents, UNIT/KUNIT/NIL, ERASE, BOOL, and OUT. Its local principal-port active-pair rewrites consume budget first, then count; terminal NIL emits a Boolean and an eraser; the eraser consumes leftover unary nodes. Each rewrite checks that every live port has exactly one symmetric wire. For all 289 count/k pairs 0..16, normalization yields the correct `count>=k`, one BOOL--OUT wire and no remaining query/count/budget/eraser nodes (max 34 rewrites). Both-zero is covered.
+
+This is a bounded executable, DESTRUCTIVE query prototype. It does not preserve the count for a second query; it does not establish generic confluence under arbitrary rewrite scheduling, integrate the earlier BIT ingestion into this same graph implementation, or translate Nima's E/E_B operations. The finite agent-name set and local rules are uniform in tested n; an unbounded correctness argument can follow by induction on min(count,k), provided the implementation's port invariant generalizes.
+
+Next join BIT ingestion and destructive threshold normalization in ONE explicit port graph; test that count from a word is queried correctly without reading host-side count variables. Then inspect whether outputs needed by the original research problem demand reusable/persistent observations, which would require a copying or sharing discipline.

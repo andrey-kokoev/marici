@@ -1,0 +1,22 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-parallel-label-fibration",
+    "owner": "marici.Nima",
+    "classification": "lossless_inverse_exists_involution_requires_reverse_rule",
+    "stratum": "Arbitrary nested endpoint/label fibers with original rows retained; paired finite packets through four rows; separate linear transpose residual controls.",
+    "inputs": [
+      "research/nima/agda/ParallelLabelFibration.agda",
+      "research/nima/agda/TableFibrationCycle.agda",
+      "research/nima/checkers/check_parallel_label_fibration.ps1",
+      "research/nima/results/agda-ParallelLabelFibration.json"
+    ],
+    "checks": [{"id": "parallel-label-fibration", "path": "research/nima/checkers/check_parallel_label_fibration.py", "requires": []}],
+    "depends_on": [],
+    "consumes": [],
+    "provides": ["nested_endpoint_label_fiber_recovery", "tagged_group_ungroup_involution", "label_marginal_collision_witness"],
+    "missing_constructors": ["source_selected_nonzero_physical_residual"],
+    "next_falsifier": "Erase shared row identities with repeated labels and try to reconstruct diagonal versus crossed incidence. The packets collide; label-only join is idempotent rather than involutive. Unique labels are a separate lossless control."
+  }
+}

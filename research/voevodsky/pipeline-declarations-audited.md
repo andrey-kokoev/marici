@@ -1,0 +1,9 @@
+# Pipeline declarations audited
+
+Added a tuple of compiler operation kinds to SequencedSet, for diagnostics only; rewriting and enabledness still ignore it. The unified pipeline contract now checks exact arities, complete stage labels and bounds, allowed controls per operation stage, at-most-one insertion/union controller and membership COPY/query cardinalities, fixed ordered outputs for member stages, unique RET, and all previous stream/coverage clauses. RET's ceiling uses the compiler's last stage rather than the maximum label currently live.
+
+Fresh regression: 49,912 contract checks in 858 scheduled programs and 74,868 live denotation checks in 1,287 runs pass. Negative controls reject extra ports, out-of-range stages, COPY moved into an add stage, duplicate outputs, and swapped public/private COPY branches. Empty program is accepted. These are deliberately corrupted diagnostic graphs, not new reduction rules.
+
+The declaration tuple is immutable as a value but its object attribute is not tamper-proof; the theorem assumes compiler-supplied declarations, not an external security boundary. High-water allocation remains an execution premise. Passing tests do not certify universal closure in a proof assistant.
+
+Critical-path reassessment: more validators on the same six-operation family now have diminishing returns. The next useful assurance move is a constructor-independent small program grammar (vary operation order, empty programs, adjacent union splices, long update/query alternations), explored under every enabled redex with both the unified contract and live denotation. This probes the proof's claimed compositional scope rather than repeating a single program skeleton. After that, consolidate the pipeline theorem and decide whether proof-assistant assurance or a new control capability is the priority.

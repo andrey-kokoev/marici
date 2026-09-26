@@ -1,0 +1,9 @@
+# Declarative control-template validation
+
+Delivered a deliberately partial hand-declared manifest in `rule_templates.py`: five program release gates and five conditional control cases,10 of57 runtime typed templates. Entries specify fresh kinds/ports by allocation ordinal and exact undirected boundary/internal edges. They are not generated from the captured production step. Conditional entries were transcribed against the written rule contract; this is specification separation, not independent authorship or external review.
+
+The checker normalizes fresh IDs by pre-step allocation slot, ignores edge orientation/order and port declaration order, then requires exact equality. Missing rules raise an explicit uncovered-rule error. It supplements rather than replaces typed allocation and pure graph validation; its types argument does not currently perform those checks.
+
+Fresh testing matches270 production certificates and rejects30 deliberately swapped GS fuel/cursor routings. Those swaps conserve every linear port and use correct kinds, so this demonstrates the semantic-routing gap beyond signature validation. All10 declared cases are witnessed; an uncovered EA case rejects rather than silently succeeding. The test harness explicitly bypasses uncovered production cases to measure partial coverage; no claim of whole-run certification is made.
+
+Next complete the remaining47 templates in grouped declarative families (query/COPY/EA, update/union, cursor preparation, scanner phases), and compose exact-template validation with the typed allocation wrapper. Only after full coverage should a whole-run reference certificate path be described as checked. This is a larger finite transcription obligation, not a reason to auto-generate the expected manifest from the implementation being checked.

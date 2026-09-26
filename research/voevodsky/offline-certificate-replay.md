@@ -1,0 +1,9 @@
+# Offline certificate replay prototype
+
+Persisted `results/replay-example.json` contains an initial graph/high-water, protected observation roots,70 replacement certificates, manifest/signature contract digest and final-state digest. `offline_replay.py` imports only declarative templates, certificate checking and the pure evaluator, not a production net reducer. A fresh separate interpreter successfully replays the example and checks absence of production reducer modules.
+
+The replay chains allocation witnesses, validates every exact template, checks final graph digest and—when completion is claimed—accounts for every node as returned support, ACK/DONE or observation leaf. Truncation, contract drift, changed starting high-water and corrupted wiring all reject in four tests. Digests bind content to the current local contract; they are not signatures or authenticity guarantees.
+
+Current limitations are explicit: the initial compiler is still trusted, output slot types are not separately recorded (final leaves accept Boolean or scan tags), the schema label is emitted but not yet strictly validated, and a partial trace is structurally replayed without a claim of completion. The artifact depends on the local combined-signature table plus hand-declared templates matching its digest; it is not a standalone proof-assistant certificate. The truncated example also changes the expected final digest, so a stronger test should recompute a truncated final digest and still reject a false completion claim.
+
+Next harden exactly those replay-envelope gaps: validate schema and typed root metadata, bind declared program/input provenance or explicitly classify it as unverified, and test forged completion with a self-consistent truncated digest. Do not conflate hash consistency with semantic provenance or promote this prototype to trusted imported-state execution.

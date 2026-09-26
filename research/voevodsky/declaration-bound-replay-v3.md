@@ -1,0 +1,9 @@
+# Declaration-bound replay v3
+
+Replay now requires a v3 envelope carrying explicit bits/program declarations. Before any certificate step, the independent structural recognizer checks the initial graph against those declarations and the ordered typed observation roots. The replay result reports provenance_status=structurally-matched-declaration and authenticated=false. The incoming constructor provenance remains unverified; structural matching is a computed result, not a caller assertion of historical authenticity.
+
+The v2 identifier rejects rather than silently inheriting this stronger contract. A declared empty program replays successfully with zero steps. Tests reject altered initial bits, changed scan fuel and an extra disconnected NIL pair even when that zero-step graph's final digest is recomputed consistently. Together with earlier envelope/template/truncation cases,13 tampered artifacts reject. The70-step example still replays in a fresh interpreter without production reducer imports. All26 fresh closure suites pass.
+
+This binds executable replay to a supplied source declaration, not to an authenticated operator request. A party can replace both the declaration and its matching graph to describe another valid program. Initial allocation high-water authenticity, malicious-input parser bounds, independent manifest correctness and formal Python verification remain outside the claim.
+
+Next useful assurance step is end-to-end semantic cross-check of replayed terminal values against a small independent source interpreter using the declaration, returning a typed terminal summary from replay. The current replay verifies legal execution from a structurally matched graph, but its result does not expose the derived word/observations for direct caller comparison. Keep that interpreter separate from graph rewriting and test both FOUND/EXHAUSTED and conditional snapshot timing semantics; do not expand the instruction language.

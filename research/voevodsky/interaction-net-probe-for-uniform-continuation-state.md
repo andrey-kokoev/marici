@@ -1,0 +1,5 @@
+# Interaction-net probe for a uniform continuation state
+
+A first, deliberately tiny principal-port rewrite is `TOKEN(bit) -- PROBE(read) -> OUTPUT(bit)`. Fresh `check_interaction_net_continuation_probe.py` verifies that two disjoint active pairs commute at their named output ports. Two one-pair nets have the same agent-count summary but a future probe returns respectively 0 and 1. Agent counts are therefore insufficient as continuation state; the boundary bit and port incidence are necessary in this example.
+
+This is an archetype probe, not a translation of Nima's E/E_B overlaps or a theorem of scalable compression. The next step is to formalize a growing family of nets and an interface summary, then test closure under boundary composition and bound summary size as n grows. A finite alphabet of local rewrite rules alone does not guarantee a compact sufficient state: information can accumulate along exposed ports. Existing Farkas source/issuer work stays parked; analytic S,A,R,C,G deferred.

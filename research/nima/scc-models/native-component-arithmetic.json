@@ -1,0 +1,27 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-native-component-arithmetic",
+    "owner": "marici.Nima",
+    "classification": "conditional_component_semiring_native_readout_compatibility",
+    "stratum": "Forward realization and readout compatibility for all finite expressions on inductive component words. Geometry-to-component normal form remains conditional; no faithful full-Carrier quotient or physical selection descent asserted.",
+    "inputs": [
+      "research/nima/agda/ComponentArithmetic.agda",
+      "research/nima/agda/NativeComponentArithmetic.agda",
+      "research/nima/agda/NativeAmplitudeResolution.agda",
+      "research/nima/agda/AmplitudeDiagramExpansion.agda",
+      "research/nima/checkers/check_native_component_arithmetic.ps1",
+      "research/nima/agda/negative/ComponentProductAsAddition.agda",
+      "research/nima/agda/negative/ComponentMultiplicityCollapse.agda",
+      "research/nima/results/agda-NativeComponentArithmetic.json",
+      "research/nima/results/native-component-arithmetic-formal-audit.json"
+    ],
+    "checks": [{"id": "native-component-arithmetic-receipt", "path": "research/nima/checkers/check_native_component_arithmetic_receipt.py", "requires": []}],
+    "depends_on": [],
+    "consumes": [],
+    "provides": ["derived_component_word_semiring", "generator_determined_additive_endomorphisms", "initial_semiring_numeral_map", "native_Resolve_component_arithmetic", "direct_and_translated_readout_squares"],
+    "missing_constructors": ["geometric_component_normal_form_authorization", "signed_and_fraction_completion_bridge", "physical_coefficient_descent"],
+    "next_falsifier": "Replace derived multiplication by addition or identify a doubled generator with one generator. Both must fail Agda typechecking. Changing any local import without a fresh receipt must fail evidence validation."
+  }
+}

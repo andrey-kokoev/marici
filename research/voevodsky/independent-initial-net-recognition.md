@@ -1,0 +1,9 @@
+# Independent structural initial-net recognition
+
+`initial_net_recognizer.py` checks a supplied graph against separately supplied normalized word/program/output declarations without importing or invoking the production compiler. It walks backward from RET/ACK through the ordered gate chain, checks gate kinds/port sets and both continuation wires, consumes each literal/unary operand, verifies observation roots/types/order, and finally checks original support and initial DONE. A used-node set rejects sharing and requires every node be accounted for, excluding detached garbage.
+
+Fresh tests recognize312 constructor outputs (all lists through length3 over five instruction fixtures and two words), without changing the graph, and reject three false declarations: changed initial bit, changed scan fuel, reversed observation roots. This is bounded evidence for the recognizer, not a verified compiler theorem.
+
+Recognition deliberately ignores numeric allocation order: equivalent fresh renamings and placeholder-deletion gaps are harmless structurally. The separate certificate layer validates canonical serials and the supplied high-water, but neither authenticates historical allocation or authorship. Normalization is shared with production; finite iterable/resource premises still apply. The current recognizer expands expected unary sequences in Python, so it is not a hostile-large-input admission layer.
+
+Next integrate this structural check into a new replay envelope carrying source input/program declarations, and return provenance as structurally matched rather than merely caller asserted. Keep authentication and historical freshness explicitly unverified. Test altered declarations and graph-only extra nodes against the integrated replay, including zero-step empty programs; do not silently reinterpret v2 artifacts under a stronger guarantee.

@@ -1,0 +1,7 @@
+# Copier progress unblocks both query and eraser waits
+
+Fresh `check_copy_aux_wait_progress.py` traverses 219 alpha-quotiented states of four tiny copier/two-query inputs, including individual eraser choices. It finds 59 query/eraser principal ports waiting on a COPY auxiliary output, of which 17 belong to erasers; nine states have BOTH outputs waiting. In every waiting state COPY's principal forms an enabled pair with original B0/B1/NIL. Applying that single COPY rewrite reconnects EACH waiting principal to a fresh B0/B1/NIL principal and preserves linear port incidence. Thus a wait is not a deadlock in these reachable examples, even if both consumers are erasers.
+
+A uniform progress argument can proceed by induction on the finite remaining ORIGINAL support chain: if COPY exists, its principal meets the next B/N node; its rewrite strictly reduces the remaining original length and materializes both output heads. If COPY is gone, no wait on COPY auxiliary remains, and each remaining query/eraser principal must meet an admitted tail type, so an active pair exists until BOOL--OUT normal form. The latter premise requires the full typed recursive component grammar; the current local-neighbor validator and finite search do not prove it for arbitrary n.
+
+Next formalize that stronger component grammar and check its preservation by all 15 rule cases. Pay particular attention to whether an eraser can ever reach the remaining original chain (which would break the lexicographic rank argument) and whether any Q phase can attach to the wrong budget/support tail.

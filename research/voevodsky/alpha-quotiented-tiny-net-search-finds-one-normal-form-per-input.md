@@ -1,0 +1,7 @@
+# Alpha-quotiented tiny net search finds one normal form per input
+
+Fresh `check_alpha_quotiented_reachable_nets.py` explores every dynamically enabled REWRITE-FAMILY choice from four small wired copier/two-query inputs, merging states whose rooted typed port graphs agree up to fresh agent names. The largest fixture (bits [1,0], indices 1,0) has 65 alpha-classes and 134 transitions rather than 3,923 terminal schedule paths. Each explored graph passes linear-wire audit and maintains at most one COPY frontier and one Q agent per output; each fixture has exactly ONE reached terminal alpha-class with the correct two Boolean outputs. The other fixtures have 13, 36 and 28 states.
+
+The quotient still selects multiple simultaneous ERASE agents by deterministic within-family order. It also does not establish that the sampled shape invariant is inductive on arbitrary lengths. The reduction from schedules to states is the computational payoff of regarding local independent interactions as equivalent; the mathematical closure proof remains open.
+
+Next expose individual eraser redex IDs as separate choices in the state explorer, add all possible index pairs through n<=2, and check alpha-canonical terminal uniqueness. Then formulate the restricted invariant as a formal grammar of support/copy/query/garbage components and prove its preservation rule-by-rule, before claiming confluence uniformly in n.
