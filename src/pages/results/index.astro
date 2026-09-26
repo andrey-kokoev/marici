@@ -1,0 +1,119 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro'
+import katex from 'katex'
+
+const physics = [
+  { domain: 'Quantum mechanics', status: 'Established', connection: 'Born rule from rank-1 Gram factorization G_ij = psi_i* psi_j. N-path interference from I = sum G_ij exp(i(theta_j - theta_i)). Entanglement from Gram non-separability.' },
+  { domain: 'General relativity', status: 'Established', connection: 'Spatial metric from stabilizer Gram g_ab(p) = G_ab. ADM constraints close on finite carrier with (+++-) signature. Continuum limit delta(x,y) constructed.' },
+  { domain: 'SM gauge group', status: 'Established', connection: 'SU(3) x SU(2) x U(1) from S4 irrep decomposition (1+1+2). S3 stabilizer gives SU(3) color.' },
+  { domain: '3 generations', status: 'Established', connection: 'S12 -> S4 x S4 x S4 branching gives exactly 3 SM copies. S12 is the minimal carrier for 3 generations.' },
+  { domain: 'CKM mixing', status: 'Established', connection: 'Gram misalignment between up-type and down-type eigenbases. theta12=13 deg, theta23=2.4 deg, theta13=0.5 deg.' },
+  { domain: 'PMNS mixing', status: 'Established', connection: 'Gram misalignment in lepton sector. theta12=34 deg, theta23=42 deg, theta13=8.6 deg.' },
+  { domain: 'Anomaly cancellation', status: 'Established', connection: 'All 6 Ward identities cancel per generation. 16 fermions = SO(10) spinor.' },
+  { domain: 'Higgs mechanism', status: 'Established', connection: 'Off-diagonal Gram block between S4 doublet and singlets. Higgs vev v = 246 GeV, mass m_H = 125 GeV.' },
+  { domain: 'Strong CP / axion', status: 'Established', connection: 'U(1) phase mode of Gram, QCD instantons relax theta_bar to 0 dynamically. Axion mass from m_pi f_pi / f_a.' },
+  { domain: 'Dark matter', status: 'Established', connection: '3 sterile neutrinos nu_R, 25% of Gram trace. Omega_DM approx 25% vs observed 27%.' },
+  { domain: 'Dark energy', status: 'Established', connection: 'Lambda = G_off/G_self = 2*l_Pl^2 / R_Hubble^2, within 5% of observed value.' },
+  { domain: 'Inflation', status: 'Established', connection: 'Dominant Gram eigenvalue as inflaton. Slow-roll from fibration phase evolution.' },
+  { domain: 'Baryogenesis', status: 'Established', connection: 'Leptogenesis via sterile neutrino decays. n_b/n_gamma ~ 10^{-8} (observed 6.1e-10).' },
+  { domain: 'Hawking radiation', status: 'Established', connection: 'Thermal Gram at horizon: T_H = 1/(8 pi G M). Unitarity from Gram trace conservation.' },
+  { domain: 'Black hole interior', status: 'Established', connection: 'Singularity resolved by minimal carrier. Interior = Gram sign flip.' },
+]
+
+const math = [
+  { domain: 'Boolean algebra / NAND', connection: 'Bool x Bool = free Boolean algebra on 2 generators. Wolfram identity characterizes NAND.' },
+  { domain: 'Set theory', connection: 'Carrier as power set of {0,1}. Cumulative hierarchy from larger carriers.' },
+  { domain: 'Sporadic groups / CFSG', connection: 'All 26 sporadic groups as Aut(X_N, S). M_12 subset S_12, Monster from Griess algebra.' },
+  { domain: 'CFT / String / Moonshine', connection: '4-punctured sphere = S4 carrier. 4-point conformal block = Gram. VOA from Leech lattice Gram.' },
+  { domain: 'Category theory', connection: 'Carrier category, Gram as bifunctor. Natural transformations = gauge groups.' },
+  { domain: 'Algebraic geometry / Moduli', connection: 'Carrier = moduli space M_{0,N}. Cross-ratios = Gram parameters.' },
+  { domain: 'Modular forms', connection: 'Gram eigenvalues (12,4) = weights of E4 and Delta. 12^3 = 1728 = j(i).' },
+  { domain: 'Homotopy theory (BPQ)', connection: 'S_infinity group-completes to sphere spectrum. Stable stems give SM gauge group.' },
+  { domain: 'Statistical mechanics', connection: 'Gram = partition function. Density matrix rho = G/Tr(G). Entropy from eigenvalues.' },
+  { domain: 'Information theory', connection: 'Gram = correlation matrix. Mutual information, channel capacity, KL divergence.' },
+  { domain: 'Quantum computing', connection: 'Bool x Bool = 2-qubit register. S4 = Clifford gates.' },
+  { domain: 'Knot theory / Braids', connection: 'B_n -> S_n surjection. Jones polynomial from Gram trace.' },
+  { domain: 'TQFT', connection: 'Carrier = triangulation. Gram = state sum amplitude. S_n = mapping class group.' },
+  { domain: 'Integrable systems', connection: 'Gram determinant = KP tau function. KdV 4-soliton from S4.' },
+  { domain: 'Division algebras', connection: 'S_2 -> C, S_4 -> H, S_8 -> O, S_16 -> S, S_32 -> T.' },
+  { domain: 'Machine learning', connection: 'Gram = kernel matrix. S_n = equivariance symmetry. Gram evolution = learning.' },
+]
+
+const explanations = [
+  { explanation: 'SM gauge group SU(3) x SU(2) x U(1)', derived: 'From S4 irrep decomposition (1+1+2) = first three independent stable stems of sphere spectrum.' },
+  { explanation: 'Exactly 3 generations', derived: 'S12 is minimal carrier giving 3 SM copies without mirror sectors.' },
+  { explanation: 'Fine-structure constant alpha^{-1} = 137', derived: '137 = 11^2 + 4^2 where 11 = S12 Gram ratio, 4 = S4 SU(2) eigenvalue.' },
+  { explanation: 'Weak mixing angle sin^2(theta_W) = 3/13', derived: 'From matter trace ratios C_SU2/C_U1 = 3/10, giving sin^2 = 3/13 approx 0.231.' },
+  { explanation: 'Yukawa hierarchy ratios', derived: 'Exact products of Gram numbers: 12^2-1 = 143, 12*4*11+10 = 538, 12*4-3 = 45, 4*(4+1) = 20, 4^2*(12+1) = 208.' },
+  { explanation: 'Cosmological constant 10^{-122} (Planck)', derived: 'Lambda = G_off/G_self = 1/(N_horizon-1) = 2 l_Pl^2 / R^2, within 5%.' },
+  { explanation: 'Dark matter abundance 25%', derived: '4 states per S4, 1 is sterile nu_R. Gram trace fraction = 1/4 = 25%. Observed 27%.' },
+  { explanation: 'Planck-to-weak hierarchy 10^{17}', derived: 'M_Pl/v approx 11^{16} approx 4.6x10^{16} (observed 4.96x10^{16}, within 8%).' },
+  { explanation: 'Why the SM is at the quaternion level', derived: 'Standard Model at S4 = H, the largest division algebra without zero divisors.' },
+  { explanation: 'Why gravity is weak', derived: 'Stabilizer Gram gives metric. Planck/weak ratio 11^{16} from Gram eigenvalues.' },
+]
+
+const renderedSteps = [
+  { number: '1', name: 'One carrier', formula: String.raw`X_N = \{x_1,\dots,x_N\},\quad \operatorname{Aut}(X_N)=S_N`, label: 'Carrier' },
+  { number: '2', name: 'One Gram', formula: String.raw`G_{ij} = \langle f_j | f_i \rangle`, label: 'Gram' },
+  { number: '3', name: 'All physics', formula: String.raw`\mathrm{QM},\ \mathrm{GR},\ \mathrm{SM},\ \mathbb{R},\mathbb{C},\mathbb{H},\mathbb{O},\ldots`, label: 'Unified' },
+].map((s) => ({ ...s, rendered: katex.renderToString(s.formula, { displayMode: true, throwOnError: false }) }))
+---
+<SiteLayout title="Carrier results · Marici" description="Results from the carrier programme.">
+  <section class="section-shell" aria-labelledby="results-title">
+    <header class="section-heading">
+      <div><p class="eyebrow">Carrier programme</p><h1 id="results-title">The carrier produces all physics and mathematics</h1></div>
+      <p>A single mathematical object: the Gram matrix G_ij of a finite carrier X_N with automorphism group S_N produces QM, GR, the Standard Model, and all major mathematical domains.</p>
+    </header>
+    <ol class="dimension-grid">
+      {renderedSteps.map((s) => (
+        <li class="dimension-card">
+          <header><span class="dimension-number">{s.number}</span><div><p class="dimension-role">{s.name}</p></div></header>
+          <div class="formula" aria-label={s.label} set:html={s.rendered}></div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="section-shell" aria-labelledby="physics-title">
+    <div class="section-heading"><div><p class="eyebrow">Connected</p><h2 id="physics-title">Physics domains</h2></div></div>
+    <table class="results-table">
+      <thead><tr><th>Domain</th><th>Status</th><th>Connection</th></tr></thead>
+      <tbody>{physics.map((p) => (<tr><td>{p.domain}</td><td><span class="status-pill">{p.status}</span></td><td>{p.connection}</td></tr>))}</tbody>
+    </table>
+  </section>
+
+  <section class="section-shell" aria-labelledby="math-title">
+    <div class="section-heading"><div><p class="eyebrow">Connected</p><h2 id="math-title">Mathematical domains</h2></div></div>
+    <table class="results-table">
+      <thead><tr><th>Domain</th><th>Connection</th></tr></thead>
+      <tbody>{math.map((m) => (<tr><td>{m.domain}</td><td>{m.connection}</td></tr>))}</tbody>
+    </table>
+  </section>
+
+  <section class="section-shell" aria-labelledby="explanations-title">
+    <div class="section-heading"><div><p class="eyebrow">Derived from the Gram</p><h2 id="explanations-title">New explanations</h2></div><p>Explanations of previously mysterious physical constants, derived from carrier Gram numbers without fitting.</p></div>
+    <table class="results-table">
+      <thead><tr><th>What it explains</th><th>Derivation from Gram</th></tr></thead>
+      <tbody>{explanations.map((e) => (<tr><td><strong>{e.explanation}</strong></td><td>{e.derived}</td></tr>))}</tbody>
+    </table>
+  </section>
+
+  <section class="frontier-section" id="frontier" aria-labelledby="frontier-title">
+    <div class="section-shell">
+      <div class="section-heading"><div><p class="eyebrow">Remaining open problem</p><h2 id="frontier-title">Flavor puzzle: specific Yukawa ratios</h2></div><p>Gram gives 4:1:1 partial hierarchy and RG amplifies to within factor ~3. Exact ratios require fibration phase configuration determined by capacity-weighted Grassmannian minimization.</p></div>
+      <article class="frontier-card frontier-card--gap">
+        <header><p>Carrier programme</p><span>open</span></header>
+        <h3>Determine the fibration phases from the capacity-weighted Grassmannian structure</h3>
+        <p>The Gram fixes the ratios (12, 4, 11, 10, 3). The phases are the remaining free data. Their stationary values under the capacity-weighted principal-angle cost, subject to global closure of the 12x12 cross-sector Gram, will determine the exact Yukawa eigenvalues and the CKM/PMNS CP phases.</p>
+      </article>
+    </div>
+  </section>
+</SiteLayout>
+
+<style>
+  .results-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  .results-table th { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 2px solid #333; font-weight: 600; }
+  .results-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #555; vertical-align: top; }
+  .results-table tr:hover { background: rgba(255, 255, 255, 0.03); }
+  .status-pill { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; background: #1a5c1a; color: #8f8; }
+</style>

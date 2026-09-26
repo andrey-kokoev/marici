@@ -2,6 +2,15 @@
 
 Research ledger and public map for the scalar master geometry program: intrinsic operations producing NLSM, Yang–Mills, gravity, and the exceptional CHY pairing web.
 
+## Project objective map
+
+The [project objective map](docs/project-objective-map.md) connects the main
+source/comparison/completion objective to a shared construction–observation
+compatibility obligation and existing research programmes. Its canonical graph
+tree is `issue-tree:marici-project-objective`; the first selected task is to
+freeze one actual sector pilot contract. Contributor links are candidate inputs,
+not physical adequacy claims or ownership transfers.
+
 ## Public ledger identity
 
 The public ledger uses author-qualified attribution. Ordinary entries default
