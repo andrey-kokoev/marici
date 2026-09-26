@@ -9,17 +9,17 @@ const physics = [
   { domain: '3 generations', slug: '3-generations', status: 'Established', connection: 'S12 -> S4 x S4 x S4 branching gives exactly 3 SM copies. S12 is the minimal carrier for 3 generations.' },
   { domain: 'CKM mixing', slug: 'ckm-mixing', status: 'Established', connection: 'overlap misalignment between up-type and down-type eigenbases. theta12=13 deg, theta23=2.4 deg, theta13=0.5 deg.' },
   { domain: 'PMNS mixing', slug: 'pmns-mixing', status: 'Established', connection: 'overlap misalignment in lepton sector. theta12=34 deg, theta23=42 deg, theta13=8.6 deg.' },
-  { domain: 'CKM CP phase', slug: 'ckm-cp-phase', status: 'Partial', connection: 'Approximate: pi/3 + (l_SU2/l_U1)^2 = 66.4 deg (obs 65.5, 1.3%). Base pi/3 not Gram-derived; correction (4/12)^2 is Gram.' }," },
-  { domain: 'PMNS CP phase', slug: 'pmns-cp-phase', status: 'Established', connection: 'delta_PMNS = (l_U1/C_U1)*pi = (12/10)*pi = 216 deg. Exact Gram expression.''" },
-  { domain: 'Higgs mass', slug: 'higgs-mass', status: 'Established', connection: 'm_H = 11^2 + 4 = 125 GeV, v = 2*11^2 + 4 = 246 GeV. Within 0.2%.''" },
-  { domain: 'Top Yukawa', slug: 'top-yukawa', status: 'Established', connection: 'y_t = l_SU2/l_SU2 = 4/4 = 1. Gram normalization unit.''" },
-  { domain: 'QCD scale / proton mass', slug: 'qcd-scale', status: 'Partial', connection: 'Lambda_QCD = M_Pl/11^19 = 200 MeV (exponent 19 = 11+4+4 is Gram). m_p = 14/3 * Lambda_QCD = 938 MeV (14/3 = (r+s-1)/(s-1) is Gram ratio, but proton mass from QCD dynamics not Gram-derived).' }," },
-  { domain: "Proton-electron ratio", slug: "proton-electron-ratio", status: "Established", connection: "m_p/m_e = l_U1 x (l_U1^2 + (l_SU2-1)^2) = 12 x (144+9) = 1836. Derived from Gram: m_p = 14/3 Lambda_QCD, m_e = y_e v/sqrt(2), y_e = 14 sqrt(2) Z / (3 r_S12^4 (l_U1^2+(l_SU2-1)^2)). Error 0.008%.", checker: "check_proton_electron.py", result: "proton-electron-ratio.json" }," },
-  { domain: "Larmor formula", slug: "larmor-formula", status: "Established", connection: "P = alpha*a^2/(6pi) from Gram 3-cycle. 6pi = 3x2pi (self-coherence, witness, witness'). alpha = 1/137 from Gram numbers.", checker: "check_larmor_3cycle.py", result: "larmor-3cycle.json" }," },
-  { domain: 'Spin', slug: 'spin', status: 'Established', connection: 'Spin-1/2 is the S4 doublet irrep (weak doublet). Spin operator = SU(2) generators.''" },
-  { domain: "Beta decay", slug: "beta-decay", status: "Established", connection: "SU(2) doublet rotation via W boson. Gram provides couplings (v, alpha, sin^2_W). M_W = 80.24 GeV (obs 80.38, 0.17%), G_F = 1.1685e-5 (obs 1.166e-5, 0.21%). Phase space and axial coupling are SM dynamics, not Gram predictions.", checker: "check_beta_decay_v2.py", result: "beta-decay-gram-v2.json" }," },
-  { domain: 'EPR / Bell violation', slug: 'epr-entanglement', status: 'Established', connection: 'CHSH violation S = 2*sqrt(2) from Gram non-separability. Entanglement = overlap non-product structure.''" },
-  { domain: 'Mach's Principle', slug: 'mach-principle', status: 'Established', connection: 'Inertia = sum of Gram couplings to all points. Metric = relational from full carrier. Both global/relational.''" },
+  { domain: 'CKM CP phase', slug: 'ckm-cp-phase', status: 'Partial', connection: 'Approximate: pi/3 + (l_SU2/l_U1)^2 = 66.4 deg (obs 65.5, 1.3%). Base pi/3 not Gram-derived; correction (4/12)^2 is Gram.' },
+  { domain: 'PMNS CP phase', slug: 'pmns-cp-phase', status: 'Established', connection: 'delta_PMNS = (l_U1/C_U1)*pi = (12/10)*pi = 216 deg. Exact Gram expression.' },
+  { domain: 'Higgs mass', slug: 'higgs-mass', status: 'Established', connection: 'm_H = 11^2 + 4 = 125 GeV, v = 2*11^2 + 4 = 246 GeV. Within 0.2%.' },
+  { domain: 'Top Yukawa', slug: 'top-yukawa', status: 'Established', connection: 'y_t = l_SU2/l_SU2 = 4/4 = 1. Gram normalization unit.' },
+  { domain: 'QCD scale / proton mass', slug: 'qcd-scale', status: 'Partial', connection: 'Lambda_QCD = M_Pl/11^19 = 200 MeV (exponent 19 = 11+4+4 is Gram). m_p = 14/3 * Lambda_QCD = 938 MeV (14/3 = (r+s-1)/(s-1) is Gram ratio, but proton mass from QCD dynamics not Gram-derived).' },
+  { domain: "Proton-electron ratio", slug: "proton-electron-ratio", status: "Established", connection: "m_p/m_e = l_U1 x (l_U1^2 + (l_SU2-1)^2) = 12 x (144+9) = 1836. Derived from Gram: m_p = 14/3 Lambda_QCD, m_e = y_e v/sqrt(2), y_e = 14 sqrt(2) Z / (3 r_S12^4 (l_U1^2+(l_SU2-1)^2)). Error 0.008%.", checker: "check_proton_electron.py", result: "proton-electron-ratio.json" },
+  { domain: "Larmor formula", slug: "larmor-formula", status: "Established", connection: "P = alpha*a^2/(6pi) from Gram 3-cycle. 6pi = 3x2pi (self-coherence, witness, witness'). alpha = 1/137 from Gram numbers.", checker: "check_larmor_3cycle.py", result: "larmor-3cycle.json" },
+  { domain: 'Spin', slug: 'spin', status: 'Established', connection: 'Spin-1/2 is the S4 doublet irrep (weak doublet). Spin operator = SU(2) generators.' },
+  { domain: "Beta decay", slug: "beta-decay", status: "Established", connection: "SU(2) doublet rotation via W boson. Gram provides couplings (v, alpha, sin^2_W). M_W = 80.24 GeV (obs 80.38, 0.17%), G_F = 1.1685e-5 (obs 1.166e-5, 0.21%). Phase space and axial coupling are SM dynamics, not Gram predictions.", checker: "check_beta_decay_v2.py", result: "beta-decay-gram-v2.json" },
+  { domain: 'EPR / Bell violation', slug: 'epr-entanglement', status: 'Established', connection: 'CHSH violation S = 2*sqrt(2) from Gram non-separability. Entanglement = overlap non-product structure.' },
+  { domain: "Mach's Principle", slug: 'mach-principle', status: 'Established', connection: 'Inertia = sum of Gram couplings to all points. Metric = relational from full carrier. Both global/relational.' },
   { domain: 'Anomaly cancellation', slug: 'anomaly-cancellation', status: 'Established', connection: 'All 6 Ward identities cancel per generation. 16 fermions = SO(10) spinor.' },
   { domain: 'Higgs mechanism', slug: 'higgs-mechanism', status: 'Established', connection: 'Off-diagonal block between S4 doublet and singlets. Higgs vev v = 246 GeV, mass m_H = 125 GeV.' },
   { domain: 'Strong CP / axion', slug: 'strong-cp-axion', status: 'Schematic', connection: 'U(1) phase mode identified. QCD instanton suppression of theta_bar is assumed from SM, not Gram-derived.' },
@@ -74,7 +74,7 @@ const explanations = [
 
 const renderedSteps = [
   { number: '1', name: 'One carrier', formula: String.raw`X_N = \{x_1,\dots,x_N\},\quad \operatorname{Aut}(X_N)=S_N`, label: 'Carrier' },
-  { number: '2', name: 'One overlap', formula: String.raw`G_{ij} = \langle f_j | f_i \rangle`, label: .overlap. },
+  { number: '2', name: 'One overlap', formula: String.raw`G_{ij} = \langle f_j | f_i \rangle`, label: 'Overlap' },
   { number: '3', name: 'All physics', formula: String.raw`\mathrm{QM},\ \mathrm{GR},\ \mathrm{SM},\ \mathbb{R},\mathbb{C},\mathbb{H},\mathbb{O},\ldots`, label: 'Unified' },
 ].map((s) => ({ ...s, rendered: katex.renderToString(s.formula, { displayMode: true, throwOnError: false }) }))
 ---
@@ -189,7 +189,7 @@ const renderedSteps = [
         <h3>y_t = 1, y_c = 1/143, y_u = 1/77220, y_b = 0.024, y_s = y_b/48, y_d = y_s/20</h3>
         <p>Up-type: y_t = l_U1*l_SU2/(l_U1*l_SU2) = 1; y_c = 1/(r_S12*(l_U1+1)) = 1/143; y_u = 1/(143*(r_S12*l_U1*l_SU2+l_U1)) = 1/77220. Down-type: y_b = l_SU2/N_dn = 0.024; y_s = y_b/(l_U1*l_SU2) = 0.0005; y_d = y_s/(l_U1+r_S12-l_SU2+1) = 2.5e-5. Fibration phases: theta_3 = 0 rad (top, un-suppressed), theta_2 = 2.974 rad = 170.4° (cos^2 suppression = 1/143), theta_1 = 3.134 rad = 179.6° (cos^2 suppression = 1/77220).</p>
       </article>
-    </div>
+    </section>
   <section class="section-shell" id="gram-numbers" aria-labelledby="gram-numbers-title" style="max-width:720px;margin:0 auto 2rem;padding:0 18px;">
     <div class="section-heading"><div><p class="eyebrow">Origin of the four Gram numbers</p><h2 id="gram-numbers-title">What each number is and where it comes from</h2></div><p>The four numbers are <b>not</b> free parameters — they are the complete spectral data of the carrier's Gram matrix under S4×S4×S4 symmetry. They are of three different mathematical types, each determined by the carrier's structure.</p>
     <p><span class="proof-badge">✓</span> Formal proof: <a href="https://github.com/andrey-kokoev/marici/blob/main/research/nima/agda/RelationalCarrier.agda" target="_blank">RelationalCarrier.agda</a> (Cubical Agda, 107 files). Lean: <a href="https://github.com/andrey-kokoev/marici/blob/main/research/buzzard/Entry2125.lean" target="_blank">probe kernel</a>, <a href="https://github.com/andrey-kokoev/marici/blob/main/research/buzzard/marici_formal/MariciFormal/CrossResolventGram.lean" target="_blank">Gram positivity</a>, <a href="https://github.com/andrey-kokoev/marici/blob/main/research/buzzard/marici_formal/MariciFormal/PhysicsPredictions.lean" target="_blank">predictions (ℚ)</a>.</p></div>
@@ -201,6 +201,9 @@ const renderedSteps = [
       <tr><td><b>C_U1 = 10</b></td><td><b>Trace</b> of the U(1) charge sector</td><td>Sum of squared U(1) hypercharges over all matter in three generations: Σ Y² = 10. Per-generation trace = 10/3.</td><td>Cosmological budgets: Ω_b = (c-s)/r² = 6/121, Ω_DM = (c-s)/(l+r) = 6/23. The Machian denominator 5280 = l·s·r·c.</td></tr>
     </table>
   </section>
+</SiteLayout>
+
+<style>
   .results-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
   .results-table th { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 2px solid #333; font-weight: 600; }
   .results-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #555; vertical-align: top; }
