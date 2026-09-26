@@ -1,5 +1,31 @@
 # Foundational derivation: from Bool×Bool to the Gram
 
+## Preamble: the bridge for physics professionals
+
+This document derives all of fundamental physics from a single mathematical
+object—the Gram matrix of a finite carrier. The progression is:
+
+**Carrier X_n with probes f_i → Gram G_ij = ⟨f_j|f_i⟩ → three physical projections:**
+
+1. **QM**: The interference pattern
+   \[I = \sum G_{ij} e^{i(\theta_j-\theta_i)}\]
+   gives the Born rule (rank-1 factorization G_{ij} = \psi_i^*\psi_j) and
+   N-path interference. The phases \theta_i are the wavefunction phase.
+
+2. **GR**: The stabilizer Gram at point p
+   \[g_{ab}(p) = G_{ab}|_{\text{Stab}(p)}\]
+   gives the spatial metric. The temporal component comes from the connection
+   between full and stabilizer Gram, giving signature (+++-).
+
+3. **SM**: The irrep decomposition of S₄ acting on 4 points
+   \[4 = 1 \oplus 1 \oplus 2\]
+   gives SU(3)×SU(2)×U(1). The CKM matrix comes from Gram misalignment
+   between up-type and down-type eigenbases.
+
+The same Gram matrix, projected three ways, produces all of physics.
+
+---
+
 ## 1. The carrier
 
 Start with a finite set of points:
