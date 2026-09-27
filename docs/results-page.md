@@ -4,9 +4,9 @@
 
 | Step | Name | Formula |
 |---|---|---|
-| 1 | One carrier | $X_N = {x_1,dots,x_N},quad operatorname{Aut}(X_N)=S_N$ |
-| 2 | One overlap | $G_{ij} = langle f_j | f_i angle$ |
-| 3 | All physics | $mathrm{QM}, mathrm{GR}, mathrm{SM}, mathbb{R},mathbb{C},mathbb{H},mathbb{O},ldots$ |
+| 1 | One carrier | $X_N = \{x_1,\dots,x_N\},\quad \operatorname{Aut}(X_N)=S_N$ |
+| 2 | One overlap | $G_{ij} = \langle f_j \mid f_i\rangle$ |
+| 3 | All physics | $\mathrm{QM}, \mathrm{GR}, \mathrm{SM}, \mathbb{R},\mathbb{C},\mathbb{H},\mathbb{O},\ldots$ |
 
 ## Physics domains (27)
 

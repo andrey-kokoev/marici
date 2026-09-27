@@ -2,19 +2,19 @@
 
 ## The single object and its three projections
 
-The carrier programme starts from a single object: a finite set X_N with N probe functions f_i, forming the **Gram overlap matrix**
+The carrier programme starts from a single object: a finite set $X_N$ with $N$ probe functions $f_i$, forming the **Gram overlap matrix**
 
-```
-G_ij = <f_j | f_i>
-```
+$$
+G_{ij}=\langle f_j\mid f_i\rangle
+$$
 
 This one matrix gives **three projections** that together cover all of known physics:
 
-- **Quantum mechanics** — the interference pattern I = Σ G_ij exp(i(θ_j − θ_i))
+- **Quantum mechanics** — the interference pattern $I=\sum_{i,j}G_{ij}e^{i(\theta_j-\theta_i)}$
 
-- **General relativity** — the stabilizer metric g_ab(p) = G_ab|_Stab(p)
+- **General relativity** — the $g_{ab}(p)=G_{ab}|_{\operatorname{Stab}(p)}$
 
-- **Standard Model** — the S4 irrep decomposition G = V²· diag(λ,…) · V
+- **Standard Model** — the $S_4$ irrep decomposition $G=V^2\operatorname{diag}(\lambda,\ldots)V$
 
 This replaces position (Q), momentum (P), and time (T) as separate primitives with a single algebraic structure. In the carrier programme, Q, P, and T are the **bottom rung of the Postnikov tower** of S4, the automorphism group of the minimal carrier.
 
@@ -22,11 +22,11 @@ The complete derivation is presented below, step by step, with each section show
 
 ## 1. The carrier
 
-**Definition.** X_N = {x_1, …, x_N} with N = 4 minimal. The canonical choice is Bool × Bool = {00, 01, 10, 11}.
+**Definition.** $X_N=\{x_1,\ldots,x_N\}$ with $N=4$ minimal. The canonical choice is Bool × Bool = {00, 01, 10, 11}.
 
 The carrier is a finite set with no metric, no coordinates, no topology. The only structure is the cardinality N and the automorphism group S_N.
 
-**Why N = 4.** S4 has irreducible representations 1 ⊕ 1' ⊕ 2 (trivial + sign + doublet). This gives exactly the SM gauge group structure: U(1) from the trivial rep, SU(2) from the doublet, SU(3) from the sign × doublet interaction. Larger N (e.g., N = 12, which gives three generations) maintain the same S4 substructure as the gauge sector.
+**Why N = 4.** $S_4$ has irreducible representations $1\oplus1'\oplus2$ (trivial + sign + doublet). This gives exactly the SM gauge group structure: U(1) from the trivial rep, SU(2) from the doublet, SU(3) from the sign × doublet interaction. Larger N (e.g., N = 12, which gives three generations) maintain the same S4 substructure as the gauge sector.
 
 **Connection to homotopy.** The classifying space BS4 has a Postnikov tower; its cohomological data is conventionally cited as suggesting U(1), SU(2), SU(3) fibres, but the precise identification (including the base space and bottom stage from which Q, P, T would emerge) remains a proposal rather than a derived theorem.
 
@@ -42,7 +42,7 @@ The carrier is a finite set with no metric, no coordinates, no topology. The onl
 
 ## 3. The Gram matrix
 
-**Definition.** G_ij = <f_j | f_i> is an N × N positive semidefinite Hermitian matrix. It contains all information about the geometric relationships between probe functions.
+**Definition.** $G_{ij}=\langle f_j\mid f_i\rangle$ is an N × N positive semidefinite Hermitian matrix. It contains all information about the geometric relationships between probe functions.
 
 In standard physics, three separate structures are needed:
 
@@ -60,11 +60,11 @@ In the carrier programme, all three arise from **three different projections of 
 
 - **S4-equivariant** (SM — gauge invariance under S4 → SU(3)×SU(2)×U(1))
 
-The Hermiticity follows from the inner product definition <f_j|f_i> = <f_i|f_j>*. The symmetry follows from the stabilizer restriction G_ab = G_ba. The S4-equivariance follows from Aut(X_N) = S_N.
+The Hermiticity follows from the inner product definition <f_j|f_i> = <f_i|f_j>*. The symmetry follows from the stabilizer restriction G_ab = G_ba. The S4-equivariance follows from $\operatorname{Aut}(X_N)=S_N$.
 
 ## 4. Automorphism group
 
-Aut(X_N) = S_N for the N-point carrier. For N = 4: S4, with |S4| = 24. The automorphism group acts by permuting indices: G_ij → G_σ(i)σ(j) for σ ∈ S_N.
+$\operatorname{Aut}(X_N)=S_N$ for the N-point carrier. For N = 4: S4, with |S4| = 24. The automorphism group acts by permuting indices: G_ij → G_σ(i)σ(j) for σ ∈ S_N.
 
 Gauge groups from the irrep decomposition of S4:
 
@@ -120,13 +120,11 @@ The apparent conflict between QM and GR at short distances is a lower-stage phen
 
 Same Gram G_ij, three distinct physical theories from three different ways of reading the same matrix:
 
-  | Projection | Construction | Physical theory 
-
-  | **QM** | I = Σ G_ij exp(i(θ_j − θ_i)) | Quantum interference, Born rule, phase evolution 
-
-  | **GR** | g_ab(p) = G_ab|_Stab(p) | Spatial metric from stabilizer, spacetime from fibration 
-
-  | **SM** | G = V²· diag(λ_1,…,λ_4) · V | Gauge groups from S4 irreps, Yukawas from Gram eigenvectors 
+| Projection | Construction | Physical theory |
+|---|---|---|
+| **QM** | $I=\sum_{i,j}G_{ij}e^{i(\theta_j-\theta_i)}$ | Quantum interference, Born rule, phase evolution |
+| **GR** | $g_{ab}(p)=G_{ab}|_{\operatorname{Stab}(p)}$ | Spatial metric from stabilizer, spacetime from fibration |
+| **SM** | $G=V^2\operatorname{diag}(\lambda_1,\ldots,\lambda_4)V$ | Gauge groups from $S_4$ irreps, Yukawas from Gram eigenvectors |
 
 **Why this single-matrix approach works:**
 
@@ -140,9 +138,9 @@ All three are the same matrix seen from different angles.
 
 ## 7. QM projection — interference, phases, and the Born rule
 
-**Interference term.** I = Σ_{i,j} G_ij exp(i(θ_j − θ_i)). The phase differences θ_j − θ_i give the dynamics — no Hamiltonian needed.
+**Interference term.** $I=\sum_{i,j}G_{ij}e^{i(\theta_j-\theta_i)}$. The phase differences θ_j − θ_i give the dynamics — no Hamiltonian needed.
 
-**Born rule.** Prob(i) = G_ii / Tr(G). The diagonal of the Gram gives probabilities directly: Prob(i) = G_ii / Tr(G). This follows from the normalization of the probe functions and the positivity of the Gram matrix.
+**Born rule.** $\Pr(i)=G_{ii}/\operatorname{Tr}(G)$. The diagonal of the Gram gives probabilities directly: $\Pr(i)=G_{ii}/\operatorname{Tr}(G)$. This follows from the normalization of the probe functions and the positivity of the Gram matrix.
 
 **Phase evolution.** The phases θ_i evolve along the chirality 3-cycle (identity → left → right → identity). The three steps of this cycle give three phase steps that correspond to the three generations of the SM. The complex phases of CKM and PMNS matrices arise from the misalignment between these three phase steps.
 
@@ -154,13 +152,13 @@ All three are the same matrix seen from different angles.
 
 **Stabilizer.** Stab(p) = {σ ∈ S_N | σ(p) = p} &subseteq; S_N. For N = 4, the stabilizer of a point is S3, of size 6, acting as the permutation group on the remaining 3 points. This 3-dimensional orbit gives the spatial dimensions.
 
-**Metric from Gram.** g_ab(p) = G_ab|_Stab(p). Restrict G_ij to the indices corresponding to points in the stabilizer orbit. This submatrix gives the *spatial metric* at point p. The indices a,b run over the 3 dimensions of the stabilizer orbit.
+**Metric from Gram.** $g_{ab}(p)=G_{ab}|_{\operatorname{Stab}(p)}$. Restrict G_ij to the indices corresponding to points in the stabilizer orbit. This submatrix gives the *spatial metric* at point p. The indices a,b run over the 3 dimensions of the stabilizer orbit.
 
 **Spacetime signature (+++-).** The stabilizer submatrix gives the spatial part (+++). The connection between stabilizers at different points — the Gram overlap between probes at different p — gives the temporal component (−). The full metric is (+++−), matching general relativity.
 
 **ADM constraints.** The Gram stationarity condition δG/δθ = 0 gives constraint equations that match the ADM Hamiltonian and momentum constraints of GR. The lapse and shift functions of the ADM formalism correspond to the projection of the Gram phase gradient along the stabilizer and its orthogonal complement, respectively.
 
-**Where the Einstein-Hilbert action would come from.** The action principle: S[G] = ∫ R(G) dV, where R(G) is the scalar curvature computed from the stabilizer Gram metric. If δS/δG_stab = 0 reproduces G_μν = 8πG T_μν, the derivation is complete. This derivation is not yet complete (see section 16).
+**Where the Einstein-Hilbert action would come from.** The action principle: S[G] = ∫ R(G) dV, where R(G) is the scalar curvature computed from the stabilizer Gram metric. If δS/δG_stab = 0 reproduces $G_{\mu\nu}=8\pi G T_{\mu\nu}$, the derivation is complete. This derivation is not yet complete (see section 16).
 
 ## 9. SM projection — S4 irrep decomposition and gauge groups
 
@@ -180,15 +178,12 @@ All three are the same matrix seen from different angles.
 
 **Gram numbers as eigenvalues:**
 
-  | Gram number | Symbol | Eigenvalue | Physical meaning 
-
-  | 12 | l_U1 | Trivial rep | U(1) hypercharge overlap 
-
-  | 10 | C_U1 | Sign rep | Charge conjugation overlap 
-
-  | 4 | l_SU2 | Doublet rep (mult. 2) | SU(2) weak overlap 
-
-  | 11 | r_S12 | Off-diagonal / S12 | 3-generation mixing overlap 
+| Gram number | Symbol | Eigenvalue | Physical meaning |
+|---:|---|---|---|
+| 12 | $\lambda_{U(1)}$ | Trivial representation | $U(1)$ hypercharge overlap |
+| 10 | $C_{U(1)}$ | Sign representation | Charge conjugation overlap |
+| 4 | $\lambda_{SU(2)}$ | Doublet representation (multiplicity 2) | $SU(2)$ weak overlap |
+| 11 | $r_{S12}$ | Off diagonal / $S_{12}$ | Three generation mixing overlap |
 
 These four numbers (11, 12, 4, 10) are the parameters. All physical constants are rational expressions in them.
 
@@ -266,9 +261,9 @@ where R_Hubble = c/H_0 is the Hubble radius. Using the Gram eigenvalues gives &L
 
 ## 16. Einstein equation (partial)
 
-**What is derived.** The metric from the stabilizer Gram: g_ab(p) = G_ab|_Stab(p). The ADM constraints (Hamiltonian and momentum) close at the stabilizer level, matching the constraints of GR.
+**What is derived.** The metric from the stabilizer Gram: $g_{ab}(p)=G_{ab}|_{\operatorname{Stab}(p)}$. The ADM constraints (Hamiltonian and momentum) close at the stabilizer level, matching the constraints of GR.
 
-**What is not yet derived.** The full Einstein equation G_μν = 8πG T_μν is claimed to follow from Gram stationarity:
+**What is not yet derived.** The full Einstein equation $G_{\mu\nu}=8\pi G T_{\mu\nu}$ is claimed to follow from Gram stationarity:
 
 δS / δG_stab = 0
 
@@ -286,27 +281,18 @@ where the first term is the scalar curvature of the stabilizer Gram metric and t
 
 All fundamental constants are rational expressions in the four Gram numbers (r = 11, l = 12, s = 4, c = 10), with the Machian bootstrap factor Z = 1/(1 + 1/90 − 1/5280) as the only correction coming from closed-loop effects.
 
-  | Constant | Gram expression | Predicted value | Observed | Error 
-
-  | α−&sup1; | r² + s² = 11² + 4² | **137** | 137.036 | 0.03% 
-
-  | sin²θ_W | C_SU2/C_U1 = 3/10 → 3/13 | **0.231** | 0.231 (Z pole) | <0.1% 
-
-  | M_Pl / v | r^(r+s) × l × Z = 11^15 × 12 × Z | **4.96×10^16** | 4.96×10^16 | 0.09% 
-
-  | &Lambda;_QCD | M_Pl / r^(r+s+s) = M_Pl / 11^19 | **~200 MeV** | ~200 MeV | 0.2% 
-
-  | m_p | (r+s−1)/(s−1) × &Lambda;_QCD = 14/3 × M_Pl/11^19 | **938 MeV** | 938.27 MeV | 0.7% 
-
-  | m_p / m_e | l × (l² + (s−1)²) = 12 × (144 + 9) | **1836** | 1836.15 | 0.01% 
-
-  | m_H | r² + s = 11² + 4 | **125 GeV** | 125.1 GeV | 0.08% 
-
-  | v | 2r² + s = 2·121 + 4 | **246 GeV** | 246.2 GeV | 0.08% 
-
-  | Ω_DM | (c − s)/(l + r) = (10 − 4)/(12 + 11) | **6/23 = 26.1%** | 26.4% | 1.2% 
-
-  | Ω_de | r / (l²) = 11/16 | **11/16 = 68.8%** | ~68.9% | ~0.1% 
+| Constant | Gram expression | Predicted value | Observed | Error |
+|---|---|---:|---:|---:|
+| $\alpha^{-1}$ | $r^2+s^2=11^2+4^2$ | **137** | 137.036 | 0.03% |
+| $\sin^2\theta_W$ | $C_{SU(2)}/C_{U(1)}=3/10\to3/13$ | **0.231** | 0.231 ($Z$ pole) | <0.1% |
+| $M_{\mathrm{Pl}}/v$ | $r^{r+s}\times l\times Z=11^{15}\times12\times Z$ | **$4.96\times10^{16}$** | $4.96\times10^{16}$ | 0.09% |
+| $\Lambda_{\mathrm{QCD}}$ | $M_{\mathrm{Pl}}/r^{r+s+s}=M_{\mathrm{Pl}}/11^{19}$ | **~200 MeV** | ~200 MeV | 0.2% |
+| $m_p$ | $(r+s-1)/(s-1)\times\Lambda_{\mathrm{QCD}}=14/3\times M_{\mathrm{Pl}}/11^{19}$ | **938 MeV** | 938.27 MeV | 0.7% |
+| $m_p/m_e$ | $l\times(l^2+(s-1)^2)=12\times(144+9)$ | **1836** | 1836.15 | 0.01% |
+| $m_H$ | $r^2+s=11^2+4$ | **125 GeV** | 125.1 GeV | 0.08% |
+| $v$ | $2r^2+s=2\cdot121+4$ | **246 GeV** | 246.2 GeV | 0.08% |
+| $\Omega_{\mathrm{DM}}$ | $(c-s)/(l+r)=(10-4)/(12+11)$ | **$6/23=26.1\%$** | 26.4% | 1.2% |
+| $\Omega_{\mathrm{de}}$ | $r/l^2=11/16$ | **$11/16=68.8\%$** | ~68.9% | ~0.1% |
 
 The cosmic budget uses all four densities: Ω_b + Ω_DM + Ω_de + Ω_k = 1. An earlier expression using only the 23 = l + r denominator (11/23) was incorrect because it neglected baryonic matter; the 11/16 form is the one used consistently across results and the landing page.
 
@@ -321,4 +307,3 @@ The carrier programme's reach extends beyond physics into pure mathematics, thro
 **Homotopy theory.** The stable stems of the sphere spectrum give S4 as the first non-trivial group beyond ℝ/2. The Postnikov tower of BS4 → K(ℝ/2, 2) → K(ℝ/3, 2) → K(ℝ/2, 2) is a specific instance of a general phenomenon: the sphere spectrum's stable stems at dimensions 1, 2, 3 correspond to U(1), SU(2), SU(3).
 
 **Sporadic groups.** M12 is a subgroup of S12, and the Monster has a structure related to the Leech lattice and Griess algebra, both connected to S24. These are mathematical parallels, not physics derivations — the physical content of the carrier programme is in the S4 structure, and the sporadic connections show that the same algebraic structures appear in finite simple group theory.
-
