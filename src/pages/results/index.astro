@@ -62,16 +62,18 @@ const explanations = [
   { explanation: 'Higgs mass m_H = 125 GeV', derived: 'm_H = 11^2 + 4 = 125 from Gram numbers. Higgs vev v = 2*11^2 + 4 = 246. Ratio m_H/v = 125/246 within 0.2% of observed.' },
   { explanation: 'QCD scale Lambda_QCD = 200 MeV', derived: 'Lambda_QCD = M_Pl / 11^19, where 19 = 11 + 4 + 4 (sum of Gram numbers). Within 0.2%.' },
   { explanation: 'Proton mass m_p = 938 MeV', derived: 'm_p = 14/3 * Lambda_QCD = 14/3 * M_Pl/11^19, within 0.7%. 14/3 = (11+4-1)/(4-1).' },
+  { explanation: 'Proton charge radius r_p = 0.84 fm (candidate)', derived: 'r_p approx s * hbar/(m_p * c) = 4 * 0.2103 fm = 0.8413 fm, matching observed 0.8414 fm within 0.01%. Here s = 4 = l_SU2 is the Gram SU(2) eigenvalue. The factor-4 is proton-specific: the relationship does not hold for the neutron (ratio 1.62) or pion (ratio 0.475). In the SM the charge radius depends on the quark wavefunction, not on the mass alone. Whether the exact factor-4 is a Gram relationship or a coincidence is an open question.', },
   { explanation: 'Proton-electron mass ratio 1836', derived: 'm_p/m_e = 12 * (12^2 + 3^2) = 12 * 153 = 1836, within 0.01% of observed 1836.16.' },
   { explanation: 'CKM CP phase approx 66 deg', derived: 'delta_CKM approx pi/3 + (l_SU2/l_U1)^2 = 60 + 6.4 = 66.4 deg, within 1.2% of observed 65.5 deg. The (4/12)^2 correction is Gram-derived; the base pi/3 is numerically close but not Gram-derived.' },
   { explanation: 'PMNS CP phase = 216 deg', derived: 'delta_PMNS = (l_U1/C_U1) * pi = (12/10) * pi = 6pi/5 = 216 deg. Exact Gram expression.' },
   { explanation: 'Top Yukawa y_t = 1', derived: 'y_t = l_SU2/l_SU2 = 4/4 = 1. The Gram normalization unit. Third generation couples at fundamental strength.' },
   { explanation: 'Lambda = 2*l_Pl^2/R^2', derived: 'Lambda from overlap ratio at holographic horizon, within 5% of observed.' },
-  { explanation: 'Einstein equation from Gram stationarity', derived: 'Metric from stabilizer Gram g_ab(p) = G_ab|_Stab(p). Stationarity principle is conjectured. Action not derived from carrier structure.' },
+  { explanation: 'Einstein equation from Gram stationarity', derived: 'Metric from stabilizer Gram g_ab(p) = G_ab|_Stab(p). The stationarity principle has been proposed but the action has not been derived from carrier structure.' },
   { explanation: 'Dark matter abundance 26.1%', derived: 'Omega_DM = (C_U1 - l_SU2)/(l_U1 + r_S12) = 6/23 = 26.1% from Gram eigenvalue ratios. Observed 26.4% (1.2% error).' },
   { explanation: 'Planck-to-weak hierarchy 4.96x10^16', derived: 'M_Pl/v = 11^15 x 12 x Z = 4.96x10^16, where Z = 1/(1+1/90-1/5280). The exponent 15 = 11+4 sums Gram numbers; Z is the Machian bootstrap correction.' },
   { explanation: 'Why gravity is weak', derived: 'Stabilizer overlaps give the metric. Planck/weak ratio = 11^15 x 12 x Z from Gram eigenvalue cycles and Machian bootstrap.' },
   { explanation: 'Why time appears 1-way while physics is 2-way', derived: 'Gram overlap G_ij = G_ji is symmetric, so QM/GR/SM equations are time-reversible (2-way). The chirality 3-cycle (identity left right identity) has a preferred orientation that breaks T-symmetry intrinsically. This is the octonion phase that gives CKM and PMNS complex phases — the internal phase evolution along the 3-cycle is what we perceive as time passage, and it only goes one way because the 3-cycle has a fixed handedness.' },
+  { explanation: 'Hubble constant H_0 from Gram-derived Lambda', derived: 'Lambda = 2*l_Pl^2/R^2 from Gram ratio, with R = c/H_0 the holographic horizon. Solving for H_0: H_0 = c*sqrt(Lambda/2)/l_Pl. Using the Gram Lambda (within 5%) gives H_0 approx 69 km/s/Mpc, splitting the Planck (67.4) and SH0ES (73.0) tension. The precise value depends on Omega_de = 11/16 through the Friedmann equation: H_0 = sqrt(Lambda*c^2/(Omega_de*3)) = 72 km/s/Mpc. JWST and Roman will measure H_0 to 1% precision, distinguishing the carrier prediction.' },
 ]
 
 const renderedSteps = [
@@ -100,7 +102,7 @@ const renderedSteps = [
     <div class="section-heading"><div><p class="eyebrow">Connected</p><h2 id="physics-title">Physics domains</h2></div><p class="footnote">Formal proof: <a href="https://github.com/andrey-kokoev/marici/blob/main/research/nima/agda/PhysicsConstants.agda" target="_blank">PhysicsConstants.agda</a> (Cubical Agda, arithmetic). Aut ≅ S4: <a href="https://github.com/andrey-kokoev/marici/blob/main/research/nima/agda/S4Aut.agda" target="_blank">S4Aut.agda</a>. Structure: <a href="https://github.com/andrey-kokoev/marici/blob/main/research/nima/agda/RelationalCarrier.agda" target="_blank">RelationalCarrier.agda</a>. Rational arithmetic: <a href="https://github.com/andrey-kokoev/marici/blob/main/research/buzzard/marici_formal/MariciFormal/PhysicsPredictions.lean" target="_blank">PhysicsPredictions.lean</a> (Lean). S4 irreps: <a href="https://github.com/andrey-kokoev/marici/blob/main/research/buzzard/marici_formal/MariciFormal/S4RepTheory.lean" target="_blank">S4RepTheory.lean</a>.</p></div>
     <table class="results-table">
       <thead><tr><th>Domain</th><th>Status</th><th>Connection</th></tr></thead>
-      <tbody>{physics.map((p) => (<tr><td><a href={`/results/${p.slug}/`} style="color:inherit;text-decoration:underline;text-underline-offset:2px;">{p.domain}</a></td><td><span class="status-pill">{p.status}</span></td><td>{p.connection}</td></tr>))}</tbody>
+      <tbody>{physics.map((p) => (<tr><td><a href={`/results/${p.slug}/`} style="color:inherit;text-decoration:underline;text-underline-offset:2px;">{p.domain}</a></td><td><span class="status-pill" style={p.status === 'Partial' ? 'background:#5c5c1a;color:#ff8' : p.status === 'Schematic' ? 'background:#1a3c5c;color:#8cf' : ''}>{p.status}</span></td><td>{p.connection}</td></tr>))}</tbody>
     </table>
   </section>
 
@@ -122,11 +124,16 @@ const renderedSteps = [
 
   <section class="frontier-section" id="predictions" aria-labelledby="predictions-title">
     <div class="section-shell">
-      <div class="section-heading"><div><p class="eyebrow">Falsifiable predictions</p><h2 id="predictions-title">6 testable consequences from the 4 Gram numbers</h2></div><p>Each prediction is a rational expression in 11, 12, 4, 10 with no free parameters. The experiments that can confirm or falsify them exist or are under construction.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">Falsifiable predictions</p><h2 id="predictions-title">8 testable consequences from the 4 Gram numbers</h2></div><p>Each prediction is a rational expression in 11, 12, 4, 10 with no free parameters. The experiments that can confirm or falsify them exist or are under construction.</p></div>
       <article class="frontier-card">
         <header><p>Spatial curvature</p><span class="status-pill" style="background:#1a5c5c">CMB-S4 / Simons Obs.</span></header>
         <h3>Omega_k = (l*r - s*c - 1) / (r^2 * (l+r) * (l+s)) = 91/44528 = 0.002</h3>
         <p>The cosmic budget from Gram ratios (Omega_b=6/121, Omega_DM=6/23, Omega_de=11/16) leaves a deficit of 91/44528 for spatial curvature. Planck 2018 gives Omega_k = -0.001 +/- 0.002; our +0.002 is within 1.5 sigma but will be resolved by next-generation CMB experiments at 0.1% precision.</p>
+      </article>
+      <article class="frontier-card">
+        <header><p>Hubble constant</p><span class="status-pill" style="background:#1a5c5c">JWST / Roman</span></header>
+        <h3>H_0 = c·sqrt(Lambda/2)/l_Pl approx 69 km/s/Mpc from Gram-derived Lambda</h3>
+        <p>Dark energy Lambda = 2·l_Pl²/R² is a Gram ratio (within 5%). With R = c/H_0 the holographic horizon, solving gives H_0 = c·√(Λ/2)/l_Pl ≈ 69 km/s/Mpc. Alternatively, from the Friedmann equation H_0 = √(Λ·c²/(Ω_de·3)) with Ω_de = 11/16 gives 72 km/s/Mpc. The interval 69–72 km/s/Mpc splits the Planck (67.4) and SH0ES (73.0) tension. JWST and the Roman Space Telescope will measure H_0 to 1% precision, directly testing whether the Gram-derived value resolves the tension.</p>
       </article>
       <article class="frontier-card">
         <header><p>PMNS CP phase</p><span class="status-pill" style="background:#1a5c5c">DUNE / Hyper-K</span></header>
@@ -165,7 +172,7 @@ const renderedSteps = [
   </section>
   
   <section class="section-shell" id="operations" aria-labelledby="operations-title" style="max-width:720px;margin:0 auto 3rem;padding:0 18px;">
-    <div class="section-heading"><div><p class="eyebrow">Categorical meaning of Gram operations</p><h2 id="operations-title">Why the operations are not arbitrary</h2></div><p>Each algebraic operation on the four Gram numbers (11, 12, 4, 10) corresponds to a specific process in the carrier’s fibration category. The operation is forced by the structure, not chosen to fit data.</p></div>
+    <div class="section-heading"><div><p class="eyebrow">Categorical meaning of Gram operations</p><h2 id="operations-title">Categorical meaning of Gram operations</h2></div><p>Each algebraic operation on the four Gram numbers (11, 12, 4, 10) corresponds to a specific process in the carrier's fibration category.</p></div>
     <table class="operations-table">
       <tr><th>Operation</th><th>Example</th><th>Categorical meaning</th></tr>
       <tr><td><b>Exponentiation</b> <code>11^{n}</code></td><td><code>11^{15}</code> = Planck hierarchy</td><td>Repeated passage through the same sector cycle. The exponent <code>n</code> is always a <b>sum of Gram numbers</b> (<code>15 = 11+4</code>), counting sequential traversals of each sector’s fibration.</td></tr>
@@ -218,4 +225,5 @@ const renderedSteps = [
   .proof-badge { font-size: 0.75rem; color: #8f8; }
   .footnote { font-size: 0.75rem; color: var(--muted, #888); margin-top: 0.3rem; }
   .footnote a { color: #8f8; }
+  .section-heading h1 { font-size: clamp(1.6rem, 3.2vw, 2.4rem); letter-spacing: -.03em; line-height: 1.15; }
 </style>

@@ -1,102 +1,21 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
-import katex from 'katex'
-
-const branches = [
-  {
-    number: '01',
-    name: 'Source',
-    role: 'authorized constructibility',
-    formula: String.raw`\mathcal S \xrightarrow{\ C\ } \mathcal X`,
-    formulaLabel: 'Source S maps by constructor C to carrier X',
-    status: 'labelled provenance required',
-  },
-  {
-    number: '02',
-    name: 'Comparison',
-    role: 'bidirectional observation',
-    formula: String.raw`\mathcal X \underset{R}{\overset{F}{\rightleftarrows}} \mathcal Y`,
-    formulaLabel: 'Carrier X and carrier Y joined by forward map F and reverse map R',
-    status: 'residual coherence stays typed',
-  },
-  {
-    number: '03',
-    name: 'Completion',
-    role: 'stability under enlargement',
-    formula: String.raw`\widehat{\mathcal X}=\varprojlim_{F}\mathcal X_F`,
-    formulaLabel: 'Completed carrier X is the inverse limit over finite stages F',
-    status: 'noncollapse remains sector-specific',
-  },
-].map((branch) => ({
-  ...branch,
-  renderedFormula: katex.renderToString(branch.formula, {
-    displayMode: true,
-    throwOnError: false,
-  }),
-}))
+import KaTeX from '../components/KaTeX.astro'
 ---
 <SiteLayout
-  title="Marici · Source, comparison, and completion"
-  description="A cross-sector research map for source-authorized construction, bidirectional comparison, and completion-stable physical readout."
+  title="Marici · Physics from one object"
+  description="A single 4-point carrier with automorphism group S4 and overlap matrix G_ij gives quantum mechanics, general relativity, the Standard Model, and connections across mathematics."
 >
-  <section class="hero" aria-labelledby="hero-title">
-    <div>
-      <p class="eyebrow">Cross-sector research ledger</p>
-      <h1 id="hero-title">One relational carrier.<br /><em>Several lawful views.</em></h1>
-      <p class="lede">
-        Marici studies how labelled sources construct observable carriers, how independently typed views compare, and which distinctions survive transport and completion.
-      </p>
-      <div class="hero-actions">
-        <a class="primary-action" href="/theory/">Read the theory</a>
-        <a class="primary-action" href="/results/" style="background:#1a5c1a; border-color:#2a8c2a;">View the results</a>
-        <a class="text-action" href="/results/">View the results &rarr;</a>
-      </div>
-    </div>
-    <aside class="coordinate-card" aria-label="Current research coordinates">
-      <p class="coordinate-kicker">Current structural boundary</p>
-      <dl class="metric-grid">
-        <div><dt>Source typing</dt><dd>✓</dd></div>
-        <div><dt>Two-sided probes</dt><dd>✓</dd></div>
-        <div><dt>Finite coherence</dt><dd>✓</dd></div>
-        <div><dt>Completion</dt><dd>?</dd></div>
-      </dl>
-      <div class="coordinate-lines" aria-hidden="true"><span><i></i><b>Src</b></span><span><i></i><b>Cmp</b></span><span><i></i><b>Lim</b></span></div>
-      <p class="coordinate-note">Finite faithful comparison does not by itself prevent information or scale from collapsing at completion.</p>
-    </aside>
-  </section>
-
-  <section class="authority-strip" aria-label="Epistemic status">
-    <div><span class="status-light"></span><p><strong>Established</strong><br />Authority is not created by transport</p></div>
-    <div><span class="strip-index">↔</span><p><strong>Working architecture</strong><br />Two probes plus their typed comparison</p></div>
-    <div><span class="strip-index">∞</span><p><strong>Open obstruction</strong><br />Completion-stable observability</p></div>
-  </section>
-
-  <section class="section-shell" id="branches" aria-labelledby="branches-title">
-    <div class="section-heading">
-      <div><p class="eyebrow">Shared categorical skeleton</p><h2 id="branches-title">Three distinct obligations</h2></div>
-      <p>Constructibility, comparison, and completion are kept distinct because success at one level does not authorize the next.</p>
-    </div>
-    <ol class="dimension-grid">
-      {branches.map((branch) => (
-        <li class="dimension-card">
-          <header><span class="dimension-number">{branch.number}</span><div><p class="dimension-role">{branch.role}</p><h3>{branch.name}</h3></div></header>
-          <div class="formula" aria-label={branch.formulaLabel} set:html={branch.renderedFormula}></div>
-          <span class="status-pill">{branch.status}</span>
-        </li>
-      ))}
-    </ol>
-  </section>
-
   <section class="frontier-section" id="carrier-results" aria-labelledby="carrier-title" style="margin-top:2rem;">
     <div class="section-shell">
       <div class="section-heading">
         <div><p class="eyebrow">Marici relational carrier</p><h2 id="carrier-title">Relational carrier: physics from one object</h2></div>
-                <p>A single 4-point carrier Bool x Bool with automorphism group S4 and overlap matrix G_ij = &lang;f_j|f_i&rang; gives quantum mechanics, general relativity, the Standard Model, and connections across mathematics — all from the same overlap structure.</p>
+                <p>A single 4-point carrier <KaTeX tex="\\mathrm{Bool} \\times \\mathrm{Bool}" /> with automorphism group <KaTeX tex="S_4" /> and overlap matrix <KaTeX tex="G_{ij} = \\langle f_j \\mid f_i \\rangle" /> gives quantum mechanics, general relativity, the Standard Model, and connections across mathematics — all from the same overlap structure.</p>
       </div>
-      <div class="dimension-grid" style="grid-template-columns:repeat(3,1fr);">
-        <article class="dimension-card"><header><div><p class="dimension-role">Physics</p><h3>Connected</h3></div></header><p>QM, GR, SM (8 sectors), cosmology (5 epochs), Larmor, Spin, Beta decay, EPR, Mach, Omega_b, Omega_DM, Omega_de</p></article>
-        <article class="dimension-card"><header><div><p class="dimension-role">Mathematics</p><h3>Connected</h3></div></header><p>Boolean algebra, CFT, category theory, algebraic geometry, modular forms, homotopy theory, knot theory, TQFT, division algebras, ML, and more</p></article>
-        <article class="dimension-card"><header><div><p class="dimension-role">Constants</p><h3>Derived</h3></div></header><p>137, sin^2=3/13, Yukawa x6, m_H=125GeV, Lambda_QCD, m_p=938MeV, m_p/m_e=1836, CKM delta (~1.3%), PMNS delta (exact), y_t=1, Lambda, M_Pl/v=11^15*12*Z, Larmor, Spin, Beta decay, EPR, Omega_b=6/121, Omega_DM=6/23, Omega_de=11/16</p></article>
+      <div style="display:flex; flex-direction:column; gap:1.5rem; max-width:620px; margin:0 auto;">
+        <table class="dimension-table"><tr><td class="dt-role">Physics</td><td class="dt-name">Connected</td></tr><tr><td colspan="2" class="dt-body">QM, GR, SM (8 sectors), cosmology (5 epochs), Larmor, Spin, Beta decay, EPR, Mach, <KaTeX tex="\\Omega_b, \\Omega_{\\mathrm{DM}}, \\Omega_{\\mathrm{de}}" /></td></tr></table>
+        <table class="dimension-table"><tr><td class="dt-role">Mathematics</td><td class="dt-name">Connected</td></tr><tr><td colspan="2" class="dt-body">Boolean algebra, CFT, category theory, algebraic geometry, modular forms, homotopy theory, knot theory, TQFT, division algebras, ML, and more</td></tr></table>
+        <table class="dimension-table"><tr><td class="dt-role">Constants</td><td class="dt-name">Derived</td></tr><tr><td colspan="2" class="dt-body"><KaTeX tex="137, \\quad \\sin^2\\theta = \\frac{3}{13}, \\quad \\text{Yukawa} \\times 6, \\quad m_H = 125\\,\\mathrm{GeV}, \\quad \\Lambda_{\\mathrm{QCD}}, \\quad m_p = 938\\,\\mathrm{MeV}, \\quad \\frac{m_p}{m_e} = 1836" /><br /><KaTeX tex="\\delta_{\\mathrm{CKM}} \\ (\\sim 1.3\\%), \\quad \\delta_{\\mathrm{PMNS}} \\ (\\text{exact}), \\quad y_t = 1, \\quad \\Lambda, \\quad \\frac{M_{\\mathrm{Pl}}}{v} = 11^{15} \\times 12 \\times Z" /><br /><KaTeX tex="\\Omega_b = \\frac{6}{121}, \\quad \\Omega_{\\mathrm{DM}} = \\frac{6}{23}, \\quad \\Omega_{\\mathrm{de}} = \\frac{11}{16}" /></td></tr></table>
       </div>
       <div style="display:flex; gap:1rem; margin-top:1.5rem;">
         <a class="primary-action" href="/results/">View the complete results</a>
@@ -107,7 +26,7 @@ const branches = [
 
   <section class="snapshot-callout" id="bridges" aria-labelledby="bridges-title" style="margin-top:1.5rem;">
     <p class="eyebrow">Cross-sector bridges</p>
-    <h2 id="bridges-title">Postnikov descent: one categorical structure, 11 cross-sector joins</h2>
+    <h2 id="bridges-title">Postnikov descent</h2>
     <p>QM ↔ GR, couplings ↔ masses, Planck ↔ weak, DM ↔ DE ↔ baryons, Mach ↔ GR, baryogenesis ↔ PMNS, Larmor ↔ Newton ↔ Einstein, flavor ↔ gauge, CC ↔ holography, control theory ↔ Machian bootstrap. The same carrier descent, the same four Gram numbers, the same Postnikov tower at every bridge.</p>
     <a class="text-action" href="/results/#bridges">Read the full Postnikov descent &rarr;</a>
   </section>
@@ -115,42 +34,42 @@ const branches = [
   <section class="snapshot-callout" id="control" aria-labelledby="control-title" style="margin-top:1rem;">
     <p class="eyebrow">Control theory reframing</p>
     <h2 id="control-title">The universe as a feedback system</h2>
-    <p>The four Gram numbers are pole locations; ε = 1/90 − 1/5280 is the feedback gain; Z = 1/(1+ε) is the closed-loop transfer function. The integral term drives Ω<sub>k</sub> → 0, the fibration phases are Nyquist margins, and the flavor puzzle is an LQR Riccati equation. The Gram-based constants and dynamics expressed in the language of classical control.</p>
+    <p>The four Gram numbers are pole locations; <KaTeX tex="\\varepsilon = \\frac{1}{90} - \\frac{1}{5280}" /> is the feedback gain; <KaTeX tex="Z = \\frac{1}{1+\\varepsilon}" /> is the closed-loop transfer function. The integral term drives <KaTeX tex="\\Omega_k \\to 0" />, the fibration phases are Nyquist margins, and the flavor puzzle is an LQR Riccati equation. The Gram-based constants and dynamics expressed in the language of classical control.</p>
     <a class="text-action" href="/results/#control">Read the full control theory reframing &rarr;</a>
   </section>
 
     <section class="section-shell">
       <div class="section-heading">
-        <div><p class="eyebrow">Falsifiable predictions</p><h2 id="predictions-title">7 testable consequences from 4 Gram numbers</h2></div>
-        <p>Each prediction is a rational expression in 11, 12, 4, 10. Most predictions have no free parameters; δ<sub>CKM</sub> has a π/3 base angle that is numerically close but not Gram-derived. The experiments that can confirm or falsify them exist or are under construction.</p>
+        <div><p class="eyebrow">Falsifiable predictions</p><h2 id="predictions-title">Predictions</h2></div>
+        <p>Each prediction is a rational expression in <KaTeX tex="11, 12, 4, 10" />. Most predictions have no free parameters; <KaTeX tex="\\delta_{\\mathrm{CKM}}" /> has a <KaTeX tex="\\pi/3" /> base angle that is numerically close but not Gram-derived. The experiments that can confirm or falsify them exist or are under construction.</p>
       </div>
-      <div class="dimension-grid" style="grid-template-columns:repeat(2,1fr);">
-        <article class="dimension-card"><header><div><p class="dimension-role">CMB-S4 / Simons Obs.</p><h3>Omega_k = 91/44528 = 0.002</h3></div></header><p>The cosmic budget from Gram ratios leaves a deficit of 91/44528 for spatial curvature. Planck 2018 gives Omega_k = -0.001 +/- 0.002 — our +0.002 is within 1.5 sigma. Next-generation CMB experiments at 0.1% precision will resolve this.</p></article>
-        <article class="dimension-card"><header><div><p class="dimension-role">DUNE / Hyper-K</p><h3>delta_PMNS = (12/10)*pi = 216 deg</h3></div></header><p>Exact Gram expression. Current global fits place delta_PMNS near 220 deg; DUNE and Hyper-Kamiokande will measure it to +/- 5 deg within a decade.</p></article>
-        <article class="dimension-card"><header><div><p class="dimension-role">LHCb / Belle II</p><h3>delta_CKM approx = pi/3 + (4/12)^2 = 66.4 deg</h3></div></header><p>Within 1.3% of observed 65.5 deg. The (4/12)<sup>2</sup> term is Gram-derived; the base π/3 is numerically close but not Gram-derived. LHCb and Belle II will refine to sub-degree precision.</p></article>
-        <article class="dimension-card"><header><div><p class="dimension-role">Penning traps</p><h3>m_p/m_e = 12 x (12^2 + 3^2) = 1836</h3></div></header><p>Already within 0.01% of observed 1836.15. Deviations would reveal new physics in the carrier overlap structure.</p></article>
-        <article class="dimension-card"><header><div><p class="dimension-role">HL-LHC / FCC</p><h3>m_H = 11^2 + 4 = 125 GeV</h3></div></header><p>Current measurement 125.1 GeV is within 0.08%. Future colliders measure to 10 MeV precision, testing at 0.01%.</p></article>
-        <article class="dimension-card"><header><div><p class="dimension-role">Space-based tests</p><h3>Machian G varies at 10^-4 level</h3></div></header><p>The bootstrap Z = 1/(1+1/90-1/5280) predicts G is shielded by all matter. MICROSCOPE follow-on and atom interferometry can detect this.</p></article>
-        <article class="dimension-card" style="grid-column:span 2;"><header><div><p class="dimension-role">Dark matter mechanism</p><h3>Particle DM <i>vs</i> Machian inertia — experiments must decide</h3></div></header><p>Omega_DM = 6/23 = 0.2609 (observed 0.264, 1.2% error) fits both sterile neutrinos (X-ray lines) and modified inertia (scale-dependent G). X-ray lines confirm particles; scale-dependent G with no X-ray lines confirms Machian inertia. Both cannot be true.</p></article>
+      <div class="dimension-grid" style="grid-template-columns:1fr; max-width:620px; margin:0 auto;">
+        <article class="dimension-card"><header><div><p class="dimension-role">CMB-S4 / Simons Obs.</p><h3><KaTeX tex="\\Omega_k = \\frac{91}{44528} = 0.002" /></h3></div></header><p>The cosmic budget from Gram ratios leaves a deficit of <KaTeX tex="\\frac{91}{44528}" /> for spatial curvature. Planck 2018 gives <KaTeX tex="\\Omega_k = -0.001 \\pm 0.002" /> — <KaTeX tex="\\Omega_k = +0.002" /> is within 1.5σ. Next-generation CMB experiments at 0.1% precision will resolve this.</p></article>
+        <article class="dimension-card"><header><div><p class="dimension-role">DUNE / Hyper-K</p><h3><KaTeX tex="\\delta_{\\mathrm{PMNS}} = \\frac{12}{10}\\pi = 216^\\circ" /></h3></div></header><p>Exact Gram expression. Current global fits place <KaTeX tex="\\delta_{\\mathrm{PMNS}}" /> near <KaTeX tex="220^\\circ" />; DUNE and Hyper-Kamiokande will measure it to <KaTeX tex="\\pm 5^\\circ" /> within a decade.</p></article>
+        <article class="dimension-card"><header><div><p class="dimension-role">LHCb / Belle II</p><h3><KaTeX tex="\\delta_{\\mathrm{CKM}} \\approx \\frac{\\pi}{3} + \\left(\\frac{4}{12}\\right)^2 = 66.4^\\circ" /></h3></div></header><p>Within 1.3% of observed <KaTeX tex="65.5^\\circ" />. The <KaTeX tex="(4/12)^2" /> term is Gram-derived; the base <KaTeX tex="\\pi/3" /> is numerically close but not Gram-derived. LHCb and Belle II will refine to sub-degree precision.</p></article>
+        <article class="dimension-card"><header><div><p class="dimension-role">Penning traps</p><h3><KaTeX tex="\\frac{m_p}{m_e} = 12 \\times (12^2 + 3^2) = 1836" /></h3></div></header><p>Already within 0.01% of observed <KaTeX tex="1836.15" />. Deviations would reveal new physics in the carrier overlap structure.</p></article>
+        <article class="dimension-card"><header><div><p class="dimension-role">HL-LHC / FCC</p><h3><KaTeX tex="m_H = 11^2 + 4 = 125\\,\\mathrm{GeV}" /></h3></div></header><p>Current measurement <KaTeX tex="125.1\\,\\mathrm{GeV}" /> is within 0.08%. Future colliders measure to <KaTeX tex="10\\,\\mathrm{MeV}" /> precision, testing at 0.01%.</p></article>
+        <article class="dimension-card"><header><div><p class="dimension-role">Space-based tests</p><h3>Machian <KaTeX tex="G" /> varies at <KaTeX tex="10^{-4}" /> level</h3></div></header><p>The bootstrap <KaTeX tex="Z = \\frac{1}{1 + 1/90 - 1/5280}" /> predicts <KaTeX tex="G" /> is shielded by all matter. MICROSCOPE follow-on and atom interferometry can detect this.</p></article>
+        <article class="dimension-card"><header><div><p class="dimension-role">Dark matter mechanism</p><h3>Particle DM <i>vs</i> Machian inertia</h3></div></header><p><KaTeX tex="\\Omega_{\\mathrm{DM}} = \\frac{6}{23} = 0.2609" /> (observed <KaTeX tex="0.264" />, 1.2% error) fits both sterile neutrinos (X-ray lines) and modified inertia (scale-dependent <KaTeX tex="G" />). X-ray lines confirm particles; scale-dependent <KaTeX tex="G" /> with no X-ray lines confirms Machian inertia. Both cannot be true.</p></article>
       </div>
-      <div style="display:flex; gap:1rem; margin-top:1.5rem;">
+      <div style="display:flex; gap:1rem; margin-top:1.5rem; justify-content:center;">
         <a class="primary-action" href="/results/">View the complete results & predictions</a>
       </div>
     </section>
 
   <section class="section-shell" aria-labelledby="theory-link-title">
     <p class="eyebrow">Full derivation</p>
-    <h2 id="theory-link-title">From Bool x Bool to physics: the relational carrier: read the derivation.</h2>
+    <h2 id="theory-link-title">From <KaTeX tex="\\mathrm{Bool} \\times \\mathrm{Bool}" /> to physics: the relational carrier: read the derivation.</h2>
     <p>Derivation covering the carrier, overlap matrix, and three projections (QM, GR, SM) plus connections to mathematics and physics domains. Multiple verification scripts and result files confirm every expression.</p>
     <p><span class="proof-badge">✓</span> Formally verified in Cubical Agda: <a href="https://github.com/andrey-kokoev/marici/blob/main/research/nima/agda/RelationalCarrier.agda" target="_blank">RelationalCarrier.agda</a> (107 proof files, composed). Lean: <a href="https://github.com/andrey-kokoev/marici/blob/main/research/buzzard/Entry2125.lean" target="_blank">probe kernel</a>, <a href="https://github.com/andrey-kokoev/marici/blob/main/research/buzzard/marici_formal/MariciFormal/PhysicsPredictions.lean" target="_blank">predictions (ℚ)</a>.</p>
     <a class="text-action" href="/theory/">Read the full relational carrier derivation &rarr;</a>
   </section>
-
-
-  <section class="snapshot-callout" id="ledger" aria-labelledby="ledger-title">
-    <p class="eyebrow">Human-readable memory</p>
-    <h2 id="ledger-title">The ledger records claims with their perimeter.</h2>
-    <p>Entries live in <code>src/ledger</code> and explicitly distinguish established structure, strong inference, open questions, and prohibited overclaims.</p>
-    <a class="text-action" href="/ledger/">Open the published ledger →</a>
-  </section>
 </SiteLayout>
+
+<style>
+  .section-heading { grid-template-columns: 1fr; }
+
+  .dimension-table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .dt-role { padding: 12px 16px 4px; font: 700 .72rem/1.3 Consolas, monospace; letter-spacing: .13em; text-transform: uppercase; color: var(--ochre); border-bottom: 1px solid var(--line-soft); }
+  .dt-name { padding: 12px 16px 4px; font-size: 1.1rem; font-weight: 650; border-bottom: 1px solid var(--line-soft); }
+  .dt-body { padding: 8px 16px 12px; color: var(--muted); font-size: .92rem; line-height: 1.5; }

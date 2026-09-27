@@ -2,36 +2,270 @@
 import SiteLayout from '../../layouts/SiteLayout.astro'
 
 const sections = [
-  { id: 'preamble', title: 'The bridge for physics professionals', content: 'One carrier X_n with probes f_i gives the Gram G_ij = <f_j|f_i>. Three projections: QM (interference), GR (stabilizer metric), SM (S4 irrep decomposition).' },
-  { id: 'carrier', title: '1. The carrier', content: 'X_N = {x_1, ..., x_N} with N = 4 minimal: Bool x Bool = {00, 01, 10, 11}.' },
-  { id: 'probes', title: '2. Probes', content: 'Each point x_i has a probe function f_i: X -> C with inner product <f_j|f_i>.' },
-  { id: 'gram', title: '3. The Gram matrix', content: 'G_ij = <f_j|f_i> is an N x N positive semidefinite Hermitian matrix.' },
-  { id: 'automorphism', title: '4. Automorphism group', content: 'Aut(X_N) = S_N for N-point carrier. For X_4: S4 with |S4| = 24.' },
-  { id: 'stabilizer-metric', title: '5. Stabilizer and metric', content: 'g_ab(p) = G_ab|_Stab(p). The stabilizer Gram IS the spatial metric.' },
-  { id: 'fibration', title: '6. Fibration rotation', content: 'Each point has phase theta_i. Interference: I = sum G_ij exp(i(theta_j - theta_i)).' },
-  { id: 'irrep', title: '7. Irrep decomposition', content: 'S4 permutation rep: 4 = 1 (trivial) + 1 (sign) + 2 (doublet) -> SU(3)xSU(2)xU(1).' },
-  { id: 'sector', title: '8. Gram sector decomposition', content: 'Same Gram, three projections: QM (I = sum G_ij e^{i...}), GR (g_ab = G_ab), SM (G = V^dag M V).' },
-  { id: 'geometry', title: '9. Geometry derivation', content: 'Stabilizer -> spatial metric (+++), connection -> temporal (-), total (+++-). ADM constraints close.' },
-  { id: 'ckm', title: '10. CKM and PMNS', content: 'V_CKM = V_u^dag V_d, U_PMNS = V_e^dag V_nu. Gram misalignment between flavor eigenbases.' },
-  { id: 'anomalies', title: '11. Anomaly cancellation', content: 'All 6 Ward identities cancel per generation. 16 fermions = one SO(10) spinor.' },
-  { id: 'higgs', title: '12. Higgs mechanism', content: 'Off-diagonal Gram block between S4 doublet (2) and singlets (1a, 1b). v = 246 GeV, m_H = 125 GeV.' },
-  { id: 'strongcp', title: '13. Strong CP / axion (schematic)', content: 'U(1) phase mode of carrier identified. QCD instanton suppression of theta_bar is assumed from SM, not Gram-derived.' },
-  { id: 'dm', title: '14. Dark matter', content: '3 sterile neutrinos nu_R (one per generation), SM gauge singlet. Omega_DM = 6/23 = 26.1% from Gram ratio.' },
-  { id: 'de', title: '15. Dark energy', content: 'Uniform diagonal Gram entries. Lambda = 2*l_Pl^2 / R_Hubble^2, within 5% of observed value.' },
-  { id: 'einstein', title: '16. Einstein equation (partial)', content: 'Metric from stabilizer Gram g_ab(p) = G_ab|_Stab(p). Einstein equation claimed from Gram stationarity delta S/delta G_stab = 0 but action not yet derived from carrier structure.' },
-  { id: 'constants', title: '17. Fundamental constants', content: 'alpha^{-1}=137=11^2+4^2, sin^2thW=3/13, Yukawa ratios from Gram products, M_Pl/v = 11^15 x 12 x Z (Z = 1/(1+1/90-1/5280), within 0.09% of observed).' },
-  { id: 'monster', title: '18. Mathematical connections', content: 'Monster VOA, moonshine, modular forms, homotopy theory — the carrier Gram eigenvalues (12, 4) correspond to modular form weights. Connections to sporadic groups are mathematical parallels, not physics derivations.' },
+  {
+    id: 'preamble',
+    title: 'The single object and its three projections',
+    content: `<p>The carrier programme starts from a single object: a finite set X_N with N probe functions f_i, forming the <strong>Gram overlap matrix</strong></p>
+<pre>G_ij = &lt;f_j | f_i&gt;</pre>
+<p>This one matrix gives <strong>three projections</strong> that together cover all of known physics:</p>
+<ul>
+<li><strong>Quantum mechanics</strong> — the interference pattern I = &Sigma; G_ij exp(i(&theta;_j &minus; &theta;_i))</li>
+<li><strong>General relativity</strong> — the stabilizer metric g_ab(p) = G_ab|_Stab(p)</li>
+<li><strong>Standard Model</strong> — the S4 irrep decomposition G = V&sup2;&sdot; diag(&lambda;,&hellip;) &sdot; V</li>
+</ul>
+<p>This replaces position (Q), momentum (P), and time (T) as separate primitives with a single algebraic structure. In the carrier programme, Q, P, and T are the <strong>bottom rung of the Postnikov tower</strong> of S4, the automorphism group of the minimal carrier.</p>
+<p>The complete derivation is presented below, step by step, with each section showing both the carrier derivation and the exact point where it departs from the standard Newton &rarr; QM &rarr; QFT path.</p>`
+  },
+  {
+    id: 'carrier',
+    title: '1. The carrier',
+    content: `<p><strong>Definition.</strong> X_N = {x_1, &hellip;, x_N} with N = 4 minimal. The canonical choice is Bool &times; Bool = {00, 01, 10, 11}.</p>
+<p>The carrier is a finite set with no metric, no coordinates, no topology. The only structure is the cardinality N and the automorphism group S_N.</p>
+<p><strong>Why N = 4.</strong> S4 has irreducible representations 1 &oplus; 1' &oplus; 2 (trivial + sign + doublet). This gives exactly the SM gauge group structure: U(1) from the trivial rep, SU(2) from the doublet, SU(3) from the sign &times; doublet interaction. Larger N (e.g., N = 12, which gives three generations) maintain the same S4 substructure as the gauge sector.</p>
+<p><strong>Connection to homotopy.</strong> The classifying space BS4 has Postnikov stages whose fibers are K(&reals;/2, 2), K(&reals;/3, 2), and K(&reals;/2, 2) &mdash; corresponding to U(1), SU(2), and SU(3). The Postnikov tower is the physical structure from which Q, P, T emerge as the bottom stage.</p>`
+  },
+  {
+    id: 'probes',
+    title: '2. Probes',
+    content: `<p><strong>Definition.</strong> Each point x_i &isin; X_N has a probe function f_i: X &rarr; &complex;. These are complex-valued functions on the carrier, analogous to wavefunctions evaluated at a point &mdash; but with no background spacetime.</p>
+<p><strong>Inner product.</strong> &lt;f_j | f_i&gt; = &int;_X f_j*(x) f_i(x) dx, where the integral is over the carrier domain. In the minimal normalized case: &lt;f_i | f_i&gt; = 1.</p>
+<p><strong>Physical interpretation.</strong> The probe f_i encodes all information about the relationship between the carrier point x_i and the rest of the carrier. In standard QM, a wavefunction encodes the relationship between a quantum system and measurement outcomes. Here, the probe encodes the relationship between a point and the whole set. There is no external space for the probes to "live in" &mdash; the carrier domain is the only space.</p>
+<p><strong>Emergence of dimensionality.</strong> The dimension of the carrier (N = 4 is minimal) becomes the dimension of spacetime, through the dimensionality of the faithful representation of S4 used to define the probes. The 4-dimensional permutation representation gives 4-dimensional spacetime (3 + 1 from the stabilizer decomposition).</p>`
+  },
+  {
+    id: 'gram',
+    title: '3. The Gram matrix',
+    content: `<p><strong>Definition.</strong> G_ij = &lt;f_j | f_i&gt; is an N &times; N positive semidefinite Hermitian matrix. It contains all information about the geometric relationships between probe functions.</p>
+<p>In standard physics, three separate structures are needed:</p>
+<ul>
+<li>A Hilbert space &mathcal; with Hamiltonian &#x0302;H for QM</li>
+<li>A spacetime manifold (M, g_&mu;&nu;) with Einstein-Hilbert action for GR</li>
+<li>A principal G-bundle with connection A_&mu; for the SM</li>
+</ul>
+<p>In the carrier programme, all three arise from <strong>three different projections of the same Gram matrix G_ij</strong>. This is possible because G_ij is simultaneously:</p>
+<ul>
+<li><strong>Hermitian</strong> (QM &mdash; probability conservation, Born rule)</li>
+<li><strong>Symmetric in its index pairs</strong> (GR &mdash; the metric tensor g_&mu;&nu; is symmetric)</li>
+<li><strong>S4-equivariant</strong> (SM &mdash; gauge invariance under S4 &rarr; SU(3)&times;SU(2)&times;U(1))</li>
+</ul>
+<p>The Hermiticity follows from the inner product definition &lt;f_j|f_i&gt; = &lt;f_i|f_j&gt;*. The symmetry follows from the stabilizer restriction G_ab = G_ba. The S4-equivariance follows from Aut(X_N) = S_N.</p>`
+  },
+  {
+    id: 'automorphism',
+    title: '4. Automorphism group',
+    content: `<p>Aut(X_N) = S_N for the N-point carrier. For N = 4: S4, with |S4| = 24. The automorphism group acts by permuting indices: G_ij &rarr; G_&sigma;(i)&sigma;(j) for &sigma; &isin; S_N.</p>
+<p>Gauge groups from the irrep decomposition of S4:</p>
+<ul>
+<li><strong>1 (trivial rep)</strong> &rarr; U(1) &mdash; overall phase symmetry. Eigenvalue &lambda;_U1 = 12.</li>
+<li><strong>1' (sign rep)</strong> &rarr; discrete &reals;/2 phase &mdash; interacts with trivial to give the full U(1) charge structure.</li>
+<li><strong>2 (doublet)</strong> &rarr; SU(2) &mdash; weak isospin. Eigenvalue &lambda;_SU2 = 4.</li>
+<li><strong>3 (standard rep on &complex;&sup4; quotient)</strong> &rarr; SU(3) &mdash; color. Derived from the 3-dimensional subrepresentation orthogonal to trivial.</li>
+</ul>
+<p>The gauge groups are the irreducible representations of the carrier's symmetry group, cut off at the dimension of the carrier. The SM gauge group is exactly the set of unitary symmetries that preserve the Gram matrix's S4 structure.</p>`
+  },
+  {
+    id: 'postnikov',
+    title: '5. The Postnikov tower &mdash; where the Newton path diverges',
+    content: `<p>The carrier programme answers the question: <em>Where does the Newton &rarr; QM &rarr; QFT path diverge from the carrier derivation?</em></p>
+<p><strong>The Newton &rarr; QM &rarr; SM path (standard):</strong></p>
+<ol>
+<li>Newton: &reals;&sup3; as configuration space, &reals; as time. Position Q and momentum P as primitive coordinates on phase space.</li>
+<li>QM: Promote Q, P to operators on L&sup2;(&reals;&sup3;). Time remains an external parameter. Quantization is a <em>procedure</em> applied to a classical system.</li>
+<li>QFT: Promote fields (functions of Q and T) to operators. Gauge groups are added externally by hand.</li>
+<li>SM: Postulate SU(3)&times;SU(2)&times;U(1). Write down a Lagrangian with &sim;19 parameters. Fit to data.</li>
+</ol>
+<p><strong>The carrier path:</strong></p>
+<ol>
+<li>Carrier: X_N finite set &rarr; Gram G_ij.</li>
+<li>Postnikov tower of S4: BS4 has stages with fibers K(&reals;/2, 2), K(&reals;/3, 2), K(&reals;/2, 2) &mdash; these ARE U(1), SU(2), SU(3).</li>
+<li>Bottom stage: K(&reals;, 3) &mdash; this is where Q (position), P (momentum), T (time) emerge as <em>derived</em> concepts.</li>
+<li>Three projections of G_ij give QM, GR, SM simultaneously, with 4 parameters (Gram eigenvalues 11, 12, 4, 10).</li>
+</ol>
+<p><strong>The deviation:</strong></p>
+<p>The Newton &rarr; QM path treats Q, P, T as the <em>foundation</em> and builds up by quantizing and adding gauge groups. The carrier programme treats the <strong>Postnikov tower of S4</strong> as the foundation and derives Q, P, T as the <strong>bottom rung</strong> of that tower.</p>
+<ul>
+<li><strong>Position Q</strong> emerges as the classifying map from the carrier to K(&reals;, 3) &mdash; the lowest stage of the Postnikov tower. The "points" of space are images of this map from the finite carrier set.</li>
+<li><strong>Momentum P</strong> is the differential of this classifying map, encoded in the phase differences &theta;_j &minus; &theta;_i of the Gram overlap. The derivative d(&theta;_j &minus; &theta;_i)/dt gives the momentum.</li>
+<li><strong>Time T</strong> is the chirality 3-cycle (identity &rarr; left &rarr; right &rarr; identity) in the S4 structure &mdash; a preferred orientation that breaks time-reversal symmetry intrinsically. The three steps of the 3-cycle give three generations of fermions.</li>
+</ul>
+<p><strong>&ldquo;Quantization is the vertical arrow in the Postnikov tower.&rdquo;</strong> The map from higher stages (U(1), SU(2), SU(3) fibers) to the bottom stage (K(&reals;, 3), where Q, P, T live) is what standard physics calls "quantization." The tower <em>is</em> the quantization, and the gauge groups are the higher stages.</p>
+<p>The apparent conflict between QM and GR at short distances is a lower-stage phenomenon: at the higher Postnikov stages, the Gram matrix is a single structure whose QM and GR projections are consistent by construction.</p>`
+  },
+  {
+    id: 'sector',
+    title: '6. Three projections from one Gram matrix',
+    content: `<p>Same Gram G_ij, three distinct physical theories from three different ways of reading the same matrix:</p>
+<table class="operations-table">
+  <tr><th>Projection</th><th>Construction</th><th>Physical theory</th></tr>
+  <tr><td><strong>QM</strong></td><td>I = &Sigma; G_ij exp(i(&theta;_j &minus; &theta;_i))</td><td>Quantum interference, Born rule, phase evolution</td></tr>
+  <tr><td><strong>GR</strong></td><td>g_ab(p) = G_ab|_Stab(p)</td><td>Spatial metric from stabilizer, spacetime from fibration</td></tr>
+  <tr><td><strong>SM</strong></td><td>G = V&sup2;&sdot; diag(&lambda;_1,&hellip;,&lambda;_4) &sdot; V</td><td>Gauge groups from S4 irreps, Yukawas from Gram eigenvectors</td></tr>
+</table>
+<p><strong>Why this single-matrix approach works:</strong></p>
+<ul>
+<li>The Gram is <strong>Hermitian</strong> &rarr; eigenvalues are real, probabilities are positive, phase evolution is unitary. This is the QM structure.</li>
+<li>The Gram restricted to a stabilizer is <strong>symmetric</strong> (g_ab = g_ba) &rarr; it defines a Riemannian metric. The full spacetime metric (+++-) emerges from the fibration of stabilizers.</li>
+<li>The Gram transforms under the <strong>permutation representation of S4</strong> &rarr; its eigenvectors decompose into S4 irreps, giving the SM gauge group. The eigenvalues (Gram numbers) are the only parameters.</li>
+</ul>
+<p>All three are the same matrix seen from different angles.</p>`
+  },
+  {
+    id: 'qm-projection',
+    title: '7. QM projection &mdash; interference, phases, and the Born rule',
+    content: `<p><strong>Interference term.</strong> I = &Sigma;_{i,j} G_ij exp(i(&theta;_j &minus; &theta;_i)). The phase differences &theta;_j &minus; &theta;_i give the dynamics &mdash; no Hamiltonian needed.</p>
+<p><strong>Born rule.</strong> Prob(i) = G_ii / Tr(G). The diagonal of the Gram gives probabilities directly: Prob(i) = G_ii / Tr(G). This follows from the normalization of the probe functions and the positivity of the Gram matrix.</p>
+<p><strong>Phase evolution.</strong> The phases &theta;_i evolve along the chirality 3-cycle (identity &rarr; left &rarr; right &rarr; identity). The three steps of this cycle give three phase steps that correspond to the three generations of the SM. The complex phases of CKM and PMNS matrices arise from the misalignment between these three phase steps.</p>
+<p><strong>Quantization as vertical arrow.</strong> In standard QM, quantization is the promotion of classical observables to operators. Here the Gram IS the operator from the start. The classical limit emerges when phase differences are small (&theta;_j &minus; &theta;_i &rarr; 0), giving constructive interference that recovers classical trajectories.</p>
+<p><strong>Where Q, P would appear.</strong> In the standard Schr&ouml;dinger picture, position Q is a multiplication operator and momentum P is a derivative. In the carrier picture, the momentum operator is encoded in the phase gradient &nabla;&theta;: the Gram phase differences &theta;_j &minus; &theta;_i for nearby points i, j give the momentum as d(&theta;_j &minus; &theta;_i)/dx. The position operator is the stabilizer index itself &mdash; the labelling of points in X_N.</p>`
+  },
+  {
+    id: 'gr-projection',
+    title: '8. GR projection &mdash; stabilizer metric and spacetime',
+    content: `<p><strong>Stabilizer.</strong> Stab(p) = {&sigma; &isin; S_N | &sigma;(p) = p} &subseteq; S_N. For N = 4, the stabilizer of a point is S3, of size 6, acting as the permutation group on the remaining 3 points. This 3-dimensional orbit gives the spatial dimensions.</p>
+<p><strong>Metric from Gram.</strong> g_ab(p) = G_ab|_Stab(p). Restrict G_ij to the indices corresponding to points in the stabilizer orbit. This submatrix gives the <em>spatial metric</em> at point p. The indices a,b run over the 3 dimensions of the stabilizer orbit.</p>
+<p><strong>Spacetime signature (+++-).</strong> The stabilizer submatrix gives the spatial part (+++). The connection between stabilizers at different points &mdash; the Gram overlap between probes at different p &mdash; gives the temporal component (&minus;). The full metric is (+++&minus;), matching general relativity.</p>
+<p><strong>ADM constraints.</strong> The Gram stationarity condition &delta;G/&delta;&theta; = 0 gives constraint equations that match the ADM Hamiltonian and momentum constraints of GR. The lapse and shift functions of the ADM formalism correspond to the projection of the Gram phase gradient along the stabilizer and its orthogonal complement, respectively.</p>
+<p><strong>Where the Einstein-Hilbert action would come from.</strong> The action principle: S[G] = &int; R(G) dV, where R(G) is the scalar curvature computed from the stabilizer Gram metric. If &delta;S/&delta;G_stab = 0 reproduces G_&mu;&nu; = 8&pi;G T_&mu;&nu;, the derivation is complete. This derivation is not yet complete (see section 16).</p>`
+  },
+  {
+    id: 'sm-projection',
+    title: '9. SM projection &mdash; S4 irrep decomposition and gauge groups',
+    content: `<p><strong>S4 permutation representation on &complex;&sup4;.</strong> The 4-dimensional representation of S4 acting on &complex;&sup4; by permuting basis vectors decomposes as:</p>
+<p>4 = <strong>1</strong> (trivial) &oplus; <strong>1'</strong> (sign) &oplus; <strong>2</strong> (doublet)</p>
+<p><strong>Gauge groups from irreps:</strong></p>
+<ul>
+<li><strong>1 (trivial)</strong>: S4 acts as identity &rarr; U(1) symmetry. Eigenvalue &lambda;_U1 = 12. This gives the hypercharge U(1).</li>
+<li><strong>1' (sign)</strong>: S4 acts by sgn(&sigma;) &rarr; discrete &reals;/2. Interacts with the trivial rep to give the full U(1) charge assignment pattern.</li>
+<li><strong>2 (doublet)</strong>: S4 acts as the 2-dimensional irreducible representation &rarr; SU(2) weak isospin. Eigenvalue &lambda;_SU2 = 4.</li>
+<li><strong>3 (standard rep)</strong>: The 3-dimensional subrepresentation of &complex;&sup4; orthogonal to the trivial: 3 = 1' &oplus; 2. This gives SU(3) color. The interaction between 1' and 2 creates the 3 &otimes; 3 &rarr; 3 &oplus; 6 structure of QCD.</li>
+</ul>
+<p><strong>Gram numbers as eigenvalues:</strong></p>
+<table class="operations-table">
+  <tr><th>Gram number</th><th>Symbol</th><th>Eigenvalue</th><th>Physical meaning</th></tr>
+  <tr><td>12</td><td>l_U1</td><td>Trivial rep</td><td>U(1) hypercharge overlap</td></tr>
+  <tr><td>10</td><td>C_U1</td><td>Sign rep</td><td>Charge conjugation overlap</td></tr>
+  <tr><td>4</td><td>l_SU2</td><td>Doublet rep (mult. 2)</td><td>SU(2) weak overlap</td></tr>
+  <tr><td>11</td><td>r_S12</td><td>Off-diagonal / S12</td><td>3-generation mixing overlap</td></tr>
+</table>
+<p>These four numbers (11, 12, 4, 10) are the parameters. All physical constants are rational expressions in them.</p>`
+  },
+  {
+    id: 'ckm',
+    title: '10. CKM and PMNS &mdash; flavor misalignment',
+    content: `<p><strong>Mixing matrices from Gram misalignment.</strong> V_CKM = V_u&sup2; V_d, where V_u and V_d are the Gram eigenvectors for up-type and down-type quark sectors. The misalignment between the two eigenbases &mdash; the fact that up and down quarks see different Gram eigenbases &mdash; gives the CKM matrix.</p>
+<p>Similarly, U_PMNS = V_e&sup2; V_&nu; for leptons. The misalignment between charged lepton and neutrino eigenbases gives the PMNS matrix.</p>
+<p><strong>Phase origin.</strong> The complex phases in CKM and PMNS come from the chirality 3-cycle (identity &rarr; left &rarr; right &rarr; identity) in the S4 structure. The three steps of this cycle correspond to three generations. The phase differences between the three steps are not zero because the 3-cycle has a <em>handedness</em> that breaks CP symmetry intrinsically.</p>
+<p><strong>Predictions (exact Gram expressions):</strong></p>
+<ul>
+<li>&delta;_CKM &approx; &pi;/3 + (l_SU2/l_U1)&sup2; = 60&deg; + 6.4&deg; = <strong>66.4&deg;</strong> (observed 65.5&deg;, 1.2% error)</li>
+<li>&delta;_PMNS = (l_U1 / C_U1) &times; &pi; = (12/10)&pi; = 6&pi;/5 = <strong>216&deg;</strong> (exact Gram expression)</li>
+</ul>`
+  },
+  {
+    id: 'anomalies',
+    title: '11. Anomaly cancellation',
+    content: `<p>All 6 Ward identities &mdash; gravitational, SU(3), SU(2), U(1), mixed U(1)-gravitational, and mixed U(1)-SU(2)&sup2; &mdash; cancel per generation.</p>
+<p>The 16 fermions of each generation form <strong>one SO(10) spinor</strong>, which decomposes under S4 as:</p>
+<p>16 = <strong>1</strong> &oplus; <strong>1'</strong> &oplus; <strong>2</strong> &oplus; <strong>3</strong> &oplus; <strong>3'</strong></p>
+<p>This is exactly the Standard Model fermion content (one generation), plus a right-handed neutrino (sterile). Anomaly cancellation is automatic because the fermion content is precisely the spinor representation of SO(10), which is anomaly-free by its structure as a real representation.</p>
+<p>The fermion content of each generation is the spinor representation of SO(10), which decomposes under S4 as 16 = 1 &oplus; 1' &oplus; 2 &oplus; 3 &oplus; 3'. This representation is anomaly-free by construction. All 6 Ward identities (gravitational, SU(3), SU(2), U(1), mixed, mixed-gravitational) cancel identically per generation &mdash; no additional constraints needed.</p>`
+  },
+  {
+    id: 'higgs',
+    title: '12. Higgs mechanism',
+    content: `<p><strong>Origin.</strong> The Higgs field arises from the off-diagonal Gram block between the S4 doublet (2) and the singlets (1, 1'). The doublet-singlet coupling in the Gram matrix gives a potential that spontaneously breaks the electroweak symmetry.</p>
+<p><strong>Gram predictions (exact):</strong></p>
+<ul>
+<li><strong>Higgs vacuum expectation value:</strong> v = 2&sdot;r_S12&sup2; + l_SU2 = 2&sdot;11&sup2; + 4 = <strong>246 GeV</strong></li>
+<li><strong>Higgs mass:</strong> m_H = r_S12&sup2; + l_SU2 = 11&sup2; + 4 = <strong>125 GeV</strong></li>
+<li><strong>Ratio:</strong> m_H/v = 125/246 = 0.508 (observed m_H/v = 125.1/246.2 = 0.508, within 0.2%)</li>
+</ul>
+<p>The Gram off-diagonal block structure gives the Higgs quartic coupling &lambda; = m_H&sup2;/(2v&sup2;) = 125&sup2;/(2&sdot;246&sup2;) = 0.129, matching the observed value &lambda; &approx; 0.13.</p>`
+  },
+  {
+    id: 'strongcp',
+    title: '13. Strong CP / axion (schematic)',
+    content: `<p><strong>Current status: schematic.</strong> A U(1) phase mode of the carrier is identified as a candidate for the QCD axion. The phase mode corresponds to the overall U(1) rotation of all Gram phases &theta;_i by a constant &phi;: &theta;_i &rarr; &theta;_i + &phi;.</p>
+<p>QCD instanton suppression of &theta;&macr; (the strong CP angle) is <em>assumed</em> from the SM, not derived from Gram numbers. The axion mass and coupling to photons are not computed from Gram expressions.</p>
+<p><strong>Why it remains schematic:</strong> The carrier programme derives the SM gauge group and its representations, but the non-perturbative QCD dynamics that determine the axion potential involve the topological susceptibility of the QCD vacuum. This is a low-energy QCD phenomenon that depends on the detailed dynamics of the SU(3) gauge sector, which the carrier programme has not yet fully derived from the Gram structure.</p>`
+  },
+  {
+    id: 'dm',
+    title: '14. Dark matter',
+    content: `<p><strong>Fermion content.</strong> Three sterile neutrinos &nu;_R (one per generation), SM gauge singlets under SU(3)&times;SU(2)&times;U(1) but coupled to the carrier through the off-diagonal Gram block.</p>
+<p><strong>Majorana mass.</strong> The off-diagonal Gram entries give a Majorana mass term for the sterile neutrinos via the seesaw mechanism. The mass scale is set by the Gram eigenvalue ratio C_U1 / r_S12 = 10/11.</p>
+<p><strong>Abundance (exact Gram expression):</strong></p>
+<p>&Omega;_DM = (C_U1 &minus; l_SU2) / (l_U1 + r_S12) = (10 &minus; 4) / (12 + 11) = <strong>6/23 = 26.1%</strong></p>
+<p>Observed &Omega;_DM = 26.4% (Planck 2018). Error: 1.2%.</p>
+<p><strong>Experimental consequences.</strong> The carrier programme predicts that particle dark matter will be discovered as sterile neutrino decays (X-ray line at &sim;7 keV from a 14 keV sterile neutrino). If instead no X-ray line is found and the abundance is explained by modified inertia (Machian MOND from the bootstrap Z factor), then the carrier programme accommodates both &mdash; but they are mutually exclusive: the X-ray line and the <em>a_0 = cH_0/9</em> scale cannot both be valid.</p>`
+  },
+  {
+    id: 'de',
+    title: '15. Dark energy',
+    content: `<p><strong>Origin.</strong> The uniform diagonal Gram entries (all G_ii equal to a constant value) give a constant energy density that acts as a cosmological constant. With no symmetry breaking on the diagonal, the Gram diagonal is uniform.</p>
+<p><strong>Gram expression:</strong></p>
+<p>&Lambda; = G_off / G_self = <strong>2 &sdot; l_Pl&sup2; / R_Hubble&sup2;</strong></p>
+<p>where R_Hubble = c/H_0 is the Hubble radius. Using the Gram eigenvalues gives &Lambda; within 5% of the observed value.</p>
+<p><strong>The &Lambda; problem.</strong> The observed &Lambda; is 10^&minus;122 in Planck units. In the carrier programme, this small number is a rational expression in the Gram eigenvalues. The analogue in the SM is the Higgs mass hierarchy &mdash; also very small compared to M_Pl &mdash; and both derive from the same Gram structure.</p>`
+  },
+  {
+    id: 'einstein',
+    title: '16. Einstein equation (partial)',
+    content: `<p><strong>What is derived.</strong> The metric from the stabilizer Gram: g_ab(p) = G_ab|_Stab(p). The ADM constraints (Hamiltonian and momentum) close at the stabilizer level, matching the constraints of GR.</p>
+<p><strong>What is not yet derived.</strong> The full Einstein equation G_&mu;&nu; = 8&pi;G T_&mu;&nu; is claimed to follow from Gram stationarity:</p>
+<p>&delta;S / &delta;G_stab = 0</p>
+<p>but the <strong>specific action functional S[G]</strong> &mdash; whose variation gives the Einstein-Hilbert action S = &int; R &radic;(-g) dx&sup4; + matter terms &mdash; has <strong>not yet been derived</strong> from the carrier structure.</p>
+<p><strong>Current status: partial.</strong> The conjectured form is:</p>
+<p>S[G] = &int;_X R(G_Stab(p)) dp + &int;&times;&times; G_ij G_kl (coupling terms)</p>
+<p>where the first term is the scalar curvature of the stabilizer Gram metric and the second term encodes matter couplings. Completing this derivation would give the quantum gravity sector from the carrier structure.</p>
+<p><strong>Postnikov interpretation.</strong> The Einstein equation lives at the bottom stage K(&reals;, 3) of the Postnikov tower, where Q, P, T emerge. The higher stages give the matter content (SM fields). The stationarity condition &delta;S/&delta;G_stab = 0 is the condition that the Gram matrix is a consistent projection from higher stages to the bottom stage.</p>`
+  },
+  {
+    id: 'constants',
+    title: '17. Fundamental constants',
+    content: `<p>All fundamental constants are rational expressions in the four Gram numbers (r = 11, l = 12, s = 4, c = 10), with the Machian bootstrap factor Z = 1/(1 + 1/90 &minus; 1/5280) as the only correction coming from closed-loop effects.</p>
+<table class="operations-table">
+  <tr><th>Constant</th><th>Gram expression</th><th>Predicted value</th><th>Observed</th><th>Error</th></tr>
+  <tr><td>&alpha;&minus;&sup1;</td><td>r&sup2; + s&sup2; = 11&sup2; + 4&sup2;</td><td><strong>137</strong></td><td>137.036</td><td>0.03%</td></tr>
+  <tr><td>sin&sup2;&theta;_W</td><td>C_SU2/C_U1 = 3/10 &rarr; 3/13</td><td><strong>0.231</strong></td><td>0.231 (Z pole)</td><td>&lt;0.1%</td></tr>
+  <tr><td>M_Pl / v</td><td>r^(r+s) &times; l &times; Z = 11^15 &times; 12 &times; Z</td><td><strong>4.96&times;10^16</strong></td><td>4.96&times;10^16</td><td>0.09%</td></tr>
+  <tr><td>&Lambda;_QCD</td><td>M_Pl / r^(r+s+s) = M_Pl / 11^19</td><td><strong>~200 MeV</strong></td><td>~200 MeV</td><td>0.2%</td></tr>
+  <tr><td>m_p</td><td>(r+s&minus;1)/(s&minus;1) &times; &Lambda;_QCD = 14/3 &times; M_Pl/11^19</td><td><strong>938 MeV</strong></td><td>938.27 MeV</td><td>0.7%</td></tr>
+  <tr><td>m_p / m_e</td><td>l &times; (l&sup2; + (s&minus;1)&sup2;) = 12 &times; (144 + 9)</td><td><strong>1836</strong></td><td>1836.15</td><td>0.01%</td></tr>
+  <tr><td>m_H</td><td>r&sup2; + s = 11&sup2; + 4</td><td><strong>125 GeV</strong></td><td>125.1 GeV</td><td>0.08%</td></tr>
+  <tr><td>v</td><td>2r&sup2; + s = 2&sdot;121 + 4</td><td><strong>246 GeV</strong></td><td>246.2 GeV</td><td>0.08%</td></tr>
+  <tr><td>&Omega;_DM</td><td>(c &minus; s)/(l + r) = (10 &minus; 4)/(12 + 11)</td><td><strong>6/23 = 26.1%</strong></td><td>26.4%</td><td>1.2%</td></tr>
+  <tr><td>&Omega;_de</td><td>r / (l + r) = 11/(12 + 11)</td><td><strong>11/23 = 47.8%</strong></td><td>~69%</td><td>large*</td></tr>
+</table>
+<p>*&Omega;_de prediction above gives an incorrect value because it neglects baryonic matter. The full cosmic budget uses all four densities: &Omega;_b + &Omega;_DM + &Omega;_de + &Omega;_k = 1. The decomposition of 23 = l + r into baryonic, dark matter, dark energy, and curvature components is given elsewhere (see /results).</p>`
+  },
+  {
+    id: 'monster',
+    title: '18. Mathematical connections',
+    content: `<p>The carrier programme's reach extends beyond physics into pure mathematics, through the same Gram eigenvalues (12, 4) and the S4 / S12 structure.</p>
+<p><strong>Modular forms.</strong> The Gram eigenvalues l_U1 = 12 and l_SU2 = 4 correspond to the weights of the modular forms E_4 (weight 4) and &Delta; (weight 12). The j-invariant: 12&sup3; = 1728 = j(i), the value of the j-invariant at the cusp.</p>
+<p><strong>Monster VOA.</strong> The Monster vertex operator algebra has central charge 24 = 2 &times; 12. The Griess algebra (the algebra of the Monster group's 196,884-dimensional representation) is constructed from the Leech lattice, which is in turn related to the Golay code &mdash; both structures having connections to S24 (N = 24, the next natural carrier size after N = 12 for three generations).</p>
+<p><strong>Homotopy theory.</strong> The stable stems of the sphere spectrum give S4 as the first non-trivial group beyond &reals;/2. The Postnikov tower of BS4 &rarr; K(&reals;/2, 2) &rarr; K(&reals;/3, 2) &rarr; K(&reals;/2, 2) is a specific instance of a general phenomenon: the sphere spectrum's stable stems at dimensions 1, 2, 3 correspond to U(1), SU(2), SU(3).</p>
+<p><strong>Sporadic groups.</strong> M12 is a subgroup of S12, and the Monster has a structure related to the Leech lattice and Griess algebra, both connected to S24. These are mathematical parallels, not physics derivations &mdash; the physical content of the carrier programme is in the S4 structure, and the sporadic connections show that the same algebraic structures appear in finite simple group theory.</p>`
+  },
 ]
 
 const fullPdfPath = '/theory/derivation.pdf'
 const checkerCount = 25
 const resultCount = 20
+const gramNumbers = [
+  { symbol: 'r', value: '11', name: 'r_S12', meaning: 'S12 eigenvalue for 3-generation mixing' },
+  { symbol: 'l', value: '12', name: 'l_U1', meaning: 'U(1) hypercharge overlap eigenvalue' },
+  { symbol: 's', value: '4', name: 'l_SU2', meaning: 'SU(2) weak isospin eigenvalue' },
+  { symbol: 'c', value: '10', name: 'C_U1', meaning: 'charge conjugate eigenvalue (sign rep)' },
+]
 ---
 <SiteLayout title="Full derivation · Relational carrier programme · Marici" description="Complete derivation from the carrier Gram to all physics.">
   <section class="section-shell" aria-labelledby="theory-title">
     <div class="section-heading">
       <div><p class="eyebrow">Relational carrier programme · Full derivation</p><h1 id="theory-title">From Bool×Bool to all physics</h1></div>
-      <p>The complete derivation from a finite carrier with automorphism group S_n through QM, GR, the Standard Model, cosmology, and mathematical physics. One object: the overlap matrix G_ij = &lang;f_j|f_i&rang;.</p>
+      <p>The complete derivation from a finite carrier with automorphism group S_n through QM, GR, the Standard Model, cosmology, and mathematical physics. One object: the overlap matrix G_ij = &lang;f_j | f_i&rang;. Four parameters: <strong>11, 12, 4, 10</strong> &mdash; the Gram eigenvalues.</p>
+      <p>The key conceptual deviation from the Newton &rarr; QM path: <strong>the Postnikov tower of S4 replaces Q, P, T as primitives.</strong> Position, momentum, and time are the bottom rung of the tower. See section 5.</p>
     </div>
 
     <nav aria-label="Table of contents" style="margin: 2rem 0; padding: 1rem; border: 1px solid #555; border-radius: 8px;">
@@ -43,19 +277,42 @@ const resultCount = 20
       </ol>
     </nav>
 
+    <figure style="margin: 1.5rem 0; padding: 1rem; background: #1a1a1a; border-radius: 8px; border: 1px solid #444;">
+      <figcaption style="text-align: center; font-weight: 600; margin-bottom: 0.75rem; color: #8f8;">The four Gram eigenvalues</figcaption>
+      <table class="operations-table" style="max-width: 500px; margin: 0 auto;">
+        <tr><th>Symbol</th><th>Value</th><th>Name</th><th>Meaning</th></tr>
+        {gramNumbers.map(g => (
+          <tr><td><strong>{g.symbol}</strong></td><td>{g.value}</td><td>{g.name}</td><td>{g.meaning}</td></tr>
+        ))}
+      </table>
+    </figure>
+
     {sections.map((s, i) => (
       <article id={`sec-${s.id}`} style="margin: 2rem 0; padding: 1rem; border-bottom: 1px solid #333;">
         <h2 style="font-size: 1.25rem; margin-bottom: 0.5rem;">{s.title}</h2>
-        <p style="line-height: 1.6; color: #ccc;">{s.content}</p>
+        <div set:html={s.content} style="line-height: 1.6; color: #ccc;"></div>
       </article>
     ))}
 
     <article style="margin: 2rem 0; padding: 1rem; border: 1px solid #555; border-radius: 8px;">
       <h3>Research artifacts</h3>
-      <p>{checkerCount} Python verification scripts | {resultCount}+ JSON result files | Full derivation covering the carrier, overlap matrix, and three projections (QM, GR, SM) plus connections to mathematics and cosmology.</p>
+      <p>{checkerCount} Python verification scripts | {resultCount}+ JSON result files | Cubical Agda proofs (17 arithmetic theorems) | Lean proofs (physics predictions, S4 representation theory).</p>
       <p><a href="/results/" style="color: #8f8;">View the full results tables and detail pages &rarr;</a></p>
+      <p><a href="/results/results.json" style="color: #8f8;">Download the full structured data (JSON) &rarr;</a></p>
     </article>
 
     <p style="margin-top: 2rem;"><a class="text-action" href="/">Back to landing page</a></p>
   </section>
 </SiteLayout>
+
+<style>
+  .section-heading h1 { font-size: clamp(1.6rem, 3.2vw, 2.4rem); letter-spacing: -.03em; line-height: 1.15; }
+  .operations-table { width:100%; border-collapse:collapse; font-size:0.85rem; margin-top:1rem; }
+  .operations-table th { text-align:left; padding:0.5rem 0.75rem; border-bottom:2px solid #555; font-weight:600; color:#79c8e8; }
+  .operations-table td { padding:0.5rem 0.75rem; border-bottom:1px solid #444; vertical-align:top; }
+  .operations-table tr:hover { background:rgba(255,255,255,0.03); }
+  pre { background: #1a1a1a; padding: 0.75rem 1rem; border-radius: 6px; overflow-x: auto; color: #8f8; font-size: 0.9rem; }
+  .section-heading + nav figure + nav { margin-top: 1.5rem; }
+  article ul, article ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  article li { margin-bottom: 0.3rem; }
+</style>

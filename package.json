@@ -20,23 +20,24 @@
     "frontier:check": "node scripts/check-frontier-atlas.mjs",
     "oddballs:check": "node scripts/check-oddball-observatory.mjs",
     "bootstrap": "node scripts/assemble-narada-source.mjs && pnpm install",
-    "build:ui": "pnpm --filter @narada-core/ui build",
+    "dev": "vitepress dev website",
     "pyramid:dev": "node public/experiments/eight-node-coherence-pyramid/dev-server.mjs",
     "math:check": "node scripts/check-katex.mjs source",
     "math:check:dist": "node scripts/check-katex.mjs dist",
-    "build": "node -e \"console.error('Build disabled'); process.exit(1)\"",
+    "build": "vitepress build website && pagefind --site website/.vitepress/dist",
+    "preview": "vitepress preview website",
     "cleanup:aged": "pwsh -NoLogo -NoProfile -File scripts/cleanup-aged.ps1",
     "ship": "pnpm run build && wrangler deploy"
   },
-  "dependencies": {
-    "@narada-core/ui": "workspace:*"
-  },
   "devDependencies": {
+    "@mdit/plugin-katex": "1.0.2",
     "@playwright/test": "^1.62.1",
+    "gray-matter": "^4.0.3",
     "katex": "^0.16.47",
-    "rehype-katex": "^7.0.1",
-    "remark-math": "^6.0.0",
+    "markdown-it": "^14.1.0",
+    "pagefind": "1.5.2",
     "typescript": "^6.0.3",
+    "vitepress": "1.6.4",
     "wrangler": "4.114.0"
   }
 }
