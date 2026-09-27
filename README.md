@@ -22,19 +22,18 @@ The ledger list and detail views render the qualified name in the attribution
 sentence, so public copy says “marici.Benincasa did this work” rather than
 “Marici did this work.”
 
-## Shared UI and release
+## Public website and release
 
-Marici consumes the centralized renderer-neutral design system from
-@narada-core/ui. Build the shared UI before the site with pnpm run build:ui;
-the normal release command is pnpm run ship, which builds and then runs
-Wrangler against wrangler.jsonc.
+The public site uses VitePress 1.x, KaTeX, and Pagefind. Its authored pages are
+`docs/landing-page.md`, `docs/theory-page.md`, and `docs/results-page.md`.
+`pnpm run dev` prepares generated routes and starts VitePress. `pnpm run build`
+prepares the published ledger, builds the site, and indexes it with Pagefind.
+Ledger entries remain in `src/ledger`; drafts are excluded. Wrangler serves
+`website/.vitepress/dist`, and `pnpm run ship` builds and deploys the site.
 
-Marici's Astro Markdown pipeline uses remark-math, remark-narada-math, and
-rehype-katex. Use \(...\) for inline TeX and a standalone \[...\] paragraph
-for display TeX.
+Use `$...$` for inline math and `$$...$$` for display math. Ledger Markdown also
+accepts `\\(...\\)` and standalone `\\[...\\]`, normalized during generation.
 
-The cross-repository contract, including the governed direct-Wrangler
-invocation, is documented in narada/docs/deployment/site-ui-and-wrangler.md.
 
 ## Stacks Project search
 
@@ -52,8 +51,8 @@ only identity, kind, title, status, summary, safe ledger provenance, and
 relation endpoints; proposal, event, payload, and private locator fields are
 not published.
 
-Selection is shareable as `/graph/?entity=<id>` and comparison as
-`/graph/?entity=<id>&compare=<id>`. Selecting highlights context without
+Selection is shareable as `/explore/graph/?entity=<id>` and comparison as
+`/explore/graph/?entity=<id>&compare=<id>`. Selecting highlights context without
 hiding the overview. Neighborhood isolation is a separate reversible action.
 The inspector groups relations as propositions and supports same-kind stepping,
 browser history, side-by-side comparison, and keyboard movement among SVG
