@@ -4,7 +4,7 @@
 
 The Standard Model of particle physics has ~20 free parameters (masses, mixing angles, couplings). ΛCDM cosmology adds ~6 more (cosmic densities, curvature). The carrier model replaces them all with **one 4×4 matrix** (an overlap Gram) and a **rank-1 descent mechanism** (each witness act restricts the carrier by one point). The numbers that appear — 12, 11, 4, 10 — are not inputs. They are derived from the fact that the Gram has four points, the cross-coupling is uniform, and the descent drops rank by one per step.
 
-If any of those constraints is wrong, the predicted constants change. If all three hold, the constants are forced. That is what makes this an explanation in Deutsch's sense: **hard to vary** (change one detail and the numbers shift), **covers more than it assumes** (26 constants from 3 constraints), and **testable** (every prediction in the section below).
+If any of those constraints is wrong, the predicted constants change. If all three hold, the constants are forced.
 
 ---
 
@@ -171,7 +171,7 @@ $\Omega_{\mathrm{DM}} = \frac{6}{23} = 0.2609$ (observed $0.264$, $1.2\%$ error)
 
 **What if it is wrong**
 
-Each prediction above has a stated falsification threshold. If any one crosses that threshold, the corresponding Gram constraint is ruled out: either $N \neq 4$, or the cross is not uniform, or the descent is not rank-1. The explanation is specific about what would break it. If all predictions hold, the carrier model reduces the 26 free parameters of the SM + ΛCDM to a single Gram and its rank-1 descent — which is what makes it an explanation in Deutsch's sense: it exposes itself to being wrong, in a specific way.
+Each prediction above has a stated falsification threshold. If any one crosses it, the corresponding Gram assumption is ruled out — either $N \neq 4$, or the cross is not uniform, or the descent is not rank-1. If all hold, the 26 parameters reduce to the Gram and its descent.
 
 ---
 
