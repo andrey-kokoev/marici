@@ -42,17 +42,17 @@ The ladder $12 \to 11 \to 10 \to \dots \to 4$ follows from restriction. A **witn
 
 ## Ladder descent
 
-| Rung | Value v | Free pts | C(v,2) | v+C(v,2) | Control layer | Why this ratio governs that bridge |
-|---:|---:|---:|---:|---:|---:|---:|
-| 1 | **12** | 12 | 66 | 78 | **Presentation** | Full directed-pair structure — the surface physics sees |
-| 2 | **11** | 11 | 55 | 66 | Presentation | First screening: 12 → 11 by one witness act |
-| 3 | **10** | 10 | 45 | 55 | Presentation | Symmetric remainder $4+6$ after two acts |
-| 4 | 9 | 9 | 36 | 45 | **Transport / API** | $3^2$ — the interaction lattice, first value below spectral bottom 11 |
-| 5 | 8 | 8 | 28 | 36 | Transport / API | $2^3$ — the 8 directional channels of spatial engagement |
-| 6 | 7 | 7 | 21 | 28 | Transport / API | Prime boundary — the irreducible interface |
-| 7 | **6** | 6 | 15 | 21 | **Core state** | $C(4,2)$ — internal pairs of the minimal carrier |
-| 8 | **5** | 5 | **10** | 15 | Core state | $N+1$ — the witness pointer. $C(5,2)=10 = 6+4$ unifies the two readings of $C_{U_1}$ |
-| 9 | **4** | 4 | 6 | **10** | Core state | $N$ — minimal carrier. Floor. Cycle seed $N(N-1)=12$ |
+| Rung | Value v / Gram number | Symbol | Assigned representation | Physical meaning | Free pts | C(v,2) | v+C(v,2) | Control layer | Why this ratio governs that bridge |
+|---:|---:|---|---|---|---:|---:|---:|---|---|
+| 1 | **12** | $\lambda_{U(1)}$ | Trivial representation | $U(1)$ hypercharge overlap | 12 | 66 | 78 | **Presentation** | Full directed-pair structure — the surface physics sees |
+| 2 | **11** | $r_{S12}$ | Off diagonal / $S_{12}$ | Three-generation mixing overlap | 11 | 55 | 66 | Presentation | First screening: 12 → 11 by one witness act |
+| 3 | **10** | $C_{U(1)}$ | Sign representation | Charge-conjugation overlap | 10 | 45 | 55 | Presentation | Symmetric remainder $4+6$ after two acts |
+| 4 | 9 | — | — | — | 9 | 36 | 45 | **Transport / API** | $3^2$ — the interaction lattice, first value below spectral bottom 11 |
+| 5 | 8 | — | — | — | 8 | 28 | 36 | Transport / API | $2^3$ — the 8 directional channels of spatial engagement |
+| 6 | 7 | — | — | — | 7 | 21 | 28 | Transport / API | Prime boundary — the irreducible interface |
+| 7 | **6** | — | — | — | 6 | 15 | 21 | **Core state** | $C(4,2)$ — internal pairs of the minimal carrier |
+| 8 | **5** | — | — | — | 5 | **10** | 15 | Core state | $N+1$ — the witness pointer. $C(5,2)=10 = 6+4$ unifies the two readings of $C_{U_1}$ |
+| 9 | **4** | $\lambda_{SU(2)}$ | Doublet representation (multiplicity 2) | $SU(2)$ weak overlap | 4 | 6 | **10** | Core state | $N$ — minimal carrier. Floor. Cycle seed $N(N-1)=12$ |
 
 The control parameters ($\varepsilon = 1/90 - 1/5280$, $5280 = 12 \cdot 4 \cdot 11 \cdot 10$, $Z = 1/(1+\varepsilon)$) set the loop's feedback gain. $5280$ is the product of the four Gram numbers. $90 = C_{U_1} \times (C_{U_1} - 1) = 10 \times 9$, which follows from $C_{U_1} = N + C(N,2) = 10$ (derived from $N=4$). The expression $\varepsilon = 1/90 - 1/5280$ can be rewritten as $\varepsilon = (1/C_{U_1})(1/(C_{U_1}-1) - 1/(l_{U_1} l_{SU_2} r))$, which spans all three ladder layers. The specific combination (difference of inverses, scaled by $1/C_{U_1}$) is the proposed control correspondence; a forced derivation from the descent mechanism is still open (see ledger §4197). In the layer mapping: the presentation layer is the full 12-pole feedback; the transport layer operates below the spectral bottom 11 (the visible line); the core state is the plant, whose $N(N-1)=12$ regenerates the presentation.
 
