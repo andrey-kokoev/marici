@@ -43,7 +43,7 @@ The ladder $12 \to 11 \to 10 \to \dots \to 4$ follows from restriction. A **witn
 ## Ladder descent
 
 | Rung | Value v | Free pts | C(v,2) | v+C(v,2) | Control layer | Why this ratio governs that bridge |
-|---:|---:|---:|---:|---:|---:
+|---:|---:|---:|---:|---:|---:|---:|
 | 1 | **12** | 12 | 66 | 78 | **Presentation** | Full directed-pair structure — the surface physics sees |
 | 2 | **11** | 11 | 55 | 66 | Presentation | First screening: 12 → 11 by one witness act |
 | 3 | **10** | 10 | 45 | 55 | Presentation | Symmetric remainder $4+6$ after two acts |
