@@ -54,7 +54,7 @@ The ladder $12 \to 11 \to 10 \to \dots \to 4$ follows from restriction. A **witn
 | 8 | **5** | 5 | **10** | 15 | Core state | $N+1$ — the witness pointer. $C(5,2)=10 = 6+4$ unifies the two readings of $C_{U_1}$ |
 | 9 | **4** | 4 | 6 | **10** | Core state | $N$ — minimal carrier. Floor. Cycle seed $N(N-1)=12$ |
 
-The control parameters ($\varepsilon = 1/90 - 1/5280$, $5280 = 12 \cdot 4 \cdot 11 \cdot 10$, $Z = 1/(1+\varepsilon)$) set the loop's feedback gain. $5280$ is the product of the four Gram numbers. The number $90$ is not currently derived from the Gram alone (see ledger §4197 for the proposed control correspondence). In the layer mapping: the presentation layer is the full 12-pole feedback; the transport layer operates below the spectral bottom 11 (the visible line); the core state is the plant, whose $N(N-1)=12$ regenerates the presentation.
+The control parameters ($\varepsilon = 1/90 - 1/5280$, $5280 = 12 \cdot 4 \cdot 11 \cdot 10$, $Z = 1/(1+\varepsilon)$) set the loop's feedback gain. $5280$ is the product of the four Gram numbers. $90 = C_{U_1} \times (C_{U_1} - 1) = 10 \times 9$, which follows from $C_{U_1} = N + C(N,2) = 10$ (derived from $N=4$). The specific combination $\varepsilon = 1/90 - 1/5280$ is the proposed control correspondence (see ledger §4197). In the layer mapping: the presentation layer is the full 12-pole feedback; the transport layer operates below the spectral bottom 11 (the visible line); the core state is the plant, whose $N(N-1)=12$ regenerates the presentation.
 
 Each bridge is a ratio of two rungs. The ratio is forced by the Gram — it is not a free assignment:
 
@@ -114,7 +114,7 @@ $\Omega_b = \frac{6}{121},\quad \Omega_{\mathrm{DM}} = \frac{6}{23},\quad \Omega
 
 ## The universe as a feedback system
 
-The $12 \to 4$ ladder maps to a discrete control loop (see the rungs table above for the layer mapping). The feedback gain is $\varepsilon = 1/90 - 1/5280$, where $5280 = 12 \cdot 4 \cdot 11 \cdot 10$ is Gram-derived and $90$ is not (see the ladder descent section). The closed-loop transfer function is $Z = 1/(1+\varepsilon)$. The integral term drives $\Omega_k \to 0$; the fibration phases are Nyquist margins. See ledger §4197 for the full LQR correspondence (proposed).
+The $12 \to 4$ ladder maps to a discrete control loop (see the rungs table above for the layer mapping). The feedback gain is $\varepsilon = 1/90 - 1/5280$, where $90 = C_{U_1} \times (C_{U_1} - 1)$ and $5280 = 12 \cdot 4 \cdot 11 \cdot 10$ are both derived from $N=4$ (see the ladder descent section). The closed-loop transfer function is $Z = 1/(1+\varepsilon)$. The integral term drives $\Omega_k \to 0$; the fibration phases are Nyquist margins. See ledger §4197 for the full LQR correspondence (proposed).
 
 [Read the full control theory reframing →](/results/#control)
 
