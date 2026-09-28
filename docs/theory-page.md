@@ -2,7 +2,7 @@
 
 ## The single object and its three projections
 
-The carrier programme starts from a single object: a finite set $X_N$ with $N$ probe functions $f_i$, forming the **Gram overlap matrix**
+The construction starts from a single object: a finite set $X_N$ with $N$ probe functions $f_i$, forming the **Gram overlap matrix**
 
 $$
 G_{ij}=\langle f_j\mid f_i\rangle
@@ -16,7 +16,7 @@ This one matrix gives **three projections** that together cover all of known phy
 
 - **Standard Model** — the $S_4$ irrep decomposition $G=V^2\operatorname{diag}(\lambda,\ldots)V$
 
-This replaces position (Q), momentum (P), and time (T) as separate primitives with a single algebraic structure. In the carrier programme, Q, P, and T are the **bottom rung of the Postnikov tower** of S4, the automorphism group of the minimal carrier.
+This replaces position (Q), momentum (P), and time (T) as separate primitives with a single algebraic structure. In this construction, Q, P, and T are the **bottom rung of the Postnikov tower** of S4, the automorphism group of the minimal carrier.
 
 The complete derivation is presented below, step by step, with each section showing both the carrier derivation and the exact point where it departs from the standard Newton → QM → QFT path.
 
@@ -28,7 +28,7 @@ The carrier is a finite set with no metric, no coordinates, no topology. The onl
 
 **Why N = 4.** $S_4$ has irreducible representations $1\oplus1'\oplus2$ (trivial + sign + doublet). This gives exactly the SM gauge group structure: U(1) from the trivial rep, SU(2) from the doublet, SU(3) from the sign × doublet interaction. Larger N (e.g., N = 12, which gives three generations) maintain the same S4 substructure as the gauge sector.
 
-**Connection to homotopy.** The classifying space BS4 has a Postnikov tower; its cohomological data is conventionally cited as suggesting U(1), SU(2), SU(3) fibres, but the precise identification (including the base space and bottom stage from which Q, P, T would emerge) remains a proposal rather than a derived theorem.
+**Connection to homotopy.** The Postnikov tower of BS4 as source of U(1), SU(2), SU(3) fibres, with Q, P, T from the bottom stage, remains a proposal, not a theorem. A candidate concretization exists: in the lattice-stack picture, Q is carried by the horizontal configuration planes, T by the vertical witness→record axis (the escalation 12 → 11 → 10, one unit of cross-coherence per act), and the FCC correspondence 12:4 = 3 is the candidate for the spatial dimension. All remain proposed; none is derived.
 
 ## 2. Probes
 
@@ -52,7 +52,7 @@ In standard physics, three separate structures are needed:
 
 - A principal G-bundle with connection A_μ for the SM
 
-In the carrier programme, all three arise from **three different projections of the same Gram matrix G_ij**. This is possible because G_ij is simultaneously:
+In this construction, all three arise from **three different projections of the same Gram matrix G_ij**. This is possible because G_ij is simultaneously:
 
 - **Hermitian** (QM — probability conservation, Born rule)
 
@@ -80,7 +80,7 @@ The gauge groups are proposed to be read off from the irreducible representation
 
 ## 5. The Postnikov tower — where the Newton path diverges
 
-The carrier programme answers the question: *Where does the Newton → QM → QFT path diverge from the carrier derivation?*
+The construction answers the question: *Where does the Newton → QM → QFT path diverge from the carrier derivation?*
 
 **The Newton → QM → SM path (standard):**
 
@@ -104,7 +104,7 @@ The carrier programme answers the question: *Where does the Newton → QM → QF
 
 **The deviation:**
 
-The Newton → QM path treats Q, P, T as the *foundation* and builds up by quantizing and adding gauge groups. The carrier programme treats the **Postnikov tower of S4** as the foundation and derives Q, P, T as the **bottom rung** of that tower.
+The Newton → QM path treats Q, P, T as the *foundation* and builds up by quantizing and adding gauge groups. The construction treats the **Postnikov tower of S4** as the foundation and derives Q, P, T as the **bottom rung** of that tower.
 
 - **Position Q** emerges as the classifying map from the carrier to K(ℝ, 3) — the lowest stage of the Postnikov tower. The "points" of space are images of this map from the finite carrier set.
 
@@ -231,7 +231,7 @@ The Gram off-diagonal block structure gives the Higgs quartic coupling λ = m_H�
 
 QCD instanton suppression of θ&macr; (the strong CP angle) is *assumed* from the SM, not derived from Gram numbers. The axion mass and coupling to photons are not computed from Gram expressions.
 
-**Why it remains schematic:** The carrier programme derives the SM gauge group and its representations, but the non-perturbative QCD dynamics that determine the axion potential involve the topological susceptibility of the QCD vacuum. This is a low-energy QCD phenomenon that depends on the detailed dynamics of the SU(3) gauge sector, which the carrier programme has not yet fully derived from the Gram structure.
+**Why it remains schematic:** The construction derives the SM gauge group and its representations, but the non-perturbative QCD dynamics that determine the axion potential involve the topological susceptibility of the QCD vacuum. This is a low-energy QCD phenomenon that depends on the detailed dynamics of the SU(3) gauge sector, which the construction has not yet fully derived from the Gram structure.
 
 ## 14. Dark matter
 
@@ -245,7 +245,7 @@ QCD instanton suppression of θ&macr; (the strong CP angle) is *assumed* from th
 
 Observed Ω_DM = 26.4% (Planck 2018). Error: 1.2%.
 
-**Experimental consequences.** The carrier programme proposes that particle dark matter could be discovered as sterile neutrino decays (X-ray line at ∼7 keV from a 14 keV sterile neutrino). If instead no X-ray line is found and the abundance is explained by modified inertia (Machian MOND from the bootstrap Z factor, with the suggested acceleration scale a_0 = cH_0/9), then the programme accommodates both — but they are mutually exclusive: the X-ray line and the a_0 = cH_0/9 scale cannot both be valid, and the a_0 expression itself is a proposal rather than a derived relation.
+**Experimental consequences.** The construction proposes that particle dark matter could be discovered as sterile neutrino decays (X-ray line at ∼7 keV from a 14 keV sterile neutrino). If instead no X-ray line is found and the abundance is explained by modified inertia (Machian MOND from the bootstrap Z factor, with the suggested acceleration scale a_0 = cH_0/9), then the construction accommodates both — but they are mutually exclusive: the X-ray line and the a_0 = cH_0/9 scale cannot both be valid, and the a_0 expression itself is a proposal rather than a derived relation.
 
 ## 15. Dark energy
 
@@ -257,7 +257,7 @@ Observed Ω_DM = 26.4% (Planck 2018). Error: 1.2%.
 
 where R_Hubble = c/H_0 is the Hubble radius. Using the Gram eigenvalues gives &Lambda; within 5% of the observed value.
 
-**The &Lambda; problem.** The observed &Lambda; is 10^−122 in Planck units. In the carrier programme, this small number is a rational expression in the Gram eigenvalues. The analogue in the SM is the Higgs mass hierarchy — also very small compared to M_Pl — and both derive from the same Gram structure.
+**The &Lambda; problem.** The observed &Lambda; is 10^−122 in Planck units. In this construction, this small number is a rational expression in the Gram eigenvalues. The analogue in the SM is the Higgs mass hierarchy — also very small compared to M_Pl — and both derive from the same Gram structure.
 
 ## 16. Einstein equation (partial)
 
@@ -298,7 +298,7 @@ The cosmic budget uses all four densities: Ω_b + Ω_DM + Ω_de + Ω_k = 1. An e
 
 ## 18. Mathematical connections
 
-The carrier programme's reach extends beyond physics into pure mathematics, through the same Gram eigenvalues (12, 4) and the S4 / S12 structure.
+The construction's reach extends beyond physics into pure mathematics, through the same Gram eigenvalues (12, 4) and the S4 / S12 structure.
 
 **Modular forms.** The Gram eigenvalues l_U1 = 12 and l_SU2 = 4 correspond to the weights of the modular forms E_4 (weight 4) and &Delta; (weight 12). The j-invariant: 12³ = 1728 = j(i), the value of the j-invariant at the cusp.
 
@@ -306,4 +306,4 @@ The carrier programme's reach extends beyond physics into pure mathematics, thro
 
 **Homotopy theory.** The stable stems of the sphere spectrum give S4 as the first non-trivial group beyond ℝ/2. The Postnikov tower of BS4 → K(ℝ/2, 2) → K(ℝ/3, 2) → K(ℝ/2, 2) is a specific instance of a general phenomenon: the sphere spectrum's stable stems at dimensions 1, 2, 3 correspond to U(1), SU(2), SU(3).
 
-**Sporadic groups.** M12 is a subgroup of S12, and the Monster has a structure related to the Leech lattice and Griess algebra, both connected to S24. These are mathematical parallels, not physics derivations — the physical content of the carrier programme is in the S4 structure, and the sporadic connections show that the same algebraic structures appear in finite simple group theory.
+**Sporadic groups.** M12 is a subgroup of S12, and the Monster has a structure related to the Leech lattice and Griess algebra, both connected to S24. These are mathematical parallels, not physics derivations — the physical content of this construction is in the S4 structure, and the sporadic connections show that the same algebraic structures appear in finite simple group theory.
