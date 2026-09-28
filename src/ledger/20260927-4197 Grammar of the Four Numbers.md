@@ -75,6 +75,44 @@ Computed in the lattice experiments: FCC tight-binding gives band shifts +12 (Γ
 - FCC tight-binding: band eigenvalues s + 12t (Γ) and s − 4t (X, W flat band); 12 : 4 = 3 = spatial dimension.
 - Cube closure counting: 6 faces impose only 5 independent flatness conditions (one global holonomy relation); 12 − 5 = 7 free edge values.
 
+## Full tower: descend and ascend (9 rungs, closed cycle)
+
+The escalation is not three rungs — it is nine, from 12 down to 4, with the floor regenerating the top.
+
+**The descend (witnessing/recording, −1 per act):**
+
+| rung | value | free | fixed (history) | C(v,2) | v+C(v,2) | status |
+|---:|---:|---:|---:|---:|---:|---|
+| 1 | **12** | 12 | 0 | 66 | 78 | l_U1 — full S12 carrier |
+| 2 | **11** | 11 | 1 | 55 | 66 | r — one point fixed |
+| 3 | **10** | 10 | 2 | 45 | 55 | C_U1 — two points fixed |
+| 4 | 9 | 9 | 3 | 36 | 45 | first value below spectral bottom 11 |
+| 5 | 8 | 8 | 4 | 28 | 36 |  2³ — cube, full outward engagement |
+| 6 | 7 | 7 | 5 | 21 | 28 | prime, Fano/octonion separation |
+| 7 | **6** | 6 | 6 | 15 | 21 | 6 = C(4,2) — internal carrier pairs |
+| 8 | **5** | 5 | 7 | **10** | 15 | 5 = N+1 (witness). C(5,2)=10 unifies both readings: 6 internal + 4 witness spokes = C_U1 |
+| 9 | **4** | 4 | 8 | 6 | **10** | floor = N = l_SU2 — minimal S4 carrier. C(4,2)=6 pairs, symmetric dof 10 |
+
+**Three triplets:**
+
+| Triplet | Rungs | Values | Phase |
+|---|---|---|---|
+| 1 | 1–3 | **12, 11, 10** | Coherence. Named constants. The square 4+6+2=12 closes here. "I am fully coherent and forward-compatible." |
+| 2 | 4–6 | 9, 8, 7 | Transition. Interaction grid (3²), outward engagement (2³), irreducible oddness (7). Dof drops below the persistent spectral bottom 11. |
+| 3 | 7–9 | **6, 5, 4** | Floor. 6 = C(4,2) pairs, 5 = N+1 (the witness, C(5,2)=10 unifies the two 10s), 4 = N. Seed of regeneration: 4×3 generations = 12. |
+
+**The cycle closure:**
+
+```
+floor 4  ──  N(N−1) = 4×3 = 12  ── rung 1
+       ──  N² = 16 = 12 + 4   ── rung 1 + rung 9 (the square of the carrier
+                                      decomposes into directed pairs + diagonal)
+```
+
+The two factorizations of 12 — 2×6 (orientations × pairs) and 3×4 (generations × carrier) — are the same count: N(N−1) = 4×3 = 12. The ladder is a closed cycle: the floor's own square re-emits the top.
+
+**The spectral bottom never moves:** the n-point Gram at every rung has bottom eigenvalue 11 ×(n−1). The descend line 13−r starts above it (12), crosses it at r=2 (11), then passes below. The name r = 11 marks the crossover between the descending dof and the persistent screening line.
+
 ## Open programs
 
 1. Route the FCC band data through the carrier Gram (not just the S12 block model), or exhibit that the FCC 12-shell and the S12 carrier are the same object.
