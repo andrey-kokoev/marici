@@ -16,7 +16,7 @@ This one matrix gives **three projections** that together cover all of known phy
 
 - **Standard Model** — the $S_4$ irrep decomposition $G=V^2\operatorname{diag}(\lambda,\ldots)V$
 
-This replaces position (Q), momentum (P), and time (T) as separate primitives with a single algebraic structure. In this construction, Q, P, and T are the **bottom rung of the Postnikov tower** of S4, the automorphism group of the minimal carrier.
+This replaces position (Q), momentum (P), and time (T) as separate primitives with a single algebraic structure. In this construction, Q and T emerge from the descent of the 12-point carrier through the witness ladder (see the landing page for the rungs table).
 
 The complete derivation is presented below, step by step, with each section showing both the carrier derivation and the exact point where it departs from the standard Newton → QM → QFT path.
 
@@ -26,9 +26,11 @@ The complete derivation is presented below, step by step, with each section show
 
 The carrier is a finite set with no metric, no coordinates, no topology. The only structure is the cardinality N and the automorphism group S_N.
 
-**Why N = 4.** $S_4$ has irreducible representations $1\oplus1'\oplus2$ (trivial + sign + doublet). This gives exactly the SM gauge group structure: U(1) from the trivial rep, SU(2) from the doublet, SU(3) from the sign × doublet interaction. Larger N (e.g., N = 12, which gives three generations) maintain the same S4 substructure as the gauge sector.
+**Why N = 4.** $S_4$ has irreducible representations $1\oplus1'\oplus2$ (trivial + sign + doublet). This gives exactly the SM gauge group structure: U(1) from the trivial rep, SU(2) from the doublet, SU(3) from the sign × doublet interaction.
 
-**Connection to homotopy.** The Postnikov tower of BS4 as source of U(1), SU(2), SU(3) fibres, with Q, P, T from the bottom stage, remains a proposal, not a theorem. A candidate concretization exists: in the lattice-stack picture, Q is carried by the horizontal configuration planes, T by the vertical witness→record axis (the escalation 12 → 11 → 10, one unit of cross-coherence per act), and the FCC correspondence 12:4 = 3 is the candidate for the spatial dimension. All remain proposed; none is derived.
+The full carrier for three generations is the 12-point set $X_{12}$, partitioned as $S_4 \times S_4 \times S_4$ (three generations of 4 points each). The ladder $12 \to 11 \to 10 \to \dots \to 4$ describes how the carrier is restricted by witness acts — each act removes one point (a rank-1 projection), dropping the Gram rank by exactly 1. The minimal carrier $N=4$ is the floor: Bool $\times$ Bool = 4 points, cannot restrict further. $N(N-1)=12$ regenerates the top from the floor.
+
+**Connection to homotopy (proposed).** The Postnikov tower of BS4 as source of U(1), SU(2), SU(3) fibres is a proposal, not a theorem. The ladder descent above is the concrete mechanism; the homotopy identification remains conjectural.
 
 ## 2. Probes
 
@@ -78,7 +80,7 @@ Gauge groups from the irrep decomposition of S4:
 
 The gauge groups are proposed to be read off from the irreducible representations of the carrier's symmetry group. This is an ansatz: a finite-group irrep decomposition does not by itself produce a continuous gauge group, and the lift from S4-representation data to U(1)×SU(2)×SU(3) gauge symmetries (with its charges and commutators) has not yet been presented as an explicit construction.
 
-## 5. The Postnikov tower — where the Newton path diverges
+## 5. The ladder descent — where the Newton path diverges
 
 The construction answers the question: *Where does the Newton → QM → QFT path diverge from the carrier derivation?*
 
@@ -96,25 +98,13 @@ The construction answers the question: *Where does the Newton → QM → QFT pat
 
 1. Carrier: X_N finite set → Gram G_ij.
 
-1. Postnikov tower of S4: the classifying space BS4 has 2-type with Postnikov invariants that have been proposed to reproduce the gauge fibres U(1), SU(2), SU(3) — the identification is a proposal, not a theorem (see SS9).
+1. The ladder 12 → 11 → 10 → … → 4: witness acts restrict the carrier by one point per act, dropping the Gram rank by exactly 1. Nine rungs, floor N=4, cycle N(N-1)=12.
 
-1. Bottom stage: K(ℝ, 3) — this is where Q (position), P (momentum), T (time) emerge as *derived* concepts.
-
-1. Three projections of G_ij give QM, GR, SM simultaneously, with 4 parameters (Gram eigenvalues 11, 12, 4, 10).
+1. Three projections of G_ij give QM, GR, SM simultaneously, with 4 Gram numbers (12, 11, 4, 10).
 
 **The deviation:**
 
-The Newton → QM path treats Q, P, T as the *foundation* and builds up by quantizing and adding gauge groups. The construction treats the **Postnikov tower of S4** as the foundation and derives Q, P, T as the **bottom rung** of that tower.
-
-- **Position Q** emerges as the classifying map from the carrier to K(ℝ, 3) — the lowest stage of the Postnikov tower. The "points" of space are images of this map from the finite carrier set.
-
-- **Momentum P** is the differential of this classifying map, encoded in the phase differences θ_j − θ_i of the Gram overlap. The derivative d(θ_j − θ_i)/dt gives the momentum.
-
-- **Time T** is the chirality 3-cycle (identity → left → right → identity) in the S4 structure — a preferred orientation that breaks time-reversal symmetry intrinsically. The three steps of the 3-cycle give three generations of fermions.
-
-**"Quantization is the vertical arrow in the Postnikov tower."** The map from higher stages (U(1), SU(2), SU(3) fibers) to the bottom stage (K(ℝ, 3), where Q, P, T live) is what standard physics calls "quantization." The tower *is* the quantization, and the gauge groups are the higher stages.
-
-The apparent conflict between QM and GR at short distances is a lower-stage phenomenon: at the higher Postnikov stages, the Gram matrix is a single structure whose QM and GR projections are consistent by construction.
+The Newton path treats Q, P, T as the foundation and builds up by quantizing. The carrier path starts from the Gram and the ladder descent that generates the constants. The ladder 12→4 is the mechanism; the rungs are the scales. The Postnikov identification of the gauge fibres is a separate proposal (see §18).
 
 ## 6. Three projections from one Gram matrix
 
@@ -217,11 +207,11 @@ This is exactly the Standard Model fermion content (one generation), plus a righ
 
 **Gram predictions (exact):**
 
-- **Higgs vacuum expectation value:** v = 2·r_S12² + l_SU2 = 2·11² + 4 = **246 GeV**
+- **Higgs vacuum expectation value:** $v = 2\cdot 11^2 + 4 = \mathbf{246\,\mathrm{GeV}}$
 
-- **Higgs mass:** m_H = r_S12² + l_SU2 = 11² + 4 = **125 GeV**
+- **Higgs mass:** $m_H = 11^2 + 4 = \mathbf{125\,\mathrm{GeV}}$
 
-- **Ratio:** m_H/v = 125/246 = 0.508 (observed m_H/v = 125.1/246.2 = 0.508, within 0.2%)
+- **Ratio:** $m_H/v = 125/246 = 0.508$ (observed $125.1/246.2 = 0.508$, within 0.2%)
 
 The Gram off-diagonal block structure gives the Higgs quartic coupling λ = m_H²/(2v²) = 125²/(2·246²) = 0.129, matching the observed value λ &approx; 0.13.
 
@@ -275,26 +265,26 @@ S[G] = ∫_X R(G_Stab(p)) dp + ∫×× G_ij G_kl (coupling terms)
 
 where the first term is the scalar curvature of the stabilizer Gram metric and the second term encodes matter couplings. Completing this derivation would give the quantum gravity sector from the carrier structure.
 
-**Postnikov interpretation.** The Einstein equation lives at the bottom stage K(ℝ, 3) of the Postnikov tower, where Q, P, T emerge. The higher stages give the matter content (SM fields). The stationarity condition δS/δG_stab = 0 is the condition that the Gram matrix is a consistent projection from higher stages to the bottom stage.
+The action principle $S[G] = \int R(G) dV$ whose variation gives $G_{\mu\nu} = 8\pi G T_{\mu\nu}$ is not yet derived (proposed). Completing this derivation would give the quantum gravity sector from the carrier structure.
 
 ## 17. Fundamental constants
 
-All fundamental constants are rational expressions in the four Gram numbers (r = 11, l = 12, s = 4, c = 10), with the Machian bootstrap factor Z = 1/(1 + 1/90 − 1/5280) as the only correction coming from closed-loop effects.
+All fundamental constants are rational expressions in the four Gram numbers $(12, 11, 4, 10)$, with the Machian bootstrap factor $Z = 1/(1 + 1/90 - 1/5280)$ as the only correction coming from closed-loop effects.
 
 | Constant | Gram expression | Predicted value | Observed | Error |
 |---|---|---:|---:|---:|
-| $\alpha^{-1}$ | $r^2+s^2=11^2+4^2$ | **137** | 137.036 | 0.03% |
-| $\sin^2\theta_W$ | $C_{SU(2)}/C_{U(1)}=3/10\to3/13$ | **0.231** | 0.231 ($Z$ pole) | <0.1% |
-| $M_{\mathrm{Pl}}/v$ | $r^{r+s}\times l\times Z=11^{15}\times12\times Z$ | **$4.96\times10^{16}$** | $4.96\times10^{16}$ | 0.09% |
-| $\Lambda_{\mathrm{QCD}}$ | $M_{\mathrm{Pl}}/r^{r+s+s}=M_{\mathrm{Pl}}/11^{19}$ | **~200 MeV** | ~200 MeV | 0.2% |
-| $m_p$ | $(r+s-1)/(s-1)\times\Lambda_{\mathrm{QCD}}=14/3\times M_{\mathrm{Pl}}/11^{19}$ | **938 MeV** | 938.27 MeV | 0.7% |
-| $m_p/m_e$ | $l\times(l^2+(s-1)^2)=12\times(144+9)$ | **1836** | 1836.15 | 0.01% |
-| $m_H$ | $r^2+s=11^2+4$ | **125 GeV** | 125.1 GeV | 0.08% |
-| $v$ | $2r^2+s=2\cdot121+4$ | **246 GeV** | 246.2 GeV | 0.08% |
-| $\Omega_{\mathrm{DM}}$ | $(c-s)/(l+r)=(10-4)/(12+11)$ | **$6/23=26.1\%$** | 26.4% | 1.2% |
-| $\Omega_{\mathrm{de}}$ | $r/l^2=11/16$ | **$11/16=68.8\%$** | ~68.9% | ~0.1% |
+| $\alpha^{-1}$ | $11^2+4^2$ | **137** | 137.036 | 0.03% |
+| $\sin^2\theta_W$ | $3/13$ | **0.231** | 0.231 ($Z$ pole) | <0.1% |
+| $M_{\mathrm{Pl}}/v$ | $11^{15}\times12\times Z$ | **$4.96\times10^{16}$** | $4.96\times10^{16}$ | 0.09% |
+| $\Lambda_{\mathrm{QCD}}$ | $M_{\mathrm{Pl}}/11^{19}$ | **~200 MeV** | ~200 MeV | 0.2% |
+| $m_p$ | $14/3\times M_{\mathrm{Pl}}/11^{19}$ | **938 MeV** | 938.27 MeV | 0.7% |
+| $m_p/m_e$ | $12\times(12^2+3^2)$ | **1836** | 1836.15 | 0.01% |
+| $m_H$ | $11^2+4$ | **125 GeV** | 125.1 GeV | 0.08% |
+| $v$ | $2\cdot11^2+4$ | **246 GeV** | 246.2 GeV | 0.08% |
+| $\Omega_{\mathrm{DM}}$ | $(10-4)/(12+11)$ | **$6/23=26.1\%$** | 26.4% | 1.2% |
+| $\Omega_{\mathrm{de}}$ | $11/16$ | **$11/16=68.8\%$** | ~68.9% | ~0.1% |
 
-The cosmic budget uses all four densities: Ω_b + Ω_DM + Ω_de + Ω_k = 1. An earlier expression using only the 23 = l + r denominator (11/23) was incorrect because it neglected baryonic matter; the 11/16 form is the one used consistently across results and the landing page.
+The budget uses all four densities: $\Omega_b + \Omega_{\mathrm{DM}} + \Omega_{\mathrm{de}} + \Omega_k = 1$. The $11/16$ form is used consistently across results and the landing page.
 
 ## 18. Mathematical connections
 
@@ -304,6 +294,6 @@ The construction's reach extends beyond physics into pure mathematics, through t
 
 **Monster VOA.** The Monster vertex operator algebra has central charge 24 = 2 × 12. The Griess algebra (the algebra of the Monster group's 196,884-dimensional representation) is constructed from the Leech lattice, which is in turn related to the Golay code — both structures having connections to S24 (N = 24, the next natural carrier size after N = 12 for three generations).
 
-**Homotopy theory.** The stable stems of the sphere spectrum give S4 as the first non-trivial group beyond ℝ/2. The Postnikov tower of BS4 → K(ℝ/2, 2) → K(ℝ/3, 2) → K(ℝ/2, 2) is a specific instance of a general phenomenon: the sphere spectrum's stable stems at dimensions 1, 2, 3 correspond to U(1), SU(2), SU(3).
+**Homotopy theory (proposed).** The stable stems of the sphere spectrum give $S_4$ as the first non-trivial group beyond $\mathbb{R}/2$. The Postnikov tower of $BS_4$ is a candidate identification for the gauge fibres $U(1), SU(2), SU(3)$, but this is a proposal, not a derivation (see the landing page's ladder descent for the concrete mechanism).
 
 **Sporadic groups.** M12 is a subgroup of S12, and the Monster has a structure related to the Leech lattice and Griess algebra, both connected to S24. These are mathematical parallels, not physics derivations — the physical content of this construction is in the S4 structure, and the sporadic connections show that the same algebraic structures appear in finite simple group theory.
