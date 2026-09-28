@@ -73,7 +73,7 @@ family.  The labels must remain distinct because their final residual walls
 are respectively
 
 \[
-b=x,qquad a=y.
+b=x,\qquad a=y.
 \]
 
 No projection to the nine-master infinity-Gysin sequence is yet defined.

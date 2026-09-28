@@ -57,7 +57,7 @@ used.
 At eighteen exact fiber points for each of the unequal-energy packets
 
 \[
-(X_1,X_2,X_3)=(2,3,4),qquad(3,4,5),
+(X_1,X_2,X_3)=(2,3,4),\qquad(3,4,5),
 \]
 
 the ten response columns have rank ten.  After adjoining the constant

@@ -22,13 +22,13 @@ complete fixed-(G_{12}) factor family.
 Five finite factors map inside the existing list:
 
 \[
-u\mapsto u,qquad
-v\mapsto v-2,qquad
+u\mapsto u,\qquad
+v\mapsto v-2,\qquad
 v-u\mapsto y,
 \]
 
 \[
-u-2\mapsto v,qquad
+u-2\mapsto v,\qquad
 v-2\mapsto u-2,
 \]
 

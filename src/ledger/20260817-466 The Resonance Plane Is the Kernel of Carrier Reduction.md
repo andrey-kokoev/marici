@@ -33,7 +33,7 @@ a^4\left(
 and Entry 449 identifies its basis as
 
 \[
-[a^4],qquad[a^{11}c].
+[a^4],\qquad[a^{11}c].
 \]
 
 Thus the Euler-resonance plane is canonically a **kernel** of carrier

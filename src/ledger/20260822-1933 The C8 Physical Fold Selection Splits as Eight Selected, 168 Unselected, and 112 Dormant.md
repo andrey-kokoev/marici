@@ -18,9 +18,9 @@ In the frozen companion models, \((a,b,c,d,z)\) are the retained edge-energy var
 At the exact B8 fold point
 
 \[
-a=c=d=z=1,qquad
-b^2=-\frac9{10},qquad
-k=1,qquad l=0,
+a=c=d=z=1,\qquad
+b^2=-\frac9{10},\qquad
+k=1,\qquad l=0,
 \]
 
 the edge-energy gradient is

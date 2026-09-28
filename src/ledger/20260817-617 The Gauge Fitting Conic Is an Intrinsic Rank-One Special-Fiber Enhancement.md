@@ -9,7 +9,7 @@ date: 2026-08-17
 
 Entry 388 detected the residual conic
 [
-C_{m fit}:qquad X_1X_2-E_T^2=0
+C_{m fit}:\qquad X_1X_2-E_T^2=0
 ]
 from a bounded rank census. Is this merely a failure of the projection to
 master coordinates, or does the full frozen reduction presentation itself
@@ -22,12 +22,12 @@ nullity (255), projected gauge rank (2), and pivot mask (24).
 
 At tested conic points, the same presentation gives
 [
-116,qquad256,qquad3,qquad280.
+116,\qquad256,\qquad3,\qquad280.
 ]
 Thus
 [
-\boxed{Deltaoperatorname{rank}A=-1,qquad
-Deltadimker A=+1,qquad
+\boxed{Deltaoperatorname{rank}A=-1,\qquad
+Deltadimker A=+1,\qquad
 Deltaoperatorname{rank}G=+1.}
 ]
 

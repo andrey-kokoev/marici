@@ -5,7 +5,7 @@
 Entry 353 extended the physical Cut--nearby comparison through either individual site-soft branch. The remaining corner is
 
 [
-x=X_1=0,qquad y=X_2=0,
+x=X_1=0,\qquad y=X_2=0,
 ]
 
 where both site-soft normals vanish simultaneously.
@@ -41,7 +41,7 @@ J=
 0&2&1\
 0&0&1
 end{pmatrix},
-qquad
+\qquad
 K=
 \begin{pmatrix}
 0&0&1&-1\
@@ -54,9 +54,9 @@ with
 
 [
 Phi_{m exc}=JK,
-qquad
+\qquad
 ker K=mathbb Z(1,1,1,1),
-qquad
+\qquad
 operatorname{coker}K=0.
 ]
 
@@ -94,7 +94,7 @@ Unimodular row operations
 
 [
 R_1mapsto R_1-yR_3,
-qquad
+\qquad
 R_2mapsto R_2-xR_3
 ]
 
@@ -119,9 +119,9 @@ The correct Fitting ideals are
 [
 \boxed{
 I_1=(1),
-qquad
+\qquad
 I_2=(2x,2y),
-qquad
+\qquad
 I_3=(4xy).
 }
 ]
@@ -140,7 +140,7 @@ The other two directions occur separately in the first normal grades:
 
 [
 operatorname{rank}_{(1,0)}=1,
-qquad
+\qquad
 operatorname{rank}_{(0,1)}=1.
 ]
 

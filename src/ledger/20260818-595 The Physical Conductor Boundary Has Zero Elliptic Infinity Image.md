@@ -35,7 +35,7 @@ After projective homogenization, evaluation at the wall point at infinity is
 therefore respectively
 
 \[
--x,qquad y,qquad z.
+-x,\qquad y,\qquad z.
 \]
 
 On the generic nonsoft open (xyz\ne0), none vanishes.  Hence every

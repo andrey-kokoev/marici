@@ -22,7 +22,7 @@ purpose of passing the test.
 The packet contains:
 
 \[
-5\text{ labelled occurrence channels},qquad
+5\text{ labelled occurrence channels},\qquad
 \dim I_{\rm aug}=4,
 \]
 

@@ -49,8 +49,8 @@ and the sparse blocks are
 Direct labelled transport gives, for both variances,
 
 \[
-C_0\to C_1:J,qquad
-C_1\to C_2:J,qquad
+C_0\to C_1:J,\qquad
+C_1\to C_2:J,\qquad
 C_2\to C_0:I,
 \]
 

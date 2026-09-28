@@ -17,7 +17,7 @@ exact image is divisible by (a^4). The simplest proposed lift would replace
 
 [
 K=a^4+u,a^2(1-b^2)
-qquad (\bmod,u^2)
+\qquad (\bmod,u^2)
 ]
 
 and reduce every exact-form representative coefficientwise modulo (K).
@@ -28,7 +28,7 @@ Use the source-defined sector
 
 [
 (s_a,s_b)=(1,1),
-qquad
+\qquad
 f=1,
 ]
 
@@ -36,7 +36,7 @@ with
 
 [
 L_1=b+1-u,
-qquad
+\qquad
 L_2^-=a-\frac u2.
 ]
 

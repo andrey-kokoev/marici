@@ -73,8 +73,8 @@ residues are the same universal nodal operator (N), up to the commuting
 scalar half-residue of the (B^{-1/2}) Kummer twist:
 
 \[
-[R_u^{\rm ell},R_v^{\rm ell}]=0,qquad
-\operatorname{rank}N=1,qquad N^2=0.
+[R_u^{\rm ell},R_v^{\rm ell}]=0,\qquad
+\operatorname{rank}N=1,\qquad N^2=0.
 \]
 
 Thus the pure elliptic quotient has no hidden corner obstruction.

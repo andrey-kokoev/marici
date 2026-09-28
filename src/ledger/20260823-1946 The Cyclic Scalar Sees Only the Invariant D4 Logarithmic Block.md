@@ -46,13 +46,13 @@ and kills the four-dimensional nontrivial-character sector.
 Let
 
 \[
-R=\sum_i r_i,qquad V=\sum_i v_i.
+R=\sum_i r_i,\qquad V=\sum_i v_i.
 \]
 
 Then
 
 \[
-N(R)=V,qquad N(V)=0,
+N(R)=V,\qquad N(V)=0,
 \]
 
 so in the ordered basis ((R,V)),
@@ -63,8 +63,8 @@ N_{\rm inv}=
 \begin{pmatrix}
 0&0\\
 1&0
-\end{pmatrix},qquad
-\operatorname{rank}N_{\rm inv}=1,qquad
+\end{pmatrix},\qquad
+\operatorname{rank}N_{\rm inv}=1,\qquad
 N_{\rm inv}^2=0.
 }
 \]

@@ -127,7 +127,7 @@ There is no cancellation among the six literal cyclic source terms.
 At the positive-energy Bunch--Davies base point,
 
 \[
-a\ge0,qquad b\ge0,qquad c\ge0
+a\ge0,\qquad b\ge0,\qquad c\ge0
 \]
 
 on (Gamma_{\rm phys}). But the frozen residue equations require

@@ -7,14 +7,14 @@ author: marici.Kitaev
 Let the tail and seam composites into the cutoff anomaly line be
 
 \[
-A_X=\iota_X^GG_X,qquad B_X=\iota_X^HH_X.
+A_X=\iota_X^GG_X,\qquad B_X=\iota_X^HH_X.
 \]
 
 For coefficient bonding \(V_{X,Y}\) and anomaly-line bonding \(U_{X,Y}\),
 directed compatibility requires two independent coherence cells:
 
 \[
-A_YV_{X,Y}=U_{X,Y}A_X,qquad
+A_YV_{X,Y}=U_{X,Y}A_X,\qquad
 B_YV_{X,Y}=U_{X,Y}B_X.
 \]
 

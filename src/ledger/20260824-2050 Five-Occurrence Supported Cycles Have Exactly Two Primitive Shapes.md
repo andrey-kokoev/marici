@@ -10,7 +10,7 @@ H_1(\operatorname{Cl}G).
 The dimension distribution is
 
 \[
-0:837,qquad 1:177,qquad 2:10.
+0:837,\qquad 1:177,\qquad 2:10.
 \]
 
 Exactly 27 supports are minimal nonzero cases: 15 labelled copies of

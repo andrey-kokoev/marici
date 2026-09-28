@@ -16,7 +16,7 @@ two-dimensional excess, after reading Entries 447--448.
 At
 [
 E=X_2=0,
-qquad
+\qquad
 K=a^4,quad L_1=b+1,quad L_2=a.
 ]
 Set
@@ -29,7 +29,7 @@ factor and retain the ((s_a,s_b)=(1,1)) sector. Its two exact operators are
 [
 \boxed{
 D_b=a(1-cpartial_c),
-qquad
+\qquad
 D_a=c(apartial_a-7).
 }
 ]
@@ -47,7 +47,7 @@ D_a(a^ic^j)=(i-7)a^ic^{j+1}.
 
 The image of these two operators contains every monomial except
 [
-1,qquad a^7c.
+1,\qquad a^7c.
 ]
 
 Indeed:
@@ -77,7 +77,7 @@ Restoring the universal factor gives intrinsic representatives
 [
 \boxed{
 [a^4],
-qquad
+\qquad
 [a^{11}(b+1)].
 }
 ]

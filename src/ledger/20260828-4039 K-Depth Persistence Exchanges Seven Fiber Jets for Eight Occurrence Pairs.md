@@ -10,8 +10,8 @@ Entry 4034 established that the depth-six persistent image (I) and
 rank-(26) low sector (L) satisfy
 
 [
-dim I=27,qquad
-dim L=26,qquad
+dim I=27,\qquad
+dim L=26,\qquad
 dim(I\cap L)=19.
 ]
 

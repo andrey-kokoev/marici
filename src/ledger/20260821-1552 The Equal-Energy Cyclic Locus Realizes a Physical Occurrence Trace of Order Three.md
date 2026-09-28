@@ -15,7 +15,7 @@ cyclic family as a deck cover.
 In the normalized (G_{12}) chart,
 
 \[
-X_1=1,qquad X_2=\frac{u+v}{2}-1,qquad
+X_1=1,\qquad X_2=\frac{u+v}{2}-1,\qquad
 X_3=\frac{u-v}{2}.
 \]
 
@@ -29,14 +29,14 @@ The source cycle acts by
 Its positive equal-energy fixed point is
 
 \[
-(u,v)=(3,1),qquad (X_1,X_2,X_3)=(1,1,1).
+(u,v)=(3,1),\qquad (X_1,X_2,X_3)=(1,1,1).
 \]
 
 Entry 764 independently derives the three residue-chart connections and
 their horizontal transition
 
 \[
-S=\operatorname{diag}(z^{-2},z^{-1},z,z),qquad
+S=\operatorname{diag}(z^{-2},z^{-1},z,z),\qquad
 z=\frac{u-v}{2}.
 \]
 
@@ -55,7 +55,7 @@ Entry 356's six all-positive physical occurrences form two regular cyclic
 orbits:
 
 \[
-(12|23,23|31,31|12),qquad
+(12|23,23|31,31|12),\qquad
 (12|31,23|12,31|23).
 \]
 
@@ -90,7 +90,7 @@ RT=3I_2.
 Modulo three the norm remains rank two but becomes square-zero:
 
 \[
-N\ne0,qquad N^2=0\pmod3.
+N\ne0,\qquad N^2=0\pmod3.
 \]
 
 Thus

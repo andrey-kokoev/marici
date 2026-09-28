@@ -17,7 +17,7 @@ Entry 1286 found on the physical slice that a character (S) of weight
 
 [
 deg_tequiv wpmod 2,
-qquad
+\qquad
 deg_t+deg_ule16-w.
 ]
 
@@ -34,7 +34,7 @@ F_1=2u_1^2+2u_2^2+u_3^2-2u_1u_2-2u_2u_3,
 
 [
 F_2=F_1-2ho u_1+ho^2,
-qquad
+\qquad
 F_3=F_1-2ho u_2+2ho^2,
 ]
 
@@ -111,7 +111,7 @@ Construct the source-localized differential in the homogenized character
 basis. Test whether it is homogeneous after assigning
 
 [
-deg y_i=1,qquad deg F_i=2.
+deg y_i=1,\qquad deg F_i=2.
 ]
 
 If localization necessarily mixes total grades beyond the shifts dictated by

@@ -12,8 +12,8 @@ the (g_{23}) and (g_{31}) four-pole families.  Near their positive
 occurrence collision use the source-derived weighted chart
 
 \[
-E=\tau^2,qquad
-a=y+\tau^2r,qquad
+E=\tau^2,\qquad
+a=y+\tau^2r,\qquad
 b=x-\tau^2r+\tau^3n.
 \]
 

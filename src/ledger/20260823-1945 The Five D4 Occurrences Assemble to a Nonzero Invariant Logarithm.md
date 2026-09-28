@@ -28,7 +28,7 @@ Let (r_i) denote a regular lift and (v_i) its vanishing line.  The
 nilpotent logarithm of monodromy is
 
 \[
-N(r_i)=v_i,qquad N(v_i)=0.
+N(r_i)=v_i,\qquad N(v_i)=0.
 \]
 
 In the ordered basis

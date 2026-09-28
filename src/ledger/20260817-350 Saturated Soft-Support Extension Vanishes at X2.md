@@ -15,7 +15,7 @@ that is invisible on the generic total-energy divisor?
 Work in the homogeneous chart
 
 [
-X_1=1,qquad u=E_T,qquad y=X_2=\frac{u+v}{2}-1.
+X_1=1,\qquad u=E_T,\qquad y=X_2=\frac{u+v}{2}-1.
 ]
 
 The source-defined algebraic kernel generator degenerates at (u=0,v=2) as
@@ -49,7 +49,7 @@ At both independent finite fields,
 
 [
 p_1=2305843009213693951,
-qquad
+\qquad
 p_2=2305843009213693921,
 ]
 

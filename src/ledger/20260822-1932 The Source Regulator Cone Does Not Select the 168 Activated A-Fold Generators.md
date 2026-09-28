@@ -19,7 +19,7 @@ Thus the physical source supplies a negative-imaginary tube.  The remaining ques
 At the exact generic family-A fold point used in Entry 1930,
 
 \[
-a=b=c=d=1,qquad z^2=\frac{32}{5},qquad k=1,qquad l=0,
+a=b=c=d=1,\qquad z^2=\frac{32}{5},\qquad k=1,\qquad l=0,
 \]
 
 the companion divisor has edge-energy gradient

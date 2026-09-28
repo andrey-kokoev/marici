@@ -49,7 +49,7 @@ where \(K\) is the generic Cayley--Menger polynomial of Entry 185.
 Compactify with
 
 \[
-b=\frac1s,qquad a=\frac ts,qquad w=\frac W{s^2}.
+b=\frac1s,\qquad a=\frac ts,\qquad w=\frac W{s^2}.
 \]
 
 Equivalently, homogenize the wall quartic to
@@ -77,7 +77,7 @@ D_\infty=D_+\cup D_-,
 \]
 
 \[
-D_\pm:\qquad s=0,qquad
+D_\pm:\qquad s=0,\qquad
 W=\pm P_1(a^2-b^2).
 \]
 

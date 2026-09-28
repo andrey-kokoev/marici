@@ -31,12 +31,12 @@ and two independent generic six-scale points.
 Set \((c,a,b)=(y_{12},y_{23},y_{31})\). The denominator support is
 
 \[
-q_{g_1}=c+b+X_1,qquad
+q_{g_1}=c+b+X_1,\qquad
 q_{g_2}=c+a+X_2,
 \]
 
 \[
-q_{g_3}=a+b+X_3,qquad
+q_{g_3}=a+b+X_3,\qquad
 q_{g_{23}}=c+b+X_2+X_3.
 \]
 
@@ -57,8 +57,8 @@ resonance in the critical count.
 At
 
 \[
-\mathbf F_{32003},qquad
-(X_1,X_2,X_3)=(2,3,4),qquad
+\mathbf F_{32003},\qquad
+(X_1,X_2,X_3)=(2,3,4),\qquad
 (P_1,P_2,P_3)=(5,7,11),
 \]
 
@@ -106,8 +106,8 @@ grade.
 The full rank replicates at
 
 \[
-\mathbf F_{65521},qquad
-(X_1,X_2,X_3)=(3,5,6),qquad
+\mathbf F_{65521},\qquad
+(X_1,X_2,X_3)=(3,5,6),\qquad
 (P_1,P_2,P_3)=(7,11,13),
 \]
 

@@ -6,7 +6,7 @@ Separate the two endpoint occurrences with smooth one-sided mollifiers before
 taking their coincidence limit. The two time-ordering chambers contribute
 
 \[
-\frac12,qquad\frac12,
+\frac12,\qquad\frac12,
 \]
 
 and their sum equals the product of the one-occurrence masses:

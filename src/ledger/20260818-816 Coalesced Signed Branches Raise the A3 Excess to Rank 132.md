@@ -13,7 +13,7 @@ this then forces (P_1=0) or (P_2=0), but it does **not** force
 (Lambda=0): for example,
 
 \[
-P_3=E=P_1=0,qquad P_2\ne0
+P_3=E=P_1=0,\qquad P_2\ne0
 \quad\Longrightarrow\quad
 \Lambda=P_2^4\ne0.
 \]

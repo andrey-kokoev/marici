@@ -41,7 +41,7 @@ Each equality saturates a labelled triangle inequality among three centers.
 For example,
 
 \[
-y_2=0,qquad y_4=y_3+y_5
+y_2=0,\qquad y_4=y_3+y_5
 \]
 
 means that the soft center (C_2) lies on the segment joining (C_3) and

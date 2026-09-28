@@ -11,7 +11,7 @@ Use the common conserved coordinate lattice
 and impose only the frozen branch normals
 
 \[
-s_{14}=0,qquad s_{23}=0,qquad
+s_{14}=0,\qquad s_{23}=0,\qquad
 s_{235}=s_{23}+s_{25}+s_{35}=0.
 \]
 

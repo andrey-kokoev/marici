@@ -3,8 +3,8 @@
 The three coordinates of Entry 2054 carry canonical witness objects:
 
 \[
-W_p=\ker(M_I^T),qquad
-W_s=\ker(d_1)/\operatorname{im}(d_2),qquad
+W_p=\ker(M_I^T),\qquad
+W_s=\ker(d_1)/\operatorname{im}(d_2),\qquad
 W_d=\ker(T).
 \]
 

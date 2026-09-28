@@ -39,7 +39,7 @@ held-out point excluded from interpolation.
 The test was repeated at the independent generic fibers
 
 \[
-v=5,qquad v=7.
+v=5,\qquad v=7.
 \]
 
 ## Result

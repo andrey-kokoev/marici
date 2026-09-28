@@ -23,8 +23,8 @@ and the source Cayley--Menger polynomial \(K\) at the two generic specialization
 For a selected product \(D\) of
 
 \[
-q_{g_1}=c+b+X_1,qquad
-q_{g_2}=c+a+X_2,qquad
+q_{g_1}=c+b+X_1,\qquad
+q_{g_2}=c+a+X_2,\qquad
 q_{\mathcal G_{12}}=c+X_1+X_2+X_3,
 \]
 

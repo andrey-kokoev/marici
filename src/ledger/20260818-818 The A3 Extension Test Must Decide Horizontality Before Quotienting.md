@@ -18,7 +18,7 @@ intrinsic (A_3) monodromy.
 The (A_3) eigenvalues are
 
 \[
-i,qquad -1,qquad -i,
+i,\qquad -1,\qquad -i,
 \]
 
 so over (mathbb Q)
@@ -46,8 +46,8 @@ Equivalently, locally
 Across Entry 816's sixty-six germs this predicts
 
 \[
-\dim V_{\rm ex}=132,qquad
-\chi_{C_3}=(132,0,0),qquad
+\dim V_{\rm ex}=132,\qquad
+\chi_{C_3}=(132,0,0),\qquad
 \bigl(\operatorname{tr}1,\operatorname{tr}M,
 \operatorname{tr}M^2\bigr)=(132,0,-132).
 \]

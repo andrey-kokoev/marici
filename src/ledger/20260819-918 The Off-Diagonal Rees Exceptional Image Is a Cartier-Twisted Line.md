@@ -20,9 +20,9 @@ In multiplicative Laurent coordinates, take the (a)-chart
 
 [
 A_4-1=H,
-qquad
+\qquad
 Y-1=UH,
-qquad
+\qquad
 Q-1=VH.
 ]
 

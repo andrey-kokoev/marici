@@ -50,7 +50,7 @@ All nine frozen six-site source completions restrict generically nontrivially
 to this object.  An exact positive-square-root point on the reduced line,
 
 \[
-z=v=1,qquad x=11/3,qquad w=1/3,qquad t=-1,
+z=v=1,\qquad x=11/3,\qquad w=1/3,\qquad t=-1,
 \]
 
 makes every active wall vanish while every uncut denominator in each of the

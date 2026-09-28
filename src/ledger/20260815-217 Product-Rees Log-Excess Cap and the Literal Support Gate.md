@@ -18,7 +18,7 @@ d=a+b.
 ]
 The quotient functional
 [
-delta(a)=-1,qquad delta(b)=+1,qquad delta(c)=0
+delta(a)=-1,\qquad delta(b)=+1,\qquad delta(c)=0
 ]
 is primitive and has kernel (mathbf Zlangle d,cangle).
 
@@ -31,8 +31,8 @@ Lambda^{\bullet-1}mathbf Zlangle d,cangle.
 In the ordered bases ((a,b,c)), ((awedge b,awedge c,bwedge c)),
 and (awedge bwedge c), its nonzero matrices are
 [
-[-1  1  0],qquad
-\begin{bmatrix}-1&0&0\0&-1&1end{bmatrix},qquad
+[-1  1  0],\qquad
+\begin{bmatrix}-1&0&0\0&-1&1end{bmatrix},\qquad
 [-1].
 ]
 Their ranks are (1,2,1), and their Smith factors are respectively

@@ -57,7 +57,7 @@ print the generic 34-master alphabet.
 Set
 
 [
-c=y_{12},qquad a=y_{23},qquad b=y_{31}.
+c=y_{12},\qquad a=y_{23},\qquad b=y_{31}.
 ]
 
 The immutable pole planes are
@@ -80,7 +80,7 @@ mathrm{CM}=
 1&a^2&P_2^2&0&P_3^2\
 1&b^2&P_1^2&P_3^2&0
 end{pmatrix},
-qquad
+\qquad
 K=-\frac12detmathrm{CM}.
 ]
 
@@ -191,7 +191,7 @@ The two nontrivial triple supports are
 
 [
 T_{123}=K|_{L_1=L_2=L_3=0},
-qquad
+\qquad
 T_{23}=K|_{L_2=L_3=L_{23}=0}.
 ]
 
@@ -257,8 +257,8 @@ preserves (K) and generates the other two lower families. Cyclic closure
 introduces no new geometric type beyond
 
 [
-P_i^2-X_i^2,qquad
-Lambda_P,qquad
+P_i^2-X_i^2,\qquad
+Lambda_P,\qquad
 P_k^2-(X_imp X_j)^2,
 ]
 

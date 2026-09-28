@@ -63,7 +63,7 @@ q_{\mathcal G_{12}}:&\quad 16.
 These are exactly the independently certified closed ranks from Entry 340:
 
 \[
-7+1,qquad 7+1,qquad 7+9.
+7+1,\qquad 7+1,\qquad 7+9.
 \]
 
 The results are unchanged for:

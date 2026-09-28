@@ -5,7 +5,7 @@
 The generic marked-relative quotient has rank \(26\). The source-word construction retains raw primitive representatives rooted at
 
 \[
-S,qquad D_0,qquad D_1,
+S,\qquad D_0,\qquad D_1,
 \]
 
 where \(S\) is the literal source and \(D_0,D_1\) are its two declared first-derivative roots. Breadth-first Gauss–Manin words are admitted only when independent in the quotient.

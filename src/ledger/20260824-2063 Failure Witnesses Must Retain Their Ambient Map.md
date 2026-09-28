@@ -9,8 +9,8 @@ S\xrightarrow{M}T\xrightarrow{P}T_I,
 the genuine kernel, projection loss, and observation cocircuit are distinct:
 
 \[
-K_{\rm true}=\ker M,qquad
-K_{\rm blind}=\ker(PM)/\ker M,qquad
+K_{\rm true}=\ker M,\qquad
+K_{\rm blind}=\ker(PM)/\ker M,\qquad
 C_{\rm obs}=\operatorname{coker}(PM)^*.
 \]
 

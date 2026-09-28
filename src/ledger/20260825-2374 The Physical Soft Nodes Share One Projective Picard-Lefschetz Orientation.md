@@ -18,12 +18,12 @@ Sequence claim: seqclaim-8f3a81ff2fd3793f6ddf80a8.
 Write
 
 \[
-F=t^2-5-4\kappa\xi,qquad
-Y_+=w+F,qquad Y_-=w-F,
+F=t^2-5-4\kappa\xi,\qquad
+Y_+=w+F,\qquad Y_-=w-F,
 \]
 
 \[
-U=4(1-\kappa^2),qquad V=4(1-\xi^2).
+U=4(1-\kappa^2),\qquad V=4(1-\xi^2).
 \]
 
 The exceptional hypersurface identity is exactly
@@ -51,8 +51,8 @@ In the source coordinate order ((w,t,\kappa,\xi)), the coordinate Jacobian is
 At an endpoint write
 
 \[
-\kappa=\epsilon(1-r_\kappa),qquad
-\xi=\delta(1-r_\xi),qquad r_\kappa,r_\xi\ge0.
+\kappa=\epsilon(1-r_\kappa),\qquad
+\xi=\delta(1-r_\xi),\qquad r_\kappa,r_\xi\ge0.
 \]
 
 In the inward coordinate order ((w,t,r_\kappa,r_\xi)), the Jacobian becomes

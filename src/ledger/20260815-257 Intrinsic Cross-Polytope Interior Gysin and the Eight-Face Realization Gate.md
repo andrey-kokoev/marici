@@ -37,8 +37,8 @@ has a primitive normalized generator.
 Physical reflection acts on the conductor basis by
 
 \[
-e_0\mapsto-e_0,qquad
-e_1\mapsto-e_2,qquad
+e_0\mapsto-e_0,\qquad
+e_1\mapsto-e_2,\qquad
 e_2\mapsto-e_1.
 \]
 

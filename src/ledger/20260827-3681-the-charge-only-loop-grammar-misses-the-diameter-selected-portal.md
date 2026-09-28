@@ -4,7 +4,7 @@ WP842 inserts the primitive charge spectrum into the smallest two-moment beta
 hostile. For (Q=\operatorname{diag}(1,2,3)),
 
 \[
-S_2=14,qquad S_4=98,qquad\Delta_Q=2.
+S_2=14,\qquad S_4=98,\qquad\Delta_Q=2.
 \]
 
 The charge-only flow (\beta_x=x^2(S_2-S_4x)) selects (x_*=1/7), not the

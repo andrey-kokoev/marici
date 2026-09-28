@@ -15,7 +15,7 @@ Entry 210 derives the six ordered long-road pairs and their complementary
 marked half-corridors. Entry 164 supplies the normalization-provenanced paired
 branch labels
 [
-z_0=(x_5,x_2),qquad z_1=(x_3,x_0),qquad z_2=(x_1,x_4).
+z_0=(x_5,x_2),\qquad z_1=(x_3,x_0),\qquad z_2=(x_1,x_4).
 ]
 On each ordered cone, the first marked-corridor edge consists of two short
 labels that occur uniquely in the appropriate plus or minus sheet of this

@@ -30,7 +30,7 @@ The two pole directions are presentations of one localization and are joined sep
 \frac{P}{K^m q^n}
 =
 \frac{PK}{K^{m+1}q^n},
-qquad
+\qquad
 \frac{P}{K^m q^n}
 =
 \frac{Pq}{K^m q^{n+1}}.
@@ -39,7 +39,7 @@ qquad
 Freeze
 
 [
-gamma=5,qquad mathbb F_{32003},
+gamma=5,\qquad mathbb F_{32003},
 ]
 
 and measure the image of degree-at-most-five numerators in the simple-(q) block ((m,n)=(0,1)).
@@ -47,8 +47,8 @@ and measure the image of degree-at-most-five numerators in the simple-(q) block 
 The source divisors are
 
 [
-q_{g_1}=c+b+X_1,qquad
-q_{g_2}=c+a+X_2,qquad
+q_{g_1}=c+b+X_1,\qquad
+q_{g_2}=c+a+X_2,\qquad
 q_{mathcal G_{12}}=c+X_1+X_2+X_3.
 ]
 

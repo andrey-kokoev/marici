@@ -52,7 +52,7 @@ The source discrepancy is downstream of Eq. (18). Given the independently
 checked sector reductions
 
 \[
-J_1,qquad-2J_2,qquad-J_0,
+J_1,\qquad-2J_2,\qquad-J_0,
 \]
 
 the first unresolved step is the unpublished contraction/reduction that

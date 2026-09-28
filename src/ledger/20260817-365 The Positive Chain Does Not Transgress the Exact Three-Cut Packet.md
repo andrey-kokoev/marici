@@ -48,7 +48,7 @@ q_{\mathcal G_{31}}=E+b.
 On the source chain,
 
 \[
-x,y,z>0,qquad a,b,c\ge0.
+x,y,z>0,\qquad a,b,c\ge0.
 \]
 
 Each Cut form has coefficient one on all three positive site energies,

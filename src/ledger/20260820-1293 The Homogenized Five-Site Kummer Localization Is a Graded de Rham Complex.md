@@ -16,7 +16,7 @@ Use Entry 1291's homogenized variables and assign
 
 [
 deg t=deg y_i=deg u_j=degho=1,
-qquad
+\qquad
 deg(dz)=deg z.
 ]
 
@@ -42,9 +42,9 @@ one of the source-derived forms
 
 [
 5t,
-qquad
+\qquad
 5t+2y_i,
-qquad
+\qquad
 |A|t+y_i+y_j.
 ]
 

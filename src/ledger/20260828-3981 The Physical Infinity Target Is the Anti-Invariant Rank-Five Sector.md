@@ -33,7 +33,7 @@ A source-normalized basis may be chosen as follows.
 The compact anti-invariant classes are
 [
 omega_0=\frac{dt}{W},
-qquad
+\qquad
 omega_2=\frac{t^2dt}{W}.
 ]
 
@@ -51,9 +51,9 @@ Three anti-invariant logarithmic classes have residue vectors
 They are represented by
 [
 y\frac{dt}{tW},
-qquad
+\qquad
 z\frac{dt}{(t+1)W},
-qquad
+\qquad
 x\frac{t,dt}{W}.
 ]
 
@@ -65,7 +65,7 @@ Thus the anti-invariant sector has rank
 The remaining two classes are invariant logarithmic forms
 [
 \frac{dt}{t},
-qquad
+\qquad
 \frac{dt}{t+1},
 ]
 with residue vectors
@@ -81,7 +81,7 @@ Hence
 H^1_{mathrm{dR}}(Esetminus D)
 =
 H^1_+oplus H^1_-,
-qquad
+\qquad
 (dim H^1_+,dim H^1_-)=(2,5).
 ]
 

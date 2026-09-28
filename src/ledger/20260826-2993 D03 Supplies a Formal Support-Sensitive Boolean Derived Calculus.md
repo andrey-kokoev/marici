@@ -36,14 +36,14 @@ Unlike the five-site row audited in Entry 2992, its decisive maps are not insert
 The first checker derives the oriented road square from principal monomial labels, verifies both weighted chain identities, and shows that the normalized complex resolves the Cartier ideal
 
 [
-(M),qquad M=x_0x_1x_3x_4.
+(M),\qquad M=x_0x_1x_3x_4.
 ]
 
 On the (x_3) edge it constructs the one- and two-normal Koszul-to-Cech maps explicitly.  For endpoint normal (x_i), the degree-one comparison is
 
 [
 g_i^0(r)=(r/x_i,0),
-qquad
+\qquad
 g_i^1(t)=t/x_i,
 ]
 

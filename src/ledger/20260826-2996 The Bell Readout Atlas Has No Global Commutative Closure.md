@@ -20,7 +20,7 @@ There are four measurement contexts
 
 [
 C_{xy}={A_x,B_y},
-qquad x,yin{0,1}.
+\qquad x,yin{0,1}.
 ]
 
 Within each context, (A_x) and (B_y) are ordinary jointly recorded signs.  The context is therefore a commutative finite probability closure.
@@ -37,7 +37,7 @@ with
 
 [
 E_{00}=E_{01}=E_{10}=-\frac1{sqrt2},
-qquad
+\qquad
 E_{11}=\frac1{sqrt2}.
 ]
 
@@ -49,7 +49,7 @@ Contexts sharing (A_x) agree on its marginal, and contexts sharing (B_y) agree o
 
 [
 sum_b p(a,bmid x,y)=\frac12,
-qquad
+\qquad
 sum_a p(a,bmid x,y)=\frac12.
 ]
 

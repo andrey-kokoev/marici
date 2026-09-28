@@ -22,7 +22,7 @@ The literal marked half-corridor has two edges and therefore needs a third,
 middle stratum. A global section of this projective bundle disjoint from both
 coordinate endpoints has two nowhere-vanishing components
 [
-Nlongrightarrow L_{ab},qquad Nlongrightarrow L_c.
+Nlongrightarrow L_{ab},\qquad Nlongrightarrow L_c.
 ]
 Both are line-bundle isomorphisms, so such a section forces
 (L_{ab}cong L_c).

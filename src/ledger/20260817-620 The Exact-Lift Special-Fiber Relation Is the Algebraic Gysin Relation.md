@@ -28,7 +28,7 @@ Thus indices \(8,9,10,11\) are \((e_6,e_7,e_8,e_9)\).
 At a generic fiber the projected exact-lift gauge plane pivots in \(e_1,e_2\).
 On either component
 \[
-D_-=E^2-X_1X_2=0,qquad D_+=E^2+X_1X_2=0,
+D_-=E^2-X_1X_2=0,\qquad D_+=E^2+X_1X_2=0,
 \]
 the rank-three special-fiber gauge space acquires one RREF row pivoting at
 \(e_6\). Its earlier coordinates vanish by construction. The invariant datum

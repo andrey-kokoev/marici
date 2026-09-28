@@ -20,7 +20,7 @@ energy arrangement.
 Use the directional Gauss--Manin adapter of Entries 2385--2387, target
 
 \[
-K^4,qquad(q_{g_1},q_{g_2},q_{g_3},q_{G_{23}},q_{G_{31}})
+K^4,\qquad(q_{g_1},q_{g_2},q_{g_3},q_{G_{23}},q_{G_{31}})
 =(4,4,4,2,2),
 \]
 
@@ -85,7 +85,7 @@ c_2=
 The only poles of (c_2) are
 
 \[
-x=0,qquad y=0,qquad x+y=0.
+x=0,\qquad y=0,\qquad x+y=0.
 \]
 
 The homogeneous quartic restricts on the special fiber to

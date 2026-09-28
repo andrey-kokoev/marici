@@ -17,7 +17,7 @@ source-defined map is
 [
 \boxed{
 u=\frac{E}{x}=\frac1r,
-qquad
+\qquad
 v=\frac{ell_3}{x}=\frac{2r+2s-1}{r}.
 }
 ]
@@ -63,7 +63,7 @@ This factor is derived from the already frozen Cayley--Menger branch
 coefficient. The source geometry has
 [
 c=-u,
-qquad
+\qquad
 y=\frac{u+v-2}{2},
 ]
 hence

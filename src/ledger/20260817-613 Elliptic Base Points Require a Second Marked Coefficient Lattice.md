@@ -28,12 +28,12 @@ components.
 In the (x=1) marked chart, two base points are
 [
 [0:1:0]longleftrightarrow(u,v)=(0,2),
-qquad
+\qquad
 [2:1:0]longleftrightarrow(u,v)=(2,0).
 ]
 The remaining points are their source-involution partners under
 [
-xleftrightarrow y,qquad aleftrightarrow b.
+xleftrightarrow y,\qquad aleftrightarrow b.
 ]
 
 Each visible point was tested in both blowup charts with 20 exact exceptional
@@ -44,11 +44,11 @@ measures residual normal poles rather than treating them as failed fits.
 
 At ([0:1:0]), the old weight gives
 [
-minord A_t=-2,qquad minord A_ho=-1.
+minord A_t=-2,\qquad minord A_ho=-1.
 ]
 The transformed bad masks are
 [
-M_t=1835008,qquad M_ho=1849456.
+M_t=1835008,\qquad M_ho=1849456.
 ]
 They decode as:
 
@@ -57,7 +57,7 @@ They decode as:
 
 At ([2:1:0]), the old weight gives
 [
-minord A_t=-1,qquad minord A_ho=-1,
+minord A_t=-1,\qquad minord A_ho=-1,
 ]
 with tangent mask
 [
@@ -80,8 +80,8 @@ solution
 This lattice was frozen and rerun at both visible points. It gives
 [
 \boxed{
-minord A_t=-1,qquad minord A_ho=0,
-qquad M_t=M_ho=0
+minord A_t=-1,\qquad minord A_ho=0,
+\qquad M_t=M_ho=0
 }
 ]
 at each point.
@@ -90,7 +90,7 @@ at each point.
 
 At ([0:1:0]), the rational exceptional directions are
 [
-ho=-1,qquadho=1.
+ho=-1,\qquadho=1.
 ]
 They come respectively from (y=0) and
 [
@@ -113,7 +113,7 @@ Delta_1
 
 At ([2:1:0]), the (u)-chart directions are
 [
-ho=-1,qquadho=-9,
+ho=-1,\qquadho=-9,
 ]
 with reciprocal directions in the second chart. Direct expansion gives
 [

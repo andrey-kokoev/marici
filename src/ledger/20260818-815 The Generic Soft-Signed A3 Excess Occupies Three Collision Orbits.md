@@ -24,14 +24,14 @@ before cyclic assembly.
 The three collision representatives
 
 \[
-(g_1,g_2),qquad(g_1,g_3),qquad(g_2,g_3)
+(g_1,g_2),\qquad(g_1,g_3),\qquad(g_2,g_3)
 \]
 
 have two independently movable marked coordinates.  Their simultaneous
 coordinate boundary can therefore meet
 
 \[
-P_3=0,qquad E^2=P_1^2\quad\text{or}\quad E^2=P_2^2
+P_3=0,\qquad E^2=P_1^2\quad\text{or}\quad E^2=P_2^2
 \]
 
 at a generic (A_3) point.

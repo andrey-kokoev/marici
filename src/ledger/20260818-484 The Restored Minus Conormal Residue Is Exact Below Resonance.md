@@ -15,7 +15,7 @@ conormal identity is compared with the odd resonance lattice. Put
 
 [
 c=b+1,
-qquad
+\qquad
 g=a^3c(2-c).
 ]
 
@@ -64,7 +64,7 @@ one obtains
 
 [
 B(7,0)=(3,3),
-qquad
+\qquad
 B(7,1)=(3,4).
 ]
 

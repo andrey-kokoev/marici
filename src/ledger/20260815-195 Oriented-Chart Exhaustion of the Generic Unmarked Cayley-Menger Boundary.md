@@ -40,10 +40,10 @@ Neither occurs.
 Take the nondegenerate base triangle
 
 [
-r_1=(0,0,0),qquad
-r_2=(p,0,0),qquad
+r_1=(0,0,0),\qquad
+r_2=(p,0,0),\qquad
 r_3=(u,v,0),
-qquad pv
+\qquad pv
 e0,
 ]
 
@@ -158,17 +158,17 @@ For a nondegenerate base triangle, the pairwise edge-line intersections are
 
 [
 F_{12}cap F_{13}={r_1},
-qquad c=0,
+\qquad c=0,
 ]
 
 [
 F_{12}cap F_{23}={r_2},
-qquad a=0,
+\qquad a=0,
 ]
 
 [
 F_{13}cap F_{23}={r_3},
-qquad b=0.
+\qquad b=0.
 ]
 
 The three edge lines have no common point. A triple face intersection
@@ -196,27 +196,27 @@ powers are determined only by codimension:
 
 [
 z=0:
-qquad dz,
-qquad 	ext{power }0,
+\qquad dz,
+\qquad 	ext{power }0,
 ]
 
 [
 F_{ij}:
-qquad ho,dho,d	heta,
-qquad 	ext{power }1,
+\qquad ho,dho,d	heta,
+\qquad 	ext{power }1,
 ]
 
 [
 a=0, b=0, 	ext{or }c=0:
-qquad ho^2,dho,dOmega,
-qquad 	ext{power }2.
+\qquad ho^2,dho,dOmega,
+\qquad 	ext{power }2.
 ]
 
 All are integrable, and none has logarithmic exponent (-1). Therefore
 
 [
 \boxed{
-T_u=1,qquad N=0
+T_u=1,\qquad N=0
 }
 ]
 
@@ -240,7 +240,7 @@ for
 
 [
 a,b,cge0,
-qquad
+\qquad
 X_i>0,
 ]
 

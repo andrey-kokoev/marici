@@ -6,7 +6,7 @@ Entry 1886 closes the stabilizer-fixed six-site critical sector.  Retain all
 three free squared loop coordinates
 
 \[
-x=y_1^2,qquad v=y_3^2,qquad w=y_5^2
+x=y_1^2,\qquad v=y_3^2,\qquad w=y_5^2
 \]
 
 and specialize the denominator-cleared \(\kappa\)-Rees cover to the regular

@@ -45,7 +45,7 @@ a global period presentation or in a noncanonical scalar operator.
 Use
 
 \[
-l_1=b+x-E,qquad l_2=a+y-E
+l_1=b+x-E,\qquad l_2=a+y-E
 \]
 
 and the source lift
@@ -58,8 +58,8 @@ No basis element or support summand is added. The reduction is performed
 modulo exact one-forms on the four predeclared strata
 
 \[
-l_1l_2\sqrt K,qquad l_1\sqrt K,qquad
-l_2\sqrt K,qquad \sqrt K,
+l_1l_2\sqrt K,\qquad l_1\sqrt K,\qquad
+l_2\sqrt K,\qquad \sqrt K,
 \]
 
 with the frozen rank-twelve basis

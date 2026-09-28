@@ -28,7 +28,7 @@ r=(2,3,0,1,5,4),
 in zero-based image notation.  They satisfy
 
 \[
-c^3=1,qquad r^2=1,qquad rcr=c^{-1}.
+c^3=1,\qquad r^2=1,\qquad rcr=c^{-1}.
 \]
 
 The two pair shifts act diagonally by

@@ -9,7 +9,7 @@ date: 2026-08-18
 Entry 505 identifies the unique principal homotopy coefficient
 
 \[
-h=2am,qquad m=fL_1^{e_a}L_2^{e_b},
+h=2am,\qquad m=fL_1^{e_a}L_2^{e_b},
 \]
 
 for the commutator

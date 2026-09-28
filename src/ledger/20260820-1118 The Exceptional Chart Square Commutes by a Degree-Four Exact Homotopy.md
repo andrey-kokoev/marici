@@ -14,13 +14,13 @@ frame transition, modulo the frozen exact submodule.
 On the overlap use
 
 \[
-r=s^{-1},\qquad A_q=a/s,qquad B_q=b/s.
+r=s^{-1},\qquad A_q=a/s,\qquad B_q=b/s.
 \]
 
 Because
 
 \[
-L_{i,q}=s^{-1}L_{i,p},qquad K_q=s^{-4}K_p,qquad
+L_{i,q}=s^{-1}L_{i,p},\qquad K_q=s^{-4}K_p,\qquad
 dA_q\wedge dB_q=s^{-2}da\wedge db,
 \]
 

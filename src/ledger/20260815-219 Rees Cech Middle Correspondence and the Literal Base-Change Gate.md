@@ -29,7 +29,7 @@ Assign the two opens to the two marked corridor edges and the overlap to the
 middle costalk. The proper total (mathbf P^1) class maps to the sum of the
 two edges. With
 [
-partial e_0=m-o,qquad partial e_1=c-m,
+partial e_0=m-o,\qquad partial e_1=c-m,
 ]
 the overlap terms cancel and
 [

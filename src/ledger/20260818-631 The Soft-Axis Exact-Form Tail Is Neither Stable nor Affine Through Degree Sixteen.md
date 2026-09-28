@@ -28,7 +28,7 @@ The first finite falsifiers are degrees 14 and 16.
 
 Use
 [
-E=t,qquad X_2=3t^2
+E=t,\qquad X_2=3t^2
 ]
 over
 [
@@ -61,12 +61,12 @@ degree-16 value shows that the raw sequence has still not stabilized.
 
 At degree 14,
 [
-(r_E,r_{[E,M]})=(224,234),qquad
+(r_E,r_{[E,M]})=(224,234),\qquad
 (delta_E,delta_{[E,M]})=(192,289).
 ]
 At degree 16,
 [
-(r_E,r_{[E,M]})=(271,281),qquad
+(r_E,r_{[E,M]})=(271,281),\qquad
 (delta_E,delta_{[E,M]})=(222,321).
 ]
 The rank difference remains ten, while the determinant difference changes.

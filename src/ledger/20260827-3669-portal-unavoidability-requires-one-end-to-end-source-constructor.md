@@ -11,7 +11,7 @@ For the conditional WP821 coefficients (a=b=d=f=1,c=3), the primitive
 contrast (q_3-q_2=1) gives the exact positive prediction
 
 \[
-x_*=y_*=\frac12,qquad g_n-g_m=\frac1{\sqrt2},
+x_*=y_*=\frac12,\qquad g_n-g_m=\frac1{\sqrt2},
 \]
 
 with local infrared stability eigenvalues (1/2) and (2). The same

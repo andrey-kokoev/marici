@@ -12,7 +12,7 @@ On the (b
 e0) infinity chart, write
 
 [
-b=s^{-1},qquad a=t/s,qquad w=W/s^2.
+b=s^{-1},\qquad a=t/s,\qquad w=W/s^2.
 ]
 
 The five marked linear denominators have leading product

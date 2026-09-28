@@ -46,7 +46,7 @@ The exact first missing arrow is a mixed-variance realization
 [
 Gamma_{ij}^{!,log}longrightarrow
 C_\bullet(q_k)subset F_B/F_V,
-qquad {i,j,k}={14,03,25},
+\qquad {i,j,k}={14,03,25},
 ]
 whose two restrictions agree with the adjacent long-facet packets and whose
 image is the fixed complementary marked corridor. It must identify the

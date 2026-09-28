@@ -16,7 +16,7 @@ Under the precisely typed global-adjoint fault
 the CDFG codebook gives
 
 \[
-A\leftrightarrow B,qquad D\leftrightarrow E,
+A\leftrightarrow B,\qquad D\leftrightarrow E,
 \]
 
 while (C,F,G,H) leave the valid codebook. With the mode unobserved, sixteen

@@ -15,7 +15,7 @@ The first Hall-selected minor with mixed oriented determinant signs is
 Its two nonzero terms are
 
 \[
-+604{,}800{,}000,qquad-3{,}024{,}000{,}000,
++604{,}800{,}000,\qquad-3{,}024{,}000{,}000,
 \]
 
 with nonzero sum \(-2{,}419{,}200{,}000\). Row/column sign normalization

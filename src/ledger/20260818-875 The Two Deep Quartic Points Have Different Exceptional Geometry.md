@@ -27,7 +27,7 @@ wall connections gives eleven irreducible carrier factors.
 At \((2,2)\), exactly three vanish:
 
 \[
-u-2,qquad v-2,qquad u-v.
+u-2,\qquad v-2,\qquad u-v.
 \]
 
 Put \(x=u-2\), \(y=v-2\).  The quartic has order two and tangent cone
@@ -49,7 +49,7 @@ t=3\pm2\sqrt2.
 The three existing carrier directions are
 
 \[
-t=0,qquad t=1,qquad t=\infty.
+t=0,\qquad t=1,\qquad t=\infty.
 \]
 
 Hence the two quartic directions are genuinely unmarked points of the

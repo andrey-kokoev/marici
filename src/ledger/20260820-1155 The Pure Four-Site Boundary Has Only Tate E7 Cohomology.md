@@ -48,7 +48,7 @@ Its Betti numbers are
 and its degree-two Hodge numbers are
 
 \[
-\boxed{h^{2,0}=0,qquad h^{1,1}=8,qquad h^{0,2}=0.}
+\boxed{h^{2,0}=0,\qquad h^{1,1}=8,\qquad h^{0,2}=0.}
 \]
 
 Thus the pure transcendental lattice has rank zero.

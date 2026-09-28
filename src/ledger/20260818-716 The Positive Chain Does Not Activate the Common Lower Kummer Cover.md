@@ -26,7 +26,7 @@ chain does not activate this supported coefficient packet at all.
 On the literal Bunch--Davies chamber,
 
 \[
-a,b,c\geq0,qquad X_1,X_2,X_3>0.
+a,b,c\geq0,\qquad X_1,X_2,X_3>0.
 \]
 
 Every lower pole is strictly positive:

@@ -24,7 +24,7 @@ Use the same source reduction engine and the two (x=1) base-point
 representatives
 [
 [0:1:0]leftrightarrow(0,2),
-qquad
+\qquad
 [2:1:0]leftrightarrow(2,0).
 ]
 For each point inspect:

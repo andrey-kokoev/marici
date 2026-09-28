@@ -14,7 +14,7 @@ This is a finite-field theorem at the tested exact fibers, not yet a characteris
 
 On the chart
 [
-b=s^{-1},qquad a=t s^{-1},qquad w=W s^{-2},
+b=s^{-1},\qquad a=t s^{-1},\qquad w=W s^{-2},
 ]
 write the five marked denominator factors as
 [
@@ -34,7 +34,7 @@ overline K=F+s^2G+O(s^4).
 For a numerator of total degree (5+n), the logarithmic finite-part coefficient is derived from
 [
 [s^n]\frac{1}{D(s)sqrt{F+s^2G}},
-qquad n=0,1,2.
+\qquad n=0,1,2.
 ]
 
 Thus the tested grades are:
@@ -67,7 +67,7 @@ This guards the branch choices, residue orientations, and infinity Jacobian.
 
 At both primes
 [
-p=32009,qquad p=32003,
+p=32009,\qquad p=32003,
 ]
 at the exact external point
 [
@@ -106,8 +106,8 @@ where only the joint relative cocycle is expected to descend.
 
 It is mistyped to demand independent quotient maps
 [
-V_{m phys}^{(26)}	o W_{0},qquad
-V_{m phys}^{(26)}	o W_{-1},qquad
+V_{m phys}^{(26)}	o W_{0},\qquad
+V_{m phys}^{(26)}	o W_{-1},\qquad
 V_{m phys}^{(26)}	o W_{infty}.
 ]
 

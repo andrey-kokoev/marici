@@ -27,7 +27,7 @@ They account for thirty labelled pairs. No pair was added outside the frozen
 Put
 
 \[
-x=t^2,qquad a=y_i,qquad b=y_j,qquad c=y_e=-\frac52t,
+x=t^2,\qquad a=y_i,\qquad b=y_j,\qquad c=y_e=-\frac52t,
 \qquad p=ab.
 \]
 

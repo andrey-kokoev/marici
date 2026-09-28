@@ -26,7 +26,7 @@ A=R[x,u].
 Use the cohomological Koszul complex
 
 \[
-K(x,u):qquad
+K(x,u):\qquad
 A\xrightarrow{d_0}A^2\xrightarrow{d_1}A,
 \]
 
@@ -41,7 +41,7 @@ d_1(b,c)=ub-xc.
 Use the Čech complex
 
 \[
-C(x,u):qquad
+C(x,u):\qquad
 A\xrightarrow{\delta_0}A_x\oplus A_u
 \xrightarrow{\delta_1}A_{xu},
 \]

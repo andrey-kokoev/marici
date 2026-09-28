@@ -17,28 +17,28 @@ The moving arithmetic detected in Entry 4139 is therefore localized inside the e
 At ((5,7,11)), the valuation-(7) pivots occur at residual coordinates
 
 [
-2220,qquad2224,
+2220,\qquad2224,
 ]
 
 with source labels
 
 [
 [3,2,2,2,2,2;(4,8)],
-qquad
+\qquad
 [3,2,2,2,2,2;(5,1)].
 ]
 
 At ((7,11,17)), the valuation-(7) and valuation-(11) pivots occur at
 
 [
-2220,qquad2248,
+2220,\qquad2248,
 ]
 
 with labels
 
 [
 [3,2,2,2,2,2;(4,8)],
-qquad
+\qquad
 [3,2,2,2,2,2;(7,6)].
 ]
 

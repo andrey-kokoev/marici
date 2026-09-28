@@ -24,7 +24,7 @@ E=X_2=0,
 ]
 the leading fiber data in the integration variables are
 [
-K_4=a^4,qquad L_{1,mathrm{top}}=b,qquad
+K_4=a^4,\qquad L_{1,mathrm{top}}=b,\qquad
 L_{2,mathrm{top}}=a.
 ]
 
@@ -48,7 +48,7 @@ through degree 12. From degree 13 through degree 40, every shell has
 deficiency exactly four:
 [
 operatorname{rank}sigma_d=d-3
-qquad
+\qquad
 	ext{in a target shell of dimension }d+1.
 ]
 
@@ -59,7 +59,7 @@ K_4=a^4,
 every leading exact-form image is divisible by (a^4). Hence the four
 classes
 [
-1,qquad a,qquad a^2,qquad a^3
+1,\qquad a,\qquad a^2,\qquad a^3
 ]
 times the appropriate power of (b) cannot lie in the image.
 

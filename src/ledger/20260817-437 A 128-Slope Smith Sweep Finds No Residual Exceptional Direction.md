@@ -22,7 +22,7 @@ A chosen maximal minor is inadmissible after Entry 433.
 
 Use the ordinary exceptional chart
 [
-E=t,qquad X_2=ct
+E=t,\qquad X_2=ct
 ]
 and the intrinsic invariant
 [
@@ -40,7 +40,7 @@ truncation (mathbf F[t]/(t^{12})), and 128 distinct deterministic
 pseudorandom slopes generated from seed (mathtt{0x9e3779b97f4a7c15}).
 The already classified directions
 [
-c=0,qquad c=1,qquad c=	frac12
+c=0,\qquad c=1,\qquad c=	frac12
 ]
 were excluded. Eight slopes were independently repeated at exact-form degree
 10 after the degree-8 sweep.
@@ -49,7 +49,7 @@ were excluded. Eight slopes were independently repeated at exact-form degree
 
 All 128 degree-8 samples satisfy
 [
-q=10,qquad 
+q=10,\qquad
 u_{m master}=66.
 ]
 

@@ -35,23 +35,23 @@ value.
 Let
 
 \[
-\ell_1=x-y-z,qquad \ell_2=x-y+z,qquad E=x+y+z.
+\ell_1=x-y-z,\qquad \ell_2=x-y+z,\qquad E=x+y+z.
 \]
 
 Exact polynomial division over
 \(\mathbb F_{2305843009213693951}\) gives
 
 \[
-\nu_E K_E(x+z,x)=2,qquad
-\nu_{\ell_1}K_E(x+z,x)=2,qquad
+\nu_E K_E(x+z,x)=2,\qquad
+\nu_{\ell_1}K_E(x+z,x)=2,\qquad
 \nu_{\mathcal Q}K_E(x+z,x)=0,
 \]
 
 and
 
 \[
-\nu_E K_E(y,y+z)=2,qquad
-\nu_{\ell_2}K_E(y,y+z)=2,qquad
+\nu_E K_E(y,y+z)=2,\qquad
+\nu_{\ell_2}K_E(y,y+z)=2,\qquad
 \nu_{\mathcal Q}K_E(y,y+z)=0.
 \]
 

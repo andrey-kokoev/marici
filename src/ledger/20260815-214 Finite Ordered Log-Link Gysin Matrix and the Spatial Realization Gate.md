@@ -18,11 +18,11 @@ d e=c-o.
 Entry 210 fixes the complementary marked half-corridor and entry 213 fixes its
 normalization-provenanced occurrence lines. Write its two edges as
 [
-d a=m-o,qquad d b=c-m.
+d a=m-o,\qquad d b=c-m.
 ]
 The primitive Gysin map is forced by the boundary labels:
 [
-elongmapsto a+b,qquad olongmapsto o,qquad clongmapsto c.
+elongmapsto a+b,\qquad olongmapsto o,\qquad clongmapsto c.
 ]
 Therefore (dGamma(e)=c-o=Gamma(de)), with the middle terms cancelling
 integrally.

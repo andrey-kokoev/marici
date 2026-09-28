@@ -6,7 +6,7 @@ For the source-normalized integral interaction-net residual at the frozen trunca
 
 [
 operatorname{rank}_{mathbf F_2}M=2135,
-qquad
+\qquad
 dimoperatorname{coker}_{mathbf F_2}M=143.
 ]
 
@@ -43,7 +43,7 @@ At the all-odd fibers
 
 [
 (5,7,11),
-qquad
+\qquad
 (7,11,17),
 ]
 
@@ -51,7 +51,7 @@ the mod-two rank is (2135). Their good-prime controls are respectively
 
 [
 operatorname{rank}_{mathbf F_{17}}M=2194,
-qquad
+\qquad
 operatorname{rank}_{mathbf F_{19}}M=2194.
 ]
 
@@ -71,7 +71,7 @@ The only prime-local layer that survives the present fiber-independence audit is
 
 [
 F_{143}	o L_{90},
-qquad
+\qquad
 K_{53}	ext{ unchanged},
 ]
 

@@ -24,7 +24,7 @@ It obeys the exact mode-adjunction recurrence
 For faithful winding energies
 
 \[
- y_i=\pi t n_i^2,qquad t\ge1,qquad1\le n_1<\cdots<n_r,
+ y_i=\pi t n_i^2,\qquad t\ge1,\qquad1\le n_1<\cdots<n_r,
 \]
 
 distinctness forces `y_r>=pi r^2`. Thus

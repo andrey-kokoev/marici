@@ -5,7 +5,7 @@
 The three statistical placements
 
 \[
-F_LA_MA_R,qquad R_LF_MA_R,qquad R_LR_MF_R
+F_LA_MA_R,\qquad R_LF_MA_R,\qquad R_LR_MF_R
 \]
 
 do not have the same momentum variance in the source one-loop graph.
@@ -14,7 +14,7 @@ The left and right factors are external Dyson legs at observed momentum
 (p).  The middle factor is the self-energy containing loop momenta
 
 \[
-q,qquad k=|p-q|.
+q,\qquad k=|p-q|.
 \]
 
 Hence only (F_M) places state dependence inside the hard loop.  The outer

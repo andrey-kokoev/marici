@@ -20,7 +20,7 @@ N_{16}
 equiv
 sum_{Ssubseteq{1,ldots,5}}
 C_S(t,u_1,u_2,u_3)y_S,
-qquad y_i^2=F_i(u).
+\qquad y_i^2=F_i(u).
 ]
 
 No symmetry between the five occurrence labels is assumed on this asymmetric
@@ -34,7 +34,7 @@ polynomials satisfies
 [
 \boxed{
 deg_tequiv wpmod 2,
-qquad
+\qquad
 deg_t+deg_ule 16-w.
 }
 ]

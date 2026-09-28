@@ -28,7 +28,7 @@ violates 32 fusion coefficients, fails modular-(S) relabelling invariance,
 and exchanges the unequal twists of (D,E). The smallest witness is
 
 \[
-A\otimes A=A,qquad B\otimes B=A\ne B.
+A\otimes A=A,\qquad B\otimes B=A\ne B.
 \]
 
 ## Complete odd algebra and canonical origin
@@ -37,7 +37,7 @@ The diagonal algebra splits into even and odd dimensions (6+2). Its entire
 odd part is already spanned by (W_D,W_E):
 
 \[
-Q_A-Q_B=\frac{W_D+W_E}{6},qquad
+Q_A-Q_B=\frac{W_D+W_E}{6},\qquad
 Q_D-Q_E=\frac{W_D-W_E}{2}.
 \]
 

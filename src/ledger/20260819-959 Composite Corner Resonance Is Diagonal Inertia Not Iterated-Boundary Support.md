@@ -26,7 +26,7 @@ These polynomials are neither associates nor support-equivalent.
 At the generic normal-torus point
 
 \[
-m=2,qquad n=\frac12,
+m=2,\qquad n=\frac12,
 \]
 
 one has

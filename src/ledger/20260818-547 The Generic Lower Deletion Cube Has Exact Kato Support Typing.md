@@ -44,7 +44,7 @@ All five other pairs are transverse affine lines.  Exactly two triples are
 transverse points:
 
 \[
-q_{g_1}q_{g_2}q_{g_3},qquad
+q_{g_1}q_{g_2}q_{g_3},\qquad
 q_{g_2}q_{g_3}q_{g_{23}}.
 \]
 

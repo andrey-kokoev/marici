@@ -14,7 +14,7 @@ proper/extraordinary six-functor correspondence.
 Start with the oriented octahedral complex
 
 [
-C_2=mathbf Z^8,qquad C_1=mathbf Z^{12},qquad C_0=mathbf Z^6.
+C_2=mathbf Z^8,\qquad C_1=mathbf Z^{12},\qquad C_0=mathbf Z^6.
 ]
 
 The six opposite-sign (mixed) edges are replaced by their independently
@@ -23,8 +23,8 @@ single source edges; their images are the independently computed two-edge K6
 chains. Thus the expanded source has
 
 [
-C_2^{mathrm{exp}}=mathbf Z^8,qquad
-C_1^{mathrm{exp}}=mathbf Z^{24},qquad
+C_2^{mathrm{exp}}=mathbf Z^8,\qquad
+C_1^{mathrm{exp}}=mathbf Z^{24},\qquad
 C_0^{mathrm{exp}}=mathbf Z^{18}.
 ]
 

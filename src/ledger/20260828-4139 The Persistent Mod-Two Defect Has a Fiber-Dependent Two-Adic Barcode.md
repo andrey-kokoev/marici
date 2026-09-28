@@ -75,7 +75,7 @@ First, the number of positive-valuation directions is stable:
 Second, a substantial prefix of the valuation distribution is stable:
 
 [
-m_1=45,qquad m_2=10,qquad m_3=2.
+m_1=45,\qquad m_2=10,\qquad m_3=2.
 ]
 
 Third, the two longest bars retain higher-congruence kinematic information:

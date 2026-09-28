@@ -31,7 +31,7 @@ E=X_2=0
 ]
 the complete, not merely leading, polynomial data are
 [
-K=a^4,qquad L_1=b+1,qquad L_2=a.
+K=a^4,\qquad L_1=b+1,\qquad L_2=a.
 ]
 
 All four exact sectors
@@ -96,7 +96,7 @@ Hilbert-function level it consists of
 A greedy quotient-basis computation at cutoffs 16 and 20 selected the same
 representatives
 [
-a^4,qquad a^{11}b.
+a^4,\qquad a^{11}b.
 ]
 These are computational representatives only. They are not asserted to be
 a canonical, horizontal, or geometrically split basis.

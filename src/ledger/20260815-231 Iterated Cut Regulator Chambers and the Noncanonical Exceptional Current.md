@@ -145,7 +145,7 @@ If the boundary value is taken first, the \(\tau^{-2}\) grade can instead
 contain
 
 \[
-2i\pi\delta(r),\qquad 0,qquad -2i\pi\delta(r),
+2i\pi\delta(r),\qquad 0,\qquad -2i\pi\delta(r),
 \]
 
 depending on the regulator chamber. Therefore

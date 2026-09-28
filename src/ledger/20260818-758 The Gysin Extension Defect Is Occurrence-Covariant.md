@@ -34,7 +34,7 @@ Under the occurrence reflection \(\sigma_{23}\),
 
 \[
 \boxed{
-u'=u,qquad v'=2-v.
+u'=u,\qquad v'=2-v.
 }
 \]
 
@@ -65,7 +65,7 @@ The residue sign is retained, but cancels in connection conjugation. The
 nontrivial differential-form transformation is
 
 \[
-du=du',qquad dv=-dv'.
+du=du',\qquad dv=-dv'.
 \]
 
 Consequently the transported diagonal blocks are
@@ -113,7 +113,7 @@ The Entry 757 ansatz was transported as a whole:
 \[
 X=\frac{N(u',v')}{D_{31}^{m}},
 \qquad
-m=0,1,2,qquad
+m=0,1,2,\qquad
 \deg N\le10,
 \]
 

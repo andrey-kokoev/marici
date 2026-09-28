@@ -29,7 +29,7 @@ edges are bridges, loop edges, nested interfaces, or members of a compatible
 Cut flag. Resolve each \(e\in C\) into endpoint occurrences
 
 \[
-e_s,qquad e_t.
+e_s,\qquad e_t.
 \]
 
 At each endpoint, the operation is the replacement

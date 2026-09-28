@@ -111,7 +111,7 @@ after the stated common normalization. Therefore the leading determinant is not 
 The chambers
 
 \[
-12345,qquad13524
+12345,\qquad13524
 \]
 
 share no face in \(\widetilde{\mathcal M}_{0,5}(\mathbb R)\). Their twisted-cycle intersection therefore vanishes, matching the primary source.

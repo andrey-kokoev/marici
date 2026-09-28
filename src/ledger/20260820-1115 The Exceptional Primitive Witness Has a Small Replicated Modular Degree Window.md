@@ -51,7 +51,7 @@ q\ne0, r=p/q&(6,5)&1
 Both rows reproduce at
 
 \[
-2305843009213693951,qquad2305843009213693921.
+2305843009213693951,\qquad2305843009213693921.
 \]
 
 The adjacent failures are informative:

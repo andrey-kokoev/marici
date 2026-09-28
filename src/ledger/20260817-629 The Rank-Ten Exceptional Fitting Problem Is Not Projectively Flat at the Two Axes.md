@@ -29,13 +29,13 @@ at the two omitted projective directions, using both blow-up charts.
 
 The ordinary chart is
 [
-E=t,qquad X_2=ct,
+E=t,\qquad X_2=ct,
 ]
 whose point (c=0) is ([E:X_2]=[1:0]).
 
 The reciprocal chart is
 [
-X_2=t,qquad E=ct,
+X_2=t,\qquad E=ct,
 ]
 whose point (c=0) is ([E:X_2]=[0:1]).
 
@@ -49,7 +49,7 @@ after specialization.
 At the ordinary boundary,
 [
 [E:X_2]=[1:0],
-qquad
+\qquad
 (q,
 u_{m master})=(7,55).
 ]
@@ -57,7 +57,7 @@ u_{m master})=(7,55).
 At the reciprocal boundary,
 [
 [E:X_2]=[0:1],
-qquad
+\qquad
 (q,
 u_{m master})=(3,13).
 ]

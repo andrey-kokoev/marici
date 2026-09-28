@@ -26,8 +26,8 @@ finite.
 The physical Bunch--Davies chain is the positive loop-edge domain, restricted
 by Cayley--Menger/Gram nonnegativity. On that literal chamber,
 [
-q_{mathcal G_{12}}=E+c,qquad
-q_{mathcal G_{23}}=E+a,qquad
+q_{mathcal G_{12}}=E+c,\qquad
+q_{mathcal G_{23}}=E+a,\qquad
 q_{mathcal G_{31}}=E+b,
 ]
 with (E>0) and (a,b,cgeq0). Hence every marked cut denominator is

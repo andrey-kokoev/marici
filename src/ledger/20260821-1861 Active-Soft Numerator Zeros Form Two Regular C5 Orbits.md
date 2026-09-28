@@ -25,14 +25,14 @@ Thus the two middle endpoint types have no real numerator zero.
 The two physical roots are
 
 \[
-y_2=0:qquad
+y_2=0:\qquad
 x=\frac{7-\sqrt5}{2},
 \]
 
 and
 
 \[
-y_5=0:qquad
+y_5=0:\qquad
 x=\frac{\sqrt5-1}{2}.
 \]
 

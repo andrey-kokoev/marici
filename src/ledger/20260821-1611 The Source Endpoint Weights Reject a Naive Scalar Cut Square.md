@@ -12,7 +12,7 @@ In the direct oscillatory basis, the bulk, combined mixed, and
 boundary--boundary sectors are
 
 \[
-J_1,qquad -2J_2,qquad -J_0.
+J_1,\qquad -2J_2,\qquad -J_0.
 \]
 
 The published source normalization is

@@ -4,7 +4,7 @@
 
 Entry 4156 observed, on the one-parameter sample path
 [
-x=y,qquad z=x+2,
+x=y,\qquad z=x+2,
 ]
 that the terminal structural Smith valuation obeyed
 [
@@ -43,7 +43,7 @@ At ((7,7,11)), the characteristic-zero rank remains (2194), while depth (26) det
 
 The first hostile point already falsifies the (x+1)-only law:
 [
-(3,3,5)mapsto17,qquad
+(3,3,5)mapsto17,\qquad
 (3,3,7)mapsto22,
 ]
 although (x+1) is unchanged.
@@ -54,7 +54,7 @@ A second candidate,
 ]
 is also falsified:
 [
-(3,3,9)mapsto12,qquad
+(3,3,9)mapsto12,\qquad
 (7,7,13)mapsto12.
 ]
 

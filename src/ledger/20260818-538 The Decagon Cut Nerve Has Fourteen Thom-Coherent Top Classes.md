@@ -38,7 +38,7 @@ Both matrices reduce completely by unimodular (pm1) pivots, so every
 nonzero Smith factor is one.  Hence
 
 \[
-\boxed{H_0\cong\mathbb Z,qquad H_1=0,qquad H_2\cong\mathbb Z^{14}.}
+\boxed{H_0\cong\mathbb Z,\qquad H_1=0,\qquad H_2\cong\mathbb Z^{14}.}
 \]
 
 ## Triple-order coherence

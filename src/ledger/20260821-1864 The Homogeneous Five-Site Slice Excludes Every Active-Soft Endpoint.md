@@ -31,7 +31,7 @@ Every interval excludes zero.  Numerically, the four mismatch intervals are
 centered near
 
 \[
-2.25018,qquad -0.255873,qquad 0.255873,qquad -2.25018.
+2.25018,\qquad -0.255873,\qquad 0.255873,\qquad -2.25018.
 \]
 
 Hence none of the four active-soft endpoints lies on the homogeneous

@@ -43,9 +43,9 @@ radicand types. Simultaneous cyclic permutation gives
 
 [
 3 	ext{sectors},
-qquad
+\qquad
 12 	ext{sector-labelled radicand types},
-qquad
+\qquad
 15 	ext{finite pair collisions}.
 ]
 
@@ -124,7 +124,7 @@ All ten literal affine poles are strictly positive for
 
 [
 a,b,cge0,
-qquad
+\qquad
 X_i>0.
 ]
 
@@ -198,7 +198,7 @@ supset
 Their literal source powers are
 
 [
-0,qquad1,qquad2,
+0,\qquad1,\qquad2,
 ]
 
 respectively, so none is logarithmic.

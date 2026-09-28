@@ -44,7 +44,7 @@ D=E^4-X_1^2X_2^2
 
 The same frozen exact-lift presentation was tested on both
 \[
-D_-=E^2-X_1X_2=0,qquad D_+=E^2+X_1X_2=0.
+D_-=E^2-X_1X_2=0,\qquad D_+=E^2+X_1X_2=0.
 \]
 At exact-form degrees 8 and 10 and for every \(u=3,\ldots,100\):
 

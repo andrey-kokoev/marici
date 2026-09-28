@@ -14,14 +14,14 @@ g_{12}\mid g_{34}\mid g_{56}.
 Rotation by two sites cyclically permutes
 
 \[
-x=y_1^2,qquad v=y_3^2,qquad w=y_5^2.
+x=y_1^2,\qquad v=y_3^2,\qquad w=y_5^2.
 \]
 
 It does not preserve the single ideal \((L^2,M)\).  Instead it produces
 three pairwise-disjoint Cartier components
 
 \[
-(L_i^2,M_i),qquad i=0,1,2.
+(L_i^2,M_i),\qquad i=0,1,2.
 \]
 
 Exact affine-rank tests show that every pair of reduced lines is disjoint.

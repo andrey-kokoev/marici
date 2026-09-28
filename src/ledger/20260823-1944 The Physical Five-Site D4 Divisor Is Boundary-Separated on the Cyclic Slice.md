@@ -32,8 +32,8 @@ g_{12}\mid g_{34}\mid g_5,
 the wall equations fix
 
 \[
-y_2=-\frac32t,qquad
-y_4=-\frac12t,qquad
+y_2=-\frac32t,\qquad
+y_4=-\frac12t,\qquad
 y_5=-\frac12t.
 \]
 

@@ -49,7 +49,7 @@ A_3B_{34}&\longleftrightarrow s_{134}.
 The four \(Z\)-dependent factors match no facet of any of the six chambers:
 
 \[
-ZA_2,qquad ZA_2B_{24},qquad A_3/Z,qquad A_3B_{34}/Z.
+ZA_2,\qquad ZA_2B_{24},\qquad A_3/Z,\qquad A_3B_{34}/Z.
 \]
 
 Thus

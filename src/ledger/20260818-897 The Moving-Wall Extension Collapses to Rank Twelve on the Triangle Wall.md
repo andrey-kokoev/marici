@@ -53,8 +53,8 @@ At the three transverse control fibers
 the generic ranks immediately return:
 
 \[
-\dim N=25,qquad
-\dim\mathcal C^{\rm aug}=26,qquad
+\dim N=25,\qquad
+\dim\mathcal C^{\rm aug}=26,\qquad
 \operatorname{rank}\mathrm{II}=3.
 \]
 

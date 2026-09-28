@@ -70,7 +70,7 @@ where
 
 [
 ker K=mathbb Z(1,1,1,1),
-qquad
+\qquad
 operatorname{coker}K=0.
 ]
 
@@ -126,9 +126,9 @@ Equivalently, its determinantal ideals are
 
 [
 I_1=(1),
-qquad
+\qquad
 I_2=(2),
-qquad
+\qquad
 I_3=(4t).
 ]
 

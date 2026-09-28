@@ -95,8 +95,8 @@ leftover factor.
 The source reports that
 
 \[
-\widetilde x_1-P,qquad
-\widetilde x_2-P,qquad
+\widetilde x_1-P,\qquad
+\widetilde x_2-P,\qquad
 \widetilde x_1+\widetilde x_2-2P
 \]
 

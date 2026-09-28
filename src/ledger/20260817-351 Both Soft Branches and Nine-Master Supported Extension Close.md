@@ -23,8 +23,8 @@ under (C_2^{(a)}	imes C_2^{(b)}). The elliptic quotient occurs only in the final
 The source involution is
 
 [
-xleftrightarrow y,qquad
-aleftrightarrow b,qquad
+xleftrightarrow y,\qquad
+aleftrightarrow b,\qquad
 e_8leftrightarrow e_9,
 ]
 
@@ -93,7 +93,7 @@ The direct final-block reconstruction and the resulting nine-master synthesis ag
 
 [
 p_1=2305843009213693951,
-qquad
+\qquad
 p_2=2305843009213693921,
 ]
 

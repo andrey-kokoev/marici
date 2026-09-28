@@ -47,7 +47,7 @@ information that its first leg has the correct coefficient.
 
 The log-expanded carrier behaves differently:
 \[
- C_{\log}=X_1E_{13}+X_{D03}E_{D3},qquad
+ C_{\log}=X_1E_{13}+X_{D03}E_{D3},\qquad
  dC_{\log}=X_{D03}X_0c-X_1X_5v_+.
 \]
 Its \(E_{D3}\) component is compatible with the literal absolute first leg,

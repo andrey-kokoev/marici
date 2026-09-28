@@ -12,14 +12,14 @@ homogeneous specialization produce (mathcal Q)?
 Let (X,Y,Z) be the three contracted site energies and let
 
 \[
-U=P_A^2,qquad V=P_B^2,qquad W=P_C^2,
+U=P_A^2,\qquad V=P_B^2,\qquad W=P_C^2,
 \]
 
 with (P_A+P_B+P_C=0).  The three singleton wall equations solve uniquely as
 
 \[
-y_1=\frac{Y-X-Z}{2},qquad
-y_2=\frac{Z-X-Y}{2},qquad
+y_1=\frac{Y-X-Z}{2},\qquad
+y_2=\frac{Z-X-Y}{2},\qquad
 y_3=\frac{X-Y-Z}{2}.
 \]
 
@@ -61,7 +61,7 @@ candidate polynomial is fitted.
 Set
 
 \[
-U=X^2,qquad V=Y^2,qquad W=Z^2.
+U=X^2,\qquad V=Y^2,\qquad W=Z^2.
 \]
 
 Exact Symbolica reduction gives
@@ -90,8 +90,8 @@ It is not equal to (Delta_{\rm sing}^{\rm hom}).  Moreover its restrictions
 to the three signed-energy walls are respectively
 
 \[
--16(3XY+X^2+Y^2)^2,qquad
--16Y^2(X-Y)^2,qquad
+-16(3XY+X^2+Y^2)^2,\qquad
+-16Y^2(X-Y)^2,\qquad
 -16X^2(X-Y)^2,
 \]
 

@@ -9,7 +9,7 @@ source-derived transport is instead the integer exponent shift
 
 \[
 s_c\mapsto s_c+1,
-qquad
+\qquad
 A_c\mapsto-A_c.
 \]
 
@@ -21,7 +21,7 @@ Exact reduction gives
 
 \[
 T_{A_2}\lambda=-\lambda,
-qquad
+\qquad
 T_{A_3}\lambda=-\lambda.
 \]
 

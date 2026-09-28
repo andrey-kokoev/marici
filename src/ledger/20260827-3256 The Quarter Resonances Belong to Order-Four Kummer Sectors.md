@@ -43,7 +43,7 @@ fibers belong to the two conjugate order-four Kummer sectors.
 Multiplication or division by an integral power of (K) changes
 
 \[
-\gamma\longmapsto\gamma+n,qquad n\in\mathbb Z,
+\gamma\longmapsto\gamma+n,\qquad n\in\mathbb Z,
 \]
 
 and preserves \(\chi_\gamma\). Such meromorphic gauge transformations cannot connect the

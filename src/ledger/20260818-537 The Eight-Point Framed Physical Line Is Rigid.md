@@ -25,7 +25,7 @@ unit and is therefore zero; the overlap has no residual gauge automorphism.
 Consequently the Čech diagram of relative endomorphism complexes has ranks
 
 \[
-\boxed{C^0_{m rel}=0,qquad C^1_{m rel}=0}.
+\boxed{C^0_{m rel}=0,\qquad C^1_{m rel}=0}.
 \]
 
 Its degree-zero homology and its higher automorphism groups vanish.  Entry

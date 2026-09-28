@@ -66,8 +66,8 @@ boundary-value prescription, and oriented chain (Gamma).
 The denominators are
 
 [
-q_{mathcal G}=E,qquad
-q_{mathfrak g_j}=y_{j-1,j}+X_j+y_{j,j+1},qquad
+q_{mathcal G}=E,\qquad
+q_{mathfrak g_j}=y_{j-1,j}+X_j+y_{j,j+1},\qquad
 q_{mathcal G_{j,j+1}}=E+y_{j,j+1}.
 ]
 
@@ -96,7 +96,7 @@ mathcal Q_{ij}
 Then
 
 [
-ho(mathcal Q_{12})=mathcal Q_{23},qquad
+ho(mathcal Q_{12})=mathcal Q_{23},\qquad
 ho^2(mathcal Q_{12})=mathcal Q_{31}.
 ]
 
@@ -141,7 +141,7 @@ T_{mathcal Q_{12}}^{(31)}
 
 [
 N_{mathcal Q_{12}}^{(ij)}=0,
-qquad
+\qquad
 operatorname{Var}_{mathcal Q_{12}}
 (Gamma_{ij,+}^{m res})=0.
 ]
@@ -197,8 +197,8 @@ Therefore, on the generic nonsoft locus,
 
 [
 \boxed{
-T_{mathcal Q_{12}}^{m phys}=1,qquad
-N_{mathcal Q_{12}}^{m phys}=0,qquad
+T_{mathcal Q_{12}}^{m phys}=1,\qquad
+N_{mathcal Q_{12}}^{m phys}=0,\qquad
 operatorname{Var}_{mathcal Q_{12}}(Gamma_{m phys})=0.
 }
 ]

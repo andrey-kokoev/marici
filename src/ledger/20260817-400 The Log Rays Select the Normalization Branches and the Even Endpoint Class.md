@@ -35,7 +35,7 @@ column to augment to one:
 \]
 These equations have the unique integral solution
 \[
- a=0,qquad b=1,qquad
+ a=0,\qquad b=1,\qquad
  M=
  \begin{pmatrix}0&1\\1&0\end{pmatrix}.
 \]

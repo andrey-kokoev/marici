@@ -6,7 +6,7 @@ Entry 1588 identified the left Dyson leg, middle self-energy kernel, and
 right Dyson leg.  Restore independent CTP matrices
 
 \[
-G_L,qquad G_M,qquad G_R
+G_L,\qquad G_M,\qquad G_R
 \]
 
 subject only to their separate largest-time identities.

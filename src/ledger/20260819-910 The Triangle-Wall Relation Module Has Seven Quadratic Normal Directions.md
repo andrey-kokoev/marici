@@ -19,13 +19,13 @@ elimination then computed the length-two and length-three block ranks.
 At ambient relation degree 10,
 
 \[
-r_0=6305,qquad r_{\rm gen}=6317,qquad(n_1,n_2)=(5,7),
+r_0=6305,\qquad r_{\rm gen}=6317,\qquad(n_1,n_2)=(5,7),
 \]
 
 while at degree 11,
 
 \[
-r_0=7461,qquad r_{\rm gen}=7475,qquad(n_1,n_2)=(7,7).
+r_0=7461,\qquad r_{\rm gen}=7475,\qquad(n_1,n_2)=(7,7).
 \]
 
 In both cases

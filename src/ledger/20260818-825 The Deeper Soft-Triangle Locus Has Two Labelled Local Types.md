@@ -11,8 +11,8 @@ The degeneration left open by Entries 813 and 824 lies on
 
 \[
 a_0=b_0=0,\qquad
-P_3=0,qquad
-E^2=P_1^2\ \text{or}\ E^2=P_2^2,qquad
+P_3=0,\qquad
+E^2=P_1^2\ \text{or}\ E^2=P_2^2,\qquad
 P_1^2=P_2^2.
 \]
 
@@ -24,14 +24,14 @@ different local types.
 For
 
 \[
-(g_1,g_2),qquad(g_1,g_3),qquad(g_2,g_3),
+(g_1,g_2),\qquad(g_1,g_3),\qquad(g_2,g_3),
 \]
 
 neither marked coordinate forces (E=0).  After reduction, the deeper
 branches are
 
 \[
-P_3=0,qquad P_2=sP_1,qquad E=rP_1,qquad r,s\in\{+1,-1\}.
+P_3=0,\qquad P_2=sP_1,\qquad E=rP_1,\qquad r,s\in\{+1,-1\}.
 \]
 
 There are four branches per occurrence.  The original choice of whether the

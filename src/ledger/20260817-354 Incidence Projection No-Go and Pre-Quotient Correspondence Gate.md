@@ -21,7 +21,7 @@ dn_D=(X_D/u_D)p_D.
 For an incidence-only degree-zero pairing, put
 
 [
-k=langle q_J,p_Dangle,qquad
+k=langle q_J,p_Dangle,\qquad
 a=langle r_J,n_Dangle.
 ]
 
@@ -36,7 +36,7 @@ impossible. More generally, (x_3mid k), and the least monomial solution
 is
 
 [
-k=x_3,qquad a=mp X_D/u_D.
+k=x_3,\qquad a=mp X_D/u_D.
 ]
 
 Thus the incidence relation supplies only an orientation shadow. It cannot

@@ -44,7 +44,7 @@ At the (t=3) nodes the integral occurrence relation is ((2,-2)); at the
 quotient covectors, normalized on the retained (e_{31}) occurrence, are
 
 \[
-(1,1),qquad(0,1).
+(1,1),\qquad(0,1).
 \]
 
 Hence each node contributes one rational supported anti-invariant line after

@@ -51,9 +51,9 @@ Its orbit under \((a,b)\mapsto(\epsilon_a a,\epsilon_b b)\) is
 
 \[
 \begin{aligned}
-a+b+z,qquad
-a-b+z,qquad
--a+b+z,qquad
+a+b+z,\qquad
+a-b+z,\qquad
+-a+b+z,\qquad
 -a-b+z.
 \end{aligned}
 \]

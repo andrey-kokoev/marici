@@ -24,12 +24,12 @@ branches (X_2=pm E^2).
 
 At the soft axis:
 [
-E=t,qquad X_2=3t^2.
+E=t,\qquad X_2=3t^2.
 ]
 
 At the total-energy axis:
 [
-X_2=t,qquad E=3t^2.
+X_2=t,\qquad E=3t^2.
 ]
 
 The intrinsic determinantal difference was computed in
@@ -56,7 +56,7 @@ stable transverse excess is
 
 At (X_2=0), the valuations are
 [
-89,qquad92,qquad95
+89,\qquad92,\qquad95
 ]
 at exact-form degrees (8,10,12). The value increases by 3 whenever the
 cutoff increases by 2. Thus no cutoff-independent soft-axis excess is

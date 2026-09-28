@@ -20,8 +20,8 @@ Retain Entry 1070's ordered source residues \(M_1,\ldots,M_8\). The spurious
 divisors are
 
 \[
-w_6=\widetilde x_1-P,qquad
-w_7=\widetilde x_2-P,qquad
+w_6=\widetilde x_1-P,\qquad
+w_7=\widetilde x_2-P,\qquad
 w_8=\widetilde x_1+\widetilde x_2-2P.
 \]
 

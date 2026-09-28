@@ -34,7 +34,7 @@ certifies the signs of the repeated critical squares.
 For the first two quartics,
 
 \[
-D_1,qquad D_2,
+D_1,\qquad D_2,
 \]
 
 both real norm roots belong exclusively to the conjugate
@@ -43,7 +43,7 @@ both real norm roots belong exclusively to the conjugate
 For each of
 
 \[
-D_3,qquad D_4,
+D_3,\qquad D_4,
 \]
 
 exactly two positive real roots belong to the source branch. At all four

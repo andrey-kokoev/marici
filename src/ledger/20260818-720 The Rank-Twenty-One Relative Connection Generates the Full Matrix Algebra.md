@@ -24,8 +24,8 @@ Use the retained-pivot relative presentation with
 at
 
 \[
-(X_1,X_2,X_3)=(2,3,4),qquad
-\mathbf F_{32003},qquad \gamma=5.
+(X_1,X_2,X_3)=(2,3,4),\qquad
+\mathbf F_{32003},\qquad \gamma=5.
 \]
 
 For each of the twenty-one free quotient coordinates, differentiate its

@@ -10,7 +10,7 @@ date: 2026-08-27
 At the infinity soft-signed corner, Entry 3648 gives the \(A_3\) Milnor basis
 
 \[
-1,qquad s,qquad s^2.
+1,\qquad s,\qquad s^2.
 \]
 
 On the source-selected central branch

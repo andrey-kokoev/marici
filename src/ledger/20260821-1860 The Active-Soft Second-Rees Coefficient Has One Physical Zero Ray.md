@@ -49,7 +49,7 @@ All denominator factors are restrictions of already frozen residual OFPT
 walls.  Inside the positive (x)-chamber, the fixed-(x) poles are
 
 \[
-x=1,qquad x=2,qquad x=\frac52,
+x=1,\qquad x=2,\qquad x=\frac52,
 \]
 
 with the additional shape-dependent walls (a=1) and (a=x-2) when

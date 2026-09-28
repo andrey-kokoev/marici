@@ -19,14 +19,14 @@ Of the 36 wall pairs, 33 intersect transversely. Each admits constant dual
 normal fields (V_i,V_j) satisfying
 
 \[
-V_i(s_i)=1,quad V_i(s_j)=0,qquad
+V_i(s_i)=1,quad V_i(s_j)=0,\qquad
 V_j(s_i)=0,quad V_j(s_j)=1.
 \]
 
 For the Kummer twist (K_0^{-1/2}), the induced scalar connection terms are
 
 \[
-A_i=-\frac{V_iK_0}{2K_0},qquad
+A_i=-\frac{V_iK_0}{2K_0},\qquad
 A_j=-\frac{V_jK_0}{2K_0}.
 \]
 
@@ -51,8 +51,8 @@ The 84 labelled wall triples decompose as follows:
 The three branch-supported triples are
 
 \[
-(g_1,g_2,s_{12}),qquad
-(g_1,g_3,s_{31}),qquad
+(g_1,g_2,s_{12}),\qquad
+(g_1,g_3,s_{31}),\qquad
 (g_2,g_3,s_{23}),
 \]
 

@@ -68,7 +68,7 @@ e_{13|25}-e_{134|25}^{(134256)}
 in the kernel, while the unhit chamber directions are
 
 \[
-123456,qquad132456.
+123456,\qquad132456.
 \]
 
 All \(2^6=64\) independent orientation choices preserve rank four and the

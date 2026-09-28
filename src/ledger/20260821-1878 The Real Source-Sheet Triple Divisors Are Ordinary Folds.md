@@ -12,7 +12,7 @@ For every region-only representative, the wall equations leave two squared
 variables
 
 \[
-x,qquad v.
+x,\qquad v.
 \]
 
 The fifth cover equation is linear in (x):
@@ -30,7 +30,7 @@ P_2(z)v^2+P_1(z)v+P_0(z)=0.
 An ordinary fold requires
 
 \[
-G_x\ne0,qquad P_2\ne0,qquad d\operatorname{Disc}_v(P)\ne0
+G_x\ne0,\qquad P_2\ne0,\qquad d\operatorname{Disc}_v(P)\ne0
 \]
 
 at the critical divisor.

@@ -38,9 +38,9 @@ source columns and (48) legal target edge-state terms. For every term the
 differential has the entry-143 signs
 
 [
-\varnothing,qquad
-{a}mapsto-\varnothing,qquad
-{b}mapsto-\varnothing,qquad
+\varnothing,\qquad
+{a}mapsto-\varnothing,\qquad
+{b}mapsto-\varnothing,\qquad
 {a,b}mapsto-{b}+{a},
 ]
 

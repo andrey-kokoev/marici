@@ -22,7 +22,7 @@ The homogeneous three-site source uses
 Thus the physical point is
 
 \[
-\epsilon=0,qquad \gamma=-\frac12,
+\epsilon=0,\qquad \gamma=-\frac12,
 \]
 
 whereas the two quarter fibers occur at

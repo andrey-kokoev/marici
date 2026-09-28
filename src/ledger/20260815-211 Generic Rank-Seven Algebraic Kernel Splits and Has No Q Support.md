@@ -76,7 +76,7 @@ D_1^iP_6^j\mathcal Q^k,
 \]
 finds a polynomial solution:
 \[
-\boxed{h\in\mathbf F_p[u,v],qquad\deg h=7.}
+\boxed{h\in\mathbf F_p[u,v],\qquad\deg h=7.}
 \]
 Its denominator powers are
 \[
@@ -86,7 +86,7 @@ Its denominator powers are
 The identity was fitted on 96 generic points and then passed 1,024 disjoint
 points in both directions:
 \[
-2048\text{ validations},qquad0\text{ mismatches}.
+2048\text{ validations},\qquad0\text{ mismatches}.
 \]
 
 Thus the generic algebraic plane splits, and its extension class has no
@@ -103,7 +103,7 @@ using their source numerator parities rather than a fitted projection.
 
 In the bases
 \[
-(ab),qquad(aK_1,a),qquad(bK_1,b),
+(ab),\qquad(aK_1,a),\qquad(bK_1,b),
 \]
 the first block has only the pole \(u=0\). The second is constant
 triangular. The third has only

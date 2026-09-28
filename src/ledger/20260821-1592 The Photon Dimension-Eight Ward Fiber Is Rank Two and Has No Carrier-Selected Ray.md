@@ -10,8 +10,8 @@ The parity-even dimension-eight photon EFT has two quartic field-strength
 generators.  Exact multilinearization and oriented-helicity contraction give
 
 \[
-\Phi_1=g_2s^2,qquad
-\Phi_2=f_2(s^2+t^2+u^2),qquad
+\Phi_1=g_2s^2,\qquad
+\Phi_2=f_2(s^2+t^2+u^2),\qquad
 \Phi_5=0.
 \]
 
@@ -19,7 +19,7 @@ All four Ward substitutions, parity comparisons, and identical-output
 comparisons vanish exactly.  In the normalized \(s=4\) center-of-mass chart,
 
 \[
-\Phi_1=16g_2,qquad
+\Phi_1=16g_2,\qquad
 \Phi_2=8f_2(3+\cos^2\theta).
 \]
 

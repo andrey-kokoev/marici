@@ -17,20 +17,20 @@ lengths.
 The physical loop variables are lengths
 
 \[
-a=y_{23},qquad b=y_{31},qquad c=y_{12}.
+a=y_{23},\qquad b=y_{31},\qquad c=y_{12}.
 \]
 
 Before the additional Cayley--Menger minor inequalities are imposed, the
 literal source chamber already requires
 
 \[
-a\ge0,qquad b\ge0,qquad c\ge0.
+a\ge0,\qquad b\ge0,\qquad c\ge0.
 \]
 
 The three cyclic branch points are
 
 \[
-(-1,-1,0),qquad(-1,0,-1),qquad(0,-1,-1).
+(-1,-1,0),\qquad(-1,0,-1),\qquad(0,-1,-1).
 \]
 
 Each has exactly two negative length coordinates. Hence every sufficiently

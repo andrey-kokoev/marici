@@ -42,7 +42,7 @@ Thus the frozen finite candidate divisor is
 Delta_{m cand}(z)
 =
 zprod_{alpha=1}^{14}f_alpha(z),
-qquad
+\qquad
 degDelta_{m cand}=29.
 }
 ]
@@ -55,7 +55,7 @@ The exact source-compatible census contains
 
 [
 245	ext{ pairs},
-qquad
+\qquad
 1210	ext{ triples}.
 ]
 
@@ -66,7 +66,7 @@ empty pair and 70 restricted to existing total-energy support. Hence
 [
 \boxed{
 	ext{unresolved pairs}=0,
-qquad
+\qquad
 	ext{unresolved triples}=0.
 }
 ]

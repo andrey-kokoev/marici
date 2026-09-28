@@ -43,8 +43,8 @@ As in Entry 909, their orientation signs cancel at every move.
 Write the third Laurent normals as
 
 \[
-n_{12}=A_2-1,qquad
-n_{13}=A_3-1,qquad
+n_{12}=A_2-1,\qquad
+n_{13}=A_3-1,\qquad
 n_{14}=A_4-1.
 \]
 

@@ -124,7 +124,7 @@ Move to the first intersections where the present proof's nonzero weights
 can fail:
 
 \[
-x=0,qquad y=0,qquad x+y=0,
+x=0,\qquad y=0,\qquad x+y=0,
 \]
 
 and to the signed-energy conductor collisions of Entry 675.  Construct the

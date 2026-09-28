@@ -21,7 +21,7 @@ rescaling to be common, so it is projectively trivial.
 
 The abstract packet has vertices (o,m,i), edges (e_L,e_R), and
 [
-d e_L=m-o,qquad d e_R=i-m.
+d e_L=m-o,\qquad d e_R=i-m.
 ]
 Tensoring with the complete two-normal Boolean packet and both conductor Tor
 grades gives 240 abstract labelled rows. The coefficient matrix is the

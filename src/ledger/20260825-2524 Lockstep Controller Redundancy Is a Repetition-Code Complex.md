@@ -20,7 +20,7 @@ with (E_n(b)=b\mathbf1_n) and
 ((H_nx)_j=x_j+x_{j+1}), is exact:
 
 \[
-H_nE_n=0,qquad
+H_nE_n=0,\qquad
 \ker H_n=\operatorname{im}E_n=\operatorname{span}\{\mathbf1_n\}.
 \]
 
@@ -35,7 +35,7 @@ The common-mode vector (mathbf1_n) has zero syndrome because it is the
 logical (X) codeword, not a detectable defect. Under
 
 \[
-F:\mathbf F_2\to\mathbf F_2^4,qquad F(b)=b\mathbf1_4,
+F:\mathbf F_2\to\mathbf F_2^4,\qquad F(b)=b\mathbf1_4,
 \]
 
 that logical flip becomes simultaneous inversion of all four actuator

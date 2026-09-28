@@ -34,7 +34,7 @@ left(-1,\frac23ight).
 At each center use both point-blowup charts
 [
 u=u_0+t,quad v=v_0+tho,
-qquad
+\qquad
 v=v_0+t,quad u=u_0+tho.
 ]
 The frame, Kummer shear, seven projected columns, finite field, 20 exceptional

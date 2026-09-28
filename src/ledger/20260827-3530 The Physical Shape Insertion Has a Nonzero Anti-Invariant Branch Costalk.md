@@ -17,7 +17,7 @@ two sheet values are (-17/6) and (17/6).
 Use
 
 \[
-x=g_1,qquad y=g_2,qquad z=s_{12}
+x=g_1,\qquad y=g_2,\qquad z=s_{12}
 \]
 
 with the orientation inherited from ((a,b,c)). The coordinate Jacobian is

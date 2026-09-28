@@ -61,7 +61,7 @@ At grade two, the four oriented endpoint costalks map to
 The source factor is strictly positive on
 
 \[
-p>0,qquad1<t<3,qquad-1<\xi<1,
+p>0,\qquad1<t<3,\qquad-1<\xi<1,
 \]
 
 and none of the four node restrictions annihilates the line.

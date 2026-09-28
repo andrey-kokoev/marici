@@ -10,7 +10,7 @@ Entry 454 produced a geometric rank-two lattice with basis (1,a).  The
 Euler-resonance quotient of Benincasa Entry 449 has divided representatives
 
 \[
-1,qquad a^7(b+1).
+1,\qquad a^7(b+1).
 \]
 
 Their equal rank does not by itself identify the lattices.  On the (u)-chart

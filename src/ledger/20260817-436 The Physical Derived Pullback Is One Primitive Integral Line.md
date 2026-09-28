@@ -25,7 +25,7 @@ over \(\mathbb Z\), verifies \(d^2=0\), and checks the ranks over
 \(\mathbb F_2,\mathbb F_3,\mathbb F_5\), and \(\mathbb F_{101}\). Unit minors
 in every differential prove saturation of the image lattices. Therefore
 \[
-\boxed{H_1\cong\mathbb Z,qquad H_i=0\ (i\ne1),}
+\boxed{H_1\cong\mathbb Z,\qquad H_i=0\ (i\ne1),}
 \]
 with no integral torsion.
 

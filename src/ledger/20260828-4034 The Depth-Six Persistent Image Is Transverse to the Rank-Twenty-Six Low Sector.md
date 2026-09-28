@@ -42,8 +42,8 @@ No equality was inferred from dimensions.
 Both charts give
 
 [
-dim Q_3=53,qquad
-dimoperatorname{im}(Q_3\to Q_6)=27,qquad
+dim Q_3=53,\qquad
+dimoperatorname{im}(Q_3\to Q_6)=27,\qquad
 dimker(Q_3\to Q_6)=26.
 ]
 
@@ -52,14 +52,14 @@ All depth-three relations descend.
 The comparison with the low sector is also identical in both charts:
 
 [
-dim I=27,qquad
+dim I=27,\qquad
 dim L=26,
 ]
 
 but
 
 [
-dim(I\cap L)=19,qquad
+dim(I\cap L)=19,\qquad
 dim(I+L)=34.
 ]
 

@@ -43,9 +43,9 @@ The required restricted object is not that unmarked rank-nine module: all four l
 Set \(c=-E\). For the \(q_{g_{23}}\) summand the four lines are
 
 \[
-b=y+z,qquad
-a=x+z,qquad
-a+b=-z,qquad
+b=y+z,\qquad
+a=x+z,\qquad
+a+b=-z,\qquad
 b=x.
 \]
 

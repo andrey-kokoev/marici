@@ -36,7 +36,7 @@ the special-fiber line is retained.
 
 At exact-form degree 8, for every \(u=3,\ldots,60\) on both
 \[
-D_-=E^2-X_1X_2=0,qquad D_+=E^2+X_1X_2=0,
+D_-=E^2-X_1X_2=0,\qquad D_+=E^2+X_1X_2=0,
 \]
 all 116 tested fibers satisfy simultaneously:
 

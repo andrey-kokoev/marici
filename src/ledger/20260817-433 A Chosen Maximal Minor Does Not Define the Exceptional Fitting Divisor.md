@@ -21,7 +21,7 @@ would have zeros only at the frozen strict-transform directions
 
 Use
 [
-E=t,qquad X_2=ct.
+E=t,\qquad X_2=ct.
 ]
 The intrinsic Smith difference is
 [

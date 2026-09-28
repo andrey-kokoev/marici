@@ -43,13 +43,13 @@ the exact derivatives satisfy
 Consequently the reduced Jacobian locus is
 
 \[
-\boxed{X=0,qquad R=S.}
+\boxed{X=0,\qquad R=S.}
 \]
 
 With $R_i=F_i/\det H$, the physical reduced singular support away from the Gram divisor is
 
 \[
-\boxed{X_A=0,qquad F_i=F_j.}
+\boxed{X_A=0,\qquad F_i=F_j.}
 \]
 
 ## Typing correction

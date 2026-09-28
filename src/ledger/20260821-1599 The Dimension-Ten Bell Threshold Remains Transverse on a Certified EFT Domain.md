@@ -50,8 +50,8 @@ L(p)+\frac{2k^2p(1-p)}{\sqrt{1-2k^2p^2}}
 Hence, provided
 
 \[
-A>0,qquad
-1-2k^2p^2>0,qquad
+A>0,\qquad
+1-2k^2p^2>0,\qquad
 \frac{f_3}{g_2}s<A(\sqrt2-1),
 \]
 

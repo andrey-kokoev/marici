@@ -47,7 +47,7 @@ Let \(e\) connect labelled endpoints \(s\) and \(t\). Resolving the Cut creates
 two external occurrences
 
 \[
-e_s,qquad e_t.
+e_s,\qquad e_t.
 \]
 
 At endpoint \(s\), the operation replaces

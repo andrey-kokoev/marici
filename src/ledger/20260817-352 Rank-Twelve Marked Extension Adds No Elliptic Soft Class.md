@@ -110,7 +110,7 @@ The polynomial identity, generic wall-column images, and both soft principal lim
 
 [
 p_1=2305843009213693951,
-qquad
+\qquad
 p_2=2305843009213693921,
 ]
 

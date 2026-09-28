@@ -13,7 +13,7 @@ normalization–conductor target
 \]
 For each of the three rotated roads there is a unique local map
 \[
-h_i\mapsto c,qquad r_{i,-}\mapsto e_-,qquad r_{i,+}\mapsto e_+.
+h_i\mapsto c,\qquad r_{i,-}\mapsto e_-,\qquad r_{i,+}\mapsto e_+.
 \]
 These maps now descend globally.
 

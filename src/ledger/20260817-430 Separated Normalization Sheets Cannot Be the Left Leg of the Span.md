@@ -33,7 +33,7 @@ c<e_-,\qquad c<e_+.
 \]
 There is then exactly one order-preserving extension of the endpoint data:
 \[
-h\mapsto c,qquad r_D\mapsto e_-,qquad r_1\mapsto e_+.
+h\mapsto c,\qquad r_D\mapsto e_-,\qquad r_1\mapsto e_+.
 \]
 Reflection fixes \(c\) and exchanges both pairs of rays and sheets, so this
 map is equivariant. No extra choice or scalar is introduced.

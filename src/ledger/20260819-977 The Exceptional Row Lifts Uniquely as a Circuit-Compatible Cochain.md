@@ -30,9 +30,9 @@ such that
 The four singleton columns force
 
 \[
-\lambda_1=u_0,qquad
-\lambda_4=u_2,qquad
-\lambda_3=u_3,qquad
+\lambda_1=u_0,\qquad
+\lambda_4=u_2,\qquad
+\lambda_3=u_3,\qquad
 \lambda_5=u_5.
 \]
 
@@ -40,7 +40,7 @@ The two oriented circuit boundaries then force
 
 \[
 \lambda_3-\lambda_2=u_1,
-qquad
+\qquad
 \lambda_1-\lambda_0=u_4.
 \]
 

@@ -12,9 +12,9 @@ The same source block also contains off-diagonal subchannel poles
 
 [
 y=s_{35},
-qquad
+\qquad
 z=s_{25},
-qquad
+\qquad
 q=x+y+z.
 ]
 
@@ -46,7 +46,7 @@ Keep (X) tangential and use multiplicative Laurent coordinates
 
 [
 Q=XYZ,
-qquad
+\qquad
 Z=\frac{Q}{XY}.
 ]
 
@@ -54,9 +54,9 @@ The six orders of
 
 [
 A_4	o1,
-qquad
+\qquad
 Y	o1,
-qquad
+\qquad
 Q	o1
 ]
 

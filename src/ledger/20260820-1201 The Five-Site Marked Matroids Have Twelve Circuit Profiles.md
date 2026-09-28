@@ -48,8 +48,8 @@ The flat ranks, geometric sizes, and occurrence depths refine the three
 mark-count classes into twelve exact profiles:
 
 \[
-5\text{ profiles at seven marks},qquad
-6\text{ profiles at eight marks},qquad
+5\text{ profiles at seven marks},\qquad
+6\text{ profiles at eight marks},\qquad
 1\text{ profile at nine marks}.
 \]
 

@@ -26,7 +26,7 @@ presentation.
 The depth-three grade has its intrinsic one-plus-five representatives
 
 \[
-722;qquad
+722;\qquad
 15362,15363,15364,15365,15370.
 \]
 

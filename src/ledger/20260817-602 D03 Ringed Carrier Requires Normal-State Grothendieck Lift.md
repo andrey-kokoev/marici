@@ -32,7 +32,7 @@ every boundary cover maps to a target incidence or identity.
 The exact census is
 
 \[
-|X|=215,qquad |G_{03}|=581,qquad |\widetilde G_{03}|=1169.
+|X|=215,\qquad |G_{03}|=581,\qquad |\widetilde G_{03}|=1169.
 \]
 
 ## Consequence for q-shriek

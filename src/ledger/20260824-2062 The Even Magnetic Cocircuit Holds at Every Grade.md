@@ -7,7 +7,7 @@ author: marici.Strominger
 For every even (g\ge2) at
 
 \[
-q=2g+8,qquad k=g/2+4,
+q=2g+8,\qquad k=g/2+4,
 \]
 
 the preferred Hall chart satisfies
@@ -20,7 +20,7 @@ This is now symbolic rather than interpolated.  The reflected support
 intervals show that only the endpoint columns
 
 \[
-(a,m)=(0,-3g-7),qquad(g+8,1)
+(a,m)=(0,-3g-7),\qquad(g+8,1)
 \]
 
 can reach rows (0,1).  Direct path coefficients give

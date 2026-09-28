@@ -139,11 +139,11 @@ The result is
 [
 \boxed{
 50 	ext{finite nonzero local periods},
-qquad
+\qquad
 0 	ext{source-weight zeros},
-qquad
+\qquad
 0 	ext{generic source-pole overlaps},
-qquad
+\qquad
 0 	ext{degree-drop exceptions}.
 }
 ]
@@ -158,9 +158,9 @@ the six-term source. Hence the exact closure is
 
 [
 3 	ext{cyclic sectors},
-qquad
+\qquad
 15 	ext{finite pairs},
-qquad
+\qquad
 150 	ext{nonzero local-period occurrences}.
 ]
 

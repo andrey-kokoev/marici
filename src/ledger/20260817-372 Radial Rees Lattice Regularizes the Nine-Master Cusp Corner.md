@@ -42,7 +42,7 @@ u=t,\qquad v=tr,
 the pulled-back coefficients are
 
 \[
-A_t=A_u+rA_v,qquad A_r=tA_v.
+A_t=A_u+rA_v,\qquad A_r=tA_v.
 \]
 
 The \(dt\)-coefficient has minimum \(t\)-valuation \(-1\), but the raw

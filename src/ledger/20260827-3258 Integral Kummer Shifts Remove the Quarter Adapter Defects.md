@@ -14,7 +14,7 @@ depend on the selected meromorphic lattice at the exact exponent?
 Integral shifts
 
 \[
-\gamma\longmapsto\gamma+n,qquad n\in\mathbb Z,
+\gamma\longmapsto\gamma+n,\qquad n\in\mathbb Z,
 \]
 
 preserve the local inertia

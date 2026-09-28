@@ -66,7 +66,7 @@ canonical before the filtration maps and gauge quotient are fixed.
 Restrict to a transverse curve with coordinate (t) through only one of
 
 \[
-E=0,qquad\ell_-=0,qquad\ell_+=0.
+E=0,\qquad\ell_-=0,\qquad\ell_+=0.
 \]
 
 Every connection one-form on that curve is proportional to (dt).  The

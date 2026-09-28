@@ -14,7 +14,7 @@ reappears when a soft or endpoint factor vanishes.  At the associated Rees
 grade, it does not: every labelled port remains rank three on each of
 
 \[
-x=0,qquad y=0,qquad x+y=0.
+x=0,\qquad y=0,\qquad x+y=0.
 \]
 
 ## Forced exceptional weights

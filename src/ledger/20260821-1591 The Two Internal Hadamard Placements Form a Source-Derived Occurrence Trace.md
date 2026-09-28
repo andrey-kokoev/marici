@@ -5,7 +5,7 @@
 May Entry 1590's two internal statistical occurrences
 
 \[
-q,qquad k=|p-q|
+q,\qquad k=|p-q|
 \]
 
 be combined before the hard-grade audit?

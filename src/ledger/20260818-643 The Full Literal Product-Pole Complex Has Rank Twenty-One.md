@@ -51,7 +51,7 @@ full deletion-closed image has dimension
 The calculation was repeated independently at generic Kummer weights
 
 \[
-\gamma=5,qquad\gamma=7,
+\gamma=5,\qquad\gamma=7,
 \]
 
 and returned 21 in both cases.

@@ -52,7 +52,7 @@ Scanning the entire nonnegative bidegree grid, both incoming maps fail
 simultaneously only at
 
 \[
-(I,J)=(0,0),qquad(7,1).
+(I,J)=(0,0),\qquad(7,1).
 \]
 
 The first has (B(0,0)=(0,0)).  The second has

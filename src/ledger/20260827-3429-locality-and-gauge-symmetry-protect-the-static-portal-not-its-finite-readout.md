@@ -29,7 +29,7 @@ At (m=\ell=p=1), (r_0=0) and (r_0=1), with (r_L=0), give respectively
 
 \[
 \frac{1}{\sqrt2\sinh\sqrt2}
-\qquad,qquad
+\qquad,\qquad
 \frac{1}{\sqrt2\sinh\sqrt2+\cosh\sqrt2}.
 \]
 

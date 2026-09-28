@@ -44,13 +44,13 @@ Heron factors
 
 [
 f_1=P_1-P_2-P_3,
-qquad
+\qquad
 f_2=P_1-P_2+P_3,
 ]
 
 [
 f_3=P_1+P_2-P_3,
-qquad
+\qquad
 f_4=P_1+P_2+P_3.
 ]
 
@@ -140,7 +140,7 @@ Picard--Lefschetz transvection. In particular,
 [
 \boxed{
 T_u=1,
-qquad
+\qquad
 N=0
 }
 ]
@@ -155,7 +155,7 @@ At a true site-soft endpoint, freeze
 
 [
 X_i=P_i=0,
-qquad
+\qquad
 ho=|ell|longrightarrow0.
 ]
 

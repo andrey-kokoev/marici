@@ -20,7 +20,7 @@ The order-144 protected torus representation has exact algebra and commutant
 Its multiplicity-two blind doublet is spanned by
 
 \[
- \tfrac12A-\tfrac12B+D,qquad A+B+C+F.
+ \tfrac12A-\tfrac12B+D,\qquad A+B+C+F.
 \]
 
 Every protected word acts identically on this coherent doublet.

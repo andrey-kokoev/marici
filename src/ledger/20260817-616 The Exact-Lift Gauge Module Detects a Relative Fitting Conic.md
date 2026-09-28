@@ -18,7 +18,7 @@ No new carrier cell, fitted support summand, or post hoc splitting is allowed.
 
 On the (X_1=1) patch use
 [
-E_T=u,qquad X_2=\frac{u+v}{2}-1,qquad
+E_T=u,\qquad X_2=\frac{u+v}{2}-1,\qquad
 X_3=\frac{u-v}{2}.
 ]
 The comparison product includes the existing site-energy and signed-energy
@@ -51,14 +51,14 @@ from rank-change points.
 
 A separate presentation-rank scan covered
 [
-3le ule15,qquad3le vle200.
+3le ule15,\qquad3le vle200.
 ]
 It found 35 exceptional evaluations.
 
 Twenty-seven lie on frozen support. They include the families
 [
 v=uquad(X_3=0),
-qquad
+\qquad
 v=u+2quad(E_T-X_2=0),
 ]
 plus one Cayley--Menger point in the bounded window.

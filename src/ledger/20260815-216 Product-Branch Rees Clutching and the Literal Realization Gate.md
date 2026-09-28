@@ -59,7 +59,7 @@ Bockstein, and (D_8)/Jordan tests remain open.
 The next exact step is to construct the oriented log-excess cap. At the
 characteristic-lattice level this means comparing the product map
 [
-mathbf Zlongrightarrowmathbf Z^2,qquad 1longmapsto(1,1)
+mathbf Zlongrightarrowmathbf Z^2,\qquad 1longmapsto(1,1)
 ]
 with its primitive anti-diagonal quotient, and proving that its exterior
 contraction realizes the four legal Boolean/Tor states and the two adjacent

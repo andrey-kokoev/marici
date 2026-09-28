@@ -9,8 +9,8 @@ If \(\mathcal Q=0\) is object-level support or a pole divisor of the literal pro
 Work over \(\mathbb F_{32003}\) with
 
 \[
-\gamma=5,qquad
-\text{ambient degree }9,qquad
+\gamma=5,\qquad
+\text{ambient degree }9,\qquad
 \text{pole depths }(2,2).
 \]
 
@@ -23,7 +23,7 @@ Search the source quartic
 for points satisfying
 
 \[
-\mathcal Q=0,qquad ABE\neq0.
+\mathcal Q=0,\qquad ABE\neq0.
 \]
 
 Three independently found fibers are
@@ -51,7 +51,7 @@ At all three fibers, the complete deletion-rank vector remains
 The face span and proper quotient remain
 
 \[
-\dim B=20,qquad
+\dim B=20,\qquad
 \dim(H_{111}/B)=1.
 \]
 

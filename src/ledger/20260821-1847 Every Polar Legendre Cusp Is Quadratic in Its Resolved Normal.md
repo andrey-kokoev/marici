@@ -43,7 +43,7 @@ m=\frac{h_2\delta_1}{c}
 gives, at generic points of the three cusp divisors,
 
 \[
-\delta_1=0:qquad
+\delta_1=0:\qquad
 j^{-1}
 =
 \frac{h_2^2}{256h_1^2\delta_2^2}\delta_1^2
@@ -51,7 +51,7 @@ j^{-1}
 \]
 
 \[
-\delta_2=0:qquad
+\delta_2=0:\qquad
 j^{-1}
 =
 \frac{h_1^2}{256h_2^2\delta_1^2}\delta_2^2
@@ -61,7 +61,7 @@ j^{-1}
 and
 
 \[
-c=0:qquad
+c=0:\qquad
 j^{-1}
 =
 \frac{c^2}{256h_2^2\delta_1^2}

@@ -25,8 +25,8 @@ separate, this forces
 This is not a new convention: on the literal endpoint road it gives
 
 \[
-\deg(e_2)=-\epsilon_4,qquad
-\deg(e_3)=-\epsilon_0-\epsilon_4,qquad
+\deg(e_2)=-\epsilon_4,\qquad
+\deg(e_3)=-\epsilon_0-\epsilon_4,\qquad
 \deg(e_4)=-\epsilon_1-\epsilon_4,
 \]
 

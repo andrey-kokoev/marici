@@ -28,7 +28,7 @@ A_3B_{34}/Z&\longleftrightarrow s_{134}+s_{25}.
 For the ratio factors, the frozen equations give
 
 \[
-s_{23}=0,qquad s_{235}=0
+s_{23}=0,\qquad s_{235}=0
 \quad\Longrightarrow\quad
 s_{25}=-s_{35},
 \]

@@ -115,7 +115,7 @@ Epistemic event:
 Transform the exact \(p\)-chart primitive under
 
 \[
-r=s^{-1},\qquad A_q=rA_p,qquad B_q=rB_p,
+r=s^{-1},\qquad A_q=rA_p,\qquad B_q=rB_p,
 \]
 
 with the full derivative vector field and degree-six frame.  Subtract the
