@@ -58,18 +58,32 @@ $\Omega_b = \frac{6}{121},\quad \Omega_{\mathrm{DM}} = \frac{6}{23},\quad \Omega
 
 ## Ladder descent
 
-Each bridge pair is governed by a ratio of two rungs from the $12 \to 4$ ladder (proposed mappings; see ledger §4197 for the scale-coupling arguments):
+| Rung | Value v | Free pts | C(v,2) | v+C(v,2) | Control layer | Control role |
+|---:|---:|---:|---:|---:|---:
+| 1 | **12** | 12 | 66 | 78 | **Presentation** | Full observer feedback, 12-pole system |
+| 2 | **11** | 11 | 55 | 66 | Presentation | First screening, 11-pole observer |
+| 3 | **10** | 10 | 45 | 55 | Presentation | Symmetric remainder $4+6$, record layer |
+| 4 | 9 | 9 | 36 | 45 | **Transport / API** | Interaction lattice $3^2$, below spectral bottom 11 |
+| 5 | 8 | 8 | 28 | 36 | Transport / API | $2^3$ — the 8 directional channels |
+| 6 | 7 | 7 | 21 | 28 | Transport / API | Prime boundary — the irreducible meter |
+| 7 | **6** | 6 | 15 | 21 | **Core state** | $C(4,2)$ — internal pairs of the carrier |
+| 8 | **5** | 5 | **10** | 15 | Core state | $N+1$ — the witness pointer. $C(5,2)=10 = 6+4$ unifies pair and witness readings of $C_{U_1}$ |
+| 9 | **4** | 4 | 6 | **10** | Core state | $N$ — minimal carrier (plant). Floor $= l_{SU_2}$. Cycle seed $N(N-1)=12$ |
 
-- **QM / GR**: rungs 1 and 9 ($12/4 = 3$).
-- **Planck / weak**: rungs 1 and 2 ($12/11$).
-- **DM / DE / baryons**: rungs 2, 3, 9 ($11, 10, 4$).
-- **Mach / GR**: rung 9 ($Z = 1/(1+1/90-1/5280)$, denominator $5280 = 12 \cdot 4 \cdot 11 \cdot 10$).
-- **couplings / masses**: rungs 1–4 ($12 \to 9$).
-- **flavor / gauge**: rung 5 ($C(5,2)=10 = 6$ internal $+ 4$ witness spokes).
-- **baryogenesis / PMNS**: rungs 3, 4 ($C_{U_1}=10$).
-- **Larmor / Newton / Einstein**: rungs 1, 4 (gap $4 = l_{SU_2}$).
-- **CC / holography**: rung 9 ($\Lambda = 2 l_{\mathrm{Pl}}^2 / R^2$ from $N=4$).
-- **control / Machian bootstrap**: denominator $5280 = 12 \cdot 4 \cdot 11 \cdot 10$.
+Control parameters: $\varepsilon = 1/90 - 1/5280$, $5280 = 12 \cdot 4 \cdot 11 \cdot 10$, $Z = 1/(1+\varepsilon)$. The presentation layer is the full 12-pole feedback; the transport layer operates entirely below the spectral bottom 11 (the visible line); the core state is the plant, whose $N(N-1)=12$ regenerates the presentation layer.
+
+Each bridge pair is governed by a ratio of two rungs from the ladder (proposed; see ledger §4197):
+
+- QM / GR: rungs 1 and 9 ($12/4 = 3$)
+- Planck / weak: rungs 1 and 2 ($12/11$)
+- DM / DE / baryons: rungs 2, 3, 9 ($11, 10, 4$)
+- Mach / GR: rung 9 ($Z = 1/(1+1/90-1/5280)$, denominator $5280 = 12 \cdot 4 \cdot 11 \cdot 10$)
+- couplings / masses: rungs 1–4 ($12 \to 9$)
+- flavor / gauge: rung 5 ($C(5,2)=10 = 6$ internal $+ 4$ witness spokes)
+- baryogenesis / PMNS: rungs 3, 4 ($C_{U_1}=10$)
+- Larmor / Newton / Einstein: rungs 1, 4 (gap $4 = l_{SU_2}$)
+- CC / holography: rung 9 ($\Lambda = 2 l_{\mathrm{Pl}}^2 / R^2$ from $N=4$)
+- control / Machian bootstrap: denominator $5280 = 12 \cdot 4 \cdot 11 \cdot 10$
 
 [Read the full ladder descent →](/results/#ladder)
 
@@ -79,7 +93,7 @@ Each bridge pair is governed by a ratio of two rungs from the $12 \to 4$ ladder 
 
 ## The universe as a feedback system
 
-The $12 \to 4$ ladder maps to a discrete control loop. Each restriction step is a pole at $v(r) = 13 - r$ (remaining degrees of freedom). The cross-coupling $\varepsilon = 1/90 - 1/5280$ is the feedback gain. The closed-loop transfer function $Z = 1/(1 + \varepsilon)$ reproduces the bootstrap constant. The integral term drives $\Omega_k \to 0$; the fibration phases are Nyquist margins. See ledger §4197 for the full LQR correspondence (proposed).
+The $12 \to 4$ ladder maps to a discrete control loop (see the rungs table above for the layer mapping). The feedback gain is $\varepsilon = 1/90 - 1/5280$, the closed-loop transfer function is $Z = 1/(1+\varepsilon)$. The integral term drives $\Omega_k \to 0$; the fibration phases are Nyquist margins. See ledger §4197 for the full LQR correspondence (proposed).
 
 [Read the full control theory reframing →](/results/#control)
 
