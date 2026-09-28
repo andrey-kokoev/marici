@@ -27,7 +27,7 @@ On this carrier the directed-pair count is $2\cdot C(4,2) = 12$. Setting $s = 12
 |---|---|---|
 | $N=4$ to $N=3$ | gap $3$, generations $2$, pairs $3$, directed $6$, symmetric $6$ | 2 generations instead of 3; gap $3 \neq 4$; symmetric and directed degenerate ($6 = 6$) |
 | $N=4$ to $N=5$ | gap $5$, generations $4$, pairs $10$, directed $20$, symmetric $15$ | 4 generations instead of 3; gap $5 \neq 4$ |
-| uniform cross to non-uniform | eigenvalues and gap change | the rational constants $6/121$, $3/13$, etc. become irrational |
+| uniform cross to non-uniform | eigenvalues and gap can change | proposed constant expressions require recalculation; the $3/13$ trace derivation separately fails the [multiplicity audit](/theory/#weak-mixing-matter-trace-audit) |
 | rank-1 descent to rank-2 | the ladder drops by 2 per step | the 9-rung sequence would be 12, 10, 8, … — skips 11 and 10, missing the named constants |
 
 The three constraints — $N=4$, uniform cross, rank-1 descent — are each independently necessary. Remove any one and the constants lose their observed values.
@@ -96,13 +96,15 @@ Each bridge is a ratio of two rungs. The ratio is forced by the Gram — it is n
 
 ### Constants
 
+**137 as a comparison-slot count (proposed).** Compare two $T_1$ carriers using their direct relationship as reference: eleven remaining arrows on each side give $121$ arrow–arrow slots; their four-valued states give $16$ state–state slots. The total is $137$. With equal weights, $1/137$ is the average normalized weight per comparison slot, proposed to represent electromagnetic coupling—not a cost per arrow. [Read the interpretation and assumptions](/theory/#fine-structure-constant-comparison-slots). The [carrier-realized readout study](/theory/#carrier-realized-comparison-and-the-decimal-tail) develops reference interference, residual power, and two-way feedback. Its assembly checks pass; the exploratory 137.036195934 feedback value fails precision measurements.
+
 Each constant is an expression in the four Gram numbers $(12, 11, 4, 10)$. One example with the chain visible:
 
 $m_H = 11^2 + 4 = 125\;\mathrm{GeV}$ — $11$ is the first visible eigenvalue ($12$ screened once), $4$ is the floor. The formula $11^2 + 4$ follows from the spectral decomposition of the witness-restricted Gram (see ledger §4197 for the derivation).
 
-All other constants follow the same pattern (see ledger §4197):
+Other proposed constant expressions are collected below (see ledger §4197). **Weak-mixing audit:** the cited matter-trace derivation of $3/13$ omits quark colour multiplicity; consistent counting gives $3/8$ under its normalization assumption. The $3/13$ carrier expression needs a new derivation. [Read the audit](/theory/#weak-mixing-matter-trace-audit).
 
-$137,\quad \sin^2\theta = \frac{3}{13},\quad \text{Yukawa} \times 6,\quad \Lambda_{\mathrm{QCD}},\quad m_p = 938\,\mathrm{MeV},\quad \frac{m_p}{m_e} = 1836$
+[137](/theory/#fine-structure-constant-comparison-slots), $\sin^2\theta = \frac{3}{13},\quad \text{Yukawa} \times 6,\quad \Lambda_{\mathrm{QCD}},\quad m_p = 938\,\mathrm{MeV},\quad \frac{m_p}{m_e} = 1836$
 
 $\delta_{\mathrm{CKM}} \ (\sim 1.3\%),\quad \delta_{\mathrm{PMNS}} \ (\text{exact}),\quad y_t = 1,\quad \Lambda,\quad \frac{M_{\mathrm{Pl}}}{v} = 11^{15} \times 12 \times Z$
 
@@ -144,7 +146,7 @@ The $(4/12)^2 = (1/3)^2$ term is Gram-derived (floor $4$ over top $12$, squared)
 ### Penning traps
 $\frac{m_p}{m_e} = 12 \times (12^2 + 3^2) = 1836$
 
-The full directed count $12$ times the square of $12$ plus the multiplicity $3 = N-1$. Already within $0.01\%$ of observed $1836.15$. **Falsified if:** future measurements deviate from $1836$ by more than $0.1\%$, ruling out the $12$ and $3$ structure.
+**Comparison-path hypothesis:** each of twelve directed relationships carries a comparison of 144 arrow pairs and nine state pairs remaining after a shared state is fixed. Every traversal consumes resource. The observed ratio is approximately $1836.152673$; its additional resource is proposed to come from pairwise settling. Checked back-action models sustain a settling floor, while its strength and mass conversion remain unresolved. The integer baseline already differs from precision measurements. [Read the construction and outcomes](/theory/#proton-electron-ratio-comparison-paths-and-settling).
 
 ### HL-LHC / FCC
 $m_H = 11^2 + 4 = 125\;\mathrm{GeV}$

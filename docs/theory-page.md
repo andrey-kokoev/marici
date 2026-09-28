@@ -269,16 +269,206 @@ The action principle $S[G] = \int R(G) dV$ whose variation gives $G_{\mu\nu} = 8
 
 ## 17. Fundamental constants
 
-All fundamental constants are rational expressions in the four Gram numbers $(12, 11, 4, 10)$, with the Machian bootstrap factor $Z = 1/(1 + 1/90 - 1/5280)$ as the only correction coming from closed-loop effects.
+### Fine-structure constant: comparison slots
+
+**Proposed carrier interpretation.** $137$ is the number of comparison slots between two $T_1$ carriers; $1/137$ is the average normalized weight per slot, not a cost per arrow.
+
+Here $T_0$ retains identities, $T_1$ carries relationships and witnessed round-trip agreement with those identities, and $T_2$ carries coherence of their extension. These are relational levels, not powers of time; no chirality assumption is required.
+
+Hold the direct relationship between the two carriers as the reference against which their other relationships and states are compared. It is excluded from the comparison slots because it supplies that reference. In this proposed counting, each carrier contributes eleven remaining arrows and a four-valued state, $\mathrm{Bool}\times\mathrm{Bool}$:
+
+| Comparison block | Slots |
+|---|---:|
+| Every remaining arrow of one carrier against every remaining arrow of the other | $11\times11=121$ |
+| Every carrier-state value of one against every carrier-state value of the other | $4\times4=2^4=16$ |
+| **Total** | **137** |
+
+The assembled comparison is assessed against the direct relationship; its residual supplies the proposed next-level coherence data at $T_2$. The count $137$ describes the comparison domain, not the residual.
+
+The two blocks are counted separately, not as state assignments attached to each arrow pair. With equal slot weights, the normalized comparison is $\frac{1}{137}\sum_{s=1}^{137}c_s$. The proposed identification with electromagnetic coupling is $\alpha\approx1/137$. This interpretation assumes the two blocks exhaust the comparisons and carry equal normalization weight; it does not yet derive that identification or the measured low-energy value $\alpha^{-1}\approx137.036$.
+
+
+### Carrier-realized comparison and the decimal tail
+
+**Hypothesis.** Realizing the 137-slot comparison on the carrier changes its reference-channel normalization through the comparison residual. The slot count remains integral. The measured low-energy inverse coupling is approximately $137.035999$, so the calculation must explain an additional normalization of approximately $0.036$.
+
+For realized slot weights $w_s=1+\epsilon_s$, one candidate normalization is $\alpha^{-1}=\sum_s w_s=137+\sum_s\epsilon_s$, with the direct reference assigned unit weight. This assignment requires a carrier rule. The arithmetic mean of the 137 normalized slot weights remains $1/137$; the proposed physical correction concerns the reference-channel weight relative to their total.
+
+#### Reference assembly and readout
+
+A checked linear prototype supplies maps $x_i:A\to U$, $y_j:U\to B$ for eleven arrow labels at each endpoint, and $s_a:A\to V$, $t_b:V\to B$ for four state labels. The state labels are represented by maps in this prototype. All composites and the direct reference $d$ have endpoints $A\to B$:
+
+$$
+C=\frac{\sum_{i,j}y_j\circ x_i+\sum_{a,b}t_b\circ s_a}{137},\qquad R=C-d.
+$$
+
+Agreement makes the residual vanish while retaining all comparison slots. Two equal and opposite incoming perturbations cancel in the assembled comparison. The prototype assumes common intermediate spaces and a linear target permitting sums and subtraction.
+
+With a unit-normalized reference and a chosen inner product, reference amplitude and intensity are
+
+$$
+\mathcal A=1+\langle d,R\rangle,\qquad
+\mathcal I=1+2\operatorname{Re}\langle d,R\rangle+\|R\|^2.
+$$
+
+In the real two-dimensional test, $d=I$, $\langle X,Y\rangle=\operatorname{Tr}(X^T Y)/2$, and $H$ has the single nonzero entry $H_{12}=1$. Modify one incoming leg to $I+uH$ and one outgoing leg to $I+vH^T$. Exact assembly gives
+
+$$
+C=I+\frac{11uH+11vH^T+uvH^T H}{137},
+$$
+
+$$
+\mathcal A=1+\frac{uv}{274},\qquad
+\mathcal I=1+\frac{uv}{137}+\frac{121(u^2+v^2)+u^2v^2}{2\cdot137^2}.
+$$
+
+**Outcome:** two-way composition supplies a signed $uv$ feedback term and a positive residual-power term. Exact rational checks pass. Carrier dynamics still need to supply $u,v$, the metric, and the physical readout. These formulas establish the readout mechanism within the prototype; they supply no numerical prediction for the decimal tail yet.
+
+#### Feedback trials and precision outcome
+
+A separate exploratory routing model uses 1936 sequential arrow/state return histories. Endpoint reversal fixes 44 histories and pairs the others, giving a symmetric subspace of dimension 990. Uniform incoherent averaging retains the fraction $990/1936=45/88$.
+
+Taking outward gain $a=1/121$ and return gain $b=(1/16)(45/88)$ gives a two-block operator $K=\left(\begin{smallmatrix}0&a\\b&0\end{smallmatrix}\right)$ with eigenvalues $\pm L$, where $L=\sqrt{ab}$. For source and readout at the same reference port, the proposed normalization is
+
+$$
+\alpha^{-1}=\frac{137}{(1-L)(1+L)}=\frac{137}{1-ab}=137.036195933608.
+$$
+
+The assumptions are positive return gains, incoherent uniform path selection, and re-randomization each loop. Coherent uniform paths already lie in the symmetric sector. Persistent path sectors instead give $137.036205073996$.
+
+**Precision outcome: the fixed routing prediction fails both quoted recoil targets.** Its difference from the rubidium result is $0.000196727608$, about 17,884 quoted measurement-uncertainty units; the caesium difference is $0.000196887608$, about 7,292 units. The model has no theoretical uncertainty budget. The first positive return alone already gives $137.036186373028$, so adding positive returns cannot close the gap. Removing one symmetric reference direction gives $137.036159362409$; deleting all 44 endpoint-fixed directions gives $137.034586819316$. Neither deletion is supplied by the carrier's reference-comparison rule. The near-$0.036$ tail remains an exploratory result.
+
+#### Independent measurement routes
+
+| Route | Measured comparison and extraction | Effect of a shared $\alpha=\alpha_0/(1+\varepsilon)$, $\alpha_0=1/137$ |
+|---|---|---|
+| Atomic recoil | Laser-driven recoil determines $h/m_{\rm atom}$; combine with spectroscopy and mass ratios: $Q=(2R_\infty/c)(m_{\rm atom}/m_e)(h/m_{\rm atom})=\alpha^2$ | $Q/Q_0=(1+\varepsilon)^{-2}$ |
+| Electron magnetic moment | Spin and cyclotron frequencies determine $a_e=(g-2)/2$; invert the calculated relation $a_e=F(\alpha)$ | $a_e=F(\alpha_0/(1+\varepsilon))$; leading term $\alpha/(2\pi)$ |
+
+Representative recoil determinations are $137.035999206(11)$ ([rubidium, 2020](https://doi.org/10.1038/s41586-020-2964-7)) and $137.035999046(27)$ ([caesium, 2018](https://doi.org/10.1126/science.aap7706)). Their quoted uncertainties expose an unresolved disagreement between the two determinations. Relative to the 137 baseline, the rubidium value corresponds to a $-0.026270\%$ shift in $\alpha$ and a $-0.052533\%$ shift in $Q$. The corresponding change in the leading magnetic-anomaly term is approximately $-3.05181\times10^{-7}$; a precision magnetic comparison requires the full $F$ and independent measurements.
+
+A shared carrier correction must propagate consistently through both extraction routes. This cross-method requirement specifies a test; the measured values do not determine the carrier feedback law.
+
+#### Curvature and residual floor
+
+The existing cosmological budget gives the exact deficit
+
+$$
+\kappa=1-\frac6{121}-\frac6{23}-\frac{11}{16}=\frac{91}{44528}\approx0.00204366.
+$$
+
+The shared-residual hypothesis proposes cosmological and electromagnetic readouts of one carrier closure residual. Applying this deficit uniformly to electromagnetic normalization gives $137/(1-\kappa)=137.28055449$, which fails the measured target. A successful shared-residual construction needs its sector-specific readout maps. The residual's mean can shift normalization; fluctuations around the mean would define a noise floor. A noise prediction requires a covariance or stochastic model.
+
+**Research and checks:** [hypothesis and feedback trials](https://github.com/andrey-kokoev/marici/blob/main/research/nima/comparison-slot-normalization-and-carrier-closure-residual-hypothesis.md), [measurement/readout comparison](https://github.com/andrey-kokoev/marici/blob/main/research/nima/fine-structure-recoil-and-magnetic-moment-comparison.md), and the exact checkers `check_comparison_slot_endpoint_reversal.py`, `check_comparison_slot_reference_assembly.py`, `check_comparison_reference_readouts.py`, and `check_fine_structure_cross_method_target.py` under `research/nima/checkers/`.
+
+### Weak mixing: matter-trace audit
+
+**Outcome: the cited matter-trace derivation of $3/13$ fails a colour-multiplicity check.** With $Q=T_3+Y$ and doublet index $1/2$, the contributions per generation are:
+
+| Multiplet | $SU(2)$ trace | Hypercharge squared trace |
+|---|---:|---:|
+| Quark doublet, three colours | $3/2$ | $1/6$ |
+| Right-handed up quark | $0$ | $4/3$ |
+| Right-handed down quark | $0$ | $1/3$ |
+| Lepton doublet | $1/2$ | $1/2$ |
+| Right-handed charged lepton | $0$ | $1$ |
+| Neutral right-handed neutrino | $0$ | $0$ |
+| **Three-generation total** | **6** | **10** |
+
+The historical checker `check_gauge_coupling_norm.py` counted the quark doublet once in the weak trace while retaining all three colours in the hypercharge trace. Under its common inverse-trace normalization assumption, $g_i^2=k/C_i$, consistent counting gives
+
+$$
+\sin^2\theta_W=\frac{g'^2}{g'^2+g^2}=\frac{C_{SU(2)}}{C_{SU(2)}+C_Y}=\frac6{6+10}=\frac38.
+$$
+
+A second check averages over quark colours consistently in both sectors. It gives $C_{SU(2)}=3$, $C_Y=19/3$, and mixing fraction $9/28$. Thus consistent colour averaging also fails to recover $3/13$.
+
+**Common-measure test.** On the same matter space, assign nonnegative weight $q$ to each quark state and $\ell$ to each lepton state, using that measure for both generators. Per generation, $C_{SU(2)}=3q/2+\ell/2$ and $C_Y=11q/6+3\ell/2$. Their mixing fraction is $(9q+3\ell)/(20q+12\ell)$, ranging from $1/4$ to $9/20$. The target $3/13$ requires $\ell=-19q$, so this positive two-weight family cannot produce it. Multiplet-specific weights allow more possibilities, but require an independent carrier rule. Exact checks: `research/nima/checkers/check_weak_mixing_common_measure.py`.
+
+The carrier expression $3/13$ remains a candidate requiring a specified common comparison space and sector readouts. The matter-trace argument above supplies no derivation of it. The $3/8$ result is conditional on common normalization; a comparison with measured weak angles requires a scale, renormalization convention, and running calculation. The frequently quoted value near $0.231$ refers to particular electroweak-scale definitions.
+
+The historical trace-based route to $137=(C_Y+1)^2+(C_{SU(2)}+1)^2$ also fails this audit: corrected matter traces give $11^2+7^2=170$. The separate comparison-slot proposal uses its own eleven-arrow/four-state assumptions.
+
+[Full audit](https://github.com/andrey-kokoev/marici/blob/main/research/nima/weak-mixing-comparison-normalization-audit.md). Exact checks: `research/nima/checkers/check_weak_mixing_matter_trace_audit.py`.
+
+### Proton-electron ratio: comparison paths and settling
+
+**Hypothesis and current outcome.** The expression $12(12^2+3^2)=1836$ counts a proposed comparison programme. The observed mass ratio is approximately $1836.152673$. Exact slot counts and explicit disturbance-settling prototypes have been checked; the particle-energy identification and the $0.152673$ correction remain to be derived.
+
+#### Shared-state comparison programme
+
+Compare two four-state carriers, each carrying twelve directed relationships. Hold one state on each side as the identified shared reference. The remaining state alternatives number three per carrier:
+
+| Comparison component | Slots |
+|---|---:|
+| All directed relationships against all directed relationships | $12\times12=144$ |
+| Remaining state alternatives against remaining state alternatives | $3\times3=9$ |
+| One shared-reference comparison | **153** |
+| One such comparison for each of twelve outer directed relationships | **1836** |
+
+The shared-state identification is an input. The nine state slots assess compatibility relative to it. Assigning the proton to the full programme and the electron to its resource unit is the proposed physical interpretation. The historical checker instead identified three with the miscounted weak matter trace; that argument fails the preceding audit. The new shared-state count has its own assumptions.
+
+Fixing the reference partitions the outer relationships into three outward, three inward, and six internal arrows. Their weighted total is $153(3w_{\rm out}+3w_{\rm in}+6w_{\rm internal})$. Unit weights give 1836; the fixed-reference symmetry permits distinct orbit weights.
+
+#### Paths retain traversal resource
+
+A directed path retains its history. Traversing $A\to B\to A$ consumes two steps even though it returns to its starting point. The resource model uses additive positive traversal costs. Every comparison attempt is charged, including an attempt whose state update is zero.
+
+An earlier vector-energy test represented arrows by endpoint differences. Its coherent cancellation discards traversal history and therefore does not evaluate this path-resource proposal. That test also exposed a separate normalization choice: raw Gram norms give arrow-pair weight $22^2$ and state-pair weight $12^2$. The equal-unit slot count requires a physical resource rule selecting the relative weights.
+
+#### Pairwise settling and the fractional tail
+
+The proposed tail is the additional resource needed to settle disturbances created by the comparisons. An explicit pairwise-averaging test gives
+
+$$
+(1,0,0)\longrightarrow(1/2,1/2,0)\longrightarrow(1/2,1/4,1/4).
+$$
+
+The second comparison reopens the first agreement. A full prototype uses two carriers with a pinned shared state, six remaining state potentials, and all 153 equality comparisons repeated twelve times. Every attempt consumes one resource unit. In exact arithmetic, a unit input disturbance reopens 1668 immediately preceding agreements in forward order and 1664 in reverse order. Final squared disturbances are approximately $1.2\times10^{-61}$ and $7.4\times10^{-61}$ respectively. Compatible input leaves zero disturbance while still consuming all 1836 attempts.
+
+**Outcome:** sequential comparisons demonstrably disturb earlier agreements. The residual depends on input and order; this deterministic prototype supplies no universal mass tail.
+
+#### Back-action-supported settling floor
+
+An additional prototype gives each comparison its own back-action. For a comparison row $r$, let $P=I-rr^T/(r^Tr)$ project onto its agreement plane. Update the six state potentials by
+
+$$
+x'=Px+\eta,\qquad \operatorname{Cov}(\eta)=qP/5.
+$$
+
+The independent zero-mean disturbance remains inside the newly satisfied agreement plane and can disturb other agreements. The five-dimensional normalization injects expected squared resource $q$ per attempt. With covariance $\Sigma$:
+
+$$
+\Sigma'=P\Sigma P+qP/5,
+$$
+
+$$
+\operatorname{Tr}\Sigma'=\operatorname{Tr}\Sigma-
+\frac{r^T\Sigma r}{r^Tr}+q.
+$$
+
+The declared schedule reaches a periodic covariance. At $q=1$, end-sweep state variance is approximately 14.845441; each 153-comparison sweep settles 153 squared-resource units, matching its injection. Twelve sweeps settle $1836q$. Halving $q$ halves the settling load; zero injection gives zero floor for compatible input. Positive traversal cost is accounted for separately.
+
+**Outcome:** comparison back-action sustains a reproducible settling floor in this model. The carrier still needs to determine $q$, its metric and conversion to rest energy, and the electron's own settling response. The model measures settling during the repeated programme. Attributing the tail specifically to additional traversals also requires a retry or stopping rule. Setting $q$ from $0.152673$ would calibrate the model to the observed ratio.
+
+#### Closure trials and verification
+
+A prior uniform-return trial gave $1836/(1-1/15552)=1836.118063$, missing the observed tail. Direct enumeration of composable four-state paths instead gives expected first-return resource four under uniform outgoing routing; ordinary graph closure supplies no rare-return probability of $1/15552$. Pairwise settling is the subsequent mechanism investigated above.
+
+[Full hypothesis, assumptions, and outcomes](https://github.com/andrey-kokoev/marici/blob/main/research/nima/proton-electron-shared-state-comparison-hypothesis.md). Checkers under `research/nima/checkers/`: `check_proton_electron_comparison_slots.py`, `check_proton_electron_gram_energy.py`, `check_proton_electron_path_closure.py`, `check_four_state_return_paths.py`, `check_pairwise_comparison_settling.py`, `check_full_mass_comparison_programme.py`, and `check_comparison_backaction_floor.py`. Counting and deterministic update checks use exact arithmetic; the covariance-floor test uses floating arithmetic with explicit tolerances. These checks establish their stated models, with no derived mass correction yet.
+
+### Constant expressions
+
+The table below collects proposed expressions in $(12,11,4,10)$. The Planck-scale expression uses the Machian bootstrap factor $Z=1/(1+1/90-1/5280)$. The electromagnetic feedback extensions above are exploratory models with the stated precision failures.
 
 | Constant | Gram expression | Predicted value | Observed | Error |
 |---|---|---:|---:|---:|
-| $\alpha^{-1}$ | $11^2+4^2$ | **137** | 137.036 | 0.03% |
-| $\sin^2\theta_W$ | $3/13$ | **0.231** | 0.231 ($Z$ pole) | <0.1% |
+| $\alpha^{-1}$ | $11^2+4^2$ | [**137**](#fine-structure-constant-comparison-slots) | 137.036 | 0.03% |
+| $\sin^2\theta_W$ | $3/13$ (candidate; [trace derivation fails audit](#weak-mixing-matter-trace-audit)) | **0.230769** | ≈0.231 (definition-dependent, electroweak scale) | Scale-matched prediction pending |
 | $M_{\mathrm{Pl}}/v$ | $11^{15}\times12\times Z$ | **$4.96\times10^{16}$** | $4.96\times10^{16}$ | 0.09% |
 | $\Lambda_{\mathrm{QCD}}$ | $M_{\mathrm{Pl}}/11^{19}$ | **~200 MeV** | ~200 MeV | 0.2% |
 | $m_p$ | $14/3\times M_{\mathrm{Pl}}/11^{19}$ | **938 MeV** | 938.27 MeV | 0.7% |
-| $m_p/m_e$ | $12\times(12^2+3^2)$ | **1836** | 1836.15 | 0.01% |
+| $m_p/m_e$ | $12\times(12^2+3^2)$ ([comparison-path hypothesis](#proton-electron-ratio-comparison-paths-and-settling)) | **1836** | ≈1836.152673 | ≈0.0083%; settling correction unresolved |
 | $m_H$ | $11^2+4$ | **125 GeV** | 125.1 GeV | 0.08% |
 | $v$ | $2\cdot11^2+4$ | **246 GeV** | 246.2 GeV | 0.08% |
 | $\Omega_{\mathrm{DM}}$ | $(10-4)/(12+11)$ | **$6/23=26.1\%$** | 26.4% | 1.2% |
