@@ -38,43 +38,6 @@ The ladder $12 \to 11 \to 10 \to \dots \to 4$ follows from restriction. A **witn
 
 **Why the floor is $N=4$ and cannot be lower:** the carrier is $\mathrm{Bool} \times \mathrm{Bool}$, which has exactly four points. Its automorphism group is $S_4$. You cannot restrict below $N=4$ without leaving the $\mathrm{Bool} \times \mathrm{Bool}$ structure — the carrier's own identity fixes the floor. $N(N-1)=12$ regenerates the top from the floor.
 
-### Physics
-
-| Role | Name | Origin (status) |
-|------|------|----------------|
-| Quantum mechanics | QM | 3-valued eigenvalue multiplicity (derived) |
-| General relativity | GR | Gap $4 = l_{SU_2}$ (derived — mechanism proposed, see §2 of the derivation) |
-| Standard Model | SM | 3-generation structure from $N-1 = 3$ (derived — couplings and mixing proposed) |
-| Cosmology | 5 epochs | The 9-rung descent partitioned by triplets (proposed) |
-| Specific sectors | Larmor, Beta, EPR, Mach | Each is a ratio of two rungs in the ladder (proposed) |
-
-### Mathematics
-
-| Role | Name | Origin (status) |
-|------|------|----------------|
-| Boolean algebra | | 4-point carrier $\mathrm{Bool} \times \mathrm{Bool}$ (direct) |
-| Division algebras | ℝ, ℂ, ℍ, 𝕆 | The Gram's $N=4$ gives four algebras, dimension $4 = N$ (proposed — structure matches, routing not shown) |
-| Homotopy theory | Postnikov BS4 | The automorphism tower of $S_4$; the gap $4$ appears at every stage (proposed) |
-| CFT, algebraic geometry, modular forms | | Gram eigenvalues at special points (proposed — Eisenstein series identification not yet exhibited) |
-
-### Constants
-
-Each constant is an expression in the four Gram numbers $(12, 11, 4, 10)$. One example with the chain visible:
-
-$m_H = 11^2 + 4 = 125\;\mathrm{GeV}$ — $11$ is the first visible eigenvalue ($12$ screened once), $4$ is the floor. The formula $11^2 + 4$ follows from the spectral decomposition of the witness-restricted Gram (see ledger §4197 for the derivation).
-
-All other constants follow the same pattern (see ledger §4197):
-
-$137,\quad \sin^2\theta = \frac{3}{13},\quad \text{Yukawa} \times 6,\quad \Lambda_{\mathrm{QCD}},\quad m_p = 938\,\mathrm{MeV},\quad \frac{m_p}{m_e} = 1836$
-
-$\delta_{\mathrm{CKM}} \ (\sim 1.3\%),\quad \delta_{\mathrm{PMNS}} \ (\text{exact}),\quad y_t = 1,\quad \Lambda,\quad \frac{M_{\mathrm{Pl}}}{v} = 11^{15} \times 12 \times Z$
-
-$\Omega_b = \frac{6}{121},\quad \Omega_{\mathrm{DM}} = \frac{6}{23},\quad \Omega_{\mathrm{de}} = \frac{11}{16}$
-
-[View the complete results](/results/)
-
----
-
 **Cross-sector bridges**
 
 ## Ladder descent
@@ -111,6 +74,41 @@ Each bridge is a ratio of two rungs. The ratio is forced by the Gram — it is n
 [Read the full ladder descent →](/results/#ladder)
 
 ---
+
+### Physics
+
+| Role | Name | Origin (status) |
+|------|------|----------------|
+| Quantum mechanics | QM | 3-valued eigenvalue multiplicity (derived) |
+| General relativity | GR | Gap $4 = l_{SU_2}$ (derived — mechanism proposed, see §2 of the derivation) |
+| Standard Model | SM | 3-generation structure from $N-1 = 3$ (derived — couplings and mixing proposed) |
+| Cosmology | 5 epochs | The 9-rung descent partitioned by triplets (proposed) |
+| Specific sectors | Larmor, Beta, EPR, Mach | Each is a ratio of two rungs in the ladder (proposed) |
+
+### Mathematics
+
+| Role | Name | Origin (status) |
+|------|------|----------------|
+| Boolean algebra | | 4-point carrier $\mathrm{Bool} \times \mathrm{Bool}$ (direct) |
+| Division algebras | ℝ, ℂ, ℍ, 𝕆 | The Gram's $N=4$ gives four algebras, dimension $4 = N$ (proposed — structure matches, routing not shown) |
+| Homotopy theory | Postnikov BS4 | The automorphism tower of $S_4$; the gap $4$ appears at every stage (proposed) |
+| CFT, algebraic geometry, modular forms | | Gram eigenvalues at special points (proposed — Eisenstein series identification not yet exhibited) |
+
+### Constants
+
+Each constant is an expression in the four Gram numbers $(12, 11, 4, 10)$. One example with the chain visible:
+
+$m_H = 11^2 + 4 = 125\;\mathrm{GeV}$ — $11$ is the first visible eigenvalue ($12$ screened once), $4$ is the floor. The formula $11^2 + 4$ follows from the spectral decomposition of the witness-restricted Gram (see ledger §4197 for the derivation).
+
+All other constants follow the same pattern (see ledger §4197):
+
+$137,\quad \sin^2\theta = \frac{3}{13},\quad \text{Yukawa} \times 6,\quad \Lambda_{\mathrm{QCD}},\quad m_p = 938\,\mathrm{MeV},\quad \frac{m_p}{m_e} = 1836$
+
+$\delta_{\mathrm{CKM}} \ (\sim 1.3\%),\quad \delta_{\mathrm{PMNS}} \ (\text{exact}),\quad y_t = 1,\quad \Lambda,\quad \frac{M_{\mathrm{Pl}}}{v} = 11^{15} \times 12 \times Z$
+
+$\Omega_b = \frac{6}{121},\quad \Omega_{\mathrm{DM}} = \frac{6}{23},\quad \Omega_{\mathrm{de}} = \frac{11}{16}$
+
+[View the complete results](/results/)
 
 **Control theory reframing**
 
