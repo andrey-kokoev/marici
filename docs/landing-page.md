@@ -12,9 +12,7 @@ If any of those constraints is wrong, the predicted constants change. If all thr
 
 ## Relational carrier: physics from one object
 
-The carrier is $\mathrm{Bool} \times \mathrm{Bool}$ — a four-element set with automorphism group $S_4$. Its overlap matrix $G_{ij} = \langle f_j \mid f_i \rangle$ is the Gram of the four probe functions $f_i$.
-
-The Gram $G = sI + J$ (self-coupling $s$, uniform cross $1$) on $N=4$ points has eigenvalues $s+3$ (×1) and $s-1$ (×3).
+The carrier is $\mathrm{Bool} \times \mathrm{Bool}$ — a four-element set with automorphism group $S_4$. Its overlap matrix $G_{ij} = \langle f_j \mid f_i \rangle$ is the Gram of the four probe functions $f_i$. The automorphism $S_4$ forces all off-diagonal overlaps equal (the carrier cannot distinguish directions among its own points), so the Gram reduces to $G = sI + J$ (self-coupling $s$, uniform cross $1$) on $N=4$ points, with eigenvalues $s+3$ (×1) and $s-1$ (×3).
 
 On this carrier the directed-pair count is $2\cdot C(4,2) = 12$. Setting $s = 12$ identifies the Gram's self-coupling with the carrier's full relational structure:
 
@@ -36,7 +34,7 @@ The three constraints — $N=4$, uniform cross, rank-1 descent — are each inde
 
 ### The ladder
 
-The ladder $12 \to 11 \to 10 \to \dots \to 4$ follows from restriction: each level of witness is a restriction of the carrier to one fewer point, which drops the Gram rank by exactly $1$ (the removed point's probe is linearly independent of the remaining $N-1$). Nine rungs.
+The ladder $12 \to 11 \to 10 \to \dots \to 4$ follows from restriction. A **witness act** is a projective restriction of the carrier to one fewer point — the removed point's probe function is no longer available as an independent degree of freedom. Each such restriction drops the Gram rank by exactly $1$ (the removed probe is linearly independent of the remaining $N-1$). The ladder has nine rungs, one per act.
 
 **Why the floor is $N=4$ and cannot be lower:** the carrier is $\mathrm{Bool} \times \mathrm{Bool}$, which has exactly four points. Its automorphism group is $S_4$. You cannot restrict below $N=4$ without leaving the $\mathrm{Bool} \times \mathrm{Bool}$ structure — the carrier's own identity fixes the floor. $N(N-1)=12$ regenerates the top from the floor.
 
@@ -93,7 +91,7 @@ $\Omega_b = \frac{6}{121},\quad \Omega_{\mathrm{DM}} = \frac{6}{23},\quad \Omega
 | 8 | **5** | 5 | **10** | 15 | Core state | $N+1$ — the witness pointer. $C(5,2)=10 = 6+4$ unifies the two readings of $C_{U_1}$ |
 | 9 | **4** | 4 | 6 | **10** | Core state | $N$ — minimal carrier. Floor. Cycle seed $N(N-1)=12$ |
 
-The control parameters ($\varepsilon = 1/90 - 1/5280$, $5280 = 12 \cdot 4 \cdot 11 \cdot 10$, $Z = 1/(1+\varepsilon)$) are the feedback loop of the ladder's descent: the presentation layer is the full 12-pole feedback; the transport layer operates below the spectral bottom 11 (the visible line); the core state is the plant, whose $N(N-1)=12$ regenerates the presentation.
+The control parameters ($\varepsilon = 1/90 - 1/5280$, $5280 = 12 \cdot 4 \cdot 11 \cdot 10$, $Z = 1/(1+\varepsilon)$) set the loop's feedback gain. $5280$ is the product of the four Gram numbers. The number $90$ is not currently derived from the Gram alone (see ledger §4197 for the proposed control correspondence). In the layer mapping: the presentation layer is the full 12-pole feedback; the transport layer operates below the spectral bottom 11 (the visible line); the core state is the plant, whose $N(N-1)=12$ regenerates the presentation.
 
 Each bridge is a ratio of two rungs. The ratio is forced by the Gram — it is not a free assignment:
 
@@ -118,7 +116,7 @@ Each bridge is a ratio of two rungs. The ratio is forced by the Gram — it is n
 
 ## The universe as a feedback system
 
-The $12 \to 4$ ladder maps to a discrete control loop (see the rungs table above for the layer mapping). The feedback gain is $\varepsilon = 1/90 - 1/5280$, the closed-loop transfer function is $Z = 1/(1+\varepsilon)$. The integral term drives $\Omega_k \to 0$; the fibration phases are Nyquist margins. See ledger §4197 for the full LQR correspondence (proposed).
+The $12 \to 4$ ladder maps to a discrete control loop (see the rungs table above for the layer mapping). The feedback gain is $\varepsilon = 1/90 - 1/5280$, where $5280 = 12 \cdot 4 \cdot 11 \cdot 10$ is Gram-derived and $90$ is not (see the ladder descent section). The closed-loop transfer function is $Z = 1/(1+\varepsilon)$. The integral term drives $\Omega_k \to 0$; the fibration phases are Nyquist margins. See ledger §4197 for the full LQR correspondence (proposed).
 
 [Read the full control theory reframing →](/results/#control)
 
