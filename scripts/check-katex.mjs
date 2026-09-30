@@ -45,7 +45,13 @@ if(mode==='source') {
     const html=await fs.readFile(path.join(dist,entry.slug,'index.html'),'utf8').catch(()=>null)
     if(!html){failures++;console.error(`Missing rendered ledger entry: ${entry.slug}`);continue}
     checked++;formulas+=(html.match(/class="katex"/g)||[]).length
-    if(/\\\(|\\\[/.test(html)){failures++;console.error(`Unconverted TeX delimiters: ${entry.slug}`)}
+    const visibleText = html
+      .replace(/<!--[^]*?-->/g, '')
+      .replace(/<head\b[^>]*>[^]*?<\/head>/i, '')
+      .replace(/<(annotation|script|style|pre|code)\b[^>]*>[^]*?<\/\1>/gi, '')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/&(?:#92|#x5c|bsol);/gi, '\\')
+    if(/\\\(|\\\[/.test(visibleText)){failures++;console.error(`Unconverted visible TeX delimiters: ${entry.slug}`)}
   }
   console.log(`Checked ${checked}/${entries.length} rendered ledger entries; ${formulas} KaTeX formulae; ${failures} errors.`)
   if(failures) process.exitCode=1

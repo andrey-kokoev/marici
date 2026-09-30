@@ -3,6 +3,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import matter from 'gray-matter'
 import MarkdownIt from 'markdown-it'
+import katexCore from 'katex'
 import { katex } from '@mdit/plugin-katex'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -21,8 +22,19 @@ async function walk(dir) {
   return found.sort()
 }
 const slugify = value => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-const plain = value => value.replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').replace(/[*_>#`]/g, '').replace(/\s+/g, ' ').trim()
+const plain = value => value.replace(/\\\((.*?)\\\)/g, '$1').replace(/\\\[/g, '').replace(/\\\]/g, '').replace(/\$([^$]+)\$/g, '$1').replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').replace(/[*_>#`]/g, '').replace(/\s+/g, ' ').trim()
 const htmlEscape = value => value.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;')
+const renderTitle = value => {
+  const normalized = value.replace(/\\\((.*?)\\\)/g, (_, formula) => `$${formula}$`)
+  let html = ''
+  let cursor = 0
+  for (const match of normalized.matchAll(/\$([^$]+)\$/g)) {
+    html += htmlEscape(normalized.slice(cursor, match.index))
+    html += katexCore.renderToString(match[1], { throwOnError: false, output: 'htmlAndMathml' })
+    cursor = match.index + match[0].length
+  }
+  return html + htmlEscape(normalized.slice(cursor))
+}
 const markdown = new MarkdownIt({ html: true, linkify: true }).use(katex, { throwOnError: false, strict: 'error' })
 const ledgerPublic = path.join(root, 'website', 'public', 'research', 'ledger')
 await fs.copyFile(path.join(root, 'src', 'data', 'epistemic-graph.json'), path.join(root, 'website', 'public', 'epistemic-graph.json'))
@@ -65,7 +77,7 @@ for (const file of await walk(sourceRoot)) {
   const title = String(parsed.data.title || parsed.content.match(/^#\s+(.+)$/m)?.[1]?.trim() || filenameTitle)
   const slug = slugify(`${dateKey}-${entryText}-${filenameTitle}`)
   const first = parsed.content.split(/\r?\n\s*\r?\n/).find(block => block.trim() && !/^\s*#{1,6}\s/.test(block) && !/^\s*```/.test(block)) || title
-  const description = String(parsed.data.description || plain(first).slice(0, 280))
+  const description = plain(String(parsed.data.description || first)).slice(0, 280)
   const authorList = Array.isArray(parsed.data.authors) ? parsed.data.authors.map(String) : parsed.data.author ? [String(parsed.data.author)] : /\bcosmolog(?:y|ical|ies)\b/i.test(title) ? ['marici.Benincasa'] : ['marici.Nima']
   const date = `${dateKey.slice(0,4)}-${dateKey.slice(4,6)}-${dateKey.slice(6,8)}`
   const body = parsed.content.replace(/^\s*#\s+.+\r?\n+/, '')
@@ -89,9 +101,9 @@ for (let i=0;i<records.length;i++) {
     })
   const pageUrl = `/research/ledger/${record.slug}/`
   const article = markdown.render(body)
-  const previousLink = previous ? `<a href="/research/ledger/${previous.slug}/">← ${htmlEscape(previous.title)}</a>` : '<span></span>'
-  const nextLink = next ? `<a href="/research/ledger/${next.slug}/">${htmlEscape(next.title)} →</a>` : '<span></span>'
-  const document = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${htmlEscape(record.description)}"><title>${htmlEscape(record.title)} · Marici ledger</title><link rel="stylesheet" href="/katex/katex.min.css"><style>body{margin:0;background:#fcfaf7;color:#29251f;font:16px/1.7 system-ui,sans-serif}.site-head,main{max-width:900px;margin:auto;padding:20px}.site-head{border-bottom:1px solid #ddd5cb}.site-head a{margin-right:1.2rem;color:#80502e}main{padding-top:42px}h1{line-height:1.15;letter-spacing:-.03em}h2,h3{margin-top:2em}a{color:#80502e}pre{overflow:auto;padding:1rem;background:#f0ece7;border-radius:8px}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto}td,th{border:1px solid #d9d2c8;padding:.5rem .7rem;text-align:left}.meta{color:#716b64;font-size:.9rem}.pager{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid #ddd5cb;padding-top:1.4rem;margin-top:3rem}.pager a{max-width:48%}</style></head><body>${marker}<header class="site-head"><a href="/">Marici</a><a href="/research/theory/">Theory</a><a href="/research/results/">Results</a><a href="/research/ledger/">Ledger</a><a href="/explore/graph/">Graph</a></header><main><p class="meta">Entry ${record.entry} · ${record.date} · ${htmlEscape(record.authorLabel)} · ${htmlEscape(record.kind)}</p><h1>${htmlEscape(record.title)}</h1>${article}<p class="meta"><a href="https://github.com/andrey-kokoev/marici/blob/main/${htmlEscape(record.source)}">View source on GitHub</a></p><nav class="pager">${previousLink}${nextLink}</nav></main></body></html>`
+  const previousLink = previous ? `<a href="/research/ledger/${previous.slug}/">← ${renderTitle(previous.title)}</a>` : '<span></span>'
+  const nextLink = next ? `<a href="/research/ledger/${next.slug}/">${renderTitle(next.title)} →</a>` : '<span></span>'
+  const document = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${htmlEscape(record.description)}"><title>${htmlEscape(plain(record.title))} · Marici ledger</title><link rel="stylesheet" href="/katex/katex.min.css"><style>body{margin:0;background:#fcfaf7;color:#29251f;font:16px/1.7 system-ui,sans-serif}.site-head,main{max-width:900px;margin:auto;padding:20px}.site-head{border-bottom:1px solid #ddd5cb}.site-head a{margin-right:1.2rem;color:#80502e}main{padding-top:42px}h1{line-height:1.15;letter-spacing:-.03em}h2,h3{margin-top:2em}a{color:#80502e}pre{overflow:auto;padding:1rem;background:#f0ece7;border-radius:8px}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto}td,th{border:1px solid #d9d2c8;padding:.5rem .7rem;text-align:left}.meta{color:#716b64;font-size:.9rem}.pager{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid #ddd5cb;padding-top:1.4rem;margin-top:3rem}.pager a{max-width:48%}</style></head><body>${marker}<header class="site-head"><a href="/">Marici</a><a href="/research/theory/">Theory</a><a href="/research/results/">Results</a><a href="/research/ledger/">Ledger</a><a href="/explore/graph/">Graph</a></header><main><p class="meta">Entry ${record.entry} · ${record.date} · ${htmlEscape(record.authorLabel)} · ${htmlEscape(record.kind)}</p><h1>${renderTitle(record.title)}</h1>${article}<p class="meta"><a href="https://github.com/andrey-kokoev/marici/blob/main/${htmlEscape(record.source)}">View source on GitHub</a></p><nav class="pager">${previousLink}${nextLink}</nav></main></body></html>`
   const pageDir = path.join(ledgerPublic, record.slug)
   await fs.mkdir(pageDir, { recursive: true })
   await fs.writeFile(path.join(pageDir, 'index.html'), document, 'utf8')
