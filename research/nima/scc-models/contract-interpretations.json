@@ -1,0 +1,21 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-contract-interpretations",
+    "owner": "marici.Nima",
+    "classification": "checked_agda_operational_interpretations_of_comparison_successor_contract_operations",
+    "stratum": "Five of nine comparison-successor contract operations now have checked Agda interpretations as native rule applications: filler-as-compare-rule (BoundaryGeneratedQuestions), passive-frame-change (PassiveFrameTransport), reference-substitute, record-reindex, and family-admit (ContractInterpretations). The remaining four (comparison.fixed_frame, frame.active, history.edit, operand.pair) follow the same apply-a-native-rule pattern but are not yet coded as Agda modules.",
+    "inputs": [
+      "research/nima/agda/PassiveFrameTransport.agda",
+      "research/nima/agda/ContractInterpretations.agda",
+      "research/nima/generating-grammar/registry.json"
+    ],
+    "checks": [{"id": "contract-interpretations-freshness", "path": "research/nima/agda/PassiveFrameTransport.agdai", "requires": []}],
+    "depends_on": ["nima-native-table-equivalence"],
+    "consumes": [],
+    "provides": ["checked_passive_frame_change", "checked_reference_substitution", "checked_record_reindex", "checked_family_admission", "checked_filler_as_compare_rule"],
+    "missing_constructors": ["remaining_four_contract_interpretations", "all_nine_as_one_compile"],
+    "next_falsifier": "Change any imported native rule without recompiling the interpretation modules; the SCC check requires the .agdai interface file to be present."
+  }
+}
