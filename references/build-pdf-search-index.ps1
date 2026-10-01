@@ -1,14 +1,37 @@
+<#
+.SYNOPSIS
+Builds a searchable, page-by-page index of PDF files.
+
+.DESCRIPTION
+Without -InputPath, indexes every PDF directly under references and writes to
+extractions/pdf-search-all. The manifest is regenerated from the supplied PDF
+set; this is a rebuild, not an incremental manifest update.
+
+.EXAMPLE
+.\build-pdf-search-index.ps1
+
+.EXAMPLE
+.\build-pdf-search-index.ps1 -InputPath '.\Derived algebraic geometry Vol1.pdf', '.\Derived algebraic geometry Vol2.pdf' -OutputDirectory '.\extractions/pdf-search-index'
+#>
 [CmdletBinding()]
 param(
-    [string[]] $InputPath = @(
-        (Join-Path $PSScriptRoot 'Derived algebraic geometry Vol1.pdf'),
-        (Join-Path $PSScriptRoot 'Derived algebraic geometry Vol2.pdf')
-    ),
-    [string] $OutputDirectory = (Join-Path $PSScriptRoot 'extractions/pdf-search-index'),
+    [string[]] $InputPath,
+    [string] $OutputDirectory = (Join-Path $PSScriptRoot 'extractions/pdf-search-all'),
     [string] $PdfBossPath = (Join-Path $PSScriptRoot '.local-tools/pdfboss/bin/pdfboss.exe')
 )
 
 $ErrorActionPreference = 'Stop'
+
+if (-not $PSBoundParameters.ContainsKey('InputPath')) {
+    $InputPath = @(
+        Get-ChildItem -LiteralPath $PSScriptRoot -Filter '*.pdf' -File |
+            Sort-Object Name |
+            ForEach-Object FullName
+    )
+}
+if (-not $InputPath -or $InputPath.Count -eq 0) {
+    throw "No PDF files supplied or found under $PSScriptRoot"
+}
 
 function Resolve-FromWorkingDirectory([string] $Path) {
     if ([IO.Path]::IsPathRooted($Path)) {
@@ -118,5 +141,5 @@ foreach ($volumeGroup in ($manifest | Group-Object volume)) {
 }
 
 $manifest | Export-Csv -LiteralPath $manifestPath -NoTypeInformation -Encoding utf8
-Write-Output "Indexed $($manifest.Count) PDF pages under $outputRoot"
+Write-Output "Indexed $($manifest.Count) PDF pages from $($InputPath.Count) PDFs under $outputRoot"
 Write-Output "Manifest: $manifestPath"
