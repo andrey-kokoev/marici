@@ -1,0 +1,23 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-response-amplitude-source-gate",
+    "owner": "marici.Nima",
+    "classification": "response_amplitudes_are_supplied_and_not_selected_by_reference_witness_or_mean",
+    "stratum": "Shared-leg matrix topology with fixed2I reference, centered rational determinant-one shear fixtures and unchanged formal witnesses. Frobenius cost is a control, not physical energy.",
+    "inputs": [
+      "research/nima/response-amplitude-source-gate.md",
+      "research/nima/native-scalar-fiber-amplitude.md",
+      "research/nima/agda/RetainedComparisonSeries.agda",
+      "research/nima/checkers/check_shared_leg_dg_realization.py",
+      "research/nima/checkers/biclique_complex.py"
+    ],
+    "checks": [{"id": "response-amplitude-source-gate", "path": "research/nima/checkers/check_response_amplitude_source_gate.py", "requires": []}],
+    "depends_on": ["nima-witness-matrix-packet-adapter"],
+    "consumes": ["explicit_fixture_coefficients", "supplied_field_comparison_series", "fixed_reference_and_retained_topology"],
+    "provides": ["amplitude_preparation_source_gap", "same_mean_same_cost_opposite_mixed_response", "passive_frame_invariant_separation"],
+    "missing_constructors": ["source_amplitude_preparation_or_evolution", "witness_dependent_response_action", "physical_metric_and_normalization"],
+    "next_falsifier": "Require a proposed amplitude law to distinguish the centered sign-reflected fixtures using source-authorized preparation or dynamics, not the shared mean, witness topology or scalar cost."
+  }
+}

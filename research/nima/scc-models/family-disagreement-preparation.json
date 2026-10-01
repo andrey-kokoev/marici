@@ -1,0 +1,22 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-family-disagreement-preparation",
+    "owner": "marici.Nima",
+    "classification": "family_disagreement_feedback_computes_preparation_and_preserves_retained_response_means",
+    "stratum": "Actual30 shared legs and137 comparison slots; original unit masses and incoming-target families; declared relaxation gain, control metric and common witness action. Not physical dynamics or initial amplitude generation.",
+    "inputs": [
+      "research/nima/family-disagreement-preparation-law.md",
+      "research/nima/checkers/check_rung_transport_diagram.py",
+      "research/nima/checkers/check_shared_leg_dg_realization.py",
+      "research/nima/checkers/biclique_complex.py"
+    ],
+    "checks": [{"id": "family-disagreement-preparation", "path": "research/nima/checkers/check_family_disagreement_preparation.py", "requires": []}],
+    "depends_on": ["nima-boundary-prepared-witness-updates"],
+    "consumes": ["declared_family_relaxation_principle", "retained_primitive_legs", "member_masses", "common_witness_action"],
+    "provides": ["state_computed_preparation_kicks", "mean_preserving_shared_leg_feedback", "exact_disagreement_contraction", "retained_member_reconstruction", "slot_quadratic_quartic_scaling"],
+    "missing_constructors": ["physical_family_calibration_operation", "physical_gain_and_metric", "initial_amplitude_preparation", "generalized_partition_and_witness_transport"],
+    "next_falsifier": "Compare the actual preparation operation with the predicted family-mean preservation and disagreement contraction. Reject this law if it drives a family-constant field, changes family means, or erases member data needed by subsequent comparisons."
+  }
+}

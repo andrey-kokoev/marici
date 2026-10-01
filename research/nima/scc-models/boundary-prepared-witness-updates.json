@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-boundary-prepared-witness-updates",
+    "owner": "marici.Nima",
+    "classification": "retained_affine_preparation_transport_law_with_witness_only_cocycle_limit",
+    "stratum": "Rational End(V) amplitudes, declared faithful S3 action and additive preparations, fixed2I reference. Common witness action on shared legs; not arbitrary slot dynamics or a physical preparation law.",
+    "inputs": ["research/nima/boundary-prepared-witness-update-law.md"],
+    "checks": [{"id": "boundary-prepared-witness-updates", "path": "research/nima/checkers/check_boundary_prepared_witness_updates.py", "requires": []}],
+    "depends_on": ["nima-response-amplitude-source-gate"],
+    "consumes": ["supplied_boundary_preparation", "faithful_witness_representation", "operator_valued_amplitude_type", "fixed_reference_decode"],
+    "provides": ["associative_retained_affine_update", "port_frame_covariance", "primitive_leg_update_preserves_slot_factorization", "derived_slot_cross_terms", "finite_witness_only_cocycle_limit"],
+    "missing_constructors": ["physical_preparation_source", "witness_and_preparation_schedule", "physical_metric", "full_intended_rung_transport"],
+    "next_falsifier": "Supply a concrete primitive preparation and its ordered witness interaction. Reject identification of a preparation word with its finite witness alone: two transposition pulses can have identity witness and nonzero accumulated preparation."
+  }
+}

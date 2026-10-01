@@ -1,0 +1,22 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-flat-reference-attachment",
+    "owner": "marici.Nima",
+    "classification": "flat_reference_attachment_realizes_port_lift_with_frame_invariant_readout",
+    "stratum": "Actual finite endpoint fixture, fixed invertible reference and declared global port frames. Flat reference transport is constructed, not source-selected. Both horizontal endpoint candidates remain admissible.",
+    "inputs": [
+      "research/nima/flat-reference-attachment-and-holonomy-gate.md",
+      "research/nima/checkers/check_rung_transport_diagram.py",
+      "research/nima/checkers/check_shared_leg_dg_realization.py",
+      "research/nima/checkers/biclique_complex.py"
+    ],
+    "checks": [{"id": "flat-reference-attachment", "path": "research/nima/checkers/check_flat_reference_attachment.py", "requires": []}],
+    "depends_on": ["nima-endpoint-composition-gate"],
+    "consumes": ["fixed_invertible_reference", "retained_member_masses", "declared_global_port_frames"],
+    "provides": ["typed_reference_attachment", "frame_covariant_promotion", "fixed_reference_decoding", "reference_holonomy_obstruction_control"],
+    "missing_constructors": ["source_reference_flatness_or_path_indexed_transport", "intended_endpoint_generator", "physical_reference_metric"],
+    "next_falsifier": "Transport the source reference around a retained carrier loop. Nonidentity holonomy cannot be erased by a port-frame change and invalidates the globally flat attachment identification."
+  }
+}

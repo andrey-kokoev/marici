@@ -1,0 +1,24 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-reference-witness-source-audit",
+    "owner": "marici.Nima",
+    "classification": "anchor_coherence_verified_carrier_connection_not_supplied_by_these_witnesses",
+    "stratum": "Existing fixed-domain shared-leg and reanchoring witnesses, retaining their declared objects and degrees. No carrier-edge connection is inferred from anchor coherence.",
+    "inputs": [
+      "research/nima/reference-witness-source-audit.md",
+      "research/nima/nonflat-calibration-is-route-structure-not-endpoint-data.md",
+      "research/nima/checkers/check_witnessed_reference_reanchoring.py",
+      "research/nima/checkers/check_rung_transport_diagram.py",
+      "research/nima/checkers/check_shared_leg_dg_realization.py",
+      "research/nima/checkers/biclique_complex.py"
+    ],
+    "checks": [{"id": "reference-witness-source-audit", "path": "research/nima/checkers/check_reference_witness_source_audit.py", "requires": []}],
+    "depends_on": ["nima-flat-reference-attachment"],
+    "consumes": ["fixed_domain_reference_witnesses", "retained_carrier_endpoint_labels"],
+    "provides": ["strict_anchor_coordinate_coherence", "strict_versus_filled_route_inventory", "carrier_connection_source_adapter_gap"],
+    "missing_constructors": ["source_defined_carrier_edge_operations", "typed_carrier_route_to_witness_adapter", "route_preserving_rung4_observation"],
+    "next_falsifier": "Require explicit endpoint, degree and ordered-composition assignments before identifying a degree-one anchor witness with carrier transport. Evaluate source loop words only after that adapter exists."
+  }
+}

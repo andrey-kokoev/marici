@@ -104,3 +104,41 @@ class PortNet:
         trial.validate()
         self.nodes,self.wires,self.serial=trial.nodes,trial.wires,trial.serial
         return tuple(ids)
+
+    def replace_region(self,region,replacements,internal,boundary):
+        """Transactional finite-region macro rewrite, with explicit boundary.
+
+        Unlike replace(), this admits internal cycles and more than two agents.
+        It does not assert that the macro compiles into principal-pair rules.
+        Opaque handles are transferred exactly once, never copied or invented.
+        """
+        self.validate()
+        selected=set(region)
+        if not selected or len(selected)!=len(region) or not selected<=set(self.nodes):
+            raise ValueError('invalid region')
+        old_boundary={ep:peer for ep,peer in self.wires.items()
+                      if ep[0] in selected and peer[0] not in selected}
+        if set(boundary)!=set(old_boundary):raise ValueError('boundary mismatch')
+        old_handles=[h for n in selected for h in self.nodes[n].handles]
+        new_handles=[h for agent in replacements for h in agent.handles]
+        if len(new_handles)!=len(set(new_handles)) or set(new_handles)!=set(old_handles):
+            raise ValueError('payload loss, duplication or invention')
+        trial=PortNet(self.signatures)
+        trial.nodes=dict(self.nodes);trial.wires=dict(self.wires);trial.serial=self.serial
+        for n in selected:
+            for p in self.signatures[trial.nodes[n].kind].ports:
+                ep=n,p
+                if ep in trial.wires:
+                    peer=trial.wires.pop(ep);del trial.wires[peer]
+            del trial.nodes[n]
+        ids=[trial.add(agent.kind,agent.handles) for agent in replacements]
+        def resolve(ep):
+            index,port=ep
+            if not isinstance(index,int) or isinstance(index,bool) or not 0<=index<len(ids):
+                raise ValueError('bad local index')
+            return ids[index],port
+        for a,b in internal:trial.link(resolve(a),resolve(b))
+        for old,new in boundary.items():trial.link(resolve(new),old_boundary[old])
+        trial.validate()
+        self.nodes,self.wires,self.serial=trial.nodes,trial.wires,trial.serial
+        return tuple(ids)

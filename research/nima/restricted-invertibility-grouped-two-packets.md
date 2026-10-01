@@ -1,5 +1,9 @@
 # Restricted invertibility of grouped 2-packets on the tetrahedral carrier
 
+## Correction: scope of this model
+
+The maps called alpha and beta below are copy/expansion and averaging readout, **not** the lossless group-by-from/to operations documented in `incidence-rung-tower.md`. The restricted-inverse theorem remains valid for this separate model. The inference that signed subtraction is missing from the actual grouping cycle is withdrawn. See `grouping-is-reindexing-not-averaging.md` for the corrected cycle and current synthesis status.
+
 ## Result and scope
 
 Index four scalar states by the vertices of K4 and twelve packet slots by its directed nonidentity edges. Define source and target incidence matrices by
@@ -93,7 +97,7 @@ The exact packet expression is
 
 Therefore no new map generator is needed in a calculus closed under signed linear combinations. In a calculus allowing only positive grouping and composition, the expression is not yet executable. This distinction separates information sufficiency from operational availability.
 
-The central repository audit is whether existing group-by-from/group-by-to operations actually realize alpha, beta and the signed expression above. The present note constructs the matrices; it does not claim that audit is complete. Matrix support counts likewise do not establish a pruning-minimal execution graph or a particle-pair cost.
+Local inspection establishes that the documented group-by-from/group-by-to operations are reindexings, not these maps. The prior identification is therefore withdrawn. Only an independently specified averaging reduction would make this inverse relevant to that cycle. Matrix support counts likewise do not establish a pruning-minimal execution graph or a particle-pair cost.
 
 ## Relation to the adjoint-mate proposal
 

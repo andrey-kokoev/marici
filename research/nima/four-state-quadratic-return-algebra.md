@@ -1,5 +1,9 @@
 # Four-state quadratic return algebra: identity and recoverable contrast
 
+## Scope correction
+
+This note defines an optional averaging operator, not the documented lossless group-by-from/to reindexings. Its inverse remains mathematically valid, but signed subtraction is not a missing operation of regrouping. See `grouping-is-reindexing-not-averaging.md` for the correction and the separate promotion-reconstruction question.
+
 ## Proposal
 
 Let a=I and let m be a positive integer. Suppose the forward operator b satisfies

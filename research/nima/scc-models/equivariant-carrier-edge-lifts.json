@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-equivariant-carrier-edge-lifts",
+    "owner": "marici.Nima",
+    "classification": "two_equivariant_permutation_edge_lifts_flatness_separated_by_spectator_action",
+    "stratum": "Conditional interpretation of four-state arrows as degree-zero S4 transports, fully equivariant under conjugation. Not inferred from labels or from DG witnesses.",
+    "inputs": ["research/nima/equivariant-edge-lifts-and-spectator-policy.md"],
+    "checks": [{"id": "equivariant-carrier-edge-lifts", "path": "research/nima/checkers/check_equivariant_carrier_edge_lifts.py", "requires": []}],
+    "depends_on": ["nima-reference-witness-source-audit"],
+    "consumes": ["four_label_carrier", "conditional_permutation_edge_semantics", "full_relabelling_equivariance"],
+    "provides": ["exhaustive_two_lift_classification", "spectator_action_flatness_discriminator", "reference_exclusion_surviving_loop_control"],
+    "missing_constructors": ["source_authorized_active_permutation_semantics", "source_spectator_action", "typed_carrier_route_to_witness_adapter", "physical_rung4_observation"],
+    "next_falsifier": "Determine the source operation on the two uninvolved labels. Fixing them forces the nonflat endpoint swap; exchanging them gives the flat double swap. Reject either identification if arrows do not act as permutations."
+  }
+}
