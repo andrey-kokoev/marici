@@ -96,7 +96,9 @@ Each bridge is a ratio of two rungs. The ratio is forced by the Gram — it is n
 
 ### Constants
 
-**137 as a comparison-slot count (proposed).** Compare two $T_1$ carriers using their direct relationship as reference: eleven remaining arrows on each side give $121$ arrow–arrow slots; their four-valued states give $16$ state–state slots. The total is $137$. With equal weights, $1/137$ is the average normalized weight per comparison slot, proposed to represent electromagnetic coupling—not a cost per arrow. [Read the interpretation and assumptions](/theory/#fine-structure-constant-comparison-slots). The [carrier-realized readout study](/theory/#carrier-realized-comparison-and-the-decimal-tail) develops reference interference, residual power, and two-way feedback. Its assembly checks pass; the exploratory 137.036195934 feedback value fails precision measurements.
+**Latest structural synthesis: retained witnesses and conditional feedback.** The tower specifies transports $9:12\to6$, $8:11\to5$, and $7:10\to4$, with the physical reference at rung 4. Source comparisons retain actual equivalence witnesses and histories; checked adapters preserve them alongside all 137 matrix responses. A conditional preparation-and-transport model now includes feedback that preserves family means and contracts disagreement while retaining old records. Physical preparation, metric and gain remain to be identified: the matrix amplitudes are supplied fixtures, and contraction is not yet a physical energy-dissipation law. No new numerical constant or gauge identification follows. [Diagram, checked results, and open steps](/theory/#tower-successor-and-mixed-comparison-defects).
+
+**137 as a comparison-slot count (proposed).** Compare two $T_1$ carriers using their direct relationship as reference: eleven remaining arrows on each side give $121$ arrow–arrow slots; their four-valued states give $16$ state–state slots. The total is $137$. With equal weights, $1/137$ is the average normalized weight per comparison slot, proposed to represent electromagnetic coupling—not a cost per arrow. [Read the interpretation and assumptions](/theory/#fine-structure-constant-comparison-slots). The [carrier-realized readout study](/theory/#carrier-realized-comparison-and-the-decimal-tail) develops reference interference, residual power, and two-way feedback. Its assembly checks pass; the exploratory 137.036195934 feedback value fails precision measurements. A closed-record model now gives equal normalized mismatch response under schedule-averaged equilibrium. A separate evolving-phase Hamiltonian closes comparison back-reaction; its long-time response and electromagnetic identification remain open. [Equilibrium and phase back-reaction](/theory/#record-equilibrium-and-phase-back-reaction).
 
 Each constant is an expression in the four Gram numbers $(12, 11, 4, 10)$. One example with the chain visible:
 
@@ -116,6 +118,8 @@ $\Omega_b = \frac{6}{121},\quad \Omega_{\mathrm{DM}} = \frac{6}{23},\quad \Omega
 
 ## The universe as a feedback system
 
+[System characteristics](/research/system-characteristics/) tracks the record-family tower, software behaviour, verification results, and open questions about identity, updates, and feedback.
+
 The $12 \to 4$ ladder maps to a discrete control loop (see the rungs table above for the layer mapping). The feedback gain is $\varepsilon = 1/90 - 1/5280$, where $90 = C_{U_1} \times (C_{U_1} - 1)$ and $5280 = 12 \cdot 4 \cdot 11 \cdot 10$ are both derived from $N=4$ (see the ladder descent section). The closed-loop transfer function is $Z = 1/(1+\varepsilon)$. The integral term drives $\Omega_k \to 0$; the fibration phases are Nyquist margins. See ledger §4197 for the full LQR correspondence (proposed).
 
 [Read the full control theory reframing →](/results/#control)
@@ -126,8 +130,6 @@ The $12 \to 4$ ladder maps to a discrete control loop (see the rungs table above
 
 ## Predictions
 
-Each prediction is a rational expression in $11, 12, 4, 10$. If a measured value deviates by more than $3\sigma$, the corresponding Gram constraint is falsified. The falsification is specific: which assumption would be ruled out is stated per prediction.
-
 ### CMB-S4 / Simons Obs.
 $\Omega_k = \frac{91}{44528} = 0.002$
 
@@ -136,7 +138,7 @@ Derivation: see ledger §4197 (the chain from the 9-rung ladder sum and the symm
 ### DUNE / Hyper-K
 $\delta_{\mathrm{PMNS}} = \frac{12}{10}\pi = 216^\circ$
 
-The ratio $12/10$ is Gram-directed over Gram-symmetric (rungs 1 and 3). The phase is forced by the carrier's directed-to-symmetric count — there is no free angle. Current global fits place $\delta_{\mathrm{PMNS}}$ near $220^\circ$; DUNE and Hyper-Kamiokande will measure it to $\pm 5^\circ$ within a decade. **Falsified if:** the measured value deviates from $216^\circ$ by more than $5^\circ$, ruling out the $12/10$ ratio.
+The ratio $12/10$ is Gram-directed over Gram-symmetric (rungs 1 and 3). Current global fits place $\delta_{\mathrm{PMNS}}$ near $220^\circ$; DUNE and Hyper-Kamiokande will measure it to $\pm 5^\circ$ within a decade. **Falsified if:** the measured value deviates from $216^\circ$ by more than $5^\circ$, ruling out the $12/10$ ratio.
 
 ### LHCb / Belle II
 $\delta_{\mathrm{CKM}} \approx \frac{\pi}{3} + \left(\frac{4}{12}\right)^2 = 66.4^\circ$
@@ -167,18 +169,18 @@ $\Omega_{\mathrm{DM}} = \frac{6}{23} = 0.2609$ (observed $0.264$, $1.2\%$ error)
 
 ---
 
-**What if it is wrong**
+**Measurement comparisons**
 
-Each prediction above has a stated falsification threshold. If any one crosses it, the corresponding Gram assumption is ruled out — either $N \neq 4$, or the cross is not uniform, or the descent is not rank-1. If all hold, the 26 parameters reduce to the Gram and its descent.
+The numerical windows above are comparison targets. A statistical test requires experimental and theoretical uncertainties. Rejecting an expression requires tracing the discrepancy through its derivation to identify the affected assumptions.
 
 ---
 
-**Full derivation**
+**Construction and formalizations**
 
-## From $\mathrm{Bool} \times \mathrm{Bool}$ to physics: the relational carrier: read the derivation.
+## The relational carrier
 
-Derivation covering the carrier, overlap matrix, and three projections (QM, GR, SM) plus connections to mathematics and physics domains. Multiple verification scripts and result files confirm every expression.
+The construction covers the carrier, overlap matrix, and proposed QM, GR, and SM projections.
 
-✓ Formally verified in Cubical Agda: [RelationalCarrier.agda](https://github.com/andrey-kokoev/marici/blob/main/research/nima/agda/RelationalCarrier.agda) (107 proof files, composed). Lean: [probe kernel](https://github.com/andrey-kokoev/marici/blob/main/research/buzzard/Entry2125.lean), [predictions (ℚ)](https://github.com/andrey-kokoev/marici/blob/main/research/buzzard/marici_formal/MariciFormal/PhysicsPredictions.lean).
+Cubical Agda: [RelationalCarrier.agda](https://github.com/andrey-kokoev/marici/blob/main/research/nima/agda/RelationalCarrier.agda) (107 proof files, composed). Lean: [probe kernel](https://github.com/andrey-kokoev/marici/blob/main/research/buzzard/Entry2125.lean), [predictions (ℚ)](https://github.com/andrey-kokoev/marici/blob/main/research/buzzard/marici_formal/MariciFormal/PhysicsPredictions.lean).
 
 [Read the full relational carrier derivation →](/theory/)

@@ -120,6 +120,7 @@ for (const [source, target] of [
   ['landing-page.md', path.join(root, 'website', 'index.md')],
   ['theory-page.md', path.join(root, 'website', 'research', 'theory', 'index.md')],
   ['results-page.md', path.join(root, 'website', 'research', 'results', 'index.md')],
+  ['system-characteristics.md', path.join(root, 'website', 'research', 'system-characteristics', 'index.md')],
 ]) {
   const content = (await fs.readFile(path.join(root, 'docs', source), 'utf8'))
     .replaceAll('](/results/#bridges)', '](#postnikov-descent)')
@@ -127,11 +128,14 @@ for (const [source, target] of [
     .replaceAll('](/results/#frontier)', '](/research/results/)')
     .replaceAll('](/results/', '](/research/results/')
     .replaceAll('](/theory/', '](/research/theory/')
+    .replace(/\]\(\.\.\/research\/([^)]*)\)/g, (_, relative) => `](https://github.com/andrey-kokoev/marici/blob/main/research/${relative})`)
+    .replaceAll('](theory-page.md', '](/research/theory/')
+  await fs.mkdir(path.dirname(target), { recursive: true })
   await fs.writeFile(target, content, 'utf8')
 }
 const landingSource = await fs.readFile(path.join(root, 'docs', 'landing-page.md'), 'utf8')
 const predictionStart = landingSource.indexOf('## Predictions')
-const derivationStart = landingSource.indexOf('## From ', predictionStart)
+const derivationStart = landingSource.indexOf('**Construction and formalizations**', predictionStart)
 const predictions = predictionStart >= 0 ? landingSource.slice(predictionStart, derivationStart > predictionStart ? derivationStart : undefined) : '# Predictions\n\nSee the [landing page](/#predictions).\n'
 await fs.mkdir(path.join(root,'website','research','predictions'), { recursive: true })
 await fs.writeFile(path.join(root, 'website', 'research', 'predictions', 'index.md'), `# Falsifiable predictions\n\n${predictions.replace(/^## Predictions\s*/,'').replaceAll('](/results/', '](/research/results/').replaceAll('](/theory/', '](/research/theory/')}`, 'utf8')

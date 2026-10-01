@@ -12,6 +12,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'Theory', link: '/research/theory/' },
+      { text: 'System', link: '/research/system-characteristics/' },
       { text: 'Results', link: '/research/results/' },
       { text: 'Predictions', link: '/research/predictions/' },
       { text: 'Ledger', link: '/research/ledger/' },

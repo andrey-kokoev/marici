@@ -8,6 +8,31 @@
 | 2 | One overlap | $G_{ij} = \langle f_j \mid f_i\rangle$ |
 | 3 | All physics | $\mathrm{QM}, \mathrm{GR}, \mathrm{SM}, \mathbb{R},\mathbb{C},\mathbb{H},\mathbb{O},\ldots$ |
 
+## Current comparison-tower checks
+
+The tower has a specified transport diagram, retained source witnesses and
+checked response adapters. A conditional preparation-and-transport model now
+includes family-disagreement feedback. Source-backed structure, supplied matrix
+fixtures and proposed dynamics must remain distinct: **no new numerical physical
+constant or physical energy-dissipation law is derived**.
+
+| Construction | Checked result or specified role | Open physical/architectural step |
+|---|---|---|
+| Rung diagram | The specified roles are $9:12\to6$, $8:11\to5$, $7:10\to4$. Explicit retained-record candidates satisfy both squares and give the same rung-4-relative readout along both routes. | Select the intended horizontal generator and realize the reference value and metric at rung 4. |
+| Retained-family promotion | One fresh label per family, with members and masses retained. Different endpoint policies still pass the presentation checks. | Specify the next-level endpoints; presentation coherence alone does not select them. |
+| Mixed comparison data | The additive path model has 109 rectangle relations. Their finite responses are $(\Delta y)(\Delta x)$, with an analogous state block. | Establish the physical readout; curvature remains an interpretation to construct. |
+| Higher coherence and reference changes | Shared-leg witnesses, weak-return associator/pentagon, and two-step local reanchoring pass exact tests. Old records and the offset to rung 4 remain retained. | Connect these conditional constructions to the intended generator and observation law. |
+| Faithful joint adapter | A marked reference edge and outside state basepoint give rank 137 and exact recovery of all matrix responses, means, and named mixed defects. | Select the context, probes, measure and physical measurement procedure. |
+| Readout versus composition | Full mean/fluctuation packets give a checked correction law; composing promoted means fixes conditional pair weights. Endpoint policies agreeing at first moment can differ after composition. | Select the intended operand ports and endpoint generator. |
+| Source comparison witnesses | The constructor retains supplied equivalences and parent histories. The four-point finite realization has six witnesses per endpoint pair; endpoints alone lose information. | Identify actual carrier operations and their route-preserving observation. Do not impose flatness in place of retaining witnesses. |
+| Witness/response packet | Separate channels preserve witnesses, original matrix responses and bridge composition. The existing matrices fail a pure finite-groupoid functor identification. | Derive amplitude preparation and its relationship to witnesses; the numerical matrices remain fixtures. |
+| Amplitude source audit | Same-reference, same-mean and same-scalar-cost fixtures can have opposite mixed responses. | Supply preparation or evolution data; those constraints alone do not determine amplitudes. |
+| Conditional preparation law | Explicit increments and witness transport have associative ordered updates, coordinate covariance and retained histories. Common-action primitive-leg updates preserve all 137 slot factorizations. | Identify the physical preparations and their schedule. |
+| Conditional family feedback | Computed increments relax retained incoming-family disagreement while preserving all family means. Exact contraction, slot scaling and member reconstruction are checked. | Justify the relaxation principle, gain and metric. This does not generate initial amplitudes or establish energy dissipation. |
+| Candidate $1,2,4$ progression | Independent products of the full off-diagonal relation have these second-homology counts. | Derive that product operation as the tower successor and establish any gauge correspondence. |
+
+[Derivation and exact verification sources](/theory/#tower-successor-and-mixed-comparison-defects).
+
 ## Physics domains (27)
 
 | Domain | Status | Connection |
@@ -67,7 +92,7 @@
 |---|---|
 | **SM gauge group SU(3) x SU(2) x U(1)** | Proposed read-off from S4 irrep decomposition (1+1+2); the identification with the first stable stems of the sphere spectrum is an analogy, not a derived correspondence. |
 | **Exactly 3 generations** | S12 is minimal carrier giving 3 SM copies without mirror sectors. |
-| **Fine-structure constant alpha^{-1} ≈ [137](/theory/#fine-structure-constant-comparison-slots)** | Proposed comparison-slot count for two T₁ carriers: 121 arrow–arrow slots plus 16 state–state slots. Their direct relationship is the reference, excluded from the slots. With equal weights, 1/137 is the average normalized weight per slot—not a cost per arrow. [Interpretation and assumptions](/theory/#fine-structure-constant-comparison-slots). Checked assembly separates reference interference and residual power. An exploratory feedback value, 137.036195934, fails precision recoil targets; carrier response strengths remain to be derived. [Readout calculations and outcomes](/theory/#carrier-realized-comparison-and-the-decimal-tail). |
+| **Fine-structure constant alpha^{-1} ≈ [137](/theory/#fine-structure-constant-comparison-slots)** | Proposed comparison-slot count for two T₁ carriers: 121 arrow–arrow slots plus 16 state–state slots. Their direct relationship is the reference, excluded from the slots. With equal weights, 1/137 is the average normalized weight per slot—not a cost per arrow. [Interpretation and assumptions](/theory/#fine-structure-constant-comparison-slots). Checked assembly separates reference interference and residual power. Closed-record schedule mixing gives a conditional normalized mismatch response of 1/137. A separate Hamiltonian couples comparison mismatch to an evolving overlap phase; its long-time normalization and electromagnetic readout remain open. [Equilibrium and back-reaction](/theory/#record-equilibrium-and-phase-back-reaction). The earlier exploratory feedback value, 137.036195934, fails precision recoil targets. [Readout calculations and outcomes](/theory/#carrier-realized-comparison-and-the-decimal-tail). |
 | **Weak mixing angle sin^2(theta_W) = 3/13 (candidate)** | The cited matter-trace derivation omits quark colour multiplicity in the weak sector. Consistent traces give 6 and 10, hence 3/8 under common inverse-trace normalization. Consistent colour averaging gives 9/28. A carrier derivation of 3/13 and a scale-matched measurement comparison remain open. [Audit and next construction](/theory/#weak-mixing-matter-trace-audit). |
 | **Yukawa hierarchy ratios** | Up-type: y_t : y_c : y_u = 12 : 11 : 10 (Gram eigenvalues) with fibration phase suppression 1/(r(l+1)) = 1/143 and 1/(rls+l) = 1/540. Down-type: y_b = l_SU2/N, y_s = y_b/(l*s), y_d = y_s/(l+r-s+1). All within 1% of observed. |
 | **Higgs mass m_H = 125 GeV** | m_H = 11^2 + 4 = 125 from Gram numbers. Higgs vev v = 2*11^2 + 4 = 246. Ratio m_H/v = 125/246 within 0.2% of observed. |

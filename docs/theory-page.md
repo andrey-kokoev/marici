@@ -288,6 +288,315 @@ The assembled comparison is assessed against the direct relationship; its residu
 The two blocks are counted separately, not as state assignments attached to each arrow pair. With equal slot weights, the normalized comparison is $\frac{1}{137}\sum_{s=1}^{137}c_s$. The proposed identification with electromagnetic coupling is $\alpha\approx1/137$. This interpretation assumes the two blocks exhaust the comparisons and carry equal normalization weight; it does not yet derive that identification or the measured low-energy value $\alpha^{-1}\approx137.036$.
 
 
+### Tower successor and mixed comparison defects
+
+**Current synthesis.** The tower has a specified transport diagram and a fixed
+physical-reference locus at rung 4. Source comparisons retain actual equivalence
+witnesses and histories; checked adapters preserve those witnesses alongside the
+137 matrix responses and their **109 mixed comparison relations**. A conditional
+preparation-and-transport model now includes a tested family-disagreement
+feedback law. Its physical preparation, metric and gain remain to be identified.
+The matrix amplitudes are supplied fixtures, not derived physical predictions;
+these results supply no new numerical constant.
+
+#### Rung transports and the physical reference
+
+The middle triple presents transport between the outer triples:
+
+$$
+\begin{array}{ccc}
+12 & \xrightarrow{\;9\;} & 6\\
+\downarrow && \downarrow\\
+11 & \xrightarrow{\;8\;} & 5\\
+\downarrow && \downarrow\\
+10 & \xrightarrow{\;7\;} & 4.
+\end{array}
+$$
+
+Vertical moves retain the labelled/source-indexed/target-indexed presentations.
+Rung 4 is the designated physical-reference locus. Both squares must commute,
+so the two complete routes from rung 12 to rung 4 yield the same physical
+readout. Exact retained-record fixtures satisfy these equations; the intended
+horizontal generator and the numerical reference/readout at rung 4 still need
+to be constructed.
+
+Local reference changes retain their offset to that fixed reference:
+$C-d_4=(C-d_{\mathrm{local}})+(d_{\mathrm{local}}-d_4)$.
+Choosing the mean as a local reference can make its local residual zero while
+preserving the full rung-4-relative offset.
+[Diagram and verification](https://github.com/andrey-kokoev/marici/blob/main/research/nima/rung-transport-diagram-and-fixed-reference.md).
+
+#### What promotion determines
+
+The record-family rule assigns one fresh label to each grouped family and
+retains its members. Candidate higher-witness constructions are now checked;
+the intended horizontal generator and its next-level endpoint maps remain to
+be selected and connected to them. In the checked fixture, two endpoint policies preserving
+reconstruction, weights, and the reference/residual equation iterate as
+$137\to32\to1$ and $137\to32\to32$.
+
+Independent all-pairs comparison is a separate, explicit operation. For the full
+four-label off-diagonal relation, its repeated products give the candidate
+second-homology counts $1,2,4$. Establishing this operation as the tower's
+successor, and identifying those classes with gauge data, remain open.
+
+#### Retained paths produce 109 relations
+
+The typed assembly uses eleven maps $x_i:A\to U$, eleven $y_j:U\to B$, four
+$s_a:A\to V$, four $t_b:V\to B$, and the direct reference $d:A\to B$.
+Its 137 composites share these **31 primitive/reference legs**.
+
+The additive path-boundary description assigns a comparison cell $\sigma_{ij}$
+the boundary $x_i+y_j-d$, with $s_a+t_b-d$ for the state block. These boundaries
+have rank 28. Their 109-dimensional kernel has a basis of rectangle relations
+relative to a chosen base leg in each family:
+
+$$
+\sigma_{ij}-\sigma_{i0}-\sigma_{0j}+\sigma_{00}.
+$$
+
+There are $(11-1)^2=100$ arrow-block relations and $(4-1)^2=9$ state-block
+relations. Explicit composite names and composition witnesses preserve this
+count under a checked chain retraction. The additive path boundary and the
+finite matrix response are distinct parts of the construction.
+
+#### Mixed second difference and the curvature analogy
+
+Write the matrix response of a slot as $R_{ij}=y_jx_i-d$. Then
+
+$$
+R_{ij}-R_{i0}-R_{0j}+R_{00}
+=(y_j-y_0)(x_i-x_0).
+$$
+
+The state block has the corresponding formula with $t$ and $s$. Reference changes
+cancel. The response vanishes when only one leg family changes; simultaneous
+changes can give a nonzero bilinear defect. Exact rational tests verify this
+identity and recover the original normalized 137-slot assembly.
+
+This is a discrete mixed second derivative: it measures interaction between the
+two leg variations. Its rectangle support suggests a curvature interpretation.
+A physical curvature or gauge-field identification remains open. In a declared
+invertible-reference sector, the bridge $d^{-1}$ makes both composition orders
+well-typed and gives the discrepancy
+$\rho_2d^{-1}\rho_1-\rho_1d^{-1}\rho_2$. A weaker witnessed return requires
+explicit unit and higher-coherence data. The 109 relations carry factored
+responses rather than freely independent matrix parameters.
+
+#### Reference transport and higher coherence
+
+A graded shared-leg construction gives each comparison two witness routes and
+109 higher products reconciling them. A witnessed reference return supports
+recursive composition with explicit reference-drift corrections, an associator,
+and a pentagon filler. These are checked algebraic realizations with declared
+witness data; their physical interpretation remains conditional.
+
+A retained comparison or weighted family can also serve as a local reference.
+Its existing witness updates the unit and triangle records while preserving old
+records as parents. Two successive changes agree with a direct change, and
+returning to the old reference restores the current fields. All mixed rectangles
+remain unchanged. The offset to the physical rung-4 reference must still be
+retained. History retention does not require freezing current witness values.
+
+The earlier biclique-chain filler model is a separate construction. Its filler
+dimensions are not dimensions of the shared-leg model or physical field counts.
+
+#### A faithful joint arrow/state observation
+
+The actual slot matrices can be encoded as coefficients of carrier probe
+functions on $S_4\times S_4$. An endpoint-fixing probe model merges reverse-arrow
+responses; retained kernel records restore the named slots. A marked-context
+alternative uses a reference ordered edge and a state basepoint outside that
+edge. Its joint probe map has rank 137, and an exact decoder recovers every
+matrix response, its mean, and the named mixed defects.
+
+The marked context is transported under relabelling. Its selection and physical
+measurement interpretation are inputs. In particular, uniform carrier averaging
+is different from equal-slot averaging: the tested arrow/state indicator probes
+have means $1/144$ and $1/16$. An observation law must specify which averaging or
+decoding operation is physically performed.
+
+#### The readout/composition gate
+
+Faithful reconstruction alone does not make decoded averaging multiplicative.
+Two valid leg perturbations can occupy disjoint probe contexts: their pointwise
+mixed product vanishes, while the product of their decoded means is nonzero.
+For the tested decoder $J$ and invertible reference,
+
+$$
+J(R_2d^{-1}R_1)\ne J(R_2)d^{-1}J(R_1).
+$$
+
+Independent pairing of slot contexts restores the mean-composition identity:
+
+$$
+\sum_{i,j}w_jw_i R_{2j}d^{-1}R_{1i}
+=\left(\sum_jw_jR_{2j}\right)d^{-1}
+ \left(\sum_iw_iR_{1i}\right).
+$$
+
+Alternatively, the multiplicativity discrepancy can be retained as explicit
+coherence data. The intended transport must specify which operation it uses.
+Independent pairing is therefore structurally motivated under the stated
+readout requirement; it has not yet been derived as the tower's family successor.
+The candidate $1,2,4$ product-homology result remains conditional.
+
+A full mean/fluctuation packet now supplies an associative correction law for
+declared same-slot composition. Composing promoted family means instead fixes
+conditional leaf-pair coefficients through retained membership and masses.
+The two horizontal endpoint candidates can agree in their original mean yet
+differ after that composition probe. These checks sharpen the operation choice;
+they do not select the intended generator.
+
+#### Retain witnesses rather than impose flatness
+
+The source comparison constructor accepts a supplied pointed equivalence and
+retains it with both boundary packages. Composition retains its parents. In the
+finite realization on four differently pointed copies of the carrier, each
+endpoint pair admits six distinct witnesses. Endpoints alone are not faithful.
+The full witness, or its stabilizer coordinate with endpoint frames, preserves
+composition and permits the actual route holonomy to be tested.
+
+Flatness is therefore not imposed on the comparison type. A global-frame
+attachment gives a conditional flat reference realization; nontrivial loop
+transport cannot be erased by changing those frames. The existing fixed-domain
+comparison witnesses do not by themselves select a carrier reference connection.
+
+A two-channel matrix packet retains the supplied witness separately from the
+original response. This distinction is necessary: the existing matrix fixture
+cannot simply be a functorial image of the finite comparison groupoid. Its
+normalized base response is $I/2$, whereas the finite based witnesses have sixth
+power identity. A faithful encoding does not derive the response amplitudes.
+
+#### Conditional preparation and witness transport
+
+For a declared operator-valued amplitude $A$, separate witness transport from
+an explicit preparation increment $B$:
+
+$$
+T_h(A)=\rho(h)A\rho(h)^{-1},\qquad A_{\mathrm{new}}=T_h(A)+B.
+$$
+
+Ordered updates compose as
+
+$$
+(h_2,B_2)\circ(h_1,B_1)
+=(h_2h_1,\;B_2+T_{h_2}(B_1)).
+$$
+
+This conditional law has checked associativity, inverse updates, retained
+histories and port-coordinate covariance. Applying a common witness action and
+supplied preparations to the primitive legs preserves the shared factorization
+of all 137 slots. Their cross terms follow from multiplying updated legs.
+Preparation history cannot generally be compressed into its finite witness:
+a composite can have identity witness but a nonzero preparation increment.
+
+#### One explicit candidate for the preparation increment
+
+Postulate relaxation toward agreement within retained incoming families. With
+$P$ the member-weighted family-mean projector, define
+
+$$
+B=\eta\bigl(P T_h(A)-T_h(A)\bigr).
+$$
+
+The exact fixture checks the original unit member masses, 30 primitive legs,
+137 slots and 32 target-slot families. The rule preserves their family and global
+means. In a declared witness-invariant quadratic control metric, active leg
+disagreement scales by $(1-\eta)^2$; slot fluctuations have quadratic and quartic
+scaling. Retained kicks reconstruct the old members even at full projection.
+These are not claims about physical energy dissipation or the cost of history.
+
+This feedback computes $B$ from existing data rather than fitting each increment
+independently. But family-constant states receive no drive: it does not prepare
+initial amplitudes, select their family means, or force those means to equal the
+rung-4 reference. Relaxation itself, the gain $\eta$, and the control metric are
+explicit model choices, not consequences of the count 137.
+
+**Next step:** identify a source preparation or calibration operation that
+implements—or falsifies—this feedback. Its physical gain, metric and relation
+to the intended rung transports remain open. Until that identification, keep
+the matrix values and feedback law labelled as fixtures and conditional models.
+
+**Verification sources:** [operation contract](https://github.com/andrey-kokoev/marici/blob/main/research/nima/comparison-successor-operation-contract.md),
+[shared-leg witnesses](https://github.com/andrey-kokoev/marici/blob/main/research/nima/shared-leg-dg-realization-and-base-coherence.md),
+[witnessed returns](https://github.com/andrey-kokoev/marici/blob/main/research/nima/witnessed-reference-return-and-pentagon.md),
+[local reference changes](https://github.com/andrey-kokoev/marici/blob/main/research/nima/witnessed-reference-reanchoring.md),
+[joint response adapter and exact checks](https://github.com/andrey-kokoev/marici/blob/main/research/nima/joint-probe-response-adapter.md),
+[retained source witnesses](https://github.com/andrey-kokoev/marici/blob/main/research/nima/retained-pointed-comparison-groupoid.md),
+[witness/response packet](https://github.com/andrey-kokoev/marici/blob/main/research/nima/witness-matrix-packet-adapter.md),
+[amplitude source audit](https://github.com/andrey-kokoev/marici/blob/main/research/nima/response-amplitude-source-gate.md),
+[preparation and transport](https://github.com/andrey-kokoev/marici/blob/main/research/nima/boundary-prepared-witness-update-law.md),
+[family-feedback law and checks](https://github.com/andrey-kokoev/marici/blob/main/research/nima/family-disagreement-preparation-law.md),
+and [current system summary](/research/system-characteristics/#current-synthesis-status).
+
+### Record equilibrium and phase back-reaction
+
+The record-family architecture presents the same labelled paths individually,
+indexed by source, and indexed by target. Promotion assigns each grouped family
+a fresh label while retaining its members. A weighted response survives this
+change of presentation when each family carries the sum of its members' weights.
+Equal weights for newly assigned labels generally change the response.
+
+#### A conditional route to equal comparison response
+
+In the closed comparison prototype, a normalized carrier coordinate is exchanged
+with its retained record. There are 16 carrier coordinates and 137 record
+coordinates. Write the mismatch of comparison $i$ as
+
+$$
+\delta_i=w_i-u_i^Tq.
+$$
+
+The 137 real exchange normals are independent and have a connected
+nonorthogonality graph in the tested construction. A covariance invariant under
+every individual exchange is scalar on their span. A state-independent random
+schedule that enables every comparison, with an idle probability to remove
+periodicity, drives the ensemble covariance toward that common invariant space.
+Each realized exchange remains reversible and conserves the total quadratic budget.
+
+For positive active variance, the limiting response satisfies
+
+$$
+\frac{\operatorname{Var}(\delta_i)}
+{\sum_{j=1}^{137}\operatorname{Var}(\delta_j)}=\frac1{137}.
+$$
+
+This result concerns normalized mismatch fluctuations. Its identification with
+electromagnetic coupling requires a physical charge/field readout. The schedule,
+comparison operation, and retained-state model are stated assumptions. Unequal
+positive scheduling probabilities preserve the equilibrium but change convergence
+rates and can change event-frequency-weighted measurements.
+
+#### Coupling comparisons to an evolving phase
+
+A complex extension supports local endpoint phase changes when the state,
+comparison features, and Gram metric transform together. Independent overlap
+phases admit nonzero loop holonomy while preserving a positive metric in the
+constructed family. A subsequent single-phase trial uses the actual comparison
+mismatches in the Hamiltonian
+
+$$
+H=\frac{\kappa}{2}\sum_{i=1}^{137}
+\left|w_i-u_i(\theta)^\dagger q\right|^2
++\frac{\beta}{2}p^2+\mu(1-\cos\theta).
+$$
+
+Here $p$ is conjugate to the overlap phase $\theta$. The negative phase derivative
+of the same Hamiltonian drives the phase momentum. Thus record mismatch changes
+the phase, which changes the subsequent comparison directions. Numerical tests
+check the force against energy differentiation, global phase covariance, and
+convergence of energy and norm errors under timestep refinement.
+
+The Hamiltonian, canonical frame, scalar reduction, and coefficients are trial
+choices. This evolving-phase model has a different update law from the random
+exchange model. Its long-time response still needs testing; the earlier
+$1/137$ equilibrium result cannot be transferred without that test. No physical
+coupling normalization or observed decimal correction has been derived.
+
+[System characteristics and verification sources](/research/system-characteristics/#closed-record-equilibrium-and-normalized-exchange-response)
+track the individual constructions, checks, and open interfaces.
+
 ### Carrier-realized comparison and the decimal tail
 
 **Hypothesis.** Realizing the 137-slot comparison on the carrier changes its reference-channel normalization through the comparison residual. The slot count remains integral. The measured low-energy inverse coupling is approximately $137.035999$, so the calculation must explain an additional normalization of approximately $0.036$.
@@ -394,6 +703,41 @@ The historical trace-based route to $137=(C_Y+1)^2+(C_{SU(2)}+1)^2$ also fails t
 ### Proton-electron ratio: comparison paths and settling
 
 **Hypothesis and current outcome.** The expression $12(12^2+3^2)=1836$ counts a proposed comparison programme. The observed mass ratio is approximately $1836.152673$. Exact slot counts and explicit disturbance-settling prototypes have been checked; the particle-energy identification and the $0.152673$ correction remain to be derived.
+
+#### Two-cycle compaction and retained overlap
+
+**Conceptual conjecture.** Descent from rung12 toward rung4 compacts a packet's compatibility information into the fewest independent relationships from which the required information can be recovered. Shared structure becomes a retained reference. The part with maximum relationship depth supplies the entry interface for outside probes; its resolution makes the attached parts accessible.
+
+A proton packet is proposed to have an assembled external presentation and a compact, quark-level descent presentation. The two-cycle picture is:
+
+| Stage | Proposed packet operation |
+|---|---|
+| First cycle begins | One complex plane collapses into records, supplying the retained reference for this cycle. |
+| First descent | Explicit compatibility paths are collected into shared records and fewer independent arrows. |
+| First cycle ends | A splittable packet separates into two parts $a,b$ and their relationship $\rho$; the relationship is carried in the next complex plane. |
+| Second cycle begins | One plane collapses into records; the two parts and their connection participate in the new cycle. |
+| Second-cycle resolution | Each part is presented with the connection through which the other is reachable: $A=(a,\rho)$ and $B=(\rho,b)$. |
+| Reassembly | The two overlapping presentations reconstruct the packet through their shared relationship. |
+
+The proposed overlap bookkeeping is
+
+$$
+(a+\rho)+(\rho+b)-\rho=a+\rho+b.
+$$
+
+With equal bookkeeping weights for $a,\rho,b$, this gives
+
+$$
+\frac23+\frac23-\frac13=1.
+$$
+
+The conjectured association with the proton's $uud$ presentation assigns the two component-with-relationship contributions to the two $u$ entries and the shared contribution's subtraction to the $d$ entry. Equal weights and the identification with electric charge are hypotheses in this interpretation. The expression $12(12^2+3^2)$ is proposed to count the retained compatibility responsibilities of the assembled interface.
+
+#### Proposed interpretation of quark spin labels
+
+The proposal interprets quark **spin-up and spin-down as presentations of orientation in overlapping retained arrows**, resolved relative to a probe axis. The underlying record consists of the two parts and their shared relationship; the spin labels would arise when that structure is presented to a probe. Descent and reconstruction would supply the transformation between these presentations.
+
+QCD describes quarks as spin-$1/2$ fields; quantum spin is an intrinsic angular-momentum degree of freedom. The retained-overlap proposal is a conjecture about the origin of that description. Its physical test is to derive the two-outcome spin response, its dependence on the probe axis, and the corresponding polarized-scattering observables from the retained arrows. No such calculation or distinct empirical prediction has yet been obtained from this proposal.
 
 #### Shared-state comparison programme
 
