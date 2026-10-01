@@ -1,0 +1,822 @@
+{
+  "schema_version": 4,
+  "revision": 25,
+  "native_core": "research/nima/generating-grammar/native-core.json",
+  "semantic_extensions": "research/nima/generating-grammar/semantic-extensions.json",
+  "completions_and_policies": "research/nima/generating-grammar/completions-and-policies.json",
+  "catalogue_role": "Supplementary experimental/policy catalogue. The implemented generating grammar is the source-bound native_core, not this flat operation list.",
+  "title": "Marici generating grammar",
+  "maintainer": "marici.Nima",
+  "authority": "Canonical maintenance record for this grammar audit, created at operator request; does not supersede cited source contracts or confer theorem/publication authority.",
+  "scope": "Mathematical and retained-record operations in the explicitly listed source slices; not repository workflow commands or an exhaustive inventory of sector operations.",
+  "completeness": "open",
+  "source_basis": {
+    "status": "unresolved",
+    "description": "The operator's S4 object includes object, transport and joint object/transport. Its exact typed source signature has not been frozen. Do not silently replace it with a bare group or bare four-point set.",
+    "acceptance": "Record the source sorts, structure maps, equations, permitted constructions and equivalence criterion, with authoritative source references. Then audit dependencies against that fixed signature."
+  },
+  "sources": {
+    "local_dependency_audit": {
+      "path": "research/nima/results/interpretation-dependencies.json",
+      "section": "Thirteen roots: local import graph, fresh aggregate checking, source hashes, receipt freshness, compiler/Cubical inventory binding and conditional interfaces; compiler built-in data and semantic signature derivability excluded"
+    },
+    "architecture": {
+      "path": "docs/system-characteristics.md",
+      "section": "System as a software architecture"
+    },
+    "contract": {
+      "path": "research/nima/comparison-successor-operation-contract.md",
+      "section": "State and operation ledger"
+    },
+    "experiment": {
+      "path": "research/nima/three-operation-grammar-first-closure-experiment.md",
+      "section": "Declared interpretation; Closure; First cross-branch recurrence"
+    },
+    "comparison": {
+      "path": "research/nima/recursive-comparison-record-closure.md",
+      "section": "One candidate law, used twice; Inputs that the current assembly does not supply"
+    },
+    "s4_working": {
+      "path": "research/nima/s4-working-draft.md",
+      "section": "Source basis: three layers of S4 formalization; Structure maps; Permitted constructions; Equations"
+    },
+    "passive_frame": {
+      "path": "research/nima/agda/PassiveFrameTransport.agda",
+      "section": "Interpretation module"
+    },
+    "contract_interpretations": {
+      "path": "research/nima/agda/ContractInterpretations.agda",
+      "section": "Interpret module"
+    },
+    "coverage_boundary": {
+      "path": "research/nima/generating-grammar/coverage-boundary.md",
+      "section": "What is covered; What is NOT covered; What remains uncovered"
+    },
+    "remaining_interpretations": {
+      "path": "research/nima/agda/RemainingInterpretations.agda",
+      "section": "Remaining module"
+    },
+    "path_ledger": {
+      "path": "research/nima/agda/PathLedgerInterpretations.agda",
+      "section": "PathOps module: filler-pull-is-native, pointwise, pull-pointwise; no Python ledger bridge"
+    }
+  },
+  "sorts": {
+    "TypeExpr": "Type expression over a supplied base type Q; full constructor word retained.",
+    "Presentation": "Container presentation with its expression word and reversible codecs.",
+    "Equivalence": "An actual equivalence with inverse data, not equality of cardinalities.",
+    "RecordSet": "Labelled records with declared source and target fields and retained members.",
+    "RecordView": "An indexed presentation with enough metadata for exact reconstruction.",
+    "FamilySet": "Declared groups of records, retaining every member or its recoverable link.",
+    "Comparison": "Typed actual/reference maps and construction parents; higher witnesses when required.",
+    "FramePackage": "Typed maps, witnesses and any metric in a declared frame.",
+    "History": "Retained witness/parent data with declared observation and permission policy.",
+    "AdmissionProfile": "Permissions for a specified request family, not arbitrary observables.",
+    "OperandPair": "Two explicitly supplied operand occurrences with dependency identities."
+  },
+  "seeds": [
+    {
+      "id": "seed.q",
+      "codomain": "TypeExpr",
+      "rule": "A supplied base type Q starts the experimental expression grammar.",
+      "requires": [
+        "Base type Q"
+      ],
+      "source": "experiment"
+    }
+  ],
+  "unsupported_families": [
+    {
+      "id": "unsupported.path_native_execution",
+      "source_path": "research/nima/checkers/retained_path_successor.py",
+      "reason": "All 33 defined functions/methods are now classified with source rules and exact finite tests in semantic-extensions.json. Their operational interpretation into native Resolve remains open; noninjective averaging cannot be replaced by a comparison equivalence."
+    },
+    {
+      "id": "unsupported.policy_native_interpretation",
+      "source_path": "research/nima/comparison-successor-operation-contract.md",
+      "reason": "All nine rows now have typed assessments in completions-and-policies.json. Family-retention and supplied-operand pairing have compiled native derivations with premise recovery. DG computations, reference updates and permission policies still lack full operational interpretations; assessment is not derivation."
+    }
+  ],
+  "operations": [
+    {
+      "id": "type.pp",
+      "name": "Product-product",
+      "role": "constructor",
+      "domain": [
+        "TypeExpr"
+      ],
+      "codomain": "TypeExpr",
+      "rule": "X -> P(P(X)); (a,b) -> (4a,b+2), where P(X)=Pi(i:Bool).X.",
+      "requires": [
+        "Base type Q",
+        "Bool-indexed dependent products"
+      ],
+      "retains": [
+        "Full constructor word",
+        "Independent indexed values"
+      ],
+      "depends_on": [],
+      "evidence": "source_reported_induction",
+      "sources": [
+        "experiment"
+      ],
+      "s4_status": "unassessed",
+      "gap": "This type-building constructor is not identified with an operation of the intended S4 object."
+    },
+    {
+      "id": "type.sp",
+      "name": "Sum-product",
+      "role": "constructor",
+      "domain": [
+        "TypeExpr"
+      ],
+      "codomain": "TypeExpr",
+      "rule": "X -> S(P(X)); (a,b) -> (2a+1,b+1), where S(X)=Sigma(i:Bool).X.",
+      "requires": [
+        "Base type Q",
+        "Bool-indexed dependent sums and products"
+      ],
+      "retains": [
+        "Full constructor word",
+        "Choice bits and indexed values"
+      ],
+      "depends_on": [],
+      "evidence": "source_reported_induction",
+      "sources": [
+        "experiment"
+      ],
+      "s4_status": "unassessed",
+      "gap": "No coverage theorem identifies this experimental constructor with family promotion."
+    },
+    {
+      "id": "type.ps",
+      "name": "Product-sum",
+      "role": "constructor",
+      "domain": [
+        "TypeExpr"
+      ],
+      "codomain": "TypeExpr",
+      "rule": "X -> P(S(X)); (a,b) -> (2a+2,b+1).",
+      "requires": [
+        "Base type Q",
+        "Bool-indexed dependent sums and products"
+      ],
+      "retains": [
+        "Full constructor word",
+        "Choice bits and indexed values"
+      ],
+      "depends_on": [],
+      "evidence": "source_reported_induction",
+      "sources": [
+        "experiment"
+      ],
+      "s4_status": "unassessed",
+      "gap": "Independent operands here are part of the declared semantics, not consequences of a fresh label."
+    },
+    {
+      "id": "type.normalize",
+      "name": "Normalize a type expression",
+      "role": "derived",
+      "domain": [
+        "TypeExpr"
+      ],
+      "codomain": "Presentation",
+      "rule": "Construct codecs to Sigma(bits:Bool^a).Pi(position:Fin(2^b)).Q by recursion on the expression.",
+      "requires": [
+        "Expression generated by the three type constructors"
+      ],
+      "retains": [
+        "Original word",
+        "Encode and decode maps"
+      ],
+      "depends_on": [
+        "type.pp",
+        "type.sp",
+        "type.ps"
+      ],
+      "evidence": "source_reported_induction",
+      "sources": [
+        "experiment"
+      ],
+      "s4_status": "unassessed",
+      "gap": "Closure applies to this experimental type language, not yet to all Marici operations."
+    },
+    {
+      "id": "type.compare",
+      "name": "Compare container presentations",
+      "role": "derived",
+      "domain": [
+        "Presentation",
+        "Presentation"
+      ],
+      "codomain": "Equivalence",
+      "rule": "For equal container signatures, decode_target composed with encode_source gives the comparison.",
+      "requires": [
+        "Same formal Q-indexed signature",
+        "Inverse codecs"
+      ],
+      "retains": [
+        "Both source expressions",
+        "Actual comparison and inverse"
+      ],
+      "depends_on": [
+        "type.normalize"
+      ],
+      "evidence": "source_reported_construction",
+      "sources": [
+        "experiment"
+      ],
+      "s4_status": "unassessed",
+      "gap": "A complete generating relation set between constructor words remains open."
+    },
+    {
+      "id": "record.reindex",
+      "name": "Re-present retained records",
+      "role": "constructor",
+      "domain": [
+        "RecordSet"
+      ],
+      "codomain": "RecordView",
+      "rule": "Index the same retained records by label, from-label or to-label; provide exact reconstruction.",
+      "requires": [
+        "Declared field selector",
+        "Record identity policy"
+      ],
+      "retains": [
+        "Every matching record",
+        "Selected field and identities"
+      ],
+      "depends_on": [],
+      "evidence": "source_reported_checked",
+      "sources": [
+        "architecture",
+        "contract"
+      ],
+      "s4_status": "unassessed",
+      "gap": "Reindexing does not by itself create a successor transport."
+    },
+    {
+      "id": "record.group",
+      "name": "Group with retained members",
+      "role": "constructor",
+      "domain": [
+        "RecordSet"
+      ],
+      "codomain": "FamilySet",
+      "rule": "Group by declared keys with retain_members=True.",
+      "requires": [
+        "Grouping keys"
+      ],
+      "retains": [
+        "All members or recoverable links",
+        "Group membership"
+      ],
+      "depends_on": [],
+      "evidence": "selected_architecture",
+      "sources": [
+        "architecture",
+        "contract"
+      ],
+      "s4_status": "unassessed",
+      "gap": "The source must select grouping keys; aggregation alone is not this operation."
+    },
+    {
+      "id": "record.promote",
+      "name": "Promote families",
+      "role": "constructor",
+      "domain": [
+        "FamilySet"
+      ],
+      "codomain": "RecordSet",
+      "rule": "Give each retained family one fresh label in a declared namespace, with next-level endpoint fields.",
+      "requires": [
+        "Namespace and label lifetime",
+        "Next-level source/target assignment"
+      ],
+      "retains": [
+        "Every family member",
+        "Fresh-label to family correspondence"
+      ],
+      "depends_on": [],
+      "evidence": "selected_architecture",
+      "sources": [
+        "architecture",
+        "contract"
+      ],
+      "s4_status": "unassessed",
+      "gap": "Endpoint assignment and horizontal generator are not supplied by fresh labelling."
+    },
+    {
+      "id": "frame.passive",
+      "name": "Passive frame change",
+      "role": "conditional",
+      "domain": [
+        "FramePackage"
+      ],
+      "codomain": "FramePackage",
+      "rule": "Transport maps, witnesses and any metric together by the supplied typed frame equivalence.",
+      "requires": [
+        "Typed representation of relabelling"
+      ],
+      "retains": [
+        "Maps",
+        "Witnesses",
+        "Metric if present"
+      ],
+      "depends_on": [],
+      "evidence": "source_reported_conditional",
+      "sources": [
+        "contract"
+      ],
+      "s4_status": "unassessed",
+      "gap": "Relabelling covariance does not establish selection of an active operation."
+    },
+    {
+      "id": "comparison.compose",
+      "name": "Compose reference-aware comparisons",
+      "role": "constructor",
+      "domain": [
+        "Comparison",
+        "Comparison"
+      ],
+      "codomain": "Comparison",
+      "rule": "(C1,d1):A->U and (C2,d2):U->B map to (C2*C1,d2*d1), retaining children.",
+      "requires": [
+        "Matching middle object U",
+        "Composable reference maps"
+      ],
+      "retains": [
+        "Children",
+        "Actual and reference composites",
+        "Residual C2*C1-d2*d1"
+      ],
+      "depends_on": [],
+      "evidence": "source_reported_checked",
+      "sources": [
+        "comparison"
+      ],
+      "s4_status": "unassessed",
+      "gap": "Same cell degree; this is not a higher-cell or family-promotion constructor."
+    },
+    {
+      "id": "comparison.fixed_frame",
+      "name": "Fixed-frame comparison with return",
+      "role": "conditional",
+      "domain": [
+        "Comparison",
+        "Comparison"
+      ],
+      "codomain": "Comparison",
+      "rule": "C_new=C2*r*C1 with recorded reference correction and higher witnesses.",
+      "requires": [
+        "Typed return r",
+        "Unit and higher witness data"
+      ],
+      "retains": [
+        "Parents",
+        "Reference correction",
+        "Higher witnesses"
+      ],
+      "depends_on": [],
+      "evidence": "source_reported_checked",
+      "sources": [
+        "contract"
+      ],
+      "s4_status": "unassessed",
+      "gap": "Not silently identified with ordinary composable-pair comparison composition."
+    },
+    {
+      "id": "reference.substitute",
+      "name": "Witnessed reference substitution",
+      "role": "conditional",
+      "domain": [
+        "Comparison"
+      ],
+      "codomain": "Comparison",
+      "rule": "Keep actual maps fixed; version reference and witnesses using a selected retained anchor and its reference-change witness.",
+      "requires": [
+        "Anchor selection",
+        "Reference-change witness",
+        "Fixed domain"
+      ],
+      "retains": [
+        "Actual maps",
+        "Parents",
+        "Versioned witnesses"
+      ],
+      "depends_on": [],
+      "evidence": "source_reported_checked",
+      "sources": [
+        "contract"
+      ],
+      "s4_status": "unassessed",
+      "gap": "Physical reference or mask selection is not supplied by the fixed-domain construction."
+    },
+    {
+      "id": "frame.active",
+      "name": "Protected active frame request",
+      "role": "candidate",
+      "domain": [
+        "FramePackage"
+      ],
+      "codomain": "FramePackage",
+      "rule": "For an admitted g: C'=g*C, d'=g*d, r'=r*g^-1; keep u,v fixed and update W with its certificate.",
+      "requires": [
+        "Closed invertible g",
+        "[g,delta(v)]=0",
+        "Allowed certificate K_g with [g,v]=delta(K_g)"
+      ],
+      "retains": [
+        "Protected unit witnesses",
+        "Admission certificate",
+        "Updated triangle witness"
+      ],
+      "depends_on": [],
+      "evidence": "candidate_protocol",
+      "sources": [
+        "contract"
+      ],
+      "s4_status": "unassessed",
+      "gap": "Interpreting a permutation as an active intervention is a separate policy."
+    },
+    {
+      "id": "history.edit",
+      "name": "Permitted history edit",
+      "role": "conditional",
+      "domain": [
+        "History"
+      ],
+      "codomain": "History",
+      "rule": "Edit only while preserving declared readouts and unit/triangle equations, with parents and cost retained.",
+      "requires": [
+        "Permission policy",
+        "Declared readouts",
+        "Cost/metric if used"
+      ],
+      "retains": [
+        "Parents",
+        "Cost record",
+        "Coherence equations"
+      ],
+      "depends_on": [],
+      "evidence": "source_reported_checked",
+      "sources": [
+        "contract"
+      ],
+      "s4_status": "unassessed",
+      "gap": "Admissible edits depend on the supplied support and observation policy."
+    },
+    {
+      "id": "family.admit",
+      "name": "Uniform family admission",
+      "role": "candidate",
+      "domain": [
+        "FamilySet"
+      ],
+      "codomain": "AdmissionProfile",
+      "rule": "H_F is the intersection of member permission profiles for a common request family.",
+      "requires": [
+        "Member profiles",
+        "Common request family",
+        "Uniform all-members policy"
+      ],
+      "retains": [
+        "Member-profile provenance"
+      ],
+      "depends_on": [],
+      "evidence": "candidate_protocol",
+      "sources": [
+        "contract"
+      ],
+      "s4_status": "unassessed",
+      "gap": "Not a summary of arbitrary history observations or metric cost."
+    },
+    {
+      "id": "operand.pair",
+      "name": "Independent carrier copying/pairing",
+      "role": "conditional",
+      "domain": [
+        "RecordSet",
+        "RecordSet"
+      ],
+      "codomain": "OperandPair",
+      "rule": "Introduce explicitly supplied operand occurrences with their dependency data.",
+      "requires": [
+        "Extra operand constructor",
+        "Independence specification if claimed"
+      ],
+      "retains": [
+        "Both operands",
+        "Occurrence and dependency identities"
+      ],
+      "depends_on": [],
+      "evidence": "separate_model_choice",
+      "sources": [
+        "contract"
+      ],
+      "s4_status": "unassessed",
+      "gap": "Fresh labels and repeated composition do not establish independent copying."
+    }
+  ],
+  "coverage": [
+    {
+      "source": "contract",
+      "item": "Re-present retained records",
+      "operations": [
+        "record.reindex"
+      ]
+    },
+    {
+      "source": "contract",
+      "item": "Passive frame change",
+      "operations": [
+        "frame.passive"
+      ]
+    },
+    {
+      "source": "contract",
+      "item": "Fixed-frame comparison",
+      "operations": [
+        "comparison.fixed_frame"
+      ]
+    },
+    {
+      "source": "contract",
+      "item": "Witnessed reference substitution",
+      "operations": [
+        "reference.substitute"
+      ]
+    },
+    {
+      "source": "contract",
+      "item": "Protected active frame request g",
+      "operations": [
+        "frame.active"
+      ]
+    },
+    {
+      "source": "contract",
+      "item": "Permitted history edit",
+      "operations": [
+        "history.edit"
+      ]
+    },
+    {
+      "source": "contract",
+      "item": "Family promotion",
+      "operations": [
+        "record.group",
+        "record.promote"
+      ]
+    },
+    {
+      "source": "contract",
+      "item": "Uniform family admission",
+      "operations": [
+        "family.admit"
+      ]
+    },
+    {
+      "source": "contract",
+      "item": "Independent carrier copying/pairing",
+      "operations": [
+        "operand.pair"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "id": "relation.codec_inverse",
+      "operations": [
+        "type.normalize",
+        "type.compare"
+      ],
+      "statement": "Encode and decode are inverse; canonical comparisons compose by inverse-codec cancellation.",
+      "source": "experiment"
+    },
+    {
+      "id": "relation.comparison_assoc",
+      "operations": [
+        "comparison.compose"
+      ],
+      "statement": "Actual/reference composites and residual agree across bracketings; retained construction trees remain distinct.",
+      "source": "comparison"
+    },
+    {
+      "id": "relation.profile_intersection",
+      "operations": [
+        "family.admit"
+      ],
+      "statement": "Profile intersection is associative and covariant under passive relabelling under the declared common-request policy.",
+      "source": "contract"
+    }
+  ],
+  "retired_gaps": [
+    {
+      "id": "gap.experimental_bridge",
+      "reason": "The PP/SP/PS experiment is not the governing native grammar. Identifying it with every operation is not a completion requirement; any claimed adapter remains separately accountable."
+    },
+    {
+      "id": "gap.relation_completeness",
+      "reason": "The authoritative native grammar already has type-theoretic equality and retained witnesses. A finite presentation of all equalities or a total equality decision algorithm is not required for its generating grammar."
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap.source_signature",
+      "acceptance": "Record the source sorts, structure maps, equations, permitted constructions and equivalence criterion, with authoritative source references. Then audit dependencies against that fixed signature."
+    },
+    {
+      "id": "gap.global_coverage",
+      "acceptance": "Identify authoritative admission boundaries for mathematical Marici operations and map every admitted family to grammar rules, or retain explicit unsupported families. The nine-row contract census is only a local slice."
+    },
+    {
+      "id": "gap.operational_interpretations",
+      "acceptance": "Supply generation-preserving typed interpretations of the remaining retained-path and policy computations into the declared native closure, with actual admission data or an explicit obstruction. The split/reassemble P-kind sketch is constructive only modulo the step_decoder/step_lift presentation."
+    }
+  ],
+  "existing_interpretations": [
+    {
+      "id": "filler-as-compare-rule-apply",
+      "source": "BoundaryGeneratedQuestions.Application.perform",
+      "claim": "A Filler a b (equivalence + pointed witness) is interpreted as a compare-rule application in the native Resolve grammar. Given Resolve S a and Resolve S b, apply(compare-rule a b e p)(da, db) produces the composed comparison.",
+      "status": "checked_agda",
+      "files": [
+        "research/nima/agda/BoundaryGeneratedQuestions.agda"
+      ]
+    },
+    {
+      "id": "passive-frame-change",
+      "source": "PassiveFrameTransport.Interpretation.Passive.change",
+      "claim": "A FramePackage (Complete package + Filler a a) is interpreted as a compare-rule application via Application.perform. This maps the frame.passive contract operation to the native grammar.",
+      "status": "checked_agda",
+      "files": [
+        "research/nima/agda/PassiveFrameTransport.agda"
+      ]
+    },
+    {
+      "id": "reference-substitute",
+      "source": "ContractInterpretations.Interpret.substitute",
+      "claim": "reference.substitute contract operation: compose-rule with identity comparison. Given a comparison C: a\u2192b and derivations, produces Resolve S (compose-comparisons a b b e (idEquiv) p refl).",
+      "status": "checked_agda",
+      "files": [
+        "research/nima/agda/ContractInterpretations.agda"
+      ]
+    },
+    {
+      "id": "record-reindex",
+      "source": "ContractInterpretations.Interpret.reindex",
+      "claim": "record.reindex contract operation: Pi-congruence-rule applied pointwise to an I-indexed family. Given pointwise equivalences e_i, witnesses p_i, and derivations for old and new families, produces Resolve S (Pi-comparison).",
+      "status": "checked_agda",
+      "files": [
+        "research/nima/agda/ContractInterpretations.agda"
+      ]
+    },
+    {
+      "id": "family-admit",
+      "source": "ContractInterpretations.Interpret.admit",
+      "claim": "family.admit contract operation: same Pi-congruence pattern as reindex, with the reference family as uniform standard.",
+      "status": "checked_agda",
+      "files": [
+        "research/nima/agda/ContractInterpretations.agda"
+      ]
+    },
+    {
+      "id": "history-edit",
+      "source": "DGHistoryEditPolicy.Policy",
+      "claim": "Conditional DG exact-edit policy retaining parent Resolve derivation, generator, permission, cost and computed result. Unit/triangle equations are derived. Arbitrary readouts require a witness; readouts of unchanged C,d,r,u are proved invariant. No Resolve derivation of the output or concrete endpoint-typed DG instance is claimed. Separate path-edit compare-rule case remains in HistoryPathEdits.",
+      "status": "partial_checked_agda",
+      "files": [
+        "research/nima/agda/DGHistoryEditPolicy.agda",
+        "research/nima/agda/HistoryPathEdits.agda"
+      ]
+    },
+    {
+      "id": "operand-pair",
+      "source": "OperandPairInterpretation.Pairing.run",
+      "claim": "Explicit supplied-operand pairing via Pi-rule. Both values and actual premise derivations are recoverable; assemble/unpack round trips are checked. No independent preparation, fresh label, or admission policy is inferred.",
+      "status": "checked_agda",
+      "files": [
+        "research/nima/agda/OperandPairInterpretation.agda"
+      ]
+    },
+    {
+      "id": "fixed-frame-comparison",
+      "source": "RemainingInterpretations.Remaining.fixed-frame",
+      "claim": "Checked composition with an absorbed reference correction; separate retention and higher-witness obligations have not been established.",
+      "status": "partial_checked_agda",
+      "files": [
+        "research/nima/agda/RemainingInterpretations.agda"
+      ]
+    },
+    {
+      "id": "frame-active",
+      "source": "DGFrameUpdates.Updates.active",
+      "claim": "Conditional on FrameAlgebra and an admitted invertible request, updates C,d,r,W while fixing u,v and proves both unit equations and the triangle. Exact edits also preserve all frame equations. Common-carrier model only: concrete DG instance, typed endpoint corners, permission policy and native Resolve bridge remain open. Certificate boundary composition/inversion is checked separately in DGCertificateTransport; DGActionComposition now checks componentwise sequential/direct agreement; proof-field equality is not claimed.",
+      "status": "partial_checked_agda",
+      "files": [
+        "research/nima/agda/DGFrameUpdates.agda",
+        "research/nima/agda/DGHistoryTransport.agda"
+      ]
+    },
+    {
+      "id": "e-tree-templates",
+      "source": "ECurriedTemplates",
+      "coverage_status": "native_rule_bridge_unverified",
+      "claim": "Candidate source: template E-system with variable scopes, partial application, and embedding; native-rule bridge unverified.",
+      "status": "candidate_source",
+      "files": [
+        "research/nima/agda/ECurriedTemplates.agda"
+      ]
+    },
+    {
+      "id": "fibration-constructor-bridge",
+      "source": "FibrationCodeInterpretation",
+      "coverage_status": "native_rule_bridge_unverified",
+      "claim": "Candidate source for fiber/section interpretation of annotated constructors; native-rule bridge unverified.",
+      "status": "candidate_source",
+      "files": [
+        "research/nima/agda/FibrationCodeInterpretation.agda"
+      ]
+    },
+    {
+      "id": "fibration-route-generator",
+      "source": "FibrationRouteInterchange",
+      "coverage_status": "native_rule_bridge_unverified",
+      "claim": "Candidate source for route interchange along fibration boundaries; native-rule bridge unverified.",
+      "status": "candidate_source",
+      "files": [
+        "research/nima/agda/FibrationRouteInterchange.agda"
+      ]
+    },
+    {
+      "id": "index-identity-coherence",
+      "source": "IndexIdentityCoherence",
+      "coverage_status": "native_rule_bridge_unverified",
+      "claim": "Candidate source for index evidence and paths; native-rule bridge unverified.",
+      "status": "candidate_source",
+      "files": [
+        "research/nima/agda/IndexIdentityCoherence.agda"
+      ]
+    },
+    {
+      "id": "nand-constructions",
+      "source": "NandConstructions",
+      "coverage_status": "native_rule_bridge_unverified",
+      "claim": "Candidate source for NAND via Pi over E-pair with empty target; native-rule bridge unverified.",
+      "status": "candidate_source",
+      "files": [
+        "research/nima/agda/NandConstructions.agda"
+      ]
+    },
+    {
+      "id": "universal-substitution",
+      "source": "UniversalSubstitution",
+      "coverage_status": "native_rule_bridge_unverified",
+      "claim": "Candidate source for universal substitution and Sigma/Pi adjunctions; native-rule bridge unverified.",
+      "status": "candidate_source",
+      "files": [
+        "research/nima/agda/UniversalSubstitution.agda"
+      ]
+    },
+    {
+      "id": "path-ledger-filler-pull",
+      "source": "PathLedgerInterpretations.PathOps.filler-pull-is-native",
+      "claim": "Checked native/readout agreement and pull naturality for a supplied pointwise operation. Does not interpret Python payload composition or split/reassemble.",
+      "status": "partial_checked_agda",
+      "files": [
+        "research/nima/agda/RetainedComparisonSeries.agda",
+        "research/nima/agda/PathLedgerInterpretations.agda"
+      ]
+    },
+    {
+      "id": "dg-history-transport",
+      "source": "DGHistoryTransport.Transport",
+      "claim": "Conditional on DGFragment additive, associative and differential laws: derives active triangle preservation and exact history-edit unit-boundary/triangle preservation. Noncommutative composition and degrees are explicit. Concrete DG instance, endpoint corners and native Resolve bridge remain open. Full common-carrier frame updates and certificate boundary composition/inversion are checked separately in DGFrameUpdates and DGCertificateTransport.",
+      "status": "partial_checked_agda",
+      "files": ["research/nima/agda/DGHistoryTransport.agda"]
+    },
+    {
+      "id": "dg-certificate-transport",
+      "source": "DGCertificateTransport.Certificates",
+      "claim": "Conditional on CertificateAlgebra: derives certificate boundary laws for K_hg=h*K_g+K_h*g and K_inverse=-g_inverse*K_g*g_inverse. Does not yet prove equality of sequential/direct full frame actions or instantiate a concrete DG algebra.",
+      "status": "partial_checked_agda",
+      "files": ["research/nima/agda/DGCertificateTransport.agda"]
+    },
+    {
+      "id": "dg-action-composition",
+      "source": "DGActionComposition.Composition.active-composition",
+      "claim": "Conditional on ActionAlgebra: constructs a composite admitted request and proves sequential/direct equality of C,d,r,u,v,W. Does not identify proof fields or instantiate a concrete typed-endpoint DG algebra. Inverse full-action data recovery is checked separately in DGActionInverse; policy/native bridge remain open.",
+      "status": "partial_checked_agda",
+      "files": ["research/nima/agda/DGActionComposition.agda"]
+    },
+    {
+      "id": "dg-action-inverse",
+      "source": "DGActionInverse.Inversion.active-inverse",
+      "claim": "Conditional on InverseAlgebra: constructs an admitted inverse request and proves recovery of C,d,r,u,v,W after the forward/inverse action. No proof-field equality or concrete typed-endpoint DG instance is claimed.",
+      "status": "partial_checked_agda",
+      "files": ["research/nima/agda/DGActionInverse.agda"]
+    }
+  ],
+  "coverage_boundary_documented": true
+}

@@ -1,0 +1,118 @@
+{
+  "schema": "marici.grammar_completion_audit.v1",
+  "status": "passed",
+  "checked_at": "2026-10-01T15:52:07.124116+00:00",
+  "counts": {
+    "modules": {
+      "signed": {
+        "definitions": 47,
+        "parameter_modules": 2,
+        "module_aliases": 5,
+        "datatypes": 0
+      },
+      "rational": {
+        "definitions": 43,
+        "parameter_modules": 1,
+        "module_aliases": 3,
+        "datatypes": 0
+      },
+      "faithful": {
+        "definitions": 7,
+        "parameter_modules": 1,
+        "module_aliases": 0,
+        "datatypes": 0
+      },
+      "transport": {
+        "definitions": 5,
+        "parameter_modules": 1,
+        "module_aliases": 2,
+        "datatypes": 0
+      },
+      "bridge": {
+        "definitions": 12,
+        "parameter_modules": 3,
+        "module_aliases": 6,
+        "datatypes": 1
+      },
+      "macros": {
+        "definitions": 9,
+        "parameter_modules": 1,
+        "module_aliases": 3,
+        "datatypes": 0
+      }
+    },
+    "total_definitions": 123,
+    "policy_rows": 9
+  },
+  "rejections": [
+    "signed definitions mismatch: ['Signed']",
+    "rational definitions mismatch: ['unclassified']",
+    "policy coverage mismatch: ['Independent carrier copying/pairing']",
+    "unsupported policy promotion",
+    "global coverage cannot be promoted by census",
+    "unknown native policy form"
+  ],
+  "formal": {
+    "completed_arithmetic": {
+      "status": "pass",
+      "receipt_sha256": "2e1d59af47f5559db92926fc9438856051b8b04c7996e7f95866f4ed92543c21",
+      "local_import_modules": 21,
+      "negative_controls": [
+        "ComponentZeroDenominator",
+        "ComponentBadFractionCancellation",
+        "ComponentBadSignedCancellation",
+        "ComponentBadScalarReadout"
+      ]
+    },
+    "native_macros": {
+      "status": "passed",
+      "audit_sha256": "d6a940984a93150f414d6ea4afd7ade09acf1d6ace732647dbef6e6df36a6a9a",
+      "local_import_closure": {
+        "GeneratingGrammarMacros": "d831332a090fee729c94b7da26b019cdfa4f6ea128c3172fb8aa27ac85e61007",
+        "IndexedConstructorTables": "8b1609e6e3b29b42b723f046e8c63f53ea86828be27695b70680605bed4a71ee",
+        "WholePackageSigmaPi": "7f46a08a6ed5572ba88b07aef1ec8f89c46f5b1b1161d6ec34d40d94164651db",
+        "ProofRelevantCoherenceClosure": "4e4cc9293ff2bca33e0f13defccf1a9aa21df1febcd43508b4439865f21c3724",
+        "TableFibrationCycle": "7b87663338c58311cd6a4c951ac1f3c9732b93b7e704e44596badfe2e5372fdc",
+        "NativeTableRules": "8eaa1f747bf97452f9955ca541cc93cfeaaee901dcd4a523c08996f12fb6b42f",
+        "WholePackageResolution": "0a54ffd1847469287fddc7110fa3cdb8ff9c50e445baeb0c03d4083dc83d96c9",
+        "NativeTableResolution": "90b92340dede723ebdfb790edc344aaaf8ab43a59bada459de90ea4787144012",
+        "IndexedResolutionTransport": "5bcabe3bc1dcc256b97eacf4ba8650fd16239c7bad1e4dbcac23360230c406a9"
+      },
+      "missing_operand_rejected": true
+    }
+  },
+  "global_generation": "open",
+  "manifest_sha256": "d7f6722ab6175d0f579f23a377370c295fd903341990fff67a30fc890ab7a138",
+  "checker_sha256": "a8faeb7db7fcdd70affd5f08b5370060ec3ff019c3a43b52141b137f8dc2df13",
+  "table_sha256": "616bf66696625547534cacc65ad433fb090feb5a5c7bd862bb7dcdaf42d5cff1",
+  "sources": {
+    "signed": {
+      "path": "research/nima/agda/SignedComponentArithmetic.agda",
+      "sha256": "bed714fcc5e1377fed3c594e7c74ed3903b2384c11b46de608d824b3677e5303"
+    },
+    "rational": {
+      "path": "research/nima/agda/RationalComponentArithmetic.agda",
+      "sha256": "bf8bbc062803cf817bef86b3e2692f0585579de8bf66bbf15eb61b361891dd9d"
+    },
+    "faithful": {
+      "path": "research/nima/agda/FaithfulComponentRing.agda",
+      "sha256": "605cd230e2c875bda042ff0a03a9798f801f94cdf5ea827944f97ca7f20bc32a"
+    },
+    "transport": {
+      "path": "research/nima/agda/NativeCoefficientTransport.agda",
+      "sha256": "fb33442d69942ab8d15009be585d6b9d6629160af3557a422de080f33ed7c931"
+    },
+    "bridge": {
+      "path": "research/nima/agda/NativeRationalComponentArithmetic.agda",
+      "sha256": "6b1e5997d75d87f93e3ca69a5ad7a6b8c477133656b9c1b0020e92bd82948400"
+    },
+    "policy": {
+      "path": "research/nima/comparison-successor-operation-contract.md",
+      "sha256": "6075a5a771a1515fb73bd13bdff8a561902ce68ffb8b5397bfeb62a89d781d68"
+    },
+    "macros": {
+      "path": "research/nima/agda/GeneratingGrammarMacros.agda",
+      "sha256": "d831332a090fee729c94b7da26b019cdfa4f6ea128c3172fb8aa27ac85e61007"
+    }
+  }
+}

@@ -1,4 +1,6 @@
-{-# OPTIONS --cubical --guardedness #-}
+{-# OPTIONS --safe --cubical --guardedness #-}
+-- Audit note: --safe checks the definitions below, not the cardinality,
+-- presentation-completeness or physics interpretations stated in comments.
 ------------------------------------------------------------------------
 -- S4Aut.agda
 --

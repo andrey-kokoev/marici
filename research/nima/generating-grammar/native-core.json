@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "revision": 2,
+  "scope": "The independently implemented indexed native table syntax and retained Resolve calculus, with the existing amplitude-expression interpretation.",
+  "authority": "Agda datatype and rule definitions below, not this transcription. Exhaustiveness is relative to these definitions; admission and source parameters remain explicit.",
+  "global_marici_coverage": "open",
+  "sources": {
+    "nodes": "research/nima/agda/IndexedConstructorTables.agda",
+    "rules": "research/nima/agda/NativeTableRules.agda",
+    "resolve": "research/nima/agda/IndexedResolutionTransport.agda",
+    "closure": "research/nima/agda/NativeTableResolution.agda",
+    "legacy_nodes": "research/nima/agda/WholePackageSigmaPi.agda",
+    "legacy_rules": "research/nima/agda/WholePackageResolution.agda",
+    "amplitude": "research/nima/agda/NativeAmplitudeResolution.agda",
+    "arithmetic": "research/nima/agda/ComponentArithmetic.agda",
+    "arithmetic_bridge": "research/nima/agda/NativeComponentArithmetic.agda",
+    "specification": "research/nima/native-table-equivalence.md"
+  },
+  "formation": {
+    "constructor": "table-node",
+    "rule": "h:Header; children:(i:Arity h)->Node(Inputs h i) |- table-node h children : Node(Result h)",
+    "graph": "Graph = Sigma(A:Type l).Node A",
+    "package": "Package = Sigma(g:Graph).Value g; Value = fst",
+    "equality": "Cubical type-theoretic equality of the full dependent syntax/package; neither equal scalar readouts nor equal value types erase constructors or retained witnesses.",
+    "quantifiers": "For every supplied universe level, header parameters and well-founded typed child family. Arity may be infinite; a finite number of schemas is not a finite-state or finite-branching assertion."
+  },
+  "headers": [
+    {"tag": "atom-header", "parameters": "A:Type l", "ports": "empty", "inputs": "none", "result": "A", "legacy": "atom"},
+    {"tag": "E-header", "parameters": "I:Type l; F:I->Type l", "ports": "I", "inputs": "F i", "result": "Sigma I F", "legacy": "E"},
+    {"tag": "P-header", "parameters": "I:Type l; F:I->Type l", "ports": "I", "inputs": "F i", "result": "(i:I)->F i", "legacy": "Pi"},
+    {"tag": "paths-header", "parameters": "A:Type l; x,y:A", "ports": "Unit", "inputs": "A", "result": "x = y", "legacy": "paths"},
+    {"tag": "maps-header", "parameters": "A,B:Type l", "ports": "Bool", "inputs": "false:A; true:B", "result": "A->B", "legacy": "maps"},
+    {"tag": "equivalences-header", "parameters": "A,B:Type l", "ports": "Bool", "inputs": "false:A; true:B", "result": "A equiv B", "legacy": "equivalences"},
+    {"tag": "retain-header", "parameters": "A,B:Type l; x:A", "ports": "Bool", "inputs": "false:A; true:B", "result": "B (with A,x retained in syntax)", "legacy": "retain"},
+    {"tag": "comparison-header", "parameters": "A,B:Type l; e:A equiv B", "ports": "Bool", "inputs": "false:A; true:B", "result": "Sigma(x:A).Sigma(y:B).e(x)=y", "legacy": "comparison"}
+  ],
+  "rules": [
+    {"tag": "E-kind", "legacy": "E-rule", "parameters": "I; F:I->Package; i:I", "ports": "I", "premises": "F j for EVERY j:I, including unselected branches", "output": "E-package I F i", "supplied": "Index domain, full package family and selected index"},
+    {"tag": "P-kind", "legacy": "Pi-rule", "parameters": "I; F:I->Package", "ports": "I", "premises": "F i for every i:I", "output": "Pi-package I F", "supplied": "Index domain and full package family"},
+    {"tag": "compare-kind", "legacy": "compare-rule", "parameters": "a,b:Package; e:Ty a equiv Ty b; p:e(value a)=value b", "ports": "Bool", "premises": "a and b", "output": "comparison-package a b e p", "supplied": "Actual equivalence e and pointed compatibility witness p"},
+    {"tag": "identity-kind", "legacy": "identity-rule", "parameters": "a:Package", "ports": "Unit", "premises": "a", "output": "identity-comparison a", "supplied": "Input package"},
+    {"tag": "inverse-kind", "legacy": "inverse-rule", "parameters": "a,b,e,p as in compare-kind", "ports": "Unit", "premises": "comparison-package a b e p", "output": "inverse-comparison a b e p, retaining original comparison", "supplied": "Typed original pointed comparison"},
+    {"tag": "compose-kind", "legacy": "compose-rule", "parameters": "a,b,c; e:Ty a equiv Ty b; f:Ty b equiv Ty c; pointed witnesses p,q", "ports": "Bool", "premises": "comparison(a,b,e,p) and comparison(b,c,f,q)", "output": "compose-comparisons a b c e f p q, retaining both comparisons", "supplied": "Shared middle package and actual witnesses"},
+    {"tag": "higher-kind", "legacy": "higher-rule", "parameters": "g:Graph; x,y:Value g; p,q:x=y; alpha:p=q", "ports": "Bool", "premises": "path-package g x y p and path-package g x y q", "output": "higher-package g x y p q alpha", "supplied": "Actual higher witness alpha; not inferred from endpoints"},
+    {"tag": "reflexivity-kind", "legacy": "reflexivity-rule", "parameters": "a=(g,x):Package", "ports": "Unit", "premises": "a", "output": "path-package g x x refl", "supplied": "Marked package"},
+    {"tag": "path-lift-kind", "legacy": "path-lift-rule", "parameters": "c,d:Graph; e:Value c equiv Value d; x,y:Value c", "ports": "Unit", "premises": "Package of the actual equivalence e", "output": "lift-paths c d e x y, retaining e", "supplied": "Equivalence and path endpoints"},
+    {"tag": "distribution-kind", "legacy": "distribution-rule", "parameters": "I; J:I->Type l; F:(i:I)->J i->Package; v:Pi_i Sigma_j Ty(F i j)", "ports": "(Sigma I J) + Unit", "premises": "Every F i j AND the marked left-hand package with value v", "output": "Pointed comparison Pi_i Sigma_j F(i,j) equiv Sigma_f Pi_i F(i,f(i))", "supplied": "Full dependent family and the actual left-hand value v"},
+    {"tag": "E-congruence-kind", "legacy": "E-congruence-rule", "parameters": "I; F,H:I->Package; e_i and p_i pointed comparisons; selected i:I", "ports": "I", "premises": "Every comparison(F j,H j,e_j,p_j)", "output": "Pointed E comparison, retaining the full family of comparisons", "supplied": "Pointwise equivalences, compatibility witnesses and selected index"},
+    {"tag": "P-congruence-kind", "legacy": "Pi-congruence-rule", "parameters": "I; F,H:I->Package; e_i and p_i pointed comparisons", "ports": "I", "premises": "Every comparison(F i,H i,e_i,p_i)", "output": "Pointed Pi comparison, retaining the full family of comparisons", "supplied": "Pointwise equivalences and compatibility witnesses"}
+  ],
+  "derivations": [
+    {"tag": "seed", "rule": "a:Admit q |- seed a : Resolve q", "retains": "The actual admission certificate a"},
+    {"tag": "apply", "rule": "r:Rule; ds:(i:Arity r)->Resolve(input r i) |- apply r ds : Resolve(output r)", "retains": "Full rule parameters and every premise derivation"}
+  ],
+  "source_policy": {
+    "input": "Admit:Package->Type at the declared universe",
+    "rule": "A literal requires its actual certificate. No fallback admits arbitrary packages.",
+    "empty_policy": "Empty admission does not imply empty closure: a zero-arity P application has no premise obligations.",
+    "s4_generation": "Not established. Supplying a type, map, equivalence, witness or admission certificate is recorded as an input, not counted as generation from S4."
+  },
+  "coverage_witnesses": [
+    {"source": "nodes", "symbol": "syntax-iso", "claim": "All eight legacy Code forms correspond to native Graphs."},
+    {"source": "nodes", "symbol": "complete-equivalence", "claim": "Complete packages, including selected values and syntax, correspond."},
+    {"source": "rules", "symbol": "rule-equivalence", "claim": "All twelve legacy rule parameter spaces correspond to native Rule."},
+    {"source": "rules", "symbol": "port-equivalence", "claim": "Every rule's premise ports correspond."},
+    {"source": "rules", "symbol": "input-commutes", "claim": "Marked inputs correspond."},
+    {"source": "rules", "symbol": "output-commutes", "claim": "Marked outputs correspond."},
+    {"source": "closure", "symbol": "closure-equivalence", "claim": "Legacy and native retained closures correspond, including arbitrary original admission policies via ForOldSeeds."},
+    {"source": "closure", "symbol": "old-derivation-recovered", "claim": "The original derivation is recovered."},
+    {"source": "closure", "symbol": "native-derivation-recovered", "claim": "The native derivation is recovered."}
+  ],
+  "amplitude_interpretation": {
+    "constructors": [
+      {"tag": "zero-expr", "translation": "Run.seed zero-seed", "uses": ["seed"]},
+      {"tag": "one-expr", "translation": "Run.seed one-seed", "uses": ["seed"]},
+      {"tag": "factor", "translation": "Run.seed (factor-seed a)", "uses": ["seed"]},
+      {"tag": "binary", "translation": "Run.apply P-kind over Port={operator,left,right}; operator is a certified seed and children are translated recursively", "uses": ["apply", "P-kind", "seed"]}
+    ],
+    "modes": ["sum-mode", "product-mode"],
+    "witness": "NativeAmplitudeResolution.Algebra.native-run",
+    "arithmetic_bridge": "NativeComponentArithmetic.Bridge.execution",
+    "supplied": "Factor type and factor weights; arbitrary target coefficient algebra in the generic interpreter, or the constructed Word semiring in the component bridge.",
+    "nonclaim": "A P application retains operator and operand records; it does not derive scalar addition or multiplication from an unlabelled table. Component multiplication is separately constructed by recursion in ComponentArithmetic."
+  },
+  "external_boundaries": [
+    "This is exhaustive for the named native datatypes, not all repository sector operations.",
+    "No completeness theorem currently maps the nine-row comparison-successor policy contract into these native rules.",
+    "The retained-path ledger and natural component arithmetic now have exhaustive definition censuses and computational rules in semantic-extensions.json. The path ledger's operational interpretation into native Resolve remains open.",
+    "No finite serialization or equality-decision procedure for arbitrary supplied types, functions or higher witnesses is asserted."
+  ]
+}

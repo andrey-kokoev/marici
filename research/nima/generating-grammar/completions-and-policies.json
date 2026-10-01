@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "revision": 1,
+  "scope": "Complete public-definition census of five arithmetic completion/bridge files and the native policy-macro file, and a typed assessment of every row of the existing policy contract. This is not a theorem interpreting every policy in native Resolve.",
+  "global_generation": "open",
+  "sources": {
+    "signed": "research/nima/agda/SignedComponentArithmetic.agda",
+    "rational": "research/nima/agda/RationalComponentArithmetic.agda",
+    "faithful": "research/nima/agda/FaithfulComponentRing.agda",
+    "transport": "research/nima/agda/NativeCoefficientTransport.agda",
+    "bridge": "research/nima/agda/NativeRationalComponentArithmetic.agda",
+    "policy": "research/nima/comparison-successor-operation-contract.md",
+    "macros": "research/nima/agda/GeneratingGrammarMacros.agda"
+  },
+  "arithmetic_grammar": {
+    "carriers": ["Pair = Word x Word", "Signed = Pair / Balance", "Denominator = 1+Word", "Representative = Signed x Denominator", "Rational = Representative / Cross"],
+    "relations": ["Balance((a,b),(c,d)) iff append(a,d)=append(c,b)", "Cross((a,d),(b,e)) iff multiply(a,den-signed(e))=multiply(b,den-signed(d))"],
+    "operations": ["add-pair((a,b),(c,d))=(a+c,b+d)", "multiply-pair((a,b),(c,d))=(ac+bd,ad+bc)", "negate-pair(a,b)=(b,a)", "den-product(1+a,1+b)=1+(a+(1+a)*b)", "add-representative((a,d),(b,e))=(a*e+b*d,d*e)", "multiply-representative((a,d),(b,e))=(a*b,d*e)", "negate-representative(a,d)=(-a,d)"],
+    "descent": "Operations are first constructed on representatives and proved compatible with the quotient. FaithfulComponentRing transfers laws only after source operations and preservation proofs exist.",
+    "native_execution": "SignedBridge and FractionBridge instantiate NativeCoefficientTransport; every finite marked sum/product Expr has direct and translated native executions with commuting readouts.",
+    "inputs": "Inductive Word, set-quotient/type-theoretic infrastructure and library algebra used in proofs. Factor weights and the geometric component-normal-form hypothesis remain supplied.",
+    "inverse_boundary": "The recorded source proves inversion of each admitted positive component denominator. Do not promote this to an independently formalized universal localization theorem for arbitrary targets."
+  },
+  "modules": [
+    {
+      "source": "signed",
+      "parameter_modules": ["Readout", "QuotientOperation"],
+      "module_aliases": ["Readout.W", "I", "Add", "Multiply", "Ring"],
+      "datatypes": {},
+      "groups": [
+        {"id": "signed.carriers", "kind": "type_and_relation", "symbols": ["Pair", "Balance", "Signed"], "rule": "Word pairs and the balance set quotient."},
+        {"id": "signed.representatives", "kind": "operation", "symbols": ["zero-pair", "one-pair", "add-pair", "multiply-pair", "negate-pair"], "rule": "Construct representative arithmetic from component append and multiply; negation swaps the pair."},
+        {"id": "signed.generic_readout", "kind": "readout", "symbols": ["Readout.pair", "Readout.read"], "rule": "Difference of numeral images, descending through Balance into a supplied commutative ring."},
+        {"id": "signed.readout_laws", "kind": "proof", "symbols": ["Readout.add-polynomial", "Readout.multiply-polynomial", "Readout.pair-add", "Readout.pair-multiply", "Readout.negate-polynomial", "Readout.pair-negate", "Readout.cancel", "Readout.respects"], "rule": "Ring polynomial identities and compatibility with representative arithmetic and Balance."},
+        {"id": "signed.integer_bridge", "kind": "equivalence_and_proof", "symbols": ["append-native", "balance-native", "balance-component", "to-difference", "from-difference", "roundtrip", "asInt", "fromInt", "recover", "faithful", "asInt-fromInt"], "rule": "Compare to the library difference quotient and signed normal forms; prove roundtrips and faithful readout."},
+        {"id": "signed.preservation", "kind": "proof", "symbols": ["numeral-pos", "pair-asInt", "raw-add", "raw-multiply", "raw-negate"], "rule": "Show constructed representative operations commute with integer readout."},
+        {"id": "signed.quotient_operations", "kind": "descent", "symbols": ["QuotientOperation.operation", "QuotientOperation.preserves", "add", "multiply", "zero", "one", "negate", "negate-preserves", "add-inverse", "signedRing"], "rule": "Descend operations, prove their readouts and additive inverse, and assemble the source commutative ring."},
+        {"id": "signed.embedding", "kind": "embedding_and_proof", "symbols": ["embed-word", "embed-word-add", "embed-word-multiply"], "rule": "Embed Word as (n,0), preserving constructed addition and multiplication."}
+      ]
+    },
+    {
+      "source": "rational",
+      "parameter_modules": ["QuotientOperation"],
+      "module_aliases": ["Add", "Multiply", "Ring"],
+      "datatypes": {},
+      "groups": [
+        {"id": "rational.denominators", "kind": "carrier_operation_and_proof", "symbols": ["Denominator", "word", "den-product", "den-product-word", "multiply-native", "den-product-native", "den-signed", "den-readout"], "rule": "Strictly positive word denominators, constructed product, and compatibility with signed/library readouts."},
+        {"id": "rational.carriers", "kind": "type_and_relation", "symbols": ["Representative", "Cross", "Rational", "include"], "rule": "Signed numerator/positive denominator pairs modulo component cross multiplication."},
+        {"id": "rational.readout", "kind": "equivalence_and_proof", "symbols": ["representative", "cross-law", "cross-native", "asRational", "from-representative", "fromRational", "recover", "readout-recover", "faithful"], "rule": "Construct coefficient-quotient/readout roundtrips and cross-relation compatibility; not package equivalence from scalar equality."},
+        {"id": "rational.representatives", "kind": "operation_and_proof", "symbols": ["add-representative", "multiply-representative", "raw-add", "raw-multiply", "negate-representative", "raw-negate"], "rule": "Construct representative operations first and prove their rational readouts."},
+        {"id": "rational.quotient_operations", "kind": "descent", "symbols": ["QuotientOperation.operation", "QuotientOperation.preserves", "add", "multiply", "zero", "one", "fraction", "negate", "negate-preserves", "readoutRing", "rationalRing"], "rule": "Descend the constructed operations, then transfer ring laws through the faithful readout."},
+        {"id": "rational.embedding_and_inverse", "kind": "embedding_and_proof", "symbols": ["embed-signed", "embed-signed-add", "embed-signed-multiply", "positive-inverse-readout", "positive-inverse"], "rule": "Embed signed coefficients at denominator one and invert every admitted positive component denominator."}
+      ]
+    },
+    {
+      "source": "faithful", "parameter_modules": ["Transfer"], "module_aliases": [], "datatypes": {},
+      "groups": [{"id": "faithful.transfer", "kind": "law_transfer", "symbols": ["Transfer.associative", "Transfer.commutative", "Transfer.add-unit", "Transfer.mul-unit", "Transfer.add-inverse", "Transfer.distribute", "Transfer.ring"], "rule": "Transfer laws through an injective readout only after source operations and preservation proofs are supplied."}]
+    },
+    {
+      "source": "transport", "parameter_modules": ["Transport"], "module_aliases": ["Transport.E", "Transport.T"], "datatypes": {},
+      "groups": [{"id": "coefficients.transport", "kind": "expression_interpretation", "symbols": ["Transport.mode", "Transport.expression", "Transport.evaluate-commutes", "Transport.native-readout-commutes", "Transport.translated-readout-commutes"], "rule": "Retain all factor labels while recursively transporting expressions along a coefficient homomorphism, with evaluation and both native readout squares."}]
+    },
+    {
+      "source": "bridge", "parameter_modules": ["SignedBridge", "FractionBridge", "ScalarFixture"],
+      "module_aliases": ["SignedBridge.Native", "SignedBridge.Diagrams", "FractionBridge.Native", "FractionBridge.Diagrams", "ScalarFixture.B", "ScalarFixture.E"],
+      "datatypes": {"ScalarFixture.Factor": ["channel", "normalization"]},
+      "groups": [
+        {"id": "rational.fixture", "kind": "source_fixture", "symbols": ["ScalarFixture.weight", "ScalarFixture.sum-channels", "ScalarFixture.expression", "ScalarFixture.execution", "ScalarFixture.denominator-from-source", "ScalarFixture.numerator-from-export", "ScalarFixture.denominator-from-export", "ScalarFixture.computed", "ScalarFixture.translated", "ScalarFixture.expanded"], "rule": "Reuse the existing channel weights and marked 1/600 factor; construct actual native execution, obtaining the existing 6/25 scalar with both readout comparisons."},
+        {"id": "rational.cancellation_controls", "kind": "proof", "symbols": ["signed-cancellation", "fraction-cancellation"], "rule": "Check signed cancellation and equality of common-factor fraction representatives in the coefficient quotient."}
+      ]
+    }
+    ,{
+      "source": "macros", "parameter_modules": ["Retained"], "module_aliases": ["Retained.G", "Retained.N", "Retained.Run"], "datatypes": {},
+      "groups": [{"id": "native.retained_macros", "kind": "native_derivation_and_recovery", "symbols": ["Retained.family", "Retained.family-run", "Retained.family-premise", "Retained.family-value", "Retained.pair-family", "Retained.pair", "Retained.pair-run", "Retained.pair-left-premise", "Retained.pair-right-premise"], "rule": "Construct actual P-kind applications and recover their original premise packages and derivations. No output is admitted as a fresh literal."}]
+    }
+  ],
+  "policy_assessments": [
+    {
+      "item": "Re-present retained records", "status": "partial_realization", "native_forms": ["compare-kind"],
+      "available": "The path ledger's source/target family and deconstruct_family give exact ordered-record recovery; TableFibrationCycle supplies the record-presentation recovery theorem.",
+      "missing": "A typed macro connecting the particular record presentation and its admission certificates to native Package/Resolve. The existence of an equivalence does not itself admit its endpoint packages.",
+      "test": "Reject a view dropping a record or changing stage order; require forward/backward package and derivation maps before claiming a native macro."
+    },
+    {
+      "item": "Passive frame change", "status": "conditional_encoding", "native_forms": ["compare-kind", "inverse-kind", "compose-kind", "path-lift-kind"],
+      "available": "Native rules retain supplied pointed equivalences, inverses/composites and path lifting.",
+      "missing": "The actual representation acting jointly on maps, witnesses and any metric; relabelling covariance alone does not construct it.",
+      "test": "With a supplied representation, verify that the transported selected package and every protected witness commute; do not compare only endpoint dimensions."
+    },
+    {
+      "item": "Fixed-frame comparison", "status": "computation_not_identified", "native_forms": ["compose-kind", "higher-kind"],
+      "available": "The DG source supplies C2*r*C1 and reference/higher-witness corrections. Native compose-kind instead composes pointed equivalences and retains both parents.",
+      "missing": "A typed interpretation of DG maps, weak return and corrections; arbitrary actual/reference maps need not be equivalences.",
+      "test": "A noninjective exact map cannot be the equivalence parameter. Either preserve an explicitly larger record or provide a different computational interpretation."
+    },
+    {
+      "item": "Witnessed reference substitution", "status": "conditional_encoding", "native_forms": ["compare-kind", "higher-kind"],
+      "available": "The source operation retains actual maps and versions reference/witness data with a supplied change witness.",
+      "missing": "A type-correct map from that DG reference-change witness to native pointed package equivalence or higher-path data; these witness types are not silently interchangeable.",
+      "test": "Two substitutions must agree with direct substitution at the retained-reference package, including mixed witness components."
+    },
+    {
+      "item": "Protected active frame request g", "status": "external_admission_policy", "native_forms": ["compare-kind", "higher-kind"],
+      "available": "The candidate protocol checks [g,delta(v)]=0 and [g,v]=delta(K_g), then updates W to g*W+K_g*d.",
+      "missing": "A representation and filler-space policy plus an actual certificate; native generic Admit does not generate K_g or select the request.",
+      "test": "Reject requests without certificates even if their label permutation exists; check certificate composition/inversion for admitted requests."
+    },
+    {
+      "item": "Permitted history edit", "status": "external_admission_policy", "native_forms": ["higher-kind"],
+      "available": "History is retained; native higher-kind records an actual equality between supplied paths.",
+      "missing": "A permission/readout/cost policy and a bridge between its allowed edits and the native path type. Equal readouts do not imply path equality.",
+      "test": "Keep two equal-readout histories distinct unless the declared edit policy and actual witness justify the change."
+    },
+    {
+      "item": "Family promotion", "status": "partial_realization", "native_forms": ["P-kind"],
+      "available": "GeneratingGrammarMacros.Retained.family-run constructs the actual P-kind derivation; family-premise recovers each original package AND its derivation by refl.",
+      "missing": "The grouping, fresh-label identity policy and next-level endpoints; the retention macro does not supply them or independent copies.",
+      "test": "Changing or dropping a member must change the retained package; require explicit next endpoints rather than inferring them from a label count."
+    },
+    {
+      "item": "Uniform family admission", "status": "external_admission_policy", "native_forms": ["P-kind"],
+      "available": "Membership in the intersection of member permission sets means every member supplies permission for the same request. P-kind can retain the resulting family of certificate packages.",
+      "missing": "A mapping from these member permissions to the declared Admit family; native P-kind itself neither chooses nor proves an admission policy.",
+      "test": "Compare direct versus staged intersection and reject a request refused by even one retained member."
+    },
+    {
+      "item": "Independent carrier copying/pairing", "status": "core_macro_with_external_policy", "native_forms": ["P-kind"],
+      "available": "GeneratingGrammarMacros.Retained.pair-run constructs the actual ordered-pair derivation; pair-left-premise and pair-right-premise recover both original packages and derivations by refl.",
+      "missing": "This pairs supplied operands. It does not construct an independent new operand or establish independence by duplicating an existing derivation.",
+      "test": "Retain the two operand dependency identities; reject using fresh labels or repeated leaves as a proof of independence."
+    }
+  ],
+  "coverage_boundary": {
+    "closed": "Public declarations/module schemas/aliases in the six named arithmetic/macro files; every row in the policy ledger has an explicit assessment.",
+    "open": "A generation-preserving interpreter for every policy and retained-path computation, and an authoritative boundary for all sector operations in the repository.",
+    "prohibited_shortcut": "Neither admitting the desired answer as a fresh seed, storing an arbitrary external computation as an atom, nor labelling an unproved correspondence an equivalence counts as deriving the operation.",
+    "next_executable": "Construct a typed native interpreter for the DG comparison operation with its weak-return correction, under a frozen admission policy. Pairing and family-retention macros are now implemented and checked; they do not close that computational adapter."
+  }
+}

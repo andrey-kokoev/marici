@@ -15,6 +15,18 @@ if (!(Test-Path $Source)) { throw "Source not found: $Source" }
 $Argv = @('--transliterate', '-i', (Join-Path $Root 'research/nima/agda'), '-i', $Library)
 if ($Fresh) { $Argv += '--ignore-interfaces' }
 $Argv += $Source
+function Get-SourceInventory([string]$Directory) {
+  $Inventory = [ordered]@{}
+  foreach ($File in (Get-ChildItem $Directory -Recurse -File -Filter '*.agda' | Sort-Object FullName)) {
+    $Key = [IO.Path]::GetRelativePath($Directory, $File.FullName).Replace('\', '/')
+    $Inventory[$Key] = (Get-FileHash -Algorithm SHA256 -LiteralPath $File.FullName).Hash.ToLowerInvariant()
+  }
+  return ,$Inventory
+}
+$OwnerDirectory = Join-Path $Root 'research/nima/agda'
+$OwnerBefore = Get-SourceInventory $OwnerDirectory
+$LibraryBefore = Get-SourceInventory $Library
+$CompilerBefore = (Get-FileHash -Algorithm SHA256 $Agda).Hash.ToLowerInvariant()
 $Started = [DateTime]::UtcNow.ToString('o')
 $Version = (& $Agda --version | Out-String).Trim()
 Push-Location $Root
@@ -22,11 +34,13 @@ try {
   & $Agda @Argv 2>&1 | Tee-Object -FilePath $Log
   $Code = $LASTEXITCODE
 } finally { Pop-Location }
-$SourceFiles = Get-ChildItem (Join-Path $Root 'research/nima/agda') -Filter '*.agda'
-$Hashes = @{}
-foreach ($File in $SourceFiles) {
-  $Hashes[$File.Name] = (Get-FileHash -Algorithm SHA256 $File.FullName).Hash.ToLowerInvariant()
-}
+$Hashes = Get-SourceInventory $OwnerDirectory
+$LibraryAfter = Get-SourceInventory $Library
+$CompilerAfter = (Get-FileHash -Algorithm SHA256 $Agda).Hash.ToLowerInvariant()
+$InputsStable = (($OwnerBefore | ConvertTo-Json -Compress) -ceq ($Hashes | ConvertTo-Json -Compress)) -and
+  (($LibraryBefore | ConvertTo-Json -Compress) -ceq ($LibraryAfter | ConvertTo-Json -Compress)) -and
+  ($CompilerBefore -ceq $CompilerAfter)
+if (!$InputsStable) { $Code = 43 }
 [ordered]@{
   schema = 'marici.nima.agda-check.v1'
   module = $Module
@@ -35,8 +49,11 @@ foreach ($File in $SourceFiles) {
   command = $Agda
   args = $Argv
   compiler_version = $Version
-  compiler_sha256 = (Get-FileHash -Algorithm SHA256 $Agda).Hash.ToLowerInvariant()
+  compiler_sha256 = $CompilerAfter
+  inputs_stable_during_check = $InputsStable
   library = $Library
+  library_source_inventory_sha256 = $LibraryAfter
+  library_inventory_note = 'Full Cubical .agda inventory, stable before/after checking; compiler built-in data remains a separate trust boundary.'
   exit_code = $Code
   passed = ($Code -eq 0)
   ignore_interfaces = [bool]$Fresh
