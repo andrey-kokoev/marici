@@ -1,0 +1,22 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-optical-exchange-timed-frames",
+    "owner": "marici.Nima",
+    "classification": "two_endpoint_timed_frame_transport_preserves_optical_exchange_contract",
+    "stratum": "Prescribed endpoint frames, delayed stored-port event boundaries and two coherently retained environment modes. Complex-amplitude covariance; conditional ideal Hamiltonian interpolation, not measured timing or a general quantum-state model.",
+    "inputs": [
+      "research/nima/optical-exchange-timed-endpoint-frames.md",
+      "research/nima/checkers/check_optical_exchange_calibration_bounds.py",
+      "research/nima/137-local-endpoint-phase-adapter.md",
+      "research/nima/checkers/check_optical_plant_endpoint_exchange.py"
+    ],
+    "checks": [{"id": "optical-exchange-timed-frames", "path": "research/nima/checkers/check_optical_exchange_timed_frames.py", "requires": ["numpy"]}],
+    "depends_on": ["nima-optical-exchange-calibration-bounds"],
+    "consumes": ["complete_optical_dilation", "calibration_error_contract", "prescribed_timed_endpoint_frames", "retained_environment_state"],
+    "provides": ["two_endpoint_event_transport", "timed_composition_and_covariance", "continuous_connection_hostile", "timestamp_error_bound"],
+    "missing_constructors": ["measured_clock_and_phase_traces", "storage_and_synchronization_apparatus", "multi_event_calibration_certificate"],
+    "next_falsifier": "Accumulate calibration and timing errors through a full history without silently replacing retained environment memory by fresh independent noise."
+  }
+}

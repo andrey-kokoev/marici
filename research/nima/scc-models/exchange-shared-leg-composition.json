@@ -1,0 +1,22 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-exchange-shared-leg-composition",
+    "owner": "marici.Nima",
+    "classification": "exchange_slot_operators_fail_shared_leg_rectangle_factorization",
+    "stratum": "Exact rational addressed exchange dynamics; tests invertible shared primitive-leg factorization on the same joint state space. Does not exclude larger intermediate spaces or higher witness actions.",
+    "inputs": [
+      "research/nima/exchange-shared-leg-composition-gate.md",
+      "research/nima/witness-record-memory-gate.md",
+      "research/nima/checkers/check_matrix_leg_exchange_closure.py",
+      "research/nima/exchange-oscillator-preparation-and-measurement.md"
+    ],
+    "checks": [{"id": "exchange-shared-leg-composition", "path": "research/nima/checkers/check_exchange_shared_leg_composition.py", "requires": []}],
+    "depends_on": ["nima-witness-record-memory-gate"],
+    "consumes": ["addressed_exchange_operation", "proposed_shared_leg_factorization", "retained_record_ports"],
+    "provides": ["all109_rectangle_factorization_hostiles", "exact_reverse_word_recovery", "first_port_rectangle_readout_discriminator"],
+    "missing_constructors": ["typed_labelled_experiment_compiler", "native_selection_of_instrument_attachment", "physical_normalization"],
+    "next_falsifier": "Compile labelled comparison experiments with full source provenance and chronological history; reject any unproved flattening of a native rectangle into an identity event word."
+  }
+}

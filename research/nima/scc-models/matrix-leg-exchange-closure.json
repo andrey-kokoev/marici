@@ -1,0 +1,22 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-matrix-leg-exchange-closure",
+    "owner": "marici.Nima",
+    "classification": "trace_shared_leg_preparation_not_exchange_closed_retained_correction_completion",
+    "stratum": "Exact rational trace readout of shared2-by2 matrix-leg composites, with raw and fixed-reference variants; failure of closure under independently addressed exchange. Other readouts and enriched native witness models remain open.",
+    "inputs": [
+      "research/nima/matrix-leg-preparation-exchange-closure.md",
+      "research/nima/checkers/check_shared_leg_dg_realization.py",
+      "research/nima/exchange-oscillator-preparation-and-measurement.md",
+      "research/nima/source-exchange-preparation-readout-contract.md"
+    ],
+    "checks": [{"id": "matrix-leg-exchange-closure", "path": "research/nima/checkers/check_matrix_leg_exchange_closure.py", "requires": []}],
+    "depends_on": ["nima-exchange-oscillator-instrument"],
+    "consumes": ["shared_matrix_leg_composition", "declared_trace_readout", "independent_exchange_port_operation"],
+    "provides": ["rank4_to_rank5_closure_hostile", "rank3_carrier_signal_obstruction", "retained_correction_packet_word_check"],
+    "missing_constructors": ["native_record_memory_authorization", "source_update_on_extended_record_packet", "physical_selection_and_normalization"],
+    "next_falsifier": "Test whether native comparison witnesses have independently writable readings compatible with their fixed endpoint boundaries, rather than assuming that retention already supplies free record amplitudes."
+  }
+}

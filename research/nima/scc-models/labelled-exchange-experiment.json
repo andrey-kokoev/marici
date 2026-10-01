@@ -1,0 +1,22 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-labelled-exchange-experiment",
+    "owner": "marici.Nima",
+    "classification": "conditional_native_boundary_validated_labelled_experiment_compiler",
+    "stratum": "Trusted native DG boundary evaluator plus declared attached-memory experiment; real exchange endpoints, full covariance and chronological provenance. Not native operator factorization or physical selection.",
+    "inputs": [
+      "research/nima/labelled-exchange-experiment-compiler.md",
+      "research/nima/checkers/labelled_exchange_experiment.py",
+      "research/nima/checkers/check_shared_leg_dg_realization.py",
+      "research/nima/exchange-shared-leg-composition-gate.md"
+    ],
+    "checks": [{"id": "labelled-exchange-experiment", "path": "research/nima/checkers/check_labelled_exchange_experiment.py", "requires": ["numpy"]}],
+    "depends_on": ["nima-exchange-shared-leg-composition"],
+    "consumes": ["native_comparison_boundary", "trusted_differential_evaluator", "declared_preparation_and_memory", "labelled_exchange_operation"],
+    "provides": ["executable_boundary_validated_compiler", "faithful_packet_with_covariance", "event_concatenation_and_provenance", "reference_transport_and_stale_frame_rejection"],
+    "missing_constructors": ["native_instrument_selection", "physical_preparation_detector_calibration", "absolute_current_field_normalization"],
+    "next_falsifier": "Run calibrated signed-echo and rectangle measurement controls through the compiler including detector gain, loss and phase uncertainty; do not substitute the1/137 share for calibration."
+  }
+}

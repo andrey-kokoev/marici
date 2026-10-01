@@ -1,0 +1,21 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-optical-exchange-history-certificate",
+    "owner": "marici.Nima",
+    "classification": "conditional_retained_environment_history_error_certificate",
+    "stratum": "Full155-coordinate unitary history with two retained environment modes and synthetic independent port/router/timestamp bounds. Same initial preparation; complex-amplitude covariance, not measured calibration or arbitrary quantum-channel certification.",
+    "inputs": [
+      "research/nima/optical-exchange-history-calibration-certificate.md",
+      "research/nima/checkers/check_optical_exchange_timed_frames.py",
+      "research/nima/checkers/check_optical_exchange_calibration_bounds.py"
+    ],
+    "checks": [{"id": "optical-exchange-history-certificate", "path": "research/nima/checkers/check_optical_exchange_history_certificate.py", "requires": ["numpy"]}],
+    "depends_on": ["nima-optical-exchange-timed-frames"],
+    "consumes": ["full_optical_port_calibration", "independent_router_bound", "consistent_timestamp_frames", "retained_environment_policy"],
+    "provides": ["multi_event_operator_bound", "mean_and_covariance_bounds", "environment_policy_hostile", "missing_stale_and_ordering_evidence_rejection"],
+    "missing_constructors": ["measured_calibration_artifacts", "physical_router_storage_and_phase_trace", "empirical_evidence_validation"],
+    "next_falsifier": "Final acceptance must distinguish theoretical and synthetic passes from a measured independent calibration; the latter cannot be inferred from passing regression checks."
+  }
+}

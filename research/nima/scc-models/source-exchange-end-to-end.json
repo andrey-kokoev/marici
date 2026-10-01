@@ -1,0 +1,29 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-source-exchange-end-to-end",
+    "owner": "marici.Nima",
+    "classification": "native_trace_seed_to_compiled_exchange_and_detector_chain_conditionally_checked",
+    "stratum": "Actual native matrix-response fixture mapped by a declared trace-to-quadrature gain into coherent oscillator preparation; boundary-validated events and declared detector moments. No experimental data, source-selected pulse or absolute physical coupling.",
+    "inputs": [
+      "research/nima/source-exchange-end-to-end-audit.md",
+      "research/nima/checkers/labelled_exchange_experiment.py",
+      "research/nima/checkers/check_shared_leg_dg_realization.py",
+      "research/nima/checkers/check_exchange_feedback_adapter.py",
+      "research/nima/checkers/check_source_exchange_contract.py",
+      "research/nima/checkers/check_exchange_oscillator_instrument.py",
+      "research/nima/checkers/check_matrix_leg_exchange_closure.py",
+      "research/nima/checkers/check_witness_record_memory_gate.py",
+      "research/nima/checkers/check_exchange_shared_leg_composition.py",
+      "research/nima/checkers/check_labelled_exchange_experiment.py",
+      "research/nima/checkers/check_exchange_detector_calibration.py"
+    ],
+    "checks": [{"id": "source-exchange-end-to-end", "path": "research/nima/checkers/check_source_exchange_end_to_end.py", "requires": ["numpy"]}],
+    "depends_on": ["nima-exchange-detector-calibration"],
+    "consumes": ["native_matrix_values_and_witness_boundaries", "declared_trace_preparation", "compiled_exchange_events", "conditional_detector_contract"],
+    "provides": ["actual_native_response_seeded_end_to_end_experiment", "retained_source_and_current_record_provenance", "fresh_eight_checker_audit", "explicit_success_criteria_ledger"],
+    "missing_constructors": ["native_instrument_selection", "preparation_reset_control_resource_accounting", "independent_physical_standards", "absolute_current_field_coupling"],
+    "next_falsifier": "Account for preparation, reset and control resources before identifying conserved exchange budget with a complete physical energy account."
+  }
+}

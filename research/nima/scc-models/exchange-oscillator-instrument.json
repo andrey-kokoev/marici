@@ -1,0 +1,22 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-exchange-oscillator-instrument",
+    "owner": "marici.Nima",
+    "classification": "conditional_passive_oscillator_exchange_and_homodyne_contract",
+    "stratum": "Standard bosonic modes and coherent-state/homodyne laws supplied as physical assumptions; ideal controllable difference-mode Hamiltonian realizes the prior complex exchange pulse. Not a native Carrier derivation or electromagnetic normalization.",
+    "inputs": [
+      "research/nima/exchange-oscillator-preparation-and-measurement.md",
+      "research/nima/137-gauge-adapter-and-complex-lift.md",
+      "research/nima/source-exchange-preparation-readout-contract.md",
+      "research/nima/checkers/check_137_closed_record_stationarity.py"
+    ],
+    "checks": [{"id": "exchange-oscillator-instrument", "path": "research/nima/checkers/check_exchange_oscillator_instrument.py", "requires": ["numpy"]}],
+    "depends_on": ["nima-source-exchange-contract"],
+    "consumes": ["prior_complex_rank_one_pulse", "labelled_mode_features", "canonical_bosonic_structure", "coherent_preparation", "phase_referenced_quadrature_readout"],
+    "provides": ["conditional_passive_mode_hamiltonian", "signed_echo_measurement_contract", "pulse_area_error_prediction", "vacuum_normalization_hostile"],
+    "missing_constructors": ["native_matrix_leg_to_mode_state_adapter", "source_selected_physical_controls", "preparation_detector_resource_accounting", "absolute_current_field_normalization"],
+    "next_falsifier": "Test closure of the proposed native preparation map under exchange before treating arbitrary16-mode states and137 independent record displacements as source-supplied."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-optical-plant-endpoint-exchange",
+    "owner": "marici.Nima",
+    "classification": "conditional_optical_exchange_boundary_with_endpoint_phase_covariance",
+    "stratum": "Ordered four-port optical dilation with a normalized16-mode carrier supermode, retained records/environment and transported endpoint phases. Declared ideal controls, not measured calibrations or native physical selection.",
+    "inputs": [
+      "research/nima/optical-plant-endpoint-exchange.md",
+      "research/aspect/reciprocal-lossy-cavity-plant.md",
+      "research/aspect/checkers/reciprocal_lossy_cavity_plant.py",
+      "research/nima/137-local-endpoint-phase-adapter.md",
+      "research/nima/checkers/check_137_local_phase_covariance.py"
+    ],
+    "checks": [{"id": "optical-plant-endpoint-exchange", "path": "research/nima/checkers/check_optical_plant_endpoint_exchange.py", "requires": ["numpy"]}],
+    "depends_on": [],
+    "consumes": ["ordered_optical_port_contract", "endpoint_metric_and_feature_transport", "declared_control_settings"],
+    "provides": ["lossy_plant_nonexchange_control", "ideal_boundary_exchange_embedding", "full_port_phase_covariance", "return_phase_loss_port_correction"],
+    "missing_constructors": ["independent_optical_control_calibration", "supermode_router_and_delay_storage", "time_varying_frame_connection_implementation"],
+    "next_falsifier": "Certify a tolerance budget from independent control-port measurements including loss, phase and mode-routing error, not from fitting the exchange output."
+  }
+}

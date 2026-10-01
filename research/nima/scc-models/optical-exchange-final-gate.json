@@ -1,0 +1,23 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-optical-exchange-final-gate",
+    "owner": "marici.Nima",
+    "classification": "optical_endpoint_synthesis_model_complete_measured_calibration_missing",
+    "stratum": "Final bounded optical/endpoint synthesis: analytic ideal exchange, rejected frozen cavity, synthetic independently structured calibration and held-out checks. No measured apparatus validation or general quantum-channel guarantee.",
+    "inputs": [
+      "research/nima/optical-endpoint-exchange-verdict.md",
+      "research/nima/checkers/check_optical_plant_endpoint_exchange.py",
+      "research/nima/checkers/check_optical_exchange_calibration_bounds.py",
+      "research/nima/checkers/check_optical_exchange_timed_frames.py",
+      "research/nima/checkers/check_optical_exchange_history_certificate.py"
+    ],
+    "checks": [{"id": "optical-exchange-final-gate", "path": "research/nima/checkers/check_optical_exchange_final_gate.py", "requires": ["numpy"]}],
+    "depends_on": ["nima-optical-exchange-history-certificate"],
+    "consumes": ["fresh_optical_endpoint_synthesis_chain", "full_history_error_interval", "declared_evidence_kind"],
+    "provides": ["scoped_optical_realization_verdict", "rejected_vs_inconclusive_bound_distinction", "synthetic_to_measured_promotion_guard", "required_measured_packet_contract"],
+    "missing_constructors": ["independently_measured_port_router_and_time_calibration", "physical_environment_and_storage_contract", "held_out_apparatus_observations"],
+    "next_falsifier": "Evaluate an independently acquired calibration and held-out measurement packet. Additional synthetic passes cannot certify a physical apparatus."
+  }
+}

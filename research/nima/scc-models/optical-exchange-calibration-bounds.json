@@ -1,0 +1,21 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-optical-exchange-calibration-bounds",
+    "owner": "marici.Nima",
+    "classification": "conditional_independent_port_calibration_exchange_error_certificate",
+    "stratum": "Synthetic independent complex four-port calibration with supplied entrywise/router error bounds, vacuum-noise dilation and held-out mean-amplitude tests. Not measured apparatus calibration or arbitrary-state channel certification.",
+    "inputs": [
+      "research/nima/optical-exchange-independent-calibration-bounds.md",
+      "research/nima/checkers/check_optical_plant_endpoint_exchange.py",
+      "research/nima/optical-plant-endpoint-exchange.md"
+    ],
+    "checks": [{"id": "optical-exchange-calibration-bounds", "path": "research/nima/checkers/check_optical_exchange_calibration_bounds.py", "requires": ["numpy"]}],
+    "depends_on": ["nima-optical-plant-endpoint-exchange"],
+    "consumes": ["complete_ordered_optical_dilation", "independent_complex_port_probe_contract", "bounded_router_vector_error"],
+    "provides": ["analytic_mirror_loss_phase_error_budget", "independent_calibration_operator_certificate", "held_out_amplitude_regression", "intensity_only_phase_hostile", "vacuum_noise_injection_check"],
+    "missing_constructors": ["measured_calibration_error_evidence", "time_dependent_frame_connection_and_delay", "actual_mode_router_and_storage"],
+    "next_falsifier": "Test calibrated frame transport during a delayed multi-event experiment, including the temporal connection rather than applying a static phase conjugation at both endpoints."
+  }
+}
