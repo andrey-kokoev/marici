@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paw → tetrahedron · one cycle</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#111c2e;--ink:#e8f0fc;--muted:#9eb0c8;--old:#7dd3fc;--new:#fbbf24;--path:#c084fc;--border:#28364c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,sans-serif}main{max-width:1440px;margin:auto;padding:24px}header{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:18px}h1{font-size:clamp(23px,3vw,34px);margin:0;font-weight:600;letter-spacing:-.025em}.eyebrow{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.14em;margin:0 0 5px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}.scene{position:relative;height:min(66vh,680px);min-height:360px;background:radial-gradient(ellipse at 50% 45%,#162339,#0b1220);border:1px solid var(--border);border-radius:16px;overflow:hidden}.scene canvas{display:block;width:100%;height:100%;touch-action:none}.label{position:absolute;pointer-events:none;font-weight:700;font-size:15px;padding:1px 6px;background:#0b1220d9;border:1px solid #ffffff35;border-radius:6px;transform:translate(-50%,-50%)}.hint{position:absolute;bottom:14px;left:18px;color:var(--muted);font-size:12px;pointer-events:none}.badge{position:absolute;top:16px;left:18px;border-radius:20px;background:#0b1220cf;padding:5px 12px;font-size:13px;pointer-events:none}.panel{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:16px}h2{font-size:20px;line-height:1.3;margin:0}p{margin:0}.description{min-height:88px;color:#c8d6e8}.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0}.stat strong{font-size:25px;display:block;line-height:1.3;font-variant-numeric:tabular-nums}.stat span{font-size:12px;color:var(--muted)}.detail{font-size:13px;color:var(--muted)}.detail b{color:var(--ink)}.legend{display:grid;gap:6px;font-size:13px}.legend span:before{content:'';display:inline-block;width:20px;height:3px;background:var(--c);vertical-align:middle;margin-right:8px}.checks{display:grid;gap:8px;font-size:13px}.checks label{cursor:pointer}input[type=checkbox]{accent-color:var(--old);margin-right:7px}.controls{margin-top:18px;border:1px solid var(--border);border-radius:14px;padding:16px;background:var(--panel)}.stages{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}button,select{font:inherit;color:var(--ink);background:#1a2940;border:1px solid #35445c;border-radius:8px;padding:9px 12px;cursor:pointer}button:hover{background:#243956}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--old);outline-offset:3px}.stages button{font-size:13px;text-align:left;min-height:56px}.stages button[aria-pressed=true]{border-color:var(--old);background:#19364c;color:#d5f2ff}.stages small{display:block;color:var(--muted);font-size:11px}.transport{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.timeline-wrap{flex:1;min-width:160px;display:flex;gap:10px;align-items:center}.timeline-wrap input{flex:1;min-width:80px;accent-color:var(--old)}#progress{width:40px;font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px}#play{min-width:90px;background:#245066;border-color:#39758a}.speed{font-size:12px;color:var(--muted)}select{padding:6px}.footer{margin-top:12px;color:var(--muted);font-size:12px;max-width:1050px}.footer a{color:var(--old)}.error{position:absolute;inset:20px;background:#17263b;padding:24px;z-index:10;border-radius:12px}.hidden{display:none!important}noscript{display:block;padding:20px;color:#fbbf24}
+@media(max-width:800px){main{padding:14px}.layout{grid-template-columns:1fr}.scene{height:52vh;min-height:320px}.panel{display:grid;grid-template-columns:1fr 1fr;gap:14px}.description{min-height:0}.stats{grid-row:span 2}.panel h2{grid-column:1/-1}.legend,.checks{font-size:12px}.stages{gap:5px}.stages button{padding:8px;font-size:12px}header{display:block}.footer{font-size:11px}}
+</style>
+</head>
+<body>
+<main>
+<header><div><p class="eyebrow">One retained geometric cycle</p><h1>Paw → tetrahedron</h1></div><span class="detail">Four records · unit edges · regular tetrahedron</span></header>
+<div class="layout">
+  <div id="scene" class="scene" aria-label="Interactive 3D paw-to-tetrahedron animation">
+    <div id="badge" class="badge">1 · Identity</div>
+    <div class="hint">Drag to orbit · scroll or pinch to zoom</div>
+    <div id="error" class="error hidden" role="alert"></div>
+  </div>
+  <aside class="panel">
+    <h2 id="stage-title">1. Identity: the paw</h2>
+    <p id="description" class="description"></p>
+    <div class="stats">
+      <div class="stat"><strong>4</strong><span>record vertices</span></div>
+      <div class="stat"><strong id="packets">8</strong><span>directed packets</span></div>
+      <div class="stat"><strong id="edges">4</strong><span>relationships</span></div>
+      <div class="stat"><strong id="volume">0.0000</strong><span>enclosed volume</span></div>
+    </div>
+    <div class="detail">Body angle φ: <b id="phi">0°</b><br>Leg angle θ: <b id="theta">0°</b><br><span id="witness">Triangle ABC · leg AD</span></div>
+    <div class="legend"><span style="--c:var(--old)">Original relationships</span><span style="--c:var(--new)">New BD and CD</span><span style="--c:var(--path)">Retained path witnesses</span></div>
+    <div class="checks"><label><input id="traces" type="checkbox" checked>Orientation traces</label><label><input id="faces" type="checkbox" checked>Tetrahedral faces</label></div>
+    <button id="camera-reset" type="button">Reset view</button>
+  </aside>
+</div>
+<section class="controls" aria-label="Cycle playback">
+  <div class="stages">
+    <button type="button" data-stage="0" aria-pressed="true">1 · Identity<small>Flat paw</small></button>
+    <button type="button" data-stage="1" aria-pressed="false">2 · 1:many<small>Body around leg</small></button>
+    <button type="button" data-stage="2" aria-pressed="false">3 · Many:1<small>Leg around body</small></button>
+    <button type="button" data-stage="3" aria-pressed="false">4 · Identity<small>Tetrahedral closure</small></button>
+  </div>
+  <div class="transport">
+    <button id="play" type="button">Play</button><button id="reset" type="button">Reset</button>
+    <div class="timeline-wrap"><label for="timeline" class="detail">Cycle</label><input id="timeline" type="range" min="0" max="1" step="0.001" value="0" aria-label="Cycle progress"><output id="progress">0%</output></div>
+    <label class="speed">Speed <select id="speed"><option value="0.5">½×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+  </div>
+</section>
+<p class="footer">Unit-edge construction: equilateral triangle ABC + leg AD, body rotation 60°, leg rotation arccos(−⅓) ≈ 109.47°. Closure adds full-length BD and CD from B → A → D and C → A → D. Every structural edge has length 1; grid, axes and traces are visual guides. Each solid edge carries two directed packets. Violet traces show past presentations. The axes and completion rule are supplied; “many:1” here displays frame-compatible configurations, with no automatic quotient. Playback duration is illustrative. <a href="vendor/THREE-LICENSE.txt">Three.js · MIT</a></p>
+<noscript>This visualization requires JavaScript and WebGL.</noscript>
+</main>
+<script src="vendor/three.min.js"></script>
+<script src="vendor/OrbitControls.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

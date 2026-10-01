@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proton-like carrier · 3D</title>
+<style>
+:root{color-scheme:dark;--bg:#090f19;--panel:#111c2b;--ink:#e5edf7;--muted:#91a5be;--line:#26384e;--accent:#86e4db}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,Segoe UI,sans-serif}main{max-width:1540px;margin:auto;padding:26px}header{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:20px}.eyebrow{font-size:11px;letter-spacing:.19em;text-transform:uppercase;color:var(--accent);margin:0 0 7px}h1{font-size:clamp(25px,3.2vw,39px);font-weight:560;letter-spacing:-.04em;line-height:1.15;margin:0}.subtitle{color:var(--muted);margin:8px 0 0}.status{color:#adc2d7;font-size:12px;white-space:nowrap}.status:before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:8px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px}.viewport{height:clamp(490px,75vh,830px);position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:radial-gradient(ellipse at 50% 40%,#192b40,#090f19 75%)}canvas{display:block;width:100%;height:100%;touch-action:none}.view-head{position:absolute;top:18px;left:20px;z-index:2;pointer-events:none}.view-head strong{font-size:12px;font-weight:500;color:#d3e2f0}.view-head p{font-size:11px;color:var(--muted);margin:4px 0}.hint{position:absolute;left:20px;bottom:17px;font-size:11px;color:var(--muted);pointer-events:none}.vertex-label{position:absolute;pointer-events:none;transform:translate(-50%,-50%);padding:1px 5px;border-radius:4px;font-size:13px;font-weight:650;color:#fff3df;background:#0b1527b0}.vertex-label.centre{font-size:10px;font-weight:450;color:#cae3f4}.vertex-label.agent{font-size:11px;color:#e4f6ff}.panel{display:flex;flex-direction:column;gap:17px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:19px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding-bottom:16px;border-bottom:1px solid var(--line)}.stats strong{display:block;font-size:26px;font-weight:550;line-height:1.3}.stats span{font-size:10px;color:var(--muted)}.section-title{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 9px}.modes{display:grid;grid-template-columns:1fr;gap:6px}button,select{font:inherit;background:#18263a;color:var(--ink);border:1px solid #35465d;border-radius:7px;padding:8px 11px;cursor:pointer}button:hover{background:#23384c}button[aria-pressed=true]{background:#193b42;border-color:#559e9c;color:#bbfbf0}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.modes button{text-align:left;font-size:12px}.legend{display:grid;grid-template-columns:1fr 1fr;gap:8px;color:#c8d8e8;font-size:12px}.legend span:before{content:'';display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--c);margin-right:7px}.options{display:grid;gap:8px;font-size:12px}.options label{cursor:pointer}input{accent-color:var(--accent)}input[type=checkbox]{margin:0 7px 0 0;vertical-align:middle}.range{display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted);font-size:12px}.range input{width:120px;min-width:0}.buttons{display:flex;gap:8px}.buttons button{flex:1;font-size:12px}.inspector{border-top:1px solid var(--line);padding-top:16px}.inspector select{width:100%;font-size:12px;padding:7px}.inspector pre{font:12px/1.8 ui-monospace,Consolas,monospace;color:#c4f6ee;margin:11px 0 0;white-space:pre-wrap;min-height:65px}.small{font-size:11px;color:var(--muted);margin:9px 0 0}.foot{font-size:11px;color:var(--muted);margin:15px 0 0;max-width:1040px}.foot a{color:var(--accent)}#error{position:absolute;inset:24px;padding:24px;background:#152438;z-index:5;border-radius:10px}#error[hidden]{display:none}noscript{display:block;padding:20px;color:#f2c986}
+@media(max-width:850px){main{padding:15px}header{align-items:start}.status{display:none}.layout{grid-template-columns:1fr}.viewport{height:57vh;min-height:380px}.panel{display:grid;grid-template-columns:1fr 1fr;gap:18px}.stats{grid-column:1/-1;max-width:none}.stats strong{font-size:24px}.modes{grid-template-columns:1fr}.inspector{grid-column:1/-1}.buttons{align-self:start}.foot{font-size:10px}.range{flex-wrap:wrap}.range input{width:100%}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body><main>
+<header><div><p class="eyebrow">Twelve-triangle construction</p><h1>Proton-like carrier</h1><p class="subtitle">A tetrahedral shell with a shared cyclic mode.</p></div><div class="status">Interactive 3D · works offline</div></header>
+<div class="layout">
+<section id="viewport" class="viewport" aria-label="Interactive three-dimensional tetrahedral carrier">
+  <div class="view-head"><strong id="view-title">Triangulated surface</strong><p id="view-detail">Four faces, each divided into three triangles</p></div>
+  <div class="hint">Drag to orbit · scroll or pinch to zoom · click a triangle</div>
+  <div id="error" hidden role="alert"></div>
+</section>
+<aside class="panel">
+  <div class="stats"><div><strong id="count-a">12</strong><span id="label-a">triangles</span></div><div><strong id="count-b">8</strong><span id="label-b">shared vertices</span></div><div><strong id="count-c">18</strong><span id="label-c">shared edges</span></div></div>
+  <div><p class="section-title">View</p><div class="modes"><button type="button" data-view="surface" aria-pressed="true">Surface</button><button type="button" data-view="both" aria-pressed="false">Surface + interaction net</button><button type="button" data-view="dual" aria-pressed="false">Interaction net</button></div></div>
+  <div><p class="section-title">Parent faces</p><div class="legend"><span style="--c:#65d5c8">ABC</span><span style="--c:#819df1">ABD</span><span style="--c:#deb674">ACD</span><span style="--c:#d28faa">BCD</span></div></div>
+  <div class="options"><label><input id="phase-guides" type="checkbox" checked>Shared phase guides</label><label><input id="labels" type="checkbox" checked>Labels</label><label><input id="auto-rotate" type="checkbox">Rotate the view</label></div>
+  <label class="range" for="opacity">Surface opacity<input id="opacity" type="range" min="0.08" max="1" value="0.92" step="0.01"></label>
+  <div class="buttons"><button id="play" type="button">Pause guides</button><button id="reset" type="button">Reset view</button></div>
+  <div class="inspector"><p class="section-title">Triangle packets</p><select id="triangle" aria-label="Choose a triangle"><option value="">Choose a triangle…</option></select><pre id="packets">Select a face triangle
+to inspect its three
+endpoint pairs.</pre><p id="selected-note" class="small">Corner vertices are ivory; face-centre vertices are blue.</p></div>
+</aside>
+</div>
+<p class="foot">Geometric model, not a measured proton shape. Moving marks illustrate a shared phase, not particle trajectories. The interaction-net view puts one agent on each small triangle and connects agents across shared edges. <a href="../paw-cycle/vendor/THREE-LICENSE.txt">Three.js · MIT</a></p>
+<noscript>Enable JavaScript to display the 3D model.</noscript>
+</main>
+<script src="../paw-cycle/vendor/three.min.js"></script>
+<script src="../paw-cycle/vendor/OrbitControls.js"></script>
+<script src="app.js"></script>
+</body></html>
