@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-mass-gap-symmetry",
+    "owner": "marici.Nima",
+    "classification": "charge_preserving_symmetry_does_not_force_comparison_mass_ratio",
+    "stratum": "Forward realization: rooted relabelling orbits and charge-preserving internal symmetries of the finite dressing model. No general local quantum-field-theory no-go.",
+    "inputs": ["research/nima/mass-gap-symmetry-and-protected-kernel.md", "research/nima/checkers/check_mass_comparison_dressing.py"],
+    "checks": [{"id": "mass-gap-symmetry", "path": "research/nima/checkers/check_mass_gap_symmetry.py", "requires": []}],
+    "depends_on": ["nima-mass-comparison-dressing"],
+    "consumes": ["rooted_comparison_slot_action", "finite_charged_core_hamiltonian"],
+    "provides": ["exact_gap_orbit_classification", "charge_sector_offset_obstruction", "positive_square_kernel_lift_hostile"],
+    "missing_constructors": ["source_derived_energy_counting_charge", "source_protected_charged_sector_kernel", "particle_sector_identification"],
+    "next_falsifier": "Construct an independently sourced energy algebra and protected kernel; counting slots and imposing a sum of squares do not suffice."
+  }
+}

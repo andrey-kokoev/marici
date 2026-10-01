@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-mass-path-port-connectivity",
+    "owner": "marici.Nima",
+    "classification": "path_port_connectivity_closed_gauss_and_energy_bridge_open",
+    "stratum": "Forward realization on the finite active-port projection of retained paths. Undirected incidence connectivity is not reversible dynamics, a Gauss law, or stored rest energy.",
+    "inputs": ["research/nima/mass-path-operations-connect-comparison-ports.md", "research/nima/proton-electron-shared-state-comparison-hypothesis.md", "research/nima/checkers/check_mass_gauss_completion.py"],
+    "checks": [{"id": "mass-path-port-connectivity", "path": "research/nima/checkers/check_mass_path_port_connectivity.py", "requires": []}],
+    "depends_on": ["nima-mass-gauss-completion"],
+    "consumes": ["composable_retained_paths", "typed_endpoint_readouts", "comparison_port_domain"],
+    "provides": ["explicit_connected_incidence_graph", "directed_transport_obstruction", "history_resource_hostile", "kirchhoff_not_charge_locking_witness"],
+    "missing_constructors": ["history_retaining_physical_interaction", "derived_charge_locking_law", "derived_charging_energy"],
+    "next_falsifier": "Lift the port incidences to a history-retaining interaction deriving charge equality; weak graph connectivity and Kirchhoff conservation do not supply it."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-mass-history-locking-controller",
+    "owner": "marici.Nima",
+    "classification": "reversible_driven_charge_locking_not_autonomous_mass_generation",
+    "stratum": "Forward realization by an ideal reversible syndrome/feedback circuit with retained records, externally set gains and input charge, and explicit charge/work reservoirs. Not autonomous source dynamics or measured apparatus.",
+    "inputs": ["research/nima/mass-history-retaining-locking-interaction.md", "research/nima/checkers/check_mass_path_port_connectivity.py"],
+    "checks": [{"id": "mass-history-locking-controller", "path": "research/nima/checkers/check_mass_history_locking_controller.py", "requires": []}],
+    "depends_on": ["nima-mass-path-port-connectivity"],
+    "consumes": ["source_port_incidence_graph", "ideal_difference_register", "externally_controlled_charge_shifts"],
+    "provides": ["reversible_collective_charge_preparation", "retained_record_inverse", "explicit_work_and_charge_balance", "measurement_only_and_gain_mismatch_hostiles"],
+    "missing_constructors": ["autonomous_source_hamiltonian", "derived_charging_form", "protected_particle_sector", "finite_resolution_physical_implementation"],
+    "next_falsifier": "Derive the interaction and its charging form from autonomous source dynamics, rather than an externally selected preparation schedule and target sector."
+  }
+}

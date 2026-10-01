@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-mass-rotor-action-charge",
+    "owner": "marici.Nima",
+    "classification": "rotor_action_separates_energy_count_from_unit_particle_charge",
+    "stratum": "Forward realization through two candidate compact-rotor actions with a common external U(1) normalization. Ideal phase rigidity versus exact declared Gauss constraint, not source-derived particle dynamics.",
+    "inputs": ["research/nima/mass-rotor-action-and-external-charge.md", "research/nima/checkers/check_mass_path_port_connectivity.py"],
+    "checks": [{"id": "mass-rotor-action-charge", "path": "research/nima/checkers/check_mass_rotor_action_charge.py", "requires": []}],
+    "depends_on": ["nima-mass-path-port-connectivity"],
+    "consumes": ["connected_comparison_incidence_graph", "candidate_compact_rotor_actions", "common_external_charge_assignment"],
+    "provides": ["derived_gauss_equality_and_collective_energy", "phase_vs_charge_locking_distinction", "unit_particle_charge_hostile", "charging_form_freedom"],
+    "missing_constructors": ["source_selected_rotor_action", "source_microscopic_charge_assignment", "particle_and_rest_energy_identification"],
+    "next_falsifier": "Derive external charges and charging form jointly; the common-charge action produces1836 charge units as well as1836 energy units."
+  }
+}

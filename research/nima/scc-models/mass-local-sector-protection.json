@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-mass-local-sector-protection",
+    "owner": "marici.Nima",
+    "classification": "conditional_local_transition_protection_without_mass_gap_protection",
+    "stratum": "Exact Gauss-constrained rotor space, primitive external charge and bounded microscopic tensor support. Not softened constraints, derived spatial locality, or an arbitrary-error-protected quantum code.",
+    "inputs": ["research/nima/mass-local-sector-protection.md", "research/nima/checkers/check_mass_primitive_quotient_charge.py"],
+    "checks": [{"id": "mass-local-sector-protection", "path": "research/nima/checkers/check_mass_local_sector_protection.py", "requires": []}],
+    "depends_on": ["nima-mass-primitive-quotient-charge"],
+    "consumes": ["exact_integer_gauss_constraints", "primitive_quotient_charge", "bounded_support_hamiltonian_assumption"],
+    "provides": ["conditional_sector_separation_theorem", "sharp_collective_transition_support", "local_energy_shift_hostile", "normalization_symmetry_extension_obstruction"],
+    "missing_constructors": ["source_exact_gauss_and_locality_law", "source_charging_coefficients", "relativistic_particle_identification"],
+    "next_falsifier": "Derive the common charging form without assuming a microscopic permutation symmetry that violates the physical constraint space."
+  }
+}

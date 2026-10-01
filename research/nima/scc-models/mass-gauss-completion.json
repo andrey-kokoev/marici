@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-mass-gauss-completion",
+    "owner": "marici.Nima",
+    "classification": "gauss_constraints_force_collective_integer_excitation_conditionally",
+    "stratum": "Forward realization with newly assumed compact rotor Gauss constraints. Relabelling-envelope graph versus illustrative connected completion; exact integer-charge tests, no derived particle mass.",
+    "inputs": ["research/nima/mass-gauss-law-collective-excitation.md", "research/nima/checkers/check_mass_gap_symmetry.py"],
+    "checks": [{"id": "mass-gauss-completion", "path": "research/nima/checkers/check_mass_gauss_completion.py", "requires": []}],
+    "depends_on": ["nima-mass-gap-symmetry"],
+    "consumes": ["comparison_slot_relabelling_graph", "declared_compact_rotor_constraint"],
+    "provides": ["conditional_collective_integer_excitation", "thirty_component_obstruction", "gauge_invariant_charging_hostiles"],
+    "missing_constructors": ["source_gauss_law", "source_operations_connecting_comparison_orbits", "derived_charging_form", "physical_particle_identification"],
+    "next_falsifier": "Source the connections and charging form independently of the target1836; the illustrative bridges and equal coefficients remain inputs."
+  }
+}

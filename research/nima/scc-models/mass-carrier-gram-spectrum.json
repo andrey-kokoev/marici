@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-mass-carrier-gram-spectrum",
+    "owner": "marici.Nima",
+    "classification": "carrier_gram_energy_does_not_select_1836_particle_gap",
+    "stratum": "Forward realization through the explicitly chosen tagged Gram-feature Hamiltonian F^dagger M F. Exact finite spectrum; not a unique source Hamiltonian and not a refutation of retained-history resource models.",
+    "inputs": ["research/nima/mass-carrier-gram-spectrum-audit.md", "research/nima/checkers/check_proton_electron_comparison_slots.py", "research/nima/checkers/check_proton_electron_gram_energy.py"],
+    "checks": [{"id": "mass-carrier-gram-spectrum", "path": "research/nima/checkers/check_mass_carrier_gram_spectrum.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["four_state_carrier_gram", "typed_comparison_feature_map"],
+    "provides": ["exact_feature_rank_and_nullity", "exact_positive_gram_spectrum", "trace_versus_particle_gap_distinction"],
+    "missing_constructors": ["source_record_energy_action", "particle_sector_selection", "physical_energy_normalization"],
+    "next_falsifier": "Supply an independent carrier action making retained comparison records physical and selecting their energy law; the static Gram metric does not determine it."
+  }
+}

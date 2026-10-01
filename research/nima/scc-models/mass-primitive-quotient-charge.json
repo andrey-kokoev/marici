@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-mass-primitive-quotient-charge",
+    "owner": "marici.Nima",
+    "classification": "primitive_quotient_charge_consistent_mass_normalization_unfixed",
+    "stratum": "Forward realization on a declared compact Gauss quotient, with a new primitive external U(1) identification and an elementary reference representation. Not a reinterpretation of the previous degree-N external coupling or a source-selected mass law.",
+    "inputs": ["research/nima/mass-primitive-quotient-charge.md", "research/nima/checkers/check_mass_rotor_action_charge.py"],
+    "checks": [{"id": "mass-primitive-quotient-charge", "path": "research/nima/checkers/check_mass_primitive_quotient_charge.py", "requires": []}],
+    "depends_on": ["nima-mass-rotor-action-charge"],
+    "consumes": ["connected_integer_gauss_lattice", "candidate_charging_action", "primitive_quotient_external_symmetry"],
+    "provides": ["joint_integral_collective_and_elementary_charge", "explicit_gauge_equivalent_charge_lifts", "same_charge_energy_deformation", "antiparticle_mixing_hostile"],
+    "missing_constructors": ["physical_identification_of_external_quotient", "common_charging_coefficient_law", "protected_particle_sector"],
+    "next_falsifier": "Source the charging law and extra particle-sector conservation; correct unit charge alone allows both changed mass ratios and mixing with the elementary antiparticle."
+  }
+}
