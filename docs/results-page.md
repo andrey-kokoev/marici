@@ -1,12 +1,12 @@
 # Results & predictions
 
-## The relational carrier gives physics and mathematics
+## Research constructions and physical hypotheses
 
 | Step | Name | Formula |
 |---|---|---|
 | 1 | One carrier | $X_N = \{x_1,\dots,x_N\},\quad \operatorname{Aut}(X_N)=S_N$ |
 | 2 | One overlap | $G_{ij} = \langle f_j \mid f_i\rangle$ |
-| 3 | All physics | $\mathrm{QM}, \mathrm{GR}, \mathrm{SM}, \mathbb{R},\mathbb{C},\mathbb{H},\mathbb{O},\ldots$ |
+| 3 | Proposed identifications | Physical states, dynamics and readouts require separate derivations; representation identities alone do not supply them. |
 
 ## Current comparison-tower checks
 
@@ -33,13 +33,26 @@ constant or physical energy-dissipation law is derived**.
 
 [Derivation and exact verification sources](/theory/#tower-successor-and-mixed-comparison-defects).
 
+## Tetrahedral spin and charge audit
+
+The 36-coordinate tetrahedral model has exact projector ranks $12,3,1$ and $LR=RL=N$. Its specified three-stage, dense-feedback implementation has 1836 arrows; this count is basis/implementation dependent and is not a derived particle mass.
+
+| Test | Verified result | Physical boundary |
+|---|---|---|
+| Binary tetrahedral bridge | $2T\to A_4$, $Q_8\to V_4$, and $\operatorname{End}(\mathbb C^2)=\mathbf1\oplus\mathbf3$ recover the three-axis action. | Operator-space equivalence does not derive a physical spinor state or weak isospin. |
+| Added spinor factor | $V_{36}\otimes\mathbb C^2$ has a rank-two collective doublet with central action $-I_2$. | The extra factor is an input, not selected by the native model. |
+| Native rotation-loop test | All six orthogonal-half-turn commutators return +1; a separate projection triangle can give $-13/3375$. | The native spinorial-selection conjecture fails in this model. The broader physical conjecture lacks an independent interaction/readout. |
+| Charge scan correction | $I$, $N$ and $2N-I$ refute the former universal charge no-go. A scaled half-turn has expectation +1 but variance 8. | Physical charge sectors and electromagnetic coupling remain unconstructed. |
+
+[Derivations, falsifiers and executable checks](/theory/#tetrahedral-geometry-spinors-and-the-native-loop-test).
+
 ## Physics domains (27)
 
 | Domain | Status | Connection |
 |---|---|---|
 | Quantum mechanics | Established | Born rule from rank-1 factorization of the overlap matrix G_ij = psi_i* psi_j. N-path interference from I = sum G_ij exp(i(theta_j - theta_i)). Entanglement from overlap non-separability. |
 | General relativity | Established | Spatial metric from stabilizer overlaps g_ab(p) = G_ab. ADM constraints close on finite carrier with (+++-) signature. Continuum limit delta(x,y) constructed. |
-| SM gauge group | Established | SU(3) x SU(2) x U(1) proposed from S4 irrep decomposition (1+1+2). The lift from finite-group irreps to continuous gauge groups is an ansatz; an explicit construction of the gauge action is not yet presented. |
+| SM gauge group | Conjecture; representation claim corrected | The natural S4 permutation carrier is 1+3, not 1+1+2. Finite-group representation dimensions do not derive continuous gauge actions, weak isospin, or spatial spin. |
 | 3 generations | Established | S12 -> S4 x S4 x S4 branching gives exactly 3 SM copies. S12 is the minimal carrier for 3 generations. |
 | CKM mixing | Established | overlap misalignment between up-type and down-type eigenbases. theta12=13 deg, theta23=2.4 deg, theta13=0.5 deg. |
 | PMNS mixing | Established | overlap misalignment in lepton sector. theta12=34 deg, theta23=42 deg, theta13=8.6 deg. |
@@ -48,14 +61,14 @@ constant or physical energy-dissipation law is derived**.
 | Higgs mass | Established | m_H = 11^2 + 4 = 125 GeV, v = 2*11^2 + 4 = 246 GeV. Within 0.2%. |
 | Top Yukawa | Established | y_t = l_SU2/l_SU2 = 4/4 = 1. Gram normalization unit. |
 | QCD scale / proton mass | Partial | Lambda_QCD = M_Pl/11^19 = 200 MeV (exponent 19 = 11+4+4 is Gram). m_p = 14/3 * Lambda_QCD = 938 MeV (14/3 = (r+s-1)/(s-1) is Gram ratio, but proton mass from QCD dynamics not Gram-derived). |
-| Proton-electron ratio | Hypothesis; prototypes checked | 12 × (144 arrow-comparison slots + 9 state-comparison slots) = 1836, relative to a shared state. Positive path resource and pairwise settling are modeled. Back-action supports a settling floor; its strength and conversion to the observed ≈1836.152673 mass ratio remain unresolved. [Construction and test outcomes](/theory/#proton-electron-ratio-comparison-paths-and-settling). |
+| Proton-electron ratio | Exact construction counts; physical mass hypothesis open | The comparison programme and specified tetrahedral network each have count 1836, without an identified common dynamics or mass readout. The observed ≈1836.152673 ratio, fractional correction and proton quantum numbers are not derived. [Current tests](/theory/#tetrahedral-geometry-spinors-and-the-native-loop-test). |
 | Larmor formula | Established | P = alpha*a^2/(6pi) from Gram 3-cycle. The factor 6pi = 3 x 2pi combines the three steps of the Gram 3-cycle with a full 2pi rotation. alpha ≈ 1/[137](/theory/#fine-structure-constant-comparison-slots), using the proposed comparison-slot normalization. |
-| Spin | Established | Spin-1/2 is the S4 doublet irrep (weak doublet). Spin operator = SU(2) generators. |
+| Spin | Spinor bridge checked; native physical selection not established | The 2T doublet recovers the vector action on its traceless operators. Native transport returns +1 on the proposed commutator test, not -1. An added spinor factor is compatible but not physically selected. [Audit](#tetrahedral-spin-and-charge-audit). |
 | Beta decay | Established | SU(2) doublet rotation via W boson. Gram provides couplings (v, alpha, sin^2_W). M_W = 80.24 GeV (obs 80.38, 0.17%), G_F = 1.1685e-5 (obs 1.166e-5, 0.21%). Phase space and axial coupling are SM dynamics, not Gram predictions. |
 | EPR / Bell violation | Established | CHSH violation S = 2*sqrt(2) from Gram non-separability. Entanglement = overlap non-product structure. |
 | Mach's Principle | Established | Inertia = sum of Gram couplings to all points. Metric = relational from full carrier. Both global/relational. |
 | Anomaly cancellation | Established | All 6 Ward identities cancel per generation. 16 fermions = SO(10) spinor. |
-| Higgs mechanism | Established | Off-diagonal block between S4 doublet and singlets. Higgs vev v = 246 GeV, mass m_H = 125 GeV. |
+| Higgs mechanism | Proposed; carrier representation and potential not derived | The natural S4 permutation carrier has no doublet-singlet blocks. The proposed origin requires a different representation and an independently specified symmetry-breaking potential; the numerical v and mass candidates do not establish them. |
 | Strong CP / axion | Schematic | U(1) phase mode identified. QCD instanton suppression of theta_bar is assumed from SM, not Gram-derived. |
 | Dark matter | Established | 3 sterile neutrinos nu_R. Omega_DM = (C_U1 - l_SU2)/(l_U1 + r_S12) = 6/23 = 26.1% (observed 26.4%, within 1.2%). |
 | Dark energy | Established | Lambda = G_off/G_self = 2*l_Pl^2 / R_Hubble^2, within 5% of observed value. |
@@ -90,7 +103,7 @@ constant or physical energy-dissipation law is derived**.
 
 | What it explains | Derivation from carrier |
 |---|---|
-| **SM gauge group SU(3) x SU(2) x U(1)** | Proposed read-off from S4 irrep decomposition (1+1+2); the identification with the first stable stems of the sphere spectrum is an analogy, not a derived correspondence. |
+| **SM gauge group SU(3) x SU(2) x U(1)** | The former 1+1+2 decomposition of the natural S4 permutation carrier was incorrect; it is 1+3. A continuous gauge action remains an additional construction, not a read-off from representation dimensions or stable-stem analogies. |
 | **Exactly 3 generations** | S12 is minimal carrier giving 3 SM copies without mirror sectors. |
 | **Fine-structure constant alpha^{-1} ≈ [137](/theory/#fine-structure-constant-comparison-slots)** | Proposed comparison-slot count for two T₁ carriers: 121 arrow–arrow slots plus 16 state–state slots. Their direct relationship is the reference, excluded from the slots. With equal weights, 1/137 is the average normalized weight per slot—not a cost per arrow. [Interpretation and assumptions](/theory/#fine-structure-constant-comparison-slots). Checked assembly separates reference interference and residual power. Closed-record schedule mixing gives a conditional normalized mismatch response of 1/137. A separate Hamiltonian couples comparison mismatch to an evolving overlap phase; its long-time normalization and electromagnetic readout remain open. [Equilibrium and back-reaction](/theory/#record-equilibrium-and-phase-back-reaction). The earlier exploratory feedback value, 137.036195934, fails precision recoil targets. [Readout calculations and outcomes](/theory/#carrier-realized-comparison-and-the-decimal-tail). |
 | **Weak mixing angle sin^2(theta_W) = 3/13 (candidate)** | The cited matter-trace derivation omits quark colour multiplicity in the weak sector. Consistent traces give 6 and 10, hence 3/8 under common inverse-trace normalization. Consistent colour averaging gives 9/28. A carrier derivation of 3/13 and a scale-matched measurement comparison remain open. [Audit and next construction](/theory/#weak-mixing-matter-trace-audit). |
@@ -99,7 +112,7 @@ constant or physical energy-dissipation law is derived**.
 | **QCD scale Lambda_QCD = 200 MeV** | Lambda_QCD = M_Pl / 11^19, where 19 = 11 + 4 + 4 (sum of Gram numbers). Within 0.2%. |
 | **Proton mass m_p = 938 MeV** | m_p = 14/3 * Lambda_QCD = 14/3 * M_Pl/11^19, within 0.7%. 14/3 = (11+4-1)/(4-1). |
 | **Proton charge radius r_p = 0.84 fm (candidate)** | r_p approx s * hbar/(m_p * c) = 4 * 0.2103 fm = 0.8413 fm, matching observed 0.8414 fm within 0.01%. Here s = 4 = l_SU2 is the Gram SU(2) eigenvalue. The factor-4 is proton-specific: the relationship does not hold for the neutron (ratio 1.62) or pion (ratio 0.475). In the SM the charge radius depends on the quark wavefunction, not on the mass alone. Whether the exact factor-4 is a Gram relationship or a coincidence is an open question. |
-| **Proton-electron mass ratio ≈1836.152673** | Proposed baseline: twelve 153-slot shared-state comparisons. The ≈0.152673 tail is hypothesized to reflect net pairwise-settling resource relative to the electron. Update and back-action prototypes demonstrate settling, with no derived tail yet. [Details and outcomes](/theory/#proton-electron-ratio-comparison-paths-and-settling). |
+| **Proton-electron mass ratio ≈1836.152673** | The integer 1836 is a model count, not a mass prediction. Settling prototypes do not derive the fractional correction; the tetrahedral spinor bridge does not supply the missing Hamiltonian or particle identification. [Current boundary](/theory/#tetrahedral-geometry-spinors-and-the-native-loop-test). |
 | **CKM CP phase approx 66 deg** | delta_CKM approx pi/3 + (l_SU2/l_U1)^2 = 60 + 6.4 = 66.4 deg, within 1.2% of observed 65.5 deg. The (4/12)^2 correction is Gram-derived; the base pi/3 is numerically close but not Gram-derived. |
 | **PMNS CP phase = 216 deg** | delta_PMNS = (l_U1/C_U1) * pi = (12/10) * pi = 6pi/5 = 216 deg. Exact Gram expression. |
 | **Top Yukawa y_t = 1** | y_t = l_SU2/l_SU2 = 4/4 = 1. The Gram normalization unit. Third generation couples at fundamental strength. |

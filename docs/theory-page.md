@@ -1,4 +1,4 @@
-# Full derivation
+# Constructions, hypotheses, and verification boundaries
 
 ## The single object and its three projections
 
@@ -8,7 +8,7 @@ $$
 G_{ij}=\langle f_j\mid f_i\rangle
 $$
 
-This one matrix gives **three projections** that together cover all of known physics:
+This programme proposes three physical interpretations of the matrix. Exact finite constructions, supplied physical inputs, and unverified identifications are distinguished below; the matrix alone is not a derivation of all physics:
 
 - **Quantum mechanics** — the interference pattern $I=\sum_{i,j}G_{ij}e^{i(\theta_j-\theta_i)}$
 
@@ -18,7 +18,7 @@ This one matrix gives **three projections** that together cover all of known phy
 
 This replaces position (Q), momentum (P), and time (T) as separate primitives with a single algebraic structure. In this construction, Q and T emerge from the descent of the 12-point carrier through the witness ladder (see the landing page for the rungs table).
 
-The complete derivation is presented below, step by step, with each section showing both the carrier derivation and the exact point where it departs from the standard Newton → QM → QFT path.
+The sections below retain the proposed mechanisms and their audits. The [tetrahedral spinor and native-loop tests](#tetrahedral-geometry-spinors-and-the-native-loop-test) correct the earlier identification of finite-group doublets with physical spin and separate representation compatibility from physical selection.
 
 ## 1. The carrier
 
@@ -26,7 +26,7 @@ The complete derivation is presented below, step by step, with each section show
 
 The carrier is a finite set with no metric, no coordinates, no topology. The only structure is the cardinality N and the automorphism group S_N.
 
-**Why N = 4.** $S_4$ has irreducible representations $1\oplus1'\oplus2$ (trivial + sign + doublet). This gives exactly the SM gauge group structure: U(1) from the trivial rep, SU(2) from the doublet, SU(3) from the sign × doublet interaction.
+**Why consider N = 4.** Four labelled points support a tetrahedral geometry. The irreducible complex representations of $S_4$ have dimensions $1,1,2,3,3$; its natural four-point permutation representation is $\mathbf1\oplus\mathbf3$, not $\mathbf1\oplus\mathbf1'\oplus\mathbf2$. Neither this decomposition nor the existence of a doublet establishes physical minimality, spatial spin, or a Standard Model gauge action.
 
 The full carrier for three generations is the 12-point set $X_{12}$, partitioned as $S_4 \times S_4 \times S_4$ (three generations of 4 points each). The ladder $12 \to 11 \to 10 \to \dots \to 4$ describes how the carrier is restricted by witness acts — each act removes one point (a rank-1 projection), dropping the Gram rank by exactly 1. The minimal carrier $N=4$ is the floor: Bool $\times$ Bool = 4 points, cannot restrict further. $N(N-1)=12$ regenerates the top from the floor.
 
@@ -72,7 +72,7 @@ Gauge groups from the irrep decomposition of S4:
 
 - **1 (trivial rep)** → proposed U(1) — overall phase symmetry. Eigenvalue λ_U1 = 12.
 
-- **1' (sign rep)** → discrete ℝ/2 phase — proposed to complete the U(1) charge structure.
+- **1' (sign rep)** → a discrete $\mathbb Z_2$ character — no continuous charge assignment follows from it.
 
 - **2 (doublet)** → proposed SU(2) — weak isospin. Eigenvalue λ_SU2 = 4.
 
@@ -122,7 +122,7 @@ Same Gram G_ij, three distinct physical theories from three different ways of re
 
 - The Gram restricted to a stabilizer is **symmetric** (g_ab = g_ba) → it defines a Riemannian metric. The full spacetime metric (+++-) emerges from the fibration of stabilizers.
 
-- The Gram transforms under the **permutation representation of S4** → its eigenvectors decompose into S4 irreps, giving the SM gauge group. The eigenvalues (Gram numbers) are the only parameters.
+- For an equivariant Gram operator, the **permutation representation of S4** supplies scalar and three-dimensional invariant sectors. It does not produce the continuous Standard Model gauge action or select physical couplings.
 
 All three are the same matrix seen from different angles.
 
@@ -152,30 +152,17 @@ All three are the same matrix seen from different angles.
 
 ## 9. SM projection — S4 irrep decomposition and gauge groups
 
-**S4 permutation representation on ℂ⁴.** The 4-dimensional representation of S4 acting on ℂ⁴ by permuting basis vectors decomposes as:
+**Corrected permutation representation.** The natural action on $\mathbb C^4$ splits into the constant line and the sum-zero subspace:
 
-4 = **1** (trivial) ⊕ **1'** (sign) ⊕ **2** (doublet)
+$$
+\mathbb C^4=\mathbf1\oplus\mathbf3.
+$$
 
-**Gauge groups from irreps:**
+The standard three-dimensional representation is irreducible; it is not $\mathbf1'\oplus\mathbf2$. Sign and doublet representations exist elsewhere in the representation theory of $S_4$, but are absent from this permutation carrier. The previous table assigning its sectors to hypercharge, weak isospin, and colour is withdrawn.
 
-- **1 (trivial)**: S4 acts as identity → U(1) symmetry. Eigenvalue λ_U1 = 12. This gives the hypercharge U(1).
+An ordinary two-dimensional finite-group representation is not by itself a spatial spin-$1/2$ representation or a weak-isospin doublet. The checked spatial bridge instead uses the binary tetrahedral group $2T\subset SU(2)$ above $A_4\subset SO(3)$. Its defining doublet has $\operatorname{End}(S)=\mathbf1\oplus\mathbf3$, with the central sign cancelling on operators. [Exact bridge and physical-selection test](#tetrahedral-geometry-spinors-and-the-native-loop-test).
 
-- **1' (sign)**: S4 acts by sgn(σ) → discrete ℝ/2. Interacts with the trivial rep to give the full U(1) charge assignment pattern.
-
-- **2 (doublet)**: S4 acts as the 2-dimensional irreducible representation → SU(2) weak isospin. Eigenvalue λ_SU2 = 4.
-
-- **3 (standard rep)**: The 3-dimensional subrepresentation of ℂ⁴ orthogonal to the trivial: 3 = 1' ⊕ 2. This gives SU(3) color. The interaction between 1' and 2 creates the 3 ⊗ 3 → 3 ⊕ 6 structure of QCD.
-
-**Gram numbers as eigenvalues:**
-
-| Gram number | Symbol | Eigenvalue | Physical meaning |
-|---:|---|---|---|
-| 12 | $\lambda_{U(1)}$ | Trivial representation | $U(1)$ hypercharge overlap |
-| 10 | $C_{U(1)}$ | Sign representation | Charge conjugation overlap |
-| 4 | $\lambda_{SU(2)}$ | Doublet representation (multiplicity 2) | $SU(2)$ weak overlap |
-| 11 | $r_{S12}$ | Off diagonal / $S_{12}$ | Three generation mixing overlap |
-
-These four numbers (11, 12, 4, 10) are the parameters. All physical constants are rational expressions in them.
+The numerical expressions in $(12,11,4,10)$ elsewhere on this page remain proposals with their own assumptions. They are not derived continuous gauge couplings or particle constants merely because those numbers label a chosen matrix.
 
 ## 10. CKM and PMNS — flavor misalignment
 
@@ -195,15 +182,11 @@ Similarly, U_PMNS = V_e² V_ν for leptons. The misalignment between charged lep
 
 All 6 Ward identities — gravitational, SU(3), SU(2), U(1), mixed U(1)-gravitational, and mixed U(1)-SU(2)² — cancel per generation.
 
-The 16 fermions of each generation form **one SO(10) spinor**, which decomposes under S4 as:
-
-16 = **1** ⊕ **1'** ⊕ **2** ⊕ **3** ⊕ **3'**
-
-This is exactly the Standard Model fermion content (one generation), plus a right-handed neutrino (sterile). Anomaly cancellation is automatic because the fermion content is precisely the spinor representation of SO(10), which is anomaly-free by its structure as a real representation. All 6 Ward identities (gravitational, SU(3), SU(2), U(1), mixed, mixed-gravitational) cancel identically per generation — no additional constraints needed.
+One Standard Model generation plus a right-handed neutrino can be placed in the chiral 16-dimensional spinor of $\operatorname{Spin}(10)$ as an additional representation choice. The former displayed decomposition into one each of $1,1',2,3,3'$ is withdrawn: those dimensions sum to 10, not 16. No embedding and multiplicities selecting a 16-dimensional matter representation from the four-point carrier are supplied here. Anomaly cancellation for specified matter content does not derive that content from the carrier.
 
 ## 12. Higgs mechanism
 
-**Origin.** The Higgs field arises from the off-diagonal Gram block between the S4 doublet (2) and the singlets (1, 1'). The doublet-singlet coupling in the Gram matrix gives a potential that spontaneously breaks the electroweak symmetry.
+**Proposed origin.** A doublet-singlet coupling could be specified on an enlarged representation, but the natural four-point permutation carrier has only $\mathbf1\oplus\mathbf3$. The previously asserted doublet/singlet Gram blocks and symmetry-breaking potential are not derived from that carrier.
 
 **Gram predictions (exact):**
 
@@ -702,7 +685,7 @@ The historical trace-based route to $137=(C_Y+1)^2+(C_{SU(2)}+1)^2$ also fails t
 
 ### Proton-electron ratio: comparison paths and settling
 
-**Hypothesis and current outcome.** The expression $12(12^2+3^2)=1836$ counts a proposed comparison programme. The observed mass ratio is approximately $1836.152673$. Exact slot counts and explicit disturbance-settling prototypes have been checked; the particle-energy identification and the $0.152673$ correction remain to be derived.
+**Hypothesis and current boundary.** The expression $12(12^2+3^2)=1836$ counts a proposed comparison programme, not a derived mass ratio. The observed value is approximately $1836.152673$. Exact slot counts and disturbance-settling prototypes have been checked; their physical energy law and fractional correction remain unconstructed. A separate [tetrahedral projector realization and spinor audit](#tetrahedral-geometry-spinors-and-the-native-loop-test) now distinguishes its exact geometry from the missing particle interpretation.
 
 #### Two-cycle compaction and retained overlap
 
@@ -737,7 +720,7 @@ The conjectured association with the proton's $uud$ presentation assigns the two
 
 The proposal interprets quark **spin-up and spin-down as presentations of orientation in overlapping retained arrows**, resolved relative to a probe axis. The underlying record consists of the two parts and their shared relationship; the spin labels would arise when that structure is presented to a probe. Descent and reconstruction would supply the transformation between these presentations.
 
-QCD describes quarks as spin-$1/2$ fields; quantum spin is an intrinsic angular-momentum degree of freedom. The retained-overlap proposal is a conjecture about the origin of that description. Its physical test is to derive the two-outcome spin response, its dependence on the probe axis, and the corresponding polarized-scattering observables from the retained arrows. No such calculation or distinct empirical prediction has yet been obtained from this proposal.
+QCD describes quarks as spin-$1/2$ fields. The retained-overlap proposal has not derived the two-component physical state, its probe-axis response, or polarized-scattering observables. The native-loop test below rejects the specific claim that existing tetrahedral transport already selects the spinorial sign; adding a doublet remains a new input.
 
 #### Shared-state comparison programme
 
@@ -801,6 +784,44 @@ A prior uniform-return trial gave $1836/(1-1/15552)=1836.118063$, missing the ob
 
 [Full hypothesis, assumptions, and outcomes](https://github.com/andrey-kokoev/marici/blob/main/research/nima/proton-electron-shared-state-comparison-hypothesis.md). Checkers under `research/nima/checkers/`: `check_proton_electron_comparison_slots.py`, `check_proton_electron_gram_energy.py`, `check_proton_electron_path_closure.py`, `check_four_state_return_paths.py`, `check_pairwise_comparison_settling.py`, `check_full_mass_comparison_programme.py`, and `check_comparison_backaction_floor.py`. Counting and deterministic update checks use exact arithmetic; the covariance-floor test uses floating arithmetic with explicit tolerances. These checks establish their stated models, with no derived mass correction yet.
 
+### Tetrahedral geometry, spinors, and the native-loop test
+
+**Current status:** exact geometry and representation comparison; physical proton identification unproved. The two seed rotations generate $A_4$ and twelve centroid-edge triangles on a closed tetrahedron. Twelve three-axis fibers give a 36-dimensional complex carrier. Its local, symmetry and collective projectors satisfy
+
+$$
+L^2=L,\qquad R^2=R,\qquad N^2=N,\qquad LR=RL=N,
+$$
+
+with ranks $12,3,1$. The reference vector has squared norm $20/3$ and the assembled vector $u$ has squared norm 80, so $N=uu^*/80$.
+
+**What 1836 counts.** In the inherited axis basis, the specified three-stage network has $108+432+1296=1836$ nonzero arrows. Distinct stage ports and dense collective feedback are explicit choices. This is neither a basis-independent minimum nor a mass. The separate 153-slot comparison programme has the same integer count; equal counts do not identify their dynamics. [Geometry and implementation](https://github.com/andrey-kokoev/marici/blob/main/research/nima/twelve-triangle-positive-geometry.md).
+
+**The spinorial bridge.** The binary tetrahedral cover $2T\to A_4$ has kernel $\{\pm1\}$ and restricts to $Q_8\to V_4$. For its defining two-component spinor $S$, Pauli conjugation recovers the three-axis action:
+
+$$
+\Phi(v)=\sum_{a=1}^3v_a\sigma_a,\qquad
+U(q)\Phi(v)U(q)^*=\Phi(r(q)v),\qquad
+\operatorname{End}(S)=\mathbf1\oplus\mathbf3.
+$$
+
+Thus $2\otimes2^*=1+3$ relates state and operator spaces. It is not a simplex-doubling law for quantum numbers. Spatial spin and weak isospin are distinct, and a finite-group doublet alone does not derive either physical identification.
+
+The original projectors survive as Hilbert-Schmidt superoperators on twelve traceless operator fibers; their central action is even. Adding an independent factor $S$ gives $V_{36}\otimes S$ of dimension 72 and a rank-two collective sector $\operatorname{span}(u)\otimes S$ with central action $-I_2$. Replacing three-component fibers with two-component spinors instead gives dimension 24 and no invariant vector. Neither operation proves that the additional spinor is physical. [Exact bridge and hostiles](https://github.com/andrey-kokoev/marici/blob/main/research/nima/binary-tetrahedral-spinor-bridge.md).
+
+**Independent selection test.** The conjecture was that native coherent transport, without inserted spinors, requires a relative minus sign for an orthogonal-half-turn commutator. The native selected-line maps instead obey
+
+$$
+T_{yx}=\frac{v_yv_x^*}{20/3},\qquad T_{zy}T_{yx}=T_{zx}.
+$$
+
+Every closed selected-line route therefore returns +1. All six ordered half-turn commutators confirm this. Bare projector products also give positive commutator amplitudes, even though a different three-step loop gives $-13/3375$. A negative interference coefficient alone is not spinorial transport. Inserting one negative edge forces the desired sign but breaks a native composition cell, with squared defect norm 4.
+
+The native-selection conjecture fails **within this endpoint/filter model**. The broader physical conjecture is untested: a rotation-path-dependent physical interaction and coherent readout have not been independently specified. The local triangle cycle is also nonorthogonal; it cannot silently be treated as unitary spinor transport. [Native-loop falsification and source audit](https://github.com/andrey-kokoev/marici/blob/main/research/nima/tetrahedral-native-rotation-loop.md).
+
+**Charge correction.** The earlier universal charge no-go is withdrawn. Both $I$ and $N$ commute with the combined $A_4$ action and give eigenvalue +1 on $u$; $N$ has spectrum $\{0,1\}$ and $2N-I$ has spectrum $\{-1,1\}$. Conversely, a half-turn scaled by -3 has expectation +1 but variance 8, so $u$ is not its charge eigenstate. These algebraic candidates do not identify electric charge without independent sectors and electromagnetic coupling. [Corrected charge scan](https://github.com/andrey-kokoev/marici/blob/main/research/nima/tetrahedral-axis-sign-charge-operator.md).
+
+**Verification.** The dependency-free checkers `check_twelve_triangle_positive_geometry.py`, `check_binary_tetrahedral_spinor_bridge.py`, `check_tetrahedral_native_rotation_loop.py`, and `check_tetrahedral_axis_charge_operator.py` use exact arithmetic. The bridge tests 576 group products and 1,728 cocycle triples; the native-loop audit tests 1,728 composition triples for each of its two transport laws. An audit pass records these identities and the failed native-selection consequence, not an experimental confirmation of a proton model.
+
 ### Constant expressions
 
 The table below collects proposed expressions in $(12,11,4,10)$. The Planck-scale expression uses the Machian bootstrap factor $Z=1/(1+1/90-1/5280)$. The electromagnetic feedback extensions above are exploratory models with the stated precision failures.
@@ -812,7 +833,7 @@ The table below collects proposed expressions in $(12,11,4,10)$. The Planck-scal
 | $M_{\mathrm{Pl}}/v$ | $11^{15}\times12\times Z$ | **$4.96\times10^{16}$** | $4.96\times10^{16}$ | 0.09% |
 | $\Lambda_{\mathrm{QCD}}$ | $M_{\mathrm{Pl}}/11^{19}$ | **~200 MeV** | ~200 MeV | 0.2% |
 | $m_p$ | $14/3\times M_{\mathrm{Pl}}/11^{19}$ | **938 MeV** | 938.27 MeV | 0.7% |
-| $m_p/m_e$ | $12\times(12^2+3^2)$ ([comparison-path hypothesis](#proton-electron-ratio-comparison-paths-and-settling)) | **1836** | ≈1836.152673 | ≈0.0083%; settling correction unresolved |
+| $m_p/m_e$ | $12\times(12^2+3^2)$ ([comparison count](#proton-electron-ratio-comparison-paths-and-settling)) | **1836 slots; no derived mass prediction** | ≈1836.152673 | Integer differs by ≈0.0083%; physical readout and correction unresolved |
 | $m_H$ | $11^2+4$ | **125 GeV** | 125.1 GeV | 0.08% |
 | $v$ | $2\cdot11^2+4$ | **246 GeV** | 246.2 GeV | 0.08% |
 | $\Omega_{\mathrm{DM}}$ | $(10-4)/(12+11)$ | **$6/23=26.1\%$** | 26.4% | 1.2% |

@@ -28,8 +28,10 @@ The public site uses VitePress 1.x, KaTeX, and Pagefind. Its authored pages are
 `docs/landing-page.md`, `docs/theory-page.md`, and `docs/results-page.md`.
 `pnpm run dev` prepares generated routes and starts VitePress. `pnpm run build`
 prepares the published ledger, builds the site, and indexes it with Pagefind.
-Ledger entries remain in `src/ledger`; drafts are excluded. Wrangler serves
-`website/.vitepress/dist`, and `pnpm run ship` builds and deploys the site.
+Ledger entries remain in `src/ledger`; drafts are excluded. To refresh authored
+content and result Markdown without rebuilding the ledger or public assets,
+run `node scripts/prepare-website.mjs --pages-only`.
+Wrangler serves `website/.vitepress/dist`, and `pnpm run ship` builds and deploys the site.
 
 Use `$...$` for inline math and `$$...$$` for display math. Ledger Markdown also
 accepts `\\(...\\)` and standalone `\\[...\\]`, normalized during generation.

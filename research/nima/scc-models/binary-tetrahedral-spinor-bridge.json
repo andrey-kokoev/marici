@@ -1,0 +1,25 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "binary-tetrahedral-spinor-bridge",
+    "owner": "marici.Nima",
+    "classification": "exact_finite_group_operator_intertwiner_with_optional_spinor_tensor_extension_not_physical_spin_assignment",
+    "stratum": "Fixed labelled A4 tetrahedron; 24-element binary lift; Q(sqrt(3),i); operator dimension 36; optional tensor-state dimension 72. Forward realization and route compatibility, not physical readout descent.",
+    "inputs": [
+      "research/nima/binary-tetrahedral-spinor-bridge.md",
+      "research/nima/checkers/check_twelve_triangle_positive_geometry.py",
+      "research/nima/checkers/check_triangle_half_phase.py",
+      "research/nima/tetrahedral-axis-sign-charge-operator.md"
+    ],
+    "checks": [
+      {"id": "binary-tetrahedral-spinor-bridge-exact", "path": "research/nima/checkers/check_binary_tetrahedral_spinor_bridge.py", "requires": []},
+      {"id": "tetrahedral-axis-charge-corrected", "path": "research/nima/checkers/check_tetrahedral_axis_charge_operator.py", "requires": []}
+    ],
+    "depends_on": [],
+    "consumes": ["labelled tetrahedral rotations", "local symmetry and collective projectors"],
+    "provides": ["Pauli equivariant isometry", "Q8 to V4 lift", "projector transport as Hilbert-Schmidt superoperators", "optional rank-two collective spinor tensor sector"],
+    "missing_constructors": ["physical state-selection rule and independently specified electromagnetic coupling", "continuous rotation action on the whole carrier"],
+    "next_falsifier": "Physical interpretation is deferred at missing source inputs. Algebraic hostiles check handedness, central parity, nonunitary local cycle, nonzero Pauli determinant, and replacement-fiber average rank zero."
+  }
+}

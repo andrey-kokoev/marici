@@ -133,6 +133,14 @@ No separate extra nine-arrow triangle copy was added to a larger arrow set. The 
 
 ## What fixes this count
 
+The [monomial-projector support theorem](monomial-projector-support-theorem.md)
+explains these three terms representation-theoretically. In this axis basis,
+the actual signed spatial action is Ind_(V4)^(A4)(chi) for a nontrivial
+one-dimensional character chi, not the ordinary permutation action on A4/V4.
+Its group order 12 and degree 3 give the supports 108, 432 and 1296. This
+identifies the representation underlying the construction; it does not select
+the three-stage architecture or make its support basis-independent.
+
 **Stagewise positivity:** the spatial surface itself is positive, but the [stagewise audit](stagewise-geometric-positivity.md) distinguishes this from positive geometric transport. The coefficient maps preserve positive cell amplitudes; applied literally to spatial corner coordinates, they produce split seams and nonreal points. An atlas/embedding interpretation of the intermediate stages is still required.
 
 The subsequent [minimality audit](twelve-triangle-net-minimality.md) proves that the 1836-arrow graph is pruning-minimal at fixed weights, but the same geometry and exact collective projector admit a 73-arrow three-stage realization (or 72 arrows in two passes). These smaller counts attain their respective layered-network lower bounds.

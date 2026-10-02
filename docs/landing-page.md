@@ -98,6 +98,8 @@ Each bridge is a ratio of two rungs. The ratio is forced by the Gram — it is n
 
 **Latest structural synthesis: retained witnesses and conditional feedback.** The tower specifies transports $9:12\to6$, $8:11\to5$, and $7:10\to4$, with the physical reference at rung 4. Source comparisons retain actual equivalence witnesses and histories; checked adapters preserve them alongside all 137 matrix responses. A conditional preparation-and-transport model now includes feedback that preserves family means and contracts disagreement while retaining old records. Physical preparation, metric and gain remain to be identified: the matrix amplitudes are supplied fixtures, and contraction is not yet a physical energy-dissipation law. No new numerical constant or gauge identification follows. [Diagram, checked results, and open steps](/theory/#tower-successor-and-mixed-comparison-defects).
 
+**Tetrahedral update: a checked spinor bridge, not a derived proton.** The 36-coordinate geometry has an exact projector algebra and a binary tetrahedral lift with $2\otimes2^*=1+3$. Adding a spinor factor gives a collective doublet, but native rotation-loop transport returns +1 rather than the required -1. The native-selection conjecture fails in that model; physical spin, charge coupling and mass identification remain open. The earlier universal charge no-go is withdrawn. [Construction, independent test and corrections](/theory/#tetrahedral-geometry-spinors-and-the-native-loop-test).
+
 **137 as a comparison-slot count (proposed).** Compare two $T_1$ carriers using their direct relationship as reference: eleven remaining arrows on each side give $121$ arrow–arrow slots; their four-valued states give $16$ state–state slots. The total is $137$. With equal weights, $1/137$ is the average normalized weight per comparison slot, proposed to represent electromagnetic coupling—not a cost per arrow. [Read the interpretation and assumptions](/theory/#fine-structure-constant-comparison-slots). The [carrier-realized readout study](/theory/#carrier-realized-comparison-and-the-decimal-tail) develops reference interference, residual power, and two-way feedback. Its assembly checks pass; the exploratory 137.036195934 feedback value fails precision measurements. A closed-record model now gives equal normalized mismatch response under schedule-averaged equilibrium. A separate evolving-phase Hamiltonian closes comparison back-reaction; its long-time response and electromagnetic identification remain open. [Equilibrium and phase back-reaction](/theory/#record-equilibrium-and-phase-back-reaction).
 
 Each constant is an expression in the four Gram numbers $(12, 11, 4, 10)$. One example with the chain visible:
@@ -106,7 +108,7 @@ $m_H = 11^2 + 4 = 125\;\mathrm{GeV}$ — $11$ is the first visible eigenvalue ($
 
 Other proposed constant expressions are collected below (see ledger §4197). **Weak-mixing audit:** the cited matter-trace derivation of $3/13$ omits quark colour multiplicity; consistent counting gives $3/8$ under its normalization assumption. The $3/13$ carrier expression needs a new derivation. [Read the audit](/theory/#weak-mixing-matter-trace-audit).
 
-[137](/theory/#fine-structure-constant-comparison-slots), $\sin^2\theta = \frac{3}{13},\quad \text{Yukawa} \times 6,\quad \Lambda_{\mathrm{QCD}},\quad m_p = 938\,\mathrm{MeV},\quad \frac{m_p}{m_e} = 1836$
+[137](/theory/#fine-structure-constant-comparison-slots), $\sin^2\theta = \frac{3}{13},\quad \text{Yukawa} \times 6,\quad \Lambda_{\mathrm{QCD}},\quad m_p = 938\,\mathrm{MeV},\quad N_{\mathrm{comparison}} = 1836$
 
 $\delta_{\mathrm{CKM}} \ (\sim 1.3\%),\quad \delta_{\mathrm{PMNS}} \ (\text{exact}),\quad y_t = 1,\quad \Lambda,\quad \frac{M_{\mathrm{Pl}}}{v} = 11^{15} \times 12 \times Z$
 
@@ -145,10 +147,10 @@ $\delta_{\mathrm{CKM}} \approx \frac{\pi}{3} + \left(\frac{4}{12}\right)^2 = 66.
 
 The $(4/12)^2 = (1/3)^2$ term is Gram-derived (floor $4$ over top $12$, squared). The base $\pi/3$ is numerically close but not Gram-derived. **Falsified if:** the Gram-derived term $(4/12)^2$ does not appear within $0.5^\circ$ in the measured angle, indicating the ratio $4/12$ is not the floor-to-top factor.
 
-### Penning traps
-$\frac{m_p}{m_e} = 12 \times (12^2 + 3^2) = 1836$
+### Penning traps: comparison target, not a derived prediction
+$N_{\mathrm{comparison}} = 12 \times (12^2 + 3^2) = 1836$
 
-**Comparison-path hypothesis:** each of twelve directed relationships carries a comparison of 144 arrow pairs and nine state pairs remaining after a shared state is fixed. Every traversal consumes resource. The observed ratio is approximately $1836.152673$; its additional resource is proposed to come from pairwise settling. Checked back-action models sustain a settling floor, while its strength and mass conversion remain unresolved. The integer baseline already differs from precision measurements. [Read the construction and outcomes](/theory/#proton-electron-ratio-comparison-paths-and-settling).
+**Open mass hypothesis:** this is a comparison-slot count. A separate three-stage tetrahedral realization also has 1836 arrows under explicit basis and feedback choices, not as an invariant minimum. Neither construction derives the measured mass ratio, approximately $1836.152673$, or its fractional correction. Settling models require an independently selected strength and energy conversion; the spinor bridge does not provide them. [Construction history](/theory/#proton-electron-ratio-comparison-paths-and-settling); [current spin and charge tests](/theory/#tetrahedral-geometry-spinors-and-the-native-loop-test).
 
 ### HL-LHC / FCC
 $m_H = 11^2 + 4 = 125\;\mathrm{GeV}$

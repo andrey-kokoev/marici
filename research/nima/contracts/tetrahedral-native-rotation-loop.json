@@ -1,0 +1,28 @@
+{
+  "id": "tetrahedral-native-rotation-loop",
+  "scope": "Declared scalar reductions of exact native-route calculations. SCC compares tokens; the companion checker proves the matrix/amplitude reductions. No physical interaction is declared.",
+  "objects": [
+    {"id": "reference_line", "type": "span_C(v0) with v0* v0=20/3"}
+  ],
+  "arrows": [
+    {"id": "native_commutator", "source": "reference_line", "target": "reference_line", "map_token": "scalar:+1", "evidence": "research/nima/results/tetrahedral-native-rotation-loop.json#commutator_loops"},
+    {"id": "identity", "source": "reference_line", "target": "reference_line", "map_token": "scalar:+1"},
+    {"id": "spinorial_requirement", "source": "reference_line", "target": "reference_line", "map_token": "scalar:-1", "status": "hypothesis_requirement_not_a_native_operation"}
+  ],
+  "cells": [
+    {"id": "native_endpoint_return", "routes": [["native_commutator"], ["identity"]], "threshold": "exact_zero"},
+    {"id": "native_spinorial_return", "routes": [["native_commutator"], ["spinorial_requirement"]], "threshold": "exact_zero"}
+  ],
+  "obstructions": [
+    {"id": "nonzero_native_spinorial_residual", "cell": "native_spinorial_return", "scalar_difference": "2"}
+  ],
+  "claims": [
+    {"id": "native_spinor_selection", "requires": ["native_negative_commutator", "independent_rotation_interaction", "coherent_physical_readout"]},
+    {"id": "native_endpoint_factorization", "requires": ["exact_native_composition", "native_positive_commutator"]}
+  ],
+  "available_witnesses": ["exact_native_composition", "native_positive_commutator"],
+  "higher_coherence": [
+    {"id": "physical_rotation_path_realization", "degree": 2, "state": "unsupported", "residual": "No independently specified physical rotation interaction and coherent readout for this excitation."}
+  ],
+  "impact_edges": [{"from": "native_spinorial_return", "to": "native_spinor_selection"}]
+}
