@@ -1,0 +1,26 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-graded-boundary-coherence",
+    "owner": "marici.Nima",
+    "classification": "cubical_all_grade_globular_recovery_and_mapping_out_universal_property",
+    "stratum": "Arbitrary answer type A and natural grade n; total packages of parallel identity-type comparisons. Marked boundaries and their filler spaces remain separately typed.",
+    "inputs": [
+      "research/nima/graded-boundary-coherence-iteration-01.md",
+      "research/nima/agda/GradedBoundaryCoherence.agda",
+      "research/nima/agda/negative/GradedBoundaryBadFiller.agda",
+      "research/nima/agda/negative/GradedBoundaryBadErasure.agda",
+      "research/nima/checkers/check_graded_boundary_coherence.ps1",
+      "research/nima/checkers/agda_receipt_audit.py"
+    ],
+    "checks": [
+      {"id": "graded-boundary-coherence-formal-receipt", "path": "research/nima/checkers/check_graded_boundary_coherence.py", "requires": []}
+    ],
+    "depends_on": [],
+    "consumes": ["open_boundary_and_filler_distinction", "cubical_identity_types"],
+    "provides": ["all_grade_total_package_equivalence", "contractible_interpretation_extensions", "involutive_comparison_reversal", "noncontractible_marked_filler_space"],
+    "missing_constructors": ["marked_simplex_face_maps", "comparison_with_retained_graph_structure"],
+    "next_falsifier": "A proposed boundary-preserving comparison must retain the distinct identity and Boolean-negation fillers of the fixed Bool-to-Bool type boundary."
+  }
+}

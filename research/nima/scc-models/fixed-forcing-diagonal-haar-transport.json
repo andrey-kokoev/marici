@@ -1,0 +1,22 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "fixed-forcing-diagonal-haar-transport",
+    "owner": "marici.Nima",
+    "classification": "exact_haar_core_transport_distinction_not_xi_energy_conservation",
+    "stratum": "Positive real profiles f_a(x)=a*x*exp(-a*x) in both Haar spaces; fixed-forcing versus simultaneous pair transport, with explicit Mellin energy multipliers.",
+    "inputs": [
+      "research/nima/fixed-forcing-placement-and-diagonal-haar-transport-are-different-squares.md",
+      "research/nima/checkers/check_fixed_forcing_vs_diagonal_haar_transport.py"
+    ],
+    "checks": [
+      {"id": "fixed-forcing-vs-diagonal-haar", "path": "research/nima/checkers/check_fixed_forcing_vs_diagonal_haar_transport.py", "requires": []}
+    ],
+    "depends_on": [],
+    "consumes": ["fixed_forcing_joint_graph", "relative_haar_diagonal_pair_action"],
+    "provides": ["moving_base_covariance", "equal_energy_unequal_state_hostile", "positive_roundtrip_does_not_imply_one_step_energy_conservation"],
+    "missing_constructors": ["xi_fiber_relative_haar_energy_conservation"],
+    "next_falsifier": "Apply an independently source-derived energy comparison to actual Xi states; the exact equal-energy/unequal-state hostile forbids replacing it by fixed-forcing vector closure."
+  }
+}

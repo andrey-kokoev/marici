@@ -1,0 +1,26 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "unchanged-evans-first-zero-interval",
+    "owner": "marici.Nima",
+    "classification": "interval_falsifier_of_unchanged_evans_zero_hilbert_residual_not_rh_proof",
+    "stratum": "Declared unchanged-Evans scalar Hilbert residual at the Arb-certified first critical-line zeta zero; rational compact partition, removable-point Cauchy bound, explicit infinite tail.",
+    "inputs": [
+      "research/nima/unchanged-evans-membership-has-a-rational-mesh-interval-obstruction.md",
+      "research/nima/checkers/check_unchanged_evans_rational_ball_certificate.py"
+    ],
+    "checks": [
+      {
+        "id": "unchanged-evans-rational-ball-certificate",
+        "path": "research/nima/checkers/check_unchanged_evans_rational_ball_certificate.py",
+        "requires": ["flint"]
+      }
+    ],
+    "depends_on": [],
+    "consumes": ["certified_first_zeta_zero", "unchanged_evans_scalar_hilbert_residual"],
+    "provides": ["strictly_negative_first_zero_hilbert_residual"],
+    "missing_constructors": ["independent_g4_forward_crossing", "divisor_preserving_modified_history_comparison"],
+    "next_falsifier": "Recompute with higher precision and a refined rational mesh; retain the full central and infinite-tail allowances. A source-derived corrected comparison must be tested on its own full residual, not substituted into this unchanged-state normalization."
+  }
+}

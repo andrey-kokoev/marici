@@ -1,0 +1,25 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-barycentric-refinement-coherence",
+    "owner": "marici.Nima",
+    "classification": "carrier_annotation_preservation_and_refinement_coherence",
+    "stratum": "Two exact subdivisions of a generated tetrahedral presentation. Formal contractibility of complete typed annotation-preservation packages along fixed carriers, their composition and comparison paths. Fixed-annotation comparison contractibility is refuted. Forward realization, route/coherencer compatibility and readout descent.",
+    "inputs": [
+      "research/nima/agda/BarycentricRefinementCoherence.agda",
+      "research/nima/agda/negative/RefinementBadWitness.agda",
+      "research/nima/agda/BarycentricWitnessPacket.agda",
+      "research/nima/barycentric-refinement-coherence.md",
+      "research/nima/checkers/check_barycentric_witness_packet.py",
+      "research/nima/checkers/check_graded_boundary_coherence.ps1",
+      "research/nima/checkers/agda_receipt_audit.py"
+    ],
+    "checks": [{"id": "barycentric-refinement-audit", "path": "research/nima/checkers/check_barycentric_refinement.py", "requires": []}],
+    "depends_on": ["nima-barycentric-witness-packet"],
+    "consumes": ["marked_typed_face_vertices", "fixed_source_annotations", "minimal_carrier_maps"],
+    "provides": ["contractible_preservation_packages", "contractible_package_comparisons", "composable_preservation", "two_exact_refinements", "carrier_validation_controls", "fixed_annotation_comparison_counterexample"],
+    "missing_constructors": ["new_fillers_for_refined_boundaries", "infinite_refinement_comparison", "active_view_contraction"],
+    "next_falsifier": "Construct native typed fillers on refined boundaries instead of only pulling back source-cell annotations; specify which witness data vary in the comparison type."
+  }
+}

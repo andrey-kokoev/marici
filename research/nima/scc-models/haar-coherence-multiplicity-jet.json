@@ -1,0 +1,22 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "haar-coherence-multiplicity-jet",
+    "owner": "marici.Nima",
+    "classification": "local_jet_obstruction_to_nonreduced_energy_ideal_filler_not_rh_proof",
+    "stratum": "At a seam zero of order m with a common real-analytic energy family and positive nonzero baseline, in the ring C{w,eta}/(w^m,eta^m). Does not assert a multiple Xi zero exists.",
+    "inputs": [
+      "research/nima/haar-energy-ideal-coherence-would-add-a-zero-simplicity-theorem.md",
+      "research/nima/checkers/check_haar_coherence_multiplicity_jet.py"
+    ],
+    "checks": [
+      {"id": "haar-energy-ideal-multiplicity-jet", "path": "research/nima/checkers/check_haar_coherence_multiplicity_jet.py", "requires": []}
+    ],
+    "depends_on": [],
+    "consumes": ["hermitian_two_history_energy_defect", "relative_haar_modular_character"],
+    "provides": ["reduced_vanishing_is_not_nonreduced_ideal_membership", "regular_energy_ideal_filler_has_extra_simplicity_requirement"],
+    "missing_constructors": ["xi_fiber_relative_haar_energy_conservation"],
+    "next_falsifier": "Any proposed all-jet energy filler must pass the double-root hostile without silently assuming simplicity, introducing singular coefficients, or changing to the reduced fiber."
+  }
+}

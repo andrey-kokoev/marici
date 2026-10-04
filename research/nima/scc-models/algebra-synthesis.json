@@ -1,0 +1,32 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-algebra-synthesis",
+    "owner": "marici.Nima",
+    "classification": "target_blind_enumeration_cached_adequacy_and_replayed_minimum_certificate",
+    "stratum": "Forward realization: alpha-normalized binary-operation identities to algebraic semantics. Agda Sigma specification separates adequacy and minimality. Quantified adequacy reuses an existing proof; 32 supplementary countermodel refutations are checked. Full minimum coverage/replay is audited in Python, not reflected into Agda. Finite-model survival is not promoted to adequacy.",
+    "inputs": [
+      "research/nima/agda/AlgebraSynthesisSpecification.agda",
+      "research/nima/agda/DiscoveredWolframFormula.agda",
+      "research/nima/agda/GeneratedLowerRefutations.agda",
+      "research/nima/agda/negative/SynthesisBadFormula.agda",
+      "research/nima/agda/negative/SynthesisBadNormalization.agda",
+      "research/nima/agda/negative/SynthesisBadCountermodel.agda",
+      "research/nima/checkers/algebra_formula_search.py",
+      "research/nima/checkers/algebra_countermodel_lifts.py",
+      "research/nima/checkers/algebra_finite_sat.py",
+      "research/nima/checkers/check_algebra_synthesis.py",
+      "research/nima/checkers/agda_receipt_audit.py",
+      "research/nima/checkers/check_graded_boundary_coherence.ps1",
+      "research/nima/checkers/test_algebra_synthesis.py",
+      "research/nima/algebra-synthesis.md"
+    ],
+    "checks": [{"id": "algebra-synthesis-audit", "path": "research/nima/checkers/check_algebra_synthesis.py", "requires": []}],
+    "depends_on": ["nima-wolfram-converse"],
+    "consumes": ["quantified_boolean_nand_equivalence"],
+    "provides": ["alpha_normalized_candidate_enumeration", "replayable_countermodel_certificates", "held_out_formula_extraction", "checked_sigma_specification"],
+    "missing_constructors": ["kernel_checked_enumeration_coverage_and_rejection_reflection", "general_adequacy_prover", "verified_runtime_refinement"],
+    "next_falsifier": "Construct the full minimum witness in Agda, or expose a missing/misclassified cheaper identity. A fresh-proof-search claim additionally requires an adequacy backend that does not retrieve the existing Wolfram proof."
+  }
+}

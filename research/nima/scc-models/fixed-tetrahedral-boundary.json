@@ -1,0 +1,28 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-fixed-tetrahedral-boundary",
+    "owner": "marici.Nima",
+    "classification": "cubical_fixed_boundary_loop_classification_and_path_yoneda",
+    "stratum": "Four vertices, six identity-path edges and four face witnesses held fixed; a supplied tetrahedral filler provides loop coordinates. Generic dependent path extension is tested separately against the original retained E-arrows.",
+    "inputs": [
+      "research/nima/fixed-tetrahedral-boundary-iteration-04.md",
+      "research/nima/agda/PathIndexedExtension.agda",
+      "research/nima/agda/FixedTetrahedralBoundary.agda",
+      "research/nima/agda/MarkedTetrahedronCoherence.agda",
+      "research/nima/agda/RetainedComparisonStructure.agda",
+      "research/nima/agda/negative/FixedBoundaryBadErasure.agda",
+      "research/nima/checkers/check_graded_boundary_coherence.ps1",
+      "research/nima/checkers/agda_receipt_audit.py"
+    ],
+    "checks": [
+      {"id": "fixed-tetrahedral-boundary-formal-receipt", "path": "research/nima/checkers/check_fixed_tetrahedral_boundary.py", "requires": []}
+    ],
+    "depends_on": ["nima-marked-tetrahedron-coherence"],
+    "consumes": ["four_tetrahedral_face_descriptions", "retained_comparison_structure"],
+    "provides": ["fixed_boundary_loop_classification", "grade_four_residual_comparison", "dependent_path_and_fiber_yoneda", "endpoint_only_extension_counterexample", "naive_original_E_extension_obstruction"],
+    "missing_constructors": ["equivariant_extension_for_original_E", "concrete_distinct_fixed_boundary_tetrahedral_fillers", "full_four_simplex_boundary"],
+    "next_falsifier": "Construct equivariant extensions for set-valued E-actions. Compare the regular retained action with the realized K-action without identifying E-arrows with native P-paths."
+  }
+}

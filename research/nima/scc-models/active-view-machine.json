@@ -1,0 +1,27 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-active-view-machine",
+    "owner": "marici.Nima",
+    "classification": "registered_replay_active_view_with_formal_model_and_tested_runtime",
+    "stratum": "Closed Boolean instruction histories with separately retained source syntax. Formal certified changes between four output/trace visibility modes and Layer3 evaluator agreement. Tested Python planning, clearing, recovery, exact undo, dependencies and costs. Forward realization, route/coherencer compatibility and readout descent.",
+    "inputs": [
+      "research/nima/agda/ActiveViewMachine.agda",
+      "research/nima/agda/negative/ActiveViewBadTrace.agda",
+      "research/nima/agda/negative/ActiveViewBadHistory.agda",
+      "research/nima/checkers/active_view.py",
+      "research/nima/checkers/test_active_view.py",
+      "research/nima/checkers/agda_receipt_audit.py",
+      "research/nima/checkers/check_graded_boundary_coherence.ps1",
+      "research/nima/examples/active-view-requests.json",
+      "research/nima/active-view-engine.md"
+    ],
+    "checks": [{"id": "active-view-runtime-audit", "path": "research/nima/checkers/check_active_view.py", "requires": []}],
+    "depends_on": ["nima-typed-generator-coherence"],
+    "consumes": ["certified_reduction", "all_dimensions_certificate", "closed_boolean_instruction_source"],
+    "provides": ["four_formal_view_modes", "registered_policy_selection", "source_bound_plan_application", "exact_undo", "dependency_retention", "byte_and_replay_accounting", "hostile_runtime_checks"],
+    "missing_constructors": ["verified_python_codec_refinement", "general_payload_backend", "automatic_new_rule_discovery"],
+    "next_falsifier": "Prove or refute the runtime/codec refinement against the formal mode model; include undo-receipt storage and validation work in any efficiency claim."
+  }
+}

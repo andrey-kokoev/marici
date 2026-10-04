@@ -1,0 +1,27 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-double-negation",
+    "owner": "marici.Nima",
+    "classification": "bounded_fresh_one_law_search_not_adequacy",
+    "stratum": "Forward realization: supplied-axiom instances and congruence proof edges to independently checked equational paths. Only the fixed double-negation goal is eligible for promotion after fresh kernel checking. An audited search miss remains unresolved.",
+    "inputs": [
+      "research/nima/checkers/ground_equational_milestone.py",
+      "research/nima/checkers/test_ground_equational_milestone.py",
+      "research/nima/checkers/check_double_negation.py",
+      "research/nima/checkers/check_double_negation_kernel.ps1",
+      "research/nima/checkers/check_fresh_equations.py",
+      "research/nima/milestones/double-negation/README.md"
+    ],
+    "checks": [
+      {"id": "double-negation-engine-tests", "path": "research/nima/checkers/test_ground_equational_milestone.py", "requires": []},
+      {"id": "double-negation-audit", "path": "research/nima/checkers/check_double_negation.py", "requires": []}
+    ],
+    "depends_on": ["nima-algebra-synthesis"],
+    "consumes": ["held_out_formula_extraction"],
+    "provides": ["bounded_one_law_search_audit"],
+    "missing_constructors": ["fresh_full_Adequate_witness", "autonomous_formula_selection"],
+    "next_falsifier": "The fixed-budget run must produce a derivation of exactly double negation; the independent checker must reject a changed input or conclusion, and a fresh Agda check must reject an altered endpoint. Otherwise retain unresolved, without replacing the target."
+  }
+}

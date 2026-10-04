@@ -1,0 +1,36 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-algebra-synthesis-completion",
+    "owner": "marici.Nima",
+    "classification": "kernel_minimum_and_sigma_with_reused_adequacy_fresh_search_still_open",
+    "stratum": "Forward realization and compatibility: raw equation syntax retracts from indexed syntax; total kernel pattern coverage and universally quantified finite refutations reject every cheaper admissible Formula. Goal.Result retains the original quantified Adequate/Minimal definitions and reuses the existing adequacy proof. A separate, fresh equational search emits checked conditional consequences, not a new Adequate witness. Neither graph admission nor finite-model survival closes that missing gate.",
+    "inputs": [
+      "research/nima/agda/AlgebraSynthesisSpecification.agda",
+      "research/nima/agda/DiscoveredWolframFormula.agda",
+      "research/nima/agda/SynthesisMinimumSupport.agda",
+      "research/nima/agda/GeneratedMinimumCoverage.agda",
+      "research/nima/agda/SynthesisCertifiedMinimum.agda",
+      "research/nima/agda/FreshEquationalConsequences.agda",
+      "research/nima/agda/negative/SynthesisMinimumMissingCase.agda",
+      "research/nima/agda/negative/SynthesisMinimumBadRejection.agda",
+      "research/nima/agda/negative/FreshWrongConclusion.agda",
+      "research/nima/checkers/build_minimality_cover.py",
+      "research/nima/checkers/emit_minimum_kernel.py",
+      "research/nima/checkers/fresh_equational_search.py",
+      "research/nima/checkers/check_fresh_equations.py",
+      "research/nima/checkers/emit_fresh_equations.py",
+      "research/nima/checkers/check_synthesis_kernel.ps1",
+      "research/nima/checkers/check_synthesis_completion.py",
+      "research/nima/checkers/test_synthesis_completion.py",
+      "research/nima/algebra-synthesis-completion.md"
+    ],
+    "checks": [{"id": "synthesis-completion-audit", "path": "research/nima/checkers/check_synthesis_completion.py", "requires": []}],
+    "depends_on": ["nima-algebra-synthesis"],
+    "consumes": ["checked_sigma_specification", "held_out_formula_extraction", "replayable_countermodel_certificates"],
+    "provides": ["kernel_checked_minimum", "sigma_witness_with_reused_adequacy", "fresh_equational_certificate_checking"],
+    "missing_constructors": ["independently_discovered_Adequate_witness", "autonomous_enumeration_to_fresh_proof_selection", "verified_runtime_refinement"],
+    "next_falsifier": "Derive and kernel-check a new Adequate witness without importing the existing Wolfram proof. A missing normalized source branch must fail coverage; a false refutation or altered fresh conclusion must fail typing. The existing proof-reuse benchmark remains a separate packet."
+  }
+}

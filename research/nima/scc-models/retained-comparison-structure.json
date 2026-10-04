@@ -1,0 +1,24 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-retained-comparison-structure",
+    "owner": "marici.Nima",
+    "classification": "cubical_agda_inhabited_candidate_with_nonfaithful_realization",
+    "stratum": "Universe-parameterized record with path-valued unit, associativity, inverse and realization laws; explicit two-object Boolean inhabitant, without an added higher coherence tower.",
+    "inputs": [
+      "research/nima/retained-comparison-structure.md",
+      "research/nima/agda/RetainedComparisonStructure.agda",
+      "research/nima/agda/negative/RetainedComparisonBadErasure.agda",
+      "research/nima/checkers/check_retained_comparison.ps1"
+    ],
+    "checks": [
+      {"id": "retained-comparison-formal-receipt", "path": "research/nima/checkers/check_retained_comparison.py", "requires": []}
+    ],
+    "depends_on": [],
+    "consumes": ["minimal_comparison_change_realization_table"],
+    "provides": ["explicit_record_inhabitant", "distinct_changes_equal_realization", "no_recovery_from_realization", "derived_transport"],
+    "missing_constructors": ["universal_property", "lossless_comparison_with_original_marici_constructor"],
+    "next_falsifier": "Any claimed lossless comparison must recover both distinct retained changes despite their identical realized comparison."
+  }
+}

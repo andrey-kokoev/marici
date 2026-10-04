@@ -1,0 +1,26 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-typed-generator-coherence",
+    "owner": "marici.Nima",
+    "classification": "uniform_finite_dimensional_preservation_and_relative_coherence",
+    "stratum": "Induction over every natural-number comparison dimension, for every admitted Stack4 reduction. Actual iterated compaction maps are equivalences; complete recovery fibers and their iterated comparison types are contractible. Forward realization, route/coherencer compatibility and readout descent.",
+    "inputs": [
+      "research/nima/agda/TypedGeneratorCoherence.agda",
+      "research/nima/agda/negative/CoherenceBadGlobalFiller.agda",
+      "research/nima/agda/negative/CoherenceBadScoreLift.agda",
+      "research/nima/agda/TypedGeneratorPresentation.agda",
+      "research/nima/agda/GradedBoundaryCoherence.agda",
+      "research/nima/typed-generator-coherence.md",
+      "research/nima/checkers/check_graded_boundary_coherence.ps1",
+      "research/nima/checkers/agda_receipt_audit.py"
+    ],
+    "checks": [{"id": "typed-generator-coherence-audit", "path": "research/nima/checkers/check_typed_generator_coherence.py", "requires": []}],
+    "depends_on": ["nima-typed-generator-presentation"],
+    "consumes": ["stack4", "certified_compaction_equivalence", "contractible_complete_recovery_fibers", "typed_globular_boundary_tower"],
+    "provides": ["all_dimensions_certificate", "cell_equivalences_and_recovery", "iterated_relative_contractibility", "uniform_stack_certification", "certificate_uniqueness", "global_filler_and_score_lift_controls"],
+    "missing_constructors": ["general_infinity_category_interface", "automatic_reduction_discovery"],
+    "next_falsifier": "Keep preservation separate from arbitrary filler existence when adding further operations or comparison shapes; specify their extra structure explicitly."
+  }
+}

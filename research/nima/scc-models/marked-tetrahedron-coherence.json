@@ -1,0 +1,27 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-marked-tetrahedron-coherence",
+    "owner": "marici.Nima",
+    "classification": "cubical_four_tetrahedral_horns_and_relative_completion_criterion",
+    "stratum": "Four marked vertices, six fixed identity-path edges, and three supplied triangle-face witnesses in an arbitrary type; the missing face and tetrahedral coherence are completed together.",
+    "inputs": [
+      "research/nima/marked-tetrahedron-coherence-iteration-03.md",
+      "research/nima/agda/RelativeCoherentCompletion.agda",
+      "research/nima/agda/MarkedTetrahedronCoherence.agda",
+      "research/nima/agda/MarkedTriangleCoherence.agda",
+      "research/nima/agda/negative/MarkedTetrahedronBadErasure.agda",
+      "research/nima/checkers/check_graded_boundary_coherence.ps1",
+      "research/nima/checkers/agda_receipt_audit.py"
+    ],
+    "checks": [
+      {"id": "marked-tetrahedron-coherence-formal-receipt", "path": "research/nima/checkers/check_marked_tetrahedron_coherence.py", "requires": []}
+    ],
+    "depends_on": ["nima-marked-triangle-coherence"],
+    "consumes": ["marked_triangle_face_witnesses", "invertible_path_whiskering"],
+    "provides": ["four_contractible_tetrahedral_horn_completions", "relative_completion_iff_projection_equivalence", "triangle_operations_and_witness_preserved_by_shared_constructor", "equal_diagonal_distinct_coherent_tetrahedra_hostile"],
+    "missing_constructors": ["grade_four_comparison_over_fixed_complete_boundary", "concrete_incompatible_marked_four_face_boundary"],
+    "next_falsifier": "Compare tetrahedral fillers while fixing all four faces; do not replace that question by a three-face horn or infer equality of full coherent data from the common return edge."
+  }
+}

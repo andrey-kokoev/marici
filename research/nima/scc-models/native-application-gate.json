@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-native-application-gate",
+    "owner": "marici.Nima",
+    "classification": "native_function_application_endpoint_gate",
+    "stratum": "Forward realization before Yoneda witness assembly. Freeze actual native twelve-rule closure and admit only a function Unit→Bool and a Unit argument. Require the evaluated Bool node, optionally retaining both inputs, as the derivation endpoint. External readout is a separate interface.",
+    "inputs": ["research/nima/adapters/native-application/README.md", "research/nima/adapters/native-application/NativeApplicationGate.agda", "research/nima/adapters/native-application/NativeApplicationBadReadout.agda", "research/nima/checkers/check_native_application_gate.py", "research/nima/checkers/check_native_application_kernel.ps1", "research/nima/results/native-application-kernel.json"],
+    "checks": [{"id":"native-application-gate-audit", "path":"research/nima/checkers/check_native_application_gate.py", "requires":[]}],
+    "depends_on": [],
+    "consumes": [],
+    "provides": ["principal_atom_admission_invariant", "certified_P_family_specialization"],
+    "missing_constructors": ["native_application_with_retained_codomain_endpoint"],
+    "next_falsifier": "Inspect every actual rule output and prove or refute principal-atom provenance after stripping retention wrappers. Do not infer absence of arbitrary interpreted encodings from a canonical-endpoint obstruction."
+  }
+}

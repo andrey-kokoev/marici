@@ -1,0 +1,28 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-retained-nand-phases",
+    "owner": "marici.Nima",
+    "classification": "small_set_action_joint_refutation_and_equivariant_wolfram_criterion",
+    "stratum": "Small set-valued E-actions over a supplied retained structure. Empty, Sigma and Pi types are admitted ambient constructors. Phase two compares questions by equivariant inverse maps.",
+    "inputs": [
+      "research/nima/retained-nand-two-phases.md",
+      "research/nima/agda/RetainedNandPhases.agda",
+      "research/nima/agda/RetainedActionYoneda.agda",
+      "research/nima/agda/NandConstructions.agda",
+      "research/nima/agda/QBooleanity.agda",
+      "research/nima/agda/negative/RetainedNandBadReflection.agda",
+      "research/nima/checkers/check_graded_boundary_coherence.ps1",
+      "research/nima/checkers/agda_receipt_audit.py"
+    ],
+    "checks": [
+      {"id": "retained-nand-phases-formal-receipt", "path": "research/nima/checkers/check_retained_nand_phases.py", "requires": []}
+    ],
+    "depends_on": ["nima-nand-constructions", "nima-q-booleanity"],
+    "consumes": ["retained_set_actions", "empty_pair_function_types", "exact_wolfram_double_negation_comparison"],
+    "provides": ["natural_joint_refutation_universal_property", "old_nand_value_type_bridge", "equivariant_wolfram_stable_proposition_criterion", "retained_input_recovery", "set_valued_and_boolean_reflection_loss_controls"],
+    "missing_constructors": ["whole_Q_to_retained_action_constructor_equivalence", "unrestricted_higher_valued_action_coherence"],
+    "next_falsifier": "Test source-derived compatibility questions instead of mere inhabitation of already completed data. Do not identify a retained question with its double-negation truth result."
+  }
+}

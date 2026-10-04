@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-ordinary-yoneda",
+    "owner": "marici.Nima",
+    "classification": "ordinary_yoneda_reconstruction_from_naturality",
+    "stratum": "Forward realization and route/coherencer compatibility for explicitly supplied categories with set-valued homs and set-valued presheaves. No inverse arrows assumed. Four-channel sufficiency is not assumed or concluded.",
+    "inputs": ["research/nima/adapters/yoneda/README.md", "research/nima/adapters/yoneda/OrdinaryYoneda.agda", "research/nima/adapters/yoneda/NativeYoneda.agda", "research/nima/adapters/yoneda/YonedaControls.agda", "research/nima/adapters/yoneda/YonedaBadNaturality.agda", "research/nima/adapters/yoneda/YonedaRegression.agda", "research/nima/checkers/check_ordinary_yoneda.py", "research/nima/checkers/check_ordinary_yoneda_kernel.ps1", "research/nima/results/ordinary-yoneda-kernel.json"],
+    "checks": [{"id":"ordinary-yoneda-audit", "path":"research/nima/checkers/check_ordinary_yoneda.py", "requires":[]}],
+    "depends_on": [],
+    "consumes": [],
+    "provides": ["ordinary_yoneda_reconstruction", "natural_transformation_identity_evaluation", "native_yoneda_witness_retention"],
+    "missing_constructors": ["four_channel_to_category_with_composition_and_laws"],
+    "next_falsifier": "Drop naturality and test whether evaluation at the identity remains injective; erase a marked naturality witness from the native package. Four-channel sufficiency remains a separate unproved claim even if the Yoneda proof passes."
+  }
+}

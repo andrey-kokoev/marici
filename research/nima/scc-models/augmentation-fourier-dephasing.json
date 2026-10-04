@@ -1,0 +1,21 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "augmentation-fourier-dephasing",
+    "owner": "marici.Nima",
+    "classification": "exact_finite_augmentation_and_dephasing_fractions_given_centroid_cyclic_witness_not_state_uniqueness_or_physical_identification",
+    "stratum": "Four-state F2^2 delta carrier with counting metric; three-dimensional augmentation representation of A4; complexified witness and End(W) over Q(i sqrt(3)). Forward realization, witness attachment transport and A4 covariance checked. Stable-source comparison and physical readout descent not supplied.",
+    "inputs": [
+      "research/nima/augmentation-fourier-dephasing-fractions.md"
+    ],
+    "checks": [
+      {"id": "augmentation-fourier-dephasing-exact", "path": "research/nima/checkers/check_augmentation_fourier_dephasing.py", "requires": []}
+    ],
+    "depends_on": [],
+    "consumes": ["F2^2 with nontrivial order-three automorphism", "counting dagger linearization", "centroid and cyclic coefficient witness prescription"],
+    "provides": ["augmentation tetrahedron and intrinsic character axes", "coordinate-free translation Reynolds identity", "squared Hilbert-Schmidt fractions 11/25 and 14/25", "equivariant edge-difference counterexample to state selection by carrier symmetry alone"],
+    "missing_constructors": ["explicit stable-source K0 and rotation comparison", "source derivation of the centroid-cyclic witness prescription", "physical preparation/channel/effect identification"],
+    "next_falsifier": "For a supplied stable-source comparison, verify the K0 rotation and its nontrivial mod-2 order-three action, then test the transported triangle coefficient map against the centroid witness. Do not infer the witness from representation uniqueness."
+  }
+}

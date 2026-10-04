@@ -1,0 +1,26 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-marked-triangle-coherence",
+    "owner": "marici.Nima",
+    "classification": "cubical_marked_path_triangle_horn_completion_and_relative_universal_property",
+    "stratum": "Three fixed vertices and path edges in an arbitrary type; two-edge horns versus fully fixed three-edge boundaries. No set truncation of face-witness types.",
+    "inputs": [
+      "research/nima/marked-triangle-coherence-iteration-02.md",
+      "research/nima/agda/MarkedTriangleCoherence.agda",
+      "research/nima/agda/GradedBoundaryCoherence.agda",
+      "research/nima/agda/negative/MarkedTriangleBadErasure.agda",
+      "research/nima/checkers/check_graded_boundary_coherence.ps1",
+      "research/nima/checkers/agda_receipt_audit.py"
+    ],
+    "checks": [
+      {"id": "marked-triangle-coherence-formal-receipt", "path": "research/nima/checkers/check_marked_triangle_coherence.py", "requires": []}
+    ],
+    "depends_on": ["nima-graded-boundary-coherence"],
+    "consumes": ["graded_parallel_comparison_tower", "invertible_cubical_path_edges"],
+    "provides": ["three_contractible_horn_completion_spaces", "cyclic_rotation_equivalence_on_face_witnesses", "dependent_interpretation_extension_over_fixed_horn", "equal_diagonal_distinct_factorizations_hostile"],
+    "missing_constructors": ["tetrahedral_face_witness_comparison", "higher_coherence_for_repeated_forward_rotation"],
+    "next_falsifier": "A tetrahedral or repeated-rotation closure must retain all marked face witnesses and must not identify the ordinary and negation-twisted factorizations just because their diagonals agree."
+  }
+}

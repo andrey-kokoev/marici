@@ -1,0 +1,26 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-finite-stone",
+    "owner": "marici.Nima",
+    "classification": "four_element_stone_adapter_not_general_duality_synthesis",
+    "stratum": "Forward realization and route/coherencer compatibility: a supplied four-element Boolean algebra, actual atoms, reconstruction, all endomorphisms, and contravariant composition are represented by unchanged native constructor nodes and rules. Domain proof discovery is not attributed to the constructor.",
+    "inputs": [
+      "research/nima/adapters/finite-stone/README.md",
+      "research/nima/adapters/finite-stone/agda/FiniteStoneDomain.agda",
+      "research/nima/adapters/finite-stone/agda/FiniteStoneAdapter.agda",
+      "research/nima/adapters/finite-stone/core-freeze.json",
+      "research/nima/checkers/check_finite_stone.py",
+      "research/nima/checkers/check_finite_stone_kernel.ps1",
+      "research/nima/agda/IndexedConstructorTables.agda",
+      "research/nima/agda/NativeTableRules.agda"
+    ],
+    "checks": [{"id":"finite-stone-audit","path":"research/nima/checkers/check_finite_stone.py","requires":[]}],
+    "depends_on": ["nima-native-table-equivalence"],
+    "consumes": ["full_code_syntax_and_complete_package_equivalence", "independent_all_twelve_native_operations"],
+    "provides": ["four_element_stone_adapter_certificate"],
+    "missing_constructors": ["general_finite_stone_theorem", "cross_object_finite_stone_functors", "automatic_domain_theorem_discovery"],
+    "next_falsifier": "A wrong atom, reversed composition variance, or erased swap must fail. Core digests must stay unchanged. Passing this pilot does not establish arbitrary-vocabulary reconstruction or generic certificate discovery."
+  }
+}
