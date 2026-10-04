@@ -1,0 +1,7 @@
+# Re-specializing certified selection with a retained execution trace
+
+`agda/ReSpecializeWitnessSelection.agda` applies the existing meta-WG to `WitnessSelectionGenerator.selection-WG`, whose request state already contains native derivations of a Pi family and a chosen index. The new domain's `compute` is actual selection. Its admissibility predicate is **not uniformly true**: requests are admitted by a lifted unit witness, but completed responses are admitted only when their derivation is accompanied by equality to execution from that exact request. The proof of closure maps an admitted request to the generated trace `refl`, and preserves an already admitted response's trace.
+
+The checked `specialized-selection` produces an admitted response with that trace; `recovered-selection-pair` retains the supplied domain and original selection WG; `meta-selection` checks the higher-level constructor step. Since its state contains derivations and generator types, re-specialization lives at a higher universe level. This is a bounded second application of the same meta-construction, not a theorem that arbitrary views compose or that application is available under the original twelve rules. No new physical readout follows.
+
+Fresh safe Cubical Agda (`--ignore-interfaces --transliterate`, include `research/nima/agda`, native-application and application-extension adapters, Cubical 0.9) exits zero. The imported `TypedGeneratorLayers.agda` has a pre-existing unused-export warning for `isPropIsContr`.
