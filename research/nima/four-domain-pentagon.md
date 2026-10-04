@@ -1,0 +1,9 @@
+# Four-domain pentagon: full-step presentation coherence
+
+`agda/FourDomainPentagon.agda` defines all five dependent parenthesizations of four blocks and five explicit, invertible associator edges. The long route has three edges; the short route has two. `pentagon` equates their endpoint maps. Each edge lifts to an isomorphism of endpoint-plus-witness packages for an arbitrary relation on the fully nested state. `full-pentagon` equates the two entire step-map functions, and `generated-pentagon` applies the equality to the actual generated step. No proof irrelevance or truncation is used: the witness is retained unchanged along both routes.
+
+`Domains.Second.Third.Fourth` instantiates this construction for an arbitrary four-stage compatible specialization chain. Each later stage uses exactly the preceding compiled generator, with supplied agreement and admission closure. The four blocks are the first admitted state and the next three admission certificates; the relation is the full fourth compiled relation, not its projection to the original state. Thus `Full.full-pentagon` and `Full.generated-pentagon` cover actual full four-domain steps.
+
+Scope: this is the pentagon for dependent-pair presentations of a fixed compatible chain. The five edges are explicit Sigma reassociations, not applications of a newly defined closed binary operation on `FullComposition` objects. It does not establish that missing algebra, provenance-record equality across arbitrary compositions, naturality, or multi-step history coherence. The earlier three-stage file is not imported: this is a direct general dependent-pair coherence proof with a domain-chain instantiation.
+
+Verification: fresh Agda with `--ignore-interfaces --safe --cubical --guardedness --transliterate`, the research Agda and adapter include paths, and Cubical 0.9 passed. The pre-existing `TypedGeneratorLayers.agda` warning about the `isPropIsContr` import remains.
