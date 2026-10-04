@@ -48,6 +48,18 @@ $$
 
 If the combined energy is positive and nonzero on Xi kernel states, this forces `Re z=0`.
 
-The functional equality cannot be inferred from shell asymptotics, determinant equality, or the scalar combination `R+2E`. Its first finite test is one prime shell: compare the conservative response and cyclic trace separately on `rho(0)`, `E`, `W`, and `R`, with the determinant-line normalization retained.
+The functional equality cannot be inferred from shell asymptotics, determinant equality, or the scalar combination `R+2E`. The [coordinate audit](conservative-cyclic-trace-coordinate-audit.md) and [minimal owner contract](minimal-conservative-trace-owner-input.md) reduce the first finite test to two full vector evaluations on one prime shell:
 
-Status: pair-to-Euler cyclic joint graph and bordered response compatibility closed; conservative trace identification is the lowest missing arithmetic coherence.
+$$
+\Lambda_{\rm cons,s}(P_p\otimes w_\theta)=p^{-2s}w_\theta,
+\qquad
+\Lambda_{\rm cons,s}(P_p\otimes j_\theta)=p^{-2s}j_\theta,
+$$
+
+where `w_theta=(1/2,1/2)` and `j_theta=(1/4,-1/4)`. Retain the determinant-line normalization and the oriented odd pairing `K_link=-J_link/2`. Cross-channel errors must not be discarded by scalarization.
+
+The ordinary coordinate is already identified. If the conservative readout preserves `zR-rho(0)=E-W/2`, the two generator equations determine the reciprocal row for `z!=0` and at zero by the declared removable extension. Thus there is no third independent `R`-row theorem.
+
+Frozen frontier: the missing constructor is the independently defined conservative response functional itself. Its first falsifier is a nonzero two-column shell residual; its first theorem is vanishing of that residual. The subsequent theorem must transport the same functional and equality through cutoffs, reciprocal maps, parameter jets, and completion.
+
+Status: pair-to-Euler cyclic joint graph and bordered response compatibility closed; **independent conservative readout missing, local comparison untested**. The block conservative operator alone does not supply its response functional. No failing comparison or positive acceptance result is asserted.

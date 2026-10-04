@@ -88,10 +88,7 @@ divisor ideal is
 (\tau(z),\overline{\tau}(w)).
 \]
 
-But membership of the energy defect in this ideal would require its restriction
-to the joint Xi locus to vanish. That restriction is precisely the positive
-Haar residual above. Thus the ideal-membership claim is equivalent to the
-missing theorem, not a consequence of bordered holomorphic strictness.
+Membership in this ideal requires vanishing on the joint Xi locus, but the converse is not automatic at multiple zeros: the ideal retains nonreduced jet data. At a seam zero of order m>=2, with a common real-analytic energy family and nonzero positive baseline, the Haar defect has nonzero normal first jet while every member of `(tau,conjugate(tau))` has zero first jet. Thus a regular nonreduced ideal filler would additionally force simplicity under these assumptions. Reduced-fiber energy conservation remains the RH-bearing target; it is neither implied by bordered holomorphic strictness nor formally equivalent to the stronger ideal-membership claim. See `haar-energy-ideal-coherence-would-add-a-zero-simplicity-theorem.md` for the all-multiplicity proof and exact double-root hostile.
 
 ## Status of the three requested objectives
 

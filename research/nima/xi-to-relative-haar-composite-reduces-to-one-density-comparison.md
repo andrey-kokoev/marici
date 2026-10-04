@@ -23,7 +23,7 @@ H_{\rm Haar}
 =H_{\rm add}\widehat\otimes\overline{H_{\rm mult}}.
 $$
 
-Therefore the remaining typed arrow is not another Evans or pair map. It is a density comparison
+A stronger density-only formulation would ask for a comparison
 
 $$
 \iota_{\rm sep\to Haar}:
@@ -58,4 +58,4 @@ $$
 
 Noncollapse then forces `Re z=0`.
 
-Status: all outer arrows constructed; the remaining state-placement gate is one separation-history-to-relative-Haar comparison.
+Current status: the outer arrows and source-retaining state placement are constructed. The fixed-forcing joint graph in `fixed-forcing-correlation-graph-is-the-density-to-haar-comparison.md` avoids requiring an inverse or standalone map from density alone. Its covariance is the based one-leg action, while diagonal relative-Haar transport also moves the forcing base; see `fixed-forcing-placement-and-diagonal-haar-transport-are-different-squares.md`. The remaining Xi-specific condition is one-step route-energy equality, not another spectral-to-label realization.

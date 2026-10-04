@@ -1,10 +1,18 @@
 # Marici · Physics from one object
 
-## The problem this solves
+**Terminology:** A [Witness Generator](/theory/#witness-generator-glossary) takes a state and returns an output together with a typed witness relating them. This is a mathematical interface, not by itself a physical dynamics or a proof that every proposed domain view can be generated.
 
-The Standard Model of particle physics has ~20 free parameters (masses, mixing angles, couplings). ΛCDM cosmology adds ~6 more (cosmic densities, curvature). The carrier model replaces them all with **one 4×4 matrix** (an overlap Gram) and a **rank-1 descent mechanism** (each witness act restricts the carrier by one point). The numbers that appear — 12, 11, 4, 10 — are not inputs. They are derived from the fact that the Gram has four points, the cross-coupling is uniform, and the descent drops rank by one per step.
+## The problem the programme addresses
 
-If any of those constraints is wrong, the predicted constants change. If all three hold, the constants are forced.
+The Standard Model of particle physics has about 20 free parameters; ΛCDM cosmology adds about six more. Marici investigates whether source-derived relational constructions can constrain physical states, couplings and readouts. The four-point overlap Gram and restriction ladder below are proposed ingredients, not an established replacement for all of those parameters. Their counts and spectra require separate comparison maps before they become physical predictions.
+
+## Current construction and comparison frontier
+
+- **Local arithmetic operator:** translation can expose residue information erased by valuation averaging. The resulting finite Tate incidence has exact adjoint and Fourier structure and a uniform gap on its nonzero active sectors. [Construction and finite verification](/theory/#tate-residue-to-valuation-incidence).
+- **Cosmology comparison:** nine oriented circuit states are not identified with the rank-nine marked-relative ambiguity module. The next certificate must construct their source-labelled map into $M_{15}$ and preserve the elliptic quotient and symmetry action. [Required comparison](/theory/#the-circuit-to-cosmology-comparison-certificate).
+- **Physical descent:** Green homotopy may remove the rank-seven lift ambiguity without choosing an absolute representative. Equivariant fillers and a source-defined zero elliptic origin are still required. [Descent equation and scope](/theory/#green-homotopy-rather-than-an-arbitrary-absolute-lift).
+
+These are distinct verification stages. The local Tate result does not establish the arithmetic packet normalization, global completion, or a cosmological readout.
 
 ---
 

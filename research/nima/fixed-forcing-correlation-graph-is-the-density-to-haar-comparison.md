@@ -21,7 +21,7 @@ H_{\rm sep}\oplus
 (H_{\rm add}\widehat\otimes\overline{H_{\rm mult}}).
 $$
 
-The graph is closed because both component maps are continuous. Its projection to the Haar tensor leg is injective: since `Phi` is nonzero,
+On the declared Hilbert history carrier, continuity of the correlation map and the lower bound `||Phi tensor u||=||Phi|| ||u||` make the joint map bounded below and its image closed. Continuity alone would not prove closed image. Its projection to the Haar tensor leg is injective: since `Phi` is nonzero,
 
 $$
 \Phi\otimes u=0
@@ -43,10 +43,10 @@ $$
 =(I\otimes S_a)(\Phi\otimes u).
 $$
 
-Hence `Gamma_Phi` intertwines prime dilation/translation on both legs. Reciprocal orientation is retained by adjoining the opposite ordered graph with the contragredient tensor leg.
+Hence `Gamma_Phi` intertwines the based one-leg action `S_a^sep direct-sum (I tensor S_a)`. This must not be identified with the diagonal relative-Haar action `U_a(p) tensor conjugate(U_m(p))`: that operation also transports the forcing base to `U_a(p)Phi`. Reciprocal orientation is retained by adjoining the opposite ordered graph with the contragredient tensor leg.
 
 At an Xi zero, the pointed histories satisfy `u_-=u_+` after seam gluing. Their graph images therefore agree simultaneously in the separation-density and Haar-tensor coordinates. The Haar coordinate is nonzero because the Xi augmented state has nonzero source coordinate and `Phi!=0`.
 
 Thus the correct density-to-Haar comparison is a faithful joint graph, not a map from density alone. On this graph the Xi-relative route equality and the relative-Haar modular energy refer to the same source history state.
 
-Status: density/Haar state-placement graph constructed on the source-generated history carrier; completion requires only the already declared rapid correlation continuity.
+Status: density/Haar state-placement graph constructed on the source-generated history carrier. Fixed-base covariance concerns one-leg history translation; diagonal Haar covariance is a moving-base construction. Neither implies the Xi-specific one-step energy-cycle law. The exact comparison and a p=2 equal-energy/unequal-state falsifier are in `fixed-forcing-placement-and-diagonal-haar-transport-are-different-squares.md`.

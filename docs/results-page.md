@@ -8,6 +8,17 @@
 | 2 | One overlap | $G_{ij} = \langle f_j \mid f_i\rangle$ |
 | 3 | Proposed identifications | Physical states, dynamics and readouts require separate derivations; representation identities alone do not supply them. |
 
+## Local Tate incidence and elliptic descent
+
+| Object | Established scope | Remaining comparison |
+|---|---|---|
+| Finite-place incidence $C_{p,h}=R_pT_h(I-R_p)$ | Exact residue-to-radial operator with nilpotence, adjoint, Fourier conjugation and dilation covariance on the appropriate carriers. The rational audit passes 48 finite radial cases and the independent four-state fixture. | Identify its radial image with the arithmetic primitive/square packet, including the $\log p$ and cycle $1/k$ weights. |
+| Active singular-value gap | The general finite-packet calculation gives nonzero singular values $1$ or $\sqrt{1-(p-1)^{-2}}$. Active gaps do not collapse under these refinements; exact kernels and zero-rank cases remain. | No restricted-product/corona completion or completed Weil positivity follows from this local bound. |
+| Nine-state circuit resolution | Saturated rank-seven kernel with six within-support differences and one twisted circuit-relation line. This is an integral circuit result. | It is not an identification with the cosmology $M_9$. Recover the source-labelled comparison $J:C^{\rm or}_9\to M_{15}$ and test the quotient and symmetry squares. |
+| Elliptic Green descent | The equation $BI=DH+C^{\rm ell}_pE$ packages the seven kernel fillers invariantly. Under the stated splitting assumptions it is equivalent to those seven tests. | The physical matrices and filler remain to be constructed. Equivariant lifting and a source-defined zero elliptic origin are additional requirements. |
+
+[Local theorem, comparison certificate and physical scope](/theory/#finite-place-incidence-and-physical-descent). These entries report mathematical constructions and unresolved source comparisons, not new numerical physical predictions.
+
 ## Current comparison-tower checks
 
 The tower has a specified transport diagram, retained source witnesses and

@@ -1,5 +1,112 @@
 # Constructions, hypotheses, and verification boundaries
 
+## Witness Generator (glossary)
+
+For a state type $S$ and a declared witness relation $R:S\to S\to\mathsf{Type}$, a **Witness Generator** (WG) has type
+
+$$G_R:\prod_{s:S}\sum_{t:S}R(s,t).$$
+
+It returns an output state and an actual witness connecting it to the input. This name does not imply that the output is later or different; partial operations must include admissibility evidence in their input. The path specialization uses $R(s,t)=(s=t)$. Retained histories, composition and higher coherence require the additional layers; they do not follow merely from the WG type. The names *Witnessor*, *Relational Witness Generator* and *Dependent Relational Witness Generator* refer to this same formulation.
+
+[Layer-1 formulation](../research/nima/typed-witness-generator-layer.md) · [retained Layer 2](../research/nima/typed-generator-layer-2.md) · [ledger glossary entry 4296](../src/ledger/4296%20Witness%20Generator%20Glossary%20and%20Scope.md).
+
+### Family formation is not execution
+
+A dependent `Pi-package` retains a family of witnessed values $\prod_{i:I}B(i)$. The original native `P-kind` rule derives that family when **every component already has a derivation**; it can recover a certified component premise from such a derivation. Merely storing or seeding the family does not derive a selected output from a function and input. An explicit dependent application/elimination rule can do that while retaining both operands and its beta witness, but this has been checked only in the **application-extended runtime**, not as a theorem of the original twelve-rule closure. This separation matters for the proposed domain-specific constructor compiler: [scoped experiment](../research/nima/meta-witness-native-bridge.md) and [open conjecture](../src/ledger/4295%20Domain-Specific%20Constructors%20from%20Retained%20Domain%20Presentations.md).
+
+## Finite-place incidence and physical descent
+
+Two constructions must be kept separate: an explicit local Tate operator and a proposed comparison with the marked-relative cosmology source. The former has exact finite checks; the latter still needs its source-labelled comparison matrix. Neither matching ranks nor matching scalar readouts identifies the two sources.
+
+### Tate residue-to-valuation incidence
+
+For a prime $p$ and integer $N\ge1$, use the Schwartz–Bruhat packet
+
+$$
+V_N=\{f:\operatorname{supp}f\subset p^{-N}\mathbb Z_p,\quad
+f(x+a)=f(x)\text{ for }a\in p^N\mathbb Z_p\}.
+$$
+
+It has dimension $p^{2N}$. With an additive character of conductor $\mathbb Z_p$ and self-dual Haar measure, Fourier transform preserves this packet. Normalized unit averaging $R_p$ is the orthogonal projection onto its valuation shells. Translation $T_hf(x)=f(x-h)$ preserves $V_N$ when $h\in p^{-N}\mathbb Z_p$.
+
+The off-diagonal operator
+
+$$
+C_{p,h}=R_pT_h(I-R_p):(I-R_p)V_N\longrightarrow R_pV_N
+$$
+
+measures the radial information exposed by translating an input erased by unit averaging. Translation descends through $R_p$ exactly when $C_{p,h}=0$. On the full packet,
+
+$$
+C_{p,h}^2=0,\qquad
+C_{p,h}^{\dagger}=(I-R_p)T_{-h}R_p,\qquad
+\mathcal F_pC_{p,h}\mathcal F_p^{-1}=R_pM_{\chi_h}(I-R_p).
+$$
+
+The character sign follows the Fourier convention. Unitary dilation gives $D_aC_{p,h}D_a^{-1}=C_{p,h/a}$ on the full local carrier or transported packets; a nonunit dilation need not preserve a fixed $V_N$.
+
+**Exact finite result.** Put $m=v_p(h)$, with $-N\le m<N$. The only possible nonzero singular values are
+
+$$
+1,\qquad \sqrt{1-(p-1)^{-2}},
+$$
+
+with active rank $N-m-1$ at $p=2$ and $N-m$ at odd primes. Thus every nonzero active sector has gap $1$ at $p=2$ and at least $\sqrt3/2$ at odd primes, uniformly across these finite refinements. Exact kernels remain; at $p=2,m=N-1$ the operator is zero. Translations in $p^N\mathbb Z_p$ are the identity on the packet and also give zero incidence.
+
+For $p=2,N=1,h=1/2$, the operator sends $e_1-e_3$ to $e_2-e_0$ and is a rank-one partial isometry. Keeping $h=1/2$ and refining to $N=2$ gives rank two. The all-packet formula follows from the radial compression; the independent rational audit passes 48 cases at $p=2,3,5,7$, $N=1,2,3$, plus the full four-state fixture.
+
+**Remaining arithmetic comparison.** This constructs a residue-to-radial incidence, not its identification with the primitive/square valuation boundary packet. That comparison must supply the boundary labels, metric, $\log p$ normalization and cycle $1/k$ law. Positivity of the associated block square does not establish completed Weil positivity, a global prime-to-Tate equivalence, or the Riemann hypothesis. Restricted-product/corona completion is a separate gate, not a consequence of the finite gap.
+
+[Proof and conventions](../research/nima/tate-residue-radial-mixed-incidence.md) and [exact checker](../research/nima/checkers/check_tate_radial_mixed_incidence.py). Running the dependency-free checker regenerates the local audit output at `research/nima/results/tate-radial-mixed-incidence.json`.
+
+### The circuit-to-cosmology comparison certificate
+
+The nine oriented closed-circuit states resolve three circuit supports, each with multiplicity three. Their class map $\epsilon_{\rm circ}:C^{\rm or}_9\to\mathbb Z^2$ has saturated rank-seven kernel, with filtration
+
+$$
+0\longrightarrow K_6\longrightarrow\ker\epsilon_{\rm circ}
+\longrightarrow K_{\rm rel}\longrightarrow0,\qquad
+K_6\cong A_2^{\oplus3}.
+$$
+
+The six directions compare representatives of the same support; the final line records the relation among the three oriented circuit classes. Its character is $\chi_{\rm rel}(g)=(-1)^{\operatorname{core\ swap}(g)}\det(g|_{\rm roads})$. The ordinary 243-state transition graph cannot fill the unpointed three-tag diagonal: its edge boundaries have augmentation zero, while that diagonal has augmentation three. The oriented two-term resolution retains the relation without dividing by three.
+
+This circuit module is **not yet identified** with the marked-relative $M_9$ in
+
+$$
+0\longrightarrow M_9\xrightarrow{\iota}M_{15}
+\xrightarrow{\pi}Q_6\longrightarrow0.
+$$
+
+The missing comparison is the source-derived composite $J=\iota\Phi:C^{\rm or}_9\to M_{15}$, not an arbitrary isomorphism between rank-nine spaces. Its certificate must export an ordered source basis $\mathcal B_{15}$, the coefficient domain, $\pi$, $J$, the elliptic quotient $\bar q_\ell$ on $\ker\pi$, and the symmetry actions. Required checks include
+
+$$
+\pi J=0,\qquad \operatorname{rank}J=9,\qquad
+\operatorname{im}J=\ker\pi,\qquad
+\bar q_\ell J=\epsilon_{\rm circ},\qquad
+J\rho_{\rm circ}(g)=\rho_{15}(g)J.
+$$
+
+These action equations use a fixed common coefficient domain; parameter-changing symmetries require the corresponding semilinear transport. Compatibility with the relative Gauss–Manin quotient must be derived, not assigned by matching circuit labels to master indices. Integral saturation and unit Smith factors require a declared integral lattice: the generic de Rham quotient alone does not supply one. The split-coordinate candidate $\begin{pmatrix}A&B\\0&I_2\end{pmatrix}$ must intertwine the symmetry extension classes, not merely preserve quotient dimensions.
+
+Only a passing comparison identifies $JT$ with the physical rank-seven kernel, where the columns of $T$ form the circuit kernel basis. No such $J$ is constructed by these rank calculations.
+
+### Green homotopy rather than an arbitrary absolute lift
+
+For the actual elliptic quotient $E:M_9\to V_{\rm ell}$, inclusion matrix $I$, physical route $B$, and target differential $D$, the finite descent equation is
+
+$$
+BI=DH+C^{\rm ell}_pE.
+$$
+
+It says that the route depends on an ambiguity only through its elliptic class, up to the specified Green homotopy. Over a field, or a split free integral sequence, this is equivalent to filling the seven kernel columns; its benefit is a basis-independent formulation retaining the homotopy, not a stronger existence test.
+
+The circuit filtration separates the six representative comparisons from the relation line. Strict vanishing on $K_6$ makes the relation image representative-independent as a chain. Null-homotopies on $K_6$ give that independence only in homology and must be retained in the symmetry comparison. An equivariant boundary need not have an integral equivariant primitive, so the final filler is tested in the equivariant mapping complex, not just a character component of ordinary homology.
+
+A successful filler gives homotopical descent through $P_8=M_{15}/T_7$ and a map to $H_0(W_p)$. The extension $0\to V_{\rm ell}\to P_8\to Q_6\to0$ does not itself supply a zero elliptic coordinate over a fixed sewn class. A source-defined elliptic readout $\widetilde\epsilon:M_{15}\to V_{\rm ell}$ extending $E$ would supply that origin. Thus the $T_7$ ambiguity can be removed by homotopy without selecting an absolute lift, but the physical elliptic origin remains a separate datum.
+
+**Sources.** [Circuit resolution, Entry 60](https://github.com/andrey-kokoev/marici/blob/main/src/ledger/20260813-60%20Integral%20Circuit%20Resolution%20and%20the%20True%20Skein%20Target.md); [generic de Rham Gysin quotient, Entry 150](https://github.com/andrey-kokoev/marici/blob/main/src/ledger/20260815-150%20Explicit%20Infinity-Gysin%20Projection%20and%20the%20Rank-Seven%20Algebraic%20Kernel.md); [marked-relative interface preflight](../research/nima/qG12-finite-quotient-interface-preflight.md); [lift audit](../research/nima/sewn-qG12-conductor-and-lift-audit.md).
+
 ## The single object and its three projections
 
 The construction starts from a single object: a finite set $X_N$ with $N$ probe functions $f_i$, forming the **Gram overlap matrix**
