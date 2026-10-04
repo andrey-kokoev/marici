@@ -1,0 +1,11 @@
+# Pointwise Pi-family of recursively generated witness histories
+
+`agda/WitnessHistoryFamily.agda` constructs the Boolean-negation domain-specific WG's **two-step** Layer-2 history from each Boolean starting index. `history-family = Pi-package Bool component` stores each entire history as a typed component value, rather than storing only its final Boolean readout. Checked `history-readback` recovers that history at its index; `two-steps-length` proves its length is two. The state returns to the initial Boolean value after two transitions, yet `nonempty-return` proves the returned two-step history is not the empty history.
+
+This is a first concrete test of the interpretation “the index identifies the state, while the family records its recursive witnessed behavior.” The index is `Bool`, not an identity-path space; the histories are supplied by the verified `Histories.generated` recursion, not created by `Pi-package` formation itself.
+
+**Derivation test.** The old twelve-rule invariant proves `no-old-component-from-family-seed`: with only the entire Pi family admitted, no native derivation of the pointwise atomic history package at `false` exists. This uses principal-node structure rather than trying to compare hidden values across univalent package paths. Conversely, if derivations of all component packages are supplied, `CertifiedFamily` uses `P-kind` to derive the Pi family and recovers its precise premise at each index. Neither direction manufactures missing pointwise derivations.
+
+**Execution test.** `HistoryApplication` uses the separately extended application rule with just the certified family and certified Boolean index as seeds. It derives a retained evaluated-history endpoint, its beta coherencer and a readback of the nonempty two-step history. This endpoint includes provenance wrappers and is not the bare atomic component ruled out above; the old negative control must not be misquoted as excluding every possible retained endpoint.
+
+Verification: fresh safe Cubical Agda with `--ignore-interfaces --transliterate`, `research/nima/agda`, `research/nima/adapters/native-application`, `research/nima/adapters/application-extension` and Cubical 0.9 exited zero. The imported `TypedGeneratorLayers.agda` emits a pre-existing unused-export warning for `isPropIsContr`.
