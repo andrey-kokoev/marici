@@ -5,6 +5,7 @@ export default defineConfig({
   title: 'Marici',
   description: 'Research from the relational carrier.',
   cleanUrls: true,
+  ignoreDeadLinks: true,
   sitemap: { hostname: 'https://marici.andrei-kokoev.workers.dev' },
   markdown: {
     config(md) { md.use(katex, { throwOnError: false, strict: 'error' }) },
