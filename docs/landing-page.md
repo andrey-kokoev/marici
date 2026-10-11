@@ -6,6 +6,12 @@
 
 The Standard Model of particle physics has about 20 free parameters; ΛCDM cosmology adds about six more. Marici investigates whether source-derived relational constructions can constrain physical states, couplings and readouts. The four-point overlap Gram and restriction ladder below are proposed ingredients, not an established replacement for all of those parameters. Their counts and spectra require separate comparison maps before they become physical predictions.
 
+## Matter research atlas
+
+[Explore the interactive isotope and mechanism registry →](/experiments/matter-catalog.html)
+
+Compare hydrogen-1 and hydrogen-2, inspect constituent candidates, and follow the working mass, charge and coupling mechanisms to their sources. The atlas separates observed isotope properties from geometric constructions, conditional energy models and remaining binding/stability obligations. It includes the charged-core dressing mechanism, quotient-charge model, and conservation-compatible hydrogen mass readout.
+
 ## Current construction and comparison frontier
 
 - **Local arithmetic operator:** translation can expose residue information erased by valuation averaging. The resulting finite Tate incidence has exact adjoint and Fourier structure and a uniform gap on its nonzero active sectors. [Construction and finite verification](/theory/#tate-residue-to-valuation-incidence).

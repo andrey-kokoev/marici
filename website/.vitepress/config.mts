@@ -15,6 +15,10 @@ export default defineConfig({
       { text: 'Theory', link: '/research/theory/' },
       { text: 'System', link: '/research/system-characteristics/' },
       { text: 'Results', link: '/research/results/' },
+      { text: 'Matter', items: [
+        { text: 'Element & isotope catalogue', link: '/experiments/matter-catalog.html' },
+        { text: 'Standard Model graph', link: '/matter/standard-model-graph' },
+      ] },
       { text: 'Predictions', link: '/research/predictions/' },
       { text: 'Ledger', link: '/research/ledger/' },
       { text: 'Graph', link: '/explore/graph/' },

@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises'
+import { checkMatterAssets } from './check-matter-assets.mjs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import matter from 'gray-matter'
@@ -7,6 +8,7 @@ import katexCore from 'katex'
 import { katex } from '@mdit/plugin-katex'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+await checkMatterAssets(root)
 const sourceRoot = path.join(root, 'src', 'ledger')
 const ledgerOut = path.join(root, 'website', 'research', 'ledger')
 const resultsOut = path.join(root, 'website', 'research', 'results')
