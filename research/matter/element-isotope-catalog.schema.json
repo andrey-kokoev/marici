@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Element-isotope research catalogue",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schema_version", "title", "coverage", "sources", "mechanisms", "constituents", "elements"],
+  "properties": {
+    "$schema": {"const": "./element-isotope-catalog.schema.json"},
+    "schema_version": {"const": "1.1.0"},
+    "title": {"$ref": "#/$defs/text"},
+    "coverage": {"$ref": "#/$defs/text"},
+    "sources": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/source"}},
+    "mechanisms": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/mechanism"}},
+    "constituents": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/constituent"}},
+    "elements": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/element"}}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1},
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"},
+    "ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+    "status": {"enum": ["checked", "conditional", "conjectural", "illustrative", "unconstructed", "refuted"]},
+    "claim": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "statement", "source_ids"],
+      "properties": {"status": {"$ref": "#/$defs/status"}, "statement": {"$ref": "#/$defs/text"}, "source_ids": {"$ref": "#/$defs/ids"}}
+    },
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "kind", "location", "description"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "kind": {"enum": ["repository", "external"]},
+        "location": {"$ref": "#/$defs/text"}, "description": {"$ref": "#/$defs/text"}
+      }
+    },
+    "mechanism": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "status", "summary", "assumptions", "results", "open_obligations", "source_ids"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "name": {"$ref": "#/$defs/text"}, "status": {"$ref": "#/$defs/status"},
+        "summary": {"$ref": "#/$defs/text"}, "source_ids": {"$ref": "#/$defs/ids"},
+        "assumptions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/text"}},
+        "results": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/claim"}},
+        "open_obligations": {"type": "array", "items": {"$ref": "#/$defs/text"}}
+      }
+    },
+    "constituent": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "status", "claims", "mechanism_ids"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "name": {"$ref": "#/$defs/text"},
+        "status": {"$ref": "#/$defs/status"},
+        "mechanism_ids": {"$ref": "#/$defs/ids"},
+        "claims": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/claim"}}
+      }
+    },
+    "element": {
+      "type": "object", "additionalProperties": false,
+      "required": ["atomic_number", "symbol", "name", "isotopes"],
+      "properties": {
+        "atomic_number": {"type": "integer", "minimum": 1},
+        "symbol": {"type": "string", "pattern": "^[A-Z][a-z]?$"}, "name": {"$ref": "#/$defs/text"},
+        "isotopes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/isotope"}}
+      }
+    },
+    "isotope": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "mass_number", "name", "observations", "model"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "mass_number": {"type": "integer", "minimum": 1}, "name": {"$ref": "#/$defs/text"},
+        "observations": {
+          "type": "object", "additionalProperties": false,
+          "required": ["protons", "neutrons", "neutral_atom_electrons", "stability", "source_ids"],
+          "properties": {
+            "protons": {"type": "integer", "minimum": 1}, "neutrons": {"type": "integer", "minimum": 0},
+            "neutral_atom_electrons": {"type": "integer", "minimum": 1},
+            "stability": {"enum": ["observationally_stable", "radioactive", "unknown"]},
+            "source_ids": {"$ref": "#/$defs/ids"}
+          }
+        },
+        "model": {
+          "type": "object", "additionalProperties": false,
+          "required": ["status", "constituent_ids", "mechanism_ids", "mass_readout", "geometry", "binding", "stability_explanation", "open_obligations"],
+          "properties": {
+            "status": {"$ref": "#/$defs/status"}, "constituent_ids": {"$ref": "#/$defs/ids"},
+            "mechanism_ids": {"$ref": "#/$defs/ids"}, "mass_readout": {"$ref": "#/$defs/claim"},
+            "geometry": {"$ref": "#/$defs/claim"}, "binding": {"$ref": "#/$defs/claim"}, "stability_explanation": {"$ref": "#/$defs/claim"},
+            "open_obligations": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/text"}}
+          }
+        }
+      }
+    }
+  }
+}
