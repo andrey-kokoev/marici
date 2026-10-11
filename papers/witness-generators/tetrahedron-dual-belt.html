@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Six outward connecting tetrahedra</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #101827; color: #e5edf8; font-family: system-ui, sans-serif; }
+    canvas { display: block; touch-action: none; }
+    header { position: absolute; top: 24px; left: 24px; pointer-events: none; }
+    h1 { margin: 0 0 8px; font-size: 22px; font-weight: 550; }
+    p { margin: 0; color: #a8b8cc; font-size: 14px; }
+    footer { position: absolute; bottom: 24px; left: 24px; right: 24px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    button { background: #24364c; color: #e5edf8; border: 1px solid #58718d; border-radius: 6px; padding: 8px 14px; cursor: pointer; }
+    button:focus-visible { outline: 2px solid #80dcff; outline-offset: 3px; }
+    #error { position: absolute; top: 110px; left: 24px; right: 24px; color: #ffb4a8; }
+    #vertex-tooltip { position: fixed; pointer-events: none; z-index: 10; padding: 6px 9px; border: 1px solid #58718d; border-radius: 5px; background: #101827ee; color: #fff; font: 13px ui-monospace, monospace; white-space: pre; }
+  </style>
+  <script type="importmap">
+    { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    } }
+  </script>
+</head>
+<body>
+  <header><h1>Connecting and outer tetrahedra</h1><p>2 original · 6 connecting · 12 outer · 6 completions · Hover for vertex IDs</p></header>
+  <footer>
+    <label><input id="vertices" type="checkbox" checked> 4 vertices</label>
+    <label><input id="edges" type="checkbox" checked> 6 edges</label>
+    <label><input id="faces" type="checkbox" checked> 3 faces</label>
+    <label><input id="closure" type="checkbox" checked> Filler + bottom face</label>
+    <label><input id="belt" type="checkbox" checked> Six connecting tetrahedra</label>
+    <label><input id="outer-tetrahedra" type="checkbox" checked> Outer tetrahedra</label>
+    <label><input id="completion" type="checkbox" checked> Completions 1–6</label>
+    <label><input id="separate" type="checkbox"> Separate</label>
+    <label><input id="explode" type="checkbox"> Explode</label>
+    <label>Factor <input id="explosion-factor" type="range" min="1" max="4" step="0.05" value="2"> <output id="factor-value" for="explosion-factor">2.00×</output></label>
+    <button id="reset" type="button">Reset view</button>
+    <p>Drag to rotate · Scroll to zoom · Explode to reveal the nested filler tetrahedron</p>
+  </footer>
+  <p id="error" role="alert" hidden></p>
+  <div id="vertex-tooltip" role="tooltip" hidden></div>
+  <script type="module">
+    const error = document.querySelector('#error');
+    try {
+      const THREE = await import('three');
+      const { OrbitControls } = await import('three/addons/controls/OrbitControls.js');
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color('#101827');
+      const viewHeight = 7;
+      const aspect = innerWidth / innerHeight;
+      const camera = new THREE.OrthographicCamera(
+        -viewHeight * aspect / 2, viewHeight * aspect / 2,
+        viewHeight / 2, -viewHeight / 2, 0.1, 100
+      );
+      camera.position.set(3.8, 2.6, 5.0);
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      renderer.setSize(innerWidth, innerHeight);
+      renderer.domElement.setAttribute('aria-label', 'Two original tetrahedra connected by six outward-pointing tetrahedra, one on each former belt face; no belt mesh');
+      document.body.prepend(renderer.domElement);
+
+      // A regular tetrahedron centered at its centroid. The base has radius 1;
+      // every edge has length sqrt(3). There is no extra hub or central vertex.
+      const h = Math.sqrt(2);
+      const r = Math.sqrt(3) / 2;
+      const positions = [
+        new THREE.Vector3(0, 3 * h / 4, 0),
+        new THREE.Vector3(0, -h / 4, 1),
+        new THREE.Vector3(-r, -h / 4, -0.5),
+        new THREE.Vector3(r, -h / 4, -0.5)
+      ];
+      const tetrahedron = new THREE.Group();
+      tetrahedron.name = 'tetrahedron';
+      const assembly = new THREE.Group();
+      assembly.name = 'facing-tetrahedra';
+      scene.add(assembly);
+      assembly.add(tetrahedron);
+      const parts = {};
+      for (const name of ['vertices', 'edges', 'faces', 'closure']) {
+        parts[name] = new THREE.Group();
+        parts[name].name = name;
+        tetrahedron.add(parts[name]);
+      }
+      const vertexGeometry = new THREE.SphereGeometry(0.025, 16, 12);
+      const vertexMaterial = new THREE.MeshBasicMaterial({ color: '#ffffff' });
+      positions.forEach((position, i) => {
+        const vertex = new THREE.Mesh(vertexGeometry, vertexMaterial);
+        vertex.name = ['A', 'B', 'C', 'D'][i];
+        vertex.position.copy(position);
+        parts.vertices.add(vertex);
+      });
+      const edgeMaterial = new THREE.LineBasicMaterial({ color: '#d4f5ff' });
+      for (const [a, b] of [[0, 1], [0, 2], [0, 3], [1, 2], [2, 3], [3, 1]]) {
+        const edge = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints([positions[a], positions[b]]), edgeMaterial
+        );
+        edge.name = 'ABCD'[a] + 'ABCD'[b];
+        parts.edges.add(edge);
+      }
+      const material = new THREE.MeshStandardMaterial({
+        color: '#56b8da', roughness: 0.65, metalness: 0.05, flatShading: true,
+        transparent: true, opacity: 0.2, side: THREE.DoubleSide, depthWrite: false
+      });
+      const makeFace = (indices, name) => {
+        const geometry = new THREE.BufferGeometry().setFromPoints(indices.map(i => positions[i]));
+        geometry.computeVertexNormals();
+        const face = new THREE.Mesh(geometry, material);
+        face.name = name;
+        return face;
+      };
+      parts.faces.add(makeFace([0, 2, 1], 'ABC'), makeFace([0, 3, 2], 'ACD'), makeFace([0, 1, 3], 'ADB'));
+      // The closure is a complete tetrahedral solid, visualized by its boundary.
+      // At rest its three side faces coincide with the separate side faces.
+      // Draw only its bottom at rest to avoid double-blending coincident surfaces;
+      // explosion exposes its full boundary as one independently moving object.
+      const fillerSides = new THREE.Group();
+      fillerSides.name = 'filler-side-boundary';
+      fillerSides.add(makeFace([0, 2, 1], 'filler-ABC'), makeFace([0, 3, 2], 'filler-ACD'), makeFace([0, 1, 3], 'filler-ADB'));
+      parts.closure.add(fillerSides, makeFace([1, 2, 3], 'filler-BCD'));
+
+      const opposite = tetrahedron.clone(true);
+      opposite.name = 'opposite-tetrahedron';
+      const gap = 0.7;
+      tetrahedron.position.y = h / 4 + gap / 2;
+      opposite.rotation.x = Math.PI;
+      opposite.position.y = -h / 4 - gap / 2;
+      assembly.add(opposite);
+      const figures = [tetrahedron, opposite].map(root => ({
+        root,
+        rest: root.position.clone(),
+        parts: Object.fromEntries(['vertices', 'edges', 'faces', 'closure'].map(name => [name, root.getObjectByName(name)])),
+        fillerSides: root.getObjectByName('filler-side-boundary')
+      }));
+
+      // Six outward tetrahedra cover all former belt-face positions.
+      // No central belt surface or solid is constructed.
+      const belt = new THREE.Group();
+      belt.name = 'outward-connectors';
+      assembly.add(belt);
+      const basePoints = figures.map(({ root }) => positions.slice(1).map(point =>
+        point.clone().applyQuaternion(root.quaternion).add(root.position)));
+      figures[0].attachmentBase = basePoints[0];
+      figures[1].attachmentBase = basePoints[1];
+      for (let index = 0; index < 6; index++) {
+        const side = Math.floor(index / 3);
+        const anchor = basePoints[side][index % 3];
+        const neighbors = [...basePoints[1 - side]].sort((a, b) =>
+          anchor.distanceToSquared(a) - anchor.distanceToSquared(b)).slice(0, 2);
+        const base = [anchor, ...neighbors];
+        const baseCenter = base.reduce((sum, point) => sum.add(point), new THREE.Vector3()).divideScalar(3);
+        const outward = base[1].clone().sub(base[0]).cross(base[2].clone().sub(base[0])).normalize();
+        if (outward.dot(baseCenter) < 0) outward.negate();
+        const meanEdge = (base[0].distanceTo(base[1]) + base[1].distanceTo(base[2]) + base[2].distanceTo(base[0])) / 3;
+        const apex = baseCenter.clone().addScaledVector(outward, meanEdge * Math.sqrt(2 / 3));
+        const worldPoints = [apex, ...base];
+        const centroid = worldPoints.reduce((sum, point) => sum.add(point), new THREE.Vector3()).divideScalar(4);
+        const points = worldPoints.map(point => point.clone().sub(centroid));
+        const root = new THREE.Group();
+        root.name = `outward-tetrahedron-${index + 1}`;
+        root.position.copy(centroid);
+        belt.add(root);
+        const middleParts = {};
+        for (const name of ['vertices', 'edges', 'faces', 'closure']) {
+          middleParts[name] = new THREE.Group();
+          middleParts[name].name = name;
+          root.add(middleParts[name]);
+        }
+        const color = ['#f5bb62', '#bd9aff', '#7de0ae', '#f58ba8', '#7bbdff', '#e2da78'][index];
+        const faceMaterial = material.clone();
+        faceMaterial.color.set(color);
+        const middleEdges = new THREE.LineBasicMaterial({ color });
+        points.forEach((point, i) => {
+          const vertex = new THREE.Mesh(vertexGeometry, vertexMaterial);
+          vertex.name = `vertex-${i}`;
+          vertex.position.copy(point);
+          middleParts.vertices.add(vertex);
+        });
+        for (const [a, b] of [[0, 1], [0, 2], [0, 3], [1, 2], [2, 3], [3, 1]]) {
+          middleParts.edges.add(new THREE.Line(
+            new THREE.BufferGeometry().setFromPoints([points[a], points[b]]), middleEdges
+          ));
+        }
+        const face = indices => {
+          const corners = indices.map(i => points[i]);
+          const normal = corners[1].clone().sub(corners[0]).cross(corners[2].clone().sub(corners[0]));
+          if (normal.dot(corners[0]) < 0) [corners[1], corners[2]] = [corners[2], corners[1]];
+          const geometry = new THREE.BufferGeometry().setFromPoints(corners);
+          geometry.computeVertexNormals();
+          return new THREE.Mesh(geometry, faceMaterial);
+        };
+        const sides = new THREE.Group();
+        sides.name = 'filler-side-boundary';
+        for (const indices of [[0, 1, 2], [0, 2, 3], [0, 3, 1]]) {
+          middleParts.faces.add(face(indices));
+          sides.add(face(indices));
+        }
+        middleParts.closure.add(sides, face([1, 2, 3]));
+        figures.push({ root, rest: root.position.clone(), parts: middleParts, fillerSides: sides, attachmentBase: base });
+      }
+
+      // Neighboring original octahedral faces share an edge. Their outer tips
+      // form the cube graph (12 edges), even when metric proportions are irregular.
+      const outerFrame = new THREE.Group();
+      outerFrame.name = 'outer-cube-frame';
+      assembly.add(outerFrame);
+      const outerLinks = [];
+      const frameMaterial = new THREE.LineBasicMaterial({ color: '#ffffff' });
+      for (let i = 0; i < figures.length; i++) {
+        for (let j = i + 1; j < figures.length; j++) {
+          const shared = figures[i].attachmentBase.filter(a =>
+            figures[j].attachmentBase.some(b => a.distanceToSquared(b) < 1e-12)).length;
+          if (shared !== 2) continue;
+          const geometry = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3()]);
+          const line = new THREE.Line(geometry, frameMaterial);
+          line.name = `outer-link-${i}-${j}`;
+          outerFrame.add(line);
+          outerLinks.push({ i, j, line });
+        }
+      }
+      if (outerLinks.length !== 12 || figures.some((_, i) =>
+        outerLinks.filter(link => link.i === i || link.j === i).length !== 3)) {
+        throw new Error('Outer frame must have 12 edges and degree 3 at every tip.');
+      }
+      const vertexTargets = [];
+      const vertexRegistry = [];
+      for (const figure of figures) {
+        figure.parts.vertices.children.forEach(vertex => {
+          const position = vertex.position.clone().applyQuaternion(figure.root.quaternion)
+            .add(figure.root.position);
+          let entry = vertexRegistry.find(candidate => candidate.position.distanceToSquared(position) < 1e-10);
+          if (!entry) {
+            entry = { id: `V${String(vertexRegistry.length + 1).padStart(2, '0')}`, position };
+            vertexRegistry.push(entry);
+          }
+          // One geometric identity, retained by all component copies when exploded.
+          vertex.userData.vertexId = entry.id;
+          vertexTargets.push(vertex);
+        });
+      }
+      if (vertexRegistry.length !== 14) throw new Error('Expected 14 distinct geometric vertices.');
+
+      // Keep the explicitly selected Outer 1. Complete every other frame link
+      // using its two tips and the common edge of the original attachment faces.
+      const outerSpecs = [['V01', 'V02', 'V03', 'V12']];
+      for (const { i, j } of outerLinks) {
+        const tips = [i, j].map(index => figures[index].parts.vertices.children[0].userData.vertexId);
+        if (tips.includes('V01') && tips.includes('V12')) continue;
+        const common = figures[i].attachmentBase.filter(a =>
+          figures[j].attachmentBase.some(b => a.distanceToSquared(b) < 1e-12));
+        const sharedIds = common.map(point => vertexRegistry.find(entry =>
+          entry.position.distanceToSquared(point) < 1e-10).id);
+        outerSpecs.push([...tips, ...sharedIds]);
+      }
+      if (outerSpecs.length !== 12) throw new Error('Expected one outer tetrahedron per frame link.');
+      outerSpecs.push(
+        ['V14', 'V13', 'V01', 'V02'],
+        ['V09', 'V10', 'V05', 'V07'],
+        ['V09', 'V11', 'V05', 'V08'],
+        ['V10', 'V11', 'V05', 'V06'],
+        ['V12', 'V13', 'V01', 'V03'],
+        ['V12', 'V14', 'V01', 'V04']
+      );
+      const completion = new THREE.Group();
+      completion.name = 'Completions';
+      assembly.add(completion);
+      const outerTetrahedra = new THREE.Group();
+      outerTetrahedra.name = 'Outer tetrahedra';
+      assembly.add(outerTetrahedra);
+      for (const [outerIndex, outerIds] of outerSpecs.entries()) {
+      const outerPoints = outerIds.map(id => vertexRegistry.find(entry => entry.id === id).position.clone());
+      const outerCenter = outerPoints.reduce((sum, p) => sum.add(p), new THREE.Vector3()).divideScalar(4);
+      const localPoints = outerPoints.map(p => p.clone().sub(outerCenter));
+      const volume6 = localPoints[1].clone().sub(localPoints[0]).dot(
+        localPoints[2].clone().sub(localPoints[0]).cross(localPoints[3].clone().sub(localPoints[0])));
+      if (Math.abs(volume6) < 1e-9) throw new Error(`Outer ${outerIndex + 1} vertices are coplanar.`);
+      const outerOne = new THREE.Group();
+      const isCompletion = outerIndex >= 12;
+      outerOne.name = isCompletion ? `Completion ${outerIndex - 11}` : `Outer ${outerIndex + 1}`;
+      outerOne.position.copy(outerCenter);
+      if (isCompletion) completion.add(outerOne);
+      else outerTetrahedra.add(outerOne);
+      const outerParts = {};
+      for (const name of ['vertices', 'edges', 'faces', 'closure']) {
+        outerParts[name] = new THREE.Group();
+        outerParts[name].name = name;
+        outerOne.add(outerParts[name]);
+      }
+      localPoints.forEach((point, i) => {
+        const vertex = new THREE.Mesh(vertexGeometry, vertexMaterial);
+        vertex.position.copy(point);
+        vertex.userData.vertexId = outerIds[i];
+        outerParts.vertices.add(vertex);
+        vertexTargets.push(vertex);
+      });
+      const outerMaterial = material.clone();
+      outerMaterial.color.set('#ffc986');
+      const outerEdgeMaterial = new THREE.LineBasicMaterial({ color: '#ffc986' });
+      for (const [a, b] of [[0, 1], [0, 2], [0, 3], [1, 2], [2, 3], [3, 1]]) {
+        const edge = new THREE.Line(new THREE.BufferGeometry().setFromPoints([localPoints[a], localPoints[b]]), outerEdgeMaterial);
+        edge.name = `${outerIds[a]}–${outerIds[b]}`;
+        outerParts.edges.add(edge);
+      }
+      const outerFace = indices => {
+        const corners = indices.map(i => localPoints[i]);
+        const normal = corners[1].clone().sub(corners[0]).cross(corners[2].clone().sub(corners[0]));
+        if (normal.dot(corners[0]) < 0) [corners[1], corners[2]] = [corners[2], corners[1]];
+        const geometry = new THREE.BufferGeometry().setFromPoints(corners);
+        geometry.computeVertexNormals();
+        return new THREE.Mesh(geometry, outerMaterial);
+      };
+      const outerFillerSides = new THREE.Group();
+      for (const indices of [[0, 1, 2], [0, 2, 3], [0, 3, 1]]) {
+        outerParts.faces.add(outerFace(indices));
+        outerFillerSides.add(outerFace(indices));
+      }
+      outerParts.closure.add(outerFillerSides, outerFace([1, 2, 3]));
+      figures.push({ root: outerOne, rest: outerCenter.clone(), parts: outerParts, fillerSides: outerFillerSides });
+      }
+      // All former frame edges are now owned by complete outer tetrahedra.
+      assembly.remove(outerFrame);
+      for (const { line } of outerLinks) line.geometry.dispose();
+      frameMaterial.dispose();
+      const tooltip = document.getElementById('vertex-tooltip');
+      const raycaster = new THREE.Raycaster();
+      const pointer = new THREE.Vector2();
+      let hoverPosition = null;
+      let dragging = false;
+      const isVisible = object => {
+        for (let node = object; node; node = node.parent) if (!node.visible) return false;
+        return true;
+      };
+      const updateHover = () => {
+        tooltip.hidden = true;
+        if (!hoverPosition || dragging) return;
+        const bounds = renderer.domElement.getBoundingClientRect();
+        pointer.set(
+          2 * (hoverPosition.x - bounds.left) / bounds.width - 1,
+          1 - 2 * (hoverPosition.y - bounds.top) / bounds.height
+        );
+        scene.updateMatrixWorld(true);
+        camera.updateMatrixWorld(true);
+        raycaster.setFromCamera(pointer, camera);
+        const hits = raycaster.intersectObjects(vertexTargets.filter(isVisible), false);
+        if (!hits.length) return;
+        tooltip.textContent = hits[0].object.userData.vertexId;
+        tooltip.hidden = false;
+        tooltip.style.left = Math.max(0, Math.min(hoverPosition.x + 14, innerWidth - tooltip.offsetWidth - 8)) + 'px';
+        tooltip.style.top = Math.max(0, Math.min(hoverPosition.y + 14, innerHeight - tooltip.offsetHeight - 8)) + 'px';
+      };
+      renderer.domElement.addEventListener('pointermove', event => {
+        hoverPosition = { x: event.clientX, y: event.clientY };
+        updateHover();
+      });
+      renderer.domElement.addEventListener('pointerleave', () => { hoverPosition = null; tooltip.hidden = true; });
+      renderer.domElement.addEventListener('pointerdown', () => { dragging = true; tooltip.hidden = true; });
+      addEventListener('pointerup', () => { dragging = false; updateHover(); });
+      addEventListener('pointercancel', () => { dragging = false; hoverPosition = null; tooltip.hidden = true; });
+
+      scene.add(new THREE.HemisphereLight('#cceaff', '#253044', 2));
+      const light = new THREE.DirectionalLight('#ffffff', 3);
+      light.position.set(3, 5, 4);
+      scene.add(light);
+      // OrbitControls drives an invisible control camera. Transfer its rotation
+      // to the figure instead: the visible camera and lights stay fixed in space.
+      const controlCamera = camera.clone();
+      const controls = new OrbitControls(controlCamera, renderer.domElement);
+      controls.enablePan = false;
+      controls.minZoom = 0.3;
+      controls.maxZoom = 3;
+      controls.update();
+      const initialRotation = controlCamera.quaternion.clone();
+      controls.saveState();
+      let explosionAmount = 0;
+      let separationAmount = 0;
+      const render = () => {
+        for (const figure of figures) {
+          figure.root.position.copy(figure.rest).sub(barycenter)
+            .multiplyScalar(1 + 0.5 * separationAmount).add(barycenter);
+          figure.fillerSides.visible = explosionAmount > 0 || !figure.parts.faces.visible;
+        }
+        for (const entry of explosion) {
+          const { object, rest, offset, root, center } = entry;
+          // Recompute the radial displacement against the current separated layout.
+          if (root) offset.copy(center).applyQuaternion(root.quaternion).add(root.position)
+            .sub(barycenter).applyQuaternion(root.quaternion.clone().invert());
+          object.position.copy(rest).addScaledVector(offset, explosionAmount);
+        }
+        renderer.render(scene, camera);
+        updateHover();
+      };
+      const updateFigure = () => {
+        assembly.quaternion.copy(initialRotation)
+          .multiply(controlCamera.quaternion.clone().invert());
+        camera.zoom = controlCamera.zoom;
+        camera.updateProjectionMatrix();
+        camera.lookAt(0, 0, 0);
+        render();
+      };
+      controls.addEventListener('change', updateFigure);
+      for (const [name, part] of Object.entries(parts)) {
+        document.getElementById(name).addEventListener('change', event => {
+          for (const figure of figures) figure.parts[name].visible = event.target.checked;
+          render();
+        });
+      }
+      document.getElementById('belt').addEventListener('change', event => {
+        belt.visible = event.target.checked;
+        render();
+      });
+      document.getElementById('outer-tetrahedra').addEventListener('change', event => {
+        outerTetrahedra.visible = event.target.checked;
+        render();
+      });
+      document.getElementById('completion').addEventListener('change', event => {
+        completion.visible = event.target.checked;
+        render();
+      });
+      // One radial rule for all rigid components: c' = B + factor * (c - B).
+      // Compute the combined vertex barycenter from all figures.
+      const barycenter = new THREE.Vector3();
+      for (const { root, parts } of figures) {
+        for (const vertex of parts.vertices.children) {
+          barycenter.add(vertex.position.clone().applyQuaternion(root.quaternion).add(root.position));
+        }
+      }
+      barycenter.divideScalar(4 * figures.length);
+      const explosion = [];
+      for (const { root, parts } of figures) {
+        const record = (object, center) => {
+          const offset = center.clone().applyQuaternion(root.quaternion).add(root.position)
+            .sub(barycenter).applyQuaternion(root.quaternion.clone().invert());
+          explosion.push({ object, rest: object.position.clone(), offset, root, center: center.clone() });
+        };
+        for (const vertex of parts.vertices.children) record(vertex, vertex.position);
+        for (const group of [parts.edges, parts.faces]) {
+          for (const object of group.children) {
+            const position = object.geometry.getAttribute('position');
+            const center = new THREE.Vector3();
+            for (let i = 0; i < position.count; i++) center.add(new THREE.Vector3().fromBufferAttribute(position, i));
+            record(object, center.divideScalar(position.count));
+          }
+        }
+        const fillerCenter = parts.vertices.children.reduce((sum, vertex) => sum.add(vertex.position), new THREE.Vector3()).divideScalar(4);
+        record(parts.closure, fillerCenter);
+      }
+      let explosionFrame = null;
+      const explodeToggle = document.getElementById('explode');
+      const factorSlider = document.getElementById('explosion-factor');
+      const animateExplosion = () => {
+        if (explosionFrame !== null) cancelAnimationFrame(explosionFrame);
+        const from = explosionAmount;
+        const to = explodeToggle.checked ? Number(factorSlider.value) - 1 : 0;
+        const start = performance.now();
+        const duration = 650;
+        const animate = now => {
+          const t = Math.min((now - start) / duration, 1);
+          const eased = t * t * (3 - 2 * t);
+          explosionAmount = from + (to - from) * eased;
+          render();
+          explosionFrame = t < 1 ? requestAnimationFrame(animate) : null;
+        };
+        explosionFrame = requestAnimationFrame(animate);
+      };
+      explodeToggle.addEventListener('change', animateExplosion);
+      factorSlider.addEventListener('input', () => {
+        document.getElementById('factor-value').value = Number(factorSlider.value).toFixed(2) + '×';
+        animateExplosion();
+      });
+      let separationFrame = null;
+      const separateToggle = document.getElementById('separate');
+      separateToggle.addEventListener('change', () => {
+        if (separationFrame !== null) cancelAnimationFrame(separationFrame);
+        const from = separationAmount;
+        const to = separateToggle.checked ? 1 : 0;
+        const start = performance.now();
+        const animate = now => {
+          const t = Math.min((now - start) / 650, 1);
+          separationAmount = from + (to - from) * t * t * (3 - 2 * t);
+          render();
+          separationFrame = t < 1 ? requestAnimationFrame(animate) : null;
+        };
+        separationFrame = requestAnimationFrame(animate);
+      });
+      // Browsers can restore checkbox values independently of module state.
+      // Initialize the scene from the actual controls, including history restores.
+      const syncControlState = () => {
+        if (explosionFrame !== null) cancelAnimationFrame(explosionFrame);
+        if (separationFrame !== null) cancelAnimationFrame(separationFrame);
+        explosionFrame = separationFrame = null;
+        separationAmount = separateToggle.checked ? 1 : 0;
+        explosionAmount = explodeToggle.checked ? Number(factorSlider.value) - 1 : 0;
+        document.getElementById('factor-value').value = Number(factorSlider.value).toFixed(2) + '×';
+        for (const figure of figures) {
+          for (const [name, part] of Object.entries(figure.parts)) {
+            part.visible = document.getElementById(name).checked;
+          }
+        }
+        belt.visible = document.getElementById('belt').checked;
+        outerTetrahedra.visible = document.getElementById('outer-tetrahedra').checked;
+        completion.visible = document.getElementById('completion').checked;
+        updateFigure();
+      };
+      addEventListener('pageshow', syncControlState);
+      syncControlState();
+      document.querySelector('#reset').addEventListener('click', () => { controls.reset(); render(); });
+      addEventListener('resize', () => {
+        const aspect = innerWidth / innerHeight;
+        for (const view of [camera, controlCamera]) {
+          view.left = -viewHeight * aspect / 2;
+          view.right = viewHeight * aspect / 2;
+          view.top = viewHeight / 2;
+          view.bottom = -viewHeight / 2;
+          view.updateProjectionMatrix();
+        }
+        renderer.setSize(innerWidth, innerHeight);
+        render();
+      });
+      render();
+    } catch (cause) {
+      error.hidden = false;
+      error.textContent = 'Unable to load the scene. Internet access to jsDelivr and a WebGL-capable browser are required. ' + cause.message;
+      console.error(cause);
+    }
+  </script>
+</body>
+</html>

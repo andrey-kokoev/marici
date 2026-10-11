@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Electron candidate — four-face spinor construction</title>
+<style>
+*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:#101827;color:#e8eef7;font:14px system-ui;display:grid;grid-template-columns:360px 1fr;height:100vh}aside{padding:18px;overflow:auto;background:#141f30;border-right:1px solid #40506a}h1{font-size:20px;margin:0 0 10px}p{line-height:1.5;color:#c2cede}a{color:#91d9ff}nav{display:grid;gap:5px}button{background:#263951;border:1px solid #526d8b;color:#fff;padding:8px;border-radius:5px;cursor:pointer}nav button{text-align:left}button[aria-current]{border-color:#ffe191;background:#4a402b}button:focus-visible,input:focus-visible{outline:2px solid #ffe191}label{display:block;margin:10px 0 4px}input[type=range]{width:100%}.row{display:flex;gap:5px;flex-wrap:wrap}.formula,output{font-family:ui-monospace,monospace}.formula{white-space:pre-line;line-height:1.5;color:#ffe191;padding:10px;background:#0d1522;border-radius:5px}.small{font-size:12px}table{width:100%;border-collapse:collapse;font-size:12px;margin:12px 0}td,th{padding:5px 3px;border-bottom:1px solid #35445a;text-align:left}td.num{text-align:right;font-family:ui-monospace,monospace}main{position:relative;min-width:0;overflow:hidden}canvas{display:block;touch-action:none}#caption{position:absolute;bottom:12px;left:12px;right:12px;background:#101827dc;padding:10px;border:1px solid #3b4c67;border-radius:6px;pointer-events:none}#error{position:absolute;top:15px;left:15px;right:15px;background:#281922;color:#ffb9b9;padding:15px}#readout{font:12px/1.6 ui-monospace,monospace;white-space:pre-wrap}details{margin-top:14px}@media(max-width:760px){body{grid-template-columns:1fr;grid-template-rows:48vh 52vh}aside{border-right:0;border-bottom:1px solid #40506a}h1{font-size:18px}#caption{font-size:11px;padding:6px}}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script></head>
+<body><aside><h1>Electron candidate<br>Four-face spinor construction</h1>
+<p class="small"><a href="proton-neutron-assembly.html">← Proton / belt assembly</a><br><a href="fourth-construction.html">Fourth construction: compare the two routes →</a></p>
+<nav id="steps"></nav><p id="description" aria-live="polite"></p><div id="formula" class="formula"></div>
+<div class="row" style="margin-top:10px"><button id="back">Previous</button><button id="next">Next</button><button id="reset">Reset camera</button></div>
+<section id="preparation"><h2 style="font-size:16px">Prepare an input spin state</h2>
+<label>Polar angle θ: <output id="theta-value">0°</output><input id="theta" type="range" min="0" max="180" step="1" value="0"></label>
+<label>Azimuth φ: <output id="phi-value">0°</output><input id="phi" type="range" min="-180" max="180" step="1" value="0"></label>
+<div class="row"><button id="up">+z state</button><button id="down">−z state</button><button id="zero-face">Zero face 1</button></div>
+</section>
+<section id="rotation-panel" hidden><h2 style="font-size:16px">Rotation lift · fixed spin basis</h2>
+<label>Body rotation α: <output id="angle-value">0°</output><input id="angle" type="range" min="0" max="720" step="1" value="0"></label>
+<div class="row"><button id="turn360">360°: opposite sign</button><button id="turn720">720°: original sign</button><button id="turn0">0°</button></div>
+<p class="small">The sign is shown relative to the stored input spinor. The geometry and face weights alone cannot reveal it.</p></section>
+<table aria-label="Face projection weights"><thead><tr><th>Face</th><th>Weight ‖ψᵢ‖²</th></tr></thead><tbody id="weights"></tbody></table>
+<div id="readout"></div>
+<details><summary>What is being constructed?</summary><p class="small">A declared spinorial extension, not a smaller solid electron. The tetrahedron indexes four face projections of one two-component state. Both logical spin states survive. No electric-charge, mass or exchange rule is generated here.</p><p class="small">The 144-transfer realization uses L = diag(Pᵢ), G = N, and return N. Equal matrices at distinct typed stages are separate records. Matrix entries, not the drawn guide lines, determine that count.</p><p class="small"><a href="https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/electron-charge-spin-frontier.md">Derivation and exact checks</a></p></details>
+</aside><main id="view"><div id="caption">Drag to rotate · Scroll to zoom. Exploded positions are display poses; arrows represent polarization, not particle trajectories.</div><div id="error" role="alert" hidden></div></main>
+<script type="module">
+try {
+const THREE=await import('three');const {OrbitControls}=await import('three/addons/controls/OrbitControls.js');
+const view=document.querySelector('#view');const scene=new THREE.Scene();scene.background=new THREE.Color('#101827');
+const camera=new THREE.PerspectiveCamera(42,1,.01,100);camera.position.set(4,2.8,6.5);
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));view.prepend(renderer.domElement);renderer.domElement.setAttribute('aria-label','Four tetrahedral face projections encoding one spinorial doublet');
+const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(0,0,0);controls.minDistance=3.5;controls.maxDistance=16;controls.update();controls.saveState();
+scene.add(new THREE.HemisphereLight('#eff8ff','#283446',2.5));const light=new THREE.DirectionalLight('#ffffff',2);light.position.set(3,6,5);scene.add(light);
+const body=new THREE.Group();scene.add(body);const V=(...x)=>new THREE.Vector3(...x);
+const points={A:V(1,1,1),B:V(1,-1,-1),C:V(-1,1,-1),D:V(-1,-1,1)};
+const names=['ABC','BAD','CDA','DCB'],colors=['#72c8e8','#a3ca88','#c397e0','#e6b474'];
+function line(ps,parent,color){const l=new THREE.Line(new THREE.BufferGeometry().setFromPoints(ps),new THREE.LineBasicMaterial({color,transparent:true,opacity:.8}));parent.add(l);return l;}
+function label(value,where,color,size=.23){const c=document.createElement('canvas');const x=c.getContext('2d');x.font='bold 36px monospace';c.width=Math.ceil(x.measureText(value).width)+20;c.height=64;x.font='bold 36px monospace';x.fillStyle=color;x.textAlign='center';x.textBaseline='middle';x.fillText(value,c.width/2,32);const s=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),depthTest:false,transparent:true}));s.position.copy(where);s.scale.set(size*c.width/64,size,1);return s;}
+const parts=names.map((name,i)=>{const ps=[...name].map(k=>points[k]);const center=ps.reduce((a,p)=>a.add(p),V(0,0,0)).divideScalar(3);
+ const normal=ps[1].clone().sub(ps[0]).cross(ps[2].clone().sub(ps[0])).normalize();
+ const g=new THREE.Group();body.add(g);const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(ps.flatMap(v=>v.toArray()),3));geo.computeVertexNormals();
+ const mat=new THREE.MeshStandardMaterial({color:colors[i],side:THREE.DoubleSide,transparent:true,opacity:.25,depthWrite:false});g.add(new THREE.Mesh(geo,mat));line([...ps,ps[0]],g,colors[i]);
+ const tag=label(`${i+1}: ${name}`,center.clone().addScaledVector(normal,.2),colors[i]);g.add(tag);
+ const arrow=new THREE.ArrowHelper(normal.clone().negate(),center.clone().addScaledVector(normal,.9),.75,colors[i],.15,.07);g.add(arrow);
+ const guide=line([V(0,0,0),center],body,colors[i]);
+ return{name,ps,normal,center,g,mat,tag,arrow,guide};});
+const inputArrow=new THREE.ArrowHelper(V(0,0,1),V(0,0,0),1.35,'#fff1b0',.18,.08);body.add(inputArrow);
+const inputLabel=label('input spin',V(0,1.9,0),'#fff1b0',.26);body.add(inputLabel);
+const add=(a,b)=>[a[0]+b[0],a[1]+b[1]],mul=(a,b)=>[a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]],conj=a=>[a[0],-a[1]],scale=(s,a)=>[s*a[0],s*a[1]],norm=z=>z.reduce((s,a)=>s+a[0]**2+a[1]**2,0);
+const mv=(m,z)=>m.map(row=>row.reduce((a,c,j)=>add(a,mul(c,z[j])),[0,0]));
+const projector=n=>[[[(1-n.z)/2,0],[-n.x/2,n.y/2]],[[-n.x/2,-n.y/2],[(1+n.z)/2,0]]];
+const rotate=(z,a)=>[add(scale(Math.cos(a/2),z[0]),scale(-Math.sin(a/2),z[1])),add(scale(Math.sin(a/2),z[0]),scale(Math.cos(a/2),z[1]))];
+const bloch=z=>{const ab=mul(conj(z[0]),z[1]);return V(2*ab[0],2*ab[1],norm([z[0]])-norm([z[1]]));};
+const fmt=z=>`${Math.abs(z[0])<.0005?'0.000':z[0].toFixed(3)}${z[1]<-.0005?'−':'+'}${Math.abs(z[1])<.0005?'0.000':Math.abs(z[1]).toFixed(3)}i`;
+const steps=[
+ ['1 · Four face frames','Start with four oriented whole faces of the tetrahedron. Their normals define the locations of the projection records, not four particles.','nᵢ = outward unit face normal\nΣ nᵢ = 0'],
+ ['2 · Select inward polarization','Each face selects the spinor component opposite to its outward normal. The arrows show this polarization direction.','Pᵢ = (I − nᵢ · σ) / 2\nPᵢ² = Pᵢ;  Σ Pᵢ = 2I'],
+ ['3 · Encode one spinor across the faces','Change the input state below. Its two complex components are distributed across all four face records. A face may have zero weight without losing the full state.','ψᵢ = Pᵢ z / √2\nΣ ‖ψᵢ‖² = ‖z‖² = 1'],
+ ['4 · Recover both components','The face records reconstruct the input exactly. This is an isometric encoding of a doublet, not a collapse to one selected spin direction.','J†ψ = Σ Pᵢψᵢ / √2 = z\nJ†J = I₂'],
+ ['5 · Form the coherent return','The return preserves a two-dimensional space. Every encoded state has negative face polarization; that statement is not an electric-charge measurement.','Nᵢⱼ = PᵢPⱼ / 2\nN² = N; rank N = 2\nL: 16 + G: 64 + N: 64 = 144 transfers'],
+ ['6 · Follow the rotation lift','Rotate the body and spinor together. At 360° the geometry returns but the spinor has the opposite sign. At 720° both return.','Uᵧ(α) = exp(−i α σᵧ / 2)\nUᵧ(360°) = −I\nUᵧ(720°) = +I']
+];
+let step=0,offset=.7,motion=0,spinMotion=0,reference=[ [1,0],[0,0] ];
+const offsets=[.7,.7,.35,0,0,0];
+const nav=document.querySelector('#steps');steps.forEach(([title],i)=>{const b=document.createElement('button');b.textContent=title;b.dataset.step=i;b.addEventListener('click',()=>setStep(i));nav.append(b);});
+function render(){renderer.render(scene,camera);}
+function update(){
+ const theta=+document.querySelector('#theta').value*Math.PI/180,phi=+document.querySelector('#phi').value*Math.PI/180;
+ reference=[[Math.cos(theta/2),0],[Math.sin(theta/2)*Math.cos(phi),Math.sin(theta/2)*Math.sin(phi)]];
+ const angle=(step===5?+document.querySelector('#angle').value:0)*Math.PI/180,world=rotate(reference,angle);body.rotation.y=angle;
+ document.querySelector('#theta-value').textContent=`${document.querySelector('#theta').value}°`;document.querySelector('#phi-value').textContent=`${document.querySelector('#phi').value}°`;document.querySelector('#angle-value').textContent=`${document.querySelector('#angle').value}°`;
+ inputArrow.setDirection(bloch(reference).normalize());inputArrow.visible=inputLabel.visible=step>=2;
+ let recovered=[[0,0],[0,0]],totalWeight=0,polarization=0,covarianceError=0;const weights=[];const faceStates=[];
+ parts.forEach((p,i)=>{
+  const local=mv(projector(p.normal),reference).map(z=>scale(1/Math.sqrt(2),z));const state=rotate(local,angle);const n=p.normal.clone().applyAxisAngle(V(0,1,0),angle),P=projector(n);
+  const direct=mv(P,world).map(z=>scale(1/Math.sqrt(2),z));direct.forEach((z,j)=>{covarianceError=Math.max(covarianceError,Math.hypot(z[0]-state[j][0],z[1]-state[j][1]));});
+  const rec=mv(P,state);recovered=recovered.map((z,j)=>add(z,scale(1/Math.sqrt(2),rec[j])));
+  const w=norm(state);weights.push(w);totalWeight+=w;faceStates.push(state);const spin=bloch(state);polarization+=n.dot(spin);
+  p.g.position.copy(p.normal).multiplyScalar(offset);p.mat.opacity=step<2?.2:.09+.65*w;p.arrow.visible=step>=1&&(step<2||w>1e-10);p.guide.visible=step>=2&&step<=4;
+  const pos=p.guide.geometry.attributes.position;const end=p.center.clone().add(p.g.position);pos.setXYZ(0,0,0,0);pos.setXYZ(1,end.x,end.y,end.z);pos.needsUpdate=true;p.guide.geometry.computeBoundingSphere();
+ });
+ const reconstructionError=Math.max(...recovered.map((z,i)=>Math.hypot(z[0]-world[i][0],z[1]-world[i][1])));
+ const overlap=world.reduce((a,z,i)=>add(a,mul(conj(reference[i]),z)),[0,0]);
+ document.querySelector('#weights').innerHTML=parts.map((p,i)=>`<tr><td style="color:${colors[i]}">${i+1} · ${p.name}</td><td class="num">${weights[i].toFixed(6)}</td></tr>`).join('');
+ document.querySelector('#readout').textContent=`Spinor in fixed basis:\n(${fmt(world[0])}, ${fmt(world[1])})\nTotal face weight: ${totalWeight.toFixed(6)}\nNegative polarization: ${polarization.toFixed(6)}\nReconstruction error: ${reconstructionError.toExponential(1)}`+(step===5?`\nReference overlap: ${fmt(overlap)}`:'');
+ window.electronAssemblyAudit={step:step+1,angleDegrees:angle*180/Math.PI,reference,spinor:world,faceStates,weights,totalWeight,polarization,reconstructionError,covarianceError,referenceOverlap:overlap,logicalRank:2,transferCount:144,normals:parts.map(p=>p.normal.toArray())};
+ if(Math.abs(totalWeight-1)>1e-10||Math.abs(polarization+1)>1e-10||reconstructionError>1e-10||covarianceError>1e-10)throw Error('Spinor encoding check failed');
+ render();
+}
+function setStep(i){++spinMotion;step=Math.max(0,Math.min(5,i));document.querySelector('#description').textContent=steps[step][1];document.querySelector('#formula').textContent=steps[step][2];document.querySelector('#rotation-panel').hidden=step!==5;nav.querySelectorAll('button').forEach((b,j)=>{if(j===step)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
+ const from=offset,start=performance.now(),id=++motion;function tick(now){if(id!==motion)return;const t=Math.min(1,(now-start)/750);offset=from+(offsets[step]-from)*t*t*(3-2*t);update();if(t<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);
+}
+for(const id of ['theta','phi','angle'])document.querySelector('#'+id).addEventListener('input',()=>{++spinMotion;update();});
+function prep(t,p){document.querySelector('#theta').value=t;document.querySelector('#phi').value=p;update();}
+document.querySelector('#up').addEventListener('click',()=>prep(0,0));document.querySelector('#down').addEventListener('click',()=>prep(180,0));
+document.querySelector('#zero-face').addEventListener('click',()=>{const n=parts[0].normal;document.querySelector('#theta').step='any';document.querySelector('#phi').step='any';prep(Math.acos(n.z)*180/Math.PI,Math.atan2(n.y,n.x)*180/Math.PI);});
+for(const a of [0,360,720])document.querySelector('#turn'+a).addEventListener('click',()=>{const slider=document.querySelector('#angle'),from=+slider.value,start=performance.now(),id=++spinMotion;function tick(now){if(id!==spinMotion)return;const t=Math.min(1,(now-start)/1300);slider.value=from+(a-from)*t;update();if(t<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);});
+document.querySelector('#back').addEventListener('click',()=>setStep(step-1));document.querySelector('#next').addEventListener('click',()=>setStep(step+1));document.querySelector('#reset').addEventListener('click',()=>{controls.reset();render();});controls.addEventListener('change',render);
+new ResizeObserver(()=>{const w=view.clientWidth,h=view.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);render();}).observe(view);
+setStep(0);update();
+} catch(e){const error=document.querySelector('#error');error.hidden=false;error.textContent='Unable to render the construction: '+e.message+' (Three.js requires access to jsDelivr.)';console.error(e);}
+</script></body></html>

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One tetrahedron: sectors, collapse, and coefficient folds</title>
+<style>
+:root{color-scheme:dark;--bg:#101722;--panel:#192333;--text:#e6edf5;--muted:#aebed1;--gold:#ffd166;--line:#3a5069}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,sans-serif}main{max-width:1500px;margin:auto;padding:24px}h1{font-size:clamp(23px,3vw,34px);line-height:1.2;margin:0 0 10px}h2{font-size:19px;margin:0 0 8px}p{margin:8px 0}a{color:#8fd6ff}.muted,small{color:var(--muted)}nav,.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}nav{margin:22px 0 16px}button,select{font:inherit;color:var(--text);background:#24354c;border:1px solid #54708e;border-radius:7px;padding:8px 13px;cursor:pointer}button[aria-pressed="true"]{background:#435535;border-color:var(--gold);color:#fff2cc}button:focus-visible,select:focus-visible,input:focus-visible,canvas:focus-visible{outline:3px solid var(--gold);outline-offset:3px}input[type=range]{width:180px;vertical-align:middle;accent-color:var(--gold)}label{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap}.explanation,.controls,.readout{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:16px;margin:12px 0}.controls .row+.row{margin-top:12px}.views{display:grid;grid-template-columns:1fr 1fr;gap:16px}.view-card{min-width:0;background:#121e2c;border:1px solid var(--line);border-radius:9px;overflow:hidden}.view-heading{padding:12px 16px 0}.viewport{height:clamp(320px,48vh,560px);position:relative;touch-action:none}.viewport canvas{display:block;width:100%;height:100%;touch-action:none}.caption{padding:8px 16px 14px;min-height:70px;color:var(--muted)}.readout{font:14px/1.6 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;min-height:95px}.badge{color:var(--gold);font-weight:600}.key{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px}.upper{background:#6bdcff}.lower{background:#ee96dd}#error{background:#512c31;padding:16px;border:1px solid #ff9696;border-radius:8px}details{margin:16px 0;padding:12px 16px;border:1px solid var(--line);border-radius:8px}summary{cursor:pointer}code{color:#ffe0a1}footer{margin-top:22px;color:var(--muted);font-size:14px}[hidden]{display:none!important}@media(max-width:760px){main{padding:14px}.views{grid-template-columns:1fr}.viewport{height:340px}nav button{flex:1;padding:8px}.caption{min-height:0}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+</head>
+<body>
+<main>
+<h1>One tetrahedron: what collapses, what is kept</h1>
+<p class="muted">A separate construction from the <a href="tetrahedron-dual-belt.html">two-tetrahedron assembly</a>. Start with step 1. No host attachment or particle interpretation is shown here.</p>
+<nav aria-label="Exploration steps">
+<button type="button" data-step="1" aria-pressed="true">1 · Where 24 comes from</button>
+<button type="button" data-step="2" aria-pressed="false">2 · Collapse / retain</button>
+<button type="button" data-step="3" aria-pressed="false">3 · Two directions, one value</button>
+<button type="button" id="reset">Reset</button>
+</nav>
+<section class="explanation" id="explanation" aria-labelledby="step-title"><h2 id="step-title">Loading the geometry…</h2><p id="step-text">The page needs WebGL and access to jsDelivr for Three.js.</p></section>
+<p id="error" role="alert" hidden></p>
+<section class="controls" aria-label="Exploration controls">
+<div id="sector-controls">
+<div class="row"><label>Faces <select id="face"><option value="all">All four: 24 pieces</option><option>ABC</option><option>ABD</option><option>ACD</option><option>BCD</option></select></label><button type="button" id="previous">Previous piece</button><button type="button" id="next">Next piece</button><label><input type="checkbox" id="only">Only selected piece</label></div>
+<div class="row"><label>Separate pieces <input id="explode" type="range" min="0" max="1" step="0.01" value="0.18"><output id="explode-value">18%</output></label><span class="muted">Display gaps only; this does not change the subdivision.</span></div>
+</div>
+<div id="collapse-controls" hidden><div class="row"><label>Collapse <input id="collapse" type="range" min="0" max="1" step="0.01" value="0"><output id="collapse-value">0%</output></label><button type="button" id="start-position">Boundary</button><button type="button" id="end-position">At center</button></div><p class="muted">One colored sample per sector. There are continuously many possible directions, not just 24.</p></div>
+<div id="mode-controls" hidden><div class="row"><button type="button" id="mode-center">Image center</button><button type="button" id="mode-boundary">On the seam</button><button type="button" id="mode-loop">Trace a closed loop</button><span><i class="key upper"></i>Upper: face ABC &nbsp; <i class="key lower"></i>Lower: the other three faces</span></div><div class="row"><label>Image coordinate uA <input id="mode-a" type="range" min="0" max="1" step="0.001" value="0.333333"><output id="mode-a-value"></output></label><label>uB <input id="mode-b" type="range" min="0" max="0.666667" step="0.001" value="0.333333"><output id="mode-b-value"></output></label><span class="muted">uC = 1 − uA − uB. Or click/drag inside the right-hand triangle.</span></div></div>
+</section>
+<div class="views">
+<section class="view-card"><div class="view-heading"><h2 id="left-title">Tetrahedron</h2></div><div id="left-view" class="viewport"></div><div id="left-caption" class="caption"></div></section>
+<section class="view-card"><div class="view-heading"><h2 id="right-title">Face detail</h2></div><div id="right-view" class="viewport"></div><div id="right-caption" class="caption"></div></section>
+</div>
+<div id="readout" class="readout" aria-label="Selected geometry and coordinates"></div>
+<p id="announcement" role="status" class="muted"></p>
+<details><summary>What exactly is being drawn?</summary>
+<p><b>Step 1.</b> A flag is a nested choice of vertex, edge, face, and body. The barycenters of those four objects form one small tetrahedron. There are 4 × 3 × 2 = 24 flags. This is a subdivision count.</p>
+<p><b>Step 2.</b> If b is the body center and v is a boundary point, the visible point is y = (1 − t)b + tv. Sending t to zero erases v from the visible point. The right panel explicitly stores v separately. It does not claim that an ordinary geometric point contains a visible miniature tetrahedron. The direction boundary is a tetrahedral surface, topologically a sphere.</p>
+<p><b>Step 3.</b> The right triangle is a coordinate chart for the selected coefficient image, <em>not a host spatial triangle</em>. For tetrahedron barycentric coordinates v, its coordinates are u = (vA + vD/3, vB + vD/3, vC + vD/3). This represents the kernel quotient of the retained projector in the declared ABCD alignment. It is not a display of the three complex coefficients themselves.</p>
+<p>For m = min(uA,uB,uC), the two boundary preimages are upper = (uA,uB,uC,0) and lower = (uA−m,uB−m,uC−m,3m). On the boundary m = 0 and the points coincide. The dashed segment joins equal-readout endpoints through the solid interior; only its endpoints belong to the direction boundary.</p>
+<p>The animated loop follows these explicit global lifts. It does not demonstrate every possible transport law. The host's six-panel belt is deliberately omitted: it is a different object.</p>
+<p><a href="../../research/voevodsky/retained-potential-realization.md">Construction notes and verification</a></p>
+</details>
+<footer>Drag either 3D view to rotate; scroll to zoom. Click a colored sector to select it. The right views in steps 1 and 3 are flat diagrams. This page does not alter the existing assembly.</footer>
+</main>
+<script id="fold-math">
+// Pure geometry, also exercised by the Node checker. No DOM or WebGL here.
+(() => {
+  const P=[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]];
+  const faces=[[0,1,2],[0,1,3],[0,2,3],[1,2,3]];
+  const bary=ids=>P.map((_,i)=>ids.includes(i)?1/ids.length:0);
+  const mean=rows=>rows[0].map((_,i)=>rows.reduce((s,r)=>s+r[i],0)/rows.length);
+  const xyz=v=>[0,1,2].map(i=>v.reduce((s,a,j)=>s+a*P[j][i],0));
+  const flags=[];
+  for(const face of faces)for(const vertex of face)for(const other of face.filter(i=>i!==vertex)){
+    const edge=[vertex,other].sort();
+    const chain=[[vertex],edge,face,[0,1,2,3]];
+    const vertices=chain.map(bary);
+    flags.push({face:face.map(i=>'ABCD'[i]).join(''),chain:chain.map(ids=>ids.map(i=>'ABCD'[i]).join('')),vertices,boundary:vertices.slice(0,3),sample:mean(vertices.slice(0,3))});
+  }
+  const quotient=v=>[0,1,2].map(i=>v[i]+v[3]/3);
+  const lifts=u=>{const m=Math.min(...u);return {upper:[...u,0],lower:[...u.map(a=>a-m),3*m]};};
+  const collapse=(v,s)=>v.map(a=>(1-s)*a+s/4);
+  const loop=phase=>[0,1,2].map(i=>1/3+0.23*Math.cos(2*Math.PI*(phase+i/3)));
+  globalThis.FoldMath={P,faces,bary,mean,xyz,flags,quotient,lifts,collapse,loop};
+})();
+</script>
+<script type="module">
+const $=id=>document.getElementById(id);
+try {
+const THREE=await import('three');
+const {OrbitControls}=await import('three/addons/controls/OrbitControls.js');
+const M=globalThis.FoldMath;
+const colors={ABC:0x6bdcff,ABD:0xee96dd,ACD:0xa8df85,BCD:0xffad75};
+const gold=0xffd166,upperColor=0x6bdcff,lowerColor=0xee96dd;
+const state={step:1,selected:0,face:'all',only:false,explode:0.18,collapse:0,u:[1/3,1/3,1/3],running:false,phase:0,trace:false,finished:false};
+const flatCorners=[new THREE.Vector3(0,1.35,0),new THREE.Vector3(-1.17,-0.675,0),new THREE.Vector3(1.17,-0.675,0)];
+const flat=u=>flatCorners.reduce((p,c,i)=>p.addScaledVector(c,u[i]),new THREE.Vector3());
+const vector=v=>new THREE.Vector3(...M.xyz(v));
+function makeView(id){
+  const element=$(id),renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor(0x121e2c);
+  renderer.domElement.setAttribute('aria-label',id==='left-view'?'Interactive tetrahedron':'Direction or coefficient detail');
+  element.appendChild(renderer.domElement);
+  const scene=new THREE.Scene(),group=new THREE.Group();scene.add(group);
+  const camera=new THREE.OrthographicCamera(-2.5,2.5,2.5,-2.5,0.01,100);
+  const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.enablePan=false;controls.minZoom=0.65;controls.maxZoom=3;
+  const view={element,renderer,scene,group,camera,controls};
+  view.home=planar=>{controls.reset();camera.position.set(...(planar?[0,0,7]:[5,2,1]));camera.up.set(0,1,0);camera.zoom=1;controls.target.set(0,0,0);camera.lookAt(0,0,0);camera.updateProjectionMatrix();controls.enableRotate=!planar;controls.update();};
+  const observer=new ResizeObserver(()=>{const w=element.clientWidth,h=element.clientHeight;renderer.setSize(w,h);const aspect=w/h;camera.left=-2.25*aspect;camera.right=2.25*aspect;camera.top=2.25;camera.bottom=-2.25;camera.updateProjectionMatrix();});observer.observe(element);
+  view.home(false);return view;
+}
+const left=makeView('left-view'),right=makeView('right-view');
+function clear(view){
+  const geometries=new Set(),materials=new Set();view.group.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)for(const m of(Array.isArray(o.material)?o.material:[o.material]))materials.add(m);});
+  view.group.clear();for(const g of geometries)g.dispose();for(const m of materials){if(m.map)m.map.dispose();m.dispose();}
+}
+function line(group,points,color=0x6a819b,dashed=false){const geometry=new THREE.BufferGeometry().setFromPoints(points);const material=dashed?new THREE.LineDashedMaterial({color,dashSize:0.065,gapSize:0.04}):new THREE.LineBasicMaterial({color});const object=new THREE.Line(geometry,material);if(dashed)object.computeLineDistances();group.add(object);return object;}
+function dot(group,p,color,size=0.045,flag){const o=new THREE.Mesh(new THREE.SphereGeometry(size,12,8),new THREE.MeshBasicMaterial({color}));o.position.copy(p);if(flag!==undefined)o.userData.flag=flag;group.add(o);return o;}
+function label(group,text,p,color='#e9f3ff',scale=0.38){const canvas=document.createElement('canvas');let ctx=canvas.getContext('2d');ctx.font='600 44px system-ui';canvas.width=Math.ceil(ctx.measureText(text).width)+24;canvas.height=64;ctx=canvas.getContext('2d');ctx.font='600 44px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#101722dd';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle=color;ctx.fillText(text,canvas.width/2,32);const tex=new THREE.CanvasTexture(canvas);tex.colorSpace=THREE.SRGBColorSpace;const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,depthTest:false,depthWrite:false}));sprite.position.copy(p);sprite.scale.set(scale*canvas.width/canvas.height,scale,1);group.add(sprite);return sprite;}
+function triangle(group,points,color,opacity=0.45,flag){const geo=new THREE.BufferGeometry().setFromPoints(points);geo.computeVertexNormals();const mesh=new THREE.Mesh(geo,new THREE.MeshBasicMaterial({color,side:THREE.DoubleSide,transparent:opacity<1,opacity,depthWrite:false}));if(flag!==undefined)mesh.userData.flag=flag;group.add(mesh);return mesh;}
+function tetra(group,points,color,opacity,flag){for(const ids of [[0,1,2],[0,1,3],[0,2,3],[1,2,3]])triangle(group,ids.map(i=>points[i]),color,opacity,flag);for(const [a,b]of[[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]])line(group,[points[a],points[b]],color);}
+function shell(group,labels=true){const pts=M.P.map(p=>new THREE.Vector3(...p));for(const [a,b]of[[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]])line(group,[pts[a],pts[b]],0x61778e);if(labels)pts.forEach((p,i)=>label(group,'ABCD'[i],p.clone().multiplyScalar(1.16),'#d6e4f1',0.20));}
+const eligible=()=>M.flags.map((f,i)=>i).filter(i=>state.face==='all'||M.flags[i].face===state.face);
+function select(index){state.selected=index;if(state.face!=='all'&&state.face!==M.flags[index].face){state.face=M.flags[index].face;$('face').value=state.face;}draw();}
+function drawSectors(){
+  shell(left.group);const eligibleFlags=eligible();
+  for(const i of eligibleFlags){if(state.only&&i!==state.selected)continue;const f=M.flags[i];const offset=vector(M.mean(f.vertices)).multiplyScalar(state.explode);const pts=f.vertices.map(v=>vector(v).add(offset));tetra(left.group,pts,i===state.selected?gold:colors[f.face],i===state.selected?0.38:0.055,i);if(i===state.selected){line(left.group,pts,gold);pts.forEach((p,j)=>{dot(left.group,p,gold,0.038);label(left.group,f.chain[j],p.clone().add(new THREE.Vector3(0,0.13,0)),'#ffe6a1',0.17);});}}
+  const chosen=M.flags[state.selected],faceIndices=chosen.chain[2].split('').map(c=>'ABCD'.indexOf(c));
+  for(let i=0;i<M.flags.length;i++){const f=M.flags[i];if(f.face!==chosen.face)continue;const pts=f.boundary.map(v=>flat(faceIndices.map(j=>v[j])));triangle(right.group,pts,i===state.selected?gold:colors[f.face],i===state.selected?0.85:0.18,i);line(right.group,[...pts,pts[0]],0x7793aa);}
+  faceIndices.forEach((idx,i)=>label(right.group,'ABCD'[idx],flatCorners[i].clone().multiplyScalar(1.15),'#e9f3ff',0.20));
+  label(right.group,chosen.face,flat([1/3,1/3,1/3]).add(new THREE.Vector3(0,0,0.04)),'#e9f3ff',0.18);
+  $('readout').textContent=`Selected piece ${state.selected+1}/24: ${chosen.chain.join(' → ')}\nFour corners: vertex, edge midpoint, face center, body center.\nShowing ${state.only?1:eligibleFlags.length} solid pieces. Face ${chosen.face} has 6 boundary triangles, each joined to the body center.`;
+}
+function drawCollapse(){
+  shell(left.group);shell(right.group,false);
+  for(let i=0;i<M.flags.length;i++){const f=M.flags[i],color=i===state.selected?gold:colors[f.face],v=vector(f.sample),y=vector(M.collapse(f.sample,state.collapse));
+    triangle(right.group,f.boundary.map(vector),color,i===state.selected?0.55:0.14,i);line(right.group,[...f.boundary.map(vector),vector(f.boundary[0])],0x49647d);
+    dot(right.group,v,color,i===state.selected?0.07:0.032,i);
+    line(left.group,[new THREE.Vector3(),v],i===state.selected?gold:0x30465b);
+    if(state.collapse<1)dot(left.group,y,color,i===state.selected?0.07:0.033,i);
+    if(i===state.selected){line(right.group,[new THREE.Vector3(),v],gold);label(right.group,'kept direction',v.clone().multiplyScalar(1.3),'#ffe6a1',0.20);}
+  }
+  dot(left.group,new THREE.Vector3(),0xffffff,state.collapse===1?0.075:0.022);
+  if(state.collapse===1)label(left.group,'one visible point',new THREE.Vector3(0,0.28,0),'#ffffff',0.22);
+  const f=M.flags[state.selected];
+  $('readout').textContent=`Collapse: ${(100*state.collapse).toFixed(0)}% · inward depth t = ${(1-state.collapse).toFixed(2)}\n${state.collapse===1?'1 visible position; 24 separately retained sector samples.':'24 sample positions are moving inward. The stored directions on the right do not move.'}\nSelected sector: ${f.chain.join(' → ')}\nBoundary direction v = (${f.sample.map(a=>a.toFixed(3)).join(', ')}). This remains unchanged.`;
+}
+function drawMode(){
+  shell(left.group);
+  for(const face of M.faces)triangle(left.group,face.map(i=>new THREE.Vector3(...M.P[i])),face.includes(3)?lowerColor:upperColor,0.14);
+  const seam=[...M.P.slice(0,3).map(p=>new THREE.Vector3(...p))];line(left.group,[...seam,seam[0]],0xffffff);
+  for(const v of [...[0,1,2].map(i=>M.bary([i])),M.bary([0,1]),M.bary([1,2]),M.bary([0,2])])dot(left.group,vector(v),0xffffff,0.023);
+  const {upper,lower}=M.lifts(state.u),pu=vector(upper),pl=vector(lower),merged=Math.min(...state.u)<1e-9;
+  if(merged){dot(left.group,pu,0xffffff,0.07);label(left.group,'same point',pu.clone().add(new THREE.Vector3(0,0.2,0)),'#ffffff',0.23);}else{
+    line(left.group,[pu,pl],0xffd166,true);dot(left.group,pu,upperColor,0.075);dot(left.group,pl,lowerColor,0.075);
+    label(left.group,'upper',pu.clone().add(new THREE.Vector3(0,0.16,0)),'#6bdcff',0.22);label(left.group,'lower',pl.clone().add(new THREE.Vector3(0,-0.17,0)),'#ee96dd',0.22);
+  }
+  triangle(right.group,flatCorners,0x6bdcff,0.16);line(right.group,[...flatCorners,flatCorners[0]],0xffffff);
+  flatCorners.forEach((p,i)=>label(right.group,['uA','uB','uC'][i],p.clone().multiplyScalar(1.15),'#e9f3ff',0.20));
+  for(const u of [[0.5,0.5,0],[0,0.5,0.5],[0.5,0,0.5]])dot(right.group,flat(u),0xffffff,0.025);
+  dot(right.group,flat(state.u),gold,0.07);
+  if(state.trace){const us=Array.from({length:97},(_,i)=>M.loop(i/96));line(right.group,us.map(flat),0x8a9c68);line(left.group,us.map(u=>vector(M.lifts(u).upper)),upperColor);line(left.group,us.map(u=>vector(M.lifts(u).lower)),lowerColor);}
+  $('mode-a').value=state.u[0];$('mode-b').max=Math.max(0,1-state.u[0]);$('mode-b').value=state.u[1];$('mode-a-value').value=state.u[0].toFixed(3);$('mode-b-value').value=state.u[1].toFixed(3);
+  $('readout').textContent=`Image value u = (${state.u.map(a=>a.toFixed(3)).join(', ')})\nUpper direction: (${upper.map(a=>a.toFixed(3)).join(', ')})\nLower direction: (${lower.map(a=>a.toFixed(3)).join(', ')})\n${merged?'On the seam: the two formulas give ONE boundary point.':'Inside the image: TWO distinct boundary points have this same readout.'}${state.finished?'\nLoop complete: upper returned to upper; lower returned to lower.':''}`;
+}
+const content={
+1:{title:'Build the 24 pieces, rather than taking the number on trust.',text:'Choose a vertex, an edge touching it, and a face containing that edge. Join their centers to the body center. This gives one small tetrahedron. Repeat every choice: 4 vertices × 3 edges × 2 faces = 24. Click a piece or use Previous / Next.',left:'24 small tetrahedra inside one tetrahedron',right:'One face, divided into six triangles',lc:'The selected small tetrahedron is gold. Its four corners follow the displayed chain. Drag to inspect; use separation to see pieces that overlap in projection.',rc:'Each small face triangle is the boundary base of one inward sector. Join all six to the body center to fill the cone under this face.'},
+2:{title:'Move to the center. Compare the point with the stored direction.',text:'The left shows positions moving inward. The right deliberately keeps the boundary directions unchanged. At 100%, the left has one position, but the right still distinguishes the sectors. Retention is additional data—not something recoverable from the center point alone.',left:'Visible geometric positions',right:'Stored directions — not extra physical space',lc:'The faint outer frame and rays are reference guides, not surviving positions. At full collapse only the center position remains.',rc:'The tetrahedral boundary represents the sphere of directions. One dot per sector is sampled here. Click a sector to track its direction on both sides.'},
+3:{title:'Different directions can have the same coefficient readout.',text:'Pick a point in the right-hand triangle. The left shows both boundary directions that produce that value. At the triangle boundary, those two points meet. Trace a loop: the upper and lower lifts each return to themselves, without exchanging.',left:'Two preimages on the direction boundary',right:'Coefficient-image chart — click or drag inside',lc:'Cyan: ABC face. Pink: the other three faces. The white ABC outline is their seam. The dashed chord joins the two endpoints of one equal-readout fiber.',rc:'This is a chart for coefficient values, not a second spatial tetrahedron or the host triangle. A single yellow value corresponds to the highlighted point(s) on the left.'}
+};
+function draw(){clear(left);clear(right);if(state.step===1)drawSectors();else if(state.step===2)drawCollapse();else drawMode();}
+function setStep(step){state.step=step;state.running=false;$('mode-loop').textContent='Trace a closed loop';const c=content[step];$('step-title').textContent=c.title;$('step-text').textContent=c.text;$('left-title').textContent=c.left;$('right-title').textContent=c.right;$('left-caption').textContent=c.lc;$('right-caption').textContent=c.rc;for(const button of document.querySelectorAll('[data-step]'))button.setAttribute('aria-pressed',String(Number(button.dataset.step)===step));$('sector-controls').hidden=step!==1;$('collapse-controls').hidden=step!==2;$('mode-controls').hidden=step!==3;right.home(step!==2);$('announcement').textContent='';draw();}
+for(const button of document.querySelectorAll('[data-step]'))button.addEventListener('click',()=>setStep(Number(button.dataset.step)));
+$('face').addEventListener('change',event=>{state.face=event.target.value;if(!eligible().includes(state.selected))state.selected=eligible()[0];draw();});
+for(const [id,delta]of[['previous',-1],['next',1]])$(id).addEventListener('click',()=>{const indices=eligible(),idx=indices.indexOf(state.selected);select(indices[(idx+delta+indices.length)%indices.length]);});
+$('only').addEventListener('change',event=>{state.only=event.target.checked;draw();});
+$('explode').addEventListener('input',event=>{state.explode=Number(event.target.value);$('explode-value').value=`${Math.round(100*state.explode)}%`;draw();});
+function collapse(value){state.collapse=value;$('collapse').value=value;$('collapse-value').value=`${Math.round(100*value)}%`;draw();}
+$('collapse').addEventListener('input',event=>collapse(Number(event.target.value)));$('start-position').addEventListener('click',()=>collapse(0));$('end-position').addEventListener('click',()=>collapse(1));
+function setMode(u){const total=u.reduce((s,a)=>s+Math.max(a,0),0);state.u=u.map(a=>Math.max(a,0)/total);state.running=false;state.trace=false;state.finished=false;$('announcement').textContent='';$('mode-loop').textContent='Trace a closed loop';draw();}
+$('mode-center').addEventListener('click',()=>setMode([1/3,1/3,1/3]));$('mode-boundary').addEventListener('click',()=>setMode([0.5,0.5,0]));
+$('mode-a').addEventListener('input',event=>{const a=Number(event.target.value),b=Math.min(state.u[1],1-a);setMode([a,b,1-a-b]);});
+$('mode-b').addEventListener('input',event=>{const b=Number(event.target.value);setMode([state.u[0],b,1-state.u[0]-b]);});
+$('mode-loop').addEventListener('click',()=>{state.running=!state.running;if(state.running){state.phase=0;state.trace=true;state.finished=false;state.u=M.loop(0);$('announcement').textContent='Following both sheets around one interior loop.';}else $('announcement').textContent='Loop stopped.';$('mode-loop').textContent=state.running?'Stop loop':'Trace a closed loop';draw();});
+const raycaster=new THREE.Raycaster();
+function ray(view,event){const rect=view.renderer.domElement.getBoundingClientRect();view.scene.updateMatrixWorld(true);view.camera.updateMatrixWorld(true);raycaster.setFromCamera(new THREE.Vector2(2*(event.clientX-rect.left)/rect.width-1,1-2*(event.clientY-rect.top)/rect.height),view.camera);}
+function modePick(event){ray(right,event);const point=raycaster.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,0,1),0),new THREE.Vector3());if(!point)return false;const triangle=new THREE.Triangle(...flatCorners);if(!triangle.containsPoint(point))return false;const coords=triangle.getBarycoord(point,new THREE.Vector3());setMode([coords.x,coords.y,coords.z]);return true;}
+for(const view of [left,right]){let down=null,dragMode=false;const canvas=view.renderer.domElement;
+  canvas.addEventListener('pointerdown',event=>{down=[event.clientX,event.clientY];if(view===right&&state.step===3){dragMode=modePick(event);if(dragMode)canvas.setPointerCapture(event.pointerId);}});
+  canvas.addEventListener('pointermove',event=>{if(dragMode)modePick(event);});
+  canvas.addEventListener('pointerup',event=>{if(!dragMode&&down&&Math.hypot(event.clientX-down[0],event.clientY-down[1])<5&&state.step!==3){ray(view,event);const pickables=[];view.group.traverse(o=>{if(o.isMesh&&o.userData.flag!==undefined)pickables.push(o);});const hits=raycaster.intersectObjects(pickables,false);if(hits.length)select(hits[0].object.userData.flag);}dragMode=false;down=null;});
+  canvas.addEventListener('pointercancel',()=>{dragMode=false;down=null;});
+}
+$('reset').addEventListener('click',()=>{Object.assign(state,{selected:0,face:'all',only:false,explode:0.18,collapse:0,u:[1/3,1/3,1/3],running:false,phase:0,trace:false,finished:false});$('face').value='all';$('only').checked=false;$('explode').value=0.18;$('explode-value').value='18%';$('collapse').value=0;$('collapse-value').value='0%';left.home(false);setStep(1);});
+setStep(1);
+let last=performance.now();
+function animate(now){const dt=Math.min((now-last)/1000,0.05);last=now;
+  if(state.running&&!document.hidden){state.phase=Math.min(1,state.phase+dt/8);state.u=M.loop(state.phase);if(state.phase===1){state.running=false;state.finished=true;$('mode-loop').textContent='Trace a closed loop';$('announcement').textContent='Loop complete. Neither sheet exchanged with the other.';}draw();}
+  for(const view of [left,right]){view.controls.update();view.renderer.render(view.scene,view.camera);}requestAnimationFrame(animate);
+}
+requestAnimationFrame(animate);
+} catch(error){$('error').hidden=false;$('error').textContent='Unable to start the view. WebGL and internet access to jsDelivr are required. '+error.message;console.error(error);}
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Three arrows to a receiver — centers connected last</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#111a27;color:#e8eef6;font:16px/1.5 system-ui,sans-serif}main{max-width:1300px;margin:auto;padding:24px}h1{font-size:clamp(24px,4vw,34px);line-height:1.2}h2{font-size:19px;margin:0 0 10px}.muted{color:#b1c2d6}.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}button,select{font:inherit;color:inherit;background:#263a50;border:1px solid #5b7490;border-radius:6px;padding:9px 13px;cursor:pointer}button[aria-pressed=true]{background:#4d4429;border-color:#ffd166}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #ffd166;outline-offset:3px}.controls,.panel,details{background:#182637;border:1px solid #39516b;border-radius:8px;padding:16px;margin:16px 0}.layout{display:grid;grid-template-columns:1.6fr 1fr;gap:16px}.panel{margin:0;min-width:0}#view{height:570px;touch-action:none}canvas{display:block;width:100%;height:100%}.readout{font:14px/1.7 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;background:#111d2b;padding:12px;border-radius:6px}.blue{color:#85cfff}.gold{color:#ffd166}.green{color:#8de6ad}label{display:inline-flex;align-items:center;gap:8px}summary{cursor:pointer}a{color:#9ed8ff}#error{background:#592b31;padding:12px}#stage-text{min-height:5em}p{margin:10px 0}[hidden]{display:none!important}@media(max-width:760px){main{padding:14px}.layout{grid-template-columns:1fr}#view{height:430px}}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+</head><body><main>
+<h1>Three incoming arrows. Connect the centers last.</h1>
+<p class="muted">The new receiver shares face ABC with the proton tetrahedron. It does not receive another complete twelve-arrow structure. No belt is added.</p>
+<div class="controls"><div class="row"><button id="source" aria-pressed="true">1 · Primitive arrows</button><button id="centers" aria-pressed="false">2 · Centers last</button><button id="reset-camera">Reset camera</button></div><div class="row" style="margin-top:14px"><label><input id="frames" type="checkbox" checked>Show tetrahedral frames</label><label><input id="face" type="checkbox" checked>Show shared face ABC</label></div></div>
+<p id="error" role="alert" hidden></p>
+<div class="layout"><section class="panel"><h2 id="view-title">12 old arrows + 3 incoming arrows</h2><div id="view"></div><p><span class="blue">Blue: proton structure</span> · <span class="gold">Gold: three new incoming arrows</span> · <span class="green">Green: shared face</span></p><p class="muted">Drag to rotate; scroll to zoom. In “Centers last,” hide the frames to see the segment representation.</p></section>
+<section class="panel"><h2 id="stage-title">A receiver, not a second proton</h2><p id="stage-text">The old tetrahedron retains twelve directed arrows. Only A → e, B → e, and C → e are added. No primitive arrows leave e.</p><div id="structure" class="readout">Proton: 12 directed arrows
+Added:   3 directed arrows
+Total:  15 primitive arrows
+
+New apex: e
+Shared face: ABC</div>
+<h2 style="margin-top:22px">Three channels, one arrival value</h2><label>Receiver value z <select id="phase"><option value="0">1</option><option value="1">ω</option><option value="2">ω²</option></select></label><div id="signals" class="readout" style="margin-top:12px"></div><p class="muted">ω³ = 1. The incoming maps remove the relative cyclic phases; all three images agree at e.</p><p id="status" role="status" class="green"></p>
+</section></div>
+<details><summary>What fixes the geometry?</summary><p>The three new edges inherit the original tetrahedron’s edge length. There are two points at that distance from A, B, and C: the old apex D and its reflection across ABC. The outward condition selects the reflected point e.</p><p>The phase compatibility does not determine this edge length. Equal-edge realization is the explicit geometric rule used here.</p><p>Only after building both tetrahedra do we compute their barycenters bP and bQ. Their connecting segment crosses ABC at its center F. The receiver apex <b>e is not bQ</b>. The segment is a higher-level representation; it is not counted as a sixteenth primitive arrow.</p><p>The display uses a rigid rotation and translation to put ABC horizontally. It does not shrink either complex or identify their centers.</p><p><a href="../../research/voevodsky/three-arrow-receiver.md">Three-arrow compatibility calculation</a> · <a href="../../research/voevodsky/three-arrow-receiver-geometry.md">Spatial construction</a></p></details>
+</main>
+<script id="receiver-math">
+(()=>{
+ const P={A:[1,1,1],B:[1,-1,-1],C:[-1,1,-1],D:[-1,-1,1]};
+ const mean=ps=>[0,1,2].map(i=>ps.reduce((s,p)=>s+p[i],0)/ps.length);
+ const F=mean(['A','B','C'].map(k=>P[k]));P.e=F.map((x,i)=>2*x-P.D[i]);
+ const bP=mean(['A','B','C','D'].map(k=>P[k])),bQ=mean(['A','B','C','e'].map(k=>P[k]));
+ const old=[...'ABCD'].flatMap(a=>[...'ABCD'].filter(b=>b!==a).map(b=>[a,b]));
+ const incoming=[...'ABC'].map(a=>[a,'e']);
+ const signals=k=>[0,1,2].map((i)=>({source:'ABC'[i],input:(k+i)%3,weight:(3-i)%3,arrival:k}));
+ globalThis.ReceiverMath={P,F,bP,bQ,old,incoming,signals};
+})();
+</script>
+<script type="module">
+const $=id=>document.getElementById(id),M=globalThis.ReceiverMath;
+const names=['1','ω','ω²'];let stage='source',setScene=()=>{},home=()=>{};
+function signals(){const k=Number($('phase').value);$('signals').textContent=M.signals(k).map(r=>`${r.source} → e: ${names[r.weight]} × ${names[r.input]} = ${names[r.arrival]}`).join('\n');$('status').textContent=`All three incoming images equal ${names[k]}.`;}
+function choose(value){stage=value;for(const k of ['source','centers'])$(k).setAttribute('aria-pressed',String(stage===k));
+ $('view-title').textContent=stage==='source'?'12 old arrows + 3 incoming arrows':'Two derived centers, one segment';
+ $('stage-title').textContent=stage==='source'?'A receiver, not a second proton':'The pair represented by its centers';
+ $('stage-text').textContent=stage==='source'?'The old tetrahedron retains twelve directed arrows. Only A → e, B → e, and C → e are added. No primitive arrows leave e.':'bP is the proton barycenter. bQ is the barycenter of ABCe. They remain distinct; their segment crosses the shared face center F. The apex e is a different point from bQ.';
+ $('structure').textContent=stage==='source'?'Proton: 12 directed arrows\nAdded:   3 directed arrows\nTotal:  15 primitive arrows\n\nNew apex: e\nShared face: ABC':'bP ───────── F ───────── bQ\n\nF: center of shared face ABC\nbQ ≠ receiver apex e\n\nSource still has 15 arrows.\nThe segment is a derived representation.';
+ setScene();}
+$('source').onclick=()=>choose('source');$('centers').onclick=()=>choose('centers');$('frames').onchange=()=>setScene();$('face').onchange=()=>setScene();$('phase').onchange=signals;$('reset-camera').onclick=()=>home();signals();
+try{
+ const THREE=await import('three');const {OrbitControls}=await import('three/addons/controls/OrbitControls.js');
+ const element=$('view'),renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor(0x182637);element.append(renderer.domElement);renderer.domElement.setAttribute('aria-label','Two face-sharing tetrahedra with three incoming receiver arrows and derived barycenters');
+ const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(38,1,.01,100);
+ const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.enablePan=false;controls.minDistance=4;controls.maxDistance=16;
+ home=()=>{camera.position.set(6,3.6,8);controls.target.set(0,0,0);controls.update();};home();
+ const rotation=new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(1,1,-1).normalize(),new THREE.Vector3(0,1,0));
+ const point=p=>new THREE.Vector3(...p).sub(new THREE.Vector3(...M.F)).applyQuaternion(rotation);
+ const P=Object.fromEntries(Object.entries(M.P).map(([k,p])=>[k,point(p)]));
+ const frame=new THREE.Group(),arrows=new THREE.Group(),centers=new THREE.Group(),face=new THREE.Group();scene.add(frame,arrows,centers,face);
+ const line=(group,points,color)=>{const o=new THREE.Line(new THREE.BufferGeometry().setFromPoints(points),new THREE.LineBasicMaterial({color}));group.add(o);return o;};
+ const dot=(group,p,color,r=.055)=>{const o=new THREE.Mesh(new THREE.SphereGeometry(r,16,12),new THREE.MeshBasicMaterial({color}));o.position.copy(p);group.add(o);return o;};
+ function label(group,text,p,color='#e8eef6',height=.2){const c=document.createElement('canvas');let ctx=c.getContext('2d');ctx.font='600 42px system-ui';c.width=Math.ceil(ctx.measureText(text).width)+20;c.height=60;ctx=c.getContext('2d');ctx.font='600 42px system-ui';ctx.fillStyle='#182637ee';ctx.fillRect(0,0,c.width,60);ctx.fillStyle=color;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,c.width/2,30);const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;const o=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,depthTest:false,depthWrite:false}));o.position.copy(p);o.scale.set(height*c.width/60,height,1);group.add(o);}
+ function triangle(group,keys,color,opacity){const g=new THREE.BufferGeometry().setFromPoints(keys.map(k=>P[k]));group.add(new THREE.Mesh(g,new THREE.MeshBasicMaterial({color,transparent:true,opacity,side:THREE.DoubleSide,depthWrite:false})));}
+ for(const keys of ['ABD','ACD','BCD'])triangle(frame,[...keys],0x85cfff,.055);
+ for(const keys of ['ABe','ACe','BCe'])triangle(frame,[...keys],0xffd166,.055);
+ for(const [a,b]of[['A','B'],['A','C'],['B','C'],['A','D'],['B','D'],['C','D'],['A','e'],['B','e'],['C','e']])line(frame,[P[a],P[b]],b==='e'?0xa99258:0x6a94b5);
+ for(const [k,p]of Object.entries(P)){dot(frame,p,k==='e'?0xffd166:0x85cfff);label(frame,k==='e'?'e · receiver':k,p.clone().add(new THREE.Vector3(0,k==='D'?-.22:.2,0)),k==='e'?'#ffd166':'#dceeff');}
+ triangle(face,['A','B','C'],0x8de6ad,.12);line(face,[P.A,P.B,P.C,P.A],0x8de6ad);
+ dot(face,new THREE.Vector3(),0x8de6ad,.035);label(face,'F',new THREE.Vector3(.18,.05,0),'#8de6ad',.16);
+ function arrow(a,b,color,separate){let from=P[a].clone(),to=P[b].clone();const d=to.clone().sub(from).normalize();
+  if(separate){let offset=d.clone().cross(new THREE.Vector3(0,1,0));if(offset.lengthSq()<.01)offset=d.clone().cross(new THREE.Vector3(1,0,0));offset.normalize().multiplyScalar(.035);from.add(offset);to.add(offset);}
+  const length=from.distanceTo(to)-.22;from.addScaledVector(d,.11);arrows.add(new THREE.ArrowHelper(d,from,length,color,.15,.085));}
+ M.old.forEach(([a,b])=>arrow(a,b,0x85cfff,true));M.incoming.forEach(([a,b])=>arrow(a,b,0xffd166,false));
+ const bp=point(M.bP),bq=point(M.bQ);dot(centers,bp,0x85cfff,.085);dot(centers,bq,0xffd166,.085);
+ const delta=bq.clone().sub(bp),cylinder=new THREE.Mesh(new THREE.CylinderGeometry(.021,.021,delta.length(),12),new THREE.MeshBasicMaterial({color:0xffffff}));cylinder.position.copy(bp).add(bq).multiplyScalar(.5);cylinder.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),delta.normalize());centers.add(cylinder);
+ label(centers,'bP',bp.clone().add(new THREE.Vector3(.3,-.03,0)),'#85cfff');label(centers,'bQ',bq.clone().add(new THREE.Vector3(.3,.03,0)),'#ffd166');
+ setScene=()=>{frame.visible=$('frames').checked;arrows.visible=stage==='source'&&$('frames').checked;centers.visible=stage==='centers';face.visible=$('face').checked;};setScene();
+ new ResizeObserver(()=>{const w=element.clientWidth,h=element.clientHeight;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();}).observe(element);
+ function animate(){controls.update();renderer.render(scene,camera);requestAnimationFrame(animate);}animate();
+}catch(error){$('error').hidden=false;$('error').textContent='Unable to start the 3D view. WebGL and internet access to jsDelivr are required. '+error.message;console.error(error);}
+</script></body></html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Proton — source assembly sequence</title>
+<style>
+[hidden]{display:none!important}*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#101827;color:#e8eef7;font:14px system-ui}canvas{display:block;touch-action:none}aside{position:absolute;top:12px;left:12px;width:310px;background:#101827ef;border:1px solid #496078;border-radius:8px;padding:14px;max-height:calc(100vh - 90px);overflow:auto}h1{font-size:19px;margin:0 0 12px}nav{display:grid;gap:5px}button,select{background:#263951;border:1px solid #526d8b;color:#fff;padding:8px;border-radius:4px;cursor:pointer}nav button{text-align:left}button[aria-current]{border-color:#ffe191;background:#4a402b}button:focus-visible,input:focus-visible{outline:2px solid #ffe191}p{line-height:1.45;color:#bed0e2}#operation{white-space:pre-line;color:#ffe191;font:13px ui-monospace,monospace;line-height:1.5}footer{position:absolute;bottom:12px;left:12px;right:12px;background:#101827ec;padding:8px;display:flex;gap:8px;align-items:center;border-radius:5px}footer span{color:#b6c5da}#error{position:absolute;right:12px;top:12px;max-width:440px;background:#101827;color:#ffb0a0;padding:15px}#orbit-panel{margin-top:15px}a{color:#91d9ff}@media(max-width:650px){aside{width:240px;font-size:12px;max-height:65vh}nav button{padding:5px;font-size:12px}footer span{display:none}}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+</head><body>
+<aside><h1>Actual source assembly</h1><nav id="steps"></nav><p id="description" aria-live="polite"></p><div id="operation"></div>
+<div id="orbit-panel" hidden><label>Generated triangle <output id="orbit-number">1 / 12</output><br><input id="orbit" type="range" min="1" max="12" value="1" step="1"></label><p id="orbit-detail"></p></div>
+<p style="font-size:11px">Source order, not a physical time law. Colours track packet identity. Regular coordinates enter explicitly at step 4.</p>
+<details><summary>Source procedures</summary><p><a href="../../research/nima/checkers/check_twelve_packets_to_tetrahedron.py">Packet grouping / endpoint wiring</a><br><a href="../../research/nima/checkers/check_twelve_triangle_positive_geometry.py">Seed rotations / triangle orbit</a></p></details></aside>
+<footer><button id="back">Previous</button><button id="next">Next</button><button id="reset">Reset camera</button><span>Drag to rotate · Scroll to zoom · Segments remain identifiable throughout</span></footer><p id="error" hidden role="alert"></p>
+<script type="module">
+const error=document.querySelector('#error');
+try{
+const THREE=await import('three');const {OrbitControls}=await import('three/addons/controls/OrbitControls.js');
+const scene=new THREE.Scene();scene.background=new THREE.Color('#101827');const camera=new THREE.PerspectiveCamera(40,innerWidth/innerHeight,.01,100);camera.position.set(4.5,3.3,10.6);
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);document.body.prepend(renderer.domElement);renderer.domElement.setAttribute('aria-label','Twelve separate endpoint-labelled segments grouped and glued by the actual source rules');
+const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(-.65,0,0);controls.minDistance=4;controls.maxDistance=22;controls.update();controls.saveState();
+scene.add(new THREE.HemisphereLight('#eff8ff','#283446',2.4));const light=new THREE.DirectionalLight('#ffffff',2);light.position.set(3,6,5);scene.add(light);
+const root=new THREE.Group();root.position.x=.65;scene.add(root);const V=(x,y,z)=>new THREE.Vector3(x,y,z);
+const labels=['00','01','10','11'],names=['A','B','C','D'];
+// Exact ordered input and grouping from check_twelve_packets_to_tetrahedron.py.
+const input=[['00','01'],['00','10'],['00','11'],['01','00'],['01','10'],['01','11'],['10','00'],['10','01'],['10','11'],['11','00'],['11','01'],['11','10']];
+const packets=input.map(([s,t],i)=>({id:'p'+String(i+1).padStart(2,'0'),s:labels.indexOf(s),t:labels.indexOf(t),source:s,target:t,color:new THREE.Color().setHSL(i/12,.68,.66)}));
+const records=labels.map((_,s)=>packets.filter(p=>p.s===s));
+if(records.some(r=>r.length!==3)||new Set(packets.map(p=>p.source+'>'+p.target)).size!==12)throw Error('Packet grouping failed');
+const P=[V(1,1,1),V(1,-1,-1),V(-1,1,-1),V(-1,-1,1)],grid=[V(-1.8,1.25,0),V(1.1,1.25,0),V(-1.8,-1.2,0),V(1.1,-1.2,0)];
+const group=()=>{const g=new THREE.Group();root.add(g);return g;};const packetGroup=group(),recordLabels=group(),generated=group(),cones=group();
+function text(value,point,color='#e5edf8',size=.23){const canvas=document.createElement('canvas');canvas.width=512;canvas.height=80;const c=canvas.getContext('2d');c.font='bold 30px monospace';c.textAlign='center';c.textBaseline='middle';c.fillStyle=color;c.fillText(value,256,40);const s=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(canvas),transparent:true,depthTest:false}));s.position.copy(point);s.scale.set(size*6.4,size,1);return s;}
+function dot(point,parent,color='#ffe091',r=.032){const m=new THREE.Mesh(new THREE.SphereGeometry(r,12,8),new THREE.MeshBasicMaterial({color}));m.position.copy(point);parent.add(m);return m;}
+function line(points,parent,color='#90afc4'){const l=new THREE.Line(new THREE.BufferGeometry().setFromPoints(points),new THREE.LineBasicMaterial({color}));parent.add(l);return l;}
+function face(points,parent,color,opacity=.28){const g=new THREE.BufferGeometry().setFromPoints(points);g.computeVertexNormals();const m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color,transparent:true,opacity,side:THREE.DoubleSide,depthWrite:false,roughness:.75}));parent.add(m);return m;}
+const meshes=packets.map(p=>{const arrow=new THREE.ArrowHelper(V(1,0,0),V(0,0,0),1,p.color,.11,.045);const a=dot(V(0,0,0),packetGroup,p.color,.022),b=dot(V(0,0,0),packetGroup,p.color,.022);const tag=text(`${p.id} ${p.source}→${p.target}`,V(0,0,0),'#d9e7f5',.17);packetGroup.add(arrow,tag);return{arrow,a,b,tag};});
+const recordMarks=names.map((n,i)=>{const g=new THREE.Group();recordLabels.add(g);dot(V(0,0,0),g,'#fff',.043);g.add(text(`${n} = ${labels[i]}`,V(0,.22,0),'#fff',.2));return g;});
+// The geometric constructor explicitly declares these two generators.
+const generators=[[1,2,0,3],[3,0,2,1]],compose=(p,q)=>q.map(i=>p[i]),key=p=>p.join('');
+const identity=[0,1,2,3],seen=new Map([[key(identity),identity]]),front=[identity];
+while(front.length){const q=front.pop();for(const g of generators){const p=compose(g,q);if(!seen.has(key(p))){seen.set(key(p),p);front.push(p);}}}
+const rotations=[...seen.values()].sort((a,b)=>key(a).localeCompare(key(b)));
+if(rotations.length!==12)throw Error('Rotation closure failed');
+const generatedRows=rotations.map(p=>{const g=new THREE.Group();generated.add(g);const a=p[0],b=p[1],c=p[2],F=P[a].clone().add(P[b]).add(P[c]).divideScalar(3);const owner=[a,b,c].sort().map(i=>names[i]).join('');const color=packets.find(x=>x.s===a&&x.t===b).color;
+ face([F,P[a],P[b]],g,color,.4);line([F,P[a]],g);line([F,P[b]],g);dot(F,g);g.add(text('F'+owner,F.clone().multiplyScalar(1.15),'#ffe091',.16));return{group:g,p,a,b,c,F,owner};});
+if(new Set(generatedRows.map(r=>r.a+','+r.b)).size!==12||new Set(generatedRows.map(r=>r.owner)).size!==4)throw Error('Generated incidence mismatch');
+const seedLines=group();for(const [loop,color] of [[[0,1,2,0],'#ffce73'],[[1,0,3,1],'#e98dce']]){line(loop.map(i=>P[i]),seedLines,color);face(loop.slice(0,3).map(i=>P[i]),seedLines,color,.15);}
+const faces=[[0,1,2],[0,3,1],[0,2,3],[1,3,2]];faces.forEach((f,i)=>{const g=new THREE.Group();cones.add(g);const points=[V(0,0,0),...f.map(j=>P[j])];for(const tri of [[0,1,2],[0,2,3],[0,3,1],[1,2,3]])face(tri.map(j=>points[j]),g,['#72c8e8','#a3ca88','#c397e0','#e6b474'][i],.18);for(const j of f)line([V(0,0,0),P[j]],g,'#e5d7a1');});dot(V(0,0,0),cones);cones.add(text('O = mean(A,B,C,D)',V(0,.12,0),'#ffe091',.18));
+const stages=[
+ ['1 · Twelve separate segments','Input: twelve distinct packets, each carrying source and target addresses. Their screen positions are only a display layout.','p01: 00→01, …, p12: 11→10\n12 packets; no grouped vertices yet'],
+ ['2 · Group equal source addresses','Collect packets by their source address. Each group becomes one record containing three outgoing packets. Targets are still references, not glued endpoints.','records[s] = packets with source s\n4 records × 3 retained packets'],
+ ['3 · Resolve target references','Glue each target endpoint to the record with the matching address. Every original packet remains present. Opposite arrows share an undirected edge.','target(p) ↦ records[target address]\n12 directed arrows / 6 edges: K4'],
+ ['4 · Apply the supplied spatial embedding','The geometric constructor supplies these regular tetrahedral coordinates. They are not inferred from packet count. The existing endpoint wiring is unchanged.','A=(1,1,1); B=(1,−1,−1)\nC=(−1,1,−1); D=(−1,−1,1)'],
+ ['5 · Use the two seed cycles','Use the two oriented cycles specified by the geometric constructor. Their permutations generate all twelve proper tetrahedral rotations.','A→B→C→A, D fixed\nB→A→D→B, C fixed\nclosure of generators: 12 rotations'],
+ ['6 · Construct the reference triangle','Compute FABC as the mean of A,B,C. The source reference is the small centroid-edge triangle (FABC,A,B), not the entire face ABC.','FABC = (A+B+C)/3\nreference = (FABC,A,B)'],
+ ['7 · Generate the twelve triangle images','Apply each generated rotation to the reference triangle, in the checker’s sorted permutation order. Each image is labelled by its outer directed edge. Move the slider to inspect every image.','tri(p) = (F{p(A),p(B),p(C)}, p(A), p(B))\n12 distinct triangles cover the surface'],
+ ['8 · Read the four center-to-face pieces','The generated triangles close the surface. The derived body center O and each whole face identify four tetrahedral sectors. This is a geometric decomposition, not four added copies of the surface.','O = (A+B+C+D)/4\n4 face cones; 3 small triangles per cone']
+];
+const nav=document.querySelector('#steps');let step=0,motion=0;stages.forEach(([title],i)=>{const b=document.createElement('button');b.textContent=title;b.dataset.step=i;b.addEventListener('click',()=>setStep(i));nav.append(b);});
+function endpoints(p,s){
+ if(s===0){const row=Math.floor((Number(p.id.slice(1))-1)/3),col=(Number(p.id.slice(1))-1)%3;const a=V(-2.35+col*1.7,1.6-row*1.05,0);return[a,a.clone().add(V(1.15,0,0))];}
+ if(s===1){const a=grid[p.s].clone(),j=records[p.s].indexOf(p);const b=a.clone().add(V(1.0,.6-j*.6,.1*(j-1)));return[a,b];}
+ const loc=s===2?grid:P;return[loc[p.s].clone(),loc[p.t].clone()];
+}
+function put(i,a,b){const m=meshes[i],d=b.clone().sub(a),len=d.length();m.arrow.position.copy(a);m.arrow.setDirection(d.normalize());m.arrow.setLength(Math.max(.001,len),Math.min(.12,len*.2),.045);m.a.position.copy(a);m.b.position.copy(b);m.tag.position.copy(a).add(b).multiplyScalar(.5).add(V(0,.12,0));}
+function render(){renderer.render(scene,camera);}
+function updateStatic(){
+ document.querySelectorAll('[data-step]').forEach(b=>{if(+b.dataset.step===step)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});document.querySelector('#description').textContent=stages[step][1];document.querySelector('#operation').textContent=stages[step][2];document.querySelector('#back').disabled=step===0;document.querySelector('#next').disabled=step===7;
+ recordLabels.visible=step>=1;recordMarks.forEach((m,i)=>m.position.copy(step<=2?grid[i]:P[i]));meshes.forEach(m=>m.tag.visible=step<=2);seedLines.visible=step===4;cones.visible=step===7;document.querySelector('#orbit-panel').hidden=step!==6;
+ const n=+document.querySelector('#orbit').value;generatedRows.forEach((r,i)=>r.group.visible=step===5?i===0:step===6?i<n:step===7);generated.visible=step>=5;
+ document.querySelector('#orbit-number').textContent=n+' / 12';const r=generatedRows[n-1];document.querySelector('#orbit-detail').textContent=`Image ${n}: ABCD → ${r.p.map(i=>names[i]).join('')}; triangle (F${r.owner},${names[r.a]},${names[r.b]}).`;
+}
+function setStep(value){const old=step;step=value;const id=++motion,start=performance.now();updateStatic();function tick(now){if(id!==motion)return;const t=Math.min(1,(now-start)/700),ease=t*t*(3-2*t);packets.forEach((p,i)=>{const a=endpoints(p,old),b=endpoints(p,step);put(i,a[0].lerp(b[0],ease),a[1].lerp(b[1],ease));});render();if(t<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);}
+document.querySelector('#back').addEventListener('click',()=>setStep(Math.max(0,step-1)));document.querySelector('#next').addEventListener('click',()=>setStep(Math.min(7,step+1)));document.querySelector('#orbit').addEventListener('input',()=>{updateStatic();render();});document.querySelector('#reset').addEventListener('click',()=>{controls.reset();render();});controls.addEventListener('change',render);
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);render();});
+packets.forEach((p,i)=>put(i,...endpoints(p,0)));updateStatic();render();
+}catch(cause){error.hidden=false;error.textContent='Scene unavailable: '+cause.message;console.error(cause);}
+</script></body></html>

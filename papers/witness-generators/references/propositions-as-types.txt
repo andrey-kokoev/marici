@@ -1,0 +1,941 @@
+Propositions as Types ∗
+
+                Philip Wadler
+
+               University of Edinburgh
+                wadler@inf.ed.ac.uk
+
+    Powerful insights arise from linking two ﬁelds of study previ-      cluding Agda, Automath, Coq, Epigram, F#, F , Haskell, LF, ML,
+ously thought separate. Examples include Descartes’s coordinates,       NuPRL, Scala, Singularity, and Trellys.
+which links geometry to algebra, Planck’s Quantum Theory, which
+links particles to waves, and Shannon’s Information Theory, which           Propositions as Types is a notion with mystery. Why should it
+links thermodynamics to communication. Such a synthesis is of-          be the case that intuitionistic natural deduction, as developed by
+fered by the principle of Propositions as Types, which links logic to   Gentzen in the 1930s, and simply-typed lambda calculus, as devel-
+computation. At ﬁrst sight it appears to be a simple coincidence—       oped by Church around the same time for an unrelated purpose,
+almost a pun—but it turns out to be remarkably robust, inspiring the    should be discovered thirty years later to be essentially identical?
+design of automated proof assistants and programming languages,         And why should it be the case that the same correspondence arises
+and continuing to inﬂuence the forefronts of computing.                 again and again? The logician Hindley and the computer scientist
+                                                                        Milner independently developed the same type system, now dubbed
+    Propositions as Types is a notion with many names and many          Hindley-Milner. The logician Girard and the computer scientist
+origins. It is closely related to the BHK Interpretation, a view of     Reynolds independently developed the same calculus, now dubbed
+logic developed by the intuitionists Brouwer, Heyting, and Kol-         Girard-Reynolds. Curry-Howard is a double-barrelled name that
+mogorov in the 1930s. It is often referred to as the Curry-Howard       ensures the existence of other double-barrelled names. Those of us
+Isomorphism, referring to a correspondence observed by Curry in         that design and use programming languages may often feel they
+1934 and reﬁned by Howard in 1969 (though not published until           are arbitrary, but Propositions as Types assures us some aspects of
+1980, in a Festschrift dedicated to Curry). Others draw attention       programming are absolute.
+to signiﬁcant contributions from de Bruijn’s Automath and Martin-
+Lo¨f’s Type Theory in the 1970s. Many variant names appear in the           An online appendix contains this paper in full with additional
+literature, including Formulae as Types, Curry-Howard-de Bruijn         details and references, plus a historic note provided by William
+Correspondence, Brouwer’s Dictum, and others.                           Howard. (The version you are reading is the online appendix.)
+
+    Propositions as Types is a notion with depth. It describes a            This paper serves as a brief introduction to Propositions as
+correspondence between a given logic and a given programming            Types. For those interested to learn more, textbook treatments are
+language. At the surface, it says that for each proposition in the      available [23, 59, 56].
+logic there is a corresponding type in the programming language—
+and vice versa. Thus we have                                            1. Church, and the theory of computation
+
+                           propositions as types.                       The origins of logic lie with Aristotle and the stoics in classi-
+                                                                        cal Greece, Ockham and the scholastics in the middle ages, and
+It goes deeper, in that for each proof of a given proposition, there    Leibniz’s vision of a calculus ratiocinator at the dawn of the en-
+is a program of the corresponding type—and vice versa. Thus we          lightenment. Our interest in the subject lies with formal logic,
+also have                                                               which emerged from the contributions of Boole, De Morgan, Frege,
+                                                                        Peirce, Peano, and others in the 19th century.
+                            proofs as programs.
+                                                                            As the 20th century dawned, Whitehead and Russell’s Principia
+And it goes deeper still, in that for each way to simplify a proof      Mathematica [66] demonstrated that formal logic could express a
+there is a corresponding way to evaluate a program—and vice             large part of mathematics. Inspired by this vision, Hilbert and his
+versa. Thus we further have                                             colleagues at Go¨ttingen became the leading proponents of formal
+                                                                        logic, aiming to put it on a ﬁrm foundation.
+         simpliﬁcation of proofs as evaluation of programs.
+                                                                            One goal of Hilbert’s Program was to solve the Entschei-
+Hence, we have not merely a shallow bijection between proposi-          dungsproblem (decision problem), that is, to develop an “effec-
+tions and types, but a true isomorphism preserving the deep struc-      tively calculable” procedure to determine the truth or falsity of any
+ture of proofs and programs, simpliﬁcation and evaluation.              statement. The problem presupposes completeness: that for any
+                                                                        statement, either it or its negation possesses a proof. In his ad-
+    Propositions as Types is a notion with breadth. It applies to a     dress to the 1930 Mathematical Congress in Ko¨nigsberg, Hilbert
+range of logics including propositional, predicate, second-order,       afﬁrmed his belief in this principle, concluding “Wir mu¨ssen wis-
+intuitionistic, classical, modal, and linear. It underpins the foun-    sen, wir werden wissen” (“We must know, we will know”), words
+dations of functional programming, explaining features including        later engraved on his tombstone. Perhaps a tombstone is an ap-
+functions, records, variants, parametric polymorphism, data ab-         propriate place for those words, given that any basis for Hilbert’s
+straction, continuations, linear types, and session types. It has in-   optimism had been undermined the day before, when at the self-
+spired automated proof assistants and programming languages in-         same conference Go¨del [24] announced his proof that arithmetic is
+                                                                        incomplete.
+∗ Version V10, 29 November 2014. Submitted for publication. Apologies
+for the use of numerical citations, which are required by the venue; I      While the goal was to satisfy Hilbert’s program, no precise def-
+normally use author-year. Copyright Philip Wadler c 2014.               inition of “effectively calculable” was required. It would be clear
+                                                                        whether a given procedure was effective or not, like Justice Stew-
+art’s characterisation of obscenity, “I know it when I see it”. But     cursive function is λ-deﬁnable, and vice-versa. The proof was out-
+to show the Entscheidungsproblem undecidable required a formal          lined by Church [8] and published in detail by Kleene [36]. Rather
+deﬁnition of “effectively calculable”.                                  than mollifying Go¨del, this result caused him to doubt that his own
+                                                                        deﬁnition was correct! Things stood at an impasse.
+    One can ﬁnd allusions to the concept of algorithm in the work
+of Euclid and, eponymously, al-Khwarizmi, but the concept was               Meanwhile, at Cambridge, Alan Turing, a student of Max New-
+only formalised in the 20th century, and then simultaneously re-        man, independently formulated his own notion of “effectively cal-
+ceived three independent deﬁnitions by logicians. Like buses: you       culable” in the form of what we now call a Turing Machine, and
+wait two thousand years for a deﬁnition of “effectively calculable”,    used this to show the Entscheidungsproblem undecidable. Before
+and then three come along at once. The three were lambda calcu-         the paper was published, Newman was dismayed to discover that
+lus, published 1936 by Alonzo Church [9], recursive functions, pro-     Turing had been scooped by Church. However, Turing’s approach
+posed by Go¨del at lectures in Princeton in 1934 and published 1936     was sufﬁciently different from Church’s to merit independent pub-
+by Stephen Kleene [35], and Turing machines, published 1937 by          lication. Turing hastily added an appendix sketching the equiva-
+Alan Turing [60].                                                       lence of λ-deﬁnability to his machines, and his paper [60] appeared
+                                                                        in print a year after Church’s, when Turing was 23. Newman ar-
+    Lambda calculus was introduced by Church at Princeton, and          ranged for Turing to travel to Princeton, where he completed a doc-
+further developed by his students Rosser and Kleene. At this time,      torate under Church’s supervision.
+Princeton rivalled Go¨ttingen as a centre for the study of logic. The
+Institute for Advanced Study was co-located with the mathematics            Turing’s most signiﬁcant difference from Church was not in
+department in Fine Hall. In 1933, Einstein and von Neumann joined       logic or mathematics but in philosophy. Whereas Church merely
+the Institute, and Go¨del arrived for a visit.                          presented the deﬁnition of λ-deﬁnability and baldly claimed that it
+                                                                        corresponded to effective calculability, Turing undertook an anal-
+    Logicians have long been concerned with the idea of function.       ysis of the capabilities of a “computer”—at this time, the term re-
+Lambda calculus provides a concise notation for functions, includ-      ferred to a human performing a computation assisted by paper and
+ing “ﬁrst-class” functions that may appear as arguments or results      pencil. Turing argued that the number of symbols must be ﬁnite (for
+of other functions. It is remarkably compact, containing only three     if inﬁnite, some symbols would be arbitrarily close to each other
+constructs: variables, function abstraction, and function applica-      and undistinguishable), that the number of states of mind must be
+tion. Church [7] at ﬁrst introduced lambda calculus as a way to de-     ﬁnite (for the same reason), and that the number of symbols under
+ﬁne notations for logical formulas (almost like a macro language)       consideration at one moment must be bounded (“We cannot tell at a
+in a new presentation of logic. All forms of bound variable could       glance whether 9999999999999999 and 999999999999999 are the
+be subsumed to lambda binding. (For instance, instead of ∃x. A[x],      same”). Later, Gandy [18] would point out that Turing’s argument
+Church wrote Σ(λx. A[x]).) However, it was later discovered by          amounts to a theorem asserting that any computation a human with
+Kleene and Rosser [38] that Church’s system was inconsistent. By        paper and pencil can perform can also be performed by a Turing
+this time, Church and his students had realised that the system was     Machine. It was Turing’s argument that ﬁnally convinced Go¨del;
+of independent interest. Church had foreseen this possibility in his    since λ-deﬁnability, recursive functions, and Turing machines had
+ﬁrst paper on the subject, where he wrote “There may, indeed, be        been proved equivalent, he now accepted that all three deﬁned “ef-
+other applications of the system than its use as a logic.”              fectively calculable”.
+
+    Church discovered a way of encoding numbers as terms of                 As mentioned, Church’s ﬁrst use of lambda calculus was to en-
+lambda calculus. The number n is represented by a function that         code formulas of logic, but this had to be abandoned because it led
+accepts a function f and a value x, and applies the function to the     to inconsistency. The failure arose for a reason related to Russell’s
+value n times. (For instance, three is λf. λx. f (f (f (x))).) With     paradox, namely that the system allowed a predicate to act on itself,
+this representation, it is easy to encode lambda terms that can add or  and so Church adapted a solution similar to Russell’s, that of clas-
+multiply, but it was not clear how to encode the predecessor func-      sifying terms according to types. Church’s simply-typed lambda
+tion, which ﬁnds the number one less than a given number. One           calculus ruled out self-application, permitting lambda calculus to
+day in the dentist’s ofﬁce, Kleene suddenly saw how to deﬁne pre-       support a consistent logical formulation [10].
+decessor [34]. When Kleene brought the result to his supervisor,
+Church conﬁded that he had nearly convinced himself that repre-             Whereas self-application in Russell’s logic leads to paradox,
+senting predecessor in lambda calculus was impossible. Once this        self-application in Church’s untyped lambda calculus leads to
+hurdle was overcome, Church and his students soon became con-           non-terminating computations. Conversely, Church’s simply-typed
+vinced that any “effectively calculable” function of numbers could      lambda calculus guarantees every term has a normal form, that is,
+be represented by a term in the lambda calculus.                        corresponds to a computation that halts.
+
+    Church proposed λ-deﬁnability as the deﬁnition of “effec-               The two applications of lambda calculus, to represent computa-
+tively calculable”, what we now know as Church’s Thesis, and            tion and to represent logic, are in a sense mutually exclusive. If a
+demonstrated that there was a problem whose solution was not λ-         notion of computation is powerful enough to represent any effec-
+deﬁnable, that of determining whether a given λ-term has a normal       tively calculable procedure, then that notion is not powerful enough
+form, what we now know as the Halting Problem [9]. A year later,        to solve its own Halting Problem: there is no effectively calcula-
+he demonstrated there was no λ-deﬁnable solution to the Entschei-       ble procedure to determine whether a given effectively calculable
+dungsproblem [8].                                                       procedure terminates. However, the consistency of Church’s logic
+                                                                        based on simply-typed lambda calculus depends on every term hav-
+    In 1933, Go¨del arrived for a visit at Princeton. He was un-        ing a normal form.
+convinced by Church’s contention that every effectively calcula-
+ble function was λ-deﬁnable. Church responded by offering that              Untyped lambda calculus or typed lambda calculus with a con-
+if Go¨del would propose a different deﬁnition, then Church would        struct for general recursion (sometimes called a ﬁxpoint operator)
+“undertake to prove it was included in λ-deﬁnability”. In a series of   permits the deﬁnition of any effectively computable function, but
+lectures at Princeton in 1934, based on a suggestion of Herbrand,       have a Halting Problem that is unsolvable. Typed lambda calculi
+Go¨del proposed what came to be known as “general recursive func-       without a construct for general recursion have a Halting Problem
+tions” as his candidate for effective calculability. Kleene took notes  that is trivial—every program halts!—but cannot deﬁne some ef-
+and published the deﬁnition [35]. Church and his students soon de-      fectively computable functions. Both kinds of calculus have their
+termined that the two deﬁnitions are equivalent: every general re-      uses, depending on the intended application.
+    As well as fundamental contributions to programming lan-           Deduction. He needed a roundabout proof to show the absence of
+guages, Church also made early contributions to hardware veri-         roundabout proofs! Later, in 1965, Prawitz showed how to prove
+ﬁcation and model checking, as described by Vardi [62].                the Subformula Principle directly, by introducing a way to simplify
+                                                                       Natural Deduction proofs; and this set the ground for Howard’s
+2. Gentzen, and the theory of proof                                    work described in the next section.
+
+A second goal of Hilbert’s program was to establish the consistency    3. Propositions as Types
+of various logics. If a logic is inconsistent, then it can derive any
+formula, rendering it useless.                                         In 1934, Curry observed a curious fact, relating a theory of func-
+                                                                       tions to a theory of implication [13]. Every type of a function
+    In 1935, at the age of 25, Gerhard Gentzen [20] introduced not     (A → B) could be read as a proposition (A ⊃ B), and under this
+one but two new formulations of logic, natural deduction and se-       reading the type of any given function would always correspond to
+quent calculus, which became established as the two major systems      a provable proposition. Conversely, for every provable proposition
+for formulating a logic, and remain so to this day. He showed how      there was a function with the corresponding type. Subsequently,
+to normalise proofs to ensure they were not “roundabout”, yielding     Curry and Feys [14] extended the correspondence from not merely
+a new proof of the consistency of Hilbert’s system. And, to top it     types and propositions to also include term and proofs, and to hint
+off, to match the use of the symbol ∃ for the existential quantiﬁ-     at the relation between evaluation of terms and simpliﬁcation of
+cation introduced by Peano, Gentzen introduced the symbol ∀ to         proofs.
+denote universal quantiﬁcation. He wrote implication as A ⊃ B (if
+A holds then B holds), conjunction as A & B (both A and B hold),           In 1969, Howard circulated a xeroxed manuscript [32]. It was
+and disjunction as A ∨ B (at least one of A or B holds).               not published until 1980, where it appeared in a Festschrift dedi-
+                                                                       cated to Curry. Motivated by Curry’s observation, Howard pointed
+    Gentzen’s insight was that proof rules should come in pairs, a     out that there is a similar correspondence between natural deduc-
+feature not present in earlier systems such as Hilbert’s. In natural   tion, on the one hand, and simply-typed lambda calculus, on the
+deduction, these are introduction and elimination pairs. An intro-     other, and he made explicit the third and deepest level of the cor-
+duction rule speciﬁes under what circumstances one may assert a        respondence as described in the introduction, that simpliﬁcation of
+formula with a logical connective (for instance, to prove A ⊃ B,       proofs corresponds to evaluation of programs. Howard showed the
+one may assume A and then must prove B), while the correspond-         correspondence extends to the other logical connectives, conjunc-
+ing elimination rule shows how to use that logical connective (for     tion and disjunction, by extending his lambda calculus with con-
+instance, from a proof of A ⊃ B and a proof of A one may de-           structs that represent pairs and disjoint sums. Just as proof rules
+duce B, a property dubbed modus ponens in the middle ages). As         come in introduction and elimination pairs, so do typing rules: in-
+Gentzen notes, “The introductions represent, as it were, the ‘deﬁni-   troduction rules correspond to ways to deﬁne or construct a value
+tions’ of the symbols concerned, and the eliminations are no more,     of the given type, and elimination rules correspond to ways to use
+in the ﬁnal analysis, than the consequences of these deﬁnitions.”      or deconstruct values of the given type.
+
+    A consequence of this insight was that any proof could be              We can describe Howard’s observation as follows:
+normalised to one that is not “roundabout”, where “no concepts
+enter into the proof other than those contained in the ﬁnal result”.    • Conjunction A & B corresponds to Cartesian product A × B,
+For example, in a normalised proof of the formula A & B, the only          that is, a record with two ﬁelds, also known as a pair. A proof
+formulas that may appear are itself and its subformulas, A and B,          of the proposition A & B consists of a proof of A and a proof of
+and the subformulas of A and B themselves. No other formula,               B. Similarly, a value of type A × B consists of a value of type
+such as (B & A) ⊃ (A & B) or A ∨ B, may appear; this is                    A and a value of type B.
+called the Subformula Principle. An immediate consequence was
+consistency. It is a contradiction to prove false, written . The only   • Disjunction A ∨ B corresponds to a disjoint sum A + B, that
+way to derive a contradiction is to prove, say, both A ⊃ and A             is, a variant with two alternatives. A proof of the proposition
+for some formula A. But given such a proof, one could normalise            A ∨ B consists of either a proof of A or a proof of B, including
+it to one containing only subformulas of its conclusion, . But             an indication of which of the two has been proved. Similarly, a
+has no subformulas! It is like the old saw, “What part of no don’t         value of type A + B consists of either a value of type A or a
+you understand?” Logicians became interested in normalisation of           value of type B, including an indication of whether this is a left
+proofs because of its role in establishing consistency.                    or right summand.
+
+    Gentzen preferred the system of Natural Deduction because it        • Implication A ⊃ B corresponds to function space A → B. A
+was, in his view, more natural. He introduced Sequent Calculus             proof of the proposition A ⊃ B consists of a procedure that
+mainly as a technical device for proving the Subformula Principle,         given a proof of A yields a proof of B. Similarly, a value of
+though it has independent interest.                                        type A → B consists of a function that when applied to a value
+                                                                           of type A returns a value of type B.
+    Sequent Calculus has two key properties. First, every proof in
+Natural Deduction can be converted to a proof in Sequent Calculus,     This reading of proofs goes back to the intuitionists, and is often
+and conversely, so the two systems are equivalent. Second, unlike      called the BHK interpretation, named for Brouwer, Heyting, and
+Natural Deduction, every rule save one has the property that its hy-   Kolmogorov. Brouwer founded intuitionism [28], and Heyting [29]
+potheses only involve subformulas of those that appear in its con-     and Kolmogorov [39] formalised intuitionistic logic, and developed
+clusion. The one exception, the Cut rule, can always be removed by     the interpretation above, in the 1920s and 1930s. Realisability,
+a process called Cut Elimination. Hence every proof had an equiv-      introduced by Kleene [37] in the 1940s, is based on a similar
+alent normal form satisfying the Subformula Principle. Gentzen’s       interpretation.
+main interest in Sequent Calculus was to prove the Subformula
+Principle, although Sequent Calculus has features of independent           Given the intuitionistic reading of proofs, it hardly seems sur-
+interest, such as providing a more symmetric presentation of clas-     prising that intuitionistic natural deduction and lambda calculus
+sical logic, and today researchers often use formulations closer to    should correspond so closely. But it wasn’t until Howard that the
+Sequent Calculus than to Natural Deduction.                            correspondence was laid out clearly, in a way that allowed working
+                                                                       logicians and computer scientists to put it to use.
+    It is an irony that Gentzen was required to introduce Sequent
+Calculus in order to prove the Subformula Principle for Natural
+    Howard’s paper divides into two halves. The ﬁrst half explains a      tation. How much more remarkable, then, that it applies to a wide
+correspondence between two well-understood concepts, the propo-           variety of logics and of computation.
+sitional connectives &, ∨, ⊃ on the one hand and the computational
+types ×, +, → on the other hand. The second half extends this                 Quantiﬁcation over propositional variables in second-order
+analogy, and for well-understood concepts from logic proposes new         logic corresponds to type abstraction in second-order lambda calcu-
+concepts for types that correspond to them. In particular, Howard         lus. For this reason, the second-order lambda calculus was discov-
+proposes that the predicate quantiﬁers ∀ and ∃ corresponds to new         ered twice, once by the logician Jean-Yves Girard [21] and once
+types that we now call dependent types.                                   by the computer scientist John Reynolds [53]. And for the same
+                                                                          reason, a similar system that supports principle type inference was
+    With the introduction of dependent types, every proof in predi-       also discovered twice, once by the logician Roger Hindley [30] and
+cate logic can be represented by a term of a suitable typed lambda        once by the computer scientist Robin Milner [45]. Building on the
+calculus. Mathematicians and computer scientists proposed numer-          correspondence, John Mitchell and Gordon Plotkin [46] observed
+ous systems based on this concept, including de Bruijn’s Automath         that existential quantiﬁcation in second-order logic corresponds
+[17], Martin-Lo¨f’s type theory [43], Bates and Constable’s PRL           precisely to data abstraction, an idea that now underpins much re-
+and nuPRL [3], and Coquand and Huet’s Calculus of Constructions           search in the semantics of programming languages. The design of
+[11], which developed into the Coq proof assistant.                       generic types in Java and C# draws directly upon Girard-Reynolds,
+                                                                          while the type systems of functional languages including ML and
+    Applications include CompCert, a certiﬁed compiler for the C          Haskell are based upon Hindley-Milner. Philosophers might argue
+programming language veriﬁed in Coq [41]; a computer-checked              as to whether mathematical systems are ‘discovered’ or ‘devised’,
+proof of the four-colour theorem also veriﬁed in Coq [25]; parts of       but the same system arising in two different contexts argues that
+the Ensemble distributed system veriﬁed in NuPRL [27, 40]; and            here the correct word is ‘discovered’.
+twenty thousand lines of browser plug-ins veriﬁed in F [57].
+                                                                              Two major variants of logic are intuitionistic and classical.
+    de Bruijn’s work was independent of Howard’s, but Howard              Howard’s original paper observed a correspondence with intu-
+directly inspired Martin Lo¨f and all the other work listed above.        itionistic logic. Not until two decades later was the correspon-
+Howard was (justly!) proud of his paper, citing it as one of the two      dence extended to also apply to classical logic, when Tim Grifﬁn
+great achievements of his career [55].                                    [26] observed that Peirce’s Law in classical logic provides a type
+                                                                          for the call/cc operator of Scheme. Chet Murthy [49] went on to
+4. Intuitionistic logic                                                   note that Kolmogorov and Go¨del’s double-negation translation,
+                                                                          widely used to relate intuitionistic and classical logic, corresponds
+In Gilbert and Sullivan’s The Gondoliers, Casilda is told that as an      to the continuation-passing style transformation widely used both
+infant she was married to the heir of the King of Batavia, but that       by semanticists and implementers of lambda calculus. Parigot [50],
+due to a mix-up no one knows which of two individuals, Marco or           Curien and Herbelin [12], and Wadler [64] introduced various com-
+Giuseppe, is the heir. Alarmed, she wails “Then do you mean to say        putational calculi motivated by correspondences to classical logic.
+that I am married to one of two gondoliers, but it is impossible to
+say which?” To which the response is “Without any doubt of any                Modal logic permits propositions to be labelled as ‘necessarily
+kind whatever.”                                                           true’ or ‘possibly true’. Clarence Lewis introduced modal logic
+                                                                          in 1910, and his 1938 textbook [42] describes ﬁve variants, S1–
+    Logic comes in many varieties, and one distinction is between         S5. Some claim that each of these variants has an interpretation
+classical and intuitionistic. Intuitionists, concerned by cavalier as-    as a form of computation via Propositions as Types, and a down
+sumptions made by some logicians about the nature of inﬁnity, in-         payment on this claim is given by an interpretation of S4 as staged
+sist upon a constructionist notion of truth. In particular, they insist   computation due to Davies and Pfenning [16], and of S5 as spatially
+that a proof of A ∨ B must show which of A or B holds, and hence          distributed computation due to Murphy et al [48].
+they would reject the claim that Casilda is married to Marco or
+Giuseppe until one of the two was identiﬁed as her husband. Per-              Eugenio Moggi [47] introduced monads as a technique to ex-
+haps Gilbert and Sullivan anticipated intuitionism, for their story’s     plain the semantics of important features of programming lan-
+outcome is that the heir turns out to be a third individual, Luiz, with   guages such as state, exceptions, and input-output. Monads became
+whom Casilda is, conveniently, already in love.                           widely adopted in the functional language Haskell, and later mi-
+                                                                          grated into other languages, including Clojure, Scala, F#, and C#.
+    Intuitionists also reject the law of the excluded middle, which       Benton, Bierman, and de Paiva [4] observed that monads corre-
+asserts A ∨ ¬A for every A, since the law gives no clue as to             spond to yet another modal logic, differing from all of S1–S5.
+which of A or ¬A holds. Heyting formalised a variant of Hilbert’s
+classical logic that captures the intuitionistic notion of provability.       Temporal logic admits distinction between modalities such as
+In particular, the law of the excluded middle is provable in Hilbert’s    ‘holds now’, ‘will hold eventually’, and ‘will hold in the next time
+logic, but not in Heyting’s. Further, if the law of the excluded          step’. Temporal logic was ﬁrst formalised by Arthur Prior in his
+middle is added as an axiom to Heyting’s logic, then it becomes           1957 text [52], and came to play a major role in the speciﬁcation
+equivalent to Hilbert’s. Kolmogorov showed the two logics were            and veriﬁcation of computing systems, beginning with the work of
+closely related: he gave a double-negation translation, such that a       Amir Pnueli [51]. Interpretations of temporal logics via Proposi-
+formula is provable in classical logic if and only if its translation is  tions as Types include an application to partial evaluation due to
+provable in intuitionistic logic.                                         Davies [15], and an application to functional reactive programming
+                                                                          due to Jeffery [33].
+    Propositions as Types was ﬁrst formulated for intuitionistic
+logic. It is a perfect ﬁt, because in the intuitionist interpretation         In classical, intuitionistic, and modal logic, any hypothesis can
+the formula A ∨ B is provable exactly when one exhibits either a          be used an arbitrary number of times—zero, once, or many. Linear
+proof of A or a proof of B, so the type corresponding to disjunction      logic, introduced in 1987 by Girard [22], requires that each hy-
+is a disjoint sum.                                                        pothesis is used exactly once. Linear logic is ‘resource conscious’
+                                                                          in that facts may be used up and superseded by other facts, suiting
+5. Other logics, other computation                                        it for reasoning about a world where situations change. From its
+                                                                          inception, linear logic was suspected to apply to problems of im-
+The principle of Propositions as Types would be remarkable even           portance to computer scientists, and its ﬁrst publication was not in
+if it applied only to one variant of logic and one variant of compu-      Annals of Mathematics but in Theoretical Computer Science. Com-
+putational aspects of linear logic are discussed by Abramsky [1]        AB                  A&B                      A&B
+and Wadler [63], among many others, and applications to quantum                    &-I                                        &-E2
+computing are surveyed by Gay [19]. Most recently, Session Types,                                    &-E1
+a way of describing communication protocols introduced by Honda          A&B                   A                        B
+[31], have been related to intuitionistic linear logic by Caires and
+Pfenning [5], and to classical linear logic by Wadler [65].                         [A]x               A⊃B          A
+                                                                                     ·                        B        ⊃-E
+    One key to the correspondence between logic and computation                      ·
+is the study of category theory. Both simply-typed lambda calculus                   ·
+and intuitionistic natural deduction correspond to the notion of a                   B
+cartesian closed category [54]. Many extensions of this idea arise,                        ⊃-Ix
+including an exciting strand of work linking categories, computa-
+tion, linear logic, and quantum physics [2].                                      A⊃B
+
+    Vladimir Voevodsky, a winner of the Fields Medal, excited           Figure 1. Gerhard Gentzen (1935) — Natural Deduction
+much interest with his recent work on Homotopy Type Theory
+(HoTT) and Univalent Foundations, which links topology to Propo-                  [B & A]z                  [B & A]z
+sitions as Types. A Special Year devoted to the subject and hosted
+by the Institute for Advanced Studies at Princeton, Church’s home,                      &-E2                        &-E1
+led to the publication last year of The HoTT Book, which indeed
+was hotly awaited, and authored by over 50 mathematicians and                     A                              B
+computer scientists ranging from Aczel to Zeilenberg.
+                                                                                                                    &-I
+    Propositions as Types remains a topic of active research.
+                                                                                            A&B
+6. Natural deduction                                                                                          ⊃-Iz
+
+We now turn to a more formal development, presenting a fragment                      (B & A) ⊃ (A & B)
+of natural deduction and a fragment of typed lambda calculus in a
+style that makes clear the connection between the two.                                  Figure 2. A proof
+
+    We begin with the details of natural deduction as deﬁned by                   ·              ·
+Gentzen [20]. The proof rules are shown in Figure 1. To simplify                  ·              ·
+our discussion, we consider just two of the connectives of natural                ·              ·
+deduction. We write A and B as placeholders standing for arbitrary                A         B
+formulas. Conjunction is written A & B and implication is written                                                   ·
+A ⊃ B.                                                                                              &-I             ·
+                                                                                                                    ·
+    We represent proofs by trees, where each node of the tree is                     A&B
+an instance of a proof rule. Each proof rule consists of zero or
+more formulas written above a line, called the premises, and a                              &-E1 =⇒ A
+single formula written below the line, called the conclusion. The
+interpretation of a rule is that when all the premises hold, then the                   A
+conclusion follows.
+                                                                             [A]x                                        ·
+    The proof rules come in pairs, with rules to introduce and to             ·                                          ·
+eliminate each connective, labelled -I and -E respectively. As we             ·                                          ·
+read the rules from top to bottom, introduction and elimination               ·                        ·                 A
+rules do what they say on the tin: the ﬁrst introduces a formula              B                        ·                 ·
+for the connective, which appears in the conclusion but not in the                  ⊃-Ix               ·                 ·
+premises; the second eliminates a formula for the connective, which                                 A
+appears in a premise but not in the conclusion. An introduction rule       A⊃B                                           ·
+describes under what conditions we say the connective holds—                                              ⊃-E =⇒ B
+how to deﬁne the connective. An elimination rule describes what                       B
+we may conclude when the connective holds—how to use the
+connective.                                                                       Figure 3. Simplifying proofs
+
+    The introduction rule for conjunction, &-I, states that if formula  [B & A]z            [B & A]z
+A holds and formula B holds, then the formula A & B must hold
+as well. There are two elimination rules for conjunction. The ﬁrst,        &-E2                           &-E1
+&-E1, states that if the formula A & B holds, then the formula A
+must hold as well. The second, &-E2, concludes B rather than A.         A                           B
+
+    The introduction rule for implication, ⊃-I, states that if from                                    &-I
+the assumption that formula A holds we may derive the formula B,
+then we may conclude that the formula A ⊃ B holds and discharge                   A&B                                    BA
+the assumption. To indicate that A is used as an assumption zero,                                   ⊃-Iz                            &-I
+once, or many times in the proof of B, we write A in brackets and
+tether it to B via ellipses. A proof is complete only when every        (B & A) ⊃ (A & B)                                 B&A
+assumption in it has been discharged by a corresponding use of                                                                     ⊃-E
+⊃-I, which is indicated by writing the same name (here x) as a
+superscript on each instance of the discharged assumption and on                                    A&B
+the discharging rule. The elimination rule for implication, ⊃-E,                                       w
+states that if formula A ⊃ B holds and if formula A holds, then                                        ­
+
+                                                                                  BA                        BA
+                                                                                             &-I                       &-I
+
+                                                                                   B&A                       B&A
+                                                                                            &-E2                      &-E1
+
+                                                                                      A                         B
+                                                                                                                   &-I
+                                                                                                A&B
+                                                                                                      w
+                                                                                                      ­
+
+                                                                                            AB
+                                                                                                        &-I
+
+                                                                                             A&B
+
+                                                                                  Figure 4. Simplifying a proof
+we may conclude formula B holds as well; as mentioned earlier,                We can think of the assumption of A in ⊃-I as a debt which
+this rule also goes by the name modus ponens.                             is discharged by the proof of A provided in ⊃-E. The proof in the
+                                                                          redex accumulates debt and pays it off later; while the proof in the
+    Critical readers will observe that we use similar language to de-     reduct pays directly each time the assumption is used. Proof debt
+scribe rules (‘when-then’) and formulas (‘implies’). The same idea        differs from monetary debt in that there is no interest, and the same
+applies at two levels, the meta level (rules) and the object level (for-  proof may be duplicated freely as many times as needed to pay off
+mulas), and in two notations, using a line with premises above and        an assumption, the very property which money, by being hard to
+conclusion below for implication at the meta level, and the symbol        counterfeit, is designed to avoid!
+⊃ with premise to the left and conclusion to the right at the ob-
+ject level. It is almost as if to understand implication one must ﬁrst        Figure 4 demonstrates use of these rules to simplify a proof.
+understand implication! This Zeno’s paradox of logic was wryly            The ﬁrst proof contains an instance of ⊃-I followed by ⊃-E, and is
+observed by Lewis Carroll [6], and the phenomenon was deeply in-          simpliﬁed by replacing each of the two assumptions of B & A on
+vestigated by Martin Lo¨f [44]. We need not let it disturb us; every-     the left by a copy of the proof of B & A on the right. The result is
+one possesses a good informal understanding of implication, which         the second proof, which as a result of the replacement now contains
+may act as a foundation for its formal description.                       an instance of &-I followed by &-E2, and another instance of &-I
+                                                                          followed by &-E1. Simplifying each of these yields the third proof,
+    A proof of the formula                                                which derives A & B directly from the assumptions A and B, and
+                                                                          can be simpliﬁed no further.
+                          (B & A) ⊃ (A & B).
+                                                                              It is not hard to see that proofs in normal form satisfy the Sub-
+is shown in Figure 2. In other words, if B and A hold then A and B        formula Principle: every formula of such a proof must be a sub-
+hold. This may seem so obvious as to be hardly deserving of proof!        formula of one of its undischarged assumptions or of its conclu-
+However, the formulas B ⊃A and A⊃B have meanings that differ,             sion. The proof in Figure 2 and the ﬁnal proof of Figure 4 both sat-
+and we need some formal way to conclude that the formulas B & A           isfy this property, while the ﬁrst proof of Figure 4 does not, since
+and A & B have meanings that are the same. This is what our proof         (B & A) ⊃ (A & B) is not a subformula of A & B.
+shows, and it is reassuring that it can be constructed from the rules
+we posit.                                                                 7. Lambda calculus
+
+    The proof reads as follows. From B & A we conclude A, by              We now turn our attention to the simply-typed lambda calculus of
+&-E2, and from B & A we also conclude B, by &-E1. From A and              Church [10]. The type rules are shown in Figure 5. To simplify
+B we conclude A & B, by &-I. That is, from the assumption B & A           our discussion, we take both products and functions as primitive
+(used twice) we conclude A & B. We discharge the assumption               types; Church’s original calculus contained only function types,
+and conclude (B & A) ⊃ (A & B) by ⊃-I, linking the discharged             with products as a derived construction. We now write A and B
+assumptions to the discharging rule by writing z as a superscript on      as placeholders for arbitrary types, and L, M , N as placeholder
+each.                                                                     for arbitrary terms. Product types are written A × B and function
+                                                                          types are written A → B. Now instead of formulas, our premises
+    Some proofs are unnecessarily roundabout. Rules for simpli-           and conclusions are judgments of the form
+fying proofs appear in Figure 3, and an example of such a proof
+appears in Figure 4. Let’s focus on the example ﬁrst.                                                         M :A
+
+    The top of Figure 4 shows a larger proof built from the proof         indicating that term M has type A.
+in Figure 2. The larger proof assumes as premises two formulas, B             Like proofs, we represent type derivations by trees, where each
+and A, and concludes with the formula A & B. However, rather
+than concluding it directly we derive the result in a roundabout          node of the tree is an instance of a type rule. Each type rule consists
+way, in order to illustrate an instance of ⊃-E, modus ponens. The         of zero or more judgments written above a line, called the premises,
+proof reads as follows. On the left is the proof given previously,        and a single judgment written below the line, called the conclusion.
+concluding in (B & A) ⊃ (A & B). On the right, from B and A we            The interpretation of a rule is that when all the premises hold, then
+conclude B & A by &-I. Combining these yields A & B by ⊃-E.               the conclusion follows.
+
+    We may simplify the proof by applying the rewrite rules of                Like proof rules, type rules come in pairs. An introduction rule
+Figure 3. These rules specify how to simplify a proof when an             describes how to deﬁne or construct a term of the given type, while
+introduction rule is immediately followed by the corresponding            an elimination rule describes how to use or deconstruct a term of
+elimination rule. Each rule shows two proofs connected by an              the given type.
+arrow, indicating that the redex (the proof on the left) may be
+rewritten, or simpliﬁed, to yield the reduct (the proof on the right).        The introduction rule for products, ×-I, states that if term M
+Rewrites always take a valid proof to another valid proof.                has type A and term N has type B, then we may form the pair
+                                                                          term M, N of product type A × B. There are two elimination
+    For &, the redex consists of a proof of A and a proof of B,           rules for products. The ﬁrst, ×-E1, states that if term L has type
+which combine to yield A & B by &-I, which in turn yields A by            A × B, then we may form the term π1 L of type A, which selects
+&-E1. The reduct consists simply of the proof of A, discarding the        the ﬁrst component of the pair. The second, ×-E2 is similar, save
+unneeded proof of B. There is a similar rule, not shown, to simplify      that it forms the term π2 L of type B.
+an occurrence of &-I followed by &-E2.
+                                                                              The introduction rule for functions, →-I, states that if given a
+    For ⊃, the redex consists of a proof of B from assumption A,          variable x of type A we have formed a term N of type B, then we
+which yields A ⊃ B by ⊃-I, and a proof of A, which combine to             may form the lambda term λx. N of function type A → B. The
+yield B by ⊃-E. The reduct consists of the same proof of B, but           variable x appears free in N and bound in λx. N . Undischarged as-
+now with every occurrence of the assumption A replaced by the             sumptions correspond to free variables, while discharged assump-
+given proof of A. The assumption A may be used zero, once, or             tions correspond to bound variables. To indicate that the variable
+many times in the proof of B in the redex, so the proof of A may          x may appear zero, once, or many times in the term N , we write
+be copied zero, once, or many times in the proof of B in the reduct.      x : A in brackets and tether it to N : B via ellipses. A term is
+For this reason, the reduct may be larger than the redex, but it will     closed only when every variable in it is bound by a corresponding
+be simpler in the sense that it has removed an unnecessary detour         λ term. The elimination rule for functions, →-E, states that given
+via the subproof of A ⊃ B.
+M :A N :B                   L:A×B                     L:A×B               term L of type A → B and term M of type A we may form the
+                       ×-I                                                application term L M of type B.
+                                          ×-E1                      ×-E2
+ M, N : A × B                π1 L : A                  π2 L : B               For natural deduction, we noted that there might be confusion
+                                                                          between implication at the meta level and the object level. For
+[x : A]x                    →-Ix      L:A→B M :A                          lambda calculus the distinction is clearer, as we have implication
+   ·                                                               →-E    at the meta level (if terms above the line are well typed so are terms
+   ·                                                                      below) but functions at the object level (a function has type A → B
+   ·                                          LM : B                      because if it is passed a value of type A then it returns a value
+                                                                          of type B). What previously had been discharge of assumptions
+N :B                                                                      (perhaps a slightly diffuse concept) becomes binding of variables
+                                                                          (a concept understood by most computer scientists).
+λx. N : A → B
+                                                                              The reader will by now have observed a striking similarity
+Figure 5. Alonzo Church (1935) — Lambda Calculus                          between Gentzen’s rules from the preceding section and Church’s
+                                                                          rules from this section: ignoring the terms in Church’s rules then
+[z : B × A]z                            [z : B × A]z                      they are identical, if one replaces & by × and ⊃ by →. The
+                                                                          colouring of the rules is chosen to highlight the similarity.
+                            ×-E2                     ×-E1
+                                                                              A program of type
+          π2 z : A                         π1 z : B
+                                                                                                    (B × A) → (A × B)
+                                                     ×-I
+                                                                          is shown in Figure 6. Whereas the difference between B & A and
+                π2 z, π1 z : A × B                    →-Iz                A & B appears a mere formality, the difference between B × A and
+                                                                          A × B is easier to appreciate: converting the latter to the former
+λz. π2 z, π1 z : (B × A) → (A × B)                                        requires swapping the elements of the pair, which is precisely the
+                                                                          task performed by the program corresponding to our former proof.
+                    Figure 6. A program
+                                                                              The program reads as follows. From variable z of type B × A
+             ·                 ·                        ·                 we form term π2 z of type A by ×-E2 and also term π1 z of type
+             ·                 ·                        ·                 B by ×-E1. From these two we form the pair π2 z, π1 z of type
+             ·                 ·                        ·                 A × B by ×-I. Finally, we bind the free variable z to form the
+          M :A              N :B                     M :A                 lambda term λz. π2 z, π1 z of type (B × A) → (A × B) by
+                                                                          →-I, connecting the bound typings to the binding rule by writing z
+                                      ×-I                                 as a superscript on each. The function accepts a pair and swaps its
+                                                                          elements, exactly as described by its type.
+              M, N : A × B
+                                                                              A program may be evaluated by rewriting. Rules for evaluating
+                                  ×-E1 =⇒                                 programs appear in Figure 7, and an example appears in Figure 8.
+                                                                          Let’s focus on the example ﬁrst.
+              π1 M, N : A
+                                                                              The top of Figure 8 shows a larger program built from the
+[x : A]x       →-Ix                  ·                           ·        program in Figure 6. The larger program has two free variables,
+   ·                                 ·                           ·        y of type B and x of type A, and constructs a value of type
+   ·                                 ·                           ·        A × B. However, rather than constructing it directly we reach
+   ·                              M :A                       M :A         the result in a roundabout way, in order to illustrate an instance
+                                                                 ·        of →-E, function application. The program reads as follows. On
+N :B                                                             ·        the left is the program given previously, forming a function of type
+                                                                 ·        (B × A) → (A × B). On the right, from B and A we form the
+λx. N : A → B                                             N [M/x] : B     pair y, x of type B × A by ×-I. Applying the function to the pair
+                                                                          forms a term of type A × B by →-E.
+                                           →-E =⇒
+                                                                              We may evaluate this program by applying the rewrite rules
+(λx. N ) M : B                                                            of Figure 7. These rules specify how to rewrite a term when an
+                                                                          introduction rule is immediately followed by the corresponding
+              Figure 7. Evaluating programs                               elimination rule. Each rule shows two derivations connected by
+                                                                          an arrow, indicating that the redex (the term on the left) may be
+[z : B × A]z        [z : B × A]z                                          rewritten, or evaluated, to yield the reduct (the term on the right).
+                                                                          Rewrites always take a valid type derivation to another valid type
+          ×-E2                        ×-E1                                derivation, ensuring that rewrites preserve types, a property known
+                                                                          as subject reduction or type soundness.
+π2 z : A                    π1 z : B
+                                                                              For ×, the redex consists of term M of type A and term N
+                                      ×-I                                 of type B, which combine to yield term M, N of type A × B
+                                                                          by ×-I, which in turn yields term π1 M, N of type A by ×-E1.
+π2 z, π1 z : A × B                         →-Iz  y:B          x:A         The reduct consists simply of term M of type A, discarding the
+                                                  y, x               ×-I  unneeded term N of type B. There is a similar rule, not shown, to
+λz. π2 z, π1 z : (B × A) → (A × B)                                        rewrite an occurrence of ×-I followed by ×-E2.
+                                                          :B×A
+                                                                     →-E      For →, the redex consists of a derivation of term N of type B
+                                                                          from variable x of type A, which yields the lambda term λx. N of
+          (λz. π2 z, π1 z ) y, x : A × B                                  type A → B by →-I, and a derivation of term M of type A, which
+                                w                                         combine to yield the application (λx. N ) M of type B by →-E.
+                                ­                                         The reduct consists of the term N [M/x] that replaces each free
+
+y:B x:A                               y:B x:A
+                    ×-I
+                                                          ×-I
+ y, x : B × A                          y, x : B × A
+                   ×-E2
+                                                         ×-E1
+ π2 y, x : A                           π1 y, x : B
+
+          π2 y, x , π1 y, x                             ×-I
+                                      :A×B
+                             w
+                             ­
+
+                    x:A y:B
+                                        ×-I
+
+                     x, y : A × B
+
+              Figure 8. Evaluating a program
+occurrence of the variable x in term N by term M . Further, if in                       Figure 9. Plaque on Pioneer Spaceship
+the derivation that N has type B we replace each assumption that x
+has type A by the derivation that M has type A, we get a derivation     Acknowledgements. Thank you to Gershom Bazerman, Pete
+showing that N [M/x] has type B. Since the variable x may appear        Bevin, Guy Blelloch, Rintcius Blok, Ezra Cooper, Ben Darwin,
+zero, once, or many times in the term N , the term M may be copied      Benjamin Denckla, Peter Dybjer, Johannes Emerich, Martin Er-
+zero, once, or many times in the reduct N [M/x]. For this reason,       wig, Yitz Gale, Mikhail Glushenkov, Gabor Greif, Vinod Grover,
+the reduct may be larger than the redex, but it will be simpler in      Sylvain Henry, Philip Ho¨lzenspies, William Howard, John Hughes,
+the sense that is has removed a subterm of type A → B. Thus,            Colin Lupton, Daniel Marsden, Craig McLaughlin, Tom Moertel,
+discharge of assumptions corresponds to applying a function to its      Simon Peyton-Jones, Benjamin Pierce, Lee Pike, Andre´s Sicard-
+argument.                                                               Ram´ırez, Scott Rostrup, Dann Toliver, Moshe Vardi, Jeremy Yal-
+                                                                        lop, Richard Zach, Leo Zovik, and the referees. This work was
+    Figure 8 demonstrates use of these rules to evaluate a program.     funded under EPSRC EP/K034413/1.
+The ﬁrst program contains an instance of →-I followed by →-E,
+and is rewritten by replacing each of the two occurrences of z of           Philip Wadler (wadler@inf.ed.ac.uk, @PhilipWadler) is Profes-
+type B × A on the left by a copy of the term y, x of type B × A         sor of Theoretical Computer Science in the Laboratory for Foun-
+on the right. The result is the second program, which as a result of    dations of Computer Science in the School of Informatics at the
+the replacement now contains an instance of ×-I followed by ×-E2,       University of Edinburgh, Scotland.
+and another instance of ×-I followed by ×-E1. Rewriting each of
+these yields the third program, which derives the term x, y of type     A. Howard on Curry-Howard
+A × B, and can be evaluated no further.
+                                                                        While writing this paper, I realised I was unclear on parts of the his-
+    Hence, simpliﬁcation of proofs corresponds exactly to evalua-       tory. Below is a letter I wrote to William Howard and his response
+tion of programs, in this instance demonstrating that applying the      (with corrections he provided after I asked to publish it). I believe it
+function to the pair indeed swaps its elements.                         is a useful historical document, and am grateful to Howard for his
+                                                                        permission to publish. The correspondence refers to Shell-Gellasch
+8. Conclusion                                                           [55], and references to Figures 5 and 6 in the following are to the
+                                                                        ﬁgures in this paper.
+Proposition as Types informs our view of the universality of certain
+programming languages.                                                      Here is my original request.
+
+    The Pioneer spaceship contains a plaque designed to communi-            Subject: The Formulae-as-Types Notion of Construction
+cate with aliens, if any should ever intercept it (see Figure 9). They      Dear Prof Howard,
+may ﬁnd some parts of it easier to interpret than others. A radial di-      My research has been greatly inﬂuenced by your own, partic-
+agram shows the distance of fourteen pulsars and the centre of the      ularly the paper cited in my subject. I am now writing a paper on
+galaxy from Sol. Aliens are likely to determine that the length of      the ﬁeld of work that grew out of that paper, which was solicited
+each line is proportional to the distances to each body. Another dia-   for publications by the Communications of the ACM (the ﬂagship
+gram shows humans in front of a silhouette of Pioneer. If Star Trek     of the professional organisation for computer scientists). A draft of
+gives an accurate conception of alien species, they may respond         the paper is attached.
+“They look just like us, except they lack pubic hair.” However, if          I would like to portray the history of the subject accurately. I
+the aliens’s perceptual system differs greatly from our own, they       have read your interview with Shell-Gallasch, but a few questions
+may be unable to decipher these squiggles.                              remain, which I hope you will be kind enough to answer.
+                                                                            Your paper breaks into two halves. The ﬁrst describes the corre-
+    What would happen if we tried to communicate with aliens by         spondence between propositional logic and simple types, the sec-
+transmitting a computer program? In the movie Independence Day,         ond introduces the correspondence between predicate logic and de-
+the heroes destroy the invading alien mother ship by infecting it       pendent types. Did you consider the ﬁrst half to be new material or
+with a computer virus. Close inspection of the transmitted program      merely a reprise of what was known? To what extent do you con-
+shows it contains curly braces—it is written in a dialect of C! It      sider your work draws on or was anticipated by the work of Heyt-
+is unlikely that alien species would program in C, and unclear that     ing and Kolmogorov, and Kleene’s realisability? To what extent did
+aliens could decipher a program written in C if presented with one.
+
+    What about lambda calculus? Propositions as Types tell us that
+lambda calculus is isomorphic to natural deduction. It seems difﬁ-
+cult to conceive of alien beings that do not know the fundamentals
+of logic, and we might expect the problem of deciphering a pro-
+gram written in lambda calculus to be closer to the problem of un-
+derstanding the radial diagram of pulsars than that of understanding
+the image of a man and a woman on the Pioneer plaque.
+
+    We might be tempted to conclude that lambda calculus is uni-
+versal, but ﬁrst let’s ponder the suitability of the word ‘universal’.
+These days the multiple worlds interpretation of quantum physics
+is widely accepted. Scientists imagine that in different universes
+one might encounter different fundamental constants, such as the
+strength of gravity or the Planck constant. But easy as it may be to
+imagine a universe where gravity differs, it is difﬁcult to conceive
+of a universe where fundamental rules of logic fail to apply. Natural
+deduction, and hence lambda calculus, should not only be known
+by aliens throughout our universe, but also throughout others. So
+we may conclude it would be a mistake to characterise lambda cal-
+culus as a universal language, because calling it universal would be
+too limiting.
+your work inﬂuence the subsequent work of de Bruijn and Martin           to think about writing it up, so I thought I had better see if it
+Lof? What was the history of your mimeograph on the subject, and         is in the book. Well, it is easy enough to ﬁnd if you know what
+why was it not published until the Curry Festschrift in 1980?            you are looking for. On looking at it, I got a shock: not only had
+                                                                         they extended the ideas to Gentzen’s sequent calculus, but they
+    Many thanks for your consideration, not to mention for found-        had the connection between elimination of cuts from a derivation
+ing my ﬁeld! Yours, —P                                                   and normalization of the corresponding lambda term. But, on a
+                                                                         closer look, I concluded that they had a connection but not the
+    And here is his response:                                            connection. It turns out that I was not quite right about that either.
+                                                                         See my remark about their Theorem 5, below. Not that it would
+    Dear Prof. Wadler,                                                   have mattered much for anything I might have published: even if
+    As mentioned in the interview with Shell-Gellasch, my work on        they had the connection between Gentzen’s sequent calculus and
+propositions as types (p-a-t) originated from my correspondence          the lambda calculus, I had a far-reaching generalization (i.e., to
+with Kreisel, who was very interested in getting a mathematical          Heyting arithmetic).
+notion (i.e., in ordinary mathematics) for Brouwer’s idea of a con-
+struction (as explained by Heyting). I was not familiar with the             The above is more detailed than would be required to answer
+work of Brouwer or Heyting, let alone Kolmogorov, but, from what         your questions, but I needed to write this out to clarify my thoughts
+Kreisel had to say, the idea was clear enough: a construction of         about the matter; so I may as well include the above, since I think it
+α → β was to be a construction F which, acting on a construction         will interest you. It answers one of your questions, “To what extent
+A of α, gives a construction B of β. So we have constructions act-       do you consider your work draws on or was anticipated by the work
+ing on constructions, rather like functionals acting on functionals.     of Heyting and Kolmogorov, and Kleene’s realisability?” Namely,
+So, as an approximation,                                                 my work draws on the work of Heyting and Brouwer, via Kreisel’s
+    (1) let’s take “construction” to mean “functional”.                  explanation of that work to me. None of it was anticipated by the
+    But what kind of functionals? In constructive mathematics, a         work of Heyting, Kolmogorov or Kleene: they were not thinking
+functional is not given as a set of ordered pairs. Rather,               of functionals of ﬁnite type. Though I was familiar with Kleene’s
+    (2) to give a functional is to give not only the action or process   recursive realizability, I was not thinking about it at the time.
+it performs but also to give its type (domain and counterdomain).        Admittedly, it touches on ideas about Brouwer’s constructions but
+    Clearly, the type structure is going to be complicated. I set my-    is far from capturing the notion of a construction (actually, Kleene
+self the project of ﬁnding a suitable notation for the type symbols.     once made remarks to this effect, I forget where). Because of the
+So one needs a suitable type symbol for the functional F, above.         relation between constructions and Kleene’s recursive realizability,
+Well, just take it to be alpha itself (at this point, I was thinking of  there could have been some unconscious inﬂuence; but, in any case,
+propositional logic). Suddenly I remembered something that Curry         not a signiﬁcant inﬂuence.
+had talked about in the logic seminar during my time at Penn State.
+If we consider typed combinators, and look at the structure of the           “Did your work inﬂuence the subsequent work of de Bruijn and
+type symbols of the basic combinators (e.g., S, K, I), we see that       Martin Lof?” As far as I know, my work had no inﬂuence on the
+each of the type symbols corresponds to (is isomorphic to) one of        work of de Bruijn. His work appears to be completely independent
+the axioms of pure implicative logic. Well! This was just what I         of mine. I do recall that he once sent me a package of Automath
+needed!                                                                  material. The project of a computer program for checking existing
+    How do we formulate the following notion?                            proofs did not appear very interesting and I did not reply. What I
+    (3) F is a construction of phi.                                      would have been interested in is a program for ﬁnding proofs of
+    Consider the case in which φ has the form α⊃β The temptation         results that had not yet been proved! Even a proof-assistant would
+is to deﬁne “F is a construction of α ⊃ β to mean “for all A: if         have been ﬁne. Why did he send me the Automath material? I
+A is a construction of α, then F A is a construction of β”. Well,        don’t recall what year it was. Sometime in the 1970s. Whatever the
+that is circular, because we have used “if · · · then · · ·” to deﬁne    accompanying letter, it was not informative; merely something like:
+implication. This is what you call “Zenos paradox of logic”. I           ”Dear Professor Howard, you may be interested in the following
+avoided this circularity by taking (3) to mean:                          material ...”. Since that time, I have seen two or three articles by
+    (4) F is assigned the type φ according to the way F is built up;     him, and I have a more favorable impression. It is good, solid work.
+i.e., the way in which F is constructed.                                 Obviously original. He discovered the idea of derivations as terms,
+    Thus F is a construction of φ by construction. Your Figure 6         and the accompanying idea of formulae-as-types, on his own. He
+illustrates precisely what I meant by this. (I did not have that         uses lambda terms but, I think, only for purposes of description.
+beautiful notation at the time but it conveys what I meant.)             In other words, I don’t think that he has the connection between
+    To summarize: My basic insight consisted simultaneously of           normalization and cut-elimination, but I have not made an extensive
+the thoughts (2) and (4) plus the thought that Curry’s observation       examination of his work. In fact, does he use a Gentzen system at
+provided the means to implement (2), (4). Let me say this in a           all? I just don’t know. The latter two questions would easily be
+different way. The thought (2) was not new. I had had the thought        answered by anyone familiar with his work. In any case, give him
+(2) for many years, ever since I had begun to study primitive            credit where credit is due. There are enough goodies for everyone!
+recursive functionals of ﬁnite type. What was new was the thought
+(4) plus the recognition that Curry’s idea provided the way to               My inﬂuence on Martin-Lo¨f? No problem there. I met him at
+implement (4). I got this basic insight in the summer of 1966. Once      the Buffalo 1968 conference and I told him my ideas. His instant
+I saw how to do it with combinators, I wondered what it would            reaction was: “Now, why didn’t I think of that?” He had a visiting
+look like from the vewpoint of the lambda calculus, and saw, to          appointment at UIC for the academic year 1968–1969, so we had
+my delight, that this corresponded to the intuitionistic version of      lots of opportunity to talk, and he started developing his own
+Gentzen’s sequent calculus.                                              approach to the ideas. In January 1969, mainly to make sure that we
+    Incidentally, Curry’s observation concerning the types of the        were both clear on who had discovered what, I wrote up my own
+basic combinators is presented in his book with Feys (Curry-Feys),       ideas in the form of handwritten notes. By then, Xerox machines
+but I was unaware of this, though I had owned a copy for several         were prevalent, so I sent a copy to Kreisel, and he gave copies to
+years (since 1959, when I was hired at Penn State). After working        various people, including Girard. At least, I think that is how Girard
+out the details of p-a-t over a period of several months, I began        got a copy, or maybe Martin-Lo¨f gave him one. I like Martin-
+                                                                         Lo¨f’s work. I could say more about this, but the short answer to
+your question is: Martin-Lo¨f’s work originated from mine. He has            (5) cut elimination for a derivation corresponds to normalization
+always given me credit and we are good friends.                          for the term,
+
+    On further thought, I need to mention that, in that ﬁrst conversa-       the conversations with Tait were very much on my mind. Most
+tion, Martin-Lo¨f suggested that the derivations-as-terms idea would     likely I would have noticed (5) without having had the conversa-
+work particularly well in connection with Prawitz’s theory of nat-       tions with Tait. But who knows? In any case, he deserves credit for
+ural deduction. I thought: okay, but no big deal. Actually, at that      having noticed the correspondence between derivations and terms.
+time, I was not familiar with Prawitz’s results (or, if at all, then     What he did not have was the associated correspondence between
+only vaguely). But it was a bigger deal than I had thought, because      propositions and types. In fact, he was not using a general enough
+Prawitz’s reductions steps for a deduction correspond direcly to re-     notion of type for this. By hindsight we can see that in his system
+duction steps for the associated lambda term! Actually, for most         there is a homomorphism, not an isomorphism, from propositions
+purposes, I like the sequent formulation of natural deduction as         to types.
+given in pages 33 and 88 of Sorensen and Urzyczyn (2006). In fact,
+if we add left-implication-introduction to this (let’s conﬁne our-           I need to say a bit more about Tait and types. Since Schu¨tte had
+selves to pure implicative logic), the resulting system P# is pretty     extended his system of proofs to transﬁnite orders, Tait extended
+interesting. All occurrences of modus ponens can be eliminated,          his system of terms to transﬁnite type levels. I already had my own
+not just those which are preceded by left-implication-introduction.      system of primitive recursive functionals of transﬁnite type. In our
+This is what I am up to in my JSL 1980 paper, “Ordinal analysis of       very ﬁrst conversation, we compared out ideas on this topic. This
+terms of ﬁnite type”. Also, the cut rule is easy to derive in P# (just   topic requires that one think very hard about the notion of type.
+consider, for typed lambda terms: a well-formed term substituted         Certainly, I had already thought extensively about the notion of type
+into a well-formed term results in a well-formed term); hence P# is      (because of (2), above) before I ever met Tait, but my conversations
+is a conservative extension of the system P* in Part I of my little      with him reinforced this tendency. Thoughts about types were very
+paper in the Curry Festschrift.                                          much on my mind when I began to consider (1), (2), above.
+
+    The phrase formulae-as-types was coined by Kreisel in order              As already mentioned, the notes were handwritten and xeroxed;
+that we would have a name for the subject matter in our correspon-       no mimeographs. “Why [were they] not published until the Curry
+dence back and forth. I would assume that the phrase ”propositions       Festschrift in 1980?” First let me mention why they got published
+as types” was coined by Martin-Lo¨f; at least, during our ﬁrst con-      in the Curry Festschrift. Selden was bringing out the Festschrift
+versation at the Buffalo 1968 meeting, he suggested that one could       for Curry’s 80th birthday. He asked me to contribute the notes. I
+think of a type as a proposition, according to the idea that, in intu-   said: “Sure. I’ll write up an improved version. I can now do much
+itionistic mathematics, the meaning of a proposition φ is given by       better.” He replied: “No, I want the original notes. It is a historical
+the species of “all” proofs of φ. I use quotes here because we are       document.” In other words, by that time various copies had been
+not talking about a set-theoretic, completed inﬁnity.                    passed around and there were a number of references to them in
+                                                                         the literature. So I had them typed up and I sent them in.
+    “The second [part] introduces the correspondence between
+predicate logic and dependent types.” I was not thinking about it in         Why didn’t I publish them before that? Simply because they
+that way at all. I wanted to provided an interpretation of the notion    did not solve the original problem. That was Kreisel’s and Go¨dels
+of construction to some nontrivial part of intuitionistic mathematics    verdict (Kreisel had shown or described the work to Go¨del). In fact,
+(Heyting arithmetic). Part I of the paper was just the preliminaries     even before communicating the work to Kreisel, I knew that I had
+for this. Actually, what you say in the pdf is consistent with this.     gotten only an approximation to the notion of construction, and that
+No need for change here.                                                 more work had to be done. Essentially, the criticism is as follows.
+                                                                         In my little paper, I do not provide axioms and rules of inference
+    “Did you consider the ﬁrst half to be new material or merely a       for proving statements of the form
+reprise of what was known?” New. But in January of last year I had
+occasion to take a really hard look at the material in Curry-Feys,           (3) F is a construction of φ.
+pp. 313–314; and I now see that there is a much closer relationship          Remember, we have to avoid ”Zenos paradox of logic”! The
+between my Theorem 2 in Part I and their Theorem 5, page 326,            answer is that the proofs will look like what you have in Figure 6. In
+than I had thought. The issues here are quite interesting. I can         other words, Figure 6 is not only a program; it is also a proof (or: it
+provide a discussion if you want.                                        can be reinterpreted as a proof). But Figure 6 can also be interpreted
+                                                                         as an explanation of how a construction (blue) is to be built up in
+    In the introduction to my little paper, I mention that Tait had      order to have a given type (red). In other words, ﬁgures such as
+inﬂuenced me. Let me say a few words about that. In the summer of        Figure 6 implements the idea (4) mentioned near the beginning of
+1963 we had conversations in which he explained to me that he had        this e-mail; i.e., F is assigned the type φ according to the way F is
+developed a theory of inﬁnite terms in analogy to Schtte’s theory of     built up.
+inﬁnite proofs, where normalization (via lambda reductions) of an            I hope this tickles you; it certainly tickles me. Of course, the
+inﬁnite terms corresponds to cut elimination of the corresponding        rules of inference are as in Figure 5. So these simple ideas provide
+proof. He did not know what to make of it. He thought of his theory      the missing theory of constructions; or, at the very least, provide a
+of inﬁnite terms as a sort of pun on Schtte’s theory of inﬁnite proofs.  signiﬁcant step in that direction.
+But we both agreed that there must be a deep connection between              In January 2013, I exchanged a few e-mails with Tait and Con-
+normalization of lambda terms and Gentzen’s cut elimination. We          stable on the history of p-a-t. This caused me to take a really careful
+puzzled over this during two or three of our conversations but could     look at the Curry-Feys book. Here is something I found that really
+not come up with an answer.                                              made me laugh: the required theory, whose inferences are of the
+                                                                         form given in Figure 5 is already in Curry-Feys. Admittedly, to see
+    As explained in the ﬁrst paragraph of this e-mail, my work           this you ﬁrst have to erase all the turnstyles ( ); Curry seems
+originated with a problem posed by Kreisel; so, at the start of this     to have some kind of obsession with them. In particular, erase the
+work, certainly I was not thinking of those conversations with Tait.     turnstiles from the proof tree on page 281. The result is exactly a
+But, as mentioned above, as soon as I got the basic insight about the    proof tree of the general form given in your Figure 6. (Hint: (· · ·)X
+relevance of Curry’s combinators, I considered how it would work         is to be read “X has type (· · ·)”. In other words, rewrite (· · ·)X
+for lambda terms. At that point, I remembered my conversations           as X : (· · ·).) What does Fbc mean, where F is boldface? Just
+with Tait. In other words, when I veriﬁed that                           rewrite Fbc as b → c. You see? I am an expert. I could probably
+make money writing a translation manual. In summary, the required         terms, (4) is pretty obvious. Namely, if the given derivation in (4)
+theory is essentially just Curry’s theory of functionality (more pre-     corresponds to a term A, then the normal form of A provides the
+cisely, the appropriate variant of Curry’s theory). So, did I miss the    required cut free derivation. In other words, the result (4) follows
+boat here? Might I have seen all this in 1969 if only I had had the       easily from the normalization of A.
+determination to take a hard look at Curry-Feys? I don’t know. It
+may require the clarity of mind represented by the notation of Fig-           So we have, here, a bit of a mystery. It appears to me that the
+ure 5. Do you have any idea when and where this notation came             proof of Theorem 5 is mainly devoted to a proof that
+into use?
+                                                                              (5) a typed lambda term can be normalized.
+    One more remark concerning my reason for not publishing.                  If I am right about this, then the explanation of the mystery
+Didn’t I feel that I had made an important breakthrough, in spite of      would be that (5) was not widely known at the time that Curry-Feys
+Kreisel’s and Go¨dels criticisms? On the one hand, yes. On the other      was written (publication date: 1958).
+hand, I had reservations. Except for Martin-Lo¨f, Prawitz, Tait and
+Girard, very few people showed an interest in the ideas. But maybe            Later, Howard elaborated on his last point above.
+Martin-Lo¨f, Prawitz, Tait and Girard should have been enough.
+You say: “Certainly Howard was proud of the connection he drew,               Concerning the question of whether (5) was widely known at
+citing it as one of the two great achievements of his career [43].”       the time that Curry-Feys was written, the answer is, to my surprise:
+Should we let that passage stand? Sure. The interview occurred in         apparently not. I just remembered that Robin Gandy, whom I knew
+the spring of 2000. By that time, I was getting lots of praise from       quite well, had published, in the Curry Festschrift, an article about
+the computer science community. So, pride is a peculiar thing. Let        Turing’s proof of (5). (Actually, he explained the proof to me in
+me end this on a positive note. In 1969 Prawitz was in the US and         1978.) Gandy says on p. 454:
+came to UIC to give a talk. When he entered the room, he made
+a beeline for me, looked me in the eye and shook my hand. The                 “The earliest published proof [of (5)] known to me is in Curry
+message was: Well done! THAT made me proud.                               & Fey’s book Combinatory Logic . . . ”
+
+    There is more to say; but this answers your questions, I think;           Gandy tells us that (5) is stated as a corollary of Theorem 9,
+so I’ll send it to avoid further delay.                                   page 340. Theorem 9 is a monster. Maybe somebody will explain
+                                                                          to me, sometime, what it says. Fortunately the relevant corollary,
+    Your pdf, Propositions as Types, is very readable.                    which is on p. 341, clearly says (5). In my struggles with Curry-
+    Bill                                                                  Feys, I never got to p. 341.
+
+    A later message provided additional detail on the relation to             Thanks Robin. Good show!
+Curry and Feys [14].                                                          Turing’s proof is the one that just about anyone would think
+                                                                          of (execute redexes in a strategic order: “rightmost”–“innermost”–
+    Curry observed the striking fact that                                 lambda operators of highest type ﬁrst). In contrast, Curry-Fey’s
+    (1) if the basic combinators are typed, then the types they re-       proof, in the proof of Theorem 5, follows the style of Tait’s com-
+ceive have the same structure as various axioms of pure implicative       putability method (“Intensional interpretations . . . ”) or a variant
+logic, P.                                                                 thereof. At least, that is my impression. Someone should check this.
+    As an easy consequence of this, one gets a correspondence
+between the theorems of P and the types of all combinators that           References
+are built up from the basic combinators. To avoid circumlocutions,
+let us state this in terms of the system of simple typed combinators:       [1] S. Abramsky. Computational interpretations of linear logic.
+there is a correspondence between the theorems of P and the types                Theoretical Computer Science, 111(1&2):3–57, 1993.
+of the typed combinators. The correspondence just mentioned is
+better expressed by observing that there is a                               [2] J. Baez and M. Stay. Physics, topology, logic and computation:
+    (2) correspondence between the derivations in P and the types                a rosetta stone. In B. Coecke, editor, New Structures for Physics,
+of the typed combinators.                                                        Lecture Notes in Physics, pages 91–166. Springer-Verlag, 2009.
+    In Curry’s approach, a combinator is not given with a type;
+rather, a combinator receives a type by means of the “basic theory          [3] J. L. Bates and R. L. Constable. Proofs as programs. Transactions on
+of functionality”, Func. Hence he gives an equivalent                            Programming Languages and Systems, 7(1):113–136, Jan. 1985.
+    (3) correspondence between the theorems of P and the theorems
+of Func (plus axioms provided by (1)).                                      [4] P. N. Benton, G. M. Bierman, and V. de Paiva. Computational types
+    This is given in Curry-Feys, pp. 313–314. A variant of this,                 from a logical perspective. Journal of Functional Programming,
+which gives a correspondence between Gentzen-style derivations                   8(2):177–193, 1998.
+and the “basic theory of functionality” adapted to lambda terms, is
+then developed (pp. 315–332).                                               [5] L. Caires and F. Pfenning. Session types as intuitionistic linear
+    Consider Gentzen’s intuitionistic sequent calculus LJ restricted             propositions. In CONCUR, pages 222–236, 2010.
+to implication. Thus the rules characterizing LJ are: modus ponens,
+left-implication-introduction and cut. The cut elimination theorem          [6] L. Carroll. What the Tortoise said to Achilles. Mind, 4(14):278–280,
+for this system says:                                                            April 1895.
+    (4) From a derivation of a sequent in LJ, we can get a derivation
+of the same sequent in the system LJ*, where LJ* is LJ without the          [7] A. Church. A set of postulates for the foundation of logic. Annals of
+cut rule.                                                                        Mathematics, 33(2):346–366, 1932.
+    In the Curry-Feys approach to terms and their types, it is not
+hard to provide a statement equivalent to (4), so it is a bit surprising    [8] A. Church. A note on the entscheidungsproblem. Journal of Symbolic
+that they do not do so—at least, not in a form that one would expect.            Logic, 1:40–41, 1936. Received 15 April 1936. Correction, ibid.,
+The closest they come to this is in the statement of Theorem 5,                  1:101–102 (1936), received 13 August 1936.
+page 326. Moreover, Theorem 5 has a ﬁve page proof which is
+not easy to follow, whereas, from the viewpoint of typed lambda             [9] A. Church. An unsolvable problem of elementary number theory.
+                                                                                 American Journal of Mathematics, 58(2):345–363, April 1936.
+                                                                                 Presented to the American Mathematical Society, 19 April 1935;
+                                                                                 abstract in Bulletin of the American Mathematical Society, 41, May
+                                                                                 1935.
+
+                                                                          [10] A. Church. A formulation of the simple theory of types. Journal of
+                                                                                 Symbolic Logic, 5(2):56–68, June 1940.
+
+                                                                          [11] T. Coquand and G. P. Huet. The calculus of constructions.
+                                                                                 Information and Computation, 76(2/3):95–120, 1988.
+[12] P.-L. Curien and H. Herbelin. The duality of computation. In                   in Bulletin of the AMS, July 1935.
+      International Conference on Functional Programming (ICFP), pages
+      233–243, 2000.                                                          [36] S. C. Kleene. λ-deﬁnability and recursiveness. Duke Mathematical
+                                                                                    Journal, 2:340–353, 1936.
+[13] H. B. Curry. Functionality in combinatory logic. Proceedings of the
+      National Academy of Science, 20:584–590, 1934.                          [37] S. C. Kleene. On the interpretation of intuitionistic number theory.
+                                                                                    Journal of Symbolic Logic, 10:109–124, 1945.
+[14] H. B. Curry and R. Feys. Combinatory Logic. North-Holland, 1958.
+                                                                              [38] S. C. Kleene and J. B. Rosser. The inconsistency of certain formal
+[15] R. Davies. A temporal-logic approach to binding-time analysis. In              logics. Annals of Mathematics, 36:630–636, 1936.
+      Logic in Computer Science (LICS), pages 184–195, 1996.
+                                                                              [39] A. N. Kolmogorov. Zur deutung der intuitionistischen logik.
+[16] R. Davies and F. Pfenning. A modal analysis of staged computation.             Mathematische Zeitschrift, 35:58–65, 1932.
+      In Principles of Programming Languages (POPL), pages 258–270,
+      1996.                                                                   [40] C. Kreitz. Building reliable, high-performance networks with
+                                                                                    the nuprl proof development system. Journal of Functional
+[17] N. G. de Bruijn. The mathematical language Automath, its usage, and            Programming, 14(1):21–68, 2004.
+      some of its extensions. In Symposium on Automatic Demonstration,
+      volume 125 of Lecture Notes in Computer Science, pages 29–61.           [41] X. Leroy. Formal veriﬁcation of a realistic compiler. Commun. ACM,
+      Springer-Verlag, 1968.                                                        52(7):107–115, 2009.
+
+[18] R. Gandy. The conﬂuence of ideas in 1936. In R. Herken, editor, The      [42] C. Lewis and C. Langford. Symbolic Logic. 1938. reprinted by Dover,
+      Universal Turing Machine: a Half-Century Survey, pages 51–102.                1959.
+      Springer, 1995.
+                                                                              [43] P. Martin-Lo¨f. Intuitionistic type theory. Bibliopolis Naples, Italy,
+[19] S. Gay. Quantum programming languages: survey and bibliography.                1984.
+      Mathematical Structures in Computer Science, 16(4):581–600, 2006.
+                                                                              [44] P. Martin-Lo¨f. On the meaning of the logical constants and the
+[20] G. Gentzen. Untersuchungen u¨ber das logische Schließen. Mathe-                justiﬁcation of the logical laws (Siena Lectures 1983). Nordic Journal
+      matische Zeitschrift, 39(2–3):176–210, 405–431, 1935. Reprinted in            of Philosophical Logic, 1(1):11–60, 1996.
+      [58].
+                                                                              [45] R. Milner. A theory of type polymorphism in programming. J.
+[21] J.-Y. Girard. Interpre´tation functionelle et e´limination des coupures        Comput. Syst. Sci., 17(3):348–375, 1978.
+      dans l’arithme´tique d’ordre supe´rieure, 1972. Universite´ Paris VII,
+      These D’Etat.                                                           [46] J. C. Mitchell and G. D. Plotkin. Abstract types have existential type.
+                                                                                    Transactions on Programming Languages and Systems, 10(3):470–
+[22] J.-Y. Girard. Linear logic. Theoretical Computer Science, 50:1–102,            502, July 1988.
+      1987.
+                                                                              [47] E. Moggi. Notions of computation and monads. Information and
+[23] J.-Y. Girard, P. Taylor, and Y. Lafont. Proof and Types. Cambridge             Computation, 93(1):55–92, 1991.
+      University Press, 1989.
+                                                                              [48] T. Murphy VII, K. Crary, R. Harper, and F. Pfenning. A symmetric
+[24] K. Go¨del. U¨ ber formal unterscheidbare Sa¨tze der Principia                  modal lambda calculus for distributed computing. In Logic in
+      Mathematica und verwandter Systeme I. Monatshefte fu¨r Mathematik             Computer Science (LICS), pages 286–295, 2004.
+      und Physik, 38:173–198, 1931. Reprinted in [61].
+                                                                              [49] C. Murthy. An evaluation semantics for classical proofs. In Logic in
+[25] G. Gonthier. Formal proof–the four-color theorem. Notices of the               Computer Science (LICS), pages 96–107, 1991.
+      AMS, 55(11):1382–1393, 2008.
+                                                                              [50] M. Parigot. λµ-calculus: an algorithmic interpretation of classical
+[26] T. Grifﬁn. A formulae-as-types notion of control. In Principles of             natural deduction. In Logic programming and automated reasoning,
+      Programming Languages (POPL), pages 47–58. ACM, Jan. 1990.                    volume 624 of Lecture Notes in Computer Science, pages 190–201.
+                                                                                    Springer-Verlag, 1992.
+[27] M. Hayden and R. van Renesse. Optimizing layered communication
+      protocols. In Proceedings of the 6th International Symposium on         [51] A. Pnueli. The temporal logic of programs. In FOCS, pages 46–57,
+      High Performance Distributed Computing, HPDC, pages 169–177.                  1977.
+      IEEE Computer Society, 1997.
+                                                                              [52] A. Prior. Time and Modality. 1957.
+[28] D. E. Hesseling. Gnomes in the fog: the reception of Brouwer’s
+      intuitionism in the 1920s. Birkha¨user, 2003.                           [53] J. C. Reynolds. Towards a theory of type structure. In Symposium
+                                                                                    on Programming, volume 19 of Lecture Notes in Computer Science,
+[29] A. Heyting. Mathematische Grundlagenforschung Intuitionismus                   pages 408–423, 1974.
+      Bewiestheorie. Ergebnisse der Mathematik und ihren Grenagebiete.
+      Springer Verlag, Berlin, 1934.                                          [54] D. Scott. Relating theories of the λ-calculus. In To H. B. Curry:
+                                                                                    Essays on Combinatory Logic, Lambda Calculus, and Formalism,
+[30] R. Hindley. The principal type scheme of an object in combinatory              pages 375–402. Academic Press, 1980.
+      logic. Transactions of the American Mathematical Society, 146:29–
+      60, Dec. 1969.                                                          [55] A. E. Shell-Gellasch. Reﬂections of my advisor: Stories of
+                                                                                    mathematics and mathematicians. The Mathematical Intelligencer,
+[31] K. Honda. Types for dyadic interaction. In CONCUR, pages 509–523,              25(1):35–41, 2003.
+      1993.
+                                                                              [56] M. H. Sørensen and P. Urzyczyn. Lectures on the Curry-Howard
+[32] W. A. Howard. The formulae-as-types notion of construction. In                 isomorphism. Elsevier, 2006.
+      To H. B. Curry: Essays on Combinatory Logic, Lambda Calculus,
+      and Formalism, pages 479–491. Academic Press, 1980. The original        [57] N. Swamy, J. Chen, C. Fournet, P. Strub, K. Bhargavan, and J. Yang.
+      version was circulated privately in 1969.                                     Secure distributed programming with value-dependent types. In
+                                                                                    M. M. T. Chakravarty, Z. Hu, and O. Danvy, editors, International
+[33] A. Jeffrey. Causality for free!: parametricity implies causality for           Conference on Functional Programming (ICFP), pages 266–278.
+      functional reactive programs. In Programming Languages meets                  ACM, 2011.
+      Program Veriﬁcation (PLPV), pages 57–68, 2013.
+                                                                              [58] M. E. Szabo, editor. The collected papers of Gerhard Gentzen. North
+[34] S. Kleene. Origins of recursive function theory. Annals of the History         Holland, 1969.
+      of Computing, 3(1):52–67, 1981.
+                                                                              [59] S. Thompson. Type Theory and Functional Programming. Addison-
+[35] S. C. Kleene. General recursive functions of natural numbers.                  Wesley, 1991.
+      Mathematical Annalen, 112(1), December 1936. Abstract published
+                                                                              [60] A. M. Turing. On computable numbers, with an application to the
+      Entscheidungsproblem. Proceedings of the London Mathematical
+      Society, s2-42(1), 1937. Received 28 May 1936, read 12 November
+      1936.
+
+[61] J. van Heijenoort. From Frege to Go¨del: a sourcebook in mathemati-
+      cal logic, 1879–1931. Harvard University Press, 1967.
+
+[62] M. Y. Vardi. From church and prior to PSL. In O. Grumberg
+      and H. Veith, editors, 25 Years of Model Checking—History,
+      Achievements, Perspectives, volume 5000 of Lecture Notes in
+      Computer Science, pages 150–171. Springer, 2008.
+
+[63] P. Wadler. A taste of linear logic. In Mathematical Foundations of
+      Computer Science (MFCS), volume 711 of LNCS, pages 185–210.
+      Springer-Verlag, 1993.
+
+[64] P. Wadler. Call-by-value is dual to call-by-name. In International
+      Conference on Functional Programming (ICFP), pages 189–201.
+      ACM, 2003.
+
+[65] P. Wadler. Propositions as sessions. In International Conference on
+      Functional Programming (ICFP), pages 273–286. ACM, 2012.
+
+[66] A. N. Whitehead and B. Russell. Principia mathematica. Cambridge
+      University Press, 1912.
+

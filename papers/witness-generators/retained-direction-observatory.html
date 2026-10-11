@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Retained directions: what a second interface can see</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#101824;color:#e7eff8;font:16px/1.5 system-ui,sans-serif}main{max-width:1250px;margin:auto;padding:24px}h1{font-size:clamp(24px,4vw,34px);line-height:1.2}h2{font-size:19px;margin:0 0 10px}p{margin:8px 0}.muted{color:#adc0d5}button,select{font:inherit;border:1px solid #59718b;border-radius:6px;padding:9px 12px;background:#26394d;color:inherit;cursor:pointer}button[aria-pressed=true]{border-color:#ffd166;background:#51482d}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #ffd166;outline-offset:3px}.row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.controls,.panel,details{background:#172535;border:1px solid #354e67;border-radius:9px;padding:16px;margin:16px 0}.layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}.panel{margin:0;min-width:0}#view{height:430px;touch-action:none}canvas{display:block;width:100%;height:100%}.readout{font:14px/1.7 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;background:#101c29;border-radius:6px;padding:12px}.good{color:#93e8b6}.gold{color:#ffd166}.pink{color:#f49bda}.tag{font-size:13px;color:#adc0d5}#status{min-height:3em}a{color:#9ed8ff}summary{cursor:pointer}#error{background:#58262e;padding:15px}label{display:inline-flex;align-items:center;gap:8px}#record{min-height:85px}.legend{font-size:14px;color:#bfd0e2}[hidden]{display:none!important}@media(max-width:760px){main{padding:14px}.layout{grid-template-columns:1fr}#view{height:340px}}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+</head><body><main>
+<h1>Same first readout. Different retained directions.</h1>
+<p>Prepare the face center or the opposite vertex. Interface <b>AB</b> reads zero for both. Can a second interface tell them apart?</p>
+<div class="controls"><div class="row">
+<button id="front" aria-pressed="true">Face center ABC</button><button id="back" aria-pressed="false">Opposite vertex D</button><button id="sample">Another boundary direction</button>
+</div><div class="row" style="margin-top:14px"><label><input id="retain" type="checkbox" checked>Retain original direction</label><label>Second interface <select id="second"></select></label></div>
+<p class="muted">Changing retention starts a fresh trial. Discarded information is never reconstructed from the first output alone.</p></div>
+<p id="error" role="alert" hidden></p>
+<div class="layout">
+<section class="panel"><h2>Prepared direction — reference view</h2><div id="view"></div><p class="legend"><span class="gold">Gold: face center ABC</span> · <span class="pink">Pink: opposite vertex D</span><br>White ring: current preparation. Dashed line: the first interface’s invisible normal direction.</p><p class="muted">This view shows the preparation even when the observer discards it. It is not an extra input to the second readout. Drag to rotate; scroll to zoom.</p><div id="input" class="readout"></div></section>
+<section class="panel"><h2>What the observer can use</h2><p class="tag">1 · First interface: AB, on face ABC</p><div id="first-value" class="readout"></div><p class="tag">Record passed downstream</p><div id="record" class="readout"></div><p id="second-title" class="tag"></p><div id="second-value" class="readout"></div><p class="tag">Reconstruction from the two readouts</p><div id="recovery" class="readout"></div><p id="status" role="status"></p></section>
+</div>
+<details><summary>What this experiment establishes</summary><p>The matrices are generated from the source’s twelve triangle frames. For each frame, v = X(1,ω,ω²), with ω = (−1+√−3)/2. The aligned reversed-cycle readout is A = v vᵀ/(v* v). Both interfaces read the <em>same retained real vector</em>.</p><p>Two interfaces on different faces reconstruct that vector. Two on the same face retain a common invisible normal. Reading the first output with another projector is a different operation: it cannot recover information already discarded.</p><p>When the direction is discarded, this page shows that sequential operation separately. It does not present it as a second measurement of the original direction.</p><p>All twelve interfaces come from the existing coefficient construction. This page models access to a retained input, not measurement disturbance or a time-evolution law.</p><p><a href="../../research/voevodsky/second-interface-observability.md">Exact calculation</a> · <a href="potential-fold-explorer.html">Earlier sector explorer</a></p></details>
+</main>
+<script id="observatory-math">
+(() => {
+ const P=[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]];
+ const faces={AB:'ABC',AC:'ACD',AD:'ABD',BA:'ABD',BC:'ABC',BD:'BCD',CA:'ABC',CB:'BCD',CD:'ACD',DA:'ACD',DB:'ABD',DC:'BCD'};
+ const add=(z,w)=>[z[0]+w[0],z[1]+w[1]];
+ const mul=(z,w)=>[z[0]*w[0]-3*z[1]*w[1],z[0]*w[1]+z[1]*w[0]];
+ const xyz=v=>[0,1,2].map(j=>v.reduce((s,x,i)=>s+x*P[i][j],0));
+ const matrices={},vectors={};
+ for(const [edge,face] of Object.entries(faces)){
+  const F=[0,1,2].map(j=>[...face].reduce((s,c)=>s+P['ABCD'.indexOf(c)][j],0)/3);
+  const a=P['ABCD'.indexOf(edge[0])],b=P['ABCD'.indexOf(edge[1])];
+  const v=F.map((f,j)=>[f-(a[j]+b[j])/2,(a[j]-b[j])/2]);
+  const norm=v.reduce((s,z)=>s+z[0]**2+3*z[1]**2,0);vectors[edge]=v;
+  matrices[edge]=v.map(z=>v.map(w=>mul(z,w).map(x=>x/norm)));
+ }
+ const apply=(edge,z)=>matrices[edge].map(row=>row.reduce((s,a,i)=>add(s,mul(a,z[i])),[0,0]));
+ const observe=(edge,d)=>apply(edge,d.map(x=>[x,0]));
+ const prepare=(v,retain)=>{const d=xyz(v);return {first:observe('AB',d),direction:retain?[...d]:null};};
+ const second=(record,edge)=>record.direction?observe(edge,record.direction):null;
+ function inverse(m){
+  const a=m.map((row,i)=>[...row,...[0,1,2].map(j=>+(i===j))]);
+  for(let j=0;j<3;j++){let p=j;for(let i=j+1;i<3;i++)if(Math.abs(a[i][j])>Math.abs(a[p][j]))p=i;
+   if(Math.abs(a[p][j])<1e-10)return null;[a[p],a[j]]=[a[j],a[p]];const d=a[j][j];a[j]=a[j].map(x=>x/d);
+   for(let i=0;i<3;i++)if(i!==j){const t=a[i][j];a[i]=a[i].map((x,k)=>x-t*a[j][k]);}
+  }return a.map(row=>row.slice(3));
+ }
+ function recover(edge,z1,z2){
+  const maps=[matrices.AB,matrices[edge]],outputs=[z1,z2];
+  const M=[0,1,2].map(i=>[0,1,2].map(j=>maps.reduce((s,p)=>s+p.reduce((t,row)=>t+row[i][0]*row[j][0]+3*row[i][1]*row[j][1],0),0)));
+  const inv=inverse(M);if(!inv)return null;
+  const rhs=[0,1,2].map(i=>maps.reduce((s,p,k)=>s+p.reduce((t,row,j)=>t+row[i][0]*outputs[k][j][0]+3*row[i][1]*outputs[k][j][1],0),0));
+  const d=inv.map(row=>row.reduce((s,x,i)=>s+x*rhs[i],0));
+  return {xyz:d,barycentric:P.map(p=>(1+p.reduce((s,x,i)=>s+x*d[i],0))/4)};
+ }
+ globalThis.ObservatoryMath={P,faces,matrices,vectors,xyz,apply,observe,prepare,second,recover};
+})();
+</script>
+<script type="module">
+const $=id=>document.getElementById(id),M=globalThis.ObservatoryMath;
+const state={barycentric:[1/3,1/3,1/3,0],retain:true,second:'AC',kind:'front',record:null};
+const fmt=x=>(Math.abs(x)<1e-10?0:x).toFixed(5);
+const vector=v=>'('+v.map(fmt).join(', ')+')';
+const complex=z=>`${fmt(z[0])} ${z[1]<-1e-10?'−':'+'} ${fmt(Math.abs(z[1]))}√−3`;
+const outputs=z=>z.map((x,i)=>'xyz'[i]+': '+complex(x)).join('\n');
+for(const [edge,face] of Object.entries(M.faces)){const o=document.createElement('option');o.value=edge;o.textContent=`${edge} · face ${face}${face==='ABC'?' · same face':''}`;$('second').append(o);}$('second').value='AC';
+let updateScene=()=>{};
+function render(){
+ $('input').textContent='Prepared barycentrics:\n'+vector(state.barycentric);
+ $('first-value').textContent=outputs(state.record.first);
+ $('record').textContent=state.record.direction?'First readout + retained direction\n'+vector(state.record.direction):'First readout only.\nOriginal direction: discarded.';
+ $('second-title').textContent=`2 · Interface ${state.second}, on face ${M.faces[state.second]}`;
+ const z2=M.second(state.record,state.second);
+ if(z2){
+  $('second-value').textContent=outputs(z2);
+  const recovered=M.recover(state.second,state.record.first,z2);
+  if(recovered){$('recovery').textContent='Recovered barycentrics:\n'+vector(recovered.barycentric);$('status').textContent='Two different-face readouts recover the retained direction.';$('status').className='good';}
+  else{$('recovery').textContent='Not unique: both interfaces miss the same normal direction.';$('status').textContent='Choose an interface on a different face to resolve the ambiguity.';$('status').className='gold';}
+ }else{
+  $('second-value').textContent='Direct readout unavailable: direction discarded.\n\nProjecting the first output instead:\n'+outputs(M.apply(state.second,state.record.first));
+  $('recovery').textContent='Cannot reconstruct the original direction from this record.';
+  $('status').textContent='The reference picture still shows the preparation, but the observer no longer has it.';$('status').className='gold';
+ }
+ for(const id of ['front','back','sample'])$(id).setAttribute('aria-pressed',String(state.kind===id));
+ updateScene();
+}
+function prepare(v,kind){state.barycentric=[...v];state.kind=kind;state.record=M.prepare(v,state.retain);render();}
+$('front').onclick=()=>prepare([1/3,1/3,1/3,0],'front');$('back').onclick=()=>prepare([0,0,0,1],'back');
+$('sample').onclick=()=>{const v=Array.from({length:4},()=>0.1+Math.random());v[Math.floor(Math.random()*4)]=0;const sum=v.reduce((a,b)=>a+b,0);prepare(v.map(x=>x/sum),'sample');};
+$('retain').onchange=event=>{state.retain=event.target.checked;prepare(state.barycentric,state.kind);};
+$('second').onchange=event=>{state.second=event.target.value;render();};
+prepare(state.barycentric,'front');
+try{
+ const THREE=await import('three');const {OrbitControls}=await import('three/addons/controls/OrbitControls.js');
+ const element=$('view'),renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor(0x172535);element.append(renderer.domElement);
+ renderer.domElement.setAttribute('aria-label','Prepared tetrahedral direction and the first interface blind axis');
+ const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(40,1,0.01,100);camera.position.set(5,2,1);
+ const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.enablePan=false;controls.minDistance=3;controls.maxDistance=12;
+ const pts=M.P.map(v=>new THREE.Vector3(...v));
+ const line=(points,color,dashed=false)=>{const g=new THREE.BufferGeometry().setFromPoints(points);const mat=dashed?new THREE.LineDashedMaterial({color,dashSize:.07,gapSize:.05}):new THREE.LineBasicMaterial({color});const o=new THREE.Line(g,mat);if(dashed)o.computeLineDistances();scene.add(o);return o;};
+ for(const ids of [[0,1,2],[0,1,3],[0,2,3],[1,2,3]]){const g=new THREE.BufferGeometry().setFromPoints(ids.map(i=>pts[i]));scene.add(new THREE.Mesh(g,new THREE.MeshBasicMaterial({color:ids.includes(3)?0xc49bec:0x6cdcff,transparent:true,opacity:.1,side:THREE.DoubleSide,depthWrite:false})));}
+ for(const [a,b]of[[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]])line([pts[a],pts[b]],0x9caec1);
+ function label(text,p){const c=document.createElement('canvas');c.width=64;c.height=64;const ctx=c.getContext('2d');ctx.fillStyle='#172535';ctx.fillRect(0,0,64,64);ctx.font='bold 44px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#e7eff8';ctx.fillText(text,32,32);const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;const o=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,depthTest:false,depthWrite:false}));o.position.copy(p);o.scale.set(.2,.2,.2);scene.add(o);}
+ pts.forEach((p,i)=>label('ABCD'[i],p.clone().multiplyScalar(1.13)));
+ function dot(p,color,r){const o=new THREE.Mesh(new THREE.SphereGeometry(r,20,12),new THREE.MeshBasicMaterial({color}));o.position.copy(p);scene.add(o);return o;}
+ const front=new THREE.Vector3(1/3,1/3,-1/3);dot(front,0xffd166,.065);dot(pts[3],0xf49bda,.065);line([front,pts[3]],0xffd166,true);dot(new THREE.Vector3(),0x8297ad,.025);
+ const selected=dot(front,0xffffff,.092);selected.material.wireframe=true;
+ const ray=line([new THREE.Vector3(),front],0xffffff);
+ updateScene=()=>{const p=new THREE.Vector3(...M.xyz(state.barycentric));selected.position.copy(p);const pos=ray.geometry.attributes.position;pos.setXYZ(1,p.x,p.y,p.z);pos.needsUpdate=true;ray.geometry.computeBoundingSphere();};updateScene();
+ new ResizeObserver(()=>{const w=element.clientWidth,h=element.clientHeight;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();}).observe(element);
+ function animate(){controls.update();renderer.render(scene,camera);requestAnimationFrame(animate);}animate();
+}catch(error){$('error').hidden=false;$('error').textContent='3D view unavailable. WebGL and internet access to jsDelivr are required. The numerical experiment still works. '+error.message;console.error(error);}
+</script></body></html>

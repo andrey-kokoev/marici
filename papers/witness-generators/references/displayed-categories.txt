@@ -1,0 +1,1021 @@
+Logical Methods in Computer Science                                       Submitted Feb. 23, 2018
+Volume 15, Issue 1, 2019, pp. 20:1–20:18                                  Published Mar. 05, 2019
+https://lmcs.episciences.org/
+
+                                DISPLAYED CATEGORIES
+
+                       BENEDIKT AHRENS AND PETER LEFANU LUMSDAINE
+
+School of Computer Science, University of Birmingham, United Kingdom
+e-mail address: b.ahrens@cs.bham.ac.uk
+
+Department of Mathematics, Stockholm University, Sweden
+e-mail address: p.l.lumsdaine@math.su.se
+
+     Abstract. We introduce and develop the notion of displayed categories.
+         A displayed category over a category C is equivalent to ‘a category D and functor
+
+     F : D → C’, but instead of having a single collection of ‘objects of D’ with a map to the
+     objects of C, the objects are given as a family indexed by objects of C, and similarly for the
+     morphisms. This encapsulates a common way of building categories in practice, by starting
+     with an existing category and adding extra data/properties to the objects and morphisms.
+
+         The interest of this seemingly trivial reformulation is that various properties of func-
+     tors are more naturally deﬁned as properties of the corresponding displayed categories.
+     Grothendieck ﬁbrations, for example, when deﬁned as certain functors, use equality on
+     objects in their deﬁnition. When deﬁned instead as certain displayed categories, no reference
+     to equality on objects is required. Moreover, almost all examples of ﬁbrations in nature
+     are, in fact, categories whose standard construction can be seen as going via displayed
+     categories.
+
+         We therefore propose displayed categories as a basis for the development of ﬁbrations in
+     the type-theoretic setting, and similarly for various other notions whose classical deﬁnitions
+     involve equality on objects.
+
+         Besides giving a conceptual clariﬁcation of such issues, displayed categories also provide
+     a powerful tool in computer formalisation, unifying and abstracting common constructions
+     and proof techniques of category theory, and enabling modular reasoning about categories
+     of multi-component structures. As such, most of the material of this article has been
+     formalised in Coq over the UniMath library, with the aim of providing a practical library
+     for use in further developments.
+
+    Key words and phrases: Category theory, Dependent type theory, Computer proof assistants, Coq,
+Univalent mathematics.
+
+l LOGICAL METHODS                         DOI:10.23638/LMCS-15(1:20)2019  c B. Ahrens and P. LeF. Lumsdaine
+           IN COMPUTER SCIENCE                                            CC Creative Commons
+20:2  B. Ahrens and P. LeF. Lumsdaine  Vol. 15:1
+
+                                                1. Introduction
+
+It is often said that reference to equality of objects of categories is in general both undesirable
+and unnecessary.
+
+     There are some topics, however, whose development does appear to require it. One
+example often given is the deﬁnition of (Grothendieck) ﬁbrations (and their relatives): functors
+p : D → C equipped with a lifting property providing (among other things) an object d of D
+such that pd is equal to a previously given object c of C. A similar example is the property
+of creating limits; see [Lei14, Remark 5.3.7] for an explicit discussion of this example.1
+
+     In examples of ﬁbrations (or creation of limits), however, one virtually never has cause
+to speak explicitly of equality of objects; and equally in their basic general theory.
+
+     How is this avoidance achieved? In the general development, equality occurs only within
+the notion of ‘objects of D over c’, for objects c of C. And in examples, there is almost always
+an obvious alternative notion of ‘object D over c’, trivially equivalent to ‘objects of D whose
+projection is equal to c’, but expressible without mentioning equality of objects.
+
+     Speciﬁcally, objects of D typically consist of objects of C equipped with extra data,
+structure, or properties; ‘an object of D over c’ is then understood to mean ‘a choice of the
+extra data for c’. For instance, in showing that the forgetful functor Top → Set creates limits,
+one doesn’t construct a space and then note that its underlying set is equal to the desired
+one; one simply constructs a suitable topology on that set.
+
+     The notion of displayed categories makes this explicit. A displayed category over C
+consists of a family of types Dc (of ‘objects over c’), indexed by objects c of C, and similarly
+sets of morphisms indexed by morphisms of C, along with suitable composition and identity
+operations to ensure that the total collections of objects and morphisms form a category
+(with a projection functor to C). This is entirely equivalent to the data of a category with a
+functor to C, just as ‘a family of sets indexed by X’ is equivalent to ‘a set with a function to
+X ’.
+
+     If ﬁbrationhood (or creating limits, etc.) is now deﬁned not as a property of a functor but
+instead as a property of a displayed category, no mention of equality of objects is required.
+Equality of objects is used only for turning an arbitrary functor into a displayed category; but
+this is rarely needed in practice, since most natural examples of ﬁbrations, creation of limits,
+and so on already arise from displayed categories. For instance, the standard deﬁnition of
+the category Top can be read as the total category of a displayed category over Set, whose
+objects over a set X are topologies on X.
+
+     We therefore propose that displayed categories should be taken as a basis for the
+development of ﬁbrations, creation of limits, and similar notions, in particular in the type-
+theoretic setting, where dealing with equality on objects is more practically problematic than
+in classical foundations.
+
+     We do not believe we are introducing something mathematically novel here; we are
+simply making explicit an aspect of how mathematicians already deal with certain kinds of
+examples in practice. The payoﬀs, however, are twofold.
+
+     Firstly, since this concept has been previously un-articulated, it has not been consistently
+appreciated that it resolves the ‘problematic’ issue of ﬁbrations (and various other notions)
+apparently requiring use of equality on objects. Besides providing conceptual clariﬁcation,
+this should help in future work with disentangling which constructions genuinely do require
+
+    1Both of these deﬁnitions have analogues in which the equality is weakened to isomorphism; but the strict
+versions have nonetheless remained in more general currency.
+Vol. 15:1  DISPLAYED CATEGORIES  20:3
+
+use of equality on objects, and hence may require extra work or assumptions to develop in
+type-theoretic settings.
+
+     Secondly, by making this common informal technique precise, we make it available for use
+in computer formalisation, where a diﬀerence between the formal deﬁnitions given and the
+approach used in practice cannot be so blithely elided as it can for human mathematicians.
+Aside from issues of equality on objects, many common proof-techniques for reasoning about
+categories of multi-component structures can be expressed formally in terms of displayed
+categories, giving an essential toolbox for constructing and investigating such categories in
+formalisations.
+
+     To that end, most constructions and results of the present paper have been formalised
+in the proof assistant Coq, over the UniMath library, with the goal of providing a practical
+library for re-use in further developments.
+
+     While that development is in univalent type theory, for the present article we work in an
+‘agnostic’ logical setting: all results may be understood either in type theory with univalence,
+or in a classical set-theoretic foundation.
+
+1.1. Outline. We begin, in §2, by laying out precisely the agnostic type-theoretic foundation
+in which we work, and recalling the basic background of category theory in this setting.
+
+     In §3, we then set up the core deﬁnitions and constructions of displayed categories, along
+with various examples which will be used as running illustrations through the following
+sections.
+
+     Following this, in §4, we consider creation of limits, a ﬁrst simple example of a classical
+property of functors which can be stated and developed more cleanly as a property of
+displayed categories.
+
+     In §5, we move to the central such example: ﬁbrations, along with their cousins isoﬁbra-
+tions, discrete ﬁbrations, and so on. We set out the displayed-category deﬁnitions of these,
+and set out some of the basic results and constructions over this deﬁnition.
+
+     This provides a basis for the theory and application of ﬁbrations in the type-theoretic
+setting. In §6, we use this to deﬁne comprehension categories—a categorical axiomatisation
+of type dependency—bringing together several of the tools set up in earlier sections.
+
+     Finally, in §7, we consider univalence of displayed categories. The main result there is
+that the total category of a univalent displayed category (suitably deﬁned) over a univalent
+base category is univalent. This generalises the structure identity principle of [Uni13, §9.8].
+
+     Throughout the article, many proofs would be almost word-for-word the same as standard
+proofs of the corresponding results about classically-deﬁned ﬁbrations (resp. creation of limits,
+etc), since displayed categories are exactly a formal abstraction of the language already used
+in such proofs. We therefore omit these, to avoid repeating well-known material—but we
+invite the reader to recall the standard proofs, and see how directly they transfer.
+
+     Most other proofs are also either omitted or just brieﬂy sketched, if they are either
+routine, available in detail in the formalisation, or both.
+
+     We follow Voevodsky in writing ‘Problem’, rather than ‘Theorem’, ‘Proposition’, etc., to
+denote proof-relevant results.
+
+1.2. Formalisation. Most results of the present article have been formalised in Coq, over
+the UniMath library of Voevodsky et al. [VAG+].
+20:4  B. Ahrens and P. LeF. Lumsdaine  Vol. 15:1
+
+     The primary goal of the formalisation is to provide a library for use in further work.
+We have therefore focused in it on the results and constructions we expect to be useful in
+such work. In particular, we have not formalised the comparisons with classical deﬁnitions:
+these are not needed for the development of ﬁbrations etc. based on displayed categories, but
+rather form a justiﬁcation that this approach is ‘correct’ from a classical point of view.
+
+     The formalisation is available as part of the UniMath library, at https://github.com/
+UniMath/UniMath, in the subdirectory UniMath/CategoryTheory/DisplayedCats. Instruc-
+tions for use can be found in the repository’s README.md ﬁle.
+
+     As a base for further development, readers are recommended to use the most up-
+to-date version of UniMath. However, organisation and naming of material there may
+change in future, so for permanent reference, the speciﬁc version described in this article
+is commit 4dd5c17 (8 December 2018), with browsable online documentation at https:
+//unimath.github.io/doc/UniMath/4dd5c17/toc.html.
+
+     Deﬁnitions, constructions, and results included in the formalisation are labelled below
+with their corresponding identiﬁers, as e.g. disp_cat, and linked to their code in the reference
+version.
+
+     The material of the present paper constitutes about 5,000 lines of code.
+
+1.3. Revision notes. This article is an expanded version of the conference paper [AL17],
+presented at Formal Structures for Computation and Deduction (FSCD) 2017. Changes
+include the addition of Section 7.3 on amnestic functors, and various minor local revisions.
+
+                                                2. Background
+
+2.1. Logical setting. All the material of the present paper may be understood either in
+the univalent setting, or in classical set-theoretic foundations.
+
+     Precisely, our background setting throughout is Martin-Löf’s intensional type theory,
+with: Σ-types, with the strong η rule; identity types; Π-types, also with η, and functional
+extensionality; 0, 1, 2, and N; propositional truncation; and two universes closed under all
+these constructions.
+
+     This setting is agnostic about equality on types: it assumes neither univalence, nor UIP.
+It is therefore expected to be compatible both with the addition of univalence, and with the
+interpretation of types as classical sets.
+
+     Some type-theoretic issues trivialise under the classical reading—for instance, the con-
+sideration of transport along equalities, which is unnecessary classically. Some topics also
+become less interesting there, as they admit only degenerate examples: in particular, the
+material on univalent categories. The reader interested only in the classical setting may
+therefore ignore these aspects.
+
+2.2. Type-theoretic background. We mostly follow the terminology standardised in the
+HoTT book [Uni13]. A brief, but suﬃcient, overview is given in [AKS15], among other
+places.
+
+     We depart from it (and type-theoretic tradition in general) in writing just existence
+for what is called mere existence in [Uni13], since this is what corresponds (under the
+interpretation of types as sets) to the standard mathematical usage of existence.
+Vol. 15:1  DISPLAYED CATEGORIES  20:5
+
+     We will make frequent use of dependent paths/equalities [Uni13, §6.2] Speciﬁcally, in
+a type family Bx indexed by x : A, we will write dependent equalities as e.g. p : y0 =e y1,
+where e : x0 =A x1 and yi : Bxi. We omit explicit mention of the type family B, since it
+will always be clear from context. The base A will often moreover be a set, in which case
+y0 =e y1 does not depend on the base path e, so we suppress this and write just y0 =∗ y1.
+
+     We will mostly ignore size issues; we would really like to think of everything as being
+universe-polymorphic. For concreteness, however, Type may be understood always as the
+smaller of our two assumed universes, with types in this universe referred to as small, and
+similarly Set as meaning the type or category of small sets, and so on.
+
+2.3. Categories. We mostly follow the approach to category theory in the type-theoretic
+setting established in [AKS15]. We depart however from their terminology, writing categories
+for what [AKS15] calls precategories (since it is this that becomes the standard deﬁnition under
+the set interpretation), and writing univalent categories for what [AKS15] calls categories.
+
+     Speciﬁcally, in a category C, the hom-sets C(a, b) are required to be sets, but the type C0
+of objects is allowed to be an arbitrary type. A category C is univalent if for all a, b : C, the
+canonical map idtoisoa,b : (a = b) → isoC(a, b) is an equivalence: informally, if ‘equality of
+objects is isomorphism in C’.
+
+     Following the UniMath library, we write composition in the ‘diagrammatic’ order; that
+is, the composite of f : a → b and g : b → c is denoted f · g : a → c.
+
+                                         3. Displayed categories
+
+In this section, we set out the basic deﬁnitions of displayed categories, displayed functors,
+and displayed natural transformations, along with key constructions on them, and examples
+which will act as running illustrations throughout the paper.
+
+3.1. Deﬁnition and examples.
+
+Deﬁnition 3.1 (disp_cat). Given a category C, a displayed category D over C consists of
+(1) for each object c : C, a type Dc of ‘objects over c’;
+(2) for each morphism f : a → b of C, x : Da and y : Db, a set of ‘morphisms from x to y
+
+     over f ’, denoted homf (x, y) or x →f y;
+(3) for each c : C and x : Dc, a morphism 1x : x →1c x;
+(4) for all morphisms f : a → b and g : b → c in C and objects x : Da and y : Db and z : Dc,
+
+     a function
+                                 homf (x, y) × homg(y, z) → homf·g(x, z) ,
+
+     denoted like ordinary composition by (f¯, g¯) → f¯ · g¯ : x →f·g z, where f¯ : x →f y and
+     g¯ : y →g z,
+such that, for all suitable inputs, we have:
+(5) f¯ · 1y =∗ f¯,
+(6) 1x · f¯ =∗ f¯,
+(7) f¯ · (g¯ · h¯) =∗ (f¯ · g¯) · h¯.
+20:6                               B. Ahrens and P. LeF. Lumsdaine  Vol. 15:1
+
+     Note that the axioms are all dependent equalities, over equalities of morphisms in C: for
+instance, if f¯ : x →f y, then f¯ · 1y : x →f·1b y, so the displayed right unit axiom f¯ · 1y =∗ f¯
+is over the ordinary right unit axiom f · 1b = f of C. This will be typical in what follows:
+equations in displayed categories will be modulo analogous equations in C, which we will
+
+usually suppress without further comment.
+
+     As promised, any displayed category over C induces an ordinary category over C:
+
+Deﬁnition 3.2 (total_category, pr1_category). Let D be a displayed category D over
+C. The total category of D, written D (or C D, or c:C Dc) is deﬁned as follows:
+(1) objects are pairs (a, x) where a : C and x : Da; in other words, the type of objects is
+
+                                               ( D)0 := a:C Da ;
+(2) morphisms (a, x) → (b, y) are pairs (f, f¯) where f : a → b and f¯ : x →f y; in other
+
+     words,
+                               ( D) (a, x), (b, y) := f:C(a,b) homf (x, y) ;
+
+(3) composition and identities in          D are induced straightforwardly from those of C and D,
+                                           D → C simply takes the ﬁrst projection, on both objects
+      and similarly for the axioms.
+
+The   evident  forgetful  functor  πD   :
+
+                                     1
+
+and morphisms.
+
+Example 3.3 (group.disp_grp). The category of groups can be deﬁned as the total category
+of a displayed category Grp, over Set:
+
+(1) GrpX is the set of group structures on the set X;
+(2) given a function f : X → Y and group structures (µ, e) on X and (µ , e ) on Y ,
+
+     homf ((µ, e), (µ , e )) is (the type representing) the proposition ‘f is a homomorphism
+     with respect to (µ, e), (µ , e )’;
+(3) the displayed composition ‘operation’ is the fact that the composite of homomorphisms
+     is a homomorphism; similarly for the identity;
+(4) the axioms are trivial, since the displayed hom-sets are propositions.
+
+The total category of this is exactly the usual category of groups.
+
+Example 3.4 (disp_top). The category of topological spaces can be deﬁned as the total
+category of the displayed category Top over Set:
+
+(1) TopX is the set of topologies on the set X;
+(2) given a function f : X → Y and topologies T on X and T on Y , homf (T, T ) is the
+
+     proposition ‘f is continuous with respect to X and Y ’.
+
+Example 3.5 (disp_over_unit). Any category can be viewed as a displayed category over
+the terminal category.
+
+Example 3.6 (disp_full_sub). Let P : C → Type be a (type-valued) predicate on the
+objects of C. Then there is an associated displayed category, with object family exactly P ,
+and with homf (y, y ) := 1 for all f : c → c , y : P c, and y : P c . The operations and axioms
+are trivial.
+
+     Its total category is the full subcategory of C of objects satisfying the predicate P .
+
+     Properties of the forgetful functor can often be straightforwardly read oﬀ from the
+displayed category:
+Vol. 15:1                              DISPLAYED CATEGORIES                                          20:7
+
+Proposition 3.7 (full_pr1_category, faithful_pr1_category). Let D be a displayed
+category over C. If every displayed hom-set homf (y, y ) of D is a proposition (resp. inhabited,
+contractible) then π1 : D → C is faithful (full, fully faithful).
+
+     Besides the total category, a displayed category also possesses ﬁbre categories:
+
+Deﬁnition 3.8 (fiber_category). Given a displayed category D over C, and an object
+c : C, deﬁne the ﬁbre category Dc of D over c as the category with objects Dc and with
+morphisms hom(x, y) := hom1c(x, y). Composition and identity are induced by that of D.
+
+     In general these may not be so well behaved as the total category; they will typically be
+interesting and well-behaved just when D is an isoﬁbration (Deﬁnition 5.8).
+
+Remark 3.9. In choosing notation and terminology for examples of displayed categories, a
+question arises: should one name displayed categories according to their total category, or
+according to their ﬁbres?
+
+     This problem arises already with ﬁbrations in the classical setting; so we follow for the
+most part the usual compromises used there. Speciﬁcally, when a given total category has a
+particularly canonical displaying—for example, groups displayed over sets—we will use the
+same name for the displayed category and its total category, so for example G : Grp denotes
+a group, while (µ, e) : GrpX is a group structure on X. On the other hand, when diﬀerent
+displayed categories have equivalent total categories—for instance, the product C × C may
+be displayed over either C or C —then we will adopt diﬀerent notation to distinguish these,
+usually based on the resulting ﬁbre categories.
+
+     Other examples we will meet below include:
+
+(1) any product C × C , displayed over its ﬁrst factor as constC C (Example 3.16);
+(2) the arrow category C→, in several ways: displayed over C2, with ﬁbres hom-sets; and
+
+     displayed over C, with ﬁbres either the slices or the coslices of C (Example 3.18);
+(3) categories of algebras for endofunctors and monads (Examples 3.19, 3.20).
+
+We postpone their full deﬁnitions until we have a few more tools set up.
+
+Remark 3.10. Equivalent deﬁnitions in a similar vein as displayed categories—that is,
+‘ﬁbred’ presentations of arbitrary functors into a ﬁxed base category—can be recovered from
+more sophisticated categorical structures in several ways: as lax 2-functors or double functors
+from the base category into the bicategory or double category of spans, or as normal lax
+2-functors/double functors into the bicategory/double category of distributors (as observed
+by Bénabou in [Bén00, §7]), or as double profunctors from the base category to the terminal
+double category.2
+
+3.2. Displayed functors and natural transformations. Another occurrence of equality
+
+of objects is in various deﬁnitions where diagrams of functors are assumed to commute on
+
+the nose. For instance, comprehension categories involve a ﬁbration p : T → C, and a functor
+
+χ : T → C→, such that χ · cod = p [Jac99, Theorem 9.3.4]; similar conditions occur in the
+
+deﬁnition of functorial factorisations, in the theory of weak factorisation systems (among
+
+many other places).
+
+It is typically clear that the deﬁnitions could also be phrased without equality of objects,
+
+at some cost in concision or clarity.  Indeed,  they  are  almost  always  of  the  form  G  ·  πD   = F,
+
+                                                                                                  1
+
+2Our thanks to Mike Shulman and an anonymous referee for pointing out some of these reformulations.
+20:8                            B. Ahrens and P. LeF. Lumsdaine                        Vol. 15:1
+
+where G is a functor into the total category of some displayed category, and F is a previously-
+
+given functor into the base. They are often furthermore of the more specialised form
+
+G  ·  πD   =  πD   ·  F  .
+
+        1       1
+
+      By axiomatising this situation, as displayed functors over functors into the base, such
+
+deﬁnitions can be stated without equality of objects, with no loss of clarity.
+
+Deﬁnition 3.11 (disp_functor). Let F : C → C be a functor, and D, D displayed
+categories over C and C respectively. A (displayed) functor G from D to D over F consists
+of:
+
+(1) maps Gc : Dc → D F c, for each c : C (which we usually write just as G, omitting c); and
+(2) maps homf (x, y) → homF f (Gx, Gy), for each f : c → c in C;
+(3) satisfying the evident dependent analogues of the usual functor laws.
+
+      A displayed functor G over F straightforwardly induces a total functor between total
+
+categories, written         G:  D→  D , such that  G  ·  πD   =  πD   ·  F  .  Indeed, displayed functors
+
+                                                           1       1
+
+are precisely equivalent to such functors between total categories. We often therefore call the
+
+total functor just G.
+
+      Similarly, a functor G over F induces ﬁbre functors Gc : Dc → D F c, for each c : C.
+
+      A useful special case is when F is the identity functor of C, in which case we call G just
+
+a functor over C; this is precisely equivalent to a functor between the total categories strictly
+
+over C in the usual sense.
+
+Deﬁnition 3.12 (disp_nat_trans). Let F, F : C → C be functors, α : F → F a natural
+transformation, and G and G displayed functors from D to D over F and F respectively.
+A displayed natural transformation β from G to G over α consists of
+
+(1) for each c : C and d : Dc, a morphism β(d) : homα(c)(G(d), G (d))
+(2) such that for any f : C(c, c ) and f¯ : homf (d, d ), Gf¯ · β(d ) =∗ β(d) · G f¯.
+
+     Just as ordinary functors and natural transormations form a functor category, their
+displayed versions form a displayed category over the functor category between the bases:
+
+Deﬁnition 3.13 (disp_functor_cat). Given categories C and C , and displayed categories
+D and D over C and C respectively, there is a displayed category [D, D ] over [C, C ], deﬁned
+as follows:
+
+(1) objects over F : C → C are displayed functors from D to D over F ;
+(2) morphisms over α : F → F from G to G are displayed natural transformations from G
+
+     to G over α;
+(3) composition and identity are given by pointwise composition and identity.
+
+      Displayed analogues of usual lemmas on the functor category hold; for instance:
+
+Lemma 3.14 (is_disp_functor_cat_iso_iff_pointwise_iso). A displayed natural trans-
+formation is an isomorphism in the displayed functor category if and only if it is an isomor-
+phism pointwise.
+
+     We could now go on and deﬁne displayed adjunctions over adjunctions between the
+bases, displayed equivalences over equivalences of the base, and so on. From these, one
+gets adjunctions and equivalences, respectively, of total categories. A very useful special
+case is that of displayed adjunctions and equivalences over the identity in the base, yielding
+adjunctions and equivalences of total categories leaving the ﬁrst components of objects
+untouched.
+Vol. 15:1  DISPLAYED CATEGORIES  20:9
+
+     These deﬁnitions are provided in the formalisation; indeed, the original motivation of
+the present work and formalisation was to have these available, in order to construct an
+equivalence of univalent categories between CwF-structures and split type-category structures
+on a ﬁxed base category (cf. the equivalence of types of [ALV18, Construction 3.19]). However,
+an account of this is beyond the scope of the present paper.
+
+     One may also naturally ask what structure the total collections of displayed categories,
+functors, and natural transformations form. We expect that they should form a bicategory
+when the base category is held ﬁxed, and more generally a displayed bicategory over the
+bicategory of categories; but this again is beyond the scope of the present work.
+
+3.3. Constructions on displayed categories. To eﬃciently construct our remaining key
+examples, we set up some basic general constructions on displayed categories.
+
+Deﬁnition 3.15 (reindex_disp_cat). Let D be a displayed cat over C, and F : C → C a
+functor. Then F ∗D, the pullback of D along F , is the displayed category over C deﬁned by
+(1) (F ∗D)c := DF c
+(2) homfF ∗D(d, d ) := homDF f (d, d )
+with the evident composition and identities. There is an evident displayed functor F ∗D → D
+over F .
+
+Example 3.16 (disp_cartesian). Given any categories C, C , the constant displayed cat-
+egory over C with ﬁbre C , denoted constC C (or just const C , when C is implicit), is the
+pullback along the unique functor C → 1 of C , seen as a displayed category over 1.
+
+     There is an evident equivalence from the total category C const C to the product C × C ,
+strictly over C.
+
+Deﬁnition 3.17 (sigma_disp_cat). Let D be a displayed category over C, and E a displayed
+category over C D. The Σ-category of E over D, denoted D E, is the displayed category
+over C deﬁned as follows:
+
+(1) ( D E )x := y:Dx E(x,y)
+(2) homf ((y, z), (y , z )) := f¯:y→f y hom(f,f¯)(z, z )
+(3) operations deﬁned componentwise from those of D and E.
+
+There is an evident equivalence of total categories D E → C ( D E) over C.
+
+                                                                                                 C
+
+Example 3.18 (disp_arrow, disp_domain, disp_codomain). The arrow category has three
+diﬀerent displayed incarnations:
+(1) By C→, we mean the displayed category over C × C with
+
+      (a) C→x,y := homC(x, y)
+      (b) homh,k C→(f, g) := (f ·k = h·g), i.e. the proposition that the resulting square commutes.
+     As our notation suggests, the total category of this is the usual arrow category of C.
+(2) Pulling this back along the canonical equivalence C const C → C × C, and taking the
+     Σ-category of the result, we obtain a displayed category over C which we denote −\C,
+     since its ﬁbre categories are just the co-slices of C. Its total category is equivalent over C
+     to dom : C→ → C.
+(3) If in the previous example, we instead pull back along the equivalence C const C → C × C
+     that swaps the two components, we get instead the displayed category of slices of C, with
+     total category equivalent over C to cod : C→ → C.
+20:10                                  B. Ahrens and P. LeF. Lumsdaine                              Vol. 15:1
+
+Example 3.19 (disp_cat_functor_alg). Suppose F : C → C is an endofunctor. Then F -
+algebras naturally form a displayed category F -Alg over C, with
+(1) F -Algc := homC(F c, c)
+(2) homf (α, β) := (α · f = F f · β), i.e. the proposition that f : a → b is an algebra
+
+     homomorphism (a, α) → (b, β).
+
+The total category is the usual category F -Alg. We will sometimes write F -EndAlg to
+distinguish this from categories of monad algebras.
+
+Example 3.20 (disp_cat_monad_alg). Suppose (T, µ, η) is a monad on C. The full subcat-
+egory of T -EndAlg consisting of the monad algebras for (T, µ, η) can be seen as a displayed
+category over T -EndAlg, as in Example 3.6. Taking the Σ-category of this yields the monad-
+algebras (T, µ, η)-MonAlg as a displayed category over C.
+
+     As usual, we write just T -Alg when there is no risk of confusion.
+
+                                            4. Creation of limits
+
+Creation of limits is our ﬁrst example of a concept which can be proﬁtably reformulated in
+terms of displayed categories.
+
+     As a property of functors, it is a standard and fruitful tool in category theory. It has
+however often been viewed with some mistrust for involving equalities of objects: see, for
+example, [Lei14, Remark 5.3.7].
+
+     If formulated instead as a property of displayed categories, it involves no equalities of
+objects:
+
+Deﬁnition 4.1 (creates_limit). Let D be a displayed category over C, J a graph, and F
+a diagram of shape J in D. Given a limiting cone λ for the diagram F · π1 : J → C in C,
+with vertex c : C, we say that D creates a limit for F over λ if
+
+(1) there is a unique cone on F over λ; that is, a unique object d : Dc and family of arrows
+     µj : homλj (d, π2F (j)) such that the pairs (λj, µj) form a cone on F in D;
+
+(2) and, furthermore, this unique cone (λj, µj)j:J is limiting.
+
+More generally, we say that D creates limits of shape J (or creates small limits, etc.) if, for
+any diagram F as above over J (resp. over any small J ), and every limiting cone λ on F · π1
+in C, D creates a limit for F over λ.
+
+       It is routine to check that this does indeed correspond to the standard notion:
+
+Proposition 4.2. A displayed category D over a category C creates a limit or class of limits,
+
+in   our  sense,  if  and  only    if  the  functor  πD   :  D → C does so in the classical sense.
+
+                                                       1
+
+     It of course follows immediately from this that the displayed deﬁnition implies the various
+standard consequences of creation of limits. In fact, however, the proofs from the displayed
+deﬁnition are at least as direct as the standard proofs; for instance,
+
+Proposition 4.3 (total_limits, pr1_preserves_limit). Suppose the category C has limits
+
+of shape J , and the displayed category D over C creates limits of shape J . Then D has
+
+all  such  limits,    and  πD   :  D → C preserves them.
+
+                             1
+
+     Moreover, all the main standard examples of functors that create limits can be seen as
+the forgetful functors associated to displayed categories.
+Vol. 15:1                         DISPLAYED CATEGORIES                                                  20:11
+
+Example 4.4 (creates_limits_functor_alg). For any endofunctor F : C → C, the dis-
+played category of F -algebras over C creates all limits. Likewise, for any monad T on C, the
+displayed category of T -algebras over C creates all limits.
+
+                                                  5. Fibrations
+
+We consider, in this section, three important variations of ﬁbrations of categories: Grothen-
+dieck ﬁbrations (and their dual, opﬁbrations); isoﬁbrations; and discrete ﬁbrations.
+
+     We depart from some classical literature in deﬁning ﬁbrations by default to be cloven—
+that is, to include an operation providing all lifts required. (This is not novel: it has been
+preferred also by other authors, to avoid indiscriminate use of the axiom of choice.) We
+distinguish the case where liftings are merely known to exist as weak ﬁbrations.
+
+5.1. Fibrations and opﬁbrations.
+Deﬁnition 5.1 (is_cartesian). Let D be a displayed category over C. A map f¯ : homf (d , d)
+of D over f : c → c is cartesian if for each g : c → c , d : Dc , and h¯ : homg·f (d , d), there
+is a unique g¯ : homg(d , d ) such that g¯ · f¯ = h¯.
+
+Deﬁnition 5.2 (cartesian_lift). Let D be a displayed category over C. A cartesian lift
+of f : C(c , c) and d : Dc consists of an object d : Dc and a cartesian map f¯ : homf (d , d).
+
+Deﬁnition 5.3 (cleaving, fibration, weak_fibration). A cleaving for a displayed cate-
+gory D over a category C is a function giving, for each f : c → c and d : Dc, a cartesian lift
+of f and d. A (cloven) ﬁbration over C is a displayed category equipped with a cleaving. A
+weak ﬁbration is a displayed category such that for each such f , d as above, there exists some
+cartesian lift.
+
+     All the above have evident duals: opcartesian maps and lifts, and weak/cloven opﬁbra-
+tions. Again, these all correspond straightforwardly to their classical versions:
+
+Proposition 5.4. A map in a total category C D is cartesian in our sense (resp. opcartesian)
+                                                                    πD
+exactly    if  it  is  cartesian  (opcartesian)  with  respect  to       in  the  classical  sense.  A  displayed
+                                                                      1
+                                                                                  πD
+category   D       is a cloven (resp. weak) ﬁbration in our sense exactly if           is one in the classical
+                                                                                    1
+
+sense (i.e. [Lei14, Def. 5.3.5], read unchanged in the univalent setting).
+
+     As with the standard deﬁnition, cartesian lifts are unique up to isomorphism. Proposi-
+tion 7.5 below shows that when D is univalent, they are literally unique.
+
+     An important example in our applications of interest is the arrow category:
+
+Proposition 5.5 (cartesian_iff_isPullback). For any category C, consider the displayed
+category C/− of slices of C, as in Example 3.18.3 above. An arrow h : f →k g in C/− is
+cartesian exactly if its associated commuting square is a pullback. The displayed category C/−
+is a weak ﬁbration just if all pullbacks exist in C, and a (cloven) ﬁbration just if C has chosen
+pullbacks.
+
+     Finally, we transfer the deﬁnition of split ﬁbrations. It seems likely to us that—as with
+the hom-set condition for categories—split ﬁbrations in the type-theoretic setting should
+include a setness condition in order to be as useful and well-behaved as classically:
+
+Deﬁnition 5.6 (is_split). Say a ﬁbration D over C is split if:
+20:12  B. Ahrens and P. LeF. Lumsdaine  Vol. 15:1
+
+(1) each Dc is a set; and
+(2) the chosen lifts of identities are identities, and the chosen lift of any composite is the
+
+     composite of the individual lifts.
+
+5.2. Isoﬁbrations.
+Deﬁnition 5.7 (iso_disp). Let D be a displayed category over C, and f : c ∼= c an
+isomorphism in C.
+
+     A map f¯ : homf (d, d ) is a (displayed) isomorphism if it has a 2-sided inverse, i.e. some
+g¯ : homf−1(d , d) such that f¯ · g¯ =∗ 1d and g¯ · f¯ =∗ 1d . We write f¯ : d ∼=f d .
+
+     As with ordinary isomorphisms, the inverse of a displayed isomorphism is unique.
+
+Deﬁnition 5.8 (weak_iso_fibration, iso_cleaving, iso_fibration). Let D be a dis-
+played category over C. Say D is a weak isoﬁbration if for each isomorphism i : c ∼= c in C
+and d : Dc, there exists some object d : Dc and isomorphism ¯i : d ∼=i d. An iso-cleaving on
+D is a function giving, for each such i, d, some such d ,¯i. A (cloven) isoﬁbration over C is a
+displayed category equipped with an iso-cleaving.
+
+Proposition 5.9. A displayed category is a weak (resp. cloven) isoﬁbration in our sense
+just if its forgetful functor is one in the classical sense.
+
+Example 5.10 (iso_cleaving_functor_alg). The displayed categories of groups, topo-
+logical spaces, and similar are all naturally isoﬁbrations over Set, just as classically. More
+generally, so are the displayed categories of algebras for endofunctors and monads.
+
+     In fact, in the univalent setting, isoﬁbrations often come for free:
+
+Problem 5.11 (iso_cleaving_category). Let D be a displayed category over a univalent
+category C. Then D is an isoﬁbration.
+Construction 5.12 (for Problem 5.11). Since C is univalent, every isomorphism i : c ∼= c is
+uniquely of the form idtoiso(e). To give an iso-cleaving on D, it therefore suﬃces to give, for
+each e : c = c and d : Dc, some d : Dc and lift ¯i : d ∼=idtoiso(e) d. By identity elimination,
+the case e := 1c suﬃces; in this case, we take d := d and ¯i := 1d.
+
+     Assuming the univalence axiom, the examples above of Grp and Top over Set there-
+fore come for free. However, we note them separately (and prove them directly, in the
+formalisation), both to show that they do not require univalence, and to have their action
+explicitly.
+
+Remark 5.13. As the examples given illustrate, most ﬁbrations and isoﬁbrations encountered
+in nature are categories/functors that arise as the total category/forgetful functor of a
+displayed category. This, we argue, supports the idea that it is natural to take the displayed-
+category deﬁnitions as basic for developing ﬁbrations and related notions, especially in the
+type-theoretic setting.
+
+     However, not all examples are of this form. For instance, suppose F : C → C is a functor
+of small categories that is a complemented inclusion on objects; then the precomposition
+functor F ∗ : C → C between their presheaf categories is an isoﬁbration. However, in the
+classical setting, C is not literally the total category of any displayed category over C
+(though it is of course isomorphic to one).
+Vol. 15:1  DISPLAYED CATEGORIES              20:13
+
+5.3. Discrete ﬁbrations.
+
+Deﬁnition 5.14 (is_discrete_fibration). Let D be a displayed category over C. Say
+that D is a discrete ﬁbration if
+(1) for each c : C, the type Dc is a set; and
+(2) for any f : C(c , c) and d : Dc, there is a unique d : Dc and f¯ : homf (d , d).
+
+     These lifts are automatically cartesian; so any discrete ﬁbration is canonically a ﬁbra-
+tion (fibration_from_discrete_fibration), and is moreover split (is_split_fibration_
+from_discrete_fibration).
+
+     Thanks to the setness condition, discrete ﬁbrations over a ﬁxed base category C and
+displayed functors between them form a category; and, just as classically, we have:
+
+Problem 5.15 (forms_equivalence_disc_fib). For any category C, there is a (strong)
+equivalence of categories between C and the category of discrete ﬁbrations over C.
+
+     For a presheaf P on C, the classical category of elements of P is the total category of
+the displayed discrete ﬁbration given by the above equivalence.
+
+                                     6. Comprehension categories
+
+We now turn brieﬂy to comprehension categories and categories with attributes, just as
+a glimpse of the applications in semantics of type theory which provided the proximate
+motivation for the present development.
+
+Deﬁnition 6.1 (comprehension_cat_structure). A comprehension category consists of a
+category C, a ﬁbration T over C, and a functor χ : T → C/− over C (the ‘comprehension’)
+preserving cartesian arrows.
+
+                                             T χ / c:C C/c
+
+           π1  | π1
+                   C
+
+     This is almost identical to [LW15, Deﬁnition 2.1.1], modulo the correspondence between
+displayed categories/functors and ordinary categories/functors over the base. As such, it is a
+direct reformulation of the original deﬁnition [Jac99, Deﬁnition 10.4.2], taking the ﬁbration
+of types as primary.
+
+Deﬁnition 6.2. A split type-category (aka category with attributes) consists of a category
+
+C; a presheaf Ty on C; an operation assigning to each Γ : C and A : Ty(Γ) an object and
+
+map πA : Γ.A → Γ; and operations giving, for each f : Γ → Γ and A : Ty(Γ), a map
+f.A : Γ .f ∗A → Γ.A exhibiting πf∗A as a pullback of πA:
+
+            Γ .f ∗A f.A             / Γ.A
+
+                         A               πA
+           πf ∗A
+                                       
+                                    / Γ.
+
+               Γ
+
+                                 f
+
+Problem 6.3 ([Bla91, Thm. 2.3]). Any category with attributes induces a comprehension
+category with the same base.
+20:14  B. Ahrens and P. LeF. Lumsdaine  Vol. 15:1
+
+Construction 6.4 (for Problem 6.3). The equivalence of Problem 5.15 turns Ty into a
+(discrete) ﬁbration. The operations Γ.A, πA, and f.A provide the action on objects and arrows
+of the comprehension functor; while the pullback condition, combined with Proposition 5.5,
+ensures that it preserves cartesian maps.
+
+                   7. Univalence and the Structure Identity Principle
+
+7.1. Displayed univalence.
+
+Deﬁnition 7.1 (idtoiso_disp). Let D be a displayed category over C. Given c, c : C,
+e : c = c , d : Dc, d : Dc , and e : d =e d , we write idtoiso(e, e ) : d ∼=idtoiso(e) d for the
+canonical displayed isomorphism obtained by identity elimination on e, e .
+
+     Note that we overload the notation idtoiso, using it for both ordinary and displayed
+categories.
+
+Deﬁnition 7.2 (is_univalent_disp). Let D be a displayed category over C. Say that
+D is univalent if for any c, c : C and e : c = c and d : Dc and d : Dc , the above map
+(d =e d ) → isoidtoiso(e)(d, d ) is an equivalence.
+
+     To verify univalence of a displayed category, it clearly suﬃces to prove the condition
+just in the case where e is reﬂexivity. But displayed isomorphisms over identities are just
+isomorphisms in the ﬁbre categories, so we have:
+
+Proposition 7.3 (is_univalent_disp_iff_fibers_are_univalent). Let D be a displayed
+category over C. Then D is univalent exactly if each of its ﬁbre categories is univalent.
+
+     The key practical application of displayed univalence is in proving that complex categories
+built up using displayed categories are univalent:
+
+Theorem 7.4 (is_univalent_total_category). Let C be a univalent category, and let D
+be a univalent displayed category over C. Then the total category D is univalent.
+
+     However, displayed univalence is a meaningful notion even when the base is not known
+to be univalent; one has, for instance:
+
+Proposition 7.5 (isaprop_cartesian_lifts, univalent_fibration_is_cloven). Let D
+be a univalent displayed category over C. For any f : c → c and d : Dc, if a cartesian
+lift (d , f¯) of f and d exists, then it is unique; that is, the type of cartesian lifts is a proposition.
+More generally, if D is a weak (iso-)ﬁbration, then it possesses a unique (iso-)cleaving.
+
+Proof. The usual classical argument shows that cartesian lifts are unique up to isomorphism.
+By univalence of D, it follows that they are literally unique.
+
+     It follows that the type of (iso-)cleavings of D is a proposition; and that whenever a
+suitable lift is known to exist, one can be chosen. Putting these together, the proposition
+follows.
+
+Similarly, as for ordinary categories, univalence bounds the h-level of the types of objects:
+
+Proposition 7.6 (univalent_disp_cat_has_groupoid_obs). Let D be a univalent dis-
+played category over C. Then for each c : C, the type of objects Dc is a 1-type.
+Vol. 15:1  DISPLAYED CATEGORIES  20:15
+
+7.2. Structure Identity Principle. Theorem 7.4 generalizes an early-noted consequence
+of univalence, the so-called structure identity principle, as formulated by Aczel. We recall
+here the version from the HoTT book; a slightly diﬀerent formulation is considered in [CD13].
+
+Deﬁnition 7.7 [Uni13, Def. 9.8.1]. A standard notion of structure on a category C consists
+of:
+(1) for each c : C, a type P (c);
+(2) for each c, c : C and α : P (c) and β : P (c ) and f : C(c, c ), a proposition Hα,β(f );
+(3) such that H is suitably closed under composition and identity; and
+(4) for each c : C, the preorder on P (c) deﬁned by setting α ≤ α if Hα,α (1c) is a poset.
+
+     Items 1–3 can immediately be read as providing an associated displayed category over
+C (disp_cat_from_SIP_data), whose displayed hom-sets are propositions. The category
+of (P, H)-structures, as deﬁned in [Uni13], is precisely the total category of this displayed
+category.
+
+     With a little thought, item 4 can then be seen as saying that this displayed category is
+univalent (is_univalent_disp_from_SIP_data). Theorem 7.4 then immediately implies:
+
+Corollary 7.8 [Uni13, Theorem 9.8.2]. Given a standard notion of structure (P, H) on C,
+if C is univalent, then so is the category of (P, H)-structures on C.
+
+Example 7.9 (is_univalent_disp_functor_alg). The displayed categories of algebras for
+an endofunctor or monad (Examples 3.19, 3.20) arise from standard notions of structure,
+and so are univalent.
+
+7.3. Amnestic functors. Univalence of categories beyond posets is not typically considered
+explicitly in the classical setting, since when all types are sets, only a category containing
+no non-trivial automorphisms can be univalent. However, the functors corresponding to
+univalent displayed categories can be recognised in the established (though comparatively
+little-used) notion of amnestic functors. To compare them in the univalent setting, we must
+clarify the classical vocabulary a little. By saying that a morphism f : a → b in a category C
+is an identity, we mean this in the total type of morphisms of C: that is, that there exists
+some c : C such that (a, b, f ) = (c, c, 1c) : Σx,y:ChomC(x, y).
+
+Deﬁnition 7.10 (cf. [AHS90, Def. 3.27(4)]). A functor F : C → C is:
+(1) weakly amnestic if for any isomorphism i : a ∼= b in C , i is an identity if and only if F i is
+
+     an identity;
+(2) amnestic if for any isomorphism i : a ∼= b in C , the map from ‘objects c : C such that
+
+     (a, b, i) = (c, c, 1c)’ to ‘objects c : C such that (F a, F b, F i) = (c, c, 1c)’ is an equivalence.
+
+     The established deﬁnition of amnestic is usually phrased as what we have called weakly
+amnestic. However, in the classical setting, they are equivalent; so either may be seen as a
+reasonable type-theoretic reading of the classical deﬁnition:
+
+Proposition 7.11. If C is a category whose type of objects is a set, then for any f : a → b
+in C, the type of ‘objects c such that (a, b, f ) = (c, c, 1c)’ is a proposition.
+
+     Thus if C and C both have sets of objects, a functor F : C → C is amnestic if and only
+if it is weakly amnestic.
+
+     We then have:
+20:16                                   B. Ahrens and P. LeF. Lumsdaine                                   Vol. 15:1
+
+Proposition 7.12. Let C be any category, and D a displayed category over C. Then D is
+
+univalent exactly if     πD   :  D → C is amnestic.
+
+                           1
+
+Proof. For any map f : a → b in C, the type of ‘objects c such that (a, b, f ) = (c, c, 1c)’ is
+equivalent to the type of ‘equalities e : a = b such that f = idtoiso(e)’. For (f, f¯) : (a, a¯) →
+
+(b, ¯b) in D, the analogous type is further equivalent to the type of pairs e : a = b and
+
+e¯ : a¯ =e ¯b such that f = idtoiso(e) and f¯ =∗ idtoiso(e, e¯).
+
+       Moreover,    the  map  between   these  types      induced  by  πD   is  the  evident  projection  map,  so
+
+                                                                         1
+
+is an equivalence just if for any e : a = b such that f = idtoiso(e), there is a unique e¯ such
+
+that f¯ =∗ idtoiso(e, e¯).
+
+       So  πD   is  amnestic  just  if  this  holds  for  every  isomorphism    in   D. By the quantiﬁcation
+
+             1
+
+over e such that f = idtoiso(e), this is equivalent to the statement: for every a, b, e : a = b,
+
+a¯ : Da, ¯b : Db, and f¯ : a¯ ∼=idtoiso(e) ¯b, there is a unique e¯ such that f¯ =∗ idtoiso(e, e¯). But this
+
+is clearly equivalent to univalence of D.
+
+                                                8. Conclusions
+
+We have introduced displayed categories, and set up their basic theory, along with key
+examples and applications.
+
+     The applications fall into two main groups:
+
+(1) rephrasing classical deﬁnitions to avoid referring to equality of objects;
+(2) allowing categories of multi-component structures, and maps between such categories, to
+
+     be constructed and reasoned about in a modular, stage-by-stage fashion.
+
+     In this paper, we have focused more on the former—for instance, the use of displayed
+categories as a basis for the development of ﬁbrations in the type-theoretic setting.
+
+     We have seen less of the latter, since it is typically tied to speciﬁc more involved
+applications. However, in our own further work (for instance, on the structures considered in
+[ALV18]), we have found this at least as signiﬁcant as a payoﬀ of the present work.
+
+     Theorem 7.4, giving univalence of the total category, is especially valuable. Naïve
+approaches to proving univalence quickly become quite cumbersome even for categories of
+only moderately complex structures, such as groups. The issue is that identities between such
+structures translate to a tuples of identities between the components, where the identities
+of later components are usually heterogeneous, involving accumulated transports along the
+identities between earlier components.
+
+     The displayed-category approach avoids this; one need only work ‘ﬁbrewise’, over each
+component in turn. All the necessary wrangling of transports is dealt with once and for all
+in the proof of Theorem 7.4.
+
+     An instance of this is the proof of univalence of the category of CwF-structures over a
+ﬁxed univalent base category. Details are beyond the scope of the present article, but it is
+available in the formalisation as is_univalent_term_fun_structure.
+
+Further work. In the present article and formalisation, we have explored only the basic
+theory and applications of displayed categories. There are many clear directions for further
+work:
+
+(1) In [ALV18], we have started a project of giving careful comparisons between the various
+     categorical structures used for semantics of type theory. We touched on this project in
+     Section 6. In forthcoming work, we plan to give full comparisons between categories
+Vol. 15:1  DISPLAYED CATEGORIES  20:17
+
+     of such structures, including comprehension categories, type-categories (not necessarily
+     split), and categories with display maps.
+(2) The material on creation of limits in Section 4 should be generalised to a more permissive
+     notion of displayed limits, to cover a broader range of examples.
+(3) In the formalisation (though not the article) we study displayed adjunctions and equiv-
+     alences over a ﬁxed base, and show that these induce adjunctions and equivalences
+     between total categories and ﬁbre categories. This should be generalised to displayed
+     adjunctions/equivalences over adjunctions/equivalences in the base.
+(4) Generally, one should be able to assemble displayed categories into a displayed bicategory
+     over the bicategory of categories. Of course, this would require deﬁning displayed
+     bicategories, and developing the basic theory of bicategories in the type-theoretic setting.
+(5) Displayed categories should also be viewable as forming some 2-dimensional analogue of
+     a comprehension category, with displayed categories being the ‘dependent types’ over
+     a base category ‘context’. This would provide a new potential guiding example for the
+     ‘directed type theory’ that various authors have started to explore in recent work.
+
+Acknowledgements. We would like to thank Mike Shulman and the participants of the
+Stockholm Logic Seminar for very helpful feedback on the present work.
+
+     This material is based upon work supported by the National Science Foundation under
+agreement No. DMS-1128155 and CMU 1150129-338510. This material is based upon work
+supported by the Air Force Oﬃce of Scientiﬁc Research under award number FA9550-17-1-
+0363. During the preparation of this article the authors were also partly supported by the
+CoqHoTT ERC Grant 637339 and the Swedish Research Council (VR) Grant 2015-03835
+Constructive and category-theoretic foundations of mathematics, and beneﬁted from a research
+visit funded by the EUTypes COST Action CA 15123.
+
+           References
+
+[AHS90]    Jiří Adámek, Horst Herrlich, and George E. Strecker, Abstract and concrete categories: The joy
+[AKS15]    of cats, Pure and Applied Mathematics (New York), John Wiley & Sons, Inc., New York, 1990,
+[AL17]     http://www.tac.mta.ca/tac/reprints/articles/17/tr17abs.html.
+           Benedikt Ahrens, Krzysztof Kapulkin, and Michael Shulman, Univalent categories and the Rezk
+[ALV18]    completion, Mathematical Structures in Computer Science 25 (2015), 1010–1039, arXiv:1303.0584,
+[Bén00]    doi:10.1017/S0960129514000486.
+[Bla91]    Benedikt Ahrens and Peter LeFanu Lumsdaine, Displayed categories (conference version), 2nd
+[CD13]     International Conference on Formal Structures for Computation and Deduction (FSCD 2017) (Dale
+[Jac99]    Miller, ed.), Leibniz International Proceedings in Informatics (LIPIcs), vol. 84, Leibniz-Zentrum für
+[Lei14]    Informatik, 2017, pp. 5:1–5:16, arXiv:1705.04296v1, doi:10.4230/LIPIcs.FSCD.2017.5.
+           Benedikt Ahrens, Peter LeFanu Lumsdaine, and Vladimir Voevodsky, Categorical structures for
+           type theory in univalent foundations, Logical Methods in Computer Science 14(3) (2018), arXiv:
+           1705.04310, doi:10.23638/LMCS-14(3:18)2018, https://lmcs.episciences.org/4814.
+           Jean Bénabou, Distributors at work, Notes by Thomas Streicher from lectures given at TU Darmstadt,
+           2000, http://www.mathematik.tu-darmstadt.de/~streicher/FIBR/DiWo.pdf.
+           Javier Blanco, Relating categorical approaches to type theory, 1991, Master thesis, Univ. Nijmegen.
+           Thierry Coquand and Nils Anders Danielsson, Isomorphism is equality, Indagationes Mathematicae
+           24 (2013), no. 4, 1105 – 1120, In memory of N.G. (Dick) de Bruijn (1918–2012), doi:10.1016/j.
+           indag.2013.09.002.
+           Bart Jacobs, Categorical logic and type theory, Studies in Logic and the Foundations of Mathematics,
+           vol. 141, Elsevier, 1999.
+           Tom Leinster, Basic category theory, Cambridge Studies in Advanced Mathematics, vol. 143,
+           Cambridge University Press, 2014.
+20:18    B. Ahrens and P. LeF. Lumsdaine  Vol. 15:1
+
+[LW15]   Peter LeFanu Lumsdaine and Michael A. Warren, The local universes model: an overlooked coherence
+         construction for dependent type theories, ACM Trans. Comput. Log. 16 (2015), no. 3, Art. 23, 31,
+[Uni13]  arXiv:1411.1736, doi:10.1145/2754931.
+[VAG+]   The Univalent Foundations Program, Homotopy type theory: Univalent foundations of mathematics,
+         Institute for Advanced Study, 2013, http://homotopytypetheory.org/book.
+         Vladimir Voevodsky, Benedikt Ahrens, Daniel Grayson, et al., UniMath — a computer-checked
+         library of univalent mathematics, https://github.com/UniMath/UniMath.
+
+         This work is licensed under the Creative Commons Attribution License. To view a copy of this
+         license, visit https://creativecommons.org/licenses/by/4.0/ or send a letter to Creative
+         Commons, 171 Second St, Suite 300, San Francisco, CA 94105, USA, or Eisenacher Strasse
+         2, 10777 Berlin, Germany
+
