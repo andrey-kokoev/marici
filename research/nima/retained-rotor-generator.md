@@ -1,5 +1,13 @@
 # A continuous Clifford sector and its action-phase mismatch
 
+**Current disposition:** the zero-offset mismatch below is historical input to
+the completed `retained-rotor-phase-transport.md` construction, not a failure of
+that stronger lift. Its phase/HJ comparison, history-sensitive angular clock
+and bounded calibration analysis already exist in that packet,
+`retained-rotor-history-clock.md` and
+`retained-clock-calibration-identifiability.md`. The successor list below
+records the earlier research order; do not restart those completed tasks.
+
 Active obligations: forward realization and attachment transport. This is the
 first bounded leaf of the retained-development-to-generator programme. The
 input is the existing declared real Cl(2,0) realization, not a newly chosen

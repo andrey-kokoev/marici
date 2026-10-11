@@ -127,6 +127,10 @@ def main():
     }
     out.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(result))
+    # Export the completed, checked lift for source-bound successor comparisons.
+    return dict(U=U, rho=rho, F=F, beta=beta, transform=transform, lift=lift,
+                kappa=kappa, x=x, theta=th, phi=phi,
+                contact_H=contact_H, result=result)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,15 @@
 # The full rotor phase lift fixes its angular constant conditionally
 
+## Current continuation — 7 October 2026
+
+The angular history clock proposed in the original continuation is completed in
+`retained-rotor-history-clock.md`; its bounded calibration analysis is completed
+in `retained-clock-calibration-identifiability.md`. Neither construction supplies
+physical seconds or selects the declared module/metric from the native source.
+The remaining interface is native analytic realization and physical calibration,
+not another clock-existence test. The pre-correction text is preserved under
+`quarantine/20261007-evidence-lifecycle-repair/`.
+
 Active SCC obligation: attachment transport, including comparison, reversal and
 readout descent. This continues `retained-rotor-generator.md` using its declared
 real Clifford realization and symplectic form. It does not silently promote the
@@ -162,11 +172,11 @@ comparisons across the position-projection caustics. The selection of weight
 one comes from the declared real defining module, not merely from the sign at
 one period.
 
-The next local question is a clock on full rotor/reversal histories. Angle is
-periodic in the lift, its action has a shorter period, and odd developments
-reverse orientation. An ordinary additive scalar clock on their endpoint group
-may fail; retaining an unwrapped, orientation-dependent history coordinate must
-be tested. The independent native analytic-enlargement audit remains open.
+The clock-existence question is closed at the scope stated in the current
+continuation above. Retaining unwrapped histories permits an affine angular
+reading with orientation transport; it is not an ordinary additive scalar on
+the endpoint group. The independent native analytic-enlargement and physical
+calibration boundaries remain separate.
 
 Closing reconciliation: Voevodsky's
 `source-algebra-selection-boundary.md` gives two dimension-free inner crossed
