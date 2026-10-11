@@ -1,4 +1,9 @@
-"""Larger carrier: stabilizer Gram eigenvalues and metric signature."""
+"""Finite stabilizer permutation-label Grams with a supplied Euclidean dot product.
+
+These are not constructed tangent metrics. See
+../continuum-embedding-evidence-boundary.md; the original diagnostic is archived
+under ../quarantine/20261007-continuum-evidence/checkers/.
+"""
 from itertools import permutations, combinations, product
 from pathlib import Path
 import json
@@ -93,25 +98,25 @@ G_d4 = gram_matrix(induced_neighbors)
 eig_d4 = np.sort(np.linalg.eigvalsh(G_d4))
 print(f"  D4 induced Gram eigenvalues: {[round(ev, 3) for ev in eig_d4]}")
 
-# --- Test 3: Metric signature from stabilizer Gram ---
-# For the 4-point carrier, the stabilizer S3 acts on 3 points.
-# The Gram eigenvalues of the S3 action give the "local geometry" at a point.
-# If all eigenvalues > 0: Euclidean (+++)
-# If one eigenvalue < 0: Lorentzian (++-) 
-# If all eigenvalues equal: isotropic (conformal)
+# --- Diagnostic 3: inertia of the supplied permutation-label Gram ---
+# G=A*A.T is positive semidefinite by construction. Its positive rank is
+# not a source-derived spatial dimension; a negative eigenvalue would be
+# numerical error, not emergent Lorentz signature.
 
 # For the 3x3 grid D4 action on 8 neighbors:
 # Count positive, negative, zero eigenvalues
 pos = np.sum(eig_d4 > 1e-10)
 neg = np.sum(eig_d4 < -1e-10)
 zero = np.sum(np.abs(eig_d4) < 1e-10)
-print(f"\n  Metric signatures: {pos}+, {neg}-, {zero}0")
+print(f"\n  Gram inertia counts: {pos}+, {neg}-, {zero}0")
 signature = f"({''.join('+' for _ in range(pos))}{''.join('-' for _ in range(neg))})"
 print(f"  Signature: {signature}")
 
 result = {
     'schema': 'marici.nima.machian-metric-larger-carrier.v1',
-    'classification': 'stabilizer_gram_signature_depends_on_carrier_geometry_not_imported_from_external_manifold',
+    'status': 'finite_diagnostic_only',
+    'classification': 'finite_permutation_label_grams_with_supplied_dot_product',
+    'superseding_packet': 'continuum-embedding-evidence-boundary.md',
     'carrier_4pt': {
         'stabilizer': 'S3 on 3 points (from S4 automorphism group)',
         'induced_gram_eigenvalues': [round(ev, 3) for ev in eig4_ind],
@@ -124,8 +129,8 @@ result = {
         'negative': int(neg),
         'zero': int(zero),
     },
-    'finding': 'The stabilizer Gram eigenvalues are determined entirely by the carrier geometry. No external metric is needed.',
-    'next': 'Compare with the LP^2 norm on the stabilizer space to see if the Gram matches the spatial metric of a 2D surface.',
+    'finding': 'These finite matrices use the chosen numeric permutation encoding and Euclidean dot product. Their inertia does not establish a tangent metric or continuum limit.',
+    'not_established': 'A source-derived stabilizer-to-tangent comparison, physical metric interpretation, and convergent metric reconstruction.',
 }
 
 out = ROOT / 'results/machian-metric-larger-carrier.json'

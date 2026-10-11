@@ -3,6 +3,11 @@ param(
   [switch]$Fresh
 )
 $ErrorActionPreference = 'Stop'
+# Command-service environments may omit PATHEXT. PowerShell then classifies
+# an explicit .exe path as a document rather than a native command.
+if ($IsWindows -and (($env:PATHEXT -split ';') -notcontains '.EXE')) {
+  $env:PATHEXT = if ($env:PATHEXT) { "$env:PATHEXT;.EXE" } else { '.EXE' }
+}
 $Root = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../../..'))
 $Tools = Join-Path $env:USERPROFILE 'tools/cubical-agda'
 $Agda = Join-Path $Tools 'agda-2.8.0/agda.exe'
@@ -12,7 +17,11 @@ $Results = Join-Path $Root 'research/nima/results'
 $Log = Join-Path $Results "agda-$Module.log"
 $Receipt = Join-Path $Results "agda-$Module.json"
 if (!(Test-Path $Source)) { throw "Source not found: $Source" }
-$Argv = @('--transliterate', '-i', (Join-Path $Root 'research/nima/agda'), '-i', $Library)
+$Argv = @('--safe', '--cubical', '--guardedness', '--transliterate',
+  '-i', (Join-Path $Root 'research/nima/agda'),
+  '-i', (Join-Path $Root 'research/voevodsky/agda'),
+  '-i', (Join-Path $Root 'research/nima/adapters/native-application'),
+  '-i', (Join-Path $Root 'research/nima/adapters/application-extension'), '-i', $Library)
 if ($Fresh) { $Argv += '--ignore-interfaces' }
 $Argv += $Source
 function Get-SourceInventory([string]$Directory) {
@@ -24,7 +33,10 @@ function Get-SourceInventory([string]$Directory) {
   return ,$Inventory
 }
 $OwnerDirectory = Join-Path $Root 'research/nima/agda'
+$AdapterDirectory = Join-Path $Root 'research/nima/adapters'
+$CheckerBefore = (Get-FileHash -Algorithm SHA256 $PSCommandPath).Hash.ToLowerInvariant()
 $OwnerBefore = Get-SourceInventory $OwnerDirectory
+$AdaptersBefore = Get-SourceInventory $AdapterDirectory
 $LibraryBefore = Get-SourceInventory $Library
 $CompilerBefore = (Get-FileHash -Algorithm SHA256 $Agda).Hash.ToLowerInvariant()
 $Started = [DateTime]::UtcNow.ToString('o')
@@ -35,11 +47,15 @@ try {
   $Code = $LASTEXITCODE
 } finally { Pop-Location }
 $Hashes = Get-SourceInventory $OwnerDirectory
+$AdaptersAfter = Get-SourceInventory $AdapterDirectory
+$CheckerAfter = (Get-FileHash -Algorithm SHA256 $PSCommandPath).Hash.ToLowerInvariant()
 $LibraryAfter = Get-SourceInventory $Library
 $CompilerAfter = (Get-FileHash -Algorithm SHA256 $Agda).Hash.ToLowerInvariant()
 $InputsStable = (($OwnerBefore | ConvertTo-Json -Compress) -ceq ($Hashes | ConvertTo-Json -Compress)) -and
   (($LibraryBefore | ConvertTo-Json -Compress) -ceq ($LibraryAfter | ConvertTo-Json -Compress)) -and
-  ($CompilerBefore -ceq $CompilerAfter)
+  ($CompilerBefore -ceq $CompilerAfter) -and
+  (($AdaptersBefore | ConvertTo-Json -Compress) -ceq ($AdaptersAfter | ConvertTo-Json -Compress)) -and
+  ($CheckerBefore -ceq $CheckerAfter)
 if (!$InputsStable) { $Code = 43 }
 [ordered]@{
   schema = 'marici.nima.agda-check.v1'
@@ -50,6 +66,8 @@ if (!$InputsStable) { $Code = 43 }
   args = $Argv
   compiler_version = $Version
   compiler_sha256 = $CompilerAfter
+  checker_sha256 = $CheckerAfter
+  adapter_source_inventory_sha256 = $AdaptersAfter
   inputs_stable_during_check = $InputsStable
   library = $Library
   library_source_inventory_sha256 = $LibraryAfter

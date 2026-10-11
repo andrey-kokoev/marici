@@ -1,4 +1,9 @@
-"""Continuum limit: stabilizer Gram converges to Euclidean metric as carrier grows."""
+"""Finite cubic-grid counts and a SUPPLIED Euclidean direction Gram.
+
+Historical filename; this diagnostic constructs no continuum interpolant.
+See ../continuum-embedding-evidence-boundary.md. Original code is archived in
+../quarantine/20261007-continuum-evidence/checkers/.
+"""
 from itertools import product
 from pathlib import Path
 import json
@@ -24,11 +29,8 @@ def cubic_grid(L):
             if 0 <= nx < L and 0 <= ny < L and 0 <= nz < L:
                 count += 1
         nbrs[i] = count
-        # Symmetry rank: how many symmetry axes preserve the point
-        # Interior: all 6 directions preserved = full cubic symmetry
-        # Face: 4 directions preserved, 1 axis broken
-        # Edge: 2 directions preserved, 2 axes broken
-        # Corner: 3 directions preserved, 3 axes broken
+        # Historical variable name: this is just the neighbor count,
+        # NOT a computed point stabilizer or symmetry rank.
         if count == 6:
             sym_k = 6  # interior
         elif count == 5:
@@ -54,16 +56,10 @@ for L in [2, 3, 4, 5, 6]:
 # For L=2, every point is a corner (3 neighbors), so no interior.
 # For L=3, interior points start appearing (1 center point).
 
-# Continuum limit metric from stabilizer Gram:
-# For an interior point with 6 neighbors in a cubic grid,
-# the stabilizer Gram should approach the identity (Euclidean metric).
-# We can test this by computing the Gram of the 6 permutation vectors
-# that correspond to the 6 neighbor directions.
-
-# For a large enough L, the "cubic symmetry" of an interior point
-# gives 6 directions (up, down, left, right, forward, back).
-# The Gram of these 6 direction vectors (as axis-aligned unit vectors)
-# is proportional to the Euclidean metric.
+# The six vectors below are prescribed Euclidean directions, not the
+# permutation-label vectors computed by check_machian_metric_larger.py.
+# Their finite Gram calculation is independent of L once an interior point
+# exists. It does not construct a metric interpolant or a convergence map.
 
 # Let's compute it for L=5 (interior exists).
 L = 5
@@ -92,10 +88,12 @@ if interior:
 
 result = {
     'schema': 'marici.nima.continuum-limit-test.v1',
-    'classification': 'continuum_limit_stabilizer_Gram_converges_to_Euclidean_metric_as_carrier_grows',
-    'specific_finding': 'The stabilizer Gram eigenvalues for interior points of a 3D cubic grid give the Euclidean metric (+++). As L increases, the fraction of interior points approaches 1, so the stabilizer Gram converges to the Euclidean metric everywhere in the continuum limit.',
+    'status': 'finite_diagnostic_only',
+    'classification': 'finite_grid_counts_and_supplied_euclidean_direction_gram',
+    'specific_finding': 'The supplied six axis vectors have a rank-three positive semidefinite Gram. Interior fractions approach one; this is not a metric convergence theorem.',
+    'superseding_packet': 'continuum-embedding-evidence-boundary.md',
     'interior_fraction': {str(L): round(len([i for i in range(L**3) if len([j for j in range(L**3) if abs(i//(L*L)-j//(L*L))+abs((i//L)%L-(j//L)%L)+abs(i%L-j%L)==1]) == 6]) / L**3, 4) for L in [2,3,4,5,6]},
-    'open': 'The continuum limit of the full LQG constraint algebra (including the Hamiltonian constraint) requires the Dirac delta in {C(x), C(y)}. This emerges from the carrier as N → ∞: the discrete bracket becomes a distribution.',
+    'not_established': 'No stabilizer-to-tangent comparison, metric interpolation, Dirac distribution limit, or continuum constraint algebra is implemented here.',
 }
 
 out = ROOT / 'results/continuum-limit-test.json'

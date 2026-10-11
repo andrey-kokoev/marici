@@ -1,118 +1,133 @@
-"""Gram selection principle: N-path interference from filler overlaps.
-For N alternatives with Gram G_ij = <f_j|f_i>, the interference pattern is
-I(theta) = sum_{i,j} G_ij exp(i(theta_j - theta_i)). No superposition postulate.
+"""Repaired conditional Gram-norm calculation; not a derivation of the Born rule.
+uv run --with sympy python research/nima/checkers/check_gram_selection_principle.py
+Original bytes: quarantine/20261007-quantum-readout-evidence/checkers/.
 """
-from fractions import Fraction as F
-from pathlib import Path
-import hashlib
 import json
-import cmath
+from itertools import combinations
+from pathlib import Path
+import sympy as s
 
 OWNER = Path(__file__).resolve().parents[1]
+CODES = [(False,False),(False,True),(True,False),(True,True)]
+
 
 def code(pt):
-    return (1 if pt[0] else 0) * 2 + (1 if pt[1] else 0)
+    return (1 if pt[0] else 0)*2+(1 if pt[1] else 0)
 
-CODES = [(False, False), (False, True), (True, False), (True, True)]
+
 def image_vec(f):
     return [code(f(pt)) for pt in CODES]
-def dot(u, v):
-    return sum(a*b for a,b in zip(u, v))
+
+
+def dot(u,v):
+    return sum(a*b for a,b in zip(u,v))
+
+
 def norm2(v):
-    return dot(v, v)
+    return dot(v,v)
 
-def identity(pt):  return pt
-def swap(pt):      return (pt[1], pt[0])
-def twist(pt):
-    if pt[0]: return (pt[0], not pt[1])
-    return pt
-def flip_fst(pt):  return (not pt[0], pt[1])
-def flip_both(pt): return (not pt[0], not pt[1])
 
-FILLERS = {'id': identity, 'swap': swap, 'twist': twist,
-           'flip_fst': flip_fst, 'flip_both': flip_both}
+def identity(pt): return pt
 
-def N_slit_intensity(G, phases):
-    """I(theta) = sum_{i,j} G_ij * exp(i*(theta_j - theta_i))"""
-    N = len(G)
-    total = 0j
-    for i in range(N):
-        for j in range(N):
-            total += G[i][j] * cmath.exp(1j * (phases[j] - phases[i]))
-    return total.real
+def swap(pt): return (pt[1],pt[0])
+
+def twist(pt): return (pt[0],not pt[1]) if pt[0] else pt
+
+def flip_fst(pt): return (not pt[0],pt[1])
+
+def flip_both(pt): return (not pt[0],not pt[1])
+
+FILLERS = {'id':identity,'swap':swap,'twist':twist,'flip_fst':flip_fst,'flip_both':flip_both}
+
+
+def gram_data():
+    vecs = [image_vec(f) for f in FILLERS.values()]
+    V = s.Matrix.hstack(*(s.Matrix(v)/s.sqrt(norm2(v)) for v in vecs))
+    return vecs,V,V.H*V  # G_ij = v_i^dagger v_j, also for complex controls.
+
+
+def N_slit_intensity(G,phases):
+    q = s.Matrix([s.exp(s.I*p) for p in phases])
+    return s.simplify((q.H*s.Matrix(G)*q)[0])
+
+
+def require_equal(actual,expected,label):
+    if s.simplify(actual-expected) != 0:
+        raise AssertionError(label)
+
+
+def balanced_packet(V,phases):
+    """Supplied coherent preparation and balanced erasure, not native apparatus.
+
+Path labels remain orthogonal until projection. P and I-P are a complete
+binary path measurement; the selected port returns a record vector.
+"""
+    d,n = V.shape
+    W = s.zeros(d*n,n)
+    for j in range(n):
+        W[j*d:(j+1)*d,j] = V[:,j]
+    if W.H*W != s.eye(n):
+        raise ValueError('Each record column must have unit norm')
+    if len(phases) != n:
+        raise ValueError('One phase per retained path is required')
+    a = s.Matrix([s.exp(s.I*p) for p in phases])/s.sqrt(n)
+    if s.simplify((a.H*a)[0]-1) != 0:
+        raise ValueError('Equal-path preparation requires unit-modulus phase factors')
+    K = s.kronecker_product(s.ones(1,n)/s.sqrt(n),s.eye(d))
+    psi = W*a
+    output = s.simplify(K*psi)
+    probability = s.simplify((output.H*output)[0])
+    return {'isometry':W,'input':psi,'port':K,'record_vector':output,
+            'click_probability':probability,
+            'record_density':None if probability == 0 else s.simplify(output*output.H/probability)}
+
+
+def verify():
+    vecs,V,G = gram_data()
+    assert len(vecs) == 5 and V.shape == (4,5) and V.rank() == G.rank() == 4
+    # All 31 principal minors, not a numerical eigensolver tolerance.
+    assert all(G.extract(ix,ix).det() >= 0 for k in range(1,6) for ix in combinations(range(5),k))
+    pairs = {}
+    for i,j in combinations(range(5),2):
+        G2 = G.extract([i,j],[i,j]); gamma = G2[0,1]
+        values = []
+        for phase,expected in [(0,2+2*gamma),(s.pi,2-2*gamma),(s.pi/2,2)]:
+            intensity = N_slit_intensity(G2,[0,phase])
+            require_equal(intensity,expected,'raw two-path norm')
+            packet = balanced_packet(V[:,[i,j]],[0,phase])
+            require_equal(packet['click_probability'],intensity/4,'two-path click normalization')
+            assert 0 <= packet['click_probability'] <= 1
+            values.append(str(intensity))
+        pairs[f'{i},{j}'] = {'gamma':str(gamma),'raw_norms_at_0_pi_halfpi':values}
+    packet = balanced_packet(V,[0]*5)
+    require_equal(packet['click_probability'],N_slit_intensity(G,[0]*5)/25,'five-path click normalization')
+    # Complex convention control: the correct synthesis is 1+i*i=0.
+    CV = s.Matrix([[1,s.I]])
+    require_equal(N_slit_intensity(CV.H*CV,[0,s.pi/2]),0,'complex Gram variance')
+    rejected = False
+    try:
+        require_equal(N_slit_intensity(G.extract([0,1],[0,1]),[0,0]),1+G[0,1],'old unchecked expectation')
+    except AssertionError:
+        rejected = True
+    assert rejected
+    return {'schema':'marici.nima.gram-selection-repaired.v1','status':'pass',
+            'classification':'conditional coherent norm with explicit preparation/effect normalization',
+            'rank':G.rank(),'pairs':pairs,'five_path_raw_norm':str(N_slit_intensity(G,[0]*5)),
+            'five_path_click_probability':str(packet['click_probability']),
+            'old_expectation_rejected':rejected,
+            'given_not_derived':['integer encoding and Hermitian metric','complex coherent preparation',
+                                 'trace/Born pairing and balanced path effect'],
+            'physical_record_map':'not established by this calculation',
+            'superseding_packet':'gram-interference-and-bell-readout-comparison.md'}
+
 
 def main():
-    out = OWNER / 'results/gram-selection-principle.json'
+    out = OWNER/'results/gram-selection-principle-repaired.json'
     out.unlink(missing_ok=True)
+    result = verify()
+    out.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+    print(json.dumps(result,indent=2))
 
-    names = list(FILLERS.keys()); n = len(names)
-    vecs = [image_vec(FILLERS[name]) for name in names]
-    
-    # Gram: G_ij = normalized overlap <f_j | f_i>
-    n2s = [norm2(v) for v in vecs]
-    G_raw = [[dot(vecs[i], vecs[j]) for j in range(n)] for i in range(n)]
-    G = [[G_raw[i][j] / (n2s[i]**0.5 * n2s[j]**0.5) for j in range(n)] for i in range(n)]
-    
-    # Check Gram is positive semidefinite (all eigenvalues >= 0)
-    import numpy as np
-    eigenvals = np.linalg.eigvalsh(np.array(G))
-    PSD = all(ev >= -1e-12 for ev in eigenvals)
-
-    # For each pair (N=2), verify the standard double-slit formula.
-    pairs = {}
-    for i in range(n):
-        for j in range(i+1, n):
-            gamma = G[i][j]
-            V = abs(gamma)
-            D = (1 - V**2)**0.5
-            # Test N=2 interference formula.
-            test_phases = [(0.0, 0.0), (0.0, 3.14159), (0.0, 1.5708)]
-            expected = [1+gamma.real, 1-gamma.real, 1+gamma.imag]
-            results = []
-            for (p1, p2), exp in zip(test_phases, expected):
-                I = N_slit_intensity([[G[i][i], G[i][j]], [G[j][i], G[j][j]]], [p1, p2])
-                results.append({'phases': [p1, p2], 'I': round(I, 10), 'expected': round(exp, 10)})
-            pairs[f"{names[i]}_{names[j]}"] = {
-                'gamma': (round(gamma.real, 6), round(gamma.imag, 6)),
-                'V': round(V, 6), 'D': round(D, 6),
-                'V2_D2': round(V*V + D*D, 10),
-                'tests': results,
-            }
-
-    # For each triple (N=3), compute the 3-slit Gram and intensity pattern.
-    triples = {}
-    for i in range(n):
-        for j in range(i+1, n):
-            for k in range(j+1, n):
-                G3 = [[G[p][q] for q in (i,j,k)] for p in (i,j,k)]
-                I0 = N_slit_intensity(G3, [0.0, 0.0, 0.0])
-                I12 = N_slit_intensity(G3, [0.0, 1.0, 0.0])
-                triples[f"{names[i]}_{names[j]}_{names[k]}"] = {
-                    'G': [[round(x, 4) for x in row] for row in G3],
-                    'I_uniform': round(I0, 6),
-                    'I_phase12': round(I12, 6),
-                }
-
-    result = {
-        'schema': 'marici.nima.gram-selection-principle.v1',
-        'classification': 'n_path_interference_from_gram_overlaps_without_superposition',
-        'n_fillers': n,
-        'gram_psd': PSD,
-        'eigenvalues': [round(float(ev), 6) for ev in eigenvals],
-        'two_slit_pairs': pairs,
-        'three_slit_triples': triples,
-        'principle': ('The N-slit interference formula I(theta) = sum G_ij exp(i*(theta_j - theta_i)) '
-                      'follows from the Gram matrix of record state overlaps. '
-                      'No superposition, no Born rule, no probability. '
-                      'The Gram is determined by the source-admitted positive pairing.'),
-        'missing': ('N-slit diffraction envelope from continuous aperture. '
-                    'Summing infinitely many alternatives requires a limit of the Gram. '
-                    'The path integral is that limit.'),
-        'input_sha256': {str(Path(__file__).relative_to(OWNER)):
-                        hashlib.sha256(open(__file__, 'rb').read()).hexdigest()},
-    }
-    out.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
-    print(json.dumps(result, indent=2))
 
 if __name__ == '__main__':
     main()
