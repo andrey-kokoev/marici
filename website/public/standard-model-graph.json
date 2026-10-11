@@ -1,0 +1,36 @@
+{
+  "schema": "marici.matter.standard-model-graph.v1",
+  "title": "Standard Model particle and interaction graph",
+  "scope": "Established Standard Model field content; antiparticles are implied. Neutrino mass generation, gravity, and conjectural Marici identifications are outside this graph.",
+  "nodes": [
+    {"id":"u","label":"u","name":"up quark","kind":"quark","generation":1,"charge":"+2/3","spin":"1/2","x":150,"y":120},
+    {"id":"d","label":"d","name":"down quark","kind":"quark","generation":1,"charge":"-1/3","spin":"1/2","x":150,"y":210},
+    {"id":"c","label":"c","name":"charm quark","kind":"quark","generation":2,"charge":"+2/3","spin":"1/2","x":310,"y":120},
+    {"id":"s","label":"s","name":"strange quark","kind":"quark","generation":2,"charge":"-1/3","spin":"1/2","x":310,"y":210},
+    {"id":"t","label":"t","name":"top quark","kind":"quark","generation":3,"charge":"+2/3","spin":"1/2","x":470,"y":120},
+    {"id":"b","label":"b","name":"bottom quark","kind":"quark","generation":3,"charge":"-1/3","spin":"1/2","x":470,"y":210},
+    {"id":"nu_e","label":"νe","name":"electron neutrino","kind":"lepton","generation":1,"charge":"0","spin":"1/2","x":150,"y":350},
+    {"id":"e","label":"e","name":"electron","kind":"lepton","generation":1,"charge":"-1","spin":"1/2","x":150,"y":440},
+    {"id":"nu_mu","label":"νμ","name":"muon neutrino","kind":"lepton","generation":2,"charge":"0","spin":"1/2","x":310,"y":350},
+    {"id":"mu","label":"μ","name":"muon","kind":"lepton","generation":2,"charge":"-1","spin":"1/2","x":310,"y":440},
+    {"id":"nu_tau","label":"ντ","name":"tau neutrino","kind":"lepton","generation":3,"charge":"0","spin":"1/2","x":470,"y":350},
+    {"id":"tau","label":"τ","name":"tau","kind":"lepton","generation":3,"charge":"-1","spin":"1/2","x":470,"y":440},
+    {"id":"gluon","label":"g","name":"gluon","kind":"gauge-boson","charge":"0","spin":"1","x":700,"y":100},
+    {"id":"photon","label":"γ","name":"photon","kind":"gauge-boson","charge":"0","spin":"1","x":850,"y":190},
+    {"id":"W","label":"W±","name":"charged weak bosons","kind":"gauge-boson","charge":"±1","spin":"1","x":700,"y":360},
+    {"id":"Z","label":"Z⁰","name":"neutral weak boson","kind":"gauge-boson","charge":"0","spin":"1","x":850,"y":360},
+    {"id":"higgs","label":"H","name":"Higgs boson","kind":"scalar","charge":"0","spin":"0","x":775,"y":500}
+  ],
+  "relations": [
+    {"id":"strong","label":"strong / color","kind":"interaction","mediators":["gluon"],"members":["u","d","c","s","t","b"],"color":"#d05a47"},
+    {"id":"electromagnetic","label":"electromagnetic / charge","kind":"interaction","mediators":["photon"],"members":["u","d","c","s","t","b","e","mu","tau","W"],"color":"#d39a2c"},
+    {"id":"weak","label":"weak isospin","kind":"interaction","mediators":["W","Z"],"members":["u","d","c","s","t","b","nu_e","e","nu_mu","mu","nu_tau","tau","higgs"],"color":"#4f82bd"},
+    {"id":"yukawa","label":"Yukawa coupling","kind":"interaction","mediators":["higgs"],"members":["u","d","c","s","t","b","e","mu","tau"],"color":"#8b68b5"}
+  ],
+  "notes": [
+    "Each fermion node represents the corresponding field species; antiparticles are implied.",
+    "The graph shows interaction eligibility, not a Feynman diagram or coupling strength.",
+    "Minimal Standard Model neutrinos are shown as left-handed species; observed neutrino masses require an extension not selected here.",
+    "Gravity is not part of the Standard Model."
+  ]
+}
