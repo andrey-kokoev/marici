@@ -153,7 +153,26 @@ Therefore this constructs a genuine 1836-arrow realization and its closed traver
 
 ## Verification and artifacts
 
-    python research/nima/checkers/check_twelve_triangle_positive_geometry.py
+Historical fixed-fixture regression (not an input-driven run):
+
+    python research/nima/checkers/check_twelve_triangle_positive_geometry.py --regression
+
+Source-driven reconstruction:
+
+    python research/nima/checkers/check_twelve_triangle_positive_geometry.py --source research/nima/inputs/proton-six-arrows.json --output-dir research/nima/results/proton-six-arrows-source
+    python research/nima/checkers/check_triangle_arrow_source_input.py
+
+The JSON supplies all vertex coordinates and six directed endpoint pairs. The
+constructor discovers complete oriented triangles in those pairs, derives their
+permutations, and computes their orbit and coefficient maps. No target count is
+passed to it. The result matches the historical manifest in every typed endpoint
+and exact coefficient. Removing any one of the six input arrows gives three
+triangles, an open boundary and return-cycle union measure 135. Empty triangle
+input and incompatible geometry are rejected rather than replaced by defaults.
+
+This input interface implements the existing proper-rotation / centroid-triangle
+construction; it does not yet implement arbitrary non-rotational cell gluing.
+Coordinates remain explicit source data, not consequences of the arrow list.
 
 Checks use exact rationals and Q(i*sqrt(3)). They cover the seed-generated group, all facet placements, boundary cancellation, supporting halfspaces, signed volumes, local eigenpairs, transport covariance, commuting projector intersection, collective idempotence, all 1836 explicit arrows, closed-cycle coverage and positive cycle weights summing to one.
 

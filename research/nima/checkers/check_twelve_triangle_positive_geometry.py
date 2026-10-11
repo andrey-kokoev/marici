@@ -57,7 +57,8 @@ def zsum(vs):
     return tuple(out)
 
 
-def main():
+def regression_main():
+    # Fixed historical fixture; not the source-input constructor.
     # Original two oriented triangles: A->B->C->A and B->A->D->B.
     generators=((1,2,0,3),(3,0,2,1))
     group={(0,1,2,3)};front=list(group)
@@ -225,5 +226,22 @@ def main():
     obj+=['f '+' '.join(str(names.index(k)+1) for k in t) for t in triangles]
     (dest/'twelve-triangle-positive-geometry.obj').write_text('\n'.join(obj)+'\n')
     print('PASS: 12 seed-generated triangles; closed positive volume 8/3; collective eigenline; 1836 unique three-stage arrows covering positive closed cycles. Stage typing and dense feedback explicit.')
+
+def main():
+    import argparse
+    parser = argparse.ArgumentParser(description='Source-driven triangle assembly or explicit historical regression')
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument('--source', help='JSON containing vertices and directed endpoint pairs')
+    mode.add_argument('--regression', action='store_true', help='Run the fixed historical fixture only')
+    parser.add_argument('--output-dir', help='Destination for source-driven assembly and exact arrow manifest')
+    args = parser.parse_args()
+    if args.regression:
+        regression_main()
+    else:
+        if not args.output_dir:
+            parser.error('--source requires --output-dir')
+        from assemble_triangle_arrow_source import run
+        run(args.source, args.output_dir)
+
 
 if __name__=='__main__': main()
