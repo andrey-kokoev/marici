@@ -1,5 +1,22 @@
 # Experimental gate for the sub-threshold QED Bell signal
 
+## Readout interpretation withdrawn — 2026-10-07
+
+The historical single-Compton implementation below does not realize its assigned
+binary effects. Exact integration gives full-coverage sharpness 2 mu/pi, not
+mu; narrowing sectors introduces a no-click branch. All stated azimuth-reference
+settings are postprocessings of one local parent POVM, so complete-record CHSH
+cannot exceed 2 for any source state. The quoted 2.01412 is a hypothetical
+analyzer-model value, not an observed-record prediction for this implementation.
+More luminosity cannot repair this interface error.
+
+See `compton-record-compatibility.md` and
+`checkers/check_compton_record_compatibility.py` for the frozen comparison and
+single-arm calibration discriminator. The earlier conditional-state/amplitude
+results and numerical model estimates below are retained as history, not a
+validated Compton Bell protocol. The former executable experimental gate is
+retired rather than allowed to regenerate an unsupported physical verdict.
+
 ## Typed protocol
 
 Use two counter-propagating photon beams with center-of-mass energy

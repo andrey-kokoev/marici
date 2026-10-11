@@ -1,8 +1,17 @@
-"""Finite experimental gate for the sub-threshold QED Bell signal."""
+"""Historical hypothetical-binary-analyzer calculation; Compton interface withdrawn.
+Use checkers/check_compton_record_compatibility.py for the corrected readout gate.
+The original numerical body is retained below as provenance, not a physical certificate.
+"""
 
 import hashlib
 import json
 from pathlib import Path
+
+# Refuse before optional imports or arithmetic; never leave a stale experimental
+# verdict on the retired default path. The Klein-Nishina function remains reusable.
+if __name__ == "__main__":
+    (Path(__file__).parent / "results" / "qed-bell-experimental-gate.json").unlink(missing_ok=True)
+    raise SystemExit("RETIRED: azimuth binning does not realize the assigned binary effects; use checkers/check_compton_record_compatibility.py")
 
 import mpmath as mp
 
