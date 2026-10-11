@@ -2,6 +2,7 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
+from math import isclose
 
 class ObjectiveKind(Enum):
     SCIENTIFIC_TARGET="scientific_target"
@@ -60,5 +61,10 @@ def recommend(objective:Objective,actions:list[ActionAssessment])->Recommendatio
       "maximum_graph_repair":lambda a:(a.graph_repair_value,-a.expected_cost),
     }
     if objective.functional not in keys:raise ValueError(f"unsupported objective functional: {objective.functional}")
-    winner=max(xs,key=lambda a:(keys[objective.functional](a),a.action))
+    if objective.functional == 'reachability_then_expected_cost':
+        best=max(a.success_probability for a in xs)
+        tied=[a for a in xs if isclose(a.success_probability,best,rel_tol=1e-12,abs_tol=0.0)]
+        winner=max(tied,key=lambda a:(-a.expected_cost,a.action))
+    else:
+        winner=max(xs,key=lambda a:(keys[objective.functional](a),a.action))
     return Recommendation(objective.name,winner.action,f"maximizes {objective.functional} among {len(xs)} admissible actions")

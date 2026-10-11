@@ -70,6 +70,42 @@ This completes the static compatibility and path semantics. A reduction system i
 
 `coherence_pyramid.py` applies typed coherence layers successively, records marginal pruning at each rung, and ranks the next constituent-arrow observation by survivor entropy per declared cost. Object-level domain/codomain checking is separate from sign composition, preventing equal sign vectors in unrelated interfaces from being identified.
 
+## Cross-net proof-outcome references
+
+`outcome_reference.py` validates a pinned export of a named proposition from one net into another. This uses **proof-attempt outcomes**, not signed-port composition: `++` proves the proposition, `-+` refutes it, and `+-`/`--` leave its truth unresolved.
+
+An immutable, content-addressed export records the source contract/result revisions, selected claim and scope bindings, verification level, and evidence hashes. A consumer pointer repeats the exact accepted claim/scope, outcome and verification level. A separate mutable head records whether that export is active. Resolution rejects changed evidence, mismatched scope, verification upgrades, changed outcomes, revocation or supersession. Corrections require a new reviewed export and explicit consumer re-pinning; they never silently float an existing import to a new result. Live consumers must rerun reference validation before use.
+
+This checks integrity and equality of the declared interface—not theorem truth, completeness of the declared assumptions, publication authority or authenticity against an adversary able to rewrite the whole repository. No generic aggregation of polarity arrows is used. No proof is inferred just because the producer net terminated.
+
+Concrete example:
+
+- Export head: `research/nima/exports/standard-local-lift.head.json`.
+- Consumer pointer: `research/nima/contracts/imports/standard-local-lift.pointer.v1.json`.
+- Successor: `research/nima/contracts/completion-refinement-conjecture-net.v1.json`.
+- Guide: `research/nima/completion-refinement-conjecture-net.md`.
+
+Checks:
+
+```text
+python research/conjecture_net/test_outcome_reference.py
+python research/nima/checkers/test_completion_refinement_net.py
+python research/nima/checkers/check_completion_refinement_net.py
+```
+
+## Bayesian proof-outcome portfolio planning
+
+`bayesian_outcome_planner.py` evaluates a finite one-shot portfolio under an explicit joint distribution of proposition truth. Sound ++/-+ outcomes resolve claims; +- and -- only update hypothetical beliefs. Conditional attempt likelihoods, certificate prerequisites, a hard effort budget and abandonment are explicit. The objective is positive target closure probability first, expected effort second. A probability-one proposition is not automatically a proof certificate.
+
+The implementation keeps correlated claims in shared truth worlds rather than multiplying independent marginals. Experiment aliases must be canonicalized by the input adapter to avoid charging or counting the same observation twice. It also reports one-step information gains; those are diagnostics, not substitutes for the closure objective. A planning run records no scientific outcomes.
+
+Concrete estimates and sensitivity analysis: `research/nima/completion-refinement-planning.md`.
+
+```text
+python research/conjecture_net/test_bayesian_outcome_planner.py
+python research/nima/checkers/test_completion_refinement_planning.py
+```
+
 ## Authoritative metrics
 
 `graph_metrics.py` derives frontier width, interface deficit, coherence burden, formal outcome entropy, active action count, and declared terminal depth from an explicit typed graph snapshot. Percentage changes are valid only when computed by `percent_change(before.metrics(), after.metrics())`; zero bases return `None`. Hand-authored `before`/`after` dictionaries are not authoritative projections.

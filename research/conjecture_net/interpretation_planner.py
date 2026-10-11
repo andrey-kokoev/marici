@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from functools import lru_cache
 from hashlib import sha256
+from math import isclose
 from typing import Callable,Mapping
 
 OUTCOMES=("++","+-","-+","--")
@@ -192,12 +193,18 @@ class Planner:
                 if not a.available(state):continue
                 success=0.;future_cost=0.
                 for outcome in OUTCOMES:
-                    branch=a.branches[outcome];ns=branch.effect.apply(state.resolve(name,outcome)).derive(branch.implications,assume_branch_premises=True)
+                    branch=a.branches[outcome]
+                    if branch.probability == 0:continue  # Impossible branches contribute neither value nor cost.
+                    ns=branch.effect.apply(state.resolve(name,outcome)).derive(branch.implications,assume_branch_premises=True)
                     decoded=any(d.decode(name,branch.effect.raw,ns)==self.target for d in self.decoders)
                     child=Value(1.,0.,None) if decoded else go(ns,unused-{name})
                     success+=branch.probability*child.success
                     future_cost+=branch.probability*child.expected_cost
                 candidates.append(Value(success,a.cost+future_cost,name))
             if not candidates:return Value(0.,0.,None)
-            return max(candidates,key=lambda v:(v.success,-v.expected_cost,v.first_action or ''))
+            best_success=max(v.success for v in candidates)
+            # Equivalent products along different orders differ by roundoff.
+            # Relative-only tolerance never equates a positive chance to abandonment.
+            tied=[v for v in candidates if isclose(v.success,best_success,rel_tol=1e-12,abs_tol=0.0)]
+            return max(tied,key=lambda v:(-v.expected_cost,v.first_action or ''))
         return go(initial,frozenset(self.actions))
