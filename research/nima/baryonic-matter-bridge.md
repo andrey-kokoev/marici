@@ -1,58 +1,29 @@
-# Baryonic matter from S₄ irrep decomposition
+# Baryonic-matter bridge — old identification withdrawn
 
-## The bridge
+## Current disposition — 7 October 2026
 
-The 4-point carrier \(\text{Bool}\times\text{Bool}\) has automorphism group \(S_4\). Its 4 points decompose into irreducible representations of \(S_4\) as
+The natural four-point S4 representation is 1+3, not 1+sign+2. This was already
+settled in `weak-doublet-singlet-weight-and-s4-representation-audit.md`, which
+also constructs the valid witness-S3 doublet and explicit conditional gauge
+operators. Its symmetry-only charge/kinetic underdetermination remains a closure.
 
-\[
-4 = \text{Triv} (1) \oplus \text{Sign} (1) \oplus \text{Std2} (2)
-\]
+The new missing comparison is now constructed in `s4-gram-action-comparison.md`:
 
-which maps directly to the electroweak sector of the Standard Model:
+- The ACTUAL old 24-by-24 permutation-operator Gram has eigenvalues 24, 8 and 0
+  with multiplicities 1, 9 and 14. It is not a nondegenerate regular Gram.
+- Its rank-ten operator image carries 1+3+3+3 under left translation, but
+  1+1+2+3+3' under conjugation. The latter doublet is an OPERATOR sector.
+- The completed witness weak/charge operators lift explicitly through that
+  full Gram. Its orthogonal operator projection also recovers the earlier
+  pinched witness charge.
 
-| \(S_4\) irrep | Dimension | Standard Model role |
-|---|---|---|
-| Triv | 1 | Right-handed charged lepton singlet \(e_R\) |
-| Sign | 1 | Right-handed sterile neutrino \(\nu_R\) |
-| Std2 | 2 | Left-handed weak doublet \((\nu_L, e_L)\) |
+These are compatible finite constructions, not a derivation of physical matter,
+SU(3)xSU(2)xU(1), generations, masses or CKM mixing. Neither equality of dimensions
+nor switching group actions supplies the missing matter map. No blanket
+absence-of-doublets conclusion follows.
 
-The stabilizer of one carrier point is \(S_3\), acting on the 3 remaining points as
-
-\[
-3 = \text{Triv}_3 (1) \oplus \text{Std}_3 (2)
-\]
-
-which gives the **color structure**: the 3 remaining points are the 3 colors of SU(3). Combined with the weak doublet from the full \(S_4\) decomposition:
-
-\[
-\boxed{S_4 \supset S_3:\quad 4 \longrightarrow 2_{\text{weak}} \otimes 3_{\text{color}} \oplus 1_{\text{lepton}} \oplus 1_{\text{sterile}}}
-\]
-
-The predicted fermion content per generation:
-
-| Type | Count | From |
-|---|---|---|
-| Leptons: \(\nu_L, e_L, \nu_R, e_R\) | 4 | Triv (1) + Sign (1) + Std2 (2) |
-| Quarks: \(u_L^{r,g,b}, d_L^{r,g,b}, u_R^{r,g,b}, d_R^{r,g,b}\) | 12 | Std2 (2) × Std3a (3) × 2 chiralities |
-| **Total per generation** | **16** | |
-| **Three generations** | **48** | Std3b (3) from \(S_4\) |
-
-The three generations correspond to the remaining 3D irrep Std3b of \(S_4\). The Gram eigenvalues of the stabilizer give the **mass ratios** and **CKM mixing** through diagonalization of the Gram kernel on the flavor subspace.
-
-## What we now have
-
-| Layer | Status |
-|---|---|
-| Spacetime metric from stabilizer Gram | Confirmed |
-| ADM constraint algebra | Confirmed discretely |
-| QM as rank-1 Gram factorization | Confirmed |
-| **Matter from S4 irreps** | **Irrep decomposition matches SM** |
-| Mass ratios from Gram eigenvalues | Not yet computed |
-| CKM/PMNS mixing from Gram eigenvectors | Not yet computed |
-
-The bridge to baryonic matter is structurally consistent with our existing work. The Gram selection principle, which gave N-path interference and the spatial metric, now also gives the particle content through the same mathematical object: the Gram matrix of the carrier, decomposed into irreducible representations of the automorphism group.
-
-Verification:
-```text
-python research/nima/checkers/check_baryonic_matter.py
-```
+The old particle-content and “all layers confirmed” tables are withdrawn.
+Original text and code are preserved in `quarantine/20261007-s4-evidence/`.
+The live `checkers/check_baryonic_matter.py` now reports only checked finite
+representation content. Verification of the comparison uses
+`checkers/check_s4_gram_action_comparison.py` and its result JSON.

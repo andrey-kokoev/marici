@@ -1,128 +1,66 @@
+# Checked constructions, not an inclusion of quantum mechanics
+
+Current companion to `conceptual-steps-table.md`. The previous diagram's
+quantization and theory-inclusion arrows are withdrawn; its original is
+preserved under `quarantine/20261007-conceptual-summary/`.
+
+These are separate typed branches. Solid arrows name conditional constructions
+or comparisons with the supplied inputs indicated. Dashed arrows mark physical
+promotions not established here; they are not open waiting tasks or implications.
+
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'fontSize': '14px',
-      'lineColor': '#888',
-      'primaryColor': '#2d5a27',
-      'primaryTextColor': '#ddd',
-      'primaryBorderColor': '#4a8',
-      'secondaryColor': '#1a2a5a',
-      'tertiaryColor': '#3a1a4a',
-      'edgeLabelBackground': '#222'
-    }
-  }
-}%%
+flowchart TD
+  B["Existing full Bool Tick at fixed source"]
+  B --> T["Full record classified by ordered schedule tags"]
+  B -->|"Supplied complex linearization and metric"| U["Unitary Hamiltonian realization of its discrete square"]
+  U -->|"Compare admissible analytic annotations"| N["Path-image uniqueness refuted in the declared class"]
 
-flowchart LR
-  subgraph Newton["Newtonian stem (1833−1925)"]
-    N1["Phase space (q,p)"]
-    N2["Hamiltonian H"]
-    N3["Poisson bracket { , }"]
-    N4["Action S = ∫(p dq − H dt)"]
-    N5["Canonical transformations"]
-  end
+  C["Declared Clifford metric, defining module and phase connection"]
+  C --> P["Completed phase lift and HJ chart comparison; C = kappa"]
+  P --> A["Affine angular clock with retained winding and orientation"]
+  A --> K["Specified observations do not calibrate external rate or kappa"]
+  P --> R["Closed lift does not quantize reduced action"]
+  P -->|"Explicitly added angular cotangent pair"| TT["Regular parametrized constraint recovers the full form and phase"]
+  GG["Actual four-point permutation action"] --> UU["Stabilizer covariance and canonical cotangent lift"]
+  TT -.-> VV["No ADM field-constraint map or physical time inferred"]
+  UU -.-> VV
 
-  subgraph HJ["Hamilton−Jacobi layer"]
-    HJ1["S as generating function"]
-    HJ2["Separation into action + phase"]
-    HJ3["∮ p dq as adiabatic invariant"]
-  end
+  S["Existing six-port pulses, metric and full retained state"]
+  S --> Q["Canonical chart retaining reference and internal pairs"]
+  Q --> E["Shared recoil cotangent representation"]
+  Q --> J["Old spatial reader plus recoil-only momenta: rank obstruction"]
+  E --> J
 
-  subgraph QM_path["Quantum mechanics (1925−1948)"]
-    Q1["Quantization postulate: ∮ p dq = nℏ"]
-    Q2["Non‑commutativity: pq−qp = iℏ"]
-    Q3["Complex amplitude: exp(iS/ℏ)"]
-    Q4["Hilbert space |ψ⟩"]
-    Q5["Hermitian operators as observables"]
-    Q6["Born rule: P = |⟨a|ψ⟩|²"]
-    Q7["Measurement collapse"]
-    Q8["Path integral: ∫𝒟q exp(iS/ℏ)"]
-    Q9["Spinors: 4π from Dirac equation"]
-  end
+  G["Supplied cubic grid and Euclidean dot product"]
+  G --> D["Valid finite grid counts and direction Gram"]
+  D -->|"Compare claimed radial reconstruction"| F["Fixed-point continuum convergence refuted for that interpolant"]
 
-  subgraph Our_path["Our model (2025−)"]
-    O1["Declared Clifford algebra, J² = −1"]
-    O2["Connection α = dφ − β/κ"]
-    O3["κ = action−phase scale (uncalibrated)"]
-    O4["∫α = Δφ − ΔF/κ = clock reading"]
-    O5["Finite discrete carrier (4‑point source)"]
-    O6["Retained typed histories (fillers)"]
-    O7["Complementarity from Gram determinant"]
-    O8["4π minimal return from cocycle"]
-    O9["No probability — deterministic records"]
-    O10["Coarse‑grained rational counting ratios"]
-  end
+  O["Original complex S4 permutation-operator Gram"]
+  O --> V["Rank-ten operator image; left and conjugation actions distinguished"]
+  V -->|"Compare completed supplied witness sectors"| W["Explicit weak and charge lifts; existing pinching recovered"]
+  W -.-> Y["No selected physical matter, hypercharge or kinetic law inferred"]
 
-  subgraph Merge["Structural convergence"]
-    M1["4π spinor period"]
-    M2["V² + D² = 1 complementarity"]
-    M3["Action quantization: ∮α = −area/κ"]
-    M4["Geometric/ Berry phase from same connection"]
-    M5["Cocycle = Jacobi identity (Lie algebra structure)"]
-  end
+  AA["Existing twelve directed arrows with endpoint S4 action"]
+  AA --> BB["Invariant block systems classified; unique four-arrow matching blocks"]
+  BB -.-> CC["Independent S4 cubed action and physical generations not selected"]
 
-  Newton --> HJ
+  DD["Supplied full twelve-point numerical Gram with endpoint phases"]
+  DD --> EE["Typed adjoint comparison: common doublet maps align; singular values fixed"]
+  EE --> FF["Printed singlet-eigenframe CKM fails readout descent"]
 
-  HJ -->|"∮ p dq is discrete"| Q1
-  HJ -->|"∫α is geometric"| O2
+  QQ["Complete five-filler source with ordered Bool labels"]
+  QQ --> RR["Encoded record route: raw norm and click normalization distinguished"]
+  QQ --> SS["Actual twist action plus existing X+ instrument prepares Bell conditionally"]
+  RR -.-> M
+  SS -.-> M
 
-  Q1 --> Q2 --> Q3 --> Q4 --> Q5 --> Q6 --> Q7
-  Q3 --> Q8
-  Q8 --> Q9
-
-  O2 --> O3 --> O4 --> O5 --> O6 --> O7 --> O8
-  O6 --> O9 --> O10
-
-  Q9 --> M1
-  O8 --> M1
-
-  Q6 -->|"same equation"| M2
-  O7 --> M2
-
-  Q1 --> M3
-  O4 --> M3
-
-  Q3 --> M4
-  O2 --> M4
-
-  Q2 --> M5
-  O2 --> M5
-
-  style N1 fill:#2d4a1a,color:#ddd
-  style N2 fill:#2d4a1a,color:#ddd
-  style N3 fill:#2d4a1a,color:#ddd
-  style N4 fill:#2d4a1a,color:#ddd
-  style N5 fill:#2d4a1a,color:#ddd
-  style HJ1 fill:#3a5a2a,color:#ddd
-  style HJ2 fill:#3a5a2a,color:#ddd
-  style HJ3 fill:#3a5a2a,color:#ddd
-
-  style Q1 fill:#2a2a6a,color:#ddd
-  style Q2 fill:#2a2a6a,color:#ddd
-  style Q3 fill:#2a2a6a,color:#ddd
-  style Q4 fill:#2a2a6a,color:#ddd
-  style Q5 fill:#2a2a6a,color:#ddd
-  style Q6 fill:#4a1a1a,color:#ddd
-  style Q7 fill:#4a1a1a,color:#ddd
-  style Q8 fill:#2a2a6a,color:#ddd
-  style Q9 fill:#2a2a6a,color:#ddd
-
-  style O1 fill:#2a4a2a,color:#ddd
-  style O2 fill:#2a4a2a,color:#ddd
-  style O3 fill:#2a4a2a,color:#ddd
-  style O4 fill:#2a4a2a,color:#ddd
-  style O5 fill:#2a4a2a,color:#ddd
-  style O6 fill:#2a4a2a,color:#ddd
-  style O7 fill:#2a4a2a,color:#ddd
-  style O8 fill:#2a4a2a,color:#ddd
-  style O9 fill:#4a2a1a,color:#ddd
-  style O10 fill:#4a2a1a,color:#ddd
-
-  style M1 fill:#3a2a4a,color:#ddd
-  style M2 fill:#3a2a4a,color:#ddd
-  style M3 fill:#3a2a4a,color:#ddd
-  style M4 fill:#3a2a4a,color:#ddd
-  style M5 fill:#3a2a4a,color:#ddd
+  U -.-> H["No selected physical Hamiltonian or time calibration inferred"]
+  A -.-> H
+  E -.-> X["Physical localization and mass calibration still need independent input"]
+  P -.-> M["No Born rule, action quantum or detector record derived"]
 ```
+
+The period/action arrow is resolved by
+`rotor-period-does-not-quantize-reduced-action.md`, using the completed phase
+lift rather than its earlier zero-offset mismatch. Evidence for the other nodes
+and their exact scope is indexed in `conceptual-steps-table.md`.

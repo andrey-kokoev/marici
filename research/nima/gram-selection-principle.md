@@ -1,72 +1,47 @@
-# Gram selection principle: N-path interference without superposition
+# Gram interference: conditional norm, not a Born-rule derivation
 
-## The missing piece is now stated
+**Supersedes the historical probability/quantum-completion claims — 7 October
+2026.** See `gram-interference-and-bell-readout-comparison.md` for the complete
+source and instrument comparison. Original bytes, including the rank-one and
+continuum assertions, are preserved in
+`quarantine/20261007-quantum-readout-evidence/gram-selection-principle.md`.
 
-For N alternative fillers \(f_1,\ldots,f_N\) between the same two packages, each produces a record state \(|f_i\rangle\) in the source-admitted positive pairing. Their **Gram matrix**
+## Retained mathematical statement
 
-\[
-G_{ij} = \langle f_j | f_i \rangle
-\]
-
-determines the combined interference entirely. For an interferometer with relative phases \(\theta_i\),
-
-\[
-I(\theta) = \sum_{i,j} G_{ij}\, e^{i(\theta_j-\theta_i)}.
-\]
-
-No superposition, no addition of amplitudes, no Born rule. The Gram matrix replaces the path integral's amplitude sum.
-
-## What the checker confirms
-
-For all 10 pairs of the 5 discrete fillers on the four-point carrier:
-
-- Gram is positive semidefinite (all eigenvalues ≥ 0).
-- For each pair: \(V = |G_{12}|\), \(D = \sqrt{1-V^2}\), and \(V^2 + D^2 = 1\).
-- For each triple: the 3-slit intensity formula \(I = \sum_{i,j=1}^3 G_{ij}e^{i(\theta_j-\theta_i)}\) is well-defined and depends only on the Gram.
-
-[full numeric results](results/gram-selection-principle.json)
-
-## The continuous limit and the path integral
-
-When the set of alternatives becomes a continuum (parameter \(x\) over the aperture), the Gram becomes a **kernel** \(G(x,y) = \langle f_y|f_x\rangle\). The interference formula becomes
+For the declared complex record vectors, use the consistent convention
+G_ij=v_i-dagger v_j. Then
 
 \[
-I(\theta) = \iint G(x,y)\, e^{i(\theta(y)-\theta(x))}\,dx\,dy.
+I(\theta)=q^\dagger Gq=\|Vq\|^2,\qquad q_i=e^{i\theta_i}.
 \]
 
-**QM is the rank-1 special case.** When the Gram kernel factorizes as
+This is a quadratic coherent norm, equivalent to the corresponding amplitude
+sum. It is not automatically a probability. The old checker recorded a factor-of-two
+mismatch for every pair without asserting its expected values. The repaired
+checker enforces the raw norm and separately calculates the balanced-port
+probability with its preparation and effect factors.
 
-\[
-G(x,y) = \psi^*(x)\,\psi(y)
-\]
+## Interpretation boundary
 
-for some complex function \(\psi\), the formula reduces to
+A rank-one Gram admits a scalar amplitude factorization. That fact neither
+selects a prepared quantum state nor derives the Born rule. Higher-rank density
+matrices also obey that rule. The full five-filler construction now has an
+explicit comparison with the existing conditional quantum instrument, retaining
+both the encoded record vectors and the original filler actions.
 
-\[
-I(\theta) = \left|\int \psi(x)\, e^{i\theta(x)}\,dx\right|^2,
-\]
-
-which is the Born rule plus the path integral together. The wavefunction \(\psi\) is the **Cholesky factor** of the Gram kernel.
-
-**Our model allows all PSD kernels**, not only rank-1. This means:
-- Mixed states (rank > 1) are natural, not secondary.
-- The Born rule is a special case of a deeper geometric structure.
-- Probability is not fundamental—it emerges when the Gram kernel happens to factorize.
-
-## What this does not yet provide
-
-1. **Which Gram kernels are source-admitted?** The positive pairing comes from the source. Not every PSD kernel corresponds to a source-available set of alternatives.
-
-2. **The continuous aperture limit.** \(G(x,y)\) requires a density of alternatives. The finite carrier is discrete; constructing a continuum limit is the path integral problem renamed, not solved.
-
-3. **Factorization into a "wavefunction."** For the rotor, the Gram of \(\langle U(\theta_2)|U(\theta_1)\rangle = e^{i(\theta_2-\theta_1)}\) factorizes with \(\psi(\theta) = e^{-i\theta}\). That is why the rotor behaves like a quantum amplitude. Not every filler family factorizes.
-
-## Falsifier
-
-The gram selection principle is falsified if a physical N-slit experiment produces a pattern inconsistent with the Gram kernel formula for the source-admitted overlaps between the alternatives. Any such experiment would be a measurement of the Gram.
+The metric/encoding, coherent preparation, state-effect pairing, analyzers and
+laboratory record assignment must not be silently identified. No continuum
+aperture limit, path integral, physical probability law or measurement
+interpretation is derived here. Further compatible Gram factorizations would
+not resolve those independent interfaces.
 
 ## Verification
 
 ```text
-uv run --with sympy,numpy python research/nima/checkers/check_gram_selection_principle.py
+uv run --with sympy python research/nima/checkers/check_gram_selection_principle.py
+uv run --with sympy python research/nima/checkers/check_gram_bell_readout_comparison.py
 ```
+
+New exact receipt: `results/gram-selection-principle-repaired.json`. The second
+command additionally requires the source-bound legacy transport described in
+the comparison packet. Neither command overwrites the historical receipt.

@@ -1,6 +1,29 @@
 # Admission request: Gram unification — final
 
-## Transition
+**Withdrawn as a current completion/admission request — 7 October 2026.** The
+continuum construction is refuted in `continuum-embedding-evidence-boundary.md`;
+the claimed natural S4 matter decomposition is false, and the actual full Gram
+has the distinct operator interpretation in `s4-gram-action-comparison.md`.
+The strongest existing witness construction leaves physical charge/kinetic
+selection underdetermined. Admission cannot repair these mathematical bridges.
+The BPQ-to-gauge-group and other independent assertions below are not certified
+by this correction. This file's old transition is historical text, not an
+instruction executed by the present turn. Original bytes are hash-preserved in
+`quarantine/20261007-s4-evidence/`.
+
+**Quantum/mixing follow-through:** `gram-interference-and-bell-readout-comparison.md`
+and `twelve-point-phase-readout-descent.md` now resolve the corresponding source/
+readout comparisons. Rank-one factorization is not a Born derivation, and endpoint
+phases cannot split the old mass spectrum. These are mathematical/interface
+corrections, not deficiencies repairable by admission alone.
+
+**Constraint follow-through:** `finite-canonical-actions-versus-adm-constraints.md`
+now distinguishes stabilizer covariance, the retained canonical realizations
+and an explicitly extended parametrized constraint. The old ADM/LQG reports
+are not verification of a field-theory comparison. Admission cannot supply the
+missing Poisson/constraint map or turn the added angular pair into physical time.
+
+## Historical transition (not executed here)
 tree=issue-tree:0e33231dc7bfeb794df5270f
 from=nima-lqg-holonomy-flux-algebra-v1:v1
 disposition=resolved

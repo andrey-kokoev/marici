@@ -1,4 +1,15 @@
-# Gram Unification
+# Gram Unification — historical page, not a verified theory
+
+**Completion and zero-free-parameter claims withdrawn — 7 October 2026.**
+See `continuum-embedding-evidence-boundary.md` for the failed continuum
+construction, `s4-gram-action-comparison.md` for the actual operator actions,
+and `weak-doublet-singlet-weight-and-s4-representation-audit.md` for the
+completed conditional witness model and closed symmetry-only underdetermination.
+These defects are not resolved by source admission. The claims below are
+preserved history, not publication-ready findings; original bytes are archived
+under `quarantine/20261007-s4-evidence/`.
+
+## Historical claims (not current disposition)
 
 One matrix. Three layers of physics. Zero free parameters.
 

@@ -1,6 +1,44 @@
 # Foundational derivation: from Bool×Bool to the Gram
 
-## Preamble: the bridge for physics professionals
+**Historical compendium, not a single verified derivation.** The advertised
+continuum construction cited in section 10.4 is withdrawn: the literal
+interpolation fails for a constant metric, and the actual cited code computes
+finite Grams rather than the claimed source-to-continuum map. See
+`continuum-embedding-evidence-boundary.md` (7 October 2026). Consequently the
+opening all-physics completion claim cannot be used as an established result.
+This correction does not verify the compendium's other independent claims.
+The entire original is hash-preserved in
+`quarantine/20261007-continuum-evidence/foundational-derivation-boolxbool-to-gram.md`.
+
+**S4 correction:** the natural-state decomposition was already corrected in
+`weak-doublet-singlet-weight-and-s4-representation-audit.md`. The original full
+operator Gram and the completed witness construction are now compared in
+`s4-gram-action-comparison.md`. This does not derive the historical SM matter
+assignments; conjugation of operators is not the natural action on four states.
+
+**Phase/readout correction:** `twelve-point-phase-readout-descent.md` replays the
+entire supplied twelve-point phase model. Its shared-doublet squared maps align;
+its printed CKM instead compares degenerate singlet eigenframes. Endpoint
+rephasing changes neither its spectrum nor its determinant. This supersedes the
+associated mixing and phase-dependent determinant assertions below, not the
+separate stronger flavor constructions.
+
+**Quantum-readout correction:** `gram-interference-and-bell-readout-comparison.md`
+repairs the interference normalization and disconnected Bell readout. Valid
+conditional quantum instruments and the actual twist-action Bell preparation
+are retained. Neither a raw norm nor rank-one Gram factorization derives the
+Born probability/record law, and mixed quantum states are not outside QM.
+The associated quantum-completion assertions below are superseded.
+
+**Constraint/connection correction:** `finite-canonical-actions-versus-adm-constraints.md`
+retains the entire finite action and completed rotor phase lift. Stabilizer
+covariance is not an ADM Poisson algebra; the positive rotor Hamiltonian has
+no zero level. Its regular parametrized comparison needs an explicitly added
+angular pair. The old holonomy/flux and forced-SU2 reports are quarantined,
+including their wrong curvature sign at the stated conventions. These finite
+checks supply neither the asserted GR closure nor its physical calibration.
+
+## Historical preamble (not a current theorem)
 
 This document derives all of fundamental physics from a single mathematical
 object—the Gram matrix of a finite carrier. The progression is:
@@ -112,7 +150,14 @@ The phases \(\theta_i\) distinguish the QM, GR, and SM sectors:
 - In GR: \(\theta_i\) are determined by the diffeomorphism gauge
 - In SM: \(\theta_i\) encode internal gauge degrees of freedom
 
-## 7. Irrep decomposition
+## 7. Historical irrep decomposition (withdrawn)
+
+The displayed equality below is FALSE for the natural S4 action: its split is
+1+3. Fixing a witness gives 1+1+2 only under S3, with two trivial lines.
+A separate operator-conjugation doublet is not a correction of this state-space
+identity. See `s4-gram-action-comparison.md` for the full comparison.
+
+The historical assertion was:
 
 The 4-point permutation representation of \(S_4\) decomposes into irreps:
 
@@ -246,7 +291,17 @@ See `formal-adm-constraint-derivation.md` and `checkers/check_discrete_constrain
 
 No manifold assumed. The metric is derived from the carrier Gram.
 
-## 11. Larger carriers
+## 11. Historical larger-carrier claims (superseded)
+
+`twelve-arrow-blocks-and-generation-selection.md` preserves the strongest
+existing twelve-arrow source and classifies all its invariant block systems.
+Its canonical three-matching quotient does not supply three independent S4
+factors or physical generations. The old subgroup Gram also has a reproduced
+counting error: cross-block fixed-label overlap is 864, not 576. The following
+size-to-physics table and minimality statement are therefore not derived results.
+All original numerical code is preserved, not replaced by a smaller model.
+
+The historical assertion was:
 
 The 4-point carrier gives the SM gauge group but only 1 generation. The next physically significant sizes:
 
@@ -1984,7 +2039,17 @@ This sets the inflationary energy scale. In physical units:
 E_{\text{infl}} \sim \sqrt{\lambda_{\text{max}}} \cdot M_{\text{Pl}}
 \]
 
-### Slow-roll from Gram evolution
+### Historical slow-roll assertion (not derived by the stated phase law)
+
+For the actual endpoint-phase law G(theta)=D-dagger G_base D, the determinant
+is constant in every finite matrix dimension, including twelve: the two
+unitary determinant factors multiply to one. See
+`twelve-point-phase-readout-descent.md`. Thus the phase-dependent determinant
+and roll claimed below do not follow from that law. A different matrix operation
+or a sourced potential would be additional input; no such construction is
+verified by this passage.
+
+The historical assertion was:
 
 The inflaton is the collective mode of the fibration rotation phases
 \(\theta_i\). The effective potential for the inflaton is the Gram

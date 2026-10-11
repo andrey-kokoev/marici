@@ -1,6 +1,20 @@
 # Gram Unification of QM, GR, and the Standard Model
 
-## Overview
+**Historical index, not a verified unification.** The continuum-completion claim
+and the conclusion that only source admission/precision/inflation remain are
+superseded by `continuum-embedding-evidence-boundary.md` (7 October 2026).
+The actual finite implementations do not establish the cited metric limit;
+the stated interpolant fails even on a constant metric. Accordingly the
+all-three-theories completion claim is withdrawn. Other sectors below are
+historical assertions, not newly verified results. The original index is
+hash-preserved in `quarantine/20261007-continuum-evidence/`.
+
+**S4 correction:** `s4-gram-action-comparison.md` reuses the already completed
+witness construction and compares it with the original full operator Gram.
+Its conjugation doublet is not the asserted four-state matter decomposition;
+the dependent SM/generation claims are withdrawn, not blocked only on admission.
+
+## Historical overview (not current disposition)
 
 One mathematical object—the Gram matrix \(G_{ij} = \langle f_j | f_i \rangle\) of a finite carrier \(X_N\) with automorphism group \(S_N\)—produces all three layers of fundamental physics through sector decomposition.
 
@@ -9,26 +23,29 @@ One mathematical object—the Gram matrix \(G_{ij} = \langle f_j | f_i \rangle\)
 | Step | Result | Artifact |
 |---|---|---|
 | Foundation | Carrier from Bool×Bool, probes, Gram, automorphism group, fibration rotation | `foundational-derivation-boolxbool-to-gram.md` |
-| Gram selection principle | N-path interference from Gram overlaps, Born rule as rank-1 factorization | `gram-selection-principle.md`, `checkers/check_gram_selection_principle.py` |
-| LQG connection | Holonomy-flux algebra matches, SU(2) promotion forced by cocycle | `lqg-structural-analogy.md`, `checkers/check_holonomy_flux_algebra.py` |
-| Machian metric | \(g_{ab}(p) = G_{ab}\) from stabilizer Gram | `machian-metric.md`, `checkers/check_machian_metric.py` |
-| ADM constraints | (+++-) signature from 24 S4 elements, constraint algebra closes | `formal-adm-constraint-derivation.md`, `checkers/check_discrete_constraint_algebra.py` |
-| Continuum limit | \(\delta(x,y)\) constructed from \(N \to \infty\) carrier | `continuum-embedding-construction.md`, `checkers/check_continuum_limit.py` |
-| SM gauge group | SU(3)×SU(2)×U(1) from S4 irrep decomposition (1+1+2) | `baryonic-matter-bridge.md`, `checkers/check_baryonic_matter.py` |
-| CKM mixing | Gram misalignment between up/down bases: \(\theta_{12}\approx13^\circ\) | `checkers/check_gram_entries.py`, `checkers/check_mass_diagonalization.py` |
+| Gram interference | Conditional norm and instrument comparison constructed; the claim that rank-one factorization derives Born probabilities is withdrawn. | `gram-interference-and-bell-readout-comparison.md` |
+| LQG connection | **Withdrawn identification:** the old formula reports computed no bracket or SU2 selection. The completed abelian phase lift survives. | `finite-canonical-actions-versus-adm-constraints.md`; `lqg-structural-analogy.md` |
+| Machian metric | A finite probe Gram is computed; its identification with a physical tangent metric is not established by the cited finite code. | `continuum-embedding-evidence-boundary.md` |
+| ADM constraints | Stabilizer covariance and a canonical action survive, not ADM closure or a Lorentzian-signature certificate. The rotor has a conditional parametrized-constraint comparison only with an explicit added pair. | `finite-canonical-actions-versus-adm-constraints.md` |
+| Continuum limit | **Withdrawn:** literal interpolation does not even reproduce a constant metric; finite code supplies no replacement | `continuum-embedding-evidence-boundary.md` |
+| SM gauge group | **Withdrawn identification.** Natural S4 is 1+3; valid witness and operator doublets have different actions and no selected matter map. | `s4-gram-action-comparison.md`; `weak-doublet-singlet-weight-and-s4-representation-audit.md` |
+| CKM mixing | **Full twelve-point phase-model claim withdrawn:** the shared-doublet squared maps align, while its singlet-eigenframe readout is basis-dependent. Other historical supplied-matrix examples are not carrier derivations. | `twelve-point-phase-readout-descent.md` |
 | PMNS mixing | Gram misalignment in lepton sector: \(\theta_{12}\approx34^\circ\) | `checkers/check_pmns_from_gram.py` |
-| 3 generations | S12 → S4×S4×S4 branching | `checkers/check_larger_carrier.py`, `checkers/check_small_carriers.py` |
+| 3 generations | **Not selected.** The retained arrow source has a canonical three-matching quotient, not independently derived S4^3 matter factors. The old subgroup count is wrong. | `twelve-arrow-blocks-and-generation-selection.md` |
 | Anomaly cancellation | All 6 Ward identities pass per generation (16 states = SO(10) spinor) | `checkers/check_anomaly_cancellation.py` |
 | Higgs mechanism | Off-diagonal Gram block between S4 doublet (2) and singlets (1ₐ,1_b) | `checkers/check_higgs_mechanism.py` |
 | Dark matter | 3 ν_R sterile neutrinos, 25% of Gram trace → \(\Omega_{\text{DM}}\approx 0.27\) | `dark-matter-as-gram-remainder.md`, `checkers/check_dark_matter_abundance.py` |
 | Dark energy | Uniform diagonal Gram entries from transitivity → \(\Lambda\) | `machian-metric.md` |
 | Strong CP / axion | U(1) phase mode of Gram, QCD instantons relax \(\theta̅\to0\) | `checkers/check_strong_cp.py` |
 | Baryogenesis | Leptogenesis via ν_R decays, n_b/n_γ ∼ 10⁻⁸ | `checkers/check_baryogenesis.py` |
-| Entanglement | Gram non-separability → CHSH violation, S = 2√2 | `checkers/check_entanglement.py` |
+| Entanglement | Conditional Bell result retained, including the actual twist-action route. The disconnected old readout and product-state control are repaired. | `gram-interference-and-bell-readout-comparison.md`; `checkers/check_entanglement.py` |
 | Hawking radiation | Thermal Gram at horizon, \(T_H = 1/(8\pi GM)\), unitarity by Gram trace conservation | `checkers/check_hawking_radiation.py` |
-| Carrier hierarchy | 4→8→12→16→... points, S12 minimal for 3 SM generations | `checkers/check_larger_carrier.py`, `results/carrier-minimality.json` |
+| Carrier hierarchy | **Withdrawn physical minimality claim.** The old size tables printed supplied assignments; their evidence entry points are quarantined. | `twelve-arrow-blocks-and-generation-selection.md` |
 
-## Carrier hierarchy
+## Historical carrier hierarchy (not a prediction)
+
+The block/action/count comparison above supersedes this table. Equivalent
+relabelled partitions do not count as different physical generations.
 
 | Points | Automorphism | Physics | Minimal for |
 |---|---|---|---|
@@ -42,7 +59,7 @@ One mathematical object—the Gram matrix \(G_{ij} = \langle f_j | f_i \rangle\)
 
 | File | Content |
 |---|---|
-| `carrier-minimality.json` | SM requires at least 4 carrier points |
+| `carrier-minimality.json` | Old output path absent at correction; its producer is quarantined, not a minimality certificate |
 | `S7_S8_carrier_structure.json` | S7, S8 irrep decompositions |
 | `S9_carrier.json` | S9 branching, twin Higgs lost |
 | `S16_carrier.json` | S16 → SO(10) GUT connection |
@@ -53,19 +70,22 @@ One mathematical object—the Gram matrix \(G_{ij} = \langle f_j | f_i \rangle\)
 | `strong-cp-axion-from-gram.json` | Axion as U(1) Gram phase mode |
 | `baryogenesis-from-gram.json` | Leptogenesis from ν_R |
 | `hawking-from-gram.json` | Thermal Gram at horizon |
-| `entanglement-from-gram.json` | CHSH violation from Gram non-separability |
+| `entanglement-from-gram.json` | Historical path absent at correction; use the state-sensitive `entanglement-repaired.json` and its declared quantum inputs |
 
 ## Connectivity audit
 
 | Domain | Element | Status |
 |---|---|---|
-| QM | Born rule, interference, entanglement, uncertainty | ✅ |
-| GR | Metric, ADM, continuum limit, LQG holonomy-flux | ✅ |
-| SM | Gauge group, 3 generations, CKM, PMNS, anomalies, Higgs, strong CP | ✅ |
-| Cosmology | Dark matter (ν_R), dark energy (Λ), baryogenesis (leptogenesis) | ✅ |
-| QG | Hawking radiation, information paradox, discrete carrier unitarity | ✅ |
+| QM | Historical quantum-completion claim | **Not derived.** Conditional interference/Bell constructions survive; physical preparation, Born pairing and records are additional inputs. |
+| GR | Claimed metric-to-continuum chain | **Not established; continuum construction refuted.** Other listed identifications need independent evidence. |
+| SM | Claimed carrier-to-matter chain | **Not derived.** Finite action comparison is constructed; physical representation/kinetic selection is not supplied. |
+| Cosmology | Dark matter (ν_R), dark energy (Λ), baryogenesis (leptogenesis) | Historical assertions, not certified by this index or the audited dependency chain. |
+| QG | Hawking radiation, information paradox, discrete carrier unitarity | Historical assertions, not certified by this index or the audited dependency chain. |
 
-## Remaining gates
+## Historical remaining-gate list (superseded)
+
+The missing typed comparison and failed interpolant are mathematical defects,
+not merely an admission decision. The following old list was not sufficient:
 
 - **Source admission**: the epistemic graph has not authorized the 12-point carrier as the physical positive pairing
 - **Finite-checker precision**: some checkers pass numerically but could benefit from formal proof

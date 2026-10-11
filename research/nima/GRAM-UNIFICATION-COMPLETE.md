@@ -1,6 +1,17 @@
-# Gram Unification: Complete
+# Gram Unification: historical completion claim withdrawn
 
-## The claim
+**Not a current completion certificate — 7 October 2026.** The continuum
+construction fails (`continuum-embedding-evidence-boundary.md`), and the old
+S4 state-to-matter identification is not rescued by the full operator Gram
+(`s4-gram-action-comparison.md`). The completed witness model is conditional;
+its charge/kinetic freedom was already classified in
+`weak-doublet-singlet-weight-and-s4-representation-audit.md`.
+Source admission is not the only remaining mathematical gate. The independent
+stable-stem/gauge and particle-count assertions below are not established by
+these finite calculations. Original bytes are hash-preserved under
+`quarantine/20261007-s4-evidence/`.
+
+## Historical claim (withdrawn)
 
 One matrix \(G_{ij} = \langle f_j | f_i \rangle\) on a finite carrier \(X_N\) 
 with automorphism group \(S_N\). No other assumptions. Everything follows.
