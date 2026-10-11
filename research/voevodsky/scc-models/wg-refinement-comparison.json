@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "wg-refinement-comparison",
+    "owner": "marici.Voevodsky",
+    "classification": "forward_realization_comparison_not_novelty_or_efficiency",
+    "stratum": "Fixed Boolean proof-dependent refinement fixture; all inhabitants of the declared edge types; two-layer flattening and three-layer associator",
+    "inputs": [
+      "research/voevodsky/agda/WGRefinementBaseline.agda",
+      "research/voevodsky/agda/WGRefinementLibraryBaseline.agda",
+      "research/voevodsky/agda/WGRefinementLibraryComparison.agda",
+      "research/voevodsky/agda/SigmaReassociation.agda",
+      "research/voevodsky/agda/negative/WGRefinementLibraryBad.agda",
+      "research/voevodsky/agda/WGRefinementClient.agda",
+      "research/voevodsky/agda/WGRefinementComparison.agda",
+      "research/voevodsky/agda/negative/WGRefinementBaselineBad.agda",
+      "research/voevodsky/agda/negative/WGRefinementClientBad.agda",
+      "research/nima/agda/ComposableWitnessSpecialization.agda"
+    ],
+    "checks": [{
+      "id": "wg-refinement-comparison-check",
+      "path": "research/voevodsky/checkers/check_wg_refinement_comparison.py",
+      "requires": []
+    }],
+    "depends_on": [],
+    "consumes": ["selected-proof-dependent-refinement-api"],
+    "provides": ["matched-full-step-forward-realization", "matched-erasure-rejection"],
+    "missing_constructors": ["multi-example-utility-evaluation"],
+    "next_falsifier": "Either baseline or WG accepts refl after the retained true payload is replaced by false, or a full-step comparison fails to type-check"
+  }
+}

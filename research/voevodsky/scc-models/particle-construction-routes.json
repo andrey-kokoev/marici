@@ -1,0 +1,24 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "voevodsky-particle-construction-routes",
+    "owner": "marici.Voevodsky",
+    "classification": "shared_geometric_seed_with_conditional_fourth_route",
+    "stratum": "The retained regular tetrahedral sources, belt gap 7/10 and actual opposite-branch assignment. Original proton/belt coherent rank one; electron and proposed fourth coherent rank two. No common full source-state identification is assumed.",
+    "inputs": [
+      "research/voevodsky/results/proton_merkle_store.json",
+      "research/voevodsky/results/four_six_center_cones.json",
+      "research/voevodsky/results/coupled_six_piece_belt_store.json",
+      "research/voevodsky/results/belt_three_by_twelve_store.json",
+      "research/voevodsky/results/opposite_branch_belt_store.json",
+      "research/voevodsky/results/electron_tetrahedral_spinor_store.json",
+      "research/voevodsky/particle-construction-routes.md"
+    ],
+    "checks": [{"id": "voevodsky-three-routes-and-fourth", "path": "research/voevodsky/checkers/check_particle_construction_routes.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["retained particle-construction generators", "actual belt signs", "tetrahedral spinor projectors"],
+    "provides": ["source-traced partial construction routes", "orientation comparison with retained relabelling", "scalar-normalization falsifier", "exact conditional fourth return"],
+    "missing_constructors": ["common full construction record", "typed comparisons among the three original endpoint protocols", "meta-tetrahedral completion law"],
+    "next_falsifier": "A claimed forced fourth must preserve the actual belt signs and type/rank changes, account for the non-scalar frame normalization, and derive the required comparison/coherence maps rather than infer uniqueness from four endpoints."
+  }
+}

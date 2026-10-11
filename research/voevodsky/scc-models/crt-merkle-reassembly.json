@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "voevodsky-crt-merkle-reassembly",
+    "owner": "marici.Voevodsky",
+    "classification": "finite-cutoff theorem",
+    "stratum": "Typed pure CRT term content modulo occurrence naming and sharing; witness attachments retained; equivalence checked on all 225 environments of Z3 x Z5 x Z15.",
+    "inputs": ["research/voevodsky/crt-merkle-reassembly.md", "research/voevodsky/results/crt_edge_reassembly.json"],
+    "checks": [{"id": "crt-merkle-reassembly", "path": "research/voevodsky/checkers/check_crt_merkle_reassembly.py", "requires": []}],
+    "depends_on": ["voevodsky-crt-edge-reassembly"],
+    "consumes": ["typed-edge-lossless-reassembly", "crt-fixed-domain-witness-preservation"],
+    "provides": ["typed-crt-content-addressing", "witness-bound-merkle-integrity", "fixed-crt-merkle-equivalence-certificate"],
+    "missing_constructors": ["arbitrary-dependent-witness-normalization"],
+    "next_falsifier": "A witness-dependent constructor with equal output values but inequivalent retained attachment witnesses."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "voevodsky-deuterium-rim-response",
+    "owner": "marici.Voevodsky",
+    "classification": "attachment_transport_before_binding_readout",
+    "stratum": "Two scalar retained triangle-mode rim amplitudes on the aligned belt; electron spinor-to-scalar attachment is not supplied.",
+    "inputs": ["research/voevodsky/results/belt_three_by_twelve_store.json", "research/voevodsky/results/coupled_six_piece_belt_store.json", "research/voevodsky/results/collective_carrier_spectrum.json", "research/voevodsky/deuterium-two-rim-response.md", "research/voevodsky/deuterium-typed-rim-and-breakup-test.md"],
+    "checks": [{"id": "voevodsky-deuterium-two-rim-check", "path": "research/voevodsky/checkers/check_deuterium_two_rim.py", "requires": []}, {"id": "voevodsky-deuterium-typed-breakup-check", "path": "research/voevodsky/checkers/check_deuterium_typed_rim_binding.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["source-selected weighted belt Hamiltonian", "lower/upper rim triangle incidence"],
+    "provides": ["joint lower/upper rim trace", "exact minimum-energy extension", "symmetric and antisymmetric rim response", "typed tensor-spin rim extension", "fixed neutral opposite-charge matching falsifier", "exact common-reservoir breakup-energy test"],
+    "missing_constructors": ["proton and electron coefficient attachment into the rim scalar ports", "particle-sector preserving attractive interaction", "nuclear and electronic binding-energy normalization"],
+    "next_falsifier": "A proposed binding law must retain both rim response channels, type the electron spinor port, and lower the composite below its separately specified breakup threshold. Positive gluing penalties alone do not do that."
+  }
+}

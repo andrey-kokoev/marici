@@ -1,0 +1,110 @@
+{
+  "id": "voevodsky-belt-tetrahedral-parent-square",
+  "objects": [
+    {
+      "id": "T4",
+      "dimension": 16,
+      "type": "rational_scaled_labelled_coordinate_packet"
+    },
+    {
+      "id": "T3",
+      "dimension": 12,
+      "type": "rational_scaled_labelled_coordinate_packet"
+    },
+    {
+      "id": "M4",
+      "dimension": 24,
+      "type": "rational_scaled_labelled_coordinate_packet"
+    },
+    {
+      "id": "M3",
+      "dimension": 18,
+      "type": "rational_scaled_labelled_coordinate_packet"
+    }
+  ],
+  "arrows": [
+    {
+      "id": "project_vertices",
+      "source": "T4",
+      "target": "T3",
+      "map_token": "7418449c191794499fa3253fb88c883c337b7c9446f65b200cd83d1a1844c9c5"
+    },
+    {
+      "id": "midpoint_4d",
+      "source": "T4",
+      "target": "M4",
+      "map_token": "f4c9117c17211c35d99ac5ff4d4ff1533bc39266386f1888398bdc1f2ff5c0b8"
+    },
+    {
+      "id": "midpoint_3d",
+      "source": "T3",
+      "target": "M3",
+      "map_token": "80f1042fcfe804bbacd50166a616d36e3ae098fdd9952556f9b43a5828a431f0"
+    },
+    {
+      "id": "project_midpoints",
+      "source": "M4",
+      "target": "M3",
+      "map_token": "8d7d65e80ce53ed1bdd9470eca2ca33076b32ddfc5a9b508ddc398a18603b42f"
+    },
+    {
+      "id": "via_projection",
+      "source": "T4",
+      "target": "M3",
+      "map_token": "63614c4fab9f535fcfc2503c261b86382734af0e2c68f0a9a230c4fc4f944785"
+    },
+    {
+      "id": "via_midpoints",
+      "source": "T4",
+      "target": "M3",
+      "map_token": "63614c4fab9f535fcfc2503c261b86382734af0e2c68f0a9a230c4fc4f944785"
+    }
+  ],
+  "cells": [
+    {
+      "id": "midpoints_commute_with_projection",
+      "routes": [
+        [
+          "via_projection"
+        ],
+        [
+          "via_midpoints"
+        ]
+      ],
+      "witness": "check_signed_belt_tetrahedral_parent.py computes both exact composite matrices independently."
+    }
+  ],
+  "obstructions": [
+    {
+      "id": "unmodified_spinor_transport",
+      "reason": "Regular face overlap 1/3 differs from projected side-face overlap 149/296."
+    }
+  ],
+  "claims": [
+    {
+      "id": "signed_subdivision_assembly",
+      "requires": [
+        "midpoint_square",
+        "312_coefficient_equality"
+      ]
+    },
+    {
+      "id": "positron_identification",
+      "requires": [
+        "charge_conjugation_map",
+        "mass_and_charge_readouts"
+      ]
+    }
+  ],
+  "available_witnesses": [
+    "midpoint_square",
+    "312_coefficient_equality"
+  ],
+  "higher_coherence": [
+    {
+      "id": "physical_antiparticle_comparison",
+      "degree": 3,
+      "state": "unsupported"
+    }
+  ]
+}

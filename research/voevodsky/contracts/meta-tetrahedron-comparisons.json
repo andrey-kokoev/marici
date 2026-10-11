@@ -1,0 +1,179 @@
+{
+  "id": "voevodsky-conditional-directed-meta-tetrahedron",
+  "objects": [
+    {
+      "id": "E",
+      "dimension": 2,
+      "type": "selected_complex_state"
+    },
+    {
+      "id": "X",
+      "dimension": 2,
+      "type": "selected_complex_state"
+    },
+    {
+      "id": "N",
+      "dimension": 1,
+      "type": "selected_complex_state"
+    },
+    {
+      "id": "P",
+      "dimension": 1,
+      "type": "selected_complex_state"
+    }
+  ],
+  "arrows": [
+    {
+      "id": "EX",
+      "source": "E",
+      "target": "X",
+      "map_token": "4cab747021c2d4aa17429ff6b299d8245975d1f48035ac44dfa288add1321a94"
+    },
+    {
+      "id": "EN",
+      "source": "E",
+      "target": "N",
+      "map_token": "de71d3759a28ffb34177443b429d7f9c4c69fb444ce26ca7cfcc284594515747"
+    },
+    {
+      "id": "EP",
+      "source": "E",
+      "target": "P",
+      "map_token": "de71d3759a28ffb34177443b429d7f9c4c69fb444ce26ca7cfcc284594515747"
+    },
+    {
+      "id": "XN",
+      "source": "X",
+      "target": "N",
+      "map_token": "de71d3759a28ffb34177443b429d7f9c4c69fb444ce26ca7cfcc284594515747"
+    },
+    {
+      "id": "XP",
+      "source": "X",
+      "target": "P",
+      "map_token": "de71d3759a28ffb34177443b429d7f9c4c69fb444ce26ca7cfcc284594515747"
+    },
+    {
+      "id": "NP",
+      "source": "N",
+      "target": "P",
+      "map_token": "e28610836ab702cd35495751839961e9fae54fec4ee18dc4b314862c18c3d104"
+    },
+    {
+      "id": "EXN",
+      "source": "E",
+      "target": "N",
+      "map_token": "de71d3759a28ffb34177443b429d7f9c4c69fb444ce26ca7cfcc284594515747"
+    },
+    {
+      "id": "EXP",
+      "source": "E",
+      "target": "P",
+      "map_token": "de71d3759a28ffb34177443b429d7f9c4c69fb444ce26ca7cfcc284594515747"
+    },
+    {
+      "id": "ENP",
+      "source": "E",
+      "target": "P",
+      "map_token": "de71d3759a28ffb34177443b429d7f9c4c69fb444ce26ca7cfcc284594515747"
+    },
+    {
+      "id": "XNP",
+      "source": "X",
+      "target": "P",
+      "map_token": "de71d3759a28ffb34177443b429d7f9c4c69fb444ce26ca7cfcc284594515747"
+    }
+  ],
+  "cells": [
+    {
+      "id": "EXN",
+      "routes": [
+        [
+          "EN"
+        ],
+        [
+          "EXN"
+        ]
+      ],
+      "witness": "Exact logical composite, lifted by source-verified J_i isometries."
+    },
+    {
+      "id": "EXP",
+      "routes": [
+        [
+          "EP"
+        ],
+        [
+          "EXP"
+        ]
+      ],
+      "witness": "Exact logical composite, lifted by source-verified J_i isometries."
+    },
+    {
+      "id": "ENP",
+      "routes": [
+        [
+          "EP"
+        ],
+        [
+          "ENP"
+        ]
+      ],
+      "witness": "Exact logical composite, lifted by source-verified J_i isometries."
+    },
+    {
+      "id": "XNP",
+      "routes": [
+        [
+          "XP"
+        ],
+        [
+          "XNP"
+        ]
+      ],
+      "witness": "Exact logical composite, lifted by source-verified J_i isometries."
+    }
+  ],
+  "obstructions": [
+    {
+      "id": "full_state_equivalence",
+      "reason": "Ranks 2,2,1,1. Any complex row has singular two-by-two Gram matrix."
+    }
+  ],
+  "claims": [
+    {
+      "id": "conditional_directed_coherence",
+      "requires": [
+        "declared_functional",
+        "source_encoders",
+        "four_faces"
+      ]
+    },
+    {
+      "id": "source_derived_meta_tetrahedron",
+      "requires": [
+        "source_selected_comparison_functional",
+        "common_full_construction_record",
+        "geometry_and_transport_comparison"
+      ]
+    }
+  ],
+  "available_witnesses": [
+    "declared_functional",
+    "source_encoders",
+    "four_faces"
+  ],
+  "higher_coherence": [
+    {
+      "id": "strict_selected_state_tetrahedron",
+      "degree": 3,
+      "state": "verified",
+      "witness": "Exact three-step composite equals both parenthesizations and the direct EP map; source encoder Gram identities lift it to the raw spaces."
+    },
+    {
+      "id": "comparison_of_complete_construction_procedures",
+      "degree": 3,
+      "state": "unsupported"
+    }
+  ]
+}

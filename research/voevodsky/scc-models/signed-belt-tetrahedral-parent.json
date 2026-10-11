@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "voevodsky-signed-belt-tetrahedral-parent",
+    "owner": "marici.Voevodsky",
+    "classification": "forward_realization_and_signed_attachment_transport_test",
+    "stratum": "Current gap 7/10, six labelled belt panels and retained 312-transfer spinor return. Orthogonal projection in an explicit positive R4 metric; midpoint subdivision and two-cap omission are separate operations.",
+    "inputs": ["research/voevodsky/results/four_six_center_cones.json", "research/voevodsky/results/conditional_fourth_spinor_store.json", "research/voevodsky/results/opposite_branch_belt_store.json", "research/voevodsky/checkers/check_particle_construction_routes.py", "research/voevodsky/checkers/check_electron_charge_spin_frontier.py", "research/voevodsky/signed-belt-tetrahedral-parent.md"],
+    "checks": [{"id": "voevodsky-tetrahedral-parent-test", "path": "research/voevodsky/checkers/check_signed_belt_tetrahedral_parent.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["signed belt geometry and full spinor coefficient store"],
+    "provides": ["explicit regular tetrahedral lift", "signed medial-subassembly certificate", "whole-projection and unmodified-spinor-transport falsifiers"],
+    "missing_constructors": ["physical charge-conjugation comparison", "physical mass and charge readouts"],
+    "next_falsifier": "Fail the tetrahedral-parent hypothesis if any vertex, panel, orientation sign or retained coefficient disagrees. Reject stronger unchanged-view claims if face overlaps change or the whole-image vertex count fails."
+  }
+}

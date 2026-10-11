@@ -1,0 +1,21 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "voevodsky-electron-pairing-coupling",
+    "owner": "marici.Voevodsky",
+    "classification": "retained_phase_contract_ambiguity_with_conditional_spinor_pairing",
+    "stratum": "Nonzero one-dimensional source vector mode for the retained D phase; a separately declared fundamental spinor doublet for the bilinear pairing. No identification between their phase actions is assumed.",
+    "inputs": [
+      "research/voevodsky/results/proton_merkle_store.json",
+      "research/voevodsky/results/electron_tetrahedral_spinor_store.json",
+      "research/voevodsky/checkers/check_retained_phase_attachment.py",
+      "research/voevodsky/electron-pairing-coupling.md"
+    ],
+    "checks": [{"id": "voevodsky-electron-pairing-attachment-audit", "path": "research/voevodsky/checkers/check_electron_pairing_coupling.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["source-bound retained phase registration", "declared spinorial coefficient carrier"],
+    "provides": ["fixed versus field-dependent phase-link distinction", "exact singlet Ward identity", "one-spinor conjugation channel falsifier", "minimal pair mass-degeneracy falsifier"],
+    "missing_constructors": ["source selection of charged common-phase retention", "transport to the rank-two spinor carrier", "binary neutral-output coupling", "physical energy and exchange rule"],
+    "next_falsifier": "Any proposed source coupling must distinguish the frozen normalized D from field-dependent D(p), preserve the retained raw embeddings, and not replace a binary singlet effect by a non-CP deterministic spin reversal."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "voevodsky-electron-charge-spin-frontier",
+    "owner": "marici.Voevodsky",
+    "classification": "declared_spinor_extension_with_readout_obstruction",
+    "stratum": "Fixed tetrahedral geometry; exact finite coefficient carriers. First test keeps the old vector readout; second explicitly enlarges to a rank-two spinor carrier over Q(sqrt(3),i).",
+    "inputs": [
+      "research/voevodsky/results/proton_merkle_store.json",
+      "research/voevodsky/results/smaller_negative_flux_carrier.json",
+      "research/voevodsky/electron-charge-spin-frontier.md"
+    ],
+    "checks": [
+      {"id": "voevodsky-electron-charge-spin-audit", "path": "research/voevodsky/checkers/check_electron_charge_spin_frontier.py", "requires": []},
+      {"id": "voevodsky-electron-tetrahedral-spinor", "path": "research/voevodsky/checkers/check_electron_tetrahedral_spinor.py", "requires": []}
+    ],
+    "depends_on": [],
+    "consumes": ["source-bound vector modes", "four-face cyclic carrier", "tetrahedral normal incidence"],
+    "provides": ["exact normalized-flux spectral falsifier", "explicit negative-polarization spinorial doublet", "positive fixed-support deletion certificate"],
+    "missing_constructors": ["source operation producing the spinor extension", "common electromagnetic U(1) readout", "energy and scale selection", "fermionic exchange contract"],
+    "next_falsifier": "Do not identify Pauli polarization with electrical charge: any proposed common readout must give sharp charges on both the source proton and the spinor carrier without state-dependent recalibration. The old flux fails this test."
+  }
+}
