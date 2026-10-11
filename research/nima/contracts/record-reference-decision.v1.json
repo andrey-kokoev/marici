@@ -1,0 +1,16 @@
+{
+  "schema": "marici.nima.record-reference-decision.v1",
+  "problem": "Which full reference tables admit the shared balanced two-branch record model, and how can all nine source/action hypotheses be compared with uncertain reference and probe tables without fitting noise parameters?",
+  "source": {"checker":"research/nima/checkers/check_record_sign_action_census.py", "receipt":"research/nima/results/record-sign-action-census.json"},
+  "conjecture": "Normalized nonnegative full references are compatible iff the two bypass product laws and two basis product laws hold, herald means agree, the concatenated centered matrices have rank at most one, and both reflected tables are nonnegative. A common stochastic-channel witness can then be constructed. Reflection is 5-Lipschitz in entrywise L1; the resulting probe-wise error envelopes never reject a true candidate on the simultaneous input-error event.",
+  "models": ["P","000","001","010","011","100","101","110","111"],
+  "reference_keys": ["B","A","00","11"],
+  "probe_keys": ["T","S"],
+  "norm": "entrywise L1 of complete normalized probability tables; not half-L1 total variation",
+  "perturbation": {"strength":"1/10000", "rule":"replace each table by (1-strength) times itself plus strength times a declared point mass", "uniform_error_budget":"1/5000"},
+  "near_blind": {"channel":"BZ", "rule":"minus column = plus + theta times (original minus - plus)", "theta":["1","1/10","1/1000","1/100000","0"], "probe_error_budget":"1/1000", "expected_gap_to_001":"theta times the original Z column L1 difference"},
+  "hostiles": ["negative or unnormalized input table", "nonproduct basis table with unchanged marginals", "nonproduct bypass table with unchanged pair marginals", "unequal herald means", "separately admissible X tables with incompatible herald covariance directions", "positive table with negative reflection", "small finite-error perturbation that violates exact reference factorization but contains the true reference in its error region", "near-blind but exactly informative Z channel", "strict rejection boundary equality", "zero-support and all-blind channels"],
+  "confidence_wrapper": "For six fixed tables with d_i cells and N_i independent identically distributed attempted trials, use epsilon_i=min(2,d_i sqrt(log(2d_i/alpha_i)/(2N_i))). The simultaneous input-error event has probability at least 1-sum alpha_i. No between-table independence is required. No postselection, fitted error bars or unproved iid assumption.",
+  "decision": "Reject a compound candidate iff either probe residual exceeds its test error plus its reference-prediction envelope. Otherwise say not_excluded, not accepted. An exactly incompatible point estimate with positive errors does not alone reject the error region. Retain negative reflected estimates without clipping.",
+  "scope": "Fixed source pair, eight fixed-label homomorphisms, balanced preparation and common conditionally independent axis-specific channels. Exact reference compatibility; conservative finite-error reference diagnostics and hypothesis exclusion, not a complete noisy-region feasibility solver. No measured data, physical admission gate or instrument-equivalence inference."
+}

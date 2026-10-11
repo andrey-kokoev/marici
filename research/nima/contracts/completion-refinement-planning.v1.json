@@ -1,0 +1,86 @@
+{
+  "schema": "marici.nima.completion-refinement-planning.v1",
+  "estimate_status": "subjective_uncalibrated_planning_only",
+  "conditioned_on": ["standard-spectral-whole-return-exists proved", "completion-phase-unit-norm freshly proved", "completion-pi-half-turn proved at explicitly operator-accepted mixed verification level", "completion-phase-metric-regularity freshly kernel-proved", "completion-unit-circle-flow freshly kernel-proved", "operational-unitary-half-turn freshly assembled at accepted mixed identification level"],
+  "required_known_proofs": ["standard-spectral-whole-return-exists", "completion-phase-unit-norm", "completion-pi-half-turn", "completion-phase-metric-regularity", "completion-unit-circle-flow", "operational-unitary-half-turn"],
+  "resolved_estimates_retained": ["completion-pi-half-turn", "completion-phase-metric-regularity", "completion-unit-circle-flow", "operational-unitary-half-turn"],
+  "update_policy": "Condition the existing truth model on accepted pi closure and fresh operational regularity closure; omit resolved actions but retain old estimates as history. The same-phase flow record is now freshly assembled and its action is also removed. Full half-turn assembly is also freshly complete at the accepted identification level; its action is removed while earlier +- receipts remain historical. Only whole-return assembly remains. No new effort measurement or attempt-budget reset is asserted. The 24-EU calculation is a retained planning scenario, not a remaining-budget claim.",
+  "effort_unit": "One focused proof/edit/check work cycle, not a minute of elapsed time. A long kernel rebuild need not be many effort units.",
+  "cost_scope": "Marginal cost of one bounded attempt. Proof costs for dependent nodes apply after prerequisite certificates exist; they exclude prerequisite costs. Ranges are judgment ranges, not statistical confidence intervals.",
+  "objective": {
+    "target": "operational-spectral-whole-return-certificate",
+    "functional": "maximize_positive_certificate_probability_then_minimize_expected_effort",
+    "budget_effort_units": 24,
+    "negative_target_outcome": "Resolves the target negatively but is not rewarded as a positive certificate by this objective.",
+    "secondary_diagnostic": "Expected claim, target and joint information per effort for each direction; not the closure objective."
+  },
+  "attempt_policy": {
+    "bounded_attempts_per_canonical_action": 1,
+    "failure_semantics": "+- and -- leave the proposition unresolved. A failed proof cannot supply a prerequisite certificate.",
+    "retry_policy": "After an actual attempt, record the observation and replan explicitly. Do not silently repeat exhausted actions.",
+    "conditional_independence": "Distinct bounded-attempt outcomes are assumed independent conditional on the joint truth world. Flow rejection is the same experiment as regularity rejection and is not duplicated.",
+    "soundness": "P(++|false)=0 and P(-+|true)=0. These are proof/rejection outcomes, not polarity arrows.",
+    "history": "This is a new forward portfolio after the norm proof, not a restart of the predecessor's stopped source-contract audit. Priors summarize current judgment rather than a numerical update of that old prior."
+  },
+  "joint_model": {
+    "pi_true": 0.98,
+    "all_scale_regularity_true": 0.97,
+    "pi_scale_regularity_given_all_scale_failure": 0.40,
+    "target_true_given_half_turn_true": 0.96,
+    "target_true_given_half_turn_false": 0.25,
+    "factorization": "Pi and all-scale regularity are initially independent. Pi-scale regularity is certain when all-scale regularity holds, otherwise 0.40. Flow equals all-scale regularity because norm is proved. Half-turn equals pi-endpoints AND pi-scale regularity. The target conditional is 0.96 or 0.25 according to half-turn truth.",
+    "scope_boundary": "The final target is not equated with this particular proof route. The nonzero target probability after half-turn failure allows alternative implementation routes; no automatic parent-refutation edge is introduced.",
+    "basis": "The standard theorem and completed norm implementation make correctness highly plausible. Remaining uncertainty concerns the exact operational calculus and certificate contract. These probabilities are judgments, not measured frequencies."
+  },
+  "claims": {
+    "pi": "completion-pi-half-turn",
+    "regularity": "completion-phase-metric-regularity",
+    "flow": "completion-unit-circle-flow",
+    "half_turn": "operational-unitary-half-turn",
+    "target": "operational-spectral-whole-return-certificate"
+  },
+  "estimates": {
+    "completion-pi-half-turn": {
+      "prove_cost": 8, "prove_cost_range": [5, 13], "prove_success_given_true": 0.65,
+      "reject_cost": 10, "reject_cost_range": [6, 18], "reject_success_given_false": 0.20,
+      "proof_use": "Supplies the identified pi and exact endpoint certificate needed by the half-turn.",
+      "rejection_use": "Refutes the stated endpoint contract and blocks this constructive route, without automatically refuting every implementation.",
+      "basis": "Requires a constructive pi definition, identification with the reference pi and exact trigonometric half-turn laws; no ready endpoint package was found."
+    },
+    "completion-phase-metric-regularity": {
+      "prove_cost": 5, "prove_cost_range": [3, 9], "prove_success_given_true": 0.75,
+      "reject_cost": 8, "reject_cost_range": [5, 14], "reject_success_given_false": 0.30,
+      "proof_use": "With norm already proved, enables the unit-circle-flow certificate.",
+      "rejection_use": "Locates a failure of the all-scale continuity/derivative contract. It need not fail at pi.",
+      "basis": "Existing operational Taylor bounds and comparison machinery can be reused, but metric differentiation and its transfer still need a precise implementation."
+    },
+    "completion-unit-circle-flow": {
+      "prove_cost": 1, "prove_cost_range": [1, 2], "prove_success_given_true": 0.98,
+      "reject_cost": 8, "reject_cost_range": [5, 14], "reject_success_given_false": 0.30,
+      "rejection_alias": "completion-phase-metric-regularity",
+      "proof_use": "Assembles the norm and regularity proofs for the same phase; supplies the half-turn flow input.",
+      "rejection_use": "Since norm is proved, this is the regularity rejection test, not independent evidence.",
+      "basis": "Expected record/transport assembly after prerequisites. The proposition is then known, but a checked certificate still has to be constructed."
+    },
+    "operational-unitary-half-turn": {
+      "prove_cost": 1, "prove_cost_range": [1, 3], "prove_success_given_true": 0.95,
+      "reject_cost": 12, "reject_cost_range": [8, 20], "reject_success_given_false": 0.20,
+      "proof_use": "Specializes the same phase to the identified pi and enables whole-return assembly.",
+      "rejection_use": "Rules out the specified operational half-turn, not every possible completion implementation.",
+      "basis": "Expected specialization and endpoint assembly once flow and pi certificates are available. A direct disproof is substantially harder than failure to assemble them."
+    },
+    "operational-spectral-whole-return-certificate": {
+      "prove_cost": 4, "prove_cost_range": [3, 8], "prove_success_given_true": 0.70,
+      "reject_cost": 18, "reject_cost_range": [12, 30], "reject_success_given_false": 0.10,
+      "proof_use": "Closes the positive objective and makes the operational certificate exportable.",
+      "rejection_use": "Resolves the target negatively. Failure of a single candidate or proof attempt is insufficient.",
+      "basis": "Requires tensor/operator algebra, metric interval/gluing, piecewise generators, faithfulness and correspondence to the imported witness. Global nonexistence is much harder to certify than a candidate defect."
+    }
+  },
+  "sensitivity": {
+    "pi_proof_costs": [6, 8, 12],
+    "regularity_proof_costs": [3, 5, 8],
+    "likelihood_pairs": [[0.50, 0.90], [0.65, 0.75], [0.80, 0.60]],
+    "meaning": "27 scenarios vary the two open analytic proof costs and their conditional proof-completion probabilities. This is a sensitivity test, not a calibration claim."
+  }
+}

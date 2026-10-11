@@ -1,0 +1,20 @@
+{
+  "schema": "marici.nima.spectral-whole-return-test.v1",
+  "claim_id": "spectral-local-core-admits-whole-tick-return",
+  "local_core": "source-derived-local-core-exists",
+  "witness": "free-linearized native flips with H_j=pi*(I-P_j)/2 and U_j(t)=exp(-i*t*H_j)",
+  "semantic_backend": "standard finite-dimensional complex Hilbert spaces",
+  "source_derivation": "The same uniform-construction meaning used for the local core; no externally supplied return path.",
+  "return_meaning": "A source-derived, faithful whole-record interpretation into a pair of external metric paths, with exact endpoints, schedule traversal and reconstruction/swap coherence. Not a pointwise interpretation of Cubical I.",
+  "domain": "The ordinary closed real interval [0,2], with its Euclidean subspace metric, split at 1.",
+  "constructor": {
+    "initial_state": "v=e_(run leftFirst s)=P_R P_L e_s",
+    "order": "(a,b) is the reverse of the retained schedule's operation order",
+    "first_segment": "gamma_r,s(t)=U_a(t)v for 0<=t<=1",
+    "second_segment": "gamma_r,s(t)=U_b(t-1)P_a v for 1<=t<=2",
+    "whole_record": "For tags (r,q), interpret the full Tick as (gamma_r,s,gamma_q,s)."
+  },
+  "required_laws": ["same spectral generators as the local-core witness", "start at the native double-flip target and finish at the source basis state", "agreement at the seam and whole-route metric continuity", "unit norm everywhere", "factor-local Schrodinger evolution on each open segment", "whole-record reconstruction and equal-tag coherence", "swapping schedule tags swaps the two paths", "faithfulness at fixed source via distinct seam states and the full-Tick tag classification", "factor-exchange covariance with schedule names exchanged"],
+  "not_required_or_claimed": ["C1 differentiability at the switching time", "literal time reversal of the forward trajectory", "a total single-valued Cubical-pointwise state decoder", "a kernel-verified Cauchy-completion phase", "uniqueness of continuous interpretations"],
+  "proof_note": "research/nima/spectral-whole-return-proof.md"
+}

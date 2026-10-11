@@ -1,0 +1,59 @@
+{
+  "schema": "marici.scc.freeze.v1",
+  "model_id": "nima-s4-gram-action-comparison",
+  "fingerprint": "1b85aab50233cf0859b9ce9904cc41a3a37efb638ab13a65be303ea39bfc4906",
+  "owner": "marici.Nima",
+  "classification": "full-operator-Gram-comparison-not-physical-matter-selection",
+  "stratum": "Forward realization and action compatibility on the original 24-element S4 Gram, complex natural permutation operators, and completed witness-fixed construction. Left translation and conjugation are distinct actions.",
+  "depends_on": [],
+  "consumes": [
+    "full original S4 operator Gram",
+    "completed witness-sector charges and spectral kinetic comparison"
+  ],
+  "provides": [
+    "exact matrix-coefficient quotient",
+    "left-versus-conjugation action distinction",
+    "explicit completed-witness operator lifts and pinching comparison"
+  ],
+  "missing_constructors": [],
+  "next_falsifier": "Reject if the actual old Gram does not factor, its quotient characters differ, or completed witness operators fail to lift. Conjugation doublets are not matter doublets. Additional physical matter or action selection is a new question; do not reopen the existing symmetry-only underdetermination.",
+  "manifest": {
+    "id": "nima-s4-gram-action-comparison",
+    "owner": "marici.Nima",
+    "classification": "full-operator-Gram-comparison-not-physical-matter-selection",
+    "stratum": "Forward realization and action compatibility on the original 24-element S4 Gram, complex natural permutation operators, and completed witness-fixed construction. Left translation and conjugation are distinct actions.",
+    "inputs": [
+      "research/nima/quarantine/20261007-s4-evidence/SHA256SUMS",
+      "research/nima/quarantine/20261007-s4-evidence/checkers/check_baryonic_matter.py",
+      "research/nima/checkers/check_baryonic_matter.py",
+      "research/nima/weak-doublet-singlet-weight-and-s4-representation-audit.md",
+      "research/nima/checkers/check_carrier_doublet_singlet_split.py",
+      "research/nima/checkers/check_witness_stabilizer_doublet.py",
+      "research/nima/checkers/check_witness_gauge_assignment.py",
+      "research/nima/checkers/check_witness_charge_operator.py",
+      "research/nima/checkers/check_gram_preserving_charge_family.py",
+      "research/nima/checkers/check_gram_gauge_kinetic_weights.py"
+    ],
+    "checks": [
+      {
+        "id": "nima-s4-gram-action-comparison-exact",
+        "path": "research/nima/checkers/check_s4_gram_action_comparison.py",
+        "requires": [
+          "sympy"
+        ]
+      }
+    ],
+    "depends_on": [],
+    "consumes": [
+      "full original S4 operator Gram",
+      "completed witness-sector charges and spectral kinetic comparison"
+    ],
+    "provides": [
+      "exact matrix-coefficient quotient",
+      "left-versus-conjugation action distinction",
+      "explicit completed-witness operator lifts and pinching comparison"
+    ],
+    "missing_constructors": [],
+    "next_falsifier": "Reject if the actual old Gram does not factor, its quotient characters differ, or completed witness operators fail to lift. Conjugation doublets are not matter doublets. Additional physical matter or action selection is a new question; do not reopen the existing symmetry-only underdetermination."
+  }
+}

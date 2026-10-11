@@ -1,0 +1,22 @@
+{
+  "schema": "marici.nima.uniform-local-core-test.v1",
+  "claim_id": "source-derived-local-core-exists",
+  "interpretation": "Existence by a uniform construction from the native square within declared analytic mathematics, not unique selection by the source.",
+  "semantic_backend": "standard finite-dimensional complex Hilbert spaces",
+  "background": ["complex scalars and ordinary real time", "free linearization of finite sets", "standard coordinate inner product", "ordinary complex exponential with its standard analytic laws"],
+  "source_input": "Two Bool factors with their native bit flips and the ordered commuting square. No phase, generator or continuous path is supplied as input.",
+  "constructor": {
+    "carrier": "H=C[Bool x Bool] canonically identified with C[Bool] tensor C[Bool]",
+    "encoding": "q maps to the delta basis vector e_q",
+    "operators": "P_L e_(a,b)=e_(not a,b); P_R e_(a,b)=e_(a,not b)",
+    "generators": "H_j=pi*(I-P_j)/2",
+    "dynamics": "U_j(t)=exp(-i*t*H_j)=(I-Q_j)+exp(-i*pi*t)*Q_j, Q_j=(I-P_j)/2",
+    "square": "U(a,b)=U_R(b) U_L(a)"
+  },
+  "required_laws": ["native operations extend on the delta basis", "unitarity and continuity for every real parameter", "time-zero identity and time-one native operation", "factorwise generators and preservation of factor operator algebras", "commuting square and all four discrete corners", "covariance under factorwise relabelings and exchange of factor names"],
+  "choice_boundary": "The pi-scaled spectral interpolation is one fixed construction rule. It is not a field supplied with each source, and is not claimed uniquely selected by Tick. No logarithm homomorphism under arbitrary permutation composition is claimed.",
+  "excluded_obligations": ["whole-Tick return interpretation", "source uniqueness of the analytic profile", "construction of exponential and pi in the operational Cauchy completion", "ten-topic observable law"],
+  "completion_boundary": "The Cauchy-completion implementation is a separate backend refinement, not evidence silently assumed in this standard-C4 theorem.",
+  "proof_note": "research/nima/uniform-local-core-proof.md",
+  "checker": "research/nima/checkers/check_uniform_local_core.py"
+}

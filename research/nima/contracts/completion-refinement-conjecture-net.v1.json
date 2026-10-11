@@ -1,0 +1,162 @@
+{
+  "schema": "marici.nima.completion-refinement-conjecture-net.v1",
+  "id": "nima.completion-refinement-net.v1",
+  "outcome_semantics": "proof-attempt-outcomes-v1",
+  "objective": {
+    "target": "operational-spectral-whole-return-certificate",
+    "meaning": "Produce a safe Agda certificate implementing the exported spectral local lift and faithful external whole-return paths in the existing operational Cauchy completion.",
+    "acceptance": "Fresh headless Agda closure, no postulates or unsolved metas, source/dependency hashes, explicit theorem types covering every target obligation, and correspondence to the exported witness. Cached success or a conditional norm-transfer theorem alone is insufficient.",
+    "excluded": ["uniqueness of the realization", "physical interpretation", "ten-topic observable law", "Cubical-pointwise state decoding", "C1 differentiability at the seam"]
+  },
+  "imports": [
+    {
+      "id": "standard-spectral-whole-return-exists",
+      "outcome_pointer": "research/nima/contracts/imports/standard-local-lift.pointer.v1.json",
+      "role": "proved standard-semantics specification and reference witness, not a kernel axiom or completion certificate"
+    }
+  ],
+  "conjectures": [
+    {
+      "id": "completion-phase-unit-norm",
+      "statement": "For every completion scale p and completion time t, the existing TickCompletionPhase.phase p t has complex norm squared one, with ScheduledNormBound discharged for the actual operational schedules rather than assumed.",
+      "scope_id": "operational-TickCompletionPhase-all-scale-all-time",
+      "outcome": "++",
+      "depends_on": [],
+      "attempts": [{"intent": "prove", "outcome": "++", "receipt": "research/nima/results/constructed-scheduled-norm-fresh.json"}],
+      "proof_module": "research/nima/agda/TickConstructedScheduledNorm.agda",
+      "acceptance": "Safe Agda proof of the unconditional norm identity; include fresh closure of the scheduled residual bound and its transfer.",
+      "historical_context_only": ["research/nima/scheduled-norm-control.md", "research/nima/unit-circle-understanding-review.md"],
+      "disposition": "Proved for every completion scale and time. The uniform radius majorant supplies eventual actual-sample controls, constructs ScheduledNormBound and transfers to the operational quotient phase. Full fresh safe Agda closure passed.",
+      "supporting_attempt": "research/nima/results/constructed-scheduled-norm-fresh.json",
+      "cost_to_prove": null,
+      "cost_to_reject": null
+    },
+    {
+      "id": "completion-pi-half-turn",
+      "statement": "Construct a completion-valued pi representing the same standard pi used in the exported witness, and prove completionCosine(-pi)=-1 and completionSine(-pi)=0, hence phase pi oneCompletion=-oneComplex.",
+      "scope_id": "operational-completion-standard-pi-half-turn",
+      "outcome": "++",
+      "attempts": [{"intent": "prove", "outcome": "++", "receipt": "research/nima/results/pi-mixed-level-accepted.json"}],
+      "proof_module": "research/nima/agda/TickMachinEndpoints.agda",
+      "verification_level": "operator-accepted mixed: safe Agda endpoints and written standard-real identification; not kernel identification",
+      "acceptance_record": "research/nima/contracts/pi-mixed-level-acceptance.v1.json",
+      "disposition": "Proved at the explicitly operator-accepted mixed level. The historical progress below is retained without rewriting earlier evidence. Dependent flow, derivative, full half-turn and whole-return claims remain open.",
+      "completed_progress": {
+        "attempt_state": "in_progress",
+        "active_action": "prove/completion-pi-half-turn",
+        "completed_component": "convergent-Machin-candidate",
+        "component_receipt": "research/nima/results/machin-pi-candidate-fresh.json",
+        "supporting_components": [
+          {"id": "trig-addition-foundations", "receipt": "research/nima/results/trig-addition-foundations-fresh.json"},
+          {"id": "completion-trig-addition", "receipt": "research/nima/results/completion-trig-addition-fresh.json"},
+          {"id": "operational-cayley-grid", "receipt": "research/nima/results/operational-cayley-identity-fresh.json", "scope": "nonnegative rational grid inputs N/(d+1) bounded by one half"},
+          {"id": "machin-endpoint-reduction", "receipt": "research/nima/results/machin-endpoint-reduction-fresh.json", "next_gate": "RationalMachinGate: square(square(Cayley(1/5))) = i*Cayley(1/239)"},
+          {"id": "machin-endpoints", "receipt": "research/nima/results/machin-endpoints-fresh.json"},
+          {"id": "machin-reference-series", "receipt": "research/nima/results/machin-reference-series-fresh.json"},
+          {"id": "standard-real-identification-written", "receipt": "research/nima/results/standard-pi-identification.json"}
+        ],
+        "remaining_obligations": ["standard-pi identification at the accepted formal level"],
+        "checkpoint_policy": "Operator selected the pi critical-path branch. The convergent candidate, unconditional operational sine/cosine addition laws, and operational Cayley identity for nonnegative rational grid inputs at most one half are freshly checked components. The Cayley proof includes actual outer-factor transport and concrete dyadic telescoping. The Cayley identities are now instantiated at the existing opaque Machin inputs 1/5 and 1/239. The rational gate and MachinEndpoints are now freshly proved, including the phase half-turn for the constructed candidate. Earlier supporting receipts retain their historical open gates. The exact common-cutoff rational Machin series now has a checked all-later tail bound, convergence to the constructed candidate, and uniqueness-based comparison with any reference image proved to have that limit. A complete written classical-real interpretation rho([x])=lim x_n now proves rho(machinPi)=standard pi, with explicit convergence soundness and branch selection; its endpoint and series kernel dependencies were freshly rechecked. This interpretation is not formalized in Agda. The remaining identification gate is explicit acceptance of this mixed verification level or kernel formalization of the interpretation; no automatic parent promotion is permitted. The derivative remains paused and unproved."
+      },
+      "definition_module": "research/nima/agda/TickMachinPiEndpointContract.agda",
+      "depends_on": [],
+      "acceptance": "Safe Agda construction with half-turn laws and an explicit identification of the chosen pi; choosing an arbitrary odd half-turn or assuming endpoint trigonometric values is insufficient.",
+      "historical_context_only": ["research/nima/agda/TickCompletionPhase.agda"],
+      "cost_to_prove": 8,
+      "cost_to_reject": 10
+    },
+    {
+      "id": "completion-phase-metric-regularity",
+      "statement": "For every completion scale p, the implemented phase p is metric-continuous in completion time and has derivative (-i*p)*phase p, using a specified metric derivative definition for the operational completion.",
+      "scope_id": "operational-completion-phase-metric-calculus",
+      "outcome": "++",
+      "attempts": [{"intent": "prove", "outcome": "++", "receipt": "research/nima/results/constructed-phase-derivative-fresh.json"}],
+      "proof_module": "research/nima/agda/TickConstructedPhaseDerivative.agda",
+      "verification_level": "fresh safe Agda all-scale/all-time/all-increment operational metric continuity and derivative",
+      "disposition": "Completed the same resumed attempt. The derivative modulus, representative bounds, residual identification and full regularity pair are constructed. Historical component checkpoints remain unchanged; dependent certificate assembly is not automatically promoted.",
+      "completed_progress": {
+        "attempt_state": "in_progress",
+        "resume_authorization": "Operator instructed proceed after accepting the mixed-level pi certificate.",
+        "pause_history": "Previously paused for the pi critical-path branch; resumed as the same unfinished attempt without a budget reset.",
+        "active_action": "prove/completion-phase-metric-regularity",
+        "completed_component": "metric-continuity",
+        "component_receipt": "research/nima/results/phase-metric-continuity-fresh.json",
+        "supporting_components": [
+          {"id": "phase-derivative-origin-reduction", "receipt": "research/nima/results/phase-derivative-reduction-fresh.json"},
+          {"id": "completion-order-limit-transfer", "receipt": "research/nima/results/completion-order-limits-fresh.json"},
+          {"id": "rational-phase-relative-bound", "receipt": "research/nima/results/rational-phase-derivative-bound-fresh.json"},
+          {"id": "bounded-completion-relative-bound", "receipt": "research/nima/results/completion-relative-bound-fresh.json"}
+        ],
+        "remaining_obligations": ["PhaseDerivativeLaw"],
+        "next_gate": "Construct the dyadic modulus, recover eventual representative bounds from CompletionWithin, and identify localResidualNorm with the origin-reduction residual to instantiate LocalPhaseDerivativeBound.",
+        "checkpoint_policy": "Resumed the same attempt. Fresh safe Agda proves exact factorization by phase p t and unit-norm invariance of the remainder. Thus the derivative at the origin supplies all times. Fresh safe Agda now also transfers all-precision eventual rational inequalities to CompletionLE and preserves moving h-squared budgets, including h=0. The actual Taylor residuals now have a uniform two-cutoff relative estimate under explicit rational scale/radius budgets, and convergent residual sequences instantiate order transfer to the operational rational-input limit. Closed order under completion-valued limits and bounded density now extend the operational relative estimate to arbitrary completion inputs with explicit radius budgets and eventual representative bounds. Constructing the modulus, extracting those bounds from the completion ball, and aligning the residual with the origin reduction remain open; neither derivative nor full regularity is claimed."
+      },
+      "definition_module": "research/nima/agda/TickPhaseMetricRegularity.agda",
+      "depends_on": [],
+      "acceptance": "Safe Agda all-time continuity and derivative theorems for the implemented exponential, not a sampled calculation or a theorem about a different real-number backend.",
+      "historical_context_only": ["research/nima/agda/TickCompletionPhase.agda"],
+      "cost_to_prove": 5,
+      "cost_to_reject": 8
+    },
+    {
+      "id": "completion-unit-circle-flow",
+      "statement": "For every completion scale p, the same implemented phase p is a metric-continuous, differentiable unit-circle curve satisfying derivative=(-i*p)*phase p.",
+      "scope_id": "operational-TickCompletionPhase-all-scale-all-time",
+      "outcome": "++",
+      "attempts": [{"intent": "prove", "outcome": "++", "receipt": "research/nima/results/constructed-unit-circle-flow-fresh.json"}],
+      "proof_module": "research/nima/agda/TickConstructedUnitCircleFlow.agda",
+      "verification_level": "fresh safe Agda same-phase unit-norm and full metric regularity record; public definition equalities expose exact law types",
+      "depends_on": ["completion-phase-unit-norm", "completion-phase-metric-regularity"],
+      "construction": "Property pullback over the fixed TickCompletionPhase.phase, not a pairing of unrelated phase implementations.",
+      "acceptance": "Safe Agda proof carrying both norm and regularity certificates for the same phase.",
+      "cost_to_prove": 1,
+      "cost_to_reject": 8
+    },
+    {
+      "id": "operational-unitary-half-turn",
+      "statement": "For a constructed completion-valued pi identified with the standard pi of the exported witness, the existing phase pi is a differentiable unit-circle curve with phase pi 0=1, phase pi 1=-1 and derivative=-i*pi*phase pi.",
+      "scope_id": "operational-TickCompletionPhase-standard-pi-unitary-half-turn",
+      "outcome": "++",
+      "proof_module": "research/nima/agda/TickConstructedUnitaryHalfTurn.agda",
+      "verification_level": "fresh safe Agda operational half-turn; operator-accepted written standard-pi identification, not kernel identification",
+      "depends_on": ["completion-unit-circle-flow", "completion-pi-half-turn"],
+      "construction": "Combine the same phase-family certificates and specialize to the same identified pi; reuse the existing phase-start proof.",
+      "acceptance": "An unconditional safe Agda certificate of norm, continuity, derivative and both endpoints for the implemented phase; fresh closure is required. Standard-pi identification inherits the explicitly accepted mixed level of completion-pi-half-turn; it is not relabeled kernel-proved.",
+      "attempts": [
+        {"intent": "prove", "outcome": "+-", "receipt": "research/nima/results/operational-unitary-half-turn-attempt.json"},
+        {"intent": "prove", "outcome": "+-", "receipt": "research/nima/results/operational-unitary-half-turn-residual-attempt.json"},
+        {"intent": "prove", "outcome": "++", "receipt": "research/nima/results/constructed-unitary-half-turn-fresh.json"}
+      ],
+      "cost_to_prove": 1,
+      "cost_to_reject": 12
+    },
+    {
+      "id": "operational-spectral-whole-return-certificate",
+      "statement": "The exported native-flip spectral witness has an operational completion implementation with local unitary legs, a proved external metric interval [0,2], exact return endpoints, seam continuity, piecewise generator laws, full-Tick reconstruction/swap coherence and fixed-source faithfulness.",
+      "scope_id": "safe-Agda-operational-completion-refinement-of-standard-spectral-witness",
+      "outcome": null,
+      "depends_on": ["standard-spectral-whole-return-exists", "operational-unitary-half-turn"],
+      "acceptance": "An unconditional safe Agda record inhabiting all listed laws, freshly checked with dependencies. The free-linearized maps, pi-scaled projectors, exponential and reversed schedule formula must correspond to the exported witness. The imported written proof is a specification, not an assumed Agda proof.",
+      "assembly_obligations": ["complex vector and tensor-factor operator algebra laws", "continuous metric interval and closed-piece gluing", "unitarity and exact native endpoints", "generator compatibility on each open segment", "whole-record reconstruction and swap coherence", "distinct seam states and fixed-source faithfulness", "explicit correspondence to the exported standard witness"],
+      "historical_context_only": ["research/nima/agda/TickWholeReturnRealization.agda", "research/nima/agda/TickRetainedStructure.agda"],
+      "assembly_progress": "research/nima/operational-whole-return-progress.md",
+      "cost_to_prove": 4,
+      "cost_to_reject": 18
+    }
+  ],
+  "dependency_semantics": "depends_on describes the chosen constructive proof route, not a logical equivalence. Passing prerequisites only enables an assembly attempt; it does not prove the target. Refuting a proposed subgoal does not automatically refute the target, since another implementation route may exist.",
+  "history_policy": "The two earlier full half-turn attempts remain recorded as +-. The norm subgoal now has an independent ++ with a fresh unconditional Agda proof. Metric regularity is paused after its fresh continuity proof; its derivative remains open. The selected pi branch has a freshly checked convergent Machin candidate, unconditional operational trigonometric/phase addition laws, the operational Cayley identity on nonnegative rational grid inputs at most one half, and exact Machin candidate endpoints. The operator explicitly accepted the mixed certificate, closing the pi node with kernel endpoints and written standard-real identification (not kernel identification). Metric regularity is now freshly kernel-proved, including its all-increment derivative and explicit modulus. Unit-circle flow is now also freshly kernel-proved by same-phase record assembly. Full half-turn assembly is now freshly kernel-proved for the same Machin candidate, with the accepted written identification retained at its actual mixed level. Both earlier +- attempts remain in history. Whole-return assembly alone remains open. No automatic closure of dependents or attempt-budget reset is inferred.",
+  "import_failure_policy": "Block the consumer on any stale, revoked, superseded or mismatched import; record no new scientific outcome. Keep the pinned reference for audit and require explicit reviewed re-pinning.",
+  "planner": {
+    "status": "subjective_uncalibrated_planning_only",
+    "parameters": "research/nima/contracts/completion-refinement-planning.v1.json",
+    "checker": "research/nima/checkers/check_completion_refinement_planning.py",
+    "result": "research/nima/results/completion-refinement-planning.json",
+    "engine": "research/conjecture_net/bayesian_outcome_planner.py",
+    "parameters_estimated": true,
+    "empirically_calibrated": false,
+    "recommended_action": null,
+    "recommendation_source": "Computed in the planning result; this contract does not hardcode a preferred action."
+  },
+  "terminal_policy": "Only a verified target proof or target refutation decides the new objective. The imported ++ and predecessor termination alone do not decide it."
+}

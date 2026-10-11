@@ -1,0 +1,33 @@
+{
+  "schema": "marici.nima.filler-phase-spectator.v1",
+  "problem": "Gate 1 of the four-gate plan: fix a source-bound implementation hypothesis and a genuine operational rival before seeking physical calibration.",
+  "obligation": "forward realization / phase-lift selection with independently fixed subsystem and readout attachments",
+  "source": {
+    "fillers": "research/nima/checkers/check_gram_selection_principle.py",
+    "states": "research/nima/checkers/check_entanglement.py",
+    "instrument": "research/aspect/checkers/check_combined_bell_instrument.py"
+  },
+  "retained": ["all five original Boolean functions and four ordered labels", "all generated permutation actions and their composition table", "both subnormalized X preparation branches", "full joint instrument continuations", "explicit preparation and effect frames"],
+  "model_class": "Strict unitary monomial representations U_g U_h=U_gh of the generated permutation group, with U_g|j> a unit phase times |g(j)>. No projective multiplier is admitted in this first test.",
+  "conjecture": "The source group is S4. Every strict monomial lift is a diagonal conjugation of its permutation lift, times a scalar trivial/sign character. Modulo local diagonal frame changes, one phase z remains. The flip_fst channel is non-signalling iff z^2=1 but fixes the whole spectator B algebra iff z=1.",
+  "hypotheses": {
+    "H0": "U_f=P_f in the independently fixed product preparation/readout frame; flip_fst acts as X_A tensor I_B",
+    "Hpi": "U_f=D P_f D-dagger for every source operation, D=diag(1,1,1,-1), in the same fixed frame; flip_fst acts as X_A tensor Z_B"
+  },
+  "supplied_assumptions": ["C^2 tensor C^2 and its counting-metric basis rays", "unitary coherent implementation", "strict phase-framed source composition", "ordinary Born/Lueders rules", "independently anchored product preparation and local X readout, not fitted to the held-out gate records"],
+  "rivals": ["classical truth tables and exact composition already select H0", "fixed-channel no-signalling selects H0", "an untransported frame mismatch is physical discrimination", "different implementations of ordinary QM constitute a Marici-versus-QM prediction"],
+  "predictions": {
+    "group_order": 24,
+    "composition_pairs": 576,
+    "point_stabilizer_order": 6,
+    "stabilizer_commutator_order": 3,
+    "spectator_residual_gcd": "z - 1",
+    "no_signalling_residual_gcd": "z**2 - 1",
+    "ideal_branch_signed_X_B": {"H0": "1", "Hpi": "-1"},
+    "identity_bypass": "Identical for every lift",
+    "fully_transported_packet": "Identical probabilities and conjugate full continuations; no physical discriminator survives a common change of representation"
+  },
+  "test_protocol": "From the supplied product00 input apply the existing X instrument on B, retaining both h labels. Apply the source flip_fst, then the existing joint Lueders rule with A=Z and B=X. Keep all ideal (h,a,b) entries and use sum (-1)^h b p(h,a,b), without branch selection. Physical no-click/record calibration is not supplied by this ideal hypothesis test.",
+  "scope": "Classification concerns strict monomial unitary lifts, not all CPTP realizations, projective lifts or native constructors in general. H0 and Hpi are ordinary-QM implementation hypotheses relative to fixed attachments. No laboratory data, calibrated apparatus, new Born law, physical implementation of the Bool source or Marici-versus-QM selection evidence is established.",
+  "falsifier": "Reject if the source closure, classification support, residual ideals, nonzero preparation, separating full-record prediction or gauge-transport control fails. Failure of independently fixed attachments blocks physical discrimination rather than selecting a model."
+}

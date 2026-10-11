@@ -1,0 +1,97 @@
+{
+  "schema": "marici.nima.closure-understanding-audit.v1",
+  "scope": "checker and claim-boundary defects; not a rerun of the physics programme",
+  "checks": [
+    "exact-matrix-extraction-node-count",
+    "printed-stationary-source-claim-is-false",
+    "source-velocity-norm-squared",
+    "printed-spectrum-is-only-matrix-diagonal",
+    "actual-eigenpair-(1, 1, 1, 1)",
+    "actual-eigenpair-(1, 1, -1, -1)",
+    "actual-eigenpair-(1, -1, 1, -1)",
+    "actual-eigenpair-(1, -1, -1, 1)",
+    "projector-ranges-are-not-orthogonal",
+    "extra-commutant-direction-commutes",
+    "extra-direction-eigenpair-(1, 1, 1, 1)",
+    "extra-direction-eigenpair-(1, 1, -1, -1)",
+    "extra-direction-eigenpair-(1, -1, 1, -1)",
+    "extra-direction-eigenpair-(1, -1, -1, 1)",
+    "selection-script-has-only-prior-receipt-assertion",
+    "one-result-write-False",
+    "one-result-write-True",
+    "baseline-control-10-of-10",
+    "injected-failure-is-counted",
+    "json-still-claims-every-property-true",
+    "failed-model-returns-without-exception",
+    "historical-receipt-untouched",
+    "positive-failure-gate/check_tick_interpretation_nonuniqueness.py",
+    "positive-failure-gate/check_shared_recoil_cotangent_binding.py"
+  ],
+  "check_count": 24,
+  "exact_source_counterexample": {
+    "H_e00": [
+      "1",
+      "-1/2",
+      "-1/2",
+      "0"
+    ],
+    "squared_norm": "3/2",
+    "printed_diagonal": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "actual_spectrum": [
+      0,
+      1,
+      1,
+      2
+    ]
+  },
+  "square_baseline": {
+    "passed": 10,
+    "failed": 0,
+    "status": "pass",
+    "model_checks": {
+      "P1_source_corner": true,
+      "P2_target_corner": true,
+      "P3_left_intermediate": true,
+      "P4_right_intermediate": true,
+      "P5_leftFirst_path": true,
+      "P6_rightFirst_path": true,
+      "P7_comparison": true,
+      "P8_return": true,
+      "P9_distinct_paths": true,
+      "P10_generator_form": true
+    },
+    "returned_normally": true
+  },
+  "square_failed_predicate_mutation": {
+    "passed": 9,
+    "failed": 1,
+    "status": "partial",
+    "model_checks": {
+      "P1_source_corner": true,
+      "P2_target_corner": true,
+      "P3_left_intermediate": true,
+      "P4_right_intermediate": true,
+      "P5_leftFirst_path": true,
+      "P6_rightFirst_path": true,
+      "P7_comparison": true,
+      "P8_return": true,
+      "P9_distinct_paths": true,
+      "P10_generator_form": true
+    },
+    "returned_normally": true
+  },
+  "historical_results_modified": false,
+  "source_sha256": {
+    "checkers/check_tick_selects_generator.py": "5b2058274e0e340205ea4391c2bdd3c1413c0cf0c11299dfc80ef1c604f102bf",
+    "checkers/check_tick_to_square_realization.py": "2db2f48fdd43ca954ddf42802c59ec800efd0cce3b4d9936c60458161f4ab36c",
+    "source-to-generator-audit.md": "217a04e67abb745140916264eccb5f15ce9f259d47f0d96dc66f665e3800adc3",
+    "checkers/check_tick_interpretation_nonuniqueness.py": "85acaf664264579e8f38a9b5f6ad9752dc2b94cbb9388b872811e9c0b63fd0e1",
+    "checkers/check_shared_recoil_cotangent_binding.py": "e3bed10f20f4e917aff4f9479563f4765150105951403bebc8377b0d1af7c7e6",
+    "checkers/check_closure_understanding_audit_20261007.py": "af26ceb64b37d0a9e89d0afb42332a4c268efa41a8b927f3b2bdd94663ecc742"
+  }
+}

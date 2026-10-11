@@ -1,0 +1,28 @@
+{
+  "schema": "marici.nima.ward-real-boundary.v1",
+  "problem": "Does the real a=0 boundary supply a nonzero native preparation once a positive reference projector is supplied?",
+  "obligation": "forward realization and noncollapse, upstream of normalized state and readout",
+  "source": "research/nima/check_two_open_pair_ward_naturality.rs",
+  "source_operation": "Original evaluate_sector and four_open_value on all 12 labelled spanning trees and all 243 full-handle sector words; only Metric/Open edge actions, hence no Laurent division",
+  "stratum": "Unlocalized polynomial tree stage, restricted to real Lorentzian collinear nonzero p_i,k_i and nonzero external q_i=p_i-k_i, with all seven external/test polarizations transverse to their momenta. Not a specialization homomorphism from the localized chart.",
+  "conjecture": "Every raw sector, hence each full four-open physical tensor, is zero. A supplied positive projector cannot turn this tensor into a nonzero normalized preparation.",
+  "rivals": [
+    "The positive boundary projector alone restores a nonzero source state",
+    "Vanishing appears only after cancelling or forgetting marked sector contributions",
+    "The probe deletes the source or returns zero on every input",
+    "A zero polynomial boundary value refutes complex Ward algebra or fixes every reconstructed/regulated scattering limit"
+  ],
+  "predictions": {
+    "tree_count": 12,
+    "sector_count_per_tree": 243,
+    "boundary_nonzero_sectors": 0,
+    "boundary_nonzero_tree_values": 0,
+    "generic_control": "At least one exact generic Gram-free native tree value is nonzero under the declared deterministic valuation",
+    "failure_control": "Attempting to normalize the zero amplitude must raise rather than fabricate a density",
+    "positive_control": "The explicitly supplied nonzero amplitude (1,0,0,1) has positive squared norm; this is not a native physical preparation"
+  },
+  "contrast_without_realization": "Also record the a=0-only formal source specialization without imposing the extra cross-transversality forced by real collinearity. A nonzero value distinguishes a=0 from the physical real boundary; zero values alone prove no extra general theorem.",
+  "native_harness": "A dependency-free Cargo package includes the original Rust implementation with only //! documentation lines converted to // for inclusion. Original main is not invoked. Actual source and harness compilation inputs are fingerprinted.",
+  "falsifier": "Any nonzero boundary sector or tree rejects the conjecture. Zero generic controls reject the nonvacuity test. A source/input mismatch or failed gate invalidates the receipt, not the scientific conjecture.",
+  "scope": "This is the specified polynomial Yang-Mills marked-theta tensor, not a full massive-electron QED amplitude. No physical rates, new probability law, analytic reconstruction, wave-packet/regulator limit, colimit theorem or apparatus calibration is established. Zero-momentum external ports and singular completions require separately supplied definitions."
+}

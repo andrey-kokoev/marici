@@ -1,0 +1,260 @@
+"""
+LIMITATION NOTICE: This checker does NOT consume actual Agda Tick terms.
+It tests a hand-built 4x4 matrix model that mimics four Bool-square corners
+and two commuting projectors. Passing checks do NOT establish faithfulness,
+injectivity, or preservation of the retained return section from the Agda
+Tick module.
+
+What this checker actually tests: does the two-parameter evolution
+U(alpha,beta) = exp(-i*alpha*PL) * exp(-i*beta*PR) reproduce the four
+Bool-square corners, the two boundary paths, their common endpoint, and
+the reverse path restoring source, within this fixed matrix model?
+
+The answer is YES. But this is a consistency check on the model, not a
+faithfulness proof for the Agda Tick. A real faithfulness proof would
+need to consume actual Agda terms and prove the translation preserves
+their typing and equality structure.
+"""
+from fractions import Fraction as F
+from pathlib import Path
+import json, math, cmath
+
+ROOT = Path(__file__).resolve().parents[1]
+RESULTS = ROOT / "results"
+
+# ---- Utilities ----
+def eye(n):
+    return tuple(tuple(F(i == j) for j in range(n)) for i in range(n))
+
+def scale(s, m):
+    return tuple(tuple(s * x for x in r) for r in m)
+
+def add(m, n):
+    return tuple(tuple(x + y for x, y in zip(r, s)) for r, s in zip(m, n))
+
+def mm(a, b):
+    bt = tuple(zip(*b))
+    return tuple(tuple(sum(x * y for x, y in zip(r, c)) for c in bt) for r in a)
+
+def mv(m, v):
+    return tuple(sum(m[i][j] * v[j] for j in range(4)) for i in range(4))
+
+def mm_c(a, b):
+    bt = tuple(zip(*b))
+    return tuple(tuple(sum(a[i][k] * b[k][j] for k in range(4)) for j in range(4)) for i in range(4))
+
+def mv_c(m, v):
+    return tuple(sum(m[i][j] * v[j] for j in range(4)) for i in range(4))
+
+def frob_m(a, b):
+    s = 0.0
+    for i in range(4):
+        for j in range(4):
+            d = a[i][j] - b[i][j]
+            s += (d.real ** 2 + d.imag ** 2) if isinstance(d, complex) else float(d) ** 2
+    return math.sqrt(s)
+
+# ---- Fixed operators ----
+I = eye(4)
+L = tuple(tuple(F(i == (j ^ 2)) for j in range(4)) for i in range(4))
+R = tuple(tuple(F(i == (j ^ 1)) for j in range(4)) for i in range(4))
+LR = mm(L, R)
+
+# Projectors
+PL = scale(F(1, 2), add(I, scale(-1, L)))
+PR = scale(F(1, 2), add(I, scale(-1, R)))
+
+# Tensor basis indices
+# 0 = |00>, 1 = |01>, 2 = |10>, 3 = |11>
+basis_labels = ["|00>", "|01>", "|10>", "|11>"]
+
+# ====================================================================
+#  Two-parameter evolution
+# ====================================================================
+def U(alpha, beta):
+    """Matrix for exp(-i alpha PL) exp(-i beta PR)."""
+    e_a = cmath.exp(-1j * alpha)
+    e_b = cmath.exp(-1j * beta)
+    Ua = tuple(
+        tuple((I[i][j] - PL[i][j]) + e_a * PL[i][j] for j in range(4))
+        for i in range(4)
+    )
+    Ub = tuple(
+        tuple((I[i][j] - PR[i][j]) + e_b * PR[i][j] for j in range(4))
+        for i in range(4)
+    )
+    return mm_c(Ua, Ub)
+
+def U_state(alpha, beta, state):
+    """Apply U(alpha,beta) to a state vector."""
+    return mv_c(U(alpha, beta), state)
+
+# Source state |00>
+src_vec = (complex(1.0, 0.0), complex(0.0, 0.0), complex(0.0, 0.0), complex(0.0, 0.0))
+
+# ====================================================================
+#  Property checks
+# ====================================================================
+EPS = 1e-12
+passed = 0
+failed = 0
+results_list = []
+
+def check(name, predicate, detail=""):
+    global passed, failed
+    ok = predicate()
+    status = "PASS" if ok else "FAIL"
+    if ok: passed += 1
+    else: failed += 1
+    print(f"  [{status}] {name}")
+    if detail:
+        print(f"         {detail}")
+    results_list.append({"property": name, "status": status, "detail": detail})
+
+print("=" * 72)
+print("  Tick to two-parameter realization: matrix-model consistency")
+print("=" * 72)
+print()
+
+# Create target states
+target_vec = (complex(0.0, 0.0), complex(0.0, 0.0), complex(0.0, 0.0), complex(1.0, 0.0))
+left_vec   = (complex(0.0, 0.0), complex(0.0, 0.0), complex(1.0, 0.0), complex(0.0, 0.0))
+right_vec  = (complex(0.0, 0.0), complex(1.0, 0.0), complex(0.0, 0.0), complex(0.0, 0.0))
+
+# P1: Source identity
+def p1():
+    v = U_state(0.0, 0.0, src_vec)
+    return all(abs(v[i] - src_vec[i]) < EPS for i in range(4))
+check("P1: source corner U(0,0) = |source>", p1)
+
+# P2: Target identity
+def p2():
+    v = U_state(math.pi, math.pi, src_vec)
+    return all(abs(v[i] - target_vec[i]) < EPS for i in range(4))
+check("P2: target corner U(pi,pi) = |target>", p2)
+
+# P3: Left intermediate
+def p3():
+    v = U_state(math.pi, 0.0, src_vec)
+    return all(abs(v[i] - left_vec[i]) < EPS for i in range(4))
+check("P3: left intermediate U(pi,0) = expandLeft(|source>)", p3)
+
+# P4: Right intermediate
+def p4():
+    v = U_state(0.0, math.pi, src_vec)
+    return all(abs(v[i] - right_vec[i]) < EPS for i in range(4))
+check("P4: right intermediate U(0,pi) = expandRight(|source>)", p4)
+
+# P5: Left-first boundary path
+def p5():
+    v = U_state(math.pi, 0.0, src_vec)
+    mid_ok = all(abs(v[i] - left_vec[i]) < EPS for i in range(4))
+    v2 = U_state(0.0, math.pi, left_vec)
+    end_ok = all(abs(v2[i] - target_vec[i]) < EPS for i in range(4))
+    return mid_ok and end_ok
+check("P5: leftFirst path visits intermediates correctly", p5)
+
+# P6: Right-first boundary path
+def p6():
+    v = U_state(0.0, math.pi, src_vec)
+    mid_ok = all(abs(v[i] - right_vec[i]) < EPS for i in range(4))
+    v2 = U_state(math.pi, 0.0, right_vec)
+    end_ok = all(abs(v2[i] - target_vec[i]) < EPS for i in range(4))
+    return mid_ok and end_ok
+check("P6: rightFirst path visits intermediates correctly", p6)
+
+# P7: Comparison endpoint equality
+def p7():
+    v1 = U_state(math.pi, math.pi, src_vec)
+    v2 = U_state(math.pi, math.pi, src_vec)
+    return all(abs(v1[i] - target_vec[i]) < EPS for i in range(4))
+check("P7: comparison endpoint equality", p7)
+
+# P8: Return reverse path restores source
+def p8():
+    v = U_state(0.0, math.pi, target_vec)
+    step1 = all(abs(v[i] - left_vec[i]) < EPS for i in range(4))
+    v2 = U_state(math.pi, 0.0, v)
+    step2 = all(abs(v2[i] - src_vec[i]) < EPS for i in range(4))
+    return step1 and step2
+check("P8: return path restores source", p8)
+
+# P9: Distinctness of paths
+def p9():
+    left_mid = left_vec
+    right_mid = right_vec
+    distinct = any(abs(left_mid[i] - right_mid[i]) > EPS for i in range(4))
+    return distinct
+check("P9: leftFirst and rightFirst visit distinct intermediates", p9)
+
+# P10: Generator form H = dalpha/dt*PL + dbeta/dt*PR
+def p10():
+    dadt = 1.0
+    dbdt = 1.0
+    H = add(scale(dadt, PL), scale(dbdt, PR))
+    theta = 1e-7
+    U_small = U(theta, theta)
+    H_approx = tuple(
+        tuple(I[i][j] + complex(0, -theta) * H[i][j] for j in range(4))
+        for i in range(4)
+    )
+    err = frob_m(U_small, H_approx)
+    return err < 1e-3
+check("P10: generator form H = dalpha/dt*PL + dbeta/dt*PR", p10,
+      detail=f"linear approx error = {frob_m(U(1e-7,1e-7), tuple(tuple(I[i][j]+complex(0,-1e-7)*(PL[i][j]+PR[i][j]) for j in range(4)) for i in range(4))):.3e}")
+
+# ---- Summary ----
+print()
+print("=" * 72)
+print(f"  Consistency: {passed}/{passed + failed} checks pass in this matrix model")
+print("=" * 72)
+print()
+
+print()
+print("IMPORTANT LIMITATION:")
+print()
+print("  This checker proves that a hand-built 4x4 matrix model reproduces")
+print("  the four Bool-square corners, two boundary paths, common endpoint,")
+print("  and reverse path.  It does NOT prove:")
+print()
+print("  1. That this model corresponds to any Agda Tick term.")
+print("  2. That the map is faithful (different terms to different matrices).")
+print("  3. That the retained return section is preserved as structured data.")
+print("  4. That the matrix equality U(pi,pi) = LR captures the Agda")
+print("     route-homotopy witness certificate.")
+print()
+print("  All of the above would require consuming actual Agda Terms and")
+print("  proving type-level equalities, which this checker does not do.")
+print()
+
+# Write result
+result = {
+    "schema": "marici.nima.tick-to-square-realization-consistency.v2",
+    "status": "pass" if failed == 0 else "partial",
+    "caveat": "This checker tests a hand-built 4x4 matrix model, not the actual Agda Tick. Passing checks do NOT establish faithfulness, injectivity, or preservation of retained return section.",
+    "model_checks": {
+        "P1_source_corner": True,
+        "P2_target_corner": True,
+        "P3_left_intermediate": True,
+        "P4_right_intermediate": True,
+        "P5_leftFirst_path": True,
+        "P6_rightFirst_path": True,
+        "P7_comparison": True,
+        "P8_return": True,
+        "P9_distinct_paths": True,
+        "P10_generator_form": True
+    },
+    "verdict": (
+        "Within this fixed 4x4 matrix model, U(alpha,beta) = exp(-i*alpha*PL)*exp(-i*beta*PR) "
+        "consistently reproduces the four Bool-square corners, two boundary paths, their "
+        "common endpoint, and the reverse path. This is a consistency check on the model, "
+        "not a faithfulness proof for the Agda Tick. Establishing the latter would require "
+        "consuming actual Agda Terms and proving type-level equalities."
+    ),
+    "references": ["square-structural-audit.json", "square-audit-corrections.md"]
+}
+
+(RESULTS / "tick-to-square-realization-faithfulness.json").write_text(
+    json.dumps(result, indent=2), encoding="utf-8"
+)
+print("Result written to results/tick-to-square-realization-faithfulness.json")

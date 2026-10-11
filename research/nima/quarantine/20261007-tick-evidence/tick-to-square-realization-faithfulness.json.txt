@@ -1,0 +1,22 @@
+{
+  "schema": "marici.nima.tick-to-square-realization-consistency.v2",
+  "status": "pass",
+  "caveat": "This checker tests a hand-built 4x4 matrix model, not the actual Agda Tick. Passing checks do NOT establish faithfulness, injectivity, or preservation of retained return section.",
+  "model_checks": {
+    "P1_source_corner": true,
+    "P2_target_corner": true,
+    "P3_left_intermediate": true,
+    "P4_right_intermediate": true,
+    "P5_leftFirst_path": true,
+    "P6_rightFirst_path": true,
+    "P7_comparison": true,
+    "P8_return": true,
+    "P9_distinct_paths": true,
+    "P10_generator_form": true
+  },
+  "verdict": "Within this fixed 4x4 matrix model, U(alpha,beta) = exp(-i*alpha*PL)*exp(-i*beta*PR) consistently reproduces the four Bool-square corners, two boundary paths, their common endpoint, and the reverse path. This is a consistency check on the model, not a faithfulness proof for the Agda Tick. Establishing the latter would require consuming actual Agda Terms and proving type-level equalities.",
+  "references": [
+    "square-structural-audit.json",
+    "square-audit-corrections.md"
+  ]
+}

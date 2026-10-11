@@ -1,0 +1,307 @@
+# Bool square audits: corrections
+
+## Checkers corrected
+
+### `check_general_square_generator.py`
+
+**Earlier claim withdrawn:** "The full Tick (schedules, comparison, return)
+provides no additional spectral constraint beyond what the corner parity
+gives."
+
+**Correction:** The Tick provides the FULL COMBINATORIAL SQUARE (source, two
+intermediates, target, comparison, return).  This is faithfully captured by
+the two-parameter evolution U(alpha,beta) = exp(-i alpha PL) . exp(-i beta PR)
+at all four corners and along both boundary paths.  What the Tick does NOT
+provide is a continuous rate/clock — the path parameterization itself is
+conventional.  The spectral constraint analysis (centralizer + parity) is
+correct for the diagonal path (one generator), but the square itself is
+two-parameter and does not reduce to a single generator.
+
+### `check_intermediate_states.py`
+
+**Earlier claim withdrawn:** "The continuous path under H0 = PL+PR does NOT
+match the Tick's sequential record" and implied this is a failure.
+
+**Correction:** The path under H0 = PL+PR is the DIAGONAL path
+alpha(t) = beta(t) = t through the (alpha,beta) square.  It does not visit
+the schedule intermediates because it follows the diagonal, not the
+boundary.  This is not a failure — it is a CHOICE of path.  The boundary
+paths (leftFirst, rightFirst) DO visit the intermediates.  The two-parameter
+evolution provides a structure in which all three paths (diagonal, leftFirst,
+rightFirst) are valid, each with different intermediate behavior.
+
+### `check_individual_logarithms.py`
+
+**Earlier claim withdrawn:** The "modular arithmetic" parity proof was
+invalid — it treated real-valued angles as integers.
+
+**Correction:** The claimed conclusion (no single H generates L and R
+individually) IS correct, but for a different reason:
+A one-parameter subgroup {exp(-i theta H)} is isomorphic to S^1 / U(1),
+which contains at most one nontrivial involution (element of order 2).
+Since L and R are two DISTINCT involutions, no single H can contain both
+in its one-parameter subgroup.  This is a group-theoretic obstruction,
+not a parity/arithmetic one.
+
+## What remains valid
+
+1. The centralizer of {L,R} is 4-dimensional, spanned by I, PL, PR, PLPR.
+2. The parity constraint `c even, a,b odd, d even` from exp(-i pi H) = LR.
+3. All external choices (coordinate symmetry, independence, zero offset,
+   unit gap) remain conventional, not Tick-derived.
+4. H0 = PL + PR remains the simplest diagonal-path generator.
+
+## Later checkers corrected
+
+### `check_tick_selects_generator.py`
+
+**Earlier over-claim:** The checker claimed to test the "full Tick record" and
+concluded the Tick does not select a unique Hamiltonian generator.
+
+**Correction:** This checker does NOT consume actual Agda Tick terms.  It
+tests a hand-built 4x4 matrix model.  Passing checks do NOT establish
+faithfulness, injectivity, or preservation of any retained structure from
+the Agda Tick module.  The finding is about the model, not the Tick.
+
+### `check_tick_to_square_realization.py`
+
+**Earlier over-claim:** The checker claimed to prove the two-parameter
+evolution "faithfully" preserves Tick data, and claimed injectivity on
+combinatorial data.
+
+**Correction:** This checker tests a hand-built matrix model.  It does NOT
+consume actual Agda terms, so it cannot prove faithfulness, injectivity,
+or preservation of the retained return section.  Results are labeled as
+"matrix model consistency" only.
+
+## New artifacts
+
+### `agda/TickDiscreteReadout.agda`
+
+The module now type-checks with Agda 2.8 and the configured Cubical library
+(exit status 0); the only output is the pre-existing `TypedGeneratorLayers`
+module-export warning. It extracts four heterogeneous corners, preserves
+the actual ordered schedule tags from the Tick's comparison, proves both
+routes reach the extracted target, and relates the extracted return
+endpoints to the actual return section's endpoint laws. It does not retain
+the comparison proof term, full return-section function, or attachment
+certificate. This is a discrete extraction theorem, not a continuous or
+faithful matrix interpretation.
+
+### `checkers/check_tick_continuous_ambiguity.py`
+
+The earlier `PL+PR` versus `3*(PL+PR)` example was only a speed rescaling
+and is withdrawn. The replacement compares `H0=PL+PR` and
+`H2=PL+PR+4*PL*PR`, which are not scalar multiples and agree on the tested
+source/corners, schedule endpoints, and return endpoint, while differing
+at an unconstrained intermediate point. It separately shows that two paths
+under `H0` can have different intermediate states. All 17 checks pass in
+the fixed matrix model; none consume actual Agda Tick terms.
+
+## Current status
+
+1. The Agda extraction records corners and actual ordered schedule tags,
+   and proves target and return-endpoint laws.
+2. The extraction deliberately omits proof-term identity, the full return
+   section, and the source attachment proof.
+3. The separate 4x4 matrix checker demonstrates non-uniqueness only within
+   its chosen model; it does not consume Agda Tick terms.
+4. No faithful map from the Agda Tick structure into continuous matrix
+   dynamics has been established.
+
+## Conditional evolution bridge
+
+`agda/TickEvolutionBridge.agda` consumes actual Bool-valued retained Ticks.
+Its `EndpointModel` contract supplies an encoding, a two-parameter evolution,
+and four exact endpoint laws. Given that contract, the bridge proves source,
+intermediate-corner, target, both actual schedule executions, and retained
+return-section endpoint preservation. A concrete finite Boolean instance
+inhabits the contract and evaluates both fresh and swapped Ticks.
+
+This is a conditional realization theorem, not yet a continuous matrix
+instantiation. The parameter type has no assumed topology, `encode` need
+not be injective, and the dependent return-section interior is not mapped.
+The remaining obligation is an exact real/complex evolution instance with
+endpoint proofs and continuity; Python's floating-point checks do not
+supply those proofs. Thus this does not establish faithfulness or the
+stronger dynamics non-uniqueness claim.
+
+## Exact four-coordinate polynomial realization
+
+`agda/TickPolynomialRealization.agda` now instantiates `EndpointModel`
+over any small ring, using vectors indexed by `Bool × Bool`, basis-vector
+encoding, and the two bit-flip permutation operators. Its formula is
+`U(a,b) = ((1-b)I+bR) ((1-a)I+aL)`. All four endpoint laws are derived
+from ring laws; none are assumed as model-specific axioms. Applying the
+existing bridge proves corner, actual schedule-execution, and return-endpoint
+preservation for actual Bool-valued Ticks. A fresh `--ignore-interfaces`
+Agda closure check exits 0, with the existing dependency warning.
+
+This advances beyond the finite Boolean parameter example but is NOT the
+complex exponential model in the numerical checker. The polynomial formula
+is generally not unitary. The completion instance and limited continuity results below extend this
+algebraic layer; no full dependent return-section interpretation or
+faithfulness theorem is claimed.
+
+## Completion-valued realization and axis continuity
+
+`agda/TickCompletionRealization.agda` instantiates the polynomial model
+with `CompletionCommRing`, the repository's constructive rational Cauchy
+completion from `research/voevodsky/agda`. Fresh and swapped actual Ticks
+both reach the encoded target, by the bridge theorem. This no longer
+assumes an unspecified scalar ring.
+
+`agda/TickCompletionContinuity.agda` proves quantitative continuity of
+all four coordinates of each L/R axis leg starting from any basis state.
+The proof uses `EventuallyWithin` bounds on regular Cauchy representatives
+and gives exact equality between their quotient classes and the SAME
+completion-valued polynomial operators. Thus the continuity witnesses are
+not unrelated illustrative curves. Negation has identity precision modulus;
+complement uses the existing addition modulus. Both axis legs and all
+basis states, including schedule intermediate corners, are covered.
+
+A fresh headless `--ignore-interfaces` closure check of the continuity
+module exits 0 with the existing `TypedGeneratorLayers` warning. Include
+paths additionally require `research/voevodsky/agda`.
+
+Still open: quotient-level joint continuity of `U(a,b,v)`, complex/unitary
+or exponential instantiation, interpretation of the full dependent return
+section, and faithfulness. Representative-level coordinate continuity is
+not being reported as any of those stronger theorems.
+
+## Quotient continuity and retained schedule legs
+
+`agda/TickQuotientContinuity.agda` defines `CompletionNear` by truncated
+representative witnesses with eventual precision bounds, then proves a
+quantitative descent theorem for functions agreeing exactly on quotient
+representatives. Both completion-valued axis-coordinate functions satisfy
+this theorem. This is continuity for the explicitly defined closeness
+relation, not a claimed identification with an independent metric topology.
+
+`agda/TickContinuousSchedules.agda` builds two legs for each actual schedule
+tag, proves coordinate continuity of each leg on completion values, proves
+their exact join at the intermediate corner, and relates the start/end to
+actual retained Ticks. Both retained schedule endpoints reach the extracted
+target. The legs are not yet packaged as a single globally parameterized
+piecewise path with a gluing theorem.
+
+Fresh headless closure verification of `TickContinuousSchedules.agda`
+exits 0 (`--ignore-interfaces`, existing dependency warning only).
+Joint continuity of the full `U(a,b,v)`, complex/unitary evolution, and full
+dependent return-section interpretation remain open.
+
+## Reused prior multiplication research
+
+`agda/TickBoundedProductContinuity.agda` reuses Voevodsky's checked
+bounded-product estimate and presentation-coherence theorem to prove a
+joint radius-dependent precision bound for completion multiplication.
+Inputs use `BoundedNear`, outputs use `CompletionNear`. This is the actual
+multiplication in the Tick completion instance, not a new abstract operation.
+Fresh closure checking exits 0 with the existing dependency warning.
+Full polynomial continuity still needs propagation of bounded certificates
+through its remaining operations. Search findings, caveats about the older
+source-to-generator audit, and next obligations are recorded in
+`../tick-continuity-prior-research.md`.
+
+## Joint polynomial continuity on bounded regions
+
+The multiplication estimate now retains its output bound via
+`product-retains-bounded-near`; its earlier unbounded-output signature is
+preserved as a wrapper. `agda/TickPolynomialContinuity.agda` adds bound-
+preserving addition and negation, precision weakening, and a generic finite
+polynomial-circuit continuity theorem with computed input demands.
+
+`agda/TickJointEvolutionContinuity.agda` encodes the actual `U(a,b,v)` as
+such a circuit and proves definitional agreement. Its
+`evolution-vector-continuous` covers both varying parameters and all four
+varying input amplitudes, yielding coordinatewise `CompletionNear` output
+bounds from explicit `BoundedNear` hypotheses. This completes the bounded
+joint quantitative estimate previously listed as open. It does not assert
+global uniform continuity on unbounded inputs or identify these closeness
+relations with an independently defined metric topology.
+
+Fresh `--ignore-interfaces` Agda closure checking exits 0 with the existing
+export warning. Global schedule-parameter gluing, complex/unitary dynamics,
+and full dependent return-section interpretation remain open.
+
+## Glued schedule realization
+
+`agda/TickGluedSchedules.agda` constructs a single schedule map on a
+pushout of two completion charts, identifying first-chart 1 with
+second-chart 0. Its seam action is exactly the proved `legs-join` path.
+Both actual ordered Tick schedules instantiate the construction, preserving
+the attached source and extracted target.
+
+The module defines `ScalarOpen` from the existing `CompletionNear` relation
+and `FinalOpen` by openness of both chart pullbacks, then proves coordinate
+preimages of scalar-open predicates are final-open. This is an explicit
+final-openness continuity criterion, not an unproved identification with
+standard real topology. The charts are entire completion carriers, NOT
+unit intervals; the parameter pushout is not asserted to be `[0,2]`.
+
+Fresh headless `--ignore-interfaces` closure checking exits 0 with the
+existing dependency warning. A standard interval parameterization,
+complex/unitary evolution, and full dependent return-section interpretation
+remain open.
+
+## Full retained Bool Tick classification (structural correction)
+
+`agda/TickRetainedStructure.agda` proves `Tick(s) ≃ Schedule × Schedule`
+for the Bool/notEquiv specialization at a fixed source. The equality and
+inverse laws include the entire return-section function and all witness
+fields. It also proves the existing readout is injective on such full
+Ticks, and every ordinary observation factors through reconstruction from
+the ordered tags. Therefore earlier descriptions of syntactically omitted
+fields must NOT be read as established loss of distinguishable information.
+
+This resolves the structural-information question for Bool, not for all
+possible source types, and does not itself select dynamics or prove analytic
+non-uniqueness modulo reparameterization. The existing comparison record
+admits all four ordered schedule pairs, including repeated tags.
+
+Fresh headless closure checking exits 0 with the existing dependency warning.
+See `../tick-full-structure-classification.md` for scope, proof outline,
+and the return to the original dynamics question.
+
+## Explicit interpretation class and non-reparameterization counterexample
+
+`../tick-admissible-interpretations.md` declares retained stochastic
+schedule realizations and their time-reparameterization equivalence.
+Straight and bowed stochastic polynomial operator families satisfy the
+same source/schedule/target constraints. One coordinate vanishes on the
+entire straight schedule but equals 1/4 on the bowed first-leg midpoint,
+excluding ANY parameter substitution, not just a constant speed rescaling.
+
+The exact checker `check_tick_interpretation_nonuniqueness.py` passes
+208/208 rational polynomial checks and certifies eight source/schedule
+image obstructions. `agda/TickInterpretationBoundary.agda` separately
+checks the source-retaining wrapper and the generic image-obstruction
+lemma (fresh closure exit 0, existing warning). The concrete real-interval
+analytic counterexample is not yet a complete Agda instantiation.
+
+This is non-uniqueness in a declared stochastic annotation class—not
+unitary dynamics, an autonomous flow, or a faithful geometric interpretation
+of the dependent return section. Those stronger requirements cannot be
+silently inferred from source recoverability or the classification theorem.
+
+## Concrete Agda obstruction, not only a generic lemma
+
+`agda/TickCompletionSeparation.agda` proves embedded rational `1/4 ≠ 0`
+using effective quotient equality and a decidable rational precision bound.
+`agda/TickConcreteImageObstruction.agda` constructs the bowed completion
+endpoint model and glued leftFirst path at `(false,false)`, proves its
+source and target, and instantiates the same retained interpretation
+contract as the straight model. `no-global-substitution` excludes ANY
+parameter map identifying those two paths. Its invariant covers both
+straight charts and their seam, not just sampled times.
+
+Fresh headless closure verification exits 0, existing warning only.
+This closes the concrete completion-valued image-obstruction obligation.
+Formal unit-interval stochastic admissibility, bowed analytic continuity in
+that interval presentation, and unitary/faithful geometric interpretations
+are not implied by it and remain separate from this theorem.
+
+## Structural audit reference
+
+See `results/square-structural-audit.json` for the two-parameter evolution
+framework that resolves the earlier incompatibilities.

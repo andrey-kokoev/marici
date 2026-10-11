@@ -1,0 +1,109 @@
+{
+  "schema": "marici.nima.bridge-planning.v1",
+  "status": "subjective_uncalibrated_planning_only",
+  "unit": "assistant_effort_unit",
+  "unit_definition": "One focused cycle inspecting sources, performing a bounded step, and verifying it; not wall-clock time or total bridge-closure cost.",
+  "authority": "Assistant-proposed estimates, not operator-elicited or measured probabilities.",
+  "objective": "local_claim_information_bits_per_effort",
+  "limitations": [
+    "Costs budget bounded attempts, not guaranteed proofs.",
+    "Information concerns each action's scoped claim, not a joint posterior over the net.",
+    "Shared dependencies and correlations are not modeled; do not add information gains across claims.",
+    "An untyped or blocked attempt is ranked conditionally, not admitted for execution.",
+    "Sensitivity scenarios are stress tests, not a probability distribution over estimates.",
+    "The legacy top-level lift estimate remains historical and is not silently replaced by these subclaim estimates."
+  ],
+  "likelihood_rule": "For prove, q=P(++|claim true), P(++|claim false)=0. For reject, q=P(-+|claim false), P(-+|claim true)=0. Complements are inconclusive outcomes, not proofs of negation or truth.",
+  "diagnostic": {
+    "id": "source-contract-audit",
+    "cost_effort_units": 1,
+    "protocol": "Write the source-derived whole-section lift type, inventory all external choices, and trace each required operation to Tick data or a declared premise. Check against the total-single-valued correspondence obstruction.",
+    "deliverable": "A bounded typed subclaim with a construction target and a refutation target, or an explicit list of typing gaps. Revise the estimates afterward.",
+    "stop_rule": "Stop after one cycle; do not drift into phase analysis. If typing remains incomplete, record that fact without rejecting the lift.",
+    "unblocks": ["source-local-lift"],
+    "probabilities": null,
+    "selection_basis": "Structural prerequisite and low-cost uncertainty reduction, not a computed information-gain score."
+  },
+  "bridges": [
+    {
+      "id": "completion-phase",
+      "net_bridge_id": "spectral-return-to-completion-phase",
+      "claim": "ScheduledNormBound holds for the actual operational sine/cosine norm representatives.",
+      "scope": "Existing normRepresentative and ScheduledNormBound in TickPhaseNormTransfer.agda; not the whole phase bridge.",
+      "prior_true": [0.8, 0.95, 0.99],
+      "basis": "Standard analytic identity and exact Taylor controls support truth; synchronization and fresh-check reduction costs remain uncertain.",
+      "dependencies": [],
+      "ready": true,
+      "prove": {
+        "cost_effort_units": [3, 6, 10],
+        "success_given_truth": [0.2, 0.5, 0.75],
+        "protocol": "Synchronize the actual product schedules with common Taylor controls, apply norm-error-bound, and construct ScheduledNormBound with fresh Agda verification.",
+        "stop_rule": "At budget exhaustion, preserve checked lemmas and report +- unless the complete scoped certificate is checked.",
+        "unblocks": "Unconditional phase unit norm; pi endpoints, continuity and generator compatibility remain separate."
+      },
+      "reject": {
+        "cost_effort_units": [2, 4, 8],
+        "success_given_falsehood": [0.1, 0.35, 0.6],
+        "protocol": "Audit the operational representatives for a concrete counterexample to ScheduledNormBound, requiring a certified nonvanishing limiting defect rather than a finite truncation error.",
+        "stop_rule": "Report -- if no limiting counterexample is certified within budget; timeout or failed proof is not rejection.",
+        "unblocks": "If rejected, repair the operational construction before further phase proofs; does not refute the standard matrix theorem."
+      }
+    },
+    {
+      "id": "source-local-lift",
+      "net_bridge_id": "discrete-square-to-continuous-local-lift",
+      "claim": "The contract produced by source-contract-audit admits a source-derived local lift, without an independent adapter.",
+      "scope": "Provisional planning target only; exact type and allowed choices must be fixed before attempting or assigning an outcome.",
+      "prior_true": [0.1, 0.2, 0.5],
+      "basis": "The prior lift attempt failed; the existing local matrix realization does not establish source derivation. Wide uncertainty reflects the missing contract.",
+      "dependencies": ["source-contract-audit"],
+      "ready": false,
+      "prove": {
+        "cost_effort_units": [2, 4, 8],
+        "success_given_truth": [0.2, 0.45, 0.7],
+        "protocol": "After the audit, construct the typed source-dependent lift and factor-algebra laws; any separately supplied analytic interface must be exposed as a premise.",
+        "stop_rule": "Record +- at the cap unless the complete audited claim is checked; a conditional adapter theorem is not source derivation.",
+        "unblocks": "Validates spending on the remaining analytic implementation for this source-derived route."
+      },
+      "reject": {
+        "cost_effort_units": [1, 3, 6],
+        "success_given_falsehood": [0.1, 0.3, 0.6],
+        "protocol": "After typing the contract, prove its requirements force the forbidden coherent pointwise selection or another explicit contradiction; candidate-local tag erasure alone is insufficient.",
+        "stop_rule": "Report -- if no no-go theorem for the exact audited scope is certified within budget.",
+        "unblocks": "Closes that contract route negatively and triggers redesign; not a no-go for all possible metric interpretations."
+      }
+    },
+    {
+      "id": "whole-section",
+      "net_bridge_id": "dependent-return-to-metric-square-correspondence",
+      "claim": "Replacing the affine legs by the proved local-unitary legs preserves whole-record reconstruction and schedule-swap coherence under the audited source contract.",
+      "scope": "Conditional integration claim for a specified source contract and phase interface, not an independent existence claim.",
+      "prior_true": [0.4, 0.7, 0.9],
+      "basis": "Affine reconstruction/coherence infrastructure exists, but the unitary replacement and source contract may change its obligations.",
+      "dependencies": ["source-local-lift", "full-completion-phase-interface"],
+      "ready": false,
+      "prove": {
+        "cost_effort_units": [2, 4, 8],
+        "success_given_truth": [0.3, 0.6, 0.8],
+        "protocol": "Instantiate whole-Tick realization with the proved spectral legs and check reconstruction, traversal, endpoints and swap coherence against the audited contract.",
+        "stop_rule": "Record +- if any required law remains assumed at the budget cap.",
+        "unblocks": "The whole-section certificate and, with source derivation, the named-k2-rival exclusion route."
+      },
+      "reject": {
+        "cost_effort_units": [1, 3, 6],
+        "success_given_falsehood": [0.15, 0.4, 0.7],
+        "protocol": "Find and certify a specific endpoint, reconstruction or schedule-swap law violated by the specified replacement.",
+        "stop_rule": "Report -- if no counterexample to the fixed replacement is checked at the cap.",
+        "unblocks": "Identifies an integration repair; does not refute all source-derived lifts."
+      }
+    }
+  ],
+  "external_dependencies": ["full-completion-phase-interface"],
+  "sensitivity": {
+    "range_order": ["low", "central", "high"],
+    "seed": 202603,
+    "scenarios": 2000,
+    "method": "Central ranking; one-parameter-at-a-time low/high stress tests; seeded independent uniform draws within declared ranges, sharing each claim prior between its prove/reject actions.",
+    "decision_rule": "If the conditional frontier winner changes, do not claim a robust optimum. Prefer the one-cycle source-contract audit before committing to a long downstream attempt."
+  }
+}

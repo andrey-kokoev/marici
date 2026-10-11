@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "charge-mass-recoil-triangle",
+    "owner": "marici.Nima",
+    "classification": "conditional_newtonian_impulse_route_compatibility_not_WG_physics",
+    "stratum": "Two bodies with positive supplied inertial masses, signed supplied charges and an integrated interaction vector; no physical clock construction.",
+    "inputs": ["research/nima/charge-mass-recoil-triangle.md", "research/nima/contracts/charge-mass-recoil-triangle.json"],
+    "checks": [{"id": "charge-mass-recoil-triangle-exact", "path": "research/nima/checkers/check_charge_mass_recoil_triangle.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["declared bilinear impulse law", "declared Newtonian inertial response"],
+    "provides": ["exact two-route response witness", "momentum-partner and energy-budget hostiles"],
+    "missing_constructors": ["WG-to-signed-charge coupling", "WG-to-inertia and momentum readout", "source impulse and energy budget", "physical-time interface"],
+    "next_falsifier": "When a source impulse map is available, test whether it obeys single-charge sign reversal, paired momentum balance and the same inertial response without fitting route-specific coefficients."
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "marici.scc.freeze.v1",
+  "model_id": "nima-rotor-period-action-boundary",
+  "fingerprint": "06b898a95006538077de1571fce619766e699c5c90ebf8b88a7172abe23828b0",
+  "owner": "marici.Nima",
+  "classification": "closed-lift-does-not-quantize-reduced-action",
+  "stratum": "Readout comparison in the completed real Clifford module-compatible phase lift, H=q^2+p^2+kappa, alpha=dphi-beta/kappa. Full lifted period theta=2*pi; not physical time or a native quantization theorem.",
+  "depends_on": [
+    "nima-retained-rotor-phase-transport"
+  ],
+  "consumes": [
+    "module_compatible_rotor_phase_transport",
+    "conditional_hamiltonian_constant_selection"
+  ],
+  "provides": [
+    "closed lifted orbit with off-lattice reduced action",
+    "exact distinction between connection integral and clock increment",
+    "horizontal versus dynamical closure distinction"
+  ],
+  "missing_constructors": [],
+  "next_falsifier": "A failed phase-return law or absence of the claimed off-lattice state rejects the counterexample. Extra horizontal-fiber closure or a quantization postulate changes the question; it must not be imposed after testing.",
+  "manifest": {
+    "id": "nima-rotor-period-action-boundary",
+    "owner": "marici.Nima",
+    "classification": "closed-lift-does-not-quantize-reduced-action",
+    "stratum": "Readout comparison in the completed real Clifford module-compatible phase lift, H=q^2+p^2+kappa, alpha=dphi-beta/kappa. Full lifted period theta=2*pi; not physical time or a native quantization theorem.",
+    "inputs": [
+      "research/nima/retained-rotor-phase-transport.md",
+      "research/nima/retained-clock-calibration-identifiability.md",
+      "research/nima/checkers/check_retained_rotor_phase_transport.py",
+      "research/nima/checkers/check_clock_calibration.py",
+      "research/nima/checkers/check_clifford_retained_order.py"
+    ],
+    "checks": [
+      {
+        "id": "nima-rotor-period-action-boundary-exact",
+        "path": "research/nima/checkers/check_rotor_period_action_boundary.py",
+        "requires": [
+          "sympy"
+        ]
+      }
+    ],
+    "depends_on": [
+      "nima-retained-rotor-phase-transport"
+    ],
+    "consumes": [
+      "module_compatible_rotor_phase_transport",
+      "conditional_hamiltonian_constant_selection"
+    ],
+    "provides": [
+      "closed lifted orbit with off-lattice reduced action",
+      "exact distinction between connection integral and clock increment",
+      "horizontal versus dynamical closure distinction"
+    ],
+    "missing_constructors": [],
+    "next_falsifier": "A failed phase-return law or absence of the claimed off-lattice state rejects the counterexample. Extra horizontal-fiber closure or a quantization postulate changes the question; it must not be imposed after testing."
+  }
+}

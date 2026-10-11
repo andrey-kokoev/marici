@@ -1,0 +1,28 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-retained-spatial-response-closure",
+    "owner": "marici.Nima",
+    "classification": "exact-response-closure-with-mechanical-readout-falsifier",
+    "stratum": "Readout descent on the seven-complex-coordinate invariant carrier of the declared six-port pulse realization, plus the actual 68 forward branch midpoints; pulse area is not physical time calibration.",
+    "inputs": [
+      "research/nima/retained-spatial-response-closure.md",
+      "research/nima/checkers/check_seed_port_exchange_binding.py",
+      "research/nima/checkers/check_retained_history_overlap_phase.py",
+      "research/nima/checkers/check_joint_phase_and_retained_moment_balance.py"
+    ],
+    "checks": [
+      {
+        "id": "nima-retained-spatial-response-closure-exact",
+        "path": "research/nima/checkers/check_retained_spatial_response_closure.py",
+        "requires": ["sympy"]
+      }
+    ],
+    "depends_on": [],
+    "consumes": [],
+    "provides": ["exact six-port spatial response including cross terms", "full seven-coordinate quadratic coherence closure", "noncanonical carrier-position readout obstruction"],
+    "missing_constructors": ["physical momentum/inertia identification preserving the inherited action and retained response"],
+    "next_falsifier": "A different source-derived spatial/canonical reading must preserve all-port response and the inherited symplectic structure; no mass fitting or nonlinear universal no-go follows from this failed reader."
+  }
+}

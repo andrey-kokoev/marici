@@ -1,0 +1,24 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "retained-tetrahedral-package",
+    "owner": "marici.Nima",
+    "classification": "retained_path_tetrahedron_boundary_recovery_checked",
+    "stratum": "Path coherence in a declared type; four explicitly retained vertices. Fixed vertices for the lossy-diagonal hostile. No arbitrary relational WG filler assertion.",
+    "inputs": [
+      "research/nima/agda/RetainedTetrahedralPackage.agda",
+      "research/nima/agda/MarkedTetrahedronCoherence.agda",
+      "research/nima/checkers/check_cubical_agda.ps1",
+      "research/nima/checkers/check_composable_witness_specialization.py",
+      "research/nima/results/agda-RetainedTetrahedralPackage.json"
+    ],
+    "checks": [
+      {"id": "retained-tetrahedral-package-fresh-receipt", "path": "research/nima/checkers/check_retained_tetrahedral_package.py", "requires": []}
+    ],
+    "depends_on": [],
+    "consumes": ["marked path-horn completion theorem", "dependent type and term pairs"],
+    "provides": ["full tetrahedral package", "six shared-edge checks", "typed boundary extraction", "horn-completion WG", "typed-value recovery fixture", "diagonal-only decoder impossibility"],
+    "missing_constructors": ["general higher-dimensional package interface", "arbitrary-relational filler criterion"],
+    "next_falsifier": "Require a proposed decoder to recover fixed-mark packages after deleting an edge or face field; distinguish theorem-backed horn completion from arbitrary erasure recovery."
+  }
+}

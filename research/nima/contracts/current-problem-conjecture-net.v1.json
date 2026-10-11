@@ -1,0 +1,613 @@
+{
+  "schema": "marici.nima.current-problem-proof-outcome-net.v1",
+  "compiler_obligation": "typed proof-route coherence, outcome propagation, and scope-preserving conjecture composition",
+  "outcome_ports": {
+    "++": {"attempt": "prove", "result": "proved"},
+    "+-": {"attempt": "prove", "result": "failed_to_prove"},
+    "-+": {"attempt": "reject", "result": "succeeded_in_rejecting"},
+    "--": {"attempt": "reject", "result": "failed_at_rejecting"}
+  },
+  "logic_boundary": {
+    "+-": "failure to prove does not prove the negation",
+    "--": "failure to reject does not prove the conjecture",
+    "outcome_type": "one attempted proof or rejection, not a truth value before an attempt"
+  },
+  "closure_planning": {
+    "contract": "research/nima/contracts/current-problem-closure-planning.v1.json",
+    "checker": "research/nima/checkers/check_closure_planning.py",
+    "result": "research/nima/results/closure-planning.json",
+    "role": "historical_portfolio_requires_revision_after_scope_clarification_and_local_core_proof",
+    "status": "subjective_scenario_not_proof",
+    "engine": "research/conjecture_net/interpretation_planner.py"
+  },
+  "bridge_planning": {
+    "role": "historical_local_information_diagnostic_not_current_frontier_optimizer",
+    "contract": "research/nima/contracts/current-problem-bridge-planning.v1.json",
+    "checker": "research/nima/checkers/check_bridge_planning.py",
+    "result": "research/nima/results/bridge-planning.json",
+    "status": "subjective_uncalibrated_planning_only",
+    "scope": "Bounded subclaim attempts on the three open bridges; not total closure costs or new proof outcomes."
+  },
+  "cost_model": {
+    "role": "historical_single_claim_information_model_not_current_closure_optimizer",
+    "separate_by_intent": true,
+    "fields": ["cost_to_prove", "cost_to_reject"],
+    "unit": "assistant_effort_unit",
+    "unit_definition": "one focused assistant work cycle on a bounded question: inspect relevant sources, perform one coherent research or implementation step, and verify it; not elapsed time",
+    "probabilities": {
+      "status": "provisional_subjective_prior_updated_after_one_attempt",
+      "initial_claim_prior_probability": 0.35,
+      "claim_prior_probability": 0.1950464396,
+      "last_observation_update": "A proof attempt returned +-; Bayes update uses P(+-|claim true)=0.45 and P(+-|claim false)=1.",
+      "conditional_outcomes": {
+        "prove": {
+          "if_claim_true": {"++": 0.55, "+-": 0.45},
+          "if_claim_false": {"++": 0.0, "+-": 1.0}
+        },
+        "reject": {
+          "if_claim_true": {"-+": 0.0, "--": 1.0},
+          "if_claim_false": {"-+": 0.25, "--": 0.75}
+        }
+      },
+      "basis": "A local C4 realization exists after declared complexification, but the source supplies no complex/exponential or dependent-return interpretation; a machine-checked source bridge is plausible, while a no-go theorem for its nonexistence is harder."
+    },
+    "selection_objective": "expected_information_gain_bits_per_assistant_effort_unit",
+    "selection_status": "provisional_subjective_ranking",
+    "legacy_finding": "The inspected Del Pezzo prior cost model charges one cost per action; objective_projection.py can rank distinct actions, but the stored model does not encode separate proof and rejection costs."
+  },
+  "conjectures": [
+    {
+      "id": "finite-compatibility-adds-selection",
+      "statement": "Adding the declared shared geometry, Hamiltonian dynamics, matter carrier and fixed readout strictly reduces the observable prediction set.",
+      "scope_id": "retained-unitary-C4-with-canonical-quantum-state-completion",
+      "scope_status": "typed_finite_class",
+      "attempted": true,
+      "outcome": "-+",
+      "evidence": ["research/nima/results/joint-compatibility-free-completion.json"],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "disposition": "rejected in the declared finite class"
+    },
+    {
+      "id": "finite-prediction-preserving-completion",
+      "statement": "Every admissible retained-unitary annotation in the declared class has a shared geometry and fixed Born-readout completion preserving all predictions.",
+      "scope_id": "retained-unitary-C4-with-canonical-quantum-state-completion",
+      "scope_status": "typed_finite_class",
+      "attempted": true,
+      "outcome": "++",
+      "evidence": ["research/nima/results/joint-compatibility-free-completion.json"],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "disposition": "proved within the declared finite class"
+    },
+    {
+      "id": "intermediate-locality-excludes-k2-rival",
+      "statement": "Adding intermediate tensor locality excludes the named k=2 generator rival while retaining the baseline locality check.",
+      "scope_id": "retained-unitary-C4-with-imposed-intermediate-tensor-locality",
+      "scope_status": "typed_conditional_class",
+      "attempted": true,
+      "outcome": "++",
+      "evidence": ["research/nima/results/tick-unitary-image-nonuniqueness.json"],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "disposition": "proved for the named baseline/rival pair; locality is an added premise"
+    },
+    {
+      "id": "native-discrete-factorwise-square",
+      "statement": "The native Bool × Bool square acts independently on its two factors: the left map flips only the first coordinate and the right map flips only the second.",
+      "scope_id": "native-Bool-square",
+      "scope_status": "typed_source_fact",
+      "attempted": true,
+      "outcome": "++",
+      "evidence": ["research/nima/results/agda-NativeSquareHamiltonianSkeleton.json", "research/nima/results/factorwise-locality-bridge.json"],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "disposition": "proved for the discrete source operations"
+    },
+    {
+      "id": "declared-class-implies-factorwise-locality",
+      "statement": "Every generator pair in the declared retained-unitary C4 annotation class is factorwise local.",
+      "scope_id": "retained-unitary-C4-declared-generator-annotation-class",
+      "scope_status": "typed_finite_class",
+      "attempted": true,
+      "outcome": "-+",
+      "evidence": ["research/nima/results/factorwise-locality-bridge.json", "research/nima/results/tick-unitary-image-nonuniqueness.json"],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "disposition": "refuted by the admitted k=2 mixed-generator counterexample"
+    },
+    {
+      "id": "full-bool-tick-has-independent-return-section-data",
+      "statement": "At a fixed Bool/notEquiv source, the full Tick contains an independent return-section degree of freedom beyond its two ordered schedule tags.",
+      "scope_id": "full-Bool-Tick-at-fixed-source",
+      "scope_status": "typed_source_classification",
+      "attempted": true,
+      "outcome": "-+",
+      "evidence": ["research/nima/tick-full-structure-classification.md", "research/nima/results/agda-TickRetainedStructure.json"],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "disposition": "refuted: the full Tick is equivalent to the pair of schedule tags; this does not supply an analytic interpretation"
+    },
+    {
+      "id": "stochastic-tick-selects-path-up-to-reparameterization",
+      "statement": "The retained stochastic schedule constraints select a unique continuous interpolation up to time reparameterization.",
+      "scope_id": "retained-stochastic-schedule-realizations-of-full-Bool-Tick",
+      "scope_status": "typed_stochastic_class",
+      "attempted": true,
+      "outcome": "-+",
+      "evidence": ["research/nima/tick-admissible-interpretations.md", "research/nima/results/tick-interpretation-nonuniqueness.json"],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "disposition": "refuted by straight and bowed admissible paths with different images"
+    },
+    {
+      "id": "unitary-tick-selects-path-image-up-to-parameters-and-phase",
+      "statement": "The declared commuting-unitary Tick annotations determine a unique state-path image up to parameter substitution and overall phase.",
+      "scope_id": "retained-unitary-C4-declared-generator-annotation-class",
+      "scope_status": "typed_unitary_class",
+      "attempted": true,
+      "outcome": "-+",
+      "evidence": ["research/nima/tick-unitary-image-nonuniqueness.md", "research/nima/results/tick-unitary-image-nonuniqueness.json"],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "disposition": "refuted by the k=2 rival's state outside the complete baseline image"
+    },
+    {
+      "id": "affine-return-legs-are-unitary",
+      "statement": "The current affine C4 return legs preserve the standard complex norm for every real parameter and state.",
+      "scope_id": "current-affine-C4-return-legs",
+      "scope_status": "typed_matrix_claim",
+      "attempted": true,
+      "outcome": "-+",
+      "evidence": ["research/nima/results/return-leg-unitarity.json", "research/nima/return-leg-unitarity.md"],
+      "attempts": [{"intent": "reject", "outcome": "-+", "evidence": "research/nima/results/return-leg-unitarity.json", "disposition": "Each basis state has squared norm 1/2 at the midpoint for either flip."}],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "disposition": "Rejects the current affine legs, not existence of a local unitary replacement."
+    },
+    {
+      "id": "spectral-return-legs-are-local-unitary",
+      "statement": "For either C4 bit flip P, Q=(I-P)/2 gives U(t)=(I-Q)+exp(-i*pi*t)Q unitary for every real t, with U(0)=I, U(1)=P and factorwise-local generator pi Q.",
+      "scope_id": "standard-complex-C4-spectral-return-legs",
+      "scope_status": "typed_matrix_claim",
+      "attempted": true,
+      "outcome": "++",
+      "evidence": ["research/nima/return-leg-unitarity.md", "research/nima/results/return-leg-unitarity.json"],
+      "attempts": [{"intent": "prove", "outcome": "++", "evidence": "research/nima/return-leg-unitarity.md", "disposition": "All-time analytic projector proof supported by exact projector, endpoint, phase, and tensor-locality checks."}],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "disposition": "Standard complex matrix theorem; complex completion phase and continuity implementation remain open."
+    },
+    {
+      "id": "current-return-surface-erases-schedule-tags",
+      "statement": "At the fixed Bool/notEquiv source, the current completion-valued return-surface gives equal C4 vectors at every scalar parameter pair for any two Ticks, regardless of their retained ordered schedule tags.",
+      "scope_id": "current-completion-valued-return-surface-at-fixed-Bool-source",
+      "scope_status": "typed_candidate-construction-fact",
+      "attempted": true,
+      "outcome": "++",
+      "evidence": ["research/nima/return-correspondence-functional-obstruction.md", "research/nima/agda/TickLocalReturnSection.agda"],
+      "attempts": [{
+        "intent": "prove",
+        "outcome": "++",
+        "effort_units_spent_estimate": 1,
+        "evidence": "research/nima/return-correspondence-functional-obstruction.md",
+        "disposition": "source attachment plus congruence through the fixed leftFirst return-target proves extensional equality"
+      }],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "disposition": "proved for the current candidate surface only; this is not a constraint on every possible lift"
+    },
+    {
+      "id": "no-total-single-valued-return-correspondence",
+      "statement": "At the fixed Bool/notEquiv source, no total single-valued relation from diagonal dependent return-section values to completion-valued C4 states can preserve the distinct target and source endpoint states.",
+      "scope_id": "fixed-Bool-return-section-to-completion-state-correspondence",
+      "scope_status": "typed_interface_obstruction",
+      "attempted": true,
+      "outcome": "-+",
+      "evidence": ["research/nima/return-correspondence-functional-obstruction.md", "research/nima/agda/TickLocalReturnSection.agda"],
+      "attempts": [{
+        "intent": "reject",
+        "outcome": "-+",
+        "effort_units_spent_estimate": 1,
+        "evidence": "research/nima/return-correspondence-functional-obstruction.md",
+        "disposition": "totality selects a Cubical state path; endpoint separation contradicts it"
+      }],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "disposition": "rejected only for total single-valued Cubical state correspondences; partial, multivalued, or externally metric-parameterized interfaces remain open"
+    },
+    {
+      "id": "source-derived-intermediate-locality-preserving-lift",
+      "statement": "There is a source-derived lift from the native factorwise Bool square to the continuous C4 dynamics whose left and right generators preserve the corresponding tensor-factor algebras and which interprets the retained whole-Tick return structure.",
+      "scope_id": "native-Bool-square-to-C4-local-dynamics-lift",
+      "scope_status": "typed_standard_complex_external_return_existence",
+      "attempted": true,
+      "outcome": "++",
+      "evidence": ["research/nima/results/source-to-local-lift-attempt.json", "research/nima/spectral-whole-return-proof.md", "research/nima/results/spectral-whole-return.json"],
+      "attempts": [{
+        "intent": "prove",
+        "outcome": "+-",
+        "effort_units_spent_estimate": 3,
+        "evidence": "research/nima/results/source-to-local-lift-attempt.json",
+        "disposition": "local C4 generator and corner fragment checked; full dependent return-section map not constructed"
+      }, {
+        "intent": "prove",
+        "outcome": "++",
+        "evidence": "research/nima/results/spectral-whole-return.json",
+        "disposition": "Same-witness local core and faithful external metric whole-record return interpretation in standard C4, under clarified uniform-construction semantics. Completion backend and pointwise Cubical interpretation are not claimed."
+      }],
+      "attempt_protocols": {
+        "prove": "Construct and machine-check a typed source-to-C4 path map, including the factorwise generator laws and the interpretation of the retained return section.",
+        "reject": "Prove that no map satisfying that explicit source-to-C4 contract exists; failure to construct one is not rejection."
+      },
+      "cost_to_prove": 3,
+      "cost_to_reject": 6,
+      "disposition": "Proved existence under the clarified standard-C4 external-path semantics. This does not establish source uniqueness, a pointwise Cubical state interpretation or the operational completion implementation."
+    },
+    {
+      "id": "source-derived-local-core-exists",
+      "statement": "There exists a source-derived factor-local continuous lift of the native Bool square, without requiring a whole-Tick return interpretation: exists f L(f).",
+      "scope_id": "native-Bool-square-to-C4-local-dynamics-lift",
+      "scope_status": "open_typed_candidate",
+      "attempted": true,
+      "outcome": "++",
+      "evidence": ["research/nima/uniform-local-core-proof.md", "research/nima/results/uniform-local-core.json"],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "logical_form": "A = exists f L(f)",
+      "attempts": [{"intent": "prove", "outcome": "++", "evidence": "research/nima/results/uniform-local-core.json", "scope": "Agreed uniform-construction meaning in standard complex-matrix semantics; not a kernel-verified completion theorem."}],
+      "witness": "free-linearized native flips with generators pi*(I-P_j)/2",
+      "proof_mode": "ordinary_all_time_mathematical_proof_with_exact_algebraic_checks",
+      "design_contract": "research/nima/local-core-test.md",
+      "test_readiness": "proved_standard_complex_core",
+      "resolved_test_contract": "research/nima/contracts/uniform-local-core-test.v1.json",
+      "attempt_protocols": {
+        "prove": "Construct a witness f with a checked L(f), retaining its identity for a later return-extension test. Do not require R(f).",
+        "reject": "Prove not (exists f L(f)) for the declared candidate class; failure of one candidate is insufficient."
+      },
+      "disposition": "Uniform source-based local dynamics exists in standard C4 under the agreed meaning. The separate same-witness whole-return theorem now also closes the clarified external-path parent."
+    },
+    {
+      "id": "spectral-local-core-admits-whole-tick-return",
+      "statement": "The checked uniform spectral local-core witness admits a faithful whole-Tick return interpretation by externally metric-parameterized paths on [0,2], with exact endpoints, unit norm, continuity and piecewise local generator laws.",
+      "scope_id": "native-Bool-square-to-C4-local-dynamics-lift",
+      "scope_status": "typed_standard_complex_external_return_witness",
+      "attempted": true,
+      "outcome": "++",
+      "evidence": ["research/nima/spectral-whole-return-proof.md", "research/nima/results/spectral-whole-return.json"],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "local_witness_receipt": "research/nima/results/uniform-local-core.json",
+      "return_contract": "research/nima/contracts/spectral-whole-return-test.v1.json",
+      "disposition": "R_ext(f) proved for the same constructed f; not a C1 seam theorem, Cubical pointwise decoder or completion-backend certificate."
+    },
+    {
+      "id": "full-lift-proof-implies-local-core",
+      "statement": "P implies existence of a source-derived local lift after forgetting the whole-Tick return interpretation: P -> exists f L(f).",
+      "scope_id": "native-Bool-square-to-C4-local-dynamics-lift",
+      "scope_status": "typed_conditional_logical_schema",
+      "attempted": true,
+      "outcome": "++",
+      "evidence": ["research/nima/agda/TickLiftOutcomeSplit.agda", "research/nima/results/lift-outcome-split.json", "research/nima/lift-outcome-split.md"],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "assumption": {"parent": "source-derived-intermediate-locality-preserving-lift", "required_outcome": "++"},
+      "consequent": "exists f L(f)",
+      "disposition": "Parametric projection theorem proved; consequent is not asserted until the parent has a proof."
+    },
+    {
+      "id": "full-lift-rejection-obstructs-return-extension",
+      "statement": "Not P implies that every source-derived local lift lacks a compatible whole-Tick return interpretation: not P -> forall f (L(f) -> not R(f)).",
+      "scope_id": "native-Bool-square-to-C4-local-dynamics-lift",
+      "scope_status": "typed_conditional_logical_schema",
+      "attempted": true,
+      "outcome": "++",
+      "evidence": ["research/nima/agda/TickLiftOutcomeSplit.agda", "research/nima/results/lift-outcome-split.json", "research/nima/lift-outcome-split.md"],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "assumption": {"parent": "source-derived-intermediate-locality-preserving-lift", "required_outcome": "-+"},
+      "consequent": "forall f (L(f) -> not R(f))",
+      "disposition": "Parametric contradiction theorem proved; does not assert existence of a local lift or rejection of P."
+    },
+    {
+      "id": "ten-topic-joint-observable-relation",
+      "statement": "One integrated geometry-dynamics-matter-measurement construction across the ten topics yields an additional non-tunable observable relation.",
+      "scope_id": null,
+      "scope_status": "underdefined_not_in_solver",
+      "attempted": false,
+      "outcome": null,
+      "evidence": [],
+      "cost_to_prove": null,
+      "cost_to_reject": null,
+      "required_before_proof_attempt": ["named shared carrier", "typed cross-topic maps", "observable", "compatibility equations", "proof/refutation cost estimates"]
+    }
+  ],
+  "source_derivation_policy": {
+    "meaning": "uniform-construction-existence-not-source-uniqueness",
+    "semantic_backend": "standard finite-dimensional complex Hilbert spaces",
+    "contract": "research/nima/contracts/uniform-local-core-test.v1.json",
+    "applies_to": ["source-derived-local-core-exists", "source-derived-intermediate-locality-preserving-lift"],
+    "scope_clarification": "L uses the same agreed existential meaning in both nodes. The spectral interpolation is constructed uniformly from represented native maps, not supplied per source. The full parent additionally requires R.",
+    "history": "Earlier source-contract audits and the stopped portfolio remain records under the then-unspecified reading; they are not refutations under this clarification.",
+    "completion_boundary": "Kernel construction in the operational Cauchy completion remains a separate open refinement; the standard-C4 proof does not close it."
+  },
+  "return_interpretation_policy": {
+    "contract": "research/nima/contracts/spectral-whole-return-test.v1.json",
+    "meaning": "faithful whole-record external metric paths, not pointwise Cubical state decoding",
+    "applies_to": ["source-derived-intermediate-locality-preserving-lift", "spectral-local-core-admits-whole-tick-return"],
+    "analytic_regularity": "continuous on [0,2], piecewise differentiable with the original local generators; no C1 claim at the seam"
+  },
+  "lift_outcome_split": {
+    "parent": "source-derived-intermediate-locality-preserving-lift",
+    "logical_form": "P = exists f (L(f) and R(f))",
+    "standalone_local_core": "source-derived-local-core-exists",
+    "information_diagnostic": {
+      "checker": "research/nima/checkers/check_local_core_information.py",
+      "result": "research/nima/results/local-core-information.json",
+      "status": "dependency_model_with_unelicited_parameter",
+      "role": "information_bounds_only_not_an_optimizer_or_observation"
+    },
+    "L": "Source-derived factor-local continuous lift of the native square, without the return obligation.",
+    "R": "Compatible interpretation of the retained whole-Tick return structure by that same lift.",
+    "interpretation": "Uses the parent attempt protocol's existing return-section obligation; does not add a new requirement to the parent.",
+    "boundary": "The implication proofs remain parametric. L now has the uniform-construction meaning shared by parent and local-core node. An independent proof of A does not prove P, and a failed proof (+-) is not not-P."
+  },
+  "proof_relations": [
+    {
+      "id": "completion-refutes-selection",
+      "premise": "finite-prediction-preserving-completion",
+      "premise_outcome": "++",
+      "relation": "entails_negation_within_scope",
+      "conclusion": "finite-compatibility-adds-selection",
+      "conclusion_outcome": "-+",
+      "scope_id": "retained-unitary-C4-with-canonical-quantum-state-completion",
+      "evidence": "research/nima/results/joint-compatibility-free-completion.json"
+    },
+    {
+      "id": "k2-counterexample-refutes-class-locality",
+      "premise": "intermediate-locality-excludes-k2-rival",
+      "premise_outcome": "++",
+      "relation": "counterexample_refutes_universal_claim_in_parent_class",
+      "conclusion": "declared-class-implies-factorwise-locality",
+      "conclusion_outcome": "-+",
+      "scope_id": "retained-unitary-C4-declared-generator-annotation-class",
+      "evidence": "research/nima/results/factorwise-locality-bridge.json"
+    },
+    {
+      "id": "parent-proof-activates-local-core-branch",
+      "premise": "source-derived-intermediate-locality-preserving-lift",
+      "premise_outcome": "++",
+      "relation": "conditional_branch_activation",
+      "conclusion": "full-lift-proof-implies-local-core",
+      "conclusion_kind": "activate_consequent_not_prove_schema",
+      "scope_id": "native-Bool-square-to-C4-local-dynamics-lift",
+      "evidence": "research/nima/results/lift-outcome-split.json"
+    },
+    {
+      "id": "parent-rejection-activates-return-obstruction-branch",
+      "premise": "source-derived-intermediate-locality-preserving-lift",
+      "premise_outcome": "-+",
+      "relation": "conditional_branch_activation",
+      "conclusion": "full-lift-rejection-obstructs-return-extension",
+      "conclusion_kind": "activate_consequent_not_prove_schema",
+      "scope_id": "native-Bool-square-to-C4-local-dynamics-lift",
+      "evidence": "research/nima/results/lift-outcome-split.json"
+    },
+    {
+      "id": "full-lift-proof-entails-standalone-local-core",
+      "premise": "source-derived-intermediate-locality-preserving-lift",
+      "premise_outcome": "++",
+      "relation": "same_scope_existential_projection",
+      "conclusion": "source-derived-local-core-exists",
+      "conclusion_outcome": "++",
+      "scope_id": "native-Bool-square-to-C4-local-dynamics-lift",
+      "evidence": "research/nima/results/lift-outcome-split.json"
+    },
+    {
+      "id": "local-core-rejection-refutes-full-lift",
+      "premise": "source-derived-local-core-exists",
+      "premise_outcome": "-+",
+      "relation": "same_scope_contrapositive_of_projection",
+      "conclusion": "source-derived-intermediate-locality-preserving-lift",
+      "conclusion_outcome": "-+",
+      "scope_id": "native-Bool-square-to-C4-local-dynamics-lift",
+      "evidence": "research/nima/results/lift-outcome-split.json"
+    },
+    {
+      "id": "same-witness-core-and-return-prove-full-lift",
+      "premises": ["source-derived-local-core-exists", "spectral-local-core-admits-whole-tick-return"],
+      "premise_outcomes": ["++", "++"],
+      "relation": "same_witness_existential_introduction",
+      "conclusion": "source-derived-intermediate-locality-preserving-lift",
+      "conclusion_outcome": "++",
+      "scope_id": "native-Bool-square-to-C4-local-dynamics-lift",
+      "witness_identity_check": "return receipt witness equals local-core receipt witness",
+      "evidence": "research/nima/results/spectral-whole-return.json",
+      "logical_rule": "TickLiftOutcomeSplit.extend-local-witness"
+    }
+  ],
+  "local_core_test_route": {
+    "node": "source-derived-local-core-exists",
+    "prove_unblocks": "return-extension-for-the-checked-local-witness",
+    "required_to_close_parent": "A return certificate R(f) for the same witnessed f, not a different lift.",
+    "reject_implies": "source-derived-intermediate-locality-preserving-lift rejected in the same scope",
+    "failed_attempts_imply": "No parent outcome.",
+    "candidate_failure_boundary": "Not R(f) for one witness does not establish forall g (L(g) -> not R(g)).",
+    "relative_scope_boundary": "The local-core proof constructs the spectral profile uniformly from the source operators; it does not merely assume a supplied DerivedComponents profile or claim source uniqueness.",
+    "witness": "free-linearized native flips with generators pi*(I-P_j)/2",
+    "status": "same_witness_return_test_proved_standard_external_paths",
+    "return_node": "spectral-local-core-admits-whole-tick-return"
+  },
+  "scope_constraints": [
+    {
+      "id": "no-hidden-return-section-selector",
+      "source_claim": "full-bool-tick-has-independent-return-section-data",
+      "source_outcome": "-+",
+      "constraint": "Do not treat the fixed-source Bool return-section interior as independent selector data; an analytic interpretation remains a separate construction."
+    },
+    {
+      "id": "path-nonuniqueness-is-scope-local",
+      "source_claims": ["stochastic-tick-selects-path-up-to-reparameterization", "unitary-tick-selects-path-image-up-to-parameters-and-phase"],
+      "constraint": "Keep stochastic and unitary non-uniqueness results in their distinct annotation classes; neither alone refutes uniqueness under a new source-derived lift."
+    },
+    {
+      "id": "functional-return-obstruction-is-not-full-lift-refutation",
+      "source_claim": "no-total-single-valued-return-correspondence",
+      "source_outcome": "-+",
+      "constraint": "The obstruction rejects a total single-valued Cubical state correspondence with exact endpoints. It also rejects any total coherently selectable relation whose endpoint fibers are singleton at the two distinct states. Do not propagate it as rejection of a genuinely nonselectable relation or an external metric-parameterized whole-section interpretation."
+    },
+    {
+      "id": "schedule-blindness-is-candidate-local",
+      "source_claim": "current-return-surface-erases-schedule-tags",
+      "source_outcome": "++",
+      "constraint": "The proved tag-erasure applies only to this candidate surface; do not infer that every valid lift must be schedule-sensitive. If tag fidelity is required, add an ordered traversal law."
+    }
+  ],
+  "next_tests": [
+    {
+      "id": "whole-section-metric-realization-certificate",
+      "status": "standard_external_return_proved_completion_refinement_open",
+      "statement": "The standard-C4 same-witness unitary whole-return construction is proved on [0,2]. The operational completion implementation and its analytic certificates remain open.",
+      "design_contract": "research/nima/whole-section-metric-realization-contract.md",
+      "relative_source_contract": {
+        "contract": "research/nima/contracts/relative-source-derivation.v1.json",
+        "analysis": "research/nima/relative-source-derivation.md",
+        "receipt": "research/nima/results/relative-source-contract.json",
+        "status": "algebraic-provenance-fragment-checked-relative-branch",
+        "scope": "Fixed globally declared analytic profile; candidates must equal the free-linearization/spectral construction.",
+        "original_source_lift_closed": false,
+        "original_planner_token_unlocked": false,
+        "locality_covariance": {
+          "implementation": "research/nima/agda/TickRelativeLocality.agda",
+          "receipt": "research/nima/results/relative-locality.json",
+          "outcome": "++",
+          "scope": "Fixed-profile algebraic slice locality and covariance under factorwise Bool relabelings and factor exchange; not analytic factor-algebra preservation or source selection.",
+          "fresh_closure": "pass"
+        },
+        "remaining": "Completion analytic profile, metric path domain, unitary factor-algebra action and whole-section integration."
+      },
+      "source_contract_audit": {
+        "outcome": "+-",
+        "receipt": "research/nima/results/source-contract-audit.json",
+        "analysis": "research/nima/source-contract-audit.md",
+        "proved": "Every external Schedule-to-X semantics satisfies reconstruction and schedule-swap; the interpretation is injective in the external semantics.",
+        "scope": "These coherence laws alone do not distinguish source derivation from supplied adapters; no full-lift no-go follows.",
+        "source_contract_unlocked": false,
+        "next": "Specify allowed analytic premises and an explicit source-derivation criterion, then replan."
+      },
+      "completion_phase_attempt": {
+        "outcome": "+-",
+        "implementation": "research/nima/agda/TickCompletionPhase.agda",
+        "receipt": "research/nima/results/agda-TickCompletionPhase.json",
+        "proved": "Completion exponential at arbitrary angular scale, start value one, real/imaginary formulas, and finish reduced to cosine/sine at negative scale.",
+        "unit_norm_progress": "All-degree Taylor coefficient proof and uniform finite norm-defect bound; 305 exact controls.",
+        "unit_norm_evidence": ["research/nima/phase-pythagorean-series.md", "research/nima/results/phase-pythagorean-series.json"],
+        "actual_schedule_control": {
+          "implementation": "research/nima/agda/TickScheduledNormControl.agda",
+          "receipt": "research/nima/results/scheduled-norm-control.json",
+          "analysis": "research/nima/scheduled-norm-control.md",
+          "proved": "Exact shifted sample identity, uniform actual-sample amplitude bounds, and eventual-control-to-metric-bound transfer.",
+          "common_taylor_controls": {
+            "implementation": "research/nima/agda/TickCommonTaylorControls.agda",
+            "receipt": "research/nima/results/common-taylor-controls.json",
+            "proved": "Explicit common rational input and term cutoff; actual-sample errors bounded by precision(n); control amplitude bounds.",
+            "coefficient_cancellation": {
+              "implementation": "research/nima/agda/TickTrigCoefficientCancellation.agda",
+              "receipt": "research/nima/results/trig-coefficient-cancellation.json",
+              "proved": "All-order Leibniz derivative norm coefficients and common-prefix truncated coefficients cancel.",
+              "term_and_sum_normalization": {
+                "implementation": "research/nima/agda/TickTrigTaylorNormalization.agda",
+                "receipt": "research/nima/results/trig-taylor-normalization.json",
+                "proved": "Operational sine/cosine terms and partial sums equal derivative coefficients times recursive exponentialTerm normalization for every rational input and index."
+              },
+              "finite_product_expansion": {
+                "implementation": "research/nima/agda/TickTaylorProductExpansion.agda",
+                "receipt": "research/nima/results/taylor-product-expansion.json",
+                "proved": "Operational norm expands into a finite rectangular double sum; finite order interchange is checked."
+              },
+              "degree_regrouping": {
+                "implementation": "research/nima/agda/TickTaylorDegreeRegrouping.agda",
+                "receipt": "research/nima/results/taylor-degree-regrouping.json",
+                "proved": "Exact operational norm regrouping by total degree through 4N+2 with the sine offset and normalization weights preserved.",
+                "factorial_binomial_identification_proved": false
+              },
+              "binomial_weights": {
+                "implementation": "research/nima/agda/TickTaylorBinomialWeights.agda",
+                "cached_receipt": "research/nima/results/taylor-binomial-weights-cached.json",
+                "fresh_receipt": "research/nima/results/taylor-binomial-weights.json",
+                "reused": "AbsoluteTaylorSeriesMultiplication.reciprocal-factorial-split",
+                "cached_check": "pass",
+                "fresh_closure": "timeout after 300 seconds",
+                "remaining": "Identify the parity-filtered binomial sum with the truncated Leibniz derivative, then instantiate existing residual bounds."
+              },
+              "operational_product_convolution_bridge_proved": false
+            },
+            "norm_defect_proved": false
+          },
+          "eventual_controls_constructed": false,
+          "scheduled_norm_bound_instantiated": false
+        },
+        "schedule_error_estimate": {
+          "implementation": "research/nima/agda/TickPhaseNormError.agda",
+          "receipt": "research/nima/results/agda-TickPhaseNormError.json",
+          "theorem": "Scheduled norm defect is bounded by 4*M*epsilon+delta from sample and common Taylor-control bounds.",
+          "fresh_closure": "pass"
+        },
+        "norm_transfer": {
+          "implementation": "research/nima/agda/TickPhaseNormTransfer.agda",
+          "theorem": "ScheduledNormBound implies phase unit norm",
+          "bound_instantiated": false,
+          "cached_check": "pass",
+          "fresh_closure": "timeout after 900 seconds"
+        },
+        "remaining": "Prove ScheduledNormBound for the actual sine/cosine product schedules and complete fresh closure; construct pi with half-turn laws; prove metric continuity."
+      },
+      "required_before_solver_admission": [
+        "type the external metric route domain and its endpoint structure",
+        "define schedule-indexed traversals of the local square from the retained ordered tags",
+        "prove whole-route continuity and factorwise locality/generator laws",
+        "retain the implemented whole-record reconstruction and schedule-swap coherence laws; every Tick observation factors through its tags",
+        "show the operation is derived from Tick/section data rather than an independent adapter",
+        "exclude total coherent pointwise selection with singleton endpoint fibers"
+      ],
+      "scope_warning": "A conditional theorem with an externally supplied route is not positive closure of the source-derived conjecture; endpoint matching alone is not a realization of the section."
+    }
+  ],
+  "bridge_gaps": [
+    {
+      "id": "spectral-return-to-completion-phase",
+      "source_fact": "spectral-return-legs-are-local-unitary",
+      "target_claim": "source-derived-intermediate-locality-preserving-lift",
+      "status": "missing_completion_phase_implementation",
+      "target_backend": "operational Cauchy completion refinement only",
+      "blocks_standard_complex_existence": false,
+      "missing": "Construct the complex completion phase with unit norm, endpoints, continuity and generator compatibility; retain whole-Tick coherence. The affine rejection is candidate-local and does not reject this bridge."
+    },
+    {
+      "id": "discrete-square-to-continuous-local-lift",
+      "source_fact": "native-discrete-factorwise-square",
+      "target_claim": "source-derived-intermediate-locality-preserving-lift",
+      "status": "constructed_standard_complex_core",
+      "missing": "No standard-C4 local-core existence gap under the agreed meaning; the operational completion implementation remains separate."
+    },
+    {
+      "id": "dependent-return-to-metric-square-correspondence",
+      "source_fact": "retained-dependent-return-section",
+      "target_claim": "whole-section-metric-realization-certificate",
+      "status": "proved_standard_external_return_completion_backend_open",
+      "missing": "The same-witness external metric return is proved in standard C4; instantiation in the operational completion is still open."
+    }
+  ],
+  "conditional_route": {
+    "id": "source-selector-route",
+    "premises": ["source-derived-intermediate-locality-preserving-lift", "intermediate-locality-excludes-k2-rival"],
+    "conclusion_scope": "excludes-the-named-k2-rival-only",
+    "status": "local_realization_exists_rival_exclusion_remains_class_relative",
+    "does_not_establish": "uniqueness or a universal observable law"
+  },
+  "critical_path_policy": {
+    "report_structural_blockers": true,
+    "rank_numeric_value_only_if_costs_and_likelihoods_exist": true,
+    "uniform_four_outcome_entropy": "sensitivity diagnostic only; not a calibrated value estimate"
+  }
+}

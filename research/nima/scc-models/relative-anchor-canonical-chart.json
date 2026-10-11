@@ -1,0 +1,25 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-relative-anchor-canonical-chart",
+    "owner": "marici.Nima",
+    "classification": "canonical-chart-on-nonzero-anchor-sector",
+    "stratum": "Attachment transport and readout descent on the nonzero-anchor chart of the same declared six-port Hamiltonian realization; no physical spatial or mass selection is inferred.",
+    "inputs": [
+      "research/nima/relative-anchor-canonical-chart.md",
+      "research/nima/checkers/check_retained_spatial_response_closure.py",
+      "research/nima/checkers/check_seed_port_exchange_binding.py"
+    ],
+    "checks": [{
+      "id": "nima-relative-anchor-canonical-chart-exact",
+      "path": "research/nima/checkers/check_relative_anchor_canonical_chart.py",
+      "requires": ["sympy"]
+    }],
+    "depends_on": [],
+    "consumes": [],
+    "provides": ["phase-neutral six-pair canonical chart shared by all ports", "retained reference phase and phase-charge canonical pair", "source-covariant three-vector and internal canonical split"],
+    "missing_constructors": ["physical configuration and inertial-mass identification"],
+    "next_falsifier": "Any proposed physical position/momentum identification must preserve this whole chart and its internal response; the current result selects no physical polarization, mass or dimensional calibration."
+  }
+}

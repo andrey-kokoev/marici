@@ -1,0 +1,25 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "tetrahedron-presentation-bridge",
+    "owner": "marici.Nima",
+    "classification": "fixed_boundary_tetrahedron_bridge_checked",
+    "stratum": "Six fixed path edges and all four independently translated faces; RouteNaturality and FaceNaturality proved. Chosen-map direct-sweep computation checked. Independent four-simplex pentagon route/coherencer compatibility remains open.",
+    "inputs": [
+      "research/nima/agda/TetrahedronPresentationBridge.agda",
+      "research/nima/agda/FourSimplexHorn.agda",
+      "research/nima/agda/MarkedTetrahedronCoherence.agda",
+      "research/nima/checkers/check_cubical_agda.ps1",
+      "research/nima/checkers/check_composable_witness_specialization.py",
+      "research/nima/results/agda-TetrahedronPresentationBridge.json"
+    ],
+    "checks": [
+      {"id": "tetrahedron-presentation-bridge-fresh-receipt", "path": "research/nima/checkers/check_tetrahedron_presentation_bridge.py", "requires": []}
+    ],
+    "depends_on": [],
+    "consumes": ["Cubical transport equivalence", "old route and triangle equivalences"],
+    "provides": ["horn-relative completion equivalence", "full completion-pair roundtrips", "completion and relative translation commute", "triangle-to-edge-to-vertex projection squares", "four explicit opposing-face projection equations and preservation across triangle translation", "canonical ambient face-slot-to-omitted-vertex incidence map and vertex recovery", "RouteNaturality and FaceNaturality", "independent all-four-face tetrahedron equivalence", "chosen equivalence route and direct-sweep computation laws"],
+    "missing_constructors": ["instantiate the four opposing-vertex maps with the intended geometric projection from the full graded tetrahedron", "GeneratedRouteCoherence comparing the translated canonical Cubical completion with the independent marked pentagon"],
+    "next_falsifier": "Normalize the sweep cube's corrected boundary to the independent pentagon long and short routes and inhabit GeneratedRouteCoherence in FourSimplexPentagonBridge. Do not infer equality of computed centers from separate completion contractibility."
+  }
+}

@@ -1,0 +1,84 @@
+# Source-to-generator audit: three distinct selection stages
+
+**Question:** Does the source—at any retained level—select the continuous Hamiltonian generator?
+
+**Answer:** The selection occurs in three stages. The source selects the first incompletely; the second is a policy; the third is a module. Treating them as one conflates structural boundaries with open targets.
+
+## Stage A: Operations
+
+| What | Source constructors |
+|---|---|
+| **expandLeft, expandRight** | `ObserverCoherenceCube.Geometry` for any `e : O ≃ R`. Generic—works for any equivalence. Not Bool-specific; the Bool instantiation is `f = notEquiv`. |
+| **Involutions L,R** | L² = R² = I on the 4-element torsor (Bool²). Both commute (LR = RL). This is a faithful (Z/2)² action. |
+| **RetainedReturn** from `RetainedSquareReversal` | Adds the backward section, start/end laws, source/target pairing. Record structure, not a dynamical constraint. |
+
+**Constraint on generator:** L and R must be realized as linear operators. Their commutation forces the generator's eigenspaces to split along the two coordinate axes:  
+`H = a·P_L + b·P_R` for some \(a,b\).
+
+*The source operations select the projector decomposition but **not** the scalar weights \(a,b\).*
+
+## Stage B: Algebra policy
+
+| What | Prior result (Voevodsky, `source-algebra-selection-boundary.md`) |
+|---|---|
+| **Trivial phase** | L(a,b)=(¬a,b), R(a,b)=(a,¬b) as commuting bit flips. Four states. |
+| **Clifford phase** | L⟶e1 (left mult), R⟶e2 (left mult). Anticommute: e1·e2 = -e2·e1. Uses 2×2 implementation, non-commuting, extra phase cocycle. |
+| **Identical source projections** | Both produce the same word histories and pointwise readouts. The source does not select between them. |
+
+The **Bool square uses the trivial phase** (commuting operations). The Clifford phase is a different algebra policy.
+
+The Hamiltonian construction `H = a·P_L + b·P_R` is WITHIN the trivial-phase policy. The policy does not select \((a,b)\). The time-evolution unitary remains
+\[
+\exp(-i\theta H) = \exp(-i\theta a P_L)\exp(-i\theta b P_R)
+\]
+for ANY \(a,b\). At \(\theta=\pi\), \(L\) and \(R\) appear when \(a,b\) are odd; at \(\theta=2\pi\) identity requires \(a,b\) integers.
+
+**The Tick's schedule pair and return live at Stage A. They do not migrate to Stage B.** Both left-first and right-first schedules use the same L,R. The route-homotopy certifies endpoint equality, which holds for any commuting P_L,P_R regardless of weight scaling. The return section reverses the combined path, which is also weight-independent.
+
+**Algebra policy says whether L,R come from a commutative or non-commutative algebra. It alone does not fix their generator's continuous weighting.**
+
+## Stage C: Defining module
+
+| What | Rotor precedent | Current status |
+|---|---|---|
+| **Rotor case** | Finite group samples fix \(k\equiv1\pmod4\). The **defining module** (R² with \(U(\theta)w=e^{-i\theta}w\)) selects \(k=1\) at all \(\theta\). |
+| **Square case** | Tick data fix \(a,b\) odd. No module yet supplied to select \((1,1)\) over \((3,1),(1,3),(3,3),\ldots\) |
+
+A defining module for the Bool square would be an explicit declaration of what the continuous path \(|\psi(\theta)\rangle = \exp(-i\theta H)|\psi_0\rangle\) should look like for ALL \(\theta\), not just at the discrete schedule angles.
+
+The **natural** module (tensor product of two independent 2-state systems with unit spectral gap) gives \(a=b=1\). But it is not forced by the finite Tick data—it is an additional declared input, exactly as the complex structure on R² was additional in the rotor case.
+
+---
+
+## What is needed to resolve the ambiguity
+
+**Option A: Declare the natural module.** Accept that the Bool states factor as two independent binary subsystems and that the generator should assign unit weight to each projector. This gives \(H_0 = P_L + P_R\) uniquely.
+
+Cost: this is an input, not a deduction. The Tick does not record "independence of the two bits"—it records that L and R commute and both are involutions. Many coupled generalizations also commute.
+
+**Option B: Find a source-constructed selection principle.** Search the existing Agda modules for any construction that explicitly couples the two axes in a weight-selective way, e.g. a second-order constraint, a primitive return invariant, or a period-counting witness that forces the gap.
+
+**Option C: Accept the ambiguity.** Document that \(a,b\) are unconstrained by the discrete retained process data, just as the rotor's \(k\) modulo 4 was unresolved by the finite samples. The defining module is then a separate forward decision.
+
+---
+
+## Concrete next executable
+
+The rotor case resolved its \(k\equiv1\pmod4\) ambiguity via the **explicit matrix identity** \(U(\theta) = \cos\theta + J\sin\theta\) evaluated at \(\theta=\pi/4\). The Bool-square analog would be:
+
+Pick a specific non-corner angle \(\theta\) (say \(\pi/2\), the midpoint of each half-square leg). The left-first path visits the intermediate state \(L(s)\) at the half-square. The continuous evolution under \(H\) from \(s\) at \(\theta=\pi/2\) should also reach \(L(s)\)—otherwise the schedule is not a continuous realization of the leg.
+
+**Check:**  
+For \(H = aP_L + bP_R\), is \(\exp(-i\pi a P_L / 2)|s\rangle = L(s)\)?  
+- Yes if \(a\) is odd (since \(\exp(-i\pi P_L/2) = I\) restricted to P_L=0, \(i\) on P_L=1, but we need the full flip to happen at \(\theta=\pi\) not \(\pi/2\)).  
+
+Actually at \(\theta=\pi/2\):  
+\(\exp(-i\pi P_L/4)\) is not L. The midpoint of the LEFT-LEG evolution is \(i^{-1/2}\) on the flipped subspace, not L. So requiring the schedule leg's midpoint doesn't select a,b either.
+
+**Correct test:** The leg's FULL DURATION is parameterized from 0 to \(\pi\) (half-square under P_L). This duration is FIXED by requiring that the flip completes at \(\theta=\pi\). But this is satisfied for ANY odd \(a\). The rate of evolution (how fast the phase winds) differs, but the Tick does not record rate—only that the flip completed.
+
+The Tick records: "L was applied starting from s, and the result was L(s)." This is a single discrete transition, not a record of how long it took or how the phase interpolated. So the timetable is not fixed by the Tick.
+
+This means the Tick's schedule structure does NOT determine the evolution rate, just as the rotor's finite samples didn't determine k=1 uniquely. The distinction between H0 and 3*H0 is a rate/weight distinction invisible to the discrete process record.
+
+**Decision point:** Do we accept that the discrete retained process record underspecifies the continuous evolution rate, and move forward with a declared module (like the rotor did)? Or do we search for a different kind of witness that carries rate information?

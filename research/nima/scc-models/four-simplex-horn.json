@@ -1,0 +1,24 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "four-simplex-horn",
+    "owner": "marici.Nima",
+    "classification": "cubical_marked_four_simplex_outer_horn_checked",
+    "stratum": "Cubical presentation of path simplices; five vertices, ten edges and triangles fixed; supplied tetrahedra 0123,0124,0134,0234. Missing face 1234. Forward realization and shared-boundary coherence.",
+    "inputs": [
+      "research/nima/agda/FourSimplexHorn.agda",
+      "research/nima/agda/RetainedTetrahedralPackage.agda",
+      "research/nima/checkers/check_cubical_agda.ps1",
+      "research/nima/checkers/check_composable_witness_specialization.py",
+      "research/nima/results/agda-FourSimplexHorn.json"
+    ],
+    "checks": [
+      {"id": "four-simplex-horn-fresh-receipt", "path": "research/nima/checkers/check_four_simplex_horn.py", "requires": []}
+    ],
+    "depends_on": [],
+    "consumes": ["Cubical dependent singleton contractibility", "retained typed vertex example"],
+    "provides": ["outer horn completion with fixed lower data", "five tetrahedral restrictions", "ten shared triangle checks", "earlier triangle-package equivalence", "exact fixed-fifth-face compatibility gate", "request-answer WG"],
+    "missing_constructors": ["full comparison with older concatenation-based tetrahedral encoding", "all horn orientations and simplicial degeneracy laws"],
+    "next_falsifier": "Construct a boundary-preserving equivalence to the earlier tetrahedral encoding; do not infer it from the triangle-level equivalence alone."
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema": "marici.nima.general-square-generator-audit.v1",
+  "status": "pass",
+  "centralizer_basis": [
+    "I",
+    "L",
+    "R",
+    "LR"
+  ],
+  "centralizer_dimension": 4,
+  "generic_form": "H = c*I + a*PL + b*PR + d*PLPR",
+  "endpoint_parity": {
+    "c_parity": "even",
+    "a_parity": "odd",
+    "b_parity": "odd",
+    "d_parity": "even",
+    "condition": "c in 2Z, a in 2Z+1, b in 2Z+1, d in 2Z"
+  },
+  "external_choices": {
+    "D1_coordinate_symmetry": "a = b",
+    "D2_coordinate_independence": "d = 0",
+    "D3_zero_offset": "c = 0",
+    "D4_unit_local_gap": "a = 1"
+  },
+  "candidates_after_all_choices": [
+    {
+      "label": "H0 = PL+PR",
+      "c": 0,
+      "a": 1,
+      "b": 1,
+      "d": 0,
+      "spectrum": [
+        0,
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "label": "3*H0 = 3(PL+PR)",
+      "c": 0,
+      "a": 3,
+      "b": 3,
+      "d": 0,
+      "spectrum": [
+        0,
+        3,
+        3,
+        6
+      ]
+    }
+  ],
+  "counterexample_H_alt": {
+    "form": "PL + PR - 2*PLPR",
+    "c": 0,
+    "a": 1,
+    "b": 1,
+    "d": -2,
+    "spectrum": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "fails_local_gap": true,
+    "satisfies_endpoint": true,
+    "note": "non-minimal local gap despite minimal spectral width"
+  },
+  "disposition": "The source endpoint parity is the only spectral constraint forced by the Tick data along the diagonal path (alpha=beta).  All other choices (coordinate independence, unit gap, zero offset) are conventional and must be declared.  The product structure gives a distinguished reference generator H0, but its normalization is not derived.  For the full two-parameter evolution U(alpha,beta) and corrections to earlier overclaims see square-structural-audit.json and square-audit-corrections.md."
+}

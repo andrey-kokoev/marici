@@ -1,0 +1,29 @@
+{
+  "schema": "marici.nima.compton-record-compatibility.v1",
+  "question": "Does the existing single-Compton azimuth-binning implementation realize the binary effects assigned to it?",
+  "obligation": "physical readout compatibility: pull classical record partitions back through the independently given Klein-Nishina POVM",
+  "source": "research/nima/check_qed_bell_experimental_gate.py:compton_visibility and the declared parallel/perpendicular azimuth implementation",
+  "domain": ["free unpolarized electron target", "unobserved final polarization/spin", "fixed incident energy and setting-independent polar-angle support", "setting-independent incoming two-photon state, otherwise arbitrary", "settings rotate the azimuth reference or relabel the same local scattering record", "all local rejection/no-click records retained"],
+  "given_not_derived": ["Klein-Nishina cross section", "polarization Hilbert space and Born pairing", "physical preparation independence from settings"],
+  "normalized_parent": "F(phi)=(I-mu*(cos(2phi)*X+sin(2phi)*Y))/(2*pi), 0<=mu<=1",
+  "records": {
+    "plus": "azimuth within Delta of alpha+pi/2 modulo pi",
+    "minus": "azimuth within Delta of alpha modulo pi",
+    "no_click": "remaining azimuths",
+    "Delta_domain": "0<Delta<=pi/4",
+    "no_click_assignment": "+1 fixed, without filtering"
+  },
+  "predictions": {
+    "acceptance": "eta=4*Delta/pi",
+    "accepted_sharpness": "nu=mu*sin(2*Delta)/(2*Delta)",
+    "effects": "E_pm=eta*(I pm nu*O(alpha))/2; E_0=(1-eta)*I",
+    "full_coverage_sharpness": "2*mu/pi, not mu",
+    "single_arm_calibration": "For the + eigenstate of O(alpha), full-coverage p_plus=1/2+mu/pi; the old binary model predicts 1/2+mu/2",
+    "complete_CHSH": "absolute value <=2 for every state because all settings are postprocessings of one local parent POVM",
+    "postselection_control": "At muA=muB=1 and Delta=pi/16, the conditional Phi+ table violates CHSH while the complete common-parent record law does not"
+  },
+  "rivals": ["pointwise modulation mu is the binary sharpness of exhaustive sector binning", "a scalar total acceptance effect makes context-dependent detector postselection an event-ready Bell test", "independent azimuth-reference choices implement incompatible quantum measurements"],
+  "exact_fixtures": {"A_axes_in_pi_units": ["1/2", "1/4"], "B_axes_in_pi_units": ["3/8", "5/8"], "half_widths_in_pi_units": ["1/4", "1/8", "1/16"], "CHSH_signs": [[1,1],[-1,1]], "pi_bounds_for_certificates": ["223/71", "22/7"]},
+  "falsifier": "Reject the obstruction if the stated sector effects fail to be marginals of the constructed positive normalized parent, or if any complete deterministic response yields absolute CHSH above 2; preserve the ideal-projector Bell control.",
+  "boundary": "No hardware run, new probability law, or Marici-versus-QM discrimination. This excludes the specified azimuth-rebinning readout, not a different setting-dependent physical interaction. Existing ideal polarization instruments and scattering-amplitude theorems remain intact."
+}

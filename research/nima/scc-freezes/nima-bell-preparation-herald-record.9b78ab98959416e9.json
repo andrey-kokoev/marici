@@ -1,0 +1,64 @@
+{
+  "schema": "marici.scc.freeze.v1",
+  "model_id": "nima-bell-preparation-herald-record",
+  "fingerprint": "9b78ab98959416e9a410d36917f659f469271b850b14157f12b95c0701635157",
+  "owner": "marici.Nima",
+  "classification": "conditional-calibration-to-herald-record-comparison-not-physical-validation",
+  "stratum": "Forward realization of both preparation branches on the actual five-filler C4 source; full instrument continuations before classical record transport. Fixed Born/Lueders inputs and setting-independent herald/erasure channel class. No new physical authority.",
+  "depends_on": [
+    "nima-gram-bell-readout-comparison"
+  ],
+  "consumes": [
+    "actual Bool filler actions",
+    "complete sequential Bell instrument"
+  ],
+  "provides": [
+    "both-branch preparation comparison",
+    "independent-calibration-to-inclusive-record prediction"
+  ],
+  "missing_constructors": [
+    "independently calibrated physical preparation and record-channel bundle"
+  ],
+  "next_falsifier": "Reject if identity-route calibration does not predict the complete twist-route record law under the same K and erasure channels, or if the mode-dependent-channel hostile is accepted. Physical testing is deferred without apparatus-bound raw trials and calibration-transfer authority; do not substitute another synthetic Bell calculation.",
+  "manifest": {
+    "id": "nima-bell-preparation-herald-record",
+    "owner": "marici.Nima",
+    "classification": "conditional-calibration-to-herald-record-comparison-not-physical-validation",
+    "stratum": "Forward realization of both preparation branches on the actual five-filler C4 source; full instrument continuations before classical record transport. Fixed Born/Lueders inputs and setting-independent herald/erasure channel class. No new physical authority.",
+    "inputs": [
+      "research/nima/contracts/bell-preparation-herald-record.v1.json",
+      "research/nima/checkers/check_gram_selection_principle.py",
+      "research/nima/checkers/check_entanglement.py",
+      "research/nima/checkers/check_gram_bell_readout_comparison.py",
+      "research/nima/gram-interference-and-bell-readout-comparison.md",
+      "research/aspect/checkers/check_combined_bell_instrument.py",
+      "research/aspect/state-effect-pairing-and-record-map-dpc.md",
+      "research/aspect/bell-no-click-efficiency-gate.md",
+      "research/aspect/live-apparatus-mcp-adapter.md"
+    ],
+    "checks": [
+      {
+        "id": "nima-bell-preparation-herald-record-exact",
+        "path": "research/nima/checkers/check_bell_preparation_herald_record.py",
+        "requires": [
+          "sympy"
+        ]
+      }
+    ],
+    "depends_on": [
+      "nima-gram-bell-readout-comparison"
+    ],
+    "consumes": [
+      "actual Bool filler actions",
+      "complete sequential Bell instrument"
+    ],
+    "provides": [
+      "both-branch preparation comparison",
+      "independent-calibration-to-inclusive-record prediction"
+    ],
+    "missing_constructors": [
+      "independently calibrated physical preparation and record-channel bundle"
+    ],
+    "next_falsifier": "Reject if identity-route calibration does not predict the complete twist-route record law under the same K and erasure channels, or if the mode-dependent-channel hostile is accepted. Physical testing is deferred without apparatus-bound raw trials and calibration-transfer authority; do not substitute another synthetic Bell calculation."
+  }
+}

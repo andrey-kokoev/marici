@@ -1,0 +1,59 @@
+{
+  "schema": "marici.scc.freeze.v1",
+  "model_id": "nima-compton-record-compatibility",
+  "fingerprint": "b5c0ba5650f1f03f1ff9d55eb4358e239fae846c4f0463ab3a0e80a05e8f29cb",
+  "owner": "marici.Nima",
+  "classification": "physical-readout-model-comparison-not-hardware-validation",
+  "stratum": "Klein-Nishina single-Compton angular POVM with fixed unpolarized target; local azimuth-reference settings and all no-click records. The source state is arbitrary on the given two-photon polarization space.",
+  "depends_on": [],
+  "consumes": [
+    "given Klein-Nishina angular response",
+    "full source polarization state, not a Bell-fitted visibility"
+  ],
+  "provides": [
+    "common-parent readout comparison",
+    "sector acceptance and sharpness law",
+    "independent single-arm calibration discriminator"
+  ],
+  "missing_constructors": [
+    "physically calibrated incompatible analyzer interaction for a detector-complete Bell experiment"
+  ],
+  "next_falsifier": "Supply a setting-dependent analyzer interaction not simulable by the declared common angular POVM, or refute the parent normalization/positivity/marginal comparison. More luminosity and more reference-angle labels cannot change this obstruction.",
+  "manifest": {
+    "id": "nima-compton-record-compatibility",
+    "owner": "marici.Nima",
+    "classification": "physical-readout-model-comparison-not-hardware-validation",
+    "stratum": "Klein-Nishina single-Compton angular POVM with fixed unpolarized target; local azimuth-reference settings and all no-click records. The source state is arbitrary on the given two-photon polarization space.",
+    "inputs": [
+      "research/nima/contracts/compton-record-compatibility.v1.json",
+      "research/nima/check_qed_bell_experimental_gate.py",
+      "research/nima/qed-bell-experimental-protocol.md",
+      "research/nima/qed-elastic-pair-instrument.md",
+      "research/nima/rank-four-photon-bell-map.md",
+      "research/nima/angular-bin-bell-pushforward.md",
+      "research/aspect/contracts/epr-compton-local-flatness-nonfactorization.v1.json"
+    ],
+    "checks": [
+      {
+        "id": "nima-compton-record-compatibility-exact",
+        "path": "research/nima/checkers/check_compton_record_compatibility.py",
+        "requires": [
+          "sympy"
+        ]
+      }
+    ],
+    "consumes": [
+      "given Klein-Nishina angular response",
+      "full source polarization state, not a Bell-fitted visibility"
+    ],
+    "provides": [
+      "common-parent readout comparison",
+      "sector acceptance and sharpness law",
+      "independent single-arm calibration discriminator"
+    ],
+    "missing_constructors": [
+      "physically calibrated incompatible analyzer interaction for a detector-complete Bell experiment"
+    ],
+    "next_falsifier": "Supply a setting-dependent analyzer interaction not simulable by the declared common angular POVM, or refute the parent normalization/positivity/marginal comparison. More luminosity and more reference-angle labels cannot change this obstruction."
+  }
+}

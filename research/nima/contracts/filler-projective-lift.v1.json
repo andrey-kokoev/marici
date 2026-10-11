@@ -1,0 +1,41 @@
+{
+  "schema": "marici.nima.filler-projective-lift.v1",
+  "problem": "Does strict source-lift classification exhaust implementations when source composition is required only for completed quantum channels?",
+  "obligation": "forward realization / distinction between phase-framed unitary and completed-channel composition",
+  "source": {
+    "fillers": "research/nima/checkers/check_gram_selection_principle.py",
+    "states": "research/nima/checkers/check_entanglement.py",
+    "instrument": "research/aspect/checkers/check_combined_bell_instrument.py"
+  },
+  "retained": ["all five actual Boolean functions and ordered four labels", "all 24 source permutations", "all 576 channel multiplication cells on every matrix unit", "central phases and the full cocycle", "both preparation branches and full instrument continuations"],
+  "conjecture": "A fourth-root monomial projective lift of the actual S4 action exists outside every rephased strict representation. It reproduces the entire flip_fst channel used by the previous test but reverses coherence between the two labels fixed by twist.",
+  "search": {
+    "adjacent_permutations": [[1,0,2,3],[0,2,1,3],[0,1,3,2]],
+    "source_words": [["flip_both","twist","flip_both"],["swap"],["twist"]],
+    "phase_exponents_modulo": 4,
+    "generator_square": "-I",
+    "adjacent_braid": "exact equality",
+    "distant_relation": "T0*T2=-T2*T0",
+    "filter": "The channel of T1*T0*T2*T1 equals Ad(P_flip_fst) on the entire matrix algebra",
+    "selection": "lexicographically first surviving exponent triple, not selected by measured or calculated witness statistics"
+  },
+  "predictions": {
+    "candidates_per_generator": 16,
+    "triples_searched": 4096,
+    "survivors": "at least one; record all surviving exponent triples",
+    "lift_group_order": 48,
+    "channel_group_order": 24,
+    "central_kernel": [0,2],
+    "matrix_unit_composition_checks": 9216,
+    "cocycle_cells": 13824,
+    "commuting_source_lift_commutator": "-I, invariant under arbitrary scalar rephasings and common conjugation",
+    "central_phase_channel": "identity, not an observable global phase",
+    "twist_fixed_ray_phase_ratio": "-1, versus +1 for every strict monomial lift",
+    "twist_channel_trace": {"strict": "4", "projective": "0"},
+    "old_flip_fst_statistic": {"strict": "1", "projective": "1"},
+    "twist_statistic_on_A0": {"strict": "1", "projective": "-1"}
+  },
+  "rivals": ["all completed-channel lifts admit strict unitary representatives", "the old flip_fst spectator test identifies the whole source implementation", "a nontrivial scalar cocycle is necessarily only a physically invisible difference between the complete channel families", "global -I itself is observable without a phase-framed control interface"],
+  "scope": "Constructive counterexample and exhaustive stated fourth-root search, not a classification of all projective or CPTP realizations. Existing strict-lift theorem survives. The ideal witness uses supplied ordinary-QM preparation, tensor factors and fixed local readout; no new Born law, physical calibration, laboratory records or Marici-versus-QM selection evidence.",
+  "falsifier": "Reject if the search has no survivor, a source/channel/cocycle gate fails, flip_fst differs as a channel, the fixed-ray coherence does not separate the candidate, or the central-phase channel is incorrectly distinguished. Preserve all predecessor and foreign source/receipt bytes."
+}

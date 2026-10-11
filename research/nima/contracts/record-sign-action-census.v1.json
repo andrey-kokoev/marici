@@ -1,0 +1,36 @@
+{
+  "schema": "marici.nima.record-sign-action-census.v1",
+  "problem": "Can source-generated reference records distinguish the fixed projective implementation from every canonical implementation with a composition-compatible three-bit sign action, despite unknown axis-dependent readout channels?",
+  "obligation": "forward realization of reference preparations, then attachment transport and full-record identification",
+  "conjecture": "The eight actions have unique predictions from matching bypass tables and the 11 basis reference. All are excluded exactly when C_A, C_B, Delta_AZ and Delta_BZ are nonzero. Blind Z channels give genuine record aliases; the missing 11 reference admits nuisance refits even when the actual Z channels are informative.",
+  "source": {
+    "bypass_receipt": "research/nima/results/bypass-record-reflection.json",
+    "projective_receipt": "research/nima/results/filler-projective-lift.json",
+    "fillers": "research/nima/checkers/check_gram_selection_principle.py",
+    "states": "research/nima/checkers/check_entanglement.py",
+    "instrument": "research/aspect/checkers/check_combined_bell_instrument.py"
+  },
+  "action_class": {
+    "group": "S4 acting through the actual Boolean source permutations",
+    "target": "C2^3, ordered herald/Alice/Bob",
+    "placement": "flip ideal labels before K and the axis-specific detector record channels; quantum continuations are not relabelled into new states",
+    "axis_rule": "the flip bit of each detector is independent of axis, but its stochastic readout channel may depend on axis",
+    "expected_count": 8,
+    "adjacent_generator_assignments": 512
+  },
+  "channel_class": "K tensor R_A,axis tensor R_B,axis, conditionally independent given ideal records, fixed across reference and probe uses of that axis",
+  "records": {"herald": [0,1,"no_record"], "detectors": [-1,0,1], "ideal_signs": [-1,1], "basis_references": "no herald requested; keep all nine detector cells"},
+  "channels": {
+    "K": [["3/4","1/6"],["1/8","2/3"],["1/8","1/6"]],
+    "AX": [["3/4","1/10"],["1/8","1/5"],["1/8","7/10"]],
+    "AZ": [["3/5","1/5"],["1/5","1/10"],["1/5","7/10"]],
+    "BX": [["7/10","1/10"],["1/10","1/5"],["1/5","7/10"]],
+    "BZ": [["1/2","1/8"],["1/4","1/8"],["1/4","3/4"]]
+  },
+  "degeneracy_census": {"flags": ["K","AX","BX","AZ","BZ"], "strata": 32, "blind_column_rule": "replace both columns by their arithmetic mean"},
+  "native_references": ["B-X preparation, identity, A-Z/B-X readout", "A-X preparation, identity, A-X/B-Z readout", "product00, identity, Z/Z readout", "product00, flip_both, Z/Z readout"],
+  "probes": ["B-X preparation, twist, A-Z/B-X", "B-X preparation, swap, A-X/B-Z"],
+  "rivals": ["informative X probes suffice when a Z response is blind", "unknown noise must be numerically fitted or physically admitted before prediction", "the 11 reference adds no identifying information", "record aliases imply equal postmeasurement continuations"],
+  "predicted_survivor_rule": "(not vA or not AZ) and (vH xor vB or not C_B) and (not vB or not BZ) and (not(vH xor vA) or not C_A)",
+  "scope": "Exact mathematical comparison for the fixed canonical/projective sources and eight ideal-label actions. No arbitrary correlated, context-dependent, or axis-dependent sign-action model is classified. No physical-admission prerequisite, measured records or finite-sample confidence claim."
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-filler-phase-spectator",
+    "owner": "marici.Nima",
+    "classification": "strict-source-lift-selection-and-spectator-attachment-test",
+    "stratum": "Strict monomial unitary lifts of the actual four-label Boolean permutation source; ordinary QM, supplied product factors and fixed independently anchored preparation/readout attachments",
+    "inputs": [
+      "research/nima/contracts/filler-phase-spectator.v1.json",
+      "research/nima/checkers/check_gram_selection_principle.py",
+      "research/nima/checkers/check_entanglement.py",
+      "research/aspect/checkers/check_combined_bell_instrument.py"
+    ],
+    "checks": [{"id": "nima-filler-phase-spectator-exact", "path": "research/nima/checkers/check_filler_phase_spectator.py", "requires": ["sympy"]}],
+    "consumes": ["actual five Boolean functions", "given tensor-product quantum instrument"],
+    "provides": ["explicit pair of operational implementation hypotheses", "conditional source-lift classification", "spectator-preserving versus merely non-signalling distinction"],
+    "missing_constructors": ["independent physical subsystem/preparation/readout binding", "calibrated full-record data"],
+    "next_falsifier": "Test whether strict unitary composition is a justified interface assumption: source laws on completed channels permit projective lifts. Seek an exact four-label monomial projective rival preserving all source channel actions/compositions, or prove none exists; do not promote the strict classification to that larger class. Empirical gates still require independent physical material."
+  }
+}

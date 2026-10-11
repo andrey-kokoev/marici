@@ -1,0 +1,27 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-tick-unitary-image-nonuniqueness",
+    "owner": "marici.Nima",
+    "classification": "distinct-images-in-declared-retained-unitary-annotation-class",
+    "stratum": "Full Bool Tick retained separately; fixed C4 basis and metric; commuting positive axis generators, exact bit-flip endpoints, interchange symmetry and reflected square. No intermediate tensor-locality or native analytic-return functor assumed.",
+    "inputs": [
+      "research/nima/agda/TickRetainedStructure.agda",
+      "research/nima/agda/NativeSquareHamiltonianSkeleton.agda",
+      "research/nima/checkers/check_native_square_controlled_hamiltonian.py",
+      "research/nima/checkers/check_triangle_half_phase.py",
+      "research/nima/native-square-controlled-hamiltonian.md"
+    ],
+    "checks": [{
+      "id": "nima-tick-unitary-image-exact",
+      "path": "research/nima/checkers/check_tick_unitary_image_nonuniqueness.py",
+      "requires": []
+    }],
+    "depends_on": ["native-square-controlled-hamiltonian"],
+    "consumes": ["actual source square operation tables", "full fixed-source Bool Tick classification"],
+    "provides": ["exact polynomial product-image invariant", "unitary rival outside the whole baseline image even modulo overall phase"],
+    "missing_constructors": [],
+    "next_falsifier": "Reject if the mixed-projector rival fails any frozen admissibility gate, or its determinant vanishes, or the baseline determinant polynomial is nonzero. A new locality axiom changes the interpretation class rather than reopening its proved underdetermination."
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "marici.scc.freeze.v1",
+  "model_id": "nima-twelve-point-phase-readout",
+  "fingerprint": "640629db4635326168c71ff314b977f15e9078ba23ead1a29466443894f1ff68",
+  "owner": "marici.Nima",
+  "classification": "full-source-phase-alignment-and-degenerate-eigenframe-readout-obstruction",
+  "stratum": "Attachment typing and readout descent on the complete preserved 12x12 phase implementation with its original base matrix. Compare adjoint convention, shared doublet operators and degenerate eigenframe freedom; preserve the separate stronger flavor implementation.",
+  "depends_on": [],
+  "consumes": [
+    "whole preserved full phase model",
+    "existing shared-doublet weak-basis convention",
+    "original solver matrix constructor"
+  ],
+  "provides": [
+    "exact common-doublet comparison",
+    "fixed-source degenerate-eigenframe counterexample",
+    "uniform phase-only mass-splitting obstruction"
+  ],
+  "missing_constructors": [],
+  "next_falsifier": "Reject if source-level exact constructor replay gives unequal shared-doublet squared maps, if the same phase-only solver can change singular values, or if degenerate frame changes leave every reported modulus unchanged. A new matter law or attachment is not a retry of this closure; the stronger nine-link noncommuting control must survive.",
+  "manifest": {
+    "id": "nima-twelve-point-phase-readout",
+    "owner": "marici.Nima",
+    "classification": "full-source-phase-alignment-and-degenerate-eigenframe-readout-obstruction",
+    "stratum": "Attachment typing and readout descent on the complete preserved 12x12 phase implementation with its original base matrix. Compare adjoint convention, shared doublet operators and degenerate eigenframe freedom; preserve the separate stronger flavor implementation.",
+    "inputs": [
+      "research/nima/quarantine/20261007-generation-evidence/SHA256SUMS",
+      "research/nima/quarantine/20261007-generation-evidence/checkers/check_full_12x12_gram.py",
+      "research/nima/quarantine/20261007-phase-readout-evidence/SHA256SUMS",
+      "research/nima/quarantine/20261007-phase-readout-evidence/checkers/check_flavor_solver.py",
+      "research/nima/quarantine/20261007-phase-readout-evidence/checkers/check_ckm_variational.py",
+      "research/nima/checkers/collect_continuum_diagnostics.py",
+      "research/nima/checkers/collect_phase_readout_diagnostics.py",
+      "research/nima/results/phase-readout-transport.json",
+      "research/nima/checkers/check_flavor_solver.py",
+      "research/nima/checkers/check_ckm_variational.py",
+      "research/flavor/flavor-nine-link-conventions.md",
+      "research/flavor/flavor-chart-transition-packet.md",
+      "research/flavor/checkers/nine_link_exact_checks.py"
+    ],
+    "checks": [
+      {
+        "id": "nima-twelve-point-phase-readout-exact",
+        "path": "research/nima/checkers/check_twelve_point_phase_readout.py",
+        "requires": [
+          "sympy"
+        ]
+      }
+    ],
+    "depends_on": [],
+    "consumes": [
+      "whole preserved full phase model",
+      "existing shared-doublet weak-basis convention",
+      "original solver matrix constructor"
+    ],
+    "provides": [
+      "exact common-doublet comparison",
+      "fixed-source degenerate-eigenframe counterexample",
+      "uniform phase-only mass-splitting obstruction"
+    ],
+    "missing_constructors": [],
+    "next_falsifier": "Reject if source-level exact constructor replay gives unequal shared-doublet squared maps, if the same phase-only solver can change singular values, or if degenerate frame changes leave every reported modulus unchanged. A new matter law or attachment is not a retry of this closure; the stronger nine-link noncommuting control must survive."
+  }
+}

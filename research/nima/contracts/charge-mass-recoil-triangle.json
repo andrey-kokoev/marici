@@ -1,0 +1,27 @@
+{
+  "id": "charge-mass-recoil-triangle",
+  "obligation": "route/coherencer compatibility",
+  "objects": [
+    {"id": "C", "type": "signed coupling coefficient with retained two-body context"},
+    {"id": "R", "type": "paired momentum increment in the same context"},
+    {"id": "V", "type": "paired velocity increment in the same context"}
+  ],
+  "arrows": [
+    {"id": "coupling-to-recoil", "source": "C", "target": "R", "map_token": "balanced_impulse", "formula": "c -> (c*G,-c*G)"},
+    {"id": "inertial-response", "source": "R", "target": "V", "map_token": "inverse_inertia", "formula": "(J1,J2) -> (J1/m1,J2/m2)"},
+    {"id": "direct-response", "source": "C", "target": "V", "map_token": "direct_response", "formula": "c -> (c*G/m1,-c*G/m2)"}
+  ],
+  "cells": [
+    {"id": "response-face", "kind": "commutation", "routes": [["coupling-to-recoil", "inertial-response"], ["direct-response"]], "threshold": "exact_zero", "external_semantic_checker": "research/nima/checkers/check_charge_mass_recoil_triangle.py"}
+  ],
+  "obstructions": [
+    {"id": "physical-identification", "description": "The supplied coupling and inertia laws are not obtained from the retained WG state."}
+  ],
+  "claims": [
+    {"id": "trial-response-compatibility", "requires": ["semantic-response-witness-import"]}
+  ],
+  "higher_coherence": [
+    {"id": "physical-time-tetrahedral-extension", "degree": 3, "state": "unsupported", "reason": "No fourth presentation, physical-clock map, extra faces or filler supplied."}
+  ],
+  "compiler_boundary": "SCC categorical compares literal route words, not these algebraic formulas. Its unequal words must not be erased by assigning identical tokens; the independent exact checker supplies the semantic equality."
+}

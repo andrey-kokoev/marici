@@ -1,0 +1,50 @@
+{
+  "schema": "marici.scc.freeze.v1",
+  "model_id": "nima-bypass-record-reflection",
+  "fingerprint": "92175ddcd778a0e4afe5e5b84a620e764d6b1747e4586894891fc21f748005cb",
+  "owner": "marici.Nima",
+  "classification": "source-bound-record-comparison-with-parity-noise-hostile",
+  "stratum": "Balanced source preparations, strict/projective S4 channels, and complete finite record alphabets with common conditional herald/readout channels",
+  "depends_on": [],
+  "consumes": [
+    "actual source operations and preparation instruments",
+    "fixed projective source section"
+  ],
+  "provides": [
+    "noise-parameter-free bypass prediction under declared common-channel premises",
+    "native cross-port comparison against a source-parity herald rival"
+  ],
+  "missing_constructors": [],
+  "next_falsifier": "Execute the full-record reflection, all-source parity-alias test and swap/readout separation. Physical admission is not an execution gate. Report model assumptions and experimental nonverification separately.",
+  "manifest": {
+    "id": "nima-bypass-record-reflection",
+    "owner": "marici.Nima",
+    "classification": "source-bound-record-comparison-with-parity-noise-hostile",
+    "stratum": "Balanced source preparations, strict/projective S4 channels, and complete finite record alphabets with common conditional herald/readout channels",
+    "inputs": [
+      "research/nima/contracts/bypass-record-reflection.v1.json",
+      "research/nima/results/filler-projective-lift.json",
+      "research/nima/checkers/check_gram_selection_principle.py",
+      "research/nima/checkers/check_entanglement.py",
+      "research/aspect/checkers/check_combined_bell_instrument.py"
+    ],
+    "checks": [
+      {
+        "id": "nima-bypass-record-reflection-exact",
+        "path": "research/nima/checkers/check_bypass_record_reflection.py",
+        "requires": [
+          "sympy"
+        ]
+      }
+    ],
+    "consumes": [
+      "actual source operations and preparation instruments",
+      "fixed projective source section"
+    ],
+    "provides": [
+      "noise-parameter-free bypass prediction under declared common-channel premises",
+      "native cross-port comparison against a source-parity herald rival"
+    ],
+    "next_falsifier": "Execute the full-record reflection, all-source parity-alias test and swap/readout separation. Physical admission is not an execution gate. Report model assumptions and experimental nonverification separately."
+  }
+}

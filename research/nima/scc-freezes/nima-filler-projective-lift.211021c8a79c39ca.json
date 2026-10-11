@@ -1,0 +1,56 @@
+{
+  "schema": "marici.scc.freeze.v1",
+  "model_id": "nima-filler-projective-lift",
+  "fingerprint": "211021c8a79c39cae182ea72a48a1ebdd1c4292e9a2ffe31fabf262e8a709959",
+  "owner": "marici.Nima",
+  "classification": "projective-channel-source-lift-countermodel",
+  "stratum": "Actual four-label Boolean S4 action realized by monomial unitary channels; completed-channel composition is strict but chosen unitary representatives may have a central multiplier",
+  "depends_on": [],
+  "consumes": [
+    "actual source permutation functions",
+    "supplied ordinary-QM tensor product and instrument"
+  ],
+  "provides": [
+    "exact projective source-channel rival",
+    "test of the completeness of strict implementation hypotheses"
+  ],
+  "missing_constructors": [
+    "independently justified physical preparation/readout and subsystem binding",
+    "independent calibration and held-out physical records"
+  ],
+  "next_falsifier": "Test the frozen 4096 generator triples and retain the full central extension/cocycle and fixed-ray instrument comparison. This closes a model-class promotion test, not the physical-interface gate. Do not create further abstract phase variants as substitutes for independent physical attachments and calibration.",
+  "manifest": {
+    "id": "nima-filler-projective-lift",
+    "owner": "marici.Nima",
+    "classification": "projective-channel-source-lift-countermodel",
+    "stratum": "Actual four-label Boolean S4 action realized by monomial unitary channels; completed-channel composition is strict but chosen unitary representatives may have a central multiplier",
+    "inputs": [
+      "research/nima/contracts/filler-projective-lift.v1.json",
+      "research/nima/checkers/check_gram_selection_principle.py",
+      "research/nima/checkers/check_entanglement.py",
+      "research/aspect/checkers/check_combined_bell_instrument.py"
+    ],
+    "checks": [
+      {
+        "id": "nima-filler-projective-lift-exact",
+        "path": "research/nima/checkers/check_filler_projective_lift.py",
+        "requires": [
+          "sympy"
+        ]
+      }
+    ],
+    "consumes": [
+      "actual source permutation functions",
+      "supplied ordinary-QM tensor product and instrument"
+    ],
+    "provides": [
+      "exact projective source-channel rival",
+      "test of the completeness of strict implementation hypotheses"
+    ],
+    "missing_constructors": [
+      "independently justified physical preparation/readout and subsystem binding",
+      "independent calibration and held-out physical records"
+    ],
+    "next_falsifier": "Test the frozen 4096 generator triples and retain the full central extension/cocycle and fixed-ray instrument comparison. This closes a model-class promotion test, not the physical-interface gate. Do not create further abstract phase variants as substitutes for independent physical attachments and calibration."
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "marici.scc.freeze.v1",
+  "model_id": "nima-gram-bell-readout-comparison",
+  "fingerprint": "e2d9933455139d64cf3de08eef71591f8328359d69f9d3ebbfdacefcbb1c282f",
+  "owner": "marici.Nima",
+  "classification": "conditional-quantum-comparison-with-repaired-source-dependence-not-Born-selection",
+  "stratum": "Forward realization and state/effect readout comparison: retain all five labelled four-component filler records, then compare their conditional balanced-port record with the entire existing Bell sequential instrument. A supplied instrument is not a derivation of probabilities from Gram rank.",
+  "depends_on": [],
+  "consumes": [
+    "complete five-filler source",
+    "original Bell state/readout implementation",
+    "existing full sequential Bell instrument",
+    "existing photon Bell packet and independent record-descent result"
+  ],
+  "provides": [
+    "conditional source-to-instrument comparison",
+    "normalization and state-dependence repairs",
+    "fixed equal-path preparation boundary"
+  ],
+  "missing_constructors": [],
+  "next_falsifier": "Reject if repaired source norms disagree with their full-vector synthesis, if actual states fail to change joint records, or if the imported instrument comparison loses its continuations. A source-derived preparation/probability/record law is separate; neither another compatible Gram nor a new normalization supplies it. The phase-family target test is restricted to the actual equal-path source and fixed CHSH analyzers, not all quantum preparations.",
+  "manifest": {
+    "id": "nima-gram-bell-readout-comparison",
+    "owner": "marici.Nima",
+    "classification": "conditional-quantum-comparison-with-repaired-source-dependence-not-Born-selection",
+    "stratum": "Forward realization and state/effect readout comparison: retain all five labelled four-component filler records, then compare their conditional balanced-port record with the entire existing Bell sequential instrument. A supplied instrument is not a derivation of probabilities from Gram rank.",
+    "inputs": [
+      "research/nima/quarantine/20261007-quantum-readout-evidence/SHA256SUMS",
+      "research/nima/quarantine/20261007-quantum-readout-evidence/checkers/check_gram_selection_principle.py",
+      "research/nima/quarantine/20261007-quantum-readout-evidence/checkers/check_entanglement.py",
+      "research/nima/checkers/collect_quantum_readout_diagnostics.py",
+      "research/nima/checkers/check_gram_selection_principle.py",
+      "research/nima/checkers/check_entanglement.py",
+      "research/nima/results/quantum-readout-transport.json",
+      "research/aspect/checkers/check_combined_bell_instrument.py",
+      "research/aspect/checkers/check_state_effect_pairing_record_map.py",
+      "research/aspect/bell-sequential-polarization-instrument.md",
+      "research/nima/check_photon_bell_source_packet.py",
+      "research/nima/photon-bell-source-packet.md"
+    ],
+    "checks": [
+      {
+        "id": "nima-gram-bell-readout-comparison-exact",
+        "path": "research/nima/checkers/check_gram_bell_readout_comparison.py",
+        "requires": [
+          "sympy"
+        ]
+      }
+    ],
+    "depends_on": [],
+    "consumes": [
+      "complete five-filler source",
+      "original Bell state/readout implementation",
+      "existing full sequential Bell instrument",
+      "existing photon Bell packet and independent record-descent result"
+    ],
+    "provides": [
+      "conditional source-to-instrument comparison",
+      "normalization and state-dependence repairs",
+      "fixed equal-path preparation boundary"
+    ],
+    "missing_constructors": [],
+    "next_falsifier": "Reject if repaired source norms disagree with their full-vector synthesis, if actual states fail to change joint records, or if the imported instrument comparison loses its continuations. A source-derived preparation/probability/record law is separate; neither another compatible Gram nor a new normalization supplies it. The phase-family target test is restricted to the actual equal-path source and fixed CHSH analyzers, not all quantum preparations."
+  }
+}

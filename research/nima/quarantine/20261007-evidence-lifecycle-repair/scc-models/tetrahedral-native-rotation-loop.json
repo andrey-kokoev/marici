@@ -1,0 +1,27 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "tetrahedral-native-rotation-loop",
+    "owner": "marici.Nima",
+    "classification": "native_spinor_selection_falsified_in_endpoint_model_physical_claim_untested",
+    "stratum": "Fixed A4 endpoint geometry over Q(i sqrt(3)); frame, covariant selected-line and bare-projection maps distinguished. Route compatibility precedes physical readout descent.",
+    "inputs": [
+      "research/nima/tetrahedral-native-rotation-loop.md",
+      "research/nima/contracts/tetrahedral-native-rotation-loop.json",
+      "research/nima/checkers/check_twelve_triangle_positive_geometry.py",
+      "research/nima/checkers/check_triangle_half_phase.py",
+      "research/nima/mass-rotor-action-and-external-charge.md",
+      "research/nima/mass-primitive-quotient-charge.md",
+      "research/nima/retained-rotor-phase-transport.md"
+    ],
+    "checks": [
+      {"id": "tetrahedral-native-rotation-loop-exact", "path": "research/nima/checkers/check_tetrahedral_native_rotation_loop.py", "requires": []}
+    ],
+    "depends_on": [],
+    "consumes": ["labelled tetrahedral endpoint rotations", "native eigenline projectors and frame transport"],
+    "provides": ["exact endpoint-factorization theorem for selected-line transport", "positive native commutator and negative projection-triangle discrimination", "injected-edge-sign composition obstruction"],
+    "missing_constructors": ["independently specified physical rotation interaction for this excitation with coherent reference and readout"],
+    "next_falsifier": "Native-source claim rejected. Physical branch deferred until an independent interaction is supplied; no new spinor or phase may be inserted as evidence for its own selection."
+  }
+}

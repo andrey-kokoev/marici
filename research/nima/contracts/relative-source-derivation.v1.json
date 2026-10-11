@@ -1,0 +1,40 @@
+{
+  "schema": "marici.nima.relative-source-derivation.v1",
+  "status": "specified_relative_contract_not_full_lift_proof",
+  "scope": "Fixed Bool/notEquiv square, relative to one globally declared analytic profile shared by all sources and Ticks.",
+  "relation_to_original": "This is an explicit relative interpretation contract, not a proof that bare Tick selects the analytic profile. The original stronger source-derived conjecture remains unresolved.",
+  "permitted_analytic_premises": [
+    "The existing complex Cauchy completion with its scalar algebra, conjugation and standard coordinate inner product.",
+    "The free four-coordinate module on Bool x Bool, with delta basis; no independently chosen state embedding.",
+    "An external real completion time interval [0,1] and a two-segment return domain glued at its seam; not Cubical I.",
+    "One scalar half satisfying 2*half=1 and one pi with the required half-turn laws.",
+    "A single profile z(t)=exp(-i*pi*t), fixed uniformly for both factors and all source labels and Tick tags, with unit norm, endpoints, continuity and generator compatibility supplied as explicit obligations."
+  ],
+  "construction_rules": {
+    "basis": "e_s(q)=delta(s,q)",
+    "linearization": "P_f(e_s)=e_(f(s)), extended linearly; for the involutions this is coefficient precomposition with the native flip.",
+    "projector": "Q_f=(I-P_f)/2",
+    "generator": "H_f=pi*Q_f",
+    "leg": "U_f(t)=I+(z(t)-1)*Q_f",
+    "forward_schedule": "Traverse the native left and right operations in the retained tag's order.",
+    "return_schedule": "Positive continuation in reversed operation order, starting at the common double-flip target. This is not asserted to be literal time reversal.",
+    "whole_tick": "Extract the two ordered tags, return the pair of schedule paths, and preserve whole-record reconstruction and schedule swap."
+  },
+  "source_derivation_criterion": "A candidate is relatively source-derived exactly when its embedding, represented flips, generators and legs are extensionally equal to these fixed constructions, and its whole paths agree with the declared schedule traversal. No independently supplied schedule-to-path map is an admissible primitive.",
+  "forbidden_free_inputs": [
+    "Tick-dependent phase profiles or time scales",
+    "Independently selected mixed-factor generators",
+    "An arbitrary Schedule-to-path adapter without a derivation equality",
+    "Total single-valued Cubical-pointwise endpoint-separated state selection"
+  ],
+  "proof_obligations": [
+    "Algebraic derivation equalities (typed by DerivedComponents).",
+    "Factor-algebra preservation and covariance under factorwise label bijections; swap covariance must exchange factor names and schedule order.",
+    "Full analytic profile certificates in the completion, including pi, norm, continuity and generator laws.",
+    "Actual metric interval and glued-domain definitions, seam agreement, exact endpoints and whole-route continuity.",
+    "Whole-record reconstruction and schedule-swap coherence for the derived unitary traversal."
+  ],
+  "implemented_fragment": "research/nima/agda/TickRelativeSourceContract.agda",
+  "implementation_boundary": "DerivedComponents and its canonical inhabitant certify algebraic provenance for fixed scalar parameters. They do not instantiate analytic laws or the whole-path traversal contract.",
+  "uniqueness_boundary": "Component equality is conditional on the same analytic profile and imposed construction rules. No uniqueness across profiles, no selection of pi by Tick, and no physical prediction are inferred."
+}

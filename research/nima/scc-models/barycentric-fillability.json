@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-barycentric-fillability",
+    "owner": "marici.Nima",
+    "classification": "candidate",
+    "stratum": "Integral simplicial chains of fixed triangle and tetrahedron cone lower skeletons with independently admitted top cells",
+    "inputs": ["research/nima/checkers/check_twelve_triangle_positive_geometry.py"],
+    "checks": [{"id": "nima-barycentric-fillability-check", "path": "research/nima/checkers/check_barycentric_fillability.py", "requires": []}],
+    "depends_on": [],
+    "consumes": [],
+    "provides": ["cone filling certificates", "missing exterior-face obstruction certificates"],
+    "missing_constructors": ["native WG admissibility to chain filling comparison"],
+    "next_falsifier": "Keep all vertex coordinates and lower incidence fixed while deleting top cells; test whether vanishing barycenter residual still implies chain fillability."
+  }
+}

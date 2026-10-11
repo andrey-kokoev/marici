@@ -1,0 +1,44 @@
+{
+  "schema": "marici.nima.bell-preparation-herald-record.v1",
+  "question": "Can an independent identity-filler calibration predict the full record law of the existing twist/X preparation while keeping both preparation branches?",
+  "obligation": "forward realization of the complete preparation instrument, then classical record transport and readout descent",
+  "source": {
+    "filler_module": "research/nima/checkers/check_gram_selection_principle.py",
+    "instrument_module": "research/aspect/checkers/check_combined_bell_instrument.py",
+    "analyzer_module": "research/nima/checkers/check_entanglement.py",
+    "retained": ["all five original Bool filler functions and ordered labels", "both X preparation effects and subnormalized continuations", "all analyzer contexts and continuations", "herald labels", "click and no-click records"],
+    "given": ["C4 counting-metric linearization", "product00 input", "Born/Lueders instrument", "two mathematical subsystem factors", "local analyzer matrices"],
+    "calibration_route": "identity filler, Alice X at setting x=1, Bob's existing setting y=0",
+    "test_route": "actual twist filler, all four existing setting pairs"
+  },
+  "classical_record_channels": {
+    "herald_effect_label": "h=0 for X+, h=1 for X-; not yet a physical record",
+    "reported_herald": "r in {0,1}",
+    "K_rows_r_columns_h": [["1-e0", "e1"], ["e0", "1-e1"]],
+    "range": "0<=e0,e1<=1; 0<etaA<=1; 0<=etaB<=1",
+    "detector_model": "Independent classical erasure of ideal instrument record labels, with retention etaA and etaB; no absorptive detector continuation is claimed",
+    "observed_records": [-1, 0, 1],
+    "no_click_record": 0,
+    "local_frame_decode": "a_decoded=(-1)^(r*x)*a on clicks; no-click stays no-click; Bob unchanged",
+    "Bell_assignment": "Assign each no-click +1 AFTER frame decoding; no record is discarded",
+    "transfer_assumptions": ["Same K and erasure channels in calibration and test modes", "Channels independent of analyzer settings and ideal detector labels", "Preparation label distribution independent of settings", "Frame decoding uses only shared source record and Alice's own setting/record"]
+  },
+  "rivals": [
+    "Forgetting the herald leaves the Bell readout unchanged",
+    "A coherent Z feedback gate or discarding the minus branch is required",
+    "Balanced herald marginals certify the record frame",
+    "Calibration may be transferred without a common record-channel contract"
+  ],
+  "predictions": {
+    "prepared_branches": "unnormalized Phi+ and Phi- projectors, each trace 1/2",
+    "herald_forgotten_CHSH_at_unit_retention": "sqrt(2)",
+    "correctly_decoded_CHSH_at_unit_retention": "2*sqrt(2)",
+    "independently_inferred_K": "K[r,h]=2*C[r,(-1)^h]/etaA from the identity-route calibration",
+    "inclusive_CHSH": "sqrt(2)*(2-e0-e1)*etaA*etaB + 2*(1-etaA)*(1-etaB)",
+    "noncollapse": "Identity and inverted K have the same balanced reported-herald marginal but different decoded record laws",
+    "transport_hostile": "Calibration K=I versus test K=swap must fail the predicted full-record comparison"
+  },
+  "acceptance": "Exact full continuation and record-law comparison, no parameter fitted to Bell data, plus preservation and deliberate-failure controls",
+  "physical_boundary": "This is a conditional interface comparison within ordinary quantum mechanics. No physical preparation/readout authority, observed counts, spacelike layout, Born derivation or Marici-versus-QM discriminator is supplied.",
+  "stopping_condition": "After this comparison, defer physical validation until an independently calibrated apparatus/source record bundle exists; no extra Bell values or synthetic ledgers count as selection evidence."
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "marici.nima.tick-selects-generator.v2",
+  "status": "pass",
+  "caveat": "This checker tests a hand-built 4x4 matrix model, not the actual Agda Tick. Passing checks do NOT establish faithfulness, injectivity, or preservation of retained return section.",
+  "classification": "matrix_model_does_not_break_generator_ambiguity",
+  "tick_constraints_tested": [
+    "individual_leg_realizations",
+    "schedule_commutation",
+    "return_consistency",
+    "path_phase_structure"
+  ],
+  "retained_structures_tested": [
+    "left_first_schedule",
+    "right_first_schedule",
+    "route_homotopy_certificate",
+    "return_section",
+    "source_attachment"
+  ],
+  "candidate_generators": [
+    "1*PL+1*PR",
+    "3*PL+1*PR",
+    "1*PL+3*PR",
+    "3*PL+3*PR",
+    "2*PL+2*PR",
+    "5*PL+1*PR"
+  ],
+  "ambiguity_broken": false,
+  "finding": "Within this matrix model, the schedule-path data do not select a unique diagonal generator coefficient (a,b).",
+  "consequence": "To select dynamics, additional principles are needed that this model does not supply.",
+  "scope": "4x4 matrix model with commuting projectors P_L, P_R. Does not generalize to the Agda Tick without a separate faithfulness proof."
+}

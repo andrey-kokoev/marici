@@ -1,0 +1,23 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "retained-square-cone-clock",
+    "owner": "marici.Nima",
+    "classification": "formal_square_record_to_tetrahedral_cone_embedding_with_intrinsic_completion_count",
+    "stratum": "Fixed-source closed square-return records for a supplied equivalence; path-coherent tetrahedral presentations; natural-number count on retained lists, not physical duration.",
+    "inputs": [
+      "research/nima/retained-square-cone-clock.md",
+      "research/nima/agda/RetainedSquareConeClock.agda",
+      "research/nima/agda/RetainedSquareReversal.agda",
+      "research/nima/agda/ObserverCoherenceCube.agda",
+      "research/nima/agda/ThreeWitnessRetainedCone.agda",
+      "research/nima/results/agda-RetainedSquareConeClock.json"
+    ],
+    "checks": [{"id": "retained-square-cone-clock-receipt-and-controls", "path": "research/nima/checkers/check_retained_square_cone_clock.py", "requires": []}],
+    "depends_on": ["nima-retained-square-reversal", "three-witness-retained-cone"],
+    "consumes": ["actual retained square return", "lossless pointed-view tetrahedral constructor"],
+    "provides": ["injective square-return record encoding", "full-record decoder", "history concatenation compatibility", "additive representation-invariant completion count", "endpoint-clock obstruction"],
+    "missing_constructors": ["autonomous production law for successive returns", "comparison with continuous rotor clock", "source-to-physical-time interpretation"],
+    "next_falsifier": "For any proposed source-selected clock extension, test its tick production and readout against the retained whole; endpoint equality cannot substitute for retained completion count."
+  }
+}

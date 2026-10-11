@@ -1,0 +1,27 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "composable-witness-specialization",
+    "owner": "marici.Nima",
+    "classification": "displayed_refinement_and_coherent_composition_checked",
+    "stratum": "Fixed universe of total WGs; dependent admission and proof-dependent witness extensions. Second operand is indexed by the compiled first. Forward realization and full-step route compatibility, not physical time or quotient readout.",
+    "inputs": [
+      "research/nima/agda/ComposableWitnessSpecialization.agda",
+      "research/nima/agda/CoherentWitnessSpecialization.agda",
+      "research/nima/agda/DisplayedWitnessSpecialization.agda",
+      "research/nima/agda/MetaWitnessGenerator.agda",
+      "research/nima/checkers/check_cubical_agda.ps1",
+      "research/nima/results/agda-ComposableWitnessSpecialization.json",
+      "research/nima/results/agda-CoherentWitnessSpecialization.json",
+      "research/nima/results/agda-DisplayedWitnessSpecialization.json"
+    ],
+    "checks": [
+      {"id": "composable-witness-specialization-fresh-receipt", "path": "research/nima/checkers/check_composable_witness_specialization.py", "requires": []}
+    ],
+    "depends_on": [],
+    "consumes": ["compatible base WG and proof-dependent refinements"],
+    "provides": ["closed indexed binary composition", "full-step realization certificate", "actual-operation units and associator", "request-answer composition WG", "actual-operation pentagon and triangle on states full steps and sources", "displayed graph totalization and dependent-sum composition", "displayed history total isomorphism", "conditional hom-set bridge to Cubical CategoryD and its total category", "counterexample to automatic arbitrary-edge lifting"],
+    "missing_constructors": ["transport and naturality for arbitrary WG equivalences", "general bicategory structure with chosen 2-cells", "general comprehension category and cartesian reindexing"],
+    "next_falsifier": "Test whether these canonical rebases extend to a typed pullback along a non-definitional WG equivalence with proof-dependent Extra. The current pentagon covers the canonical structural maps only."
+  }
+}

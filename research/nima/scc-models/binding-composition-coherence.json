@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-binding-composition-coherence",
+    "owner": "marici.Nima",
+    "classification": "candidate",
+    "stratum": "Actual finite source interchange complex; separate fixed-nucleus electronic trial with at most two retained electron labels and rounded reference inputs",
+    "inputs": ["research/nima/checkers/check_mass_source_interchange_cells.py", "research/nima/checkers/check_mass_path_port_connectivity.py", "research/nima/checkers/check_proton_hydrogen_helium_structure.py"],
+    "checks": [{"id": "nima-binding-composition-coherence-check", "path": "research/nima/checkers/check_binding_composition_coherence.py", "requires": []}],
+    "depends_on": [],
+    "consumes": [],
+    "provides": ["source-coherent vertex-energy counterterms", "hydrogen-calibrated held-out helium connected-energy discriminator"],
+    "missing_constructors": ["native electronic sector and coupled energy operator with fixed normalization"],
+    "next_falsifier": "Vary the two-electron connected term while preserving hydrogen binding, retained append histories and composition-square closure; helium must change if coherence does not select binding."
+  }
+}

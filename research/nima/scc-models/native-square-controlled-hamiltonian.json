@@ -1,0 +1,22 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "native-square-controlled-hamiltonian",
+    "owner": "marici.Nima",
+    "classification": "conditional_unitary_and_symplectic_realization_of_checked_finite_square",
+    "stratum": "Bool-negation square, complex four-dimensional counting inner product, exponential enlargement and declared oriented realization parameters; not physical time.",
+    "inputs": [
+      "research/nima/native-square-controlled-hamiltonian.md",
+      "research/nima/agda/NativeSquareHamiltonianSkeleton.agda",
+      "research/nima/agda/ObserverCoherenceCube.agda",
+      "research/nima/results/agda-NativeSquareHamiltonianSkeleton.json",
+      "research/nima/retained-square-cone-clock.md"
+    ],
+    "checks": [{"id": "native-square-controlled-hamiltonian-exact", "path": "research/nima/checkers/check_native_square_controlled_hamiltonian.py", "requires": []}],
+    "depends_on": ["retained-square-cone-clock"],
+    "consumes": ["actual source square operation tables", "retained schedule and inverse witnesses"],
+    "provides": ["self-adjoint finite-source generators", "canonical symplectic realization", "controlled reflected return", "positive symmetric logarithm nonuniqueness", "conditional bare-state autonomy obstruction"],
+    "missing_constructors": ["source selection of continuous interpolation and rates", "autonomous tick controller if inverse is executed as a later leg", "physical energy and time interpretation"],
+    "next_falsifier": "Test any proposed source-selected intermediate transport against the 3*H0 rival and distinguish an inverse certificate from an extra positive-parameter return execution."
+  }
+}
