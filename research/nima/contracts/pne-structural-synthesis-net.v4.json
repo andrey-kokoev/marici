@@ -1,0 +1,35 @@
+{
+ "schema":"marici.nima.pne-structural-synthesis-net.revision.v4",
+ "id":"pne-structural-synthesis-v4",
+ "owner":"marici.Nima",
+ "base_contract":"research/nima/contracts/pne-structural-synthesis-net.v1.json",
+ "base_sha256":"14d1536e86e850050b4b374dd96d080914e48bb53acb3bd478dbb5bb2ca24242",
+ "predecessor_contract":"research/nima/contracts/pne-structural-synthesis-net.v3.json",
+ "revision_semantics":"Cumulative overlay on v1: append evidence and subcases, replace matching tests, append tests, replace frontier.",
+ "completed_iteration":3,
+ "operator_run_iteration":1,
+ "operator_run_budget":10,
+ "evidence":[
+  {"id":"interface-catalog","path":"research/nima/results/pne-interface-catalog/verification.json","result":"Complete135 depth-indexed simple paths."},
+  {"id":"interface-catalog-independent","path":"research/nima/results/pne-interface-catalog/independent-verification.json","result":"Independent enumeration and1350 basis checks."},
+  {"id":"guarded-composition","path":"research/nima/results/pne-guarded-composition/verification.json","result":"Complete D0/1 one/two-addition source agreement and incremental activity checks."},
+  {"id":"interface-driven-synthesis","path":"research/nima/results/interface-driven-synthesis/verification.json","result":"Complete experimental D2 family243034 configurations/698 exits/7018785 labelled transitions; all selections, active interfaces and exit flags agree with direct source and Boolean checks."}
+ ],
+ "node_updates":[
+  {"id":"interface-discovery","resolved_subcases":["Complete D0/1/2 length2–4 path catalog independently reconstructed."],"remaining":"General interface identification and continuation preservation."},
+  {"id":"support-selection","resolved_subcases":["Same-origin N-internal PE classification.","D0/1 extension support/reader guards audited."],"remaining":"Candidate permissions beyond terminal-PE and larger support policies."},
+  {"id":"guarded-composition","resolved_subcases":["D0/1 all one/two additions agree with direct auditing; incremental activity watchers agree in both orders.","D2 compiled activity agrees with direct source edges on every generated selection."],"remaining":"General composition theorem beyond tested universes."},
+  {"id":"synthesis-completeness","resolved_subcases":["Interface-driven D2 construction agrees exactly with guarded Boolean family:243034 selections/698 exits; complete labelled graph retained."],"remaining":"Goal-directed structural synthesis and general completeness argument."},
+  {"id":"structural-discrimination","resolved_subcases":["D1 minimal guard and incompatibility obstructions retained.","D2 has44875 rooted transitions disabling a prior PE shortcut."],"remaining":"Turn the graph into actionable completion paths and obstruction certificates for partial structures."}
+ ],
+ "test_updates":[
+  {"id":"interface-path-catalog-D012-L234","status":"completed","executed":true,"receipt":"research/nima/results/pne-interface-catalog/verification.json","independent_receipt":"research/nima/results/pne-interface-catalog/independent-verification.json"}
+ ],
+ "added_tests":[
+  {"id":"guarded-interface-critical-pairs-D01","status":"completed","executed":true,"targets":["guarded-composition","support-selection"],"receipt":"research/nima/results/pne-guarded-composition/verification.json","procedure":["All one/two additions and both orders."],"completion":"Source agreement and minimal obstructions recorded."},
+  {"id":"interface-driven-synthesis-D2","status":"completed","executed":true,"targets":["synthesis-completeness","structural-discrimination"],"receipt":"research/nima/results/interface-driven-synthesis/verification.json","procedure":["Construct with interfaces and activity watchers; compare every selection and exit to source/Boolean checks; retain labelled graph."],"completion":"Complete243034-state graph with7018785 transitions and698 certificates."},
+  {"id":"certificate-directed-completion-D2","status":"planned","executed":false,"targets":["structural-discrimination","synthesis-completeness"],"domain":{"maxOrigin":2,"mode":"experimental-terminal-PE","sourceGraph":"research/nima/results/interface-driven-synthesis/D2-graph.jsonl.gz"},"procedure":["Identify all exit-certified states by direct audit.","Reverse-search the complete labelled graph from certified states and compute minimum addition distances and witness paths.","Classify every rooted configuration as already certified, additively completable or no certified continuation within D2.","Independently check distance equations on every graph edge and replay representative completion paths.","Extract small guard/support obstructions distinguishing uncompletable structures from completable alternatives."],"completion":"Complete classification with exact counts, shortest completion witnesses and checked no-continuation certificates. No isotope filter; distance measures operations, never changes the fixed origin budget."}
+ ],
+ "frontier":["structural-discrimination"],
+ "recommended_start":"certificate-directed-completion-D2"
+}

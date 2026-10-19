@@ -1,0 +1,43 @@
+{
+ "schema":"marici.nima.pne-structural-synthesis-net.revision.v8",
+ "id":"pne-structural-synthesis-v8",
+ "owner":"marici.Nima",
+ "base_contract":"research/nima/contracts/pne-structural-synthesis-net.v1.json",
+ "base_sha256":"14d1536e86e850050b4b374dd96d080914e48bb53acb3bd478dbb5bb2ca24242",
+ "predecessor_contract":"research/nima/contracts/pne-structural-synthesis-net.v7.json",
+ "revision_semantics":"Cumulative overlay on v1: append evidence and subcases, replace matching tests, append tests, replace frontier.",
+ "completed_iteration":7,
+ "operator_run_iteration":5,
+ "operator_run_budget":10,
+ "evidence":[
+  {"id":"interface-catalog","path":"research/nima/results/pne-interface-catalog/verification.json","result":"Bounded path catalog."},
+  {"id":"interface-catalog-independent","path":"research/nima/results/pne-interface-catalog/independent-verification.json","result":"Independent map/path checks."},
+  {"id":"guarded-composition","path":"research/nima/results/pne-guarded-composition/verification.json","result":"Small guard composition checks."},
+  {"id":"interface-driven-synthesis","path":"research/nima/results/interface-driven-synthesis/verification.json","result":"Complete experimental D2 family."},
+  {"id":"completion-planner","path":"research/nima/results/pne-completion-planner/verification.json","result":"Exact D2 live/dead policy."},
+  {"id":"source-obstructions","path":"research/nima/results/pne-source-obstructions/verification.json","result":"All nine D2 cores have source proofs."},
+  {"id":"proof-pruned-synthesis","path":"research/nima/results/proof-pruned-synthesis/verification.json","result":"Proof-pruned generation exactly retains10682 live states and698 certificates."},
+  {"id":"origin-lifted-repairs","path":"research/nima/results/origin-lifted-repairs/verification.json","result":"Eight cores have source-replayed D3 completions. Core13/18 has a complete contradiction and forced-entry-support explanation. No resource stops."}
+ ],
+ "node_updates":[
+  {"id":"interface-discovery","resolved_subcases":["Complete D0/1/2 path catalog."],"remaining":"General interface equivalence."},
+  {"id":"support-selection","resolved_subcases":["Nine D2 source obstructions; eight are repaired at minimum origin3.","Core13/18 remains impossible at D3: mandatory root support forces1 then4, eliminating native witnesses of face8/12."],"remaining":"Depth dependence of the persistent NN conflict and broader support policies."},
+  {"id":"guarded-composition","resolved_subcases":["Small extensions and full D2 states checked against source auditing."],"remaining":"General composition theorem."},
+  {"id":"synthesis-completeness","resolved_subcases":["Complete and proof-pruned D2 families.","Source-guided D3 extension search returns eight certificates and one complete proof without a target atlas."],"remaining":"Generalized goal-directed synthesis and obstruction discovery."},
+  {"id":"structural-discrimination","resolved_subcases":["Nine-pattern D2 dead-state cover.","Eight depth-limited exit/support obstructions distinguished from one persistent coupled root-support/NN-face obstruction at D3."],"remaining":"Determine whether the persistent core lifts at D4 and extract its interface-level conflict."}
+ ],
+ "test_updates":[
+  {"id":"interface-path-catalog-D012-L234","status":"completed","executed":true,"receipt":"research/nima/results/pne-interface-catalog/verification.json"}
+ ],
+ "added_tests":[
+  {"id":"guarded-interface-critical-pairs-D01","status":"completed","executed":true,"targets":["guarded-composition","support-selection"],"receipt":"research/nima/results/pne-guarded-composition/verification.json","procedure":["Small extension comparison."],"completion":"Agreement recorded."},
+  {"id":"interface-driven-synthesis-D2","status":"completed","executed":true,"targets":["synthesis-completeness","structural-discrimination"],"receipt":"research/nima/results/interface-driven-synthesis/verification.json","procedure":["Complete interface generation."],"completion":"243034/698."},
+  {"id":"certificate-directed-completion-D2","status":"completed","executed":true,"targets":["structural-discrimination","synthesis-completeness"],"receipt":"research/nima/results/pne-completion-planner/verification.json","procedure":["Completion policy."],"completion":"Exact live classification."},
+  {"id":"source-local-obstruction-derivation-D2","status":"completed","executed":true,"targets":["structural-discrimination","support-selection"],"receipt":"research/nima/results/pne-source-obstructions/verification.json","procedure":["Source elimination and split proofs."],"completion":"Nine obstructions certified."},
+  {"id":"proof-carrying-pruned-synthesis-D2","status":"completed","executed":true,"targets":["synthesis-completeness","structural-discrimination"],"receipt":"research/nima/results/proof-pruned-synthesis/verification.json","procedure":["Pruned generation before reading target policy."],"completion":"Exact10682 live states/698 certificates/224537 transitions."},
+  {"id":"origin-lifted-obstruction-repair-D3","status":"completed","executed":true,"targets":["support-selection","structural-discrimination","synthesis-completeness"],"receipt":"research/nima/results/origin-lifted-repairs/verification.json","procedure":["Mapped marked cores, source-guided extension search, replay and contradiction verification."],"completion":"Eight minimum-origin3 repairs; one D3-impossible core; all cases resolved."},
+  {"id":"persistent-NN-core-depth4","status":"planned","executed":false,"targets":["support-selection","structural-discrimination"],"domain":{"maxOrigin":4,"coreSourceIds":[13,18],"sourceUniverseMaxOrigin":2,"mode":"experimental-terminal-PE","maxSearchNodes":50000,"maxMilliseconds":60000},"procedure":["Map core and forced-support packets by full source signature into D4.","Enumerate native face witnesses for the occupied NN interface and record compatibility/guard blockers with the incoming support.","Run source-guided guarded extension search; verify any certificate or complete contradiction, and record resource stops.","Compare the D3 forced-support chain with D4 to isolate the first changed obligation or persistent conflict."],"completion":"D4 completion/proof/resource outcome plus a source-derived interface conflict or repair explanation."}
+ ],
+ "frontier":["support-selection","structural-discrimination"],
+ "recommended_start":"persistent-NN-core-depth4"
+}

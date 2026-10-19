@@ -1,0 +1,41 @@
+{
+ "schema":"marici.nima.pne-structural-synthesis-net.revision.v7",
+ "id":"pne-structural-synthesis-v7",
+ "owner":"marici.Nima",
+ "base_contract":"research/nima/contracts/pne-structural-synthesis-net.v1.json",
+ "base_sha256":"14d1536e86e850050b4b374dd96d080914e48bb53acb3bd478dbb5bb2ca24242",
+ "predecessor_contract":"research/nima/contracts/pne-structural-synthesis-net.v6.json",
+ "revision_semantics":"Cumulative overlay on v1: append evidence and subcases, replace matching tests, append tests, replace frontier.",
+ "completed_iteration":6,
+ "operator_run_iteration":4,
+ "operator_run_budget":10,
+ "evidence":[
+  {"id":"interface-catalog","path":"research/nima/results/pne-interface-catalog/verification.json","result":"Complete bounded native path catalog."},
+  {"id":"interface-catalog-independent","path":"research/nima/results/pne-interface-catalog/independent-verification.json","result":"Independent path/map checks."},
+  {"id":"guarded-composition","path":"research/nima/results/pne-guarded-composition/verification.json","result":"Small extension/source agreement."},
+  {"id":"interface-driven-synthesis","path":"research/nima/results/interface-driven-synthesis/verification.json","result":"Complete experimental D2 family243034/698."},
+  {"id":"completion-planner","path":"research/nima/results/pne-completion-planner/verification.json","result":"Exact live-set policy and nine-core cover."},
+  {"id":"source-obstructions","path":"research/nima/results/pne-source-obstructions/verification.json","result":"Nine source proofs; all cores survive D3 optimism."},
+  {"id":"proof-pruned-synthesis","path":"research/nima/results/proof-pruned-synthesis/verification.json","result":"Source-proof-pruned generation exactly preserves10682 live states,698 certificates and224537 induced labelled transitions; no policy lookup during generation."}
+ ],
+ "node_updates":[
+  {"id":"interface-discovery","resolved_subcases":["Bounded D0/1/2 native-path catalog."],"remaining":"General interface equivalence."},
+  {"id":"support-selection","resolved_subcases":["Native/PE policies and nine D2 source obstruction certificates."],"remaining":"Depth transfer of obstructions and broader permissions."},
+  {"id":"guarded-composition","resolved_subcases":["Small extension checks and full D2 active-interface agreement."],"remaining":"General composition theorem."},
+  {"id":"synthesis-completeness","resolved_subcases":["Complete D2 atlas and completion policy.","Proof-carrying subset pruning generates exactly the live D2 family without target membership lookups."],"remaining":"Source-guided synthesis beyond already enumerated depth; automatic obstruction discovery."},
+  {"id":"structural-discrimination","resolved_subcases":["Nine source-backed D2 obstructions remove95.6% of generated states while preserving all certified states and live transitions."],"remaining":"Determine which obstruction cores acquire actual certified extensions at D3."}
+ ],
+ "test_updates":[
+  {"id":"interface-path-catalog-D012-L234","status":"completed","executed":true,"receipt":"research/nima/results/pne-interface-catalog/verification.json"}
+ ],
+ "added_tests":[
+  {"id":"guarded-interface-critical-pairs-D01","status":"completed","executed":true,"targets":["guarded-composition","support-selection"],"receipt":"research/nima/results/pne-guarded-composition/verification.json","procedure":["Small extension comparison."],"completion":"Agreement and obstructions recorded."},
+  {"id":"interface-driven-synthesis-D2","status":"completed","executed":true,"targets":["synthesis-completeness","structural-discrimination"],"receipt":"research/nima/results/interface-driven-synthesis/verification.json","procedure":["Complete interface generation."],"completion":"243034 states/698 exits."},
+  {"id":"certificate-directed-completion-D2","status":"completed","executed":true,"targets":["structural-discrimination","synthesis-completeness"],"receipt":"research/nima/results/pne-completion-planner/verification.json","procedure":["Complete graph policy."],"completion":"Exact live classification and nine-core cover."},
+  {"id":"source-local-obstruction-derivation-D2","status":"completed","executed":true,"targets":["structural-discrimination","support-selection"],"receipt":"research/nima/results/pne-source-obstructions/verification.json","procedure":["Source optimism and split proofs."],"completion":"All nine proved impossible at D2; D3 relaxation survives."},
+  {"id":"proof-carrying-pruned-synthesis-D2","status":"completed","executed":true,"targets":["synthesis-completeness","structural-discrimination"],"receipt":"research/nima/results/proof-pruned-synthesis/verification.json","procedure":["Proof-bound pruning, generation before target-policy read, exact induced-state/edge comparison."],"completion":"10682 states/698 certificates/224537 transitions; six negative/resource controls."},
+  {"id":"origin-lifted-obstruction-repair-D3","status":"planned","executed":false,"targets":["support-selection","structural-discrimination","synthesis-completeness"],"domain":{"maxOrigin":3,"cores":"Nine D2 marked cores, mapped by full source signature","mode":"experimental-terminal-PE","maxSearchNodesPerCore":50000,"maxMillisecondsPerCore":60000},"procedure":["Map each mandatory core by cell key, species, full reference aliases, origin and coefficient map.","Use source-guided guarded extension search at D3, with optimistic elimination and explicit selected/absent branching as needed; no full D3 target atlas.","Stop on a direct source-replayed exit certificate or complete obstruction proof; record resource stops as unresolved.","Retain mandatory core packets and source factor provenance, replay construction prefixes and identify newly available origin3 interfaces in each repair."],"completion":"Per-core certified extension, source impossibility proof, or explicit unresolved resource stop; distinguish actual repair from relaxed reachability."}
+ ],
+ "frontier":["support-selection","structural-discrimination"],
+ "recommended_start":"origin-lifted-obstruction-repair-D3"
+}

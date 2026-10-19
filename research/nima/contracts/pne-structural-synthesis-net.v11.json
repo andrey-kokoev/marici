@@ -1,0 +1,296 @@
+{
+  "schema": "marici.nima.pne-structural-synthesis-net.revision.v11",
+  "id": "pne-structural-synthesis-v11",
+  "owner": "marici.Nima",
+  "base_contract": "research/nima/contracts/pne-structural-synthesis-net.v1.json",
+  "base_sha256": "14d1536e86e850050b4b374dd96d080914e48bb53acb3bd478dbb5bb2ca24242",
+  "predecessor_contract": "research/nima/contracts/pne-structural-synthesis-net.v10.json",
+  "revision_semantics": "Cumulative overlay on v1: append evidence and subcases, replace matching tests, append tests, replace frontier.",
+  "completed_iteration": 10,
+  "operator_run_iteration": 8,
+  "operator_run_budget": 10,
+  "evidence": [
+    {
+      "id": "interface-catalog",
+      "path": "research/nima/results/pne-interface-catalog/verification.json",
+      "result": "Bounded native path catalog."
+    },
+    {
+      "id": "interface-catalog-independent",
+      "path": "research/nima/results/pne-interface-catalog/independent-verification.json",
+      "result": "Independent path/map checks."
+    },
+    {
+      "id": "guarded-composition",
+      "path": "research/nima/results/pne-guarded-composition/verification.json",
+      "result": "Small guard composition checks."
+    },
+    {
+      "id": "interface-driven-synthesis",
+      "path": "research/nima/results/interface-driven-synthesis/verification.json",
+      "result": "Complete experimental D2 family."
+    },
+    {
+      "id": "completion-planner",
+      "path": "research/nima/results/pne-completion-planner/verification.json",
+      "result": "Exact D2 completion policy."
+    },
+    {
+      "id": "source-obstructions",
+      "path": "research/nima/results/pne-source-obstructions/verification.json",
+      "result": "Nine D2 source proofs."
+    },
+    {
+      "id": "proof-pruned-synthesis",
+      "path": "research/nima/results/proof-pruned-synthesis/verification.json",
+      "result": "Exact source-proof-pruned live family."
+    },
+    {
+      "id": "origin-lifted-repairs",
+      "path": "research/nima/results/origin-lifted-repairs/verification.json",
+      "result": "Eight minimum-origin3 repairs; one D3 contradiction."
+    },
+    {
+      "id": "persistent-NN-depth4",
+      "path": "research/nima/results/persistent-nn-depth4/verification.json",
+      "result": "Final core completes at minimum origin4. Same NN face connections become viable via N3\u00e2\u2020\u2019P3\u00e2\u2020\u2019P4\u00e2\u2020\u2019E4 continuation;42 records/41 operations."
+    },
+    {
+      "id": "prefix-completeness",
+      "path": "research/nima/results/prefix-completeness/verification.json",
+      "result": "Seed-prefix theorem proved under hereditary compatibility and endpoint-hereditary eligibility;5832 generic models/23328 selection checks pass."
+    },
+    {
+      "id": "extension-scheduling",
+      "path": "research/nima/results/extension-scheduling/verification.json",
+      "result": "Minimal generic four-packet scheduling obstruction; stable-anchor sufficient theorem;1803 unreachable pairs among216531 D2 certified-superset pairs. Actual two-reader same-body obstruction verified."
+    }
+  ],
+  "node_updates": [
+    {
+      "id": "interface-discovery",
+      "resolved_subcases": [
+        "Bounded catalog with full transport/occurrence/support distinctions."
+      ],
+      "remaining": "General interface equivalence."
+    },
+    {
+      "id": "support-selection",
+      "resolved_subcases": [
+        "Nine D2 obstruction proofs; eight minimum-depth3 repairs and one minimum-depth4 repair."
+      ],
+      "remaining": "General relation between downstream viability and support selection."
+    },
+    {
+      "id": "guarded-composition",
+      "resolved_subcases": [
+        "Small extensions, D2 full family and targeted D3/D4 source constructions verified.",
+        "General finite seed-prefix completeness under the current negative-guard interface grammar, with written proof and exhaustive generic regression.",
+        "Arbitrary-start singleton completeness is false, including actual D2 certified targets. Stable-final-anchor condition is sufficient."
+      ],
+      "remaining": "Body-coherent native materialization of jointly disabled PE shortcuts."
+    },
+    {
+      "id": "synthesis-completeness",
+      "resolved_subcases": [
+        "Complete and pruned D2 families.",
+        "Goal-directed source search completes all nine cores at their first viable origins.",
+        "General finite seed-prefix completeness under the current negative-guard interface grammar, with written proof and exhaustive generic regression.",
+        "Arbitrary-start singleton completeness is false, including actual D2 certified targets. Stable-final-anchor condition is sufficient."
+      ],
+      "remaining": "Body-coherent native materialization of jointly disabled PE shortcuts."
+    },
+    {
+      "id": "structural-discrimination",
+      "resolved_subcases": [
+        "Nine cores have exact minimum completion origins.",
+        "Persistent NN obstruction is removed by downstream reader exits, not by a new compatible face geometry."
+      ],
+      "remaining": "General source-derived synthesis and obstruction schemas."
+    }
+  ],
+  "test_updates": [
+    {
+      "id": "interface-path-catalog-D012-L234",
+      "status": "completed",
+      "executed": true,
+      "receipt": "research/nima/results/pne-interface-catalog/verification.json"
+    }
+  ],
+  "added_tests": [
+    {
+      "id": "guarded-interface-critical-pairs-D01",
+      "status": "completed",
+      "executed": true,
+      "targets": [
+        "guarded-composition",
+        "support-selection"
+      ],
+      "receipt": "research/nima/results/pne-guarded-composition/verification.json",
+      "procedure": [
+        "Small extension checks."
+      ],
+      "completion": "Recorded."
+    },
+    {
+      "id": "interface-driven-synthesis-D2",
+      "status": "completed",
+      "executed": true,
+      "targets": [
+        "synthesis-completeness",
+        "structural-discrimination"
+      ],
+      "receipt": "research/nima/results/interface-driven-synthesis/verification.json",
+      "procedure": [
+        "Complete generation."
+      ],
+      "completion": "243034/698."
+    },
+    {
+      "id": "certificate-directed-completion-D2",
+      "status": "completed",
+      "executed": true,
+      "targets": [
+        "structural-discrimination",
+        "synthesis-completeness"
+      ],
+      "receipt": "research/nima/results/pne-completion-planner/verification.json",
+      "procedure": [
+        "Exact policy."
+      ],
+      "completion": "Live classification and cores."
+    },
+    {
+      "id": "source-local-obstruction-derivation-D2",
+      "status": "completed",
+      "executed": true,
+      "targets": [
+        "structural-discrimination",
+        "support-selection"
+      ],
+      "receipt": "research/nima/results/pne-source-obstructions/verification.json",
+      "procedure": [
+        "Source certificates."
+      ],
+      "completion": "Nine proofs."
+    },
+    {
+      "id": "proof-carrying-pruned-synthesis-D2",
+      "status": "completed",
+      "executed": true,
+      "targets": [
+        "synthesis-completeness",
+        "structural-discrimination"
+      ],
+      "receipt": "research/nima/results/proof-pruned-synthesis/verification.json",
+      "procedure": [
+        "Pruned generation."
+      ],
+      "completion": "Exact live subgraph."
+    },
+    {
+      "id": "origin-lifted-obstruction-repair-D3",
+      "status": "completed",
+      "executed": true,
+      "targets": [
+        "support-selection",
+        "structural-discrimination",
+        "synthesis-completeness"
+      ],
+      "receipt": "research/nima/results/origin-lifted-repairs/verification.json",
+      "procedure": [
+        "Targeted marked-core search."
+      ],
+      "completion": "Eight repairs, one contradiction."
+    },
+    {
+      "id": "persistent-NN-core-depth4",
+      "status": "completed",
+      "executed": true,
+      "targets": [
+        "support-selection",
+        "structural-discrimination"
+      ],
+      "receipt": "research/nima/results/persistent-nn-depth4/verification.json",
+      "procedure": [
+        "Compare face candidates and forced support; search and replay."
+      ],
+      "completion": "Grade4 witness; two existing NN targets acquire origin4 exits."
+    },
+    {
+      "id": "endpoint-hereditary-prefix-completeness",
+      "status": "completed",
+      "executed": true,
+      "targets": [
+        "synthesis-completeness",
+        "guarded-composition"
+      ],
+      "domain": {
+        "class": "Finite packet universes with hereditary compatibility and endpoint-preserving downward-closed edge eligibility",
+        "sourceModes": [
+          "native",
+          "experimental-terminal-PE"
+        ],
+        "genericSmallTest": "Three packets, fixed root, every directed nonself edge absent/unconditional/forbid-third, every pair-conflict mask and selected subset"
+      },
+      "procedure": [
+        "State and prove that every compatible rooted selection has an additive seed construction using a spanning tree of its final active graph.",
+        "Check that native and terminal-PE guards satisfy endpoint-preserving downward closure, including body-vacancy and selected-successor guards.",
+        "Exhaustively compare rooted selections with prefix generation in the generic three-packet class.",
+        "Construct and verify a positive-third-support counterexample demonstrating why the guard hypothesis is necessary.",
+        "Keep arbitrary-start extension completeness distinct from seed construction completeness; intermediate states need compatibility/rootedness, not terminal exits or all selected native face witnesses. Final certificates retain both obligations."
+      ],
+      "completion": "Written proof;5832 generic models,23328 selections,14175 tree prefixes; native/PE source probes D0\u2013D4; two hypothesis controls.",
+      "receipt": "research/nima/results/prefix-completeness/verification.json"
+    },
+    {
+      "id": "arbitrary-start-extension-scheduling",
+      "status": "completed",
+      "executed": true,
+      "targets": [
+        "synthesis-completeness",
+        "guarded-composition"
+      ],
+      "domain": {
+        "genericMaxPackets": 4,
+        "mode": "endpoint-hereditary negative guards",
+        "sourceProbeMaxOrigin": 2
+      },
+      "procedure": [
+        "Search generic negative-guard models for rooted A contained in compatible rooted S with no additive rooted path from A to S.",
+        "If a counterexample exists, verify all intermediate subsets and distinguish it from a P/N/E realization.",
+        "Derive and check a sufficient scheduling condition or atomic batch repair that preserves existing rootedness.",
+        "Probe actual P/N/E bounded states using the D2 graph, explicitly distinguishing exact source evidence from the generic theorem."
+      ],
+      "completion": "Generic minimal obstruction and sufficient anchor theorem; exact target-specific D2 classification and direct source two-reader batch repair.",
+      "receipt": "research/nima/results/extension-scheduling/verification.json"
+    },
+    {
+      "id": "body-coherent-PE-materialization-D2",
+      "status": "planned",
+      "executed": false,
+      "targets": [
+        "guarded-composition",
+        "synthesis-completeness",
+        "support-selection"
+      ],
+      "domain": {
+        "maxOrigin": 2,
+        "mode": "experimental-terminal-PE",
+        "startingFamily": "All698 certified D2 configurations"
+      },
+      "procedure": [
+        "Group active PE shortcuts by reference neutron body; add all retained intermediate native-factor readers for a chosen body as one atomic macro.",
+        "Prove conditional rootedness and exit preservation by replacing every disabled shortcut with its native PN/NE path. Check any additional selected-successor guard effects.",
+        "Exhaust candidate macros on all D2 certificates and separately record compatibility failures and new native-face witness failures.",
+        "Replay the two-reader source scheduling obstruction and identify which unreachable certified-superset pairs become reachable with validated macros."
+      ],
+      "completion": "Source-checked macro semantics, proof scope, exhaustive D2 outcomes and repaired scheduling obstructions; no change to native interface rules."
+    }
+  ],
+  "frontier": [
+    "synthesis-completeness",
+    "guarded-composition"
+  ],
+  "recommended_start": "body-coherent-PE-materialization-D2"
+}

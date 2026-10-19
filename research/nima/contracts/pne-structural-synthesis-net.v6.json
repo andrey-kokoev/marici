@@ -1,0 +1,39 @@
+{
+ "schema":"marici.nima.pne-structural-synthesis-net.revision.v6",
+ "id":"pne-structural-synthesis-v6",
+ "owner":"marici.Nima",
+ "base_contract":"research/nima/contracts/pne-structural-synthesis-net.v1.json",
+ "base_sha256":"14d1536e86e850050b4b374dd96d080914e48bb53acb3bd478dbb5bb2ca24242",
+ "predecessor_contract":"research/nima/contracts/pne-structural-synthesis-net.v5.json",
+ "revision_semantics":"Cumulative overlay on v1: append evidence and subcases, replace matching tests, append tests, replace frontier.",
+ "completed_iteration":5,
+ "operator_run_iteration":3,
+ "operator_run_budget":10,
+ "evidence":[
+  {"id":"interface-catalog","path":"research/nima/results/pne-interface-catalog/verification.json","result":"Complete bounded path catalog."},
+  {"id":"interface-catalog-independent","path":"research/nima/results/pne-interface-catalog/independent-verification.json","result":"Independent paths and1350 basis checks."},
+  {"id":"guarded-composition","path":"research/nima/results/pne-guarded-composition/verification.json","result":"D0/1 extension/guard composition agreement."},
+  {"id":"interface-driven-synthesis","path":"research/nima/results/interface-driven-synthesis/verification.json","result":"Complete experimental D2 family243034/698."},
+  {"id":"completion-planner","path":"research/nima/results/pne-completion-planner/verification.json","result":"Complete policy; nine cores cover232352 dead states."},
+  {"id":"source-obstructions","path":"research/nima/results/pne-source-obstructions/verification.json","result":"All nine D2 cores derived from source: five direct optimistic failures and four finite split proofs with127 leaves.17 proper-subset and698 certified-positive controls. All nine survive D3 optimism."}
+ ],
+ "node_updates":[
+  {"id":"interface-discovery","resolved_subcases":["Complete D0/1/2 length2–4 native path catalog."],"remaining":"General interface equivalence and continuation preservation."},
+  {"id":"support-selection","resolved_subcases":["Native/PE support policy and D0/1 guards checked.","Nine D2 completion obstructions have source-derived certificates; five individual-route/support failures and four joint-choice failures."],"remaining":"Depth transfer and support policies beyond terminal-PE."},
+  {"id":"guarded-composition","resolved_subcases":["D0/1 extension and D2 state checks agree with direct source auditing."],"remaining":"General composition theorem."},
+  {"id":"synthesis-completeness","resolved_subcases":["Complete experimental D2 synthesis and minimum-addition policy."],"remaining":"Use source-backed pruning lemmas to generate viable structures directly."},
+  {"id":"structural-discrimination","resolved_subcases":["Nine patterns classify all D2 dead states.","All nine have local/source-case-split impossibility proofs with proper-subset controls."],"remaining":"Constructive use of those proofs; actual D3 repairability, since all survive the optimistic D3 test."}
+ ],
+ "test_updates":[
+  {"id":"interface-path-catalog-D012-L234","status":"completed","executed":true,"receipt":"research/nima/results/pne-interface-catalog/verification.json"}
+ ],
+ "added_tests":[
+  {"id":"guarded-interface-critical-pairs-D01","status":"completed","executed":true,"targets":["guarded-composition","support-selection"],"receipt":"research/nima/results/pne-guarded-composition/verification.json","procedure":["All small extensions."],"completion":"Agreement and obstructions recorded."},
+  {"id":"interface-driven-synthesis-D2","status":"completed","executed":true,"targets":["synthesis-completeness","structural-discrimination"],"receipt":"research/nima/results/interface-driven-synthesis/verification.json","procedure":["Complete interface generation."],"completion":"243034 states/698 exits."},
+  {"id":"certificate-directed-completion-D2","status":"completed","executed":true,"targets":["structural-discrimination","synthesis-completeness"],"receipt":"research/nima/results/pne-completion-planner/verification.json","procedure":["Complete graph planning and core extraction."],"completion":"10682 live states and nine-pattern exact dead cover."},
+  {"id":"source-local-obstruction-derivation-D2","status":"completed","executed":true,"targets":["structural-discrimination","support-selection"],"receipt":"research/nima/results/pne-source-obstructions/verification.json","procedure":["Source optimism then occupied/absent case splits; target checks only afterward."],"completion":"All nine certified impossible at D2. D3 optimism survives for every core."},
+  {"id":"proof-carrying-pruned-synthesis-D2","status":"planned","executed":false,"targets":["synthesis-completeness","structural-discrimination"],"domain":{"maxOrigin":2,"mode":"experimental-terminal-PE","maxConfigurations":1000000,"proofSource":"research/nima/results/pne-source-obstructions/verification.json"},"procedure":["Replay/validate the nine source obstruction proofs and bind them to source hashes, mode and origin budget.","Compile the proved cores into retained-subset pruning predicates and generate from interface records without reading completed target memberships.","After generation, compare exact selections against the independent completion policy live set and compare all certificates and retained labelled transitions.","Reject reuse under a changed budget or source contract; report savings in visited states and rejected branches."],"completion":"Complete pruned family matching10682 live D2 states and698 certificates, or explicit counterexample/resource stop; no atlas membership lookup during generation."}
+ ],
+ "frontier":["synthesis-completeness","structural-discrimination"],
+ "recommended_start":"proof-carrying-pruned-synthesis-D2"
+}

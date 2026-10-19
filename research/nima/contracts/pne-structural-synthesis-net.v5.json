@@ -1,0 +1,37 @@
+{
+ "schema":"marici.nima.pne-structural-synthesis-net.revision.v5",
+ "id":"pne-structural-synthesis-v5",
+ "owner":"marici.Nima",
+ "base_contract":"research/nima/contracts/pne-structural-synthesis-net.v1.json",
+ "base_sha256":"14d1536e86e850050b4b374dd96d080914e48bb53acb3bd478dbb5bb2ca24242",
+ "predecessor_contract":"research/nima/contracts/pne-structural-synthesis-net.v4.json",
+ "revision_semantics":"Cumulative overlay on v1: append evidence and subcases, replace matching tests, append tests, replace frontier.",
+ "completed_iteration":4,
+ "operator_run_iteration":2,
+ "operator_run_budget":10,
+ "evidence":[
+  {"id":"interface-catalog","path":"research/nima/results/pne-interface-catalog/verification.json","result":"Complete135 depth-indexed native paths."},
+  {"id":"interface-catalog-independent","path":"research/nima/results/pne-interface-catalog/independent-verification.json","result":"Independent1350 basis checks and complete path reconstruction."},
+  {"id":"guarded-composition","path":"research/nima/results/pne-guarded-composition/verification.json","result":"D0/1 complete extension agreement."},
+  {"id":"interface-driven-synthesis","path":"research/nima/results/interface-driven-synthesis/verification.json","result":"Complete experimental D2 family243034 states/698 exits/7018785 edges."},
+  {"id":"completion-planner","path":"research/nima/results/pne-completion-planner/verification.json","result":"698 certified,9984 completable,232352 dead. Maximum shortest addition distance7. Nine compatible retained-packet patterns exactly cover dead states; reverse BFS and DP agree, all edges checked."}
+ ],
+ "node_updates":[
+  {"id":"interface-discovery","resolved_subcases":["Complete D0/1/2 length2–4 path catalog independently reconstructed."],"remaining":"General interface identification and continuation preservation."},
+  {"id":"support-selection","resolved_subcases":["Same-origin N-internal PE classification.","D0/1 support and reader guards audited."],"remaining":"Source-local derivation of completion obstructions and broader permissions."},
+  {"id":"guarded-composition","resolved_subcases":["D0/1 all extensions and D2 generated states agree with direct activity/source checks."],"remaining":"General composition theorem."},
+  {"id":"synthesis-completeness","resolved_subcases":["Complete interface-driven experimental D2 family.","Complete minimum-addition completion policy on that family; all distances agree with two graph algorithms and edge equations."],"remaining":"Reusable source-derived planning/pruning beyond completed atlases."},
+  {"id":"structural-discrimination","resolved_subcases":["D1 minimal guard/conflict records.","D2 dead states equal states with no certified superset; nine compatible packet patterns classify deadness on the entire family."],"remaining":"Derive the nine obstructions from interfaces rather than target catalog membership; determine which survive increased origin."}
+ ],
+ "test_updates":[
+  {"id":"interface-path-catalog-D012-L234","status":"completed","executed":true,"receipt":"research/nima/results/pne-interface-catalog/verification.json"}
+ ],
+ "added_tests":[
+  {"id":"guarded-interface-critical-pairs-D01","status":"completed","executed":true,"targets":["guarded-composition","support-selection"],"receipt":"research/nima/results/pne-guarded-composition/verification.json","procedure":["Complete small extension comparison."],"completion":"Recorded source agreement and obstructions."},
+  {"id":"interface-driven-synthesis-D2","status":"completed","executed":true,"targets":["synthesis-completeness","structural-discrimination"],"receipt":"research/nima/results/interface-driven-synthesis/verification.json","procedure":["Generate complete D2 family from interfaces."],"completion":"243034 states/698 exits/7018785 edges."},
+  {"id":"certificate-directed-completion-D2","status":"completed","executed":true,"targets":["structural-discrimination","synthesis-completeness"],"receipt":"research/nima/results/pne-completion-planner/verification.json","procedure":["Reverse BFS, independent DAG DP, every edge distance check, target-superset comparison and small-core extraction."],"completion":"Complete policy and exact nine-pattern dead-state cover."},
+  {"id":"source-local-obstruction-derivation-D2","status":"planned","executed":false,"targets":["structural-discrimination","support-selection"],"domain":{"maxOrigin":2,"cores":"Nine patterns in completion-planner selectedObstructionCover","mode":"experimental-terminal-PE"},"procedure":["For each core, retain its mandatory selected packets and derive candidate continuations from native/PE interfaces without consulting certified target sets.","Use compatibility, mandatory occupancy/successor guards, optimistic root/exit reachability and required native face witnesses to seek a local impossibility certificate.","Where this relaxation is insufficient, report the missing joint constraint and solve a bounded guarded extension subproblem with explicit provenance.","Check proper-subset controls and compare predicted impossibility against the completed atlas only after constructing certificates."],"completion":"A source-derived obstruction certificate for each core or an explicit residual; identify any origin-bound dependence rather than extrapolating the D2 classifier."}
+ ],
+ "frontier":["structural-discrimination","support-selection"],
+ "recommended_start":"source-local-obstruction-derivation-D2"
+}

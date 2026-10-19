@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const path=process.argv[2]??'research/nima/contracts/pne-structural-synthesis-net.v1.json',input=JSON.parse(readFileSync(path));
+const c=input.base_contract?JSON.parse(readFileSync(input.base_contract)):input;
+if(input.base_contract){assert.equal(createHash('sha256').update(readFileSync(input.base_contract)).digest('hex'),input.base_sha256);c.evidence.push(...input.evidence);for(const update of input.node_updates){const node=c.conjectures.find(n=>n.id===update.id);assert.ok(node);node.resolved_subcases=[...(node.resolved_subcases??[]),...update.resolved_subcases];node.remaining=update.remaining;}for(const update of input.test_updates){const test=c.tests.find(t=>t.id===update.id);assert.ok(test);Object.assign(test,update);}c.tests.push(...input.added_tests);c.frontier=input.frontier;c.recommended_start=input.recommended_start;}
+const nodes=new Map(c.conjectures.map(n=>[n.id,n]));assert.equal(nodes.size,c.conjectures.length);
+const visited=new Set(),active=new Set();function visit(id){assert.ok(nodes.has(id));assert.ok(!active.has(id),'Dependency cycle');if(visited.has(id))return;active.add(id);for(const p of nodes.get(id).depends_on)visit(p);active.delete(id);visited.add(id);}
+for(const n of c.conjectures){visit(n.id);assert.ok(n.statement&&n.acceptance&&n.falsifier);assert.equal(n.status,'open');for(const e of n.evidence)assert.ok(c.evidence.some(x=>x.id===e));}
+for(const id of c.frontier)assert.ok(nodes.get(id)?.actionable);assert.ok(c.tests.some(t=>t.id===c.recommended_start));
+for(const t of c.tests){if(t.executed){assert.equal(t.status,'completed');assert.ok(t.receipt&&readFileSync(t.receipt));}else assert.equal(t.status,'planned');for(const id of t.targets)assert.ok(nodes.has(id));assert.ok(t.completion&&t.procedure.length);}
+const hash=p=>createHash('sha256').update(readFileSync(p)).digest('hex'),sourceHashes=Object.fromEntries([path,...(input.base_contract?[input.base_contract]:[]),...c.evidence.map(e=>e.path),...c.attachments.map(a=>a.contract)].map(p=>[p,hash(p)]));
+const out='research/nima/results/pne-structural-synthesis-net';mkdirSync(out,{recursive:true});writeFileSync(out+(input.base_contract?'/'+input.id.split('-').at(-1)+'-verification.json':'/verification.json'),JSON.stringify({status:'pass-net-structure-and-source-pins',nodes:nodes.size,frontier:c.frontier,recommendedStart:c.recommended_start,scientificTestsExecuted:false,sourceHashes},null,2)+'\n');console.log(JSON.stringify({status:'pass-net-structure-and-source-pins',nodes:nodes.size,frontier:c.frontier}));
