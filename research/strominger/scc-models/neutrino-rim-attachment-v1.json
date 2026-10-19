@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "neutrino-rim-attachment-v1",
+    "owner": "marici.Strominger",
+    "classification": "geometric-boundary-attachment-with-global-context-controls-and-central-spin-gate-not-weak-identification",
+    "stratum": "Existing source geometry and cap comparison, then boundary pushout, exact homology, source-word/metric controls and a restricted central-spin vertex obstruction.",
+    "inputs": ["research/strominger/contracts/neutrino-rim-attachment.v1.json", "research/strominger/results/neutrino-triangle-cap-boundary-v1.json", "research/voevodsky/inputs/mode-neutron.json", "research/voevodsky/inputs/relative-proton.json", "research/voevodsky/results/electron_tetrahedral_spinor_store.json"],
+    "checks": [{"id":"neutrino-rim-attachment-exact", "path":"research/strominger/checkers/check_neutrino_rim_attachment.py", "requires":[]}],
+    "depends_on": ["neutrino-triangle-cap-boundary-v1"],
+    "consumes": ["Actual selected neutron side surface and reserved cap geometry", "Existing standalone arrow-first disk with explicitly induced cap metric", "Retained electron raw spinor encoder and central operation"],
+    "provides": ["Six labelled source-equivariant geometric boundary attachments", "Exact annulus-to-disk-to-sphere homology under cap attachment", "Unchanged proton rejection and explicitly changed-source countermodel", "Restricted zero spin-covariant vertex for purely geometric chain partner"],
+    "missing_constructors": ["Physical particle selection and charge/weak/spin/energy/momentum attachment", "Source-derived spinorial partner rather than an undecorated disk chain"],
+    "next_falsifier": "A proposed patch fails oriented boundary cancellation or source action/metric squares; homology differs from predictions; closed proton exposes a boundary target; a nonzero chain-model vertex respects the retained electron central sign."
+  }
+}

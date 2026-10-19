@@ -1,0 +1,22 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "port-incidence-small-family-v1",
+    "owner": "marici.Strominger",
+    "classification": "source-native-projective-port-interface",
+    "stratum": "Forward realization on actual native3-channel and1-channel images, metric attachment and composition; readout descent fails on the exported rank-two complement. Not a repair of the failed sign-forgetting quotient.",
+    "inputs": [
+      "research/strominger/contracts/port-incidence-small-family.v1.json",
+      "research/strominger/results/port-incidence-conjectures-v1.json",
+      "research/strominger/checkers/check_port_incidence_conjectures.py",
+      "research/strominger/results/common-three-carrier-protocol/proton.json",
+      "research/strominger/results/common-three-carrier-protocol/neutron.json"
+    ],
+    "checks": [{"id":"port-incidence-small-family-exact","path":"research/strominger/checkers/check_port_incidence_small_family.py","requires":[]}],
+    "depends_on": ["port-incidence-conjectures-v1"],
+    "consumes": ["Actual native image encoders/decoders and metrics", "Native N below the retained rank-three projector"],
+    "provides": ["All four3/1 projective interfaces with9/3/3/1 nonzero entries", "All eight object-triple composition equations and explicit nonrecovery witness"],
+    "missing_constructors": ["Source geometric port embedding and physical particle binding"],
+    "next_falsifier": "Any actual support differs from9/3/3/1, an adapter or composition fails, or the exported P3-N column is not lost by the one-channel interface."
+  }
+}

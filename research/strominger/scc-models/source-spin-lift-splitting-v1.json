@@ -1,0 +1,24 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "source-spin-lift-splitting-v1",
+    "owner": "marici.Strominger",
+    "classification": "source-bound-finite-spin-extension-splitting",
+    "stratum": "Global source-word compatibility and section/cocycle descent on explicit doublet candidates. Actual source and mode representations are reconstructed; no physical preparation or interaction selected.",
+    "inputs": [
+      "research/strominger/contracts/source-spin-lift-splitting-test.v1.json",
+      "research/strominger/contracts/source-spin-lift-splitting.v1.json",
+      "research/strominger/results/shared-packet-frame-adapter-v1.json",
+      "research/strominger/results/baryon-geometric-spin-lifts-v1.json",
+      "research/strominger/results/baryon-coefficient-spin-binding-v1.json",
+      "research/voevodsky/inputs/relative-proton.json",
+      "research/voevodsky/inputs/mode-neutron.json"
+    ],
+    "checks": [{"id": "source-spin-lift-splitting-exact", "path": "research/strominger/checkers/check_source_spin_lift_splitting.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["Actual source rotations and36-mode actions", "Transported spin matrices and both lift signs"],
+    "provides": ["Source-specific group identifications and full pullback fibres", "Explicit neutron section and proton gauge-invariant nonsplitting certificate"],
+    "missing_constructors": ["Independent physical doublet/preparation and interaction selection"],
+    "next_falsifier": "An actual proton homomorphic section, failure of the neutron section, or a source projection/mode relation mismatch. A failed positive-lift assignment alone does not establish nonsplitting."
+  }
+}

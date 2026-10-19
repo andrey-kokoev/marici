@@ -1,0 +1,14 @@
+{
+ "schema":"marici.scc.model-manifest.v1",
+ "model":{
+  "id":"baryon-doublet-extension-v1","owner":"marici.Strominger",
+  "classification":"conditional-explicit-rank-enlargement-with-unresolved-source-couplings",
+  "stratum":"Forward realization of an explicitly supplied tensor carrier and attachment transport. Rank changes1->2, so this is not a presentation equivalence. Geometric-generator/spin and physical-coupling cells remain unsupported before readout/cost interpretation.",
+  "inputs":["research/strominger/results/rank-one-return-packets-v1.json","research/strominger/results/electron-packet-extraction-v1.json","research/strominger/results/common-three-carrier-protocol/proton.json","research/strominger/results/common-three-carrier-protocol/neutron.json","research/voevodsky/electron-pairing-coupling.md","research/nima/predictive-pair-electron-spin-binding.md"],
+  "checks":[{"id":"baryon-doublet-extension-exact","path":"research/strominger/checkers/check_baryon_doublet_extension.py","requires":[]}],
+  "depends_on":[],"consumes":["actual proton/neutron rank-one factorizations and original metrics","actual electron decoder","native24 logical rotation dictionary"],
+  "provides":["explicit tensor doublet with recovery, rank and stage-support change","conditional raw576-term singlet contraction for each enlarged source","opposite-phase neutral-output gate and exact missing-map inventory"],
+  "missing_constructors":["source proton/neutron generators to spin actions/lifts","neutral neutron magnetic/internal law","physical charge representation and preparation"],
+  "next_falsifier":"Bind an actual geometric generator to the supplied spin action and test covariance of the real encoding and coupling. Neither selecting a particle label nor inserting tensor I2 supplies that missing square."
+ }
+}

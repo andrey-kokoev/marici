@@ -1,0 +1,39 @@
+{
+ "schema":"marici.packet-transport-policy.v1",
+ "owner":"marici.Strominger",
+ "obligation":"native-versus-supplied-transport",
+ "source":"research/voevodsky/results/electron_tetrahedral_spinor_store.json",
+ "native_task":{
+  "state":"normalized logical spinor, encoded return image and full source/command archive",
+  "operations":"the24 retained binary tetrahedral logical rotations",
+  "inverse":"adjoint; raw lifted inverse composes to N, not I8",
+  "square":"For A=epsilon E_a,B=eta E_b,a!=b, AB=-BA; comparison is -I, not an equality of full amplitudes.",
+  "cost":"formal token c_native(U) per applied logical matrix; numeric primitive implementation cost unassigned"
+ },
+ "chart_task":{
+  "state":"fixed reference spinor and a marked vertex u in {-1,0,1}^3, value C(u)z_ref, encoded image, full edge archive",
+  "operations":"108 directed nearest-neighbor grid edges; T(v,u)=C(v)C(u)*",
+  "guard":"current vertex equals edge source; both endpoints are grid vertices and differ by one unit along one coordinate",
+  "native_only_mode":"admit the edge iff T(v,u) belongs to the native24 matrices",
+  "supplied_grid_mode":"admit all declared grid edges as conditional supplied operations, including nonnative matrices",
+  "comparison":"Composed chart transports telescope on equal vertex endpoints; different edge archives remain distinct.",
+  "cost":"c_native(T) for native matrices, c_supplied(T) for nonnative matrices; sum formal tokens along the actual route, no cancellation or shared-cost credit without an explicit implementation",
+  "boundary":"The finite grid task is not every SU(2) operation and does not share the native task's enabled domains."
+ },
+ "source_protocol_support":{"L":16,"G":64,"N":64,"total":144,"interpretation":"fixed stored coefficient protocol support, not the per-command cost of U, W_U or a chart edge"},
+ "cost_semantics":{
+  "assigned_units":null,
+  "physical_cost":null,
+  "primitive_realization":"not supplied",
+  "identification":"exact matrices may share a formal token; distinct executions still contribute one occurrence each",
+  "inverse_routes":"recover state but retain both execution tokens and history",
+  "forbidden_inference":"endpoint equality, coordinate status or group membership alone never assigns cost144 or zero"
+ },
+ "prospective_hostiles":[
+  "All12 signed native generator sectors retain minus-identity order comparison and opposite reference pairing.",
+  "The same two-coordinate sectors have equal endpoints only under typed supplied chart edges; reject an erased source-vertex guard.",
+  "Native-only policy refuses each first entry into a nonnative two-coordinate corner; its endpoint cannot be obtained by a word in the closed native group.",
+  "A return path retains nonempty execution tokens; no free reset or zero-cost inverse is inferred."
+ ],
+ "scope":"Mathematical admission and symbolic accounting contract; not a source-generated primitive cost or physical apparatus admission."
+}

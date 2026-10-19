@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "neutrino-spinor-rim-contact-v1",
+    "owner": "marici.Strominger",
+    "classification": "source-bound-coherent-rim-spinor-attachment-and-scalar-contact-not-physical-weak-production",
+    "stratum": "Actual geometric rim and marked coherent spinor sources, then projected-normal isometric charts, coupled base/spin transport and normalized scalar contact with recovery and dephasing controls.",
+    "inputs": ["research/strominger/contracts/neutrino-spinor-rim-contact.v1.json", "research/strominger/results/neutrino-rim-attachment-v1.json", "research/strominger/results/neutrino-three-port-boundary-v1.json", "research/voevodsky/results/electron_tetrahedral_spinor_store.json", "research/voevodsky/inputs/mode-neutron.json"],
+    "checks": [{"id":"neutrino-spinor-rim-contact-exact", "path":"research/strominger/checkers/check_neutrino_spinor_rim_contact.py", "requires":[]}],
+    "depends_on": ["neutrino-rim-attachment-v1", "neutrino-three-port-boundary-v1"],
+    "consumes": ["Existing explicit coherent C^2 fiber, omission mark and source double-cover operations", "Actual neutron cap geometry and derived boundary attachment"],
+    "provides": ["Three spinor-line ports indexed by actual cap rim edges", "Twenty-four proper metric charts and144 coupled covariance squares", "Normalized raw48 scalar contact with exact singlet recovery", "Dephasing and coupling-freedom controls"],
+    "missing_constructors": ["Physical particle-selection, weak production, charge/momentum/chirality/mass/rate attachment", "Derivation of borrowed spinor fiber from the bare arrow-first candidate"],
+    "next_falsifier": "A projected triangle has wrong metric, proper cap frame or joint covariance square fails, contact fails norm/recovery, or dephased flags retain full coherent overlap."
+  }
+}

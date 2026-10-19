@@ -1,0 +1,21 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "neutrino-three-port-discriminants-v1",
+    "owner": "marici.Strominger",
+    "classification": "source-typed-sign-and-flavor-label-discriminants-not-particle-selection",
+    "stratum": "Counter-construction by canonical source complements, source-image recovery and transport, then obstruction to rotation-inert label descent and fixed spin-line selection.",
+    "inputs": [
+      "research/strominger/contracts/neutrino-three-port-discriminants.v1.json",
+      "research/strominger/results/neutrino-three-port-boundary-v1.json",
+      "research/strominger/checkers/check_neutrino_three_port_boundary.py",
+      "research/voevodsky/results/electron_tetrahedral_spinor_store.json"
+    ],
+    "checks": [{"id":"neutrino-three-port-discriminants-exact","path":"research/strominger/checkers/check_neutrino_three_port_discriminants.py","requires":[]}],
+    "depends_on": ["neutrino-three-port-boundary-v1"],
+    "consumes": ["Constructed coherent three-face source interface", "Actual source quaternion generators and face permutations"],
+    "provides": ["Opposite-normal-eigenvalue interface with identical counts", "No intertwining of cyclic geometric ports with rotation-inert flavor labels", "Scalar commutant forbids a fixed one-dimensional spin carrier"],
+    "missing_constructors": ["Physical neutrino source and momentum/helicity, charge/weak and mass/flavor maps"],
+    "next_falsifier": "A complement variant fails exact recovery, a label bijection intertwines the nontrivial three-cycle with trivial action, or the quaternion commutant has an extra independent direction."
+  }
+}

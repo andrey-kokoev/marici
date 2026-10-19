@@ -1,0 +1,14 @@
+{
+ "schema":"marici.scc.model-manifest.v1",
+ "model":{
+  "id":"baryon-geometric-spin-lifts-v1","owner":"marici.Strominger",
+  "classification":"actual-affine-source-vector-clifford-lifts-not-full-coefficient-binding",
+  "stratum":"Attachment transport at the source-vector/metric-Clifford square. Affine centers and whitening are explicit; both lift signs retained. Native36-mode coefficient and physical coupling cells remain unsupported.",
+  "inputs":["research/voevodsky/inputs/relative-proton.json","research/voevodsky/inputs/mode-neutron.json","research/strominger/results/baryon-doublet-extension-v1.json"],
+  "checks":[{"id":"baryon-geometric-spin-lifts-exact","path":"research/strominger/checkers/check_baryon_geometric_spin_lifts.py","requires":[]}],
+  "depends_on":[],"consumes":["actual affine source generators and metrics","conditional doublet extension"],
+  "provides":["centered metric Clifford covariance for every supplied source generator","both spin-lift signs and exact finite double-cover checks","explicit remaining coefficient-action square"],
+  "missing_constructors":["actual source-generator action on native36 coefficient modes and induced line phase","choice of physical spin lift and frame alignment","charge/magnetic/internal coupling law"],
+  "next_falsifier":"Compute the actual coefficient action and test T_g K=K chi_g; a mismatched source/line or forgotten chi_g changes the spin action even when the geometric Clifford square passes."
+ }
+}
