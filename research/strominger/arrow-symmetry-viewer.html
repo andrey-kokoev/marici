@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arrow · phase · process</title>
+<style>
+  :root { color-scheme: dark; --bg:#0a101c; --panel:#121d30; --text:#e4edf9; --muted:#9eafc7; --arrow:#ffc96a; --phase:#54d9f5; --flow:#ef92d5; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.5 system-ui,sans-serif; }
+  header { padding:20px 26px 12px; }
+  h1 { margin:0 0 4px; font-size:24px; font-weight:600; }
+  header p { margin:0; color:var(--muted); }
+  main { display:grid; grid-template-columns:minmax(0,1fr) 330px; gap:18px; padding:12px 26px 24px; max-width:1500px; margin:auto; }
+  .scene { position:relative; min-height:600px; border:1px solid #263750; border-radius:14px; overflow:hidden; background:radial-gradient(ellipse at center,#172740,#0a101c 80%); }
+  canvas { width:100%; height:100%; display:block; touch-action:none; cursor:grab; }
+  canvas:active { cursor:grabbing; }
+  .legend { position:absolute; left:16px; top:14px; display:flex; gap:16px; flex-wrap:wrap; pointer-events:none; font-size:13px; }
+  .legend span:before { content:'●'; margin-right:6px; }
+  .arrow { color:var(--arrow); } .phase { color:var(--phase); } .flow { color:var(--flow); }
+  .hint { position:absolute; left:16px; bottom:12px; color:var(--muted); font-size:12px; pointer-events:none; }
+  aside { background:var(--panel); padding:17px; border:1px solid #263750; border-radius:14px; }
+  fieldset { border:0; padding:0; margin:0 0 22px; }
+  legend { font-weight:650; padding:0; margin-bottom:8px; }
+  label { display:block; font-size:13px; margin-top:12px; }
+  label output { float:right; font-variant-numeric:tabular-nums; }
+  input[type=range] { width:100%; margin:7px 0 0; accent-color:var(--arrow); }
+  #phaseAngle { accent-color:var(--phase); }
+  .buttons button[aria-pressed=true] { border-color:var(--flow); color:var(--flow); background:#49334e; }
+  button:disabled { opacity:.4; cursor:default; }
+  #processOrder { margin-top:10px; color:var(--flow); }
+  #flowStatus { margin-top:6px; color:var(--muted); font-size:12px; }
+  .buttons { display:flex; gap:6px; flex-wrap:wrap; margin-top:10px; }
+  button { background:#223551; color:var(--text); border:1px solid #425878; border-radius:7px; padding:6px 11px; font:inherit; font-size:12px; cursor:pointer; }
+  button:hover { background:#304967; } button:focus-visible,input:focus-visible { outline:2px solid #fff; outline-offset:3px; }
+  #lift { border-top:1px solid #31435d; padding-top:12px; }
+  .readout { font:12px/1.65 ui-monospace,monospace; overflow-wrap:anywhere; }
+  #returnStatus { font-size:13px; min-height:42px; color:var(--arrow); margin:8px 0; }
+  details { border-top:1px solid #31435d; padding-top:12px; font-size:12px; color:var(--muted); }
+  summary { cursor:pointer; color:var(--text); }
+  details p { margin:8px 0; }
+  @media(max-width:900px) { main { grid-template-columns:1fr; padding:12px; } header { padding:16px 14px 4px; } .scene { height:58vh; min-height:380px; } aside { max-width:none; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Arrow · phase · process</h1>
+  <p>Displayed actions: SU(2) × SO(2) × ℤ₂ — arrow frame, complex phase, process reversal.</p>
+</header>
+<main>
+  <section class="scene" aria-label="Symmetry scene">
+    <div class="legend"><span class="arrow">arrow frame</span><span class="phase">complex phase</span><span class="flow">process traversal</span></div>
+    <canvas id="scene" tabindex="0" aria-label="Rotating arrow frame, complex-phase ring, and open stage sequence with forward or reverse traversal. Drag to orbit; scroll to zoom."></canvas>
+    <div class="hint">Drag to orbit · scroll to zoom · camera motion does not change the group element</div>
+  </section>
+  <aside>
+    <fieldset>
+      <legend class="arrow">SU(2) — arrow frame</legend>
+      <label for="turn">Turn about z <output id="turnValue">0°</output></label>
+      <input id="turn" type="range" min="0" max="720" step="1" value="0">
+      <label for="tilt">Tilt about y <output id="tiltValue">40°</output></label>
+      <input id="tilt" type="range" min="-180" max="180" step="1" value="40">
+      <label for="roll">Roll about x <output id="rollValue">−20°</output></label>
+      <input id="roll" type="range" min="-180" max="180" step="1" value="-20">
+      <div class="buttons"><button data-turn="0">0°</button><button data-turn="360">360°</button><button data-turn="720">720°</button></div>
+    </fieldset>
+    <fieldset>
+      <legend class="phase">SO(2) — complex phase</legend>
+      <label for="phaseAngle">Phase θ <output id="phaseAngleValue">0°</output></label>
+      <input id="phaseAngle" type="range" min="-180" max="180" step="1" value="0">
+      <div class="buttons"><button id="phaseStep">+90°</button></div>
+    </fieldset>
+    <fieldset>
+      <legend class="flow">ℤ₂ — process reversal</legend>
+      <div class="buttons" role="group" aria-label="Process direction">
+        <button id="flowForward" aria-pressed="true">Forward →</button>
+        <button id="flowBack" aria-pressed="false">← Reverse</button>
+        <button id="flowFlip">Flip direction</button>
+      </div>
+      <div id="processOrder" class="readout">Input → L → G → N</div>
+      <div id="flowStatus" role="status">Input · step 0 / 3</div>
+      <div class="buttons"><button id="flowNext">Next stage</button><button id="play">Play traversal</button><button id="flowReset">Restart</button></div>
+    </fieldset>
+    <section id="lift" aria-label="Spinor lift readout">
+      <strong>Spinor lift</strong>
+      <div id="quaternion" class="readout"></div>
+      <div id="spinor" class="readout"></div>
+      <div id="returnStatus" role="status"></div>
+    </section>
+    <details>
+      <summary>What the display retains</summary>
+      <p>The arrow plus its two transverse frame axes show the SO(3) rotation associated with SU(2). The quaternion q and spinor readout retain the double cover: q and −q give the same frame but opposite spinors.</p>
+      <p>The cyan marker shows complex phase. The pink layer shows traversal through the open sequence Input, L, G, N. Reversal flips its traversal arrows and stage order without rotating the gold arrow or changing complex phase. Flipping twice restores the same order.</p>
+      <p>L, G, N name the retained construction stages. Reading them backwards does not implement inverses of their projectors. The moving cursor shows traversal position, not a phase or an additional group parameter; playback stops at the final stage.</p>
+      <p>SU(2) has three continuous parameters, SO(2) has one, and process reversal is binary. The spatial display retains the spinor lift in its separate readout. Playback is a display operation, not a physical-time assignment.</p>
+    </details>
+  </aside>
+</main>
+<script id="symmetry-math">
+(() => {
+  const rad = degrees => degrees * Math.PI / 180;
+  const mul = (a,b) => [
+    a[0]*b[0]-a[1]*b[1]-a[2]*b[2]-a[3]*b[3],
+    a[0]*b[1]+a[1]*b[0]+a[2]*b[3]-a[3]*b[2],
+    a[0]*b[2]-a[1]*b[3]+a[2]*b[0]+a[3]*b[1],
+    a[0]*b[3]+a[1]*b[2]-a[2]*b[1]+a[3]*b[0]
+  ];
+  const axis = (index,degrees) => {
+    const q=[Math.cos(rad(degrees)/2),0,0,0];
+    q[index+1]=Math.sin(rad(degrees)/2);
+    return q;
+  };
+  const quat = (turn,tilt,roll) => mul(axis(2,turn),mul(axis(1,tilt),axis(0,roll)));
+  const rotate = (q,v) => mul(mul(q,[0,...v]),[q[0],-q[1],-q[2],-q[3]]).slice(1);
+  const frame = q => [[1,0,0],[0,1,0],[0,0,1]].map(v=>rotate(q,v));
+  // U(q)=w I-i(x sigma_x+y sigma_y+z sigma_z); seed is U(q)*(1,0).
+  const spinor = q => [[q[0],-q[3]],[q[2],-q[1]]];
+  const circle = degrees => [Math.cos(rad(degrees)),Math.sin(rad(degrees))];
+  const wrap = degrees => ((degrees+180)%360+360)%360-180;
+  const element = s => ({q:quat(s.turn,s.tilt,s.roll),phase:circle(s.phaseAngle),flowDirection:s.flowDirection});
+  const circleMul = (a,b) => [a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]];
+  const compose = (a,b) => ({q:mul(a.q,b.q),phase:circleMul(a.phase,b.phase),flowDirection:a.flowDirection*b.flowDirection});
+  const processNames = ['Input','L','G','N'];
+  // Layout coordinates only: no geometric or physical meaning is assigned to stage positions.
+  const processNodes = [[-2.2,-1.15,-.1],[-.8,-1.25,1.25],[.8,-1.05,.55],[2.2,-1.15,-.85]];
+  const flowOrder = direction => {
+    if(direction!==1 && direction!==-1) throw new Error('Process direction must be +1 or -1');
+    return direction===1?[0,1,2,3]:[3,2,1,0];
+  };
+  const flowCursor = (direction,step) => {
+    const order=flowOrder(direction),position=Math.max(0,Math.min(3,step));
+    const index=Math.floor(position),fraction=position-index;
+    const a=processNodes[order[index]],b=processNodes[order[Math.min(index+1,3)]];
+    return a.map((x,i)=>x+(b[i]-x)*fraction);
+  };
+  globalThis.ArrowSymmetryMath={rad,mul,axis,quat,rotate,frame,spinor,circle,wrap,element,compose,processNames,processNodes,flowOrder,flowCursor};
+})();
+</script>
+<script id="symmetry-view">
+(() => {
+  const M=globalThis.ArrowSymmetryMath;
+  const canvas=document.getElementById('scene'), ctx=canvas.getContext('2d');
+  const keys=['turn','tilt','roll','phaseAngle'];
+  const controls=Object.fromEntries(keys.map(k=>[k,document.getElementById(k)]));
+  const state={turn:0,tilt:40,roll:-20,phaseAngle:0,flowDirection:1,flowStep:0};
+  const camera={yaw:-0.65,pitch:0.50,distance:8.2};
+  const colors={arrow:'#ffc96a',phase:'#54d9f5',flow:'#ef92d5'};
+  let width=1,height=1,playing=false,lastTick=0,animationId=null;
+  const scale=(v,s)=>v.map(x=>x*s);
+  const add=(a,b)=>a.map((x,i)=>x+b[i]);
+  const clean=n=>Math.abs(n)<0.0005?0:n;
+  const number=n=>clean(n).toFixed(3);
+  const complex=z=>`${number(z[0])} ${clean(z[1])<0?'−':'+'} ${number(Math.abs(z[1]))}i`;
+  function project(v) {
+    const cy=Math.cos(camera.yaw),sy=Math.sin(camera.yaw),cp=Math.cos(camera.pitch),sp=Math.sin(camera.pitch);
+    const right=cy*v[0]-sy*v[2];
+    const up=-sy*sp*v[0]+cp*v[1]-cy*sp*v[2];
+    const depth=sy*cp*v[0]+sp*v[1]+cy*cp*v[2];
+    const zoom=Math.min(width,height)*1.27/(camera.distance-depth);
+    return [width*.5+right*zoom,height*.51-up*zoom,depth];
+  }
+  function snapshot() {
+    const e=M.element(state),order=M.flowOrder(state.flowDirection);
+    return {...e,frame:M.frame(e.q),spinor:M.spinor(e.q),controls:{...state},
+      process:{order,cursor:M.flowCursor(state.flowDirection,state.flowStep),playing}};
+  }
+  function readouts() {
+    for(const k of keys) document.getElementById(k+'Value').textContent=`${controls[k].value}°`;
+    const {q,spinor,process}=snapshot();
+    document.getElementById('quaternion').textContent=`q = (${q.map(number).join(', ')})`;
+    document.getElementById('spinor').textContent=`ψ = (${spinor.map(complex).join('; ')})`;
+    const turn=state.turn;
+    document.getElementById('returnStatus').textContent=turn===360?'360°: original frame; opposite spinor.':turn===720?'720°: original frame and original spinor.':turn===0?'0°: reference frame and spinor.':'Arrow frame rotates; spinor lift remains displayed.';
+    document.getElementById('flowForward').setAttribute('aria-pressed',String(state.flowDirection===1));
+    document.getElementById('flowBack').setAttribute('aria-pressed',String(state.flowDirection===-1));
+    document.getElementById('processOrder').textContent=process.order.map(i=>M.processNames[i]).join(' → ');
+    const stage=Math.floor(state.flowStep),name=M.processNames[process.order[stage]];
+    const location=state.flowStep>stage?`${name} → ${M.processNames[process.order[stage+1]]}`:name;
+    document.getElementById('flowStatus').textContent=`${location} · step ${stage} / 3`;
+    document.getElementById('flowNext').disabled=state.flowStep>=3;
+    document.getElementById('play').textContent=playing?'Pause traversal':'Play traversal';
+  }
+  function setControls(values) {
+    for(const [key,value] of Object.entries(values)) {
+      if(key==='flowDirection') {M.flowOrder(value);state.flowDirection=value;}
+      else if(key==='flowStep') {
+        if(!Number.isFinite(value)) throw new Error('Traversal position must be finite');
+        state.flowStep=Math.max(0,Math.min(3,value));
+      }
+      else {
+        if(!keys.includes(key)) throw new Error('Unknown control '+key);
+        controls[key].value=String(value);
+        state[key]=Number(controls[key].value);
+      }
+    }
+    readouts(); draw();
+  }
+  function draw() {
+    ctx.clearRect(0,0,width,height);
+    const commands=[];
+    const segment=(a,b,color,lineWidth=1,alpha=1)=>{
+      const A=project(a),B=project(b);
+      commands.push({depth:(A[2]+B[2])/2,paint:()=>{
+        ctx.globalAlpha=alpha;ctx.strokeStyle=color;ctx.lineWidth=lineWidth;
+        ctx.beginPath();ctx.moveTo(A[0],A[1]);ctx.lineTo(B[0],B[1]);ctx.stroke();
+      }});
+    };
+    const dot=(p,color,radius=6)=>{
+      const P=project(p);
+      commands.push({depth:P[2],paint:()=>{
+        ctx.globalAlpha=1;ctx.fillStyle=color;ctx.shadowColor=color;ctx.shadowBlur=12;
+        ctx.beginPath();ctx.arc(P[0],P[1],radius,0,2*Math.PI);ctx.fill();ctx.shadowBlur=0;
+      }});
+    };
+    const label=(p,text,color)=>{
+      const P=project(p);
+      commands.push({depth:P[2]+.001,paint:()=>{
+        ctx.globalAlpha=1;ctx.fillStyle=color;ctx.font='12px system-ui';ctx.textAlign='center';ctx.fillText(text,P[0],P[1]-10);
+      }});
+    };
+    const arrow=(a,b,color,lineWidth=3)=>{
+      segment(a,b,color,lineWidth);
+      const A=project(a),B=project(b),angle=Math.atan2(B[1]-A[1],B[0]-A[0]);
+      commands.push({depth:B[2]+.001,paint:()=>{
+        ctx.globalAlpha=1;ctx.fillStyle=color;ctx.beginPath();ctx.moveTo(B[0],B[1]);
+        ctx.lineTo(B[0]-13*Math.cos(angle-.4),B[1]-13*Math.sin(angle-.4));
+        ctx.lineTo(B[0]-13*Math.cos(angle+.4),B[1]-13*Math.sin(angle+.4));ctx.closePath();ctx.fill();
+      }});
+    };
+    const curve=(f,color,lineWidth=1,alpha=1,steps=100)=>{
+      for(let i=0;i<steps;i++) segment(f(i/steps),f((i+1)/steps),color,lineWidth,alpha);
+    };
+    const radius=1.34;
+    for(let latitude=-60;latitude<=60;latitude+=30) {
+      const lat=M.rad(latitude);
+      curve(t=>[radius*Math.cos(lat)*Math.cos(2*Math.PI*t),radius*Math.sin(lat),radius*Math.cos(lat)*Math.sin(2*Math.PI*t)],'#8ca4c9',.75,.18);
+    }
+    for(let longitude=0;longitude<180;longitude+=30) {
+      const lon=M.rad(longitude);
+      curve(t=>[radius*Math.sin(2*Math.PI*t)*Math.cos(lon),radius*Math.cos(2*Math.PI*t),radius*Math.sin(2*Math.PI*t)*Math.sin(lon)],'#8ca4c9',.75,.18);
+    }
+    const ring=(r,y,color,angle,isComplex)=>{
+      const point=a=>[r*Math.cos(a),y,r*Math.sin(a)];
+      curve(t=>point(2*Math.PI*t),color,2,.7);
+      for(let i=0;i<4;i++) {
+        const a=i*Math.PI/2;
+        segment(point(a),[(r+.09)*Math.cos(a),y,(r+.09)*Math.sin(a)],color,1.5);
+        if(isComplex) label([(r+.18)*Math.cos(a),y,(r+.18)*Math.sin(a)],['+1','+i','−1','−i'][i],color);
+      }
+      const a=M.rad(angle),p=point(a);dot(p,color,7);
+      arrow(p,point(a+.16),color,2);
+    };
+    ring(2.12,.43,colors.phase,state.phaseAngle,true);
+    const nodes=M.processNodes,order=M.flowOrder(state.flowDirection);
+    for(let i=0;i<3;i++) segment(nodes[i],nodes[i+1],'#526783',1.5,.75);
+    for(let i=0;i<3;i++) {
+      const a=nodes[order[i]],b=nodes[order[i+1]];
+      const between=t=>a.map((x,j)=>x+(b[j]-x)*t);
+      arrow(between(.23),between(.68),colors.flow,2.5);
+    }
+    nodes.forEach((point,i)=>{dot(point,colors.flow,3);label(point,M.processNames[i],colors.flow);});
+    dot(M.flowCursor(state.flowDirection,state.flowStep),colors.flow,8);
+    const {frame}=snapshot();
+    arrow([0,0,0],scale(frame[0],1.15),'#718399',1.7);
+    arrow([0,0,0],scale(frame[1],1.15),'#92a3b9',1.7);
+    const endpoint=scale(frame[2],1.78);
+    arrow(scale(frame[2],-.80),endpoint,colors.arrow,4);
+    dot(endpoint,colors.arrow,4);label(add(endpoint,scale(frame[2],.18)),'arrow',colors.arrow);
+    dot([0,0,0],'#e4edf9',3);
+    commands.sort((a,b)=>a.depth-b.depth).forEach(c=>c.paint());ctx.globalAlpha=1;
+  }
+  function resize() {
+    const rect=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);
+    width=rect.width;height=rect.height;
+    canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);draw();
+  }
+  for(const k of keys) controls[k].addEventListener('input',()=>setControls({[k]:Number(controls[k].value)}));
+  document.querySelectorAll('[data-turn]').forEach(b=>b.addEventListener('click',()=>setControls({turn:Number(b.dataset.turn)})));
+  document.getElementById('phaseStep').addEventListener('click',()=>setControls({phaseAngle:M.wrap(state.phaseAngle+90)}));
+  document.getElementById('flowBack').addEventListener('click',()=>setControls({flowDirection:-1}));
+  document.getElementById('flowForward').addEventListener('click',()=>setControls({flowDirection:1}));
+  document.getElementById('flowFlip').addEventListener('click',()=>setControls({flowDirection:-state.flowDirection}));
+  function stopPlayback() {
+    playing=false;lastTick=0;
+    if(animationId!==null) cancelAnimationFrame(animationId);
+    animationId=null;readouts();
+  }
+  document.getElementById('flowNext').addEventListener('click',()=>{
+    stopPlayback();setControls({flowStep:Math.min(3,Math.floor(state.flowStep)+1)});
+  });
+  document.getElementById('flowReset').addEventListener('click',()=>{
+    stopPlayback();setControls({flowStep:0});
+  });
+  function tick(timestamp) {
+    if(!playing)return;
+    if(lastTick) state.flowStep=Math.min(3,state.flowStep+Math.min((timestamp-lastTick)/1000,.1)*.9);
+    lastTick=timestamp;
+    if(state.flowStep>=3) {playing=false;animationId=null;}
+    readouts();draw();
+    if(playing) animationId=requestAnimationFrame(tick);
+  }
+  document.getElementById('play').addEventListener('click',()=>{
+    if(playing) {stopPlayback();return;}
+    if(state.flowStep>=3) state.flowStep=0;
+    playing=true;lastTick=0;readouts();draw();animationId=requestAnimationFrame(tick);
+  });
+  let dragging=null;
+  canvas.addEventListener('pointerdown',event=>{dragging=[event.clientX,event.clientY];canvas.setPointerCapture(event.pointerId);});
+  canvas.addEventListener('pointermove',event=>{
+    if(!dragging)return;
+    camera.yaw+=(event.clientX-dragging[0])*.008;
+    camera.pitch=Math.max(-1.2,Math.min(1.2,camera.pitch+(event.clientY-dragging[1])*.008));
+    dragging=[event.clientX,event.clientY];draw();
+  });
+  canvas.addEventListener('pointerup',()=>{dragging=null;});
+  canvas.addEventListener('pointercancel',()=>{dragging=null;});
+  canvas.addEventListener('wheel',event=>{event.preventDefault();camera.distance=Math.max(5.2,Math.min(13,camera.distance+event.deltaY*.006));draw();},{passive:false});
+  canvas.addEventListener('keydown',event=>{
+    if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key))return;
+    event.preventDefault();
+    camera.yaw+=event.key==='ArrowLeft'?-.1:event.key==='ArrowRight'?.1:0;
+    camera.pitch=Math.max(-1.2,Math.min(1.2,camera.pitch+(event.key==='ArrowUp'?.1:event.key==='ArrowDown'?-.1:0)));draw();
+  });
+  new ResizeObserver(resize).observe(canvas);readouts();resize();
+  globalThis.ArrowSymmetryViewer={snapshot,setControls,draw,camera};
+})();
+</script>
+</body>
+</html>

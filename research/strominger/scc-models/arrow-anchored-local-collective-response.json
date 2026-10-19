@@ -1,0 +1,28 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "arrow-anchored-local-collective-response",
+    "owner": "marici.Strominger",
+    "classification": "candidate_static_curvature_response_not_native_electromagnetic_dynamics",
+    "stratum": "Twelve retained directed tetrahedral primitive occurrences, six antisymmetric edge coordinates, four source face loops, rank-three gauge/curvature decomposition; two nondegenerate configurations and positive face metrics.",
+    "inputs": [
+      "research/strominger/inputs/arrow-anchored-response-freeze.json",
+      "research/voevodsky/results/proton_merkle_store.json",
+      "research/nima/results/twelve-triangle-1836-arrows.json",
+      "research/nima/results/twelve-triangle-positive-geometry.json"
+    ],
+    "checks": [
+      {
+        "id": "arrow-anchored-response-exact",
+        "path": "research/strominger/checkers/check_arrow_anchored_response.py",
+        "requires": []
+      }
+    ],
+    "depends_on": [],
+    "consumes": ["labelled primitive arrows", "source boundary chains", "positive geometric face metric"],
+    "provides": ["exact anchored local and full response packets", "source-weight shielding discriminator"],
+    "missing_constructors": ["physical electromagnetic connection and clock readout"],
+    "next_falsifier": "Keep the complete AB incident face geometry fixed while hinging D about AB; test the entire anchored response at both probes before claiming nonlocal sensitivity."
+  }
+}
