@@ -1,0 +1,27 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "proton-single-probe-cycle-v1",
+    "owner": "marici.Voevodsky",
+    "classification": "candidate",
+    "stratum": "Fixed 36-coordinate tetrahedral carrier; source-generated geometric and slot-cycle actions, fixed-coordinate complex-linear readouts; native metric retained for gate compatibility audit",
+    "inputs": [
+      "research/voevodsky/inputs/proton-single-probe-cycle-v1.json",
+      "research/voevodsky/results/proton-native-task-catalogue-v1.json",
+      "research/nima/inputs/proton-six-arrows.json",
+      "research/nima/results/twelve-triangle-1836-arrows.json",
+      "research/nima/checkers/assemble_triangle_arrow_source.py",
+      "research/nima/checkers/check_twelve_triangle_positive_geometry.py",
+      "research/nima/checkers/check_triangle_half_phase.py",
+      "research/nima/checkers/check_collective_four_state_identity.py",
+      "research/voevodsky/checkers/check_proton_native_task_catalogue.py",
+      "research/voevodsky/checkers/verify_proton_native_task_catalogue.py"
+    ],
+    "checks": [{
+      "id": "voevodsky-proton-single-probe-cycle-v1",
+      "path": "research/voevodsky/checkers/check_proton_single_probe_cycle.py",
+      "requires": []
+    }]
+  }
+}

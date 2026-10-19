@@ -1,0 +1,237 @@
+# Interaction continuation — iteration 4: retained native energy and exact resolvent
+
+## Open-channel follow-up
+
+Iteration 5, `native-port-scattering.md`, attaches explicit positive-contact
+semi-infinite leads and verifies normalized stationary port scattering while
+retaining this eight-mode self-energy. The channels remain geometric port waves,
+not physical two-/three-object reaction sectors.
+
+## Result
+
+Fresh inspection found that the retained native energy contains more than the
+L/G/N projector stages: it includes local cyclic-operation defects and all
+**21 seam projectors**. Replacing it by a convenient combination of I-L and I-G
+would change the model.
+
+Keeping the actual energy expands the previously certified collective space:
+
+    9 coordinates -> 11 coordinates,
+    3 proposed visible collectives + 8 hidden coordinates.
+
+A declared equal-weight positive joint generator closes exactly on this space.
+Its full visible resolvent and eight-dimensional self-energy are verified by
+polynomial matrix identities, not sampled spectral values. All **25 exact checks**
+pass. The native energy predecessor checker was also freshly rerun successfully.
+
+This is a stationary registered-interface fixture, not a full moving-particle
+scattering theory or a derived physical interaction law.
+
+## 1. Freshly inspected retained constructions
+
+Read:
+
+- `native-adapter-collective-closure.md`;
+- `geometric-phase-energy-bridge.md` and its checker;
+- `native-phase-seam-reversible-memory.md`;
+- `check_native_operation_energy_lift.py` and its freshly regenerated store.
+
+The retained native rule is
+
+    H_D = (pi/4) D^sharp D.
+
+For the order-three local character operation, D=A-omega I. Full-field
+alignment defects and the existing 21 seam projectors supply further terms.
+The seam terms contribute 4P_e in the store's K=4H/pi convention.
+
+For the adapter involution U, the retained positive gate rule is
+
+    H_gate = pi (I-U)/2,
+    K_gate = 2(I-U).
+
+The latter implements U at unit gate time in its own declared convention.
+That statement does not mean adding other energies still implements U at that
+time, or that the clock is physically calibrated.
+
+## 2. Declared joint generator
+
+In the full 48-coordinate phase-retaining representation, use
+
+    K = K_native_with_all_seams + 2(I-U),
+    H = (pi/4) K.
+
+K_native is zero-extended onto the 12 carrier-port coordinates. This is the
+same distinction used by earlier memory lifts: native carrier energy is not an
+identity contribution on auxiliary records. The carrier ports here are local
+geometric character spaces, not independently supplied complete proton/electron
+Hamiltonians.
+
+Equal relative weighting is an explicit fixture choice, not a measured coupling
+or a consequence of topology. No parameter is fitted to 372.
+
+The converted energy is checked against the stored native phase/alignment matrix
+plus four times the sum of all 21 stored seam projectors. The source metric and
+all source hashes remain bound to the predecessor packets.
+
+## 3. Closure changes when the real energy is retained
+
+The earlier nine-space was certified for U,L,G,N. The actual energy has nonzero
+components outside it. This does not invalidate that earlier scoped result;
+it shows why closure must be tested again when the operator library grows.
+
+Starting from the same three vectors:
+
+1. native belt return;
+2. proton ABC port character;
+3. electron current ABC port character;
+
+the smallest invariant space under the single joint K is **11-dimensional**.
+The library consisting of U and the native energy produces the same space.
+The earlier L/G/N stages also preserve this enlarged space.
+
+An independently generated rational basis spans it; the checker verifies full
+operator images against the embedded 48-coordinate model. All original modes
+remain in that model. No extra coordinate is omitted to preserve a desired
+four-state diagram.
+
+## 4. Positivity and the common zero mode
+
+Exact metric-weighted LDL tests on the closed space give
+
+| Operator | Rank | Nullity in the 11-space |
+|---|---:|---:|
+| Native phase/alignment/seam energy | 6 | 5 |
+| Adapter gate energy | 4 | 7 |
+| Their declared sum | 10 | 1 |
+
+Both terms are positive semidefinite. Their sum is metric-self-adjoint and
+positive, hence gives unitary finite-dimensional evolution under the retained
+metric. There is one common zero-energy vector in this closed fixture.
+
+Without the adapter contribution, the three selected initial vectors have zero
+native energy and no evolution under that energy alone. The new transfer comes
+from the explicitly admitted adapter term, not from renaming the old ground
+state energy.
+
+None of these statements identifies a physical rest mass, binding energy or
+occupation law. A positive sum with a common zero mode is not by itself a
+negative-energy binding certificate.
+
+## 5. Smaller blocks exist for specifically prepared inputs
+
+The full 11-space splits into two metric-orthogonal invariant cyclic spaces:
+
+- **5 dimensions:** generated by the native belt input; it also contains the
+  sum of the two carrier-port characters;
+- **6 dimensions:** generated by the difference of the two carrier characters.
+
+Thus a five-state restriction is exact for the specified symmetric preparation.
+It is not exact for arbitrary independent combinations of the three visible
+inputs. Their complete response still requires all eleven coordinates.
+
+This is the requested preparation-dependent closure test. It does not turn
+these geometric input vectors into survival/two-photon/three-photon states.
+
+## 6. Retain the eight-dimensional hidden block
+
+Choose a metric-orthogonal basis whose first three vectors span the originally
+proposed visible inputs. Write
+
+    K = [[K_PP, K_PQ],
+         [K_QP, K_QQ]],
+
+with visible dimension 3 and hidden dimension 8. The hidden block is positive
+definite. Its reachable span from the three coupling columns of K_QP, under
+K_QQ, has dimension eight. Therefore these hidden directions are not merely
+unused coordinates padding the construction.
+
+The exact effective operator is
+
+    K_eff(z) = K_PP + Sigma(z),
+    Sigma(z) = K_PQ (zI-K_QQ)^(-1) K_QP.
+
+It is not the scalar-C, 1/z self-energy of the supplied four-state example.
+
+## 7. Polynomial, full-matrix resolvent certificate
+
+The checker independently constructs:
+
+- D(z)=det(zI-K), degree 11;
+- D_Q(z)=det(zI-K_QQ), degree 8;
+- their full adjugate polynomials;
+- the 3-by-3 self-energy numerator
+
+      S(z)=K_PQ adj(zI-K_QQ) K_QP.
+
+The exact field is Q(sqrt(151)); the complex spectral variable z is formal.
+Faddeev-LeVerrier recursion is followed by both full polynomial inverse checks.
+No characteristic roots or floating tolerances are used.
+
+If A_PP(z) is the visible block of adj(zI-K), the checker verifies, in both
+multiplication orders,
+
+    [D_Q(z)(zI-K_PP)-S(z)] A_PP(z)
+        = D_Q(z)D(z) I.
+
+Thus the visible block of the full resolvent equals the Schur-complement
+resolvent wherever both expressions are defined. The receipt stores all
+coefficients, the full reduced generator, metric and basis for independent
+replay and subsequent open-channel construction.
+
+Here D(0)=0 but D_Q(0) is nonzero: zero is a genuine full-system mode, not a
+singularity introduced solely by eliminating a zero-energy hidden state.
+At hidden-block eigenvalues, the eliminated representation must be handled via
+the full resolvent rather than blindly dividing by D_Q.
+
+## 8. A useful response symmetry, not a photon prediction
+
+For the native belt collective as input, the lower/proton-port and upper/electron-
+port resolvent numerators are identical coefficient by coefficient. The two output
+basis vectors also have equal metric norms. Thus their closed-system port response
+magnitudes agree wherever defined.
+
+This is a statement about the two geometric carrier ports in this symmetric
+fixture. It is not a 2gamma/3gamma ratio. Different external channels, full spinor
+coupling, preparation, thresholds or asymmetry could change an observable
+comparison; those changes must be supplied and tested, not read into the holes.
+
+## 9. Scope of time and motion
+
+The coefficients describe one registered interface, or the same fixture in the
+transported charts of iteration 2. The discrete electron-port registration record
+is retained. A continuously moving-port Hamiltonian, frame-connection terms,
+actuation cost and an autonomous clock have not been synthesized by writing this
+stationary K. Switched gate execution and autonomous sum-Hamiltonian evolution
+are not silently equated.
+
+## 10. Five-step frontier
+
+1. Finite-operator identities: independently certified in iteration 1.
+2. Local native character adapter and moving-port policy: constructive witness
+   from iteration 2; full electron spinor coupling remains open.
+3. Intermediate retention: complete for the specified 48-coordinate interface
+   fixture; eight hidden coordinates are retained in its closed collective model.
+4. Collective joint dynamics: exact 11-dimensional closure, with justified 5/6
+   preparation blocks, and exact effective resolvent now available.
+5. Asymptotic channels and normalized probabilities: next executable step.
+
+The next test should attach explicit continua or semi-infinite leads to the
+three visible **port channels**, state the contact terms and conserved flux, and
+compare the full open resolvent with the retained-hidden-block elimination.
+A positive discrete lead/contact construction would make the energy convention
+and thresholds explicit. Check unitarity and normalized reflection/transmission,
+including what identical output leads preserve of the response symmetry above.
+
+This remains a port-scattering model until a separate dictionary identifies its
+states with actual multi-object asymptotic shapes and observed reaction classes.
+The empirical 372 comparison must wait for that dictionary and measurement setup.
+
+## Reproduction
+
+```sh
+python research/voevodsky/checkers/check_native_operation_energy_lift.py
+python research/voevodsky/checkers/check_native_joint_generator_resolvent.py
+```
+
+Receipt: `results/native_joint_generator_resolvent.json`. Source-bound negative
+controls reject the old nine-dimensional truncation and a single hidden mode.
