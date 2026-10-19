@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bounded C-entry / C-exit atlas</title>
+<style>
+body{font:16px system-ui;margin:24px;background:#f6f7fa;color:#18212c;max-width:1200px}h1{font-size:25px}p{max-width:1000px}.notice{border-left:4px solid #c46a00;background:#fff4df;padding:12px}select,button{font:inherit;padding:6px;margin:4px}button:disabled{opacity:.4}.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.panel{background:white;border:1px solid #ccc;border-radius:8px;padding:14px;margin-top:14px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}svg{width:100%;max-height:650px;min-height:260px}#steps{display:flex;gap:5px;flex-wrap:wrap}#steps button.current{background:#152c52;color:white}#status{font-weight:650}table{border-collapse:collapse}th,td{padding:5px 10px;border:1px solid #ccc;text-align:right}a{color:#174a91}.small{font-size:14px;color:#445}#graph text{font:13px system-ui}
+</style>
+<h1 id="heading">Bounded C-entry / C-exit path atlas</h1>
+<p class="notice">This is an exhaustive bounded atlas of three selected reference graphs, not all lattice geometries. Source-transition counts have <strong>no derived conversion to C/M-cycle counts</strong>. Orange reverse playback is a formal recovery certificate; it does not add inverse operations to the native grammar.</p>
+<div class="controls"><label>Assembly <select id="model"></select></label><label>Length <select id="length"><option value="all">All within bound</option></select></label><label><input id="cspan" type="checkbox"> Exit C index ≤4</label><label>Path <select id="path"></select></label></div>
+<div id="summary" class="panel"></div>
+<div class="panel"><div class="controls"><button id="forward">Forward records</button><button id="reverse">Formal reverse certificate</button><button id="previous">Earlier record</button><button id="next">Later record</button></div><p id="status"></p><div id="steps"></div><pre id="state"></pre></div>
+<div class="panel"><h2>Finite path map</h2><label>Map <select id="graphkind"><option value="base">Admitted reader charts</option><option value="cap">C-exit ≤C4: full-permutation packets</option></select></label><p class="small">Reader nodes are charts, not unique cells. C-exit-cap nodes also retain origin and full coefficient permutation; distinct words remain distinct histories. Edge labels show source edge index and origin increment. Orange highlights the original generator being formally undone, not an admitted reverse arrow.</p><svg id="graph" role="img" aria-label="Finite admitted path map"></svg></div>
+<div class="panel"><h2>Cutoff and reversal findings</h2><pre id="findings"></pre><p class="small">The C-entry is the root proton's first window occurrence; the C-exit is the terminal electron's last window occurrence. This boundary convention does not derive a physical interface. A zero-origin PN / inverse-PN loop can be repeated arbitrarily without changing the C-exit index, so a C-index cap alone does not bound the number of histories.</p></div>
+<script id="data" type="application/json">__ATLAS_JSON__</script>
+<script>
+'use strict';
+const data=JSON.parse(document.getElementById('data').textContent),$=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';
+let paths=[],selected=null,reverse=false,step=0;
+function option(select,value,text){const o=document.createElement('option');o.value=value;o.textContent=text;select.append(o);}
+for(const name of Object.keys(data.models))option($('model'),name,name);
+const limit=data.summary.maxTotalTransitions;
+$('heading').textContent=`C-entry / C-exit path atlas — at most ${limit} source transitions`;
+document.title=`${limit}-transition C-entry / C-exit atlas`;
+$('length').options[0].textContent=`All ≤${limit}`;
+for(let n=0;n<=limit;n++)option($('length'),String(n),String(n));
+function model(){return data.models[$('model').value];}
+function filter(){const m=model();paths=m.paths.filter(p=>($('length').value==='all'||p.length===Number($('length').value))&&(!$('cspan').checked||p.withinC0ThroughC4));$('path').replaceChildren();paths.forEach((p,i)=>option($('path'),String(i),p.id+' ('+p.length+' edges; C'+p.exitC.index+' exit)'));choose();}
+function choose(){selected=paths[Number($('path').value)]??null;reverse=false;step=0;render();}
+function currentState(){return reverse?(step===0?selected.trace.at(-1):selected.inverseSteps[step-1].to):selected.trace[step];}
+function graph(){const m=model(),svg=$('graph'),cap=$('graphkind').value==='cap';svg.replaceChildren();const nodes=cap?m.CExitCapGraph.states.map(s=>({...m.source.charts[s.chart],...s,chartIndex:s.chart})):m.source.charts.map((c,i)=>({...c,chartIndex:i}));const edges=cap?m.CExitCapGraph.transitions.map(t=>({...m.source.edges[t.sourceEdge],...t,index:t.sourceEdge})):m.source.edges.map((e,i)=>({...e,index:i}));const groups={proton:[],neutron:[],electron:[]};nodes.forEach((c,i)=>groups[c.species].push(i));const height=Math.max(...Object.values(groups).map(g=>g.length))*110+80;svg.setAttribute('viewBox','0 0 860 '+height);const positions={};Object.entries(groups).forEach(([kind,g],col)=>g.forEach((i,row)=>positions[i]=[110+col*300,60+row*110]));
+function el(tag,attrs,text,parent=svg){const e=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,String(v)));if(text!==undefined)e.textContent=text;parent.append(e);return e;}
+const defs=el('defs',{}),marker=el('marker',{id:'arrow',viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:7,markerHeight:7,orient:'auto'},undefined,defs);el('path',{d:'M 0 0 L 10 5 L 0 10 z',fill:'#758092'},undefined,marker);
+const state=selected?currentState():null,edgeIndex=selected&&step>0?(reverse?selected.inverseSteps[step-1].inverseOf:selected.word[step-1]):null;
+const matches=c=>state&&c.chartIndex===state.chart&&(!cap||(c.origin===state.origin&&JSON.stringify(c.permutation)===JSON.stringify(state.permutation)));
+edges.forEach((e,i)=>{const [x,y]=positions[e.from],[u,v]=positions[e.to],sameColumn=x===u,offset=(i%2?1:-1)*35,cx=sameColumn?x+85:(x+u)/2,cy=(y+v)/2+offset;const highlighted=e.index===edgeIndex&&(!cap||matches(nodes[reverse?e.from:e.to]));el('path',{d:`M ${x} ${y+15} Q ${cx} ${cy} ${u} ${v-18}`,fill:'none',stroke:highlighted?(reverse?'#bd6400':'#164ec9'):'#acb3c0','stroke-width':highlighted?4:1.5,'stroke-dasharray':highlighted&&reverse?'7 4':'none','marker-end':'url(#arrow)'});el('text',{x:(x+2*cx+u)/4+3,y:(y+2*cy+v)/4-4,fill:highlighted?'#18212c':'#697386'},e.index+' / +'+e.phaseDelta);});
+nodes.forEach((c,i)=>{const [x,y]=positions[i],g=el('g',{}),active=matches(c);el('rect',{x:x-83,y:y-18,width:166,height:cap?58:42,rx:7,fill:active?'#dbe8ff':'white',stroke:active?'#164ec9':'#58677e','stroke-width':active?3:1},undefined,g);el('text',{x,y:y-1,'text-anchor':'middle'},(cap?'q'+i+' · o'+c.origin:'chart '+i)+' · '+c.species,g);el('text',{x,y:y+16,'text-anchor':'middle'},(cap?'chart '+c.chartIndex+' · ':'')+'cell '+c.cell,g);if(cap)el('text',{x,y:y+32,'text-anchor':'middle'},'slots '+c.permutation.join(''),g);});}
+function render(){const m=model();$('summary').textContent=`${m.summary.paths} admitted first-hit exit paths; ${m.summary.prefixes} retained prefixes; ${m.summary.symbolicallyReversible} formal inverse certificates; ${m.summary.nativeReverseAdmitted} natively reversible paths. Filter matches ${paths.length}. Counts at lengths 0…${limit}: ${m.summary.byLength.join(', ')}.`;
+$('findings').textContent=JSON.stringify({boundary:m.boundaryConvention,cutoff:m.bound,pumpingWitness:m.pumpingWitness,conclusions:data.conclusions},null,2);
+$('steps').replaceChildren();if(!selected){$('status').textContent='No paths at this cutoff/filter.';$('state').textContent='';$('previous').disabled=true;$('next').disabled=true;graph();return;}
+for(let i=0;i<=selected.length;i++){const b=document.createElement('button');b.textContent=String(i);b.className=i===step?'current':'';b.onclick=()=>{step=i;render();};$('steps').append(b);}
+const s=currentState(),op=step===0?'boundary':reverse?selected.inverseSteps[step-1].operation:model().source.edges[selected.word[step-1]].kind;
+$('status').textContent=`${reverse?'FORMAL REVERSE':'FORWARD'} · record ${step}/${selected.length} · ${op} · native full-route reverse ${selected.reverseNativeAdmitted?'admitted':'NOT admitted'}`;
+$('state').textContent=JSON.stringify({chart:s.chart,cell:m.source.charts[s.chart].cell,origin:s.origin,coefficientSlots:s.permutation.map(i=>'input['+i+']'),word:s.history,window:s.frame.window.map(o=>o.role+o.index+' @ '+o.vertex),context:s.frame.context,entryC:selected.entryC,exitC:selected.exitC},null,2);
+$('previous').disabled=step===0;$('next').disabled=step===selected.length;graph();}
+$('model').onchange=filter;$('length').onchange=filter;$('cspan').onchange=filter;$('path').onchange=choose;
+$('graphkind').onchange=()=>{if($('graphkind').value==='cap'){$('cspan').checked=true;filter();}else graph();};
+$('forward').onclick=()=>{reverse=false;step=0;render();};$('reverse').onclick=()=>{reverse=true;step=0;render();};$('previous').onclick=()=>{if(step>0)step--;render();};$('next').onclick=()=>{if(selected&&step<selected.length)step++;render();};filter();
+window.BoundedPhaseAtlas={snapshot:()=>({model:$('model').value,path:selected?.id,reverse,step,state:selected?currentState():null,matches:paths.length}),data};
+</script></html>
