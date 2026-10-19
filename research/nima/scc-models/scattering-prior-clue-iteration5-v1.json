@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "scattering-prior-clue-iteration5-v1",
+    "owner": "marici.Nima",
+    "classification": "joint_excitation_direction_readout_with_detector_gain_hostile_not_physical_detector",
+    "stratum": "Forward realization of positive reflection/transmission effects and full derivatives; preparation/gain nuisance and passive ground-frame checks. Positive source witness only, no global or physical identification.",
+    "inputs": ["research/nima/contracts/scattering-clues-iteration5.v1.json", "research/nima/contracts/scattering-clues-iteration1.v1.json", "research/nima/checkers/scattering_contact_scale_clue.py", "research/nima/checkers/scattering_preparation_clue.py", "research/nima/checkers/scattering_four_probe_clue.py", "research/nima/results/scattering-clues-iteration3.json", "research/nima/results/scattering-clues-iteration3-full-packet.npz", "research/nima/results/scattering-clues-iteration4.json", "research/nima/results/scattering-clues-iteration4-full-packet.npz", "research/scattering/high-energy/pentachoron_autonomous_contact_note.md", "research/scattering/high-energy/pentachoron_autonomous_contact_bundle.zip", "research/scattering/high-energy/contracts/high-energy-source-pins.v1.json"],
+    "checks": [{"id": "scattering-prior-clue-reflection-record", "path": "research/nima/checkers/scattering_reflection_record_clue.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["full_source_scattering_packet", "positive_non_dark_rank_loss_density"],
+    "provides": ["conditional_channel_readout_discrimination_and_relative_gain_boundary"],
+    "missing_constructors": ["independent_relative_direction_excitation_detector_calibration", "physical_preparation_and_species_map", "independent_kinetic_contact_law"],
+    "next_falsifier": "Total reflection may restore rank only with independently known relative gain; reflected excitation alone is a duplicate, and the unknown-gain hostile must be retained."
+  }
+}

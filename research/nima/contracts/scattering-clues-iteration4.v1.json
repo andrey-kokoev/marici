@@ -1,0 +1,22 @@
+{
+  "schema": "marici.scattering.bright-preparation-test.v1",
+  "id": "scattering-prior-clues-iteration4.v1",
+  "source_result": "research/nima/results/scattering-clues-iteration3.json",
+  "source_contract": "research/nima/contracts/scattering-clues-iteration1.v1.json",
+  "source_checker": "research/nima/checkers/scattering_contact_scale_clue.py",
+  "source_note": "research/scattering/high-energy/pentachoron_autonomous_contact_note.md",
+  "coherence_obligation": "state_based_contrast_readout_realization_and_bright_frame_transport",
+  "problem": "Does nonzero bright occupation suffice for two local coupling directions in the four-probe test?",
+  "bold_conjecture": "Every positive bright density retains a nonsingular two-coupling contrast Jacobian at the declared source couplings.",
+  "rivals": ["Only zero bright occupation loses sensitivity", "A non-dark positive density gives rank loss", "A sampled rank loss is nonpositive or a frame/numerical artifact"],
+  "source_operation": "Contract the retained full effect derivatives with the retained contrast rows, then compress to the source ground matching support. No new source operator or parameter fit.",
+  "bloch_domain": "rho_b=(I+b_x sigma_x+b_y sigma_y+b_z sigma_z)/2, norm(b)<=1",
+  "bright_weight_for_full_ground_witness": 0.5,
+  "full_ground_witness": "Half bright density plus half normalized dark projector, fixed across all four energies",
+  "determinant_form": "det C(b)=d0+l dot b+b^T Q b; obtain coefficients algebraically from the affine2x2 Jacobian, not by curve fitting",
+  "witness_search": "Evaluate center, six coordinate-axis endpoints, eight normalized cube vertices, and plus/minus eigenvectors of Q. If an endpoint changes sign relative to center, use the first such endpoint and bracket its radial root in[0,1]. Do not widen this search after observing results.",
+  "uniform_bound": "abs(d0)-norm(l)-norm(Q,2)>0 is sufficient, not necessary, for all Bloch-ball determinants to stay nonzero",
+  "finite_checks": ["Polynomial versus direct operator determinant at the fixed states", "Full ground density positivity and source-flux signal for any root witness", "Passive two-dimensional Fourier bright-frame change transports density and preserves its Jacobian"],
+  "tolerances": {"source_and_operator": 1e-9, "polynomial": 1e-10, "rank": 1e-9, "positive_density": 1e-8, "signal": 1e-6},
+  "boundary": {"physical_preparation_supplied": false, "physical_scattering_explained": false, "global_nonlinear_degeneracy_proved": false, "latest_model_recomputed": false, "root_outcome": null}
+}

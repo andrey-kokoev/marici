@@ -1,0 +1,51 @@
+{
+  "schema": "marici.conjecture-net.scattering-clue-test.v1",
+  "id": "scattering-prior-clues-iteration1.v1",
+  "coherence_obligation": "readout_compatibility_under_energy_unit_rescaling_not_parameter_identification",
+  "source_archive": "research/scattering/high-energy/pentachoron_autonomous_contact_bundle.zip",
+  "source_pins": "research/scattering/high-energy/contracts/high-energy-source-pins.v1.json",
+  "source_members": ["pentachoron_autonomous_contact.py", "native_matrices.npz", "pentachoron_autonomous_contact_results.json", "SHA256.json"],
+  "prior_clues": [
+    "research/scattering/high-energy/pentachoron_autonomous_contact_note.md",
+    "research/scattering/high-energy/omitted_mode_estimate_note.md",
+    "research/strominger/high-energy-research-reuse.md",
+    "research/strominger/neutron-autonomous-rim-scattering.md"
+  ],
+  "problem": "Separate a physical dynamical-source gap from a mere overall units-calibration gap.",
+  "bold_conjecture": "The declared native spectral operators and conservative contact structure determine dimensionless scattering readouts up to an overall energy-unit choice.",
+  "rivals": [
+    "The independent kinetic-to-phase ratio changes the dimensionless curve.",
+    "A contact-strength rival to the uniform defect-energy rule is independently detectable.",
+    "Apparent shape changes are only units or solver/frame artifacts."
+  ],
+  "source_operation": "Solve the inherited positive point-contact form with all20 native and20 core coordinates and all open/closed modes.",
+  "parameters": {
+    "nu": "kappa/(epsilon*ell^2), source fixture1; change nu without changing native operators or preparation",
+    "eta": "contact coefficient/epsilon, source uniform-defect fixture2; varying eta is an explicitly different contact-law rival",
+    "kinetic_energies_over_epsilon": [2.3, 3.0, 4.0],
+    "nu_controls": [0.5, 1.0, 2.0],
+    "eta_controls": [1.0, 2.0, 4.0],
+    "common_energy_unit_rescaling": 3.0
+  },
+  "risky_consequences": [
+    "Changing nu at fixed eta2 alters excited-channel flux while native threshold and conservation remain unchanged.",
+    "Analytic log-parameter readout derivatives distinguish nu from eta locally at the declared three probes.",
+    "A genuine common energy rescaling preserves the full S matrix in the same native eigenframe."
+  ],
+  "tolerances": {
+    "conservation_and_boundary": 1e-9,
+    "independent_solver_and_source_replay": 1e-9,
+    "analytic_vs_finite_difference_derivative": 1e-7,
+    "minimum_small_singular_value": 1e-5,
+    "minimum_shape_change": 1e-4
+  },
+  "completion_scope": "No continuum or full-model completion. This is the earlier fixed-pose local contact predecessor, not the latest strained high-energy packet.",
+  "boundary": {
+    "parameters_fitted_to_experimental_data": false,
+    "particle_or_detector_map_constructed": false,
+    "physical_scale_calibrated": false,
+    "latest_full_model_sensitivity_proved": false,
+    "local_identifiability_is_global_uniqueness": false,
+    "new_physical_preparation_authorized": false
+  }
+}

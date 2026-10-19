@@ -75,6 +75,16 @@ module Feedback (ℓ : Level) (Q : Whole.Universe.Code ℓ) where
     run = Next.compare-compilations direct via
     decode-run : (r : Previous.Compared) → decode (run r) ≡ r
     decode-run r = refl
+    -- Expose the existing constructor's endpoint and question trace without
+    -- unsealing its potentially large compiled proof trees for callers.
+    run-source : (r : Previous.Compared) → Next.Compared.source (run r) ≡ A
+    run-source r = refl
+    run-target : (r : Previous.Compared) → Next.Compared.target (run r) ≡ C
+    run-target r = refl
+    run-first-steps : (r : Previous.Compared) → steps (Next.Compared.first (run r)) ≡ 1
+    run-first-steps r = refl
+    run-second-steps : (r : Previous.Compared) → steps (Next.Compared.second (run r)) ≡ 2
+    run-second-steps r = refl
     run-injective : (r s : Previous.Compared) → run r ≡ run s → r ≡ s
     run-injective r s p = cong decode p
 

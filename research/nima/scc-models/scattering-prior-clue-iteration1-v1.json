@@ -1,0 +1,28 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "scattering-prior-clue-iteration1-v1",
+    "owner": "marici.Nima",
+    "classification": "conditional_contact_parameter_sensitivity_not_physical_scattering_identification",
+    "stratum": "Readout descent under common energy-unit changes in the fixed archived20+20 contact model; different nu/eta are rival source laws, not equivalent presentations. Numerical local sensitivity only.",
+    "inputs": [
+      "research/nima/contracts/scattering-clues-iteration1.v1.json",
+      "research/scattering/high-energy/contracts/high-energy-source-pins.v1.json",
+      "research/scattering/high-energy/pentachoron_autonomous_contact_bundle.zip",
+      "research/scattering/high-energy/pentachoron_autonomous_contact_note.md",
+      "research/scattering/high-energy/omitted_mode_estimate_note.md",
+      "research/strominger/high-energy-research-reuse.md",
+      "research/strominger/neutron-autonomous-rim-scattering.md"
+    ],
+    "checks": [{
+      "id": "scattering-prior-clue-contact-scale-controls",
+      "path": "research/nima/checkers/scattering_contact_scale_clue.py",
+      "requires": []
+    }],
+    "depends_on": [],
+    "consumes": ["byte_pinned_autonomous_contact_native_operators"],
+    "provides": ["conditional_units_invariance_and_two_parameter_local_sensitivity"],
+    "missing_constructors": ["independently_sourced_kinetic_to_phase_ratio", "physical_justification_of_uniform_contact_defect_strength", "physical_preparation_and_detector_record_map"],
+    "next_falsifier": "Full-packet source assembly disagreement, failed true units invariance, derivative mismatch, or local sensitivity rank below2 defeats the stated conditional discriminator. Actual physical validation additionally requires independent source/preparation/instrument inputs; the checker cannot supply them."
+  }
+}

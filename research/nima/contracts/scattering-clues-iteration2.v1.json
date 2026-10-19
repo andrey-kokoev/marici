@@ -1,0 +1,18 @@
+{
+  "schema": "marici.scattering.prior-clue-test.v1",
+  "id": "scattering-prior-clues-iteration2.v1",
+  "source_contract": "research/nima/contracts/scattering-clues-iteration1.v1.json",
+  "source_checker": "research/nima/checkers/scattering_contact_scale_clue.py",
+  "source_notes": ["research/scattering/high-energy/pentachoron_connected_phase_energy_note.md", "research/scattering/high-energy/pentachoron_autonomous_contact_note.md", "research/voevodsky/native-operation-energy-lift.md"],
+  "coherence_obligation": "readout_descent_under_unknown_energy_independent_ground_preparation",
+  "problem": "Does the local two-parameter discriminator survive releasing the supplied equal ground mixture?",
+  "bold_conjecture": "Any energy-independent ground-sector density changes excited flux only by one common amplitude, so spectral ratios remove preparation uncertainty.",
+  "rivals": ["A common bright projector gives scalar preparation dependence", "Retained intermediate dynamics yield preparation-dependent spectral shape", "An apparent ambiguity is numerical error or a nonpositive density"],
+  "kinetic_energies_over_epsilon": [2.3, 3.0, 4.0],
+  "base_parameters": {"nu": 1.0, "eta": 2.0},
+  "finite_rivals": [{"nu": 1.00001, "eta": 2.0}, {"nu": 1.0, "eta": 2.00002}],
+  "preparation_domain": "One energy-independent positive trace-one4x4 density on the archived native ground sector; mathematical controls, not physical preparation authority",
+  "risky_tests": ["Compare full4x4 excitation effects normalized by trace, not just equal-mixture flux", "Retain all15 traceless Hermitian preparation directions and project coupling derivatives off their readout image", "For each fixed finite coupling rival, solve once for one shared density matching all three baseline fluxes and check positivity"],
+  "tolerances": {"algebra": 1e-10, "numerical_rank": 1e-9, "matching_flux": 1e-10, "positive_density_floor": 1e-8},
+  "boundary": {"physical_preparation_supplied": false, "physical_parameters_fitted": false, "latest_strained_model_recomputed": false, "global_or_continuum_claim": false, "root_outcome": null}
+}

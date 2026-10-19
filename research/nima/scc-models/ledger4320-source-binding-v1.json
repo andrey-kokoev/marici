@@ -1,0 +1,23 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "ledger4320-source-binding-v1",
+    "owner": "marici.Nima",
+    "classification": "scoped_software_constructor_and_conditional_reference_evidence_binding",
+    "stratum": "Attachment transport of a ledger report and its source receipts into the programme; exact software-domain replay, not physical port transport.",
+    "inputs": [
+      "src/ledger/20261013-4320 Exact-Domain Transport and the Physical Reference Boundary.md",
+      "research/nima/contracts/T9-exact-domain-software.v1.json",
+      "research/nima/results/pinned-T9-software-contract.json",
+      "research/nima/checkers/retained_rung_transport.py",
+      "research/conjecture_net/contracts/programme-hierarchy.v15.json",
+      "research/conjecture_net/connect_ledger4320.py"
+    ],
+    "checks": [{"id": "ledger4320-source-binding", "path": "research/conjecture_net/connect_ledger4320.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["selected_exact_domain_software_contract", "conditional_reference_network_receipts"],
+    "provides": ["ledger4320_scoped_programme_evidence_link"],
+    "missing_constructors": ["physical_preparation_and_reference_calibration"],
+    "next_falsifier": "Reject receipt/source drift, physical promotion, or any change to the original977-pair software domain."
+  }
+}

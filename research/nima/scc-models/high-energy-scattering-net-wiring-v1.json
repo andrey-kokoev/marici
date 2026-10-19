@@ -1,0 +1,27 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "high-energy-scattering-net-wiring-v1",
+    "owner": "marici.Nima",
+    "classification": "source_pinned_scattering_dependency_net_not_physical_scattering_certificate",
+    "stratum": "Forward realization at dependency/evidence planning stratum; optional saved-complex-kernel readout replay on the fixed source packet.",
+    "inputs": [
+      "research/scattering/high-energy/contracts/high-energy-scattering-conjecture-net.v1.json",
+      "research/scattering/high-energy/contracts/high-energy-source-pins.v1.json",
+      "research/scattering/high-energy/high_energy_scattering_net.py",
+      "research/conjecture_net/graph_metrics.py",
+      "research/conjecture_net/contracts/programme-hierarchy.v15.json",
+      "research/conjecture_net/test_high_energy_scattering_net.py"
+    ],
+    "checks": [{
+      "id": "high-energy-scattering-net-source-wiring",
+      "path": "research/scattering/high-energy/high_energy_scattering_net.py",
+      "requires": []
+    }],
+    "depends_on": [],
+    "consumes": ["high_energy_scattering_source_archive_pins", "shared_conjecture_net_metric_graph"],
+    "provides": ["source_pinned_scattering_conjecture_dependency_graph"],
+    "missing_constructors": ["energy_quadrature_and_omitted_response_certificates", "independent_physical_calibration_and_species_map"],
+    "next_falsifier": "Source/member drift, broken dependency edges, historical-report promotion, or prepared-column/full-S conflation must fail before any scientific claim is consumed."
+  }
+}
