@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore a proposed minimal data packet: one marked configuration, three directed endpoints and twelve signed codimension-one coherence sectors.">
+<title>A minimal data packet? · Marici configuration atlas</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main>
+<header>
+<nav aria-label="Related pages"><a href="/experiments/">Construction gallery</a><a href="/experiments/matter-catalog.html">Research atlas</a><a href="/research/ledger/20261014-4322-configuration-coherence-and-the-candidate-constant-1836/">Ledger 4322</a></nav>
+<p class="eyebrow">Proposed primitive · configuration-space model</p>
+<h1>A mark, three directions, one coherent packet</h1>
+<p class="intro">A four-slot packet <code>[l; a, b, c]</code>: one label names the marked configuration and references its supporting complex. The other entries give directed endpoints. Explore how their paths fit together.</p>
+</header>
+<section class="workbench" aria-label="Interactive packet model">
+<div class="visual">
+<div id="scene" class="packet-scene" aria-label="Three-dimensional configuration complex">
+<img id="fallback" src="./preview.svg" alt="Three intersecting coordinate sheets divided into twelve square sectors around the marked center l.">
+<p id="scene-status" class="scene-status" role="status">Loading the local Three.js view. The static diagram remains available.</p>
+<div class="scene-caption">Configuration directions · n = 3<br>Drag to orbit · scroll or pinch to zoom</div>
+</div>
+<p class="legend"><span class="cyan">omit c: ab sheet</span><span class="orange">omit b: ac sheet</span><span class="violet">omit a: bc sheet</span><span class="gold">l: common mark</span></p>
+</div>
+<aside>
+<h2>Inspect one sector</h2>
+<label for="sector">Signed dependency sector</label><select id="sector"></select>
+<p id="sector-summary" aria-live="polite"></p>
+<div class="options"><label><input type="checkbox" id="only-selected"> Isolate selected sector</label><label><input type="checkbox" id="fills" checked> Show supporting sheets</label><label><input type="checkbox" id="signed" checked> Show signed endpoints</label></div>
+<label for="path-mode">Path display</label><select id="path-mode"><option value="compare">Compare the two orders</option><option value="return">Trace a closed return</option></select>
+<div id="route-detail" class="route-detail" aria-live="polite"></div>
+<div class="transport"><button id="play" type="button" aria-pressed="false">Play paths</button><button id="reset-view" type="button">Reset camera</button></div>
+<label for="progress">Illustrative path progress <output id="progress-value">0%</output></label><input id="progress" type="range" min="0" max="1" step="0.001" value="0">
+<p class="small">A colored sector marks a proposed coherence obligation. Its drawn surface and animation illustrate the boundary; they do not construct a mathematical filling witness.</p>
+</aside>
+</section>
+<section id="tetrahedral" class="tetrahedral-section" aria-labelledby="tetra-heading">
+<h2 id="tetra-heading">The same packet in a tetrahedral frame</h2>
+<p>Keep <code>l</code> at the common center. Aim <code>a, b, c</code> toward three vertices of a regular tetrahedron. The same twelve square sectors become twelve rhombi in three oblique sheets. Selecting a sector or changing the path controls in either block updates both; each camera orbits independently.</p>
+<div class="workbench">
+<div class="visual">
+<div id="tetra-scene" class="packet-scene" aria-label="Three-dimensional tetrahedral configuration frame">
+<img id="tetra-fallback" src="./tetra-preview.svg" alt="Three oblique sheets divided into twelve rhombi through the center of a wire tetrahedral coordinate frame.">
+<p id="tetra-status" class="scene-status" role="status">Loading the local tetrahedral Three.js view. The static diagram remains available.</p>
+<div class="scene-caption">Tetrahedral frame · same twelve sectors<br>Drag to orbit · scroll or pinch to zoom</div>
+</div>
+<p class="legend"><span class="cyan">omit c: ab sheet</span><span class="orange">omit b: ac sheet</span><span class="violet">omit a: bc sheet</span><span class="gold">l: unchanged center</span></p>
+</div>
+<aside>
+<h2>Inspect the same sector</h2>
+<label for="tetra-sector">Signed sector in the tetrahedral frame</label><select id="tetra-sector"></select>
+<p id="tetra-sector-summary" aria-live="polite"></p>
+<div class="options"><label><input type="checkbox" id="tetra-only-selected"> Isolate selected sector</label><label><input type="checkbox" id="tetra-fills" checked> Show supporting sheets</label><label><input type="checkbox" id="tetra-signed" checked> Show signed endpoints</label><label><input type="checkbox" id="tetra-guide" checked> Show wire tetrahedral guide</label></div>
+<label for="tetra-path-mode">Tetrahedral path display</label><select id="tetra-path-mode"><option value="compare">Compare the two orders</option><option value="return">Trace a closed return</option></select>
+<div id="tetra-route-detail" class="route-detail" aria-live="polite"></div>
+<div class="transport"><button id="tetra-play" type="button" aria-pressed="false">Play tetrahedral paths</button><button id="tetra-reset-view" type="button">Reset tetrahedral camera</button></div>
+<label for="tetra-progress">Shared path progress <output id="tetra-progress-value">0%</output></label><input id="tetra-progress" type="range" min="0" max="1" step="0.001" value="0">
+<p class="small">The dotted tetrahedron is a coordinate guide. Its derived fourth ray <code>d = −(a+b+c)</code> adds no independent packet entry. Its outer triangular faces are distinct from the central coherence sheets.</p>
+</aside>
+</div>
+<p class="small">The supplied coordinate change preserves the mark, incidences, sector identities and composed paths. It changes Euclidean angles: squares become rhombi. The sectors extend beyond the wire tetrahedron; they are not clipped to its surface. This is a second presentation of the supplied geometry, not a new filling theorem.</p>
+</section>
+<section id="electron" class="tetrahedral-section" aria-labelledby="electron-heading">
+<h2 id="electron-heading">Electron-like trial: two-direction base and retained phase</h2>
+<p>The prior spinor carrier supplies a candidate <strong>n = 2 ray base</strong>. Two real directions change its spin state; the supporting label complex must also retain phase and lifted transport. This block explores that candidate independently of the n = 3 pictures above.</p>
+<div class="workbench">
+<div class="visual">
+<div id="electron-scene" class="packet-scene" aria-label="Two-direction spin-ray base with a retained phase view">
+<img id="electron-fallback" src="./electron-preview.svg" alt="A spin-ray sphere with two local signed directions beside a phase circle retaining the source spinor sign.">
+<p id="electron-status" class="scene-status" role="status">Loading the recorded source operations and local Three.js view.</p>
+<div class="scene-caption">Two-direction base + retained lift<br>Drag to orbit · interpolation is illustrative</div>
+</div>
+<p class="legend"><span class="gold">l: marked initial ray</span><span class="cyan">u: first local direction</span><span class="orange">v: second local direction</span><span class="green">retained chart phase</span></p>
+<p id="electron-sign" class="count-products" aria-live="polite"></p>
+<p id="electron-ray" class="small"></p>
+<p id="electron-spinor" class="formula"></p>
+<p id="electron-phase-readout"></p>
+<p id="electron-pairing" class="small"></p>
+</div>
+<aside>
+<h2>A source loop with a retained sign</h2>
+<fieldset id="electron-controls" disabled>
+<label for="electron-progress">Source word progress <output id="electron-progress-value">0.00 / 4</output></label><input id="electron-progress" type="range" min="0" max="4" step="0.001" value="0">
+<p id="electron-word" class="small" aria-live="polite"></p>
+<div class="transport"><button id="electron-play" type="button" aria-pressed="false">Play spinor loop</button><button id="electron-next" type="button">Next source step</button><button id="electron-restart" type="button">Restart loop</button></div>
+<label><input type="checkbox" id="electron-erase"> Show phase-erased rival</label>
+<p id="electron-erased-readout" class="small" hidden></p>
+<details><summary>Prepare another normalized spinor</summary>
+<label for="electron-theta">Base polar angle θ <output id="electron-theta-value"></output></label><input id="electron-theta" type="range" min="0" max="180" step="0.01" value="106.26">
+<label for="electron-phi">Base azimuth φ <output id="electron-phi-value"></output></label><input id="electron-phi" type="range" min="0" max="360" step="0.01" value="90">
+<label for="electron-initial-phase">Retained initial phase <output id="electron-initial-phase-value"></output></label><input id="electron-initial-phase" type="range" min="0" max="360" step="0.01" value="0">
+<button id="electron-default" type="button">Restore exact source preparation</button>
+</details>
+<button id="electron-reset-view" type="button">Reset spinor camera</button>
+</fieldset>
+<p class="small">Each of the two local directions has signed sides: <strong>2 × 2</strong> one-dimensional dependency sectors. The drawn tangent cross illustrates this proposed indexing; its source-grounded packet ports and coherence witnesses remain to be constructed.</p>
+<p class="small">The circle shows phase in an α or β chart of the spinor lift, switching when the first component vanishes. It is not a global phase coordinate or a physical spatial orbit.</p>
+</aside>
+</div>
+<p>The actual source matrices are applied in the order <code>U → V → U inverse → V inverse</code>. Their composite is <code>−I</code>. At return the spinor changes sign while its ray is unchanged. The retained face encoder and signed pairing keep that distinction. An isolated spin-state probability does not distinguish the two signs.</p>
+<p class="small">The continuous arcs and tangent frame are supplied for the display. The exact trial certifies the discrete matrices and prefix states, rather than this interpolation or a completed n = 2 packet. Its phase-erased base has two local real directions; a normalized full spinor has a further phase direction. A common definition of configuration dimension is still needed before comparing this trial with the proposed proton packet.</p>
+<details><summary>Actual source face-block encoding</summary><p class="small">These are the existing tetrahedral source blocks Jz, not the proposed signed dependency sectors. Their amplitudes retain the source sign even when all weights agree.</p><div class="packet-table"><table><thead><tr><th scope="col">Source block</th><th scope="col">Two complex amplitudes</th><th scope="col">Weight</th></tr></thead><tbody id="electron-blocks"></tbody></table></div><p id="electron-decoder" class="small"></p></details>
+<p id="electron-evidence" class="small"></p>
+<p><a href="./electron-trial.json" download>Download exact trial receipt</a> · <a href="./electron-native-store.json" download>Retained native fixture</a> · <a href="https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/electron-configuration-dimension-trial-v1.md">Research note and scope</a></p>
+</section>
+<section class="discussion" aria-labelledby="packet-heading">
+<h2 id="packet-heading">What the packet proposes</h2>
+<div class="cards">
+<article><h3>The label and its complex</h3><p><code>l</code> is the marked point and the reference to the whole retained configuration. Barycentric placement expresses that reference role. Access to the label must recover the required supporting records; a coordinate or bare hash alone supplies no such recovery.</p></article>
+<article><h3>Endpoints with directions</h3><p>Each of <code>a, b, c</code> specifies an endpoint together with a transport from the mark. The path gives the endpoint its directional meaning. Signed continuation along those directions is additional supplied structure in this model.</p></article>
+<article><h3>One coherent construction</h3><p>The tuple supplies actual boundaries for the complex’s comparisons. Each square compares two orders of directional transport. Retained witnesses would establish their compatibility and remain available for later construction.</p></article>
+</div>
+<h2>Why twelve?</h2>
+<p>Choose one omitted direction. Along each remaining direction choose a signed side. For three directions, this is <strong>3 × 2 × 2 = 12</strong> sectors. The signs specify sides, not a further choice of clockwise or anticlockwise traversal.</p>
+<p>The three sheets are coordinate hyperplanes through the mark. In this three-dimensional configuration picture, their codimension-one sectors are squares. The supporting complex has sheets and boundaries; no solid volume filler is supplied.</p>
+<p><strong>Minimal coverage:</strong> every omitted-direction/sign combination is represented. The number of independent proofs may be smaller if the construction rules derive some witnesses from others.</p>
+<div class="dimension-panel">
+<label for="dimension">Configuration dimension n <output id="dimension-value">3</output></label><input id="dimension" type="range" min="2" max="8" step="1" value="3">
+<p id="dimension-summary" aria-live="polite"></p>
+<p class="formula">dependency sectors = n · 2<sup>n−1</sup></p>
+<p class="small">The 3D drawing always shows n = 3. This control changes the combinatorial count only. At larger n the cells have dimension n−1; they are not all squares.</p>
+</div>
+<h2>From a packet to sustained capability</h2>
+<p>The proposal associates dependency sectors with incoming capabilities and the n directions with outgoing capabilities. Compatible encounters should recover those capabilities in both orders: <code>i ∘ o ∘ i ≃ i</code> and <code>o ∘ i ∘ o ≃ o</code>. Longer composites need witnesses comparing their recovery procedures.</p>
+<p>A proof would show what supports the configuration, what it enables, and how its encounters preserve a coherent ability to participate again. Univalent foundations provide identity, transport and higher comparisons; this proposal additionally asks for source-generated realization and an explicit account of its supporting structure.</p>
+<h2>A candidate accounting—not a predetermined obligation count</h2>
+<p>A sector paired with a direction has <code>n² · 2^(n−1)</code> possible addresses. Pairing such an encounter with a direction, a sector, or another encounter gives three candidate products:</p>
+<p class="formula" id="general-formula">J(n) = (n² · 2^(n−1)) · n + (n² · 2^(n−1)) · (n · 2^(n−1)) + (n² · 2^(n−1)) · (n² · 2^(n−1))</p>
+<p id="count-products" class="count-products" aria-live="polite"></p>
+<p>Typing determines which addresses compose. Actual recovery and coherence witnesses must be constructed before this count can be interpreted as a realization cost. The proton-like source already has a verified 1836-arrow presentation with a different, precise stage interpretation; a source-level correspondence is an open task.</p>
+<details><summary>The sketch behind the model</summary><figure><img src="./sketch.jpg" alt="Operator’s hand-drawn three intersecting square sheets sharing a marked center, motivating the packet model." loading="lazy" width="960" height="1280"><figcaption>The motivating sketch. This workbench fixes an explicit signed-coordinate interpretation for discussion.</figcaption></figure></details>
+<h2>What is supplied and what remains to prove</h2>
+<p>This page supplies signed coordinates, a common center, sector boundaries and illustrative path playback. It checks their finite geometry and counting. A source-generated packet, meaningful independent configuration directions, licensed operations, filling witnesses, continuation preservation and a physical identification remain research obligations. “Configuration space” here does not identify its directions with physical spatial axes or assert complex-number coordinates.</p>
+<p><a href="/research/ledger/20261014-4322-configuration-coherence-and-the-candidate-constant-1836/">Read the revised proposal and earlier ledger links →</a></p>
+</section>
+<footer><a href="https://github.com/andrey-kokoev/marici/tree/main/research/voevodsky/demos/minimal-data-packet">Model source</a> · <a href="./vendor/THREE-LICENSE.txt">Three.js MIT license</a> · Local dependencies; no CDN required. Proposed minimal primitive, not a minimality theorem or physical mass derivation.</footer>
+<noscript><p>The discussion and static diagram are available without JavaScript. Interactive controls require JavaScript.</p></noscript>
+</main>
+<script src="./vendor/three.min.js"></script><script src="./vendor/OrbitControls.js"></script><script type="module" src="./app.js"></script>
+</body>
+</html>
