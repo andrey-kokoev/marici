@@ -546,11 +546,12 @@ def validate(root, net):
         incomplete = node['id'] == 'operational-unitary-half-turn' and node['outcome'] == '+-'
         flow_proof = node['id'] == 'completion-unit-circle-flow' and node['outcome'] == '++'
         half_turn_proof = node['id'] == 'operational-unitary-half-turn' and node['outcome'] == '++'
-        require(norm_proof or completed_pi or completed_regularity or flow_proof or half_turn_proof or incomplete, 'new resolutions require explicit proof-receipt admission')
+        whole_return_proof = node['id'] == net['objective']['target'] and node['outcome'] == '++'
+        require(norm_proof or completed_pi or completed_regularity or flow_proof or half_turn_proof or whole_return_proof or incomplete, 'new resolutions require explicit proof-receipt admission')
         attempt = node['attempts'][-1]
         receipt = load(root, attempt['receipt'])
-        require(attempt['intent'] == 'prove' and attempt['outcome'] == receipt['outcome'] == node['outcome']
-                and receipt['claim'] == node['id'] and receipt['scope_id'] == node['scope_id'],
+        require(attempt['intent'] == 'prove' and attempt['outcome'] == receipt.get('outcome') == node['outcome']
+                and receipt.get('claim') == node['id'] and receipt.get('scope_id') == node['scope_id'],
                 'proof/attempt claim mismatch')
         if completed_pi:
             acceptance_path = receipt['acceptance']
@@ -653,6 +654,60 @@ def validate(root, net):
                         'stale half-turn kernel/library evidence: ' + path)
             external_pins.update(external)
             admitted_proofs.append(node['id'])
+        elif whole_return_proof:
+            acceptance_path = 'research/nima/contracts/whole-return-mixed-level-acceptance.v1.json'
+            evidence_path = 'research/nima/results/standard-spectral-correspondence.json'
+            kernel_path = 'research/nima/results/operational-whole-return-kernel-fresh.json'
+            acceptance = load(root, acceptance_path)
+            evidence = load(root, evidence_path)
+            kernel = load(root, kernel_path)
+            require(receipt['schema'] == 'marici.nima.whole-return-mixed-level-accepted-result.v1'
+                    and receipt['status'] == 'pass' and receipt['acceptance'] == acceptance_path
+                    and receipt['evidence'] == evidence_path and receipt['kernel_receipt'] == kernel_path
+                    and receipt['operational_kernel_bundle_proved'] is True
+                    and receipt['standard_real_correspondence_written_proved'] is True
+                    and receipt['semantic_correspondence_kernel_proved'] is False
+                    and receipt['mixed_level_accepted'] is True and receipt['full_claim_proved_at_accepted_level'] is True
+                    and receipt['C1_at_seam_claimed'] is False and receipt['remaining_obligations_at_accepted_level'] == []
+                    and acceptance['schema'] == 'marici.nima.whole-return-mixed-level-acceptance.v1'
+                    and acceptance['accepted'] is True and acceptance['operator_instruction'] == 'yes'
+                    and acceptance['claim'] == node['id'] and acceptance['scope_id'] == node['scope_id']
+                    and acceptance['evidence'] == evidence_path
+                    and acceptance['accepted_verification'] == {
+                        'operational_kernel_bundle_proved': True, 'standard_real_correspondence_written_proved': True,
+                        'semantic_correspondence_kernel_proved': False, 'C1_at_seam_claimed': False}
+                    and set(node['depends_on']) <= set(admitted_proofs) | {item['id'] for item in imports}
+                    and {acceptance_path, evidence_path, kernel_path, node['proof_module']} <= set(receipt['source_sha256']),
+                    'whole-return requires explicit scoped mixed acceptance without kernel/seam overclaim for proof-receipt admission')
+            require(evidence['schema'] == 'marici.nima.standard-spectral-correspondence-result.v1'
+                    and evidence['status'] == 'pass' and evidence['fresh_closure_completed'] and evidence['sources_stable']
+                    and evidence['written_semantic_correspondence_supplied'] is True
+                    and evidence['operational_kernel_bundle_proved'] is True
+                    and evidence['semantic_correspondence_kernel_proved'] is False
+                    and evidence['additional_mixed_level_accepted'] is False and evidence['target_outcome'] is None
+                    and kernel['schema'] == 'marici.nima.operational-whole-return-kernel-result.v1'
+                    and kernel['status'] == 'pass' and kernel['exit_code'] == 0
+                    and kernel['fresh_dependency_check'] and kernel['fresh_closure_completed'] and kernel['sources_stable']
+                    and kernel['operational_kernel_bundle_proved'] is True and kernel['whole_return_proved'] is False
+                    and kernel['standard_real_phase_interpretation_proved'] is False
+                    and kernel['module'] == 'TickOperationalWholeReturnKernel'
+                    and {'--safe', '--ignore-interfaces'} <= set(kernel['command'])
+                    and {'LocalLaws', 'ReturnLaws', 'GeneratorLaws', 'CoherenceLaws', 'FactorLaws',
+                         'CovarianceLaws', 'StructuralLaws', 'OperationalWholeReturnKernel',
+                         'operational-whole-return-kernel'} <= set(kernel['theorems']),
+                    'whole-return lacks fresh operational bundle and written semantic evidence')
+            for supporting in (evidence, kernel):
+                require(all(receipt['source_sha256'].get(p) == h for p, h in supporting['source_sha256'].items()),
+                        'whole-return omits dependency pins')
+                require(all(receipt['external_dependency_sha256'].get(p) == h for p, h in supporting['external_dependency_sha256'].items()),
+                        'whole-return omits external pins')
+                require(receipt['external_dependency_sha256'].get(kernel['command'][0]) == supporting['compiler_sha256'],
+                        'whole-return compiler pin missing')
+            for path, expected in receipt['external_dependency_sha256'].items():
+                require(hashlib.sha256(Path(path).read_bytes()).hexdigest() == expected,
+                        'stale whole-return kernel/library evidence: ' + path)
+            external_pins.update(receipt['external_dependency_sha256'])
+            admitted_proofs.append(node['id'])
         elif norm_proof:
             require(receipt['schema'] == 'marici.nima.constructed-scheduled-norm-result.v1'
                     and receipt['status'] == 'pass' and receipt['exit_code'] == 0
@@ -708,8 +763,11 @@ def validate(root, net):
             'planning parameters must be explicitly subjective')
     return {
         'schema': 'marici.nima.completion-refinement-net-result.v1',
-        'status': 'pass', 'validation_only': True, 'net_id': net['id'], 'net_state': 'active_nonterminal',
-        'target': net['objective']['target'], 'target_outcome': None, 'terminal': False,
+        'status': 'pass', 'validation_only': True, 'net_id': net['id'],
+        'net_state': 'positive_terminal' if net['objective']['target'] in facts else 'active_nonterminal',
+        'target': net['objective']['target'],
+        'target_outcome': '++' if net['objective']['target'] in facts else None,
+        'terminal': net['objective']['target'] in facts,
         'imports': resolved, 'local_outcomes': {n['id']: n['outcome'] for n in nodes},
         'ready_proof_frontier': frontier, 'blocked_on': blocked,
         'locally_proved_claims': admitted_proofs, 'in_progress': in_progress, 'paused': paused,
@@ -719,7 +777,7 @@ def validate(root, net):
                            'unattempted': sum(n['outcome'] is None and not n.get('progress') for n in nodes)},
         'recommended_action': None, 'ranking_status': 'structural_validation_planning_receipt_not_loaded',
         'imported_proof_does_not_close_target': True,
-        'boundary': 'Validates references and scheduling structure, not the unproved completion theorems.',
+        'boundary': 'Validates live theorem-specific receipts and references. Accepted written semantic correspondence is not relabeled kernel-proved.',
         'source_sha256': pins, 'external_dependency_sha256': external_pins,
     }
 

@@ -12,43 +12,43 @@ class PlanningTests(unittest.TestCase):
         cls.structure = validate(REPO, cls.net)
         cls.result = analyze(cls.model, cls.net, cls.structure)
 
-    def test_central_policy_and_no_outcome_mutation(self):
-        self.assertEqual(self.result['central']['first_action'], 'prove/operational-spectral-whole-return-certificate')
-        self.assertAlmostEqual(self.result['central']['success_probability'], .672)
-        self.assertAlmostEqual(self.result['central']['expected_total_effort'], 4.0)
+    def test_terminal_policy_and_no_outcome_mutation(self):
+        self.assertTrue(self.structure['terminal'])
+        self.assertIsNone(self.result['central']['first_action'])
+        self.assertEqual(self.result['central']['expected_total_effort'], 0.)
+        self.assertEqual(self.result['central']['success_probability'], 1.)
         self.assertFalse(self.result['scientific_outcomes_changed'])
         self.assertEqual(self.net, load(REPO, NET))
         self.assertIsNone(self.result['continuation_action'])
-        self.assertNotIn(self.model['claims']['regularity'], {r['claim'] for r in self.result['rows']})
-        self.assertIn('not a measured remaining budget', self.result['forecast_scope'])
-        self.assertNotIn(self.model['claims']['pi'], {r['claim'] for r in self.result['rows']})
-        self.assertTrue(all(w['truth'][self.model['claims']['pi']] for w in self.result['joint_worlds']))
+        self.assertIn('recorded mixed verification level', self.result['forecast_scope'])
 
-    def test_dependent_priors_are_coherent(self):
-        rows = {r['claim']: r for r in self.result['rows']}
-        c = self.model['claims']
-        self.assertNotIn(c['flow'], rows)
-        self.assertNotIn(c['half_turn'], rows)
-        self.assertAlmostEqual(rows[c['target']]['subjective_probability_true'], .96)
-        self.assertEqual(rows[c['target']]['proof_route_effort_if_all_successful'], 4)
+    def test_terminal_has_no_estimates_or_actions(self):
+        self.assertEqual(self.result['rows'], [])
+        self.assertEqual(build_actions(self.model, self.net, build_worlds(self.model)), [])
+        self.assertEqual(self.result['canonical_action_count'], 0)
 
-    def test_no_duplicate_flow_rejection_experiment(self):
-        actions = build_actions(self.model, self.net, build_worlds(self.model))
-        self.assertEqual(len(actions), 2)
-        self.assertNotIn('prove/operational-unitary-half-turn', {a['id'] for a in actions})
-        self.assertNotIn('prove/completion-phase-metric-regularity', {a['id'] for a in actions})
-        self.assertNotIn('prove/completion-unit-circle-flow', {a['id'] for a in actions})
-        self.assertNotIn('reject/completion-unit-circle-flow', {a['id'] for a in actions})
+    def test_terminal_has_no_sensitivity_recommendations(self):
+        self.assertEqual(self.result['sensitivity']['scenario_count'], 0)
+        self.assertEqual(self.result['sensitivity']['first_action_counts'], {})
+        self.assertTrue(self.result['sensitivity']['recommendation_stable'])
 
-    def test_conditioned_sensitivity_selects_whole_return_assembly(self):
-        s = self.result['sensitivity']
-        self.assertEqual(s['scenario_count'], 27)
-        self.assertTrue(s['recommendation_stable'])
-        self.assertEqual(sum(s['first_action_counts'].values()), 27)
+    def test_historical_pre_admission_policy_is_retained(self):
+        net, model = copy.deepcopy(self.net), copy.deepcopy(self.model)
+        target = model['claims']['target']
+        node = next(n for n in net['conjectures'] if n['id'] == target)
+        node['outcome'] = None
+        model['required_known_proofs'].remove(target)
+        model['resolved_estimates_retained'].remove(target)
+        result = analyze(model, net, validate(REPO, net))
+        self.assertEqual(result['central']['first_action'], 'prove/' + target)
+        self.assertAlmostEqual(result['central']['success_probability'], .672)
+        self.assertEqual(result['central']['expected_total_effort'], 4.)
+        self.assertEqual(result['sensitivity']['scenario_count'], 27)
 
     def test_model_does_not_refute_general_target_from_route_failure(self):
         c = self.model['claims']
         self.assertTrue(any(w['truth'][c['target']] and not w['truth'][c['half_turn']] for w in build_worlds(self.model)))
+
 
 if __name__ == '__main__':
     unittest.main()

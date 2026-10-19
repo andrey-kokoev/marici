@@ -13,6 +13,8 @@ from outcome_reference import OutcomeReferenceError, load
 class SuccessorNetTests(unittest.TestCase):
     def setUp(self):
         self.net = copy.deepcopy(load(REPO, CONTRACT))
+        target = next(n for n in self.net['conjectures'] if n['id'] == 'operational-spectral-whole-return-certificate')
+        target['outcome'] = None
         # Replay the pre-acceptance checkpoint for the existing component
         # admission regressions; test current accepted state separately below.
         pi = next(n for n in self.net['conjectures'] if n['id'] == 'completion-pi-half-turn')
@@ -37,15 +39,88 @@ class SuccessorNetTests(unittest.TestCase):
         result = validate(REPO, load(REPO, CONTRACT))
         self.assertEqual(result['local_outcomes']['completion-pi-half-turn'], '++')
         self.assertNotIn('completion-pi-half-turn', result['in_progress'])
-        self.assertEqual(result['ready_proof_frontier'], ['operational-spectral-whole-return-certificate'])
+        self.assertEqual(result['ready_proof_frontier'], [])
         self.assertEqual(result['blocked_on'], {})
         self.assertEqual(result['local_outcomes']['operational-unitary-half-turn'], '++')
         self.assertEqual(result['local_outcomes']['completion-unit-circle-flow'], '++')
         self.assertNotIn('completion-phase-metric-regularity', result['in_progress'])
         self.assertEqual(result['local_outcomes']['completion-phase-metric-regularity'], '++')
-        self.assertFalse(result['terminal'])
-        self.assertEqual(result['outcome_counts'], {'++': 6, '+-': 0, 'in_progress': 0, 'paused': 0, 'unattempted': 1})
+        self.assertTrue(result['terminal'])
+        self.assertEqual(result['target_outcome'], '++')
+        self.assertEqual(result['net_state'], 'positive_terminal')
+        self.assertEqual(result['outcome_counts'], {'++': 7, '+-': 0, 'in_progress': 0, 'paused': 0, 'unattempted': 0})
         self.assertIn('research/nima/agda/TickPhaseDerivativeReduction.agda', result['source_sha256'])
+
+    def test_operational_bundle_does_not_admit_semantic_target(self):
+        receipt = load(REPO, 'research/nima/results/operational-whole-return-kernel-fresh.json')
+        self.assertEqual(receipt['status'], 'pass')
+        self.assertTrue(receipt['operational_kernel_bundle_proved'])
+        self.assertTrue(receipt['fresh_closure_completed'])
+        self.assertFalse(receipt['standard_real_phase_interpretation_proved'])
+        self.assertFalse(receipt['whole_return_proved'])
+        self.assertIsNone(receipt['target_outcome'])
+        net = load(REPO, CONTRACT)
+        target = next(n for n in net['conjectures'] if n['id'] == 'operational-spectral-whole-return-certificate')
+        self.assertEqual(target['outcome'], '++')
+        target['outcome'] = '++'
+        target['attempts'] = [{'intent': 'prove', 'outcome': '++',
+                               'receipt': 'research/nima/results/operational-whole-return-kernel-fresh.json'}]
+        with self.assertRaisesRegex(OutcomeReferenceError, 'proof/attempt claim mismatch'):
+            validate(REPO, net)
+
+    def test_written_spectral_correspondence_needs_additional_acceptance(self):
+        path = 'research/nima/results/standard-spectral-correspondence.json'
+        receipt = load(REPO, path)
+        self.assertEqual(receipt['status'], 'pass')
+        self.assertTrue(receipt['fresh_closure_completed'])
+        self.assertTrue(receipt['written_semantic_correspondence_supplied'])
+        self.assertFalse(receipt['semantic_correspondence_kernel_proved'])
+        self.assertFalse(receipt['additional_mixed_level_accepted'])
+        self.assertFalse(receipt['whole_return_proved_at_admitted_level'])
+        net = load(REPO, CONTRACT)
+        target = next(n for n in net['conjectures'] if n['id'] == 'operational-spectral-whole-return-certificate')
+        target['outcome'] = '++'
+        target['attempts'] = [{'intent': 'prove', 'outcome': '++', 'receipt': path}]
+        with self.assertRaisesRegex(OutcomeReferenceError, 'proof/attempt claim mismatch'):
+            validate(REPO, net)
+
+    def test_whole_return_requires_scoped_acceptance_and_preserves_level(self):
+        net = load(REPO, CONTRACT)
+        cases = [
+            ('research/nima/contracts/whole-return-mixed-level-acceptance.v1.json', 'accepted', False),
+            ('research/nima/contracts/whole-return-mixed-level-acceptance.v1.json', 'claim', 'completion-pi-half-turn'),
+            ('research/nima/results/whole-return-mixed-level-accepted.json', 'semantic_correspondence_kernel_proved', True),
+            ('research/nima/results/whole-return-mixed-level-accepted.json', 'C1_at_seam_claimed', True),
+            ('research/nima/results/whole-return-mixed-level-accepted.json', 'remaining_obligations_at_accepted_level', ['interpretation']),
+        ]
+        for path, field, value in cases:
+            def altered(root, requested):
+                r = load(root, requested)
+                if requested == path:
+                    r[field] = value
+                return r
+            with self.subTest(field=field), patch.object(checker, 'load', side_effect=altered):
+                with self.assertRaisesRegex(OutcomeReferenceError, 'whole-return requires explicit scoped mixed acceptance'):
+                    validate(REPO, net)
+
+    def test_whole_return_rejects_cached_and_stale_evidence(self):
+        net = load(REPO, CONTRACT)
+        def cached(root, path):
+            r = load(root, path)
+            if path == 'research/nima/results/operational-whole-return-kernel-fresh.json':
+                r['fresh_closure_completed'] = False
+            return r
+        with patch.object(checker, 'load', side_effect=cached):
+            with self.assertRaisesRegex(OutcomeReferenceError, 'whole-return lacks fresh operational bundle'):
+                validate(REPO, net)
+        def stale(root, path):
+            r = load(root, path)
+            if path == 'research/nima/results/whole-return-mixed-level-accepted.json':
+                r['source_sha256']['research/nima/standard-spectral-correspondence.md'] = '0'*64
+            return r
+        with patch.object(checker, 'load', side_effect=stale):
+            with self.assertRaisesRegex(OutcomeReferenceError, 'whole-return omits dependency pins'):
+                validate(REPO, net)
 
     def test_derivative_reduction_does_not_promote_analytic_bound(self):
         net = load(REPO, CONTRACT)

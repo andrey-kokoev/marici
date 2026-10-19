@@ -11,9 +11,9 @@ The operator accepted the mixed pi certificate (kernel construction/endpoints pl
 
 Regularity is now also freshly kernel-proved: the same resumed attempt constructed its dyadic modulus and full all-scale/all-time/all-increment derivative. The current model is conditioned on this additional closure and removes both resolved analytic actions. The aliased flow-rejection test is unavailable because regularity is already proved.
 
-Current computed recommendation: **prove/operational-spectral-whole-return-certificate**. The same-phase flow and full operational half-turn are freshly kernel-checked, with standard-pi identification retained at its explicitly accepted mixed level. Their resolved actions are removed; earlier half-turn +- attempts remain historical. In the retained 24-EU scenario the central success probability is 0.672 and expected effort 4.0; these are model outputs, not measured remaining-budget forecasts or a budget reset. All 27 retained sensitivity scenarios select whole-return assembly (resolved analytic cost variations now have no effect).
+Current state: **positive terminal**, with no recommended action. The whole-return target is admitted at the explicitly accepted additional mixed correspondence level. The planner has an empty action portfolio; its probability-one/zero-effort terminal output denotes an already admitted certificate, not a new forecast. The preceding whole-return forecast (0.672 positive-closure probability, 4.0 expected effort, all 27 scenarios selecting assembly) remains historical, not a measured budget or proof.
 
-Only the whole-return node remains open. See `constructed-unitary-half-turn.md` and `unit-circle-flow-progress.md` for the assembled prerequisites. See `phase-metric-regularity-progress.md` and `machin-pi-progress.md`.
+No conjecture nodes remain open at their recorded accepted verification levels. Standard-real semantic correspondence remains written rather than kernel-formalized. See `constructed-unitary-half-turn.md` and `unit-circle-flow-progress.md` for the assembled prerequisites. See `phase-metric-regularity-progress.md` and `machin-pi-progress.md`.
 
 ## Historical pre-acceptance forecast
 

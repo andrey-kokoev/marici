@@ -77,6 +77,22 @@ def analyze(model, net, structure, include_sensitivity=True):
     actions = build_actions(model, net, worlds)
     target = model['objective']['target']
     budget = model['objective']['budget_effort_units']
+    if target in known:
+        require(structure['terminal'] and structure['target_outcome'] == '++' and not actions,
+                'terminal planning requires an admitted target and empty portfolio')
+        return {
+            'schema': 'marici.nima.completion-refinement-planning-result.v1', 'status': 'pass',
+            'planning_only': True, 'scientific_outcomes_changed': False,
+            'estimate_status': model['estimate_status'], 'objective': model['objective'],
+            'central': {'first_action': None, 'success_probability': 1.0, 'expected_total_effort': 0.0,
+                        'budget': budget, 'success_branch_trace': [], 'states_evaluated': 0},
+            'rows': [], 'joint_worlds': worlds, 'continuation_action': None,
+            'forecast_scope': 'Terminal admitted positive certificate at its recorded mixed verification level; no remaining proof action or budget forecast.',
+            'paused_attempts': [], 'canonical_action_count': 0, 'known_proof_certificates': sorted(known),
+            'information_diagnostic': [],
+            'sensitivity': {'scenario_count': 0, 'first_action_counts': {}, 'recommendation_stable': True, 'scenarios': []},
+            'boundary': 'Terminal observation comes from theorem-specific admission, not planner probability or kernel semantic interpretation.',
+        }
     central = Planner(worlds, actions, target, known, budget).solve()
     active = list(structure.get('in_progress', {}).values())
     require(len(active) <= 1, 'multiple active attempts require an explicit continuation policy')
