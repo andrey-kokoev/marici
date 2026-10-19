@@ -1,0 +1,38 @@
+# Bounded mathematical event/control realization — review candidate v1
+
+## Status
+
+Constructed as a scoped owner-local candidate; NOT an admitted resolution of the Nima-owned work net. Shared contract dispositions and root outcome are unchanged. Its mathematical scope is the source-derived instances below, not all mathematics or physics.
+
+## Common semantics and instances
+
+Use the dependent interface in `typed-event-control-interface-v1.md`: initial context and task/success relation; typed admitted event with actual payload/witness; state/context transition; recorded history; replay; declared observations and resource effects. Events compose only at matching interfaces. Complete retained histories are distinct from predictive state summaries.
+
+1. **WG:** fixed indexed refinements F,G and their existing nested/flattened compiled presentations. Generated events are actual `generate` outputs. Supplied witnessed edges are history records, not automatically executable controls. Retain all actual proof payloads and source pair. Generated continuations replay deterministically; full-step records transport with endpoint paths. Use `Composite.correct`/`rebase`, not arbitrary WG equivalences. Caller supplies the task predicate and observers at the declared types.
+2. **Energy:** source nonnegative `(a,b)` with retained provenance, gains q in [0,1], exact total readings and the source target task. The numeric predictive quotient is distinct from the original source. Feedback uses exact available transcripts and targets from the state already changed by probing.
+3. **Context:** finite authority/resource contexts, external grant/replenish events and enabled-capability observations. A capability task is not execution of set0/set1; no grant authority or resource consumption law is invented.
+
+The common semantics is a dependent interface, not a common numerical state space, common actuator, or identification of the examples' sources. Mathematical WG choice and physical control are not synonymous. An instance with only one generated transition still fits the interface without asserting multi-input controllability.
+
+## Compatible witnesses
+
+- Interface: three explicit dictionaries, with initial data and observation/role conventions.
+- Continuation: energy `(a,b)` predictive congruence, full-context congruence, and the graph of the supplied fixed WG presentation isomorphism. Their coarse rivals remain rejected.
+- Observation/feedback: exact energy target trace; WG/context observations are their explicit mathematical readers, not detectors. No unsupported WG feedback law is required or supplied.
+- Naturality: fixed WG nested/flattened comparison and energy `(a,b)↔(H,A)` chart. Observers and task predicates pull back; no automatic transport of arbitrary policies is claimed.
+- Composition: finite history concatenation with matching boundaries. WG comparison laws are witnessed, not equality of every source record. Numeric energy gain composition leaves distinct provenance histories retained.
+- Resource policy: energy tracks only visible model-energy change; context tracks availability and authority; WG tracks supplied admission/witness obligations. No common numeric resource algebra or hidden physical reservoir is inferred.
+
+## Why this is an assembly and what it does not establish
+
+Each instance has the same typed notion of extending a recorded history, replaying it and observing at a declared information interface. The congruence and presentation comparisons preserve these operations at their explicitly chosen scopes. This yields a bounded mathematical event/control realization, conditional on the already supplied source certificates and exact-model assumptions.
+
+It does NOT establish a faithful representation of every WG source-module attachment. The marked path algebra and derived receiver remain separate source models; their nonsplit attachment is retained as a rejection constraint against coarse summaries, not transported through `Composite` by unsupported analogy. If the work-net mathematical scope requires that bridge, this candidate is insufficient until a source-owner supplies the typed bridge.
+
+It also does not establish physical binding, same-source mathematical/physical comparison, extension/completion, noise robustness or the root conjecture. These cannot be discharged by an evidence-manifest check.
+
+## Owner review request
+
+Review whether the declared fixed-WG and exact-energy scope satisfies the four nodes: typed interface, history congruence, observation/feedback and presentation naturality. If accepted, resolve them only at those scopes, then review this assembly on compatible witnesses. If attachment-preserving WG comparison is required, keep the relevant gate open and name that additional bridge. Do not silently broaden the candidate to arbitrary WG transport.
+
+Evidence inventory and fresh bounded suite results: `results/event-control-review-manifest-v1.json`, generated by `checkers/check_event_control_review_bundle_v1.py`. The checker hashes packet/source files, executes five Sontag suites and checks their pass records. It does not independently prove the cited mathematical arguments, run Agda, or validate/update the Nima work-net pins.
