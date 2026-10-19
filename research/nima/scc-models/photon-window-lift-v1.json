@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-window-lift-v1",
+    "owner": "marici.Nima",
+    "classification": "conditional_covariant_R_s_squared_window_lift_with_two_variable_analytic_difference_not_physical_matching",
+    "stratum": "Imported parity-even on-shell photon EFT; retained degree-four quadratic loop cut; fixed positive common log scale and artificial 0<tau<1 window",
+    "inputs": ["research/nima/contracts/photon-window-lift-v1.json", "research/nima/photon-window-lift-v1.md"],
+    "checks": [{"id": "photon-window-lift-exact", "path": "research/nima/checkers/check_photon_window_lift_v1.py", "requires": []}],
+    "depends_on": ["photon-loop-tensor-v1"],
+    "consumes": ["covariant_degree_four_loop_form_factors_and_all_channel_cuts", "full_tensor_common_log_scale_flow_including_forward_invisible_g4prime"],
+    "provides": ["two_variable_window_subtraction_lift_and_regular_local_matching", "exact_R_s_squared_forward_Cauchy_extension_with_retained_kernel"],
+    "missing_constructors": ["source_selected_finite_physical_matching_and_native_preparation", "same_scope_UV_dispersive_assumptions", "higher_Born_degree_independent_cut_compatibility_audit"],
+    "next_falsifier": "Before extending to R=s^2+c1*s^3, independently compare the degree-five mixed cut of the full crossed Ward/Bose Born tensor with the archived bilinear kernel; degree-four agreement alone does not establish that compatibility"
+  }
+}

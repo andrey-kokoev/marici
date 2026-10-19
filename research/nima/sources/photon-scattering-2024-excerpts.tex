@@ -1,0 +1,232 @@
+% Kelian Haring, Aditya Hebbar, Denis Karateev, Marco Meineri, Joao Penedones; Bounds on photon scattering; JHEP10(2024)103; DOI:10.1007/JHEP10(2024)103; CC-BY-4.0
+% Source: https://arxiv.org/src/2211.05795
+% Attribution/header comments added; quotations unmodified.
+
+% main.tex lines 235-274; unmodified quotation follows.
+	s+t+u=0.
+\end{equation}
+Due to crossing equations only the $\Phi_1$, $\Phi_2$, and $\Phi_5$ amplitudes are independent, the rest can be related to these as
+\begin{equation}
+	\label{eq:crossing_intro}
+	\Phi_3(s,t,u) = \Phi_1(u,t,s),\qquad
+	\Phi_4(s,t,u) = \Phi_1(t,s,u).
+\end{equation}
+Moreover, crossing also implies that $\Phi_1(s,t,u)$ is symmetric under $t-u$ permutation and the amplitudes $\Phi_2(s,t,u)$ and $\Phi_5(s,t,u)$ are fully  symmetric under permutations of their arguments.
+We give the precise definition of the amplitudes \eqref{eq:list_amplitudes} in appendix \ref{sec:S-matrix_setup}. There we also derive their crossing equations and unitarity constraints. For completeness we also explain how to define the amplitudes via tensor structures in appendix \ref{app:tensor_structures_main} both in vector and spinor formalisms.
+
+
+\paragraph{Non-perturbative observables}
+At low energy, the amplitudes $\Phi_1$, $\Phi_2$ and $\Phi_5$ have the following expansion:\footnote{Let us emphasize  that even though we write $\cO(s^n)$,  the expansion is  at small $s\sim t \sim u$ and $n$ is the total power of $s,t,u$. }
+\begin{equation}
+	\label{eq:amplitudes_EFT}
+	\begin{aligned}
+		\Phi_1(s,t,u) &= g_2 s^2 + g_3 s^3 + g_4 s^4+ g_4^\prime  s^2 t u + L_1( s| t, u) +\cO( s^5) , \\
+		\Phi_2(s,t,u)  &=f_2 (s^2+ t^2 + u^2)+f_3 s t u + f_4(s^2+t^2+u^2)^2 \\
+		&+ L_2(s,t,u)+\cO(s^5), \\
+		\Phi_5(s,t,u)  &= h_3 \, s t u+\cO(s^5)~.
+	\end{aligned}
+\end{equation}
+The two functions $L_1(s,t,u)$ and $L_2(s,t,u)$ are fixed by unitarity in terms of the polynomial terms in \eqref{eq:amplitudes_EFT}, see appendix \ref{sec:oneloopUnitarity}:
+\begin{align}
+	\nn
+	L_1(s|t,u) &\equiv  s^2\left(\beta_{1,1}s^2+\beta_{1,2} t u\right)\log\left(- s \sqrt{g_2}\right) +\beta_{1,3}s^2\left( t^2\log\left(- t \sqrt{g_2}\right)+ u^2\log\left(-u\sqrt{g_2}\right)\right),\\
+	L_2(s,t,u) &\equiv \beta_2\left(s^4 \log\left(-s \sqrt{g_2}\right) + t^4\log\left(-t \sqrt{g_2}\right) + u^4\log\left(-u \sqrt{g_2}\right) \right),
+	\label{eq:loops}
+\end{align}
+where the coefficients $\beta$ read as
+\begin{equation}
+\label{betaEFT}
+	\begin{aligned}
+		\beta_{1,1}&= - \frac{14f_2^2+5g_2^2}{160\pi^2},\qquad
+		&&\beta_{1,2}= \frac{f_2^2}{240\pi^2}\\
+		\beta_{1,3}&= - \frac{g_2^2}{80\pi^2},\qquad
+		&&\beta_{2}= - \frac{5f_2 g_2}{48 \pi^2}.
+	\end{aligned}
+\end{equation}
+
+% main.tex lines 419-471; unmodified quotation follows.
+\begin{equation}
+	\label{eq:partial_amplitudes_intro}
+	{\Phi_i^{\ell}}(s) \equiv \frac{1}{32\pi}\int_0^\pi d\theta \sin \theta \,d^{\, \ell}_{\lambda_{12}, \lambda_{34}}(\theta)\; \Phi_i\left(s,t(s,\theta),u(s,\theta)\right)
+\end{equation}
+where the scattering angle $\theta$ is related to the Mandelstam variables as
+\begin{equation}
+	\label{eq:scattering_angle}
+	t = - \frac{s}{2}(1-\cos\theta),\quad
+	u = - \frac{s}{2}(1+\cos\theta).
+\end{equation}
+The small Wigner $d$-matrix is defined in \eqref{eq:wignerD}. The differences of helicities are defined as
+\begin{equation}
+	\lambda_{12} \equiv \lambda_1 -\lambda_2,\qquad
+	\lambda_{34} \equiv \lambda_3 -\lambda_4.
+\end{equation}
+The values of helicities for the amplitudes $\Phi_i(s,t,u)$ are given in \eqref{eq:helicities}.
+
+Using partial amplitudes we can write full non-linear unitarity constraints in simple positive semi-definite form as
+\begin{equation}
+	\label{eq:non-linear_unitarity}
+\begin{pmatrix}
+	\mathbb I & \mathbb S^{ \dagger}(s) \\
+	\mathbb S (s) & \mathbb I
+\end{pmatrix} \succeq 0,
+\end{equation}
+where $\mathbb I$ is the (appropriate) identity matrix and 
+\begin{equation}
+	\label{eq:entriesa_unitarity}
+	\mathbb S (s) = \begin{cases}
+		1+i(\Phi_1^0(s) + \Phi_2^0(s)),\qquad \ell=0,\\
+		1+i(\Phi_1^\ell(s) - \Phi_2^\ell(s)),\qquad\ell \geq 0 \text{ (even)},\\
+		1+2i\Phi_3^\ell(s) ,\qquad\qquad\quad\;\;\;\ell \geq 3 \text{ (odd)},\\
+		\begin{pmatrix}
+			1 & 0\\
+			0 & 1
+		\end{pmatrix}+
+		i\begin{pmatrix}
+			\Phi_1^\ell(s) + \Phi_2^\ell(s)  &  \qquad 2 \Phi_5^{\ell}(s) \\
+			2 \Phi_5^\ell(s) &    \qquad 2\Phi_3^\ell(s)
+		\end{pmatrix}
+	,\qquad\ell \geq 2 \text{ (even)}.
+	\end{cases}	
+\end{equation}
+These conditions hold in the physical regime $s\geq 0$.
+
+There is a simpler subset of the above constraints (called positivity) given by
+\begin{equation}
+	\Im \mathbb F (s) \succeq 0,
+\end{equation}
+where  $\mathbb F $ is defined via $\mathbb S $ as follows
+\begin{equation}
+	\mathbb S  = \mathbb I +i \mathbb F \,.
+\end{equation}
+
+% main.tex lines 1611-1664; unmodified quotation follows.
+\paragraph{Scattering amplitudes in a general frame}
+Consider the 2-to-2 (in-out) scattering process of massless spin one particles, schematically $12\rightarrow 34$. It is described by the scattering amplitude $	\mathcal{S}{}_{\lambda_1, \lambda_2}^{\lambda_3,\lambda_4}(p_1,p_2,p_3,p_4)$ defined via the following matrix element
+\begin{equation}
+	\label{eq:scattering_amplitude}
+	(2\pi)^4\delta^{(4)}(p_1^\mu + p_2^\mu - p_3^\mu - p_4^\mu) \times
+	\mathcal{S}{}_{\lambda_1, \lambda_2}^{\lambda_3,\lambda_4}(p_1,p_2,p_3,p_4)\equiv
+	{}_{id}\langle\kappa_3,\kappa_4|S|\kappa_1,\kappa_2\rangle_{id}.
+\end{equation}
+Here $S$ is the scattering operator.  The particles with 4-momenta $p_1$ and $p_2$ are incoming, and the particles with momenta $p_3$ and $p_4$ are outgoing. We adopt the convention that helicities of incoming particles are always placed downstairs, instead helicities of outgoing particles are always placed upstairs. The two-particle state describing the system of two identical massless particles is defined as
+\begin{equation}
+	\label{eq:2PS}
+	|\kappa_1,\kappa_2\rangle_{id} \equiv \frac{1}{\sqrt 2}\big(
+	|\vec p_1; \lambda_1\>\otimes |\vec p_2; \lambda_2\>+
+	|\vec p_2; \lambda_2\>\otimes |\vec p_1; \lambda_1\>\big),
+\end{equation}
+where the symbol $\otimes$ stands for the ordered tensor product.  By construction it obeys the condition $|\kappa_1,\kappa_2\rangle_{id}=|\kappa_2,\kappa_1\rangle_{id}$. The $\sqrt{2}$ factor in the definition is part of our conventions. The one-particle states entering \eqref{eq:2PS} are denoted by
+\begin{equation}
+	\label{eq:1PS}
+	|\vec p; \lambda\>\equiv |m=0,\vec p; j=1,\lambda\>.
+\end{equation}
+The right-hand side of \eqref{eq:1PS} is standard notation for one-particle states, where $m$ is the mass of the particle, $j$ is its spin, $\vec p$ is the spatial momentum and $\lambda$ is the helicity. For massless spin $j=1$ particles helicity can only take two values $\lambda=\pm 1$.
+The normalization of one-particle states is given by
+\begin{equation}
+	\label{eq:normalization_1PS}
+	\<\vec p_1; \lambda_1|\vec p_2; \lambda_2\> = 2\myP_1 \delta_{\lambda_1}^{\lambda_2}
+	\times(2\pi)^3\delta^{(3)}(\vec p_1-\vec p_2)\,,
+\end{equation}
+where we defined $\myP_i = |\vec{p}_i|$.
+
+Let us now define the interacting part of the scattering operator $T$ as follows
+\begin{equation}
+	\label{eq:operator_T}
+	S=1+i T.
+\end{equation}
+This leads to the definition of the interacting scattering amplitude $\mathcal{T}{}_{\lambda_1, \lambda_2}^{\lambda_3,\lambda_4}(p_1,p_2,p_3,p_4)$, namely
+\begin{equation}
+	\label{eq:scattering_amplitude_interacting}
+	(2\pi)^4\delta^{(4)}(p_1^\mu + p_2^\mu - p_3^\mu - p_4^\mu) \times
+	\mathcal{T}{}_{\lambda_1, \lambda_2}^{\lambda_3,\lambda_4}(p_1,p_2,p_3,p_4)\equiv
+	{}_{id}\langle\kappa_3,\kappa_4|T|\kappa_1,\kappa_2\rangle_{id},
+\end{equation}
+Using \eqref{eq:operator_T} we can write the relation between the scattering amplitude and its interacting part. It reads
+\begin{equation}
+	\label{eq:relation_ST}
+	\mathcal{S}{}_{\lambda_1, \lambda_2}^{\lambda_3,\lambda_4}(p_1,p_2,p_3,p_4) =
+	\frac{{}_{id}\langle\kappa_3,\kappa_4|\kappa_1,\kappa_2\rangle_{id}}{(2\pi)^4\delta^{(4)}(p_1^\mu + p_2^\mu - p_3^\mu - p_4^\mu)}+i\mathcal{T}{}_{\lambda_1, \lambda_2}^{\lambda_3,\lambda_4}(p_1,p_2,p_3,p_4).
+\end{equation}
+The first term in the right-hand side of \eqref{eq:relation_ST} is a formal expression. It can be straightforwardly evaluated for example in the center of mass frame in spherical coordinates (e.g. see footnote 15 in \cite{Hebbar:2020ukp}). The normalization of two-particle states follows from \eqref{eq:2PS} and \eqref{eq:normalization_1PS}. It reads
+\begin{equation}
+	\label{eq:normalization_2PS}
+	{}_{id}\langle\kappa_3,\kappa_4|\kappa_1,\kappa_2\rangle_{id}=
+	4\myP_1\myP_2(2\pi)^6	\left(\delta^{(3)}(\vec{p_1}-\vec{p_3})\delta^{(3)}(\vec{p_2}-\vec{p_4})\delta_{\lambda_1}^{\lambda_3}\delta_{\lambda_2}^{\lambda_4} + (3 \leftrightarrow 4) \right).
+\end{equation}
+
+
+% main.tex lines 1706-1722; unmodified quotation follows.
+	\label{eq:com_amplitudes}
+	\mathcal{T}{}_{\lambda_1, \lambda_2}^{\lambda_3,\lambda_4}(s,t,u) \equiv
+	\mathcal{T}{}_{\lambda_1, \lambda_2}^{\lambda_3,\lambda_4}(p_1^\text{com},p_2^\text{com},p_3^\text{com},p_4^\text{com}).
+\end{equation}
+
+
+Due to the presence of identical particles and parity symmetry, there are only 5 distinct center of mass amplitudes, our choice here is
+\begin{equation}
+	\label{eq:helicity_amplitude_def}
+	\begin{aligned}
+		\Phi_1 (s,t,u) &\equiv \mathcal{T}^{++}_{++}(s,t,u),\\
+		\Phi_2(s,t,u)  &\equiv \mathcal{T}^{--}_{++}(s,t,u),\\
+		\Phi_3(s,t,u)  &\equiv \mathcal{T}^{+-}_{+-}(s,t,u),\\
+		\Phi_4(s,t,u)  &\equiv \mathcal{T}^{-+}_{+-}(s,t,u),\\
+		\Phi_5(s,t,u)  &\equiv \mathcal{T}^{+-}_{++}(s,t,u).
+	\end{aligned}
+\end{equation}
+
+% main.tex lines 1846-1874; unmodified quotation follows.
+\begin{equation}
+	|c,\vec p, \ell, \lambda; + , + \rangle_{id}, \quad |c,\vec p, \ell, \lambda; - , - \rangle_{id}, \quad |c,\vec p, \ell, \lambda; + , - \rangle_{id}
+\end{equation}
+Bose symmetry of identical particles also implies the selection rule that the first two states in the list above only exist for even $\ell$. The third state exists for all spin $\ell \geq 2$.\footnote{The total spin $\ell$ must always be greater than the difference in helicity $\lambda_1 - \lambda_2$ of the two particles.} Under parity transformation, the three states transform as follows 
+\begin{equation}
+	\begin{aligned}
+		\mathcal P|c,\vec 0, \ell, \lambda; + , + \rangle_{id} &= (-1)^{\ell} |c,\vec 0, \ell, \lambda; - , - \rangle_{id},\\
+		\mathcal P|c,\vec 0, \ell, \lambda; - , - \rangle_{id} &= (-1)^{\ell} |c,\vec 0, \ell, \lambda; + , + \rangle_{id},\\
+		\mathcal P|c,\vec 0, \ell, \lambda; + , - \rangle_{id} &=  |c,\vec 0, \ell, \lambda; + , - \rangle_{id}.
+	\end{aligned}
+	\label{parityOnPartialWaves}
+\end{equation}
+Since we consider parity invariant theories, it is convenient to define new linear combinations which are parity eigenstates:
+\begin{equation}
+	\label{eq:parity_even_two_photon_irreps}
+	\text{\bf parity even:}\quad
+	\begin{aligned}
+		|1\rangle &\equiv \frac{1}{\sqrt{2}}\Big(|c,\vec p, \ell, \lambda; + , + \rangle_{id} +  |c,\vec p, \ell, \lambda; - , - \rangle_{id}\Big), \quad \ell \geq 0\;(\text{even}),\\
+		|2 \rangle &\equiv  \sqrt{2}\,|c,\vec p, \ell, \lambda; + , - \rangle_{id}, \quad \ell \geq 2,
+	\end{aligned}
+\end{equation}
+\begin{equation}
+	\label{eq:parity_odd_two_photon_irrep}
+		\text{\bf parity odd:}\quad
+	|3\rangle \equiv \frac{1}{\sqrt{2}}\Big(|c,\vec p, \ell, \lambda; + , + \rangle_{id} -  |c,\vec p, \ell, \lambda; - , - \rangle_{id}\Big), \quad \ell \geq 0\; (\text{even}).\\
+\end{equation}
+In a unitary quantum theory, the norm of any state in the theory must be non-negative. Consider the following set of six states:
+\begin{equation}
+		|1\rangle_{in},\qquad |2\rangle_{in}, \qquad |3\rangle_{in},  \qquad
+
+% main.tex lines 3118-3140; unmodified quotation follows.
+In this appendix, we will compute the one-loop amplitude at threshold using elastic unitarity.  This computation follows the idea of \cite{EliasMiro:2019kyf,Guerrieri:2020bto,Guerrieri:2021ivu}, the novelty compared to those references is the presence of spin and we will see that the general result can be easily extended.
+
+The (tree-level) amplitudes are schematically given at threshold by \eqref{eq:amplitudes_EFT}
+\begin{equation}
+	\mathcal{T} = a_2 \bar{s}^2 + a_3 \bar{s}^3 + \cO(\bar{s}^4)\,,
+\end{equation}
+where we wrote generic dimensionless coefficients $a_i\in\mathbb{R}$ and used the dimensionless Mandelstam variables \eqref{eq:dimensionless_mandelstam}.  From unitarity ($\Im \cT \sim \cT^2 $), we expect the amplitude to acquire an imaginary part at $\cO(\bar{s}^4)$. This discontinuity corresponds to EFT loops and, as we are considering massless particles, it is given at threshold by \emph{logs}. This leads to the ansatz \eqref{eq:amplitudes_EFT}, with the one-loop discontinuity given by \eqref{eq:loops}.
+
+We will now show how to fix the coefficients $\beta_i$ to \eqref{betaEFT} by imposing unitarity at threshold.  To begin, we decompose the ansatz \eqref{eq:amplitudes_EFT} in the partial waves amplitudes $\mathbb{S}^\ell(s)$, defined in \eqref{eq:entriesa_unitarity}. 
+
+Elastic unitarity is broken due to particle production starting at $\mathcal{T}(2\to 4) = \cO(\bar s^3)$.  Therefore at threshold, unitarity implies
+\begin{equation}\label{eq:unitarityAtThreshold}
+	\text{Eigenvalues}\left[(\mathbb{S}^\ell(s))^\dagger\mathbb{S}^\ell(s)\right] = 1 + \cO(\bar s^6)\,.
+\end{equation}
+We can expand the partial wave amplitude as follows:
+\begin{equation}
+	\mathbb{S}^\ell(s) =  \mathbb I +i (\mathbb F_2^\ell \bar s^2 + \mathbb F_3^\ell \bar s^3 +\mathbb F_4^\ell \bar s^4 ) + \cO(\bar s^4 \log \bar{s})\,,
+\end{equation}
+and \eqref{eq:unitarityAtThreshold} implies
+\begin{equation}
+	2 \Im \mathbb F_4^\ell = (\mathbb F_2^\ell)^2\,,  \quad \forall\ \ell \,.
+\end{equation}
+We recall here that $\mathbb F^\ell$ are one-by-one or two-by-two matrices \eqref{eq:entriesa_unitarity}.  Imposing this equation allows us to fix the coefficients $\beta_i$  using for the logarithm the prescription  $\log(-s) = \log(|s|) - i\pi \theta(s)$.  The result matches the explicit loop computation described in appendix \ref{app:computation_EFTs}.  Note that this result could be extended to $\cO(\bar s^5)$, as elastic unitarity is only broken at $\cO(\bar s^6)$ \eqref{eq:unitarityAtThreshold}.
+

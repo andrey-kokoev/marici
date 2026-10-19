@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-primary-loop-v1",
+    "owner": "marici.Nima",
+    "classification": "primary_source_verified_four_photon_loop_coefficients_and_normalization_not_native_dynamics",
+    "stratum": "Parity-even photon EFT; leading degree-two g2_gamma,f2_gamma contacts; degree-four one-loop logarithms; normalized physical Bose partial waves; fixed positive s and declared upper-rim logarithm",
+    "inputs": ["research/nima/contracts/photon-primary-loop-v1.json", "research/nima/sources/photon-scattering-2024-provenance.json", "research/nima/sources/photon-scattering-2024-excerpts.tex", "research/nima/sources/photon-scattering-2024-pdf-excerpts.txt", "research/nima/photon-primary-loop-v1.md"],
+    "checks": [{"id": "photon-primary-loop-exact", "path": "research/nima/checkers/check_photon_primary_loop_v1.py", "requires": []}],
+    "depends_on": ["photon-normalization-v1"],
+    "consumes": ["declared_photon_Bose_kernel_to_invariant_amplitude_dictionary"],
+    "provides": ["independently_inspected_primary_equation_and_amplitude_convention", "four_primary_loop_beta_polynomial_identities", "forward_invisible_log_beta12_partial_wave_check"],
+    "missing_constructors": ["off_forward_covariant_Ward_Bose_tensor_lift_and_regular_matching", "source_selected_numerical_couplings_and_native_preparation"],
+    "next_falsifier": "Construct the covariant off-forward lift through degree four and test its Ward identities, all helicities, crossing and forward-invisible local freedom; the present parsed primary coefficients do not construct that tensor"
+  }
+}

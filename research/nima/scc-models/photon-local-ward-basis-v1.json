@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-local-ward-basis-v1",
+    "owner": "marici.Nima",
+    "classification": "explicit_local_Ward_Bose_tensor_basis_with_rank_five_forward_jet_not_full_loop_lift",
+    "stratum": "Imported parity-even on-shell four-photon local EFT jet through Mandelstam degree four, fixed eight coefficient functions; forward realization followed by readout restriction; all-in momentum conservation",
+    "inputs": ["research/nima/contracts/photon-local-ward-basis-v1.json", "research/nima/photon-local-ward-basis-v1.md", "research/nima/sources/photon-scattering-2024-local-spinor-excerpt.tex"],
+    "checks": [{"id": "photon-local-Ward-basis-exact", "path": "research/nima/checkers/check_photon_local_ward_basis_v1.py", "requires": []}],
+    "depends_on": ["photon-primary-loop-v1"],
+    "consumes": ["independently_inspected_primary_equation_and_amplitude_convention"],
+    "provides": ["explicit_eight_local_covariant_photon_contact_generators", "rank_five_forward_jet_with_three_forward_invisible_directions"],
+    "missing_constructors": ["covariant_degree_four_loop_form_factors_and_all_channel_cuts", "two_variable_window_shift_and_regular_matching_lift", "native_source_and_physical_matching"],
+    "next_falsifier": "Add verified loop logarithms to the complete covariant tensor without rational spurious kinematic poles; compare all channel cuts before attempting a two-variable analytic window shift"
+  }
+}

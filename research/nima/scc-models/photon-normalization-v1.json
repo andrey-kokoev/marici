@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-normalization-v1",
+    "owner": "marici.Nima",
+    "classification": "readout_compatibility_normalization_dictionary_with_unverified_primary_source_residual",
+    "stratum": "Fixed positive timelike s; full-sphere Bose-equivariant photon L2 carrier; standard relativistic Fock convention; positive channel phase weights; finite polynomial Born controls through degree six",
+    "inputs": ["research/nima/contracts/photon-normalization-v1.json", "research/nima/photon-normalization-v1.md"],
+    "checks": [{"id": "photon-normalization-exact", "path": "research/nima/checkers/check_photon_normalization_v1.py", "requires": []}],
+    "depends_on": [],
+    "consumes": [],
+    "provides": ["declared_photon_Bose_kernel_to_invariant_amplitude_dictionary", "earlier_Dirac_g2_to_b_algebraic_dictionary", "common_Born_kernel_vs_fixed_parameter_conversion", "exact_forward_loop_review_target_reproduction_not_primary_verification"],
+    "missing_constructors": ["independently_inspected_primary_equation_and_amplitude_convention", "source_selected_numerical_couplings_and_matching_coefficients", "native_preparation_and_physical_matching"],
+    "next_falsifier": "Inspect the cited primary PDF or provenance-bound exact excerpt; verify amplitude convention and one printed loop logarithm without fitting a normalization; reject any claim that review reproduction is primary verification"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-local-degree6-v1",
+    "owner": "marici.Nima",
+    "classification": "eighteen_generator_regular_local_photon_jet_through_degree6_with_rank8_forward_and_ten_dimensional_invisible_kernel",
+    "stratum": "Imported parity-even on-shell invariant-polynomial photon ansatz through Mandelstam degree six; no off-shell completeness or physical matching claim",
+    "inputs": ["research/nima/contracts/photon-local-degree6-v1.json", "research/nima/photon-local-degree6-v1.md"],
+    "checks": [{"id": "photon-local-degree6-exact", "path": "research/nima/checkers/check_photon_local_degree6_v1.py", "requires": []}],
+    "depends_on": ["photon-local-degree5-v1"],
+    "consumes": ["twelve_generator_regular_photon_jet_through_degree5"],
+    "provides": ["eighteen_generator_regular_photon_jet_through_degree6", "degree6_local_forward_kernel_and_independent_single_minus_h6"],
+    "missing_constructors": ["generic_degree6_regular_log_window_tensor", "physical_preparation_matching_and_native_UV_inputs"],
+    "next_falsifier": "Lift all twelve quadratic degree-six source monomials into regular crossed logarithmic/window tensors; test scale transport against this full six-direction degree-six local block, not just forward data or an h3-free family"
+  }
+}

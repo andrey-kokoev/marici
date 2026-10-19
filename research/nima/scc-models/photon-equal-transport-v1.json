@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-equal-transport-v1",
+    "owner": "marici.Nima",
+    "classification": "exact_rational_actual_Born_curve_with_equal_nonzero_degree6_transport_and_different_cut",
+    "stratum": "Imported real parity-even eight-contact photon Born domain, degree-six quadratic two-photon cut and common-log transport; not equal lower-degree cut data",
+    "inputs": ["research/nima/contracts/photon-equal-transport-v1.json", "research/nima/photon-equal-transport-v1.md"],
+    "checks": [{"id": "photon-equal-transport-exact", "path": "research/nima/checkers/check_photon_equal_transport_v1.py", "requires": []}],
+    "depends_on": ["photon-degree6-scale-null-v1"],
+    "consumes": ["real_source_degree6_zero_transport_zero_cut_equivalence"],
+    "provides": ["actual_equal_nonzero_degree6_transport_different_cut_witness", "factorizable_constant_transport_rational_source_curve"],
+    "missing_constructors": ["joint_degree45_cut_and_degree6_transport_image_and_fibres", "physical_preparation_matching_and_native_UV_inputs"],
+    "next_falsifier": "Test whether adding complete degree-four/five cut data restores the degree-six cut response lost by transport alone; the present pair has equal degree-four but different degree-five data"
+  }
+}

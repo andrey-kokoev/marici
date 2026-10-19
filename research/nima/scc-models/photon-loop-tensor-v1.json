@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-loop-tensor-v1",
+    "owner": "marici.Nima",
+    "classification": "regular_covariant_local_plus_degree_four_log_representative_with_all_channel_coefficients_not_window_matching",
+    "stratum": "Imported parity-even on-shell four-photon EFT; fixed order in momenta and leading couplings; common positive log scale; no native dynamics",
+    "inputs": ["research/nima/contracts/photon-loop-tensor-v1.json", "research/nima/photon-loop-tensor-v1.md"],
+    "checks": [{"id": "photon-loop-tensor-exact", "path": "research/nima/checkers/check_photon_loop_tensor_v1.py", "requires": []}],
+    "depends_on": ["photon-local-ward-basis-v1"],
+    "consumes": ["explicit_eight_local_covariant_photon_contact_generators", "rank_five_forward_jet_with_three_forward_invisible_directions"],
+    "provides": ["covariant_degree_four_loop_form_factors_and_all_channel_cuts", "full_tensor_common_log_scale_flow_including_forward_invisible_g4prime"],
+    "missing_constructors": ["two_variable_window_subtraction_lift_and_regular_local_matching", "native_preparation_and_physical_matching", "same_scope_UV_dispersive_assumptions"],
+    "next_falsifier": "Lift the prescribed whole-window forward subtraction off forward; cancel all channel logs and derive the two-variable analytic difference and its local jet, rather than assuming this from forward agreement"
+  }
+}

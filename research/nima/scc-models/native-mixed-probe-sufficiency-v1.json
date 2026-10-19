@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "native-mixed-probe-sufficiency-v1",
+    "owner": "marici.Nima",
+    "classification": "prospective_source_fixed_common_gain_witness_readout_sufficiency_test",
+    "stratum": "Formal rational 137-slot coefficient domain with fixed shared-leg source and conditional gain/witness operations; independent target preparations do not become native controls",
+    "inputs": ["research/nima/contracts/native-mixed-probe-protocol.v1.json"],
+    "checks": [{"id": "native-mixed-probe-sufficiency-exact", "path": "research/nima/checkers/check_native_mixed_probe_sufficiency_v1.py", "requires": []}],
+    "depends_on": ["joint-assembly-family-defect-audit-v1"],
+    "consumes": ["typed_137_slot_source_and_uniform_mixed_preparation_task"],
+    "provides": ["bounded_common_gain_witness_observation_space_and_target_descent_disposition"],
+    "missing_constructors": ["owner_reviewed_full_native_operation_and_reader_binding", "physical_instrument_preparation_resource_and_calibration_witnesses"],
+    "next_falsifier": "Coefficientwise all-gain/common-witness blind vector with a nonzero predeclared independent-leg target response. Do not repair by installing target readers or independent actuators."
+  }
+}

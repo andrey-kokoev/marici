@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-joint-cut-fibres-v1",
+    "owner": "marici.Nima",
+    "classification": "joint_degree4_degree5_real_source_fibres_with_sign_cancellation_and_zero_leading_strata",
+    "stratum": "Imported real parity-even leading photon Born couplings; coherent normalized cut data through degree five; exact algebraic identifiability, not measured physical matching",
+    "inputs": ["research/nima/contracts/photon-joint-cut-fibres-v1.json", "research/nima/photon-joint-cut-fibres-v1.md"],
+    "checks": [{"id": "photon-joint-cut-fibres-exact", "path": "research/nima/checkers/check_photon_joint_cut_fibres_v1.py", "requires": []}],
+    "depends_on": ["photon-general-degree5-cut-v1"],
+    "consumes": ["general_degree_five_single_minus_cut_and_nonfaithful_source_readout"],
+    "provides": ["stratified_joint_degree4_degree5_cut_source_identifiability", "exceptional_source_fibres_and_no_uniform_inverse_near_cancellation"],
+    "missing_constructors": ["complete_degree6_two_photon_cut_including_Born2_Born4_and_Born3_square", "source_selected_physical_preparation_and_matching", "same_scope_UV_dispersive_assumptions"],
+    "next_falsifier": "Compute the full degree-six quadratic cut with independent leading degree-four contacts: both 2-by-4 interference and 3-squared are required before claiming higher cuts resolve the h3 ambiguity"
+  }
+}

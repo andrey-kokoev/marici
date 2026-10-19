@@ -1,0 +1,130 @@
+% Attributed unmodified quotations from Haring et al., Bounds on photon scattering, JHEP10(2024)103.
+% CC-BY-4.0; DOI:10.1007/JHEP10(2024)103; source https://arxiv.org/src/2211.05795
+% Full source SHA256: 63d21a309c371b93b383a5af756e449302e00b9efe7c41504b1f94d37a398430
+
+% main.tex lines 2890-2948; B.88-B.89 / B.107-B.112.
+Using the spinors $\sh_\al$ and $\tsh_{\aldot}$ defined in \eqref{eq:spinors_xi} one can construct two Lorentz invariant building blocks, namely
+\begin{equation}
+	\plub{ij}\equiv (\sh_i)_\al(\sh_j)_\be \epsilon^{\al\be}, \qquad
+\minb{ij}\equiv (\tsh_i)_{\aldot}(\tsh_j)_{\bedot} \epsilon^{\aldot\bedot},
+	\label{SpinHalfPairings}
+\end{equation}
+where we used the short-hand notation $ \sh_i \equiv \sh(p_i)$ and $\tsh_i\equiv \tsh(p_i)$.
+
+Let us now recall the Little group tranformation property of scattering amplitudes of massless particles. It reads 
+\begin{equation}
+	\mathcal{T}_{\la_1,\la_2,\la_3,\la_4}(p_1,p_2,p_3,p_4) \to t_1^{2\la_1}t_2^{2\la_2}t_3^{2\la_3}t_4^{2\la_4}
+	\mathcal{T}_{\la_1,\la_2,\la_3,\la_4}(p_1,p_2,p_3,p_4),
+	\label{Ttchange}
+\end{equation}
+where $t_i$ are some real scalar objects. 
+Notice that imposing \eqref{Ttchange} assuming all $t_i$'s are independent parameters implies \eqref{TCovariance}. However, one could worry that there are solutions to \eqref{TCovariance} that do not respect  \eqref{Ttchange}.
+In practice, this is not relevant in our case because as we will see below we will find independent tensor structures for every choice of helicities.
+Recall that the spinors \eqref{eq:spinors_xi} transform as \eqref{eq:spinor_transform}
+\begin{equation}
+	\xi_i \rightarrow t_i \sh_i \qquad\text{and}\qquad \tsh_i \rightarrow t_i^{-1} \tilde \xi_i ,
+	\label{lambdatchange}
+\end{equation}
+which means that the Lorentz invariant blocks \eqref{SpinHalfPairings} transform as 
+\begin{equation}
+	\label{eq:transformation_bl}
+	\plub{ij} \to t_i t_j \plub{ij}, \qquad
+	\minb{ij} \to t_i^{-1} t_j^{-1}\minb{ij}.
+\end{equation}
+
+We can construct tensor structures $\mathbf{T}_{\lambda_1, \lambda_2,\lambda_3,\lambda_4}$ in \eqref{eq:decomposition_spin} as products of Lorentz invariant blocks \eqref{SpinHalfPairings}. The exponents in these products are fixed by requiring correct transformation properties of the amplitude \eqref{Ttchange}. In our case of identical spin one massless particles we can write for instance
+\begin{equation}
+	\label{eq:structures_spinor}
+	\begin{aligned}
+		\mathbf{T}_{+,+,+,+}(p_1,p_2,p_3,p_4) &= (\plub{12}\plub{34})^2+(\plub{13}\plub{24})^2+(\plub{14}\plub{23})^2,\\
+		\mathbf{T}_{+,+,-,-}(p_1,p_2,p_3,p_4) &=(\plub{12}\minb{34})^2,\\
+		\mathbf{T}_{+,-,+,-}(p_1,p_2,p_3,p_4) &=(\plub{13}\minb{24})^2,\\
+		\mathbf{T}_{+,-,-,+}(p_1,p_2,p_3,p_4) &=(\plub{14}\minb{23})^2,\\
+		\mathbf{T}_{+,+,+,-}(p_1,p_2,p_3,p_4) &= (\minb{41}\plub{12}\plub{13})^2,\\
+		\mathbf{T}_{+,+,-,+}(p_1,p_2,p_3,p_4) &= (\minb{31}\plub{12}\plub{14})^2,\\
+		\mathbf{T}_{+,-,+,+}(p_1,p_2,p_3,p_4) &= (\minb{21}\plub{13}\plub{14})^2,\\
+		\mathbf{T}_{-,+,+,+}(p_1,p_2,p_3,p_4) &= (\minb{12}\plub{23}\plub{24})^2.
+	\end{aligned}
+\end{equation}
+Due to the transformation properties \eqref{eq:transformation_bl} square blocks take care of positive helicities and angular blocks take care of negative helicities.
+
+
+
+In \eqref{eq:structures_spinor} we have defined tensor structures for 8 helicity configurations. The other 8 configurations which have opposite helicities to \eqref{eq:structures_spinor} are obtained from \eqref{eq:structures_spinor} by exchanging square and angular blocks, namely
+\begin{equation}
+	\plub{ij}  \leftrightarrow \minb{ij}.
+\end{equation}
+
+It is interesting to notice that the following identity exists:
+\begin{equation}\label{eq:identity_spinor}
+	(\plub{12}\plub{34})^2+(\plub{13}\plub{24})^2+(\plub{14}\plub{23})^2 = (s^2+t^2+u^2)\frac{\plub{12}\plub{34}}{\minb{12}\minb{34}}.
+\end{equation}
+The tensor structure $\frac{\plub{12}\plub{34}}{\minb{12}\minb{34}}$ was used for example in \cite{Arkani-Hamed:2020blm}. The latter choice might be more familiar to some readers. 
+
+
+
+% main.tex lines 3048-3111; B.88-B.89 / B.107-B.112.
+
+\subsubsection{Center of mass frame}
+We have worked so far with all-in amplitudes. Let us now use \eqref{eq:connection} in order to obtain in-out amplitudes from the all-in ones. Explicitly, we have
+\begin{equation}
+	\label{eq:explict_relations_all-in-in-out}
+	\begin{aligned}
+\mathcal{T}^{++}_{++}(p_1,p_2,p_3,p_4)=\mathcal{T}_{++--}(p_1,p_2,-p_3,-p_4),\\
+\mathcal{T}^{--}_{++}(p_1,p_2,p_3,p_4)=\mathcal{T}_{++++}(p_1,p_2,-p_3,-p_4),\\
+\mathcal{T}^{+-}_{+-}(p_1,p_2,p_3,p_4)=\mathcal{T}_{+--+}(p_1,p_2,-p_3,-p_4),\\
+\mathcal{T}^{-+}_{+-}(p_1,p_2,p_3,p_4)=\mathcal{T}_{+-+-}(p_1,p_2,-p_3,-p_4),\\
+\mathcal{T}^{+-}_{++}(p_1,p_2,p_3,p_4)=\mathcal{T}_{++-+}(p_1,p_2,-p_3,-p_4).
+	\end{aligned}
+\end{equation}
+The amplitudes in the right-hand side can still be decomposed into tensor structures \eqref{eq:decomposition_spin} with the basis given by \eqref{eq:structures_spinor}. Evaluating \eqref{eq:explict_relations_all-in-in-out} in the center of mass frame defined in \eqref{eq:COM_frame} and using \eqref{eq:helicity_amplitude_def} together with \eqref{eq:decomposition_spin}, \eqref{eq:structures_spinor} and \eqref{eq:three_functions_h} we conclude that
+\begin{equation}
+	\label{eq:relation_com_spin}
+	\begin{aligned}
+		\Phi_1(s,t,u)&= (\plub{12}\minb{34})^{2}h_1(s|t,u)\Big|_\text{COM}, \\
+		\Phi_2(s,t,u)&= \left((\plub{12}\plub{34})^2+(\plub{13}\plub{24})^2+(\plub{14}\plub{23})^2\right)  (s^2+t^2+u^2)^{-1} h_2(s,t,u)\Big|_\text{COM}, \\
+		\Phi_3(s,t,u)&= (\plub{14}\minb{23})^{2}h_1(u|t,s)\Big|_\text{COM},  \\
+		\Phi_4(s,t,u)&= (\plub{13}\minb{24})^{2}h_1(t|s,u)\Big|_\text{COM},  \\
+		\Phi_5(s,t,u)&= (\minb{31}\plub{12}\plub{14})^2 h_3(s,t,u)\Big|_\text{COM}.
+	\end{aligned}
+\end{equation}
+
+
+In order to evaluate the tensor structures in \eqref{eq:relation_com_spin} in the center of mass frame we first apply the analytic continuation \eqref{eq:pminusp} to \eqref{eq:spinHel_GeneralMomentum}. We then plug in the center of mass frame values for the 4-momenta given in \eqref{eq:COM_frame}.  This leads us to
+\begin{align}
+	\xi_1^\text{COM} &= s^{1/4} \begin{pmatrix}1\\0 \end{pmatrix},
+	\qquad\;\; 
+	\xi_2^\text{COM} = s^{1/4} \begin{pmatrix}0\\1 \end{pmatrix}, \\
+	\quad \xi_3^\text{COM} &= i s^{1/4} \begin{pmatrix}\cos\frac{\theta}{2}\\ \sin\frac{\theta}{2} \end{pmatrix},
+	\quad \xi_4^\text{COM} = i s^{1/4} \begin{pmatrix}\sin\frac{\theta}{2}\\ -\cos\frac{\theta}{2} \end{pmatrix},
+	\label{SpinHelCMin}
+\end{align}
+together with
+\begin{equation}
+	\tilde{\xi}_{1} ^\text{COM}= \xi_{1}^\text{COM},\qquad
+	\tilde{\xi}_{2}^\text{COM} = \xi_{2}^\text{COM},\qquad
+	\tilde{\xi}_{3}^\text{COM} = \xi_{3}^\text{COM},\qquad
+	\tilde{\xi}_{4}^\text{COM} = \xi_{4}^\text{COM}.
+\end{equation}
+Where the $i$ in $\sh^{\text{COM}}_{3,4}$ and $\tsh^{\text{COM}}_{3,4}$ comes from the analytic continuation from incoming to outgoing particle. 
+
+
+Plugging these into the definitions \eqref{SpinHalfPairings} we conclude
+\begin{equation}
+	\label{eq:Phi_h_relation}
+	\begin{aligned}
+			\Phi_1(s,t,u)&= s^2 h_1(s|t,u), \\
+			\Phi_2(s,t,u)&= h_2(s,t,u),\\
+			\Phi_3(s,t,u)&= u^2 h_1(u|t,s),\\
+			\Phi_4(s,t,u)&= t^2 h_1(t|s,u),\\
+			\Phi_5(s,t,u)&= stu\, h_3(s,t,u).
+	\end{aligned}
+\end{equation}
+
+The center of mass amplitudes $\Phi_I$ are related to the amplitude components $\mathcal{A}_I$ via \eqref{eq:relation_amplitudes} and \eqref{eq:matrix_M}. The amplitude components  $\mathcal{A}_I$ in turn are expressed in terms of the 3 functions $f_i$ according to \eqref{eq:solution_crossing}. Using \eqref{eq:Phi_h_relation} we can then relate $h_i$ and $f_i$ functions. We get
+\begin{equation}
+	\label{eq:f_h_relation}
+	\begin{aligned}
+		h_1(s|t,u)&= f_1(s|t,u) + \frac{1}{4}(f_2(s|t,u)+ f_2(t|s,u)+ f_2(u|s,t)),\\
+		h_2(s,t,u)&= s^2 f_1(s|t,u) + t^2 f_1(t|s,u)+ u^2f_1(u|s,t)\\
+		&- \frac{1}{2}(tuf_2(s|t,u) + su f_2(t|s,u)+ st f_2(u|s,t)) + stu f_3(s,t,u),\\

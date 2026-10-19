@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-local-degree5-v1",
+    "owner": "marici.Nima",
+    "classification": "twelve_regular_local_covariants_with_rank_six_forward_jet_and_independent_single_minus_h5",
+    "stratum": "Imported parity-even on-shell four-photon invariant-polynomial helicity jet through degree five; no off-shell operator or full loop classification",
+    "inputs": ["research/nima/contracts/photon-local-degree5-v1.json", "research/nima/photon-local-degree5-v1.md"],
+    "checks": [{"id": "photon-local-degree5-exact", "path": "research/nima/checkers/check_photon_local_degree5_v1.py", "requires": []}],
+    "depends_on": ["photon-local-ward-basis-v1"],
+    "consumes": ["explicit_eight_local_covariant_photon_contact_generators"],
+    "provides": ["independent_degree_five_local_tensor_inventory", "rank_twelve_local_jet_with_rank_six_forward_restriction"],
+    "missing_constructors": ["regular_degree_five_R_family_log_and_window_tensor", "general_dim10_Born_loop_inventory", "native_preparation_and_physical_matching"],
+    "next_falsifier": "Lift the independently checked R2/R3 degree-five cut to regular log coefficients, including odd crossing signs and the full twelve-parameter matching jet; derive the window difference rather than extrapolating the degree-four formula"
+  }
+}

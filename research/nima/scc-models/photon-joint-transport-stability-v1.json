@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-joint-transport-stability-v1",
+    "owner": "marici.Nima",
+    "classification": "unbounded_joint_image_cut_reconstruction_discontinuity_with_explicit_quartic_growth_and_conditional_bounded_boundary_continuity",
+    "stratum": "Real parity-even eight-contact imported photon Born model, complete degree4/5 cut plus degree6 transport data; fixed normalized coefficient norms, not physical priors",
+    "inputs": ["research/nima/contracts/photon-joint-transport-stability-v1.json", "research/nima/photon-joint-transport-stability-v1.md"],
+    "checks": [{"id": "photon-joint-transport-stability-exact", "path": "research/nima/checkers/check_photon_joint_transport_stability_v1.py", "requires": []}],
+    "depends_on": ["photon-joint-transport-v1"],
+    "consumes": ["exact_full_degree6_cut_reconstruction_from_joint_transport_data"],
+    "provides": ["unbounded_joint_data_cut_map_discontinuity", "conditional_quartic_bounded_zero_leading_cut_continuity_estimate"],
+    "missing_constructors": ["explicit_two_data_cut_uncertainty_modulus_on_compact_source_box", "physical_prior_licensing_and_matching_native_UV_inputs"],
+    "next_falsifier": "With an explicitly conditional finite source box, derive a two-data cut-reconstruction modulus using the full lower degree-five data, or a sharp bounded-source obstruction; the present boundary estimate is not a global noisy-data guarantee"
+  }
+}

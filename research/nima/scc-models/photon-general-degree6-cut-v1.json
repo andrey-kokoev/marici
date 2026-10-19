@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-general-degree6-cut-v1",
+    "owner": "marici.Nima",
+    "classification": "complete_degree6_quadratic_photon_cut_with_quartic_Born_interference_and_retained_h3_square",
+    "stratum": "Real parity-even on-shell photon Born jet through degree four; twelve degree-six coupling monomials; two-photon elastic cut, not full IR/UV dynamics",
+    "inputs": ["research/nima/contracts/photon-general-degree6-cut-v1.json", "research/nima/photon-general-degree6-cut-v1.md"],
+    "checks": [{"id": "photon-general-degree6-cut-exact", "path": "research/nima/checkers/check_photon_general_degree6_cut_v1.py", "requires": []}],
+    "depends_on": ["photon-general-degree5-cut-v1", "photon-joint-cut-fibres-v1"],
+    "consumes": ["general_dim10_Born_loop_inventory", "stratified_joint_degree4_degree5_cut_source_identifiability"],
+    "provides": ["complete_degree6_two_photon_cut_including_Born2_Born4_and_Born3_square", "degree6_h3_square_and_residual_sign_witness_with_quartic_nuisance"],
+    "missing_constructors": ["joint_degree4_to_degree6_source_fibres_with_unknown_quartic_Born_contacts", "regular_degree6_local_log_window_completion", "native_preparation_and_physical_matching"],
+    "next_falsifier": "On the nonzero-leading stratum, classify joint cut fibres through degree six while fitting no physical values and allowing all three quartic Born nuisance inputs; retain the double-cancellation h3 sign ambiguity rather than declaring unique recovery"
+  }
+}

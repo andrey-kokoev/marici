@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-common-ray-modulus-v1",
+    "owner": "marici.Nima",
+    "classification": "general_positive_quartic_free_cubic_radius_and_trace_separated_common_leading_ray_half_power_cut_modulus",
+    "stratum": "Imported real parity-even eight-contact photon Born domain; conditional finite box and exact common leading ray for compared pairs, positive normalized leading trace; not arbitrary cross-ray double-margin pairs",
+    "inputs": ["research/nima/contracts/photon-common-ray-modulus-v1.json", "research/nima/photon-common-ray-modulus-v1.md"],
+    "checks": [{"id": "photon-common-ray-modulus-exact", "path": "research/nima/checkers/check_photon_common_ray_modulus_v1.py", "requires": []}],
+    "depends_on": ["photon-margin-only-obstruction-v1"],
+    "consumes": ["positive_discriminant_margin_alone_retains_sharp_one_third_cut_exponent"],
+    "provides": ["universal_positive_cubic_radius_from_transport_and_leading_direction", "single_source_cut_zero_transport_coercivity", "trace_separated_common_ray_half_power_cut_modulus"],
+    "missing_constructors": ["arbitrary_cross_ray_double_margin_cut_modulus", "physical_ray_margin_box_noise_licensing_matching_native_UV_inputs"],
+    "next_falsifier": "Remove the exact common-leading-ray condition while retaining both normalized margins; the new positive radius is available, but its weights vary with the source direction and must not be held fixed across different rays"
+  }
+}

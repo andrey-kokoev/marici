@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-zero-leading-fibres-v1",
+    "owner": "marici.Nima",
+    "classification": "zero_leading_real_joint_cut_fibres_with_cubic_sign_strata_and_three_wholly_unseen_quartic_contacts",
+    "stratum": "Imported parity-even real photon Born jet through degree four with g2=f2=0; full coherent quadratic cut data through degree six, not physical matching",
+    "inputs": ["research/nima/contracts/photon-zero-leading-fibres-v1.json", "research/nima/photon-zero-leading-fibres-v1.md"],
+    "checks": [{"id": "photon-zero-leading-fibres-exact", "path": "research/nima/checkers/check_photon_zero_leading_fibres_v1.py", "requires": []}],
+    "depends_on": ["photon-general-degree6-cut-v1"],
+    "consumes": ["complete_degree6_two_photon_cut_including_Born2_Born4_and_Born3_square"],
+    "provides": ["zero_leading_joint_cut_fibres_through_degree6", "zero_leading_cubic_square_image_and_unseen_quartic_source_witness"],
+    "missing_constructors": ["regular_degree6_local_log_window_completion", "source_selected_physical_preparation_and_matching", "same_scope_UV_dispersive_assumptions"],
+    "next_falsifier": "Before lifting the complete degree-six cut, construct the regular local degree-six tensor inventory, retaining independent single-minus and invisible terms; the source-fibre theorem does not select their finite matching"
+  }
+}

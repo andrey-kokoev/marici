@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-axis-cut-modulus-v1",
+    "owner": "marici.Nima",
+    "classification": "sharp_uniform_half_power_cut_modulus_on_exact_f2_zero_face_with_all_other_contacts_and_zero_strata_retained",
+    "stratum": "Imported real parity-even eight-contact Born model restricted to exact f2=0, conditional source box M>=1, same normalized joint13/cut13 max norms",
+    "inputs": ["research/nima/contracts/photon-axis-cut-modulus-v1.json", "research/nima/photon-axis-cut-modulus-v1.md"],
+    "checks": [{"id": "photon-axis-cut-modulus-exact", "path": "research/nima/checkers/check_photon_axis_cut_modulus_v1.py", "requires": []}],
+    "depends_on": ["photon-box-cut-sharpness-v1", "photon-box-cut-modulus-v1"],
+    "consumes": ["optimal_conditional_joint_data_cut_modulus_exponent", "bounded_source_obstruction_to_cut_modulus_exponents_above_half"],
+    "provides": ["sharp_half_power_cut_modulus_on_exact_leading_axis_face", "positive_discriminant_margin_bounded_half_power_obstruction"],
+    "missing_constructors": ["uniform_cut_modulus_from_normalized_discriminant_margin_without_axis_prior", "physical_axis_box_noise_licensing_matching_native_UV_inputs"],
+    "next_falsifier": "Remove the exact f2=0 assumption: establish a rate from a stated normalized discriminant margin alone or give an actual bounded separated counterexample, including zero-stratum conventions"
+  }
+}

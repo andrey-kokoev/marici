@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-joint-transport-v1",
+    "owner": "marici.Nima",
+    "classification": "joint_degree45_cuts_and_degree6_transport_exact_full_cut_reconstruction_with_real_image_and_source_fibres",
+    "stratum": "Imported real parity-even eight-contact Born domain; exact complete degree-four/five cut coordinates plus six degree-six common-log coefficients, including zero leading pair",
+    "inputs": ["research/nima/contracts/photon-joint-transport-v1.json", "research/nima/photon-joint-transport-v1.md"],
+    "checks": [{"id": "photon-joint-transport-exact", "path": "research/nima/checkers/check_photon_joint_transport_v1.py", "requires": []}],
+    "depends_on": ["photon-equal-transport-v1", "photon-joint-degree6-fibres-v1", "photon-zero-leading-fibres-v1"],
+    "consumes": ["actual_equal_nonzero_degree6_transport_different_cut_witness", "nonzero_leading_quartic_inverse_and_remaining_relative_h3_sign", "zero_leading_joint_cut_fibres_through_degree6"],
+    "provides": ["joint_degree45_cut_degree6_transport_image_and_fibres", "exact_full_degree6_cut_reconstruction_from_joint_transport_data"],
+    "missing_constructors": ["cut_reconstruction_conditioning_with_explicit_source_or_nuisance_bounds", "physical_preparation_matching_and_native_UV_inputs"],
+    "next_falsifier": "Test stability near zero leading pair while tracking quartic nuisance growth; exact image/fibre equivalence alone is not a continuous or uniformly stable inverse"
+  }
+}

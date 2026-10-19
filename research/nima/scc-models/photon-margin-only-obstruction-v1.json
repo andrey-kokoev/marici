@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-margin-only-obstruction-v1",
+    "owner": "marici.Nima",
+    "classification": "positive_discriminant_margin_same_branch_unit_box_obstruction_above_one_third_from_leading_single_minus_cancellation",
+    "stratum": "Imported real parity-even eight-contact photon Born unit box, normalized discriminant margin at least two, nonzero h3 and leading single-minus cancellation; retained degree-six quadratic two-photon cut",
+    "inputs": ["research/nima/contracts/photon-margin-only-obstruction-v1.json", "research/nima/photon-margin-only-obstruction-v1.md"],
+    "checks": [{"id": "photon-margin-only-obstruction-exact", "path": "research/nima/checkers/check_photon_margin_only_obstruction_v1.py", "requires": []}],
+    "depends_on": ["photon-axis-cut-modulus-v1"],
+    "consumes": ["sharp_half_power_cut_modulus_on_exact_leading_axis_face"],
+    "provides": ["positive_discriminant_margin_alone_retains_sharp_one_third_cut_exponent", "bounded_same_branch_h3_cancellation_cut_obstruction"],
+    "missing_constructors": ["uniform_cut_modulus_with_discriminant_and_leading_single_minus_margins", "physical_margin_box_noise_licensing_matching_native_UV_inputs"],
+    "next_falsifier": "Test simultaneous positive normalized discriminant and leading single-minus trace margins; neither counterexample justifies discarding h3 or inferring physical admissibility of a margin"
+  }
+}

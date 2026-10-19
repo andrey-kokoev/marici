@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-general-degree5-cut-v1",
+    "owner": "marici.Nima",
+    "classification": "general_degree2_by_degree3_photon_Born_cut_with_single_minus_response_and_rank_four_readout",
+    "stratum": "Real parity-even imported on-shell photon contact EFT; quadratic degree-five two-photon elastic interference only; independent leading g2,f2,g3,f3,h3",
+    "inputs": ["research/nima/contracts/photon-general-degree5-cut-v1.json", "research/nima/photon-general-degree5-cut-v1.md"],
+    "checks": [{"id": "photon-general-degree5-cut-exact", "path": "research/nima/checkers/check_photon_general_degree5_cut_v1.py", "requires": []}],
+    "depends_on": ["photon-degree5-cut-v1"],
+    "consumes": ["higher_Born_degree_independent_cut_compatibility_audit"],
+    "provides": ["general_dim10_Born_loop_inventory", "general_degree_five_single_minus_cut_and_nonfaithful_source_readout"],
+    "missing_constructors": ["general_degree_five_regular_log_window_tensor_and_h5_scale_transport", "source_selected_finite_matching_and_preparation", "same_scope_UV_dispersive_assumptions"],
+    "next_falsifier": "Lift all six coupling-coordinate cuts, including the induced single-minus response, into the twelve-generator regular log/window tensor; verify exact R-family restriction without discarding the two-dimensional cut-readout kernel"
+  }
+}

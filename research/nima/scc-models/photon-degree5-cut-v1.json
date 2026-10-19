@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "photon-degree5-cut-v1",
+    "owner": "marici.Nima",
+    "classification": "independent_degree_five_R2_R3_Bose_cut_compatibility_with_forward_invisible_Born_counterexample",
+    "stratum": "Imported parity-even photon Born family R=r0*s^2+r1*s^3; coefficient lambda_gamma^2*r0*r1*s^5; physical normalized Bose partial waves",
+    "inputs": ["research/nima/contracts/photon-degree5-cut-v1.json", "research/nima/photon-degree5-cut-v1.md"],
+    "checks": [{"id": "photon-degree5-cut-exact", "path": "research/nima/checkers/check_photon_degree5_cut_v1.py", "requires": []}],
+    "depends_on": ["photon-local-ward-basis-v1"],
+    "consumes": ["explicit_eight_local_covariant_photon_contact_generators"],
+    "provides": ["higher_Born_degree_independent_cut_compatibility_audit", "forward_invisible_Born_contact_affects_forward_loop_cut"],
+    "missing_constructors": ["independent_degree_five_local_tensor_inventory_and_regular_log_window_completion", "general_dim10_Born_coupling_cut_inventory", "native_source_and_physical_matching"],
+    "next_falsifier": "Extend the local inventory through degree five retaining independent single-minus and forward-invisible terms, then lift the independently checked degree-five R-family log cut without kinematic poles; do not equate this family with general EFT"
+  }
+}

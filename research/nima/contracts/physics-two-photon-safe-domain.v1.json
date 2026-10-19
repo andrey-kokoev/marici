@@ -1,0 +1,19 @@
+{
+  "schema":"marici.physics-two-photon-safe-domain.v1",
+  "decision":"constructed_conditional_maximal_horizon_domain",
+  "source_witness_id":"passive-port-fock-memory.v1",
+  "horizon":3,
+  "initial_sector":"Total photon number exactly two in ten modes, classical initial R/D memory; separately labelled source Kraus instrument and nominal ordered passive maps",
+  "routed_ports":[2,5,8],
+  "constraint":"At each bin k, the coefficient of |2_p_k> after W_k must vanish on the surviving two-photon branch. Previous two-photon branches have vacuum at each consumed detector port. Any absorption reduces total number to <=1 and is automatically locally safe thereafter.",
+  "rows":"c0=<2_p0|Gamma(W0); c1=<2_p1|Gamma(W1)P_vac(p0)Gamma(W0); c2=<2_p2|Gamma(W2)P_vac(p1)Gamma(W1)P_vac(p0)Gamma(W0), restricted to initial N=2",
+  "safe_space":"Intersection ker(c0) intersect ker(c1) intersect ker(c2), with the factorial occupation metric retained",
+  "maximality":"The zero-absorption no-click branch has nonzero amplitude for either classical initial memory. Violation of any earliest row produces positive forbidden two-photon support at that detector. Conversely vanishing rows makes every prefix safe; absorbed branches have N<=1.",
+  "scope":"Initial-state subspace for this fixed ordered three-round schedule, not an invariant subspace under arbitrary passive operations or a new physical preparation authority",
+  "density_extension":"Positive density operators supported on the safe subspace obey the same criterion by spectral decomposition; mixtures cannot cancel positive forbidden probability mass.",
+  "old_overlap_status":"The accepted total-N<=1 overlap catalog is unchanged; this is an additional conditional mathematical domain candidate, not admitted physical sector transport",
+  "physical_transport_admitted":false,
+  "source_evidence":["research/nima/contracts/physics-overlap-catalog.v1.json","research/nima/contracts/physics-instrument-history-binding.v1.json","research/nima/checkers/check_physics_geometric_candidate.py","research/nima/contracts/physics-geometric-candidate.v1.json"],
+  "source_pins":"research/nima/contracts/physics-two-photon-safe-domain-pins.v1.json",
+  "result":"research/nima/results/physics-two-photon-safe-domain-v1.json"
+}
