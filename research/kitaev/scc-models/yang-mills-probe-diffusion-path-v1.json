@@ -1,0 +1,37 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-probe-diffusion-path-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Stationary continuous-path realization of the actual regular strongly local tilted gradient form; uniform radius-two coordinate fourth moments, countable-product path tightness, and joint source path/drift/martingale/bracket comparison using stationary based L2 recovery. No all-start-point weak drift, strong SDE uniqueness, original-to-tilted path density or physical-clock identification is inferred.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-probe-diffusion-path.v1.json",
+      "research/kitaev/yang-mills-probe-diffusion-path-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_diffusion_path.py",
+      "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+      "research/kitaev/contracts/yang-mills-probe-gradient-transport.v1.json",
+      "research/kitaev/yang-mills-probe-gradient-transport-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_gradient_transport.py",
+      "research/kitaev/results/yang-mills-probe-gradient-transport-v1.json",
+      "research/kitaev/contracts/yang-mills-probe-gradient-core.v1.json",
+      "research/kitaev/yang-mills-probe-gradient-core-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_gradient_core.py",
+      "research/kitaev/results/yang-mills-probe-gradient-core-v1.json",
+      "research/kitaev/contracts/yang-mills-probe-quasilocal.v1.json",
+      "research/kitaev/yang-mills-probe-quasilocal-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_quasilocal.py",
+      "research/kitaev/results/yang-mills-probe-quasilocal-v1.json",
+      "research/kitaev/contracts/yang-mills-thermodynamic-form.v1.json",
+      "research/kitaev/yang-mills-thermodynamic-form-v1.md",
+      "research/kitaev/checkers/check_yang_mills_thermodynamic_form.py",
+      "research/kitaev/results/yang-mills-thermodynamic-form-v1.json"
+    ],
+    "checks": [{"id": "kitaev-yang-mills-probe-diffusion-path-v1", "path": "research/kitaev/checkers/check_yang_mills_probe_diffusion_path.py", "requires": []}],
+    "depends_on": ["yang-mills-probe-gradient-transport-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["independent analytic review", "actual finite-horizon original-to-tilted path density and source entropy interpretation", "all-start-point weak-drift and strong SDE claims if sought", "physical calibration and continuum bridges"],
+    "next_falsifier": "The actual form is not regular/strongly local, coordinate moment constants lose source-volume uniformity, finite-time words are promoted without tightness, or weak drift time integrals cannot be controlled by common-field stationary L2 recovery."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-box-boundary-leakage-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Actual thermodynamic source boundary leakage>kappa*r/4 for all translated induced cubic-box readers of side L>=2 at common0<r<=1/1000000000; bounded-neighborhood conditional comparison retaining all box advice. L1 constant reader explicitly excepted; not a continuum or finite-volume-existence obstruction.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-box-boundary-leakage.v1.json",
+      "research/kitaev/yang-mills-box-boundary-leakage-v1.md",
+      "research/kitaev/checkers/check_yang_mills_box_boundary_leakage.py",
+      "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+      "research/kitaev/contracts/yang-mills-patch-leakage.v1.json",
+      "research/kitaev/yang-mills-patch-leakage-v1.md",
+      "research/kitaev/checkers/check_yang_mills_patch_leakage.py",
+      "research/kitaev/results/yang-mills-patch-leakage-v1.json",
+      "research/kitaev/contracts/yang-mills-weighted-orientation.v1.json",
+      "research/kitaev/yang-mills-weighted-orientation-v1.md",
+      "research/kitaev/checkers/check_yang_mills_weighted_orientation.py",
+      "research/kitaev/results/yang-mills-weighted-orientation-v1.json",
+      "research/kitaev/contracts/yang-mills-propagator-comparison.v1.json",
+      "research/kitaev/yang-mills-propagator-comparison-v1.md",
+      "research/kitaev/checkers/check_yang_mills_propagator_comparison.py",
+      "research/kitaev/results/yang-mills-propagator-comparison-v1.json"
+    ],
+    "checks": [{"id": "kitaev-yang-mills-box-boundary-leakage-v1", "path": "research/kitaev/checkers/check_yang_mills_box_boundary_leakage.py", "requires": []}],
+    "depends_on": ["yang-mills-patch-leakage-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["independent analytic review", "explicit finite-horizon interior compressed-memory control versus spatial buffer", "physical continuum and clock bridges"],
+    "next_falsifier": "A large-box predictor gains exterior advice omitted by the local variational proof, a nontrivial cubic box has fewer than six outside corner channels, or the common actual tail consumes the positive residual."
+  }
+}

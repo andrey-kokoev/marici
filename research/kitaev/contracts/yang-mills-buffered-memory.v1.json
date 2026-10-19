@@ -1,0 +1,15 @@
+{
+  "schema": "marici.yang-mills-buffered-memory.v1",
+  "owner": "marici.Kitaev",
+  "batch_iteration": 10,
+  "predecessor": "research/kitaev/contracts/yang-mills-box-boundary-leakage.v1.json",
+  "tree_id": "issue-tree:5bf804848e02bbb43cb85cd8",
+  "parent_net": {"path": "research/kitaev/contracts/yang-mills-gap-net.v1.json", "node": "continuum-correlation-construction", "discharges_parent": false},
+  "source": "Actual thermodynamic SU2 vacuum semigroup and actual free-boundary source propagators;0<=r<27/262144,R=4096*r/3,c=1/2-3R>5/64,kappa>0",
+  "reader": "FULL spatial box link algebra; Pi=E_nu[.|U_Lambda], not a smaller trace-only reader",
+  "certificate": {"saturating_error": "E_f(t,b)=2R*(1-exp(-kappa*c*t))*M(f)*(3/4)^b/c", "actual_norm": "Both full-reader approximation error and leakage L2(nu) norm <=E_f", "equal_step_memory": "0<=<f,(K_(2t)-K_t^2)f><=E_f^2", "mixed_memory": "|<g,(K_(s+t)-K_s*K_t)f>|<=E_g(s,b_g)*E_f(t,b_f)", "finite_step_horizon_budget": "A_T=2R*M(f)*min(kappa*c*T,1)/c; equal-step comparison reaches2T", "all_parameter_budget": "A_infinity=2R*M(f)/c;2R/c<18/5", "planner": "Smallest integer b>=0 satisfying A*(3/4)^b<=epsilon and A^2*(9/16)^b<=delta, using fractions", "fixtures": {"R_9_128_kappa1_M4_stepT1_eps_1_100_delta_1_10000": 15, "same_all_parameters": 19, "M4_whole_coupling_window_all_parameters": 26}},
+  "subnet": {"resolved": ["buffered-reader-memory-control"], "parent_outcome": null, "ready_frontier": ["mesh-uniform-insertion-error"], "next_acceptance": "Quantitative actual multi-insertion approximation/memory error under fine source-time partitions with explicit insertion/gradient budget; no varying-input or changing-measure shortcut."},
+  "frozen_tests": ["Fresh box-boundary-leakage replay", "768 exact buffer plans including zero/near-cutoff and finite/all-parameter horizons", "Declared minimal buffer fixtures15,19,26", "Discrete cross-time compression identities and Cauchy-Schwarz", "One observable with zero defect does not bound the whole reader operator", "Incomplete-reader port fails while full-reader toy has no leakage", "Orthogonal complement is not L-infinity contractive", "Own-measure finite propagator need not contract the actual marginal norm"],
+  "imported_analysis": ["actual finite-box Duhamel comparison", "Ricci-damped weighted gradient transport", "actual source propagator limit", "actual-state orthogonal conditional projection", "self-adjoint compression identity", "1-exp(-x)<=min(x,1)"],
+  "boundary": {"incomplete_readers_covered": false, "uniform_all_reader_unit_ball_bound": false, "Q_Linfinity_contraction_assumed": false, "free_propagator_actual_L2_contraction_assumed": false, "changing_vacuum_measures_identified": false, "arbitrary_insertion_word_control": false, "physical_clock_or_continuum_Yang_Mills": false, "independent_analytic_review": false}
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-probe-path-density-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Actual finite-horizon original-to-tilted stationary path density with separate initial-state and conditional densities; closed weak logarithmic chain rule, scalar Girsanov martingale/bracket arrow, two exact source relative-entropy rates and thermodynamic density/entropy transport. Includes an actual R=0 gauge-invariant SU2 plaquette family. No infinite-horizon equivalence, general interacting-source mechanical certification or physical-clock inference.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-probe-path-density.v1.json",
+      "research/kitaev/yang-mills-probe-path-density-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_path_density.py",
+      "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+      "research/kitaev/contracts/yang-mills-probe-diffusion-path.v1.json",
+      "research/kitaev/yang-mills-probe-diffusion-path-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_diffusion_path.py",
+      "research/kitaev/results/yang-mills-probe-diffusion-path-v1.json",
+      "research/kitaev/contracts/yang-mills-probe-gradient-transport.v1.json",
+      "research/kitaev/yang-mills-probe-gradient-transport-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_gradient_transport.py",
+      "research/kitaev/results/yang-mills-probe-gradient-transport-v1.json",
+      "research/kitaev/contracts/yang-mills-probe-gradient-core.v1.json",
+      "research/kitaev/yang-mills-probe-gradient-core-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_gradient_core.py",
+      "research/kitaev/results/yang-mills-probe-gradient-core-v1.json",
+      "research/kitaev/contracts/yang-mills-probe-pressure.v1.json",
+      "research/kitaev/yang-mills-probe-pressure-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_pressure.py",
+      "research/kitaev/results/yang-mills-probe-pressure-v1.json"
+    ],
+    "checks": [{"id": "kitaev-yang-mills-probe-path-density-v1", "path": "research/kitaev/checkers/check_yang_mills_probe_path_density.py", "requires": []}],
+    "depends_on": ["yang-mills-probe-diffusion-path-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["independent analytic review", "classification of the infinite-observation-horizon domain and density uniform integrability", "all-start-point weak drift and strong SDE claims if sought", "physical calibration and continuum bridges"],
+    "next_falsifier": "The endpoint/action density lacks normalization or its changed initial state, the weak logarithmic chain rule fails on the actual operator domain, the stochastic compensation/drift coefficient is wrong, or entropy/readout transport silently treats distinct original path measures as identical."
+  }
+}

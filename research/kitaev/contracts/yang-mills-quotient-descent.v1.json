@@ -1,0 +1,32 @@
+{
+  "schema":"marici.yang-mills-quotient-descent.v1",
+  "id":"su2-physical-quotient-and-covariant-detector-v1",
+  "source":"The finite Hamiltonian/temporal heat-kernel family of yang-mills-ground-state-transfer.v1.json; no source or vacuum replacement.",
+  "quotient":{
+    "space":"X=SU(2)^E / SU(2)^vertices, compact orbit space, including nonfree-action strata.",
+    "measure":"mu_X=pi_*mu, not a flat measure on selected loop angles; nu_X=pi_*(Omega^2 mu).",
+    "unitary":"pi^*:L2(X,mu_X)->L2(SU(2)^E,mu)^gauge; multiplication by descended Omega gives the weighted-ground-state unitary.",
+    "packet_null":"Exact zero evaluation in Haar L2; for smooth packets this is an identically zero function. Form completion requires form-Cauchy representatives, not just L2 convergence.",
+    "nonfree_action":"Use measurable equivariant horizontal fields with invariant norm, not an unjustified globally free principal bundle or constant-rank quotient vector bundle."
+  },
+  "detector":{
+    "definition":"z_ea=Omega X_ea(psi/Omega), left generators exp(t e_a/2).",
+    "equivariance":"z_e(g.U)=Ad(g_source(e)) z_e(U).",
+    "vertical_constraint":"At vertex v: sum_(source(e)=v) z_e - sum_(target(e)=v) Ad(U_e^-1) z_e = 0.",
+    "closed_target":"Closed L2 subspace of fields satisfying equivariance and the vertical constraints, with Haar-integrated norm.",
+    "domain":"Physical H1 form domain; Omega positive smooth with positive minimum at each fixed graph. Closedness follows from the ground-transform form identity.",
+    "kernel":"Exactly span(Omega); no gauge-orbit or packet-null direction is an additional physical excitation.",
+    "energy":"q_(H-E0)=kappa*||z||^2 on the full descended form domain.",
+    "continuation":"Physical semigroup and symmetric transfer steps intertwine pi^* by their gauge symmetry; no form/L2 interchange or volume-uniform comparison is inferred."
+  },
+  "strong_hostiles":{
+    "individual_loop_reader":"On the two-loop quotient, (Tr x,Tr y) is not complete: x=i,y=i and x=i,y=j have the same two zero traces but mixed traces -2 and 0.",
+    "hidden_state":"h=Tr(xy)-(Tr x Tr y)/2; conditional expectation given the individual loop traces is zero, but ||h||^2=3/4.",
+    "electric_energy":"On the seven-link source h=F1/2-3F0/2, q0(h)/kappa=15/4, normalized Rayleigh quotient=5*kappa. This is an actual finite-source blind sector, not a low-energy continuum family.",
+    "flat_measure":"For a single SU2 conjugacy angle theta, Haar quotient density is (2/pi)sin(theta)^2, not 1/pi. chi2=4cos(theta)^2-1 has Haar mean0 but flat-angle mean1.",
+    "scalar_target":"Nontrivial adjoint transport changes detector components under gauge transformations even when their norm and physical state are unchanged."
+  },
+  "exact_fixture":{"positive_function":"Omega_test=2+(Tr Wp+Tr Wq)/4, lying in [1,3].","warning":"Omega_test is used only for exact covariance/vertical-constraint controls. It is NOT claimed to be the magnetic ground state."},
+  "gate_scope":"quotient-descent constructed for the finite source family. Faithful detection with one volume-compatible constant, continuum reconstruction and completion transfer remain open.",
+  "boundary":{"Yang_Mills_proved":false,"volume_uniform_detection_proved":false,"continuum_gap_proved":false,"flat_quotient_measure_admitted":false,"atomic_source_selected":false}
+}

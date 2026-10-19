@@ -1,0 +1,37 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-probe-strong-noise-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Written dimension-uniform vector-valued reverse Poincare and flat-frame Banach range constructor. The geometric first-order connection is retained; the bounded C2 Hessian multiplier is not differentiated. Continuous HS force derivatives give same-leaf Lipschitz estimates, a factorial entrance-from-infinity bound, pathwise uniqueness and an adapted marked-noise strong solution map. Independent analytic review and actual finite-box coupled-map transport remain open.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-probe-strong-noise.v1.json",
+      "research/kitaev/yang-mills-probe-strong-noise-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_strong_noise.py",
+      "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+      "research/kitaev/contracts/yang-mills-probe-pointwise-core.v1.json",
+      "research/kitaev/yang-mills-probe-pointwise-core-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_pointwise_core.py",
+      "research/kitaev/results/yang-mills-probe-pointwise-core-v1.json",
+      "research/kitaev/contracts/yang-mills-probe-long-window.v1.json",
+      "research/kitaev/yang-mills-probe-long-window-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_long_window.py",
+      "research/kitaev/results/yang-mills-probe-long-window-v1.json",
+      "research/kitaev/contracts/yang-mills-propagator-comparison.v1.json",
+      "research/kitaev/yang-mills-propagator-comparison-v1.md",
+      "research/kitaev/checkers/check_yang_mills_propagator_comparison.py",
+      "research/kitaev/results/yang-mills-propagator-comparison-v1.json",
+      "research/kitaev/contracts/yang-mills-probe-gradient-core.v1.json",
+      "research/kitaev/yang-mills-probe-gradient-core-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_gradient_core.py",
+      "research/kitaev/results/yang-mills-probe-gradient-core-v1.json"
+    ],
+    "checks": [{"id": "kitaev-yang-mills-probe-strong-noise-v1", "path": "research/kitaev/checkers/check_yang_mills_probe_strong_noise.py", "requires": []}],
+    "depends_on": ["yang-mills-probe-pointwise-core-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["independent analytic review", "actual finite-source strong maps transported on the same marked Wiener input", "physical calibration and continuum bridges"],
+    "next_falsifier": "The traced gradient estimate gains a volume factor, the invariant-frame first-order connection is dropped, an unproved D3 multiplier estimate is used, an ell2 Gronwall step precedes same-leaf membership, or marginal path laws are substituted for the marked-noise joint arrow."
+  }
+}

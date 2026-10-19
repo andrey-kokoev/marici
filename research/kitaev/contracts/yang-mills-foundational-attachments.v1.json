@@ -1,0 +1,28 @@
+{
+  "schema": "marici.yang-mills-foundational-attachments.v1",
+  "work_net": "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+  "guide": "research/kitaev/yang-mills-witnessed-gap-net-v1.md",
+  "pattern_reference": "research/conjecture_net/contracts/hodge-foundational-attachments.v1.json",
+  "contracts": {
+    "gap": "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+    "parent": "research/conjecture_net/contracts/common-foundations-conjecture-net.v1.json",
+    "math": "research/conjecture_net/contracts/mathematical-realization-conjecture-net.v1.json",
+    "identity": "research/conjecture_net/contracts/witnessed-constructive-identity.proposed.v1.json"
+  },
+  "reciprocal_index": {"contract":"research/conjecture_net/contracts/witnessed-constructive-identity.proposed.v1.json","field":"research_branches","id":"yang-mills-witnessed-positive-gap"},
+  "port_semantics": "Supplemental reference/review ports only; no frozen parent DAG mutation, proof import, source identification, or outcome propagation. Research reference requires a resolvable node. Candidate review additionally requires a constructed source witness and target-scope review; availability does not discharge the target.",
+  "connections": [
+    {"id":"parent-to-gap-scope","source_net":"parent","source_node":"mathematical-realization","source_port":"research-context","target_net":"gap","target_node":"spectral-scope","target_port":"common-foundations-context","type":"research_reference","proof_bearing":false,"discharges_target":false,"blocks_local_research":false},
+    {"id":"identity-to-gap-scope","source_net":"identity","source_node":"scope","source_port":"research-context","target_net":"gap","target_node":"spectral-scope","target_port":"identity-scope-context","type":"research_reference","proof_bearing":false,"discharges_target":false,"blocks_local_research":false},
+    {"id":"math-to-gap-dictionary","source_net":"math","source_node":"stagewise-mathematical-interface","source_port":"research-context","target_net":"gap","target_node":"spectral-packet-dictionary","target_port":"stagewise-interface-context","type":"research_reference","proof_bearing":false,"discharges_target":false,"blocks_local_research":false},
+    {"id":"identity-to-gap-coherence","source_net":"identity","source_node":"higher-coherence","source_port":"research-context","target_net":"gap","target_node":"spectral-packet-dictionary","target_port":"higher-coherence-context","type":"research_reference","proof_bearing":false,"discharges_target":false,"blocks_local_research":false},
+    {"id":"gap-dictionary-to-identity-review","source_net":"gap","source_node":"spectral-packet-dictionary","source_port":"candidate-contribution","target_net":"identity","target_node":"continuation-and-composition","target_port":"gap-dictionary-review","type":"candidate_review","proof_bearing":false,"discharges_target":false,"blocks_local_research":false},
+    {"id":"gap-completion-to-identity-review","source_net":"gap","source_node":"completion-stable-separation","source_port":"candidate-contribution","target_net":"identity","target_node":"higher-coherence","target_port":"separation-completion-review","type":"candidate_review","proof_bearing":false,"discharges_target":false,"blocks_local_research":false},
+    {"id":"gap-to-mathematical-parent-review","source_net":"gap","source_node":"reviewed-gap-assembly","source_port":"candidate-contribution","target_net":"parent","target_node":"mathematical-realization","target_port":"yang-mills-example-review","type":"candidate_review","proof_bearing":false,"discharges_target":false,"blocks_local_research":false},
+    {"id":"physical-parent-to-gap-scope","source_net":"parent","source_node":"physical-realization","source_port":"research-context","target_net":"gap","target_node":"spectral-scope","target_port":"physical-target-context","type":"research_reference","proof_bearing":false,"discharges_target":false,"blocks_local_research":false},
+    {"id":"gap-to-physical-parent-review","source_net":"gap","source_node":"reviewed-gap-assembly","source_port":"candidate-contribution","target_net":"parent","target_node":"physical-realization","target_port":"yang-mills-existence-gap-review","type":"candidate_review","proof_bearing":false,"discharges_target":false,"blocks_local_research":false}
+  ],
+  "external_obligations": [{"target_net":"gap","target_node":"reviewed-gap-assembly","target_port":"requires:independent-existence-and-gap-review","type":"reviewed_external_witness","status":"open","available":false}],
+  "boundary": {"logical_implications_asserted":false,"gap_implies_main_net":false,"main_net_implies_gap":false,"atomic_gap_implies_Yang_Mills":false,"Hodge_or_RH_outcomes_imported":false},
+  "revision_policy": "Advance this overlay and source snapshot explicitly. Preserve Hodge attachments, historical parent/RH/physics contracts and all unresolved witness requirements."
+}

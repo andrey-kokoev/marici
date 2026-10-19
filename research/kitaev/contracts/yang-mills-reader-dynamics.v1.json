@@ -1,0 +1,15 @@
+{
+  "schema": "marici.yang-mills-reader-dynamics.v1",
+  "owner": "marici.Kitaev",
+  "batch_iteration": 7,
+  "predecessor": "research/kitaev/contracts/yang-mills-weighted-orientation.v1.json",
+  "tree_id": "issue-tree:5bf804848e02bbb43cb85cd8",
+  "parent_net": {"path": "research/kitaev/contracts/yang-mills-gap-net.v1.json", "node": "continuum-correlation-construction", "discharges_parent": false},
+  "source": "Actual thermodynamic SU2 spatial vacuum semigroup P_t=exp(-t*A), kappa>0,0<=r<27/262144,R=4096*r/3<9/64",
+  "reader": "Pi=E_nu[.|Tr(x),Tr(y)],Q=I-Pi,F=Tr(x)*Tr(y)",
+  "certificate": {"electric_identity": "L*F=6*F+h", "actual_generator": "A*F=kappa*(6*F+h-d)", "full_drift_bound": "||beta_e||<=R/4;M(F)<=16;||d||<=4R", "weighted_hidden_norm": "||Q*h||^2>579/1024>9/16", "residual": "||Q*A*F||>3*kappa/16", "leakage": "lim_(t->0+)||Q*P_t*F||/t=||Q*A*F||", "compressed_defect": "K_(2t)-K_t^2=(Q*P_t*Pi)^*(Q*P_t*Pi)", "defect_coefficient": "lim_(t->0+) <F,(K_(2t)-K_t^2)F>/t^2>9*kappa^2/256"},
+  "subnet": {"resolved": ["actual-trace-reader-dynamical-closure"], "parent_outcome": null, "ready_frontier": ["full-local-reader-magnetic-closure"], "next_acceptance": "Test the full seven-link reader, including relative orientation, under actual positive-coupling source dynamics. Any exterior-coupling witness must control the actual remainder and cannot repeat the two-trace/electric blindness result."},
+  "frozen_tests": ["Fresh weighted-orientation predecessor replay", "12 direct seven-link electric/gradient fixtures", "Exact full-source drift and full-window noncancellation budgets", "Positive reversible rational kernel with nonzero compressed semigroup defect", "Exact PSD defect factorization", "Nonfaithful but dynamically closed contrasting reader"],
+  "imported_analysis": ["actual thermodynamic cylinder operator core and generator", "anchored Fourier derivative bound and minimum label size4", "actual weighted-orientation norm bound", "strong semigroup derivative on Dom(A)", "self-adjoint compressed-semigroup identity"],
+  "boundary": {"generator_applied_to_unproved_projected_domain": false, "explicit_uniform_finite_time_radius": false, "full_seven_link_reader_nonclosure_proved": false, "all_Wilson_loop_readers_excluded": false, "low_energy_or_gap_obstruction": false, "continuum_Yang_Mills_or_physical_clock": false, "independent_analytic_review": false}
+}

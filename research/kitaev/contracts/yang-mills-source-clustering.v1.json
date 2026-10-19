@@ -1,0 +1,16 @@
+{
+  "schema": "marici.yang-mills-source-clustering.v1",
+  "owner": "marici.Kitaev",
+  "batch_iteration": 4,
+  "predecessor": "research/kitaev/contracts/yang-mills-multi-time-state.v1.json",
+  "parent_net": {"path": "research/kitaev/contracts/yang-mills-gap-net.v1.json", "node": "continuum-correlation-construction", "discharges_parent": false},
+  "tree_id": "issue-tree:5bf804848e02bbb43cb85cd8",
+  "obligation": "source-derived connected-correlation readout bounds retaining geometric locality and the full source generator",
+  "source": "Unchanged actual spatial SU2 thermodynamic vacuum and semigroup, fixed kappa>0, 0<=lambda/kappa<27/262144.",
+  "constants": {"R": "4096*r/3<9/64", "a": "4/3", "alpha": "8R/9<1/8", "c": "1/2-3R>5/64", "m": "kappa*c"},
+  "bounds": {"continuous_real_spatial": "abs(Cov(f,g)) <= L(f)*L(g)*a^(-distance)/(4*(1-alpha)); disjoint supports improve numerator factor to alpha", "smooth_real_mixed": "abs(Cov(f,P_t g)) <= M(f)*M(g)/c*a^(-distance)*exp(-m*t)", "full_L2_temporal": "abs(Cov(f,P_t g)) <= exp(-m*t)*sqrt(Var(f)*Var(g))", "separated_insertion_blocks": "abs(E[conjugate(F)*G]-conjugate(EF)*EG) <= exp(-m*t)*sqrt(Var_path(F)*Var_path(G))", "L": "sum of single-link oscillations", "M": "sum of sup norms of link gradients"},
+  "subnet": {"resolved": ["equal-time-vacuum", "closed-gradient-form", "finite-propagator-comparison", "source-compatible-multi-time-correlations", "spatial-and-semigroup-clustering"], "parent_outcome": null, "ready_frontier": ["nonzero-gauge-connected-correlator"], "next_acceptance": "Construct an actual nonzero gauge-invariant connected source correlator with a controlled remainder, or expose a blind candidate. Upper bounds alone cannot establish interaction or continuum nontriviality."},
+  "frozen_tests": ["Fresh joint-state receipt replay", "Exact weak binary Gibbs covariance and conditional response", "Damped gradient weighted-resolvent majorants", "Whole weighted chain contraction PSD and separated nonlinear block bounds", "Nonlocal fixed-gap reset law retains covariance4/5 at arbitrary assigned distance", "Fast coordinate misses a slow product-chain sector"],
+  "imported_analysis": ["actual source state/semigroup comparison", "Dobrushin comparison under a bounded local tilt", "finite-product gradient domination retaining exact Ricci1/2", "closed-form spectral theorem and conditional Markov factorization"],
+  "boundary": {"nonzero_interacting_correlator_constructed": false, "continuum_reconstruction": false, "physical_length_energy_calibration": false, "physical_clock": false, "four_dimensional_covariance": false, "weak_coupling_scaling": false, "independent_analytic_review": false}
+}

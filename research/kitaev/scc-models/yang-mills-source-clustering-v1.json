@@ -1,0 +1,33 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-source-clustering-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Source-derived readout bounds preserving full generator coercivity and weighted spatial geometry: actual fixed-lattice SU2 covariance, fixed kappa and 0<=lambda/kappa<27/262144. Written real-cylinder spatial/mixed estimates and L2 separated-block estimates, not physical continuum masses.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-source-clustering.v1.json",
+      "research/kitaev/yang-mills-source-clustering-v1.md",
+      "research/kitaev/checkers/check_yang_mills_source_clustering.py",
+      "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+      "research/kitaev/contracts/yang-mills-multi-time-state.v1.json",
+      "research/kitaev/yang-mills-multi-time-state-v1.md",
+      "research/kitaev/checkers/check_yang_mills_multi_time_state.py",
+      "research/kitaev/results/yang-mills-multi-time-state-v1.json",
+      "research/kitaev/contracts/yang-mills-propagator-comparison.v1.json",
+      "research/kitaev/yang-mills-propagator-comparison-v1.md",
+      "research/kitaev/checkers/check_yang_mills_propagator_comparison.py",
+      "research/kitaev/results/yang-mills-propagator-comparison-v1.json",
+      "research/kitaev/contracts/yang-mills-thermodynamic-vacuum.v1.json",
+      "research/kitaev/yang-mills-thermodynamic-vacuum-v1.md",
+      "research/kitaev/checkers/check_yang_mills_thermodynamic_vacuum.py",
+      "research/kitaev/results/yang-mills-thermodynamic-vacuum-v1.json"
+    ],
+    "checks": [{"id": "kitaev-yang-mills-source-clustering-v1", "path": "research/kitaev/checkers/check_yang_mills_source_clustering.py", "requires": []}],
+    "depends_on": ["yang-mills-multi-time-state-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["independent analytic review of the source chain and the damped-gradient/covariance argument", "nonzero actual gauge-invariant connected observable with controlled remainder", "weak-coupling spatial refinement and physical continuum reconstruction"],
+    "next_falsifier": "An actual source covariance violates the stated mixed bound, or a purported nontriviality conclusion is inferred from an upper bound permitting zero."
+  }
+}

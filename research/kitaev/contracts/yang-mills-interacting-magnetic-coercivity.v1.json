@@ -1,0 +1,64 @@
+{
+  "schema": "marici.yang-mills-interacting-magnetic-coercivity.v1",
+  "owner": "marici.Kitaev",
+  "batch": {"kind": "spatial-scaling", "iteration": 6, "size": 10},
+  "selected_node_id": "issue-tree:87b983be841a61be1b85d24a:interacting-magnetic-coercivity:v1",
+  "source": "Actual finite open-box SU2 ground state throughout0<=eta<27/262144,R=(4096/3)eta<9/64; original Hamiltonian and vacuum unchanged",
+  "inputs": {
+    "interaction": "sup_e sum_(A containing e)2^|A| W(Phi_A)<=R,with actual constructed nonempty labels unions of elementary plaquettes and hence size>=4",
+    "Hessian": "norm(Hess log rho)_op<=3R,Ricci=1/2",
+    "domain": "Smooth finite compact-product multiplication smears,weighted integration by parts and actual ground-state transform"
+  },
+  "results": {
+    "conditional_density": "For B links,conditional density relative to Haar_B>=exp(-|B|R/4); this is not a global density bound",
+    "local_energy": "For F=sum b_p w_p and Q=sum|b_p|^2,D>=d_R Q,d_R=(3/4)exp(-13R/4),using thirteen-link stars and Haar orthogonality",
+    "derivative_upper": "D<=12Q,Hessian_HS_squared<=36Q by generator norm1/2,covariant Hessian entries<=1/4 and bounded overlap4",
+    "generator_upper": "norm(A F)^2<=(42+36R)Q by integrated weighted Bochner with upper curvature1/2+3R",
+    "covariance_coercivity": "Var_nu(F)>=d_R^2/(42+36R)*Q>=57963/16449536*Q>Q/512 throughout the original window",
+    "covariance_upper": "Var_nu(F)<=(768/5)Q by actual Poincare and Dirichlet upper bound",
+    "positive_time": "For original clocked K=s(H-E0),sigma=s*kappa,actual mass V and first moment<=12sigma Q give C(tau)>=Q/512*exp(-6144sigma*tau)",
+    "fixed_Schwartz_witness": "At sigma<=M,L=12288M captures spectral mass>=Q/1024; one even Fourier plateau yields W(conjugate(u) tensor u)>=Q/1024",
+    "h_minus4_interacting_failure": "Q_h/(z_h^2 h^3)->3 integral f^2; z_h=h^-4 is not S'-bounded at bounded clocks for arbitrary retained coupling nets",
+    "mixed_scope_obstruction": "Exact projected eigen-equation gives sum v_Ce=eta sum v_wp; global mixed coefficients(1,-eta) have zero vacuum vector. Magnetic coercivity does not imply arbitrary mixed coercivity."
+  },
+  "frozen_coverage": {
+    "open_box_star_packets": 4,
+    "quaternion_generator_connection_packets": 9,
+    "Haar_Dirichlet_accounting_packets": 12,
+    "normalized_local_likelihood_packets": 12,
+    "rational_conditional_Bochner_margin_packets": 25,
+    "covariance_sandwich_packets": 15,
+    "spectral_Jensen_packets": 9,
+    "spectral_window_packets": 9,
+    "normalization_growth_packets": 15,
+    "gap_clustering_not_coercivity_packets": 5,
+    "global_density_ratio_scope_packets": 4,
+    "mixed_Ward_null_direction_packets": 9
+  },
+  "net_update": {
+    "base_snapshot": "research/kitaev/contracts/yang-mills-gap-net.v2.json",
+    "previous_progress": "research/kitaev/contracts/yang-mills-free-magnetic-fluctuations.v1.json#net_update",
+    "newly_resolved": ["interacting-magnetic-fluctuation-coercivity"],
+    "ready_frontier": ["mixed-electric-magnetic-Ward-audit"],
+    "next_node_id": "issue-tree:87b983be841a61be1b85d24a:mixed-reader-ward:v1",
+    "parent_outcome": null,
+    "independent_analytic_review_complete": false
+  },
+  "boundary": {
+    "Haar_endpoint_substituted_for_interacting_vacuum": false,
+    "global_volume_uniform_density_ratio_assumed": false,
+    "coercivity_inferred_from_gap_or_clustering_alone": false,
+    "covariance_perturbation_row_sum_assumed": false,
+    "third_derivatives_assumed": false,
+    "all_functions_reverse_Poincare_claimed": false,
+    "magnetic_growth_promoted_to_arbitrary_mixed_readers": false,
+    "constant_weight_Ward_identity_promoted_to_local_smears": false,
+    "equal_time_growth_alone_used_for_Sprime_divergence": false,
+    "escaping_clocks_covered_by_fixed_energy_plateau": false,
+    "individual_continuum_or_Lorentz_field_constructed": false,
+    "finite_controls_certify_analytic_theorem": false,
+    "independent_analytic_review_complete": false,
+    "continuum_Yang_Mills_root_discharged": false,
+    "frozen_predecessor_sources_revised": false
+  }
+}

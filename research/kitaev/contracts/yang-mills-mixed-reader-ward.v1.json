@@ -1,0 +1,60 @@
+{
+  "schema": "marici.yang-mills-mixed-reader-ward.v1",
+  "owner": "marici.Kitaev",
+  "batch": {"kind": "spatial-scaling", "iteration": 7, "size": 10},
+  "selected_node_id": "issue-tree:87b983be841a61be1b85d24a:mixed-reader-ward:v1",
+  "source": "Same actual finite open-box SU2 source,all spins,0<=eta<27/262144,R=(4096/3)eta<9/64; no vacuum or Hamiltonian replacement",
+  "results": {
+    "component_Ward": "r_Ae=C_e Phi_A-sum_(B union C=A)Gamma_e(Phi_B,Phi_C); sum_e r_Ae=eta*1_(A=p)w_p-k_A with scalar k_A; summing components gives the actual vacuum channel r_e=(C_e Omega)/Omega",
+    "charged_support_norm": "sup_i sum_(A containing i)2^|A| sum_e norm_A0(r_Ae)<=S_R=R+(8/3)R^2<=(5632/3)eta",
+    "local_smear_error": "Centered sum f(mid_e)r_e-eta sum f(center_p)w_p has L2(nu) norm<=S_R Lip(f) sqrt(C_L/(1-R/2))*h^-1/2,uniform in arbitrary finite boxes",
+    "shell_constant": "C_L=6c^3+36c^2+216c+624,c=2L+6; for L=1,C_L=7728; connected supports and half the exponential weight localize the oscillation sum",
+    "mixed_proxy": "m_h=z_B+eta*z_E; mixed vacuum vector differs from actual magnetic proxy by<=C_f abs(z_E)S_R h^(5/2)",
+    "noncancelling_class": "t_h=h abs(z_E)S_R/abs(m_h)->0 suffices; same-sign real coefficients give t_h<=(5632/3)h; null m_h=0 is treated without division",
+    "growth": "At bounded sigma and t_h->0,a_h=abs(m_h)^2 h^3->infinity implies a fixed Schwartz filtered pairing>=a_h I_h(f)/4096 eventually",
+    "joint_Sprime_comparison": "Spatial Schwartz partition bounds and time-smearing give C a_h(t_h+t_h^2) in a fixed projective Schwartz seminorm; nuclear S(R4) tensor_pi S(R4)=S(R8) is an explicit analytic import. For same-sign coefficients and bounded a_h,the source-to-source Ward comparison tends to zero jointly",
+    "bare_trial_threshold": "For magnetic-minus-electric energy density z_E=-kappa/h^3,z_B=-lambda/h^3 and declared once-counted canonical matching,a_h=8eta_h/h^5. Divergent ratio fails bounded-clock S' comparison; zero ratio gives weak-zero; finite nonzero ratio leaves a native critical limit question"
+  },
+  "frozen_coverage": {
+    "component_Ward_centering_packets": 18,
+    "anchored_electric_activity_packets": 6,
+    "first_order_midpoint_defect_packets": 18,
+    "exponential_support_reserve_packets": 17,
+    "shell_moment_polynomial_packets": 4,
+    "shifted_grid_shell_prefix_packets": 18,
+    "symmetric_covariance_resolvent_packets": 9,
+    "same_sign_relative_budget_packets": 15,
+    "near_null_scope_packets": 4,
+    "fixed_filter_growth_packets": 9,
+    "relative_vs_absolute_two_point_packets": 12,
+    "canonical_effective_coefficient_packets": 9,
+    "canonical_critical_threshold_packets": 15
+  },
+  "net_update": {
+    "base_snapshot": "research/kitaev/contracts/yang-mills-gap-net.v2.json",
+    "previous_progress": "research/kitaev/contracts/yang-mills-interacting-magnetic-coercivity.v1.json#net_update",
+    "newly_resolved": ["mixed-electric-magnetic-Ward-audit"],
+    "ready_frontier": ["positive-coupling-critical-mixed-two-point-limit"],
+    "next_node_id": "issue-tree:87b983be841a61be1b85d24a:critical-mixed-limit:v1",
+    "parent_outcome": null,
+    "independent_analytic_review_complete": false
+  },
+  "boundary": {
+    "global_identity_alone_used_for_local_smears": false,
+    "Haar_component_centering_confused_with_actual_nu_centering": false,
+    "third_derivative_assumed": false,
+    "total_source_volume_used_as_error_factor": false,
+    "vacuum_channel_r_e_substituted_as_operator_identity": false,
+    "same_sign_bound_applied_to_near_null_opposite_sign_coefficients": false,
+    "relative_error_used_as_absolute_two_point_convergence_at_diverging_amplitude": false,
+    "tensor_test_samples_alone_used_for_joint_Sprime_convergence": false,
+    "bare_matching_called_nonperturbative_calibration": false,
+    "every_retained_coupling_path_called_divergent": false,
+    "individual_critical_limit_or_Lorentz_scalar_constructed": false,
+    "operator_products_or_all_orders_Gaussian_convergence_proved": false,
+    "finite_controls_certify_analytic_theorem": false,
+    "independent_analytic_review_complete": false,
+    "continuum_Yang_Mills_root_discharged": false,
+    "frozen_predecessor_sources_revised": false
+  }
+}

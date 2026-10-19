@@ -1,0 +1,28 @@
+{
+  "schema":"marici.yang-mills-remainder-equation.v1",
+  "id":"su2-connected-log-remainder-and-norm-obstruction-v1",
+  "source":"Unchanged finite SU2 Hamiltonian family; a four-link plaquette observable embedded in any box supplies an exact physical norm counterexample.",
+  "equation":{
+    "definitions":"L=H0/kappa, Gamma(f,g)=sum_ea X_ea(f) X_ea(g), u=log Omega modulo constants, S=sum plaquette traces, r=lambda/kappa.",
+    "centered_log_equation":"L*u=r*S/2+Gamma(u,u)-<Gamma(u,u)>_Haar",
+    "second_order_approximation":"u_star=r*u1+r^2*u2; u1=S/6; L*u2=Gamma(u1,u1)-<Gamma(u1,u1)>.",
+    "exact_remainder":"For w=u-u_star, L*w=2*r^3*Gamma(u1,u2)_c+r^4*Gamma(u2,u2)_c+2*Gamma(u_star,w)_c+Gamma(w,w)_c, where c subtracts Haar mean.",
+    "probability_density_relation":"Conditional oscillations of the omitted normalized log-density remainder equal those of 2*w; additive normalization constants do not matter."
+  },
+  "formal_connectedness":{
+    "recursion":"u_n=L^-1 sum_(k=1..n-1) Gamma(u_k,u_(n-k))_c, n>=2, and u1=S/6.",
+    "support":"Gamma vanishes for edge-disjoint supports; the centered electric inverse preserves finite edge support. Each order-n term is supported on a link-connected union of at most n plaquettes, allowing repetitions.",
+    "not_claimed":"Convergence of the formal cluster series or a volume-uniform bound on its coefficients."
+  },
+  "rejected_norm_estimate":{
+    "claim":"The centered map L^-1 Gamma(u,u)_c is bounded quadratically in an anchored support norm using only sup norms of the cluster functions.",
+    "physical_counterexample":"On a four-link plaquette let f_n=(cos(n theta)+cos((n+2)theta))/2, n>=3. These are smooth invariant trace polynomials of sup norm <=1 on the same fixed support.",
+    "radial_operator":"L f=-(1-x^2) f''+3*x*f', x=cos theta; Gamma(f,f)=(1-x^2)*(f')^2.",
+    "test_character":"chi2=4*x^2-1 has Haar norm1 and L chi2=8 chi2.",
+    "inverse_projection":"<L^-1 Gamma(f_n,f_n)_c,chi2>=n*(n+2)/64, unbounded as n grows.",
+    "meaning":"The proposed sup-norm-only nonlinear contraction estimate fails even at fixed volume. This is high-energy amplification in a proof map, not a low-energy counterfamily or a gap-closing theorem."
+  },
+  "next_operation":"Use a derivative-/representation-weighted connected norm, proving both nonlinear product and centered inverse bounds with explicit support dependence before claiming a remainder contraction.",
+  "gate_disposition":"faithful-excitation-detection remains open. All-order formal locality and the exact remainder equation do not supply uniform convergence.",
+  "boundary":{"Yang_Mills_proved":false,"uniform_remainder_proved":false,"convergent_cluster_expansion_proved":false,"actual_source_uniform_influence_proved":false,"volume_uniform_detection_proved":false,"continuum_gap_proved":false}
+}

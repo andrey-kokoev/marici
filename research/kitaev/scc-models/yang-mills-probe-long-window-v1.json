@@ -1,0 +1,37 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-probe-long-window-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Infinite-observation-horizon domain classification on canonical raw path sigma-fields: constant probes give identical laws; nonconstant admitted probes give singular stationary path laws, signed likelihood rates, density collapse/non-uniform-integrability and quantitative source discrimination. The negative global-density extension is a closed obstruction, not a replacement equilibrium phase or physical clock.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-probe-long-window.v1.json",
+      "research/kitaev/yang-mills-probe-long-window-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_long_window.py",
+      "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+      "research/kitaev/contracts/yang-mills-probe-path-density.v1.json",
+      "research/kitaev/yang-mills-probe-path-density-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_path_density.py",
+      "research/kitaev/results/yang-mills-probe-path-density-v1.json",
+      "research/kitaev/contracts/yang-mills-probe-diffusion-path.v1.json",
+      "research/kitaev/yang-mills-probe-diffusion-path-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_diffusion_path.py",
+      "research/kitaev/results/yang-mills-probe-diffusion-path-v1.json",
+      "research/kitaev/contracts/yang-mills-probe-gradient-core.v1.json",
+      "research/kitaev/yang-mills-probe-gradient-core-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_gradient_core.py",
+      "research/kitaev/results/yang-mills-probe-gradient-core-v1.json",
+      "research/kitaev/contracts/yang-mills-probe-pressure.v1.json",
+      "research/kitaev/yang-mills-probe-pressure-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_pressure.py",
+      "research/kitaev/results/yang-mills-probe-pressure-v1.json"
+    ],
+    "checks": [{"id": "kitaev-yang-mills-probe-long-window-v1", "path": "research/kitaev/checkers/check_yang_mills_probe_long_window.py", "requires": []}],
+    "depends_on": ["yang-mills-probe-path-density-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["independent analytic review", "configuration-wise continuous drift and Feller cylinder generator core", "physical calibration and continuum bridges"],
+    "next_falsifier": "The simple-kernel/gap estimate fails to control the actual fixed-probe time average, zero entropy margins do not force a constant probe, or finite normalization is incorrectly promoted to infinite-horizon uniform integrability."
+  }
+}

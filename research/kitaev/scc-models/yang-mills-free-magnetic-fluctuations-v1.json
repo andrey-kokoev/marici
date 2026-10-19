@@ -1,0 +1,24 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-free-magnetic-fluctuations-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Spatial-scaling iteration5/10: exact native eta=0 plaquette covariance and physical energy,joint tempered two-point fluctuation scaling,bounded-clock h^-4 divergence,and escaping-clock weak-zero control. A nonzero ultralocal two-point limit fails the forward cone. No interacting/all-orders Gaussian/Lorentz field construction.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-free-magnetic-fluctuations.v1.json",
+      "research/kitaev/yang-mills-free-magnetic-fluctuations-v1.md",
+      "research/kitaev/checkers/check_yang_mills_free_magnetic_fluctuations.py",
+      "research/kitaev/results/yang-mills-electric-magnetic-reader-v1.json",
+      "research/kitaev/yang-mills-ground-state-transfer-v1.md",
+      "research/kitaev/yang-mills-arbitrary-clock-locality-v1.md",
+      "research/kitaev/yang-mills-electric-magnetic-reader-v1.md"
+    ],
+    "checks": [{"id": "native-free-fluctuation-scaling-and-scope", "path": "research/kitaev/checkers/check_yang_mills_free_magnetic_fluctuations.py", "requires": []}],
+    "depends_on": ["yang-mills-electric-magnetic-reader-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["interacting magnetic covariance coercivity and positive-time growth bounds", "all-orders field/state comparison if asserted", "independent analytic review and a viable physical continuum regime"],
+    "next_falsifier": "An unmatched-link orthogonality argument or once-counted orientation factor fails,the source box does not exhaust physical space,a bounded-clock divergence has no fixed Schwartz witness,or equal-time divergence is incorrectly carried to escaping clocks. Native six-face dependence and electric middle insertion must survive. Next derive interacting covariance coercivity,not assume it from clustering."
+  }
+}

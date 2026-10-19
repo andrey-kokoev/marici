@@ -1,0 +1,57 @@
+{
+  "schema": "marici.yang-mills-arbitrary-clock-locality.v1",
+  "owner": "marici.Kitaev",
+  "batch": {"kind": "spatial-scaling", "iteration": 2, "size": 10},
+  "tree_id": "issue-tree:87b983be841a61be1b85d24a",
+  "selected_node_id": "issue-tree:87b983be841a61be1b85d24a:arbitrary-clock-locality:v1",
+  "premises": {
+    "physical_gap": "H-E0>=c0*kappa*(I-Pvac) on the physical form domain,c0=5/64",
+    "bounded_ratio": "0<=eta=lambda/kappa<=eta_star=27/262144 as a uniform upper envelope",
+    "one_clock": "Htilde=s*(H-E0),sigma=s*kappa,J=s*lambda=sigma*eta,s>0",
+    "spectral_channel": "For some fixed t*>0,C_h(t*/2)<=C and C_h(t*)>=c>0,with centered physical vectors; no uniform equal-time norm required",
+    "operators": "Bounded gauge-invariant local cutoff operators with actual midpoint separation bounded below by r>0 and finite limsup h*log(max(1,abs(X)*norm(A)*norm(B)/2))"
+  },
+  "conclusions": {
+    "clock_bound": "sigma<=128*log(C/c)/(5*t*),hence J<=eta_star*128*log(C/c)/(5*t*)",
+    "interaction_norm": "After scalar subtraction,Phi_p=-J*w_p has exact norm J",
+    "incidence_constants": {"plaquettes_per_link": 4, "next_plaquette_overcount": 16, "series_rate": 32},
+    "commutator_tail": "norm([tau_t(A),B])<=abs(X)*norm(A)*norm(B)/2 * sum_(n>=distance)(32*J*abs(t))^n/n!",
+    "weighted_bound": "The tail is<=exp(-mu*distance)*(exp(32*exp(mu)*J*abs(t))-1) for every fixed mu>0",
+    "finite_exponential_budgets": "Choose fixed mu>gamma/r; compact-time separated commutators vanish for polynomial and finite exponential perimeter norm/support budgets",
+    "conditional_target_obstruction": "A state/observable comparison with a nonzero limiting timelike commutator contradicts the other premises; that witness is not inferred from the Euclidean channel alone",
+    "gauge_scope": "Full tensor-product locality bound restricts to the reducing gauge-invariant physical subspace; no physical tensor factorization or full-kinematic gap is assumed"
+  },
+  "net_update": {
+    "base_snapshot": "research/kitaev/contracts/yang-mills-gap-net.v2.json",
+    "previous_progress": "research/kitaev/contracts/yang-mills-spatial-scaling-progress.v1.json",
+    "resolved_at_written_conditional_scope": ["spatial-observable-budget", "arbitrary-clock-locality"],
+    "deferred_not_refuted": ["macroscopic-loop-normalization-audit"],
+    "ready_frontier": ["relativistic-scalar-witness-bridge"],
+    "next_node_id": "issue-tree:87b983be841a61be1b85d24a:relativistic-scalar-witness:v1",
+    "parent_outcome": null,
+    "independent_analytic_review_complete": false
+  },
+  "frozen_coverage": {
+    "actual_SU2_plaquette_norm_packets": 15,
+    "actual_lattice_chain_packets": 9,
+    "weighted_series_envelopes": 60,
+    "finite_exponential_budget_planners": 108,
+    "clock_interaction_envelopes": 48,
+    "reducing_sector_packets": 10,
+    "actual_free_SU2_temporal_packets": 9,
+    "corrected_matching_arithmetic_packets": 6
+  },
+  "boundary": {
+    "finite_controls_certify_analytic_locality_or_gap": false,
+    "unbounded_electric_generator_treated_as_bounded_interaction": false,
+    "physical_Hilbert_space_assumed_tensor_product": false,
+    "full_kinematic_gap_assumed": false,
+    "nonzero_temporal_channel_assumed_to_imply_propagation": false,
+    "nonperturbative_anisotropy_or_observable_bridge_constructed": false,
+    "arbitrary_superexponential_readers_covered": false,
+    "Yang_Mills_triviality_or_continuum_root_proved": false,
+    "external_references_independently_verified": false,
+    "independent_analytic_review_complete": false,
+    "frozen_predecessor_sources_revised": false
+  }
+}

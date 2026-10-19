@@ -1,0 +1,25 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-critical-mixed-limit-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Spatial-scaling iteration8/10: actual positive-coupling eta=c h^5 critical mixed two-point limit on h=2^-n physical boxes[-n,n]^3. Quantified physical-gap residual/vacuum,centering and shifted-unitary comparisons after actual Ward reduction give the joint tempered kernel6c exp(-i3sigma(t-s))delta^3(x-y). Actual bounded Gauss-compatible caps have the same nonrelativistic limit. No all-orders or arbitrary outer-volume/thermodynamic-first promotion.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-critical-mixed-limit.v1.json",
+      "research/kitaev/yang-mills-critical-mixed-limit-v1.md",
+      "research/kitaev/checkers/check_yang_mills_critical_mixed_limit.py",
+      "research/kitaev/results/yang-mills-mixed-reader-ward-v1.json",
+      "research/kitaev/yang-mills-mixed-reader-ward-v1.md",
+      "research/kitaev/yang-mills-free-magnetic-fluctuations-v1.md",
+      "research/kitaev/yang-mills-ground-state-transfer-v1.md",
+      "research/kitaev/yang-mills-electric-magnetic-reader-v1.md"
+    ],
+    "checks": [{"id": "critical-source-vacuum-dynamics-and-scope", "path": "research/kitaev/checkers/check_yang_mills_critical_mixed_limit.py", "requires": []}],
+    "depends_on": ["yang-mills-mixed-reader-ward-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["outer-volume/order-of-limits robustness beyond the chosen small-total-potential net", "all-orders observable/state comparison if asserted", "independent analytic review and physical Lorentz/calibration bridge"],
+    "next_falsifier": "Actual vacuum residual costs P rather than sqrt(P),the physical gap is misnormalized,the electric channel is erased before Ward reduction,the growing proxy norm or changed mean is unpaid,or global small-potential estimates are asserted at arbitrary outer volume. Use local buffer comparison and positive spectral tightness to audit outer-box independence next."
+  }
+}

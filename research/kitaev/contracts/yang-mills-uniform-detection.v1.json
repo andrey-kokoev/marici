@@ -1,0 +1,29 @@
+{
+  "schema":"marici.yang-mills-uniform-detection.v1",
+  "id":"su2-uniform-finite-source-detection-by-curvature-v1",
+  "source":"The existing SU2 open-box Hamiltonian family with the actual ground density constructed in anchored-casimir.v1; no surrogate, spin cutoff or quotient-metric replacement.",
+  "regime":{"coupling":"0<=r=lambda/kappa<27/262144","energy":"kappa>0 fixed in declared source units for volume comparisons","volume":"All finite open cubic boxes; the existing two-plaquette fixture is also covered by the same incidence bounds."},
+  "geometric_constructor":{
+    "metric":"The left Lie generators e_a/2 are orthonormal. Bracket structure constants are epsilon_abc; each SU2 factor has sectional curvature1/4 and Ricci1/2. Product Ricci remains1/2.",
+    "Hessian_component":"|Hess_(ea,fb) Phi_A|<=sum_pi j_e*j_f*d_pi*||Phihat_A(pi)||_trace, including equal-edge symmetrized covariant derivatives.",
+    "row_bound":"For n=|A|, the absolute Hessian row sum is <=3*(n+1)*W(Phi_A)/2.",
+    "density_bound":"With R=N_2(Phi)<=4096*r/3, ||Hess log rho||_op<=3*R.",
+    "weighted_curvature":"Ric-Hess log rho >=(1/2-4096*r)*metric >5*metric/64 in the admitted regime.",
+    "functional_inequality":"Bochner identity and weighted semigroup dissipation give Var_nu f <=(64/5)*integral |grad f|^2 dnu, first smooth then on H1. No tensorization theorem is presumed."
+  },
+  "physical_detector":{
+    "definition":"D_Omega psi=Omega grad(psi/Omega), in the previously constructed covariant horizontal target.",
+    "uniform_constant":"||D_Omega psi||^2 >=(5/64)*||(I-P_Omega)psi||^2, uniformly over finite boxes and all physical form vectors in this regime.",
+    "energy_identity":"q_(H-E0)=kappa*||D_Omega||^2.",
+    "finite_source_gap":"Delta>=5*kappa/64, with sharper source bound kappa*(1/2-4096*r).",
+    "quotient_policy":"Prove curvature on the smooth full product group and restrict to invariant functions; do not assume a smooth free orbit quotient."
+  },
+  "limits":{
+    "continuum":"No thermodynamic correlation state, simultaneous continuum limit, target reconstruction or completion transfer is constructed.",
+    "weak_coupling":"Under the previously declared convention kappa=g^2/(2a), lambda=2/(a*g^2), r=4/g^4; this theorem requires g^4>1048576/27 and does not cover g->0.",
+    "units":"A volume-uniform bare/source gap is not a physical-unit continuum gap. Along refinement the physical conversion times kappa must be controlled independently.",
+    "review":"Written analytic theorem importing compact-group geometry and elliptic/Bochner facts, with exact regression controls; not a proof-assistant or independent target-review certificate."
+  },
+  "gate_disposition":"faithful-excitation-detection constructed at the stated uniform finite-source regime; uniform-energy-cost in fixed physical units, continuum correlations, reconstruction and completion remain open.",
+  "boundary":{"Yang_Mills_proved":false,"continuum_gap_proved":false,"weak_coupling_regime_covered":false,"physical_energy_scaling_proved":false,"infinite_volume_correlations_constructed":false,"atomic_source_selected":false}
+}

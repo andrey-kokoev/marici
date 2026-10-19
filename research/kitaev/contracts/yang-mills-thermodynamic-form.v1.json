@@ -1,0 +1,24 @@
+{
+  "schema": "marici.yang-mills-thermodynamic-form.v1",
+  "owner": "marici.Kitaev",
+  "batch_iteration": 1,
+  "parent_net": {"path": "research/kitaev/contracts/yang-mills-gap-net.v1.json", "node": "continuum-correlation-construction", "status": "open", "discharges_parent": false},
+  "tree_id": "issue-tree:5bf804848e02bbb43cb85cd8",
+  "obligation": "forward realization followed by closure of the actual cylinder gradient form; source propagator comparison remains unsupported",
+  "source": {"group": "SU2", "space": "countable Z3 spatial links", "measure": "actual retained-label thermodynamic vacuum nu_infinity", "kappa": "fixed positive source energy coefficient", "r": "0<=lambda/kappa<27/262144", "gradient": "three radius-two orthonormal left generators on every link"},
+  "construction": {"initial_domain": "complex smooth cylinder functions including constants", "Hilbert_space": "L2(nu_infinity)", "target": "Hilbert direct sum over all link-generator components of L2(nu_infinity)", "drift": "beta_ea=2*sum_(A contains e) X_ea Phi_A; uniform bound 2R", "closure_topology": "L2 state norm plus L2 direct-sum gradient norm", "form": "q_infinity=kappa*||closure(D0) f||^2", "inequality": "q_infinity>=5*kappa/64*||f-nu_infinity(f)||^2", "kernel": "span of the constant function", "gauge": "closed restriction by compact product vertex gauge averaging, not a smooth orbit-space assumption"},
+  "subnet": {
+    "objective": "source-compatible-multi-time-correlations",
+    "outcome": null,
+    "conjectures": [
+      {"id": "equal-time-vacuum", "depends_on": [], "status": "resolved", "verdict": "constructed_written_argument", "evidence": ["research/kitaev/yang-mills-thermodynamic-vacuum-v1.md"]},
+      {"id": "closed-gradient-form", "depends_on": ["equal-time-vacuum"], "status": "resolved", "verdict": "constructed_written_argument", "evidence": ["research/kitaev/yang-mills-thermodynamic-form-v1.md"]},
+      {"id": "finite-propagator-comparison", "depends_on": ["closed-gradient-form"], "status": "open", "verdict": "open", "evidence": [], "acceptance": "Source-derived maps of changing vacuum Hilbert spaces and a justified liminf/recovery or semigroup convergence theorem; core energy convergence alone is insufficient."},
+      {"id": "source-compatible-multi-time-correlations", "depends_on": ["finite-propagator-comparison"], "status": "open", "verdict": "open", "evidence": [], "acceptance": "Joint insertion packets of actual source dynamics, compatible limits and reflection positivity; no physical continuum interpretation without a separate bridge."}
+    ],
+    "ready_frontier": ["finite-propagator-comparison"]
+  },
+  "frozen_tests": ["Fresh upstream receipt replays", "Exact three-site ground-state conjugation and weighted adjoint", "All principal minors of the weighted Poincare residual", "Positive but nonclosable evaluation-form sequence", "Identical vacuum measure under collapsing energy coefficient", "Hidden appended state refutes a nondense-core inference"],
+  "imported_analysis": ["previous thermodynamic Gibbs-state construction", "finite-source weighted Bochner inequality", "Haar integration by parts and conditional disintegration", "densely defined adjoint closability criterion", "closed positive form representation and spectral theorem"],
+  "boundary": {"finite_propagators_compared": false, "full_quantum_state_constructed": false, "multi_time_source_correlations_constructed": false, "continuum_reconstruction": false, "weak_coupling_scaling": false, "physical_energy_calibration": false, "independent_analytic_review": false}
+}

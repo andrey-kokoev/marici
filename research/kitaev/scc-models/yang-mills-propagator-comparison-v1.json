@@ -1,0 +1,33 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-propagator-comparison-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Actual finite-box ground-state propagators at fixed SU2 lattice and fixed source kappa, 0<=lambda/kappa<27/262144; uniform cylinder semigroup convergence and operator-core identification by boundary resolvent recovery, not continuum or physical-clock reconstruction.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-propagator-comparison.v1.json",
+      "research/kitaev/yang-mills-propagator-comparison-v1.md",
+      "research/kitaev/checkers/check_yang_mills_propagator_comparison.py",
+      "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+      "research/kitaev/contracts/yang-mills-thermodynamic-form.v1.json",
+      "research/kitaev/yang-mills-thermodynamic-form-v1.md",
+      "research/kitaev/checkers/check_yang_mills_thermodynamic_form.py",
+      "research/kitaev/results/yang-mills-thermodynamic-form-v1.json",
+      "research/kitaev/contracts/yang-mills-thermodynamic-vacuum.v1.json",
+      "research/kitaev/yang-mills-thermodynamic-vacuum-v1.md",
+      "research/kitaev/checkers/check_yang_mills_thermodynamic_vacuum.py",
+      "research/kitaev/results/yang-mills-thermodynamic-vacuum-v1.json",
+      "research/kitaev/contracts/yang-mills-uniform-detection.v1.json",
+      "research/kitaev/yang-mills-uniform-detection-v1.md",
+      "research/kitaev/checkers/check_yang_mills_uniform_detection.py",
+      "research/kitaev/results/yang-mills-uniform-detection-v1.json"
+    ],
+    "checks": [{"id": "kitaev-yang-mills-propagator-comparison-v1", "path": "research/kitaev/checkers/check_yang_mills_propagator_comparison.py", "requires": []}],
+    "depends_on": ["yang-mills-thermodynamic-form-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["independent analytic review including the one-form domination and range-recovery arguments", "actual-source multi-time insertion packets and reflection positivity", "weak-coupling refinement and physical continuum reconstruction"],
+    "next_falsifier": "A crossing drift or weighted Hessian violates the declared spatial majorant, or finite-box resolvents fail the stated graph-range error; matching local energies alone cannot repair either failure."
+  }
+}

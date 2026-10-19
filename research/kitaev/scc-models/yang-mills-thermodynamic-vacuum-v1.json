@@ -1,0 +1,24 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-thermodynamic-vacuum-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Forward realization of a commutative equal-time thermodynamic vacuum on SU2 spatial links at fixed source kappa and 0<=lambda/kappa<27/262144; written analytic proof plus exact finite regressions, not quantum reconstruction.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-thermodynamic-vacuum.v1.json",
+      "research/kitaev/yang-mills-thermodynamic-vacuum-v1.md",
+      "research/kitaev/checkers/check_yang_mills_thermodynamic_vacuum.py",
+      "research/kitaev/contracts/yang-mills-anchored-casimir.v1.json",
+      "research/kitaev/yang-mills-anchored-casimir-v1.md",
+      "research/kitaev/checkers/check_yang_mills_anchored_casimir.py",
+      "research/kitaev/results/yang-mills-anchored-casimir-v1.json"
+    ],
+    "checks": [{"id": "kitaev-yang-mills-thermodynamic-vacuum-v1", "path": "research/kitaev/checkers/check_yang_mills_thermodynamic_vacuum.py", "requires": []}],
+    "depends_on": [],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["independent review of the iteration-9 analytic source and the Dobrushin application", "full quantum state and compatible multi-time correlations", "weak-coupling spatial refinement, physical energy calibration and continuum reconstruction"],
+    "next_falsifier": "Failure of intrinsic Fourier/centering naturality for retained union labels, or a crossing boundary conditional discrepancy exceeding the declared bound."
+  }
+}

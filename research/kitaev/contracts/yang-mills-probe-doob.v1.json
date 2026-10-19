@@ -1,0 +1,16 @@
+{
+  "schema": "marici.yang-mills-probe-doob.v1",
+  "owner": "marici.Kitaev",
+  "batch_iteration": 7,
+  "batch_size": 100,
+  "predecessor": "research/kitaev/contracts/yang-mills-probe-eigenstate.v1.json",
+  "tree_id": "issue-tree:5bf804848e02bbb43cb85cd8",
+  "parent_net": {"path": "research/kitaev/contracts/yang-mills-gap-net.v1.json", "node": "continuum-correlation-construction", "discharges_parent": false},
+  "obligation": "source Markov realization, same-source attachment transport and based paired-readout comparison",
+  "source": "Original symmetric Markov A with full gap m=kappa*(1/2-3R), kappa>0,0<=R<9/64; real smooth local gauge-invariant U, norm<=delta<=m/8",
+  "constructor": {"strict_positivity": "Q_U(s)h>=exp(-delta*s)P_s h and original gap mixing exclude a positive-measure zero set of psi_U", "unitary": "J_U:L2(psi_U^2 nu)->L2(nu),f maps to psi_U*f, onto with inverse h/psi_U", "semigroup": "Ptilde_U(s)=J_U^-1 exp[-s(B_U-E_U)] J_U; positive, conservative, symmetric and strongly continuous on its declared L2 space", "generator_domain": "J_U^-1 Dom(B_U)", "relative_gap": "at least m-2delta>=3m/4; gauge equivariant"},
+  "transport": {"topology": "Local paired readouts for smooth gauge-invariant f,g and their uniform closure, uniformly on each bounded source-parameter interval; original Hilbert bases remain distinct", "filter": "Replacing both endpoint eigenvectors by their normalized filter costs at most F*G*exp(-3mT/4)", "comparison": "2FG*exp(-3mT/4)+exp(2delta*S)*[C_R*exp(4delta*T)*((4T+S)M(U)FG+G*M(f)+F*M(g))*(3/4)^b+SFG*abs(E_Lambda-E)]", "pressure_parameter": "Independent tau: abs(E_Lambda-E)<=1/(8tau)+C_R*M(U)*exp(2delta*tau)*(3/4)^b", "rational_budget": "T=n/m,tau=n/(8delta),b>=4n,k=ceil(4delta*S); exponential majorants4/7,81/128,27/64 and2^k; zero/constant cases handled separately"},
+  "subnet": {"resolved": ["small-probe-doob-dynamics"], "parent_outcome": null, "ready_frontier": ["small-probe-quasilocal-ground-state"], "next_acceptance": "Derive a volume/parameter-uniform weighted gradient estimate for log(Q_U(T)1) from the actual finite-source Hamilton-Jacobi/Bochner equation; use source compactness/full support to construct a quasilocal positive continuous eigenfunction representative and test the Feller realization, without inferring either from L2 alone."},
+  "frozen_tests": ["Fresh eigenstate receipt replay", "108 exact reversible transformed two-state kernels", "972 normalized filtered paired readouts", "192 rational paired-readout transport budgets", "Zero-weight inverse missing squared-norm residual1/2", "Missing eigenvalue-shift conservation residual1/2", "Row-normalized source kernel composition residual333238023/586794978-1639/2914>0"],
+  "boundary": {"finite_packets_prove_SU2_dynamics": false, "original_finite_infinite_hilbert_isometry_constructed": false, "pointwise_eigenvector_transport_proved": false, "Feller_realization_proved": false, "smooth_logarithmic_drift_proved": false, "path_space_regularity_proved": false, "new_original_magnetic_vacuum_constructed": false, "physical_clock_or_continuum_Yang_Mills": false, "independent_analytic_review": false}
+}

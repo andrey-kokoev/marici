@@ -1,0 +1,30 @@
+{
+  "schema":"marici.yang-mills-ground-density-test.v1",
+  "id":"su2-connected-ground-density-and-conditional-criterion-v1",
+  "source":"Unchanged finite SU2 Hamiltonian family; the seven-link member is used for the exact Taylor calculation.",
+  "parameter":"r=lambda/kappa; subtract the scalar 2*r from H/kappa, giving L-r*(p+q)/2.",
+  "perturbation":{
+    "normalization":"<Omega(r)>_Haar=1 for the eigenvector calculation; normalize rho=Omega^2/<Omega^2> when interpreting the probability density.",
+    "definitions":"p=Tr(Wp), q=Tr(Wq), S=p+q, F=p*q, F0=Tr(x*y^-1)/2, F1=F-F0, C_p=p^2-1, C_q=q^2-1.",
+    "ground_vector":"Omega=1+r*a+r^2*b+O(r^3)",
+    "a":"S/6",
+    "b":"(C_p+C_q)/96+F0/27+F1/39",
+    "dimensionless_energy":"E(H/kappa)=2*r-r^2/6+O(r^3)",
+    "log_normalized_density":"log rho=r*S/3+r^2*(-(C_p+C_q)/144-1/9+F0/54-F1/234)+O(r^3)",
+    "equal_individual_trace_witness":"(x,y)=(i,i) versus (i,j): p=q=0 in both, but the log-density difference is (8/351)*r^2+O(r^3).",
+    "rejected":"The actual density is a function only of the individual plaquette traces, including exp(c(r)*(p+q)), near r=0.",
+    "analytic_scope":"Fixed finite graph, local real-analytic expansion near r=0; compact elliptic spectral perturbation and regularity are imported. No volume-uniform convergence or all-coupling expansion is claimed.",
+    "naive_volume_radius":"A sufficient resolvent condition is |r|*P<3/2 for the rank-one isolated eigenprojection; this shrinking finite-volume condition is not a uniform cluster estimate."
+  },
+  "conditional_criterion":{
+    "measure":"The actual nu=Omega^2 mu on all link variables; invariant test functions give the physical restriction.",
+    "assumption_1":"Var_nu f <= A*sum_e E_nu[Var_(nu_e|rest) f] with A independent of volume.",
+    "assumption_2":"Conditional log-density oscillation on each SU2 link <= b0, uniformly in the conditioning and volume.",
+    "single_link_constant":"At least (3/4)*exp(-b0), from the actual conditional density and the full SU2 link Haar Poincare inequality.",
+    "conclusion":"||D_Omega psi||^2 >= (3/(4*A))*exp(-b0)*||(I-P_Omega)psi||^2; Delta >= kappa*(3/(4*A))*exp(-b0).",
+    "not_discharged":"Neither assumption is proved for the interacting source family. Locality of V does not supply them for Omega^2."
+  },
+  "gate_disposition":"faithful-excitation-detection remains open. The individual-plaquette density shortcut is rejected; the conditional criterion is a sufficient theorem with unproved source premises.",
+  "next_operation":"Seek a volume-local connected expansion or influence estimate for the actual log ground density, rather than extrapolating the fixed-pair Taylor coefficients.",
+  "boundary":{"Yang_Mills_proved":false,"volume_uniform_detection_proved":false,"conditional_tensorization_proved_for_source":false,"uniform_cluster_expansion_proved":false,"continuum_gap_proved":false,"atomic_source_selected":false}
+}

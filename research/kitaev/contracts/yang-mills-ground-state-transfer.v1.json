@@ -1,0 +1,53 @@
+{
+  "schema":"marici.yang-mills-ground-state-transfer.v1",
+  "id":"su2-ground-state-detector-and-finite-transfer-v1",
+  "source_family":{
+    "group":"SU(2)",
+    "spatial_graphs":"The existing seven-link two-plaquette graph, and open cubic boxes with L>=2 vertices along each of three spatial directions; E=3L^2(L-1), P=3L(L-1)^2, girth four.",
+    "Hilbert":"Gauge-invariant closed subspace of L2(SU(2)^E, normalized product Haar).",
+    "operator":"H=kappa*sum_e(-Delta_e)+V, V=lambda*sum_p(1-Tr(Wp)/2), kappa>0, lambda>=0.",
+    "potential_range":"0<=V<=2*lambda*P",
+    "boundary":"Open spatial boundary; gauge constraints at every vertex, no external charges.",
+    "core":"Gauge-averaged smooth matrix-coefficient polynomials, closed in the physical form norm.",
+    "source_revision":"Explicit Hamiltonian/anisotropic temporal heat-kernel regularization, not an assertion that the isotropic four-dimensional Wilson action family has already been constructed. Continuum equivalence remains open."
+  },
+  "ground_state":{
+    "existence":"Compact elliptic Schrödinger theory and positivity-improving Feynman-Kac heat kernel give a unique smooth strictly positive normalized ground function Omega; gauge invariance follows by uniqueness.",
+    "not_assumed":"No prior positive mass-gap estimate is used to define or select Omega.",
+    "measure":"dnu=Omega^2 dmu",
+    "unitary":"Uf=Omega*f from L2(nu) to L2(mu); constant maps to the actual vacuum.",
+    "detector":"D_Omega psi=(Omega*X_ea(psi/Omega))_ea, with the same covariant Lie/edge target.",
+    "form_identity":"q_(H-E0)(psi)=kappa*||D_Omega psi||^2, first on the smooth core and then on the full physical form domain.",
+    "finite_graph_separation":"Delta>=3*kappa*(min Omega^2)/(max Omega^2)."
+  },
+  "explicit_bound":{
+    "heat_normalization":"SU2 characters chi_n with link Casimir n(n+2)/4.",
+    "chosen_parameter":"kappa*t=8*log(2); t is a Euclidean semigroup/regulator parameter, not a derived physical clock.",
+    "character_tail_majorant":"sum_(n>=1)(n+1)^2/64^n=16193/250047<1/8",
+    "single_link_heat_bounds":"7/8<=k_(kappa*t)(g)<=9/8",
+    "ground_ratio":"max Omega/min Omega<=exp(2*lambda*P*t)*(9/7)^E",
+    "gap_bound":"Delta>=3*kappa*(7/9)^(2E)*2^(-32*P*lambda/kappa)>0 for each fixed finite graph and finite lambda/kappa.",
+    "volume_boundary":"This particular lower bound tends to zero as open cubic volume grows, even at fixed coupling. It establishes no volume-uniform or continuum gap; the true gap need not tend to zero."
+  },
+  "transfer":{
+    "gauge_projection":"P_G is normalized Haar averaging at every vertex.",
+    "symmetric_step":"S_tau=P_G exp(-tau*V/2) exp(-tau*H0) exp(-tau*V/2) P_G, tau>0.",
+    "positive_factorization":"S_tau=B_tau^* B_tau with B_tau=exp(-tau*H0/2)exp(-tau*V/2)P_G.",
+    "finite_state":"Z_N=Tr_phys(S_tau^N)>0, N>=1; trace class follows from compact-group heat trace. Thermal cylinder expectations retain all link and gauge integrations.",
+    "reflection":"For a suitable reflected even temporal cylinder, paired halves give Tr(A^*A)/Z>=0; positive square roots cover cut placement. This is temporal reflection positivity, not finite-cutoff Euclidean rotation covariance.",
+    "fixed_graph_time_refinement":"Symmetric product formula converges strongly to exp(-T*H) at fixed graph as tau=T/N goes to zero. This is not spatial/continuum Yang-Mills reconstruction."
+  },
+  "exact_control":{
+    "kind":"Three-site rational analogue, not an SU2 spectral truncation.",
+    "kinetic":[[1,-1,0],[-1,2,-1],[0,-1,1]],
+    "potential":[2,0,2],
+    "unnormalized_ground":[1,2,1],
+    "ground_energy":"1",
+    "shifted_spectrum":[0,2,3],
+    "comparison_gap":"1/4",
+    "actual_gap":"2",
+    "raw_detector_vacuum_residual_squared":"2"
+  },
+  "gate_scope":"Constructs finite open-cubic SU2 Hamiltonian/heat-kernel transfer sources only. Does not close continuum correlation, reconstruction, or completion-stable separation.",
+  "boundary":{"Yang_Mills_proved":false,"volume_uniform_gap_proved":false,"continuum_gap_proved":false,"isotropic_Wilson_equivalence_proved":false,"atomic_source_selected":false}
+}

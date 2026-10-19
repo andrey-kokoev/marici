@@ -1,0 +1,33 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-reader-dynamics-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Actual thermodynamic two-trace reader nonclosure on0<=r<27/262144: smooth cylinder generator residual>3*kappa/16 and leading compressed memory defect>9*kappa^2/256, not a full-local-reader result or continuum claim.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-reader-dynamics.v1.json",
+      "research/kitaev/yang-mills-reader-dynamics-v1.md",
+      "research/kitaev/checkers/check_yang_mills_reader_dynamics.py",
+      "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+      "research/kitaev/contracts/yang-mills-weighted-orientation.v1.json",
+      "research/kitaev/yang-mills-weighted-orientation-v1.md",
+      "research/kitaev/checkers/check_yang_mills_weighted_orientation.py",
+      "research/kitaev/results/yang-mills-weighted-orientation-v1.json",
+      "research/kitaev/contracts/yang-mills-propagator-comparison.v1.json",
+      "research/kitaev/yang-mills-propagator-comparison-v1.md",
+      "research/kitaev/checkers/check_yang_mills_propagator_comparison.py",
+      "research/kitaev/results/yang-mills-propagator-comparison-v1.json",
+      "research/kitaev/contracts/yang-mills-shared-link-packet.v1.json",
+      "research/kitaev/yang-mills-shared-link-packet-v1.md",
+      "research/kitaev/checkers/check_yang_mills_shared_link_packet.py",
+      "research/kitaev/results/yang-mills-shared-link-packet-v1.json"
+    ],
+    "checks": [{"id": "kitaev-yang-mills-reader-dynamics-v1", "path": "research/kitaev/checkers/check_yang_mills_reader_dynamics.py", "requires": []}],
+    "depends_on": ["yang-mills-weighted-orientation-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["independent analytic review", "actual magnetic closure or exterior leakage for the full seven-link reader", "explicit finite-time remainder if a uniform noninfinitesimal leakage bound is needed", "physical clock and continuum bridges"],
+    "next_falsifier": "The actual source drift exceeds4R, the weighted hidden channel loses its norm bound, or the cylinder generator/domain identification does not justify the first strong derivative."
+  }
+}

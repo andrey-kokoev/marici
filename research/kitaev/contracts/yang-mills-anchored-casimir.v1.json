@@ -1,0 +1,35 @@
+{
+  "schema":"marici.yang-mills-anchored-casimir.v1",
+  "id":"su2-uniform-anchored-casimir-construction-v1",
+  "source":"Unchanged finite open-cubic SU2 Hamiltonian family, r=lambda/kappa>=0; constants apply uniformly to its finite boxes, not to a continuum scaling route.",
+  "space":{
+    "W":"W(f)=sum_pi (1+C_pi)*d_pi*||fhat(pi)||_trace, C_pi=sum_e j_e(j_e+1).",
+    "interaction":"Each mean-zero gauge-invariant Phi_A depends only on a connected plaquette-union edge set A.",
+    "anchored_norm":"N_t(Phi)=sup_e sum_(A contains e) t^|A|*W(Phi_A), t>=1; use t=2.",
+    "edge_frequency":"m_e(f)=sum_pi j_e*d_pi*||fhat(pi)||_trace; sum_e m_e(f)<=2*W(f)/3."
+  },
+  "closed_estimate":{
+    "physical_inverse":"W(L^-1 h_c)<=4*||h||_A0/3 because all nonconstant physical electric modes have C_pi>=3.",
+    "edge_resolved_bilinear":"W(B(f,g))<=4*sum_e m_e(f)*m_e(g), B=L^-1 Gamma_c.",
+    "anchored_bilinear":"N_t(B(Phi,Psi))<=32*N_t(Phi)*N_t(Psi)/9, with no support-cardinality moment or volume constant.",
+    "source":"N_t(S/6)<=128*t^4/3; at t=2 set a=2048/3."
+  },
+  "actual_source_fixed_point":{
+    "coupling_window":"0<=r<27/262144, independent of volume.",
+    "ball_radius":"R=4096*r/3 in N_2.",
+    "contraction_factor":"q=262144*r/27<1.",
+    "identification":"Sum the convergent finite-box interaction fixed point to obtain u=log Omega modulo constants; positivity and elliptic regularity identify the actual source vacuum.",
+    "not_claimed":"Infinite-volume correlation construction, continuum equivalence, physical-unit scaling or a completed detection/gap theorem."
+  },
+  "remainder_and_influence":{
+    "coefficient_majorant":"N_2(Phi_n)<=Catalan(n-1)*(32/9)^(n-1)*(2048/3)^n.",
+    "tail_from_order3":"N_2(sum_(n>=3) r^n Phi_n)<=a*r*q^2/(1-q), a=2048/3.",
+    "actual_conditional_log_oscillation":"At every link, osc_e(log rho)<=4R uniformly in volume.",
+    "actual_conditional_TV_row":"sum_(j!=e)c_ej<=R/2; use sup_(n>=1)(n-1)/2^n=1/4.",
+    "interior_control":"At r=27/524288: q=1/2, R=9/128, tail<=9/512, actual conditional TV row<=9/256.",
+    "normalization":"log rho differs from2*sum_A Phi_A only by a global constant; all oscillation estimates are unaffected."
+  },
+  "next_operation":"Derive a checked uniform functional inequality from these actual-source bounds, for example by bounding the weighted-product curvature with the Casimir-controlled Hessian. Do not import a tensorization theorem without checking its hypotheses.",
+  "gate_disposition":"faithful-excitation-detection stays open pending that functional inequality; the uniform actual-source remainder constructor itself is now supplied in the stated electric-dominant window.",
+  "boundary":{"Yang_Mills_proved":false,"volume_uniform_detection_proved":false,"continuum_gap_proved":false,"infinite_volume_correlations_constructed":false,"physical_continuum_scaling_proved":false}
+}

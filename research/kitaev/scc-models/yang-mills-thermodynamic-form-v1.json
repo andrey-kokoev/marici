@@ -1,0 +1,29 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-thermodynamic-form-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Forward realization and closure of the actual cylinder gradient form over the thermodynamic SU2 vacuum at fixed source kappa and 0<=lambda/kappa<27/262144; whole-closure Poincare inequality, not finite-propagator or continuum identification.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-thermodynamic-form.v1.json",
+      "research/kitaev/yang-mills-thermodynamic-form-v1.md",
+      "research/kitaev/checkers/check_yang_mills_thermodynamic_form.py",
+      "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+      "research/kitaev/contracts/yang-mills-thermodynamic-vacuum.v1.json",
+      "research/kitaev/yang-mills-thermodynamic-vacuum-v1.md",
+      "research/kitaev/checkers/check_yang_mills_thermodynamic_vacuum.py",
+      "research/kitaev/results/yang-mills-thermodynamic-vacuum-v1.json",
+      "research/kitaev/contracts/yang-mills-uniform-detection.v1.json",
+      "research/kitaev/yang-mills-uniform-detection-v1.md",
+      "research/kitaev/checkers/check_yang_mills_uniform_detection.py",
+      "research/kitaev/results/yang-mills-uniform-detection-v1.json"
+    ],
+    "checks": [{"id": "kitaev-yang-mills-thermodynamic-form-v1", "path": "research/kitaev/checkers/check_yang_mills_thermodynamic_form.py", "requires": []}],
+    "depends_on": ["yang-mills-thermodynamic-vacuum-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["source-compatible finite-propagator limit on changing vacuum Hilbert spaces", "independent analytic review of upstream hypotheses and the closure proof", "multi-time correlations, weak-coupling refinement and physical continuum reconstruction"],
+    "next_falsifier": "A missing integration-by-parts adjoint domain or a source finite-volume limit differing from the cylinder-form closure; core convergence alone must not discharge operator comparison."
+  }
+}

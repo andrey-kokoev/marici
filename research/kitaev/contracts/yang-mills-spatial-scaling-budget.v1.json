@@ -1,0 +1,51 @@
+{
+  "schema": "marici.yang-mills-spatial-scaling-budget.v1",
+  "owner": "marici.Kitaev",
+  "batch": {"kind": "spatial-scaling", "iteration": 1, "size": 10},
+  "tree_id": "issue-tree:87b983be841a61be1b85d24a",
+  "selected_node_id": "issue-tree:87b983be841a61be1b85d24a:spatial-observable-budget:v1",
+  "premises": {
+    "regime": "0<=eta=lambda/kappa<27/262144,kappa>0; original unperturbed actual vacuum",
+    "clock_factorization": "H_(kappa,eta)=kappa*Hhat_eta; finite vacuum and thermodynamic equal-time cylinder state depend on eta,not overall kappa",
+    "spatial_covariance": "For disjoint real continuous cylinder supports,abs(Cov)<=Osc(F)*Osc(G)*(3/4)^distance/28",
+    "physical_support": "Actual edge-midpoint supports have positive limiting Euclidean separation r; graph steps move midpoints at most physical spacing h",
+    "review_boundary": "Actual SU2 interaction and Dobrushin clustering are upstream written analytic candidates,not independently certified by this follow-up"
+  },
+  "conclusions": {
+    "budget_bound": "abs(Cov)<=B_h*exp[-log(4/3)*r_h/h]/28,B_h=max(1,Osc(F_h)*Osc(G_h))",
+    "criterion": "If gamma=limsup h*log(B_h)<log(4/3)*liminf(r_h),then separated connected covariance tends to zero",
+    "necessary_budget": "abs(Cov)>=epsilon implies Osc(F_h)*Osc(G_h)>=28*epsilon*exp[log(4/3)*r_h/h]",
+    "plaquette_smear": "Osc(Z_h*h^3*sum f_p*(w_p-mean))<=8*abs(Z_h)*h^3*sum abs(f_p); for unit boxes at h=1/N,this is<=48*norm(f)_infinity*abs(Z_h)",
+    "polynomial_example": "Two h^-4-normalized unit-box plaquette smears have budget<=2304*norm(f)*norm(g)*h^-8 and vanishing separated covariance",
+    "loop_boundary": "Osc(normalized SU2 loop trace)<=2*distinct_edge_count; exponential perimeter normalization may leave the covered budget class and requires a new source estimate"
+  },
+  "net_update": {
+    "base_snapshot": "research/kitaev/contracts/yang-mills-gap-net.v2.json",
+    "previous_completed_progress": "research/kitaev/contracts/yang-mills-parameterized-strong-map.v1.json#net_update",
+    "resolved_at_written_conditional_scope": ["spatial-observable-budget"],
+    "ready_frontier": ["macroscopic-loop-normalization-audit"],
+    "next_node_id": "issue-tree:87b983be841a61be1b85d24a:macroscopic-loop-normalization:v1",
+    "parent_outcome": null,
+    "independent_analytic_review_complete": false
+  },
+  "frozen_coverage": {
+    "actual_midpoint_geometry_packets": 48,
+    "actual_plaquette_incidence_budget_packets": 12,
+    "polynomial_tail_planners": 48,
+    "exponential_envelope_classifications": 48,
+    "positive_chain_normalization_controls": 12
+  },
+  "boundary": {
+    "finite_controls_certify_source_clustering": false,
+    "new_energy_or_clock_matching_admitted": false,
+    "plaquette_candidate_identified_with_continuum_F_squared": false,
+    "all_exponential_loop_normalizations_excluded": false,
+    "electric_or_noncommuting_observables_covered": false,
+    "all_distributional_limits_or_Yang_Mills_triviality_proved": false,
+    "uniform_spatial_bound_alone_proves_interacting_continuum": false,
+    "conditional_upper_envelope_survival_proves_actual_survival": false,
+    "independent_analytic_review_complete": false,
+    "parent_continuum_or_reviewed_root_discharged": false,
+    "frozen_predecessor_sources_revised": false
+  }
+}

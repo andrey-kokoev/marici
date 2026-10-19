@@ -1,0 +1,37 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-mesh-word-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Forward actual-word realization and state-based scalar comparison. All finite real gauge-invariant insertion words with sup norms<=1 and total gradient budget B; uniform count/mesh/horizon error<=18*B*(3/4)^b/5. No arbitrary infinite word, projected-reader iteration or continuum promotion.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-mesh-word.v1.json",
+      "research/kitaev/yang-mills-mesh-word-v1.md",
+      "research/kitaev/checkers/check_yang_mills_mesh_word.py",
+      "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+      "research/kitaev/contracts/yang-mills-buffered-memory.v1.json",
+      "research/kitaev/yang-mills-buffered-memory-v1.md",
+      "research/kitaev/checkers/check_yang_mills_buffered_memory.py",
+      "research/kitaev/results/yang-mills-buffered-memory-v1.json",
+      "research/kitaev/contracts/yang-mills-thermodynamic-vacuum.v1.json",
+      "research/kitaev/yang-mills-thermodynamic-vacuum-v1.md",
+      "research/kitaev/checkers/check_yang_mills_thermodynamic_vacuum.py",
+      "research/kitaev/results/yang-mills-thermodynamic-vacuum-v1.json",
+      "research/kitaev/contracts/yang-mills-source-clustering.v1.json",
+      "research/kitaev/yang-mills-source-clustering-v1.md",
+      "research/kitaev/checkers/check_yang_mills_source_clustering.py",
+      "research/kitaev/results/yang-mills-source-clustering-v1.json",
+      "research/kitaev/contracts/yang-mills-multi-time-state.v1.json",
+      "research/kitaev/yang-mills-multi-time-state-v1.md",
+      "research/kitaev/checkers/check_yang_mills_multi_time_state.py",
+      "research/kitaev/results/yang-mills-multi-time-state-v1.json"
+    ],
+    "checks": [{"id": "kitaev-yang-mills-mesh-word-v1", "path": "research/kitaev/checkers/check_yang_mills_mesh_word.py", "requires": []}],
+    "depends_on": ["yang-mills-buffered-memory-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["independent analytic review", "refinement-compatible bounded-probe product limit with declared strong topology", "physical clock and continuum bridges"],
+    "next_falsifier": "The actual finite-word weighted gradient fails the discounted recursion, the vacuum state term lacks its interior resolvent bound, or summing propagation terms introduces a count factor contrary to the telescope."
+  }
+}

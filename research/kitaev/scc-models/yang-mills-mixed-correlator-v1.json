@@ -1,0 +1,37 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-mixed-correlator-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Actual expectation realization/comparison for distinct link-sharing SU2 plaquettes at fixed spatial lattice and kappa; r in [(3/4)^512/2,(3/4)^512], finite Cauchy normalization plus thermodynamic boundary budgets, not the full coupling window or continuum interaction.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-mixed-correlator.v1.json",
+      "research/kitaev/yang-mills-mixed-correlator-v1.md",
+      "research/kitaev/checkers/check_yang_mills_mixed_correlator.py",
+      "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+      "research/kitaev/contracts/yang-mills-source-clustering.v1.json",
+      "research/kitaev/yang-mills-source-clustering-v1.md",
+      "research/kitaev/checkers/check_yang_mills_source_clustering.py",
+      "research/kitaev/results/yang-mills-source-clustering-v1.json",
+      "research/kitaev/contracts/yang-mills-linked-density.v1.json",
+      "research/kitaev/yang-mills-linked-density-v1.md",
+      "research/kitaev/checkers/check_yang_mills_linked_density.py",
+      "research/kitaev/results/yang-mills-linked-density-v1.json",
+      "research/kitaev/contracts/yang-mills-anchored-casimir.v1.json",
+      "research/kitaev/yang-mills-anchored-casimir-v1.md",
+      "research/kitaev/checkers/check_yang_mills_anchored_casimir.py",
+      "research/kitaev/results/yang-mills-anchored-casimir-v1.json",
+      "research/kitaev/contracts/yang-mills-thermodynamic-vacuum.v1.json",
+      "research/kitaev/yang-mills-thermodynamic-vacuum-v1.md",
+      "research/kitaev/checkers/check_yang_mills_thermodynamic_vacuum.py",
+      "research/kitaev/results/yang-mills-thermodynamic-vacuum-v1.json"
+    ],
+    "checks": [{"id": "kitaev-yang-mills-mixed-correlator-v1", "path": "research/kitaev/checkers/check_yang_mills_mixed_correlator.py", "requires": []}],
+    "depends_on": ["yang-mills-source-clustering-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["independent analytic review of the all-box coefficient and upstream complex/boundary constructors", "actual ground-weighted relative-orientation readout rather than the old Haar-only fixture", "weak-coupling refinement and physical continuum reconstruction"],
+    "next_falsifier": "A surviving spectator plaquette term changes the leading coefficient, the finite normalized analytic disk contains a zero, or either exact error budget exceeds one quarter of the leading covariance."
+  }
+}

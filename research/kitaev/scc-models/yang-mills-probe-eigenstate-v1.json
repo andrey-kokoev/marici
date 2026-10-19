@@ -1,0 +1,37 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-probe-eigenstate-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Attachment transport and based readout comparison: positive spectral-filter completion in each original Hilbert space, normalized sandwich sewing, and weak transport of auxiliary normal tilted probability states. No cross-source isometry, pointwise eigenvector limit or tilted Markov dynamics is assumed.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-probe-eigenstate.v1.json",
+      "research/kitaev/yang-mills-probe-eigenstate-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_eigenstate.py",
+      "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+      "research/kitaev/contracts/yang-mills-probe-pressure.v1.json",
+      "research/kitaev/yang-mills-probe-pressure-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_pressure.py",
+      "research/kitaev/results/yang-mills-probe-pressure-v1.json",
+      "research/kitaev/contracts/yang-mills-probe-limit.v1.json",
+      "research/kitaev/yang-mills-probe-limit-v1.md",
+      "research/kitaev/checkers/check_yang_mills_probe_limit.py",
+      "research/kitaev/results/yang-mills-probe-limit-v1.json",
+      "research/kitaev/contracts/yang-mills-mesh-word.v1.json",
+      "research/kitaev/yang-mills-mesh-word-v1.md",
+      "research/kitaev/checkers/check_yang_mills_mesh_word.py",
+      "research/kitaev/results/yang-mills-mesh-word-v1.json",
+      "research/kitaev/contracts/yang-mills-source-clustering.v1.json",
+      "research/kitaev/yang-mills-source-clustering-v1.md",
+      "research/kitaev/checkers/check_yang_mills_source_clustering.py",
+      "research/kitaev/results/yang-mills-source-clustering-v1.json"
+    ],
+    "checks": [{"id": "kitaev-yang-mills-probe-eigenstate-v1", "path": "research/kitaev/checkers/check_yang_mills_probe_eigenstate.py", "requires": []}],
+    "depends_on": ["yang-mills-probe-pressure-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["independent analytic review", "strict-positive eigenvector and same-source ground-state-transformed Markov dynamics with paired-readout transport", "physical calibration and continuum bridges"],
+    "next_falsifier": "The orthogonal filter bound loses its original-state overlap, normalized sandwich comparison omits a denominator or changes its base, or weak local-state transport is promoted to an isometry or pointwise eigenvector limit."
+  }
+}

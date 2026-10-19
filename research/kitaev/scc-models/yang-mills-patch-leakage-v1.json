@@ -1,0 +1,34 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "yang-mills-patch-leakage-v1",
+    "owner": "marici.Kitaev",
+    "classification": "candidate",
+    "stratum": "Actual thermodynamic magnetic exterior leakage from the full seven-link reader,0<r<=1/1000000000; actual all-orders drift tail and weighted conditional comparison, not a formal coefficient or universal finite-patch/continuum theorem.",
+    "inputs": [
+      "research/kitaev/contracts/yang-mills-patch-leakage.v1.json",
+      "research/kitaev/yang-mills-patch-leakage-v1.md",
+      "research/kitaev/checkers/check_yang_mills_patch_leakage.py",
+      "research/kitaev/contracts/yang-mills-gap-net.v1.json",
+      "research/kitaev/yang-mills-weighted-orientation-v1.md",
+      "research/kitaev/contracts/yang-mills-reader-dynamics.v1.json",
+      "research/kitaev/yang-mills-reader-dynamics-v1.md",
+      "research/kitaev/checkers/check_yang_mills_reader_dynamics.py",
+      "research/kitaev/results/yang-mills-reader-dynamics-v1.json",
+      "research/kitaev/contracts/yang-mills-anchored-casimir.v1.json",
+      "research/kitaev/yang-mills-anchored-casimir-v1.md",
+      "research/kitaev/checkers/check_yang_mills_anchored_casimir.py",
+      "research/kitaev/results/yang-mills-anchored-casimir-v1.json",
+      "research/kitaev/contracts/yang-mills-thermodynamic-vacuum.v1.json",
+      "research/kitaev/yang-mills-thermodynamic-vacuum-v1.md",
+      "research/kitaev/checkers/check_yang_mills_thermodynamic_vacuum.py",
+      "research/kitaev/results/yang-mills-thermodynamic-vacuum-v1.json"
+    ],
+    "checks": [{"id": "kitaev-yang-mills-patch-leakage-v1", "path": "research/kitaev/checkers/check_yang_mills_patch_leakage.py", "requires": []}],
+    "depends_on": ["yang-mills-reader-dynamics-v1"],
+    "consumes": [],
+    "provides": [],
+    "missing_constructors": ["independent analytic review", "volume-independent boundary leakage for arbitrary finite induced cubic boxes at a common coupling", "explicit finite-time radius if needed", "physical continuum/clock bridges"],
+    "next_falsifier": "An exterior neighbor loses its odd outside parity, an off-diagonal Haar pairing survives, or the actual anchored tail exceeds the declared noncancellation budget."
+  }
+}

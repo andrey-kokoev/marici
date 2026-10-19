@@ -1,0 +1,29 @@
+{
+  "schema":"marici.yang-mills-linked-density.v1",
+  "id":"su2-second-order-linked-density-box-family-v1",
+  "source":"Unchanged finite open-cubic SU2 Hamiltonian family, r=lambda/kappa; analytic expansion at each fixed box only.",
+  "all_box_coefficient_theorem":{
+    "notations":"S=sum_p p, C_p=p^2-1; p is the fundamental trace of plaquette p. Adjacent means sharing a link, not merely a vertex.",
+    "log_normalized_density":"log rho=r*S/3+r^2*(-P/18-sum_p C_p/144+sum_{link-adjacent unordered pairs} J_pq)+R_L(r)",
+    "pair_term":"J_pq=F0/54-F1/234=(2*x0*y0+8*x_vec dot y_vec)/351, with both loops oriented along their common link.",
+    "disjoint_cancellation":"Pairs with disjoint edge supports have electric product energy 6 and cancel exactly from the order-r^2 logarithm, even when the plaquettes share a vertex.",
+    "pair_norm":"sup |J_pq|=8/351; support has seven links.",
+    "energy":"E0/kappa=r*P-r^2*P/12+O_L(r^3)",
+    "remainder":"R_L(r)=O_L(r^3) at each fixed box. No bound uniform in L is proved."
+  },
+  "volume_local_bounds_for_T2":{
+    "T2":"The displayed degree-two log-density polynomial, not the exact log ground density.",
+    "incidence":"At most4 plaquettes per link,12 link-neighbors per plaquette,48 adjacent pair supports incident to a link; pair supports contain7 links.",
+    "conditional_log_oscillation":"osc_e T2 <= (16/3)*|r|+(269/117)*r^2, independent of box size.",
+    "conditional_TV_row_sum":"For the artificial normalized exp(T2) density: sum_(j!=e) c_ej <=8*|r|+(175/26)*r^2, using the log-likelihood oscillation TV bound.",
+    "small_parameter_control":"At |r|=1/16 the certified TV row bound is3503/6656<1.",
+    "not_claimed":"A tensorization constant for the actual source, an actual-source uniform influence bound, or a volume-uniform gap."
+  },
+  "remaining_bridge":{
+    "oscillation":"Need sup_(L,e) osc_e R_L(r) controlled beyond the fixed-box Taylor statement.",
+    "influence":"Need a summable mixed-oscillation row bound for R_L, not just a small sup norm or pointwise convergence.",
+    "functional_inequality":"Even an influence estimate must be connected to an applicable conditional tensorization theorem with checked hypotheses and constants."
+  },
+  "gate_disposition":"faithful-excitation-detection remains open; this is an all-box coefficient theorem and a uniform certificate for the Taylor surrogate only.",
+  "boundary":{"Yang_Mills_proved":false,"uniform_remainder_proved":false,"actual_source_uniform_influence_proved":false,"conditional_tensorization_proved_for_source":false,"volume_uniform_detection_proved":false,"continuum_gap_proved":false}
+}
