@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Three overlapping particle windows on codimension-layered lattice sites or original triangular faces of a five-vertex pentachoron.">
+<title>Particle windows · lattices and pentachoron</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header>
+  <div><p class="eyebrow">Overlapping windows · geometric representations</p><h1 id="page-title">Codimension layers, shared walk</h1></div>
+  <a class="gallery" href="/experiments/">Construction gallery ↗</a>
+</header>
+<nav class="view-switch" aria-label="Geometric representation">
+  <a href="./vacuum.html" style="padding:8px 14px;border:1px solid #314858;border-radius:8px;text-decoration:none;font-size:13px">Empty structured space ↗</a>
+  <button id="carrier-mode" type="button" aria-pressed="true">P/N carriers</button>
+  <button id="electron-trial" type="button" aria-pressed="false">P/N/E carriers</button>
+  <button type="button" data-view="lattice" aria-pressed="false">Flat lattice chart</button>
+  <button type="button" data-view="hex" aria-pressed="false">Tetrahedral lattice</button>
+  <button type="button" data-view="pentachoron" aria-pressed="false">Pentachoron proper</button>
+  <button type="button" data-view="barycenter" aria-pressed="false" class="earlier">Facet and center</button>
+  <p id="view-description"></p>
+</nav>
+<main>
+  <section class="visual" aria-label="Interactive particle-window configuration">
+    <div id="scene">
+      <div class="scene-top"><span id="view-badge">Shared configuration</span><span id="projection-badge" class="projection-badge">Orthographic · 3D lattice</span></div>
+      <div id="loading" role="status">Loading local Three.js…</div>
+      <div id="error" role="alert" hidden></div>
+      <div id="scene-hint" class="scene-hint">Drag to orbit · scroll / pinch to zoom · select a triangle or label</div>
+    </div>
+    <section class="walk-panel" aria-label="Overlapping directed walk">
+      <div class="walk-heading"><span>One glued walk</span><span id="walk-location" aria-live="polite">C₀ · start</span></div>
+      <div id="walk-nodes" class="walk-nodes"></div>
+      <div class="walk-controls"><button id="play" type="button" aria-pressed="false">▶ Trace</button><button id="restart" type="button">↺</button><input id="progress" aria-label="Walk progress" type="range" min="0" max="5" step="0.001" value="0"></div>
+    </section>
+    <section class="identity-panel" aria-labelledby="identity-title">
+      <div class="identity-heading"><h2 id="identity-title">Face centers and modes</h2><span id="identity-proof" class="small" hidden></span></div>
+      <p class="small">Select an active face to see its center and spectral mode. “Follow walk” follows the selected path.</p>
+      <div class="identity-stages" role="group" aria-label="Identity window"><button type="button" data-identity-route="all" aria-pressed="true">Follow walk</button><button type="button" data-identity-route="proton" aria-pressed="false">P · CMC</button><button type="button" data-identity-route="neutron" aria-pressed="false">N · MCM</button><button type="button" data-identity-route="electron" aria-pressed="false">E · MCC</button></div>
+      <div class="identity-controls">
+        <label class="check"><input id="identity-enabled" type="checkbox" checked> Show active-face center &amp; eigenline</label>
+        <label class="check"><input id="identity-assembly-toggle" type="checkbox" checked> Show first-seen assembly trail</label>
+        <label for="identity-mode">Initial spectral mode<select id="identity-mode"><option value="positive">Positive complex mode</option><option value="negative">Negative complex mode</option><option value="common">Common identity mode</option></select></label>
+        <div><label for="identity-phase">Phase probe · not time <output id="identity-phase-output">0°</output></label><input id="identity-phase" type="range" min="0" max="360" step="1" value="0"><button id="identity-phase-reset" type="button">Reset phase probe</button></div>
+      </div>
+      <div class="identity-metrics" aria-live="polite">
+        <div><span>Active window</span><strong id="identity-window"></strong></div>
+        <div><span>Retained branch</span><strong id="identity-branch"></strong></div>
+        <div><span>Phase</span><strong id="identity-phase-readout"></strong></div>
+        <div><span>Cyclic comparison</span><strong id="identity-operation"></strong></div>
+        <div><span>Active-face center · this view</span><code id="identity-anchor"></code></div>
+        <div><span>Step Δ · this chart</span><code id="identity-displacement"></code></div>
+      </div>
+      <p id="identity-glyph-note" class="small"></p>
+      <p id="identity-view-note" class="identity-scope small"></p>
+      <details class="identity-retained"><summary>Retained identity packet &amp; source geometry</summary>
+        <dl>
+          <dt>Window identity</dt><dd id="identity-record"></dd>
+          <dt>Eigenvalue in its retained frame</dt><dd id="identity-eigenvalue"></dd>
+          <dt>Original source occurrences</dt><dd id="identity-occurrences"></dd>
+          <dt>Explicit additional closing edge</dt><dd id="identity-closure"></dd>
+          <dt>Pentachoron active-face center</dt><dd id="identity-source-anchor"></dd>
+          <dt>Source Δ · fourth coordinate in √5 units</dt><dd id="identity-source-delta"></dd>
+          <dt>Assembly / occurrence inventory</dt><dd id="identity-assembly"></dd>
+          <dt>First-seen assembly mean · this chart</dt><dd id="identity-assembly-anchor"></dd>
+          <dt>Occurrence-weighted mean · different readout</dt><dd id="identity-occurrence-mean"></dd>
+        </dl>
+        <p id="identity-revisit" class="small"></p>
+        <p class="small">The five pentachoron coordinates and all three spectral components are retained. A center point alone does not encode them. M₂ belongs to the extended carrier geometry.</p>
+      </details>
+    </section>
+  </section>
+  <aside>
+    <section id="carrier-note" class="carrier-card">
+      <h2 id="carrier-sequence">CMC[M] → MCM[C]</h2>
+      <p><strong>Proton · CMC[M]</strong><br><code>C₀ M₀ C₁ [M₁]</code></p>
+      <p><strong>Neutron · MCM[C]</strong><br><code>M₀ C₁ M₁ [C₂]</code></p>
+      <p class="small">Brackets retain the fourth continuation vertex. Proton fourth vertex: M₁. Neutron fourth vertex: C₂, not C₀. Advancing the carrier window makes the proton’s final face M₀ C₁ M₁ the neutron’s active face.</p>
+      <p id="pn-only-note" class="small">Only these two carriers are assigned here. C₂ remains the same source vertex and is the neutron’s retained fourth vertex.</p>
+      <div id="electron-carrier-note" hidden>
+        <p><strong>Electron · MCC[M]</strong><br><code>M₁ C₁ C₂ [M₂]</code></p>
+        <p class="small">N/E share the entire M₁ C₁ C₂ face. M₂ is a new vertex across that face from M₀, not M₀ renamed. This gives a third regular tetrahedron without moving P or N.</p>
+        <p class="small">M₂ extends the five-vertex geometry. Its position is the reflection of M₀ across the shared MCC face.</p>
+      </div>
+      <details><summary class="small">About this geometry</summary><p class="small">The proton and neutron are unfolded pentachoron facets. The electron adds a tetrahedron across the MCC face. This is a geometric carrier model, not a specification of particle preparation or dynamics, nor a space-filling lattice.</p></details>
+    </section>
+    <section class="windows" aria-label="Particle windows">
+      <button class="window overview" data-route="all" aria-pressed="true"><span>All windows</span><span class="small">shared edges</span></button>
+      <button class="window" data-route="proton" aria-pressed="false" style="--route:#f6b75a"><span><i></i>Proton</span><code>C₀ → M₀ → C₁</code></button>
+      <button class="window" data-route="neutron" aria-pressed="false" style="--route:#66cfff"><span><i></i>Neutron</span><code>M₀ → C₁ → M₁</code></button>
+      <button class="window" data-route="electron" aria-pressed="false" style="--route:#f19ad0"><span><i></i>Electron</span><code>M₁ → C₁ → C₂</code></button>
+    </section>
+    <section class="detail" aria-live="polite"><h2 id="detail-title">The shared edges</h2><p id="detail-text">Proton and neutron share M₀ → C₁. Neutron and electron traverse C₁ ⇄ M₁ in opposite directions.</p><div id="detail-formula">C₁ → M₁ → C₁</div><p id="detail-extra" class="small">Two occurrences of the same C₁ surround M₁.</p></section>
+    <section class="center-card"><div class="center-heading"><span class="center-dot"></span><h2 id="center-title"></h2></div><p id="center-formula" class="formula"></p><p id="center-note" class="small"></p></section>
+    <section class="view-controls" aria-label="Display controls">
+      <div id="pentachoron-controls" hidden>
+        <label for="cell">Tetrahedral boundary cell</label>
+        <select id="cell"><option value="none">No cell highlight</option></select>
+        <p id="cell-note" class="small">Five original 4D boundary cells; their orthogonal images can overlap.</p>
+      </div>
+      <div id="projection-controls" hidden>
+        <label for="projection">4D view angle <output id="projection-value">35°</output></label><input id="projection" type="range" min="-70" max="70" step="1" value="35">
+        <p class="small projection-note">Rotates the y–w plane, then orthogonally drops w. All views use an orthographic camera.</p>
+      </div>
+      <label class="check"><input id="faces" type="checkbox" checked> Triangle fills</label>
+      <label class="check"><input id="context" type="checkbox" checked> <span id="context-label">Codimension / realization grid</span></label>
+      <label id="rays-control" class="check" hidden><input id="rays" type="checkbox"> Barycenter-to-facet links</label>
+      <button id="reset-view" type="button">Reset camera</button>
+    </section>
+  </aside>
+</main>
+<footer><span class="solid-key"></span> colored arrows: directed segments <span class="dashed-key"></span> composites · faint lines: context <span class="footer-note"><span id="geometry-note">C layer: z = 0 · M layer: z = 1 · y: unused</span> · <a href="./vendor/THREE-LICENSE.txt">Three.js · MIT</a></span></footer>
+<noscript>This interactive view requires JavaScript and WebGL.</noscript>
+<script src="./vendor/three.min.js"></script><script src="./vendor/OrbitControls.js"></script>
+<script type="module" src="./app.js?v=face-centers"></script>
+</body>
+</html>

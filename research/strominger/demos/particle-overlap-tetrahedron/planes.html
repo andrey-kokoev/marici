@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Empty structured space: discrete realization R levels with rotationally linked, signed C/M planar axes.">
+<title>Empty structured space · realization and typed axes</title>
+<link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="./vacuum.css?v=plane-toggles">
+</head>
+<body class="vacuum-view">
+<header><div><p class="eyebrow">Structured space · no occupants</p><h1>Discrete R · realization</h1></div><a class="gallery" href="./">Particle-window views ↗</a></header>
+<nav class="view-switch" aria-label="Geometric representation"><a class="view-link" href="./vacuum.html">Three R axes ↗</a><a class="view-link" href="./">P/N carriers</a><a class="view-link" href="./?electron=m2">P/N/E carriers</a><a class="view-link" href="./?view=hex&amp;geometry=chart">Tetrahedral lattice</a><a class="view-link" href="./planes.html" aria-current="page">Empty structured space</a><p id="view-description">Each realization plane has M+, M-, C+, C- axes, with one signed pair repeated. Each R step rotates the frame and exchanges M↔C: (M,M,C) at R=0 becomes (C,C,M) at R=±1.</p></nav>
+<main>
+<section class="visual" aria-label="Empty structured-space visualization"><div id="scene"><div class="scene-top"><span id="occupant-badge">Unoccupied · 0 particles</span><span class="projection-badge">Orthographic · R normal</span></div><div id="loading" role="status">Loading local Three.js…</div><div id="error" role="alert" hidden></div><div class="scene-hint">Drag to orbit · scroll / pinch to zoom · click an R label or node to toggle plane / traces</div></div>
+<section class="vacuum-readout" aria-live="polite"><div><span>Realization level</span><strong id="level-readout"></strong></div><div><span>Previous frame → selected frame</span><strong id="angle-readout"></strong></div><div><span>Displayed structure</span><strong id="space-readout"></strong></div></section>
+</section>
+<aside>
+<section class="detail"><h2>Show carriers</h2><div class="occupant-selectors" role="group" aria-label="Carrier selection"><button type="button" data-occupants="none" aria-pressed="true">Empty</button><button type="button" data-occupants="proton" aria-pressed="false">Lone proton</button><button type="button" data-occupants="neutron" aria-pressed="false">Lone neutron</button><button type="button" data-occupants="electron" aria-pressed="false">Lone electron</button><button type="button" data-occupants="all" aria-pressed="false">All three</button></div><p id="occupant-readout" class="formula" aria-live="polite">No carrier geometry shown.</p><button id="focus-carriers" type="button" disabled>Focus cells</button><p class="small">Each vertex is an actual lattice node. Three tetrahedral cells partition a triangular prism between adjacent R planes, preserving the P/N/E incidence chain. These lattice cells are not the earlier regular tetrahedra.</p><details><summary>Lattice node addresses</summary><ul id="node-bindings" class="small"></ul></details></section>
+<section class="detail"><h2>Typed planar axes</h2><p id="axis-pattern" class="formula">2 × M± + 1 × C±</p><p>Each axis is labeled with its assigned type and sign: M+, M-, C+, C-. One pair repeats. The repeated type exchanges on each R step. The reference choice at R=0 sets the alternating sequence.</p><p id="assignment-readout" class="formula"></p></section>
+<section class="view-controls vacuum-controls" aria-label="Structured-space controls">
+<label for="assignment">Assignment at R = 0</label><select id="assignment"><option value="MMC">R=0: (M, M, C)</option><option value="CCM">R=0: (C, C, M)</option></select>
+<label for="turn">Rotation per R step <output id="turn-output"></output></label><input id="turn" type="range" min="-120" max="120" step="5" value="60">
+<div class="vacuum-presets" role="group" aria-label="Rotation comparisons"><button type="button" data-turn="0">0°</button><button type="button" data-turn="30">30°</button><button type="button" data-turn="60">60°</button><button type="button" data-turn="120">120°</button></div>
+<label for="initial-angle">Frame orientation at R = 0 <output id="initial-angle-output"></output></label><input id="initial-angle" type="range" min="-180" max="180" step="5" value="0">
+<label for="level">Discrete R level <output id="level-output"></output></label><input id="level" type="range" min="-3" max="3" step="1" value="0">
+<div class="vacuum-step"><button id="previous-level" type="button">← R − 1</button><button id="next-level" type="button">R + 1 →</button></div>
+<label for="extent">Levels each side of zero <output id="extent-output"></output></label><input id="extent" type="range" min="1" max="5" step="1" value="3">
+<label for="spacing">R spacing <output id="spacing-output"></output></label><input id="spacing" type="range" min="0.6" max="2" step="0.1" value="1.1">
+<label class="check"><input id="stack" type="checkbox" checked> Show all R levels</label>
+<label class="check"><input id="grid" type="checkbox" checked> Triangular lattice patches</label>
+<label class="check"><input id="links" type="checkbox" checked> Typed-frame correspondence guides</label>
+<button id="reset-view" type="button">Reset camera</button><button id="top-view" type="button">Look along R</button>
+</section>
+<section class="detail"><h2>Realization continuation</h2><p class="formula">θ[n + 1] = θ[n] + Δθ · default 60°<br>M[n] ↔ C[n + 1]</p><p>R is the discrete normal realization axis. The planes are parallel; their typed axes rotate together around R. Each step exchanges M and C on all three axes. The exceptional axis rotates with the frame and changes type.</p><p class="small">Click any R label or node to toggle that plane between full rendering and faint traces. R = −1, 0, +1 start fully shown; the outer planes start as traces. Selection and plane visibility are independent. Colors retain axis identity across levels. Dashed links join corresponding frame tips, not particle trajectories. Rotation step and spacing remain editable construction parameters.</p></section>
+</aside></main>
+<footer><span>Structured realization space · lattice-node carrier cells · no energy values</span><span class="footer-note"><a href="./vendor/THREE-LICENSE.txt">Three.js · MIT</a></span></footer>
+<noscript>This view requires JavaScript and WebGL.</noscript>
+<script src="./vendor/three.min.js"></script><script src="./vendor/OrbitControls.js"></script><script type="module" src="./vacuum-app.js?v=lattice-cells"></script>
+</body></html>
