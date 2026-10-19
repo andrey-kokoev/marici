@@ -103,6 +103,39 @@ temp/
 # Generated PDF extraction and search-index output; never commit.
 /references/extractions/
 
+# Local workflow state; retain source contracts, not execution instances.
+/tasks/
+/validated-requests/
+
+# Generated conjecture-net collection; regenerate with collect.py --refresh.
+/research/conjecture_net/collection/
+/research/conjecture_net/inventory.json
+
+# Local research iteration snapshots and SCC compiler freezes.
+/research/voevodsky/hodge-history/
+/research/kitaev/history/
+/research/**/scc-freezes/
+
+# Downloaded literature and extracted text/page images; keep sources.json,
+# download instructions and authored research inputs instead.
+/research/**/inputs/**/*.pdf
+/research/voevodsky/inputs/hodge-*/*.png
+/research/voevodsky/inputs/hodge-*/*.txt
+/research/strominger/references/chamon-gauge-map-source/supplementary.nb
+
+# Generated reader-field replay receipt (published from local verification).
+/website/public/research/tessellated-reader-fields/verification.json
+
+# Additional generated publication copies.
+/website/public/experiments/minimal-data-packet/
+/website/public/experiments/conjecture-nets.html
+/website/public/experiments/conjecture-nets.json
+
+# Heavy numerical evidence archives are local build/replay inputs, not Git source.
+# Keep their checkers, compact manifests, contracts and explanatory notes tracked.
+/research/scattering/high-energy/*_bundle.zip
+/research/scattering/high-energy/*_bundle(*).zip
+
 # Root-local research publication scratch.
 /.tmp/
 
