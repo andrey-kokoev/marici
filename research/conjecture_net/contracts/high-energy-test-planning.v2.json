@@ -1,0 +1,392 @@
+{
+  "schema": "marici.conjecture-test-planning.v1",
+  "contracts": {
+    "high-energy": "research/scattering/high-energy/contracts/high-energy-scattering-conjectures.v2.json"
+  },
+  "source_sha256": {
+    "research/scattering/high-energy/contracts/high-energy-scattering-conjectures.v2.json": "49cb47e1206d9801d6b29aff08d0668b976730a1307686555880830ba63f1880"
+  },
+  "semantics": {
+    "accepted": "Scoped acceptance met in the selected review/test; not universal truth.",
+    "rejected": "Scoped candidate falsified in the selected review/test.",
+    "inconclusive": "Neither acceptance nor scoped rejection established.",
+    "unknown_is_not_zero": true,
+    "independence_assumed": false,
+    "effort_unit": "One focused assistant read/edit/test/review cycle; relative planning unit, not elapsed time or compute usage.",
+    "forecast_uncertainty": "Qualitative limitation statement attached to each elicited distribution; not a confidence interval.",
+    "ranking_policy": "No numerical prioritization until protocol, forecast and costs are supplied; information gain additionally requires an observation model."
+  },
+  "conjectures": [
+    {
+      "id": "high-energy:local-full-spinor-switch",
+      "test": {
+        "acceptance": "At both fixed endpoint poses, each supplied full-spinor switch is an involution preserving the complete record norm, and its defect energy is positive while selected-line leakage is retained. Quantified scope: For each of the three additional faces at each endpoint, Q_f*=Q_f=Q_f\u00b2, J_f*=J_f, J_f\u00b2=I, and (J_f-I)*(J_f-I)=2[[Q_f,-Q_f],[-Q_f,Q_f]]. On the selected incoming line (p_R U p_L)*(p_R U p_L)=c_f p_L with c_f=7/9,7/9,1/9, respectively.",
+        "falsifier": "Failure of an exact identity at a specified face, or deletion/renormalization of the complementary component.",
+        "next_action": "Resolved in the supplied switch model; replay check_local_switches.py --check when sources change. Ordered composition and retained encoder continuation remain separate tests.",
+        "scope": "A supplied switch law, not derivation of that law from the native source.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "high-energy:ordered-switch-composition",
+      "test": {
+        "acceptance": "The independently assembled ordered-path and block-graph third-order switching operators agree on all C20 inputs, while distinct switch orders need not agree with one another. Quantified scope: Let V have off-diagonal block Q_f between neighboring masks in {0,1}\u00b3 and zero other blocks. Then (V\u00b3)_(111,000)=sum_(sigma in S3) Q_sigma(3) Q_sigma(2) Q_sigma(1). On the source four-coordinate common block B this sum satisfies B\u00b2=(4/9)I4 and tr(B)=0; its complement is zero as stated by the source.",
+        "falsifier": "Mismatch between the separately reconstructed products and graph block, failed B identity, or equality obtained only by discarding order-dependent terms.",
+        "next_action": "Resolved at third order for the declared graph adjacency. Replay check_ordered_composition.py --check when source gates change; do not extrapolate to higher-order propagation or identify distinct switch orders.",
+        "scope": "The independently assembled ordered-path and block-graph third-order switching operators agree on all C20 inputs, while distinct switch orders need not agree with one another.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "high-energy:retained-switch-continuation",
+      "test": {
+        "acceptance": "The source memory encoder transports the final retained endpoint packet and its quadratic energy into the outgoing record presentation without losing information required by that declared energy continuation. Quantified scope: For D,W,M,N,U_exit defined in the source, U_exit*U_exit=I28, W* M W=D*D, and for every z in C28 and every t>=0, U_exit exp(-it H_pre)z = exp(-it H_post)(U_exit z), with H_pre=H_111 direct-sum M and H_post explicitly defined as U_exit H_pre U_exit*. Both complementary and memory coordinates are retained. The independent equality H_post=H_F is NOT assumed or asserted.",
+        "falsifier": "Failure of encoder unitarity or energy identity, or loss of a retained coordinate in the transported continuation.",
+        "next_action": "Resolved for the explicitly transported continuation. Replay the exact encoder checker if sources change; retain H9's native-Hamiltonian mismatch and do not infer outgoing dynamical identification.",
+        "scope": "The transported continuation is a precise limited construction. The direct identification with actual outgoing native dynamics is refuted by H9; any enlarged dynamical bridge is a separate obligation.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "high-energy:fixed-contact-self-adjointness",
+      "test": {
+        "acceptance": "The exact open-hinge quadratic form in sections 5-6 of the source defines a closed lower-bounded form and hence a self-adjoint conservative Hamiltonian on its stated full retained space. Quantified scope: Use the Hilbert direct sum of L2(R;C20), L2([-s*,s*];C20), both 168-dimensional endpoint records and two L2(R+;C28) output fields; form domain is the corresponding H1 fields plus unrestricted finite records, with finite trace penalties rather than imposed trace equalities. With the specified positive coefficients and all contact diagonals retained, the quadratic form is densely defined, closed and nonnegative.",
+        "falsifier": "A specified term is not form-bounded on that domain, Hermiticity/positivity fails, or a form-Cauchy sequence has no domain limit.",
+        "next_action": "Resolved by the explicit analytic form proof; replay the source-binding audit when inputs change. Do not transfer this result to square-root radial kinetics, completeness or continuum convergence without a separate argument.",
+        "scope": "The exact open-hinge quadratic form in sections 5-6 of the source defines a closed lower-bounded form and hence a self-adjoint conservative Hamiltonian on its stated full retained space.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "high-energy:prepared-packet-continuity",
+      "test": {
+        "acceptance": "For the fixed strain discretization and specified four-column coherent packet, entry, exit and signed internal currents satisfy the retained continuity identity, without treating interference terms as exclusive histories. Quantified scope: For exact solutions of the specified downstream finite equations at every retained strain slice and all times for the finite spectral packet, dP_j/dt=J_entry,j-J_exit,j-(J_lambda,j+1/2-J_lambda,j-1/2), with fields, metric weights and currents as in time_resolved_strain_note.md and strain_diagnostics_note.md. Summation retains the exterior entry/exit ledger. The four prepared columns are not asserted to span the full scattering matrix.",
+        "falsifier": "An algebraic residual in the stated discrete equations or a dropped cross term/contact contribution; floating residuals require an independently declared numerical bound.",
+        "next_action": "Resolved as an identity of the exact retained downstream equations; rounded fields retain the explicit residual ledger. H6 may now compare the fixed-source diagnostics. Entrance approximation errors and continuum limits remain H7/H8 obligations.",
+        "scope": "For the fixed strain discretization and specified four-column coherent packet, entry, exit and signed internal currents satisfy the retained continuity identity, without treating interference terms as exclusive histories.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "high-energy:fixed-response-quadrature-one-percent",
+      "test": {
+        "acceptance": "At fixed 128-response space and spatial grid, replacing the source's 17-node packet by a 33-node packet with the same moment-matching convention changes each of the three named diagnostics by at most one percent relative to the nonzero 17-node value. Quantified scope: For X in {R_peak,R_packet,P_product}, |X_33-X_17|<=0.01|X_17|. R_peak uses the source search interval -100<t/t0<100; both quadratures use [3.09,3.51] and the same intended packet moments, ensemble, solver conventions and grid. Report moment weights and stationary residuals for each run.",
+        "falsifier": "Any of the three inequalities fails, or the supposed matched comparison changes the model/preparation. An unresolved solver-error margin is inconclusive.",
+        "next_action": "The six-cycle attempt ended inconclusively. Prepared stored-kernel comparisons pass, but solver/kernel/reference errors remain unenclosed; source-preconditioner powers 1 through 8 fail numerical contraction tests. Specify and cost a successor using a materially different finite-response inverse/sensitivity method. No automatic budget renewal, repeated screens or inference of singularity/refutation from these failures.",
+        "scope": "New explicit one-percent candidate criterion, selected for this test, not a historical source assertion or an error-to-continuum bound.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "unknown",
+        "event": "Outcome of a successor scoped attempt, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": "Declared sources available; required positive prerequisites reviewed for blocked tasks.",
+        "uncertainty": "Subjective forecast; spectral surprises and analytic gaps can change it. Not independent across tests.",
+        "basis": null,
+        "reason": "The historical 0.05/0.02/0.93 forecast and inconclusive outcome are retained in POLYNOMIAL-PRECONDITIONER-SCREEN.md. No successor forecast has been elicited."
+      },
+      "test_cost": {
+        "status": "unknown",
+        "scope": "Successor attempt, not the exhausted six-cycle protocol.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "Six cycles spent on localization, readouts, preparation, propagation, preconditioner and polynomial screening. A successor requires explicit cost and budget; none is silently renewed."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "high-energy:uniform-corrected-residual-stability",
+      "test": {
+        "acceptance": "For the fixed spatial-grid outgoing boundary problem, a residual-based certificate controls the full response error uniformly across the closed packet energy interval. Quantified scope: Let K denote incoming radial energy in [3.09,3.51], and A(K) the full untruncated finite-grid outgoing operator evaluated at E_op=e0+K in the source's unshifted internal convention (displayed total energy adds CPOSE). Use the full raw entrance/downstream matching operator A(K) defined in RADIAL-RESOLVENT-ENVELOPE.md, with Euclidean normalized entrance and downstream coefficient norms including unit weights on algebraic traces. Let P be the fixed retained response embedding in those norms. Downstream physical occupation is bounded by this norm through the checked mass-matrix reconstruction; no infinite-field L2 bound is inferred. There exists a certified finite C such that A(K) is invertible and ||A(K)^(-1)||<=C throughout the K interval. For every forcing b in the four-preparation source span and every approximate y, ||A(K)^(-1)b-Py||<=C||b-A(K)Py||. The full corrected residual includes native, interaction, radial and boundary contributions in the complementary space.",
+        "falsifier": "A singular A(K) in the interval or an unbounded inverse sequence; a proposed numerical certificate failing to cover an exceptional energy does not establish the claim.",
+        "next_action": "Continue explicitly budgeted VB1 from H7-VERTEX-FRAME-BRIDGE.md: exact radical vertex/centering and native assembly are enclosed. One of two cycles remains for ground/retained-frame coverage audit or bounded pilot; full-band coupled inverse stays a separate gate. Limits 300 seconds and 128 bits with one documented increase to 256. Full H7 acceptance is not native inertia alone; stop inconclusively on missing gates/exhaustion. No repeated vertex/assembly proof or renewal.",
+        "scope": "If the source interval includes a channel threshold, explicitly test the full boundary operator there rather than divide by a vanished channel velocity.",
+        "protocol_status": "specified"
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Full H7 outcome during VB1, not acceptance of exact native geometry subgate.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.0,
+          "rejected": 0.01,
+          "inconclusive": 0.99
+        },
+        "conditioning": "Exact native geometry/assembly certified; ground/frame and coupled-inverse gates unresolved.",
+        "uncertainty": "Subjective and uncalibrated; partial certificates do not count as H7 acceptance.",
+        "basis": "2026-10-14 explicit VB1 forecast: two-cycle vertex/frame protocol does not construct the coupled inverse. Subjective 0.00/0.01/0.99 for full H7, not a truth probability.",
+        "reason": "Prior forecasts stay historical; exact native assembly cannot alone promote H7."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "VB1 remaining allowance, excluding exhausted predecessors.",
+        "assistant_effort_units": 1,
+        "basis": "2026-10-14 explicit two-cycle VB1 allowance; one spent on exact radical vertices and native propagation, one remains for ground/frame coverage audit or pilot.",
+        "reason": "Partial-premise protocol, not a full-H7 completion promise; no automatic renewal."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "high-energy:packet-refinement-limit",
+      "test": {
+        "acceptance": "The pinned spatial/angular/mode approximations admit a common retained continuum realization whose packet fields converge uniformly in state norm on the fixed observation-time interval, and whose three declared diagnostics have unique refinement-independent limits. Quantified scope: There exist a specified limiting closed form q on a common retained Hilbert space, isometric comparison maps E_n from a cofinal refinement family of the pinned discretization and compatible prepared packets psi_n, such that sup_(|t/t0|<=100)||E_n psi_n(t)-psi(t)|| tends to zero. The limits of R_peak,R_packet,P_product exist and are independent of cofinal refinement order. Prove needed current-form bounds, nonzero conditioning denominators and peak-selection stability separately; state convergence alone is not their proof.",
+        "falsifier": "Two admissible cofinal refinements give different fields/diagnostics, or an unavoidable domain, norm, denominator or peak-selection defect prevents the asserted common realization.",
+        "next_action": "Construct the common form/domain and actual comparison embeddings from the pinned grid rules before estimating convergence. Preserve all refinement axes and records. Stop at a complete scoped witness, counterexample, or 8 effort units; missing error/domain certification is inconclusive.",
+        "scope": "Existence claim with explicit witness requirements, not selection of a new continuum law to fit finite samples.",
+        "protocol_status": "specified"
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.25,
+          "rejected": 0.15,
+          "inconclusive": 0.6
+        },
+        "conditioning": "Declared sources available; required positive prerequisites reviewed for blocked tasks.",
+        "uncertainty": "Subjective forecast; spectral surprises and analytic gaps can change it. Not independent across tests.",
+        "basis": "Assistant elicitation at scattering workbench integration; versioned initial assessment, not calibrated data. Common domain, interpolation and ratio/peak convergence are substantial analytic obligations.",
+        "reason": "No elicited or calibrated test-outcome forecast."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": 8,
+        "basis": "Assistant elicitation at scattering workbench integration; versioned initial assessment, not calibrated data. Common domain, interpolation and ratio/peak convergence are substantial analytic obligations.",
+        "reason": "No assistant-effort estimate for a specified test protocol."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "high-energy:actual-exit-dynamics-intertwining",
+      "test": {
+        "acceptance": "The actual source exit encoder intertwines the independently supplied native endpoint and outgoing Hamiltonians at the same source energy reference. Quantified scope: For all z in C28, H_F U_exit z=U_exit H_pre z, with H_pre=HL and H_F=HR from the pinned exit-gate matrices, and invertible U_exit; no energy shift or redefinition of H_F is permitted.",
+        "falsifier": "Any nonzero matrix defect, or a similarity invariant such as trace that differs between HL and HR.",
+        "next_action": "No new forecast: retain the exact trace obstruction; distinguish native exit energy from total scattering energy including motion.",
+        "scope": "Source-bound exact counterexample, not a failure of total energy conservation or all possible enlarged energy-transport constructions.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "high-energy:participant-exchange-coherence",
+      "test": {
+        "acceptance": "Passive exchange of the complete tagged participant packets induces a domain-preserving unitary equivalence of the independently reconstructed full retained encounter, including ordered switches, contacts and memory. Quantified scope: Use the exact tau and permutations X20,X8,X28,X defined in EXIT-AND-EXCHANGE-CONJECTURES.md. Independently rebuild q_tau,H_tau from tau-transformed admitted inputs. X Dom(q)=Dom(q_tau), q_tau(X psi,X phi)=q(psi,phi) for all form-domain pairs, H_tau X=X H on Dom(H), and X_tau X=I. Reconstructed switch, cycle, memory and boundary-coupling maps satisfy their typed commuting equations. Participant chirality and spin-lift conventions travel with their owner; output probabilities alone are not the criterion.",
+        "falsifier": "The exchanged input is outside the source constructor's admission domain, a source-bound coefficient/domain defect is nonzero, or the round-trip comparison fails. Defining H_tau by conjugation does not establish the claim.",
+        "next_action": "Resolved negatively under the unchanged constructor-admission clause. Retain the exact chirality-transport obstruction. Any tag-aware successor must explicitly admit and independently validate the richer source data and sewing conventions.",
+        "scope": "Covariance of labelled descriptions, not active parity, equality of incoming species, equality of the two exit probabilities, or equivalence of distinct switch orders.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    }
+  ],
+  "elicited_at": "2026-10-14T17:41:12.920165+00:00",
+  "elicitor": "assistant; subjective bounded-test forecasts, operator-reviewable",
+  "estimates_extended_at": "2026-10-14T17:59:43.869896+00:00"
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "marici.conjecture-net.pilot-control-screen.v1",
+  "id": "conditional-finite-control-source-enrichment-screen.v1",
+  "source_instance": "native-bool-square-pilot",
+  "target_capability": "Real Lie closure of continuously adjustable phase-framed skew-Hermitian generators on the declared C4 carrier.",
+  "control_assumptions": ["Independent signed piecewise-constant coefficients for every listed Hamiltonian", "A common phase-framed representative before channel quotient", "Ideal finite-dimensional closed-system dynamics", "The common nonzero pi normalization; no physical energy/time units"],
+  "families": [
+    {"id": "native-local", "hamiltonians": ["Q_L", "Q_R"], "extra_premises": [], "boundary": "Existing mathematical local dynamics only; physical actuation is not inferred."},
+    {"id": "native-plus-exchange", "hamiltonians": ["Q_L", "Q_R", "Q_swap=(I-S)/2"], "extra_premises": ["Treat the existing factor-exchange symmetry as a continuously actuated operation"], "boundary": "Covariance under S does not supply an actuator implementing Q_swap."},
+    {"id": "all-label-transpositions", "hamiltonians": ["Q_ab=(I-P_ab)/2 for all six label transpositions"], "extra_premises": ["Supply every transposition as an independently controlled source operation"], "boundary": "All-pairs source/control availability is additional; the uniform vector is still fixed by this spectral rule."},
+    {"id": "native-plus-local-phase", "hamiltonians": ["Q_L", "Q_R", "Q_ZL=(I-Z tensor I)/2", "Q_ZR=(I-I tensor Z)/2"], "extra_premises": ["Supply both signed-coordinate phase markings as independent controllable Hamiltonians"], "boundary": "Mathematical Z observers do not authorize Z actuators; these controls remain local."},
+    {"id": "local-phase-plus-exchange", "hamiltonians": ["Q_L", "Q_R", "Q_ZL", "Q_ZR", "Q_swap"], "extra_premises": ["Supply both phase-marked local controls and a factor-exchange interaction", "Revalidate source/control provenance and relative phase standards"], "boundary": "This is a conditional coupled-source extension. It changes the original all-controls-local assumption and is not physically selected by the existing Bool source."}
+  ],
+  "audit_requirements": ["Compute exact real Lie spans, not associative matrix-algebra ranks", "Verify final bracket closure and skew-Hermitian types", "Test uniform-vector invariants for permutation-only spectral families", "Expose every added control premise", "Do not infer coherent control from a phase-quotiented channel or measurement operator"],
+  "source_reviews": [
+    "research/nima/commutant-separation-does-not-imply-sector-controllability.md",
+    "research/nima/coherent-control-does-not-descend-from-unframed-quantum-channels.md",
+    "research/nima/exchange-contact-gate-comparison.md"
+  ],
+  "boundary": {
+    "new_source_controls_derived_from_native_flips": false,
+    "physical_controls_authorized": false,
+    "phase_framing_physically_supplied": false,
+    "new_kernel_control_theorem": false,
+    "programme_outcomes_promoted": false
+  }
+}

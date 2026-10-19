@@ -1,0 +1,17 @@
+{
+  "schema": "marici.rotation-fourier-history-dictionary.v1",
+  "scope": "Declared retained-history extension of the framed quadrilateral seed, not an unchanged native carrier.",
+  "state": "Immutable shared seed and full seed carrier; current native carrier obtained by recorded rotations; full channel history from the decoded packet; supplied current mark and mesh.",
+  "generators": {
+    "R": {"origin": "native_on_shared_seed", "carrier": "C12", "channel": "swap the two diagonal coordinates", "mark": "j -> 1-j", "test_transpose": "swap test coordinates"},
+    "F": {"origin": "added_analytic", "carrier": "no mutation; record analytic operation", "channel": "full additive Fourier in both coordinates", "mark": "unchanged", "test_transpose": "full Fourier, bilinear convention"},
+    "H": {"origin": "licensed_channel_not_native_carrier", "carrier": "no mutation; record channel operation", "channel": "full isotropic heat t>=0", "mark": "unchanged", "test_transpose": "same full heat"},
+    "T": {"origin": "licensed_channel_not_native_carrier", "carrier": "no mutation; record channel operation", "channel": "translate by declared b along current marked coordinate", "mark": "unchanged", "test_transpose": "translate by -b along coordinate stored at execution time"}
+  },
+  "laws": ["R F = F R", "R H = H R for isotropic heat", "R transports the marked translation axis", "R^4=I on carrier; R^2=I on quadrilateral diagonal action", "F^4=I on analytic state"],
+  "query_execution": "Freeze coordinate-indexed instruction parameters when recording each operation, then apply test transposes in reverse chronological order to evaluate on the retained seed packet.",
+  "unmatched": ["Native carrier implementations of F,H,T on the full channel history", "general polygon source", "physical controls or preparation"],
+  "forbidden_identification": "R is not F; both having order dividing four is insufficient.",
+  "full_native_source_binding": false,
+  "common_source_node_closed": false
+}

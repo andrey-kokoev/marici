@@ -1,0 +1,1881 @@
+{
+  "schema": "marici.conjecture-test-planning.v1",
+  "contracts": {
+    "parent": "research/conjecture_net/contracts/common-foundations-conjecture-net.v1.json",
+    "math": "research/conjecture_net/contracts/mathematical-realization-conjecture-net.v1.json",
+    "compatibility": "research/conjecture_net/contracts/same-source-compatibility-conjecture-net.v1.json",
+    "rh": "research/conjecture_net/contracts/rh-realization-work-net.v1.json"
+  },
+  "source_sha256": {
+    "research/conjecture_net/contracts/common-foundations-conjecture-net.v1.json": "400195476c9fd48ed2d89171eee577b2d32c7123b358c55e0a8844de72ad5493",
+    "research/conjecture_net/contracts/mathematical-realization-conjecture-net.v1.json": "ccc6de7541a7b9037269cefbb056075adf91357c10f9636ad6cf9098e4e82a69",
+    "research/conjecture_net/contracts/same-source-compatibility-conjecture-net.v1.json": "56b45a474874e6d54b2ea2791ec9e85211720e34ae7c710bed9cf9a1ae19bf25",
+    "research/conjecture_net/contracts/rh-realization-work-net.v1.json": "e82fb1acd1d3f242861684938edfa6433d0673a1f7b1bc0aa452add311072443"
+  },
+  "semantics": {
+    "accepted": "Scoped acceptance met in the selected review/test; not universal truth.",
+    "rejected": "Scoped candidate falsified in the selected review/test.",
+    "inconclusive": "Neither acceptance nor scoped rejection established.",
+    "unknown_is_not_zero": true,
+    "independence_assumed": false,
+    "forecast_uncertainty": "Qualitative limitation statement attached to each elicited distribution; not a confidence interval.",
+    "ranking_policy": "No numerical prioritization until protocol, forecast and costs are supplied; information gain additionally requires an observation model.",
+    "effort_unit": "One focused assistant read/edit/test/review cycle; relative planning unit, not elapsed time or compute usage."
+  },
+  "conjectures": [
+    {
+      "id": "parent:formulation-and-quantifiers",
+      "test": {
+        "acceptance": "Freeze definitions, universes, allowed source data, resource semantics and what finite/infinite representation means; distinguish universal target from pilot scopes.",
+        "falsifier": "A proposed definition counts arbitrary answer insertion or endpoint encoding as a full realization.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "The root can be specified with noncircular validity, representation, identity and physical-process semantics.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.65,
+          "rejected": 0.1,
+          "inconclusive": 0.25
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Definitions can be frozen, but infinite coverage and resources require explicit choices."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Definitions can be frozen, but infinite coverage and resources require explicit choices."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 5
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "parent:common-process-structure",
+      "test": {
+        "acceptance": "Construct the common interface and native process laws, preserving source provenance and distinguishing declared constructor conventions from derived laws.",
+        "falsifier": "Shared labels conceal incompatible operation domains, discarded records or independently selected source laws.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "A specified source supplies composable processes, contexts, records and resource-sensitive continuation interfaces usable by both branches.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.35,
+          "rejected": 0.25,
+          "inconclusive": 0.4
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Concrete constructors exist; native versus imported laws remain the main gap."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Concrete constructors exist; native versus imported laws remain the main gap."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 10
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "parent:identity-continuation-coherence",
+      "test": {
+        "acceptance": "Supply identity/equivalence transport, substitution/composition and higher compatibility witnesses; test pairs with equal present readout and different next behavior.",
+        "falsifier": "An allegedly valid identification admits a continuation on one side with no transported witness on the other under the same context and resource policy.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Admitted identifications support coherent transport of available continuations throughout construction.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.35,
+          "rejected": 0.3,
+          "inconclusive": 0.35
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Equal-readout controls exist; dependent and higher transport are substantial missing witnesses."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Equal-readout controls exist; dependent and higher transport are substantial missing witnesses."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 10
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "parent:mathematical-realization",
+      "test": {
+        "acceptance": "Construct domain realizations and their overlaps, keeping laws supplied by an adapter distinct from laws generated by the source. Include finite calculations, proof/dependent constructions and analytic completion tests.",
+        "falsifier": "An intermediate mathematical construction or licensed substitution cannot be realized by the claimed process interface.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "The same process account faithfully realizes mathematical constructions at all stages within each explicitly tested domain, with a separate universal-extension obligation.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.3,
+          "rejected": 0.2,
+          "inconclusive": 0.5
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Bounded examples are available; dependent and completion overlaps are not assembled."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Bounded examples are available; dependent and completion overlaps are not assembled."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 12
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "parent:uf-and-foundational-recovery",
+      "test": {
+        "acceptance": "Declare the chosen UF fragment/universes and construct its type, identity, equivalence and transport laws; if claiming subsumption, prove the required interpretation/conservativity rather than import it as a slogan.",
+        "falsifier": "A dependent transport or higher coherence law fails under the proposed interpretation.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "A precise relationship to UF's identities, equivalences and dependent transport can be realized within the common account.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.15,
+          "rejected": 0.25,
+          "inconclusive": 0.6
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "No completed interpretation; dependent laws and conservativity are expensive gates."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "No completed interpretation; dependent laws and conservativity are expensive gates."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 16
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "parent:physical-realization",
+      "test": {
+        "acceptance": "Retain existing physics obligations and supply their common-process binding, physical source justification and independent tests. Do not promote structural mathematics into empirical confirmation.",
+        "falsifier": "A claimed physical operation lacks its required preparation, resource, environment or instrument, or fails a declared independent prediction.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "The existing relational-carrier physics programme is realized as the physical branch of the common account.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.15,
+          "rejected": 0.35,
+          "inconclusive": 0.5
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Source binding and independent physical justification are missing, beyond analytic constructions."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Source binding and independent physical justification are missing, beyond analytic constructions."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 16
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "parent:same-source-cross-realization",
+      "test": {
+        "acceptance": "Exhibit state/action/resource and observer diagrams on the same witness, including intermediate continuations. Record context-dependent comparisons instead of equating equal scalar outputs.",
+        "falsifier": "One common-source square fails while separate endpoint predictions remain correct.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Mathematical and physical realizations use one common source account and agree on shared identities and continuations.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.25,
+          "rejected": 0.3,
+          "inconclusive": 0.45
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Shared-source requirements are stronger than separate successful realizations."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Shared-source requirements are stronger than separate successful realizations."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 12
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "parent:universal-extension-and-assembly",
+      "test": {
+        "acceptance": "State and prove the generation/completion/coverage principles and logical assembly rule. A finite list of successful examples is not this theorem.",
+        "falsifier": "The proposed extension loses an operation, identity or continuation at a limit or across overlapping domains.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Scoped realizations extend coherently over the intended mathematical scope and assemble into the root under a justified common-witness theorem.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.1,
+          "rejected": 0.3,
+          "inconclusive": 0.6
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Finite successes do not supply universal generation or coverage principles."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Finite successes do not supply universal generation or coverage principles."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 20
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "parent:common-foundations",
+      "test": {
+        "acceptance": "Independent review of all scopes, source bindings and the assembly theorem; explicit outcome admission only.",
+        "falsifier": "An obstruction covers every realization permitted by the fixed root scope, rather than only one candidate.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "The common foundations root holds at its explicitly fixed quantifier scope.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.15,
+          "rejected": 0.25,
+          "inconclusive": 0.6
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Even conditional on inputs, source bindings and assembly scopes can fail independent review."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Even conditional on inputs, source bindings and assembly scopes can fail independent review."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 10
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "math:stagewise-mathematical-interface",
+      "test": {
+        "acceptance": "Freeze validity, source rules, composition and dependent transport; distinguish supplied domain laws from laws generated by the process.",
+        "falsifier": "An endpoint-correct adapter fails an intermediate operation or licensed continuation.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Specify typed stagewise realization of mathematical objects, operations, identities, proofs and continuations.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.65,
+          "rejected": 0.1,
+          "inconclusive": 0.25
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Existing examples give concrete typing constraints; dependent transport remains unresolved."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Existing examples give concrete typing constraints; dependent transport remains unresolved."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 5
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "math:finite-domain-wg-example",
+      "test": {
+        "acceptance": "Reuse actual supplied operations and histories; record which laws are imported and which constructed.",
+        "falsifier": "The wrapper merely assumes the law claimed to be generated.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Audit the existing domain-WG pilot against that interface.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.65,
+          "rejected": 0.25,
+          "inconclusive": 0.1
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Pilot exists; its imported laws can be audited directly rather than regenerated."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Pilot exists; its imported laws can be audited directly rather than regenerated."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 3
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "math:rh-mathematical-realization-example",
+      "test": {
+        "acceptance": "Map the actual RH net into the common interface without concealing rejected unchanged-Evans candidates or treating RH as a supplied true conclusion.",
+        "falsifier": "A proposed arithmetic-to-analytic identification loses an admissible continuation or requires fitting the residual away.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Use the existing RH arithmetic/analytic construction as a mathematical-realization example, preserving intermediate source types, domain/completion data and identity-continuation witnesses.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.65,
+          "rejected": 0.2,
+          "inconclusive": 0.15
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Operation bridges exist, but overlap and completion conventions require review."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Operation bridges exist, but overlap and completion conventions require review."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 4
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "math:mathematical-realization-example-assembly",
+      "test": {
+        "acceptance": "Reviewed compatible witnesses; successful examples remain scoped and do not prove universal coverage.",
+        "falsifier": "Each example uses incompatible meanings of identity, operation or validity.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "The bounded examples share the same realization semantics.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.65,
+          "rejected": 0.2,
+          "inconclusive": 0.15
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Conditional on reviewed examples, mismatched identity semantics are the main risk."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Conditional on reviewed examples, mismatched identity semantics are the main risk."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 4
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "compatibility:common-witness-comparison-interface",
+      "test": {
+        "acceptance": "Fix domains, contexts and both routes before comparing results; state which physical ingredients are premises versus justified realizations.",
+        "falsifier": "The two routes require different hidden source choices or resource policies.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Specify one source and typed maps to mathematical and physical-process realizations with compatible identities, composition, resources and available continuations.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.65,
+          "rejected": 0.15,
+          "inconclusive": 0.2
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Domains and comparison routes can be fixed; physical premises must be separated."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Domains and comparison routes can be fixed; physical premises must be separated."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 5
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "compatibility:rh-same-source-compatibility-example",
+      "test": {
+        "acceptance": "Construct same-witness operation/domain/identity/continuation comparisons. Reuse the mathematical example without inferring physical realization from analytic positivity or a formal analogy.",
+        "falsifier": "A mathematical realization succeeds but the independently specified source/process comparison fails, including an uncancelled typed residual.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Use the SAME RH example as in the mathematical-realization net to test compatibility of its arithmetic/analytic realizations with the proposed common physical-process account.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.3,
+          "rejected": 0.35,
+          "inconclusive": 0.35
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "No shared-source continuation/form assembly yet; known kernels stress the comparison."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "No shared-source continuation/form assembly yet; known kernels stress the comparison."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 10
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "compatibility:physical-pilot-comparison-example",
+      "test": {
+        "acceptance": "Preserve existing accepted finite results and failed source-operation bridges at their own scopes; do not merge incompatible carriers by dimension or equal energy.",
+        "falsifier": "An abstract embedding has no compatible source operation or continuation on the physical side.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Attach scoped physics-programme comparisons to the same source interface.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.4,
+          "rejected": 0.35,
+          "inconclusive": 0.25
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Finite results exist, but failed bridges and carrier incompatibility must survive the audit."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Finite results exist, but failed bridges and carrier incompatibility must survive the audit."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 8
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "compatibility:same-source-compatibility-example-assembly",
+      "test": {
+        "acceptance": "Review overlap witnesses and higher compatibility; examples do not establish the universal parent theorem.",
+        "falsifier": "Pairwise comparisons cannot compose coherently on their declared common source.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "The bounded comparison examples use one coherent same-source notion.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.5,
+          "rejected": 0.25,
+          "inconclusive": 0.25
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Conditional overlap review is feasible, but higher compatibility is unfinished."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Conditional overlap review is feasible, but higher compatibility is unfinished."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 6
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:carrier-fourier-attachment",
+      "test": {
+        "acceptance": "Reuse R_a C12=F R_a, its skew-generator square and x=E I_a^-1 R_a x+Nx.",
+        "falsifier": "A source column fails a commuting square or reconstruction.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "0<a<1, a!=1/2; chosen comb seed and Fourier convention; rank-four analytic quotient, not an injective twelve-coordinate analytic map.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate.",
+        "assistant_effort_units": null
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:history-continuous-bridge",
+      "test": {
+        "acceptance": "Reuse D J=J A_endpoint and transported full sections, with exact reconstruction.",
+        "falsifier": "Independent stage section choices break extension/generator coherence.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Declared endpoint chart J and complementary basis; existing active generator unchanged; full history hidden component retained.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate.",
+        "assistant_effort_units": null
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:native-tick-is-fourier",
+      "test": {
+        "acceptance": "A nonzero solution of F X=X M.",
+        "falsifier": "Disjoint spectra force X=0; this is the recorded result.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Actual native M with characteristic polynomial (x^2+x+1)(x^2-x-1); fixed attachments.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate.",
+        "assistant_effort_units": null
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:six-step-fourier-transport",
+      "test": {
+        "acceptance": "All six permutation, generator, metric, energy and reconstruction squares; composite projection exactly P.",
+        "falsifier": "P_m C12 N_m is nonzero at an intermediate stage.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Repaired frame, not the original generator-only frame.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate.",
+        "assistant_effort_units": null
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:riemann-specialization",
+      "test": {
+        "acceptance": "Track coefficient sum, delta_0 <-> 1 under Fourier, endpoint determinant s(s-1), and boundary constant 1/2.",
+        "falsifier": "Four independent Riemann ports asserted after specialization, or zero-removed comb treated as self-Fourier.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Analytic image rank one; four-port kernel dimension three, twelve-coordinate kernel dimension eleven. Poisson/Mellin analysis reused from source notes.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate.",
+        "assistant_effort_units": null
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:additive-lattice-fourier",
+      "test": {
+        "acceptance": "F_R j_h=L_h F; shift/modulation Weyl phase, convolution, refinement and radial/Mellin composition.",
+        "falsifier": "Use exponential positions while claiming additive composition, or treat atoms as real-line L2 functions.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Finite packets and stated tempered-distribution/l2 extension; multichannel extension separate from one-dimensional selection.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate.",
+        "assistant_effort_units": null
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:signed-weil-quotient",
+      "test": {
+        "acceptance": "Reuse translation covariance, density argument and radical calculation; distinguish conditional positive completion from unconditional signed covariance.",
+        "falsifier": "Use isotropic cone as radical, covariance as positivity, or scalar evaluation weights as independent multiplicity eigendirections.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Analytic register and half-divisor normalization. Auxiliary positive norm and signed Weil form are different; scalar evaluation retains multiplicity as weights.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate.",
+        "assistant_effort_units": null
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:current-source-weil-pullback",
+      "test": {
+        "acceptance": "Source form annihilates ker R and equals the target form on the fixed domain.",
+        "falsifier": "h=14e_AB-e_AD-e_CA-e_DB-e_BC maps to zero but has norm 2100 and H=980; v=e_AD-e_BC maps to zero under R_0 but has norm=H=20.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "G12=10I+J, declared K12 at alpha=1/2, actual R_a and R_0, full source; second witness lies in visible four-plane.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate.",
+        "assistant_effort_units": null
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:retained-six-coordinate-energy",
+      "test": {
+        "acceptance": "K12=P_active^T K_active P_active, full reconstruction, source-tick intertwining, and exact recovery of energies 980 and 20.",
+        "falsifier": "Either old energy witness is lost, source normalization changes, or a four-row reader is asserted to factor a rank-six Hessian.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Same source D12 and original energy normalization; not a Weil-test map or a four-coordinate energy factorization.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate.",
+        "assistant_effort_units": null
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:direct-fourier-energy-is-weil",
+      "test": {
+        "acceptance": "Equality on the declared test domain, including even Gaussians, under the unchanged source energy convention.",
+        "falsifier": "H_F(f)=10||f_odd||^2 is zero on the certified even Gaussian while its half-divisor Weil value is strictly positive.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "Declared identification of scalar Fourier coordinate with Weil logarithmic test coordinate; not every alternative test map.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate.",
+        "assistant_effort_units": null
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:rh-stagewise-interface",
+      "test": {
+        "acceptance": "All four children are constructed; every required dictionary cell is accounted for, and operation, continuation and analytic witnesses agree on overlaps. Review against the mathematical branch interface without inferring universal realization.",
+        "falsifier": "Children use incompatible source/map/domain conventions, a required cell remains unproved, or inventory/rejection substitutes for a constructed witness.",
+        "next_action": "After all four child gates close, compose cell-indexed witnesses and review overlaps; a filled table alone cannot close this parent.",
+        "scope": "One frozen dictionary and compatible maps/domains across all children; reuse existing generic WG composition.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.75,
+          "rejected": 0.15,
+          "inconclusive": 0.1
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective post-split task-scope elicitation, not calibrated frequency",
+          "rationale": "Conditional on all four constructed children, review overlaps and assemble; no child proof is included in this budget."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective post-split task-scope elicitation, not calibrated frequency",
+          "rationale": "Conditional on all four constructed children, review overlaps and assemble; no child proof is included in this budget."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 2
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:channel-carrier-source-map",
+      "test": {
+        "acceptance": "Specify objects and native operations on one source, maps to both realizations, and commuting composition/continuation squares on generators.",
+        "falsifier": "Map chosen only from equal dimensions or spectra, exponential positions substituted for additive positions, or a native tick silently replaced.",
+        "next_action": "Freeze the source generator dictionary and test one nontrivial composition through both routes before extending the dictionary.",
+        "scope": "Keep the additive lattice coordinate distinct from previous logarithmic prime grades and distinguish native extension from Fourier.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.3,
+          "rejected": 0.4,
+          "inconclusive": 0.3
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "No common generator dictionary is established; native ticks are already incompatible."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "No common generator dictionary is established; native ticks are already incompatible."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 8
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:one-dimensional-source-selection",
+      "test": {
+        "acceptance": "Specify selection map, its symmetry policy and retained kernel; show compatibility with refinement and the theta specialization.",
+        "falsifier": "Write a one-coordinate formula as though it automatically selected a channel of Z^D.",
+        "next_action": "Compare a source-selected channel with a symmetric quotient; state which operations each permits and test the required square.",
+        "scope": "Selection/quotient must account for channel permutations, lost directions, physical mesh and heat-time choices.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.55,
+          "rejected": 0.25,
+          "inconclusive": 0.2
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Selection and symmetric quotient can be compared concretely, with explicit kernel accounting."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Selection and symmetric quotient can be compared concretely, with explicit kernel accounting."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 5
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:successor-form-candidate",
+      "test": {
+        "acceptance": "Freeze (source, Q, R, admissible test preparation, domain, completion) and check ker R subset radical Q before analytic positivity work.",
+        "falsifier": "Either stored kernel witness survives, or the direct even-Gaussian test has zero proposed energy against the certified nonzero Weil value; a fitted quotient norm merely defines the desired answer.",
+        "next_action": "Freeze a new tuple, retaining both prior rejections. Reuse the six-coordinate reader where appropriate; test kernels and the even Gaussian before claiming arithmetic form identification.",
+        "scope": "A changed map, restricted domain or independently justified changed form is a new candidate, not a relabelled old result.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.25,
+          "rejected": 0.55,
+          "inconclusive": 0.2
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Two independent form obstructions constrain repairs; early rejection is more likely than a justified survivor."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Two independent form obstructions constrain repairs; early rejection is more likely than a justified survivor."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 6
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:weil-form-comparison",
+      "test": {
+        "acceptance": "Prove Q(f,g)=b_Weil(Rf,Rg) on a generating domain and justify extension, retaining prime/gamma/endpoint contributions.",
+        "falsifier": "The two forms disagree on a domain vector, or equality exists only by replacing the independently specified source form.",
+        "next_action": "After the kernel gate, compare polarized forms on explicit source-generated tests before extending to the completion.",
+        "scope": "Use one normalization and source-defined forms; include continuity, density and limit transport.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.15,
+          "rejected": 0.45,
+          "inconclusive": 0.4
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Surviving kernels alone do not identify prime/gamma/endpoint terms or completion."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Surviving kernels alone do not identify prime/gamma/endpoint terms or completion."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 12
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:same-source-continuation-comparison",
+      "test": {
+        "acceptance": "State/action/resource diagrams commute, including an equal-readout/different-continuation pair and reconstruction of retained distinctions.",
+        "falsifier": "Routes need different source choices, unavailable operations, or discard a continuation claimed to be preserved.",
+        "next_action": "Use the rank-one Riemann readout with two different retained source states to test the exact task-relative identity claimed.",
+        "scope": "Fixed resources, history retention and source operations; continuous and discrete comparisons separately typed.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.4,
+          "rejected": 0.35,
+          "inconclusive": 0.25
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Conditional source maps help, but retained-state continuation squares are not supplied."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Conditional source maps help, but retained-state continuation squares are not supplied."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 8
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:rh-math-assembly",
+      "test": {
+        "acceptance": "Review typed stage witnesses, overlap maps, retained records and completion arguments against the branch interface.",
+        "falsifier": "Different stages use incompatible types or meanings of identity.",
+        "next_action": "Compose the typed interface witnesses and attach the result to rh-mathematical-realization-example.",
+        "scope": "Existing operations and analytic completions with declared choices; form repair is a separate branch, not a prerequisite for this bounded assembly.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.75,
+          "rejected": 0.15,
+          "inconclusive": 0.1
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Conditional on the typed interface, this is bounded composition rather than form repair."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Conditional on the typed interface, this is bounded composition rather than form repair."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 3
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:rh-cross-realization-assembly",
+      "test": {
+        "acceptance": "All three witnesses refer to the same source/map/domain conventions and their overlap comparisons compose.",
+        "falsifier": "Each branch succeeds on a different source or incompatible completion.",
+        "next_action": "Review same-witness compatibility after the three incoming gates close; attach to rh-same-source-compatibility-example.",
+        "scope": "The explicitly selected RH comparison, not an implication from unrelated successful examples.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.55,
+          "rejected": 0.25,
+          "inconclusive": 0.2
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Conditional on three constructed witnesses, overlap conventions can still disagree."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective task-scope elicitation, not calibrated frequency",
+          "rationale": "Conditional on three constructed witnesses, overlap conventions can still disagree."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 5
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:rh-stage-dictionary",
+      "test": {
+        "acceptance": "Assign stable stage/map/cell IDs; record types, domains, operations, supplied choices, kernels/retained data and evidence pointers. Every required cell has an owner child and explicit open or evidenced state; independent sources are not silently identified.",
+        "falsifier": "A stage or cell lacks its actual source/domain, or an inventory entry is counted as a compatibility proof.",
+        "next_action": "Extract the dictionary from existing RH maps and typed WG sources; list operation, continuation and completion cells without constructing another generic framework.",
+        "scope": "Actual finite coefficient, retained-history, distribution, test-dual and Mellin stages; inventory only, not proof of transport.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Inventory constructed; recorded verdict is not a future-test forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": null,
+        "reason": "Inventory constructed; future revision or rerun needs a separately scoped estimate.",
+        "assistant_effort_units": null
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:rh-operation-composition-squares",
+      "test": {
+        "acceptance": "Every required operation/composition cell has a typed commuting witness or an explicitly scoped replacement excluding the falsified candidate. Reuse old-frame leakage and native-tick mismatch controls; no omitted failed cell is marked proved.",
+        "falsifier": "A required generator or composition disagrees between routes, or a native tick is silently replaced by Fourier.",
+        "next_action": "Replay finite intertwiners against the frozen cells, then test the first uncovered composition.",
+        "scope": "Only generators and compositions enumerated in the dictionary; native extension and Fourier operations remain distinct.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.65,
+          "rejected": 0.2,
+          "inconclusive": 0.15
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective post-split task-scope elicitation, not calibrated frequency",
+          "rationale": "Finite intertwiners exist, but uncovered compositions may fail."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective post-split task-scope elicitation, not calibrated frequency",
+          "rationale": "Finite intertwiners exist, but uncovered compositions may fail."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 3
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:rh-identity-continuation-transport",
+      "test": {
+        "acceptance": "Each required identity/continuation cell specifies equivalence, kernel, reconstruction or retained distinctions and transported future witnesses. Test rank-one specialization and an equal-readout/different-future pair. Apply ideal-attachment or half-phase controls only after a documented source binding.",
+        "falsifier": "Equal current readouts are identified despite a permitted future distinction, or source-action attachments become unrelated archived coordinates.",
+        "next_action": "Declare task-relative equivalences and compare two retained states with the same Riemann readout; audit applicability of Strominger controls without imposing an unbound carrier.",
+        "scope": "Fixed observation contexts, retained source data and permitted future operations; no universal equivalence from scalar equality.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.5,
+          "rejected": 0.3,
+          "inconclusive": 0.2
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective post-split task-scope elicitation, not calibrated frequency",
+          "rationale": "Retained reconstructions exist; task-relative continuation and attachment binding need review."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective post-split task-scope elicitation, not calibrated frequency",
+          "rationale": "Retained reconstructions exist; task-relative continuation and attachment binding need review."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 4
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "rh:rh-analytic-domain-completion-transport",
+      "test": {
+        "acceptance": "Each required analytic cell declares domain, topology, normalization and map with appropriate continuity, density/extension and limit-transport witnesses. Distinguish supplied analytic choices from carrier-derived laws.",
+        "falsifier": "A comparison is used outside its domain, extension changes normalization, or finite agreement substitutes for completion proof.",
+        "next_action": "Inventory existing extension arguments against dictionary cells and audit the first missing domain/topology witness.",
+        "scope": "Distribution, test-dual and Mellin transitions under declared conventions; not source-form equality or positivity.",
+        "protocol_status": "specified",
+        "protocol": "Within the stated assistant-effort budget, inspect current evidence, attempt the next action, run relevant checks, and review against the recorded acceptance/falsifier. Stop at budget exhaustion; report inconclusive if neither gate is met.",
+        "stopping_rule": "Acceptance witness, scoped counterexample, or exhaustion of assistant-effort budget; no automatic success from dependencies."
+      },
+      "probability": {
+        "status": "estimated",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": {
+          "accepted": 0.45,
+          "rejected": 0.25,
+          "inconclusive": 0.3
+        },
+        "conditioning": "Current recorded evidence; declared prerequisites and external reviewed inputs are assumed available for blocked tasks. One budget-limited attempt, not unlimited research.",
+        "uncertainty": "Low-confidence forecast; differences below 0.10 should not be treated as robust. Scope changes require re-estimation.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective post-split task-scope elicitation, not calibrated frequency",
+          "rationale": "Existing analytic constructions help, but domain/topology extension obligations are substantive."
+        },
+        "reason": "Assistant forecast for bounded next test, not theorem confidence."
+      },
+      "test_cost": {
+        "status": "estimated",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "basis": {
+          "estimator": "assistant",
+          "date": "2026-10-13",
+          "method": "subjective post-split task-scope elicitation, not calibrated frequency",
+          "rationale": "Existing analytic constructions help, but domain/topology extension obligations are substantive."
+        },
+        "reason": "Estimated effort budget for one attempted test, not a promised completion cost.",
+        "assistant_effort_units": 5
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    }
+  ]
+}

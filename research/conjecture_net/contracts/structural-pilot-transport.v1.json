@@ -1,0 +1,51 @@
+{
+  "schema": "marici.conjecture-net.structural-pilot-transport.v1",
+  "id": "same-bool-spectral-witness-complex-real-transport.v1",
+  "claim": "The two structural pilots admit a specified common finite source witness: accepted operational spectral dynamics interpret as standard complex dynamics, whose realification is the corresponding canonical Hamiltonian flow, with scale and retained return orientation explicitly transported.",
+  "scope": "Native Bool x Bool spectral source only; declared complex linearization, standard-real interpretation and canonical symplectic convention. Not an implementation of a universal physical carrier.",
+  "source_instance": "native-bool-square-pilot",
+  "targets": ["unitary-local-return-pilot", "hamiltonian-symplectic-pilot"],
+  "common_witness": {
+    "labels": ["00", "01", "10", "11"],
+    "operations": {"left": "flip first Bool coordinate", "right": "flip second Bool coordinate"},
+    "complex_carrier": "C[Bool x Bool] with delta basis in the displayed label order",
+    "projectors": "Q_j=(I-P_j)/2",
+    "generators_t": "H_j=pi Q_j",
+    "local_flow": "U_j(t)=(I-Q_j)+exp(-i*pi*t)Q_j",
+    "retained_source": "Full fixed-source Tick, classified by its ordered schedule tags in the existing Bool specialization",
+    "return_convention": "From P_R P_L e_s, execute positive-phase legs in reversed native order on [0,2]; not inverse-phase time reversal"
+  },
+  "maps": [
+    {"id": "native-linearization", "domain": "Bool x Bool and its factor flips", "codomain": "C4 delta basis and native permutation matrices", "formula": "s maps to e_s; flip j maps to P_j", "preserves": ["native operation action", "factor composition", "source labels"], "verification": "Existing source/spectral correspondence; not a new carrier-selection theorem"},
+    {"id": "completion-interpretation", "domain": "operational ComplexCompletion vectors/operators and metric parameter", "codomain": "standard C4 vectors/operators and real parameter", "formula": "rho_C componentwise; rho([x])=lim approximation(x,n)", "preserves": ["algebra and conjugation", "phase", "metric interval", "open-piece derivatives", "retained record interpretation"], "verification": "Accepted written semantic correspondence; not kernel semantic interpretation"},
+    {"id": "state-realification", "domain": "C4", "codomain": "R8", "formula": "r(q+i p)=(q,p)", "preserves": ["real-linear structure", "squared norm"], "verification": "Written coordinate identity with exact finite algebra controls"},
+    {"id": "operator-realification", "domain": "complex 4x4 matrices", "codomain": "real 8x8 matrices", "formula": "R(A+i B)=[[A,-B],[B,A]]", "preserves": ["identity", "composition", "adjoint as transpose", "unitary as orthogonal and symplectic"], "verification": "Written general algebraic proof with exact matrix-unit controls"},
+    {"id": "scale-transport", "domain": "normalized angle theta and generators Q_j, H0=Q_L+Q_R", "codomain": "completion-reference parameter t and generators pi Q_j", "formula": "theta=pi*t; d/dt=pi*d/dtheta", "preserves": ["phase sign", "corner operations", "generator law by chain rule"], "verification": "Written chain-rule correspondence; no physical-clock or energy calibration"}
+  ],
+  "hamiltonian_convention": {
+    "state": "x=(q,p)",
+    "J": "[[0,I4],[-I4,0]]",
+    "real_symmetric_H": "Each pi-scaled native spectral generator",
+    "energy": "E_H(q,p)=(q^T H q+p^T H p)/2",
+    "vector_field": "x'=J grad E_H=[[0,H],[-H,0]]x=R(-iH)x",
+    "symplectic_test": "A_H^T J+J A_H=0",
+    "phase_energy_units": "Declared mathematical normalization only; not physical energy or hbar"
+  },
+  "return_transport": {
+    "first_piece": "r(gamma(t))=R(U_a(t))r(v) for 0<=t<=1, v=P_R P_L e_s",
+    "second_piece": "r(gamma(t))=R(U_b(t-1))r(P_a v) for 1<=t<=2",
+    "piecewise_generator": "pi Q_a on (0,1), pi Q_b on (1,2)",
+    "retained_tags": "Realification is injective, so distinct seam states and ordered path-pair tags remain distinguishable at fixed source.",
+    "seam": "Continuous; C1 is not claimed"
+  },
+  "verification_boundary": {
+    "operational_evidence_pointer": "research/nima/exports/operational-whole-return.pointer.v1.json",
+    "semantic_correspondence_kernel_proved": false,
+    "new_realification_kernel_proved": false,
+    "physical_recovery_verified": false,
+    "universal_carrier_embedding_proved": false,
+    "programme_target_outcomes_promoted": false
+  },
+  "remaining": ["Select and implement the broader common-carrier interface if required", "Kernel formalization of the new realification transport if required by a consumer", "Explicit programme-level admission at the declared written/exact-algebra verification level", "Physical clock, measurement and empirical recovery remain separate"],
+  "boundary": "Specified finite common-witness transport, not a physical unification theorem or automatic programme target closure."
+}

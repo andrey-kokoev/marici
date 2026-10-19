@@ -1,0 +1,46 @@
+{
+  "schema": "marici.conjecture-net.pilot-carrier-interface.v1",
+  "id": "native-bool-retained-programme-fragment.v1",
+  "source_instance": "native-bool-square-pilot",
+  "implementation": "research/conjecture_net/pilot_carrier.py",
+  "implementation_scope": "Finite labels, operation-word paths, occurrence records, grouping families and the fixed-source Bool Tick tag fragment. This is not all WG sources or an implemented universal carrier.",
+  "primitive_bindings": [
+    {"primitive": "typed_objects_and_labels", "implementation": "LABELS, require_label, NAMESPACE", "status": "implemented_finite_fragment"},
+    {"primitive": "typed_relations_and_operations", "implementation": "Operation, apply", "status": "implemented_finite_fragment"},
+    {"primitive": "composition", "implementation": "PathRecord.then with source/target attachment check", "status": "implemented_finite_fragment"},
+    {"primitive": "retained_records", "implementation": "PathRecord.trace, Occurrence and Family.members", "status": "implemented_finite_fragment"},
+    {"primitive": "comparisons_and_equivalences", "implementation": "TickFragment ordered tags, routes, rebuild and swap; no endpoint quotient of arbitrary paths", "status": "implemented_finite_fragment_with_existing_bool_classification"},
+    {"primitive": "promotion", "implementation": "promote with explicit grouping key and batch namespace; all member occurrences retained", "status": "implemented_finite_fragment"},
+    {"primitive": "geometric_realization_interface", "implementation": "Native basis/permutation encoding and source/schedule binding to accepted spectral witness", "status": "finite_binding_to_external_accepted_analytic_witness"},
+    {"primitive": "authorized_observer_interface", "implementation": "Delta-basis coordinates and mathematical intensities; full records retained separately", "status": "mathematical_readout_only_no_physical_authorization"}
+  ],
+  "identity_policy": {
+    "path_identity": "Within the versioned namespace, source plus full operation word determines a structural path ID. Equal endpoints do not identify paths.",
+    "occurrence_identity": "Caller-supplied unique occurrence IDs distinguish repeated equal records and preserve multiplicity.",
+    "family_identity": "Explicit batch namespace plus grouping key and key value identifies a promoted family. Caller must not reuse a batch identity for changed membership without a version/history policy.",
+    "promotion_endpoints": "This constructor returns family records only; it does not infer a next-level relation or endpoint assignment.",
+    "independent_comparison": "Not implemented or inferred by grouping. Any product constructor requires its own declared domain and parent provenance."
+  },
+  "scope_maps": [
+    {"id": "native-source-to-fragment", "formula": "Bool pair maps identically to Label; native left/right flip maps to Operation.LEFT/RIGHT", "required_law": "apply agrees with the native factor map on every source label"},
+    {"id": "fragment-to-complex-witness", "formula": "label maps to delta basis; each native operation maps to its source-linearized permutation; path word maps to its ordered operator composition", "required_law": "source action and composition square commute"},
+    {"id": "tick-tag-binding", "formula": "At a fixed Bool source, the full native Tick maps to its ordered schedule tags, then TickFragment; rebuilding uses the existing native tags equivalence", "required_law": "Preserve both tags and reconstruct only within the proven Bool specialization, not arbitrary path histories"},
+    {"id": "return-binding", "formula": "Native target is both-flipped source; each return executes the forward schedule's two operations in reverse order with positive phase", "required_law": "Source attachment, distinct seam labels and swap agree with the accepted spectral return"},
+    {"id": "fragment-to-real-witness", "formula": "Compose delta/permutation encoding with accepted complex-real transport", "required_law": "Use the accepted finite overlap, theta=pi*t and z*Hz=2E; do not introduce a second generator"}
+  ],
+  "imports": [
+    "research/conjecture_net/exports/finite-structural-overlap.pointer.v1.json",
+    "research/nima/exports/operational-whole-return.pointer.v1.json"
+  ],
+  "evidence_boundary": {
+    "audit_kind": "finite_exact_executable_structure_and_written_scoped_binding",
+    "new_adapter_kernel_proved": false,
+    "full_native_agda_tick_executed_in_python": false,
+    "universal_carrier_embedding_proved": false,
+    "physical_source_selected": false,
+    "physical_readout_authorized": false,
+    "programme_target_outcomes_promoted": false
+  },
+  "remaining": ["Admission of this new executable adapter at its stated verification level", "An all-source common-carrier construction if required", "Physical source preparation and instrument binding", "Next-level promotion endpoint policy beyond this finite grouping interface"],
+  "boundary": "Implemented finite structural fragment and candidate adapter. Existing formal native-source results are imported by scope, not replayed as Python native terms or generalized to all sources."
+}

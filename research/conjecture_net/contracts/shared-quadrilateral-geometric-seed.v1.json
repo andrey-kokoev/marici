@@ -1,0 +1,18 @@
+{
+  "schema": "marici.shared-quadrilateral-geometric-seed.v1",
+  "scope": "Framed quadrilateral only; supplied boundary order agrees with the existing native vertex cycle.",
+  "boundary_order": ["A", "D", "B", "C"],
+  "diagonals": [["A", "B"], ["C", "D"]],
+  "geometric_seed": "One of the two quadrilateral triangulations T, with supplied mark j in the diagonal set and positive rational additive mesh h.",
+  "channel_map": "T -> delta_(v_T) in Z^2, v_T the canonical diagonal incidence vector.",
+  "carrier_map": "T -> x_T=sum_{unordered diagonal {u,v} in T}(e_uv+e_vu)/2 in the existing twelve-arrow basis.",
+  "decoder": "On this seed image, recover each diagonal coefficient as x_uv+x_vu; validate support and unit triangulation incidence before decoding.",
+  "native_square": "Polygon quarter rotation rho=(A D B C) acts on T, mark and channel indices; the existing C12 acts on both endpoints of carrier arrows. x_(rho T)=C12 x_T.",
+  "access": "Decode the full seed from retained (Kx,Nx), not from Kx alone; construct the finite packet and use retained-history-source-access.v1.",
+  "updates": "Subsequent licensed packet operations use the full packet evaluator and contribution lineage. Carrier seed is immutable provenance; arbitrary heat/convolution are not native twelve-arrow updates.",
+  "fourier_boundary": "C12 intertwines analytic comb Fourier under the old K attachment, but its geometric action here is polygon rotation, not channel Fourier. No identification of these two source operations.",
+  "general_polygon_binding": false,
+  "full_operation_source_binding": false,
+  "physical_seed_admitted": false,
+  "common_source_node_closed": false
+}

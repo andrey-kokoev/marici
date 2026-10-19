@@ -1,0 +1,88 @@
+{
+  "schema": "marici.conjecture-net.programme-hierarchy.v1",
+  "id": "marici.relational-carrier-physics-programme.v1",
+  "phase": "structure_before_term_review",
+  "root": {
+    "id": "relational-carrier-physical-explanation",
+    "statement_template": "There exists a relational carrier C with geometric structure G, admissible dynamics D and observable maps O whose realizations recover the declared physical target regimes T, agree across shared regimes, satisfy the declared empirical tests E and impose falsifiable constraints F.",
+    "kind": "programme_conjecture_template",
+    "formulation_status": "underspecified",
+    "attempt_status": "unattempted",
+    "outcome": null,
+    "quantifier_policy": "One common witness (C,G,D,O) across declared targets, not a separately chosen carrier for each target.",
+    "all_physics_policy": "All physics is the motivating ambition. A testable claim requires an explicit versioned target set; closure over that set is not universal closure over every physical phenomenon.",
+    "scope_terms": ["carrier", "geometry", "dynamics", "observables", "physical_targets", "shared_regimes", "empirical_tests", "falsifiability", "explanation"]
+  },
+  "obligations": [
+    {
+      "id": "carrier-and-geometric-dynamics",
+      "level": 1,
+      "statement_template": "Specify and construct C, G and admissible D, including composition, constraints, and the provenance of geometry.",
+      "term_slots": ["carrier", "geometry", "dynamics"],
+      "formulation_status": "underspecified",
+      "attempt_status": "unattempted",
+      "outcome": null
+    },
+    {
+      "id": "physical-sector-realizations",
+      "level": 1,
+      "statement_template": "For every declared target in T, construct a realization from the same carrier witness and prove the stated recovery laws in its declared regime.",
+      "term_slots": ["carrier", "observables", "physical_targets"],
+      "formulation_status": "underspecified",
+      "attempt_status": "unattempted",
+      "outcome": null
+    },
+    {
+      "id": "cross-sector-compatibility",
+      "level": 1,
+      "statement_template": "On every declared overlap, prove that sector transports and shared observable maps agree at the required stratum while preserving the common witness.",
+      "term_slots": ["shared_regimes", "observables"],
+      "formulation_status": "underspecified",
+      "attempt_status": "unattempted",
+      "outcome": null
+    },
+    {
+      "id": "empirical-recovery",
+      "level": 1,
+      "statement_template": "Meet each declared empirical test E with explicit calibration, nuisance parameters, uncertainty, and separation of fitting from validation inputs.",
+      "term_slots": ["empirical_tests", "observables"],
+      "formulation_status": "underspecified",
+      "attempt_status": "unattempted",
+      "outcome": null
+    },
+    {
+      "id": "falsifiable-explanatory-constraint",
+      "level": 1,
+      "statement_template": "State and test constraints F that exclude alternatives or predict held-out observations rather than permitting arbitrary adapters or per-target choices.",
+      "term_slots": ["falsifiability", "explanation"],
+      "formulation_status": "underspecified",
+      "attempt_status": "unattempted",
+      "outcome": null
+    }
+  ],
+  "structural_edges": [
+    {"from": "carrier-and-geometric-dynamics", "to": "relational-carrier-physical-explanation", "relation": "candidate_obligation", "proof_bearing": false},
+    {"from": "physical-sector-realizations", "to": "relational-carrier-physical-explanation", "relation": "candidate_obligation", "proof_bearing": false},
+    {"from": "cross-sector-compatibility", "to": "relational-carrier-physical-explanation", "relation": "candidate_obligation", "proof_bearing": false},
+    {"from": "empirical-recovery", "to": "relational-carrier-physical-explanation", "relation": "candidate_obligation", "proof_bearing": false},
+    {"from": "falsifiable-explanatory-constraint", "to": "relational-carrier-physical-explanation", "relation": "candidate_obligation", "proof_bearing": false}
+  ],
+  "existing_net_links": [],
+  "promotion_policy": {
+    "terms_before_attempt": true,
+    "explicit_scoped_imports_required": true,
+    "common_witness_transport_required": true,
+    "logical_assembly_rule_required": true,
+    "automatic_child_outcome_aggregation": false,
+    "registry_presence_is_evidence": false,
+    "mixed_evidence_must_retain_verification_level": true,
+    "branch_failure_does_not_refute_existential_root": true
+  },
+  "link_contract": {
+    "required_fields": ["id", "source_net", "source_claim", "target_obligation", "relation", "status", "outcome_pointer", "scope_transport", "witness_transport", "verification_boundary"],
+    "relations": ["candidate_prerequisite", "supplies_scoped_prerequisite", "obstructs_specific_realization"],
+    "statuses": ["candidate", "reviewed", "admitted"],
+    "admission_rule": "An admitted proof-supplying link requires live scoped outcome resolution and reviewed scope/witness transport. A negative branch result only obstructs its stated realization unless a separate exhaustive argument is proved."
+  },
+  "boundary": "Local structure scaffold, not a proof attempt, logical conjunction theorem, physical claim, or external graph mutation. Existing nets are not linked by name similarity."
+}

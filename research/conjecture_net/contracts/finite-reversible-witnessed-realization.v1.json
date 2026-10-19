@@ -1,0 +1,55 @@
+{
+  "schema": "marici.finite-reversible-witnessed-realization.v1",
+  "id": "finite-reversible-witnessed-realization",
+  "status": "frozen_bounded_claim_with_constructor_candidate",
+  "source_calculus": {
+    "objects": "Ordered finite Boolean registers; logical k-bit data with m clean zero work bits, k>=1.",
+    "primitive_gates": ["NOT on one bit", "CNOT with distinct control and target", "Toffoli with two distinct controls and a distinct target"],
+    "formation": "Finite chronological gate words; identity word, sequential concatenation and disjoint register placement.",
+    "inverse": "Reverse the word; each primitive is an involution.",
+    "allowed_workspace": "At most max(k-3,0) clean work bits for the compiled k-bit permutation; extra registers explicitly declared for graph construction.",
+    "forbidden": ["arbitrary permutation as a primitive gate", "supplied whole-function evaluation oracle", "postselection", "discarding nonzero work", "undeclared change of data encoding"]
+  },
+  "target_class": {
+    "carrier": "B_k={0,1}^k for every integer k>=1, lexicographically/integer labelled with least significant bit index 0.",
+    "arrows": "Every bijection f:B_k->B_k supplied as a complete finite table satisfying bijectivity; table is specification, not an execution primitive.",
+    "marks": "Any a in B_k, b=f(a).",
+    "identity": "Extensional equality on all inputs; proof objects for finite equality are propositional at this scope.",
+    "continuations": "All finite words of specified bijections of B_k and all Boolean predicates on B_k; predicates are specified readouts, not source gates.",
+    "resources": "Gate count and explicit initialized workspace; no physical cost or clock units."
+  },
+  "third_presentation": {
+    "carrier": "C_f={(x,y) in B_k x B_k | y=f(x)} with both ordered coordinate registers retained.",
+    "maps": "ac(x)=(x,f(x)); cb(x,y)=y; bc(y)=(f^-1(y),y); ca(x,y)=x.",
+    "realization": "Graph preparation copies x by CNOT into a clean second register then applies the compiled f to that register. Graph recovery uncomputes the prepared register; coordinate projections alone are not claimed reversible on the ambient product.",
+    "common_root": "The source-typed marked pair m=(a,b) in C_f, with ac(a)=bc(b)=m; not a geometric barycenter or an arbitrary terminal space.",
+    "nonvacuity": "C_f retains both input and output with their coordinate roles and constraint. It is abstractly equivalent to B_k, but its retained presentation and constructive graph preparation are explicit, not a fresh name for A."
+  },
+  "conjectures": [
+    {
+      "id": "all-finite-bit-bijections-have-clean-witnessed-realizations",
+      "statement": "For every k>=1, every bijection f:B_k->B_k and every mark a, a terminating uniform compiler using only the frozen source gates constructs f and f^-1 with clean workspace, the graph presentation and common marked root, both full-input triangle returns, coherent composition at the extensional interface, and exact transport of every declared continuation/readout.",
+      "outcome": null,
+      "candidate_method": "Decompose the permutation into transpositions; lower each transposition through Gray-path adjacent swaps; lower each adjacent swap to NOT/CNOT/Toffoli with clean workspace.",
+      "acceptance": "General constructive correctness/termination/resource proof plus source-bound regression and mutation controls; bounded tests alone do not close the all-k claim.",
+      "falsifier": "An input bijection with no allowed clean implementation within the stated workspace bound, or a failed required full-input/composition/graph/continuation equation in the claimed compiler.",
+      "verification_target": "Written uniform constructive mathematics plus exact finite circuit checks; proof-assistant kernel verification is a separate level."
+    },
+    {
+      "id": "output-only-projection-cannot-recover-construction-histories",
+      "statement": "The projection retaining only a completed output value, or only the complete extensional permutation table, has no decoder recovering every source gate word: distinct allowed words can have the same action and output.",
+      "outcome": null,
+      "falsifier": "A decoder recovering both the empty identity word and a two-NOT identity word from their identical projected action.",
+      "scope": "Construction-history recovery, not failure to recover x from f(x) when f^-1 is retained; not every historical distinction is required by extensional target continuations."
+    }
+  ],
+  "external_links": [
+    {"contract":"research/conjecture_net/contracts/witnessed-constructive-identity.proposed.v1.json","claim_id":"source-generated-reusable-reversible-identity","type":"bounded_instance_not_universal_root_redefinition"},
+    {"contract":"research/conjecture_net/contracts/common-foundations-conjecture-net.v1.json","claim_id":"identity-continuation-coherence","type":"finite_set_level_realization_test"}
+  ],
+  "guide": "research/conjecture_net/FINITE-REVERSIBLE-WITNESSED-REALIZATION.md",
+  "checker": "research/voevodsky/checkers/check_finite_reversible_witnessed_realization.py",
+  "receipt": "research/voevodsky/results/finite-reversible-witnessed-realization-v1.json",
+  "shared_outcome_admission": false,
+  "physical_execution": "Parked"
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "marici.ontology-source-selection-conjectures.proposed.v1",
+  "id": "ontology-source-selection-proposed-overlay",
+  "status": "proposed_local_overlay_not_shared_graph_admission",
+  "physical_execution_policy": "Experiments, acquisition and calibration parked; formulation, derivation and rival analysis may proceed.",
+  "nodes": [
+    {
+      "id": "common-process-ontology",
+      "kind": "existing_conjecture_reference",
+      "contract": "research/conjecture_net/contracts/common-foundations-conjecture-net.v1.json",
+      "claim_id": "common-foundations",
+      "statement": "One physically realized process account admits faithful stagewise realizations of all constructions in a fixed admissible mathematical scope, preserving identity, composition and licensed resource-dependent continuations.",
+      "outcome": null,
+      "scope_gate": "Use the existing formulation-and-quantifiers obligation; do not duplicate the parent or silently choose its unresolved foundation and physical-process semantics.",
+      "rejection_condition": "A no-realization theorem covering the fixed admissible source class and quantifier scope; a single failed compiler or encoding is insufficient."
+    },
+    {
+      "id": "irreducibly-quantum-common-process",
+      "kind": "conjecture_requires_formulation",
+      "statement": "The common physical process account requires coherent noncommutative state/action structure: no realization in the independently delimited classical rival class preserves its full stagewise operational and resource interface.",
+      "outcome": null,
+      "quantifiers": "There exists an admitted common process account P; for every rival realization R in a frozen classical class C, at least one required state/action/identity/resource/continuation comparison fails.",
+      "formulation_gate": "Specify P, classical rival class C, observables, permitted contextuality/nonlocality, precision, computation and resource overhead independently of the desired exclusion. Quantum formalism in the simulator is not evidence for this hypothesis.",
+      "rivals": ["Classical simulation with additional memory and computation", "Contextual or nonlocal classical process account", "Quantum mechanics as effective rather than fundamental structure"],
+      "acceptance": "A full-interface obstruction for the declared rival class plus independent justification that P describes the physical source; no conclusion beyond that class.",
+      "rejection_condition": "An admissible classical realization preserving every comparison and resource constraint for the fixed P.",
+      "present_evidence_boundary": "Routing-only circuits are a restricted quantum gate class, not the class of classical theories. Their obstruction cannot establish quantum fundamentality."
+    },
+    {
+      "id": "native-scalar-physical-sector",
+      "kind": "open_conditional_physical_identification_conjecture",
+      "statement": "There exists an independently specified physical system and admissible sector carrying the native scalar projector, frozen source K and neutral-record dynamics through one faithful state/action/readout/resource map, including inactive carrier sectors and separate vacuum.",
+      "outcome": null,
+      "quantifiers": "Exists a named physical system S, encoding V, preparation/readout instruments and control/resource accounting satisfying the frozen reaggregation comparison on every admitted input and continuation, not only the scalar preparation.",
+      "formulation_gate": "Pin the physical candidate and admissible domains without fitting particle labels, coupling scale or energy offsets to target outputs. Physical system existence is unresolved, not supplied by a circuit diagram.",
+      "rivals": ["Programmable simulator only, with projector control externally supplied", "A larger coherent record system with a different source map", "No compatible realization in the selected physical candidate"],
+      "acceptance": "Full comparison witnesses plus independent physical-system provenance under the existing admission gate; empirical execution remains deferred.",
+      "rejection_condition": "A failed required square refutes a fixed candidate; refuting the existential claim requires an obstruction covering its whole admitted candidate class.",
+      "admission_gate": "research/voevodsky/contracts/retained-reaggregation-physical-admission-gate.v1.json"
+    },
+    {
+      "id": "routing-only-projector-control",
+      "kind": "local_evidence_reference",
+      "contract": "research/conjecture_net/contracts/routing-only-projector-control-conjecture.v1.json",
+      "claim_id": "routing-and-phase-suffice-for-native-scalar-controlled-flip",
+      "proposed_attempt_outcome": "-+",
+      "receipt": "research/voevodsky/results/routing-only-projector-control-obstruction-v1.json",
+      "independent_admission": false
+    },
+    {
+      "id": "programmable-coherent-candidate",
+      "kind": "conditional_construction_reference",
+      "contract": "research/conjecture_net/contracts/programmable-matter-projector-control.v1.json",
+      "evidence": "research/voevodsky/programmable-sorter-compilation-v1.md",
+      "scope": "Source-addressed abstract quantum control; not physical source identification or uniquely selected dynamics."
+    }
+  ],
+  "edges": [
+    {"from":"irreducibly-quantum-common-process","to":"common-process-ontology","type":"candidate_strengthening","meaning":"An additional quantum-irreducibility claim about the common process, not a consequence of the parent."},
+    {"from":"native-scalar-physical-sector","to":"common-process-ontology","type":"bounded_candidate_instance","meaning":"One scoped physical realization could supply an example; it cannot prove universal coverage."},
+    {"from":"programmable-coherent-candidate","to":"native-scalar-physical-sector","type":"conditional_constructor_input","meaning":"Provides abstract maps and explicit extra control requirements, leaving physical provenance unmatched."},
+    {"from":"routing-only-projector-control","to":"native-scalar-physical-sector","type":"restricted_candidate_obstruction","meaning":"Any candidate limited to the frozen routing-only gate class cannot supply the required coherent controlled flip in that encoding."},
+    {"from":"routing-only-projector-control","to":"common-process-ontology","type":"scoped_realization_constraint","meaning":"A realization preserving this control cannot replace coherent source structure by the declared routing-only interface; other source classes remain possible."},
+    {"from":"routing-only-projector-control","to":"irreducibly-quantum-common-process","type":"formulation_warning_not_support","meaning":"Demonstrates why the classical rival class must not be conflated with a restricted quantum compiler class; no quantum-fundamentality evidence transfer."}
+  ],
+  "outcome_propagation": "None. Edges declare logical/research relations, not proof implication or Bayesian updates. Existing outcomes remain unchanged."
+}

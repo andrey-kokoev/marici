@@ -1,0 +1,41 @@
+{
+  "schema": "marici.witness-sensitive-route-realization.v1",
+  "id": "witness-sensitive-route-realization",
+  "source": {
+    "calculus": "Closed Route Empty and bit Term Empty from DependentTransportMachine; stay, turn and follow, with independently defined idle/flip/split/under reductions.",
+    "target_routes": "All finite generated type paths at Bool: refl, ua(Boolean flip equivalence), and path composition. Not every path in the universe.",
+    "target_packages": "For each generated p, the marked filled triangle (p, inverse p, refl, cancellation witness), with all three vertices Bool.",
+    "continuation": "For every b:Bool, transport b along the retained first edge. Typed package comparisons induce probe equalities and higher comparisons induce equalities of those equalities.",
+    "inverse_source": "Reverse the source route order, keeping turn self-inverse; both source recovery laws are proved by recursion.",
+    "common_mark": "The source route and actual diagram/result/execution trace are retained together in Completed(p). No geometric barycenter is asserted.",
+    "resource_scope": "Finite execution traces are constructed for every closed route and input; no physical resources or uniform runtime bound asserted."
+  },
+  "conjectures": [
+    {
+      "id": "generated-routes-have-witness-sensitive-completions",
+      "statement": "Every closed source route has a constructed filled triangle, correct witness-consuming Boolean continuations on every input, finite execution traces, reversible source and semantic actions, and preservation of route composition and typed higher package comparisons.",
+      "outcome": null,
+      "proposed_attempt_outcome": "++",
+      "evidence": "research/voevodsky/agda/WitnessedRouteContinuation.agda",
+      "acceptance": "Fresh safe Cubical dependency closure with source/compiler inventories and stable inputs; no universal kernel verdict for unrelated source classes.",
+      "falsifier": "An admitted generated route fails construction, machine-to-transport agreement, finite trace, inverse law or required composition/comparison law."
+    },
+    {
+      "id": "return-diagonal-suffices-for-all-witness-sensitive-continuations",
+      "statement": "A function of only the retained return diagonal can reproduce the false-input first-edge transport probe for every source-generated triangle.",
+      "outcome": null,
+      "proposed_attempt_outcome": "-+",
+      "evidence": "research/voevodsky/agda/WitnessedRouteContinuation.agda#no-return-only-continuation",
+      "falsifier": "The stay and turn triangles have identical vertices and diagonal refl, but the probe returns false and true respectively."
+    }
+  ],
+  "scope_boundary": "Nontrivial first-edge path witnesses in an ambient universe, with actual filled 2-cells and higher comparison preservation. Does not exhibit two distinct 2-cell fillers with every edge fixed, derive univalence from the source, or prove universal higher-foundation coverage.",
+  "guide": "research/voevodsky/witness-sensitive-route-realization-v1.md",
+  "checker": "research/voevodsky/checkers/check_witness_sensitive_route_realization.py",
+  "receipt": "research/voevodsky/results/witness-sensitive-route-realization-v1.json",
+  "negative_module": "research/voevodsky/agda/WitnessedRouteBadErasure.agda",
+  "parent": "research/conjecture_net/contracts/witnessed-constructive-identity.proposed.v1.json",
+  "relation_to_finite_bit_instance": "Strengthening the continuation interface to consume retained path evidence, not a logical consequence of finite set-level synthesis.",
+  "independent_outcome_admission": false,
+  "physical_execution": "Parked"
+}

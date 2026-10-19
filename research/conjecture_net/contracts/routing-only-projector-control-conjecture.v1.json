@@ -1,0 +1,37 @@
+{
+  "schema": "marici.routing-only-projector-control-conjecture-net.v1",
+  "id": "routing-only-projector-control",
+  "outcome_semantics": "proof-attempt-outcomes-v1",
+  "definitions": {
+    "matter": "128 computational labels: native pair 0..99, separate vacuum 100, invalid padding 101..127",
+    "record": "One two-state complex record; coherent record ancillas may be included",
+    "allowed_matter_operations": "Arbitrary permutations and arbitrary diagonal unitary phases in the fixed computational matter basis; never coherent mixing of different matter labels",
+    "allowed_record_operations": "Arbitrary unitary record/work operations conditioned on the current matter label, including unconditioned operations",
+    "ancillas": "Record/work ancillas only, initialized independently; matter permutations cannot depend on record/work states. A claimed unitary implementation must return work ancillas to the same clean state for every input.",
+    "forbidden": "Matter amplitude-mixing gates, basis changes supplied as oracles, measurement/postselection, extra matter-register encodings or record-controlled matter operations",
+    "target": "C_Pi=(I-Pi) tensor I+Pi tensor X on all matter and record inputs, with Pi=vvdagger from the actual native scalar vector. It equals the theta=pi/2 interaction rotation up to the additional controlled phase on Pi; here the controlled flip itself is the precisely frozen target.",
+    "scope": "An abstract restricted compiler capability claim, not a claim that these are exactly the native geometric operations or physically available gates. The computational basis is fixed by the existing seven-qubit interface."
+  },
+  "conjectures": [
+    {
+      "id": "routing-and-phase-suffice-for-native-scalar-controlled-flip",
+      "statement": "For each of the four native chirality/doublet scalar vectors v, some finite circuit over the declared routing/phase/label-controlled-record gate class implements C_Pi exactly on the full input space, with clean work ancillas.",
+      "quantifiers": "For every supplied native source case, there exists a finite allowed circuit; equality is on every matter-record input, not only the prepared scalar input.",
+      "initial_outcome": null,
+      "acceptance": "Exhibit such a circuit and prove full-input equality and clean ancilla restoration.",
+      "falsifier": "Prove a class-wide invariant of allowed circuits and show C_Pi violates it for at least one source case and input.",
+      "attempts": [
+        {
+          "intent": "reject",
+          "proposed_outcome": "-+",
+          "evidence": "research/voevodsky/routing-only-projector-control-obstruction-v1.md",
+          "receipt": "research/voevodsky/results/routing-only-projector-control-obstruction-v1.json",
+          "verification_level": "Written finite-circuit induction plus exact native-source counterexamples and positive-control matrix checks",
+          "admission": "Not imported into an existing shared graph; no independent outcome admission claimed."
+        }
+      ]
+    }
+  ],
+  "root_physical_outcome": null,
+  "physical_admission": false
+}

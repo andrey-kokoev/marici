@@ -1,0 +1,1767 @@
+{
+  "schema": "marici.math-rh-port-connections.v1",
+  "contracts": {
+    "parent": "research/conjecture_net/contracts/common-foundations-conjecture-net.v1.json",
+    "math": "research/conjecture_net/contracts/mathematical-realization-conjecture-net.v1.json",
+    "compatibility": "research/conjecture_net/contracts/same-source-compatibility-conjecture-net.v1.json",
+    "rh": "research/conjecture_net/contracts/rh-realization-work-net.v1.json"
+  },
+  "scope": "All declared local prerequisite and required-verdict inputs, listed cross-net contribution ports, and named RH comparison cells in these four contracts. Not all conceivable implications or internals of legacy/physics nets.",
+  "nodes": [
+    {
+      "id": "parent:formulation-and-quantifiers",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "parent:common-process-structure",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:formulation-and-quantifiers",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "parent:identity-continuation-coherence",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:common-process-structure",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "parent:mathematical-realization",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:identity-continuation-coherence",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "bounded-math-examples",
+          "type": "constructed_witness"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "parent:uf-and-foundational-recovery",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:identity-continuation-coherence",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "parent:physical-realization",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:identity-continuation-coherence",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "parent:same-source-cross-realization",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:mathematical-realization",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:uf-and-foundational-recovery",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:physical-realization",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "bounded-comparisons",
+          "type": "constructed_witness"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "parent:universal-extension-and-assembly",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:same-source-cross-realization",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "parent:common-foundations",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:universal-extension-and-assembly",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "external:reviewed-root-assembly",
+          "type": "reviewed_external_witness"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "math:stagewise-mathematical-interface",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "math:finite-domain-wg-example",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:stagewise-mathematical-interface",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "math:rh-mathematical-realization-example",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:stagewise-mathematical-interface",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "bounded-rh-example",
+          "type": "constructed_witness"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "math:mathematical-realization-example-assembly",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:finite-domain-wg-example",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:rh-mathematical-realization-example",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "compatibility:common-witness-comparison-interface",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "compatibility:rh-same-source-compatibility-example",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:common-witness-comparison-interface",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "same-source-rh-example",
+          "type": "constructed_witness"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "compatibility:physical-pilot-comparison-example",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:common-witness-comparison-interface",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "compatibility:same-source-compatibility-example-assembly",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:rh-same-source-compatibility-example",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:physical-pilot-comparison-example",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:carrier-fourier-attachment",
+      "status": "resolved",
+      "verdict": "constructed",
+      "inputs": [],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:history-continuous-bridge",
+      "status": "resolved",
+      "verdict": "constructed",
+      "inputs": [
+        {
+          "id": "requires:carrier-fourier-attachment",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:native-tick-is-fourier",
+      "status": "resolved",
+      "verdict": "rejected",
+      "inputs": [
+        {
+          "id": "requires:history-continuous-bridge",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:six-step-fourier-transport",
+      "status": "resolved",
+      "verdict": "constructed",
+      "inputs": [
+        {
+          "id": "requires:carrier-fourier-attachment",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:riemann-specialization",
+      "status": "resolved",
+      "verdict": "constructed",
+      "inputs": [
+        {
+          "id": "requires:six-step-fourier-transport",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:history-continuous-bridge",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:additive-lattice-fourier",
+      "status": "resolved",
+      "verdict": "constructed",
+      "inputs": [],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:signed-weil-quotient",
+      "status": "resolved",
+      "verdict": "constructed",
+      "inputs": [],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:current-source-weil-pullback",
+      "status": "resolved",
+      "verdict": "rejected",
+      "inputs": [
+        {
+          "id": "requires:carrier-fourier-attachment",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:riemann-specialization",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:retained-six-coordinate-energy",
+      "status": "resolved",
+      "verdict": "constructed",
+      "inputs": [
+        {
+          "id": "requires:current-source-weil-pullback",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:direct-fourier-energy-is-weil",
+      "status": "resolved",
+      "verdict": "rejected",
+      "inputs": [
+        {
+          "id": "requires:retained-six-coordinate-energy",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:carrier-fourier-attachment",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:rh-stage-dictionary",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:six-step-fourier-transport",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:history-continuous-bridge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:riemann-specialization",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:additive-lattice-fourier",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:rh-operation-composition-squares",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:rh-stage-dictionary",
+          "type": "constructed_witness"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:rh-identity-continuation-transport",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:rh-stage-dictionary",
+          "type": "constructed_witness"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:rh-analytic-domain-completion-transport",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:rh-stage-dictionary",
+          "type": "constructed_witness"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:rh-stagewise-interface",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:rh-stage-dictionary",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "requires:rh-operation-composition-squares",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "requires:rh-identity-continuation-transport",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "requires:rh-analytic-domain-completion-transport",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "general-interface-review",
+          "type": "constructed_witness"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:channel-carrier-source-map",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:additive-lattice-fourier",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:carrier-fourier-attachment",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:native-tick-is-fourier",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:one-dimensional-source-selection",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:additive-lattice-fourier",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:riemann-specialization",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:successor-form-candidate",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:current-source-weil-pullback",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:signed-weil-quotient",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:retained-six-coordinate-energy",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:direct-fourier-energy-is-weil",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:weil-form-comparison",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:successor-form-candidate",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:rh-stagewise-interface",
+          "type": "scoped_research_knowledge"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:same-source-continuation-comparison",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:channel-carrier-source-map",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:one-dimensional-source-selection",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "requires:rh-stagewise-interface",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "general-common-witness-review",
+          "type": "constructed_witness"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:rh-math-assembly",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:rh-stagewise-interface",
+          "type": "constructed_witness"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    },
+    {
+      "id": "rh:rh-cross-realization-assembly",
+      "status": "open",
+      "verdict": "open",
+      "inputs": [
+        {
+          "id": "requires:rh-math-assembly",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "requires:same-source-continuation-comparison",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "requires:weil-form-comparison",
+          "type": "constructed_witness"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "knowledge",
+          "type": "scoped_research_knowledge"
+        },
+        {
+          "id": "witness",
+          "type": "constructed_witness"
+        },
+        {
+          "id": "counterexample",
+          "type": "scoped_rejection"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "source": "parent:formulation-and-quantifiers",
+      "source_port": "knowledge",
+      "target": "parent:common-process-structure",
+      "target_port": "requires:formulation-and-quantifiers",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "parent:common-process-structure",
+      "source_port": "knowledge",
+      "target": "parent:identity-continuation-coherence",
+      "target_port": "requires:common-process-structure",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "parent:identity-continuation-coherence",
+      "source_port": "knowledge",
+      "target": "parent:mathematical-realization",
+      "target_port": "requires:identity-continuation-coherence",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "parent:identity-continuation-coherence",
+      "source_port": "knowledge",
+      "target": "parent:uf-and-foundational-recovery",
+      "target_port": "requires:identity-continuation-coherence",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "parent:identity-continuation-coherence",
+      "source_port": "knowledge",
+      "target": "parent:physical-realization",
+      "target_port": "requires:identity-continuation-coherence",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "parent:mathematical-realization",
+      "source_port": "knowledge",
+      "target": "parent:same-source-cross-realization",
+      "target_port": "requires:mathematical-realization",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "parent:uf-and-foundational-recovery",
+      "source_port": "knowledge",
+      "target": "parent:same-source-cross-realization",
+      "target_port": "requires:uf-and-foundational-recovery",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "parent:physical-realization",
+      "source_port": "knowledge",
+      "target": "parent:same-source-cross-realization",
+      "target_port": "requires:physical-realization",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "parent:same-source-cross-realization",
+      "source_port": "knowledge",
+      "target": "parent:universal-extension-and-assembly",
+      "target_port": "requires:same-source-cross-realization",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "parent:universal-extension-and-assembly",
+      "source_port": "knowledge",
+      "target": "parent:common-foundations",
+      "target_port": "requires:universal-extension-and-assembly",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "math:stagewise-mathematical-interface",
+      "source_port": "knowledge",
+      "target": "math:finite-domain-wg-example",
+      "target_port": "requires:stagewise-mathematical-interface",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "math:stagewise-mathematical-interface",
+      "source_port": "knowledge",
+      "target": "math:rh-mathematical-realization-example",
+      "target_port": "requires:stagewise-mathematical-interface",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "math:finite-domain-wg-example",
+      "source_port": "knowledge",
+      "target": "math:mathematical-realization-example-assembly",
+      "target_port": "requires:finite-domain-wg-example",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "math:rh-mathematical-realization-example",
+      "source_port": "knowledge",
+      "target": "math:mathematical-realization-example-assembly",
+      "target_port": "requires:rh-mathematical-realization-example",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "compatibility:common-witness-comparison-interface",
+      "source_port": "knowledge",
+      "target": "compatibility:rh-same-source-compatibility-example",
+      "target_port": "requires:common-witness-comparison-interface",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "compatibility:common-witness-comparison-interface",
+      "source_port": "knowledge",
+      "target": "compatibility:physical-pilot-comparison-example",
+      "target_port": "requires:common-witness-comparison-interface",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "compatibility:rh-same-source-compatibility-example",
+      "source_port": "knowledge",
+      "target": "compatibility:same-source-compatibility-example-assembly",
+      "target_port": "requires:rh-same-source-compatibility-example",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "compatibility:physical-pilot-comparison-example",
+      "source_port": "knowledge",
+      "target": "compatibility:same-source-compatibility-example-assembly",
+      "target_port": "requires:physical-pilot-comparison-example",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:carrier-fourier-attachment",
+      "source_port": "knowledge",
+      "target": "rh:history-continuous-bridge",
+      "target_port": "requires:carrier-fourier-attachment",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:history-continuous-bridge",
+      "source_port": "knowledge",
+      "target": "rh:native-tick-is-fourier",
+      "target_port": "requires:history-continuous-bridge",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:carrier-fourier-attachment",
+      "source_port": "knowledge",
+      "target": "rh:six-step-fourier-transport",
+      "target_port": "requires:carrier-fourier-attachment",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:six-step-fourier-transport",
+      "source_port": "knowledge",
+      "target": "rh:riemann-specialization",
+      "target_port": "requires:six-step-fourier-transport",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:history-continuous-bridge",
+      "source_port": "knowledge",
+      "target": "rh:riemann-specialization",
+      "target_port": "requires:history-continuous-bridge",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:carrier-fourier-attachment",
+      "source_port": "knowledge",
+      "target": "rh:current-source-weil-pullback",
+      "target_port": "requires:carrier-fourier-attachment",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:riemann-specialization",
+      "source_port": "knowledge",
+      "target": "rh:current-source-weil-pullback",
+      "target_port": "requires:riemann-specialization",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:current-source-weil-pullback",
+      "source_port": "knowledge",
+      "target": "rh:retained-six-coordinate-energy",
+      "target_port": "requires:current-source-weil-pullback",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:retained-six-coordinate-energy",
+      "source_port": "knowledge",
+      "target": "rh:direct-fourier-energy-is-weil",
+      "target_port": "requires:retained-six-coordinate-energy",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:carrier-fourier-attachment",
+      "source_port": "knowledge",
+      "target": "rh:direct-fourier-energy-is-weil",
+      "target_port": "requires:carrier-fourier-attachment",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:six-step-fourier-transport",
+      "source_port": "knowledge",
+      "target": "rh:rh-stage-dictionary",
+      "target_port": "requires:six-step-fourier-transport",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:history-continuous-bridge",
+      "source_port": "knowledge",
+      "target": "rh:rh-stage-dictionary",
+      "target_port": "requires:history-continuous-bridge",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:riemann-specialization",
+      "source_port": "knowledge",
+      "target": "rh:rh-stage-dictionary",
+      "target_port": "requires:riemann-specialization",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:additive-lattice-fourier",
+      "source_port": "knowledge",
+      "target": "rh:rh-stage-dictionary",
+      "target_port": "requires:additive-lattice-fourier",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:rh-stage-dictionary",
+      "source_port": "witness",
+      "target": "rh:rh-operation-composition-squares",
+      "target_port": "requires:rh-stage-dictionary",
+      "relation": "required_constructed_input",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:rh-stage-dictionary",
+      "source_port": "witness",
+      "target": "rh:rh-identity-continuation-transport",
+      "target_port": "requires:rh-stage-dictionary",
+      "relation": "required_constructed_input",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:rh-stage-dictionary",
+      "source_port": "witness",
+      "target": "rh:rh-analytic-domain-completion-transport",
+      "target_port": "requires:rh-stage-dictionary",
+      "relation": "required_constructed_input",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:rh-stage-dictionary",
+      "source_port": "witness",
+      "target": "rh:rh-stagewise-interface",
+      "target_port": "requires:rh-stage-dictionary",
+      "relation": "required_constructed_input",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:rh-operation-composition-squares",
+      "source_port": "witness",
+      "target": "rh:rh-stagewise-interface",
+      "target_port": "requires:rh-operation-composition-squares",
+      "relation": "required_constructed_input",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:rh-identity-continuation-transport",
+      "source_port": "witness",
+      "target": "rh:rh-stagewise-interface",
+      "target_port": "requires:rh-identity-continuation-transport",
+      "relation": "required_constructed_input",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:rh-analytic-domain-completion-transport",
+      "source_port": "witness",
+      "target": "rh:rh-stagewise-interface",
+      "target_port": "requires:rh-analytic-domain-completion-transport",
+      "relation": "required_constructed_input",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:additive-lattice-fourier",
+      "source_port": "knowledge",
+      "target": "rh:channel-carrier-source-map",
+      "target_port": "requires:additive-lattice-fourier",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:carrier-fourier-attachment",
+      "source_port": "knowledge",
+      "target": "rh:channel-carrier-source-map",
+      "target_port": "requires:carrier-fourier-attachment",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:native-tick-is-fourier",
+      "source_port": "knowledge",
+      "target": "rh:channel-carrier-source-map",
+      "target_port": "requires:native-tick-is-fourier",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:additive-lattice-fourier",
+      "source_port": "knowledge",
+      "target": "rh:one-dimensional-source-selection",
+      "target_port": "requires:additive-lattice-fourier",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:riemann-specialization",
+      "source_port": "knowledge",
+      "target": "rh:one-dimensional-source-selection",
+      "target_port": "requires:riemann-specialization",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:current-source-weil-pullback",
+      "source_port": "knowledge",
+      "target": "rh:successor-form-candidate",
+      "target_port": "requires:current-source-weil-pullback",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:signed-weil-quotient",
+      "source_port": "knowledge",
+      "target": "rh:successor-form-candidate",
+      "target_port": "requires:signed-weil-quotient",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:retained-six-coordinate-energy",
+      "source_port": "knowledge",
+      "target": "rh:successor-form-candidate",
+      "target_port": "requires:retained-six-coordinate-energy",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:direct-fourier-energy-is-weil",
+      "source_port": "knowledge",
+      "target": "rh:successor-form-candidate",
+      "target_port": "requires:direct-fourier-energy-is-weil",
+      "relation": "research_prerequisite",
+      "available": true,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:successor-form-candidate",
+      "source_port": "knowledge",
+      "target": "rh:weil-form-comparison",
+      "target_port": "requires:successor-form-candidate",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:rh-stagewise-interface",
+      "source_port": "knowledge",
+      "target": "rh:weil-form-comparison",
+      "target_port": "requires:rh-stagewise-interface",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:channel-carrier-source-map",
+      "source_port": "knowledge",
+      "target": "rh:same-source-continuation-comparison",
+      "target_port": "requires:channel-carrier-source-map",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:one-dimensional-source-selection",
+      "source_port": "knowledge",
+      "target": "rh:same-source-continuation-comparison",
+      "target_port": "requires:one-dimensional-source-selection",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:rh-stagewise-interface",
+      "source_port": "knowledge",
+      "target": "rh:same-source-continuation-comparison",
+      "target_port": "requires:rh-stagewise-interface",
+      "relation": "research_prerequisite",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:rh-stagewise-interface",
+      "source_port": "witness",
+      "target": "rh:rh-math-assembly",
+      "target_port": "requires:rh-stagewise-interface",
+      "relation": "required_constructed_input",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:rh-math-assembly",
+      "source_port": "witness",
+      "target": "rh:rh-cross-realization-assembly",
+      "target_port": "requires:rh-math-assembly",
+      "relation": "required_constructed_input",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:same-source-continuation-comparison",
+      "source_port": "witness",
+      "target": "rh:rh-cross-realization-assembly",
+      "target_port": "requires:same-source-continuation-comparison",
+      "relation": "required_constructed_input",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:weil-form-comparison",
+      "source_port": "witness",
+      "target": "rh:rh-cross-realization-assembly",
+      "target_port": "requires:weil-form-comparison",
+      "relation": "required_constructed_input",
+      "available": false,
+      "logical_implication_asserted": false
+    },
+    {
+      "source": "rh:rh-math-assembly",
+      "source_port": "witness",
+      "target": "math:rh-mathematical-realization-example",
+      "target_port": "bounded-rh-example",
+      "relation": "scoped_example_contribution",
+      "available": false,
+      "logical_implication_asserted": false,
+      "discharges_target": false,
+      "does_not_block_local_research": false,
+      "acceptance": "Target acceptance and overlap review still required; source success alone does not resolve target."
+    },
+    {
+      "source": "rh:rh-cross-realization-assembly",
+      "source_port": "witness",
+      "target": "compatibility:rh-same-source-compatibility-example",
+      "target_port": "same-source-rh-example",
+      "relation": "scoped_example_contribution",
+      "available": false,
+      "logical_implication_asserted": false,
+      "discharges_target": false,
+      "does_not_block_local_research": false,
+      "acceptance": "Target acceptance and overlap review still required; source success alone does not resolve target."
+    },
+    {
+      "source": "math:mathematical-realization-example-assembly",
+      "source_port": "witness",
+      "target": "parent:mathematical-realization",
+      "target_port": "bounded-math-examples",
+      "relation": "bounded_branch_contribution",
+      "available": false,
+      "logical_implication_asserted": false,
+      "discharges_target": false,
+      "does_not_block_local_research": false,
+      "acceptance": "Target acceptance and overlap review still required; source success alone does not resolve target."
+    },
+    {
+      "source": "compatibility:same-source-compatibility-example-assembly",
+      "source_port": "witness",
+      "target": "parent:same-source-cross-realization",
+      "target_port": "bounded-comparisons",
+      "relation": "bounded_branch_contribution",
+      "available": false,
+      "logical_implication_asserted": false,
+      "discharges_target": false,
+      "does_not_block_local_research": false,
+      "acceptance": "Target acceptance and overlap review still required; source success alone does not resolve target."
+    },
+    {
+      "source": "math:stagewise-mathematical-interface",
+      "source_port": "witness",
+      "target": "rh:rh-stagewise-interface",
+      "target_port": "general-interface-review",
+      "relation": "interface_instantiation_review",
+      "available": false,
+      "logical_implication_asserted": false,
+      "discharges_target": false,
+      "does_not_block_local_research": true,
+      "acceptance": "Target acceptance and overlap review still required; source success alone does not resolve target."
+    },
+    {
+      "source": "compatibility:common-witness-comparison-interface",
+      "source_port": "witness",
+      "target": "rh:same-source-continuation-comparison",
+      "target_port": "general-common-witness-review",
+      "relation": "interface_instantiation_review",
+      "available": false,
+      "logical_implication_asserted": false,
+      "discharges_target": false,
+      "does_not_block_local_research": true,
+      "acceptance": "Target acceptance and overlap review still required; source success alone does not resolve target."
+    }
+  ],
+  "external_obligations": [
+    {
+      "target": "parent:common-foundations",
+      "target_port": "external:reviewed-root-assembly",
+      "obligation": "reviewed-root-assembly",
+      "status": "open",
+      "available": false
+    }
+  ],
+  "comparison_cells": [
+    {
+      "id": "energy-reader-to-Weil",
+      "from": [
+        "rh:retained-six-coordinate-energy"
+      ],
+      "to": "rh:weil-form-comparison",
+      "status": "not_established",
+      "reason": "Exact energy recovery supplies no arithmetic test map; direct extension rejected.",
+      "control": "rh:direct-fourier-energy-is-weil"
+    },
+    {
+      "id": "operations-to-positive-form",
+      "from": [
+        "rh:carrier-fourier-attachment",
+        "rh:six-step-fourier-transport"
+      ],
+      "to": "rh:weil-form-comparison",
+      "status": "candidate_rejected",
+      "reason": "Operation squares do not imply form equality; positive hidden energy is lost.",
+      "control": "rh:current-source-weil-pullback"
+    },
+    {
+      "id": "continuous-to-discrete",
+      "from": [
+        "rh:history-continuous-bridge"
+      ],
+      "to": "rh:native-tick-is-fourier",
+      "status": "candidate_rejected",
+      "reason": "Continuous generator agreement does not identify discrete ticks.",
+      "control": "rh:native-tick-is-fourier"
+    },
+    {
+      "id": "generic-to-Riemann-faithfulness",
+      "from": [
+        "rh:carrier-fourier-attachment"
+      ],
+      "to": "rh:riemann-specialization",
+      "status": "constructed_with_kernel",
+      "reason": "Specialization exists but rank drops from four to one; retained source is not the scalar analytic image."
+    },
+    {
+      "id": "channel-to-native-source",
+      "from": [
+        "rh:additive-lattice-fourier",
+        "rh:carrier-fourier-attachment"
+      ],
+      "to": "rh:channel-carrier-source-map",
+      "status": "open",
+      "reason": "A common source dictionary and composition witness remain required."
+    },
+    {
+      "id": "multichannel-to-one-dimensional",
+      "from": [
+        "rh:additive-lattice-fourier"
+      ],
+      "to": "rh:one-dimensional-source-selection",
+      "status": "open",
+      "reason": "One-coordinate formulas are not a source selection or symmetry-preserving quotient proof."
+    },
+    {
+      "id": "signed-to-positive",
+      "from": [
+        "rh:signed-weil-quotient"
+      ],
+      "to": "rh:weil-form-comparison",
+      "status": "not_established",
+      "reason": "Signed covariance and radical identification do not supply positive source-form equality."
+    },
+    {
+      "id": "math-to-same-source",
+      "from": [
+        "rh:rh-math-assembly"
+      ],
+      "to": "rh:rh-cross-realization-assembly",
+      "status": "open",
+      "reason": "Both continuation and form witnesses on the same source are additional required inputs."
+    }
+  ],
+  "all_logical_implications_established": false,
+  "external_references": [
+    {
+      "contract": "research/aspect/contracts/theta-rh-interaction-net-state.v20.json",
+      "role": "parallel legacy RH routes; no proof import; internal ports not audited here"
+    },
+    {
+      "contract": "research/conjecture_net/contracts/programme-hierarchy.v17.json",
+      "role": "unchanged physics programme; internal ports not audited here"
+    }
+  ]
+}

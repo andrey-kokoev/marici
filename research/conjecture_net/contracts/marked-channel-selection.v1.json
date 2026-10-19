@@ -1,0 +1,26 @@
+{
+  "schema": "marici.marked-channel-selection.v1",
+  "source": "Pointed channel source (Z^{D_n}, j), D_n the actual polygon diagonal set; j is an explicitly supplied diagonal occurrence, not a canonically chosen channel.",
+  "selection": "R_j c(k)=c(k e_j); E_j b=sum_k b(k) delta_{k e_j}",
+  "reconstruction": "c=E_j R_j c+N_j c, N_j=I-E_j R_j; full off-axis data and mark retained.",
+  "domain": "Axis subalgebra for arbitrary binary convolution; whole coefficient space only for the listed kernel-stable unary operations.",
+  "symmetry_policy": "R_{sigma(j)} sigma_* = R_j; permutations act on both source and mark. Fixed-mark symmetry is the stabilizer of j.",
+  "licensed_operations": ["axis shifts", "character multipliers", "convolution with an axis packet", "local quadratic heat", "dyadic bonding", "channel relabelling with simultaneous mark transport"],
+  "excluded_operations": ["unrestricted binary convolution of whole-source packets through the reader", "off-axis translations", "moving a channel while freezing its mark", "discarding archives or restoring them as an unreviewed task operation"],
+  "refinement": "h->h/2, n->2n; mark unchanged; R_j and E_j commute with bonding and additive atom positions stay fixed.",
+  "quadratic": "Q(n)=sum n_d^2 restricts to Q(k e_j)=k^2 with unchanged declared heat scale.",
+  "Fourier_lattice_square": "F_D E_j b(theta)=F_1 b(theta_j); normalized transverse torus factors are constant one.",
+  "real_fourier_charts": "Even charts embed T as T tensor delta_0(transverse); odd charts embed T as T tensor 1(transverse). F_D switches these charts and applies F_1; they are not the same ambient distribution.",
+  "theta": "At h=1 the marked unit axis comb pairs with the D-dimensional Gaussian as theta_1(t). Transverse delta/constant Fourier exchange cancels the extra D-1 Gaussian integration factors, giving the one-dimensional reciprocity exponent.",
+  "symmetric_alternative": "Sigma(n)=sum n_d preserves addition, permutations and bonding on finite packets, but Q does not descend, fibre summation is not bounded on l2 for D>=2 and the full unweighted comb has infinite fibre mass.",
+  "boundaries": {
+    "unmarked_canonical_channel_selected": false,
+    "whole_source_convolution_quotient_admitted": false,
+    "whole_source_heat_descends_through_sum": false,
+    "full_D_axis_comb_is_self_Fourier": false,
+    "mark_forced_by_native_source": false,
+    "channel_and_twelve_arrow_sources_identified": false,
+    "physical_selection_admitted": false,
+    "RH_proved": false
+  }
+}

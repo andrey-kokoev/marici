@@ -1,0 +1,69 @@
+{
+  "schema": "marici.bounded-foundation-profile.v1",
+  "id": "restricted-native-three-rule-profile.v1",
+  "parent_task": "parent:formulation-and-quantifiers",
+  "disposition": "constructed_bounded_profile_not_parent_formulation",
+  "F": {
+    "validity_mode": "derivability_in_named_safe_Cubical_Agda_modules",
+    "language": "The explicitly declared inductive Term and imported Cubical type theory; not all semantically valid mathematics",
+    "levels": {"Term": 0, "interpreted_carriers": 0, "Code_and_Complete": 1, "execution_and_retained_derivation_records": 1},
+    "foundation_status": "Adopted proof environment for this experiment, not derived from physical primitives or selected as universal parent foundation"
+  },
+  "K": {
+    "membership": "Term in RestrictedSeedArityProfile, fixed independently of output success",
+    "literal_seeds": ["false-seed"],
+    "rules": ["identity", "Pi-Bool", "E-Bool"],
+    "maximum_recursive_arity": 2,
+    "branch_retention": "Both binary children retained, including unselected E child",
+    "semantic_seed_closure_equals_syntax": false,
+    "all_twelve_rule_schemas": false,
+    "infinite_arity_or_completion": false
+  },
+  "P_mathematical": {
+    "source": "research/voevodsky/agda/RestrictedNativeTableExecution.agda",
+    "native_operations": "NativeTableRules.Native at level zero: atom table, identity-comparison, Pi-package and E-package",
+    "old_decoder_used_by_evaluator": false,
+    "retained_derivation": "NativeTableResolution.ForOldSeeds closure-equivalence applied to the actual restricted compile result",
+    "independent_new_closure_equivalence_claimed": false,
+    "syntax_identity": "Retained Term, not endpoint equality",
+    "physical_account": null
+  },
+  "resources": {
+    "carrier": "natural numbers",
+    "composition": "addition",
+    "unit": 0,
+    "cost_policy": "one abstract unit per literal or native rule invocation plus both premise costs",
+    "guard": "exists remaining: cost(t)+remaining=budget",
+    "execution": "Exec t spent q from RestrictedNativeBudget",
+    "availability": "guard-from-run and run-from-guard",
+    "lower_level_scheduler": null,
+    "hardware_or_physical_cost_bound": false
+  },
+  "completion": {
+    "mode": "finite_inductive_terms_only",
+    "exclusion": "No analytic completion, arbitrary infinite arity, noncomputable-object coverage or universal foundation selection"
+  },
+  "evidence": [
+    {"id":"seed-arity", "receipt":"research/voevodsky/results/restricted-seed-arity-profile-v1.json", "checker":"research/voevodsky/checkers/check_restricted_seed_arity_profile.py", "source":"research/voevodsky/agda/RestrictedSeedArityProfile.agda", "obligations":["typed compile into actual Resolve", "syntactic source recovery", "both E branches counted"]},
+    {"id":"native-execution", "receipt":"research/voevodsky/results/restricted-native-table-execution-v1.json", "checker":"research/voevodsky/checkers/check_restricted_native_table_execution.py", "source":"research/voevodsky/agda/RestrictedNativeTableExecution.agda", "obligations":["agreement", "native-history-endpoint", "original-derivation-recovered", "syntax-recovered"]},
+    {"id":"budget", "receipt":"research/voevodsky/results/restricted-native-budget-v1.json", "checker":"research/voevodsky/checkers/check_restricted_native_budget.py", "source":"research/voevodsky/agda/RestrictedNativeBudget.agda", "obligations":["execute", "cost-sound", "output-sound", "guard-from-run", "run-from-guard", "no-underfunded-selected", "syntax-budget-recovered"]}
+  ],
+  "retained_failed_candidate": {
+    "receipt": "research/voevodsky/results/restricted-profile-process-comparison-v1.json",
+    "scope": "Five source commands cannot be recovered from four Bool endpoints; retained words escape that obstruction but are only a syntax codec without native semantic squares",
+    "all_common_process_accounts_refuted": false
+  },
+  "remaining_parent_decisions": [
+    "Choose the parent's foundation language/axioms/universes and semantic versus derivability validity mode, independently of this profile's success",
+    "Fix mathematical scope including infinite/noncomputable objects and requirements for their representations without silently restricting it to Term",
+    "Fix the lowest-level physical criterion and admissible contexts; distinguish specification from construction/admission of a common physical witness"
+  ],
+  "boundaries": {
+    "parent_formulation_discharged": false,
+    "universal_coverage_proved": false,
+    "physical_realization_admitted": false,
+    "RH_proved": false,
+    "classical_Cubical_translation_supplied": false,
+    "scope_selection_authorized_by_pilot": false
+  }
+}

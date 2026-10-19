@@ -1,0 +1,124 @@
+{
+  "schema": "marici.same-source-compatibility.conjecture-net.v1",
+  "id": "marici.same-source-compatibility.v1",
+  "owner": "marici.Nima",
+  "parent": {
+    "contract": "research/conjecture_net/contracts/common-foundations-conjecture-net.v1.json",
+    "node": "same-source-cross-realization",
+    "relation": "scoped_research_decomposition_not_proof_import"
+  },
+  "objective": {
+    "target": "same-source-compatibility-example-assembly",
+    "outcome": null
+  },
+  "dependency_semantics": "Comparison gates require one shared source witness. Matching scalar outputs or separate successes do not supply transport. Links to the math branch are scope references, not cyclic proof dependencies.",
+  "imports": [],
+  "conjectures": [
+    {
+      "id": "common-witness-comparison-interface",
+      "depends_on": [],
+      "status": "resolved",
+      "outcome": null,
+      "statement": "Specify one source and typed maps to mathematical and physical-process realizations with compatible identities, composition, resources and available continuations.",
+      "acceptance": "Fix domains, contexts and both routes before comparing results; state which physical ingredients are premises versus justified realizations.",
+      "falsifier": "The two routes require different hidden source choices or resource policies.",
+      "verdict": "constructed",
+      "resolution_kind": "bounded_interface_definition",
+      "evidence": [
+        "common-witness-interface"
+      ],
+      "scope": "Definition and bounded regression interface, not a common physical constructor or universal compatibility theorem.",
+      "physical_realization_admitted": false
+    },
+    {
+      "id": "rh-same-source-compatibility-example",
+      "depends_on": [
+        "common-witness-comparison-interface"
+      ],
+      "status": "open",
+      "outcome": null,
+      "statement": "Use the SAME RH example as in the mathematical-realization net to test compatibility of its arithmetic/analytic realizations with the proposed common physical-process account.",
+      "acceptance": "Construct same-witness operation/domain/identity/continuation comparisons. Reuse the mathematical example without inferring physical realization from analytic positivity or a formal analogy.",
+      "falsifier": "A mathematical realization succeeds but the independently specified source/process comparison fails, including an uncancelled typed residual."
+    },
+    {
+      "id": "physical-pilot-comparison-example",
+      "depends_on": [
+        "common-witness-comparison-interface"
+      ],
+      "status": "open",
+      "outcome": null,
+      "statement": "Attach scoped physics-programme comparisons to the same source interface.",
+      "acceptance": "Preserve existing accepted finite results and failed source-operation bridges at their own scopes; do not merge incompatible carriers by dimension or equal energy.",
+      "falsifier": "An abstract embedding has no compatible source operation or continuation on the physical side."
+    },
+    {
+      "id": "same-source-compatibility-example-assembly",
+      "depends_on": [
+        "rh-same-source-compatibility-example",
+        "physical-pilot-comparison-example"
+      ],
+      "status": "open",
+      "outcome": null,
+      "statement": "The bounded comparison examples use one coherent same-source notion.",
+      "acceptance": "Review overlap witnesses and higher compatibility; examples do not establish the universal parent theorem.",
+      "falsifier": "Pairwise comparisons cannot compose coherently on their declared common source."
+    }
+  ],
+  "work_nets": [
+    {
+      "contract": "research/conjecture_net/contracts/rh-realization-work-net.v1.json",
+      "node": "rh-same-source-compatibility-example",
+      "target": "rh-cross-realization-assembly",
+      "role": "same_source_compatibility",
+      "shared_example_id": "shared-rh-example",
+      "relation": "scoped_decomposition",
+      "entry_nodes": [
+        "channel-carrier-source-map"
+      ],
+      "research_can_proceed_before_parent_formulation_closes": true,
+      "reuses_mathematical_package": "research/conjecture_net/contracts/rh-bounded-mathematical-example.v1.json",
+      "package_relation": "reuse_mathematical_witness_only"
+    }
+  ],
+  "example_attachments": [
+    {
+      "id": "shared-rh-example",
+      "contract": "research/aspect/contracts/theta-rh-interaction-net-state.v20.json",
+      "node": "rh-same-source-compatibility-example",
+      "role": "same_source_compatibility",
+      "mathematical_example": {
+        "contract": "research/conjecture_net/contracts/mathematical-realization-conjecture-net.v1.json",
+        "node": "rh-mathematical-realization-example"
+      },
+      "proof_bearing": false,
+      "discharges_parent": false,
+      "outcome": null
+    },
+    {
+      "id": "existing-physics-programme",
+      "contract": "research/conjecture_net/contracts/programme-hierarchy.v17.json",
+      "node": "physical-pilot-comparison-example",
+      "role": "physics_comparison_source",
+      "proof_bearing": false,
+      "discharges_parent": false,
+      "outcome": null
+    }
+  ],
+  "port_model": "research/conjecture_net/contracts/math-rh-port-connections.v10.json",
+  "boundary": {
+    "rh_assumed_true": false,
+    "rh_proved": false,
+    "physical_realization_from_mathematical_success": false,
+    "universal_compatibility_proved": false
+  },
+  "comparison_interface": "research/conjecture_net/contracts/common-witness-comparison-interface.v1.json",
+  "artifacts": [
+    {
+      "id": "common-witness-interface",
+      "note": "research/voevodsky/common-witness-comparison-interface-v1.md",
+      "checker": "research/voevodsky/checkers/check_common_witness_comparison_interface.py",
+      "receipt": "research/voevodsky/results/common-witness-comparison-interface-v1.json"
+    }
+  ]
+}

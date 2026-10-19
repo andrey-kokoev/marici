@@ -1,0 +1,419 @@
+{
+  "schema": "marici.conjecture-test-planning.v1",
+  "elicited_at": "2026-10-14T14:31:34Z",
+  "elicitor": "assistant; subjective bounded-test forecasts, operator-reviewable",
+  "contracts": {
+    "low-energy": "research/scattering/low-energy/contracts/low-energy-scattering-conjectures.v4.json"
+  },
+  "source_sha256": {
+    "research/scattering/low-energy/contracts/low-energy-scattering-conjectures.v4.json": "6ec12aad58e77b9c6151e1f667f75349dda92bd7bcffb69e89f5d800751832eb"
+  },
+  "semantics": {
+    "accepted": "Scoped acceptance met in the selected review/test; not universal truth.",
+    "rejected": "Scoped candidate falsified in the selected review/test.",
+    "inconclusive": "Neither acceptance nor scoped rejection established.",
+    "unknown_is_not_zero": true,
+    "independence_assumed": false,
+    "effort_unit": "One focused assistant read/edit/test/review cycle; relative planning unit, not elapsed time or compute usage.",
+    "forecast_uncertainty": "Qualitative limitation statement attached to each elicited distribution; not a confidence interval.",
+    "ranking_policy": "No numerical prioritization until protocol, forecast and costs are supplied; information gain additionally requires an observation model."
+  },
+  "conjectures": [
+    {
+      "id": "low-energy:rim-threshold-regularity",
+      "test": {
+        "acceptance": "The fixed two-rim fixture has no bounded non-L2 threshold solution with nonzero lead component. Its flux-normalized transmission and reflection matrices obey T(k)=O(k), R(k)=-I2+O(k) as k decreases to zero. Quantified scope: There exist C>0 and k0>0 such that ||T(k)||<=C k and ||R(k)+I2||<=C k for every 0<k<k0.",
+        "falsifier": "A threshold solution with u!=0, or failure of either uniform O(k) bound at this fixture.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "The fixed two-rim fixture has no bounded non-L2 threshold solution with nonzero lead component. Its flux-normalized transmission and reflection matrices obey T(k)=O(k), R(k)=-I2+O(k) as k decreases to zero.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "low-energy:three-port-asymptotic-completeness",
+      "test": {
+        "acceptance": "For the fixed eleven-state-plus-leads Hamiltonian, the pure-point subspace consists exactly of the five reported above-band modes, the singular-continuous subspace is zero, and outgoing wave operators from the three free chains are complete. Every initially central state is the sum of its persistent bound part and an asymptotically free outgoing lead packet. Quantified scope: On the full free three-lead Hilbert space, W_+=s-lim_(t->+infinity) exp(itH) J exp(-itH_D) exists, W_+*W_+=I, and Ran(W_+)=H_ac(H). P_pp(H) is the full-tail-normalized projection P_b onto exactly the five reported modes, and P_sc(H)=0. Consequently every initially central psi has the asymptote phi_out=W_+*(I-P_b)psi with ||exp(-itH)(I-P_b)psi-J exp(-itH_D)phi_out|| -> 0.",
+        "falsifier": "Another L2 eigenmode, a singular-continuous component, or a central state whose orthogonal-to-bound component has no such outgoing asymptote.",
+        "next_action": "Resolved for the fixed three-port Hilbert space. C5 and C7 are now ready for their separate bound-retention and channel-rank reviews; do not promote them solely from this dependency update.",
+        "scope": "Full-space scattering decomposition, not reconstruction of arbitrary finite interaction histories from asymptotic amplitudes.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "low-energy:glued-seed-two-factor-carrier",
+      "test": {
+        "acceptance": "There exists a rank-four complex J:C2 tensor C2 -> C10 with KJ=J(T_gamma tensor T_gamma), J*J=G_gamma tensor G_gamma, and [K,P]=0 for P=J(G_gamma tensor G_gamma)^(-1)J*. The complementary six coordinates are retained. This asserts an abstract reducing tensor carrier only; source-generated independent factor controls and physical output identification are not asserted. Quantified scope: Existence of J satisfying the displayed polynomial identities; independence means the full tensor product, not two overlapping path drawings or a direct sum relabelled as two particles.",
+        "falsifier": "An exact obstruction to the rank-four intertwiner, even before the metric and complement conditions.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "There exists a rank-four complex J:C2 tensor C2 -> C10 with KJ=J(T_gamma tensor T_gamma), J*J=G_gamma tensor G_gamma, and [K,P]=0 for P=J(G_gamma tensor G_gamma)^(-1)J*. The complementary six coordinates are retained. This asserts an abstract reducing tensor carrier only; source-generated independent factor controls and physical output identification are not asserted.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "low-energy:rim-packet-transmission-vanishes",
+      "test": {
+        "acceptance": "If C1 holds, every normalized incoming asymptotic packet supported in 1/2<E<1/2+epsilon has total opposite-side transmission at most C_packet epsilon, uniformly over its two-port profile and phase. Quantified scope: There exist C_packet,epsilon0>0 such that integral ||T(E)f(E)||\u00b2 dE <= C_packet epsilon for all 0<epsilon<epsilon0 and all f with integral ||f(E)||\u00b2 dE=1 and the stated support.",
+        "falsifier": "Under C1, a sequence of such packets with transmission/epsilon unbounded.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "If C1 holds, every normalized incoming asymptotic packet supported in 1/2<E<1/2+epsilon has total opposite-side transmission at most C_packet epsilon, uniformly over its two-port profile and phase.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "low-energy:three-port-bound-retention",
+      "test": {
+        "acceptance": "If C2 holds, each named normalized central preparation in the bound-spectrum report retains exactly ||P_b psi||\u00b2>0 in the large-region, long-time-averaged sense; its escaping squared norm is 1-||P_b psi||\u00b2, not one. Quantified scope: lim_(R->infinity) lim_(T->infinity) (1/T) integral_0^T ||P_R exp(-itH)psi||\u00b2 dt = ||P_b psi||\u00b2, where P_R keeps the central eleven coordinates and the first R sites of each lead. Positivity uses the reported nonzero-overlap certificates for the named preparations.",
+        "falsifier": "Violation of the ordered-limit identity under C2, or a zero bound overlap for one of the named preparations.",
+        "next_action": "Review the acceptance and falsifier under the declared scope.",
+        "scope": "If C2 holds, each named normalized central preparation in the bound-spectrum report retains exactly ||P_b psi||\u00b2>0 in the large-region, long-time-averaged sense; its escaping squared norm is 1-||P_b psi||\u00b2, not one.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "low-energy:no-regular-threshold-channel-intertwiner",
+      "test": {
+        "acceptance": "Under C1 and the source-bound three-port threshold statement C11, no regular flux-isometric family V(k):C3 -> C4 intertwines the full three-port scattering matrix with the two-rim matrix near their respective lower thresholds, even up to a common phase. Quantified scope: There do not exist V(k),alpha(k) with V*V=I3, |alpha|=1, isometric/unit-modulus limits at k=0, and S_rim(1/2+k\u00b2)V(k)=alpha(k)V(k)S_port(2-2cos(k)) for all sufficiently small k>0. S_port is metric-whitened; coefficient-versus-endpoint common phases are absorbed in alpha.",
+        "falsifier": "Such a family under the stated assumptions; not a projection that drops a port or a singular, differently prepared comparison.",
+        "next_action": "Resolved in the shared incoming/outgoing isometry class. Independent input/output maps or larger retained comparison packages require a different proposition.",
+        "scope": "One shared isometric identification V for both incoming and outgoing fibers, up to a scalar phase. The proof covers the stated regular families and also rules out escape by nonconvergence of V/alpha alone. Separate input/output frame maps, added channels and non-isometric changes are outside this obstruction.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "low-energy:no-four-mode-single-excitation-port-embedding",
+      "test": {
+        "acceptance": "Under C2, the full four-dimensional two-factor target specified in C3 cannot be isometrically embedded at fixed total energy in the three-port model's single-excitation outgoing channel fiber. Quantified scope: For almost every E in (0,4), no F(E):C2 tensor C2 -> C3 satisfies F(E)*F(E)=G_gamma tensor G_gamma. A change to multi-excitation/Fock sectors or extra channels changes the model.",
+        "falsifier": "A rank-four isometry into that three-dimensional fiber without changing the sector, energy-fiber meaning or channel count.",
+        "next_action": "Resolved for the full target at fixed energy in the single-excitation fiber. Energy mixing, extra channels and multi-excitation sectors are different propositions.",
+        "scope": "Under C2, the full four-dimensional two-factor target specified in C3 cannot be isometrically embedded at fixed total energy in the three-port model's single-excitation outgoing channel fiber.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "low-energy:two-tick-macro-factor-carrier",
+      "test": {
+        "acceptance": "The fixed path-synchronized macro return M=D contains a reducing isometric carrier for U=T_gamma tensor T_gamma with target metric H=G_gamma tensor G_gamma. Quantified scope: There exists complex J of size 12 by 4 and rank four with MJ=JU, J*J=H and [M,J H^(-1) J*]=0. M is fixed by the pinned displayed occurrences, with no fitted coefficients or additional tensor copies.",
+        "falsifier": "An exact spectral multiplicity, metric or reducing-subspace obstruction to these identities for the specified controller.",
+        "next_action": "Resolved for the fixed synchronized controller. Replay check_macro_carrier.py --check on source changes; do not infer exclusion of differently admitted retained constructors.",
+        "scope": "Conditional macro-carrier test only. Even success does not supply source-generated clock/wait operations, independent factor controls, witness transport or a coherence filler. Current primitive-word provenance, clock phases and complementary records remain explicit.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "low-energy:three-port-no-singular-continuous-spectrum",
+      "test": {
+        "acceptance": "The spectral projection onto the singular-continuous subspace of the fixed three-port Hamiltonian is zero, including at both band edges. Quantified scope: For every psi in the full coupled Hilbert space, its spectral measure has only absolutely continuous and pure-point parts on R: P_sc(H)psi=0.",
+        "falsifier": "A vector with nonzero singular-continuous spectral measure for this fixed H.",
+        "next_action": "Resolved by the rational-Weyl spectral-measure proof. C2 is now ready for its separate full-space wave-operator and point-spectrum assembly; neither follows merely from the C9 disposition.",
+        "scope": "The spectral projection onto the singular-continuous subspace of the fixed three-port Hamiltonian is zero, including at both band edges.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "low-energy:raw-macro-history-isometric-realization",
+      "test": {
+        "acceptance": "The specified coherent history appends admit deterministic contractive amplitude readouts reproducing the unweighted macro map D at every depth, without postselection, rescaling or discarding history records. Quantified scope: There exist linear contractions R_n:H_n->C12 for all n>=0, with R_0=I12 and R_(n+1) A_n=D R_n, where A_n|h>=sum_(b:D[b,last(h)]=1)|h,b>/sqrt(d_last(h)). The allowed histories, metrics and clock are fixed, not optimization variables.",
+        "falsifier": "A finite-depth norm or linear-intertwining obstruction; in particular ||D||>1 already refutes the depth-zero requirement.",
+        "next_action": "Resolved by the exact depth-zero norm obstruction. Replay check_raw_macro_readout.py --check after source changes; do not infer failure of richer retained comparison packages or C8's separate carrier test.",
+        "scope": "Norm-constrained raw-amplitude readout diagnostic, NOT the criterion for witnessed constructive identity. It tests reproduction of unweighted D, not generation and reuse of a joint comparison certificate. Failure does not exclude a richer retained constructor, weighted/heralded model or independently specified verification stage. Source authorization and physical counting metric remain unestablished.",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    },
+    {
+      "id": "low-energy:three-port-threshold-householder",
+      "test": {
+        "acceptance": "The fixed core has a simple zero mode with nonzero port projection, the open-band response has no real pole, and its lower-threshold scattering limit is the metric-whitened Householder reflection I3-2ww* with eigenvalues (-1,1,1). Quantified scope: For all 0<k<pi the outgoing response exists, and lim_(k->0+) H_port^(1/2) S(2-2cos(k)) H_port^(-1/2)=I3-2ww*, where w is the normalized whitened visible projection of the unique core zero mode.",
+        "falsifier": "A different zero-mode multiplicity, vanishing visible projection, interior real response pole, or absent/different threshold limit.",
+        "next_action": "Resolved by fresh exact finite certificates and the analytic threshold expansion. C6 is now ready for its separate shared-frame comparison proof; no completeness or physical outcome is promoted.",
+        "scope": "The fixed core has a simple zero mode with nonzero port projection, the open-band response has no real pole, and its lower-threshold scattering limit is the metric-whitened Householder reflection I3-2ww* with eigenvalues (-1,1,1).",
+        "protocol_status": "requires_estimation_protocol"
+      },
+      "probability": {
+        "status": "not_applicable",
+        "event": "Outcome of the next scoped test/review, not universal conjecture truth.",
+        "outcomes": [
+          "accepted",
+          "rejected",
+          "inconclusive"
+        ],
+        "values": null,
+        "conditioning": null,
+        "uncertainty": null,
+        "basis": null,
+        "reason": "Historical verdict is evidence, not a forecast."
+      },
+      "test_cost": {
+        "status": "not_applicable",
+        "scope": "Next scoped test including preparation, execution and review; excludes downstream assembly and total research programme.",
+        "assistant_effort_units": null,
+        "basis": null,
+        "reason": "No new test selected for this resolved candidate; a rerun requires a separate estimate."
+      },
+      "decision_value": {
+        "expected_information_gain_bits": null,
+        "expected_utility": null,
+        "reason": "Requires a hypothesis/observation model or utility model; outcome entropy alone is not information gain."
+      }
+    }
+  ]
+}

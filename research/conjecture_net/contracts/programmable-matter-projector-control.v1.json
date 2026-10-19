@@ -1,0 +1,17 @@
+{
+  "schema": "marici.programmable-matter-projector-control.v1",
+  "status": "conditional_programmable_quantum_interface",
+  "matter_register": "Seven qubits, 128 basis states: native pair indices 0..99, separate matter vacuum 100, invalid padding 101..127.",
+  "record_register": "One logical qubit with the optical record-block encoding supplied separately; matter and record vacuum are distinct factors.",
+  "native_inputs": "All four chirality/doublet cases in native_spinor_pair_adapter.json; v=J(1,0,0,1)/sqrt(2), J=W tensor conjugate(W).",
+  "basis_change": "Extend v by zeros on vacuum/padding. For w=e0-v, alpha=1-v0, U=I-w wdagger/alpha; native v0 is real and alpha nonzero. U=Udagger=U^-1 and U e0=v. This is a declared synthesized gate, not a native cycle word.",
+  "coherent_flags_in_sorted_basis": {"primary": "index=0", "rival": "1<=index<=99", "carrier_present": "0<=index<=99", "matter_vacuum": "index=100", "invalid": "101<=index<=127"},
+  "interaction": "Sort by Udagger, compute selected primary/rival predicate reversibly into a clean flag, apply exp(+i theta X_record) conditioned on flag, uncompute flag, unsort by U. theta=g*delta_model_time. No measurement of matter or flag.",
+  "record_dynamics": "Record occupation N_record remains a separate noncommuting term. Full exact record block evolution may instead multiplex active exp[-it(N_record-gX)] versus inactive exp[-it N_record]; do not multiply these exponentials as if N and X commute.",
+  "source_K": "Reuse the frozen selected K only under its already checked self-adjointness and commutation with c and Pi; its own simulator gate implementation is separate from this control interface.",
+  "vacuum_policy": "Both interaction controls zero on matter vacuum and padding. Record gap still acts on record excitations there; common empty reference retained.",
+  "hardware_capabilities_required": ["coherent state-preparation/basis-change circuit for supplied v", "reversible seven-bit equality/range predicates with clean ancilla", "controlled record rotations or controlled exact record-block unitaries", "faithful native K simulation and record-gap control", "logical-to-optical record interface if optical implementation is selected"],
+  "physical_hardware_verified": false,
+  "native_control_derived": false,
+  "full_physical_reaggregation_binding": false
+}

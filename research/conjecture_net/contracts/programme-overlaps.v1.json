@@ -1,0 +1,46 @@
+{
+  "schema": "marici.conjecture-net.programme-overlaps.v1",
+  "id": "finite-structural-overlap-and-readout-contract.v1",
+  "status": "proposed_candidate",
+  "overlaps": [
+    {
+      "id": "unitary-hamiltonian-shared-state",
+      "targets": ["unitary-local-return-pilot", "hamiltonian-symplectic-pilot"],
+      "common_source_instance": "native-bool-square-pilot",
+      "transport_contract": "research/conjecture_net/contracts/structural-pilot-transport.v1.json",
+      "domain": "Same C4 spectral states and their R8 realifications; same native labels, generators and retained schedules.",
+      "state_map": "r(q+i p)=(q,p)",
+      "operator_map": "R(A+i B)=[[A,-B],[B,A]]",
+      "parameter_map": "theta=pi*t",
+      "required_cells": ["state/operator action square", "composition square", "generator/derivative square", "closed-piece return restriction squares", "source attachment and retained schedule transport", "quadratic readout descent"],
+      "readouts": [
+        {"id": "squared-norm", "complex": "z* z", "real": "x^T x", "law": "z* z=x^T x", "role": "mathematical_readout", "physical_authorization": false},
+        {"id": "hermitian-quadratic", "complex": "z* M z for M=M*", "real": "x^T R(M) x", "law": "z* M z=x^T R(M) x", "role": "mathematical_readout", "physical_authorization": false},
+        {"id": "canonical-energy", "complex": "z* H z", "real": "E_H(x)=x^T R(H)x/2", "law": "z* H z=2 E_H(x)", "role": "mathematical_readout", "physical_authorization": false},
+        {"id": "coordinate-intensity", "complex": "|z_j|^2", "real": "q_j^2+p_j^2", "law": "|z_j|^2=q_j^2+p_j^2", "role": "mathematical_readout", "physical_authorization": false}
+      ],
+      "retention_policy": "The state map is injective, but scalar/quadratic readouts are generally quotients. Retain source attachment, full state and ordered schedule/path records; do not infer full-record faithfulness from a scalar energy or norm.",
+      "completion_policy": "Native finite-dimensional coordinate identities only; no cutoff-uniform infinite-sector estimate is inferred.",
+      "seam_policy": "Continuity and closed-piece agreement; no seam C1 claim.",
+      "verification_level": "Written general realification identities and exact rational coefficient controls, plus the live accepted mixed operational certificate.",
+      "kernel_observable_transport_proved": false,
+      "admission_status": "not_admitted_as_programme_proof_link"
+    }
+  ],
+  "unconnected_interfaces": [
+    {
+      "target": "compton-complete-record-calibration",
+      "status": "source_bridge_missing",
+      "required": ["physical preparation/source map", "instrument effects with all rejection records", "Born/Klein-Nishina input provenance", "calibration and uncertainty", "frozen statistical criterion"],
+      "boundary": "No equality between finite Bool-pilot quadratic records and Compton probabilities is supplied. A common software interface would not establish a common physical witness."
+    }
+  ],
+  "physical_readout_gate": {
+    "required_fields": ["source_preparation", "observable_or_effects", "complete_record_space", "state_to_record_pairing", "calibration", "units", "equivalence_descent", "lost_information", "uncertainty", "independent_test_protocol"],
+    "normalization_is_born_rule": false,
+    "canonical_energy_is_physical_energy": false,
+    "retained_schedule_is_physical_clock": false,
+    "scalar_readout_is_full_record": false
+  },
+  "boundary": "Specified structural overlap only, not an empirical measurement model, physical-sector compatibility theorem, or universal common carrier."
+}

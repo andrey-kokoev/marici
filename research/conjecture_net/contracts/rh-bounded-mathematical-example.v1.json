@@ -1,0 +1,406 @@
+{
+  "schema": "marici.rh-bounded-mathematical-example.v1",
+  "id": "marici.rh-bounded-mathematical-example.v1",
+  "origin_net": "research/conjecture_net/contracts/rh-realization-work-net.v1.json",
+  "origin_node": "rh-math-assembly",
+  "shared_example_id": "shared-rh-example",
+  "baseline": "research/aspect/contracts/theta-rh-interaction-net-state.v20.json",
+  "scope": "Bounded mathematical realization under declared choices, not RH truth or a universal common-source theorem.",
+  "dictionary": "research/conjecture_net/contracts/rh-stage-dictionary.v1.json",
+  "dictionary_sha256": "8dd800ae2f3f249a965e3ee40393c5ce853a67dd888908cc36d74d63012df1ab",
+  "stage_ids": [
+    "coeff-12",
+    "coeff-11",
+    "coeff-10",
+    "coeff-9",
+    "coeff-8",
+    "coeff-6",
+    "coeff-4",
+    "history",
+    "endpoint",
+    "cyclic",
+    "comb",
+    "radial",
+    "mellin",
+    "lattice",
+    "torus",
+    "real-distribution",
+    "riemann-boundary",
+    "theta",
+    "completed-zeta"
+  ],
+  "map_ids": [
+    "reduce-12-11",
+    "reduce-11-10",
+    "reduce-10-9",
+    "reduce-9-8",
+    "reduce-8-6",
+    "reduce-6-4",
+    "carrier-chart",
+    "comb-attachment",
+    "history-endpoint",
+    "endpoint-chart",
+    "oriented-radial",
+    "spectral-mellin",
+    "lattice-fourier",
+    "atom-lift",
+    "periodic-lift",
+    "real-radial",
+    "unshifted-specialization",
+    "theta-pairing",
+    "theta-mellin-completion"
+  ],
+  "routes": [
+    {
+      "id": "carrier-generic",
+      "kind": "linear",
+      "stages": [
+        "coeff-12",
+        "coeff-11",
+        "coeff-10",
+        "coeff-9",
+        "coeff-8",
+        "coeff-6",
+        "coeff-4",
+        "cyclic",
+        "comb",
+        "radial",
+        "mellin"
+      ],
+      "maps": [
+        "reduce-12-11",
+        "reduce-11-10",
+        "reduce-10-9",
+        "reduce-9-8",
+        "reduce-8-6",
+        "reduce-6-4",
+        "carrier-chart",
+        "comb-attachment",
+        "oriented-radial",
+        "spectral-mellin"
+      ],
+      "scope": "Generic chosen shift; full source archive retained."
+    },
+    {
+      "id": "history-generic",
+      "kind": "linear",
+      "stages": [
+        "history",
+        "endpoint",
+        "cyclic",
+        "comb",
+        "radial",
+        "mellin"
+      ],
+      "maps": [
+        "history-endpoint",
+        "endpoint-chart",
+        "comb-attachment",
+        "oriented-radial",
+        "spectral-mellin"
+      ],
+      "scope": "Four actual stages n=10,16,26,42; continuous bridge plus distinct native continuation on finite generic image."
+    },
+    {
+      "id": "lattice-Fourier-square",
+      "kind": "square_then_linear",
+      "stages": [
+        "lattice",
+        "torus",
+        "real-distribution",
+        "radial",
+        "mellin"
+      ],
+      "maps": [
+        "lattice-fourier",
+        "atom-lift",
+        "periodic-lift",
+        "real-radial",
+        "spectral-mellin"
+      ],
+      "scope": "Independent additive lattice source, fixed mesh continuity; multichannel statements do not select a one-dimensional zeta source."
+    },
+    {
+      "id": "Riemann-completion",
+      "kind": "linear",
+      "stages": [
+        "coeff-12",
+        "coeff-11",
+        "coeff-10",
+        "coeff-9",
+        "coeff-8",
+        "coeff-6",
+        "coeff-4",
+        "cyclic",
+        "riemann-boundary",
+        "theta",
+        "completed-zeta"
+      ],
+      "maps": [
+        "reduce-12-11",
+        "reduce-11-10",
+        "reduce-10-9",
+        "reduce-9-8",
+        "reduce-8-6",
+        "reduce-6-4",
+        "carrier-chart",
+        "unshifted-specialization",
+        "theta-pairing",
+        "theta-mellin-completion"
+      ],
+      "scope": "Unit unshifted seed for ordinary Lambda/xi; arbitrary scalar coefficients scale the entire endpoint packet and readout."
+    }
+  ],
+  "required_cells": [
+    {
+      "id": "finite-squares",
+      "owner": "rh-operation-composition-squares",
+      "witness_state": "constructed_at_declared_scope",
+      "claim_scope": "Inherited coefficient operations/forms; frame and seed supplied.",
+      "positive_identity_asserted": true,
+      "rejected_original_identification_promoted": false
+    },
+    {
+      "id": "history-generator",
+      "owner": "rh-operation-composition-squares",
+      "witness_state": "constructed_at_declared_scope",
+      "claim_scope": "Keep sqrt(3) angular normalization and transported sections; no equality of native history and analytic metrics.",
+      "positive_identity_asserted": true,
+      "rejected_original_identification_promoted": false
+    },
+    {
+      "id": "native-tick-no-go",
+      "owner": "rh-operation-composition-squares",
+      "witness_state": "rejected_identification_retained",
+      "claim_scope": "No native-tick identity claimed; positive interface keeps both operations separately typed.",
+      "positive_identity_asserted": false,
+      "rejected_original_identification_promoted": false
+    },
+    {
+      "id": "generator-quarter-turn-no-go",
+      "owner": "rh-operation-composition-squares",
+      "witness_state": "rejected_identification_retained",
+      "claim_scope": "Skew-generator flow is not full Fourier; retain the alternating stationary character.",
+      "positive_identity_asserted": false,
+      "rejected_original_identification_promoted": false
+    },
+    {
+      "id": "lattice-weyl-bonding",
+      "owner": "rh-operation-composition-squares",
+      "witness_state": "constructed_at_declared_scope",
+      "claim_scope": "Finite convolution only; l2 continuity and distributional limits are analytic-owner obligations.",
+      "positive_identity_asserted": true,
+      "rejected_original_identification_promoted": false
+    },
+    {
+      "id": "radial-spectral-square",
+      "owner": "rh-operation-composition-squares",
+      "witness_state": "constructed_on_declared_core",
+      "claim_scope": "Regularized common core and inherited induced image; no raw-comb global integral or completed endpoint-extension theorem.",
+      "positive_identity_asserted": true,
+      "rejected_original_identification_promoted": false
+    },
+    {
+      "id": "hidden-reconstruction",
+      "owner": "rh-identity-continuation-transport",
+      "witness_state": "constructed_for_fixed_coefficient_tasks",
+      "claim_scope": "P x=P y for generic analytic readout; r12 x=r12 y for unshifted readout. Neither identifies complete retained source states.",
+      "positive_identity_asserted": true,
+      "rejected_original_identification_promoted": false
+    },
+    {
+      "id": "history-retention",
+      "owner": "rh-identity-continuation-transport",
+      "witness_state": "constructed_for_fixed_history_tasks",
+      "claim_scope": "O_n x=O_n y for full endpoint/generic analytic task; complete source identity also compares endpoint-invisible histories and provenance.",
+      "positive_identity_asserted": true,
+      "rejected_original_identification_promoted": false
+    },
+    {
+      "id": "riemann-quotient",
+      "owner": "rh-identity-continuation-transport",
+      "witness_state": "unsafe_scalar_identity_rejected_and_safe_task_reader_constructed",
+      "claim_scope": "For endpoint recurrence with scalar observation ell, equality of Z x, Z=[ell;ell M], is future-safe. Equality of ell x alone is not.",
+      "positive_identity_asserted": true,
+      "rejected_original_identification_promoted": false
+    },
+    {
+      "id": "generic-domain",
+      "owner": "rh-analytic-domain-completion-transport",
+      "witness_state": "constructed_at_declared_scope",
+      "claim_scope": "No uniform coordinate inverse at a=0 or a=1/2; no comb L2 norm.",
+      "positive_identity_asserted": true,
+      "rejected_original_identification_promoted": false
+    },
+    {
+      "id": "radial-endpoint-domain",
+      "owner": "rh-analytic-domain-completion-transport",
+      "witness_state": "constructed_at_declared_scope",
+      "claim_scope": "Endpoint values are source-induced, not independently completed coordinates.",
+      "positive_identity_asserted": true,
+      "rejected_original_identification_promoted": false
+    },
+    {
+      "id": "mellin-domain",
+      "owner": "rh-analytic-domain-completion-transport",
+      "witness_state": "constructed_at_declared_scope",
+      "claim_scope": "Spectral anti-duals are not claimed to be ordinary S'(t), Hilbert vectors or pointwise Mellin functions.",
+      "positive_identity_asserted": true,
+      "rejected_original_identification_promoted": false
+    },
+    {
+      "id": "lattice-continuity",
+      "owner": "rh-analytic-domain-completion-transport",
+      "witness_state": "constructed_at_declared_scope",
+      "claim_scope": "No h-uniform unweighted sampling constant or l2 convolution-algebra claim.",
+      "positive_identity_asserted": true,
+      "rejected_original_identification_promoted": false
+    },
+    {
+      "id": "theta-completion",
+      "owner": "rh-analytic-domain-completion-transport",
+      "witness_state": "constructed_at_declared_scope",
+      "claim_scope": "No critical-line zero theorem or arithmetic form positivity.",
+      "positive_identity_asserted": true,
+      "rejected_original_identification_promoted": false
+    }
+  ],
+  "excluded_boundary_cells": [
+    "channel-source-binding",
+    "one-dimensional-binding"
+  ],
+  "evidence": {
+    "rh-stage-dictionary": {
+      "artifact_id": "stage-dictionary",
+      "id": "stage-dictionary",
+      "note": "research/voevodsky/rh-stage-dictionary-v1.md",
+      "checker": "research/voevodsky/checkers/check_rh_stage_dictionary.py",
+      "receipt": "research/voevodsky/results/rh-stage-dictionary-v1.json"
+    },
+    "rh-operation-composition-squares": {
+      "artifact_id": "operation-composition-audit",
+      "id": "operation-composition-audit",
+      "note": "research/voevodsky/rh-operation-composition-audit-v1.md",
+      "checker": "research/voevodsky/checkers/check_rh_operation_composition_audit.py",
+      "receipt": "research/voevodsky/results/rh-operation-composition-audit-v1.json"
+    },
+    "rh-identity-continuation-transport": {
+      "artifact_id": "identity-continuation-audit",
+      "id": "identity-continuation-audit",
+      "note": "research/voevodsky/rh-identity-continuation-audit-v1.md",
+      "checker": "research/voevodsky/checkers/check_rh_identity_continuation_audit.py",
+      "receipt": "research/voevodsky/results/rh-identity-continuation-audit-v1.json"
+    },
+    "rh-analytic-domain-completion-transport": {
+      "artifact_id": "analytic-completion-audit",
+      "id": "analytic-completion-audit",
+      "note": "research/voevodsky/rh-analytic-completion-audit-v1.md",
+      "checker": "research/voevodsky/checkers/check_rh_analytic_completion_audit.py",
+      "receipt": "research/voevodsky/results/rh-analytic-completion-audit-v1.json"
+    },
+    "rh-stagewise-interface": {
+      "artifact_id": "stagewise-interface-assembly",
+      "id": "stagewise-interface-assembly",
+      "note": "research/voevodsky/rh-stagewise-interface-assembly-v1.md",
+      "checker": "research/voevodsky/checkers/check_rh_stagewise_interface_assembly.py",
+      "receipt": "research/voevodsky/results/rh-stagewise-interface-assembly-v1.json"
+    }
+  },
+  "identity_contexts": {
+    "hidden-reconstruction": {
+      "disposition": "constructed_for_fixed_coefficient_tasks",
+      "equivalence": "P x=P y for generic analytic readout; r12 x=r12 y for unshifted readout. Neither identifies complete retained source states.",
+      "licensed_operations": [
+        "C12",
+        "D12 and its finite-dimensional flow"
+      ],
+      "witness": "P C12=C4 P; P D12=D4 P; r12 C12=r12; r12 D12=0. Complete state reconstructed as E P x+N x."
+    },
+    "history-retention": {
+      "disposition": "constructed_for_fixed_history_tasks",
+      "equivalence": "O_n x=O_n y for full endpoint/generic analytic task; complete source identity also compares endpoint-invisible histories and provenance.",
+      "licensed_operations": [
+        "native step_n at audited stages",
+        "existing lifted L_n and its flow"
+      ],
+      "witness": "O_next step=M O_n; O_n L_n=A_endpoint O_n; N_next step=step N_n; x=Efull Pfull x+Nfull x."
+    },
+    "riemann-quotient": {
+      "disposition": "unsafe_scalar_identity_rejected_and_safe_task_reader_constructed",
+      "equivalence": "For endpoint recurrence with scalar observation ell, equality of Z x, Z=[ell;ell M], is future-safe. Equality of ell x alone is not.",
+      "licensed_operations": [
+        "native endpoint M",
+        "declared A_endpoint drift"
+      ],
+      "witness": "ell=[2,2,0,0], ell M=[2,2,2,2], Z M=[[0,1],[1,1]] Z, Z A_endpoint=0. Equal scalar readouts 2 can have next readouts 2 and 4."
+    }
+  },
+  "completion_contract": {
+    "test_pairing": "Continuous anti-dual: <T,phi>=T(conjugate phi); <A^times T,A phi>=<T,phi>.",
+    "radial": "E_r=U S(R), p_Nk^r(g)=p_Nk(U^-1 g), smooth inverse at zero.",
+    "spectral": "E_s=V E_r with transported topology, V normalized log Fourier.",
+    "ordinary_log_tempered_extension": false,
+    "raw_combs_are_Hilbert_states": false,
+    "all_l2_packets_have_pointwise_continued_Mellin_functions": false,
+    "zero_endpoint_retained": true,
+    "independent_endpoint_completion": false
+  },
+  "operation_conventions": {
+    "additive_Fourier": "exp(-2pi ixy), self-dual measure",
+    "history_angular_generator": "A=sqrt(3)*[[0,2/3],[-2,0]]",
+    "half_density": "(U f)_epsilon(u)=exp(u/2)f(epsilon exp(u))",
+    "log_Fourier": "V=(2pi)^(-1/2) M_log; scalar normalization cancels in gamma square",
+    "radial_test_topology": "E_r=U S(R), transported Schwartz Frechet",
+    "spectral_test_topology": "E_s=V E_r, transported Frechet",
+    "dual_pairing": "continuous anti-duals; <A^times T,A phi>=<T,phi>",
+    "generic_shift": "0<a<1, a!=1/2; seed/shift supplied",
+    "specialization": "Rank-one unshifted comb readout; hidden records retained",
+    "native_analytic_continuation": "J M J^-1 on cyclic coefficients, transported to finite generic comb image; not Fourier or an operator on arbitrary ambient states"
+  },
+  "normalization_contract": {
+    "unshifted_coefficient": "c=sum cyclic coefficients; c=r12 x or ell O_n x on its respective route.",
+    "ordinary_zeta_seed_condition": "c=1 with unit self-dual comb and declared Gaussian/measure.",
+    "arbitrary_state_output": "c Lambda(s), c xi(s); polar packet and xi endpoint constant also scaled by c.",
+    "automatic_per_state_normalization": false,
+    "zero_coefficient_division_allowed": false,
+    "native_readout_prediction": "Use Z=[ell;ell M], not scalar identity or free renormalization after extension."
+  },
+  "consumer_bindings": [
+    {
+      "contract": "research/conjecture_net/contracts/mathematical-realization-conjecture-net.v1.json",
+      "node": "rh-mathematical-realization-example",
+      "role": "mathematical_realization",
+      "relation": "scoped_contribution_pending_general_interface_review",
+      "proof_bearing": false,
+      "discharges_parent": false
+    },
+    {
+      "contract": "research/conjecture_net/contracts/same-source-compatibility-conjecture-net.v1.json",
+      "node": "rh-same-source-compatibility-example",
+      "role": "same_source_compatibility",
+      "relation": "reuse_mathematical_witness_only",
+      "proof_bearing": false,
+      "discharges_parent": false
+    }
+  ],
+  "remaining_gates": [
+    "math:stagewise-mathematical-interface",
+    "math:rh-mathematical-realization-example",
+    "rh:channel-carrier-source-map",
+    "rh:one-dimensional-source-selection",
+    "rh:successor-form-candidate",
+    "rh:weil-form-comparison",
+    "rh:same-source-continuation-comparison",
+    "rh:rh-cross-realization-assembly"
+  ],
+  "boundaries": {
+    "RH_assumed_true": false,
+    "RH_proved": false,
+    "general_math_interface_discharged": false,
+    "math_branch_example_automatically_resolved": false,
+    "same_source_compatibility_discharged": false,
+    "physical_realization_supplied": false,
+    "Weil_form_pullback_supplied": false,
+    "universal_coverage_supplied": false
+  }
+}
