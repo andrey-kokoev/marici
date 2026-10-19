@@ -4,11 +4,12 @@ import { fileURLToPath } from 'node:url'
 import matter from 'gray-matter'
 import MarkdownIt from 'markdown-it'
 import { katex as markdownKatex } from '@mdit/plugin-katex'
+import { ledgerMathMacros, normalizeLedgerForPublication } from './ledger-math-publication.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const mode = process.argv[2] || 'source'
 if (!['source','dist'].includes(mode)) throw new Error('Usage: node scripts/check-katex.mjs [source|dist]')
-const markdown = new MarkdownIt().use(markdownKatex, { throwOnError: true, strict: 'error' })
+const markdown = new MarkdownIt().use(markdownKatex, { throwOnError: true, strict: 'error', macros: { ...ledgerMathMacros } })
 async function walk(dir) {
   const out=[]
   for(const entry of await fs.readdir(dir,{withFileTypes:true})) {
@@ -18,7 +19,6 @@ async function walk(dir) {
   }
   return out
 }
-const normalize = value => value.replace(/^\s*\\\[[ \t]*$/gm,()=> '$$').replace(/^\s*\\\][ \t]*$/gm,()=> '$$').replace(/\\\((.*?)\\\)/g,(_,formula)=>`$${formula}$`)
 if(mode==='source') {
   const files=await walk(path.join(root,'src','ledger'))
   let rendered=0, formulas=0, failures=0
@@ -28,14 +28,17 @@ if(mode==='source') {
     const match=path.basename(file).match(/^(\d{8})-(\d+)[ _-](.+)\.md$/i)
     if(!match) continue
     try {
-      const html=markdown.render(normalize(parsed.content))
+      const html=markdown.render(normalizeLedgerForPublication(parsed.content, Number(match[2])))
+      // The plugin catches KaTeX exceptions and emits an error element even
+      // with throwOnError enabled. Treat that output as a failed render.
+      if (/\bclass=["'][^"']*\bkatex-error\b/.test(html)) throw new Error('KaTeX error element emitted')
       formulas+=(html.match(/class="katex"/g)||[]).length; rendered++
     } catch(error) {
       failures++
       console.error(`${path.relative(root,file)}: ${error instanceof Error?error.message:String(error)}`)
     }
   }
-  console.log(`Rendered math in ${rendered} published ledger entries; ${formulas} KaTeX formulas; ${failures} errors.`)
+  console.log(`Rendered publication-normalized math in ${rendered} ledger entries; ${formulas} KaTeX formulas; ${failures} errors. Historical sources unchanged.`)
   if(failures) process.exitCode=1
 } else {
   const dist=path.join(root,'website','.vitepress','dist','research','ledger')
@@ -45,6 +48,9 @@ if(mode==='source') {
     const html=await fs.readFile(path.join(dist,entry.slug,'index.html'),'utf8').catch(()=>null)
     if(!html){failures++;console.error(`Missing rendered ledger entry: ${entry.slug}`);continue}
     checked++;formulas+=(html.match(/class="katex"/g)||[]).length
+    if (/\bclass=["'][^"']*\bkatex-error\b/.test(html)) {
+      failures++; console.error(`KaTeX error element: ${entry.slug}`)
+    }
     const visibleText = html
       .replace(/<!--[^]*?-->/g, '')
       .replace(/<head\b[^>]*>[^]*?<\/head>/i, '')
