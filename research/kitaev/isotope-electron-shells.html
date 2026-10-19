@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Isotopes and Electron Shells</title>
+  <style>
+    :root { color-scheme: light; --bg: #f3f6fa; --surface: #fff; --text: #17263a; --muted: #53657b; --line: #dce4ee; --stripe: #f7f9fc; --accent: #155d85; --head: #17344e; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.5; }
+    main { max-width: 1280px; margin: 0 auto; padding: 48px 24px; }
+    .eyebrow { margin: 0 0 8px; color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0 0 12px; font-size: clamp(1.8rem, 4vw, 2.7rem); line-height: 1.2; letter-spacing: -.035em; }
+    .intro { max-width: 850px; margin: 0; color: var(--muted); }
+    .toolbar { display: flex; align-items: end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin: 28px 0 14px; }
+    .search { display: grid; gap: 6px; width: min(100%, 360px); }
+    label { font-size: .85rem; font-weight: 600; }
+    input { width: 100%; padding: 11px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font: inherit; }
+    input:focus-visible, .table-wrap:focus-visible { outline: 3px solid #60a5fa; outline-offset: 3px; }
+    .count { margin: 0; color: var(--muted); font-size: .85rem; }
+    .table-wrap { overflow: auto; max-height: 72vh; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: 0 8px 30px #17344e08; }
+    table { border-spacing: 0; width: 100%; min-width: 1000px; font-size: .9rem; font-variant-numeric: tabular-nums; }
+    caption { padding: 12px 18px; text-align: left; color: var(--muted); background: var(--surface); font-size: .82rem; border-bottom: 1px solid var(--line); }
+    thead th { position: sticky; top: 0; z-index: 2; padding: 15px 12px; background: var(--head); color: #fff; text-align: center; white-space: nowrap; font-weight: 600; }
+    thead th:first-child { left: 0; z-index: 3; text-align: left; padding-left: 18px; }
+    tbody th, tbody td { padding: 11px 12px; border-bottom: 1px solid var(--line); background: var(--surface); text-align: center; }
+    tbody th { position: sticky; left: 0; z-index: 1; padding-left: 18px; text-align: left; white-space: nowrap; font-weight: 600; }
+    tbody tr:nth-child(even) > * { background: var(--stripe); }
+    tbody tr:hover > * { background: #e9f2fb; }
+    tbody tr:last-child > * { border-bottom: 0; }
+    tbody td:nth-child(4), thead th:nth-child(4) { border-left: 2px solid var(--line); }
+    td.empty { color: var(--muted); opacity: .6; }
+    tr[hidden] { display: none; }
+    .empty-state { padding: 20px; margin: 0; color: var(--muted); }
+    footer { margin-top: 16px; max-width: 950px; color: var(--muted); font-size: .83rem; }
+    footer p { margin: 6px 0; }
+    @media (prefers-color-scheme: dark) {
+      :root { color-scheme: dark; --bg: #101923; --surface: #172332; --text: #e4edf6; --muted: #a7b8cb; --line: #304155; --stripe: #1c2a3b; --accent: #80c8ef; --head: #234866; }
+      tbody tr:hover > * { background: #263d55; }
+    }
+    @media (max-width: 600px) { main { padding: 28px 16px; } .table-wrap { max-height: 70vh; } }
+    @page { size: landscape; margin: 12mm; }
+    @media print {
+      :root { --bg: white; --surface: white; --text: black; --muted: #444; --line: #ccc; --stripe: #f5f5f5; }
+      main { padding: 0; max-width: none; }
+      h1 { font-size: 22pt; }
+      .toolbar { display: none; }
+      .table-wrap { max-height: none; overflow: visible; box-shadow: none; border-radius: 0; margin-top: 16px; }
+      table { min-width: 0; font-size: 9pt; }
+      thead { display: table-header-group; }
+      thead th, tbody th { position: static; }
+      thead th { background: #eee; color: black; }
+      tbody th, tbody td, thead th { padding: 5px 7px; }
+      tr { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Atomic reference</p>
+      <h1>Isotopes &amp; electron shells</h1>
+      <p class="intro">Proton and neutron counts for the supplied isotopes, alongside the electron populations of their neutral atoms.</p>
+    </header>
+    <div class="toolbar">
+      <div class="search">
+        <label for="isotope-search">Find an isotope</label>
+        <input id="isotope-search" type="search" placeholder="For example, Iron or Lead-208" autocomplete="off" aria-controls="isotope-body">
+      </div>
+      <p class="count" id="row-count" role="status" aria-live="polite">39 isotopes</p>
+    </div>
+    <div class="table-wrap" role="region" aria-label="Isotope and electron-shell table; scroll horizontally on smaller screens" tabindex="0">
+      <table>
+        <caption>Shell headings give maximum capacities. An em dash (—) means that shell is unoccupied.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Nucleus</th><th scope="col">Protons</th><th scope="col">Neutrons</th>
+            <th scope="col">Shell 1 ≤2</th><th scope="col">Shell 2 ≤8</th><th scope="col">Shell 3 ≤18</th>
+            <th scope="col">Shell 4 ≤32</th><th scope="col">Shell 5 ≤50</th><th scope="col">Shell 6 ≤72</th>
+          </tr>
+        </thead>
+        <tbody id="isotope-body">
+          <tr><th scope="row">Hydrogen-1</th><td>1</td><td>0</td><td>1</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Hydrogen-2</th><td>1</td><td>1</td><td>1</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Helium-3</th><td>2</td><td>1</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Helium-4</th><td>2</td><td>2</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Lithium-6</th><td>3</td><td>3</td><td>2</td><td>1</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Lithium-7</th><td>3</td><td>4</td><td>2</td><td>1</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Beryllium-9</th><td>4</td><td>5</td><td>2</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Boron-10</th><td>5</td><td>5</td><td>2</td><td>3</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Boron-11</th><td>5</td><td>6</td><td>2</td><td>3</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Carbon-12</th><td>6</td><td>6</td><td>2</td><td>4</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Carbon-13</th><td>6</td><td>7</td><td>2</td><td>4</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Nitrogen-14</th><td>7</td><td>7</td><td>2</td><td>5</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Nitrogen-15</th><td>7</td><td>8</td><td>2</td><td>5</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Oxygen-16</th><td>8</td><td>8</td><td>2</td><td>6</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Oxygen-17</th><td>8</td><td>9</td><td>2</td><td>6</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Oxygen-18</th><td>8</td><td>10</td><td>2</td><td>6</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Neon-20</th><td>10</td><td>10</td><td>2</td><td>8</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Magnesium-24</th><td>12</td><td>12</td><td>2</td><td>8</td><td>2</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Silicon-28</th><td>14</td><td>14</td><td>2</td><td>8</td><td>4</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Sulfur-32</th><td>16</td><td>16</td><td>2</td><td>8</td><td>6</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Argon-40</th><td>18</td><td>22</td><td>2</td><td>8</td><td>8</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Calcium-40</th><td>20</td><td>20</td><td>2</td><td>8</td><td>8</td><td>2</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Calcium-46</th><td>20</td><td>26</td><td>2</td><td>8</td><td>8</td><td>2</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Iron-54</th><td>26</td><td>28</td><td>2</td><td>8</td><td>14</td><td>2</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Iron-56</th><td>26</td><td>30</td><td>2</td><td>8</td><td>14</td><td>2</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Iron-58</th><td>26</td><td>32</td><td>2</td><td>8</td><td>14</td><td>2</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Nickel-62</th><td>28</td><td>34</td><td>2</td><td>8</td><td>16</td><td>2</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Zirconium-90</th><td>40</td><td>50</td><td>2</td><td>8</td><td>18</td><td>10</td><td>2</td><td>—</td></tr>
+          <tr><th scope="row">Tin-112</th><td>50</td><td>62</td><td>2</td><td>8</td><td>18</td><td>18</td><td>4</td><td>—</td></tr>
+          <tr><th scope="row">Tin-120</th><td>50</td><td>70</td><td>2</td><td>8</td><td>18</td><td>18</td><td>4</td><td>—</td></tr>
+          <tr><th scope="row">Tin-124</th><td>50</td><td>74</td><td>2</td><td>8</td><td>18</td><td>18</td><td>4</td><td>—</td></tr>
+          <tr><th scope="row">Xenon-132</th><td>54</td><td>78</td><td>2</td><td>8</td><td>18</td><td>18</td><td>8</td><td>—</td></tr>
+          <tr><th scope="row">Barium-138</th><td>56</td><td>82</td><td>2</td><td>8</td><td>18</td><td>18</td><td>8</td><td>2</td></tr>
+          <tr><th scope="row">Gold-197</th><td>79</td><td>118</td><td>2</td><td>8</td><td>18</td><td>32</td><td>18</td><td>1</td></tr>
+          <tr><th scope="row">Mercury-204</th><td>80</td><td>124</td><td>2</td><td>8</td><td>18</td><td>32</td><td>18</td><td>2</td></tr>
+          <tr><th scope="row">Lead-204</th><td>82</td><td>122</td><td>2</td><td>8</td><td>18</td><td>32</td><td>18</td><td>4</td></tr>
+          <tr><th scope="row">Lead-206</th><td>82</td><td>124</td><td>2</td><td>8</td><td>18</td><td>32</td><td>18</td><td>4</td></tr>
+          <tr><th scope="row">Lead-207</th><td>82</td><td>125</td><td>2</td><td>8</td><td>18</td><td>32</td><td>18</td><td>4</td></tr>
+          <tr><th scope="row">Lead-208</th><td>82</td><td>126</td><td>2</td><td>8</td><td>18</td><td>32</td><td>18</td><td>4</td></tr>
+        </tbody>
+      </table>
+      <p class="empty-state" id="empty-state" hidden>No matching isotopes.</p>
+    </div>
+    <footer>
+      <p><strong>Reading the table:</strong> protons and neutrons belong to the nucleus; the shell columns describe the surrounding electrons of a neutral atom. Isotopes of the same element have the same electron counts here.</p>
+      <p>The maximum capacity of principal shell n is 2n². These capacities are not a sequential filling rule: subshell energies determine the actual populations. The supplied table values are preserved.</p>
+    </footer>
+  </main>
+  <script>
+    const input = document.getElementById('isotope-search');
+    const rows = [...document.querySelectorAll('#isotope-body tr')];
+    const count = document.getElementById('row-count');
+    const empty = document.getElementById('empty-state');
+    rows.forEach(row => [...row.cells].slice(1).forEach(cell => {
+      if (cell.textContent.trim() === '—') cell.classList.add('empty');
+    }));
+    input.addEventListener('input', () => {
+      const query = input.value.trim().toLocaleLowerCase();
+      let visible = 0;
+      rows.forEach(row => {
+        row.hidden = !row.cells[0].textContent.toLocaleLowerCase().includes(query);
+        if (!row.hidden) visible++;
+      });
+      count.textContent = query ? `${visible} of ${rows.length} isotopes` : `${rows.length} isotopes`;
+      empty.hidden = visible !== 0;
+    });
+  </script>
+</body>
+</html>

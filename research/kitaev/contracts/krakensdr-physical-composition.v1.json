@@ -1,0 +1,60 @@
+{
+  "schema": "marici.krakensdr.physical-composition.v1",
+  "owner": "marici.Kitaev",
+  "status": "draft_analysis_contract_not_acquisition_preregistration",
+  "predecessor_protocol": "research/voevodsky/krakensdr_conducted_rf_route_residue_experiment.md",
+  "primary_target": "Independent component calibration predicts sealed held-out physical compositions within a preregistered absolute tolerance and joint uncertainty",
+  "secondary_target": "A measured coarse-equivalent pair is distinguishable by the declared joint complex observer on sealed records",
+  "source_and_ports": {
+    "initial_domain": "One conducted signal path,two physical binary insert/bypass blocks and a common calibrated reference; only enumerated available compositions",
+    "composition": "Loaded two-port composition unless matched scalar multiplication is independently justified",
+    "readout": "Raw coherent IQ,reference and quality/power/controller records; joint real-vector representation for inference",
+    "physical_time": "Acquisition timestamps and independently characterized RF timing only; no clock inferred from mathematical history or attenuation index"
+  },
+  "analysis_gates": {
+    "prediction": "One calibration-frozen common parameter vector; no held-out or per-setting nuisance refit",
+    "uncertainty": "Joint measurement/calibration covariance with shared-reference and cross-configuration terms; frozen treatment of singular ranges",
+    "acceptance": "Simultaneous confidence upper bound below an absolute engineering tolerance plus preregistered predictive coverage; non-rejection alone is insufficient",
+    "contrast": "Mixed contrast and AB/BA order contrast are distinct; neither alone is the primary acceptance statistic",
+    "observer": "Coarse equivalence and held-out joint separation must both pass; labels are scoring metadata,not signal inputs",
+    "intermediate": "Use held-out intermediate settings/frequencies/transients where endpoint-equivalent models disagree; do not identify a Hamiltonian from endpoints"
+  },
+  "preregistration_requirements": [
+    "verified inventory and instrument manuals/port limits",
+    "safe source-to-receiver link budget and numeric margin",
+    "physical configuration/termination/reference map and feasible context list",
+    "component,fixture and receiver calibration with digests",
+    "joint noise/drift and power/loss records",
+    "disjoint pilot/calibration/evaluation partitions",
+    "frozen model/code/parameter policy and planned held-out predictions",
+    "numeric physical tolerance,confidence,coverage,multiplicity and drift rules",
+    "capture/linearity/settling/reset/repetition configuration"
+  ],
+  "frozen_synthetic_coverage": {
+    "commuting_mixed_contrast": 9,
+    "hypothetical_two_mode_order_contrast": 1,
+    "passive_mismatch_order_effect": 1,
+    "conjugate_quadrature_blindness": 3,
+    "unequal_loss_reciprocal_guard": 1,
+    "joint_record_marginal_blindness": 1,
+    "endpoint_delay_alias": 1,
+    "held_out_common_gain_failure": 1,
+    "equivalence_not_nonrejection": 2,
+    "correlated_contrast_covariance": 2,
+    "common_reference_phase_transport": 3,
+    "draft_preflight_blocked": 1,
+    "synthetic_complete_specification_only": 1,
+    "fail_closed_specification_mutations": 13
+  },
+  "evidence_boundary": {
+    "instrument_io_executed": false,
+    "physical_data_collected_or_validated": false,
+    "numeric_acquisition_preregistration_complete": false,
+    "hardware_energization_authorized": false,
+    "native_Boolean_or_unitary_source_physically_realized": false,
+    "natural_arithmetic_coupling_identified": false,
+    "quantum_noncommutativity_or_new_physical_law_claimed": false,
+    "Yang_Mills_or_RH_prediction_supplied": false,
+    "historical_protocol_modified": false
+  }
+}
