@@ -2,6 +2,11 @@
 
 Shared, machine-readable index of element/isotope observations and our construction research. The authoritative data is `element-isotope-catalog.json`, not a viewer, generated website asset, or an individual researcher's summary.
 
+## Assembly implementation guide
+
+For arrow assembly, proton/electron constructors, reversible cycles and assembly
+measures, use [the canonical assembly guide](../../docs/arrow-assembly.md).
+
 ## Initial coverage
 
 - Hydrogen-1 (protium) and hydrogen-2 (deuterium).

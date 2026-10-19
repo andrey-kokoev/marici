@@ -20,7 +20,7 @@ function schedule() { timer = setTimeout(search, 180) }
 
 <template>
   <section class="pagefind-search" aria-label="Search all published pages and ledger entries">
-    <label>Search all public entries <input v-model="term" type="search" placeholder="Search full text…" @input="schedule" /></label>
+    <label>Full-text search · all published pages <input v-model="term" type="search" placeholder="Search full text…" @input="schedule" /></label>
     <p v-if="searching">Searching…</p>
     <ul v-else-if="results.length"><li v-for="item in results" :key="item.url"><a :href="item.url">{{item.meta?.title || item.url}}</a><div v-html="item.excerpt"></div></li></ul>
   </section>

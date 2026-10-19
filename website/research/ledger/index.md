@@ -19,16 +19,16 @@ onMounted(async () => {
 
 # Research ledger
 
-The dated public record is loaded from `src/ledger`. Draft entries are excluded. Search matches titles, summaries, and author names.
+The dated public record is loaded from `src/ledger`. Draft entries are excluded. **Full-text search** below searches published page bodies across the site; **Filter ledger entries** narrows this dated list by title, summary, or author. The header's **Search site pages** searches the authored site pages, not the standalone ledger archive.
 
 <PagefindSearch />
 
-<label>Search entries <input data-ledger-search v-model="query" type="search" placeholder="Search the ledger…" @input="page = 1" /></label>
+<label>Filter ledger entries <input data-ledger-search v-model="query" type="search" placeholder="Title, summary, or author…" @input="page = 1" /></label>
 <p class="ledger-meta">{{ loading ? 'Loading the published ledger…' : `${matches.length.toLocaleString()} entries` }}</p>
 <div class="ledger-list">
   <article v-for="entry in visible" :key="entry.slug" class="ledger-card">
     <p class="ledger-meta">Entry {{ entry.entry }} · {{ entry.date }} · {{ entry.authorLabel }} · {{ entry.kind }}</p>
-    <h2><a :href="entry.url">{{ entry.title }}</a></h2>
+    <h2><a :href="entry.url" target="_self">{{ entry.title }}</a></h2>
     <p>{{ entry.description }}</p>
   </article>
 </div>

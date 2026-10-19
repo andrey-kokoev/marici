@@ -1,10 +1,12 @@
 import DefaultTheme from 'vitepress/theme'
 import { defineAsyncComponent } from 'vue'
 import PagefindSearch from '../components/PagefindSearch.vue'
+import Layout from './Layout.vue'
 import './custom.css'
 
 export default {
   extends: DefaultTheme,
+  Layout,
   enhanceApp({ app }) {
     app.component('GraphExplorer', defineAsyncComponent(() => import('../components/GraphExplorer.vue')))
     app.component('StandardModelGraph', defineAsyncComponent(() => import('../components/StandardModelGraph.vue')))

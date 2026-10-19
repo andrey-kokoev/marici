@@ -178,7 +178,7 @@ document.querySelector("#highlight").onclick = () => {
   catch (error) { detail.innerHTML = `<strong>Invalid selection</strong>${error.message}` }
 }
 document.querySelector("#example").onclick = () => {
-  input.value = "(0,0,3,4); (0,0,2,5); (1,0,2,4); (0,1,2,4)"
+  input.value = "(1,2,2,2); (2,1,2,2); (2,2,1,2); (2,2,2,1)"
   showSelection(parseCoordinates(input.value))
 }
 document.querySelector("#clear").onclick = () => {
