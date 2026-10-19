@@ -1,0 +1,36 @@
+{
+  "schema": "marici.scattering.scalar-c-native-comparison.v1",
+  "native_source": "research/voevodsky/results/native_joint_generator_resolvent.json",
+  "literal_source": "research/voevodsky/braid-composition-effective-shape-interaction-operators.md",
+  "native_visible_coordinates": [0, 1, 2],
+  "native_hidden_coordinates": [3, 4, 5, 6, 7, 8, 9, 10],
+  "literal_visible_coordinates": ["E", "2", "3"],
+  "literal_hidden_coordinate": "C",
+  "spectral_points_in_stored_K_units": ["-1", "-2"],
+  "comparison": "Full three-visible-coordinate Feshbach effective operator, not one preparation, full resolvent, on-shell S matrix or branching ratio.",
+  "identification": "Any fixed metric isometry between the full three-dimensional visible spaces. No physical correspondence of their labels is asserted.",
+  "candidate_class": {
+    "formula_in_whitened_coordinates": "F(z)=D+V*(zI-A)^(-1)V",
+    "hidden_dimension_maximum": 2,
+    "D": "Arbitrary constant Hermitian 3x3; need not match native K_PP.",
+    "A": "Arbitrary constant Hermitian r x r, 0<=r<=2, regular at the two points (or with removable uncoupled poles).",
+    "V": "Arbitrary constant r x 3 coupling; same coordinates at both spectral points."
+  },
+  "secant_floor": "1/4096",
+  "endpoint_error_floor": "1/8192",
+  "target_bound": "For every candidate, max_j ||K_eff(z_j)-F(z_j)||_Hport >= 1/8192.",
+  "witness": "K_eff(-2)-K_eff(-1) dominates (1/4096) I in the native visible metric.",
+  "falsifier": "Exact failure of the stated positive shifted-Gram inertia, or a candidate in the declared class with both errors strictly below 1/8192.",
+  "outside_scope": [
+    "Selected preparation or reduced readout only",
+    "Energy-dependent visible maps, direct blocks or added environmental self-energies",
+    "More than two hidden coordinates",
+    "Open-band probability or packet-error bounds",
+    "Universal no-go for source-authorized retained constructions",
+    "Physical E/2gamma/3gamma identification, energy calibration, or prediction of 372"
+  ],
+  "live_proposition_inventory_changed": false,
+  "C12_protocol_renewed": false,
+  "high_energy_protocol_executed": false,
+  "physical_outcomes_admitted": false
+}

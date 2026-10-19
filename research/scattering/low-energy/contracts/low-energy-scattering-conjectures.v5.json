@@ -1,0 +1,409 @@
+{
+  "schema": "marici.scattering.low-energy-conjectures.v5",
+  "supersedes": "research/scattering/low-energy/contracts/low-energy-scattering-conjectures.v4.json",
+  "historical_work_plan": "research/scattering/low-energy/contracts/low-energy-scattering-work-net.v3.json",
+  "registration": "local_mathematical_conjectures_not_physical_admission",
+  "physical_explanation_outcome": null,
+  "semantics": "Nodes assert propositions, not tasks. Premise edges support conditional conclusions; target_definition edges identify a mathematical space without assuming the source conjecture true. No cross-branch implication is silently assumed.",
+  "models": {
+    "rim": {
+      "space": "(L2(R) tensor C2) direct-sum C24 in the source metric, or its metric-whitened equivalent",
+      "core": "The exact K and actual rim columns W from the source fixture, W*W=I2 after the source whitening/normalization",
+      "form": "integral(||psi'||\u00b2 + (1/2)||psi||\u00b2) dx + chi*K chi + 2||psi(0)-W*chi||\u00b2",
+      "parameters": {
+        "kappa": 1,
+        "eta": 2,
+        "ell": 1,
+        "hbar": 1,
+        "threshold": "1/2"
+      },
+      "momentum": "E=1/2+k\u00b2, k>0",
+      "scattering_convention": "Flux-normalized four-channel S_rim=[[R,T],[T,R]], two ports on each side",
+      "source": "research/strominger/neutron-autonomous-rim-scattering.md"
+    },
+    "three_port": {
+      "space": "C11 direct-sum three metric-weighted l2(N) leads; no larger-model spectators discarded by assertion",
+      "form": "<x,Kx>_H + sum_j h_j |x_j-psi_(j,1)|\u00b2 + sum_(j,n>=1) h_j |psi_(j,n+1)-psi_(j,n)|\u00b2",
+      "metric_h": [
+        "1196/15",
+        "20",
+        "20"
+      ],
+      "momentum": "E=2-2cos(k), 0<k<pi",
+      "free_comparison": "H_D is three decoupled Dirichlet half-line chains, diagonal 2 and hopping -1; J inserts zero central coordinates",
+      "source": "research/voevodsky/native-port-scattering.md"
+    },
+    "glued_one_step": {
+      "candidate": "research/scattering/seed-composition/three-vertex-candidate.v1.json",
+      "input": "C10, one coordinate per distinct primitive directed occurrence, in the candidate's electron-then-positron order",
+      "metric": "I10 counting metric; an explicit mathematical convention, not physical energy",
+      "continuation": "K[b,a]=1 iff target(a)=source(b), after the pinned A/B/C identifications; one primitive extension per tick",
+      "target": "C2 tensor C2, U=T_gamma tensor T_gamma, metric G_gamma tensor G_gamma",
+      "T_gamma": [
+        [
+          "-1/2",
+          "1/2"
+        ],
+        [
+          "-3/2",
+          "-1/2"
+        ]
+      ],
+      "G_gamma": [
+        [
+          "3",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "target_source": "research/nima/photon-two-packet-construction.md",
+      "scope": "A precise first version of the seed-factorization claim, not the set of all source-authorized encoders. Macro clocks, history-controlled extensions, and physical charge identification are not silently included."
+    },
+    "pentachoron_contact": {
+      "source_model": "autonomous_20_plus_20_point_contact_not_geometric_entrance",
+      "fixture": "epsilon=ell=hbar=kappa=1; H_O=L_original+cycle_X, H_C=L_connected+cycle_X, P=matching_P from the pinned nested symbolic receipt",
+      "ground_energy": "theta=(11-2*sqrt(6)-sqrt(5))/2",
+      "first_excitation_gap": "delta=min(spectrum(H_O) above theta)-theta>0; the source reports sqrt(5), but this draft does not require a newly certified numeric gap value",
+      "input_space": "G=ker(H_O-theta I), with inherited Euclidean metric; dim(G)=4",
+      "dark_space": "D=G intersect ker(P); dim(D)=2; Q_D is its orthogonal projector restricted to G",
+      "bright_space": "B=G orthogonal-minus D; dim(B)=2",
+      "observable": "Flux-normalized transmission T(k) and reflection R(k):G->G for incidence from one side at E=theta+k^2 below the first excited threshold, computed with all evanescent and core coordinates retained",
+      "exact_matrix_receipt_sha256": "256b0a03239fb3e86053d8b905a8d5ed551a212484343fb24aacf3ec7fcbc1d5",
+      "ground_certificate": "research/scattering/low-energy/results/pentachoron-ground-sector.v1.json"
+    }
+  },
+  "conjectures": [
+    {
+      "id": "rim-threshold-regularity",
+      "label": "C1",
+      "model": "rim",
+      "status": "established",
+      "result": {
+        "certificate": "research/scattering/low-energy/results/rim-threshold.v1.json",
+        "proof": "Exact invertible full threshold block and explicit Neumann bound; see RIM-THRESHOLD.md."
+      },
+      "statement": "The fixed two-rim fixture has no bounded non-L2 threshold solution with nonzero lead component. Its flux-normalized transmission and reflection matrices obey T(k)=O(k), R(k)=-I2+O(k) as k decreases to zero.",
+      "quantifiers": "There exist C>0 and k0>0 such that ||T(k)||<=C k and ||R(k)+I2||<=C k for every 0<k<k0.",
+      "threshold_test": "At theta=1/2, the full block [[-2I2,2W*],[2W,theta I24-K-2WW*]] has no kernel vector (u,chi) with u!=0. Pure dark/core solutions do not count as lead threshold resonances.",
+      "falsifier": "A threshold solution with u!=0, or failure of either uniform O(k) bound at this fixture.",
+      "sources": [
+        "research/strominger/neutron-autonomous-rim-scattering.md",
+        "research/strominger/checkers/check_neutron_autonomous_rim_scattering.py",
+        "research/strominger/results/neutron-two-rim-contact-binding.json"
+      ]
+    },
+    {
+      "id": "three-port-asymptotic-completeness",
+      "label": "C2",
+      "model": "three_port",
+      "status": "established",
+      "result": {
+        "certificate": "research/scattering/low-energy/results/three-port-completeness.v1.json",
+        "checker": "research/scattering/low-energy/check_three_port_completeness.py",
+        "proof": "research/scattering/low-energy/THREE-PORT-COMPLETENESS-PROOF.md",
+        "argument": "The same-space reference differs by a rank-six trace-class coupling; Kato-Rosenblum gives full-space wave operators and ac completeness. C9 removes singular-continuous spectrum. Fresh full-core inertia brackets certify exactly five simple above-band modes; positivity and K-only cyclicity exclude other point spectrum."
+      },
+      "next_action": "Resolved for the fixed three-port Hilbert space. C5 and C7 are now ready for their separate bound-retention and channel-rank reviews; do not promote them solely from this dependency update.",
+      "statement": "For the fixed eleven-state-plus-leads Hamiltonian, the pure-point subspace consists exactly of the five reported above-band modes, the singular-continuous subspace is zero, and outgoing wave operators from the three free chains are complete. Every initially central state is the sum of its persistent bound part and an asymptotically free outgoing lead packet.",
+      "quantifiers": "On the full free three-lead Hilbert space, W_+=s-lim_(t->+infinity) exp(itH) J exp(-itH_D) exists, W_+*W_+=I, and Ran(W_+)=H_ac(H). P_pp(H) is the full-tail-normalized projection P_b onto exactly the five reported modes, and P_sc(H)=0. Consequently every initially central psi has the asymptote phi_out=W_+*(I-P_b)psi with ||exp(-itH)(I-P_b)psi-J exp(-itH_D)phi_out|| -> 0.",
+      "scope": "Full-space scattering decomposition, not reconstruction of arbitrary finite interaction histories from asymptotic amplitudes.",
+      "falsifier": "Another L2 eigenmode, a singular-continuous component, or a central state whose orthogonal-to-bound component has no such outgoing asymptote.",
+      "sources": [
+        "research/voevodsky/native-port-scattering.md",
+        "research/voevodsky/native-port-bound-spectrum.md",
+        "research/voevodsky/results/native_port_scattering.json"
+      ]
+    },
+    {
+      "id": "glued-seed-two-factor-carrier",
+      "label": "C3",
+      "model": "glued_one_step",
+      "status": "refuted",
+      "statement": "There exists a rank-four complex J:C2 tensor C2 -> C10 with KJ=J(T_gamma tensor T_gamma), J*J=G_gamma tensor G_gamma, and [K,P]=0 for P=J(G_gamma tensor G_gamma)^(-1)J*. The complementary six coordinates are retained. This asserts an abstract reducing tensor carrier only; source-generated independent factor controls and physical output identification are not asserted.",
+      "quantifiers": "Existence of J satisfying the displayed polynomial identities; independence means the full tensor product, not two overlapping path drawings or a direct sum relabelled as two particles.",
+      "falsifier": "An exact obstruction to the rank-four intertwiner, even before the metric and complement conditions.",
+      "result": {
+        "certificate": "research/scattering/low-energy/results/low-energy-conjectures.v4.json",
+        "reason": "U\u00b3=I4 but det(K\u00b3-I10)=-64, so KJ=JU forces J=0."
+      },
+      "sources": [
+        "research/scattering/seed-composition/three-vertex-candidate.v1.json",
+        "research/strominger/photon-shared-edge-seed.md",
+        "research/nima/photon-two-packet-construction.md"
+      ]
+    },
+    {
+      "id": "rim-packet-transmission-vanishes",
+      "label": "C4",
+      "model": "rim",
+      "status": "established",
+      "result": {
+        "certificate": "research/scattering/low-energy/results/rim-threshold.v1.json",
+        "proof": "C1 is discharged; integrate its uniform squared transmission bound over the normalized incoming packet."
+      },
+      "statement": "If C1 holds, every normalized incoming asymptotic packet supported in 1/2<E<1/2+epsilon has total opposite-side transmission at most C_packet epsilon, uniformly over its two-port profile and phase.",
+      "quantifiers": "There exist C_packet,epsilon0>0 such that integral ||T(E)f(E)||\u00b2 dE <= C_packet epsilon for all 0<epsilon<epsilon0 and all f with integral ||f(E)||\u00b2 dE=1 and the stated support.",
+      "falsifier": "Under C1, a sequence of such packets with transmission/epsilon unbounded.",
+      "argument": "k\u00b2=E-1/2; bound the normalized spectral integral by sup ||T||\u00b2. This is an asymptotic packet statement, not capture of a locally prepared bound state.",
+      "sources": [
+        "research/strominger/neutron-autonomous-rim-scattering.md"
+      ]
+    },
+    {
+      "id": "three-port-bound-retention",
+      "label": "C5",
+      "model": "three_port",
+      "status": "established",
+      "result": {
+        "certificate": "research/scattering/low-energy/results/bound-retention.v1.json",
+        "checker": "research/scattering/low-energy/check_bound_retention.py",
+        "proof": "research/scattering/low-energy/BOUND-RETENTION-PROOF.md",
+        "argument": "C2 gives fixed-region local decay of the ac part; distinct bound frequencies diagonalize the time average before R tends to infinity. Fresh exact sector/cofactor checks certify nonzero overlaps with 2/2/3/5/5 bound modes for the five named preparations."
+      },
+      "statement": "If C2 holds, each named normalized central preparation in the bound-spectrum report retains exactly ||P_b psi||\u00b2>0 in the large-region, long-time-averaged sense; its escaping squared norm is 1-||P_b psi||\u00b2, not one.",
+      "quantifiers": "lim_(R->infinity) lim_(T->infinity) (1/T) integral_0^T ||P_R exp(-itH)psi||\u00b2 dt = ||P_b psi||\u00b2, where P_R keeps the central eleven coordinates and the first R sites of each lead. Positivity uses the reported nonzero-overlap certificates for the named preparations.",
+      "falsifier": "Violation of the ordered-limit identity under C2, or a zero bound overlap for one of the named preparations.",
+      "argument": "Use outgoing free-packet local decay and retained bound tails; instantaneous central occupation need not converge because bound modes beat.",
+      "sources": [
+        "research/voevodsky/native-port-bound-spectrum.md"
+      ]
+    },
+    {
+      "id": "no-regular-threshold-channel-intertwiner",
+      "label": "C6",
+      "model": "rim versus three_port",
+      "status": "established",
+      "result": {
+        "certificate": "research/scattering/low-energy/results/threshold-comparison.v1.json",
+        "checker": "research/scattering/low-energy/check_threshold_comparison.py",
+        "proof": "research/scattering/low-energy/THRESHOLD-COMPARISON-OBSTRUCTION.md",
+        "argument": "For every shared isometry V and phase alpha, the limiting operator defect is at least sqrt(2). C1/C11 make the finite-k correction tend to zero, excluding the asserted intertwiner independently of C2."
+      },
+      "next_action": "Resolved in the shared incoming/outgoing isometry class. Independent input/output maps or larger retained comparison packages require a different proposition.",
+      "statement": "Under C1 and the source-bound three-port threshold statement C11, no regular flux-isometric family V(k):C3 -> C4 intertwines the full three-port scattering matrix with the two-rim matrix near their respective lower thresholds, even up to a common phase.",
+      "quantifiers": "There do not exist V(k),alpha(k) with V*V=I3, |alpha|=1, isometric/unit-modulus limits at k=0, and S_rim(1/2+k\u00b2)V(k)=alpha(k)V(k)S_port(2-2cos(k)) for all sufficiently small k>0. S_port is metric-whitened; coefficient-versus-endpoint common phases are absorbed in alpha.",
+      "falsifier": "Such a family under the stated assumptions; not a projection that drops a port or a singular, differently prepared comparison.",
+      "scope": "One shared isometric identification V for both incoming and outgoing fibers, up to a scalar phase. The proof covers the stated regular families and also rules out escape by nonconvergence of V/alpha alone. Separate input/output frame maps, added channels and non-isometric changes are outside this obstruction.",
+      "argument": "C1 gives S_rim(0+)=-I4. The reported three-port limit is a Householder matrix with eigenvalues (-1,1,1). Left multiplication by V0* would require this nonscalar matrix to be a scalar multiple of I3.",
+      "sources": [
+        "research/strominger/neutron-autonomous-rim-scattering.md",
+        "research/voevodsky/native-port-bound-spectrum.md"
+      ]
+    },
+    {
+      "id": "no-four-mode-single-excitation-port-embedding",
+      "label": "C7",
+      "model": "three_port and the target space of glued_one_step",
+      "status": "established",
+      "result": {
+        "certificate": "research/scattering/low-energy/results/channel-rank.v1.json",
+        "checker": "research/scattering/low-energy/check_channel_rank.py",
+        "proof": "research/scattering/low-energy/CHANNEL-RANK-OBSTRUCTION.md",
+        "argument": "C2 identifies the a.e. outgoing energy fiber as C3. The target metric diag(9,3,3,1) is positive and has rank four, while F*F for F:C4->C3 has rank at most three."
+      },
+      "next_action": "Resolved for the full target at fixed energy in the single-excitation fiber. Energy mixing, extra channels and multi-excitation sectors are different propositions.",
+      "statement": "Under C2, the full four-dimensional two-factor target specified in C3 cannot be isometrically embedded at fixed total energy in the three-port model's single-excitation outgoing channel fiber.",
+      "quantifiers": "For almost every E in (0,4), no F(E):C2 tensor C2 -> C3 satisfies F(E)*F(E)=G_gamma tensor G_gamma. A change to multi-excitation/Fock sectors or extra channels changes the model.",
+      "falsifier": "A rank-four isometry into that three-dimensional fiber without changing the sector, energy-fiber meaning or channel count.",
+      "argument": "C2 identifies the outgoing fiber as C3, while the positive target metric has rank four. rank(F*F)<=3. This uses C3's target definition, not its refuted existence assertion.",
+      "sources": [
+        "research/voevodsky/native-port-scattering.md",
+        "research/nima/photon-two-packet-construction.md"
+      ]
+    },
+    {
+      "id": "two-tick-macro-factor-carrier",
+      "label": "C8",
+      "model": "Fixed 24-state two-tick controller defined in C8-MACRO-CONTROLLER.md; its phase-zero return is the twelve-state same-support endpoint extension D.",
+      "status": "refuted",
+      "result": {
+        "certificate": "research/scattering/low-energy/results/macro-carrier.v1.json",
+        "checker": "research/scattering/low-energy/check_macro_carrier.py",
+        "proof": "research/scattering/low-energy/MACRO-CARRIER-OBSTRUCTION.md",
+        "argument": "Exact det(D-I12)=9, but U has invariant vector v=(1,0,0,3) with v*Hv=18. DJ=JU forces Jv=0, contradicting J*J=H. The reducing condition is not needed for the obstruction."
+      },
+      "next_action": "Resolved for the fixed synchronized controller. Replay check_macro_carrier.py --check on source changes; do not infer exclusion of differently admitted retained constructors.",
+      "statement": "The fixed path-synchronized macro return M=D contains a reducing isometric carrier for U=T_gamma tensor T_gamma with target metric H=G_gamma tensor G_gamma.",
+      "quantifiers": "There exists complex J of size 12 by 4 and rank four with MJ=JU, J*J=H and [M,J H^(-1) J*]=0. M is fixed by the pinned displayed occurrences, with no fitted coefficients or additional tensor copies.",
+      "falsifier": "An exact spectral multiplicity, metric or reducing-subspace obstruction to these identities for the specified controller.",
+      "sources": [
+        "research/scattering/seed-composition/three-vertex-candidate.v1.json",
+        "research/nima/photon-two-packet-construction.md",
+        "research/scattering/low-energy/C8-MACRO-CONTROLLER.md"
+      ],
+      "scope": "Conditional macro-carrier test only. Even success does not supply source-generated clock/wait operations, independent factor controls, witness transport or a coherence filler. Current primitive-word provenance, clock phases and complementary records remain explicit."
+    },
+    {
+      "id": "three-port-no-singular-continuous-spectrum",
+      "label": "C9",
+      "model": "three_port; the fixed coupled eleven-state plus three weighted half-line chains",
+      "status": "established",
+      "result": {
+        "certificate": "research/scattering/low-energy/results/no-singular-continuous.v1.json",
+        "checker": "research/scattering/low-energy/check_no_singular_continuous.py",
+        "proof": "research/scattering/low-energy/NO-SINGULAR-CONTINUOUS-PROOF.md",
+        "argument": "Finite-support resolvent entries are rational in the half-line Weyl function. The core Schur determinant is a nonzero polynomial with constant term 1, leaving finitely many exceptional energies including both thresholds. Measures are absolutely continuous elsewhere and only atomic on that finite set; density gives P_sc(H)=0."
+      },
+      "statement": "The spectral projection onto the singular-continuous subspace of the fixed three-port Hamiltonian is zero, including at both band edges.",
+      "quantifiers": "For every psi in the full coupled Hilbert space, its spectral measure has only absolutely continuous and pure-point parts on R: P_sc(H)psi=0.",
+      "falsifier": "A vector with nonzero singular-continuous spectral measure for this fixed H.",
+      "next_action": "Resolved by the rational-Weyl spectral-measure proof. C2 is now ready for its separate full-space wave-operator and point-spectrum assembly; neither follows merely from the C9 disposition.",
+      "sources": [
+        "research/voevodsky/native-port-scattering.md",
+        "research/voevodsky/native-port-bound-spectrum.md",
+        "research/scattering/low-energy/SPECTRAL-AND-HISTORY-CONJECTURES.md"
+      ]
+    },
+    {
+      "id": "raw-macro-history-isometric-realization",
+      "label": "C10",
+      "model": "The fixed orthonormal full-history spaces, equal-weight append isometries A_n and raw twelve-slot D defined in SPECTRAL-AND-HISTORY-CONJECTURES.md",
+      "status": "refuted",
+      "result": {
+        "certificate": "research/scattering/low-energy/results/raw-macro-readout.v1.json",
+        "checker": "research/scattering/low-energy/check_raw_macro_readout.py",
+        "proof": "research/scattering/low-energy/RAW-MACRO-READOUT-OBSTRUCTION.md",
+        "argument": "At depth zero, slot 1 (B->C) has two compatible next records. Its appended history vector has squared norm 1, but D e_1 has squared norm 2. R1 A0=D with R1 contractive is impossible."
+      },
+      "statement": "The specified coherent history appends admit deterministic contractive amplitude readouts reproducing the unweighted macro map D at every depth, without postselection, rescaling or discarding history records.",
+      "quantifiers": "There exist linear contractions R_n:H_n->C12 for all n>=0, with R_0=I12 and R_(n+1) A_n=D R_n, where A_n|h>=sum_(b:D[b,last(h)]=1)|h,b>/sqrt(d_last(h)). The allowed histories, metrics and clock are fixed, not optimization variables.",
+      "falsifier": "A finite-depth norm or linear-intertwining obstruction; in particular ||D||>1 already refutes the depth-zero requirement.",
+      "next_action": "Resolved by the exact depth-zero norm obstruction. Replay check_raw_macro_readout.py --check after source changes; do not infer failure of richer retained comparison packages or C8's separate carrier test.",
+      "scope": "Norm-constrained raw-amplitude readout diagnostic, NOT the criterion for witnessed constructive identity. It tests reproduction of unweighted D, not generation and reuse of a joint comparison certificate. Failure does not exclude a richer retained constructor, weighted/heralded model or independently specified verification stage. Source authorization and physical counting metric remain unestablished.",
+      "sources": [
+        "research/scattering/seed-composition/three-vertex-candidate.v1.json",
+        "research/scattering/low-energy/C8-MACRO-CONTROLLER.md",
+        "research/scattering/low-energy/SPECTRAL-AND-HISTORY-CONJECTURES.md"
+      ]
+    },
+    {
+      "id": "three-port-threshold-householder",
+      "label": "C11",
+      "model": "three_port, with the coefficient scattering convention and metric whitening of native-port-scattering.md",
+      "status": "established",
+      "result": {
+        "certificate": "research/scattering/low-energy/results/three-port-threshold.v1.json",
+        "checker": "research/scattering/low-energy/check_three_port_threshold.py",
+        "proof": "research/scattering/low-energy/THREE-PORT-THRESHOLD-PROOF.md",
+        "argument": "Fresh exact core rank 10, positive visible zero-mode norm and K-only cyclic dimension 11. The imaginary-part/cyclicity argument excludes all interior real poles; the simple-kernel Schur expansion yields the coefficient Householder limit."
+      },
+      "statement": "The fixed core has a simple zero mode with nonzero port projection, the open-band response has no real pole, and its lower-threshold scattering limit is the metric-whitened Householder reflection I3-2ww* with eigenvalues (-1,1,1).",
+      "quantifiers": "For all 0<k<pi the outgoing response exists, and lim_(k->0+) H_port^(1/2) S(2-2cos(k)) H_port^(-1/2)=I3-2ww*, where w is the normalized whitened visible projection of the unique core zero mode.",
+      "falsifier": "A different zero-mode multiplicity, vanishing visible projection, interior real response pole, or absent/different threshold limit.",
+      "next_action": "Resolved by fresh exact finite certificates and the analytic threshold expansion. C6 is now ready for its separate shared-frame comparison proof; no completeness or physical outcome is promoted.",
+      "sources": [
+        "research/voevodsky/native-port-scattering.md",
+        "research/voevodsky/native-port-bound-spectrum.md",
+        "research/scattering/low-energy/SPECTRAL-AND-HISTORY-CONJECTURES.md"
+      ]
+    },
+    {
+      "id": "pentachoron-bright-threshold-regularity",
+      "label": "C12",
+      "model": "pentachoron_contact",
+      "status": "open",
+      "statement": "There exist C>0 and k0>0, with k0^2<delta, such that ||T(k)-Q_D||<=C*k and ||R(k)+(I_G-Q_D)||<=C*k for every 0<k<k0.",
+      "quantifiers": "There exist C>0 and k0>0, with k0^2<delta, such that ||T(k)-Q_D||<=C*k and ||R(k)+(I_G-Q_D)||<=C*k for every 0<k<k0.",
+      "falsifier": "A nonzero bright transmission/reflection defect in the limit, a different/nonexistent bright limit, or failure of either uniform O(k) bound in this exact fixture. The known dark T=I is not a falsifier of this corrected statement.",
+      "next_action": "Replay the exact ground certificate. Construct the positive square root Q of H_O-theta I from exact spectral data; form the full threshold boundary block and separate its two automatic dark null directions. Test remaining kernel vectors for a nonzero bright ground lead component, distinguishing invisible/core kernels. If regular, prove a uniform small-k expansion and the stated norm/packet bounds; otherwise exhibit an exact scoped counterexample. Stop after two focused assistant effort units, or earlier at proof/counterexample. An unresolved algebraic sign, domain or error bound is inconclusive, never acceptance. No numerical scan alone decides C12.",
+      "scope": "Fixed 20+20 contact, below its own first excitation; dark sector remains transparent. Bright regularity is not implied by the exact ground certificate, C1/C4, or numerical scans.",
+      "sources": [
+        "research/scattering/high-energy/pentachoron_autonomous_contact_bundle.zip",
+        "research/scattering/high-energy/pentachoron_autonomous_contact_note.md",
+        "research/scattering/low-energy/PENTACHORON-GROUND-SECTOR.md",
+        "research/scattering/low-energy/contracts/pentachoron-bright-threshold-draft.v1.json",
+        "research/scattering/low-energy/results/pentachoron-ground-sector.v1.json"
+      ],
+      "prerequisite_certificates": [
+        "research/scattering/low-energy/results/pentachoron-ground-sector.v1.json"
+      ],
+      "conditional_packet_consequence": "If the amplitude statement is proved, every normalized incoming profile f in G supported in (theta,theta+epsilon), epsilon<k0^2, has 0<=P_trans-||Q_D*f||_L2^2<=C^2*epsilon. In particular pure B packets have O(epsilon) transmission; pure D packets have transmission one independently of this draft.",
+      "first_test": "Form M0=[[-2*Q-2*P,2*P],[2*P,theta*I-H_C-2*P]], Q=the positive square root of H_O-theta*I. Remove the certified automatic dark kernel (D,0); test remaining kernel vectors for nonzero bright ground lead component, distinguishing invisible/core kernels from lead-visible resonances. Do not require invertibility of the unreduced full 40-by-40 threshold matrix."
+    }
+  ],
+  "edges": [
+    {
+      "from": "rim-threshold-regularity",
+      "to": "rim-packet-transmission-vanishes",
+      "kind": "premise",
+      "reason": "The uniform amplitude bound controls every normalized narrow-band packet."
+    },
+    {
+      "from": "three-port-asymptotic-completeness",
+      "to": "three-port-bound-retention",
+      "kind": "premise",
+      "reason": "Separate the complete outgoing subspace from full-tail-normalized bound components."
+    },
+    {
+      "from": "rim-threshold-regularity",
+      "to": "no-regular-threshold-channel-intertwiner",
+      "kind": "premise",
+      "reason": "Provides the scalar -I4 two-rim threshold limit."
+    },
+    {
+      "from": "three-port-threshold-householder",
+      "to": "no-regular-threshold-channel-intertwiner",
+      "kind": "premise",
+      "reason": "Supplies the non-scalar source-bound threshold limit; full asymptotic completeness is not needed."
+    },
+    {
+      "from": "three-port-asymptotic-completeness",
+      "to": "no-four-mode-single-excitation-port-embedding",
+      "kind": "premise",
+      "reason": "Fixes single-excitation spectral multiplicity three."
+    },
+    {
+      "from": "glued-seed-two-factor-carrier",
+      "to": "no-four-mode-single-excitation-port-embedding",
+      "kind": "target_definition",
+      "reason": "Specifies the four-dimensional output target, not a premise that C3 is true."
+    },
+    {
+      "from": "glued-seed-two-factor-carrier",
+      "to": "two-tick-macro-factor-carrier",
+      "kind": "successor_test",
+      "reason": "The primitive-tick refutation motivates a fixed path-synchronized controller; it does not imply that the successor is true."
+    },
+    {
+      "from": "two-tick-macro-factor-carrier",
+      "to": "no-four-mode-single-excitation-port-embedding",
+      "kind": "target_definition",
+      "reason": "The successor has the same rank-four tensor target; its existence is not assumed."
+    },
+    {
+      "from": "three-port-no-singular-continuous-spectrum",
+      "to": "three-port-asymptotic-completeness",
+      "kind": "premise",
+      "reason": "Necessary spectral subclaim in C2's proposed proof; not sufficient alone. Its refutation would refute C2, not satisfy a positive proof prerequisite."
+    },
+    {
+      "from": "two-tick-macro-factor-carrier",
+      "to": "raw-macro-history-isometric-realization",
+      "kind": "target_definition",
+      "reason": "Uses the same fixed raw macro matrix D; does not assume C8 has a carrier and can be tested independently."
+    },
+    {
+      "from": "three-port-threshold-householder",
+      "to": "three-port-no-singular-continuous-spectrum",
+      "kind": "target_definition",
+      "reason": "Fixes the same three-port Hamiltonian and band edges as the spectral target; the threshold assertion is not assumed as a proof of spectral regularity."
+    }
+  ],
+  "next_test": "Use the shared live workbench recommendation; C12 is open and independent of the disposed v4 tests. Programme coverage remains incomplete.",
+  "boundary": "These are mathematical propositions about fixed conditional models. The broader source-authorized separation claim and physical e-minus/e-plus/photon identification are not proved or refuted by C3's single-step obstruction. No physical branching ratio is derived. Historical contracts, source files and central registry outcomes remain unchanged.",
+  "historical_proposition_contract": "research/scattering/low-energy/contracts/low-energy-scattering-conjectures.v4.json",
+  "admission": {
+    "draft": "research/scattering/low-energy/contracts/pentachoron-bright-threshold-draft.v1.json",
+    "draft_sha256": "78491a699b33a92dbee78c6b8e04aebe592b3efab07b92ef6b3798256cfedea3",
+    "frozen_v4_sha256": "6ec12aad58e77b9c6151e1f667f75349dda92bd7bcffb69e89f5d800751832eb",
+    "new_open_propositions": [
+      "C12"
+    ],
+    "existing_proposition_outcomes_changed": false,
+    "new_proof_or_physical_outcome_admitted": false,
+    "reason": "Coverage audit exposed a distinct contact branch; exact dark transparency corrects the target to bright regularity."
+  }
+}

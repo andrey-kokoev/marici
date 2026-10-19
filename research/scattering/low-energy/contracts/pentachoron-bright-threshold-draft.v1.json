@@ -1,0 +1,28 @@
+{
+  "schema": "marici.scattering.low-energy-pentachoron-bright-threshold-draft.v1",
+  "registration": "unresolved_draft_not_in_live_proposition_net",
+  "label": null,
+  "source_model": "autonomous_20_plus_20_point_contact_not_geometric_entrance",
+  "exact_matrix_receipt_sha256": "256b0a03239fb3e86053d8b905a8d5ed551a212484343fb24aacf3ec7fcbc1d5",
+  "ground_certificate": "research/scattering/low-energy/results/pentachoron-ground-sector.v1.json",
+  "fixture": "epsilon=ell=hbar=kappa=1; H_O=L_original+cycle_X, H_C=L_connected+cycle_X, P=matching_P from the pinned nested symbolic receipt",
+  "ground_energy": "theta=(11-2*sqrt(6)-sqrt(5))/2",
+  "first_excitation_gap": "delta=min(spectrum(H_O) above theta)-theta>0; the source reports sqrt(5), but this draft does not require a newly certified numeric gap value",
+  "input_space": "G=ker(H_O-theta I), with inherited Euclidean metric; dim(G)=4",
+  "dark_space": "D=G intersect ker(P); dim(D)=2; Q_D is its orthogonal projector restricted to G",
+  "bright_space": "B=G orthogonal-minus D; dim(B)=2",
+  "observable": "Flux-normalized transmission T(k) and reflection R(k):G->G for incidence from one side at E=theta+k^2 below the first excited threshold, computed with all evanescent and core coordinates retained",
+  "statement": "There exist C>0 and k0>0, with k0^2<delta, such that ||T(k)-Q_D||<=C*k and ||R(k)+(I_G-Q_D)||<=C*k for every 0<k<k0.",
+  "falsifier": "A nonzero bright transmission/reflection defect in the limit, a different/nonexistent bright limit, or failure of either uniform O(k) bound in this exact fixture. The known dark T=I is not a falsifier of this corrected statement.",
+  "first_test": "Form M0=[[-2*Q-2*P,2*P],[2*P,theta*I-H_C-2*P]], Q=the positive square root of H_O-theta*I. Remove the certified automatic dark kernel (D,0); test remaining kernel vectors for nonzero bright ground lead component, distinguishing invisible/core kernels from lead-visible resonances. Do not require invertibility of the unreduced full 40-by-40 threshold matrix.",
+  "conditional_packet_consequence": "If the amplitude statement is proved, every normalized incoming profile f in G supported in (theta,theta+epsilon), epsilon<k0^2, has 0<=P_trans-||Q_D*f||_L2^2<=C^2*epsilon. In particular pure B packets have O(epsilon) transmission; pure D packets have transmission one independently of this draft.",
+  "boundaries": [
+    "Dark transparency is established by the separate auxiliary certificate; bright regularity remains unproved.",
+    "No C1/C4 truth is transported between models.",
+    "No finite-core inverse is assumed at an elimination pole.",
+    "No physical species, capture mechanism, product probability or continuum numerical scan is admitted as a proof."
+  ],
+  "bright_threshold_regularity_proved": false,
+  "added_to_live_planner": false,
+  "new_proposition_outcome_admitted": false
+}
