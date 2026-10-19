@@ -1,0 +1,203 @@
+{
+  "model": "conditional arrow-cost extension; nonrelativistic projected contact",
+  "source": {
+    "repository": "andrey-kokoev/marici",
+    "geometry_file": "research/voevodsky/inputs/relative-electron.json",
+    "geometry_git_blob_sha": "e6c919458f5e95a4830d6ef405fda6397ab837a2",
+    "operation_energy_file": "research/voevodsky/native-operation-energy-lift.md",
+    "operation_energy_git_blob_sha": "846c2a12b537731fafd7e06ceb06f0aaa6dddb95",
+    "five_cycle_file": "research/voevodsky/pentachoron-cycle-spin-energy-transport.md",
+    "five_cycle_git_blob_sha": "d0bdb86bd2e3ed0399d3f97c69d39235ae3ddbdc"
+  },
+  "scope": "The native spinor Hamiltonian checker was not rerun. Its stated covariance is cited, not independently certified here. Geometry and the new mechanical extension are checked here.",
+  "exact_geometry_and_postulate_checks": {
+    "exact_checks_passed": true,
+    "centered_vertex_covariance": "sum_i q_i q_i^T = 4 ell^2 I_4",
+    "source_metric_recovered": true,
+    "source_five_cycle_preserves_vertex_set": true,
+    "source_cycle_is_not_assumed_to_be_a_time_step": true,
+    "configuration_displacement_cost": "16*ell**2*(1 - cos(angle)) + 5*x**2",
+    "motion_metric": {
+      "translation": "5",
+      "rotation": "8*ell**2",
+      "cross": "0"
+    },
+    "inertia_ratio_under_local_uniform_rule": "8/5",
+    "symmetry_alone_countermodel_ratio": "8/(5*(lambda + 1))",
+    "intrinsic_edge_lengths_do_not_supply_alignment": true,
+    "exposure_angle_exact": "atan(1/sqrt(5))",
+    "new_cost_extension": {
+      "kinetic": "E_* tau^2/ell^2 sum_i |dot(r_i)|^2 per body",
+      "contact": "E_* (q/ell)^2",
+      "mass": "10 E_* tau^2/ell^2",
+      "inertia": "16 E_* tau^2",
+      "contact_stiffness": "2 E_*/ell^2",
+      "time_unit": "sqrt(5) tau",
+      "speed_unit": "ell/(sqrt(5) tau)"
+    },
+    "same_support_different_force_control": {
+      "residual_1": "q/ell",
+      "residual_2": "(q/ell)^2",
+      "both_active": "q>0",
+      "force_1": "2 E_* q/ell^2",
+      "force_2": "4 E_* q^3/ell^4",
+      "conclusion": "Arrow presence/count alone does not choose the overlap-force law."
+    }
+  },
+  "alignment_parameter": 0.0,
+  "thresholds_in_v0_units": {
+    "first_contact_exposure_speed": 0.802539390536732,
+    "local_recontact_onset_speed": 0.7210578383228571,
+    "grazing_elapsed_after_first_separation": 1.0637567432614143
+  },
+  "thresholds_in_ell_over_tau_units": {
+    "first_contact_exposure_speed": 0.3589065263722768,
+    "local_recontact_onset_speed": 0.3224668684397923
+  },
+  "runs": [
+    {
+      "incident_speed": 0.7,
+      "alignment_energy": 0.0,
+      "contact_boundary_times": [
+        0.0,
+        2.0033443016780352
+      ],
+      "exposure_events": [
+        {
+          "time": 2.1387161332690834,
+          "force": 0.0,
+          "direction": "outward"
+        }
+      ],
+      "peak_force": 0.9275810542792722,
+      "relative_energy_drift": 1.520465159672438e-10,
+      "final_escape_time": 4.078575526757309
+    },
+    {
+      "incident_speed": 0.8,
+      "alignment_energy": 0.0,
+      "contact_boundary_times": [
+        0.0,
+        1.9914375776584787,
+        2.0079062728352315,
+        3.083782924775484
+      ],
+      "exposure_events": [
+        {
+          "time": 1.9943257313218674,
+          "force": 0.0,
+          "direction": "outward"
+        }
+      ],
+      "peak_force": 1.0591588937002816,
+      "relative_energy_drift": 8.057846057063498e-10,
+      "final_escape_time": 3.7316196074361327
+    },
+    {
+      "incident_speed": 0.9,
+      "alignment_energy": 0.0,
+      "contact_boundary_times": [
+        0.0,
+        2.8098681037467093
+      ],
+      "exposure_events": [
+        {
+          "time": 1.8824868544541153,
+          "force": 0.20301926140617743,
+          "direction": "outward"
+        }
+      ],
+      "peak_force": 1.190505451630925,
+      "relative_energy_drift": 6.866381263296401e-10,
+      "final_escape_time": 3.446898812601603
+    }
+  ],
+  "solver_comparisons": [
+    {
+      "incident_speed": 0.7,
+      "contact_time_difference": 4.440892098500626e-15,
+      "RK45_relative_energy_drift": 3.3380260007345677e-10
+    },
+    {
+      "incident_speed": 0.8,
+      "contact_time_difference": 2.7735249652494076e-09,
+      "RK45_relative_energy_drift": 2.0496566249805777e-09
+    },
+    {
+      "incident_speed": 0.9,
+      "contact_time_difference": 3.00279356935107e-10,
+      "RK45_relative_energy_drift": 3.701723427099419e-10
+    }
+  ],
+  "local_threshold_controls": [
+    {
+      "boundary": "recontact",
+      "offset": -0.002,
+      "incident_speed": 0.7190578383228571,
+      "contact_boundary_times": [
+        0.0,
+        2.0010478247554966
+      ],
+      "first_exposure": {
+        "time": 2.1080143533093394,
+        "force": 0.0,
+        "direction": "outward"
+      }
+    },
+    {
+      "boundary": "recontact",
+      "offset": 0.002,
+      "incident_speed": 0.7230578383228571,
+      "contact_boundary_times": [
+        0.0,
+        2.000567430951836,
+        2.909445747542935,
+        3.1996776692519133
+      ],
+      "first_exposure": {
+        "time": 2.1017813546254787,
+        "force": 0.0,
+        "direction": "outward"
+      }
+    },
+    {
+      "boundary": "during_first_contact",
+      "offset": -0.002,
+      "incident_speed": 0.800539390536732,
+      "contact_boundary_times": [
+        0.0,
+        1.9913743291130042,
+        2.0043178073300965,
+        3.0814273172636244
+      ],
+      "first_exposure": {
+        "time": 1.993647293277793,
+        "force": 0.0,
+        "direction": "outward"
+      }
+    },
+    {
+      "boundary": "during_first_contact",
+      "offset": 0.002,
+      "incident_speed": 0.804539390536732,
+      "contact_boundary_times": [
+        0.0,
+        3.06410189933474
+      ],
+      "first_exposure": {
+        "time": 1.9886453256045877,
+        "force": 0.0042071366600933136,
+        "direction": "outward"
+      }
+    }
+  ],
+  "not_derived": [
+    "physical ell",
+    "physical tau",
+    "a physical contact-arrow operator",
+    "relativistic dynamics",
+    "electron identification",
+    "photon/recombination channels",
+    "complex scattering amplitudes"
+  ]
+}

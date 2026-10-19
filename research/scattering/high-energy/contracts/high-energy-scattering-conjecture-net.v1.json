@@ -1,0 +1,286 @@
+{
+  "actions": [
+    {
+      "archive": "research/scattering/high-energy/pentachoron_full_response128_packet_bundle.zip",
+      "arguments": [
+        "--baseline",
+        "baseline64/packet_kernels.npz",
+        "--new",
+        "results/response128/packet_kernels.npz",
+        "--output",
+        "replayed_comparison.json"
+      ],
+      "claim": "packet-current-readout",
+      "dependencies": [
+        "numpy",
+        "scipy"
+      ],
+      "entrypoint": "compare_response_spaces.py",
+      "fresh_stationary_solve": false,
+      "full_scattering_matrix_computed": false,
+      "id": "replay-response128",
+      "kind": "saved_complex_kernel_readout_replay",
+      "members": [
+        "compare_response_spaces.py",
+        "baseline64/packet_kernels.npz",
+        "results/response128/packet_kernels.npz",
+        "packet_comparison.json"
+      ],
+      "promotes_claim_outcome": false
+    }
+  ],
+  "adapter": "research/scattering/high-energy/high_energy_scattering_net.py",
+  "boundary": {
+    "continuum_certified": false,
+    "historical_receipts_auto_admitted": false,
+    "physical_calibration_supplied": false,
+    "prepared_columns_are_full_S": false,
+    "programme_obligation_discharged": false,
+    "replay_is_fresh_scattering_solve": false
+  },
+  "coherence_obligation": "forward_realization_of_source_pinned_dependency_graph",
+  "conjectures": [
+    {
+      "acceptance": "Reconstruct source endpoint operators and retained cycle records; do not identify sectors by dimension alone.",
+      "depends_on": [],
+      "evidence": [
+        "research/scattering/high-energy/pentachoron_quantum_hinge_note.md",
+        "research/scattering/high-energy/pentachoron_geometric_split_note.md"
+      ],
+      "evidence_status": "historical_report_not_admitted_proof",
+      "id": "native-endpoint-realization",
+      "outcome": null,
+      "requires": [
+        "pinned-source-artifacts"
+      ],
+      "scope_id": "native-endpoint-realization.source-model.v1",
+      "statement": "Retained native records, endpoint geometry and cycle operators implement the stated model at their declared poses.",
+      "status": "open"
+    },
+    {
+      "acceptance": "Replay projector/involution identities and preserve7/9,7/9,1/9 selected-line obstructions; the extension remains an assumption.",
+      "depends_on": [
+        "native-endpoint-realization"
+      ],
+      "evidence": [
+        "research/scattering/high-energy/pentachoron_open_product_flux_note.md"
+      ],
+      "evidence_status": "historical_report_not_admitted_proof",
+      "id": "conditional-full-spinor-switch",
+      "outcome": null,
+      "requires": [
+        "pinned-source-artifacts"
+      ],
+      "scope_id": "conditional-full-spinor-switch.source-model.v1",
+      "statement": "The explicitly extended full-spinor rule sews the additional face switches without discarding complementary selected-line amplitudes.",
+      "status": "open"
+    },
+    {
+      "acceptance": "Validate complete diagonal/off-diagonal forms, domains, flux balance and the specified kinetic convention separately.",
+      "depends_on": [
+        "conditional-full-spinor-switch"
+      ],
+      "evidence": [
+        "research/scattering/high-energy/pentachoron_open_product_flux_note.md",
+        "research/scattering/high-energy/pentachoron_relativistic_kinetics_note.md"
+      ],
+      "evidence_status": "historical_report_not_admitted_proof",
+      "id": "autonomous-conservative-model",
+      "outcome": null,
+      "requires": [
+        "pinned-source-artifacts"
+      ],
+      "scope_id": "autonomous-conservative-model.source-model.v1",
+      "statement": "The declared contacts, kinetic terms and native records define the lower-bounded conservative model with common model energy.",
+      "status": "open"
+    },
+    {
+      "acceptance": "Rebuild outgoing kernels and finite-model scattering equations; record leads are not identified with independently occupied species.",
+      "depends_on": [
+        "autonomous-conservative-model"
+      ],
+      "evidence": [
+        "research/scattering/high-energy/joint_pose_scattering_note.md",
+        "research/scattering/high-energy/pentachoron_open_product_flux_note.md"
+      ],
+      "evidence_status": "historical_report_not_admitted_proof",
+      "id": "asymptotic-record-flux",
+      "outcome": null,
+      "requires": [
+        "pinned-source-artifacts"
+      ],
+      "scope_id": "asymptotic-record-flux.source-model.v1",
+      "statement": "The conditional open model carries coherent asymptotic flux into its2+8 product-record leads.",
+      "status": "open"
+    },
+    {
+      "acceptance": "Reconstruct complex fields and continuity before probabilities; distinguish peak, whole-packet and finite-window diagnostics.",
+      "depends_on": [
+        "asymptotic-record-flux"
+      ],
+      "evidence": [
+        "research/scattering/high-energy/time_resolved_strain_note.md",
+        "research/scattering/high-energy/strain_diagnostics_note.md"
+      ],
+      "evidence_status": "historical_report_not_admitted_proof",
+      "id": "packet-current-readout",
+      "outcome": null,
+      "requires": [
+        "pinned-source-artifacts"
+      ],
+      "scope_id": "packet-current-readout.source-model.v1",
+      "statement": "Coherent packet fields obey the declared strain continuity identity, with internal transport distinct from entry/release selection.",
+      "status": "open"
+    },
+    {
+      "acceptance": "Reproduce the matched-cutoff comparisons; finite roots and samples do not certify a continuum threshold.",
+      "depends_on": [
+        "packet-current-readout"
+      ],
+      "evidence": [
+        "research/scattering/high-energy/broad_energy_sweep_note.md",
+        "research/scattering/high-energy/strain_sign_transition_note.md"
+      ],
+      "evidence_status": "historical_report_not_admitted_proof",
+      "id": "energy-dependent-transport",
+      "outcome": null,
+      "requires": [
+        "pinned-source-artifacts"
+      ],
+      "scope_id": "energy-dependent-transport.source-model.v1",
+      "statement": "The sampled source model has nonmonotone internal transport and cutoff-dependent reversal structure, rather than a universal monotone compression law.",
+      "status": "open"
+    },
+    {
+      "acceptance": "Hold source/grid/response hierarchy fixed and perform17-to33 sampling; the existing9-node14.244725% change is not a convergence certificate.",
+      "depends_on": [
+        "packet-current-readout"
+      ],
+      "evidence": [
+        "research/scattering/high-energy/response128_packet_note.md"
+      ],
+      "evidence_status": "historical_report_not_admitted_proof",
+      "id": "energy-quadrature-convergence",
+      "outcome": null,
+      "requires": [
+        "pinned-source-artifacts"
+      ],
+      "scope_id": "energy-quadrature-convergence.source-model.v1",
+      "statement": "The128-direction packet readouts are stable under independently increased energy sampling with a stated error criterion.",
+      "status": "open"
+    },
+    {
+      "acceptance": "Rebuild from the corrected residual and justify a named norm/error bound;64-to128 agreement alone is insufficient.",
+      "depends_on": [
+        "packet-current-readout"
+      ],
+      "evidence": [
+        "research/scattering/high-energy/omitted_mode_estimate_note.md",
+        "research/scattering/high-energy/closed_mode_feedback_note.md",
+        "research/scattering/high-energy/response128_packet_note.md"
+      ],
+      "evidence_status": "historical_report_not_admitted_proof",
+      "id": "omitted-response-control",
+      "outcome": null,
+      "requires": [
+        "pinned-source-artifacts"
+      ],
+      "scope_id": "omitted-response-control.source-model.v1",
+      "statement": "A corrected-residual response hierarchy and omitted-tail estimate bound contributions outside the retained response space.",
+      "status": "open"
+    },
+    {
+      "acceptance": "Separate each refinement axis and supply completion/cofinality and error controls; finite differences are not bounds.",
+      "depends_on": [
+        "energy-quadrature-convergence",
+        "omitted-response-control"
+      ],
+      "evidence": [
+        "research/scattering/high-energy/matched_spatial_note.md",
+        "research/scattering/high-energy/spatial_after_angular_note.md",
+        "research/scattering/high-energy/strain_spatial_refinement_note.md"
+      ],
+      "evidence_status": "historical_report_not_admitted_proof",
+      "id": "spatial-continuum-control",
+      "outcome": null,
+      "requires": [
+        "pinned-source-artifacts"
+      ],
+      "scope_id": "spatial-continuum-control.source-model.v1",
+      "statement": "Spatial, angular and mode refinements converge in a declared topology with controlled readout error.",
+      "status": "open"
+    },
+    {
+      "acceptance": "Provide dimensional scale, physical preparation/instrument and species maps; a2:8 record partition supplies none of them.",
+      "depends_on": [],
+      "evidence": [
+        "research/scattering/high-energy/pentachoron_relativistic_kinetics_note.md",
+        "research/scattering/high-energy/response128_packet_note.md"
+      ],
+      "evidence_status": "historical_report_not_admitted_proof",
+      "id": "physical-calibration-and-species",
+      "outcome": null,
+      "requires": [
+        "pinned-source-artifacts"
+      ],
+      "scope_id": "physical-calibration-and-species.source-model.v1",
+      "statement": "An independently sourced dimensional calibration and state/record map identify the model preparation and leads with physical scattering species.",
+      "status": "deferred_missing_source_map"
+    },
+    {
+      "acceptance": "All dependency scopes and verification levels must be explicitly accepted; no root promotion from replay or registry admission.",
+      "depends_on": [
+        "energy-dependent-transport",
+        "spatial-continuum-control",
+        "physical-calibration-and-species"
+      ],
+      "evidence": [
+        "research/scattering/high-energy/response128_packet_note.md"
+      ],
+      "evidence_status": "historical_report_not_admitted_proof",
+      "id": "high-energy-scattering-target",
+      "outcome": null,
+      "requires": [
+        "pinned-source-artifacts"
+      ],
+      "scope_id": "high-energy-scattering-target.source-model.v1",
+      "statement": "The retained source model yields convergence-controlled scattering predictions in its declared regime, with physical interpretation only through the explicit calibration/species map.",
+      "status": "open"
+    }
+  ],
+  "dependency_semantics": "Obligation prerequisites, not identities or transported proof links between different source grids, kinetic conventions or preparations.",
+  "id": "scattering.high-energy.v1",
+  "imports": [],
+  "interfaces": [
+    "pinned-source-artifacts"
+  ],
+  "issue_boundary": {
+    "bold_conjecture": "The retained model supports convergence-controlled coherent record scattering over its declared source regime.",
+    "disposition": "Net wiring and a saved-kernel replay are executable; convergence and physical identification are not proved.",
+    "problem": "Scattering notes and bundles lack an executable dependency/evidence net.",
+    "risky_consequences": [
+      "Independent energy and corrected-residual refinements preserve readouts within declared tolerances."
+    ],
+    "rivals": [
+      "selected-line sewing without the extension",
+      "universal monotone energy-to-compression law",
+      "prepared-column orthogonality implies full-S unitarity",
+      "fixed-hierarchy agreement bounds the entire omitted space"
+    ],
+    "strongest_falsifier": "Hold128 response directions fixed and increase energy sampling17-to33; independently rebuild the omitted response hierarchy from its corrected residual."
+  },
+  "objective": {
+    "outcome": null,
+    "scope": "Conditional pentachoron quantum-configuration model; physical calibration and continuum control unresolved.",
+    "target": "high-energy-scattering-target"
+  },
+  "operator_stimulus": {
+    "status": "direct_instruction_not_scientific_evidence",
+    "target": "research/scattering/high-energy",
+    "wording": "wire it up"
+  },
+  "outcome_semantics": "proof-attempt-outcomes-v1",
+  "owner": "marici.Nima",
+  "schema": "marici.scattering.high-energy-conjecture-net.v1",
+  "source_pins": "research/scattering/high-energy/contracts/high-energy-source-pins.v1.json"
+}
