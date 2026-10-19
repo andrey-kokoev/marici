@@ -1,0 +1,30 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "hodge-cycle-equivariance-audit-v1",
+    "owner": "marici.Voevodsky",
+    "classification": "scoped_necessity_audit_not_Hodge_refutation",
+    "stratum": "Route/coherence compatibility: fixed-source cycle objects versus their classes, and ordinary additive positive-group-degree C4 cohomology with rational coefficients; not vanishing of total equivariant geometric degrees. No all-cycle invariance theorem.",
+    "inputs": [
+      "research/voevodsky/hodge-cycle-equivariance-audit-v1.md",
+      "research/voevodsky/inputs/hodge-cycle-equivariance-audit-v1/contract.json",
+      "research/voevodsky/inputs/hodge-net-source-pins.v55.json",
+      "research/conjecture_net/contracts/hodge-conjecture-net.v1.json",
+      "research/conjecture_net/contracts/hodge-refutation-direction.v1.json",
+      "research/voevodsky/hodge-cycle-packet-dictionary-v1.md",
+      "research/voevodsky/hodge-middle-hodge-kernel-v1.md",
+      "research/voevodsky/hodge-weil-projector-v1.md",
+      "research/voevodsky/checkers/check_hodge_explicit_sixfold_candidate.py"
+    ],
+    "checks": [
+      {"id": "hodge-cycle-equivariance-audit", "path": "research/voevodsky/checkers/check_hodge_cycle_equivariance_audit.py", "requires": []},
+      {"id": "hodge-cycle-equivariance-hostiles", "path": "research/voevodsky/checkers/test_hodge_cycle_equivariance_audit.py", "requires": []}
+    ],
+    "depends_on": ["hodge-refutation-direction-v1"],
+    "consumes": ["fixed-X native C4 action, cycle-supplied naturality and exact Hodge-space decomposition"],
+    "provides": ["two scoped necessity shortcuts rejected; explicit all-degrees rational C4 contraction"],
+    "missing_constructors": ["source-specific class-level necessity for EVERY algebraic cycle"],
+    "next_falsifier": "A fourth-power failure, missing rational division, confusion of group and total geometric degree, conflation of object/class invariance, or claimed geometric realization of the formal module models invalidates the corresponding inference."
+  }
+}

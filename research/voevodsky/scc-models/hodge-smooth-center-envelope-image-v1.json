@@ -1,0 +1,14 @@
+{
+ "schema":"marici.scc.model-manifest.v1",
+ "model":{
+  "id":"hodge-smooth-center-envelope-image-v1", "owner":"marici.Voevodsky",
+  "classification":"general_smooth_envelope_retains_supplied_center_class",
+  "stratum":"Normal Chern polynomial, cancellation of center Betti numbers and actual residue pushforward",
+  "inputs":["research/voevodsky/hodge-smooth-center-envelope-image-v1.md", "research/voevodsky/hodge-ci-envelope-blowup-v1.md", "research/voevodsky/hodge-known-cycle-nodal-residue-v1.md", "research/voevodsky/checkers/check_hodge_deligne_lift_image.py"],
+  "checks":[{"id":"hodge-smooth-center-envelope", "path":"research/voevodsky/checkers/check_hodge_smooth_center_envelope.py", "requires":[]}],
+  "depends_on":[], "consumes":["normal generation and generic nodality for smooth centers", "smooth-center blowup cohomology and cycle-class naturality"],
+  "provides":["full smooth-center support image formula", "no automatic annihilation of arbitrary center primitive class"],
+  "missing_constructors":["singular-cycle proper-map interface without embedded smoothability"],
+  "next_falsifier":"Assuming the primitive class of every supplied algebraic center vanishes because it did for complete intersections."
+ }
+}

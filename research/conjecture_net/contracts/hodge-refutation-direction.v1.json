@@ -1,0 +1,47 @@
+{
+  "schema": "marici.hodge-refutation-direction.v1",
+  "owner": "marici.Voevodsky",
+  "operator_instruction": "dismiss all conjectures in conjecture net that aim at proving Hodge right. add all conjectures that that aim to prove Hodge wrong",
+  "objective": "Refute rational Hodge by a valid counterexample; test the operator's higher-coherence obstruction conjecture.",
+  "dismissal_semantics": "Administrative dismissal from active research, not mathematical falsification or deletion of historical results.",
+  "registration_semantics": "Open hypotheses and proof obligations, not established counterexamples. This inventory does not exhaust all possible mathematical conjectures.",
+  "confirmation_research_allowed": false,
+  "positive_controls_required": true,
+  "historical_snapshot": "research/voevodsky/hodge-history/iteration-51/work-net.json",
+  "active_refutation_nodes": ["all-algebraic-cycles-annihilation", "counterexample-assembly", "fixed-candidate-nonalgebraicity", "higher-coherence-counterexample-existence"],
+  "retained_support_nodes": ["scope-and-cycle-map", "literature-boundary-audit", "candidate-variety-and-class", "packet-coherence-dictionary", "obstruction-construction", "cohomology-descent", "rational-survival", "candidate-hodge-membership", "candidate-obstruction-nonzero", "generic-middle-hodge-kernel"],
+  "falsification_control_nodes": ["positive-and-rational-controls", "bare-chain-closure-obstruction", "uniform-weil-projector-annihilation", "tautological-power-witness-search"],
+  "dismissed_construction_nodes": [
+    "secant-sheaf-transplant", "split-eightfold-stabilization", "eightfold-weil-filter", "eightfold-full-hodge-kernel", "higher-chern-witness-transfer", "reflexive-rank-reduction", "cyclic-quartic-prym-transplant", "gaussian-principal-isogeny", "principal-prym-membership-audit", "indecomposable-principal-model", "y2-jacobian-low-gonality-transplant", "hyperelliptic-bottom-prym-transplant", "bielliptic-involution-lift-transplant", "commuting-prym-factor-transplant", "inversion-symmetric-scalar-transplant", "asymmetric-scalar-cover-control", "asymmetric-cover-automorphisms", "asymmetric-prym-frobenius7", "asymmetric-scalar-target-transplant", "scalar-family-localization", "scalar-polarized-prym-transplant", "nonlifting-polarized-prym-transplant", "equivariant-tetragonal-gate", "eightfold-literature-and-secant-audit", "secant-local-ext-gate", "secant-source-weak-semiregularity-transplant", "eightfold-secant-weak-criterion-transplant", "ramified-trigonal-auxiliary-family", "ramified-trigonal-principal-target-transplant", "y2-etale-cyclic-quartic-polarized-transplant", "y2-two-branch-cyclic-quartic-transplant", "even-axis-principal-model", "even-axis-coupled-kummer-gate", "even-axis-joint-degree-gate", "minimal-axis-scalar-source", "minimal-axis-b-line-screen", "minimal-axis-scalar-target-transplant", "minimal-axis-second-prime-screen", "minimal-axis-b6-target-transplant", "scalar-reflection-quotient-decomposition", "reflection-symmetric-scalar-target-transplant", "off-reflection-a-line-screen", "off-reflection-a-line-target-transplant", "off-reflection-two-prime-screen", "off-reflection-two-prime-target-transplant", "inert-elliptic-projector-gate", "inert-degree-parity-target-transplant", "off-reflection-third-prime-generic-gate", "third-prime-and-generic-target-transplant", "scalar-37-full-screen", "scalar-37-typed-polarized-target-transplant", "algebraic-witness-search"
+  ],
+  "first_unresolved_proof_obligation": "all-algebraic-cycles-annihilation",
+  "forbidden_promotions": ["candidate_library_failure_to_all_cycle_nonexistence", "finite_prime_survival_to_complex_axis", "dismissal_to_mathematical_rejection", "operator_preference_to_Hodge_refutation", "unknown_quotient_renamed_as_computed_detector"],
+  "additional_hypotheses": {
+    "fixed-candidate-nonalgebraicity": {
+      "id": "fixed-candidate-nonalgebraicity",
+      "depends_on": ["candidate-hodge-membership"],
+      "required_verdicts": {"candidate-hodge-membership": "constructed"},
+      "requires": [], "external_inputs": [], "status": "open", "verdict": "open", "outcome": null, "evidence": [],
+      "aim": "refute_rational_Hodge",
+      "scope": "The unchanged selected sixfold X, p=3 and alpha in the work-net scope; all rational algebraic cycle combinations.",
+      "statement": "The fixed rational (3,3) class alpha is outside the image of cl:CH^3(X)_Q -> Hdg^3(X,Q).",
+      "acceptance": "A proof excluding every codimension-three algebraic cycle combination on this exact X, independently reviewed; failure of a source library is insufficient.",
+      "falsifier": "An actual rational algebraic cycle combination on this X whose class is alpha refutes this hypothesis. Such a falsifier must be accepted even though confirmation-directed search is dismissed.",
+      "next_action": "Audit the first missing universal-over-cycles theorem for the existing candidate obstruction; do not restart Prym matching or prime screening.",
+      "deliverable": "An all-cycle separation proof, or a source-bound falsification of this fixed-candidate hypothesis."
+    },
+    "higher-coherence-counterexample-existence": {
+      "id": "higher-coherence-counterexample-existence",
+      "depends_on": ["scope-and-cycle-map", "packet-coherence-dictionary"],
+      "required_verdicts": {"scope-and-cycle-map": "constructed", "packet-coherence-dictionary": "constructed"},
+      "requires": [], "external_inputs": [], "status": "open", "verdict": "open", "outcome": null, "evidence": [],
+      "aim": "refute_rational_Hodge",
+      "scope": "An independently selected smooth projective complex X, codimension p and rational Hodge alpha; a different candidate requires its own frozen source packet.",
+      "statement": "There exist X,p,alpha and a noncircular class-level rational higher-coherence detector O such that O(cl(Z))=0 for every rational algebraic cycle Z but O(alpha) is nonzero.",
+      "acceptance": "Construct the detector and its rational target independently, prove all-cycle necessity, cohomology descent and non-torsion detection on one common source, then obtain independent review.",
+      "falsifier": "A detected known algebraic class, presentation dependence, torsion-only detection or circular quotient invalidates a proposed witness. Rejecting one witness does not disprove this existential conjecture; a proof of rational Hodge would disprove it.",
+      "next_action": "Audit whether the cycle-supplied coherence dictionary yields an algebraic-specific necessity theorem rather than universal topological chain closure. Register any alternative detector before computing its value.",
+      "deliverable": "An explicit source-bound separating detector and its necessity theorem, or a precisely rejected proposed witness."
+    }
+  }
+}

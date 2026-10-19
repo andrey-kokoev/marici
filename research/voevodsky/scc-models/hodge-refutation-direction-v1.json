@@ -1,0 +1,27 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "hodge-refutation-direction-v1",
+    "owner": "marici.Voevodsky",
+    "classification": "administrative_reorientation_not_mathematical_evidence",
+    "stratum": "Registered Hodge conjecture inventory, refutation-only frontier, honest open hypotheses and preservation of historical mathematical verdicts.",
+    "inputs": [
+      "research/conjecture_net/contracts/hodge-conjecture-net.v1.json",
+      "research/voevodsky/checkers/check_hodge_conjecture_net.py",
+      "research/conjecture_net/contracts/hodge-refutation-direction.v1.json",
+      "research/voevodsky/hodge-refutation-direction-v1.md",
+      "research/voevodsky/hodge-history/iteration-51/work-net.json",
+      "research/voevodsky/inputs/hodge-net-source-pins.v54.json"
+    ],
+    "checks": [
+      {"id": "hodge-refutation-direction-policy", "path": "research/voevodsky/checkers/check_hodge_refutation_direction.py", "requires": []},
+      {"id": "hodge-refutation-direction-regressions", "path": "research/voevodsky/checkers/test_hodge_refutation_direction.py", "requires": []},
+      {"id": "hodge-refutation-wiring-structure", "path": "research/voevodsky/checkers/test_hodge_refutation_wiring_structure.py", "requires": []}
+    ],
+    "depends_on": [],
+    "provides": ["mandatory refutation-only research selection and explicit conjecture falsifiers"],
+    "missing_constructors": ["universal-over-cycles annihilation theorem on the fixed candidate"],
+    "next_falsifier": "A dismissed construction returning to the frontier, removal of known algebraic controls, historical verdict falsification, or promotion of an open hypothesis must fail validation."
+  }
+}

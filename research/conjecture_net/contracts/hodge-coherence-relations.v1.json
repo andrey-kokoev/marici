@@ -1,0 +1,84 @@
+{
+  "schema": "marici.hodge-coherence-relations.v1",
+  "owner": "marici.Voevodsky",
+  "lead_contract": "research/conjecture_net/contracts/hodge-coherence-leads.v1.json",
+  "guide": "research/voevodsky/hodge-coherence-relation-tests-v1.md",
+  "semantics": "Relation endpoints identify research topics, not logical implications between their full existential Hodge statements. Each implication is only the explicitly stated formula under its premises. Shared source binding is required. Cyclic references never constitute evidence.",
+  "relations": [
+    {
+      "id": "pairwise-to-quadratic-kernel",
+      "kind": "conditional_implication",
+      "endpoints": ["hodge-pairwise-readout-higher-cell-blindness", "hodge-quadratic-dark-mode-erasure"],
+      "status": "proved_abstract_only",
+      "premises": "P:V->W and B:W->U are linear over Q; U has a positive definite rational pairing; the declared quadratic observer is q(v)=<BPv,BPv>.",
+      "claim": "ker(P) is contained in the zero locus of q; equality requires B injective on im(P).",
+      "proof_or_test": "Composition kills ker(P); positivity identifies q's zero locus with ker(BP). A proper-inclusion fixture rejects the converse.",
+      "hodge_bridge": "Actual Hodge P,B and pairing must be independently sourced. Pairwise arity is not quadratic degree.",
+      "falsifier": "A proposed factorization q=norm(BP)^2 fails, or the pairing is indefinite.",
+      "hodge_implication_admitted": false
+    },
+    {
+      "id": "darkness-does-not-imply-empty-fiber",
+      "kind": "nonimplication",
+      "endpoints": ["hodge-quadratic-dark-mode-erasure", "hodge-realization-domain-erasure"],
+      "status": "countermodel_checked_abstract_only",
+      "premises": "All source states are admitted; B:Q^2->Q is the first-coordinate projection.",
+      "claim": "A nonzero dark state can exist with a nonempty realization fiber and no absent configuration.",
+      "proof_or_test": "v=(0,1) exists, Bv=0; use identity realization of the full source.",
+      "hodge_bridge": "Darkness alone cannot prove nonexistence of an algebraic representative.",
+      "falsifier": "Reject any use of this nonimplication outside its stated observable/realization distinction; a stronger sector law needs its own proof.",
+      "hodge_implication_admitted": false
+    },
+    {
+      "id": "cohomology-descent-before-detection",
+      "kind": "necessary_condition",
+      "endpoints": ["hodge-quadratic-dark-mode-erasure", "matching-fiber-invariance", "all-cycle-coverage"],
+      "status": "proved_abstract_only",
+      "premises": "s:V->H and F:V->Q are linear.",
+      "claim": "F factors uniquely through im(s) iff ker(s) is contained in ker(F); this supplies no canonical extension to all H.",
+      "proof_or_test": "Define Fbar(sv)=F(v). Test a kernel-sensitive F against a surjective s to show lost information can coexist with full realizability.",
+      "hodge_bridge": "A reader distinguishing homologous algebraic cycles cannot itself be a class-level detector; annihilation and extension are additional gates.",
+      "falsifier": "Two s-equal presentations with unequal F values refute descent of the proposed reader.",
+      "hodge_implication_admitted": false
+    },
+    {
+      "id": "readout-must-reflect-fiber-nonemptiness",
+      "kind": "necessary_and_sufficient_condition",
+      "endpoints": ["hodge-realization-domain-erasure", "joint-matching-obstruction", "matching-fiber-invariance"],
+      "status": "proved_abstract_only",
+      "premises": "mu:A->M is a realization map; rho:M->R is a compression; m is in the admitted domain M.",
+      "claim": "The inference rho(m) in rho(im(mu)) implies m in im(mu), for every m, holds iff im(mu) is saturated under fibers of rho.",
+      "proof_or_test": "Saturation means rho(m)=rho(a) with a in im(mu) forces m in im(mu). Enumerate a two-point compression with one filled and one empty fiber.",
+      "hodge_bridge": "Construct mu and rho independently of the unknown algebraic-cycle image; absent configurations are not elements of M and must remain separately tagged.",
+      "falsifier": "Two admitted boundaries with equal readout and different filler existence refute existence reflection for that compression.",
+      "hodge_implication_admitted": false
+    },
+    {
+      "id": "common-source-binding-conjecture",
+      "kind": "relation_conjecture",
+      "endpoints": ["hodge-realization-domain-erasure", "hodge-pairwise-readout-higher-cell-blindness", "hodge-quadratic-dark-mode-erasure", "joint-matching-obstruction"],
+      "status": "open_blocked",
+      "premises": "The fixed X,p,alpha and rational coefficients are unchanged; source operations must precede selection of an obstruction.",
+      "claim": "A single algebraic-source interface can realize a higher nonfillable alpha boundary whose loss under lower readout is witnessed by a factored quadratic observer, with a rational defect invariant under all allowed presentations.",
+      "proof_or_test": "Require one common source diagram; separately exhibited existential models do not prove their conjunction on the same X or maps.",
+      "hodge_bridge": "No such common Hodge interface has been constructed. This is the first missing source object, not an executable waiting task.",
+      "falsifier": "An algebraic control is excluded, the defect is torsion/choice-dependent, or the proposed common maps fail to compose. Each rejects the binding; no exhaustive refutation of all possible bindings is claimed.",
+      "hodge_implication_admitted": false
+    },
+    {
+      "id": "separation-assembly-conditional",
+      "kind": "conditional_implication",
+      "endpoints": ["joint-matching-obstruction", "all-cycle-coverage", "matching-fiber-invariance"],
+      "status": "proved_abstract_only",
+      "premises": "alpha is a rational Hodge class of smooth projective X; O is defined on Hdg^p(X,Q), annihilates every rational algebraic cycle class, and O(alpha) is nonzero.",
+      "claim": "alpha is not algebraic, hence supplies a rational Hodge counterexample.",
+      "proof_or_test": "If alpha=cl(Z), universal annihilation contradicts O(alpha)!=0. No listed premise is inferred from the relation graph.",
+      "hodge_bridge": "The actual O and universal annihilation theorem remain missing. A nonlinear obstruction requires its own full rational-combination necessity and is not automatically the base net's linear O.",
+      "falsifier": "Any algebraic class with nonzero proposed O, any choice dependence, or zero detection on alpha invalidates that proposed assembly.",
+      "hodge_implication_admitted": false
+    }
+  ],
+  "execution": {"abstract_tests": "research/voevodsky/checkers/check_hodge_coherence_relations.py", "Hodge_source_tasks": [], "stop_condition": "Do not expand abstract successor criteria at the common-source blocker; reopening requires an actual algebraic source operation."},
+  "Hodge_proved": false,
+  "Hodge_refuted": false
+}
