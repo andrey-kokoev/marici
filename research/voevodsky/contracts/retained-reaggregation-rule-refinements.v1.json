@@ -1,0 +1,62 @@
+{
+  "schema": "marici.voevodsky.rule-refinements.v1",
+  "source_contract": "research/voevodsky/contracts/retained-reaggregation-conjecture-net.v1.json",
+  "purpose": "Split the two broad rule-construction claims into independently checkable subclaims without creating duplicate priors, effort actions, or a second evidence identity.",
+  "refinements": [
+    {
+      "id": "primary-control-transport",
+      "parent": "native-signed-record-rule",
+      "statement": "Both signed controlled involutions and the scalar projector are transported to the native pair by Pi=J Ps Jdagger, with the native complement retained.",
+      "status_source": "theorem-specific parent receipt; four native chirality/doublet choices",
+      "required_check_families": [
+        "native_pair_isometry",
+        "transported_scalar_projection",
+        "plus_signed_involution",
+        "minus_signed_involution",
+        "signed_controls_self_adjoint",
+        "retained_native_complement"
+      ]
+    },
+    {
+      "id": "primary-complete-generator",
+      "parent": "native-signed-record-rule",
+      "statement": "The full uniform one-record generator includes both controlled diagonal contributions and the scalar empty-pool term before one common empty-reference subtraction.",
+      "status_source": "theorem-specific parent receipt; four native chirality/doublet choices",
+      "required_check_families": [
+        "two_controls_sum_full_diagonal",
+        "complete_hamiltonian_diagonal_and_scalar",
+        "common_reference_subtraction",
+        "common_neutral_pool_law"
+      ]
+    },
+    {
+      "id": "rival-vacuum-safe-defect-control",
+      "parent": "rival-defect-record-rule",
+      "statement": "The rival projection c-Pi generates two signed involutions on the retained carrier, vanishes on the separate empty sector, and uses the same prepared native scalar pair and ready record.",
+      "status_source": "future fresh theorem-specific rival receipt",
+      "required_checks": [
+        "rival_control_square",
+        "rival_control_self_adjoint",
+        "rival_control_zero_on_vacuum",
+        "same_ready_pair_and_record"
+      ]
+    },
+    {
+      "id": "rival-identical-input-resource-accounting",
+      "parent": "rival-defect-record-rule",
+      "statement": "The rival shares the primary's native carrier, record pool, preparation, candidate parameters, retained complement, and empty-reference ledger.",
+      "status_source": "future fresh theorem-specific rival receipt",
+      "required_checks": [
+        "same_native_carrier",
+        "same_record_pool",
+        "same_preparation",
+        "same_candidate_parameters",
+        "same_empty_reference",
+        "complementary_records_retained",
+        "same_complete_generator_diagonal"
+      ]
+    }
+  ],
+  "admission_policy": "A parent ++ requires every check in each child subclaim. The first two subclaims may be derived only from the admitted native signed-record receipt. The two rival subclaims remain unresolved until an exact theorem-specific receipt checks both. Child decomposition is not an independent probability model or duplicate attempt.",
+  "source_revision_policy": "Versioned sidecar; ledger pins its digest. Changes require explicit history-preserving migration."
+}

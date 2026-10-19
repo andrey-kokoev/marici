@@ -1,0 +1,178 @@
+{
+  "schema": "marici.voevodsky.four-port-routing.v1",
+  "source_contract_sha256": "3e843873196ae4e35306aa8a8d6df6e5321eebb76a3b6cf0c949c97d4dd21b65",
+  "outcome_semantics": "proof-attempt-outcomes-v1",
+  "routes": {
+    "freeze-common-interface": {
+      "++": {
+        "effect": "resolve_scoped_claim_proved",
+        "downstream": "satisfy_only_explicit_proof_prerequisites",
+        "admission": "fresh theorem-specific proof receipt"
+      },
+      "+-": {
+        "effect": "attempt_ends_truth_unresolved",
+        "downstream": "replan_without_dependency_credit",
+        "admission": "scoped incomplete attempt receipt"
+      },
+      "-+": {
+        "effect": "resolve_scoped_claim_refuted",
+        "downstream": "block_positive_route; do not infer target refutation unless target itself",
+        "admission": "fresh theorem-specific counterexample receipt"
+      },
+      "--": {
+        "effect": "attempt_ends_truth_unresolved",
+        "downstream": "replan_without_dependency_credit",
+        "admission": "scoped incomplete attempt receipt"
+      }
+    },
+    "native-signed-record-rule": {
+      "++": {
+        "effect": "resolve_scoped_claim_proved",
+        "downstream": "satisfy_only_explicit_proof_prerequisites",
+        "admission": "fresh theorem-specific proof receipt"
+      },
+      "+-": {
+        "effect": "attempt_ends_truth_unresolved",
+        "downstream": "replan_without_dependency_credit",
+        "admission": "scoped incomplete attempt receipt"
+      },
+      "-+": {
+        "effect": "resolve_scoped_claim_refuted",
+        "downstream": "block_positive_route; do not infer target refutation unless target itself",
+        "admission": "fresh theorem-specific counterexample receipt"
+      },
+      "--": {
+        "effect": "attempt_ends_truth_unresolved",
+        "downstream": "replan_without_dependency_credit",
+        "admission": "scoped incomplete attempt receipt"
+      }
+    },
+    "rival-defect-record-rule": {
+      "++": {
+        "effect": "resolve_scoped_claim_proved",
+        "downstream": "satisfy_only_explicit_proof_prerequisites",
+        "admission": "fresh theorem-specific proof receipt"
+      },
+      "+-": {
+        "effect": "attempt_ends_truth_unresolved",
+        "downstream": "replan_without_dependency_credit",
+        "admission": "scoped incomplete attempt receipt"
+      },
+      "-+": {
+        "effect": "resolve_scoped_claim_refuted",
+        "downstream": "block_positive_route; do not infer target refutation unless target itself",
+        "admission": "fresh theorem-specific counterexample receipt"
+      },
+      "--": {
+        "effect": "attempt_ends_truth_unresolved",
+        "downstream": "replan_without_dependency_credit",
+        "admission": "scoped incomplete attempt receipt"
+      }
+    },
+    "common-resource-accounting": {
+      "++": {
+        "effect": "resolve_scoped_claim_proved",
+        "downstream": "satisfy_only_explicit_proof_prerequisites",
+        "admission": "fresh theorem-specific proof receipt"
+      },
+      "+-": {
+        "effect": "attempt_ends_truth_unresolved",
+        "downstream": "replan_without_dependency_credit",
+        "admission": "scoped incomplete attempt receipt"
+      },
+      "-+": {
+        "effect": "resolve_scoped_claim_refuted",
+        "downstream": "block_positive_route; do not infer target refutation unless target itself",
+        "admission": "fresh theorem-specific counterexample receipt"
+      },
+      "--": {
+        "effect": "attempt_ends_truth_unresolved",
+        "downstream": "replan_without_dependency_credit",
+        "admission": "scoped incomplete attempt receipt"
+      }
+    },
+    "typed-operation-classification": {
+      "++": {
+        "effect": "resolve_scoped_claim_proved",
+        "downstream": "satisfy_only_explicit_proof_prerequisites",
+        "admission": "fresh theorem-specific proof receipt"
+      },
+      "+-": {
+        "effect": "attempt_ends_truth_unresolved",
+        "downstream": "replan_without_dependency_credit",
+        "admission": "scoped incomplete attempt receipt"
+      },
+      "-+": {
+        "effect": "resolve_scoped_claim_refuted",
+        "downstream": "block_positive_route; do not infer target refutation unless target itself",
+        "admission": "fresh theorem-specific counterexample receipt"
+      },
+      "--": {
+        "effect": "attempt_ends_truth_unresolved",
+        "downstream": "replan_without_dependency_credit",
+        "admission": "scoped incomplete attempt receipt"
+      }
+    },
+    "same-input-discriminator": {
+      "++": {
+        "effect": "resolve_scoped_claim_proved",
+        "downstream": "satisfy_only_explicit_proof_prerequisites",
+        "admission": "fresh theorem-specific proof receipt"
+      },
+      "+-": {
+        "effect": "attempt_ends_truth_unresolved",
+        "downstream": "replan_without_dependency_credit",
+        "admission": "scoped incomplete attempt receipt"
+      },
+      "-+": {
+        "effect": "resolve_scoped_claim_refuted",
+        "downstream": "block_positive_route; do not infer target refutation unless target itself",
+        "admission": "fresh theorem-specific counterexample receipt"
+      },
+      "--": {
+        "effect": "attempt_ends_truth_unresolved",
+        "downstream": "replan_without_dependency_credit",
+        "admission": "scoped incomplete attempt receipt"
+      }
+    },
+    "conditional-reaggregation-comparison": {
+      "++": {
+        "effect": "resolve_scoped_claim_proved",
+        "downstream": "satisfy_only_explicit_proof_prerequisites",
+        "admission": "fresh theorem-specific proof receipt"
+      },
+      "+-": {
+        "effect": "attempt_ends_truth_unresolved",
+        "downstream": "replan_without_dependency_credit",
+        "admission": "scoped incomplete attempt receipt"
+      },
+      "-+": {
+        "effect": "resolve_scoped_claim_refuted",
+        "downstream": "block_positive_route; do not infer target refutation unless target itself",
+        "admission": "fresh theorem-specific counterexample receipt"
+      },
+      "--": {
+        "effect": "attempt_ends_truth_unresolved",
+        "downstream": "replan_without_dependency_credit",
+        "admission": "scoped incomplete attempt receipt"
+      }
+    }
+  },
+  "attempt_intent": {
+    "prove": [
+      "++",
+      "+-"
+    ],
+    "reject": [
+      "-+",
+      "--"
+    ]
+  },
+  "dependency_semantics": "A proved prerequisite unlocks only declared child proof actions. A refuted prerequisite blocks that constructive route and is not propagated as child refutation. Failed ports preserve unresolved truth and replan.",
+  "physical_boundary": "No conditional-node port resolves physical-admission-and-selection.",
+  "alternative_routes": [],
+  "alternative_route_policy": {
+    "status": "no_reviewed_alternative_routes_registered",
+    "meaning": "A component refutation blocks the chosen constructive route only. Do not relabel the target or descendants refuted. Display a route-design/review need; register alternatives only with scoped proof dependencies and reviewed source evidence."
+  }
+}

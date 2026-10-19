@@ -1,0 +1,46 @@
+{
+  "schema": "marici.voevodsky.physical-admission-gate.v1",
+  "source_contract": "research/voevodsky/contracts/retained-reaggregation-conjecture-net.v1.json",
+  "target_node": "physical-admission-and-selection",
+  "scope": "Physical follow-up only. This protocol adds no physical facts, parameter estimates, or automatic admission.",
+  "not_in_planning_portfolio": true,
+  "required_evidence_classes": [
+    {
+      "id": "identified-native-system",
+      "requirement": "Name the physical system, degrees of freedom, native interaction, and a traceable map from the conditional carrier/record to that system.",
+      "acceptance": "Independent, source-addressed system and mapping evidence; no particle identity inferred from the constructor."
+    },
+    {
+      "id": "independent-scale-and-coupling-calibration",
+      "requirement": "Measure or independently calibrate energy, time, coupling, and relevant environmental scales with units and uncertainty/covariance.",
+      "acceptance": "Traceable calibration, uncertainty budget, and model-to-unit conversion; fit-to-target alone is insufficient."
+    },
+    {
+      "id": "physical-preparation-and-record-readout",
+      "requirement": "Specify and validate the preparation, neutral-record analogue, measurement effects, post-readout state, and common reference in the physical apparatus.",
+      "acceptance": "Calibration and controls demonstrating the same-input comparison can be implemented without changing the rules' shared inputs."
+    },
+    {
+      "id": "preregistered-discriminating-predictions",
+      "requirement": "Derive both rules' physical predictions, detector response, nuisance model, uncertainty propagation, and a preregistered selection/rejection threshold.",
+      "acceptance": "Predictions distinguish the rules at a declared error rate under independently bounded nuisance parameters."
+    },
+    {
+      "id": "independent-review-and-replication",
+      "requirement": "Provide an independent protocol review and reproducible data/analysis sufficient to assess selection or rejection.",
+      "acceptance": "Auditable data and analysis, controls, and independent review; an internal model score is not admission."
+    }
+  ],
+  "admission_policy": {
+    "required_conditional_outcome": "++",
+    "required_conclusive_receipt": "fresh theorem-specific physical review receipt bound to all evidence digests, system scope, calibrated units, predictions, and preregistered decision rule",
+    "outcome_ports": {
+      "++": "physical rule selected/admitted only by the dedicated physical evidence reviewer",
+      "+-": "physical admission attempt incomplete/unsuccessful; no rule selected",
+      "-+": "physical comparison rejected only with an admitted scoped counterexample/negative result",
+      "--": "physical rejection attempt unsuccessful; no inference"
+    },
+    "no_automatic_promotion": true
+  },
+  "current_state": "not_admitted_no_physical_evidence_package_registered"
+}

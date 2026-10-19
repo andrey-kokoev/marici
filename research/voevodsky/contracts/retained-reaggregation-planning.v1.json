@@ -1,0 +1,162 @@
+{
+  "schema": "marici.voevodsky.reaggregation-planning.v1",
+  "estimate_status": "subjective_uncalibrated_planning_only",
+  "empirically_calibrated": false,
+  "target": "conditional-reaggregation-comparison",
+  "budget_effort_units": 18,
+  "estimates": {
+    "freeze-common-interface": {
+      "prove_cost": 1,
+      "prove_cost_range": [
+        1,
+        3
+      ],
+      "prove_success_given_true": 0.98,
+      "reject_cost": 1,
+      "reject_cost_range": [
+        1,
+        3
+      ],
+      "reject_success_given_false": 0.6,
+      "rejection_available": true
+    },
+    "native-signed-record-rule": {
+      "prove_cost": 2,
+      "prove_cost_range": [
+        1,
+        4
+      ],
+      "prove_success_given_true": 0.9,
+      "reject_cost": 2,
+      "reject_cost_range": [
+        1,
+        4
+      ],
+      "reject_success_given_false": 0.6,
+      "rejection_available": true
+    },
+    "rival-defect-record-rule": {
+      "prove_cost": 2,
+      "prove_cost_range": [
+        1,
+        4
+      ],
+      "prove_success_given_true": 0.9,
+      "reject_cost": 2,
+      "reject_cost_range": [
+        1,
+        4
+      ],
+      "reject_success_given_false": 0.6,
+      "rejection_available": true
+    },
+    "common-resource-accounting": {
+      "prove_cost": 2,
+      "prove_cost_range": [
+        1,
+        4
+      ],
+      "prove_success_given_true": 0.85,
+      "reject_cost": 2,
+      "reject_cost_range": [
+        1,
+        4
+      ],
+      "reject_success_given_false": 0.6,
+      "rejection_available": true
+    },
+    "typed-operation-classification": {
+      "prove_cost": 1,
+      "prove_cost_range": [
+        1,
+        3
+      ],
+      "prove_success_given_true": 0.93,
+      "reject_cost": 1,
+      "reject_cost_range": [
+        1,
+        3
+      ],
+      "reject_success_given_false": 0.6,
+      "rejection_available": true
+    },
+    "same-input-discriminator": {
+      "prove_cost": 3,
+      "prove_cost_range": [
+        2,
+        5
+      ],
+      "prove_success_given_true": 0.8,
+      "reject_cost": 3,
+      "reject_cost_range": [
+        1,
+        5
+      ],
+      "reject_success_given_false": 0.6,
+      "rejection_available": true
+    },
+    "conditional-reaggregation-comparison": {
+      "prove_cost": 1,
+      "prove_cost_range": [
+        1,
+        3
+      ],
+      "prove_success_given_true": 0.95,
+      "reject_cost": 1,
+      "reject_cost_range": [
+        1,
+        3
+      ],
+      "reject_success_given_false": 0.6,
+      "rejection_available": true
+    }
+  },
+  "joint_model": {
+    "base_claim_probabilities": {
+      "freeze-common-interface": 0.99,
+      "native-signed-record-rule": 0.96,
+      "rival-defect-record-rule": 0.96,
+      "common-resource-accounting": 0.95,
+      "typed-operation-classification": 0.98,
+      "same-input-discriminator": 0.9
+    },
+    "target_given_all_components_true": 0.98,
+    "target_given_otherwise": 0.2,
+    "meaning": "Independent base-claim estimates, conditional target truth allows alternative routes. Chosen dependencies are certificate requirements, not truth equivalences.",
+    "constraint_status": "reviewed_constraint_registry_no_hard_constraints_admitted_yet",
+    "hard_constraints": [],
+    "shared_obligations": "Defined once in retained-reaggregation-coherence-invariants.v1.json; shared consumers refer to one owner/evidence identity and do not get duplicate truth priors."
+  },
+  "likelihood_policy": "Given each truth world, bounded-attempt completion likelihoods are independent; ++ impossible when false and -+ impossible when true. Failed attempts update beliefs, not facts. Each canonical action runs once.",
+  "sensitivity": {
+    "budgets": [
+      12,
+      18,
+      24
+    ],
+    "proof_cost_multipliers": [
+      1,
+      2,
+      3
+    ],
+    "proof_sensitivity_multipliers": [
+      0.7,
+      0.85,
+      1.0
+    ]
+  },
+  "physical_followup_excluded": "No empirical admission evidence or estimated physical proof action; do not infer it from conditional success.",
+  "port_routing": "Every conditional claim now has prove and reject attempt actions; each action has both success and unsuccessful ports. New rejection actions use the already-declared subjective reject cost and sensitivity. Ledger model pin requires reviewed migration preserving all events and spent budget.",
+  "priority_policy": {
+    "status": "diagnostic_only_not_scientific_evidence",
+    "formula": "target_information_bits_per_effort + coherence_weight * normalized_number_of_transitively_unlocked_conjectures",
+    "coherence_weights": [
+      0.0,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "interpretation": "Subjective preference sensitivity alongside, not substituted for, the closure-probability-optimal central policy. Scores do not update truth probabilities or scientific outcomes."
+  }
+}

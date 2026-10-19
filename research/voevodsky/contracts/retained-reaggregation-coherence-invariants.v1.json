@@ -1,0 +1,98 @@
+{
+  "schema": "marici.voevodsky.coherence-invariants.v1",
+  "source_contract": "research/voevodsky/contracts/retained-reaggregation-conjecture-net.v1.json",
+  "invariants": [
+    {
+      "id": "same-native-carrier-and-vacuum",
+      "owner": "freeze-common-interface",
+      "requirement": "Both rules act on the same native 100-state carrier and the same separately retained empty sector; neither rule acts on vacuum.",
+      "contract_fields": [
+        "frozen_comparison.carrier",
+        "frozen_comparison.primary_control",
+        "frozen_comparison.rival_control"
+      ]
+    },
+    {
+      "id": "same-preparation-and-record-apparatus",
+      "owner": "freeze-common-interface",
+      "requirement": "Use the same normalized native scalar-pair preparation, ready neutral record, record gap, coupling, and evolution time for both rules.",
+      "contract_fields": [
+        "frozen_comparison.preparation",
+        "frozen_comparison.records",
+        "frozen_comparison.candidate_parameters"
+      ]
+    },
+    {
+      "id": "same-complete-resource-accounting",
+      "owner": "common-resource-accounting",
+      "requirement": "Retain every rule's diagonal and complementary-sector terms and subtract one common empty reference; no rule-specific baseline or species offset.",
+      "contract_fields": [
+        "conjectures.common-resource-accounting.acceptance",
+        "frozen_comparison.observables"
+      ]
+    },
+    {
+      "id": "same-input-distinguishing-readout",
+      "owner": "same-input-discriminator",
+      "requirement": "Compare both rules at the frozen common input and model-unit time using neutral occupation and complete joint-energy/readout effects, including post-readout state; a distinguishing result must be certified rather than assumed.",
+      "contract_fields": [
+        "conjectures.same-input-discriminator.acceptance",
+        "frozen_comparison.observables"
+      ]
+    },
+    {
+      "id": "conditional-physical-boundary",
+      "owner": "physical-admission-and-selection",
+      "requirement": "No mathematical constructor, conditional comparison, model score, or imported scoped proof resolves physical selection without independent physical scale, coupling, and observational evidence.",
+      "contract_fields": [
+        "objective.physical_followup",
+        "conjectures.physical-admission-and-selection.acceptance"
+      ]
+    }
+  ],
+  "interpretation": "These are explicit coherence obligations, not admitted theorems. Static contract consistency is machine-checked; scientific satisfaction requires the owning node's admitted theorem-specific receipt.",
+  "shared_obligations": [
+    {
+      "id": "common-preparation-and-record",
+      "owner": "freeze-common-interface",
+      "consumers": [
+        "native-signed-record-rule",
+        "rival-defect-record-rule",
+        "same-input-discriminator",
+        "conditional-reaggregation-comparison"
+      ],
+      "one_evidence_identity": true
+    },
+    {
+      "id": "separate-vacuum-and-rule-controls",
+      "owner": "freeze-common-interface",
+      "consumers": [
+        "native-signed-record-rule",
+        "rival-defect-record-rule",
+        "conditional-reaggregation-comparison"
+      ],
+      "one_evidence_identity": true
+    },
+    {
+      "id": "common-empty-reference-and-total-energy",
+      "owner": "common-resource-accounting",
+      "consumers": [
+        "same-input-discriminator",
+        "conditional-reaggregation-comparison"
+      ],
+      "one_evidence_identity": true
+    },
+    {
+      "id": "retained-record-readout-and-poststate",
+      "owner": "same-input-discriminator",
+      "consumers": [
+        "conditional-reaggregation-comparison"
+      ],
+      "one_evidence_identity": true
+    }
+  ],
+  "contradiction_policy": {
+    "status": "no_hard_scientific_contradictions_admitted",
+    "rule": "Do not invent logical incompatibilities between candidate rules. Add only reviewed, source-pinned constraints; conditional probabilities remain unconstrained otherwise."
+  }
+}
