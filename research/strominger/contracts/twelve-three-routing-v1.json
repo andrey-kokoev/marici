@@ -1,0 +1,24 @@
+{
+  "schema": "marici.local-routing-test.v1",
+  "owner": "marici.Strominger",
+  "question": "Does a retained 12-input/3-output surjective routing admit cut-compatible tetrahedral realization, and is it the actual native proton C12-to-M3 transfer?",
+  "scope": "Finite combinatorial routing and read-only exact source comparison. No native physical grading, charged sector, electron occupancy or assembled P/N/E dynamics is derived.",
+  "positive_candidate": "The regular A4 action on twelve rotation labels, quotiented by its normal Klein-four subgroup, gives three four-element fibers.",
+  "tests_declared_before_checker_execution": [
+    "Construct all twelve even permutations of four vertices and the Klein-four subgroup; verify group, normality, quotient and total/single-valued/surjective routing.",
+    "Exhaust all 5775 unlabeled balanced partitions of twelve inputs into three fours; determine which descend under the actual regular A4 relabelings.",
+    "Check left/right group cut relabelings; a swap within a fiber must descend, a swap of complete fibers must descend, but a single cross-fiber swap must not.",
+    "Retain the within-fiber label and reconstruct all twelve inputs; demonstrate that the three-output readout alone is not invertible.",
+    "Use unchanged actual proton geometry/rotation records if they form the advertised group, rather than identifying twelve ports with A4 solely by count.",
+    "Load exact native L/G/N operators with their original metric, derive their image encoders/decoders, and evaluate the actual C12-to-M3 forward map.",
+    "Report all output supports per native input, surjectivity, exact rank and any multiple-output witnesses. A rank-one map cannot be a weighted total single-valued surjection onto three independent output lines.",
+    "Do not replace the native transfer with the combinatorial quotient or discard native reader/history/complement data to force agreement."
+  ],
+  "classification_rule": "The abstract candidate and its source identification receive separate verdicts. A valid abstract quotient does not accept the native or full-complex conjecture.",
+  "inputs": [
+    "research/strominger/results/common-three-carrier-protocol/proton.json",
+    "research/voevodsky/results/proton_merkle_store.json"
+  ],
+  "checker": "research/strominger/checkers/check_twelve_three_routing_v1.py",
+  "receipt": "research/strominger/results/twelve-three-routing-v1.json"
+}

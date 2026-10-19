@@ -1,0 +1,24 @@
+{
+  "schema": "marici.local-port-equations.v1",
+  "owner": "marici.Strominger",
+  "question": "Construct and solve explicit geometry-derived port equations for three compatible identity-plus-three-component presentations, with C0 input and C2 output.",
+  "state": "Each port holds a discrete complex identity label, three rational configuration coordinates and a separately retained path history. Three labels plus nine coordinates is the proposed 3+9 bookkeeping, not twelve independent complex amplitudes.",
+  "geometry": "Load the unchanged live carrier.mjs through Node. Rationalize its coordinates with a checked numerical tolerance. Use the first containing ordered tetrahedron to define each vertex's three-vector frame.",
+  "declared_transport": "Use tetrahedral wireframe edges as bidirectional geometric links. For frame F_v, q_v = inverse(F_v) F_u q_u; carry the same complex label and append the actual edge to history. This is a declared flat geometric connection, not an inferred native primitive map.",
+  "three_incoming_presentations": "Use the three two-edge geometric paths C0 -> {M0,C1,M1} -> C2. Identify them explicitly as geometric paths; the retained original directed source walk remains distinct.",
+  "compatibility": "All identity labels agree and all decoded vectors F_v q_v agree. Reject incompatible packets. For arbitrary coordinate triples retain the complete decoder residual instead of silently averaging it away.",
+  "tests_declared_before_execution": [
+    "Actual live geometry, six distinct original-plus-extension vertices, original walk and ordered P/N/E bodies are retained.",
+    "Every frame is invertible and derived from actual tetrahedron edge vectors.",
+    "Every link is invertible, transports the label, retains history and preserves the induced configuration metric.",
+    "Derive explicit three-cut matrices, input/output matrices, A x = b equations, rank, solutions and a complete retained residual decomposition.",
+    "Verify the three short geometric paths and all simple geometric C0-to-C2 paths give the same configuration result while their histories remain distinct. Also transport the repeated-C1 original directed walk.",
+    "Solve the one-electron network with and without fixed input, and derive a second regular MCC[M3] attachment by reflection without moving the existing geometry.",
+    "Solve the second-attachment network using the same law and boundary data; report compatibility and degrees of freedom without treating a new body as a derived independent electron state.",
+    "Reject an identity mismatch, a nonmatching incoming coordinate presentation and a single corrupted link creating loop holonomy.",
+    "Test invertible nonmonomial local frame changes and common rigid configuration shifts."
+  ],
+  "excluded_claims": ["native particle transfer derived", "physical energy or stability law", "one-electron exclusion", "all geometry edges are native primitive commands", "a constant homogeneous coordinate is a unique identity label"],
+  "checker": "research/strominger/checkers/check_identity_bearing_port_equations_v1.py",
+  "receipt": "research/strominger/results/identity-bearing-port-equations-v1.json"
+}
