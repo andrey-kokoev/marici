@@ -1,0 +1,48 @@
+{
+  "schema": "marici.indexed-cycle-handoff.v1",
+  "id": "indexed-cycle-handoff-v1",
+  "owner": "marici.Strominger",
+  "operator_request": "let's record it in conjecture net and test it",
+  "governing_conjecture": "A generic packet has a marked within-cycle crossing and an inter-cycle handoff. The proposed proton/neutron patterns return to the same sector kind next cycle, while the electron pattern may occupy a two-cycle orbit under a minimal reversible completion.",
+  "notation": {
+    "M": "Abstract main-sector label, encoded0 in the finite test.",
+    "C": "Abstract operator C-sector/codomain label, encoded1; not every linear-map codomain and not an established physical codimension assignment.",
+    "index": "A distinct cycle copy, not an exponent, dimension, tensor power, physical time or rotation angle.",
+    "phases": ["cycle entry", "within-cycle intermediate", "next-cycle entry"],
+    "cycle_mark_is_retained": true
+  },
+  "proposed_paths": {
+    "proton": ["C_i", "M_i", "C_(i+1)"],
+    "neutron": ["M_i", "C_i", "M_(i+1)"],
+    "electron": ["M_i", "C_i", "C_(i+1)"]
+  },
+  "minimal_completion_assumptions": [
+    "One shared deterministic within-cycle map on two sectors",
+    "A context/mode retained across cycles, not erased at handoff",
+    "The minimum number of contexts needed to fit the three observations",
+    "Each fixed-context two-sector handoff is bijective, with no unretained environment; global reversibility of a larger system alone is not this assumption"
+  ],
+  "predictions": {
+    "common_crossing": "The three observations fix the shared intra-cycle map to sector exchange.",
+    "memory_requirement": "No context-free deterministic handoff fits neutron and electron, which share intermediate C but have different next sectors. At least two contexts are required.",
+    "completions": "Anchor neutron context0 and electron context1. Enumerate all32 pairs of two-sector handoff functions and proton-context choices. Four fit the observed paths; exactly one has both handoffs bijective. It assigns proton/neutron context0 with flip handoff and electron context1 with identity handoff.",
+    "minimal_reversible_recurrence": "For sector s and mode b, complete-cycle F(s,b)=(s XOR b,b): two fixed points and one two-cycle. The electron's C-entry phase is not automatically a new species.",
+    "underdetermination": "Without the fixed-minimal-state bijectivity assumption, a constant-C handoff fits electron but loads and retains C instead of returning to M after two cycles.",
+    "environment_control": "A globally reversible circuit with fresh initialized memory can implement constant-C coarse handoff. Global reversibility alone does not force the proposed two-sector period.",
+    "phase_control": "The same electron sector exchange has exact unitary lifts X^2=I and J^2=-I. Sector period does not select amplitude sign, spin or physical time.",
+    "native_test": "Current common-three-carrier L/G/N returns are nonzero projectors of ranks1/1/2; all three stages fix the active return image. Their untagged native return has period1, not an electron swap. A stage-independent raw-state sector reader cannot label the same active state differently at successive stages.",
+    "tagged_extension": "An explicit two-sector register supplies compatible lifted maps on each actual native return image with its original induced metric and exact recovery. This is an added bookkeeping capability, not a source-derived M/C assignment or primitive physical process."
+  },
+  "source_inputs": [
+    "research/strominger/results/port-incidence-conjectures-v1.json",
+    "research/strominger/results/common-three-carrier-protocol/proton.json",
+    "research/strominger/results/common-three-carrier-protocol/neutron.json",
+    "research/strominger/results/common-three-carrier-protocol/electron.json"
+  ],
+  "named_rivals": ["One sector-only handoff explains all three paths", "Electron two-cycle return follows from the three paths alone", "Reversibility of any enlarged system forces a bijective coarse handoff", "A two-cycle sector orbit already supplies spinorial sign", "Existing native return projectors already implement the electron sector swap", "The explicit tag extension establishes physical sector/species identity"],
+  "acceptance": "Exhaust the finite completion classes, construct countermodels and the minimal reversible recurrence, and separately check actual native returns and an explicitly added tagged realization without promoting any physical assignment.",
+  "first_missing_physical_object": "Independently grounded sector/context readers, stage and handoff operations and cycle marking on the actual source. Physical time/rotation and particle assignment require separate attachment.",
+  "physical_particle_assignment_verified": false,
+  "physical_spin_or_time_derived": false,
+  "formal_outcome": null
+}

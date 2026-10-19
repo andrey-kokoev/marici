@@ -1,0 +1,20 @@
+{
+  "schema": "marici.strominger.tetrahedral-channel-capacity.v1",
+  "geometry_candidates": ["5-cell", "16-cell", "600-cell"],
+  "selection_reason": "All regular convex four-dimensional polytopes with tetrahedral boundary facets; not a selection made after inspecting spectra.",
+  "existing_dual_lattice_controls": [2,3,4],
+  "dual_lattice_source": "research/strominger/demos/dual-tetrahedral-lattices/model.mjs",
+  "operator": "Scalar nearest-neighbor combinatorial Laplacian H=degree*I-A, unit weights derived only from exact adjacency; independent two-component spin copy H tensor I2.",
+  "candidate_shell_definition": "Each successive distinct eigenvalue in ascending order is one candidate shell. All eigenvectors in that band count. No regrouping or selective subspace after comparison.",
+  "capacity_reference": "2*n^2 for n=1..6, used only after constructing operators and exact spectra",
+  "occupancy_assumption": "One fermion per spin-resolved independent mode. This is declared statistics, not derived from unique geometric edges.",
+  "neutral_filling_test": "Fill all lower graph-Laplacian bands before the next, with electron count Z; compare to the supplied neutral ground-state shell populations.",
+  "reference_atoms": [
+    {"element":"C","Z":6,"shell_populations":[2,4]},
+    {"element":"Ca","Z":20,"shell_populations":[2,8,8,2]},
+    {"element":"Fe","Z":26,"shell_populations":[2,8,14,2]},
+    {"element":"Pb","Z":82,"shell_populations":[2,8,18,32,18,4]}
+  ],
+  "risk": "A capacity match does not count as an atomic explanation if the same frozen operator fails the filling data. Boundary S3 topology does not by itself determine the spectrum.",
+  "scope": "New candidate channel arenas, not embeddings of the earlier reciprocal P/N lattice. The conventional dual of the600-cell is not another tetrahedral cellulation. No common P/N/E attachment, spin connection, Pauli derivation, charge assignment, energy scale or nuclear stability is supplied."
+}

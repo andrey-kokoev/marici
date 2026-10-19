@@ -1,0 +1,16 @@
+{
+ "schema":"marici.strominger.cmc-mcm-marked-tetrahedron.v1",
+ "source_model":"research/strominger/demos/particle-overlap-tetrahedron/model.mjs",
+ "vertices":["C0","M0","C1","M1"],
+ "proton_window":["C0","M0","C1"],
+ "neutron_window":["M0","C1","M1"],
+ "types":["C","M","C","M"],
+ "chain_cells":8,
+ "gluing":"T_i=(C_i,M_i,C_(i+1),M_(i+1)); identify only slot2 with next slot0 and slot3 with next slot1, retaining every occurrence record.",
+ "geometric_handoff":"g(x,y,z)=(x-2,y,-z). g maps prototype slot0,1 to slot2,3; successive regular tetrahedra share an edge. g^2 translates by(-4,0,0).",
+ "C_lattice":"(1,1,1)+Lambda; Lambda=Z(-2,0,-2)+Z(-2,0,2)+Z(0,4,0)",
+ "M_lattice":"(1,-1,-1)+Lambda. Their union is the existing B FCC vertex family, NOT the two original diamond families A/B.",
+ "contravariant_candidate":"R(x,y,z)=(-x,-y,z) maps local vertex index k to3-k. Apply R and reverse path order: proton window maps to neutron window, compositions reverse and shared directed edge is preserved.",
+ "task":"Retain all four source values, identities, occurrence ordering and accumulated handoff history. Test full-state reconstruction and actual window readers, not only type words.",
+ "nonclaims":["CMC/MCM are independently derived physical gradings","The new C/M point sets equal the old diamond A/B families","Regular tetrahedra tile Euclidean3D space","The symmetry is a native physical proton-neutron conversion","An opposite vertex alone retains directed face history"]
+}

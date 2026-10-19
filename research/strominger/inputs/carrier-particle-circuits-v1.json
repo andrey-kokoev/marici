@@ -1,0 +1,42 @@
+{
+  "schema": "marici.strominger.carrier-particle-circuits.fixture.v1",
+  "status": "declared formal carrier fixture; not a native particle operator derivation",
+  "carrier_kinds": {"C": "potential", "M": "realization"},
+  "windows": {
+    "proton": ["C0", "M0", "C1"],
+    "neutron": ["M0", "C1", "M1"],
+    "electron": ["M1", "C1", "C2"]
+  },
+  "recipes": {
+    "H": ["proton", "electron"],
+    "D": ["proton", "neutron", "electron"],
+    "duplicate_N_control": ["proton", "neutron", "neutron", "electron"]
+  },
+  "ports": {
+    "entry": {"carrier": "C0", "direction": "input"},
+    "excitation": {"carrier": "M1", "direction": "input"},
+    "exit": {"carrier": "C2", "direction": "output"}
+  },
+  "boundary_representation": {
+    "field": "Q",
+    "dimension": 2,
+    "ordered_basis": ["0", "1"],
+    "coordinate_metric": "identity in the supplied ordered basis; not an energy",
+    "status": "supplied binary interface for testing composition, not inferred from C/M labels",
+    "interior_generators": "uninterpreted; no end-to-end atom operator is supplied"
+  },
+  "couplers": {
+    "independent": {"rule": "identity", "source_operation": "e_i tensor e_j maps to e_i tensor e_j"},
+    "exchange": {"rule": "swap", "source_operation": "e_i tensor e_j maps to e_j tensor e_i"},
+    "pair_sign": {"rule": "bilinear_sign", "source_operation": "e_i tensor e_j maps to (-1)^(i*j) e_i tensor e_j"}
+  },
+  "finite_classification": {
+    "candidate_class": "all 16 real diagonal norm-preserving maps on the declared binary tensor interface",
+    "local_equivalence": "independent output sign operations on each named factor; full operators remain retained",
+    "source_rule": "D(e_i tensor e_j) = d_ij e_i tensor e_j, each d_ij independently +1 or -1",
+    "missing_feedback_map": "Box exit-to-entry matrices cannot be iterated as carrier circuits without an entry-to-exit interior or return operator. None is supplied."
+  },
+  "tensor_order": "left factor first; basis 00,01,10,11; matrix rows are outputs, columns are inputs",
+  "product_input_witness": {"left": [1, 1], "right": [1, 1]},
+  "excluded_claims": ["particle identity from circuit analogy", "molecular bonding", "physical actualization", "energy or stability law", "native two-dimensional particle carrier"]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nonparallel-spin-loom-v1",
+    "owner": "marici.Strominger",
+    "classification": "candidate",
+    "stratum": "Inherited equal-weight quadratic seam mismatch on every subset of the source five-cell spin geometry, both chiralities; no physical admissibility budget or common P/N/E identification.",
+    "inputs": ["research/strominger/nonparallel-spin-loom.md", "research/strominger/inputs/nonparallel-spin-loom-v1.json", "research/strominger/results/source-spin-loom/verification.json", "research/voevodsky/checkers/check_pentachoron_spin_interfaces.py", "research/aspect/scc/categorical_compiler.py"],
+    "checks": [{"id":"source_nonparallel_pattern_spectrum", "path":"research/strominger/checkers/check_nonparallel_spin_loom.py", "requires":[]}],
+    "depends_on": ["source-spin-loom-v1"],
+    "consumes": ["Source-pinned native minimal folds", "Previously declared squared full-spinor mismatch functional"],
+    "provides": ["Exact spectra and surviving lowest patterns on all source subsets", "Explicit doublet degeneracy and frame-covariant seam residuals"],
+    "missing_constructors": ["Physical selection law or exclusion threshold; larger source geometry and native P/N/E interfaces"],
+    "next_falsifier": "A source-derived selection law must reject patterns or predict a size/coordination limit without fitting an energy budget to observed valence."
+  }
+}

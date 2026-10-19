@@ -1,0 +1,15 @@
+{
+ "schema":"marici.scc.model-manifest.v1",
+ "model":{
+  "id":"dual-flag-spectrum-v1","owner":"marici.Strominger",
+  "classification":"finite-flag-spectrum-and-source-composition-test",
+  "stratum":"Exact64-flag scalar graph modes, canonical8-vertex incidence lift/reader, composition residual and minimal source-preparation closure. No physical time, native P/N/E identification, spin or occupancy derivation.",
+  "inputs":["research/strominger/inputs/dual-flag-spectrum-v1.json","research/strominger/dual-tetrahedral-branching-iteration-01.md","research/strominger/contracts/dual-tetrahedral-branching-conjecture-net.v1.json","research/strominger/results/dual-tetrahedral-branching-net/queued-flag-operator.json","research/strominger/results/tetrahedral-channel-capacity/verification.json","research/strominger/checkers/check_tetrahedral_channel_capacity.py","research/aspect/scc/categorical_compiler.py"],
+  "checks":[{"id":"flag_spectrum_and_canonical_forgetting","path":"research/strominger/checkers/check_dual_flag_spectrum_scc.py","requires":[]}],
+  "depends_on":["dual-tetrahedral-branching-net-v1"],
+  "consumes":["Freshly read planned source graph and fixed incidence operator"],
+  "provides":["Complete spectral ranks","Exact composition failure versus reconstructible full packet","Task-relative minimal invariant closure without discarding source responses"],
+  "missing_constructors":["Native branch preparation, physical fitting and occupation maps"],
+  "next_falsifier":"Test the same frozen incidence source family in dimensions2..6; do not equate main-space dimension with principal-shell grade."
+ }
+}

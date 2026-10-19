@@ -1,0 +1,15 @@
+{
+ "schema":"marici.scc.model-manifest.v1",
+ "model":{
+  "id":"tetrahedral-channel-capacity-v1","owner":"marici.Strominger",
+  "classification":"finite-source-graph-channel-test",
+  "stratum":"Exact scalar unit-weight graph spectra with an independently declared two-state spin factor on all regular4D tetrahedral-facet boundaries and old periodic-dual-network controls. Candidate band ranks and neutral filling are separate tests; no native spin/Pauli/charge/atomic or reciprocal P/N embedding claim.",
+  "inputs":["research/strominger/tetrahedral-channel-capacity.md","research/strominger/inputs/tetrahedral-channel-capacity-v1.json","research/strominger/checkers/check_tetrahedral_channel_capacity.py","research/strominger/demos/dual-tetrahedral-lattices/model.mjs"],
+  "checks":[{"id":"exact_channel_spectrum_and_filling","path":"research/strominger/checkers/check_tetrahedral_channel_capacity_scc.py","requires":[]}],
+  "depends_on":["dual-tetrahedral-lattices-v1"],
+  "consumes":["Exact candidate boundary incidence, no target populations used in adjacency","Supplied neutral reference configurations for independent criticism"],
+  "provides":["Full-graph annihilation and projector-rank certificates","Capacity comparisons and nonhidden filling failures"],
+  "missing_constructors":["Native P/N attachment, source-selected electron operator/statistics and atomic filling interactions"],
+  "next_falsifier":"If capacity ranks match but neutral occupations fail, the same source operator is not an atomic explanation; no silent sub-band selection or energy-budget fit."
+ }
+}

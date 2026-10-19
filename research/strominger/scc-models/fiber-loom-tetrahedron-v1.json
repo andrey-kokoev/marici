@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "fiber-loom-tetrahedron-v1",
+    "owner": "marici.Strominger",
+    "classification": "candidate",
+    "stratum": "Declared abelian surface-weight model on Q^2 with a mandatory identity tetrahedral filling; state-level flatness only, no native P/N/E or physical maximum-size claim.",
+    "inputs": ["research/strominger/fiber-loom-tetrahedron.md", "research/strominger/inputs/fiber-loom-tetrahedron-v1.json", "research/strominger/checkers/check_carrier_particle_circuits.py", "research/aspect/scc/categorical_compiler.py"],
+    "checks": [{"id": "tetrahedral_fiber_extension", "path": "research/strominger/checkers/check_fiber_loom_tetrahedron.py", "requires": []}],
+    "depends_on": ["carrier-region-growth-v1"],
+    "consumes": ["Explicit invertible local face comparisons", "Independently declared mandatory tetrahedral filling in the prototype"],
+    "provides": ["Full, partial and zero extension sectors", "Gauge-covariant retained coherence defects", "Negative control for distinct braids without a comparison obligation"],
+    "missing_constructors": ["Native fitting fibers, face comparisons and authority for the required filling"],
+    "next_falsifier": "Test the same frozen extension condition using independently source-derived P/N/E fitting and face data; do not fit a higher correction after a failed cell."
+  }
+}

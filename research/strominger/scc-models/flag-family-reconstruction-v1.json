@@ -1,0 +1,15 @@
+{
+ "schema":"marici.scc.model-manifest.v1",
+ "model":{
+  "id":"flag-family-reconstruction-v1","owner":"marici.Strominger",
+  "classification":"exact-flag-source-family-reconstruction",
+  "stratum":"Frozen cross-polytope flag rules in dimensions2..6; full source Walsh blocks, integer Gram/intertwiner and task-relative closure. Only d4 tetrahedral, no principal-shell, native particle or physical capacity identification.",
+  "inputs":["research/strominger/inputs/flag-family-reconstruction-v1.json","research/strominger/dual-tetrahedral-branching-iteration-02.md","research/strominger/contracts/dual-tetrahedral-branching-conjecture-net.v2.json","research/strominger/results/dual-flag-spectrum-walsh/verification.json","research/strominger/results/dual-tetrahedral-branching-net/queued-flag-operator.json","research/strominger/results/tetrahedral-channel-capacity/verification.json","research/aspect/scc/categorical_compiler.py"],
+  "checks":[{"id":"dimension_family_full_source_and_closure","path":"research/strominger/checkers/check_flag_family_reconstruction.py","requires":[]}],
+  "depends_on":["dual-flag-spectrum-walsh-v1"],
+  "consumes":["Actual iteration1 source and source-enabled dimension-family continuation"],
+  "provides":["Exact raw/vertex/memory/closure dimension distinctions","d4 source incidence recovery and full retained task certificates"],
+  "missing_constructors":["Native P/N/E attachment and physical selection laws"],
+  "next_falsifier":"Test faithful tetrahedral reader covers on the fixed d4 closure using actual restriction ranks, not assumed per-face capacity."
+ }
+}

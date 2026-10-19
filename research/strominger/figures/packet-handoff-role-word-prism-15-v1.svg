@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="720" viewBox="0 0 920 720" role="img" aria-labelledby="title description">
+  <title id="title">Role-word triangular prism — row 15</title>
+  <desc id="description">Two complementary triangles of three-letter role words. Cyclic left rotation takes CMC to MCC to CCM to CMC, and MCM to CMM to MMC to MCM. Exchanging M and C connects corresponding vertices. Row 15 selects CMC for proton, MCM for neutron, and MCC for electron. Filled vertices mark these three selections. Dashed edges indicate the rear of the transparent prism.</desc>
+  <defs>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#0f766e"/>
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#7c3aed"/>
+    </marker>
+    <style>
+      text { font-family: 'Segoe UI', Arial, sans-serif; fill: #172033; }
+      .word { font-family: 'Cascadia Code', Consolas, monospace; font-size: 25px; font-weight: 600; }
+      .particle { font-size: 16px; font-weight: 600; }
+      .muted { fill: #64748b; }
+      .edge { fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+      .teal { stroke: #0f766e; }
+      .purple { stroke: #7c3aed; }
+      .dual { stroke: #94a3b8; stroke-width: 2.1; }
+      .rear { stroke-dasharray: 7 7; }
+    </style>
+  </defs>
+
+  <rect width="920" height="720" rx="18" fill="#ffffff"/>
+  <text x="460" y="45" text-anchor="middle" font-size="27" font-weight="650">Role-word triangular prism</text>
+  <text x="460" y="76" text-anchor="middle" font-size="16" class="muted">Row 15 highlighted: proton CMC · neutron MCM · electron MCC</text>
+
+  <!-- Parallel triangular faces; corresponding vertices are joined by role exchange. -->
+  <path d="M 160 310 L 680 310 L 680 590 L 160 590 Z" fill="#f8fafc"/>
+  <path d="M 420 170 L 680 310 L 160 310 Z" fill="#ccfbf1" fill-opacity="0.55"/>
+  <path d="M 420 450 L 680 590 L 160 590 Z" fill="#ede9fe" fill-opacity="0.55"/>
+
+  <!-- Rear edges stay visible through the transparent prism. -->
+  <path class="edge dual rear" d="M 420 170 L 420 450"/>
+  <path class="edge purple rear" d="M 420 450 L 680 590 M 160 590 L 420 450"/>
+
+  <!-- Role-exchange edges. -->
+  <path class="edge dual" d="M 160 310 L 160 590 M 680 310 L 680 590"/>
+
+  <!-- Triangle boundaries. -->
+  <path class="edge teal" d="M 420 170 L 680 310 L 160 310 Z"/>
+  <path class="edge purple" d="M 680 590 L 160 590"/>
+
+  <!-- Cyclic left rotation, R, around each triangular face. -->
+  <g class="edge teal" marker-end="url(#arrow-teal)">
+    <path d="M 525 226.5 L 565 248.1"/>
+    <path d="M 440 310 L 400 310"/>
+    <path d="M 270 250.8 L 310 229.2"/>
+  </g>
+  <g class="edge purple" marker-end="url(#arrow-purple)">
+    <path d="M 525 506.5 L 565 528.1"/>
+    <path d="M 440 590 L 400 590"/>
+    <path d="M 270 530.8 L 310 509.2"/>
+  </g>
+
+  <!-- Face and duality labels. -->
+  <rect x="348" y="254" width="144" height="29" rx="10" fill="#ffffff" fill-opacity="0.94"/>
+  <text x="420" y="274" text-anchor="middle" font-size="15" style="fill:#0f766e">C-majority triangle</text>
+  <text x="420" y="552" text-anchor="middle" font-size="15" style="fill:#7c3aed">M-majority triangle</text>
+  <rect x="438" y="366" width="120" height="31" rx="9" fill="#ffffff"/>
+  <text x="450" y="387" font-size="17" class="muted">S: M ↔ C</text>
+
+  <!-- Filled nodes are the three selections in row 15. -->
+  <circle cx="420" cy="170" r="9" fill="#0f766e" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="680" cy="310" r="9" fill="#0f766e" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="160" cy="310" r="7" fill="#ffffff" stroke="#0f766e" stroke-width="2.5"/>
+  <circle cx="420" cy="450" r="9" fill="#7c3aed" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="680" cy="590" r="7" fill="#ffffff" stroke="#7c3aed" stroke-width="2.5"/>
+  <circle cx="160" cy="590" r="7" fill="#ffffff" stroke="#7c3aed" stroke-width="2.5"/>
+
+  <!-- Vertex labels. -->
+  <text x="420" y="127" text-anchor="middle" class="word">CMC</text>
+  <text x="420" y="150" text-anchor="middle" class="particle" style="fill:#0f766e">proton</text>
+  <text x="709" y="307" class="word">MCC</text>
+  <text x="709" y="331" class="particle" style="fill:#0f766e">electron</text>
+  <text x="132" y="318" text-anchor="end" class="word">CCM</text>
+  <text x="420" y="482" text-anchor="middle" class="word">MCM</text>
+  <text x="420" y="505" text-anchor="middle" class="particle" style="fill:#7c3aed">neutron</text>
+  <text x="709" y="598" class="word">CMM</text>
+  <text x="132" y="598" text-anchor="end" class="word">MMC</text>
+
+  <line x1="110" y1="639" x2="810" y2="639" stroke="#e2e8f0"/>
+  <text x="460" y="666" text-anchor="middle" font-size="16">R: cyclic left shift · S: exchange M and C · filled vertices: row 15</text>
+  <text x="460" y="692" text-anchor="middle" font-size="15" class="muted">Each triangle: C₃ rotations; adding word reversal gives D₃.</text>
+</svg>

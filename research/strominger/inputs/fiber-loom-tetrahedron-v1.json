@@ -1,0 +1,15 @@
+{
+  "schema": "marici.strominger.fiber-loom-tetrahedron.v1",
+  "status": "Declared finite prototype, not inferred P/N/E data",
+  "fiber": {"field": "Q", "dimension": 2, "basis": ["u", "v"], "metric": [[1,0],[0,1]]},
+  "vertices": [0,1,2,3],
+  "edges": ["01","02","03","12","13","23"],
+  "faces": ["012","013","023","123"],
+  "edge_transport": [[1,0],[0,1]],
+  "allowed_face_comparisons": {"I": [[1,0],[0,1]], "Z": [[1,0],[0,-1]], "minus_I": [[-1,0],[0,-1]], "minus_Z": [[-1,0],[0,1]]},
+  "mandatory_filling": {"left": ["023","012"], "right": ["013","123"], "comparison": "identity fixed before evaluation", "admissible_states": "ker(left_composite-right_composite)", "full_fiber_coherence": "left_composite=right_composite"},
+  "named_cases": {"coherent": {"012":"I","013":"I","023":"I","123":"I"}, "sector_filtered": {"012":"Z","013":"I","023":"I","123":"I"}, "fully_blocked": {"012":"minus_I","013":"I","023":"I","123":"I"}},
+  "predictions": {"named_admissible_dimensions": {"coherent":2,"sector_filtered":1,"fully_blocked":0}, "all_256_face_assignments_by_admissible_dimension": {"0":64,"1":128,"2":64}},
+  "chart_controls": "All 4096 edge-frame changes within the declared abelian comparison group act on faces by a coboundary; tetrahedron holonomy is unchanged. A common invertible rational fiber basis change preserves ranks and transports the metric.",
+  "nonpromotion": "Face weights and the mandatory flat filling are chosen prototype inputs, not source-derived particle laws. Distinct braids are not compared unless a cell is explicitly required. Higher coherence can reject configurations but need not impose a maximum size."
+}

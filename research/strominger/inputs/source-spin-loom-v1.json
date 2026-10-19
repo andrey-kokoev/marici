@@ -1,0 +1,13 @@
+{
+  "schema": "marici.strominger.source-spin-loom.v1",
+  "source": "research/voevodsky/inputs/relative-electron.json",
+  "interface_constructor": "research/voevodsky/checkers/check_pentachoron_spin_interfaces.py",
+  "prior_receipt": "research/voevodsky/results/pentachoron_spin_interfaces.json",
+  "convention": "Reuse prior minimal normal-plane folds and both retained chiral spin lifts; do not choose face signs independently.",
+  "face_comparison": "K_ijk = U_ik^-1 U_jk U_ij, based at fitting i",
+  "tetrahedron": "K_ikl K_ijk = K_ijl U_ij^-1 K_jkl U_ij",
+  "parallel_matching": "s_j = U_ij s_i; fixed spinors around loops are an extra parallel-matching requirement, not the definition of higher coherence",
+  "predictions": "All properly based tetrahedral cells fill. Triangular holonomy is nontrivial with no fixed spinor under the existing parallel matching. Connected trees retain a doublet. Naively omitting the base transport can create a spurious tetrahedral defect.",
+  "source_corruption_control": "Independently flip one derived face comparison by -I; this violates its edge-derived definition and creates a rank-two tetrahedral defect. It is a changed source, not a gauge repair.",
+  "scope": "Existing source-derived five-cell spin geometry only; not identification with the native single-cell 144 protocol or a P/N/E molecular law."
+}

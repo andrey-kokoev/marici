@@ -1,0 +1,15 @@
+{
+ "schema":"marici.scc.model-manifest.v1",
+ "model":{
+  "id":"600-cell-channel-algebra-v1","owner":"marici.Strominger",
+  "classification":"finite-two-sided-channel-factorization",
+  "stratum":"Source120-vertex quaternion group, exact regular actions and central adjacency; finite representation-theoretic channel ranks only, not electron statistics, observed atomic filling or P/N cell embedding.",
+  "inputs":["research/strominger/600-cell-channel-algebra.md","research/strominger/results/tetrahedral-channel-capacity/verification.json"],
+  "checks":[{"id":"two_sided_group_channel_certificate","path":"research/strominger/checkers/check_600_cell_channel_algebra.py","requires":[]}],
+  "depends_on":["tetrahedral-channel-capacity-v1"],
+  "consumes":["Unchanged exact spectral result and original geometric vertices/edges"],
+  "provides":["Group closure and central convolution certificate","Independent left/right mode dimensions without counting a fixed matrix's coefficients as states"],
+  "missing_constructors":["Native fitting-to-channel map and source-selected physical operator/statistics"],
+  "next_falsifier":"A changed or noncentral transport/coupling need not preserve the square band ranks; retain the original failed atomic filling benchmark."
+ }
+}

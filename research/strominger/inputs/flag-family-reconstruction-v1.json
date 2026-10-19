@@ -1,0 +1,17 @@
+{
+ "schema":"marici.strominger.flag-family-reconstruction.v1",
+ "iteration":2,"iteration_budget":10,
+ "initial_net_revision":"research/strominger/contracts/dual-tetrahedral-branching-conjecture-net.v2.json",
+ "initial_graph_test":"test:2110be12520436715a89",
+ "dimensions":[2,3,4,5,6],
+ "source_geometry":"research/strominger/results/tetrahedral-channel-capacity/verification.json",
+ "iteration1_source":"research/strominger/results/dual-tetrahedral-branching-net/queued-flag-operator.json",
+ "iteration1_result":"research/strominger/results/dual-flag-spectrum-walsh/verification.json",
+ "flags":"(sigma,i), sigma in {-1,+1}^d, marked vertex sigma_i e_i",
+ "moves":"Change marked vertex within the same facet, or flip a nonmarked sign while retaining the vertex.",
+ "operator":"Unit metric, unit weights; degree2(d-1) graph Laplacian. No fitted phases or truncation.",
+ "adapter":"B lifts2d vertex amplitudes; m=2^(d-1), D=B^T/m; L=2(HB-BHv/2). W=[B,L_selected_positive_vertices].",
+ "predictions":{"raw_flags":"d*2^d","vertex_source_dimension":"2*d","minimal_invariant_closure":"3*d","required_memory":"d","normalized_leakage_Gram":"(d-1)*P_odd"},
+ "next_boundary_test":"For the fixed d4 source12-mode closure, determine minimum tetrahedral face-reader covers and rank saturation using actual restrictions, not four independent states per contact by assumption.",
+ "nonpromotion":"Only d4 has tetrahedral facets. d is not principal electron-shell number;3d is task-relative, not physical capacity. All d2^d original flag modes are retained."
+}

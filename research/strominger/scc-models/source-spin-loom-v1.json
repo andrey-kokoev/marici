@@ -1,0 +1,17 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "source-spin-loom-v1",
+    "owner": "marici.Strominger",
+    "classification": "candidate",
+    "stratum": "Existing minimal normal-plane spin folds in source-bound pentachoron geometry; edge-derived based face holonomies and tetrahedral identities, distinguished from extra globally parallel-state conditions.",
+    "inputs": ["research/strominger/source-spin-loom.md", "research/strominger/inputs/source-spin-loom-v1.json", "research/voevodsky/inputs/relative-electron.json", "research/voevodsky/checkers/check_pentachoron_spin_interfaces.py", "research/voevodsky/results/pentachoron_spin_interfaces.json", "research/aspect/scc/categorical_compiler.py"],
+    "checks": [{"id":"source_based_spin_comparisons", "path":"research/strominger/checkers/check_source_spin_loom.py", "requires":[]}],
+    "depends_on": ["fiber-loom-tetrahedron-v1"],
+    "consumes": ["Existing source geometry, spin lift and fold convention; no independently tuned face weights"],
+    "provides": ["Correctly based tetrahedral comparison versus curvature and parallel-state loss", "Frame-covariant retained source maps and deliberate source corruption control"],
+    "missing_constructors": ["Unified P/N/E fittings and source rules for admissible nonparallel patterns"],
+    "next_falsifier": "A genuinely independent source higher-comparison object, not curvature or a misbased matrix product, must exhibit a nonzero admissible obstruction."
+  }
+}

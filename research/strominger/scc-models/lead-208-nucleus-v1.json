@@ -1,0 +1,15 @@
+{
+  "schema":"marici.scc.model-manifest.v1",
+  "model":{
+    "id":"lead-208-nucleus-v1","owner":"marici.Strominger",
+    "classification":"illustrative-nuclear-marker-display",
+    "stratum":"Forward display realization only: exact isotope counts, identity-preserving full/cutaway views and offline browser controls. Arbitrary illustrative FCC marker positions, not a physical nuclear lattice or loom-derived packing.",
+    "inputs":["research/strominger/demos/lead-208-nucleus/index.html","research/strominger/demos/lead-208-nucleus/README.md","research/strominger/checkers/check_lead_208_nucleus.mjs"],
+    "checks":[{"id":"lead-208-display-browser","path":"research/strominger/checkers/check_lead_208_nucleus.py","requires":[]}],
+    "depends_on":[],
+    "consumes":["Lead-208 isotope composition82p126n","Declared illustrative marker layout and existing local browser tooling"],
+    "provides":["Interactive whole/cutaway nucleus schematic and checked screenshots"],
+    "missing_constructors":["Source-derived physical nuclear state or P/N/E-fitting packing; display does not assert either"],
+    "next_falsifier":"Wrong counts, lost identities, cutaway changing composition, missing scope warning, nonfunctional controls or browser errors reject this display."
+  }
+}

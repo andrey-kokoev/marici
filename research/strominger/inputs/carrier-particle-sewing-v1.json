@@ -1,0 +1,17 @@
+{
+  "schema": "marici.strominger.carrier-particle-sewing.fixture.v1",
+  "source_fixture": "research/strominger/inputs/carrier-particle-circuits-v1.json",
+  "operation": "identify a derived C output boundary with another template's derived C input boundary",
+  "state_semantics": "functions on simultaneous boundary assignments, not temporal states or evolution",
+  "port_selection": "C vertices with no incoming edges are entries; C vertices with no outgoing edges are exits; require unique nonisolated entry and exit",
+  "cross_template_only": true,
+  "common_boundary": {"kind": "C", "field": "Q", "values": ["0", "1"], "evaluation_context": "shared-boundary-evaluation"},
+  "seams": {
+    "identity": {"left_restriction": [0, 1], "right_restriction": [0, 1]},
+    "twisted": {"left_restriction": [0, 1], "right_restriction": [1, 0]}
+  },
+  "admission": "Both value restrictions must be explicit bijections to the common boundary, with matching field, value basis and evaluation context. No default identity map.",
+  "sewing_rule": "Admit (i,j) exactly when rho_left(i)=rho_right(j). Retain that common value as the shared coordinate.",
+  "residual_policy": "For arbitrary ambient packets retain both Rv and (I-ER)v. Restriction alone is lossless only on im(E).",
+  "excluded_claims": ["P/N/E incidence selects which boundary identification occurs", "physical bond or binding energy", "native binary particle carrier", "stability from a closed graph", "copying an arbitrary vector by tensor square"]
+}
