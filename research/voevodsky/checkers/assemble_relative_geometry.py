@@ -6,6 +6,9 @@ and cone every other facet to the mean of the generated vertices.
 
 The source metric, generators and orbit roles are mathematical inputs. This
 constructs geometry; it does not assign coefficient operators or arrow counts.
+
+Workflow map: docs/arrow-assembly.md (repository root). For complete scheduled
+centroid cycles and recovery, use evolve_relative_geometry_modes.py.
 """
 from fractions import Fraction as Q
 from itertools import combinations

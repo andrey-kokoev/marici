@@ -1,5 +1,8 @@
 # Twelve triangles, a collective eigenline, and an explicit 1836-arrow realization
 
+For the source-driven entrypoint and its relation to the common geometric
+cycle, see the [arrow assembly guide](../../docs/arrow-assembly.md).
+
 ## Construction from the original seed
 
 Take the four endpoint states at the vertices of a regular tetrahedron:

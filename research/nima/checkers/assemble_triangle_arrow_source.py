@@ -4,6 +4,10 @@ Input supplies directed arrows and rational 3D vertex coordinates. Every complet
 oriented three-cycle supplies a vertex permutation (fixing the other vertices).
 The existing cyclic-sector, frame transport and dense-feedback rules are fixed.
 No expected group order, triangle count or arrow count is input or asserted.
+
+Workflow map: docs/arrow-assembly.md (repository root). This is the directed-
+triangle coefficient pipeline, not the common proton/electron geometry cycle.
+CLI: check_twelve_triangle_positive_geometry.py --source ... --output-dir ...
 """
 from itertools import permutations
 from pathlib import Path

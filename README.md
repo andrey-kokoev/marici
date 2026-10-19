@@ -2,6 +2,11 @@
 
 Research ledger and public map for the scalar master geometry program: intrinsic operations producing NLSM, Yang–Mills, gravity, and the exceptional CHY pairing web.
 
+## Arrow assembly
+
+[Assembly guide](docs/arrow-assembly.md): proton and electron workflows,
+shared geometric cycles, retained results, recovery and assembly measures.
+
 ## Project objective map
 
 The [project objective map](docs/project-objective-map.md) connects the main

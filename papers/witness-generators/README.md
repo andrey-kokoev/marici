@@ -4,6 +4,12 @@ Read [the tutorial](main.md). It explains selected witnessed steps, proof-depend
 
 The matched comparison shows that ordinary Cubical dependent-sum isomorphisms provide the same structural proof machinery. WG's remaining convenience is refinement assembly and certificate packaging—not new mathematics. Independent internal review found the fixed example correct and pedagogically useful, and recommended library/tutorial documentation rather than a standalone research paper. This package follows that recommendation.
 
+## Particle assembly navigation
+
+The proton/electron assembly pages in this directory are separate from this
+tutorial. For their constructors, cycles and assembly measures, start with
+[the arrow assembly guide](../../docs/arrow-assembly.md).
+
 ## Run the examples
 
 From the repository root, with Python, Agda 2.8.0 and Cubical 0.9:

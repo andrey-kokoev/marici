@@ -4,6 +4,10 @@ For a source isometry R of order m, encode z_k=(1/m) sum_t zeta^(-kt) R^t v,
 advance z_k -> zeta^k z_k, and decode v'=sum_k z_k=Rv. Keep k=0 as well.
 Admission to the moving-centroid carrier means some k!=0 component is nonzero
 for at least one supplied generator. No target geometry is read here.
+
+Workflow map: docs/arrow-assembly.md (repository root). This wraps the common
+geometry assembler for proton/electron examples; measures are centroid-cycle
+measures, not coefficient-network transfer counts.
 """
 from copy import deepcopy
 from fractions import Fraction as Q

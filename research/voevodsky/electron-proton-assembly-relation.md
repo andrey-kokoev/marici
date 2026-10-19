@@ -1,5 +1,8 @@
 # Electron/proton assembly: extension or refinement?
 
+For runnable constructors and the distinct geometric/coefficient assembly
+measures, see the [arrow assembly guide](../../docs/arrow-assembly.md).
+
 ## Question
 
 Test the proposed common growth sequence before assigning particle names to its stages. In particular, does the stored electron end at an open fan while the stored proton adds a cap and volume? Read the actual electron spinor and proton Merkle geometry stores, not the harmonized viewer stages.

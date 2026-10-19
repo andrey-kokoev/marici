@@ -1,5 +1,8 @@
 # A common relative geometric constructor from compact source records
 
+For entrypoints, complete cycles and assembly measures, see the
+[arrow assembly guide](../../docs/arrow-assembly.md).
+
 ## Mathematical rule
 
 A source is (G, T, S, roles), where G is a rational positive-definite metric,

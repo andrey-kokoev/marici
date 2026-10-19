@@ -1,5 +1,12 @@
 # Marici Agent Instructions
 
+## Arrow assembly discovery
+
+For arrow assembly, proton/electron workflows, assembly cycles, disassembly or
+assembly measures, start with [the canonical assembly guide](docs/arrow-assembly.md).
+It maps the common geometry/cycle entrypoints and specialized coefficient and
+path constructors, including input types, recovery scope and count conventions.
+
 ## Stacks Project search
 
 When investigating the Stacks Project source from Marici, use the read-only

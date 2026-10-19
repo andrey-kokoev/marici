@@ -1,6 +1,10 @@
 """A declared spinor extension of the four-face negative-circulation carrier.
 Exact tetrahedral tight-frame encoding; this changes the carrier and readout,
 not merely the phase convention of the old vector model.
+
+Workflow map: docs/arrow-assembly.md (repository root). This produces the
+four-face 144-transfer spinor fixture, not the five-cell geometric cycle.
+The entrypoint rewrites fixed result/store paths; inspect the guide first.
 """
 from dataclasses import dataclass
 from fractions import Fraction as F

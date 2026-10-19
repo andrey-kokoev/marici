@@ -1,5 +1,8 @@
 # Reversible movement into phase modes and back
 
+For proton/electron workflow commands and count conventions, see the
+[arrow assembly guide](../../docs/arrow-assembly.md).
+
 **Subsequent hostile test:** `centroid-admission-refinement-counterexample.md`
 shows that cellwise centroid admission fails subdivision invariance. The exact
 reversible dynamics below still pass; the admission hypothesis must be restricted

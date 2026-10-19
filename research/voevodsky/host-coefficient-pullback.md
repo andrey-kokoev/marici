@@ -98,7 +98,7 @@ resolved potential: I x B,
 (t,v) -> (t,Gamma(v)).
 ```
 
-Their pullback should retain (x,v), with z=Gamma(v), rather than impose z=j(x). This proposed repair distinguishes the location of a port from its value, and a mode from the fold witness above it. It still needs its explicit retained construction and reconstruction/universal-property checks; it is not counted as implemented in this iteration.
+Their pullback should retain (x,v), with z=Gamma(v), rather than impose z=j(x). This proposed repair distinguishes the location of a port from its value, and a mode from the fold witness above it. It was not implemented in this iteration. The later `proton-electron-single-link-potential-v1.md` now constructs this free-mode pullback as T x B, verifies all 1,296 maximal cells and retains all 24 fold-chart interiors. That continuation keeps the spinor/link identification as a separate missing map.
 
 No particle identity, electron operator, neutron glue or replacement H-1/H-2 arrow total is inferred from the rejected candidate.
 
