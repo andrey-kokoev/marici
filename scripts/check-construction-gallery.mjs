@@ -77,11 +77,11 @@ try {
   await page.goto(base + '/experiments/')
   await page.setViewportSize({ width: 1440, height: 1000 })
   await page.locator('.construction-preview').first().waitFor()
-  await expect(page.locator('.construction-gallery')).toHaveCount(5)
-  for (const id of ['retained-information-research-lab', 'geometry-and-assembly', 'information-and-readouts', 'spinor-comparisons', 'products-and-closure', 'diagrams-and-retained-records']) {
+  await expect(page.locator('.construction-gallery')).toHaveCount(6)
+  for (const id of ['proposed-packet-primitive', 'retained-information-research-lab', 'geometry-and-assembly', 'information-and-readouts', 'spinor-comparisons', 'products-and-closure', 'diagrams-and-retained-records']) {
     assert(await page.evaluate(id => !!document.getElementById(id), id), `Gallery family anchor missing: ${id}`)
   }
-  assert.equal(await page.locator('.construction-preview').count(), 17)
+  assert.equal(await page.locator('.construction-preview').count(), 18)
   for (const image of await page.locator('.construction-preview img').all()) {
     await image.scrollIntoViewIfNeeded()
     await page.waitForFunction(img => img.complete && img.naturalWidth > 0, await image.elementHandle())
@@ -415,7 +415,7 @@ try {
       if (!/^(?:https?:|#)/.test(href)) assert.equal((await fetch(new URL(href, page.url()))).status, 200, `${name}: ${href}`)
     }
     await Promise.all([page.waitForNavigation({ waitUntil: 'domcontentloaded' }), returnLink.click()])
-    await expect(page.locator('.construction-preview')).toHaveCount(17)
+    await expect(page.locator('.construction-preview')).toHaveCount(18)
   }
   for (const name of ['relational-growth', 'paw-cycle', 'two-paws']) {
     await page.setViewportSize({ width: 1440, height: 1000 })
@@ -469,7 +469,7 @@ try {
     const returnLink = page.getByRole('link', { name: '← Construction gallery', exact: true })
     await expect(returnLink).toHaveAttribute('target', '_self')
     await Promise.all([page.waitForNavigation({ waitUntil: 'domcontentloaded' }), returnLink.click()])
-    await expect(page.locator('.construction-preview')).toHaveCount(17)
+    await expect(page.locator('.construction-preview')).toHaveCount(18)
   }
   await page.goto(base + '/experiments/')
   await page.waitForLoadState('networkidle')
