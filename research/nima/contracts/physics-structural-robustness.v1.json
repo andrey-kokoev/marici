@@ -1,0 +1,35 @@
+{
+  "schema":"marici.physics-structural-robustness.v1",
+  "node":"identifiability-and-robustness-test",
+  "decision":"constructed_partial_parameter_region_witness",
+  "rival_table":"research/nima/contracts/physics-rival-prediction-table.v1.json",
+  "discrepancy_allowance":"1/100",
+  "detector_box":{"eta":["1/4","1/2"],"gamma":["1/4","1/2"],"prior_readiness":["1/4","3/4"]},
+  "optical_box":{"t1_squared":["1/3","2/3"],"a_squared":["1/3","2/3"],"r2_squared":["1/3","2/3"]},
+  "box_status":"Declared mathematical regimes, not measured nuisance bounds. The optical squared-amplitude box is a separate regime and does not contain the old t1=4/5 fixture.",
+  "uniform_bounds":{
+    "reset_CC_gap":"eta^2 >=1/16",
+    "reset_CNC_gap":"eta^2*(1-gamma) >=1/32",
+    "no_click_ready_continuation_gap":"eta*(1-gamma)*(1-r)/(1-eta*r) in [1/26,9/28]",
+    "no_click_likelihood_floor":"1-eta*r >=5/8",
+    "click_likelihood_floor":"eta*r >=1/16",
+    "no_click_readiness_derivative":"(1-eta)*(1-gamma)/(1-eta*r)^2 <=24/25 on the declared one-step box",
+    "dark_return_occupation_gap":"t1^2*a^2*r2^2 in [1/27,8/27]",
+    "dropped_environment_norm":"(1-a^2)*r2^2*(1-t1^2) in [1/27,8/27]"
+  },
+  "decision_scope":"Each listed scalar gap has a uniform lower bound >2/100 within its box, so the two point predictions expanded by epsilon cannot overlap at a common fixed parameter. Unknown independent parameters across rival models can still alias; no global inverse or empirical exclusion is claimed.",
+  "aliases_and_failure_regions":[
+    "At eta->0, reset-CC and other count gaps vanish: no uniform separation over the whole charter.",
+    "At gamma=1, reset-CNC and no-click-is-ready continuation gaps vanish.",
+    "At r=1, no-click-is-ready continuation gap vanishes; no-click already leaves ready memory.",
+    "At eta*r=0 the click posterior is undefined; at eta*r=1 the no-click posterior is undefined.",
+    "Zero optical t1, a or r2 removes the dark-return continuation gap; zero environment coupling removes the norm defect.",
+    "One-bin p(C)=eta*r does not identify eta and r separately: (eta,r)=(1/4,1) and (1/2,1/2) share p(C)=1/4.",
+    "Local phase laws remain aliases on total N<=1; merged CP environments remain aliases on classical memory; sampled generators retain the clock-branch alias."
+  ],
+  "limitations":["Readiness derivative bound is one-step only: no invariance or multi-step contraction of the readiness box is claimed","Only named scalar continuations are covered, not all frozen rivals","Common-parameter separation is not separation of full independently fitted nuisance prediction sets","Full programme identifiability node stays open under its prerequisite gates"],
+  "empirical_exclusions":[],
+  "source_evidence":["research/nima/contracts/physics-rival-prediction-table.v1.json","research/nima/checkers/check_physics_observation_resource_interface.py","research/nima/contracts/physics-target-charter.v1.json","research/aspect/reciprocal-lossy-cavity-plant.md","research/nima/contracts/physics-source-law-premise-audit.v1.json"],
+  "source_pins":"research/nima/contracts/physics-structural-robustness-pins.v1.json",
+  "result":"research/nima/results/physics-structural-robustness-v1.json"
+}

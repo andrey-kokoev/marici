@@ -1,0 +1,27 @@
+{
+  "schema":"marici.physics-conditional-model-assembly.v1",
+  "decision":"accept_conditional_model_assembly_only",
+  "source_witness_id":"passive-port-fock-memory.v1",
+  "node":"conditional-model-assembly",
+  "target_coverage":[
+    {"target":"reciprocal-lossy-cavity-ordered-response","domain":"Ten labelled coherent-mode preparations, ordered passive rounds, three-round horizon, supplied W and equal-frequency convention","map":"z -> coherent Fock density tensor classical memory; W -> Gamma(W); field/occupation expectations recover the supplied port plant","premise_status":"imported_optical_law_and_supplied_coefficients","physical_binding":false},
+    {"target":"finite-dead-time-detector-records","domain":"Sharp zero/one photon per bin, classical memory, all three-bin input/outcome words","map":"Input word -> preprepared product in detector-input mode roles; local source Kraus operators tensor spectator identity; retain memory and complete histories","premise_status":"imported_CP_instrument_and_supplied_coefficients","physical_binding":false}
+  ],
+  "overlap":"Reviewed total-N<=1 route with full complex optical operator equality; the 52-dimensional N=2 safe space is an additional schedule-specific candidate, not a promoted physical overlap",
+  "assembly_rules":["Same carrier ID does not equate preparation domains","Coherent field recovery does not permit applying the finite detector to a nonzero coherent port without a domain proof","Preserve photon/readiness/energy-unit distinctions","No physical target realization record or root assembly interface is supplied by this decision","No Bool/exchange/marked source identification follows","Independent law selection remains a required physical/explanatory gate"],
+  "blockers":["Native source quadraticity/creation covariance principle absent","Primitive continuous generator/logarithm branch and clock/energy provenance absent","Physical preparation/routing/reset/instrument authority absent","Unique CP completion beyond classical memory absent unless separately justified"],
+  "packets":[
+    {"result":"research/nima/results/physics-geometric-candidate-v1.json","checker":"research/nima/checkers/check_physics_geometric_candidate.py"},
+    {"result":"research/nima/results/physics-interface-geometry-admission-v1.json","checker":"research/nima/checkers/check_physics_interface_geometry_admission.py"},
+    {"result":"research/nima/results/physics-overlap-catalog-v1.json","checker":"research/nima/checkers/check_physics_overlap_catalog.py"},
+    {"result":"research/nima/results/physics-instrument-history-binding-v1.json","checker":"research/nima/checkers/check_physics_instrument_history_binding.py"},
+    {"result":"research/nima/results/physics-two-photon-safe-domain-v1.json","checker":"research/nima/checkers/check_physics_two_photon_safe_domain.py"},
+    {"result":"research/nima/results/physics-complex-overlap-coherence-v1.json","checker":"research/nima/checkers/check_physics_complex_overlap_coherence.py"},
+    {"result":"research/nima/results/physics-source-law-premise-audit-v1.json","checker":"research/nima/checkers/check_physics_source_law_premise_audit.py"}
+  ],
+  "source_evidence":["research/nima/contracts/physics-interface-geometry-admission.v1.json","research/nima/contracts/physics-source-law-premise-audit.v1.json","research/nima/contracts/physics-geometric-candidate.v1.json","research/nima/contracts/physics-instrument-history-binding.v1.json","research/nima/contracts/physics-overlap-catalog.v1.json","research/nima/contracts/physics-two-photon-safe-domain.v1.json","research/nima/contracts/physics-complex-overlap-coherence.v1.json"],
+  "physical_realization_admitted":false,
+  "native_source_law_selected":false,
+  "source_pins":"research/nima/contracts/physics-conditional-model-assembly-pins.v1.json",
+  "result":"research/nima/results/physics-conditional-model-assembly-v1.json"
+}

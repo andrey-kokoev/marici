@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "native-scattering-scale-audit-v1",
+    "owner": "marici.Nima",
+    "classification": "conditional_flux_scale_identifiability_audit",
+    "stratum": "Certified real-axis response reuse and readout identifiability under one independently unknown positive relative native/orbital scale per rival. Fixed couplings and encounter preparation; native full-state/output representations remain distinct.",
+    "inputs": ["research/nima/contracts/native-scattering-scale-audit.v1.json", "research/voevodsky/results/slater_real_axis_native.json", "research/voevodsky/results/native_spinor_pair_adapter.json", "research/voevodsky/results/offcenter_endpoint_dispersion.json", "research/voevodsky/results/multiobject_energy_response.json"],
+    "checks": [{"id": "interval-replay-and-exact-core-alias", "path": "research/nima/checkers/check_native_scattering_scale_audit.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["certified_native_core_real_axis_scattering_fixture"],
+    "provides": ["relative_scale_doublet_alias_and_calibration_boundary"],
+    "missing_constructors": ["independent_relative_energy_scale", "physical_preparation_species_and_coupling_selection"],
+    "next_falsifier": "Identical scaled native core energies preserve the whole selected encounter response; extra energy samples cannot identify an uncalibrated discrete doublet label by these readouts alone."
+  }
+}

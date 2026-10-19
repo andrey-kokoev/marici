@@ -1,0 +1,35 @@
+{
+  "schema":"marici.physics-source-law-premise-audit.v1",
+  "node":"dynamics-source-selection",
+  "decision":"constructed_conditional_generator_theorem_and_interpolation_obstruction",
+  "source_witness_id":"passive-port-fock-memory.v1",
+  "quadratic_source_principle":{
+    "status":"additional_premise_not_independently_sourced",
+    "law":"K=dGamma(h)=sum_ij h_ij a_i^dagger a_j with finite-dimensional Hermitian h, no higher-degree interactions, no displacement and vacuum energy fixed to zero",
+    "result":"[K,a_j^dagger]=sum_i h_ij a_i^dagger on the finite-particle core; U(t)=exp(-itK) therefore obeys linear creation covariance with W(t)=exp(-ith). Vacuum is fixed.",
+    "boundary":"Number conservation, locality and unitarity do not imply absence of higher-degree terms; the earlier local Kerr countermodel is preserved."
+  },
+  "interpolation_obstruction":{
+    "source_primitive":"First mirror acting on labelled (u,x), S=[[-3/5,4/5],[4/5,3/5]], identity on spectators",
+    "duration":"Dimensionless component s=t/tau, with physical tau>0 not supplied",
+    "projector":"Q=(I-S)/2 on the active two-mode subspace, zero on spectators",
+    "generators":"h0=(pi/tau)Q; h1=(pi/tau)(Q+2P_active)",
+    "laws":"U0(t)=exp(-it*dGamma(h0)); U1(t)=exp(-it*dGamma(h1))",
+    "same":"At every integer component duration t=k*tau, exp(-2*pi*i*k*N_active)=I on every Fock number sector. Both laws give the same mirror S and the same coarse ordered cavity/detector histories.",
+    "different":"At half-duration U1 differs from U0 by (-1)^N_active; their half-step coherent field phases and vacuum/one-photon coherence differ.",
+    "half_step_witness":"Normalized (|vac>+|1_u>)/sqrt(2) has mean a_u=1/10-2i/5 under h0 and -1/10+2i/5 under h1",
+    "preserved":["quadratic number-conserving generator","vacuum fixing","spectator locality","linear creation covariance at every time with each law's own W(t)","all supplied integer-duration operation maps"],
+    "conclusion":"Supplying a discrete mirror map and even quadraticity does not select its generator/logarithm branch or physical duration."
+  },
+  "required_source_inputs":[
+    {"id":"quadraticity","requirement":"A native source principle excluding Kerr/higher-degree terms, rather than the desired coherent recovery inserted as a premise","supplied":false},
+    {"id":"primitive-generator","requirement":"Source Hamiltonians or independent continuous operation family selecting logarithm branch and ordered component durations","supplied":false},
+    {"id":"coefficients-and-units","requirement":"Source provenance for numerical mirror/loss coefficients, phase frame, clock and energy normalization","supplied":false},
+    {"id":"detector-completion","requirement":"Keep the classical-memory scope or independently justify separated environment labels for a larger CP claim","supplied":false}
+  ],
+  "native_source_law_selected":false,
+  "physical_realization_admitted":false,
+  "source_evidence":["research/aspect/reciprocal-lossy-cavity-plant.md","research/nima/contracts/physics-geometric-candidate.v1.json","research/nima/contracts/physics-dynamics-selection-audit.v1.json","research/nima/contracts/physics-rival-prediction-table.v1.json","research/nima/checkers/check_physics_dynamics_selection_audit.py","research/nima/checkers/check_physics_geometric_candidate.py"],
+  "source_pins":"research/nima/contracts/physics-source-law-premise-pins.v1.json",
+  "result":"research/nima/results/physics-source-law-premise-audit-v1.json"
+}

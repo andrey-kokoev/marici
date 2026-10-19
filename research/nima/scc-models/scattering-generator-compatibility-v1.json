@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "scattering-generator-compatibility-v1",
+    "owner": "marici.Nima",
+    "classification": "exact_linear_amplitude_intertwiner_obstruction",
+    "stratum": "Forward source realization and exact generator compatibility, before energy-form or asymptotic-channel transport. Test real-linear time-independent injection of full native pair amplitudes into all four coefficient response columns; arbitrary common nonzero rate and energy offset allowed.",
+    "inputs": ["research/nima/contracts/scattering-generator-compatibility.v1.json", "research/strominger/checkers/interface_preserving_carrier_dynamics.py", "research/voevodsky/checkers/check_native_spinor_pair_adapter.py", "research/voevodsky/results/pentachoron_cycle_transport.json", "research/voevodsky/results/pentachoron_spin_interfaces.json", "research/voevodsky/results/native_spinor_pair_adapter.json"],
+    "checks": [{"id": "generator-polynomial-and-native-projectors", "path": "research/nima/checkers/check_scattering_generator_compatibility.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["fixed_interface_preserving_coefficient_law", "native_spinor_pair_amplitude_law"],
+    "provides": ["full_state_linear_intertwiner_spectral_gate"],
+    "missing_constructors": ["source_selected_encounter_embedding_and_channel_map", "physical_law_scale_and_instrument_selection"],
+    "next_falsifier": "A selected encounter-sector map must preserve source operations and metrics, not merely match a single frequency by choosing a clock rate. The full-pair spectral obstruction survives common rate/offset and repeated coefficient response columns."
+  }
+}

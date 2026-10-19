@@ -1,0 +1,16 @@
+{
+  "schema":"marici.scc.model-manifest.v1",
+  "model":{
+    "id":"physics-observation-resource-interface-v1",
+    "owner":"marici.Nima",
+    "classification":"source_specific_model_interface",
+    "stratum":"Typed preparation, record, predictive filter and resource interface for the frozen cavity/detector pair",
+    "inputs":["research/nima/contracts/physics-observation-resource-interface.v1.json","research/nima/contracts/physics-observation-resource-pins.v1.json"],
+    "checks":[{"id":"record-filter-resource-controls","path":"research/nima/checkers/check_physics_observation_resource_interface.py","requires":[]}],
+    "depends_on":[],
+    "consumes":["frozen_physics_target_charter","source_typed_cavity_and_detector","reviewed_control_contributions"],
+    "provides":["model_preparation_record_contract","positive_likelihood_filter","separate_energy_photon_readiness_ledgers"],
+    "missing_constructors":["central_review","physical_authorization","independent_calibration","common_source_geometry_and_operations"],
+    "next_falsifier":"Reject a hidden memory reset, undefined zero-likelihood posterior, mixed resource units, or physical execution without independent authorization."
+  }
+}

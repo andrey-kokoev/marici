@@ -1,0 +1,83 @@
+{
+  "schema":"marici.physics-target-charter.v1",
+  "owner":"marici.Nima",
+  "decision":"freeze_bounded_primary_target_pair",
+  "catalog_predecessor":"research/conjecture_net/contracts/physics-target-catalog.v2.json",
+  "catalog":"research/conjecture_net/contracts/physics-target-catalog.v3.json",
+  "source_register":"research/nima/contracts/physics-source-register.v1.json",
+  "source_pins":"research/nima/contracts/physics-target-charter-pins.v1.json",
+  "selected_physical_targets":["reciprocal-lossy-cavity-ordered-response","finite-dead-time-detector-records"],
+  "selection_basis":"Two finite source-typed instruments with exact composed-operation discriminators. Phase/storage and memory/record retention expose complementary failures of scalar or instantaneous summaries. Their common-source map is an explicit research obligation.",
+  "claim_level":"Conditional target recovery under identified imported optical/instrument laws; a source-derived explanation additionally requires independently justified common-carrier law and maps.",
+  "common_source_witness_id":null,
+  "physical_realization_admitted":false,
+  "empirical_evidence_admitted":false,
+  "catalog_extensions":[
+    {"id":"reciprocal-lossy-cavity-ordered-response","class":"physical_target_candidate","refines":"cavity-detector-source-binding","lead":"marici.Aspect","support":"marici.Sontag","regime":"Phase-locked one-mode discrete round-trip cavity; complete four-port dilation; finite sequences of at most three round trips","required_bindings":["instrument-common-source-binding"],"recovery_law":"Preserve ordered amplitude maps, returning state, energy metric, environment and delayed composition under the declared mirror/loss law.","allowed_inputs":["imported passive optical law","independently frozen mirror/loss/phase/delay and amplitude-readout calibration"],"missing":["common-source operation map","physical preparation/readout/resource binding","independent records"],"independent_test":"Dark-reflection preparation followed by zero drive reveals retained field; compare complete ordered responses and resource accounts.","failure_test":"A required square fails or calibrated complete records exclude the frozen prediction tube at the charter tolerance.","source":"research/aspect/reciprocal-lossy-cavity-plant.md","empirical_data":null},
+    {"id":"finite-dead-time-detector-records","class":"physical_target_candidate","refines":"cavity-detector-source-binding","lead":"marici.Aspect","support":"marici.Sontag","regime":"At most one prepared photon per bin, ready/dead memory, no-click retained, one-step recovery; sequences of at most three bins","required_bindings":["instrument-common-source-binding"],"recovery_law":"Preserve sequential click/no-click probabilities, preparation order, memory update and complete-record normalization under the declared instrument.","allowed_inputs":["imported CP instrument/Born law","independently frozen efficiency/recovery/preparation/timing calibration"],"missing":["common-source instrument map","physical memory/preparation/reset binding","independent records"],"independent_test":"Compare full records for photon-photon and photon-vacuum-photon sequences against immediate-reset and retained-memory predictions.","failure_test":"A memory/record square fails or calibrated complete records exclude the frozen prediction set at the charter tolerance.","source":"research/aspect/finite-dead-time-photodetection-memory-instrument.md","empirical_data":null}
+  ],
+  "targets":[
+    {
+      "id":"reciprocal-lossy-cavity-ordered-response",
+      "source_id":"instrument.reciprocal-lossy-cavity.v1",
+      "ingredient_records":["cavity-law","cavity-parameters"],
+      "regime":{"mode":"single complex amplitude per ordered optical port","maximum_steps":3,"phase":"p=q=1 nominal phase-locked setting; independently bounded phase error enters prediction tubes","parameter_domain":"real nonnegative r_j,t_j,a,ell with r_j^2+t_j^2=a^2+ell^2=1; nonzero t1,a,r2; physical delay T>0","state":"returning field x; complete external inputs (u,v2,w); outputs (y_r,y_t,x_next,y_e)","preparation":"independently prepared returning/incident field; unused ports have specified vacuum/zero coherent input; preserve state between round trips"},
+      "nominal_fixture":{"r1":"3/5","t1":"4/5","r2":"4/5","t2":"3/5","a":"3/5","ell":"4/5","p":"1","q":"1","status":"exact theoretical regression values, not measured calibration"},
+      "ordered_law":["y_r=-r1*u+t1*x; f=t1*u+r1*x","y_t=t2*f-r2*v2; b=r2*f+t2*v2","x_next=a*b+ell*w; y_e=-ell*b+a*w"],
+      "observation_law":"Amplitude/phase-referenced reflected and transmitted outputs, returning-state continuation, and measured or independently justified loss accounting in one energy normalization.",
+      "recovery_contract":"For each admitted preparation/word, source-to-plant state, operation and output maps commute; complete dilation preserves energy and source histories retain delay and environment. Equality of one detector projection does not authorize state deletion.",
+      "source_derivation_task":"Choose one registered common-carrier candidate or a versioned new source; construct its complex port/metric realization and ordered component maps. Label optical equations as imported until a separate source-law selection argument derives them.",
+      "exact_success":"Zero rational residual in the nominal dilation/state/composition squares; mathematical recovery over the declared parameter domain requires the corresponding analytic identities.",
+      "independent_test_route":"Calibrate mirrors, loss, phase, delay, preparation and amplitude readout on separate records; freeze prediction tubes and a fixed complete-record trial protocol before held-out dark/refeed and impulse trials.",
+      "falsifier":"Nonzero required operation/energy residual, or the complete held-out response confidence set is separated from every independently calibrated model prediction by more than epsilon.",
+      "reference_predictions":{"dark_input":["4/5","3/5","0","0"],"dark_output":["0","3/5","12/25","-16/25"],"next_zero_drive_reflected":"48/125"},
+      "rivals":["delete returning state after a dark reflected output","drop environment and claim the compressed plant is closed unitary","permute component order without a transport witness"],
+      "excluded_extensions":["arbitrary continuum temporal modes","nonlinear mirror response","unmodeled phase drift","feedback authority inferred from a matrix"]
+    },
+    {
+      "id":"finite-dead-time-detector-records",
+      "source_id":"instrument.dead-time-detector.v1",
+      "ingredient_records":["detector-law","detector-parameters"],
+      "regime":{"optical_input":"sharp zero/one photon per bin; preparation does not reset memory","maximum_steps":3,"memory":"classical ready/dead populations; full CP instrument retains separate Kraus environment labels","parameter_domain":"0<eta<=1 detection probability and 0<gamma<=1 recovery probability; calibrated bin clock","preparation":"ready initialization between independent trials must be physically certified; within each trial preserve memory"},
+      "nominal_fixture":{"eta":"9/25","gamma":"9/25","status":"exact theoretical regression values, not measured calibration"},
+      "ordered_law":["ready+photon: click with eta -> dead; no-click with 1-eta -> ready","ready+vacuum: no-click -> ready","dead+either input: no-click -> ready with gamma or dead with 1-gamma","next preparation replaces optical input only; retain the unnormalized outcome-conditioned memory state"],
+      "observation_law":"Probability of a full outcome word is the trace of the composed outcome maps; no-click and empty recovery bins remain records.",
+      "recovery_contract":"Source-to-instrument and source-to-record maps commute with preparation, each outcome update and composed histories; summed outcome probabilities equal one; no implicit memory reset.",
+      "source_derivation_task":"Construct the same common carrier's optical-number, memory and outcome interfaces; distinguish a derived source constraint from insertion of the CP/Born law and chosen eta/gamma.",
+      "exact_success":"Kraus completeness and all outcome-word probabilities through three bins agree between full joint-state and two-state classical replay for the declared preparation subdomain.",
+      "independent_test_route":"Independently calibrate photon preparation, initial readiness, efficiency, recovery and clock; freeze all complete records for input words [1,1] and [1,0,1] before validation. Use independent trials, not iid bins.",
+      "falsifier":"Lost normalization or memory dependence, or held-out complete-record confidence sets differ from every frozen calibrated prediction by more than epsilon.",
+      "reference_predictions":{"p_CC_given_inputs_11":"0","p_NC_given_inputs_11":"144/625","p_CNC_given_inputs_101":"729/15625","p_next_C_after_one_empty_gap_given_previous_C":"81/625","iid_reset_p_CC":"81/625"},
+      "rivals":["reset ready after every bin","identify no-click with ready","discard no-click trials and compare postselected rates"],
+      "excluded_extensions":["multiphoton pileup","dark counts without a separately bounded discrepancy contribution","afterpulsing","graded recovery ages","continuous-time or stationary point-process claims"]
+    }
+  ],
+  "empirical_acceptance":{
+    "status":"frozen target-level decision contract; instrument-specific protocol and acquired data remain open",
+    "epsilon":"1/100",
+    "normalization":"Cavity mean amplitudes use an independently fixed nonzero reference amplitude; detector complete-word probabilities are dimensionless. Loss/phase/preparation/model discrepancy must be inside this same budget.",
+    "familywise_error_budget":"1/100",
+    "per_target_calibration_failure_budget":"1/400",
+    "per_target_validation_failure_budget":"1/400",
+    "rule":"Let P be the complete prediction set from independent calibrated parameters and C the simultaneous held-out confidence set, in the frozen finite observable vector. With d_inf(C,P)=inf_{c in C,p in P}||c-p||_infinity and d_sup(C,P)=sup_{c in C,p in P}||c-p||_infinity: reject if d_inf>epsilon; accept at this target scope only if d_sup<=epsilon and all source/provenance/protocol gates pass; otherwise inconclusive. Nonempty sets and certified bounds are mandatory.",
+    "protocol_gate":["fixed observable vector and complete outcome alphabet","independent calibration and validation observations and preprocessing","fixed sample size or valid preregistered stopping rule","simultaneous interval coverage within each target budget","certified initial state/preparation and inter-trial reset","no parameter fitting or adaptive model repair using validation records"],
+    "acquired_dataset":null,
+    "warning":"The tolerance is a research design requirement, not an attained instrument error or confidence certificate. Existing exact fixtures supply no empirical confidence set."
+  },
+  "overlap_obligation":{
+    "status":"missing_comparison",
+    "candidate_domain":"A separately constructed single-excitation lift of the passive cavity dilation, tensored with ready/dead detector memory, with explicit vacuum, bin routing, clock and outcome maps.",
+    "routes":["common carrier -> cavity port/state history -> declared quantum/preparation lift -> detector record history","common carrier -> joint optical-memory instrument -> same complete records"],
+    "required_maps":["complex amplitude to specified quantum preparation, with imported assumptions explicit","time-bin and output-port matching","loss/environment and detector-memory retention","composed observation/resource square"],
+    "boundary":"The current classical/coherent cavity source and at-most-one-photon detector are not identified. Quantization, preparation and routing require a witness. Optical Gamma/Poisson control is a separate candidate input, not this finite detector."
+  },
+  "candidate_dispositions":[
+    {"id":"cavity-detector-source-binding","decision":"refined_into_two_selected_instances","reason":"Separate target coverage for stored field and detector memory"},
+    {"id":"compton-complete-record-calibration","decision":"reserve","reason":"Concrete conditional law but less direct comparison to retained state/history; needs preparation/calibration and source map","reopening":"Versioned expansion with independent complete-record protocol and source binding"},
+    {"id":"high-energy-scattering","decision":"deferred_primary_expansion","reason":"Numerical completion, contact/switching source law, physical maps and relative-scale alias remain open","reopening":"A reviewed bounded source-sensitive prediction with controlled numerical errors and independent scale/selection information"},
+    {"id":"retained-hamiltonian-physical-realization","decision":"deferred_primary_expansion","reason":"No supplied physical preparation/clock/actuator/reader binding","reopening":"Named physical realization packet"},
+    {"id":"optical.coherent-gamma-tap.v1","decision":"conditional_contribution_not_primary_target","reason":"Useful reviewed control/resource interface; supplied priors and ideal Poisson counts differ from the finite-memory detector","reopening":"Versioned target expansion with apparatus evidence and phase/memory/preparation comparison"}
+  ],
+  "source_evidence":["research/aspect/reciprocal-lossy-cavity-plant.md","research/aspect/checkers/reciprocal_lossy_cavity_plant.py","research/aspect/finite-dead-time-photodetection-memory-instrument.md","research/aspect/checkers/finite_dead_time_photodetection_memory_instrument.py","research/nima/contracts/physics-control-contribution-review.v1.json"],
+  "result":"research/nima/results/physics-target-charter-v1.json"
+}

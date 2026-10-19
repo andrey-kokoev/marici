@@ -1,0 +1,20 @@
+{
+  "schema": "marici.scattering.generator-compatibility.v1",
+  "id": "scattering-generator-compatibility.v1",
+  "coherence_obligation": "forward_realization_then_generator_intertwining_before_channel_transport",
+  "problem": "Can Strominger's new retained coefficient generator faithfully realize the full native spinor-pair amplitude dynamics already used by the orbital scattering adapter?",
+  "conjecture": "A real-linear injective intertwiner exists between the full native pair amplitude generator and copies of the fixed coefficient generator, with one nonzero common rate and an arbitrary common energy offset.",
+  "rivals": ["The full generators are spectrally incompatible", "Only a selected degenerate encounter sector can embed", "A new generator or controlled time-dependent map would be needed"],
+  "coefficient_constructor": "research/strominger/checkers/interface_preserving_carrier_dynamics.py",
+  "native_adapter": "research/voevodsky/checkers/check_native_spinor_pair_adapter.py",
+  "native_cycle_result": "research/voevodsky/results/pentachoron_cycle_transport.json",
+  "native_spin_result": "research/voevodsky/results/pentachoron_spin_interfaces.json",
+  "native_adapter_result": "research/voevodsky/results/native_spinor_pair_adapter.json",
+  "source_notes": ["research/strominger/interface-preserving-carrier-hamiltonian.md", "research/strominger/retained-hamiltonian-observer.md", "research/voevodsky/native-spinor-pair-adapter.md", "research/voevodsky/slater-real-axis-native.md"],
+  "coefficient_space": "Four real matrix-response columns F in R^(137x4), generator I4 tensor A; no response-channel mixing law added",
+  "native_space": "Full100-dimensional complex pair amplitude space, H_pair=H tensor I+I tensor conjugate(H); realification has dimension200",
+  "test_relation": "(I4 tensor A) B = B realify(-i a (H_pair-b I)), rank_R(B)=200, a nonzero real and b real",
+  "risky_test": "Reconstruct A and native H from source functions/receipts. Verify an annihilating polynomial for A and the complete native spectral projectors exactly. Count distinct pair energy sums. More than five distinct pair energies precludes the displayed intertwiner for any nonzero rate or offset.",
+  "controls": ["Zero-dimensional source spectrum rows do not count as eigenvalues", "Duplicating response channels changes multiplicity but not distinct spectrum", "A selected four-complex-dimensional scalar-energy encounter sector is not excluded by the full-spectrum obstruction", "Retaining a complement as software provenance does not evolve it under the target generator"],
+  "boundary": {"physical_scattering_explained": false, "channel_map_constructed": false, "all_possible_bridges_excluded": false, "source_law_changed": false, "root_outcome": null}
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "marici.scattering.native-scale-audit.v1",
+  "id": "native-scattering-scale-audit.v1",
+  "coherence_obligation": "conditional_readout_identifiability_with_relative_scale_nuisance",
+  "problem": "Does the existing E4 doublet flux discriminator identify the native doublet when the declared relative native/orbital scale is unknown?",
+  "conjecture": "The disjoint unit-scale doublet flux intervals continue to identify the doublet with independently unknown positive relative scale under each rival.",
+  "rivals": ["Only the product of relative scale and selected pair energy enters the encounter response", "Independent scale calibration excludes the rival", "Native source-state or output-action information distinguishes rivals even when aggregate flux does not"],
+  "source_result": "research/voevodsky/results/slater_real_axis_native.json",
+  "source_checker": "research/voevodsky/checkers/check_slater_real_axis_native.py",
+  "energy": 4,
+  "source_pair_energies": ["11-2sqrt(6)-sqrt(5)", "11-2sqrt(6)+sqrt(5)"],
+  "relative_scale_grid": ["1/2", "1", "2"],
+  "couplings": "All cross-channel lambdas fixed at1 as in the retained source fixture",
+  "preparation": "I4/4 in the selected encounter coordinates; no claim of equality of full native states or physical output representations",
+  "alias": "Compare option0 at scale1 with option1 at scale epsilon0/epsilon1; retain this as a nuisance rival, not an adopted physical calibration",
+  "tests": ["Validate direct source pins", "Reproduce original unit-scale probability bounds exactly", "Propagate certified response intervals at fixed scale grid without midpoint substitution", "Prove symbolically that matching scaled core energies preserves the encounter response denominators for arbitrary common channel self-energies", "Derive the common relative calibration interval threshold excluding this core-energy alias"],
+  "boundary": {"continuum_integrals_rerun": false, "physical_scale_fitted_or_admitted": false, "native_models_identified": false, "physical_scattering_explained": false, "root_outcome": null}
+}

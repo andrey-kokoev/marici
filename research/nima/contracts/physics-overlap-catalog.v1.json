@@ -1,0 +1,29 @@
+{
+  "schema":"marici.physics-overlap-catalog.v1",
+  "decision":"accept_scoped_overlap_specification",
+  "source_witness_id":"passive-port-fock-memory.v1",
+  "targets":["reciprocal-lossy-cavity-ordered-response","finite-dead-time-detector-records"],
+  "overlaps":[{
+    "id":"ordered-single-excitation-cavity-detector.v1",
+    "common_domain":"Density operators on (C|vac> direct_sum C^10) tensor C^2 with classical R/D memory; total photon number <=1. Arbitrary complex mode coherence is retained.",
+    "preparation":"Prepare all ten labelled optical modes and classical memory initially; only the single-excitation domain is admitted. Future input slots stay untouched until their declared round. No replacement photons or memory reset inside this closed routing example.",
+    "operations":"For k=0,1,2: ordered passive round W_k then destructive local detector at transmitted slot 2+3k, with outcome C or N. Identity is the empty history. Retain all fresh/returning/output modes and separate Kraus environment labels.",
+    "route_a":"Embed into Fock/memory; apply Gamma(W_k), then the spectator-extended local Kraus instrument, retaining outcome history and occurrence IDs.",
+    "route_b":"Retained port wavefunction/density matrix on vacuum plus ten one-particle modes; independent ordered field equations give 1 direct_sum W_k; tensor-factor source detector Kraus matrices by identity on spectators; retain the same history and occurrence IDs.",
+    "comparison":"The occupation-basis inclusion J intertwines each passive leg and each separately labelled Kraus leg. Therefore the unnormalized posterior states, complete word probabilities and composed source-to-record routes agree for all histories within three rounds.",
+    "observer":"Trace of the unnormalized posterior gives the complete word probability; normalized posterior only for positive trace. Reflected/transmitted/environment occupation projections and returning-state occupation are transported; wavefunction coefficient is not field mean.",
+    "resources":"Initial total mean photon number = remaining optical occupation plus cumulative detector-absorbed occupation (click and no-click loss). Readiness is separate, dimensionless memory, not energy. Equal-frequency energy is an imported scale convention.",
+    "clock":"Ordered model bin k follows cavity round k; physical equality of bin duration and round-trip T is an unfilled binding, not inferred from integer labels.",
+    "falsifiers":["silently project multiphoton input","drop environment/spectator modes","reset memory between bins","erase a no-click or occurrence","identify coherent-state amplitude with fixed-one-photon mean field","commute distinct ordered rounds without a comparison"]
+  }],
+  "excluded_overlaps":[
+    {"domain":"nonzero coherent detected amplitude","reason":"Unbounded photon-number support is outside the detector's exact n_port<=1 domain; shared W alone does not identify preparations."},
+    {"domain":"Bool/exchange/marked137 with optical source","reason":"No cross-source operation/state map supplied; prior fixed-fibre/spectral/cycle obstructions remain in force."},
+    {"domain":"coherent detector memory completion","reason":"Classical records do not select a unique CP extension; this specification uses the separately labelled imported source instrument."}
+  ],
+  "physical_transport_admitted":false,
+  "source_law_independently_selected":false,
+  "source_evidence":["research/nima/contracts/physics-geometric-candidate.v1.json","research/nima/contracts/physics-interface-geometry-admission.v1.json","research/nima/checkers/check_physics_geometric_candidate.py","research/nima/checkers/check_physics_observation_resource_interface.py","research/aspect/checkers/finite_dead_time_photodetection_memory_instrument.py","research/nima/contracts/physics-source-register.v1.json"],
+  "source_pins":"research/nima/contracts/physics-overlap-catalog-pins.v1.json",
+  "result":"research/nima/results/physics-overlap-catalog-v1.json"
+}

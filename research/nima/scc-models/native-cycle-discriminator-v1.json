@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "native-cycle-discriminator-v1",
+    "owner": "marici.Nima",
+    "classification": "conditional_scale_independent_native_cycle_readout",
+    "stratum": "Forward realization of a positive effect from the retained native cycle; source instrument and preparation authority remain separate. Exact local-population, bare-cycle, preparation-rival and visibility controls.",
+    "inputs": ["research/nima/contracts/native-cycle-discriminator.v1.json", "research/voevodsky/results/native_spinor_pair_adapter.json", "research/voevodsky/pentachoron-cycle-spin-energy-transport.md", "research/voevodsky/selected-source-k.v1.md"],
+    "checks": [{"id": "cycle-contrast-and-preparation-rival", "path": "research/nima/checkers/check_native_cycle_discriminator.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["retained_native_cycle_and_doublet_encodings"],
+    "provides": ["conditional_cycle_discriminator_and_positive_preparation_rival"],
+    "missing_constructors": ["independently_controlled_cycle_or_equivalent_instrument", "validated_unpolarized_preparation_and_visibility"],
+    "next_falsifier": "Cycle contrast distinguishes the declared unpolarized fixture but unknown positive preparation can match it. Existence of U does not supply controlled-U or a nondestructive readout."
+  }
+}

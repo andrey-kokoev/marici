@@ -1,0 +1,21 @@
+{
+  "schema":"marici.physics-instrument-history-binding.v1",
+  "decision":"constructed_conditional_instrument_history_packet",
+  "nodes":["instrument-common-source-binding","same-witness-sector-transport"],
+  "source_witness_id":"passive-port-fock-memory.v1",
+  "detector_source_id":"instrument.dead-time-detector.v1",
+  "domain":"Sharp photon inputs n_k in {0,1}, classical initial memory, length <=3; optical-only bin preparation and retained memory",
+  "embedding":"For input word n, prepare the product Fock vector with occupations n_k at fresh labelled detector ports p_k=2+3k, every other mode vacuum. Total photon number may be 0,1,2,3. Tensor with the classical R/D memory mixture.",
+  "operation_map":"At bin k apply the same separately labelled local source Kraus instrument at p_k, identity on all spectator modes. Destroy only the current optical input, retain memory and all future optical inputs. Do not apply a cavity round in this detector-only presentation.",
+  "history_comparison":"Local source preparation/instrument route and preprepared multi-bin Fock route have the same unnormalized memory populations and complete word probabilities at every prefix; unused future modes remain sharp spectators.",
+  "resource_comparison":"Expected initial photon number equals final spectator photon number plus cumulative absorbed photon number, including click and no-click loss. One photon is consumed for every bin with n_k=1, regardless of whether it clicks. Ready/dead populations remain a separate ledger.",
+  "composition":"Events retain bin/port, outcome, occurrence/predecessor IDs and model clock version. A segment takes an explicit start bin and concatenates only with the matching next bin. Empty segment is identity; staged and concatenated branch maps agree without a memory reset.",
+  "preparation_assumption":"Prepreparing product input modes is a conditional open-loop representation of the source's sharp optical preparations. It does not supply apparatus authority, adaptive preparation equivalence or a physical common clock.",
+  "cavity_overlap":"The previously reviewed total-N<=1 cavity/detector domain remains unchanged. Multi-bin product inputs are not automatically cavity-compatible: passive mixing can create two photons in one detected port.",
+  "assembly_guard":"Before inserting a passive map ahead of a detector event, establish n_port<=1 on the transformed support. No projection, discarded multiphoton mass or hidden memory reset is allowed.",
+  "physical_instrument_binding_admitted":false,
+  "native_source_law_selected":false,
+  "source_evidence":["research/nima/contracts/physics-observation-resource-interface.v1.json","research/nima/contracts/physics-geometric-candidate.v1.json","research/nima/contracts/physics-overlap-catalog.v1.json","research/nima/checkers/check_physics_geometric_candidate.py","research/nima/checkers/check_physics_observation_resource_interface.py","research/aspect/finite-dead-time-photodetection-memory-instrument.md"],
+  "source_pins":"research/nima/contracts/physics-instrument-history-binding-pins.v1.json",
+  "result":"research/nima/results/physics-instrument-history-binding-v1.json"
+}

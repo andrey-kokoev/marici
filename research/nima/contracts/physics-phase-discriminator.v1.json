@@ -1,0 +1,21 @@
+{
+  "schema":"marici.physics-phase-discriminator.v1",
+  "target":"reciprocal-lossy-cavity-ordered-response",
+  "source_id":"passive-port-fock-memory.v1",
+  "status":"constructed_prediction_test_design",
+  "preparation":"One coherent returning-mode input, other active ports vacuum; same nominal cavity map at two independently calibrated intensities",
+  "measurement":"Complex field means A1,A2 from phase-referenced readout; use their magnitudes. Mean photon counts are not this observable.",
+  "statistic":"S=|A2|/(2*|A1|), with a positive certified lower bound for |A1|",
+  "nominal_intensities":["1/4","1"],
+  "design_calibration_boxes":{"lambda1":["6/25","13/50"],"lambda2":["99/100","101/100"],"relative_readout_gain":["99/100","101/100"]},
+  "calibration_status":"Required independent design bounds; no measured calibration or data supplied",
+  "reference":"S=r*sqrt(lambda2/lambda1)/2",
+  "rival":"For the active-port Kerr phase chi*t=pi/2: S=r*sqrt(lambda2/lambda1)/2 * exp(-2*(lambda2-lambda1))",
+  "gain_policy":"A common unknown complex multiplicative readout gain cancels; relative magnitude drift r is independently bounded. Gains/intensities must not be fitted to the validation means.",
+  "decision":"Compare a simultaneously certified confidence interval for S with each full nuisance prediction enclosure enlarged by epsilon=1/100; disjointness excludes that named model. Overlap is inconclusive, not confirmation of uniqueness.",
+  "epsilon":"1/100",
+  "structural_separator":"1/2",
+  "source_sensitive_reason":"Both laws preserve number and agree on one-photon tests, but their coherent field means have different intensity dependence",
+  "scope":"One round and one fixed phase rival. Arbitrarily small nonlinear phases and other source laws require their own tests.",
+  "data":null
+}

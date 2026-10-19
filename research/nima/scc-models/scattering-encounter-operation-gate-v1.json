@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "scattering-encounter-operation-gate-v1",
+    "owner": "marici.Nima",
+    "classification": "selected_encounter_source_operation_gate",
+    "stratum": "Exact abstract metric/generator embedding distinguished from source-operation compatibility before channel attachment. Existing native-preserving S4 relabellings and same-clock free flow only; no target control manufactured from the desired encounter action.",
+    "inputs": ["research/nima/contracts/scattering-encounter-operation-gate.v1.json", "research/nima/results/scattering-generator-compatibility.json", "research/strominger/checkers/interface_preserving_carrier_dynamics.py", "research/voevodsky/results/native_spinor_pair_adapter.json", "research/voevodsky/results/typed_spin_channels.json", "research/strominger/shared-leg-controllability-audit.md"],
+    "checks": [{"id": "metric-plane-and-native-cycle", "path": "research/nima/checkers/check_scattering_encounter_operation_gate.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["selected_native_pair_cycle_and_vertices", "coefficient_native_interface_actions"],
+    "provides": ["abstract_metric_embedding_and_existing_operation_obstruction"],
+    "missing_constructors": ["source_supported_target_encounter_cycle", "compatible_target_channel_vertices", "physical_scale_and_preparation"],
+    "next_falsifier": "Existing target relabellings square to identity, whereas all four native pair cycles have nontrivial order5. A post-hoc conjugated cycle/vertex is an added operation, not source discovery."
+  }
+}

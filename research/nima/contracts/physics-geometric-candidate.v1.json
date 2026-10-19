@@ -1,0 +1,31 @@
+{
+  "schema":"marici.physics-geometric-candidate.v1",
+  "owner":"marici.Nima",
+  "suggested_reviewer":"marici.Benincasa",
+  "status":"conditional_geometric_candidate_pending_review",
+  "source_id":"passive-port-fock-memory.v1",
+  "charter":"research/nima/contracts/physics-target-charter.v1.json",
+  "interface":"research/nima/contracts/physics-observation-resource-interface.v1.json",
+  "source_pins":"research/nima/contracts/physics-geometric-candidate-pins.v1.json",
+  "source_object":{"optical":"Bosonic Fock space F_s(C^10), with ten explicitly labelled optical modes","memory":"C^2 with basis R,D; tested state family has classical memory","states":"positive trace-class density operators of trace one and finite mean photon number","geometry":"Hilbert inner product and trace-norm state topology; finite-mean-number is a separate domain restriction","field_geometry":"C^10 with Re(z* w) metric and Im(z* w) symplectic form in declared normalization","physical_clock":"not supplied by the mode labels; round-trip and bin timing require independent calibration"},
+  "mode_policy":{"returning":0,"fresh_inputs":"round k=0,1,2 uses u=1+3k, v2=2+3k, w=3+3k","retained_outputs":"after each round, u slot retains y_r, v2 slot retains y_t, w slot retains y_e; slot 0 becomes x_next","initialization":"Open-loop fresh input slots are prepared initially; they are untouched before their declared round","history":"ordered operation and occurrence labels retained; no quotient by final matrix or state"},
+  "construction_premises":[
+    {"ingredient":"complex amplitudes, bosonic Fock space and coherent states","role":"imported_physical_theory"},
+    {"ingredient":"Born/CP instrument and ready/dead memory","role":"imported_physical_theory"},
+    {"ingredient":"ten mode labels, finite horizon and tensor factorization","role":"declared_constructor_convention"},
+    {"ingredient":"mirror/loss/detector coefficients and equal-frequency interpretation","role":"instrument_specification"},
+    {"ingredient":"physical time, energy units, preparation and routing authority","role":"missing_physical_binding"}
+  ],
+  "maps":[
+    {"id":"cavity-coherent-lift","source":"instrument.reciprocal-lossy-cavity.v1","target":"passive-port-fock-memory.v1","map":"z -> |z><z| tensor |R><R|; passive W -> Gamma(W)","recovery":"Gamma(W)|z>=|Wz>; expectation of a_j is z_j; mean photon number is sum |z_j|^2","scope":"declared passive optical theory; coherent states use all number sectors","residual":"Physical energy/clock, preparation and readout calibration are supplied separately"},
+    {"id":"detector-sector-inclusion","source":"instrument.dead-time-detector.v1","target":"passive-port-fock-memory.v1","map":"local vacuum/one-photon factor at named port tensor R,D; spectator optical modes retained","recovery":"Extend each of the seven source Kraus operators by identity on spectator modes","scope":"density support on n_port<=1 before every detector event","residual":"A coherent state with nonzero detected amplitude lies outside this exact instrument domain"},
+    {"id":"number-sector-operation-lift","source":"C^10 passive port maps","target":"F_s(C^10)","map":"creation polynomial substitution a_j^dagger -> sum_i W_ij a_i^dagger; vacuum fixed","recovery":"Gamma(VW)=Gamma(V)Gamma(W), norm and number preservation","scope":"all finite number sectors by tensor/symmetric-power construction and Hilbert direct sum; executable checks at N=0,1,2","residual":"This quantization rule is imported construction, not a derived native carrier law"}
+  ],
+  "overlap":{"domain":"total photon number <=1 with classical memory, explicitly prepared coherent superpositions of mode occupancy","routing":"detect transmitted slot 2 after round 0 and transmitted slot 5 after round 1","initial_fixture":"(4/5)|1_u0>+(3/5)|1_x>, memory R, every other mode vacuum","two_step_predictions":{"first_click":"81/625","first_N_second_C":"104976/9765625","first_C_second_C":"0"},"readout_boundary":"One-photon mode coefficients and coherent-state field means transform by the same W but are distinct preparations. In a fixed one-photon state, <a_j>=0."},
+  "hostiles":["replace factorial occupation-basis metric by Euclidean metric","erase relative mode phase","reverse ordered round trips","silently project a two-photon detector input to the valid sector","identify one-photon wavefunction coefficients with coherent field mean","identify this imported Fock candidate with native Bool/exchange/marked137 without a map"],
+  "native_source_comparison":null,
+  "physical_realization_admitted":false,
+  "source_law_independently_selected":false,
+  "source_evidence":["research/aspect/checkers/reciprocal_lossy_cavity_plant.py","research/aspect/checkers/finite_dead_time_photodetection_memory_instrument.py","research/nima/contracts/physics-source-register.v1.json"],
+  "result":"research/nima/results/physics-geometric-candidate-v1.json"
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "scattering-prior-clue-iteration6-v1",
+    "owner": "marici.Nima",
+    "classification": "declared_coherent_native_port_readout_not_physical_interferometer",
+    "stratum": "Forward realization of complementary positive port effects; phase-reference transport and preparation/visibility nuisance. One fixed source density and energy, no optical/native carrier identification or apparatus authority.",
+    "inputs": ["research/nima/contracts/scattering-clues-iteration6.v1.json", "research/nima/contracts/scattering-clues-iteration1.v1.json", "research/nima/checkers/scattering_contact_scale_clue.py", "research/nima/checkers/scattering_reflection_record_clue.py", "research/nima/checkers/scattering_preparation_clue.py", "research/nima/checkers/scattering_four_probe_clue.py", "research/nima/results/scattering-clues-iteration3.json", "research/nima/results/scattering-clues-iteration3-full-packet.npz", "research/nima/results/scattering-clues-iteration5.json", "research/nima/results/scattering-clues-iteration5-full-packet.npz", "research/aspect/calibrated-homodyne-heterodyne-detection.md", "research/aspect/dark-fringe-vs-scalar-transfer-zero.md", "research/scattering/high-energy/pentachoron_autonomous_contact_note.md", "research/scattering/high-energy/pentachoron_autonomous_contact_bundle.zip", "research/scattering/high-energy/contracts/high-energy-source-pins.v1.json"],
+    "checks": [{"id": "scattering-prior-clue-coherent-port", "path": "research/nima/checkers/scattering_coherent_port_clue.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["source_labelled_complex_reflection_transmission_packet", "positive_native_density_rank_loss_witness"],
+    "provides": ["conditional_quadrature_readout_and_visibility_boundary"],
+    "missing_constructors": ["physical_native_mode_recombination_and_phase_reference", "independent_visibility_and_relative_response_calibration", "physical_preparation_species_and_kinetic_contact_maps"],
+    "next_falsifier": "Quadrature may add only nuisance. Phase0 and complete dephasing must add no direction; unknown visibility cannot be assumed away; source phase transport must retain the readout."
+  }
+}

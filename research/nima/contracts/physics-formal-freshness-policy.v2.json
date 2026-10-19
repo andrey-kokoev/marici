@@ -1,0 +1,10 @@
+{
+  "schema":"marici.physics-formal-freshness-policy.v2",
+  "receipt":"research/nima/results/physics-retained-history-agda-v1.json",
+  "receipt_sha256":"d03e17d14f9d140d54eb640ef69a95a89180cfbe51b91f689183544ced8f5b47",
+  "log_sha256":"3ec5f3ee4d79c1b2e5e28e7de03c281bc7ccd79d3fc00f4093b9d12b1ad5e836",
+  "inventory_keys_sha256":"89bfd22b6fd4c27a1d3dd1f7af46c9cd2cf89c950dc54d3e9f1f89938042a3a2",
+  "policy":"Preserve the complete recorded source inventory and hashes, compiler/runner identity and safe fresh checking flags. Additionally replay resolution of each module in the immutable compiler Checking trace across current include roots; require exactly its recorded file. Permit added files only when these conditions remain true.",
+  "reason":"Adding an unrelated unimported module does not change this compiled proof. New shadows/ambiguities and any recorded source edit still invalidate reuse.",
+  "historical_policy":"The original complete-live-inventory equality rule is superseded for central reuse by this dependency-resolution-aware rule. Owner receipts and manifests remain unchanged."
+}

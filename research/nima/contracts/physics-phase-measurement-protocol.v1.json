@@ -1,0 +1,42 @@
+{
+  "schema":"marici.physics-phase-measurement-protocol.v1",
+  "status":"candidate_pending_instrument_review",
+  "target":"reciprocal-lossy-cavity-ordered-response",
+  "prediction_contract":"research/nima/contracts/physics-phase-discriminator.v1.json",
+  "scope":"One-round coherent-field discrimination of passive lift versus the named active-port phase rival only; not the full two-target empirical protocol",
+  "readout":"Unclipped phase-referenced complex field samples Z=X+iY, scaled to fixed calibration units. E[Z] equals measured field mean up to a bounded complex additive bias.",
+  "sample_size_per_setting":8000000,
+  "schedule":"Exactly 8000000 pairs: setting 1 then setting 2, fresh independent preparation per shot. Preserve pair and shot identifiers and monotone timestamps. No data-dependent reordering or replacement.",
+  "stopping":"Fixed sample count. Abort on any invalid/missing shot, calibration failure or drift alarm; preserve all records. No interim efficacy analysis, optional stopping, postselection or outcome-driven repeat.",
+  "estimator":"Arithmetic means of all X,Y samples separately at each setting. No clipping, rejection, imputation or fitted background subtraction.",
+  "uncertainty":{
+    "familywise_alpha":"1/100",
+    "calibration_alpha":"1/200",
+    "validation_alpha":"1/200",
+    "variance_bound_per_real_coordinate":"1",
+    "coordinate_radius":"1/100",
+    "complex_bias_bound":"1/500",
+    "assumptions":"Conditional on a valid independent calibration certificate, shots are independent with stationary setting-specific means and coordinate variances <=1. A variance certificate must cover both named models, not assume coherent Gaussian noise for the Kerr rival.",
+    "proof":"Chebyshev plus union bound on four coordinate means: P(any coordinate error>d)<=4*V/(n*d^2)=1/200. Complex error radius R=sqrt(2)*d+bias. Total failure including calibration <=1/100."
+  },
+  "ratio_interval":"For mean magnitudes m1,m2, construct Lj=max(0,mj-R), Uj=mj+R. If L1<=0 report unidentifiable. Otherwise I=[L2/(2*U1),U2/(2*L1)], with outward-rounded arithmetic.",
+  "decision":"Compare I to both nuisance prediction intervals expanded by epsilon=1/100 from the prediction contract. Disjointness excludes only that named model. If both excluded report neither; if neither excluded report inconclusive. Overlap is compatibility, not model identification.",
+  "calibration_requirements":{
+    "independent_bundle":"Frozen before validation; no validation samples used for calibration, tuning or bounds. Joint coverage >=199/200 for all stochastic calibration bounds.",
+    "intensities_and_relative_gain":"Use exactly the independent boxes in the prediction contract.",
+    "minimum_common_gain_times_port_transfer":"1/2",
+    "additive_bias":"1/500",
+    "bias_scope":"Complex bias norm at each setting, including residual background and phase-reference error.",
+    "noise":"Coordinate variance <=1 for both candidate laws in the declared readout units.",
+    "stationarity":"Independent preparation/reset, fixed mean within each setting and no unaccounted phase or gain drift. Alarm policy frozen independently of validation outcomes."
+  },
+  "record_schema":{
+    "required_per_shot":["shot_id","pair_id","setting","timestamp","x","y","valid","calibration_id","preparation_id","instrument_id"],
+    "negative_records":"Every attempted shot, including invalid/rejected/missing observations, must be logged; any invalid/missing value invalidates the run rather than being dropped.",
+    "manifest":"Protocol/prediction/source and calibration digests; complete record digest; instrument and preparation authority; units, schedule, start/end timestamps, abort reason, raw and processed provenance."
+  },
+  "physical_authorization":null,
+  "calibration_bundle":null,
+  "validation_data":null,
+  "result":"research/nima/results/physics-phase-measurement-protocol-v1.json"
+}

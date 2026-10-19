@@ -1,0 +1,19 @@
+{
+  "schema":"marici.physics-detector-law-inverse.v1",
+  "node":"identifiability-and-robustness-test",
+  "decision":"constructed_partial_complete_law_identifiability_witness",
+  "domain":"Classical ready/dead reference instrument, eta,gamma,r in (0,1], same initial readiness r and same eta/gamma across all input-word laws; optical-only preparation retains memory within each word",
+  "coordinates":{"a":"P(C|1)=eta*r","b":"P(NC|01)=eta*(r+gamma*(1-r))","v":"P(NC|11)=eta*((1-eta)*r+gamma*(1-r))","w":"P(CNC|101)=eta^2*r*gamma"},
+  "inverse":{"eta":"(b-v)/a","r":"a/eta","gamma":"w/(a*eta)"},
+  "proof":"b-v=eta^2*r=a*eta and w=a*eta*gamma; positivity of a and eta makes the inverse unique within the reference family.",
+  "conditioning_box":{"eta":["1/4","1/2"],"gamma":["1/4","1/2"],"r":["1/4","3/4"]},
+  "conditioning":"For two admissible reference-family points in this box, if each of a,b,v,w differs by at most delta, then |Delta eta|<=40*delta, |Delta r|<=124*delta, |Delta gamma|<=560*delta. These are conservative deterministic pairwise bounds, not uncertainty intervals or guarantees for arbitrary off-model coordinates.",
+  "minimality_control":"Coordinates a,v,w alone can alias: (eta,gamma,r)=(1/2,1/4,1/4) and (1/4,1/2,1/2) give a=1/8,v=5/32,w=1/64 but b=7/32 versus 3/16. This is a parameter-swap ambiguity within the conditioning box.",
+  "failure_boundaries":["At r=0 or eta=0 this inverse divides by a=0; additional histories or a separately fixed initial condition are needed","Different initial readiness for different words invalidates the shared-parameter inverse","Exact family identifiability does not identify coherent-memory CP completion or a native source law","Large inverse constants show that the charter's 1/100 discrepancy alone does not imply accurate parameter identification"],
+  "complete_record_policy":"Coordinates are unconditional probabilities of the named full words. No-click outcomes and their probability mass cannot be dropped or renormalized away.",
+  "full_node_closed":false,
+  "empirical_estimates":null,
+  "source_evidence":["research/nima/contracts/physics-structural-robustness.v1.json","research/nima/contracts/physics-rival-prediction-table.v1.json","research/nima/checkers/check_physics_observation_resource_interface.py","research/nima/contracts/physics-target-charter.v1.json"],
+  "source_pins":"research/nima/contracts/physics-detector-law-inverse-pins.v1.json",
+  "result":"research/nima/results/physics-detector-law-inverse-v1.json"
+}
