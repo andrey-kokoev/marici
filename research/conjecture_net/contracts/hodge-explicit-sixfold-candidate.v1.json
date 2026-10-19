@@ -1,0 +1,42 @@
+{
+  "schema": "marici.hodge-explicit-sixfold-candidate.v1",
+  "id": "marici.hodge.nonsplit-sixfold.exp-sqrt-primes.v1",
+  "nodes": ["candidate-variety-and-class", "candidate-hodge-membership"],
+  "resolution_kinds": ["explicit_marked_polarized_torus_and_integral_weil_class", "balanced_weil_determinant_Hodge_membership"],
+  "literature_audit": "research/conjecture_net/contracts/hodge-literature-boundary-audit.v1.json",
+  "literature_receipt": "research/voevodsky/results/hodge-literature-boundary-audit-v1.json",
+  "literature_status": "Nonsplit sixfold Weil classes remain unresolved in the same-day reviewed sources; no exhaustive global status or nonalgebraicity asserted. Markman split-sixfold theorem does not cover discriminant -3.",
+  "geometry": {
+    "field": "Q(i)", "complex_dimension": 6, "codimension": 3,
+    "lattice": "Z[i]^6 in C^6, ordered real coordinates (x1,y1,...,x6,y6)",
+    "hermitian_diagonal": [1,1,1,-1,-1,-3], "negative_weights": [1,1,3],
+    "alternating_form": "E(v,w)=Im(conjugate(v)^t diag(1,1,1,-1,-1,-3) w)",
+    "primes": [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61],
+    "coordinate_denominator": 1048576,
+    "coordinate_formula": "t_l=exp(sqrt(prime_l))/2^20 for l=1,...,18",
+    "Z_formula": "Z_(a,b)=t_(2k+1)+i*t_(2k+2), k=3a+b, a,b=0,1,2",
+    "positive_plane": "W={(v,Zv):v in C^3}; h-positive since I-Z*diag(1,1,3)Z is positive definite",
+    "negative_plane": "W_perp={(Z*diag(1,1,3)w,w):w in C^3}",
+    "complex_structure": "J=i on W and -i on W_perp; equivalently J=A diag(iI3,-iI3) A^-1, A=[[I3,Z*diag(1,1,3)],[Z,I3]]",
+    "X": "(C^6 as a real vector space with complex structure J)/Z[i]^6",
+    "projectivity": "E is integral, J-compatible and E(v,Jv)>0. The imported Riemann criterion gives a polarized projective abelian sixfold.",
+    "polarization_type": [1,1,1,1,1,3], "discriminant_representative": -3
+  },
+  "class": {
+    "id": "alpha", "formula": "Re wedge_(j=1..6)(dx_j+i dy_j)",
+    "cohomological_degree": 6, "coefficients": "Z subset Q", "hodge_type": [3,3],
+    "signed_monomial_count": 32, "nonzero_period": "integral over the real x-coordinate six-torus is 1",
+    "selection_depends_on_nonalgebraicity": false
+  },
+  "genericity": "The 18 real coordinates are algebraically independent over Q by Q-linear independence of distinct prime square roots and Lindemann-Weierstrass. Rational Hodge conditions expressed polynomially in these period coordinates cannot hold accidentally.",
+  "picard_certificate": {
+    "sample_rule": "Z=0 and Z with just one entry equal to 1/8 or i/8; 19 marked rational period samples",
+    "degree_two_basis_size": 66, "stacked_exact_constraint_rank": 65,
+    "constraint": "(wedge^2 J*)v=v; algebraic independence transports any rational (1,1) class at the selected point to every sample",
+    "conclusion": "NS(X)_Q=Q E by Lefschetz (1,1). Divisor products in degree six span Q E^3. Alpha is not in this span.",
+    "all_algebraic_cycles_excluded": false
+  },
+  "imported_theorems": ["Lindemann-Weierstrass: exponentials of Q-linearly independent algebraic numbers are algebraically independent", "multiquadratic Galois theory for independent prime square classes", "Riemann projectivity criterion for complex tori with positive integral Riemann form", "cohomology of a marked real torus as the exterior algebra of its integral one-forms", "Hodge decomposition of invariant forms on complex tori", "Lefschetz (1,1)"],
+  "trust_scope": "Explicit transcendental-period construction and written general proofs, exact rational sample-rank and exterior controls. No algebraic equations for X, proof-assistant formalization or full cycle enumeration is supplied.",
+  "boundary": {"Hodge_proved": false, "Hodge_refuted": false, "alpha_nonalgebraic_proved": false, "class_obstruction_constructed": false, "all_cycle_witness_search_exhausted": false, "specific_source_generated_higher_witness_complex_constructed": false}
+}

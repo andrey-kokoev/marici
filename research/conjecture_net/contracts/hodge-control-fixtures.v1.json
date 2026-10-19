@@ -1,0 +1,34 @@
+{
+  "schema": "marici.hodge-control-fixtures.v1",
+  "scope": "Exact finite sanity controls, not an obstruction construction or proof of the general Hodge conjecture.",
+  "background_policy": "Standard projective-space and Grassmannian cycle descriptions are imported mathematical facts, not newly formalized theorems. The checker verifies the stated finite algebra and explicit quadric/plane equations.",
+  "references": [
+    {"id": "clay-hodge", "title": "Clay Mathematics Institute: Hodge Conjecture, with official problem description by Pierre Deligne", "url": "https://www.claymath.org/millennium/hodge-conjecture/", "role": "Classical rational statement and distinction from the integral variant; reference, not a newly retrieved proof."},
+    {"id": "grassmannian-schubert", "title": "William Fulton, Young Tableaux (1997): Grassmannians and Schubert calculus", "role": "Gr(2,4) Schubert cells and algebraic cycle basis; no page-specific quotation asserted."},
+    {"id": "lefschetz-divisors", "title": "Lefschetz (1,1) theorem", "role": "Imported codimension-one theorem for smooth projective complex varieties; not higher-codimension surjectivity."},
+    {"id": "integral-boundary", "title": "Atiyah and Hirzebruch, Analytic cycles on complex manifolds, Topology 1 (1962), 25–45", "role": "Historical integral counterexamples; not counterexamples to the rational conjecture."}
+  ],
+  "projective_space": {
+    "variety": "P^4_C", "complex_dimension": 4, "codimension": 2,
+    "hodge_basis": ["h^2"], "algebraic_witness": "a linear P^2", "cycle_class_columns": [[1]]
+  },
+  "quadric": {
+    "variety": "Q^4 isomorphic to Gr(2,4) in P^5_C", "complex_dimension": 4, "codimension": 2,
+    "coordinates": ["p12", "p13", "p14", "p23", "p24", "p34"],
+    "equation_terms": [[1, 0, 5], [-1, 1, 4], [1, 2, 3]],
+    "plane_A_free_coordinates": [0, 1, 2], "plane_B_free_coordinates": [3, 4, 5],
+    "schubert_partitions": [[0, 0], [1, 0], [1, 1], [2, 0], [2, 1], [2, 2]],
+    "normal_sequence": {"linear_normal_bundle_rank": 3, "quadric_degree": 2},
+    "middle_cycle_basis": ["A", "B"], "intersection_matrix": [[1, 0], [0, 1]],
+    "hyperplane_square": [1, 1], "primitive_algebraic_class": [1, -1],
+    "naive_divisor_only_obstruction_row": [1, -1],
+    "required_disposition": "Reject the naive obstruction: it is nonzero on actual algebraic planes, although it kills h^2. Non-divisor-generated and primitive do not mean nonalgebraic."
+  },
+  "rationalization": {
+    "kind": "abstract coefficient diagnostic, not a claimed variety",
+    "integral_cycle_image_generator": 2, "integral_class": 1,
+    "rational_witness_coefficient": "1/2",
+    "torsion_presentation_matrix": [[2, 0], [0, 3]],
+    "required_disposition": "Integral nonmembership and finite torsion alone cannot refute rational cycle-class surjectivity."
+  }
+}

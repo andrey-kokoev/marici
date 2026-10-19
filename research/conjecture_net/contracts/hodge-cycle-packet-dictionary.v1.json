@@ -1,0 +1,28 @@
+{
+  "schema": "marici.hodge-cycle-packet-dictionary.v1",
+  "node": "packet-coherence-dictionary",
+  "resolution_kind": "cycle_supplied_fundamental_chain_dictionary_and_necessity_lemma",
+  "scope": "Given an actual algebraic cycle, construct its topological fundamental-chain presentation using imported triangulation and cycle-class facts. No generation of algebraic support from arbitrary Hodge data is claimed.",
+  "objects": {
+    "Z": "An independently supplied codimension-p rational algebraic cycle on smooth projective X of complex dimension d.",
+    "P_alg": "Z together with compatible finite triangulation, complex orientations, rational multiplicities and the inclusion into X.",
+    "P_top": "Finite oriented rational simplicial chains in a triangulation of X, retaining their actual maps into X but not asserting algebraic support.",
+    "C": "C_{2(d-p)}(X,Q), with its simplicial boundary and subdivision/comparison data.",
+    "H": "H_{2(d-p)}(X,Q), identified by Poincare duality with H^{2p}(X,Q)."
+  },
+  "maps": [
+    {"id": "support", "source": "P_alg", "target": "Z", "meaning": "Read the supplied actual algebraic cycle, not just an algebraic label."},
+    {"id": "chain", "source": "P_alg", "target": "C", "meaning": "Oriented fundamental chain, extended rationally over cycle components."},
+    {"id": "forget", "source": "P_alg", "target": "P_top", "meaning": "Retain the mapped chain while forgetting algebraic-support evidence."},
+    {"id": "homology", "source": "ker(boundary:C->C_lower)", "target": "H", "meaning": "Quotient by boundaries; packet chain choices need not be recoverable."}
+  ],
+  "necessity_lemma": "Every supplied algebraic cycle has a closed oriented fundamental-chain packet, and PD of its homology class is its cycle class. Compatible subdivisions and chain homotopies preserve that class.",
+  "imported_facts": ["finite_compatible_semialgebraic_triangulation", "complex_orientation_and_fundamental_class_for_pure_dimensional_algebraic_cycles", "standard_cycle_class_and_Hodge_type_necessity", "simplicial_singular_homology_comparison", "rational_Poincare_duality_for_compact_oriented_manifolds"],
+  "checked_comparison": "Explicit simplicial prism: boundary P(c) + P(boundary c) = c_top - c_bottom. General common-refinement existence is imported, not a constructed universal higher witness generator.",
+  "positive_example": {"X": "(P^1_C)^4", "Z": "P^1 x P^1 x {pt} x {pt}", "complex_dimension_X": 4, "complex_codimension_Z": 2, "topological_source": "product of two oriented tetrahedral sphere boundaries", "top_dimensional_simplices": 96},
+  "negative_example": {"X": "E_i x E_i, E_i=C/(Z+iZ)", "Z_top": "real x-circle in each elliptic factor", "rational_class": "alpha=-dy1 wedge dy2", "Hodge_type_p_p": false, "counterexample_to_Hodge": false, "meaning": "Closed triangulated real torus, but alpha has nonzero (2,0) and (0,2) components; not an algebraic divisor."},
+  "rejected_candidate": {"id": "bare-chain-closure-obstruction", "criterion": "A rational Hodge class fails algebraicity because it has no finite rational closed oriented face-coherent chain representative.", "verdict": "rejected", "reason": "By rational Poincare duality and simplicial homology, every rational cohomology class has such a chain. This property cannot distinguish algebraic from other Hodge classes."},
+  "next_requirement": "A stronger obstruction must use independently defined algebraic/Hodge-specific data, descend to cohomology, and vanish on all algebraic cycles. Bare face cancellation and an algebraic label cannot supply it.",
+  "boundary": {"Hodge_proved": false, "Hodge_refuted": false, "general_packet_source_generation_constructed": false, "full_higher_witness_complex_constructed": false, "specific_hodge_obstruction_constructed": false, "negative_example_is_hodge_class": false},
+  "references": ["Bochnak, Coste and Roy, Real Algebraic Geometry: semialgebraic triangulation (imported theorem).", "Fulton, Intersection Theory: algebraic cycle classes (imported construction).", "Hatcher, Algebraic Topology: chain homotopy, cross products and Poincare duality (imported standard theorems)."]
+}

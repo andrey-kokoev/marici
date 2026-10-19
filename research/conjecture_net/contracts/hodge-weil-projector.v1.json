@@ -1,0 +1,46 @@
+{
+  "schema": "marici.hodge-weil-projector.v1",
+  "id": "marici.hodge.nonsplit-sixfold.weil-projector.v1",
+  "candidate_id": "marici.hodge.nonsplit-sixfold.exp-sqrt-primes.v1",
+  "candidate_contract": "research/conjecture_net/contracts/hodge-explicit-sixfold-candidate.v1.json",
+  "candidate_receipt": "research/voevodsky/results/hodge-explicit-sixfold-candidate-v1.json",
+  "resolved_nodes": {
+    "obstruction-construction": "explicit_candidate_weil_isotypic_projector_without_annihilation",
+    "cohomology-descent": "functorial_cohomology_projector_independent_of_presentations",
+    "rational-survival": "nonzero_rational_rank_two_projector_target",
+    "candidate-obstruction-nonzero": "fixed_alpha_is_fixed_by_candidate_projector"
+  },
+  "definition": {
+    "endomorphism": "f=2+i on the fixed polarized Q(i)-abelian sixfold",
+    "operator": "F=f* on H^6(X,Q)",
+    "target": "W=the two-dimensional rational Weil determinant subspace",
+    "map": "O=P(F)|Hdg^3(X,Q):Hdg^3(X,Q)->W",
+    "m0": [15625,234,1], "m1": [15625,70,1], "m2": [15625,-150,1], "m3": [-125,1],
+    "coefficient_order": "ascending_powers",
+    "factored_numerator_linear": [-10391779,-68381],
+    "common_denominator": 930187500000000000,
+    "formula": "q=m1*m2*m3; r=q mod m0; choose unique linear s with s*r=1 mod m0; P=s*q",
+    "intrinsic_description": "Identity on wedge^6 U and wedge^6 conjugate(U), zero on the other Q(i)-character summands; independent of marking and choice of separating endomorphism.",
+    "all_cycle_quotient_used": false
+  },
+  "admitted_operations": ["rational_linear_combinations_of_cohomology_pullbacks", "flat_pullback_CH3_Q_by_the_explicit_finite_etale_isogenies_f_to_power_k"],
+  "algebraic_cycle_policy": {
+    "preserves_algebraic_cycle_classes": true,
+    "reason": "P(F) is a rational linear combination of flat pullbacks by algebraic isogenies f^k, including k=0.",
+    "Chow_idempotence_claimed": false,
+    "annihilates_divisor_products_on_selected_X": true,
+    "annihilates_all_algebraic_cycles_on_selected_X": false,
+    "meaning_of_last_false": "Not proved, not a proof of nonvanishing on an actual algebraic cycle of this X."
+  },
+  "remaining_equivalence": "O kills all codimension-three algebraic cycle classes on the selected X iff W has no nonzero algebraic class iff the selected alpha is nonalgebraic. A single algebraic class with nonzero O-image generates an algebraic representative of alpha using f* and rational coefficients.",
+  "witness_conversion": "For z=aR+bI nonzero in W, alpha=c*z+d*f*z, with c=(44a+117b)/(44(a^2+b^2)) and d=b/(44(a^2+b^2)).",
+  "rejected_uniform_claim": {
+    "id": "uniform-weil-projector-annihilation", "verdict": "rejected",
+    "claim": "The same construction kills all algebraic cycles on every balanced Q(i)-Weil sixfold of this discriminant.",
+    "counterexample": "At the earlier Z=0 elliptic-product control, R and I are divisor polynomials, yet P(R)=R and P(I)=I.",
+    "scope": "Rejects uniform or purely K-structure/face-coherence vanishing; does not refute annihilation on the fixed transcendental-period X."
+  },
+  "coarse_endomorphism_hostile": "Using 1+i instead of a separating generator merges the Weil endpoints with mixed character summands; its naive even-character projector has rank 452, not 2, on H^6.",
+  "boundary": {"Hodge_proved": false, "Hodge_refuted": false, "validated_hodge_obstruction": false, "all_cycle_annihilation_proved": false, "alpha_nonalgebraic_proved": false, "algebraic_representative_of_alpha_constructed": false, "generic_Hodge_space_dimension_computed": false, "full_source_generated_higher_witness_complex_constructed": false},
+  "trust_scope": "Written cohomology/cycle functoriality and representation arguments, exact polynomial/exterior and witness-conversion controls. Uses previously imported torus geometry; not proof-assistant certification and not a solution of the remaining Weil algebraicity problem."
+}

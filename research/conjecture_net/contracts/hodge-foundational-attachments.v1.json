@@ -1,0 +1,27 @@
+{
+  "schema": "marici.hodge-foundational-attachments.v1",
+  "work_net": "research/conjecture_net/contracts/hodge-conjecture-net.v1.json",
+  "guide": "research/conjecture_net/HODGE.md",
+  "contracts": {
+    "hodge": "research/conjecture_net/contracts/hodge-conjecture-net.v1.json",
+    "parent": "research/conjecture_net/contracts/common-foundations-conjecture-net.v1.json",
+    "math": "research/conjecture_net/contracts/mathematical-realization-conjecture-net.v1.json",
+    "identity": "research/conjecture_net/contracts/witnessed-constructive-identity.proposed.v1.json"
+  },
+  "port_semantics": "An overlay declares supplemental reference/review ports on existing nodes; it does not alter their frozen prerequisite DAGs or import their proof outcomes. Research-reference availability means the referenced file/node resolves, not that its claim is proved. Candidate contributions are unavailable until their source node is constructed and target scope is separately reviewed.",
+  "reciprocal_index": {"contract": "research/conjecture_net/contracts/witnessed-constructive-identity.proposed.v1.json", "field": "research_branches", "id": "hodge-coherence-obstruction"},
+  "connections": [
+    {"id": "parent-to-hodge-scope", "source_net": "parent", "source_node": "mathematical-realization", "source_port": "research-context", "target_net": "hodge", "target_node": "scope-and-cycle-map", "target_port": "common-foundations-context", "type": "research_reference", "proof_bearing": false, "discharges_target": false, "blocks_local_research": false},
+    {"id": "identity-to-hodge-scope", "source_net": "identity", "source_node": "scope", "source_port": "research-context", "target_net": "hodge", "target_node": "scope-and-cycle-map", "target_port": "identity-scope-context", "type": "research_reference", "proof_bearing": false, "discharges_target": false, "blocks_local_research": false},
+    {"id": "math-to-hodge-dictionary", "source_net": "math", "source_node": "stagewise-mathematical-interface", "source_port": "research-context", "target_net": "hodge", "target_node": "packet-coherence-dictionary", "target_port": "stagewise-interface-context", "type": "research_reference", "proof_bearing": false, "discharges_target": false, "blocks_local_research": false},
+    {"id": "identity-to-hodge-coherence", "source_net": "identity", "source_node": "higher-coherence", "source_port": "research-context", "target_net": "hodge", "target_node": "packet-coherence-dictionary", "target_port": "higher-coherence-context", "type": "research_reference", "proof_bearing": false, "discharges_target": false, "blocks_local_research": false},
+    {"id": "hodge-dictionary-to-identity-review", "source_net": "hodge", "source_node": "packet-coherence-dictionary", "source_port": "candidate-contribution", "target_net": "identity", "target_node": "continuation-and-composition", "target_port": "hodge-dictionary-review", "type": "candidate_review", "proof_bearing": false, "discharges_target": false, "blocks_local_research": false},
+    {"id": "hodge-rational-boundary-to-identity-review", "source_net": "hodge", "source_node": "rational-survival", "source_port": "candidate-contribution", "target_net": "identity", "target_node": "higher-coherence", "target_port": "rational-obstruction-review", "type": "candidate_review", "proof_bearing": false, "discharges_target": false, "blocks_local_research": false},
+    {"id": "hodge-to-mathematical-parent-review", "source_net": "hodge", "source_node": "counterexample-assembly", "source_port": "candidate-contribution", "target_net": "parent", "target_node": "mathematical-realization", "target_port": "hodge-example-review", "type": "candidate_review", "proof_bearing": false, "discharges_target": false, "blocks_local_research": false}
+  ],
+  "external_obligations": [
+    {"target_net": "hodge", "target_node": "counterexample-assembly", "target_port": "requires:independent-counterexample-review", "type": "reviewed_external_witness", "status": "open", "available": false}
+  ],
+  "boundary": {"logical_implications_asserted": false, "Hodge_implies_main_net": false, "main_net_implies_Hodge": false, "cycle_map_is_reversible_bridge": false, "physics_or_RH_outcomes_imported": false},
+  "revision_policy": "Advance these explicit references and their source-pin snapshot after review. Do not silently rewrite historical RH/physics contracts, refresh all collection copies, or let a main-net success become a Hodge verdict."
+}

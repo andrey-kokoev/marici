@@ -1,0 +1,29 @@
+{
+  "schema": "marici.hodge-tautological-witness-search.v1",
+  "node": "tautological-power-witness-search",
+  "resolution_kind": "central_i_symmetry_excludes_divisorial_power_correspondence_library",
+  "verdict": "rejected",
+  "candidate_id": "marici.hodge.nonsplit-sixfold.exp-sqrt-primes.v1",
+  "candidate_contract": "research/conjecture_net/contracts/hodge-explicit-sixfold-candidate.v1.json",
+  "candidate_receipt": "research/voevodsky/results/hodge-explicit-sixfold-candidate-v1.json",
+  "projector_contract": "research/conjecture_net/contracts/hodge-weil-projector.v1.json",
+  "projector_receipt": "research/voevodsky/results/hodge-weil-projector-v1.json",
+  "source_scope": "Same fixed X, p=3, alpha and projector. Rejection concerns only the specified witness library, never all algebraic cycles.",
+  "endomorphism_certificate": {"sample_count": 19, "matrix_variable_count": 144, "stacked_commutator_rank": 142, "rational_centralizer_dimension": 2, "conclusion": "End^0(X)=Q(i), by the existing algebraic-independence argument and rational lattice homomorphism algebraization."},
+  "symmetry": {"automorphism": "tau=i on X and diagonally on every power", "on_weil_space": "tau*=-Id", "on_divisor_classes_of_every_power": "tau*=Id", "reason": "Rosati on Q(i) is conjugation; divisor classes correspond to Rosati-symmetric matrices over Q(i), all commuting with central i."},
+  "library": {
+    "objects": "Smooth powers X^r for finite positive r, using their product polarization",
+    "seeds": ["all_rational_divisor_classes_on_powers", "units_and_point_classes", "certified_exponential_Chern_characters_r_exp_c1_over_r"],
+    "operations": ["rational_linear_combination", "cup_and_external_products", "pullback_by_homomorphisms_between_smooth_powers_with_refined_intersection_license", "proper_pushforward_by_homomorphisms_between_powers", "graph_correspondences_of_such_homomorphisms", "Poincare_exponential_kernel_transform_pulled_back_by_polarization"],
+    "degree_policy": "For f:X^r->X^s, pullback preserves codimension; proper pushforward changes codimension p to p+6(s-r). Rational Chow pullback uses the standard smooth-power intersection-theoretic construction.",
+    "closure_result": "Every resulting cohomology class is tau-invariant. Its degree-six Weil projection on X is zero.",
+    "arbitrary_higher_Chern_classes_included": false,
+    "arbitrary_algebraic_subvarieties_included": false
+  },
+  "finite_search": {"space": "X x X", "kernel": "ell=m*E-p1*E-p2*E", "cycles": "p2_*(E1^a/a! * E2^b/b! * ell^c/c!), 0<=a,b<=6, c>=0, a+b+c=9", "monomial_count": 43, "nonzero_cohomology_images": 4, "all_Weil_projections_zero": true},
+  "fourier_control": {"operator": "Phi_E(eta)=p2_*(p1*eta * exp(ell))", "polarization_euler_characteristic": 3, "normalization": "No division by 3; integrate with the complex orientation, negative of the fixed real lattice orientation.", "formula": "Phi_E(E^k/k!)=3*(-1)^(6-k)*E^(6-k)/(6-k)!", "on_alpha": 3, "square_on_degree_k": "9*(-1)^k", "basis_control_count": 4096},
+  "positive_reduction": "Seek a positive-rank algebraic vector bundle G with O(kappa_3(G)) nonzero, where kappa(G)=ch(G)exp(-c1(G)/rank(G)). Since c1(G) is proportional to E and O(E*H^4)=0, O(kappa_3(G))=O(ch_3(G)). This existence is equivalent to alpha algebraic, using finite locally free resolutions and the prior witness conversion.",
+  "next_action": "Search genuinely non-tautological codimension-three cycles or bundles with nonzero normalized third Chern component. A divisor/kernel-only or exponential-Chern ansatz cannot suffice.",
+  "boundary": {"Hodge_proved": false, "Hodge_refuted": false, "all_algebraic_cycles_excluded": false, "alpha_nonalgebraic_proved": false, "algebraic_representative_of_alpha_constructed": false, "global_algebraic_witness_search_completed": false, "all_cycle_annihilation_proved": false},
+  "trust_scope": "Written genericity, Rosati/symmetry and cycle-functoriality proofs; exact rational centralizer certificate, exterior Fourier controls and 43 real algebraic correspondence-class calculations. Imported standard abelian-variety/intersection-theory facts, not proof-assistant certification."
+}
