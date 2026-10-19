@@ -1,29 +1,279 @@
 [
-  { "slug": "quantum-mechanics", "domain": "Quantum mechanics", "status": "Established", "details": "Born rule from rank-1 factorization of the overlap matrix G_ij = psi_i* psi_j. N-path interference from I = sum G_ij exp(i(theta_j - theta_i)). Entanglement from overlap non-separability.", "checker": "check_gram_selection_principle.py", "result": "gram-selection-principle.json" },
-  { "slug": "general-relativity", "domain": "General relativity", "status": "Established", "details": "Spatial metric from stabilizer overlaps g_ab(p) = G_ab. ADM constraints close on finite carrier with (+++-) signature. Continuum limit delta(x,y) constructed.", "checker": "check_machian_metric.py, check_discrete_constraint_algebra.py, check_continuum_limit.py", "result": "machian-metric-test.json" },
-  { "slug": "sm-gauge-group", "domain": "SM gauge group", "status": "Conjecture; representation claim corrected", "details": "The natural four-point permutation representation of S4 decomposes as 1+3, not 1+1+2. Its irreducible representations have dimensions 1,1,2,3,3, but their dimensions do not derive continuous gauge groups, weak isospin, or spatial spin. The exact tetrahedral bridge End(C^2)=1+3 is an operator-space comparison, not a derivation of SU(3) x SU(2) x U(1). [Representation boundary](/research/theory/#tetrahedral-geometry-spinors-and-the-native-loop-test).", "checker": "check_binary_tetrahedral_spinor_bridge.py", "result": "binary-tetrahedral-spinor-bridge.json" },
-  { "slug": "3-generations", "domain": "3 generations", "status": "Established", "details": "S12 -> S4 x S4 x S4 branching gives exactly 3 SM copies. S12 is the minimal carrier for 3 generations.", "checker": "check_larger_carrier.py, check_small_carriers.py", "result": "carrier-minimality.json" },
-  { "slug": "ckm-mixing", "domain": "CKM mixing", "status": "Established", "details": "Overlap misalignment between up-type and down-type eigenbases. theta12=13 deg, theta23=2.4 deg, theta13=0.5 deg.", "checker": "check_gram_entries.py, check_mass_diagonalization.py", "result": "mass-diagonalization.json" },
-  { "slug": "pmns-mixing", "domain": "PMNS mixing", "status": "Established", "details": "Overlap misalignment in lepton sector. theta12=34 deg, theta23=42 deg, theta13=8.6 deg.", "checker": "check_pmns_from_gram.py", "result": "pmns-from-gram-misalignment.json" },
-  { "slug": "anomaly-cancellation", "domain": "Anomaly cancellation", "status": "Established", "details": "All 6 Ward identities cancel per generation. 16 fermions = SO(10) spinor.", "checker": "check_anomaly_cancellation.py", "result": null },
-  { "slug": "higgs-mechanism", "domain": "Higgs mechanism", "status": "Proposed; carrier representation and potential not derived", "details": "The earlier origin claim used doublet-singlet blocks absent from the natural four-point S4 permutation carrier, which is 1+3. Such blocks require an explicitly enlarged representation and an independently specified symmetry-breaking potential. The numerical candidates v = 246 GeV and m_H = 125 GeV do not repair that source gap. [Representation correction](/research/theory/#tetrahedral-geometry-spinors-and-the-native-loop-test).", "checker": "check_higgs_mechanism.py (historical model; not rerun in the tetrahedral audit)", "result": "higgs-from-gram.json (historical model artifact)" },
-  { "slug": "strong-cp-axion", "domain": "Strong CP / axion", "status": "Established", "details": "U(1) phase mode of the carrier, QCD instantons relax theta_bar to 0 dynamically. Axion mass from m_pi f_pi / f_a.", "checker": "check_strong_cp.py", "result": "strong-cp-axion-from-gram.json" },
-  { "slug": "dark-matter", "domain": "Dark matter", "status": "Established", "details": "3 sterile neutrinos nu_R, 25% of overlap trace. Omega_DM approx 25% vs observed 27%.", "checker": "check_dark_matter_abundance.py", "result": "S12-dark-matter-prediction.json" },
-  { "slug": "dark-energy", "domain": "Dark energy", "status": "Established", "details": "Lambda = G_off/G_self = 2*l_Pl^2 / R_Hubble^2, within 5% of observed value.", "checker": "check_cosmological_constant.py", "result": "cosmological-constant-from-gram.json" },
-  { "slug": "stress-energy-einstein", "domain": "Stress-energy / Einstein equation", "status": "Established", "details": "Einstein equation G_mu_nu + Lambda g_mu_nu = 8piG T_mu_nu from Gram stationarity delta S/delta G_stab = 0. All energy from single Gram principle.", "checker": "check_stress_energy.py", "result": "stress-energy-from-gram.json" },
-  { "slug": "inflation", "domain": "Inflation", "status": "Established", "details": "Dominant overlap eigenvalue as inflaton. Slow-roll from fibration phase evolution.", "checker": null, "result": null },
-  { "slug": "baryogenesis", "domain": "Baryogenesis", "status": "Established", "details": "Leptogenesis via sterile neutrino decays. n_b/n_gamma ~ 10^{-8} (observed 6.1e-10).", "checker": "check_baryogenesis.py", "result": "baryogenesis-from-gram.json" },
-  { "slug": "hawking-radiation", "domain": "Hawking radiation", "status": "Established", "details": "Thermal overlaps at horizon: T_H = 1/(8 pi G M). Unitarity from overlap trace conservation.", "checker": "check_hawking_radiation.py", "result": "hawking-from-gram.json" },
-  { "slug": "black-hole-interior", "domain": "Black hole interior", "status": "Established", "details": "Singularity resolved by minimal carrier. Interior = Overlap matrix sign flip.", "checker": null, "result": null },
-  { "slug": "higgs-mass", "domain": "Higgs mass", "status": "Established", "details": "m_H = 11^2 + 4 = 125 GeV, v = 2*11^2 + 4 = 246 GeV. Within 0.2% of observed. Higgs self-coupling lambda = 0.129 from (11^2+4)^2/(2*(2*11^2+4)^2).", "checker": "check_higgs_mass.py", "result": "higgs-mass-from-gram.json" },
-  { "slug": "top-yukawa", "domain": "Top Yukawa", "status": "Established", "details": "y_t = l_SU2/l_SU2 = 4/4 = 1. The Gram normalization unit. Third generation couples at fundamental strength. m_t = v/sqrt(2) = 174 GeV.", "checker": "check_top_yukawa.py", "result": "top-yukawa-normalization.json" },
-  { "slug": "qcd-scale", "domain": "QCD scale / proton mass", "status": "Established", "details": "Lambda_QCD = M_Pl / 11^19 = 200 MeV. 19 = 11+4+4 (Gram numbers). m_p = 14/3 * Lambda_QCD = 938 MeV. 14/3 = (11+4-1)/(4-1).", "checker": "check_qcd_scale.py", "result": "qcd-scale-from-gram.json" },
-  { "slug": "proton-electron-ratio", "domain": "Proton-electron ratio", "status": "Exact construction counts; physical mass hypothesis open", "details": "The comparison programme has 12*(144+9)=1836 slots. A separate tetrahedral construction realizes 108+432+1296=1836 arrows in a specified three-stage, dense-feedback basis. These counts do not establish equivalent dynamics or a basis-independent minimum. The collective projector has rank one in 36 coordinates.\n\nThe binary tetrahedral spinor bridge preserves that projector algebra, but a physical doublet requires an added factor: native rotation-loop transport returns +1, not the spinorial -1. The earlier universal charge no-go is withdrawn because the identity and collective projector are counterexamples; neither is thereby electric charge. A Hamiltonian, physical charge coupling, proton-sector identification and the observed ratio approximately 1836.152673 remain unconstructed. The earlier settling models do not derive the fractional correction. [Construction history](/research/theory/#proton-electron-ratio-comparison-paths-and-settling); [current geometry, spin and charge tests](/research/theory/#tetrahedral-geometry-spinors-and-the-native-loop-test).", "checker": "check_twelve_triangle_positive_geometry.py, check_binary_tetrahedral_spinor_bridge.py, check_tetrahedral_native_rotation_loop.py, check_tetrahedral_axis_charge_operator.py", "result": "twelve-triangle-positive-geometry.json; binary-tetrahedral-spinor-bridge.json; tetrahedral-native-rotation-loop.json; tetrahedral-axis-charge-operator.json" },
-  { "slug": "ckm-cp-phase", "domain": "CKM CP phase", "status": "Established", "details": "delta_CKM approx pi/3 + (l_SU2/l_U1)^2 = 60 + 6.4 = 66.4 deg (observed 65.5 deg, within 1.2%). Jarlskog J approx 48/11^6. Approximate Gram expression.", "checker": "check_ckm_cp_phase.py", "result": "ckm-cp-v2.json" },
-  { "slug": "pmns-cp-phase", "domain": "PMNS CP phase", "status": "Established", "details": "delta_PMNS = (l_U1/C_U1) * pi = (12/10) * pi = 6pi/5 = 216 deg. Exact Gram expression matching observed value.", "checker": "check_pmns_cp_phase.py", "result": "pmns-cp-phase.json" },
-  { "slug": "larmor-formula", "domain": "Larmor formula (accelerated charges)", "status": "Established", "details": "P = alpha*a^2/(6*pi) from Gram interference d^2I/dt^2 = -G_ij*a*exp(i*phi). Fine-structure alpha ≈ 1/[137](/research/theory/#fine-structure-constant-comparison-slots), using the proposed comparison-slot normalization.", "checker": "check_larmor.py", "result": "larmor-from-gram.json" },
-  { "slug": "spin-transport", "domain": "Spin", "status": "Spinor bridge checked; native physical selection not established", "details": "The former claim that the ordinary S4 doublet derives physical spin-1/2 is withdrawn. Spatial spin and weak isospin are distinct. The binary tetrahedral cover 2T -> A4 and its Q8 -> V4 subgroup map are verified exactly. For a two-component spinor S, End(S)=1+3 recovers the original three-axis action by Pauli conjugation. This is an operator-space identity, not a quantum-number doubling law.\n\nThe original 36-coordinate projector algebra survives with ranks 12,3,1. Adding S gives a 72-dimensional tensor extension with a rank-two collective doublet, but S is an explicit extra input. Replacing the three-component fibers by two-component spinors instead gives dimension 24 and no invariant vector.\n\nThe independent native-loop test, using no spinor or Pauli input, returns +1 on all six orthogonal-half-turn commutators. A projection-only triangle can return -13/3375 while its commutator stays positive: a minus sign alone is not spinorial transport. The native-selection conjecture fails in that endpoint model; the broader physical conjecture is untested without an independent rotation interaction and coherent readout. [Derivation, falsifiers and limits](/research/theory/#tetrahedral-geometry-spinors-and-the-native-loop-test).", "checker": "check_binary_tetrahedral_spinor_bridge.py, check_tetrahedral_native_rotation_loop.py", "result": "binary-tetrahedral-spinor-bridge.json; tetrahedral-native-rotation-loop.json" },
-  { "slug": "beta-decay", "domain": "Beta decay", "status": "Established", "details": "W mass M_W = g_2*v/2 = 79.6 GeV (obs 80.4). Fermi constant G_F = 1.168e-5 (obs 1.166e-5). V_ud = 0.974 from CKM misalignment. All from Gram numbers.", "checker": "check_beta_decay.py", "result": "beta-decay-from-gram.json" },
-  { "slug": "epr-entanglement", "domain": "EPR / Bell violation", "status": "Established", "details": "CHSH violation S = 2*sqrt(2) from Gram non-separability G_AB != G_A*G_B. Entanglement is overlap matrix non-product structure.", "checker": "check_entanglement.py", "result": "entanglement-from-gram.json" },
-  { "slug": "mach-principle", "domain": "Mach's Principle", "status": "Established", "details": "Inertia (mass) is the sum of Gram couplings to all other carrier points: m(p) = sum_{q != p} G_pq = 6336 for S12. Metric g_ab(p) = G_ab|_Stab(p) is global/relational. Mach's Principle built into the Gram framework.", "checker": "check_mach_principle.py", "result": "mach-principle.json" }
+  {
+    "slug": "quantum-mechanics", "domain": "Quantum mechanics",
+    "status": "Conditional coherent-norm construction; physical measurement law not derived",
+    "details": "For declared complex record vectors, q-dagger G q equals the squared norm of their coherent sum. It is not automatically a probability. Rank-one scalar factorization is a special case, not a derivation of the Born rule; preparation, effects, analyzers, encoding and laboratory readout remain distinct inputs. The historical probability and continuum claims are superseded. [Corrected source](https://github.com/andrey-kokoev/marici/blob/main/research/nima/gram-selection-principle.md).",
+    "checker": "research/nima/checkers/check_gram_selection_principle.py (repaired coherent-norm scope)",
+    "result": "research/nima/results/gram-selection-principle-repaired.json"
+  },
+  {
+    "slug": "general-relativity", "domain": "General relativity",
+    "status": "Finite covariance checked; legacy ADM and continuum promotions withdrawn",
+    "details": "Finite stabilizer covariance and a canonical cotangent lift do not define GR field constraints or their smeared Poisson brackets. The Lorentzian-signature certificate and continuum interpolant claims are withdrawn. Parametrizing a mechanical rotor is not an ADM derivation. A field phase space, typed comparison, action, physical-time map and continuum construction remain missing. [Correction](https://github.com/andrey-kokoev/marici/blob/main/research/nima/formal-adm-constraint-derivation.md). Historical artifacts are not passing evidence for these withdrawn claims.",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "sm-gauge-group", "domain": "SM gauge group",
+    "status": "Representation comparison checked; continuous gauge identification open",
+    "details": "The natural four-point S4 permutation representation is 1+3, not 1+1+2. Irreducible dimensions 1,1,2,3,3 do not derive continuous gauge groups or their physical actions. The exact End(C^2)=1+3 tetrahedral bridge concerns operator space, not SU(3) x SU(2) x U(1) matter dynamics. [Representation boundary](/research/theory/#tetrahedral-geometry-spinors-and-the-native-loop-test).",
+    "checker": "research/nima/checkers/check_binary_tetrahedral_spinor_bridge.py",
+    "result": "research/nima/results/binary-tetrahedral-spinor-bridge.json"
+  },
+  {
+    "slug": "3-generations", "domain": "3 generations",
+    "status": "Proposed partition; physical generations not derived",
+    "details": "Partitioning twelve labels into three four-label blocks is additional structure, not a theorem selecting three Standard Model matter copies or a minimal physical carrier. Physical matter representations, chiral sectors and interactions remain to be constructed. [Corrected physical status](/research/results/#physical-hypotheses-corrected-status).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "ckm-mixing", "domain": "CKM mixing",
+    "status": "Conditional basis-overlap model; flavor operators not selected",
+    "details": "Supplied left-handed sector diagonalizations can define V_CKM = U_u-dagger U_d. A common Gram matrix does not select those sector operators, bases or physical flavor labels; degenerate eigenspaces do not select a preferred basis. The former displayed mixing angles are not source-derived predictions. [Flavor boundary](/research/theory/#_10-ckm-and-pmns-—-flavor-misalignment).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "pmns-mixing", "domain": "PMNS mixing",
+    "status": "Conditional basis-overlap model; lepton dynamics open",
+    "details": "U_PMNS = U_e-dagger U_nu requires independently supplied physical sector operators and appropriate bases. No source-selected lepton dynamics, mixing angles or uncertainty budget follows merely from Gram misalignment. [Flavor boundary](/research/theory/#_10-ckm-and-pmns-—-flavor-misalignment).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "anomaly-cancellation", "domain": "Anomaly cancellation",
+    "status": "Conditional on specified chiral matter content",
+    "details": "Conventional Standard Model matter can satisfy anomaly tests. Reusing its charges and trace identities does not derive that matter from the carrier. A chiral 16-dimensional Spin(10) spinor is an additional representation choice; one each of the S4 irreducibles 1,1,2,3,3 totals 10, not 16. Local anomalies and global consistency tests must be distinguished. [Scope](/research/theory/#_11-anomaly-cancellation).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "higgs-mechanism", "domain": "Higgs mechanism",
+    "status": "Proposed; representation and symmetry-breaking potential missing",
+    "details": "Doublet-singlet blocks are absent from the natural four-point permutation carrier, which is 1+3. A Higgs construction requires an enlarged representation, gauge action, potential, vacuum and physical scale. Integer candidates 125 and 246 do not supply those objects. Historical model artifacts do not establish a carrier-derived mechanism. [Boundary](/research/theory/#_12-higgs-mechanism).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "strong-cp-axion", "domain": "Strong CP / axion",
+    "status": "Schematic analogy; axion mechanism unconstructed",
+    "details": "A global carrier phase is not a physical axion field. A symmetry-breaking sector, QCD topological coupling and potential remain missing; axion mass, photon coupling and strong-CP relaxation are not derived here. [Scope](/research/theory/#_13-strong-cp-axion-schematic).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "dark-matter", "domain": "Dark matter",
+    "status": "Candidate additional models; abundance readout open",
+    "details": "Sterile neutrinos, seesaw interactions and modified inertia are proposals, not deductions from Gram entries. The candidate (10-4)/(12+11)=6/23 is exact arithmetic, not a production/evolution calculation. The old 25-percent trace claim is superseded, not a competing derived abundance. No source-selected mass, X-ray line or physical abundance law is supplied. [Scope](/research/theory/#_14-dark-matter).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "dark-energy", "domain": "Dark energy",
+    "status": "Proposed normalization; vacuum stress-energy not derived",
+    "details": "Equal diagonal Gram norms do not establish vacuum stress-energy. The historical 2*l_Pl^2/R^2 ratio is dimensionless, while dimensionful Lambda has inverse-length-squared units. A chosen horizon, normalization convention, action and energy reference are required. Numerical agreement does not solve the cosmological-constant problem. [Scope](/research/theory/#_15-dark-energy).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "stress-energy-einstein", "domain": "Stress-energy / Einstein equation",
+    "status": "Legacy derivation withdrawn; field action unconstructed",
+    "details": "Gram stationarity does not establish Einstein's equation without a defined manifold, Lorentzian metric, curvature, measure, matter action, boundary conditions and source map. Actual field equations and constraints must then be proved. A classical variation alone would not supply quantum gravity. [Corrected boundary](/research/theory/#_16-einstein-equation-unconstructed-physical-comparison).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "inflation", "domain": "Inflation",
+    "status": "Open physical hypothesis",
+    "details": "Calling an overlap eigenvalue an inflaton does not construct a field, potential, slow-roll dynamics or cosmological observables. Those comparisons remain missing. [Corrected physical status](/research/results/#physical-hypotheses-corrected-status).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "baryogenesis", "domain": "Baryogenesis",
+    "status": "Open physical hypothesis",
+    "details": "Leptogenesis requires specified particle content, decay interactions, CP asymmetry, rates and cosmological evolution. None is selected by a carrier count or oriented cycle. The former numerical estimate is not a derived asymmetry. [Corrected physical status](/research/results/#physical-hypotheses-corrected-status).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "hawking-radiation", "domain": "Hawking radiation",
+    "status": "Proposed analogy; gravitational and thermal comparison missing",
+    "details": "The conventional Hawking temperature cannot be claimed as a carrier result without a spacetime/horizon and quantum-field comparison. Conserving an overlap norm or trace does not establish radiation thermality or resolve evaporation unitarity. [Corrected physical status](/research/results/#physical-hypotheses-corrected-status).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "black-hole-interior", "domain": "Black hole interior",
+    "status": "Open physical hypothesis; singularity-resolution claim withdrawn",
+    "details": "A finite carrier or a proposed matrix sign change does not construct a black-hole interior, its field equations or singularity resolution. No such physical comparison is established. [Corrected physical status](/research/results/#physical-hypotheses-corrected-status).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "higgs-mass", "domain": "Higgs mass",
+    "status": "Exact arithmetic targets; physical units and Higgs dynamics open",
+    "details": "11^2+4=125 and 2*11^2+4=246 are integer identities. Assigning GeV units and a Higgs mass/vev interpretation requires independently constructed physics. Substituting those targets into lambda=m_H^2/(2v^2) gives about 0.1291, not a derived quartic potential or precision prediction. [Comparison targets](/research/results/#numerical-comparison-targets).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "top-yukawa", "domain": "Top Yukawa",
+    "status": "Numerical candidate; Yukawa interaction not derived",
+    "details": "4/4=1 is an arithmetic identity, not a carrier-selected top Yukawa interaction. Assigning v and using the conventional m_t=y_t*v/sqrt(2) relation does not derive a third-generation sector, renormalization scale or physical mass. [Corrected physical status](/research/results/#physical-hypotheses-corrected-status).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "qcd-scale", "domain": "QCD scale / proton mass",
+    "status": "Proposed scale expressions; QCD and mass readout missing",
+    "details": "M_Pl/11^19 and (14/3)*M_Pl/11^19 are candidate comparisons. They require a Planck-mass convention, physical scale-generation law, QCD dynamics and mass observable. Near agreement with selected values is not a source derivation or uncertainty-controlled test. [Comparison targets](/research/results/#numerical-comparison-targets).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "proton-electron-ratio", "domain": "Proton-electron ratio",
+    "status": "Exact construction counts; common charging mass branch excluded",
+    "details": "12*(144+9)=1836 counts comparison slots. A separate tetrahedral implementation has 108+432+1296=1836 nonzero coefficient arrows in a supplied staged basis. Equal counts do not identify dynamics or a basis-independent minimum. The binary tetrahedral operator bridge is exact, but physical spin requires an added factor; the native endpoint-loop model does not select its minus sign. The corrected charge scan refutes the former universal charge no-go without identifying electric charge. [Construction and spin boundaries](/research/theory/#tetrahedral-geometry-spinors-and-the-native-loop-test).\n\nUnder the recovered shared charging law, matching the retained proton/electron reference approximately 1836.152673 bounds the belt-proton splitting by about 42.5 eV, not the approximately 1.293 MeV target. No common coupling or clock rescaling repairs that branch. A different source-supported charging or elementary interaction law must test absolute and relative energies together. No physical mass ratio or universal fractional correction is established. [Exclusion](https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/common-charging-mass-closure.md).",
+    "checker": "research/voevodsky/checkers/check_common_charging_mass_closure.py (specified mass branch)",
+    "result": "research/voevodsky/results/common_charging_mass_closure.json"
+  },
+  {
+    "slug": "ckm-cp-phase", "domain": "CKM CP phase",
+    "status": "Arithmetic comparison target; CP observable not derived",
+    "details": "pi/3+(4/12)^2 is about 66.4 degrees. This expression and the proposed 48/11^6 Jarlskog expression do not select physical flavor operators, rephasing-invariant CP dynamics or an uncertainty budget. An oriented three-cycle alone does not establish CP violation. [Flavor boundary](/research/theory/#_10-ckm-and-pmns-—-flavor-misalignment).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "pmns-cp-phase", "domain": "PMNS CP phase",
+    "status": "Arithmetic comparison target; physical phase open",
+    "details": "(12/10)*pi=216 degrees is exact arithmetic, not a derived PMNS observable or verified match to a measurement. Sector dynamics, conventions, invariants and independent uncertainties remain required. [Flavor boundary](/research/theory/#_10-ckm-and-pmns-—-flavor-misalignment).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "larmor-formula", "domain": "Larmor formula (accelerated charges)",
+    "status": "Physical radiation comparison unconstructed",
+    "details": "Differentiating a coherent overlap norm does not derive radiated power. A charge/current observable, Maxwell propagation, acceleration and unit conventions are needed. The 137 slot count is not an electromagnetic coupling readout; its exploratory routing correction fails precision recoil targets. [Electromagnetic boundary](/research/theory/#carrier-realized-comparison-and-the-decimal-tail).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "spin-transport", "domain": "Spin",
+    "status": "Exact spinor bridge; native physical selection not established",
+    "details": "The binary tetrahedral cover 2T -> A4 and Q8 -> V4 subgroup bridge recover the vector action through End(C^2)=1+3. State and operator spaces remain distinct. The 36-coordinate projector algebra has ranks 12,3,1; adding an independent spinor factor gives dimension 72 and a collective doublet, while replacing vector fibers gives dimension 24 and no invariant vector. The native endpoint/filter model returns +1 on all six orthogonal-half-turn commutators. A separate projection triangle's -13/3375 is not spinorial transport. Later declared spinor extensions do not reverse this native-selection failure. Spatial spin and weak isospin are not identified by a finite-group doublet. [Exact bridge and falsifiers](/research/theory/#tetrahedral-geometry-spinors-and-the-native-loop-test).",
+    "checker": "research/nima/checkers/check_binary_tetrahedral_spinor_bridge.py; research/nima/checkers/check_tetrahedral_native_rotation_loop.py",
+    "result": "research/nima/results/binary-tetrahedral-spinor-bridge.json; research/nima/results/tetrahedral-native-rotation-loop.json"
+  },
+  {
+    "slug": "beta-decay", "domain": "Beta decay",
+    "status": "Conventional conditional relations; carrier weak dynamics missing",
+    "details": "Relations involving weak coupling, vev, Fermi constant and CKM entries require those physical inputs and an actual weak interaction. The earlier W-mass and decay constants are not derived from Gram numbers. [Corrected physical status](/research/results/#physical-hypotheses-corrected-status).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "epr-entanglement", "domain": "EPR / Bell violation",
+    "status": "Conditional quantum readout; generic-overlap implication withdrawn",
+    "details": "CHSH values require a prepared state, tensor structure, measurement settings and effects. A non-product overlap matrix alone does not establish Bell violation or the value 2*sqrt(2). Gram encodings, preparations and physical analyzers must be compared separately. [Quantum scope](https://github.com/andrey-kokoev/marici/blob/main/research/nima/gram-selection-principle.md).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "mach-principle", "domain": "Mach's Principle",
+    "status": "Relational interpretation; inertia normalization open",
+    "details": "An off-diagonal Gram sum is a probe-dependent norm quantity, not automatically inertial mass. Its value depends on carrier, probes and normalization. A physical action, time scale, energy reference and readout map remain missing; the historical sum 6336 is not a derived rest energy. [Normalization boundaries](/research/system-characteristics/#physical-identifications-and-normalization).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "operational-half-turn", "domain": "Operational analytic half-turn",
+    "status": "Kernel operational construction; accepted mixed-level pi identification",
+    "details": "Research reports fresh safe Agda closure for the assembled operational phase half-turn, combining unit norm, continuity, all-increment derivative and exact endpoints of the same phase. Identification with standard pi is an explicitly accepted written proof, not a kernel ordinary-real interpretation. The separate operational whole-return certificate remains unresolved. This is not a physical-time or uniqueness theorem. [Construction](https://github.com/andrey-kokoev/marici/blob/main/research/nima/constructed-unitary-half-turn.md).",
+    "checker": "research/nima/checkers/check_constructed_unitary_half_turn.py",
+    "result": "research/nima/results/constructed-unitary-half-turn-fresh.json"
+  },
+  {
+    "slug": "common-geometric-assembly", "domain": "Common geometric assembly",
+    "status": "Exact source-parameterized geometry; particle interpretation open",
+    "details": "One orbit/facet/cone constructor independently reproduces the declared tetrahedron, six-panel belt and pentachoron with marked interfaces. Source metrics, generators, seeds, gap and interface roles are inputs; target faces are not constructor inputs. The pentachoron cones subdivide a filled four-simplex, not five disjoint spatial volumes. Geometry does not select a coefficient support protocol or physical particle identity. [Source and sensitivity controls](https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/relative-geometric-source-constructor.md).",
+    "checker": "research/voevodsky/checkers/check_relative_geometry_sources.py",
+    "result": "research/voevodsky/results/relative_geometry_sources.json"
+  },
+  {
+    "slug": "quantum-spinor-implementation", "domain": "Conditional quantum spinor model",
+    "status": "Ideal quantum construction completed; physical implementation unverified",
+    "details": "The reduced and ideal endpoint-rotor Hamiltonians have an explicit unitary equivalence. Four conserved-flux blocks give an exact invariant 16-dimensional sector containing the global ground and first excited energy. It is a finite simulation target, not the full rotor theory, realized device or particle mass prediction. Endpoint structural flatness is not finite-stiffness pinning of independent links. Platform, charging metric, assisted hopping, preparation and measured errors remain unverified physically. [Acceptance contract](https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/spinor-quantum-implementation.md).",
+    "checker": "research/voevodsky/checkers/check_spinor_quantum_implementation.py",
+    "result": "research/voevodsky/results/spinor_quantum_implementation.json"
+  },
+  {
+    "slug": "deuterium-breakup", "domain": "Typed deuterium rim and breakup",
+    "status": "Typed ports checked; current binding branch excluded",
+    "details": "Tensor-lifted rim maps retain both spin components and solve a scalar/spinor mismatch without deriving neutron spin. Opposite phase weights forbid a naive neutral linear attachment; a compatible link or pair interaction needs its own source. In the current graph, pair-minus-breakup energy is positive for independent reservoirs and zero for the same total exterior reservoir. No attractive nuclear binding is supplied. A bounded, number- and charge-preserving cross-carrier interaction must use identical comparison boundaries. [Test](https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/deuterium-typed-rim-and-breakup-test.md).",
+    "checker": "research/voevodsky/checkers/check_deuterium_typed_rim_binding.py",
+    "result": "research/voevodsky/results/deuterium_typed_rim_binding.json"
+  },
+  {
+    "slug": "joint-compatibility-selection", "domain": "Joint compatibility and prediction selection",
+    "status": "Strict added-selection claim falsified in the tested class",
+    "details": "Canonical quantum-state completion preserves every admissible retained-unitary annotation, preparation, effect and record probability. Forgetting it recovers the original annotation, so prediction sets are equal. Intermediate tensor locality is an additional selector, absent from the frozen class. This rejects compatibility alone as a sufficient selector in this model; maps between distinct spatial, flavor and gravity sources remain unspecified. [Result and controls](https://github.com/andrey-kokoev/marici/blob/main/research/nima/joint-compatibility-free-completion-result.md).",
+    "checker": null,
+    "result": "research/nima/results/joint-compatibility-free-completion.json"
+  },
+  {
+    "slug": "braid-two-channel-composition", "domain": "Braid-constrained two-channel composition",
+    "status": "Constructive algebraic model; amplitude selection open",
+    "details": "Preserving one attachment restricts endpoint component counts to two or three and excludes the one-component channel under that condition. Distinct braids can retain different histories at the same endpoints. The separate unitary Hamiltonian leaves coupling, splitting and duration free: 372:1 is an input constraint, not a prediction. A braid representation, invariant inner product and sourced amplitude/composition law remain missing. [Model](https://github.com/andrey-kokoev/marici/blob/main/research/figueiredo/braid-constrained-two-channel-composition.md).",
+    "checker": null, "result": null
+  },
+  {
+    "slug": "storage-resource-comparison", "domain": "Storage interaction and finite-work resources",
+    "status": "Exact resource audit; objective-specific optimization",
+    "details": "The error-transparent pair pulse has 769 Pauli terms, including weights six, eight and ten. Pauli-basis uniqueness excludes direct one-/two-body implementation on those same qubits, not ancillary mediators or other encodings. A favorable truncation fails all fifteen nonzero single-error sectors. In the finite-work route a sine packet optimizes midpoint-fault fidelity at fixed ladder size, not every input or arbitrary fault time. Preparation, physical clock, microscopic couplings and bath/recovery dynamics remain resources to construct. [Branch comparison](https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/storage-branch-comparison.md).",
+    "checker": "research/voevodsky/checkers/check_storage_branch_comparison.py",
+    "result": "research/voevodsky/results/storage_branch_comparison.json"
+  },
+  {
+    "slug": "arrow-phase-process", "domain": "Arrow, phase and process reversal",
+    "status": "Declared symmetry display; numerical and browser checks",
+    "details": "The offline viewer separates SU(2) arrow-frame rotation, SO(2) complex phase and Z2 forward/reverse traversal. A 360-degree frame return retains the opposite spinor lift; 720 degrees returns both. Traversal reverses the open Input–L–G–N path and stops at its endpoint. It does not invert the noninvertible projectors or derive physical spin/time. [Open the viewer](/experiments/arrow-symmetry-viewer.html) · [Source and withdrawn process-ring interpretation](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/arrow-symmetry-viewer.md).",
+    "checker": "research/strominger/checkers/check_arrow_symmetry_viewer.mjs",
+    "result": "research/strominger/results/arrow-symmetry-viewer.json"
+  },
+  {
+    "slug": "one-arrow-observability", "domain": "What one arrow can observe",
+    "status": "Exact shielding falsifier and candidate link decoder",
+    "details": "The symmetric tetrahedral AB probe is shielded against the verified remote hinge: its full response packet stays unchanged while the full resolvent changes. An explicitly unequal incident-weight control restores sensitivity. This falsifies universal anchored sensitivity, not the local/collective distinction. Separately, one candidate electron–proton coefficient link has a one-complex-dimensional dark direction: two distinct equal-norm doublets have the same reading. A second reading after an admitted source rotation reconstructs the doublet under explicit amplitude/retention permissions. These are different kernels, not physical detector or binding constructions. [Explore both comparisons](/experiments/research-lab.html#arrow-response) · [Anchored experiment](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/arrow-anchored-local-collective-response.md) · [Link and fold-retaining attachment](https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/proton-electron-single-link-potential-v1.md).",
+    "checker": "research/strominger/checkers/check_arrow_anchored_response.py; research/voevodsky/checkers/check_proton_electron_single_link_potential.py",
+    "result": "research/strominger/results/arrow-anchored-response.json; research/voevodsky/results/proton-electron-single-link-potential-v1.json"
+  },
+  {
+    "slug": "native-information-tasks", "domain": "Protonlike and neutronlike information tasks",
+    "status": "Exact native reconstruction theorems; physical measurement open",
+    "details": "Both intrinsic protocols have 1,836 transfers and the same aggregate staged spectrum, but ordered L/G ranks are 12/3 for protonlike and 3/12 for neutronlike. Raw rejection/local disagreement/collective dimensions are 24/11/1 versus 33/2/1. Reading coordinate addresses at raw/local/aligned stages reconstructs arbitrary input with a minimum 24 versus 33 addresses. The neutron theorem requires eleven addresses in each twelve-slot sector; the proton requires two in each three-coordinate triangle. Addresses are not physical detectors, and neither count is a mass. [Select addresses and inspect the exact rank](/experiments/research-lab.html#information-tasks) · [Metric-aware neutron comparison](https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/neutron-native-relationship-tasks-v1.md).",
+    "checker": "research/voevodsky/checkers/check_neutron_native_relationship_tasks.py; research/voevodsky/checkers/check_proton_native_task_catalogue.py",
+    "result": "research/voevodsky/results/neutron-native-relationship-tasks-v1.json; research/voevodsky/results/proton-native-task-catalogue-v1.json"
+  },
+  {
+    "slug": "retained-reference-transport", "domain": "Retained reference and exact-domain software transport",
+    "status": "Conditional end-to-end reference binding; software policy pinned",
+    "details": "An explicit two-unit Clifford input and empty bank produce represented 2I after storage and delay; the active bank is empty after the third exchange, with history retained. Boundary identifications connect End(R2) to comparison A→B; equal matrices alone do not identify those types. The operator-selected SOFTWARE T9 retains inherited keys through 137→32→32 and preserves/reflects exactly 977 original composition contexts. Outer branch means can be recovered from unchanged J4, branch masses and a retained matrix contrast. Context creation still requires explicit directed connector provenance. Physical preparation, scale, flat transport, clock, detector/back-action, and reset/reuse resources remain supplied or unconstructed. [Explore lifecycle and rejected contexts](/experiments/research-lab.html#reference-lifecycle) · [Conditional binding](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/reference-port-binding.md) · [Current software contract](https://github.com/andrey-kokoev/marici/blob/main/research/nima/pinned-T9-software-contract.md).",
+    "checker": "research/strominger/checkers/check_reference_port_binding.py; research/nima/checkers/check_pinned_T9_software_contract.py",
+    "result": "research/strominger/results/reference-port-binding.json; research/nima/results/pinned-T9-software-contract.json"
+  },
+  {
+    "slug": "assembly-local-phase-clock", "domain": "Assembly-generated local phase clock",
+    "status": "Finite numerical contact-model result; physical clock not derived",
+    "details": "The existing frozen-contact Hamiltonian creates cross-topology coherence from its actual stationary incoming mixture, without a specially coherent preparation. A quadrature χ=Tr(ρQ) supplies a local relational coordinate where its derivative is nonzero. Common generator-rate rescaling cancels in dρ/dχ, and all forty populations are retained at the three audited readings. Disabling matching gives zero initial slope and rejects the chart. Bare J squared equals identity and does not accumulate this phase. This is not a derived primitive arrow update, global monotone time, physical seconds or Einstein dynamics. [Inspect the recorded samples and rate control](/experiments/research-lab.html#local-clock) · [Claim boundary and methods](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/assembly-generated-clock.md).",
+    "checker": "research/strominger/checkers/check_assembly_generated_clock.py",
+    "result": "research/strominger/results/assembly-generated-clock.json"
+  },
+  {
+    "slug": "finite-spatial-convergence", "domain": "Matched-cutoff spatial refinement",
+    "status": "Finite-model direction survives; magnitude remains spatially sensitive",
+    "details": "At one packet center, three new spatial refinements match the supplied baseline's omitted-mode energy threshold rather than mode count. Peak and whole-packet signed strain transport remain expansion-directed, but the combined-grid peak magnitude changes by −27.482%. Each new fixture has one full-S central-energy test and 32 prepared-column tests. Small equation/conservation residuals are not spatial error bounds. Tilt/hinge grids remain unchanged, closed modes remain truncated, and no continuum limit, physical particle identity, speed law or crossover energy is certified. [Compare the four fixtures and separate residuals](/experiments/research-lab.html#convergence) · [Full methods](https://github.com/andrey-kokoev/marici/blob/main/research/scattering/high-energy/matched_spatial_note.md).",
+    "checker": null,
+    "result": "research/scattering/high-energy/pentachoron_matched_spatial_refinement_bundle.zip"
+  },
+  {
+    "slug": "neutron-rest-energy-boundary", "domain": "Neutron rest energy: reference versus prediction",
+    "status": "Empirical reference and conditional model gap kept distinct",
+    "details": "## The measured reference\n\nThe NIST 2022 CODATA adjustment gives neutron rest energy **939.56542194(48) MeV**. The parenthesized standard uncertainty is 0.00000048 MeV, or 0.48 eV. The retained complete NIST table was retrieved over HTTPS; mass/joule/MeV agreement is a unit-conversion check, not three independent measurements. [NIST listing](https://physics.nist.gov/cuu/Constants/Table/allascii.txt) · [Reference receipt](/experiments/research-lab/physical-neutron.json).\n\n## What the model establishes conditionally\n\nThe completed continuum/contact model has an exactly enclosed positive internal gap near **0.185016977411665 model units**. With an additionally supplied relativistic centre-of-mass law and positive energy unit ε, its lowest branch has invariant rest energy εE0 and mass εE0/c². The stationary bank action, positive open-channel threshold, kinetic completion and neutron-sector identification are separate assumptions. Removing the action or threshold supplies zero-gap controls; the carrier alone does not force positivity.\n\n## What must not become a prediction\n\nDividing the measured neutron energy by that model gap gives about **5078.26597907 MeV per model unit**. This is circular target calibration, not independent agreement, and has not been applied to the model. Independent physical action/sector justification and independent scale information are required. Another fitted offset does not meet those obligations. [Conditional completion and counterexamples](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/neutron-rest-energy-completion.md) · [Measured versus derived boundary](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/physical-neutron-rest-energy.md) · [Model receipt](/experiments/research-lab/neutron-rest.json).",
+    "checker": "research/strominger/checkers/check_physical_neutron_rest_energy.py; research/strominger/checkers/check_neutron_rest_energy_completion.py",
+    "result": "research/strominger/results/physical-neutron-rest-energy.json; research/strominger/results/neutron-rest-energy-completion.json"
+  },
+  {
+    "slug": "hydrogen-binding-boundary", "domain": "What a physical Coulomb binding model adds",
+    "status": "Conditional nonrelativistic continuation; source-derived binding not promoted",
+    "details": "## One bridge is not a Coulomb field\n\nJoining the inherited finite electric graphs by one conductance w gives effective resistance Rpair(i,j)=Rp(i,a)+1/w+Re(b,j). Its energy is a sum of separate endpoint costs and a constant; every mixed difference vanishes. It supplies neither relative Euclidean space nor a spatial Coulomb kernel. A directed coefficient arrow, an electric bridge and a reciprocal Hamiltonian interaction are different typed objects.\n\n## Explicitly supplied physical laws\n\nA separate continuation supplies relative Euclidean R3, homogeneous Maxwell law, positive permittivity, charges ±e, masses, ℏ/time convention and self-energy subtraction. It obtains V(r)=−κ/r, reduced mass μ, radius a=ℏ²/(μκ), and E0=−μκ²/(2ℏ²). A ground-state factorization proves the lower bound, not just a finite-grid or variational fit. These familiar physical inputs are not derived by the arrow construction.\n\n## Retain the internal information\n\nThe orbital is scalar on the native electron doublet: bright and link-dark states bind equally. All 24 internal potential folds remain; they are not different Coulomb energy levels, orbital radii or electrostatic potentials. Binding does not recover information hidden from the original coefficient link. The free centre of mass has no normalizable ground on all R3; this is a relative internal bound state. No magnetic, hyperfine, QED, relativistic or radiative calculation is claimed. [Source Gauss audit and conditional Coulomb continuation](https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/source-gauss-to-coulomb-binding-v1.md) · [Full receipt](/experiments/research-lab/binding-law.json) · [Explore the link's dark direction](/experiments/research-lab.html#single-link).",
+    "checker": "research/voevodsky/checkers/check_source_gauss_to_coulomb_binding.py",
+    "result": "research/voevodsky/results/source-gauss-to-coulomb-binding-v1.json"
+  },
+  {
+    "slug": "relational-carrier-programme", "domain": "Relational-carrier programme: accepted, falsified, open",
+    "status": "Scoped finite prerequisite accepted; programme and physical outcomes open",
+    "details": "## What is accepted\n\nThe finite same-witness structural transport/readout overlap is an accepted prerequisite at its stated written-mathematics/exact-algebra level. This is not acceptance of the programme root, a universal carrier or empirical recovery. Consumers must run the owning admission checker, not infer current admissibility from a filename or this summary.\n\n## What is constructed or audited\n\nThe finite Bool adapter preserves paths and occurrences. Native propagated coordinate observers have rank nine of sixteen Hermitian directions; a declared mathematical observer extension reaches sixteen, without authorizing physical detectors. Richer control is conditional. A retained exchange adapter keeps sixteen anchors plus six mismatch coordinates. A source-indexed C4 plus C22 package preserves alternatives, not a common physical witness or independent tensor preparation. Software T9 is now explicitly pinned; physical source selection remains separate.\n\n## What the hostile controls falsify\n\nOn the 137-label comparison coefficient space, assembly boundary and family incidence have joint rank 55 and kernel dimension 82. A four-slot chain vanishes under both but has nonzero matrix response. Structural sewing therefore fails. Adding the frozen response raises rank to 56, but uniform source-variation response preservation requires rank 137. This is a linear coefficient-task statement, not physically writable 137-record memory. Passing the checker confirms this falsifier; it does not prove the rejected conjecture.\n\n## What remains open\n\nThe programme root and programme-level pilots remain open. Physical source/geometry/instrument maps, preparation, clock, units, calibration, shared regimes and empirical tests must be supplied and transported on the same witness. Missing links are not repaired by arbitrary cross-source matrices or by relabelling quadratic norms as probabilities. RH evaluator arithmetic on an imported countable basis bank is not evidence that seed triangles execute it. No new programme admission is performed by publishing this page. [Programme checkpoint](https://github.com/andrey-kokoev/marici/blob/main/research/conjecture_net/PROGRAMME.md) · [Joint-defect falsifier](https://github.com/andrey-kokoev/marici/blob/main/research/conjecture_net/JOINT-DEFECT-AUDIT.md) · [Current software contract](https://github.com/andrey-kokoev/marici/blob/main/research/nima/pinned-T9-software-contract.md) · [Interactive bounded comparisons](/experiments/research-lab.html).",
+    "checker": "research/conjecture_net/check_joint_defect_audit.py; research/conjecture_net/admit_structural_overlap.py",
+    "result": "research/conjecture_net/results/joint-defect-audit.json; research/conjecture_net/results/finite-structural-overlap-accepted.json"
+  }
 ]

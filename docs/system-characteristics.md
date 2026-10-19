@@ -1,17 +1,41 @@
-# System characteristics
+# Architecture and system characteristics
 
-This register tracks the system as a recursive relational software architecture,
-its proposed physical interpretation, and the mathematical prototypes used to
-test it. The current architecture groups all matching paths and promotes each
-grouped record to a freshly labelled record for the next level. Earlier Gram
-restriction and dynamical prototypes are recorded separately below.
+Use this register for construction contracts and assumptions. For conceptual explanations, see [Theory](/research/theory/); for verification outcomes and exclusions, see [Results](/research/results/).
 
-**Status:** **checked** means the stated construction has executable verification;
-**conditional** means the conclusion depends on the listed model choices;
-**open** identifies a missing construction or physical identification. Checked
-mathematics does not establish a physical interpretation.
+This register separates the recursive relational software architecture, specified
+mathematical constructions, conditional dynamics, and proposed physical
+interpretations. Grouped-record promotion is an architectural specification;
+Gram restriction, geometric assembly, and quantum models have separate contracts.
+Their counts, metrics, and verification claims cannot be transferred without an adapter.
+
+**Status:** **checked** means executable verification of the stated construction;
+**conditional** identifies required model choices; **open** identifies missing
+construction or physical acceptance; **excluded** rejects the specified branch.
+Kernel proofs, written analytic arguments, exact finite checks, and measured
+physical evidence are distinguished. This register summarizes linked research,
+not a new proof certificate. Checked mathematics does not establish a physical interpretation.
 
 ## Current synthesis status
+
+| Track | Positive result | Boundary or exclusion | Source |
+|---|---|---|---|
+| Operational analytic completion | Research reports safe Agda closure for unit norm, metric regularity, unit-circle flow, and the assembled half-turn. | Standard-pi identification is an explicitly accepted written proof, not a kernel ordinary-real interpretation. Operational whole-return assembly remains unresolved; the standard-complex whole-return theorem is a separate written result. | [Half-turn](../research/nima/constructed-unitary-half-turn.md), [completion net](../research/nima/completion-refinement-conjecture-net.md), [standard return](../research/nima/spectral-whole-return-proof.md) |
+| Fixed-carrier Gram tower | Orthogonal restrictions compose and conserve retained-plus-record norm; rung spectra are r+10 and 10. | Probe selection, metric-isotropic preparation, Hamiltonian, and physical units are additional obligations. Rebuilt carriers are a different tower. | [Restriction construction](../research/nima/carrier-gram-restriction-tower.md) |
+| Source-controlled geometry | One orbit/facet/cone rule reconstructs the declared tetrahedron, six-panel belt, and pentachoron with marked interfaces. | Metrics, generators, seeds, and interface roles are inputs. Matching geometry does not select a coefficient protocol or identify particles. | [Common constructor](../research/voevodsky/relative-geometric-source-constructor.md) |
+| Conditional spinor quantization | Reduced and ideal endpoint-parent Hamiltonians are unitarily equivalent. Four conserved-flux blocks give an exact invariant 16-dimensional simulation sector. | No selected physical platform, measured calibration, or particle identification. Structural endpoint flatness is not exact finite-stiffness pinning of independent links. | [Acceptance contract](../research/voevodsky/spinor-quantum-implementation.md) |
+| Absolute mass readout | The common charging/displacement model has an explicit elementary denominator and a general splitting bound. | Matching the proton/electron reference bounds splitting by about 42.5 eV, not the approximately 1.293 MeV target. Common coupling and clock rescaling cannot repair this branch. | [Charging-law exclusion](../research/voevodsky/common-charging-mass-closure.md) |
+| Typed constituent ports | Tensor-lifted belt rims retain both spin components; compatible pair operations can be specified. | The current common-vacuum graph gives repulsion or cancellation in breakup comparisons, not nuclear attraction. A sourced cross-carrier interaction is missing. | [Rim and breakup test](../research/voevodsky/deuterium-typed-rim-and-breakup-test.md) |
+| Joint compatibility | Canonical quantum-state completion preserves the original annotations and all probabilities. | It adds zero prediction constraints in the tested class; intermediate locality is an extra selector. Distinct spatial/flavor/gravity source maps remain unspecified. | [Falsified sufficiency claim](../research/nima/joint-compatibility-free-completion-result.md) |
+| Braid composition | Preserving one attachment restricts endpoint channels to two or three components. | A separate unitary model leaves amplitudes free; 372:1 is an input constraint. The braid representation and sourced amplitude law remain open. | [Composition model](../research/figueiredo/braid-constrained-two-channel-composition.md) |
+| Storage resources | Exact error-transparent interaction expansion and sine-profile midpoint optimization expose concrete resource demands. | The 769-term pulse is not directly a one-/two-body operator on the same qubits. The finite-work optimum is objective-specific; preparation, clock, and bath resources remain. | [Branch comparison](../research/voevodsky/storage-branch-comparison.md) |
+| Element/isotope catalogue | Observations and candidate construction records have explicitly separate provenance. | Coverage is non-exhaustive hydrogen-1 and hydrogen-2, not an explanation or catalogue of all stable isotopes. | [Catalogue](https://github.com/andrey-kokoev/marici/blob/main/research/matter/element-isotope-catalog.json) |
+
+These exclusions reject their stated models or sufficiency claims, not every
+possible carrier construction. They do not erase the positive identities and
+conditional constructions used in the tests. [Theory synthesis](/research/theory/#recent-constructive-results-and-exclusions)
+· [results and exclusions](/research/results/#exclusions-and-unresolved-selection).
+
+### Retained comparison architecture
 
 **Organizing specification.** The middle triple carries9:12->6,8:11->5 and
 7:10->4. Vertical moves retain the label/source/target presentations; rung4 is
@@ -1505,13 +1529,22 @@ result requires a fresh test in this coupled model.
 | Energy dimension | E_r has dimensions Q_r P_r/T_r when Q,P,T are position, momentum, and time scales. | Dimensional consistency leaves the observable and its coefficient unspecified. | Dimensional identity | [Energy normalization note](../research/nima/comparison-update-dynamics-and-energy-normalization.md) | Construct physical action and time from the same carrier dynamics. |
 | Quadratic budget as energy | The conserved norms supply candidate storage observables. | No selected physical Hamiltonian or GeV conversion. | Open | Energy normalization note | Derive the dynamics and energy readout together. |
 | Full tower budget in GeV | No derived value. The 375 GeV example assumes the entire retained rung4 budget is 125 GeV and uses uniform descent. | Higgs excitation has not been identified with the whole rung4 budget. | Conditional example only | [Calibration and audit](../research/nima/tower-energy-descent-trial.md), [Higgs audit checker](../research/nima/checkers/check_higgs_tower_identification.py) | Establish state occupations, energy reference, and dimensional normalization. |
-| Proton/electron ratio | 1836 occurs as a comparison-programme count and in a specified tetrahedral network; the physical mass ratio and fractional correction remain unconstructed. | Equal counts do not identify dynamics; support depends on basis and implementation. | Open physical hypothesis | [Geometry](../research/nima/twelve-triangle-positive-geometry.md) | Derive particle states, Hamiltonian and common energy readout. |
+| Proton/electron ratio | 1836 is a comparison-programme count and a separate fixed-stage network support count, not a measured mass ratio. | The shared charging/displacement branch cannot match both the retained mass ratio and splitting; equal counts do not identify dynamics. | Physical identification open; common charging branch excluded | [Geometry](../research/nima/twelve-triangle-positive-geometry.md), [mass closure](../research/voevodsky/common-charging-mass-closure.md) | Supply a genuinely new source-supported charging or elementary interaction law and test absolute and relative energies together. |
 | Physical spin | Adding S to V36 yields a 72-dimensional tensor carrier with a rank-two collective doublet; replacing the fibers yields dimension 24 and no invariant vector. | S is an additional input. Ordinary S4 doublets do not identify spatial spin or weak isospin. | Compatible extension, not physical selection | [Spinor bridge](../research/nima/binary-tetrahedral-spinor-bridge.md) | Independently source the rotation-path interaction; the native endpoint model does not select it. |
 | Electric charge | I and N commute with the combined A4 action and have eigenvalue +1 on u; 2N-I has spectrum {-1,1}. The former universal no-go was false. | Algebraic eigenvalues are not electric charge. A scaled half-turn has expectation +1 but variance 8. | Counterexamples checked; physical identification open | [Corrected charge scan](../research/nima/tetrahedral-axis-sign-charge-operator.md) | Supply independently specified charge sectors and electromagnetic coupling. |
 | Electromagnetic coupling | Closed-record schedule mixing gives normalized mismatch variance1/137. A trial charge/field interface still has free strength g^2/kappa while that fraction stays fixed. | Relative fluctuation weight does not yet determine source coupling, Maxwell propagation, or a spatial Coulomb law. | Open physical hypothesis; interface freedom checked | [Response bridge audit](../research/nima/137-electromagnetic-response-bridge-audit.md), [checker](../research/nima/checkers/check_137_electromagnetic_bridge.py) | Derive a charge/current observable, its carrier action, and the normalized field response. |
 
 ## Corrections and scope boundaries
 
+- Finite stabilizer covariance and cotangent lifts do not prove ADM field constraints,
+  Lorentzian signature, Einstein dynamics, or a continuum limit. The legacy
+  promotions are [withdrawn](../research/nima/formal-adm-constraint-derivation.md).
+- The half-turn's kernel operational laws and its written standard-pi identification
+  have distinct verification levels. They do not automatically certify whole-return assembly.
+- Traversal effort, stored occupation energy, excitation gaps, and rest energy must
+  use explicit observable maps and a common reference; adjusting a clock cannot fix a ratio.
+- Norm-charge is not electric charge. Changing the exterior reservoir between a
+  composite and its breakup is not a binding-energy derivation.
 - Counting permutations satisfying sigma(i)=j gives (N-1)! for every pair i,j.
   The off-diagonal (N-2)! belongs to intersections of two point stabilizers.
 - Rebuilding probes on each S_r gives a different Gram family from restricting
@@ -1531,63 +1564,40 @@ result requires a fresh test in this coupled model.
 
 ## Next synthesis step
 
-Implement grouped-record promotion with explicit grouping keys, retained members,
-next-level endpoint fields, and identity/version policy. Verify the full two-level
-promotion and drill-down cycle, then test incremental updates against rebuilding.
+The detailed register above retains construction history. The current next steps
+are separate obligations, not one automatic unification or a claim that all
+prototype work is still missing:
 
-The editable-mean prototype now supplies an overlap gain and consistent staged
-return through multiple linear grouping levels, using induced weights and metrics.
-Two-level endpoint-footprint promotion, version-scoped returns and compensating
-event history now share one implementation. Equivalent mean-return routes pass
-checks across insertion/deletion with fresh snapshots. Fixed-membership content
-lens laws now have algebraic proofs and exact regression checks; insertion gives
-an explicit obstruction to unqualified cross-membership edit transport. Next
-construct the response-compatible successor for the actual path-reference
-rectangle defects. Their109 labelled relations and factored responses are now
-derived from the shared assembly legs. The higher filler must retain their
-four-slot support and realize the mixed product response. The compositional
-closure control now gives the exact three-term residual law and passes two
-applications on an explicitly composable network. A free differential-graded realization on the actual shared legs now supplies
-all137 reference witnesses and109 square coherences, including a checked
-base-change/return law. Its original two-leg network has no nontrivial degree-three paths. A declared
-inverse-reference bridge now extends that network recursively and supports the
-next cube, preserving the independent reference and mixed-response law. The source audit separates the record-reconstruction inverse from the direct
-reference. A weak witnessed-return construction now supplies reference-drift
-corrections, an associator and a pentagon filler, with explicit unit-history
-adjustments where needed. A protected-history policy now enforces unit/triangle equations, preserves
-declared readouts and immutable parents, and selects exact least-change updates
-or rejects. Instantiating the existing residual readouts exposes a metric obstruction:
-all14 coherent-history directions in the test fixture are invisible, so their
-positive coefficient costs cannot be derived by response pullback. Fixed-frame recursive composition now preserves the response equivalence,
-while a protected active reference update can distinguish those histories by
-acceptance/rejection or declared edit cost. A consolidated contract now supplies the protected-active admission equation,
-certificate transport and a finite S4 permission-profile realization. Uniform
-family admission composes by intersection and passes two retained promotion
-rounds. A witnessed reference-substitution operation is now available directly from
-retained comparisons and promoted-family anchors. It versions witnesses while
-preserving parents, actual slots and mixed rectangles; its two-step and return
-laws pass. The operator has now fixed the reference locus at rung4 and the middle
-transports as9:12->6,8:11->5,7:10->4. Both presentation squares pass for explicit
-candidate transports. Construct the intended horizontal generator and the
-rung4 reference/readout realization; require both complete routes to preserve
-that observation. The anchored Gram test shows that symmetry, orthogonal budget
-conservation and unit reference norm still leave a metric ratio free. A concrete restriction of the S12 probes to the actual S4 arrow action now
-provides an equivariant rank6 adapter with retained orientation data. Its metric
-is not a scalar match to uniform carrier counting, and its arrow observations
-cannot reconstruct the four state probes. The joint arrow/state adapter now reproduces the actual matrix comparisons,
-with either retained kernel data or a faithful marked-context decoder. Its
-readout/composition square can fail under same-context multiplication; independent
-context pairing repairs the tested defect. Specify independent pairing versus
-explicit coherence correction and the physical rung4 measurement law before
-assigning the induced Gram normalization physical meaning. Local anchor changes must retain their offset to rung4. Keep
-passive relabelling and frozen-history active requests distinct, and specify
-any exclusion-mask or request/retry update separately.
-Keep the H1=0 fixture distinct from the nontrivial-H1 admission counterexample. Numerical normalization must remain independent of hidden
-history choices unless an operational-to-physical coupling is supplied. Track occurrence count separately from independent
-dependencies and cell degree. The direct-reference-to-root adapter and recursive mask policy remain
-explicit inputs. Incompatible requests currently reject and require
-explicit retry; merging needs its own conflict policy.
+1. **Operational return:** assemble the complex/tensor operators, metric interval,
+   gluing, endpoints, piecewise generators, reconstruction/swap coherence, fixed-source
+   faithfulness, and correspondence to the exported standard witness. Preserve the
+   half-turn's mixed verification boundary. [Completion frontier](../research/nima/completion-refinement-conjecture-net.md).
+2. **Comparison architecture:** retain actual witnesses, members, parents, and
+   versioned identity while specifying the intended horizontal generator and rung4
+   readout/metric. Candidate presentation squares and marked response decoders
+   already pass their stated tests; they do not select physical normalization.
+   Decide independent-context pairing versus explicit composition correction,
+   passive relabelling versus active edits, and rejection/retry versus merging.
+   [Source comparison](../research/nima/retained-pointed-comparison-groupoid.md)
+   · [response gate](../research/nima/response-amplitude-source-gate.md).
+3. **Physical adapters:** choose a justified platform or an explicitly labelled
+   digital simulation of the invariant spinor sector, then derive and test actual
+   charging coefficients, transfers, preparation, physical units, and errors.
+   Ideal algebra cannot certify those measurements. [Acceptance tests](../research/voevodsky/spinor-quantum-implementation.md).
+4. **Mass and binding:** change the source-supported charging/elementary interaction
+   law rather than retuning the excluded shared displacement model. Construct a
+   bounded, number- and charge-preserving cross-carrier interaction and compare
+   composite and breakup energies with identical field, boundary, and reservoir
+   data. [Mass exclusion](../research/voevodsky/common-charging-mass-closure.md)
+   · [binding gate](../research/voevodsky/deuterium-typed-rim-and-breakup-test.md).
+5. **Additional selectors and resources:** source a braid representation and
+   amplitude law independently of the 372:1 constraint. For storage, address
+   microscopic high-body interactions or justified ancillary approximations,
+   and test packet objectives beyond the midpoint fixture. Neither compatibility
+   alone nor an objective-specific optimum supplies the missing physical law.
 
-Connecting this presentation architecture to the Gram restriction model remains
-a separate task: identify its live state, records, metric, and observation maps
-before transferring any previously computed spectra or energy budgets.
+Connecting record promotion to Gram restriction still requires explicit live-state,
+record, metric, and observation maps. Keep source occurrence counts, independent
+dependencies, cell degree, coefficient supports, and physical energies distinct.
+No new spectra, coupling, isotope stability, or gauge group follows by transferring
+numbers between prototypes.

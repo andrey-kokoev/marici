@@ -72,6 +72,10 @@ formal generator with a physically available intervention. Completeness and
 minimality remain relative to explicitly demonstrated composition and
 continuation closure.
 
+## Subsequent proposal — 14 October 2026
+
+Entry 4322 develops the continuation-closed capability viewpoint into a proposed marked configuration-space realization: codimension-one dependencies, typed input/output encounters, two-sided recovery and coherent future use. It asks whether a sufficient retained realization certificate explains the candidate count 1836. This is a later research interpretation; the finite-control claims and scope of the present entry remain unchanged.
+
 ## Durable verification
 
 - Sequence allocation: `marici-ledger-entry` value `3005`, claim

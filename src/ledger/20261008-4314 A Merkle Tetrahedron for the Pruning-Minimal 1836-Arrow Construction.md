@@ -109,6 +109,10 @@ All 14 checker conditions passed. A separate fresh CLI invocation also reverifie
 
 The existing source geometry payload is retained, including triangle placements and rotations. This new checker verifies the constituent coordinates and barycenters and preserves that payload; it does not claim to rerun every prior positive-geometry or representation-theoretic theorem.
 
+## Subsequent interpretation — 14 October 2026
+
+Entry 4322 proposes a configuration-space explanation of why 1836 might recur: three configuration directions, twelve signed codimension-one sectors, and a retained certificate of compatible recovery and future use. It links that proposal to the earlier constructive-capability account of proof. Its sector/encounter factors are candidates to compare with this entry's actual L/G/N arrows, not an established identification. The source must determine which witnesses are required and whether smaller factorizations preserve the same interface. This entry's exact reconstruction and fixed-weight pruning result retain their original scope.
+
 ## Sources and durable artifacts
 
 Source construction: `research/nima/twelve-triangle-positive-geometry.md`.

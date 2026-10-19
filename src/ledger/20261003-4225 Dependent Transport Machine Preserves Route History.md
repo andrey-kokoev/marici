@@ -15,6 +15,10 @@ The semantic output-plus-correctness package is contractible for a fixed source,
 
 The operational result covers positive closed route words of the stated circle-cover machine, with its turn rule supplied and then proved sound. General dependent path syntax, inverse syntax, all-schedule termination, and integration with the separate Bool/Nat choose evaluator remain open; the identity generator is not claimed to generate nontrivial loop histories.
 
+## Subsequent proposal — 14 October 2026
+
+Entry 4322 develops proof as sustained constructive capability, requiring recovery certificates to remain usable in subsequent interactions. The route-history distinctions proved here motivate its witness-sensitive continuation requirement. Its codimension-one sector count and candidate explanation of 1836 are additional proposed constructions, outside this machine's established scope.
+
 ## Durable verification
 
 Packet: `research/nima/dependent-transport-machine.md`; Agda source: `research/nima/agda/DependentTransportMachine.agda`; receipt: `research/nima/results/dependent-transport-machine-formal-audit.json`; SCC model: `research/nima/scc-models/nima-dependent-transport-machine.json`. Fresh safe closure, intended rejection, and source-bound SCC audit are reported as passing; not rerun for this entry.

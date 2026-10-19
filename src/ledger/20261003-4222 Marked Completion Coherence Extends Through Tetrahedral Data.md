@@ -17,6 +17,10 @@ For a marked tetrahedron, the two face-composition routes are compared using the
 
 These are finite Cubical Agda results for the stated globular, path, and generated-tetrahedron constructions. They do not prove all-dimensional simplicial coherence, arbitrary fully marked boundary fillers, or a concrete incompatible fourth face with the same six edges. Fixed-boundary higher comparisons remain separate.
 
+## Subsequent proposal — 14 October 2026
+
+Entry 4322 uses retained boundary/filler constructions such as these as precedents for a proposed sustained-realization certificate. It adds a configuration-space dependency geometry and a candidate explanation of 1836. The present finite completion theorems supply bounded examples, rather than a proof of that sector interface or accounting.
+
 ## Durable verification
 
 Packets: `research/nima/graded-boundary-coherence-iteration-01.md`, `research/nima/marked-triangle-coherence-iteration-02.md`, and `research/nima/marked-tetrahedron-coherence-iteration-03.md`. Agda sources: `GradedBoundaryCoherence.agda`, `MarkedTriangleCoherence.agda`, `MarkedTetrahedronCoherence.agda`, and `RelativeCoherentCompletion.agda` under `research/nima/agda/`. Receipts: `graded-boundary-coherence-formal-audit.json`, `marked-triangle-coherence-formal-audit.json`, and `marked-tetrahedron-coherence-formal-audit.json` under `research/nima/results/`. The admitted messages report fresh safe Cubical compilation, intended erasure rejections, and source-bound SCC checks; not rerun for this entry.

@@ -1,4 +1,43 @@
-# Constructions, hypotheses, and verification boundaries
+# Theory: constructions and verification boundaries
+
+Use this page for explanations and definitions. [Architecture](/research/system-characteristics/) records construction contracts; [Results](/research/results/) summarizes checks, exclusions, and open tests.
+
+This page develops specified mathematical constructions and keeps their proposed physical interpretations separate. Exact identities, finite checks, kernel proofs, written analytic arguments, and experimental acceptance are different evidence levels. Verification statements below summarize the linked research; this page is not a new proof certificate.
+
+## Recent constructive results and exclusions
+
+### Analytic return: same witness, different verification levels
+
+The standard-complex construction uses the same source-linearized operators $H_j=\pi(I-P_j)/2$ and $U_j(t)=\exp(-itH_j)$ for local motion and whole-record return. Two reversed-order unitary pieces glue continuously on $[0,2]$, return to the source basis vector, and distinguish the retained schedule tags by their seam states. Reconstruction and schedule exchange respect the whole retained record. The all-time result is a **written analytic proof**, supported by exact finite checks and the Agda source-classification theorem; samples alone do not prove it. No derivative at the switching seam or Cubical-pointwise state decoding is claimed. [Whole-return proof](../research/nima/spectral-whole-return-proof.md).
+
+Separately, the operational completion development reports fresh safe Agda closure for unit norm, all-scale continuity and derivative, unit-circle flow, and the assembled half-turn of the same operational phase. Its identification with **standard pi** uses an explicitly accepted written proof, not a kernel-checked ordinary-real interpretation. Operational complex/tensor whole-return assembly is still the unresolved goal in the cited net. The written standard-complex result must not be silently promoted to an operational certificate. [Assembled half-turn](../research/nima/constructed-unitary-half-turn.md) · [current completion frontier](../research/nima/completion-refinement-conjecture-net.md).
+
+### A fixed-carrier restriction law
+
+For the declared fixed-point probes on $S_{12}$, one normalization gives $G_{12}=10I+J$. Restriction inside that same probe space gives $G_r=10I_r+J_r$, with coefficient-Gram eigenvalues $r+10$ and 10. The correct orthogonal projection from rung $r$ has $y_i=x_i+x_r/(r+9)$, not coordinate deletion; the removed squared norm is $10(r+10)x_r^2/(r+9)$. Nested projections compose and the retained-plus-record norm budget is conserved.
+
+The mean fraction $r/12$ requires metric-isotropic inputs and an additional norm-to-energy law. Rebuilding probes on a different $S_r$ is a different carrier construction. Neither route supplies a Hamiltonian, physical energy decay, particle identity, or the four-number spectrum $(12,11,4,10)$. [Exact restriction tower and checker](../research/nima/carrier-gram-restriction-tower.md).
+
+### Common geometry and conditional quantum dynamics
+
+A common orbit/facet/cone constructor takes declared rational metrics, proper affine isometries, seeds, and interface roles. Independent exact comparison recovers the tetrahedron, six-panel belt, and pentachoron: respectively four, six, and five admitted coarse cones. The belt's cap exclusions and gap are source data. The electron cones subdivide a filled four-simplex rather than giving five disjoint spatial volumes. This reconstructs specified geometry and interfaces, not arrow-only minimality, a coefficient protocol, or physical particles. [Source constructor and sensitivity controls](../research/voevodsky/relative-geometric-source-constructor.md).
+
+A separate conditional spinor quantization has an ideal endpoint-rotor parent unitarily equivalent to its reduced Hamiltonian. Its four conserved-flux blocks form an exact invariant **16-dimensional** subspace containing the global ground and first excited energy. This is a concrete finite simulation target, not the full rotor theory or a realized device. A platform, physical charging metric, assisted transfers, preparation fidelity, and measured error budget remain required. Exact endpoint factorization is not finite-stiffness pinning of independent continuous links. [Quantum construction and physical acceptance contract](../research/voevodsky/spinor-quantum-implementation.md).
+
+### Energy and interaction: explicit excluded branches
+
+- **Common charging mass law:** the shared one-gap law gives $E_e=1-d$, $E_p=1836-d$, and $E_b=1836+e_b$ with $-d\le e_b<0$ and $d<1$. Thus the splitting in elementary-energy units is at most $(E_p/E_e-1836)/1835$. Matching the retained proton/electron reference permits only about **42.5 eV**, not the approximately **1.293 MeV** splitting target. No common coupling or clock rescaling repairs these simultaneous comparisons. This excludes the specified shared charging/displacement branch, not every mass model. [General bound and assumptions](../research/voevodsky/common-charging-mass-closure.md).
+- **Deuterium in the current graph:** tensor-lifted rim maps solve the scalar/spinor type mismatch, but do not select a charged constituent interaction. Pair-minus-breakup energy is positive with independent exterior reservoirs and zero with the same total reservoir. The graph supplies neither attraction nor separation-dependent nuclear binding. A new bounded, number- and charge-preserving cross-carrier interaction must use identical comparison boundaries. [Typed rim and breakup test](../research/voevodsky/deuterium-typed-rim-and-breakup-test.md).
+- **Compatibility as a sufficient selector:** the tested quantum-state completion preserves every admissible annotation and all its record probabilities; forgetting it recovers the original model. Prediction sets therefore remain equal. Intermediate tensor locality would be an additional selector, not a consequence already present in that test class. Maps joining the distinct spatial, flavor, and gravity sources remain unspecified. [Completion result and falsifiers](../research/nima/joint-compatibility-free-completion-result.md).
+- **Braid topology as an amplitude law:** preserving one attachment restricts endpoint multiplicity to two or three components. It does not fix their probabilities. The separate two-channel Hamiltonian retains free coupling, splitting, and duration; **372:1 is an input constraint**, not a prediction. A sourced braid representation and amplitude assignment remain missing. [Constructive composition model](../research/figueiredo/braid-constrained-two-channel-composition.md).
+
+### Storage: constructive resources, not free apparatus
+
+The exact error-transparent pair pulse has **769 Pauli terms**, including weights six, eight, and ten. Pauli-basis uniqueness excludes a direct implementation using only one- and two-body terms on the same code qubits; ancillas, gadgets, or different encodings are not ruled out. Dropping the high-body component terms fails all fifteen nonzero single-error sectors even when clean-code action is preserved.
+
+In the alternative finite-work route, a sine-profile packet optimizes the specified midpoint-fault fidelity at fixed ladder size, giving $[1+\cos(\pi/(M+1))]/2$. This is not a channel-wide or arbitrary-fault-time optimum: another tested input becomes worse at $M=4$. Packet preparation, a physical clock, and microscopic bath/recovery dynamics remain resources to construct. [Exact branch comparison and controls](../research/voevodsky/storage-branch-comparison.md).
+
+The constructive results survive within their contracts; the exclusions require genuinely new source-supported selectors or interactions, not relabelling a count as energy or fitting an observed deficit. See the [public results and comparison targets](/research/results/). The legacy discussions below should be read within these boundaries.
 
 ## Witness Generator (glossary)
 
@@ -8,11 +47,19 @@ $$G_R:\prod_{s:S}\sum_{t:S}R(s,t).$$
 
 It returns an output state and an actual witness connecting it to the input. This name does not imply that the output is later or different; partial operations must include admissibility evidence in their input. The path specialization uses $R(s,t)=(s=t)$. Retained histories, composition and higher coherence require the additional layers; they do not follow merely from the WG type. The names *Witnessor*, *Relational Witness Generator* and *Dependent Relational Witness Generator* refer to this same formulation.
 
-[Layer-1 formulation](../research/nima/typed-witness-generator-layer.md) · [retained Layer 2](../research/nima/typed-generator-layer-2.md) · [ledger glossary entry 4296](../src/ledger/4296%20Witness%20Generator%20Glossary%20and%20Scope.md).
+[Layer-1 formulation](../research/nima/typed-witness-generator-layer.md) · [retained Layer 2](../research/nima/typed-generator-layer-2.md) · [ledger glossary entry 4296](https://github.com/andrey-kokoev/marici/blob/main/src/ledger/4296%20Witness%20Generator%20Glossary%20and%20Scope.md).
+
+### Visual guide: retaining marked typed faces
+
+![Four state occurrences and the fifteen marked nonempty faces in their barycentric incidence presentation; drawing crossings are not new incidences.](/experiments/barycentric-witness-packet.svg)
+
+For one generated tetrahedron, each presentation vertex retains its face occurrence mark, witness type, and witness term. The displayed subdivision has 15 vertices, 50 edges, 60 triangles, and 24 tetrahedra. Equal underlying typed values do not recover occurrence marks; equal volume scores do not recover maximal flags. Those distinctions are retained as records, not reconstructed from the drawing.
+
+This is a chosen finite affine realization, not physical geometry or a general identification of types with barycenters. [Read the diagram and information-loss controls](/experiments/barycentric-witness) · [source and reported verification](../research/nima/barycentric-witness-packet.md).
 
 ### Family formation is not execution
 
-A dependent `Pi-package` retains a family of witnessed values $\prod_{i:I}B(i)$. The original native `P-kind` rule derives that family when **every component already has a derivation**; it can recover a certified component premise from such a derivation. Merely storing or seeding the family does not derive a selected output from a function and input. An explicit dependent application/elimination rule can do that while retaining both operands and its beta witness, but this has been checked only in the **application-extended runtime**, not as a theorem of the original twelve-rule closure. This separation matters for the proposed domain-specific constructor compiler: [scoped experiment](../research/nima/meta-witness-native-bridge.md) and [open conjecture](../src/ledger/4295%20Domain-Specific%20Constructors%20from%20Retained%20Domain%20Presentations.md).
+A dependent `Pi-package` retains a family of witnessed values $\prod_{i:I}B(i)$. The original native `P-kind` rule derives that family when **every component already has a derivation**; it can recover a certified component premise from such a derivation. Merely storing or seeding the family does not derive a selected output from a function and input. An explicit dependent application/elimination rule can do that while retaining both operands and its beta witness, but this has been checked only in the **application-extended runtime**, not as a theorem of the original twelve-rule closure. This separation matters for the proposed domain-specific constructor compiler: [scoped experiment](../research/nima/meta-witness-native-bridge.md) and [open conjecture](https://github.com/andrey-kokoev/marici/blob/main/src/ledger/4295%20Domain-Specific%20Constructors%20from%20Retained%20Domain%20Presentations.md).
 
 ## Finite-place incidence and physical descent
 
@@ -109,153 +156,100 @@ A successful filler gives homotopical descent through $P_8=M_{15}/T_7$ and a map
 
 ## The single object and its three projections
 
-The construction starts from a single object: a finite set $X_N$ with $N$ probe functions $f_i$, forming the **Gram overlap matrix**
+The programme starts with a finite carrier and declared probe data, not a completed physical theory. Probes in a specified inner-product space define
 
 $$
-G_{ij}=\langle f_j\mid f_i\rangle
+G_{ij}=\langle f_j\mid f_i\rangle.
 $$
 
-This programme proposes three physical interpretations of the matrix. Exact finite constructions, supplied physical inputs, and unverified identifications are distinguished below; the matrix alone is not a derivation of all physics:
-
-- **Quantum mechanics** — the interference pattern $I=\sum_{i,j}G_{ij}e^{i(\theta_j-\theta_i)}$
-
-- **General relativity** — the $g_{ab}(p)=G_{ab}|_{\operatorname{Stab}(p)}$
-
-- **Standard Model** — the $S_4$ irrep decomposition $G=V^2\operatorname{diag}(\lambda,\ldots)V$
-
-This replaces position (Q), momentum (P), and time (T) as separate primitives with a single algebraic structure. In this construction, Q and T emerge from the descent of the 12-point carrier through the witness ladder (see the landing page for the rungs table).
-
-The sections below retain the proposed mechanisms and their audits. The [tetrahedral spinor and native-loop tests](#tetrahedral-geometry-spinors-and-the-native-loop-test) correct the earlier identification of finite-group doublets with physical spin and separate representation compatibility from physical selection.
+The historical proposal to obtain QM, GR, and the Standard Model as three projections of this matrix remains a set of **separate comparison problems**. Position, momentum, time, a field action, and gauge interactions are not derived merely by naming matrix sectors. The current [results and exclusions](/research/results/) distinguish bounded constructions from their physical interpretations.
 
 ## 1. The carrier
 
-**Definition.** $X_N=\{x_1,\ldots,x_N\}$ with $N=4$ minimal. The canonical choice is Bool × Bool = {00, 01, 10, 11}.
+**Definition.** $X_N=\{x_1,\ldots,x_N\}$ is a finite set. A selected example is $X_4=\mathrm{Bool}\times\mathrm{Bool}=\{00,01,10,11\}$, with set automorphism group $S_4$. A bare finite set supplies no metric or physical spacetime. Boolean operations or a distinguished square structure are additional data if retained, and can change which symmetries are allowed.
 
-The carrier is a finite set with no metric, no coordinates, no topology. The only structure is the cardinality N and the automorphism group S_N.
+The irreducible complex representations of $S_4$ have dimensions $1,1,2,3,3$; its natural four-point permutation representation is $\mathbf1\oplus\mathbf3$. This does not prove physical minimality, spatial spin, or a continuous gauge group. Partitioning a twelve-point set into three four-point blocks supplies a subgroup $S_4\times S_4\times S_4$ of its permutations, not three derived Standard Model generations.
 
-**Why consider N = 4.** Four labelled points support a tetrahedral geometry. The irreducible complex representations of $S_4$ have dimensions $1,1,2,3,3$; its natural four-point permutation representation is $\mathbf1\oplus\mathbf3$, not $\mathbf1\oplus\mathbf1'\oplus\mathbf2$. Neither this decomposition nor the existence of a doublet establishes physical minimality, spatial spin, or a Standard Model gauge action.
-
-The full carrier for three generations is the 12-point set $X_{12}$, partitioned as $S_4 \times S_4 \times S_4$ (three generations of 4 points each). The ladder $12 \to 11 \to 10 \to \dots \to 4$ describes how the carrier is restricted by witness acts — each act removes one point (a rank-1 projection), dropping the Gram rank by exactly 1. The minimal carrier $N=4$ is the floor: Bool $\times$ Bool = 4 points, cannot restrict further. $N(N-1)=12$ regenerates the top from the floor.
-
-**Connection to homotopy (proposed).** The Postnikov tower of BS4 as source of U(1), SU(2), SU(3) fibres is a proposal, not a theorem. The ladder descent above is the concrete mechanism; the homotopy identification remains conjectural.
+A four-point floor is a chosen model boundary. Smaller subsets exist; they leave that selected carrier presentation, not a proved physically forbidden state space. The Postnikov/gauge-fibre identification remains conjectural.
 
 ## 2. Probes
 
-**Definition.** Each point x_i ∈ X_N has a probe function f_i: X → ℂ. These are complex-valued functions on the carrier, analogous to wavefunctions evaluated at a point — but with no background spacetime.
+Probes $f_i$ are elements of a declared function or vector space, with a chosen inner product and measure. They need not be functions on the label set itself. In the fixed-carrier realization, $f_i$ indicates permutations fixing label $i$ on $S_{12}$, and counting measure gives diagonal $11!$ and off-diagonal $10!$.
 
-**Inner product.** <f_j | f_i> = ∫_X f_j*(x) f_i(x) dx, where the integral is over the carrier domain. In the minimal normalized case: <f_i | f_i> = 1.
+These choices have an exact finite realization but are not selected as physical wavefunctions. Probe normalization, a measurement rule, and the relation to a spatial or tensor structure require their own specification. The number of labels and the dimension of a permutation representation do not determine spacetime dimension or signature.
 
-**Physical interpretation.** The probe f_i encodes all information about the relationship between the carrier point x_i and the rest of the carrier. In standard QM, a wavefunction encodes the relationship between a quantum system and measurement outcomes. Here, the probe encodes the relationship between a point and the whole set. There is no external space for the probes to "live in" — the carrier domain is the only space.
-
-**Emergence of dimensionality.** The dimension of the carrier (N = 4 is minimal) becomes the dimension of spacetime, through the dimensionality of the faithful representation of S4 used to define the probes. The 4-dimensional permutation representation gives 4-dimensional spacetime (3 + 1 from the stabilizer decomposition).
+[Probe construction and count audit](../research/nima/carrier-gram-restriction-tower.md).
 
 ## 3. The Gram matrix
 
-**Definition.** $G_{ij}=\langle f_j\mid f_i\rangle$ is an N × N positive semidefinite Hermitian matrix. It contains all information about the geometric relationships between probe functions.
+A Gram matrix is positive semidefinite and Hermitian: $G_{ij}=\overline{G_{ji}}$. It is real symmetric only under additional reality assumptions. Its spectrum is nonnegative, but it need not be invertible; linear independence of the probes gives positive definiteness.
 
-In standard physics, three separate structures are needed:
+Carrier relabelling transports probe data. **Invariance** of a fixed Gram under every permutation requires an equivariant probe/inner-product construction; it does not follow from the bare set's automorphism group. With common diagonal $s$ and off-diagonal one, the invariant example is
 
-- A Hilbert space ℋ with Hamiltonian ̂H for QM
+$$
+G=(s-1)I+J.
+$$
 
-- A spacetime manifold (M, g_μν) with Einstein-Hilbert action for GR
+On four points its eigenvalues are $s+3$ and $s-1$, the latter with multiplicity three. Choosing $s=12$ gives 15 and 11, not a spectrum of $(12,11,4,10)$. Here $J$ denotes the all-ones matrix.
 
-- A principal G-bundle with connection A_μ for the SM
-
-In this construction, all three arise from **three different projections of the same Gram matrix G_ij**. This is possible because G_ij is simultaneously:
-
-- **Hermitian** (QM — probability conservation, Born rule)
-
-- **Symmetric in its index pairs** (GR — the metric tensor g_μν is symmetric)
-
-- **S4-equivariant** (SM — gauge invariance under S4 → SU(3)×SU(2)×U(1))
-
-The Hermiticity follows from the inner product definition <f_j|f_i> = <f_i|f_j>*. The symmetry follows from the stabilizer restriction G_ab = G_ba. The S4-equivariance follows from $\operatorname{Aut}(X_N)=S_N$.
+The distinct fixed-$S_{12}$ realization, divided once by $10!$, instead has $G_r=10I_r+J_r$ on $r$ surviving probes. Its norm eigenvalues are $r+10$ once and 10 with multiplicity $r-1$. A norm matrix is not automatically a Hamiltonian, Lorentzian metric, or gauge-field action.
 
 ## 4. Automorphism group
 
-$\operatorname{Aut}(X_N)=S_N$ for the N-point carrier. For N = 4: S4, with |S4| = 24. The automorphism group acts by permuting indices: G_ij → G_σ(i)σ(j) for σ ∈ S_N.
+For the bare $N$-point set, $\operatorname{Aut}(X_N)=S_N$. Relabelling permutes Gram indices. The natural $S_4$ representation provides a constant line and a three-dimensional sum-zero subspace; sign and doublet representations exist elsewhere but are absent from this permutation carrier.
 
-Gauge groups from the irrep decomposition of S4:
+Assignments of these dimensions or selected integers to $U(1)$, $SU(2)$, or $SU(3)$ do not construct those continuous gauge actions, charges, or commutators. A binary tetrahedral spinor bridge supplies an explicit representation comparison, not a Standard Model derivation. [Bridge and native-selection test](#tetrahedral-geometry-spinors-and-the-native-loop-test).
 
-- **1 (trivial rep)** → proposed U(1) — overall phase symmetry. Eigenvalue λ_U1 = 12.
+## 5. The ladder descent — restriction versus promotion
 
-- **1' (sign rep)** → a discrete $\mathbb Z_2$ character — no continuous charge assignment follows from it.
+The proposed $12\to11\to\cdots\to4$ ladder groups several distinct operations. They must not be interchanged by matching ranks or labels.
 
-- **2 (doublet)** → proposed SU(2) — weak isospin. Eigenvalue λ_SU2 = 4.
+- **Gram restriction:** project between nested spans of independent probes in one fixed inner-product space. The rank decreases by one under the specified deletion order. Orthogonal projection is not simple coefficient deletion when probes overlap.
+- **Retained-family promotion:** group records, retain their members and weights, and introduce fresh labels. Next-level endpoints and operations remain part of its contract.
+- **Physical descent:** interpreting a norm, count, or rung as an energy or coupling requires an observation and dynamical adapter.
 
-- **3 (standard rep on ℂ⁴ quotient)** → proposed SU(3) — color. Derived from the 3-dimensional subrepresentation orthogonal to trivial.
+For the real coefficient realization $G_r=10I_r+J_r$, the exact restriction is
 
-The gauge groups are proposed to be read off from the irreducible representations of the carrier's symmetry group. This is an ansatz: a finite-group irrep decomposition does not by itself produce a continuous gauge group, and the lift from S4-representation data to U(1)×SU(2)×SU(3) gauge symmetries (with its charges and commutators) has not yet been presented as an explicit construction.
+$$
+y_i=x_i+\frac{x_r}{r+9},\qquad
+x^T G_r x=y^T G_{r-1}y+\frac{10(r+10)}{r+9}x_r^2.
+$$
 
-## 5. The ladder descent — where the Newton path diverges
+Retaining the signed residual reconstructs the original state; nested orthogonal restrictions compose. The mean retained fraction $r/12$ requires a metric-isotropic ensemble. No clock, Hamiltonian, or GeV conversion follows from this norm identity. Rebuilding probes on each $S_r$ gives a different tower with different normalization.
 
-The construction answers the question: *Where does the Newton → QM → QFT path diverge from the carrier derivation?*
-
-**The Newton → QM → SM path (standard):**
-
-1. Newton: ℝ³ as configuration space, ℝ as time. Position Q and momentum P as primitive coordinates on phase space.
-
-1. QM: Promote Q, P to operators on L²(ℝ³). Time remains an external parameter. Quantization is a *procedure* applied to a classical system.
-
-1. QFT: Promote fields (functions of Q and T) to operators. Gauge groups are added externally by hand.
-
-1. SM: Postulate SU(3)×SU(2)×U(1). Write down a Lagrangian with ∼19 parameters. Fit to data.
-
-**The carrier path:**
-
-1. Carrier: X_N finite set → Gram G_ij.
-
-1. The ladder 12 → 11 → 10 → … → 4: witness acts restrict the carrier by one point per act, dropping the Gram rank by exactly 1. Nine rungs, floor N=4, cycle N(N-1)=12.
-
-1. Three projections of G_ij give QM, GR, SM simultaneously, with 4 Gram numbers (12, 11, 4, 10).
-
-**The deviation:**
-
-The Newton path treats Q, P, T as the foundation and builds up by quantizing. The carrier path starts from the Gram and the ladder descent that generates the constants. The ladder 12→4 is the mechanism; the rungs are the scales. The Postnikov identification of the gauge fibres is a separate proposal (see §18).
+[Fixed-carrier derivation and exact checker](../research/nima/carrier-gram-restriction-tower.md) · [separate record transport diagram](#tower-successor-and-mixed-comparison-defects).
 
 ## 6. Three projections from one Gram matrix
 
-Same Gram G_ij, three distinct physical theories from three different ways of reading the same matrix:
-
-| Projection | Construction | Physical theory |
+| Proposed reading | Available mathematical structure | Missing physical identification |
 |---|---|---|
-| **QM** | $I=\sum_{i,j}G_{ij}e^{i(\theta_j-\theta_i)}$ | Quantum interference, Born rule, phase evolution |
-| **GR** | $g_{ab}(p)=G_{ab}|_{\operatorname{Stab}(p)}$ | Spatial metric from stabilizer, spacetime from fibration |
-| **SM** | $G=V^2\operatorname{diag}(\lambda_1,\ldots,\lambda_4)V$ | Gauge groups from $S_4$ irreps, Yukawas from Gram eigenvectors |
+| Quantum | Positive overlaps, a normalized density matrix for nonzero $G$, and declared interference readouts. | State/preparation semantics, measurement effects, tensor locality, and an evolution law. |
+| Gravitational | Finite stabilizer covariance and positive inner-product geometry. | Lorentzian field geometry, continuum limit, action, and smeared Poisson constraints. |
+| Standard Model | Finite permutation representations and specified sector operators. | Continuous gauge actions, matter representations, symmetry breaking, and physical couplings. |
 
-**Why this single-matrix approach works:**
-
-- The Gram is **Hermitian** → eigenvalues are real, probabilities are positive, phase evolution is unitary. This is the QM structure.
-
-- The Gram restricted to a stabilizer is **symmetric** (g_ab = g_ba) → it defines a Riemannian metric. The full spacetime metric (+++-) emerges from the fibration of stabilizers.
-
-- For an equivariant Gram operator, the **permutation representation of S4** supplies scalar and three-dimensional invariant sectors. It does not produce the continuous Standard Model gauge action or select physical couplings.
-
-All three are the same matrix seen from different angles.
+Diagonalization of a Hermitian operator uses a unitary change of basis, $G=U D U^\dagger$. This is a spectral identity, not a construction of the three physical theories.
 
 ## 7. QM projection — interference, phases, and the Born rule
 
-**Interference term.** $I=\sum_{i,j}G_{ij}e^{i(\theta_j-\theta_i)}$. The phase differences θ_j − θ_i give the dynamics — no Hamiltonian needed.
+The expression $I=\sum_{i,j}G_{ij}e^{i(\theta_j-\theta_i)}$ is a declared interference functional. Specifying phase values does not select their evolution; a generator or other update law is required. The earlier claim “no Hamiltonian needed” as a dynamics derivation is withdrawn.
 
-**Born rule.** $\Pr(i)=G_{ii}/\operatorname{Tr}(G)$. The diagonal of the Gram gives probabilities directly: $\Pr(i)=G_{ii}/\operatorname{Tr}(G)$. This follows from the normalization of the probe functions and the positivity of the Gram matrix.
+For nonzero positive $G$, $\rho=G/\operatorname{Tr}G$ is a density matrix in the chosen coordinate Hilbert space. Its diagonal entries give probabilities **under the additional Born-rule measurement interpretation in that basis**. Positivity normalizes this model; it does not select the physical measurement rule. Rank-one factorization is a pure-state case, not a general Gram identity. Entanglement and Bell tests require specified tensor factors, states, and observables.
 
-**Phase evolution.** The phases θ_i evolve along the chirality 3-cycle (identity → left → right → identity). The three steps of this cycle give three phase steps that correspond to the three generations of the SM. The complex phases of CKM and PMNS matrices arise from the misalignment between these three phase steps.
+The recent local-lift construction supplies a different, explicit conditional dynamics. Linearize the two native Bool flips as commuting Hermitian involutions $P_j$ on standard $\mathbb C^4$, then set $Q_j=(I-P_j)/2$, $H_j=\pi Q_j$, and $U_j(t)=\exp(-itH_j)$. With declared standard analytic semantics this gives unitary local legs and external metric whole-return paths retaining schedule information. The written all-time existence proof, exact finite checks, and source-classification theorem have distinct roles; this is not unique selection of physical dynamics by bare Tick.
 
-**Quantization as vertical arrow.** In standard QM, quantization is the promotion of classical observables to operators. Here the Gram IS the operator from the start. The classical limit emerges when phase differences are small (θ_j − θ_i → 0), giving constructive interference that recovers classical trajectories.
+[Standard-complex whole-return construction](../research/nima/spectral-whole-return-proof.md). Operational completion proofs, standard-pi identification, and whole-return assembly are separately scoped; neither this written existence theorem nor a chosen three-cycle establishes physical flavor phases or an arrow of time.
 
-**Where Q, P would appear.** In the standard Schr&ouml;dinger picture, position Q is a multiplication operator and momentum P is a derivative. In the carrier picture, the momentum operator is encoded in the phase gradient &nabla;θ: the Gram phase differences θ_j − θ_i for nearby points i, j give the momentum as d(θ_j − θ_i)/dx. The position operator is the stabilizer index itself — the labelling of points in X_N.
+## 8. GR projection — finite geometry is not ADM gravity
 
-## 8. GR projection — stabilizer metric and spacetime
+For a point of the four-label set, its stabilizer is $S_3$, acting on the other three labels. This finite action gives covariance, not three-dimensional space. A positive Gram submatrix can define an inner product on an independent span. It cannot acquire a negative temporal direction merely by restriction or by connecting stabilizers.
 
-**Stabilizer.** Stab(p) = {σ ∈ S_N | σ(p) = p} &subseteq; S_N. For N = 4, the stabilizer of a point is S3, of size 6, acting as the permutation group on the remaining 3 points. This 3-dimensional orbit gives the spatial dimensions.
+**Withdrawn legacy promotions:** finite stabilizer conjugation as a verification of ADM Poisson brackets; a Lorentzian-signature certificate from an antisymmetric curvature form; and the asserted continuum interpolant. These failed or unsupported routes do not exclude other gravitational constructions.
 
-**Metric from Gram.** $g_{ab}(p)=G_{ab}|_{\operatorname{Stab}(p)}$. Restrict G_ij to the indices corresponding to points in the stabilizer orbit. This submatrix gives the *spatial metric* at point p. The indices a,b run over the 3 dimensions of the stabilizer orbit.
+The conditional rotor and its canonical cotangent lift remain valid finite mechanical comparisons. A positive rotor Hamiltonian with empty zero level cannot simply be renamed a vanishing GR constraint. Adding a clock momentum can parametrize that mechanical system, but does not construct field constraints or a physical-time map.
 
-**Spacetime signature (+++-).** The stabilizer submatrix gives the spatial part (+++). The connection between stabilizers at different points — the Gram overlap between probes at different p — gives the temporal component (−). The full metric is (+++−), matching general relativity.
+The missing comparison must provide a field phase space, actual smeared Hamiltonian and momentum constraints, their Poisson brackets, continuum geometry, and a source-selected action. An Einstein-Hilbert-shaped formula without those data is not a derivation.
 
-**ADM constraints.** The Gram stationarity condition δG/δθ = 0 gives constraint equations that match the ADM Hamiltonian and momentum constraints of GR. The lapse and shift functions of the ADM formalism correspond to the projection of the Gram phase gradient along the stabilizer and its orthogonal complement, respectively.
-
-**Where the Einstein-Hilbert action would come from.** The action principle: S[G] = ∫ R(G) dV, where R(G) is the scalar curvature computed from the stabilizer Gram metric. If δS/δG_stab = 0 reproduces $G_{\mu\nu}=8\pi G T_{\mu\nu}$, the derivation is complete. This derivation is not yet complete (see section 16).
+[ADM correction and stopping boundary](../research/nima/formal-adm-constraint-derivation.md) · [finite canonical actions versus field constraints](../research/nima/finite-canonical-actions-versus-adm-constraints.md) · [continuum evidence boundary](../research/nima/continuum-embedding-evidence-boundary.md).
 
 ## 9. SM projection — S4 irrep decomposition and gauge groups
 
@@ -273,21 +267,13 @@ The numerical expressions in $(12,11,4,10)$ elsewhere on this page remain propos
 
 ## 10. CKM and PMNS — flavor misalignment
 
-**Mixing matrices from Gram misalignment.** V_CKM = V_u² V_d, where V_u and V_d are the Gram eigenvectors for up-type and down-type quark sectors. The misalignment between the two eigenbases — the fact that up and down quarks see different Gram eigenbases — gives the CKM matrix.
+For **supplied** sector diagonalizations, basis changes can define mixing matrices, for example $V_{\mathrm{CKM}}=U_u^\dagger U_d$ and $U_{\mathrm{PMNS}}=U_e^\dagger U_\nu$ with the appropriate physical left-handed bases. This does not select sector operators, their eigenbases, or physical flavor labels from a common Gram matrix. Degenerate eigenspaces do not fix a preferred basis.
 
-Similarly, U_PMNS = V_e² V_ν for leptons. The misalignment between charged lepton and neutrino eigenbases gives the PMNS matrix.
-
-**Phase origin.** The complex phases in CKM and PMNS come from the chirality 3-cycle (identity → left → right → identity) in the S4 structure. The three steps of this cycle correspond to three generations. The phase differences between the three steps are not zero because the 3-cycle has a *handedness* that breaks CP symmetry intrinsically.
-
-**Predictions (exact Gram expressions):**
-
-- δ_CKM &approx; π/3 + (l_SU2/l_U1)² = 60&deg; + 6.4&deg; = **66.4&deg;** (observed 65.5&deg;, ~1.4% deviation)
-
-- δ_PMNS = (l_U1 / C_U1) × π = (12/10)π = 6π/5 = **216&deg;** (exact Gram expression)
+The targets $\pi/3+(4/12)^2\approx66.4^\circ$ and $(12/10)\pi=216^\circ$ are arithmetic expressions, not derived flavor observables. An oriented three-cycle does not establish three generations or CP-violating dynamics. A test needs source-selected sector operators, rephasing-invariant observables, conventions, and uncertainties.
 
 ## 11. Anomaly cancellation
 
-All 6 Ward identities — gravitational, SU(3), SU(2), U(1), mixed U(1)-gravitational, and mixed U(1)-SU(2)² — cancel per generation.
+Anomaly tests concern specified chiral matter representations and charges. Conventional Standard Model matter can satisfy them; verifying its trace identities does not derive that matter from a finite carrier. Local anomaly conditions and global consistency conditions must be distinguished rather than counted as interchangeable Ward identities.
 
 One Standard Model generation plus a right-handed neutrino can be placed in the chiral 16-dimensional spinor of $\operatorname{Spin}(10)$ as an additional representation choice. The former displayed decomposition into one each of $1,1',2,3,3'$ is withdrawn: those dimensions sum to 10, not 16. No embedding and multiplicities selecting a 16-dimensional matter representation from the four-point carrier are supplied here. Anomaly cancellation for specified matter content does not derive that content from the carrier.
 
@@ -295,67 +281,33 @@ One Standard Model generation plus a right-handed neutrino can be placed in the 
 
 **Proposed origin.** A doublet-singlet coupling could be specified on an enlarged representation, but the natural four-point permutation carrier has only $\mathbf1\oplus\mathbf3$. The previously asserted doublet/singlet Gram blocks and symmetry-breaking potential are not derived from that carrier.
 
-**Gram predictions (exact):**
+The identities $11^2+4=125$ and $2\cdot11^2+4=246$ yield candidate targets. Assigning GeV units and a Higgs interpretation requires a derived gauge action, potential, vacuum, and scale; none follows from the integer identities.
 
-- **Higgs vacuum expectation value:** $v = 2\cdot 11^2 + 4 = \mathbf{246\,\mathrm{GeV}}$
-
-- **Higgs mass:** $m_H = 11^2 + 4 = \mathbf{125\,\mathrm{GeV}}$
-
-- **Ratio:** $m_H/v = 125/246 = 0.508$ (observed $125.1/246.2 = 0.508$, within 0.2%)
-
-The Gram off-diagonal block structure gives the Higgs quartic coupling λ = m_H²/(2v²) = 125²/(2·246²) = 0.129, matching the observed value λ &approx; 0.13.
+Their ratio is $125/246\approx0.50813$. Inserting them into the conventional relation $\lambda=m_H^2/(2v^2)$ gives about 0.1291, not a derived quartic potential.
 
 ## 13. Strong CP / axion (schematic)
 
-**Current status: schematic.** A U(1) phase mode of the carrier is identified as a candidate for the QCD axion. The phase mode corresponds to the overall U(1) rotation of all Gram phases θ_i by a constant &phi;: θ_i → θ_i + &phi;.
-
-QCD instanton suppression of θ&macr; (the strong CP angle) is *assumed* from the SM, not derived from Gram numbers. The axion mass and coupling to photons are not computed from Gram expressions.
-
-**Why it remains schematic:** The construction derives the SM gauge group and its representations, but the non-perturbative QCD dynamics that determine the axion potential involve the topological susceptibility of the QCD vacuum. This is a low-energy QCD phenomenon that depends on the detailed dynamics of the SU(3) gauge sector, which the construction has not yet fully derived from the Gram structure.
+A global phase analogy does not supply an axion mechanism. It needs a physical field, symmetry breaking, coupling to QCD topology, and a potential. Neither a continuous Standard Model gauge sector nor its nonperturbative dynamics is derived by the finite comparison. Axion mass, photon coupling, and suppression of the strong CP parameter remain unconstructed.
 
 ## 14. Dark matter
 
-**Fermion content.** Three sterile neutrinos ν_R (one per generation), SM gauge singlets under SU(3)×SU(2)×U(1) but coupled to the carrier through the off-diagonal Gram block.
+Sterile-neutrino content, a seesaw interaction, and modified inertia are candidate additional models, not deductions from Gram entries. The ratio $10/11$ supplies no dimensionful Majorana mass.
 
-**Majorana mass.** The off-diagonal Gram entries give a Majorana mass term for the sterile neutrinos via the seesaw mechanism. The mass scale is set by the Gram eigenvalue ratio C_U1 / r_S12 = 10/11.
-
-**Abundance (exact Gram expression):**
-
-Ω_DM = (C_U1 − l_SU2) / (l_U1 + r_S12) = (10 − 4) / (12 + 11) = **6/23 = 26.1%**
-
-Observed Ω_DM = 26.4% (Planck 2018). Error: 1.2%.
-
-**Experimental consequences.** The construction proposes that particle dark matter could be discovered as sterile neutrino decays (X-ray line at ∼7 keV from a 14 keV sterile neutrino). If instead no X-ray line is found and the abundance is explained by modified inertia (Machian MOND from the bootstrap Z factor, with the suggested acceleration scale a_0 = cH_0/9), then the construction accommodates both — but they are mutually exclusive: the X-ray line and the a_0 = cH_0/9 scale cannot both be valid, and the a_0 expression itself is a proposal rather than a derived relation.
+The proposed abundance $(10-4)/(12+11)=6/23\approx0.26087$ is exact arithmetic. Observational comparison needs a production/evolution law and cosmological readout. No source-selected sterile-neutrino mass, X-ray line, or modified-inertia law is supplied. These candidate mechanisms are not proved mutually exclusive.
 
 ## 15. Dark energy
 
-**Origin.** The uniform diagonal Gram entries (all G_ii equal to a constant value) give a constant energy density that acts as a cosmological constant. With no symmetry breaking on the diagonal, the Gram diagonal is uniform.
+Uniform Gram diagonal entries are equal probe norms, not automatically vacuum stress-energy. A cosmological interpretation needs an action, energy reference, units, and field equations.
 
-**Gram expression:**
+The expression $2\ell_{\mathrm{Pl}}^2/R^2$ is dimensionless. Identifying it with a cosmological constant needs an explicit convention, such as $\Lambda\ell_{\mathrm{Pl}}^2$; dimensionful $\Lambda$ has inverse-length-squared units. The carrier does not select $R$ or this normalization. The cosmological-constant and hierarchy problems are not solved by matching a chosen ratio.
 
-&Lambda; = G_off / G_self = **2 · l_Pl² / R_Hubble²**
+## 16. Einstein equation (unconstructed physical comparison)
 
-where R_Hubble = c/H_0 is the Hubble radius. Using the Gram eigenvalues gives &Lambda; within 5% of the observed value.
+The assertion that ADM constraints already close at the stabilizer level is withdrawn. Finite covariance, a positive Gram inner product, and a parametrized mechanical rotor do not construct a GR field phase space or its constraint algebra.
 
-**The &Lambda; problem.** The observed &Lambda; is 10^−122 in Planck units. In this construction, this small number is a rational expression in the Gram eigenvalues. The analogue in the SM is the Higgs mass hierarchy — also very small compared to M_Pl — and both derive from the same Gram structure.
+The historical proposal to vary a curvature functional of a stabilizer Gram does not establish Einstein's equation. A manifold, Lorentzian metric, curvature, measure, matter action, boundary conditions, and source map must first be defined; the resulting field equations and constraints must then be proved. Even a successful classical variation would not alone supply quantum gravity.
 
-## 16. Einstein equation (partial)
-
-**What is derived.** The metric from the stabilizer Gram: $g_{ab}(p)=G_{ab}|_{\operatorname{Stab}(p)}$. The ADM constraints (Hamiltonian and momentum) close at the stabilizer level, matching the constraints of GR.
-
-**What is not yet derived.** The full Einstein equation $G_{\mu\nu}=8\pi G T_{\mu\nu}$ is claimed to follow from Gram stationarity:
-
-δS / δG_stab = 0
-
-but the **specific action functional S[G]** — whose variation gives the Einstein-Hilbert action S = ∫ R &radic;(-g) dx⁴ + matter terms — has **not yet been derived** from the carrier structure.
-
-**Current status: partial.** The conjectured form is:
-
-S[G] = ∫_X R(G_Stab(p)) dp + ∫×× G_ij G_kl (coupling terms)
-
-where the first term is the scalar curvature of the stabilizer Gram metric and the second term encodes matter couplings. Completing this derivation would give the quantum gravity sector from the carrier structure.
-
-The action principle $S[G] = \int R(G) dV$ whose variation gives $G_{\mu\nu} = 8\pi G T_{\mu\nu}$ is not yet derived (proposed). Completing this derivation would give the quantum gravity sector from the carrier structure.
+Neither that field construction nor a continuum limit is supplied by the legacy finite calculations. [Correction and missing typed comparison](../research/nima/formal-adm-constraint-derivation.md). This rejects the claimed promotion route, not every gravitational construction.
 
 ## 17. Fundamental constants
 
@@ -931,31 +883,28 @@ The native-selection conjecture fails **within this endpoint/filter model**. The
 
 ### Constant expressions
 
-The table below collects proposed expressions in $(12,11,4,10)$. The Planck-scale expression uses the Machian bootstrap factor $Z=1/(1+1/90-1/5280)$. The electromagnetic feedback extensions above are exploratory models with the stated precision failures.
+The assigned numbers $(12,11,4,10)$ generate arithmetic identities and candidate comparisons; they are not the fixed-carrier Gram spectrum. The factor $Z=1/(1+1/90-1/5280)$ is a proposed feedback assignment, not a selected gravitational normalization.
 
-| Constant | Gram expression | Predicted value | Observed | Error |
-|---|---|---:|---:|---:|
-| $\alpha^{-1}$ | $11^2+4^2$ | [**137**](#fine-structure-constant-comparison-slots) | 137.036 | 0.03% |
-| $\sin^2\theta_W$ | $3/13$ (candidate; [trace derivation fails audit](#weak-mixing-matter-trace-audit)) | **0.230769** | ≈0.231 (definition-dependent, electroweak scale) | Scale-matched prediction pending |
-| $M_{\mathrm{Pl}}/v$ | $11^{15}\times12\times Z$ | **$4.96\times10^{16}$** | $4.96\times10^{16}$ | 0.09% |
-| $\Lambda_{\mathrm{QCD}}$ | $M_{\mathrm{Pl}}/11^{19}$ | **~200 MeV** | ~200 MeV | 0.2% |
-| $m_p$ | $14/3\times M_{\mathrm{Pl}}/11^{19}$ | **938 MeV** | 938.27 MeV | 0.7% |
-| $m_p/m_e$ | $12\times(12^2+3^2)$ ([comparison count](#proton-electron-ratio-comparison-paths-and-settling)) | **1836 slots; no derived mass prediction** | ≈1836.152673 | Integer differs by ≈0.0083%; physical readout and correction unresolved |
-| $m_H$ | $11^2+4$ | **125 GeV** | 125.1 GeV | 0.08% |
-| $v$ | $2\cdot11^2+4$ | **246 GeV** | 246.2 GeV | 0.08% |
-| $\Omega_{\mathrm{DM}}$ | $(10-4)/(12+11)$ | **$6/23=26.1\%$** | 26.4% | 1.2% |
-| $\Omega_{\mathrm{de}}$ | $11/16$ | **$11/16=68.8\%$** | ~68.9% | ~0.1% |
+| Candidate identification | Expression | Verification boundary |
+|---|---|---|
+| Electromagnetic coupling | $11^2+4^2=137$ | A [slot count](#fine-structure-constant-comparison-slots), not an electromagnetic readout. The routing trial fails precision recoil targets. |
+| Weak mixing | $3/13$ | The cited [matter-trace derivation fails](#weak-mixing-matter-trace-audit); scale, scheme, and running remain required. |
+| Planck/weak hierarchy | $11^{15}\,12\,Z$ | No carrier-selected scale-generation law is established. |
+| QCD scale and proton mass | $M_{\mathrm{Pl}}/11^{19}$ and $(14/3)M_{\mathrm{Pl}}/11^{19}$ | Require a Planck-mass convention, dynamical QCD scale, and mass observable. Approximate agreement is not a source derivation. |
+| Proton/electron mass | $12(12^2+3^2)=1836$ | [Comparison and implementation counts](#proton-electron-ratio-comparison-paths-and-settling), not the measured approximately 1836.152673 mass ratio. |
+| Higgs mass and vev | $11^2+4=125$, $2\cdot11^2+4=246$ | Assigning GeV units and a Higgs sector is additional unestablished physics. |
+| Cosmological fractions | $6/121$, $6/23$, $11/16$, $91/44528$ | Their sum is exactly one; density and curvature readouts require dynamics and independent normalization. |
 
-The budget uses all four densities: $\Omega_b + \Omega_{\mathrm{DM}} + \Omega_{\mathrm{de}} + \Omega_k = 1$. The $11/16$ form is used consistently across results and the landing page.
+A statistical test needs independently sourced measurements, units and conventions, experimental and theoretical uncertainties, and a traceable derivation. The previous percentage-agreement table did not supply that evidence. [Public comparison targets](/research/results/#numerical-comparison-targets).
 
 ## 18. Mathematical connections
 
-The construction's reach extends beyond physics into pure mathematics, through the same Gram eigenvalues (12, 4) and the S4 / S12 structure.
+**Carrier and Boolean structure.** $\mathrm{Bool}\times\mathrm{Bool}$ has four elements; the free Boolean algebra on two generators has 16. Four classical labels can index a two-qubit basis after linearization and tensor structure are supplied. Their permutation group $S_4$ is not the Clifford group.
 
-**Modular forms.** The Gram eigenvalues l_U1 = 12 and l_SU2 = 4 correspond to the weights of the modular forms E_4 (weight 4) and &Delta; (weight 12). The j-invariant: 12³ = 1728 = j(i), the value of the j-invariant at the cusp.
+**Modular forms.** $E_4$ and $\Delta$ have weights 4 and 12, and $j(i)=1728=12^3$. The point $i$ lies in the upper half-plane, not at a cusp. These identities do not identify modular forms with carrier operators or physical couplings; an explicit map and its laws remain needed.
 
-**Monster VOA.** The Monster vertex operator algebra has central charge 24 = 2 × 12. The Griess algebra (the algebra of the Monster group's 196,884-dimensional representation) is constructed from the Leech lattice, which is in turn related to the Golay code — both structures having connections to S24 (N = 24, the next natural carrier size after N = 12 for three generations).
+**Monster and sporadic groups.** Appearances of 24, the Leech lattice, the Griess algebra, and finite permutation actions motivate possible comparisons. They do not make $S_{24}$ the Monster or establish a next physical carrier. The embedding $M_{12}\subset S_{12}$ is a finite permutation representation, not a physical-generation theorem.
 
-**Homotopy theory (proposed).** The stable stems of the sphere spectrum give $S_4$ as the first non-trivial group beyond $\mathbb{R}/2$. The Postnikov tower of $BS_4$ is a candidate identification for the gauge fibres $U(1), SU(2), SU(3)$, but this is a proposal, not a derivation (see the landing page's ladder descent for the concrete mechanism).
+**Homotopy theory.** Stable homotopy and the Postnikov tower of $BS_4$ are proposed comparison tools. Stable-stem groups do not simply become $S_4$ or continuous Standard Model gauge groups. A gauge correspondence needs an explicit construction, not matching orders or dimensions.
 
-**Sporadic groups.** M12 is a subgroup of S12, and the Monster has a structure related to the Leech lattice and Griess algebra, both connected to S24. These are mathematical parallels, not physics derivations — the physical content of this construction is in the S4 structure, and the sporadic connections show that the same algebraic structures appear in finite simple group theory.
+**Scope.** Moduli, division algebras, TQFT, integrability, and other suggested connections remain separate research hypotheses. Publish exact identities and specified maps with their verification scope, not as evidence that all physics follows from one Gram matrix.
