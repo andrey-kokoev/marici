@@ -1,0 +1,57 @@
+{
+  "schema": "marici.scattering.seed-composition-work-net.v1",
+  "id": "scattering.seed-composition.research.v1",
+  "registration": "local_research_net_not_physical_admission",
+  "objective": {"target": "source-faithful-seed-composition", "outcome": null},
+  "source_pins": "research/scattering/seed-composition/contracts/source-pins.v1.json",
+  "semantics": "Evidence nodes locate existing records. Dependencies are research obligations, not proof imports. Atlas and arrow collection remain authoritative in their own scopes and are not merged or republished here.",
+  "conjectures": [
+    {
+      "id": "isotope-atlas-evidence", "kind": "evidence", "status": "source_located", "outcome": null, "depends_on": [],
+      "statement": "The matter atlas records constituent/isotope claims with separate observation, model and physical-identification statuses.",
+      "evidence": ["research/matter/element-isotope-catalog.json", "research/matter/README.md"],
+      "scope": "Catalogue evidence, not a theorem that the named constituents are physically identified."
+    },
+    {
+      "id": "arrow-seed-collection-evidence", "kind": "evidence", "status": "source_located", "outcome": null, "depends_on": [],
+      "statement": "The source collection retains proton, neutron, electron, neutrino candidate, reversed-electron positron candidate and shared-edge photon candidate as distinct source records.",
+      "evidence": ["research/strominger/results/arrow_particle_collection.json", "research/strominger/positron-reversed-electron-seed.md", "research/strominger/photon-shared-edge-seed.md", "research/strominger/half-electron-positron-seeds.md"],
+      "scope": "Geometric generators and retained continuation modes, not a universal spin/charge/energy identification."
+    },
+    {
+      "id": "atlas-seed-source-correspondence", "kind": "conjecture", "status": "open", "outcome": null,
+      "depends_on": ["isotope-atlas-evidence", "arrow-seed-collection-evidence"],
+      "statement": "Construct a versioned claim-by-claim correspondence between atlas entries and the newer arrow records without equating the tetrahedral spinor, five-cycle geometry, and physical species.",
+      "next_action": "Compare source IDs and per-claim statuses; record the newer reversed positron and photon-stage references separately. Distinguish missing links from contradictions; do not silently rewrite atlas scientific claims.",
+      "acceptance": "Explicit scope-preserving source links and unresolved differences; no inference of charge conjugation from seed reversal."
+    },
+    {
+      "id": "three-vertex-overlap-candidate", "kind": "candidate", "status": "candidate_recorded", "outcome": null,
+      "depends_on": ["arrow-seed-collection-evidence"],
+      "statement": "Under the supplied identification of consecutive A,B,C vertices, electron and reversed positron paths admit two overlapping photon-shaped directed supports after composed-path shorthand; not an independent output factorization.",
+      "candidate": "research/scattering/seed-composition/three-vertex-candidate.v1.json",
+      "scope": "Seven vertices and ten primitive arrow occurrences; two displayed six-arrow supports expand to eighteen primitive usages. Paths and their owners remain retained; geometric/metric gluing, filled faces and photon-mode intertwining are not established."
+    },
+    {
+      "id": "admissible-composition-and-independent-separation", "kind": "conjecture", "status": "open", "outcome": null,
+      "depends_on": ["atlas-seed-source-correspondence", "three-vertex-overlap-candidate"],
+      "statement": "An actual source operation realizes two separately retained photon-candidate outputs from the glued seeds, preserving shared information, metric and dynamics rather than copying path histories as independent states.",
+      "next_action": "Construct the occurrence-to-path incidence map, quantify reused histories and retained residuals, then test a source-authorized reversible encoder or give a scoped obstruction. Audit whether triangle filling and the conjugate photon continuation plane are transported by that same map.",
+      "acceptance": "Source operation and metric/state map with retained residuals, independent-output semantics, coherence-face witnesses and continuation intertwining; a graph motif alone is insufficient."
+    },
+    {
+      "id": "physical-photon-channel-binding", "kind": "conjecture", "status": "open", "outcome": null,
+      "depends_on": ["admissible-composition-and-independent-separation"],
+      "statement": "Bind the chosen output construction to prepared electron/positron inputs and independently identified photon scattering channels with conservation and normalized readouts.",
+      "next_action": "Carry only an explicitly constructed seed operation to the low-energy photon-channel gate; leave physical preparation, scale, bosonic channel structure and readout obligations visible.",
+      "acceptance": "Independent physical-channel justification and normalized amplitudes, not seed naming or fitted branching counts."
+    },
+    {
+      "id": "source-faithful-seed-composition", "kind": "conjecture", "status": "open", "outcome": null,
+      "depends_on": ["atlas-seed-source-correspondence", "admissible-composition-and-independent-separation", "physical-photon-channel-binding"],
+      "statement": "Review a source-faithful seed composition and its stated physical or conditional scope without importing catalogue labels as proof."
+    }
+  ],
+  "frontier": ["atlas-seed-source-correspondence", "admissible-composition-and-independent-separation"],
+  "boundary": {"atlas_is_proof": false, "seed_reversal_is_physical_charge_conjugation": false, "two_independent_photon_outputs_constructed": false, "physical_scattering_explained": false, "ratio_372_derived": false, "formal_outcomes_admitted": false}
+}

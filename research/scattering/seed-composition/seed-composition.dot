@@ -1,0 +1,22 @@
+digraph seed_composition {
+  rankdir=LR;
+  node [shape=box];
+  atlas [label="Isotope atlas\n(evidence only)", shape=note];
+  collection [label="Arrow seed collection\n(evidence only)", shape=note];
+  correspondence [label="Atlas / seed correspondence\nOPEN"];
+  overlap [label="Three-vertex overlap\nCANDIDATE: reused paths"];
+  separation [label="Admissible composition +\nindependent separation\nOPEN"];
+  physical [label="Physical photon-channel binding\nOPEN"];
+  root [label="Source-faithful seed composition\nOPEN"];
+  low [label="Low-energy photon-channel gate\nOPEN", style=dashed];
+  atlas -> correspondence;
+  collection -> correspondence;
+  collection -> overlap;
+  correspondence -> separation;
+  overlap -> separation;
+  separation -> physical;
+  correspondence -> root;
+  separation -> root;
+  physical -> root;
+  separation -> low [style=dashed, label="scoped prerequisite; not proof import"];
+}
