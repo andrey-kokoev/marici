@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "opposite-branch-cycle-lift",
+    "owner": "marici.Strominger",
+    "classification": "pointed-metric-lift-of-signed-inverse-native-cycles",
+    "stratum": "Attachment transport of actual real order-three cycles with their source-defined inverse on opposite-chirality faces; same36-coordinate metric and retained16-coordinate bank. Unchanged-cycle failure remains frozen.",
+    "inputs": ["research/strominger/inputs/opposite-branch-cycle-lift-protocol-v1.json", "research/strominger/results/opposite-branch-canonical/verification.json", "research/strominger/results/opposite-branch-canonical/operators.json", "research/voevodsky/results/belt_three_by_twelve_store.json", "research/voevodsky/results/opposite_branch_belt_store.json", "research/strominger/results/opposite-branch-joint-closure/verification.json", "research/strominger/results/opposite-branch-joint-closure/operators.json"],
+    "checks": [{"id": "opposite-branch-cycle-lift", "path": "research/strominger/checkers/check_opposite_branch_cycle_lift.py", "requires": []}],
+    "depends_on": ["opposite-branch-canonical", "opposite-branch-joint-closure"],
+    "consumes": ["bounded-exact-branch-transport-comparison"],
+    "provides": ["pointed-native-cycle-inversion-lift"],
+    "missing_constructors": ["physical-selection-of-branch-and-cycle-inversion"],
+    "next_falsifier": "Any local Gram/isometry or full cycle/projector/energy residual rejects the lift. Measure forward-lift squared separately from composition with the independently constructed backward lift."
+  }
+}

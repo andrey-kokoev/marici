@@ -1,0 +1,10 @@
+import {makeLatticeItem} from '../demos/particle-overlap-tetrahedron/lattice-items.mjs';
+import {mkdir,writeFile,readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+const items=[makeLatticeItem('tetrahedron',[0,0,0,0]),makeLatticeItem('tetrahedron',[1,1,0,0],true),makeLatticeItem('octahedron',[-1,0,0,0])];
+const out='research/strominger/results/space-filling-36-shape';
+await mkdir(out,{recursive:true});
+const sourceHashes={};
+for(const p of ['research/strominger/checkers/export_native_solid_templates.mjs','research/strominger/demos/particle-overlap-tetrahedron/lattice-items.mjs','research/strominger/demos/particle-overlap-tetrahedron/simplex-components.mjs']) sourceHashes[p]=createHash('sha256').update(await readFile(p)).digest('hex');
+await writeFile(out+'/native-templates.json',JSON.stringify({source:'makeLatticeItem',sourceHashes,items:items.map(x=>({kind:x.kind,inverted:x.inverted,origin:x.origin,components:x.components}))},null,2)+'\n');
+console.log(JSON.stringify({items:items.length,primitiveTemplates:items.reduce((n,x)=>n+x.components.length,0)}));

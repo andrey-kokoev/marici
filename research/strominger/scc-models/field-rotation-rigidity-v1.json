@@ -1,0 +1,30 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "field-rotation-rigidity-v1",
+    "owner": "marici.Strominger",
+    "classification": "exact-native-field-geometric-stabilizers-and-cyclic-rigidity",
+    "stratum": "Attachment transport and readout compatibility of native complex 36-component P/N fields, with fixed metrics, L/G projectors, geometric patch supports, ordered corner cycles and declared sector grouping. Geometric automorphisms are distinguished from arbitrary covariant motion of the whole carrier and from native forward path accessibility.",
+    "inputs": [
+      "research/strominger/field-rotation-rigidity-protocol-v1.md",
+      "research/strominger/results/common-three-carrier-protocol/proton.json",
+      "research/strominger/results/common-three-carrier-protocol/neutron.json",
+      "research/strominger/results/tetrahedral-field-attachment/verification.json",
+      "research/strominger/results/baryon-tensor-grid/verification.json",
+      "research/voevodsky/results/four_six_center_cones.json",
+      "research/voevodsky/results/coupled_six_piece_belt_store.json",
+      "research/voevodsky/results/belt_three_by_twelve_store.json"
+    ],
+    "checks": [{"id":"exact_geometric_stabilizers_cycle_rigidity_and_PN_character_obstruction","path":"research/strominger/checkers/check_field_rotation_rigidity.py","requires":[]}],
+    "depends_on": [],
+    "consumes": ["Native P/N metrics and operators", "Source tetrahedral and belt geometry and marked patch ordering"],
+    "provides": [
+      "Exact finite geometric isometry enumeration and induced full-field linear/antiunitary tests",
+      "Patch-local continuous stabilizer derivation from native transports and cyclic eigenvector overlaps",
+      "Explicit metric/projector-preserving but cycle-breaking unitary hostiles",
+      "Trace obstruction to simultaneous PN projection-role exchange and geometric C3 intertwining"
+    ],
+    "missing_constructors": ["A joint PN attachment law explaining why geometric rotation should become internal field action, or a revised role exchange", "A physical or native-operation interpretation of surviving geometric automorphisms"],
+    "next_falsifier": "A missed distance- and incidence-preserving vertex permutation; a non-scalar patch-local unitary preserving the actual ordered cycles; or an invertible PN map simultaneously exchanging G_P/L_N and intertwining geometric C3 despite restricted traces 3 versus 0."
+  }
+}

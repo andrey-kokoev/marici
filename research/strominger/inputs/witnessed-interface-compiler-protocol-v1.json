@@ -1,0 +1,7 @@
+{
+ "schema":"marici.witnessed-interface-compiler.protocol.v1",
+ "obligations":["forward realization","attachment transport","route/coherencer compatibility"],
+ "rule":"For positive input metric M and independent residual rows B, derive G=B M^-1 B^T, Gamma=G^-1, A=M^-1 B^T Gamma, Q=A B. Return residual, normalized energy Q, reflection I-2Q, and reversible residual/record swap U=[[I-Q,A],[B,0]] in metric diag(M,Gamma), with all input data retained.",
+ "tests":["Use the same formulas for all21 source seam rows,18 source-bank pulse rows,and12 full-plane transport-graph residuals", "Compare outputs with existing matrices rather than fit a projector", "Reuse the existing21 occurrence-memory slots; retain their six collective dependencies", "Test sequential record writes, noncommutation, correct reverse recovery, and deletion hostile", "Separate norm/local residual energy conservation from conservation of the unchanged total Hamiltonian", "Compare residual rank15 with protected existing bank capacity"],
+ "scope":"A common comparison compiler within exact finite linear algebra. It takes the source-selected comparison map and metric as input; does not derive arbitrary comparison tasks or physical execution laws."
+}

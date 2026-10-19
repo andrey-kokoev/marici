@@ -1,0 +1,13 @@
+{
+ "schema":"marici.scc.model-manifest.v1",
+ "model":{
+  "id":"belt-directed-incidence", "owner":"marici.Strominger",
+  "classification":"source-radial-orientation-and-defect-transport-audit",
+  "stratum":"Forward realization followed by chain attachment transport; native WG attachment remains a separate unconstructed cell.",
+  "inputs":["research/strominger/inputs/belt-directed-incidence-protocol-v1.json","research/strominger/inputs/neutron-real-complex-arrows.json","research/voevodsky/results/four_six_center_cones.json","research/voevodsky/results/opposite_branch_belt_store.json","research/nima/agda/SeedJointParityResponse.agda"],
+  "checks":[{"id":"belt-directed-incidence","path":"research/strominger/checkers/check_belt_directed_incidence.py","requires":[]}],
+  "depends_on":[], "consumes":[], "provides":["bounded-belt-radial-and-chain-audit"],
+  "missing_constructors":["native-WG-to-belt-interface-attachment"],
+  "next_falsifier":"The unchanged radial rule must reproduce alternating signs without a sign-fitted direction. Nonzero transported seam records are not fillers."
+ }
+}

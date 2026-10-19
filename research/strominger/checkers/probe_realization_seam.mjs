@@ -1,0 +1,21 @@
+// Does a native realization advance supply a closing seam/monodromy?
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {GenerativeAssemblyRules} from '../../nima/generative-phase-assembly.mjs';
+const input='research/strominger/results/hydrogen-edge-attachment/verification.json',bytes=await readFile(input),samples=JSON.parse(bytes).rows,rows=[];
+const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+for(const sample of samples){
+ const r=new GenerativeAssemblyRules({seedBindings:sample.seedBindings}),p=r.root,pn=r.outgoing(p).map(i=>r.operations[i]).find(o=>o.kind==='PN');assert.ok(pn);
+ function reference(p){const pn=r.outgoing(p).map(i=>r.operations[i]).find(o=>o.kind==='PN');if(!pn)return null;const ne=r.outgoing(pn.target).map(i=>r.operations[i]).find(o=>o.kind==='NE');if(!ne)return null;return {p,n:pn.target,e:ne.target,aliases:r.charts[r.packets[ne.target].chart].aliases};}
+ function advances(start){const path=[start],ops=[];for(let step=0;step<2;step++){const op=r.outgoing(path.at(-1)).map(i=>r.operations[i]).find(o=>o.kind==='reader-phase-advance');if(!op)return {available:false,path,ops};r.validateTransfer(op);ops.push(op);path.push(op.target);}const charts=path.map(i=>r.charts[r.packets[i].chart]),packets=path.map(i=>r.packets[i]);assert.equal(packets[2].origin,packets[0].origin+2);assert.notEqual(path[2],path[0]);return {available:true,path,ops,origins:packets.map(p=>p.origin),sameBody:charts.every(c=>c.cell===charts[0].cell),oneStepCore:charts.map(c=>[c.aliases.C1,c.aliases.M1]),aliasesReturn:same(charts[0].aliases,charts[2].aliases),permutationReturn:same(packets[0].permutation,packets[2].permutation)};}
+ const proton=advances(p),neutron=advances(pn.target);assert.ok(proton.available);assert.ok(proton.aliasesReturn&&proton.permutationReturn);
+ const refs=proton.path.map(reference);assert.ok(refs.every(Boolean));assert.deepEqual(refs[0].aliases,refs[2].aliases);
+ const a=refs[0].aliases,b=refs[1].aliases,oldCore=[a.C1,a.M1],nextCore=[b.C1,b.M1];assert.ok(!same(oldCore,nextCore));
+ const oldSix=new Set(Object.values(a)),nextSix=new Set(Object.values(b)),coincident=[...oldSix].filter(x=>nextSix.has(x));
+ // Distinguish the exact absolute-index return from a chosen quotient period.
+ rows.push({marking:sample.marking,proton,neutron,rebuiltPNEReferenceReturnsAfterTwo:true,afterTwo:{coordinateAndLocalAliasMonodromy:'identity',coefficientPermutationMonodromy:'identity',absoluteOriginDelta:2,samePacket:false},oneStep:{sameCoreEdge:false,oldCore,nextCore,coincidentReferenceVertices:coincident.length},references:refs});
+}
+const availableN=rows.filter(r=>r.neutron.available);assert.ok(availableN.every(r=>r.neutron.aliasesReturn&&r.neutron.permutationReturn));
+const sources=['research/nima/generative-phase-assembly.mjs','research/strominger/demos/particle-overlap-tetrahedron/phase-advance-model.mjs','research/strominger/checkers/probe_realization_seam.mjs'],sourceHashes={};for(const s of sources)sourceHashes[s]=createHash('sha256').update(await readFile(s)).digest('hex');
+const out='research/strominger/results/realization-seam';await mkdir(out,{recursive:true});await writeFile(out+'/verification.json',JSON.stringify({status:'native-reader-return-versus-closure-tested',source:input,sourceSha256:createHash('sha256').update(bytes).digest('hex'),sourceHashes,protonTwoStepReturns:rows.length,neutronTwoStepReturns:availableN.length,rows,scope:'Native same-body reader-phase-advance only, plus rebuilding native PNE reference at each proton reader. NN spatial advances and arbitrary branches not classified. Two steps restore reference geometry and coefficient permutation but add 2 to absolute origin. No actual periodic origin identification or closed realization base is supplied. If one deliberately quotients this two-step return, its endpoint link-label monodromy is identity, unlike the separate M/C reversal reflection. Path-level twisting, framings and interior isotopy not inferred.'},null,2)+'\n');console.log(JSON.stringify({markings:rows.length,protonTwoStepReturns:rows.length,neutronTwoStepReturns:availableN.length,geometryAndPermutationReturn:true,originAdvance:2,singleStepCoreChanges:true}));

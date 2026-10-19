@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "fcc-gaussian-boundary",
+    "owner": "marici.Strominger",
+    "classification": "finite_exact_gaussian_boundary_routes_not_unbounded_recursive_closure",
+    "stratum": "Centered positive-mass rational Gaussian forms on levels 0..3 of T/O with full labelled boundary; pair route comparisons at scales 1,2,4. Only compare routes at equal microscopic action and port set.",
+    "inputs": ["research/strominger/fcc-gaussian-boundary-v1.md", "research/strominger/checkers/analyze_fcc_gaussian_boundary.py", "research/strominger/checkers/check_gaussian_response_refinement_descent.py"],
+    "checks": [{"id": "fcc-gaussian-boundary", "path": "research/strominger/checkers/check_fcc_gaussian_boundary.py", "requires": []}, {"id": "gaussian-response-refinement-descent", "path": "research/strominger/checkers/check_gaussian_response_refinement_descent.py", "requires": []}],
+    "depends_on": [],
+    "consumes": [],
+    "provides": ["exact-centred-Gaussian-boundary-kernels", "same-fine-action-gluing-route-comparison"],
+    "missing_constructors": ["microscopic-refinement-descent-to-boundary-response", "unbounded-complexity-law"],
+    "next_falsifier": "Find identical coarse boundary amplitudes with inequivalent refined boundary amplitudes under a declared microscopic refinement; any such pair rejects response-only refinement descent."
+  }
+}

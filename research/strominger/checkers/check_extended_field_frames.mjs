@@ -1,0 +1,20 @@
+// Larger-path test of the declared candidate's extra field-frame parity.
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {GenerativeAssemblyRules} from '../../nima/generative-phase-assembly.mjs';
+const file='research/strominger/results/hydrogen-edge-attachment/verification.json',samples=JSON.parse(await readFile(file)).rows,rows=[],examples=[];let transitions=0;
+for(const sample of samples){
+ const r=new GenerativeAssemblyRules({seedBindings:sample.seedBindings}),q=[{id:r.root,bit:0,depth:0,word:[],packets:[r.root]}],seen=new Set([r.root+':0']),byPacket=new Map();
+ for(const state of q){
+  const group=byPacket.get(state.id)??new Map();group.set(state.bit,state);byPacket.set(state.id,group);if(state.depth===28)continue;
+  const species=r.charts[r.packets[state.id].chart].species;
+  for(const oi of r.outgoing(state.id)){const op=r.operations[oi];r.validateTransfer(op);transitions++;const bit=state.bit^(op.kind==='reader-phase-advance'&&species==='proton'?1:0),key=op.target+':'+bit;if(!seen.has(key)){seen.add(key);q.push({id:op.target,bit,depth:state.depth+1,word:[...state.word,op.kind],packets:[...state.packets,op.target]});}}
+ }
+ const chartParities=new Map(),chartOriginParities=new Map();
+ for(const s of q){const p=r.packets[s.id];for(const [map,key] of [[chartParities,p.chart],[chartOriginParities,p.chart+'@'+p.origin]]){const bits=map.get(key)??new Set();bits.add(s.bit);map.set(key,bits);}}
+ let ambiguous=0;
+ for(const [id,group] of byPacket)if(group.size>1){ambiguous++;if(examples.length<8){const p=r.packets[id],c=r.charts[p.chart],paths=[...group.values()].map(s=>{const ids=[...new Set(s.packets)],d=r.inspect(ids);return {fieldParity:s.bit,word:s.word,combination:{valid:d.valid,reason:d.reason??null,allContactsWitnessed:d.allContactsWitnessed??false,certifiedExit:d.certifiedExit??false}};});examples.push({marking:sample.marking,species:c.species,origin:p.origin,aliases:c.aliases,coefficientPermutation:p.permutation,paths});}}
+ rows.push({marking:sample.marking,fullNativePackets:byPacket.size,packetAndFieldFrameStates:seen.size,packetsWithBothFieldParities:ambiguous,markedChartsWithBothFieldParities:[...chartParities.values()].filter(s=>s.size>1).length,markedChartOriginsWithBothFieldParities:[...chartOriginParities.values()].filter(s=>s.size>1).length});
+}
+const sources=[file,'research/strominger/checkers/check_extended_field_frames.mjs','research/nima/generative-phase-assembly.mjs','research/strominger/results/full-five-channel-candidate/verification.json'],hashes={};for(const f of sources)hashes[f]=createHash('sha256').update(await readFile(f)).digest('hex');const result={status:'bounded-extra-field-frame-test-complete',depth:28,seedMarkings:24,rows,transitions,examples,sourceHashes:hashes,candidateRule:'Fixed global PN S and inverse, geometric P reader U_P, identity co-moving N reader/NN field transport. In common reference coordinates the P-reader count modulo two is the candidate field frame. E output is terminal; its retained baryon context carries this record.',scope:'Tests a declared field-connection candidate, not a native production field rule. Different histories remain different even when full native packets coincide. If both parities occur, five coefficients plus geometry/origin do not label this candidate field completely. Extra parity may be recorded or edge maps revised; neither is selected physically here. Examples include admission/contact audits and are not all completed assemblies.'};const out='research/strominger/results/extended-field-frames';await mkdir(out,{recursive:true});await writeFile(out+'/verification.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({transitions,states:rows.reduce((s,r)=>s+r.packetAndFieldFrameStates,0),packetsWithBothFieldParities:rows.reduce((s,r)=>s+r.packetsWithBothFieldParities,0),markedChartsWithBothFieldParities:rows.reduce((s,r)=>s+r.markedChartsWithBothFieldParities,0)}));
