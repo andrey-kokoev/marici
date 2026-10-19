@@ -1,14 +1,21 @@
 import fs from 'node:fs/promises'
 import { checkMatterAssets } from './check-matter-assets.mjs'
+import { prepareConjectureNets } from './prepare-conjecture-nets.mjs'
+import { prepareVisualizationAssets } from './prepare-visualization-assets.mjs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import matter from 'gray-matter'
 import MarkdownIt from 'markdown-it'
 import katexCore from 'katex'
 import { katex } from '@mdit/plugin-katex'
+import { ledgerMathMacros, normalizeLedgerForPublication, repairedLedgerEntries } from './ledger-math-publication.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+await prepareConjectureNets(root)
 await checkMatterAssets(root)
+await prepareVisualizationAssets(root)
+// Publish the owned standalone viewer through its receipt-checking publisher.
+await import('../research/strominger/checkers/prepare_particle_overlap_viewer.mjs')
 const sourceRoot = path.join(root, 'src', 'ledger')
 const ledgerOut = path.join(root, 'website', 'research', 'ledger')
 const resultsOut = path.join(root, 'website', 'research', 'results')
@@ -35,12 +42,12 @@ const renderTitle = value => {
   let cursor = 0
   for (const match of normalized.matchAll(/\$([^$]+)\$/g)) {
     html += htmlEscape(normalized.slice(cursor, match.index))
-    html += katexCore.renderToString(match[1], { throwOnError: false, output: 'htmlAndMathml' })
+    html += katexCore.renderToString(match[1], { throwOnError: true, output: 'htmlAndMathml', macros: { ...ledgerMathMacros } })
     cursor = match.index + match[0].length
   }
   return html + htmlEscape(normalized.slice(cursor))
 }
-const markdown = new MarkdownIt({ html: true, linkify: true }).use(katex, { throwOnError: false, strict: 'error' })
+const markdown = new MarkdownIt({ html: true, linkify: true }).use(katex, { throwOnError: true, strict: 'error', macros: { ...ledgerMathMacros } })
 const ledgerPublic = path.join(root, 'website', 'public', 'research', 'ledger')
 if (!pagesOnly) {
 await fs.copyFile(path.join(root, 'src', 'data', 'epistemic-graph.json'), path.join(root, 'website', 'public', 'epistemic-graph.json'))
@@ -86,9 +93,7 @@ for (const file of await walk(sourceRoot)) {
   const description = plain(String(parsed.data.description || first)).slice(0, 280)
   const authorList = Array.isArray(parsed.data.authors) ? parsed.data.authors.map(String) : parsed.data.author ? [String(parsed.data.author)] : /\bcosmolog(?:y|ical|ies)\b/i.test(title) ? ['marici.Benincasa'] : ['marici.Nima']
   const date = `${dateKey.slice(0,4)}-${dateKey.slice(4,6)}-${dateKey.slice(6,8)}`
-  const body = parsed.content.replace(/^\s*#\s+.+\r?\n+/, '')
-    .replace(/^\s*\\\[[ \t]*$/gm, () => '$$').replace(/^\s*\\\][ \t]*$/gm, () => '$$')
-    .replace(/\\\((.*?)\\\)/g, (_, formula) => `$${formula}$`)
+  const body = normalizeLedgerForPublication(parsed.content, entry).replace(/^\s*#\s+.+\r?\n+/, '')
   records.push({ entry, date, dateKey, title, slug, description, authorLabel: authorList.join(', '), authors: authorList, kind: String(parsed.data.kind || 'research'), body, source: `src/ledger/${relative}` })
 }
 records.sort((a,b) => a.entry-b.entry || a.slug.localeCompare(b.slug))
@@ -106,10 +111,14 @@ for (let i=0;i<records.length;i++) {
       return target ? `[${all}](/research/ledger/${target.slug})` : all
     })
   const pageUrl = `/research/ledger/${record.slug}/`
-  const article = markdown.render(body)
+  let article = markdown.render(body)
+  if (/\bclass=["'][^"']*\bkatex-error\b/.test(article)) throw new Error(`Entry ${record.entry}: KaTeX error element emitted`)
+  if (repairedLedgerEntries.has(record.entry)) {
+    article += '<p class="meta">Publication notation repair: malformed TeX delimiters or tags are corrected for display only. Historical source bytes and research claims are unchanged.</p>'
+  }
   const previousLink = previous ? `<a href="/research/ledger/${previous.slug}/">← ${renderTitle(previous.title)}</a>` : '<span></span>'
   const nextLink = next ? `<a href="/research/ledger/${next.slug}/">${renderTitle(next.title)} →</a>` : '<span></span>'
-  const document = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${htmlEscape(record.description)}"><title>${htmlEscape(plain(record.title))} · Marici ledger</title><link rel="stylesheet" href="/katex/katex.min.css"><style>body{margin:0;background:#fcfaf7;color:#29251f;font:16px/1.7 system-ui,sans-serif}.site-head,main{max-width:900px;margin:auto;padding:20px}.site-head{border-bottom:1px solid #ddd5cb}.site-head a{margin-right:1.2rem;color:#80502e}main{padding-top:42px}h1{line-height:1.15;letter-spacing:-.03em}h2,h3{margin-top:2em}a{color:#80502e}pre{overflow:auto;padding:1rem;background:#f0ece7;border-radius:8px}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto}td,th{border:1px solid #d9d2c8;padding:.5rem .7rem;text-align:left}.meta{color:#716b64;font-size:.9rem}.pager{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid #ddd5cb;padding-top:1.4rem;margin-top:3rem}.pager a{max-width:48%}</style></head><body>${marker}<header class="site-head"><a href="/">Marici</a><a href="/research/theory/">Theory</a><a href="/research/results/">Results</a><a href="/research/ledger/">Ledger</a><a href="/explore/graph/">Graph</a></header><main><p class="meta">Entry ${record.entry} · ${record.date} · ${htmlEscape(record.authorLabel)} · ${htmlEscape(record.kind)}</p><h1>${renderTitle(record.title)}</h1>${article}<p class="meta"><a href="https://github.com/andrey-kokoev/marici/blob/main/${htmlEscape(record.source)}">View source on GitHub</a></p><nav class="pager">${previousLink}${nextLink}</nav></main></body></html>`
+  const document = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${htmlEscape(record.description)}"><title>${htmlEscape(plain(record.title))} · Marici ledger</title><link rel="stylesheet" href="/katex/katex.min.css"><style>body{margin:0;background:#fcfaf7;color:#29251f;font:16px/1.7 system-ui,sans-serif}.site-head,main{max-width:900px;margin:auto;padding:20px}.site-head{border-bottom:1px solid #ddd5cb}.site-head a{margin-right:1.2rem;color:#80502e}main{padding-top:42px}h1{line-height:1.15;letter-spacing:-.03em}h2,h3{margin-top:2em}a{color:#80502e}pre{overflow:auto;padding:1rem;background:#f0ece7;border-radius:8px}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto}td,th{border:1px solid #d9d2c8;padding:.5rem .7rem;text-align:left}.meta{color:#716b64;font-size:.9rem}.pager{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid #ddd5cb;padding-top:1.4rem;margin-top:3rem}.pager a{max-width:48%}</style></head><body>${marker}<header class="site-head"><a href="/">Marici</a><a href="/research/theory/">Theory</a><a href="/research/system-characteristics/">Architecture</a><a href="/research/results/">Results</a><a href="/experiments/">Constructions</a><a href="/research/ledger/">Research ledger</a><a href="/explore/graph/">Research graph</a></header><main><p class="meta">Entry ${record.entry} · ${record.date} · ${htmlEscape(record.authorLabel)} · ${htmlEscape(record.kind)}</p><h1>${renderTitle(record.title)}</h1>${article}<p class="meta"><a href="https://github.com/andrey-kokoev/marici/blob/main/${htmlEscape(record.source)}">View source on GitHub</a></p><nav class="pager">${previousLink}${nextLink}</nav></main></body></html>`
   const pageDir = path.join(ledgerPublic, record.slug)
   await fs.mkdir(pageDir, { recursive: true })
   await fs.writeFile(path.join(pageDir, 'index.html'), document, 'utf8')
@@ -121,7 +130,7 @@ ledgerCount = records.length
 
 const results = JSON.parse(await fs.readFile(path.join(root,'src','data','results-physics.json'),'utf8'))
 for (const item of results) {
-  const body = `<!-- Generated by scripts/prepare-website.mjs. Edit src/data/results-physics.json instead. -->\n\n# ${item.domain}\n\n**${item.status}**\n\n${item.details}\n\n${item.checker ? `**Checker:** \`${item.checker}\`\n\n` : ''}${item.result ? `**Result artifact:** \`${item.result}\`\n\n` : ''}[Back to results](/research/results/)\n`
+  const body = `<!-- Generated by scripts/prepare-website.mjs. Edit src/data/results-physics.json instead. -->\n\n# ${item.domain}\n\n**${item.status}**\n\nThis page summarizes the linked research at its stated verification level. It is not a new proof certificate or experimental confirmation.\n\n${item.details}\n\n${item.checker ? `**Checker:** \`${item.checker}\`\n\n` : ''}${item.result ? `**Result artifact:** \`${item.result}\`\n\n` : ''}[Back to results](/research/results/)\n`
   await fs.writeFile(path.join(resultsOut, `${slugify(item.slug)}.md`), body, 'utf8')
 }
 for (const [source, target] of [
@@ -146,7 +155,7 @@ const predictionStart = landingSource.indexOf('## Predictions')
 const derivationStart = landingSource.indexOf('**Construction and formalizations**', predictionStart)
 const predictions = predictionStart >= 0 ? landingSource.slice(predictionStart, derivationStart > predictionStart ? derivationStart : undefined) : '# Predictions\n\nSee the [landing page](/#predictions).\n'
 await fs.mkdir(path.join(root,'website','research','predictions'), { recursive: true })
-await fs.writeFile(path.join(root, 'website', 'research', 'predictions', 'index.md'), `# Falsifiable predictions\n\n${predictions.replace(/^## Predictions\s*/,'').replaceAll('](/results/', '](/research/results/').replaceAll('](/theory/', '](/research/theory/')}`, 'utf8')
+await fs.writeFile(path.join(root, 'website', 'research', 'predictions', 'index.md'), `# Predictions and comparison targets\n\n${predictions.replace(/^## Predictions(?: and comparison targets)?\s*/,'').replaceAll('](/results/', '](/research/results/').replaceAll('](/theory/', '](/research/theory/')}`, 'utf8')
 console.log(pagesOnly
   ? `Prepared authored content and ${results.length} result pages; ledger and public assets unchanged.`
   : `Prepared ${ledgerCount} public ledger entries and ${results.length} result pages.`)

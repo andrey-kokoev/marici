@@ -1,202 +1,123 @@
-# Marici · Physics from one object
+# Marici · Relational constructions and physical hypotheses
 
-**Terminology:** A [Witness Generator](/theory/#witness-generator-glossary) takes a state and returns an output together with a typed witness relating them. This is a mathematical interface, not by itself a physical dynamics or a proof that every proposed domain view can be generated.
+Marici investigates whether relational carriers and **retained witnesses** can constrain physical states, interactions, and readouts. The programme develops exact constructions, formal proofs, conditional models, and tests of proposed identifications. It has not established a replacement for the Standard Model or general relativity, or derived their measured parameters from one object.
 
-## The problem the programme addresses
+A [Witness Generator](/theory/#witness-generator-glossary) returns an output with a typed witness relating it to its input. That interface alone does not supply physical dynamics, an energy law, or a rule selecting every proposed domain view.
 
-The Standard Model of particle physics has about 20 free parameters; ΛCDM cosmology adds about six more. Marici investigates whether source-derived relational constructions can constrain physical states, couplings and readouts. The four-point overlap Gram and restriction ladder below are proposed ingredients, not an established replacement for all of those parameters. Their counts and spectra require separate comparison maps before they become physical predictions.
+## Start here
+
+- **[Theory](/theory/):** explanations, definitions, and the boundaries of proposed physical interpretations.
+- **[Architecture](/research/system-characteristics/):** record structures, construction contracts, inputs, and assumptions.
+- **[Results](/results/):** what has been checked, what is excluded, and what remains open.
+- **[Constructions](/experiments/):** visual guides and interactive workbenches.
+- **[Isotope / R-space viewer](/experiments/isotope-space):** native isotope constructions and a separate realization-space tessellation.
+- **[Research ledger](/research/ledger/):** the dated record behind the current synthesis.
+
+## October 18: tessellated reader fields
+
+A source-derived 12-by-3 baryon field, a conditional PN/NE connection, and retained coefficient frames now form one checked candidate. Seven central checkers pass on fresh replay. Its bounded frame test covers 250,040 states and 458,912 transitions through depth 28, with no conflicting parity at repeated marked charts.
+
+**[Read the field-structure result and its limits →](/research/results/tessellated-reader-fields)** The record includes unsuccessful torus and face-local extensions. Coupling selection, universal coherence and physical dynamics remain open; the added defect-accounting term is not a derived energy law.
+
+## Earlier frontier: October 8–10, 2026
+
+### Source-controlled geometric assembly
+
+One orbit/facet/cone procedure reconstructs the tetrahedral, six-panel belt, and pentachoron candidates, retaining their attachment interfaces. Metrics, symmetry actions, and seed data are explicit inputs—not predictions of physical particles. Reversible centroid modes preserve their metric budget and history.
+
+The successful admission rule operates on **maximal supporting facets**. Applying it to arbitrary refined cells restores the neutron caps and gives 24 triangles instead of 18. The source-controlled construction does not establish a universal dimensional reset or derive particle periods.
+
+[Common assembly and its counterexample, entry 4319](https://github.com/andrey-kokoev/marici/blob/main/src/ledger/20261010-4319%20Common%20Geometric%20Assembly%20with%20Retained%20Interfaces.md).
+
+### Operational analytic formalization
+
+The research reports fresh safe Agda closure for completion-valued phase norm, metric regularity, unit-circle flow, and an assembled operational half-turn. Its identification with standard pi remains an **explicitly accepted written proof**, distinct from the kernel-checked operational laws. Standard-complex external whole-return existence and its operational completion implementation also have different verification levels; whole-return assembly remains open in the cited completion net.
+
+[Half-turn construction and scope](https://github.com/andrey-kokoev/marici/blob/main/research/nima/constructed-unitary-half-turn.md) · [current completion net](https://github.com/andrey-kokoev/marici/blob/main/research/nima/completion-refinement-conjecture-net.md).
+
+### Energy, coupling, and binding: positive models and exclusions
+
+Source-weighted matter/link dynamics now account for exterior field energy against a common empty reference. But belt–proton energy ordering changes with exterior conductance. Internal norm-charge is not identified with electric charge, and an excitation gap is not automatically rest mass.
+
+Two discriminating negative results are retained:
+
+- The specified shared charging/displacement law cannot match both the proton/electron mass ratio and the neutron–proton splitting. Retuning its common strength or clock does not repair that branch.
+- The present deuterium common-vacuum graph gives repulsion with separate reservoirs or zero binding with the same total reservoir. Typed constituent ports alone do not supply an attractive interaction.
+
+A conditional spinor quantum model supplies an exact invariant 16-dimensional simulation sector, not a calibrated device or a particle identification. A neutral bilinear spinor pairing supplies an opposite-phase condition only after neutrality and charge normalization are declared.
+
+[Energy and boundary dependence, entry 4317](https://github.com/andrey-kokoev/marici/blob/main/src/ledger/20261010-4317%20From%20Belt%20Formation%20to%20a%20Common%20Vacuum%20Energy.md) · [mass-branch exclusion](https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/common-charging-mass-closure.md) · [breakup test](https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/deuterium-typed-rim-and-breakup-test.md) · [quantum model](https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/spinor-quantum-implementation.md).
+
+## Explore the constructions
+
+[![Preview of the tetrahedron, six-panel belt and projected pentachoron assembly with retained phase guides](/experiments/previews/assembly.png)](/experiments/proton-neutron-assembly.html)
+
+**[Open the geometry and phase-link workbench →](/experiments/proton-neutron-assembly.html)** Explore declared assembly stages and distinguish solid spatial edges from dotted coefficient-phase guides. These are candidate mathematical constructions, not established particles, energy scales, or binding laws.
+
+**[Browse the construction gallery →](/experiments/)** Choose from geometry and assembly, information and readouts, spinor comparisons, independent products and paw closure, or a static witness diagram. These are separate construction families, not steps in one physical sequence. Previews open full-screen interactives rather than embedding dense controls here.
 
 ## Matter research atlas
 
-[Explore the interactive isotope and mechanism registry →](/experiments/matter-catalog.html)
+[Explore the isotope and mechanism registry →](/experiments/matter-catalog.html)
 
-Compare hydrogen-1 and hydrogen-2, inspect constituent candidates, and follow the working mass, charge and coupling mechanisms to their sources. The atlas separates observed isotope properties from geometric constructions, conditional energy models and remaining binding/stability obligations. It includes the charged-core dressing mechanism, quotient-charge model, and conservation-compatible hydrogen mass readout.
+Current coverage includes **hydrogen-1 and hydrogen-2**, constituent candidates, and linked mass, charge, coupling, and memory mechanisms. Observed isotope properties are separate from geometric constructions and conditional models. Input masses or binding energies used in accounting are not independently predicted; binding and isotope-stability explanations remain open. Mechanism links indicate relevance, not completed physical identification.
 
-## Current construction and comparison frontier
+[Standard Model reference graph](/matter/standard-model-graph) displays conventional field species and interaction families separately from Marici's conjectural constructions.
 
-- **Local arithmetic operator:** translation can expose residue information erased by valuation averaging. The resulting finite Tate incidence has exact adjoint and Fourier structure and a uniform gap on its nonzero active sectors. [Construction and finite verification](/theory/#tate-residue-to-valuation-incidence).
-- **Cosmology comparison:** nine oriented circuit states are not identified with the rank-nine marked-relative ambiguity module. The next certificate must construct their source-labelled map into $M_{15}$ and preserve the elliptic quotient and symmetry action. [Required comparison](/theory/#the-circuit-to-cosmology-comparison-certificate).
-- **Physical descent:** Green homotopy may remove the rank-seven lift ambiguity without choosing an absolute representative. Equivariant fillers and a source-defined zero elliptic origin are still required. [Descent equation and scope](/theory/#green-homotopy-rather-than-an-arbitrary-absolute-lift).
+## Carrier, overlap, and the proposed ladder
 
-These are distinct verification stages. The local Tate result does not establish the arithmetic packet normalization, global completion, or a cosmological readout.
+The four-element carrier $\mathrm{Bool}\times\mathrm{Bool}$ has set automorphism group $S_4$. Declared probes and an inner product define a positive semidefinite Hermitian Gram matrix $G_{ij}=\langle f_j\mid f_i\rangle$. The symmetry of the underlying set does not by itself select the probes, their measure, or their physical meaning.
 
----
+If a Gram is invariant under every carrier permutation, it has a common diagonal and a common off-diagonal entry. For diagonal $s$ and off-diagonal one,
 
-**Marici relational carrier**
+$$
+G=(s-1)I+J,
+$$
 
-## Relational carrier: physics from one object
+where $J$ is the all-ones matrix. On four points its eigenvalues are $s+3$ once and $s-1$ three times. Setting $s=12$ is a model choice: these eigenvalues are 15 and 11, with gap 4. The counts of directed pairs (12), undirected pairs (6), and real symmetric matrix entries (10) are arithmetic facts, not derived gauge couplings or generation counts. The natural permutation representation is $\mathbf1\oplus\mathbf3$, not a singlet–singlet–doublet split.
 
-The carrier is $\mathrm{Bool} \times \mathrm{Bool}$ — a four-element set with automorphism group $S_4$. Its overlap matrix $G_{ij} = \langle f_j \mid f_i \rangle$ is the Gram of the four probe functions $f_i$. The automorphism $S_4$ forces all off-diagonal overlaps equal (the carrier cannot distinguish directions among its own points), so the Gram reduces to $G = sI + J$ (self-coupling $s$, uniform cross $1$) on $N=4$ points, with eigenvalues $s+3$ (×1) and $s-1$ (×3).
+The explicit stabilizer-indicator realization on **one fixed $S_{12}$ probe space** instead gives $G_r=10I_r+J_r$ under restriction, with norm eigenvalues $r+10$ and 10. It must not be conflated with the four-point example or with the assigned numbers $(12,11,4,10)$.
 
-On this carrier the directed-pair count is $2\cdot C(4,2) = 12$. Setting $s = 12$ identifies the Gram's self-coupling with the carrier's full relational structure:
+The proposed $12\to11\to\cdots\to4$ ladder organizes several research models. Gram-orthogonal restriction has exact retained-plus-record norm identities when the probes are independent. Family promotion is a different operation that retains grouped records under fresh labels. Neither a chosen four-point floor nor rank reduction selects a physical energy, gauge group, or measured constant. The specified transports $9:12\to6$, $8:11\to5$, $7:10\to4$ have checked retained-record candidates, but their intended physical generator and rung-4 readout remain to be identified.
 
-- The spectral gap $4 = N = l_{SU_2}$ — the fundamental scale (independent of $s$).
-- The $s-1$ eigenvalue $11$ appears with multiplicity $3 = N-1$.
-- Symmetric Gram degrees of freedom: $N + C(N,2) = 4 + 6 = 10 = C_{U_1}$.
-- Directed pairs: $2 \cdot C(N,2) = 12 = l_{U_1}$.
+[Fixed-carrier Gram construction](https://github.com/andrey-kokoev/marici/blob/main/research/nima/carrier-gram-restriction-tower.md) · [comparison-tower checks](/results/#current-comparison-tower-checks) · [transport diagram and assumptions](/theory/#tower-successor-and-mixed-comparison-defects).
 
-### Why these numbers are forced (hard to vary)
+## Retained comparisons and verification
 
-| If you change… | …the numbers become | …which does not match observation |
+- **137:** the specified comparison domain has 121 arrow–arrow slots and 16 state–state slots. Equal-slot averaging and conditional equilibrium mismatch shares are not an electromagnetic coupling derivation. The exploratory inverse-coupling value 137.036195934 fails the quoted precision recoil targets. [Interpretation and precision outcome](/theory/#carrier-realized-comparison-and-the-decimal-tail).
+- **1836:** both a comparison programme and a specified tetrahedral coefficient network have this count. The latter is pruning-minimal under fixed-weight deletion, not under unrestricted refactoring or reweighting. Neither derives the observed mass ratio. [Construction and mass boundary](/theory/#proton-electron-ratio-comparison-paths-and-settling).
+- **Spin and charge:** the binary tetrahedral bridge is checked; the native endpoint/filter spinor-selection test fails. Declared spinor extensions and opposite-phase pairing are additional constructions, not a reversal of that failure. [Spin and charge audit](/results/#tetrahedral-spin-and-charge-audit).
+- **Merkle witnesses:** content hashes bind records and dependencies; dedicated verifiers separately check identities, gluing, global transport, and explicit fillers. Surface closure does not prove that a filler exists, and local flatness does not imply trivial global holonomy. [Bounded prototypes, entry 4313](https://github.com/andrey-kokoev/marici/blob/main/src/ledger/20261008-4313%20From%20Merkle%20Identities%20to%20Discovered%20Surfaces%20and%20Verified%20Fillers.md).
+
+## Arithmetic and cosmology comparison frontier
+
+Finite Tate residue-to-radial incidence has exact adjoint/Fourier structure and a uniform gap on its nonzero active sectors. Arithmetic packet normalization and global completion remain separate obligations. The nine-state circuit resolution is not yet identified with the marked-relative cosmology module; its source-labelled comparison and equivariant descent data are still required.
+
+[Local theorem and remaining comparison](/theory/#finite-place-incidence-and-physical-descent).
+
+## Predictions and comparison targets
+
+**These are proposed numerical expressions, not established physical predictions.** Exact arithmetic does not select an observable, units, normalization, or dynamics. A statistical comparison requires independently sourced measurements, scale and scheme conventions, and experimental and theoretical uncertainty. The earlier fixed “falsified if” windows were not a justified uncertainty model and are withdrawn. Rejection of a specified expression does not automatically reject the programme.
+
+| Comparison area | Candidate expression or count | What is still missing |
 |---|---|---|
-| $N=4$ to $N=3$ | gap $3$, generations $2$, pairs $3$, directed $6$, symmetric $6$ | 2 generations instead of 3; gap $3 \neq 4$; symmetric and directed degenerate ($6 = 6$) |
-| $N=4$ to $N=5$ | gap $5$, generations $4$, pairs $10$, directed $20$, symmetric $15$ | 4 generations instead of 3; gap $5 \neq 4$ |
-| uniform cross to non-uniform | eigenvalues and gap can change | proposed constant expressions require recalculation; the $3/13$ trace derivation separately fails the [multiplicity audit](/theory/#weak-mixing-matter-trace-audit) |
-| rank-1 descent to rank-2 | the ladder drops by 2 per step | the 9-rung sequence would be 12, 10, 8, … — skips 11 and 10, missing the named constants |
+| Cosmological curvature | $91/44528\approx0.00204366$, the deficit of the proposed density budget. | A cosmological dynamics and sector-specific curvature readout; it is not selected by arithmetic closure alone. |
+| Neutrino and quark phases | $(12/10)\pi=216^\circ$; $\pi/3+(4/12)^2\approx66.4^\circ$. | Source-selected mixing operators and phase conventions. A ratio of chosen numbers is not a flavor derivation. |
+| Proton/electron mass | $12(12^2+3^2)=1836$. | Physical states, a common mass observable, and the fractional correction to the retained approximately 1836.152673 measurement target. The common charging branch is excluded, not repaired by that count. |
+| Higgs mass and vev | $11^2+4=125$; $2\cdot11^2+4=246$. | A derived Higgs sector and dimensional normalization before assigning GeV units. |
+| Electromagnetic and weak coupling | 137 comparison slots; candidate weak fraction $3/13$. | A charge/field normalization and scale-matched observable. The electromagnetic routing trial fails precision; the cited weak matter-trace derivation fails colour counting. |
+| Dark matter and gravity | Candidate density $6/23$ and feedback factor $Z=1/(1+1/90-1/5280)$. | A selected dark-sector mechanism and gravitational action. This factor does not by itself predict a $10^{-4}$ variation of $G$ or force sterile-neutrino and modified-inertia explanations to be mutually exclusive. |
 
-The three constraints — $N=4$, uniform cross, rank-1 descent — are each independently necessary. Remove any one and the constants lose their observed values.
+No new quantitative physical prediction is established by the October 8–10 constructions. Several model branches are positively tested and several are excluded, each within its declared scope.
 
-### The ladder
-
-The ladder $12 \to 11 \to 10 \to \dots \to 4$ follows from restriction. A **witness act** is a projective restriction of the carrier to one fewer point — the removed point's probe function is no longer available as an independent degree of freedom. Each such restriction drops the Gram rank by exactly $1$ (the removed probe is linearly independent of the remaining $N-1$). The ladder has nine rungs, one per act.
-
-**Why the floor is $N=4$ and cannot be lower:** the carrier is $\mathrm{Bool} \times \mathrm{Bool}$, which has exactly four points. Its automorphism group is $S_4$. You cannot restrict below $N=4$ without leaving the $\mathrm{Bool} \times \mathrm{Bool}$ structure — the carrier's own identity fixes the floor. $N(N-1)=12$ regenerates the top from the floor.
-
-**Cross-sector bridges**
-
-## Ladder descent
-
-| Rung | Value v / Gram number | Symbol | Assigned representation | Physical meaning | Free pts | C(v,2) | v+C(v,2) | Control layer | Why this ratio governs that bridge |
-|---:|---:|---|---|---|---:|---:|---:|---|---|
-| 1 | **12** | $\lambda_{U(1)}$ | Trivial representation | $U(1)$ hypercharge overlap | 12 | 66 | 78 | **Presentation** | Full directed-pair structure — the surface physics sees |
-| 2 | **11** | $r_{S12}$ | Off diagonal / $S_{12}$ | Three-generation mixing overlap | 11 | 55 | 66 | Presentation | First screening: 12 → 11 by one witness act |
-| 3 | **10** | $C_{U(1)}$ | Sign representation | Charge-conjugation overlap | 10 | 45 | 55 | Presentation | Symmetric remainder $4+6$ after two acts |
-| 4 | 9 | — | — | — | 9 | 36 | 45 | **Transport / API** | $3^2$ — the interaction lattice, first value below spectral bottom 11 |
-| 5 | 8 | — | — | — | 8 | 28 | 36 | Transport / API | $2^3$ — the 8 directional channels of spatial engagement |
-| 6 | 7 | — | — | — | 7 | 21 | 28 | Transport / API | Prime boundary — the irreducible interface |
-| 7 | **6** | — | — | — | 6 | 15 | 21 | **Core state** | $C(4,2)$ — internal pairs of the minimal carrier |
-| 8 | **5** | — | — | — | 5 | **10** | 15 | Core state | $N+1$ — the witness pointer. $C(5,2)=10 = 6+4$ unifies the two readings of $C_{U_1}$ |
-| 9 | **4** | $\lambda_{SU(2)}$ | Doublet representation (multiplicity 2) | $SU(2)$ weak overlap | 4 | 6 | **10** | Core state | $N$ — minimal carrier. Floor. Cycle seed $N(N-1)=12$ |
-
-The control parameters ($\varepsilon = 1/90 - 1/5280$, $5280 = 12 \cdot 4 \cdot 11 \cdot 10$, $Z = 1/(1+\varepsilon)$) set the loop's feedback gain. $5280$ is the product of the four Gram numbers. $90 = C_{U_1} \times (C_{U_1} - 1) = 10 \times 9$, which follows from $C_{U_1} = N + C(N,2) = 10$ (derived from $N=4$). The expression $\varepsilon = 1/90 - 1/5280$ can be rewritten as $\varepsilon = (1/C_{U_1})(1/(C_{U_1}-1) - 1/(l_{U_1} l_{SU_2} r))$, which spans all three ladder layers. The specific combination (difference of inverses, scaled by $1/C_{U_1}$) is the proposed control correspondence; a forced derivation from the descent mechanism is still open (see ledger §4197). In the layer mapping: the presentation layer is the full 12-pole feedback; the transport layer operates below the spectral bottom 11 (the visible line); the core state is the plant, whose $N(N-1)=12$ regenerates the presentation.
-
-Each bridge is a ratio of two rungs. The ratio is forced by the Gram — it is not a free assignment:
-
-| Bridge | Rungs | Ratio | Why this ratio |
-|---|---|---|---|
-| QM / GR | 1 and 9 | $12/4 = 3$ | $12/4 = N(N-1)/N = N-1 = 3$ — the spatial dimension count is the carrier's generation number |
-| Planck / weak | 1 and 2 | $12/11$ | The first screening of one witness act sets the electroweak hierarchy ratio |
-| DM / DE / baryons | 2, 3, 9 | $11, 10, 4$ | The three numbers partition the cosmic budget: visible $+$ dark $+$ vacuum = carrier + pairs + screening |
-| Mach / GR | 9 | $Z = 1/(1+\varepsilon)$ | The bootstrap constant is the closed-loop transfer function of the whole ladder |
-| couplings / masses | 1–4 | $12 \to 9$ | The first triplet's descent generates the Yukawa hierarchy |
-| flavor / gauge | 5 | $C(5,2)=10$ | The 5-point witness structure $10 = 6+4$ unifies gauge ($6$ internal pairs) and flavor ($4$ witness spokes) |
-| baryogenesis / PMNS | 3, 4 | $C_{U_1}=10$ | The record-stage symmetric dof $10$ governs CP phase origin |
-| Larmor / Newton / Einstein | 1, 4 | gap $4 = l_{SU_2}$ | The spectral gap $4 = N$ maps every classical-to-relativistic transition |
-| CC / holography | 9 | $\Lambda = 2 l_{\mathrm{Pl}}^2 / R^2$ | The floor $N=4$ is the minimal holographic screen |
-| control / bootstrap | all four | $5280 = 12 \cdot 4 \cdot 11 \cdot 10$ | The product of all four Gram numbers is the loop denominator |
-
-[Read the full ladder descent →](/results/#ladder)
-
----
-
-### Physics
-
-| Role | Name | Origin (status) |
-|------|------|----------------|
-| Quantum mechanics | QM | 3-valued eigenvalue multiplicity (derived) |
-| General relativity | GR | Gap $4 = l_{SU_2}$ (derived — mechanism proposed, see §2 of the derivation) |
-| Standard Model | SM | 3-generation structure from $N-1 = 3$ (derived — couplings and mixing proposed) |
-| Cosmology | 5 epochs | The 9-rung descent partitioned by triplets (proposed) |
-| Specific sectors | Larmor, Beta, EPR, Mach | Each is a ratio of two rungs in the ladder (proposed) |
-
-### Mathematics
-
-| Role | Name | Origin (status) |
-|------|------|----------------|
-| Boolean algebra | | 4-point carrier $\mathrm{Bool} \times \mathrm{Bool}$ (direct) |
-| Division algebras | ℝ, ℂ, ℍ, 𝕆 | The Gram's $N=4$ gives four algebras, dimension $4 = N$ (proposed — structure matches, routing not shown) |
-| Homotopy theory | Postnikov BS4 | The automorphism tower of $S_4$; the gap $4$ appears at every stage (proposed) |
-| CFT, algebraic geometry, modular forms | | Gram eigenvalues at special points (proposed — Eisenstein series identification not yet exhibited) |
-
-### Constants
-
-**Latest structural synthesis: retained witnesses and conditional feedback.** The tower specifies transports $9:12\to6$, $8:11\to5$, and $7:10\to4$, with the physical reference at rung 4. Source comparisons retain actual equivalence witnesses and histories; checked adapters preserve them alongside all 137 matrix responses. A conditional preparation-and-transport model now includes feedback that preserves family means and contracts disagreement while retaining old records. Physical preparation, metric and gain remain to be identified: the matrix amplitudes are supplied fixtures, and contraction is not yet a physical energy-dissipation law. No new numerical constant or gauge identification follows. [Diagram, checked results, and open steps](/theory/#tower-successor-and-mixed-comparison-defects).
-
-**Tetrahedral update: a checked spinor bridge, not a derived proton.** The 36-coordinate geometry has an exact projector algebra and a binary tetrahedral lift with $2\otimes2^*=1+3$. Adding a spinor factor gives a collective doublet, but native rotation-loop transport returns +1 rather than the required -1. The native-selection conjecture fails in that model; physical spin, charge coupling and mass identification remain open. The earlier universal charge no-go is withdrawn. [Construction, independent test and corrections](/theory/#tetrahedral-geometry-spinors-and-the-native-loop-test).
-
-**137 as a comparison-slot count (proposed).** Compare two $T_1$ carriers using their direct relationship as reference: eleven remaining arrows on each side give $121$ arrow–arrow slots; their four-valued states give $16$ state–state slots. The total is $137$. With equal weights, $1/137$ is the average normalized weight per comparison slot, proposed to represent electromagnetic coupling—not a cost per arrow. [Read the interpretation and assumptions](/theory/#fine-structure-constant-comparison-slots). The [carrier-realized readout study](/theory/#carrier-realized-comparison-and-the-decimal-tail) develops reference interference, residual power, and two-way feedback. Its assembly checks pass; the exploratory 137.036195934 feedback value fails precision measurements. A closed-record model now gives equal normalized mismatch response under schedule-averaged equilibrium. A separate evolving-phase Hamiltonian closes comparison back-reaction; its long-time response and electromagnetic identification remain open. [Equilibrium and phase back-reaction](/theory/#record-equilibrium-and-phase-back-reaction).
-
-Each constant is an expression in the four Gram numbers $(12, 11, 4, 10)$. One example with the chain visible:
-
-$m_H = 11^2 + 4 = 125\;\mathrm{GeV}$ — $11$ is the first visible eigenvalue ($12$ screened once), $4$ is the floor. The formula $11^2 + 4$ follows from the spectral decomposition of the witness-restricted Gram (see ledger §4197 for the derivation).
-
-Other proposed constant expressions are collected below (see ledger §4197). **Weak-mixing audit:** the cited matter-trace derivation of $3/13$ omits quark colour multiplicity; consistent counting gives $3/8$ under its normalization assumption. The $3/13$ carrier expression needs a new derivation. [Read the audit](/theory/#weak-mixing-matter-trace-audit).
-
-[137](/theory/#fine-structure-constant-comparison-slots), $\sin^2\theta = \frac{3}{13},\quad \text{Yukawa} \times 6,\quad \Lambda_{\mathrm{QCD}},\quad m_p = 938\,\mathrm{MeV},\quad N_{\mathrm{comparison}} = 1836$
-
-$\delta_{\mathrm{CKM}} \ (\sim 1.3\%),\quad \delta_{\mathrm{PMNS}} \ (\text{exact}),\quad y_t = 1,\quad \Lambda,\quad \frac{M_{\mathrm{Pl}}}{v} = 11^{15} \times 12 \times Z$
-
-$\Omega_b = \frac{6}{121},\quad \Omega_{\mathrm{DM}} = \frac{6}{23},\quad \Omega_{\mathrm{de}} = \frac{11}{16}$
-
-[View the complete results](/results/)
-
-**Control theory reframing**
-
-## The universe as a feedback system
-
-[System characteristics](/research/system-characteristics/) tracks the record-family tower, software behaviour, verification results, and open questions about identity, updates, and feedback.
-
-The $12 \to 4$ ladder maps to a discrete control loop (see the rungs table above for the layer mapping). The feedback gain is $\varepsilon = 1/90 - 1/5280$, where $90 = C_{U_1} \times (C_{U_1} - 1)$ and $5280 = 12 \cdot 4 \cdot 11 \cdot 10$ are both derived from $N=4$ (see the ladder descent section). The closed-loop transfer function is $Z = 1/(1+\varepsilon)$. The integral term drives $\Omega_k \to 0$; the fibration phases are Nyquist margins. See ledger §4197 for the full LQR correspondence (proposed).
-
-[Read the full control theory reframing →](/results/#control)
-
----
-
-**Falsifiable predictions**
-
-## Predictions
-
-### CMB-S4 / Simons Obs.
-$\Omega_k = \frac{91}{44528} = 0.002$
-
-Derivation: see ledger §4197 (the chain from the 9-rung ladder sum and the symmetric Gram total). Planck 2018 gives $\Omega_k = -0.001 \pm 0.002$ — $+0.002$ is within $1.5\sigma$. **Falsified if:** next-generation CMB measures $\Omega_k$ outside $0.002 \pm 0.001$, ruling out the ladder-sum deficit expression.
-
-### DUNE / Hyper-K
-$\delta_{\mathrm{PMNS}} = \frac{12}{10}\pi = 216^\circ$
-
-The ratio $12/10$ is Gram-directed over Gram-symmetric (rungs 1 and 3). Current global fits place $\delta_{\mathrm{PMNS}}$ near $220^\circ$; DUNE and Hyper-Kamiokande will measure it to $\pm 5^\circ$ within a decade. **Falsified if:** the measured value deviates from $216^\circ$ by more than $5^\circ$, ruling out the $12/10$ ratio.
-
-### LHCb / Belle II
-$\delta_{\mathrm{CKM}} \approx \frac{\pi}{3} + \left(\frac{4}{12}\right)^2 = 66.4^\circ$
-
-The $(4/12)^2 = (1/3)^2$ term is Gram-derived (floor $4$ over top $12$, squared). The base $\pi/3$ is numerically close but not Gram-derived. **Falsified if:** the Gram-derived term $(4/12)^2$ does not appear within $0.5^\circ$ in the measured angle, indicating the ratio $4/12$ is not the floor-to-top factor.
-
-### Penning traps: comparison target, not a derived prediction
-$N_{\mathrm{comparison}} = 12 \times (12^2 + 3^2) = 1836$
-
-**Open mass hypothesis:** this is a comparison-slot count. A separate three-stage tetrahedral realization also has 1836 arrows under explicit basis and feedback choices, not as an invariant minimum. Neither construction derives the measured mass ratio, approximately $1836.152673$, or its fractional correction. Settling models require an independently selected strength and energy conversion; the spinor bridge does not provide them. [Construction history](/theory/#proton-electron-ratio-comparison-paths-and-settling); [current spin and charge tests](/theory/#tetrahedral-geometry-spinors-and-the-native-loop-test).
-
-### HL-LHC / FCC
-$m_H = 11^2 + 4 = 125\;\mathrm{GeV}$
-
-$11$ is the first visible eigenvalue ($12$ screened once by the witness act), $4$ is the floor. Currently $125.1\;\mathrm{GeV}$ — within $0.08\%$. **Falsified if:** HL-LHC measures a Higgs mass outside $125 \pm 0.1\;\mathrm{GeV}$ ($0.08\%$), ruling out the $11^2+4$ expression.
-
-### Space-based tests
-Machian $G$ varies at $10^{-4}$ level
-
-The bootstrap $Z = 1/(1 + 1/90 - 1/5280)$ predicts $G$ is shielded by all matter — the denominator $5280 = 12 \cdot 4 \cdot 11 \cdot 10$ is the Gram product of all four numbers. **Falsified if:** $G$ variation is not detected at $10^{-4}$ level by MICROSCOPE follow-on or atom interferometry.
-
-### Dark matter mechanism
-Particle DM _vs_ Machian inertia
-
-$\Omega_{\mathrm{DM}} = \frac{6}{23} = 0.2609$ (observed $0.264$, $1.2\%$ error) — the pair count $C(4,2) = 6$ over the product $4 + 11 + 8 = 23$. **Falsified if:** both sterile neutrinos (X-ray lines) and scale-dependent $G$ (no X-ray lines) are detected, since the model predicts exactly one of the two mechanisms.
-
-[View the complete results & predictions](/results/)
-
----
-
-**Measurement comparisons**
-
-The numerical windows above are comparison targets. A statistical test requires experimental and theoretical uncertainties. Rejecting an expression requires tracing the discrepancy through its derivation to identify the affected assumptions.
-
----
+[Detailed results and exclusions](/results/) · [weak-mixing audit](/theory/#weak-mixing-matter-trace-audit).
 
 **Construction and formalizations**
 
-## The relational carrier
+## Proofs, models, and next tests
 
-The construction covers the carrier, overlap matrix, and proposed QM, GR, and SM projections.
+Kernel-checked formal laws, written mathematical arguments, exact finite checks, numerical diagnostics, and prospective apparatus designs have different evidentiary roles. A proof of an integer identity or a supplied Hamiltonian's properties is not a proof of its physical interpretation. Proof-file totals are not a measure of completed physics.
 
-Cubical Agda: [RelationalCarrier.agda](https://github.com/andrey-kokoev/marici/blob/main/research/nima/agda/RelationalCarrier.agda) (107 proof files, composed). Lean: [probe kernel](https://github.com/andrey-kokoev/marici/blob/main/research/buzzard/Entry2125.lean), [predictions (ℚ)](https://github.com/andrey-kokoev/marici/blob/main/research/buzzard/marici_formal/MariciFormal/PhysicsPredictions.lean).
+The next discriminating work is to complete the separately scoped operational whole-return certificate, supply independently justified physical current/charge and clock/energy standards, and test a stable cross-carrier interaction with identical composite/breakup accounting. Record architecture, conditional feedback, and retained memory remain separately specified until their source and observation adapters are constructed.
 
-[Read the full relational carrier derivation →](/theory/)
+[Full theory and verification boundaries](/theory/) · [research status and next tests](/results/#next-discriminating-tests) · [architecture and construction contracts](/research/system-characteristics/).
