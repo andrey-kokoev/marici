@@ -45,10 +45,11 @@ module Interchange (m : Mode) (v : Vertex)
   attachmentEquiv : (o : Out v)
     → El (expression (package (attach a o))) ≃ El (expression (package (attach b (edgeMap m o))))
   attachmentEquiv o = Σ-cong-equiv (edgeEquiv m v) (λ _ → loopEquiv e p)
-  attachmentPoint : (o : Out v)
-    → equivFun (attachmentEquiv o) (value (package (attach a o)))
-      ≡ value (package (attach b (edgeMap m o)))
-  attachmentPoint o i = edge-computes m v o i , loop-refl e p i
+  abstract
+    attachmentPoint : (o : Out v)
+      → equivFun (attachmentEquiv o) (value (package (attach a o)))
+        ≡ value (package (attach b (edgeMap m o)))
+    attachmentPoint o i = edge-computes m v o i , loop-refl e p i
   attachmentPorts : (o : Out v) (x : El (expression (package (attach a o))))
     → act m (reader (attach a o) x)
       ≡ reader (attach b (edgeMap m o)) (equivFun (attachmentEquiv o) x)
@@ -76,10 +77,11 @@ module Interchange (m : Mode) (v : Vertex)
       ≃ El (expression (package (attachAfterCompare o)))
   interchangeEquiv o = compEquiv (graphEquiv (attachmentEquiv o))
     (Σ-cong-equiv (edgeEquiv m v) (λ _ → invEquiv oldLoopEquiv))
-  interchangePoint : (o : Out v)
-    → equivFun (interchangeEquiv o) (value (package (compareAfterAttach o)))
-      ≡ value (package (attachAfterCompare o))
-  interchangePoint o i = edge-computes m v o i , backward-loop-refl i
+  abstract
+    interchangePoint : (o : Out v)
+      → equivFun (interchangeEquiv o) (value (package (compareAfterAttach o)))
+        ≡ value (package (attachAfterCompare o))
+    interchangePoint o i = edge-computes m v o i , backward-loop-refl i
   interchangePorts : (o : Out v)
     (z : El (expression (package (compareAfterAttach o))))
     → reader (compareAfterAttach o) z
