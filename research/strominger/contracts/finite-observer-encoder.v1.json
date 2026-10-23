@@ -1,0 +1,21 @@
+{
+  "schema": "marici.finite-observer-encoder.v1",
+  "status": "explicit-finite-packet-candidate",
+  "domain": "D5 = complex span of p_j, j=0,...,4, in the compact physical observer core; parent-chart evaluation remains conditional on its common-domain hypotheses",
+  "mellinConvention": "m_h(t)=integral_R h(u) exp(-i t u) du; physical half-density f(x)=x^(-1/2) h(log x)",
+  "delta": "2 log 2",
+  "epsilon": "delta/4",
+  "bump": "phi(u)=exp(1-1/(1-(u/epsilon)^2)) for |u|<epsilon, zero otherwise",
+  "normalization": "A=integral_R phi(u) exp(u/2) du >0; evenness gives the same integral with exp(-u/2)",
+  "packet": "p_j(u)=phi(u-j delta)/A",
+  "readouts": ["m_h(i/2)", "m_h(-i/2)", "A h(0)", "A h(delta)", "A h(2 delta)"],
+  "endpointRows": "ell_plus(p_j)=2^j; ell_minus(p_j)=2^(-j)",
+  "fluxRows": "A p_j(k delta)=Kronecker(k,j), k=0,1,2; in the physical half-density convention this is the calibrated full-response flux A exp(k delta/2) B_f(exp(k delta)) = A 2^k B_f(4^k)",
+  "nativeConvention": "Use the actual electron contrast reader J* at the first retained exit; complete its two root-coefficient rows by deterministic Gram-Schmidt on the projected standard basis. Preserve all three complementary coordinates.",
+  "candidateChoices": ["single logarithmic character sector", "five translated packets", "delta=2 log2", "three flux samples at0,delta,2delta", "native complement basis convention"],
+  "notClaimed": ["unique or source-forced packet", "full observer-space encoding", "natural L2 norm equals field norm", "physical preparation or calibration", "native E directions are literally analytic endpoint species", "analytical face fillers supplied"],
+  "sources": [
+    "research/voevodsky/consolidated-four-presentation-analytic-pyramid-position.md",
+    "research/voevodsky/the-full-analytical-system-is-the-joint-graph-realization-of-the-regular-and-endpoint-channels.md"
+  ]
+}
