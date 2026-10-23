@@ -62,6 +62,10 @@ simultaneous assemblies, NN orientation choices and E paths remain separate
 tests. The subsequent `geometric-context-and-extended-coherence-v1.md` records
 a bounded depth-28 native graph test of this candidate's field-frame parity.
 
+## Simultaneous-assembly follow-up
+
+The [joint-field sewing test](joint-field-assembly-sewing-v1.md) now checks this same candidate on one contact-certified retained assembly containing both comparison histories and their E exits. All18 interfaces across14 packet presentations satisfy the full44-dimensional transport/readout square; both E exits retain the rank2-plus-rank3 split. This is a positive bounded assembly extension, not arbitrary geometric face equality or an autonomous global evolution.
+
 ## Explicit defect accounting
 
 The raw source contrast has defect eigenvalue one; E's return has zero. The
