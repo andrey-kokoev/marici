@@ -1,0 +1,27 @@
+{
+  "schema": "marici.esd7-strict-parent-profile.v1",
+  "domain": "common admitted observer core D, restricted to the intersection of source chart and retained-readout domains",
+  "carrierPolicy": "correlated-essential-images",
+  "chart4": "full-response-BQAC",
+  "inverseLawScope": "on-images-of-the-same-D-only",
+  "completionExtension": false,
+  "retainedReadouts": ["ell_plus", "ell_minus", "retained_residual"],
+  "readoutMeaning": {
+    "ell_plus": "Mellin endpoint evaluation at +i/2 on the physical analytic observer core",
+    "ell_minus": "Mellin endpoint evaluation at -i/2 on the same core",
+    "retained_residual": "An arbitrary fixed source-observer residual/readout on D, with regulator parameters fixed; not assumed zero or identified with a particular analytical face filler"
+  },
+  "charts": {
+    "1": {"forward": "S1(g)=g", "inverse": "R1=I"},
+    "2": {"forward": "S2(g)=U_S(g)", "inverse": "R2(T)=inverse Fourier transform of the represented multiplier symbol"},
+    "3": {"forward": "S3(g)=(Omega_plus(g),Omega_minus(g))", "inverse": "R3=common inverse on compatible canonical-dual pairs"},
+    "4": {"forward": "S4(g)=(B_g,Q_g,A_g,C_g)", "inverse": "R4(B,Q,A,C)=B"}
+  },
+  "assumedSourceIdentities": ["R_i S_i = I_D", "S_i R_i = I_on_S_i(D)"],
+  "parentMap": "C_ij = S_j R_i; C_ii is the identity on S_i(D)",
+  "scope": "Symbolic conditional evaluation of the strict joint-graph chart diagram. Source analytic identities are hypotheses, not proved by the word checker. No bounded readout on independently completed bulk is inferred.",
+  "sources": [
+    "research/voevodsky/consolidated-four-presentation-analytic-pyramid-position.md",
+    "research/voevodsky/the-full-analytical-system-is-the-joint-graph-realization-of-the-regular-and-endpoint-channels.md"
+  ]
+}
