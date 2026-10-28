@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {seedChannelStudy} from './seed-channel-binding.mjs';
+const result=await seedChannelStudy();
+assert.equal(result.probeResults.loopDefect,1);assert.equal(result.assignmentCounts.both,16);
+result.hashes={};
+for(const path of ['./seed-channel-binding.mjs','./check_seed_channel_binding.mjs','../../tests/seed-channel-binding.test.mjs','../nima/agda/SeedFaceObstruction.agda','../nima/agda/SeedTetrahedronBridge.agda','../nima/agda/BoundaryGeneratedQuestions.agda'])result.hashes[path]=createHash('sha256').update(await readFile(new URL(path,import.meta.url))).digest('hex');
+result.verification='Executable finite source-binding checks; existing Agda sources inspected and hashed, not freshly compiled here.';
+await mkdir(new URL('./results/',import.meta.url),{recursive:true});await writeFile(new URL('./results/seed-channel-binding-v1.json',import.meta.url),JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({disposition:result.disposition,sourceOutdegrees:Object.values(result.rawSourceFibres).map(f=>f.length),directChannelSizes:Object.values(result.directChannels).map(f=>f.length),boundedPathChannelSizes:Object.values(result.endpointFamilies).map(f=>f.length),comparison:result.comparison,probe:result.probeResults,assignments:result.assignmentCounts,receipt:'research/realization-tower/results/seed-channel-binding-v1.json'},null,2));

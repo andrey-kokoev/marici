@@ -1,0 +1,13 @@
+import {geometryStudy,transportStudy} from './assembly-approaches.mjs';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const geometry=geometryStudy(),transport=transportStudy();
+assert.equal(geometry.closedSubsets.length,1);assert(geometry.dual.negationMatches);
+assert.equal(transport.paths.length,4);assert.deepEqual(transport.electronSquare.left,transport.electronSquare.right);
+assert(transport.electronSquare.nativeReaderRejected);assert(!transport.electronSquare.nativeDirectEdgeExists);
+const hashes={};for(const file of ['./assembly-approaches.mjs','./check_assembly_approaches.mjs','../../tests/assembly-approaches.test.mjs','../strominger/demos/particle-overlap-tetrahedron/phase-assembly-model.mjs','../strominger/demos/particle-overlap-tetrahedron/phase-advance-model.mjs'])hashes[file]=createHash('sha256').update(await readFile(new URL(file,import.meta.url))).digest('hex');
+const result={status:'bounded-comparison-complete-not-global-assembly',hashScope:'Experiment, tests, and two direct native sources only; not a complete transitive dependency manifest',hashes,geometry,transport};
+await mkdir(new URL('./results/',import.meta.url),{recursive:true});
+await writeFile(new URL('./results/assembly-approaches-v1.json',import.meta.url),JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({status:result.status,geometry:{starLevels:geometry.star.map(c=>c.q),closedSubsets:geometry.closedSubsets.length,ports:geometry.markedInterface.ports.length,continuationVertices:geometry.markedInterface.continuation.vertices.length},transport:{root:transport.root,paths:transport.paths.map(p=>({charts:p.charts,origin:p.origin,permutation:p.permutation})),electronCandidate:transport.electronSquare.candidateMap,nativeReaderRejected:transport.electronSquare.nativeReaderRejected,roundTrip:transport.readerRoundTrip},receipt:'research/realization-tower/results/assembly-approaches-v1.json'},null,2));
