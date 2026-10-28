@@ -1,0 +1,30 @@
+@import './theme.css';
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--viewer-background); color: var(--viewer-text); font: 16px/1.6 system-ui, sans-serif; }
+main { max-width: 1100px; margin: auto; padding: 24px; }
+a { color: var(--viewer-output); }
+h1 { line-height: 1.2; }
+.workbench { display: grid; grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr); gap: 20px; }
+#viewport { position: relative; min-width: 0; height: clamp(300px, 65vh, 650px); background: var(--viewer-background); border-radius: 12px; overflow: hidden; }
+#panel { background: var(--viewer-panel); border: 1px solid var(--viewer-border); border-radius: 10px; padding: 18px; }
+output { color: var(--viewer-output); }
+button:hover:not(:disabled) { background: var(--viewer-button-hover); }
+#viewport canvas, #fallback { display: block; width: 100%; height: 100%; }
+#viewport canvas { position: absolute; inset: 0; touch-action: none; }
+#fallback[hidden] { display: none; }
+fieldset { border: 1px solid var(--viewer-border); border-radius: 8px; display: flex; flex-wrap: wrap; gap: 10px; min-width: 0; }
+details { width: 100%; }
+summary { cursor: pointer; padding-block: 8px; }
+.button-row { display: flex; flex-wrap: wrap; gap: 10px; }
+button { min-height: 44px; padding: 8px 12px; background: var(--viewer-button); color: var(--viewer-button-text); border: 1px solid var(--viewer-button-border); border-radius: 6px; font: inherit; cursor: pointer; }
+button[aria-pressed=true] { background: var(--viewer-accent); }
+button:disabled { cursor: default; }
+label, input { display: block; width: 100%; }
+input { min-height: 44px; accent-color: var(--viewer-accent); }
+:focus-visible { outline: 3px solid var(--viewer-focus); outline-offset: 3px; }
+#status { min-height: 3em; }
+@media (max-width: 700px) {
+  main { padding: 16px; }
+  .workbench { grid-template-columns: minmax(0, 1fr); }
+  #viewport { height: 350px; }
+}

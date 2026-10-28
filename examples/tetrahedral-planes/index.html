@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Four tetrahedral planes with free camera rotation, repeated disks and reactive Vue controls.">
+<title>Four disks — tetrahedral intersection · Marici</title>
+</head>
+<body>
+<main>
+<nav aria-label="Related pages"><a href="/experiments/">← Construction gallery</a> · <a href="/experiments/threejs-reference/index.html">Vue viewer reference</a></nav>
+<h1>Four intersecting disks</h1>
+<p>Explore the planes bounding a regular tetrahedron, their finite circular patches and repeated copies. This is an interactive geometry model, not a physical claim.</p>
+<section class="workbench" aria-label="Tetrahedral planes viewer">
+<div id="viewport">
+<svg id="fallback" viewBox="0 0 400 340" role="img" aria-label="Static projection: four circular plane patches surrounding a central tetrahedron">
+<g fill="#f4c430" fill-opacity="0.12" stroke="#f4c430" stroke-width="2">
+<ellipse cx="200" cy="170" rx="155" ry="60"/>
+<ellipse cx="200" cy="170" rx="155" ry="60" transform="rotate(60 200 170)"/>
+<ellipse cx="200" cy="170" rx="155" ry="60" transform="rotate(-60 200 170)"/>
+<ellipse cx="200" cy="195" rx="145" ry="45"/>
+</g>
+<path d="M200 85 125 225 275 225Z M200 85 200 170 125 225 M200 170 275 225" fill="none" stroke="#ffe1a0" stroke-width="3"/>
+</svg>
+</div>
+<aside id="panel" aria-label="Viewer controls">
+<p id="status" role="status">Static diagram shown. Interactive Vue controls require JavaScript and local assets.</p>
+<p>Four half-spaces bound a tetrahedron. Disk radius controls the visible patches, not the bounded region.</p>
+</aside>
+</section>
+</main>
+<script type="module" src="./app.js"></script>
+</body>
+</html>

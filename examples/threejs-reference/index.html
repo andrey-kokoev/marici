@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A minimal, accessible, locally hosted Three.js reference viewer.">
+<title>Three.js reference viewer · Marici</title>
+</head>
+<body>
+<main>
+<nav aria-label="Related pages"><a href="/experiments/">← Construction gallery</a></nav>
+<h1>Three.js reference viewer</h1>
+<p>A tetrahedron demonstrates viewer behavior, not a scientific claim. Four vertices, six edges and four triangular faces.</p>
+<section class="workbench" aria-label="Tetrahedron viewer">
+<div id="viewport">
+<svg id="fallback" viewBox="0 0 400 300" role="img" aria-label="Static projection of a tetrahedron with four vertices and six edges">
+<path d="M200 35 65 225 335 225Z M200 35 200 170 65 225 M200 170 335 225" fill="none" stroke="#f4c430" stroke-width="3"/>
+</svg>
+</div>
+<aside id="panel" aria-label="Viewer controls">
+<p id="status" role="status">Static diagram shown. The interactive panel requires JavaScript and local assets.</p>
+<p id="instructions">Drag to orbit; scroll or pinch to zoom. Keyboard buttons provide an alternative.</p>
+<fieldset id="controls" disabled><legend>View</legend>
+<button id="left" type="button">Rotate left</button>
+<button id="right" type="button">Rotate right</button>
+<button id="zoom-in" type="button">Zoom in</button>
+<button id="zoom-out" type="button">Zoom out</button>
+<button id="reset" type="button">Reset view</button>
+<button id="spin" type="button" aria-pressed="false">Auto-rotate</button>
+<label for="opacity">Face opacity <output id="opacity-value">0.35</output></label>
+<input id="opacity" type="range" min="0" max="1" step="0.05" value="0.35">
+</fieldset>
+<p>Automatic motion is off initially. The static diagram and description remain usable if WebGL or dependencies fail.</p>
+</aside>
+</section>
+</main>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
