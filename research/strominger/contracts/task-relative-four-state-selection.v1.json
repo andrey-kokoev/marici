@@ -1,0 +1,15 @@
+{
+  "schema": "task-relative-four-state-selection.v1",
+  "claim_under_test": "The same six-arrow source and a reversible writable four-state route-memory task select one contextual class, even allowing state-frame comparisons.",
+  "source_contract": "research/strominger/contracts/task-relative-memory-selection.v1.json",
+  "task": {
+    "state": "(current vertex, element of Z/4)",
+    "initial": ["A", 0],
+    "observation": "Current vertex and memory state at every typed boundary",
+    "allowed_programs": "Uniform cyclic shifts of the four-state memory on each occurrence; equal shifts on each pair exchanged by source sigma",
+    "required_laws": ["primitive reversibility", "typed endpoints", "unit and chronological composition", "source-swap covariance", "all sixteen configurations reachable from the fixed initial state"],
+    "frame_comparisons": "Additionally test arbitrary state permutations at each vertex, not only fixed-label contextual equivalence",
+    "motivation": "A reversible writable two-bit route memory, with no prescribed response on any selected edge or loop"
+  },
+  "scope": "A separately declared finite task, not a repair of the one-bit counterexample. Exact finite calculations, not a new Agda native-compilation theorem or empirical study."
+}

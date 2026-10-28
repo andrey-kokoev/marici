@@ -1,0 +1,22 @@
+{
+  "schema": "task-relative-memory-selection.v1",
+  "claim_under_test": "The unchanged source and this fixed operational task determine a single nonempty contextual-equivalence class of admitted implementations.",
+  "source": {
+    "vertices": ["A", "B", "C", "D"],
+    "edges": [["AB", "A", "B"], ["BC", "B", "C"], ["CA", "C", "A"], ["AD", "A", "D"], ["DB", "D", "B"], ["BA", "B", "A"]],
+    "vertex_swap": {"A":"B", "B":"A", "C":"D", "D":"C"},
+    "edge_swap": {"AB":"BA", "BA":"AB", "BC":"AD", "AD":"BC", "CA":"DB", "DB":"CA"}
+  },
+  "task": {
+    "motivation": "A reversible one-bit memory carried through typed route continuations, whose states remain readable and writable without changing the available source transitions.",
+    "state": "(current source vertex, Boolean memory)",
+    "initial": ["A", 0],
+    "observation": "The current vertex and bit, at every authorized route boundary; readout labels are fixed, not quotiented by vertex-dependent bit relabelling.",
+    "contexts": "All finite endpoint-correct directed words, including empty words, with the same read operation",
+    "allowed_update_grammar": "Each original occurrence receives a Boolean permutation (identity or NOT), uniformly across uses; no added edges, resets or time-dependent policies.",
+    "required_laws": ["typed endpoint preservation", "bijective primitive bit updates", "unit and sequential composition", "source-swap covariance with identity action on the bit", "all eight vertex/bit configurations reachable from the fixed initial state"],
+    "not_required": ["a prescribed bit value on a particular edge or loop", "faithful encoding of every raw route into one bit", "physical time or detector realization"]
+  },
+  "test": "Exhaust all 64 Boolean-permutation edge assignments; check laws and finite-state reachability; compute contextual classes of the survivors using the complete reachable paired transition systems.",
+  "scope": "A bounded mathematical countermodel to universal task-relative selection, not a physical experiment or a blind preregistered study. Task-relative classification into several classes is not refuted. The task and update grammar are explicit additional authority, not uniquely chosen by WG."
+}
