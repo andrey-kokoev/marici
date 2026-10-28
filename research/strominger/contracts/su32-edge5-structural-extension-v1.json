@@ -1,0 +1,54 @@
+{
+  "schema": "su32.edge5-structural-extension-contract.v1",
+  "status": "specification-and-regression-gate-not-a-wiring",
+  "reading": "reading:0:-1",
+  "carrier": {
+    "constructor": "buildPESymmetricSector(2)",
+    "edgeUnits": 5,
+    "wholeCells": 245,
+    "roleCounts": {"proton": 80, "neutron": 85, "electron": 80},
+    "nativeEdges": 660,
+    "nativeFaces": 760,
+    "sharedInterfaces": 560,
+    "layers": 17,
+    "residualComparisonCones": 44
+  },
+  "fibreInventory": {
+    "requiredCount": 80,
+    "identityDomain": null,
+    "entryOccurrences": null,
+    "exitOccurrences": null,
+    "recordReferenceBinding": null,
+    "warning": "The accepted 80-fibre target is not a bijection derived from counts of cells or coordinate ports. Four directional record labels are not eighty fibre identities."
+  },
+  "workingChoice": {
+    "sourcePolicy": "research/strominger/contracts/su32-working-wiring-family-v1.json",
+    "meaning": "Use the operator-chosen {2,2} family without selecting a labelled representative.",
+    "proposedIncidenceTemplate": "For a declared triple (T,U,V), where T is the selected occurrence of the paired-tip group with both members active and U,V carry the P/P and E/E pairs, T shares an actual native edge with U and with V.",
+    "edge3Acceptance": "The incidence predicate must select exactly the eight retained working candidates and exclude the eight control candidates, without inspecting their distance class.",
+    "edge5MarkedTripleDomain": null,
+    "scope": "A proposed placement condition. Edge sharing is not authorization for an N-to-N passage, and no instance of this template is automatically assigned to each cone.",
+    "cyclicIdentification": "No C5 equivalence assumed."
+  },
+  "globalConstraints": [
+    "Specify one complete carrier-wide assignment before local reader checks; do not construct routes by extending admissible readers.",
+    "Retain every native cell, edge, face, required interior site and original provenance. Distinguish unused sites from deleted geometry.",
+    "Bind fibre identities and their boundary occurrences before solving. Partition named fibre instances disjointly and regroup with an inverse; repeated references are not automatically new fibre instances.",
+    "Use actual shared-face and declared internal passages. Opposite-tip grouping alone does not authorize teleportation.",
+    "Include all 44 overlapping comparison cones and explicit external context; do not treat them as independent copies of the entrance cone.",
+    "Distinguish availability of a geometric comparison path from an obligation to execute it as a wire.",
+    "Require exact forward/reverse recovery on the declared state domain and retain the assignment and its histories.",
+    "Do not import period-four closure, lexical endpoint matching, a shortest-path selector or a native phase law from another candidate."
+  ],
+  "openBindings": {
+    "fibreStateAndBoundaryPorts": null,
+    "signedReferenceToFibreOccurrences": null,
+    "markedPlacementInstances": null,
+    "internalPassageAndJunctionTypes": null,
+    "contextualComparisonMapsAndFillingLaw": null,
+    "boundaryClosure": null
+  },
+  "solverGate": "Do not run a routing solver until fibre/port and passage/placement bindings are specified. Missing bindings mean not formulated, not no solution.",
+  "allowedOutcomes": ["complete structurally verified assignment under explicit assumptions", "conflicting declared constraints with provenance", "unformulated obligations", "incomplete search"],
+  "nativeDynamicsClaim": false
+}
