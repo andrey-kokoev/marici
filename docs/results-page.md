@@ -4,6 +4,12 @@ Use this page for verification status. [Theory](/research/theory/) explains the 
 
 This page separates **checked mathematical constructions**, **conditional models**, **open physical identifications**, and **excluded branches**. A checker pass, an exact numerical identity, or a research-ledger admission does not establish a physical theory. Verification levels below are those reported in the linked research; this synthesis is not a new proof certificate.
 
+## October 20: verified interval calculus
+
+<a href="/research/ledger/20261020-4328-verified-interval-calculus-with-an-observation-and-identification-procedure/" target="_self">Ledger 4328 — Verified Interval Calculus with an Observation-and-Identification Procedure</a> connects six interval records to retained cavity processes, preserves all twelve endpoint edits, and constructs a separating three-probe observation family. Under the declared independent-trial, static shared-calibration model, 240,000 trials suffice for correct unique identification with probability above 99%.
+
+The verification consists of written proofs and exact rational checks, not experimental data or proof-assistant certification. Vacuum output, phase-insensitive counts and unrestricted calibration drift each expose distinct limits. The construction does not derive AdS/dS geometry, causal orientation or metric scale. [Mathematical construction](/research/theory/#finite-interval-processes-and-observations).
+
 ## October 18: tessellated reader fields and framed coherence
 
 [The new field-structure report](/research/results/tessellated-reader-fields) records an exact native 12-by-3 factorization, geometric P/N field reconstructions, and a conditional connection that retains all five reference coefficients in a joint baryon–electron field. Seven central checkers pass on fresh replay.

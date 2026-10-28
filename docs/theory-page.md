@@ -6,6 +6,10 @@ This page develops specified mathematical constructions and keeps their proposed
 
 ## Recent constructive results and exclusions
 
+### Finite interval processes and observations
+
+For the existing three-round retained cavity, the ordered product $E(i,j)=W_{j-1}\cdots W_{i-1}$ represents each nonempty interval on a three-edge line. Full-record recovery and all legal extension/trim comparisons hold; an edit $p\to p'$ acts on the output through the based correction $E(p')E(p)^T$, rather than a universal bare inverse. A specified three-probe family separates these six processes distributionally, and reference-calibrated counts support a finite-sample identification theorem. <a href="/research/ledger/20261020-4328-verified-interval-calculus-with-an-observation-and-identification-procedure/" target="_self">Ledger 4328</a> gives the equations, assumptions, counterexamples and reproduction sources; [the results page](/research/results/#october-20-verified-interval-calculus) summarizes verification. This finite process calculus does not select AdS/dS causal geometry.
+
 ### Analytic return: same witness, different verification levels
 
 The standard-complex construction uses the same source-linearized operators $H_j=\pi(I-P_j)/2$ and $U_j(t)=\exp(-itH_j)$ for local motion and whole-record return. Two reversed-order unitary pieces glue continuously on $[0,2]$, return to the source basis vector, and distinguish the retained schedule tags by their seam states. Reconstruction and schedule exchange respect the whole retained record. The all-time result is a **written analytic proof**, supported by exact finite checks and the Agda source-classification theorem; samples alone do not prove it. No derivative at the switching seam or Cubical-pointwise state decoding is claimed. [Whole-return proof](../research/nima/spectral-whole-return-proof.md).

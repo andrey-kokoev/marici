@@ -4,6 +4,10 @@
 
 [COMMON-FOUNDATIONS.md](COMMON-FOUNDATIONS.md) defines the new conjectural parent: stage-by-stage common process realization preserving identity, composition and available continuations. Its [parent net](contracts/common-foundations-conjecture-net.v1.json) has nine open obligations. Separate [mathematical-realization](contracts/mathematical-realization-conjecture-net.v1.json) and [same-source compatibility](contracts/same-source-compatibility-conjecture-net.v1.json) nets each attach the same RH example, with distinct acceptance gates and no automatic proof transfer. The existing physics programme below is retained as the physical-realization child, not rewritten or promoted.
 
+### Ramsey in tetrahedral–octahedral space
+
+[Voevodsky's Ramsey entry](../voevodsky/RAMSEY-TETRAHEDRAL-OCTAHEDRAL.md), [net revision 8](../voevodsky/contracts/ramsey-tetrahedral-octahedral-conjecture-net.v1.json), retains the bounded actual-native packet word lift (`++`) and refutes a specific endpoint/cache-only color-query projection (`-+`). Two length-two words have identical complete native endpoints/caches and seven-event counts but require colors 0 and 1 under the same fixed configuration. The omitted word/query selector matters; a full trace or suitable selection mark could repair the loss. This is not a general endpoint-encoding or retained-history forcing no-go. Prior mathematical/geometry results keep their scopes, including external classical Hales–Jewett forcing and the 48 macro versus 16 fixed-subdivision symmetries. The governing native-solvability conjecture and four original obligations remain open; no parent proof is automatically promoted.
+
 ### Event-sourced control representation
 
 [Sontag's control research entry](CONTROL-HANDOFF.md) and [event-sourced control net](contracts/event-sourced-control-work-net.v1.json) organize the common-system conjecture around typed events, history-to-state congruence, observations/feedback, presentation naturality and mathematical/physical realization. Existing WG, energy and contextual-capability examples populate the first interface task.
