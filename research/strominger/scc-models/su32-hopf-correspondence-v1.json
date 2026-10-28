@@ -1,0 +1,27 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "su32-hopf-correspondence-v1",
+    "owner": "marici.Strominger",
+    "classification": "incidence_fixture_and_conditional_reference_adapters_not_native_hopf_binding",
+    "stratum": "Route/coherencer compatibility on the 51-cell Su-32 carrier; attachment transport unresolved. Spinor chart only on nonzero contrast; retain three context coordinates and the zero-contrast stratum.",
+    "inputs": [
+      "research/strominger/contracts/su32-hopf-correspondence-v1.json",
+      "research/strominger/sulfur-32-reversible-channel-specification.md",
+      "research/strominger/global-coherence-standing-assumption.md",
+      "research/strominger/checkers/check_su32_hopf_fixture.mjs",
+      "research/strominger/results/su32-hopf-tests-v1/fixture.json",
+      "research/strominger/results/su32-hopf-tests-v1/circle-join.json",
+      "research/strominger/results/su32-hopf-tests-v1/simplicial-source.json",
+      "research/strominger/results/berry-connection-domain-cut/verification.json",
+      "research/strominger/checkers/check_retained_spinor_dual_line_trial.py",
+      "research/strominger/checkers/check_native_dual_line_context_adapter.py"
+    ],
+    "checks": [{"id": "su32-hopf-correspondence-audit", "path": "research/strominger/checkers/check_su32_hopf_correspondence.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["native shared-face incidences", "retained contrast/context chart", "circle-join and simplicial reference constructions"],
+    "provides": ["Su-32 fixture with full cone overlaps and explicit null operation witnesses"],
+    "missing_constructors": ["signed-pair encoding", "native two-circle join adapter", "face-compatible native simplicial adapter", "simultaneous global transitions and boundary law"],
+    "next_falsifier": "A proposed global adapter loses context, creates a second independent circle from reading multiplicity, or fails a native comparison on an overlap."
+  }
+}

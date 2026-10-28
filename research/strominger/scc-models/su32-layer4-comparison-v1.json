@@ -1,0 +1,24 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "su32-layer4-comparison-v1",
+    "owner": "marici.Strominger",
+    "classification": "lossless_reference_join_candidate_with_distinct_reconciliation_derivations",
+    "stratum": "Set-valued route/coherencer compatibility: independently retained signed records; shared labelled records identified only on payload agreement. Native comparison operation and phase lift not inferred.",
+    "inputs": [
+      "research/strominger/sulfur-32-reversible-channel-specification.md",
+      "research/strominger/internal-source-comparison-and-interchange-v1.md",
+      "research/strominger/canonical-comparison-synthesis-v1.md",
+      "research/strominger/results/su32-hopf-tests-v1/fixture.json",
+      "research/strominger/su32-layer4-comparison.mjs",
+      "research/strominger/checkers/check_su32_layer4_comparison.mjs",
+      "research/strominger/su32-signed-reference-encoder.mjs"
+    ],
+    "checks": [{"id": "layer4-reference-join-replay", "path": "research/strominger/checkers/check_su32_layer4_comparison.py", "requires": []}],
+    "depends_on": ["su32-signed-reference-encoder-v1"],
+    "consumes": ["lossless signed-reference occurrence encoder"],
+    "provides": ["two-order lossless reconciliation baseline with both derivations retained"],
+    "missing_constructors": ["native layer-4 operation selecting additional phase or frame data", "cross-cone payload transport", "source-defined continuation at central N"],
+    "next_falsifier": "A proposed comparison loses one operand, identifies mismatching shared records, or supplies identical phase readouts for inputs it claims to distinguish."
+  }
+}

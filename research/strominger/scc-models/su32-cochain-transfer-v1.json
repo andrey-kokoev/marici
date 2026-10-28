@@ -1,0 +1,24 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "su32-cochain-transfer-v1",
+    "owner": "marici.Strominger",
+    "classification": "candidate_global_support_cochains_and_conditional_contractions",
+    "stratum": "Route/coherencer compatibility on rational cochains of the native reference-support complex. Payload algebra, geometric realization and BV dynamics are not inferred.",
+    "inputs": [
+      "research/strominger/sulfur-32-reversible-channel-specification.md",
+      "research/strominger/results/su32-hopf-tests-v1/fixture.json",
+      "research/strominger/su32-layer4-comparison.mjs",
+      "research/strominger/su32-signed-reference-encoder.mjs",
+      "research/strominger/checkers/export_su32_comparison_support.mjs",
+      "research/strominger/su32-simplicial-cs-reading.md",
+      "references/Towards_simplicial_CS.pdf"
+    ],
+    "checks": [{"id": "cochain-transfer-replay", "path": "research/strominger/checkers/check_su32_cochain_transfer.py", "requires": []}],
+    "depends_on": ["su32-layer4-comparison-v1"],
+    "consumes": ["actual layer-4 operand supports and retained reference identities"],
+    "provides": ["candidate global support differential and two cochain products", "conditional two-diagonal chain contractions"],
+    "missing_constructors": ["source-selected payload algebra", "global cross-cone contraction", "transferred higher Whitney operations", "native circle-bundle adapter"],
+    "next_falsifier": "A global-to-local differential or product restriction fails; direct/staged chain maps fail; or the claimed uniquely native comparison admits distinct products/contractions with identical incidence."
+  }
+}

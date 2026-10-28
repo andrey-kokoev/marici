@@ -1,0 +1,21 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "su32-native-phase-law-v1",
+    "owner": "marici.Strominger",
+    "classification": "common_diagonal_slot_phase_and_reader_invariant_doublets_with_A4_extension_failure",
+    "stratum": "Attachment transport on five complex coefficient slots; stationary species-indexed diagonal U(1) actions. Each invariant doublet supports Hopf only on its nonzero fixed-norm stratum; all other coefficients retained.",
+    "inputs": [
+      "research/nima/generative-phase-assembly.mjs",
+      "research/strominger/demos/particle-overlap-tetrahedron/phase-advance-model.mjs",
+      "research/strominger/su32-native-phase-law-v1.md",
+      "research/strominger/full-field-path-coherence-v1.md"
+    ],
+    "checks": [{"id": "native-phase-law-exact", "path": "research/strominger/checkers/check_su32_native_phase_law.py", "requires": ["sympy"]}],
+    "depends_on": ["su32-signed-reference-encoder-v1"],
+    "consumes": ["lossless signed-reference occurrence encoder", "actual native five-slot operation matrices"],
+    "provides": ["stationary diagonal phase intertwiners classified", "reader-invariant rank-two coefficient sectors with retained metrics"],
+    "missing_constructors": ["signed-record coefficient encoding", "actual full-carrier occurrence transitions", "source choice of admissible sector and phase quotient"],
+    "next_falsifier": "Test actual Su-32 geometric comparison maps for doublet preservation or mixing; the prior A4 vertex/context extension already mixes them."
+  }
+}

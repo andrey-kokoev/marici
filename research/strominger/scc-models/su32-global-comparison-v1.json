@@ -1,0 +1,23 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "su32-global-comparison-v1",
+    "owner": "marici.Strominger",
+    "classification": "candidate_global_comparison_with_retained_mismatch_channels",
+    "stratum": "Route/coherencer compatibility on one global rational reference-support complex. Both reductions, acyclic recovery witnesses and cohomological mismatches retained. No native coefficient law inferred.",
+    "inputs": [
+      "research/strominger/results/su32-hopf-tests-v1/fixture.json",
+      "research/strominger/checkers/export_su32_comparison_support.mjs",
+      "research/strominger/checkers/check_su32_cochain_transfer.py",
+      "research/strominger/su32-layer4-comparison.mjs",
+      "research/strominger/su32-signed-reference-encoder.mjs",
+      "research/strominger/su32-cellular-tft-reading.md"
+    ],
+    "checks": [{"id": "global-comparison-replay", "path": "research/strominger/checkers/check_su32_global_comparison.py", "requires": []}],
+    "depends_on": ["su32-cochain-transfer-v1"],
+    "consumes": ["native reference-support complex", "local rational contraction and binary comparison formulas"],
+    "provides": ["candidate whole-carrier contraction retaining local mismatches", "candidate global two-route binary comparison"],
+    "missing_constructors": ["native payload coefficient assignment", "full higher action", "native involution lift"],
+    "next_falsifier": "A same-role diagonal belongs to multiple square interiors; global contraction or restriction compatibility fails; sign rebinding changes the comparison; or local agreement erases a nonzero global period."
+  }
+}
