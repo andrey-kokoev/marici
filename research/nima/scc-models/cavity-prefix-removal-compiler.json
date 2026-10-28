@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-cavity-prefix-removal-compiler",
+    "owner": "marici.Nima",
+    "classification": "conditional_full_port_component_comparison",
+    "stratum": "Frozen three-round ten-mode pre-detection passive optical model at p=q=1. Forward realization and route/coherencer compatibility with inverse component controls assumed.",
+    "inputs": ["research/nima/cavity-prefix-removal-compiler-protocol.md", "research/nima/cavity-prefix-removal-compiler.md", "research/aspect/checkers/reciprocal_lossy_cavity_plant.py", "research/nima/checkers/check_physics_geometric_candidate.py"],
+    "checks": [{"id": "cavity-prefix-removal-exact", "path": "research/nima/checkers/check_cavity_prefix_removal_compiler.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["actual mirror and loss matrices", "retained round port permutation", "passive symmetric-power lift"],
+    "provides": ["full-port component reconstruction", "compiled suffix-transported inverse comparison", "wrong-order and scalar-only controls"],
+    "missing_constructors": ["independent interval encoding", "coherent port control authority", "physical calibration and causal maps"],
+    "next_falsifier": "A source-bound correction fails a full component/state comparison; no physical promotion is allowed without independent control and encoding interfaces."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-interval-cavity-finite-sample",
+    "owner": "marici.Nima",
+    "classification": "conditional_finite_sample_theorem",
+    "stratum": "Fixed six-arm independent Bernoulli model, static shared factors >=1/5; hardware excluded.",
+    "inputs": ["research/nima/interval-cavity-finite-sample-protocol.md", "research/nima/interval-cavity-finite-sample.md", "research/nima/results/interval-cavity-probes.json"],
+    "checks": [{"id": "interval-cavity-finite-sample-exact", "path": "research/nima/checkers/check_interval_cavity_finite_sample.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["six canonical interval probe signatures", "Hoeffding inequality", "static shared reference/validation factors"],
+    "provides": ["fixed sample count", "simultaneous coverage proof", "exact rational classifier", "unrestricted factor drift alias"],
+    "missing_constructors": [],
+    "next_falsifier": "A proposed extension admitting unrestricted reference/validation drift must distinguish the explicit identical-distribution interval pair."
+  }
+}

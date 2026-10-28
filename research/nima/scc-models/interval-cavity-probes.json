@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-interval-cavity-probes",
+    "owner": "marici.Nima",
+    "classification": "conditional_finite_observation_family",
+    "stratum": "Six m=3 interval processes with separate one-photon preparations and the existing ready detector; not a physical apparatus admission or general process tomography.",
+    "inputs": ["research/nima/interval-cavity-probe-protocol.md", "research/nima/interval-cavity-probes.md", "research/nima/checkers/check_physics_geometric_candidate.py", "research/nima/nnmhv_coherence_paths.py"],
+    "checks": [{"id": "interval-cavity-probes-exact", "path": "research/nima/checkers/check_interval_cavity_probes.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["three retained cavity rounds", "one-photon lift", "ready/dead C/N instrument", "n=8 source records"],
+    "provides": ["conditional jointly faithful three-probe family", "deletion collision witnesses", "static-factor reference calibration and ratio error bound"],
+    "missing_constructors": ["physical preparation/routing authority", "independent reference calibration and finite-sample guarantee", "inverse control authority", "causal maps"],
+    "next_falsifier": "Independently bounded preparation/readiness/efficiency variation makes two interval response sets overlap."
+  }
+}
