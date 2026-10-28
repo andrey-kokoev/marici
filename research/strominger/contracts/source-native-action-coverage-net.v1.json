@@ -1,0 +1,82 @@
+{
+  "schema": "marici.owner-local-conjecture-net.v1",
+  "id": "source-native-action-coverage",
+  "owner": "marici.Strominger",
+  "revision": 1,
+  "status": "reference_elaboration_not_independent_active_net",
+  "governing_map": "research/strominger/WG-SYMMETRY-PROGRAMME.md",
+  "governing_parent_node": "structured-action-coverage",
+  "scheduling_authority": "none; historical draft frontier is informational, not an approved task queue",
+  "objective": {
+    "target": "source-native-action-coverage",
+    "status": "open",
+    "statement": "Classify which structured actions are represented by existing source-native continuations, preserving specified composition, relations, observations and witnesses."
+  },
+  "parent": {
+    "contract": "research/strominger/contracts/wg-source-determination-conjecture-net.v1.json",
+    "revision": 27,
+    "nodes": ["source-certified-coherent-admission", "structured-action-coverage"],
+    "relation": "connected_mathematical_successor",
+    "imports_proof": false,
+    "mutates_parent": false
+  },
+  "evidence_policy": {
+    "prior_source_inspection_is_fresh_verification": false,
+    "reported_constructions_are_new_results": false,
+    "dependencies_are_proof_implications": false,
+    "hardware_in_scope": false,
+    "coverage_domain_selected": false
+  },
+  "nodes": [
+    {
+      "id": "retained-continuation-action",
+      "kind": "prior_result",
+      "status": "resolved",
+      "verdict": "located_existing_construction",
+      "depends_on": [],
+      "statement": "The actual six-edge directed path language acts on rooted histories by appending occurrences; supplied payload interpretations satisfy the chronological run-append law.",
+      "evidence": ["research/nima/agda/SeedFirstReturnActions.agda", "research/nima/seed-geometric-response-state.md", "research/strominger/original-rule-geometric-compiler-v1.md"],
+      "scope": "Regular history action is source-defined. Alternative payload actions require interpretation. Geometric inverses do not become directed source occurrences.",
+      "verification": "Sources inspected; original-rule compiler freshly checked separately in the preceding reconciliation. No fresh check of every cited root by this net."
+    },
+    {
+      "id": "retained-regular-action-reconstruction",
+      "kind": "prior_result",
+      "status": "resolved",
+      "verdict": "located_existing_construction",
+      "depends_on": [],
+      "statement": "Over the supplied retained-comparison structure, set-valued actions retain units and composition; regular actions are given by postcomposition and Nat_E(E(p,-),D) is equivalent to D(p).",
+      "evidence": ["research/nima/retained-action-yoneda-iteration-05.md", "research/nima/agda/RetainedActionYoneda.agda", "research/nima/retained-comparison-structure.md", "research/nima/adapters/yoneda/README.md"],
+      "scope": "Regular probes detect retained arrows; realization may forget them. The supplied structure and target action are not uniquely selected by this theorem. Structure.E is not the native dependent-extension constructor E.",
+      "verification": "Source and reports inspected; no fresh Yoneda compiler run in this net."
+    },
+    {
+      "id": "freeze-action-coverage-interface",
+      "kind": "specification_gate",
+      "status": "open",
+      "verdict": "open",
+      "depends_on": ["retained-continuation-action", "retained-regular-action-reconstruction"],
+      "statement": "Specify an independently motivated bounded target action class and an exact source-action interface before asserting coverage.",
+      "next_action": "Audit existing coverage results first; then name the source syntax, target action class, representation/comparison maps, allowed parameter producers, preserved relations and witness laws, and whether coverage means existence, fullness, faithfulness or classification of fibers.",
+      "deliverable": "A typed coverage contract or a finding that an existing theorem already answers the selected question.",
+      "falsifier": "An arbitrary target action is inserted as a free source parameter and its evaluation is reported as source-derived coverage."
+    },
+    {
+      "id": "source-native-action-coverage",
+      "kind": "conjecture_program",
+      "status": "open",
+      "verdict": "uninstantiated",
+      "depends_on": ["freeze-action-coverage-interface"],
+      "statement": "Candidate: the existing source-native continuation representation covers the independently specified target action class through comparisons preserving its declared composition, relations and retained witnesses.",
+      "scope": "No target class is selected yet; this is a conjecture programme with an explicit specification gate, not a quantified theorem or a claim to cover all actions.",
+      "next_action": "After the interface is frozen, reuse existing action and native-compilation theorems to construct the comparison, classify its image/fibers, or exhibit a target action excluded by a source invariant.",
+      "deliverable": "A scoped representation/coverage theorem or explicit obstruction, with generated versus supplied data distinguished.",
+      "falsifier": "An action in the declared target class has no source-generated representative preserving the required laws, or a claimed faithful comparison merges a required retained distinction."
+    }
+  ],
+  "frontier_semantics": "Open nodes whose research prerequisites are resolved. Located prior constructions are reusable evidence, not newly verified theorems.",
+  "frontier": ["freeze-action-coverage-interface"],
+  "recommended_start": null,
+  "search_record": "research/strominger/source-system-action-prior-search-v1.md",
+  "publication": "owner-local successor plus operator-authorized epistemic graph registration; completed parent unchanged"
+}
