@@ -154,12 +154,12 @@ def main(fixture_path=None,result_path=None):
             assert normal(U[a]+word)==U[b]
             assert apply(word,Y[a])==Y[b]
             checked_types.add(key)
-        assert mm(pi,P[a])==P[b]
+        assert mm(pi,P[a])==P[b], f"interface {op['id']}: coefficient square Pi_edge Pi_source = Pi_target"
         word=() if key[0] in ['N-reader','NN-phase-advance'] else (key[0],)
         # Adjoint transport computes R_b U_edge on ALL44 inputs without
         # expanding products of dense multiradical44x44 matrices.
-        assert sharp(apply(inverse_word(word),bindings[b]),metric[species(a)])==mm(pi,readouts[a])
-        assert apply(word,bindings[a])==mm(bindings[b],pi)
+        assert sharp(apply(inverse_word(word),bindings[b]),metric[species(a)])==mm(pi,readouts[a]), f"interface {op['id']}: full44 readout square"
+        assert apply(word,bindings[a])==mm(bindings[b],pi), f"interface {op['id']}: five-coefficient binding square"
         interfaces.append({'operation':op['id'],'kind':op['kind'],'source':a,'target':b,'full44FieldSquare':True,'full44ReadoutSquare':True,'fiveCoefficientBindingSquare':True})
     check('all18 retained interfaces intertwine on the entire44-dimensional field',len(interfaces)==18)
     for id in packets:
@@ -189,12 +189,39 @@ def main(fixture_path=None,result_path=None):
     check('discarding transported coefficient bindings breaks the root-field comparison',bool(fixed_failures))
     pn=next(op for op in f['operations'] if op['kind']=='PN')
     check('replacing PN by identity fails the native full-field square',U[pn['source']]!=U[pn['target']])
+    # Falsification control: transported five-coefficient readouts are NOT a
+    # faithful observation of the arbitrary full44 field. Their common kernel
+    # is transported from the rank39 complement of the root preparation.
+    root_readout=readouts[f['rootPacket']]
+    assert U[f['rootPacket']]==() and mm(root_readout,root_binding)==identity(5)
+    blind=zeros(44,1);blind[36][0]=R(1)
+    assert mm(root_readout,blind)==zeros(5,1)
+    blind_frames={key:apply(word,blind) for key,word in frames.items()}
+    blind_observations=[]
+    for id in packets:
+        transported=blind_frames[frame_key(id)]
+        assert mm(readouts[id],transported)==zeros(5,1), f"packet {id}: blind-field readout"
+        assert gram(transported,metric[species(id)])==identity(1), f"packet {id}: blind-field norm"
+        blind_observations.append({'packet':id,'allFiveReadoutsZero':True,'fullFieldNormSquared':'1'})
+    # P=B0 R0 is a rank5 projector because R0 B0=I5; hence I-P has rank39.
+    # Transport/readout naturality and reachability make every pulled-back
+    # observation Pi_h R0, so further packet views cannot remove this kernel.
+    assert len(root_binding)==44 and len(root_binding[0])==5
+    check('readout-only recovery of the full44 field is rejected by an exact common-kernel witness',len(blind_observations)==len(packets))
+    observation_audit={'restrictedClaim':'Recover arbitrary full44 root field from transported native five-slot readouts alone',
+       'verdict':'refuted-under-prior-candidate','rootFieldDimension':44,'nativeReadoutRank':5,'commonKernelDimension':39,
+       'rootLeftInverseIdentity':'R0 B0 = I5','transportFactorization':'R_h U_h = Pi_h R0',
+       'blindRootField':serialize(blind),'blindCoordinate':36,'zeroAndBlindHaveIdenticalObservations':True,
+       'packetObservations':blind_observations,
+       'preparedNativeSubspaceRecovery':True,
+       'scope':'The arbitrary full field has a rank39 unobserved complement. The prepared five-dimensional subspace still reconstructs exactly. Actual retained full-field context or residual payload defeats this obstruction; broader fibration existence and clocks are not refuted.'}
     # Norm on a compatible section is inherited from ONE root field, not summed copies.
     check('compatible sections recover the same arbitrary44-coordinate root from every chart',all(normal(U[id]+Ui[id])==() for id in packets))
     inputs=list(paths.values())+['research/strominger/checkers/check_joint_field_assembly_sewing.py',
            'research/strominger/checkers/exact_multiradical.py','research/nima/checkers/check_twelve_triangle_positive_geometry.py']
     report={'status':'passed','check_count':len(checks),'checks':checks,'sourceHashes':{p:sha(p) for p in inputs},
       'counts':{'bodies':f['audit']['counts'],'packets':len(packets),'interfaces':len(interfaces),'rootFieldDimension':44,'preparedNativeDimension':5},
+      'observationAudit':observation_audit,
       'interfaces':interfaces,'retainedHistories':f['histories'],'exitSplits':exits,'fixedBindingFailurePackets':fixed_failures,
       'frameTypes':{s+str(bit):{'forwardFactorWord':word,'inverseFactorWord':inverses[s,bit]} for (s,bit),word in frames.items()},
       'generatorMatrices':{name:serialize(matrix) for name,matrix in edge_maps.items() if name not in ['N-reader','NN-phase-advance']},

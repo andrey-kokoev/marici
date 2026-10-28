@@ -1,0 +1,19 @@
+{
+  "schema": "marici.archimedean-cutoff-entry.v1",
+  "scope": "One real archimedean even sector, all20 off-diagonal entries of the declared five-packet candidate", 
+  "carrier": "L2(R_+,dx), unitarily equivalent to the even subspace of L2(R,dx)",
+  "fourier": "C f(x)=2 integral_0^infinity cos(2 pi x xi) f(xi) dxi; the unitary cosine transform",
+  "physicalCutoff": "P_Lambda=1_(0,Lambda]",
+  "fourierCutoff": "Q_Lambda=C P_Lambda C*",
+  "outerRegulator": "Z_R=P_R with R>=Lambda; in the correctly cycled trace Z_R^2 P_Lambda=P_Lambda",
+  "unitaryDilation": "U_t f(x)=t^(-1/2) f(x/t)",
+  "observerAmplitude": "k_j(t)=p_j(log t); A_j=integral k_j(t) U_t dt/t",
+  "normalizationBridge": "Equivalently A_j=integral f_j(t) V_t dt/t, where V_t f(x)=f(x/t) and f_j(t)=t^(-1/2) p_j(log t). The factor must not be omitted.",
+  "orderedPacketEntry": "T_ij(Lambda)=Tr(Z_R P_Lambda Q_Lambda A_i A_j* Z_R)",
+  "reference": "J_0 f(x)=x^(-1) f(1/x), Q_Lambda^0=J_0 P_Lambda J_0=1_[Lambda^(-1),infinity); retain inversion explicitly",
+  "referenceEntry": "Tr(P_Lambda Q_Lambda^0 A_i A_j*)=2 log(Lambda) integral p_i(u) conjugate(p_j(u)) du; zero for i!=j in this disjoint packet",
+  "evaluatedPairs": "all ordered(i,j) with0<=i,j<=4 and i!=j; only the common diagonal remains uncomputed",
+  "cutoffs": [2,4,8],
+  "method": "Analytic kernel derivation plus exact rational interval bookkeeping; no sampled or synthetic operator matrices",
+  "notClaimed": ["all semilocal places", "all25 packet entries", "diagonal finite-part subtraction", "full analytical filler", "physical apparatus calibration", "substitution of a convenient Hardy window for a transported regulator"]
+}

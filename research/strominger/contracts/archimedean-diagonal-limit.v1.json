@@ -1,0 +1,14 @@
+{
+  "schema": "marici.archimedean-diagonal-limit.v1",
+  "physicalProfile": "research/strominger/contracts/archimedean-cutoff-entry.v1.json",
+  "packetProfile": "research/strominger/contracts/finite-observer-encoder.v1.json",
+  "autocorrelation": "c(s)=integral p_0(u) p_0(u-s) du, even, supported on[-log2,log2]",
+  "diagonalVolumeCoefficient": "d=c(0)=integral p_0(u)^2 du",
+  "counterterm": "2 log(Lambda) d on each diagonal, zero off-diagonal",
+  "variables": "a=2 pi Lambda^2; x=exp(s)-1; eta=1/2; f(x)=c(log(1+x))/sqrt(1+x)",
+  "subtractedWeight": "h(x)=f(x)-d 1_{|x|<=eta}, on[-1/2,1]",
+  "finitePart": "d(log(pi)+EulerGamma)+(1/2) integral_{-1/2}^1 h(x)/|x| dx+(1/4) integral_{-log2}^{log2} c(s)/cosh(s/2) ds",
+  "coarseBounds": {"dLower": "100/121", "dUpper": "9/2", "cPrimeUpper": "108", "fPrimeCentralUpper": "1323/4"},
+  "errorForLambdaPowerOfTwo": "For Lambda=2^k,k>=1: abs(T_00-2d log(Lambda)-finitePart) <= [(1323/4)(1+8(k+1)/3)+139/9]/(6*4^k)",
+  "claimBoundary": "Exact analytic finite-part representation and explicit convergence bounds in the declared even archimedean sector. No numerical quadrature value, sign/positivity theorem, other-sector extension or higher analytical filler."
+}
