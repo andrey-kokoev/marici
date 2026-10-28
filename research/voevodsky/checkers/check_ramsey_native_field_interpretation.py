@@ -1,0 +1,53 @@
+"""Kernel semantic bridge plus separately pinned runtime frame-word binding."""
+from pathlib import Path
+import hashlib,json,subprocess
+from check_ramsey_lifted_facet_incidence import normal,inverse
+ROOT=Path(__file__).resolve().parents[3];BASE=ROOT/'research/voevodsky';V='research/voevodsky/'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def main():
+    paths=[V+'results/ramsey-source-bound-comparison-v1.json',V+'results/ramsey-lifted-facet-incidence-v1.json']
+    bound,incidence=[json.loads((ROOT/p).read_text()) for p in paths]
+    for receipt in [bound,incidence]:
+        for p,h in receipt['source_sha256'].items():assert sha(ROOT/p)==h,'stale comparison input '+p
+    frames={int(k):v['frameWord'] for k,v in incidence['PNTargetFieldBindings'].items()}
+    assert set(frames)==set(range(4))
+    pairs=[];triangles=0
+    for a in range(4):
+        for b in range(4):
+            word=inverse(frames[a])+frames[b]
+            assert normal(frames[a]+word)==normal(frames[b])
+            if a!=b:
+                stored=next(e for e in incidence['directedEdgeRecords'] if e['parents']==[a,b])
+                assert stored['comparisonWord']==word
+            pairs.append({'source':a,'target':b,'semanticTransferWord':word,
+                          'interpretedFrom':'F_target F_source^-1; retained root unchanged'})
+            for c in range(4):
+                assert normal(word+inverse(frames[b])+frames[c])==normal(inverse(frames[a])+frames[c]);triangles+=1
+    owner=BASE/'agda';fix=BASE/'fixtures/ramsey-native-field-interpretation'
+    tools=Path.home()/'tools/cubical-agda';agda=tools/'agda-2.8.0/agda.exe';library=tools/'cubical-0.9'
+    dirs=[owner,ROOT/'research/nima/agda',fix,library,ROOT/'research/nima/adapters/native-application',ROOT/'research/nima/adapters/application-extension']
+    def inventory():return {str(p):sha(p) for folder in dirs for p in folder.rglob('*.agda')}
+    before=inventory();compiler=sha(agda);args=[str(agda),'--safe','--cubical','--guardedness','--transliterate','--ignore-interfaces']
+    for folder in dirs:args+=['-i',str(folder)]
+    codes={}
+    for name,directory,positive in [('RamseyNativeFieldInterpretation',owner,True),('RamseyFieldInterpretationExamples',fix,True),('RamseyFieldInterpretationBadIdentity',fix,False)]:
+        run=subprocess.run(args+[str(directory/(name+'.agda'))],cwd=ROOT,capture_output=True,text=True,timeout=600)
+        text=run.stdout+'\n'+run.stderr;(BASE/('results/agda-'+name+'.log')).write_text(text,encoding='utf-8');codes[name]=run.returncode
+        if positive:assert run.returncode==0 and 'UnsupportedIndexedMatch' not in text,text[-6000:]
+        else:assert run.returncode!=0 and name+'.agda' in text and ('!=' in text or 'not equal' in text),text[-6000:]
+    assert before==inventory() and compiler==sha(agda)
+    files=[ROOT/p for p in paths]+[Path(__file__),BASE/'contracts/ramsey-native-field-interpretation-attempt.v1.json',
+      owner/'RamseyNativeFieldInterpretation.agda',owner/'RamseyNativeDerivedComparison.agda',
+      BASE/'checkers/check_ramsey_lifted_facet_incidence.py',*fix.glob('*.agda')]
+    out={'schema':'marici.ramsey-native-field-interpretation.verification.v1','status':'passed',
+      'scope_id':'native-derived-comparison-field-interpretation-v1','freshSafeCubical':True,
+      'ignoreInterfaces':True,'inputsStable':True,'compiler_sha256':compiler,'moduleExitCodes':codes,
+      'genericNativeSemanticSquare':True,'genericTransferIdentityAndComposition':True,
+      'retainedRootDecodeCell':True,'falseFieldIdentityRejected':True,
+      'runtimeFramePairs':pairs,'runtimeFrameTriangles':triangles,
+      'actualNumericalFrameEquivalencesKernelInstantiated':False,
+      'interpretationChangesRetainedRoot':False,'localGeometricRestrictionProved':False,'parentDescentResolved':False,
+      'source_sha256':{p.relative_to(ROOT).as_posix():sha(p) for p in files},'formalSourceInventory':before}
+    (BASE/'results/ramsey-native-field-interpretation-v1.json').write_text(json.dumps(out,indent=2)+'\n')
+    print(json.dumps({k:v for k,v in out.items() if k not in ['runtimeFramePairs','source_sha256','formalSourceInventory']},indent=2))
+if __name__=='__main__':main()
