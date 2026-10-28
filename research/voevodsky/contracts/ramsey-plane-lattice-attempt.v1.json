@@ -1,0 +1,32 @@
+{
+  "schema": "marici.voevodsky.ramsey-plane-lattice-attempt.v1",
+  "owner": "marici.Voevodsky",
+  "coherence_obligation": "forward_geometric_realization_only; native_attachment_transport_not_inferred",
+  "source": "research/strominger/tetrahedral-plane-lattice-universal-witness-conjectures-v1.md",
+  "normalized_source_planes": "s_i.u=1+4*h, h in Z; u=x/(sqrt(3)*d), d>0",
+  "normals": [[1,1,1],[-1,-1,1],[-1,1,-1],[1,-1,-1]],
+  "offset": [-1,1,1],
+  "plane_index_offsets": [0,0,0,-1],
+  "claims": [
+    {
+      "id": "plane-lattice-realization",
+      "scope_id": "D3-four-plane-chambers-geometric-realization-v1",
+      "statement": "For d>0, the affine map x=sqrt(3)*d*((-1,1,1)+2*v) identifies the even-sum lattice with all vertices of the declared four-plane arrangement and carries its complete geometric chamber/face structure to the regular tetrahedral-octahedral tiling.",
+      "intent": "prove",
+      "acceptance": "An inverse and all plane indices are explicit; classify every chamber through the sum-zero four-coordinate slice as a tetrahedron or octahedron; prove face incidence and twelve nearest-neighbor directions; compare the net's two templates with actual chambers.",
+      "falsifier": "An incorrect image/inverse, plane index, cell type, face identification or nearest-neighbor count under the fixed declared map."
+    },
+    {
+      "id": "fixed-scale-cell-forcing",
+      "scope_id": "D3-binary-unit-cell-forcing-v1",
+      "statement": "Every two-coloring of the even-sum lattice contains an elementary tetrahedral or octahedral chamber whose vertices all have the same color.",
+      "intent": "reject",
+      "candidate_counterexample": "c(v)=v1 mod 2",
+      "acceptance": "Prove this one coloring splits every elementary chamber, not merely a bounded list; independently test tetrahedral and octahedral chambers and retain that even dilations are not refuted.",
+      "falsifier": "A monochromatic elementary chamber for the proposed parity coloring would reject this particular counterexample; it would not prove universal fixed-scale forcing."
+    }
+  ],
+  "bounds": {"triple_plane_indices": [-2,2], "chamber_indices": [-2,2], "vertex_box": [-3,3]},
+  "controls": ["wrong affine offset", "wrong affine scale", "odd-sum lattice vertex", "nearest-neighbor unit-axis substitution", "scale-two image called an elementary cell"],
+  "scope_boundary": "Geometric realization and a fixed-scale counterexample only. No native attachment/history admission, uniform Ramsey bound, physical proton identification or parent proof promotion. The dilation-allowing Ramsey pilot is not refuted."
+}

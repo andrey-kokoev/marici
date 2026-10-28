@@ -1,0 +1,18 @@
+{
+  "schema": "marici.voevodsky.ramsey-uniform-bound-attempt.v1",
+  "owner": "marici.Voevodsky",
+  "id": "uniform-vertex-bound",
+  "scope_id": "D3-all-finite-patterns-all-finite-colors-bound-v1",
+  "statement": "The pilot admits a uniform explicitly specified finite forcing-bound construction B(r,S).",
+  "intent": "prove",
+  "coherence_obligation": "forward_mathematical_realization_and_certificate_projection; not_native_forcing_transport",
+  "candidate_bound": "B(r,S)=max_s ||s||_infinity * H(|S|,r)",
+  "H_algorithm": "Enumerate positive word lengths in increasing order; at each length enumerate every word coloring and every combinatorial line; return the first forcing length.",
+  "termination_dependency": "Classical finite Hales-Jewett theorem, explicitly used as external established mathematics, not independently re-proved or kernel checked here.",
+  "projection": "Sum the lattice letters of a word; a word line projects to a+m*S with a the sum of fixed letters and m the positive number of variable positions.",
+  "shortcuts": "H(1,r)=1; H(k,1)=1; H(2,r)=r by maximal Boolean chains and Hamming-weight lower controls.",
+  "practical_limits": {"max_colorings": 100000, "max_words": 10000, "max_templates": 100000, "refusal_is_refutation": false},
+  "acceptance": "Written proof covers all finite nonempty S and r>=1, specifies a terminating unbounded mathematical algorithm using the declared classical theorem, and preserves the exact certificate interface. Independently test finite word forcing, avoidance witnesses, binary lengths, lattice extraction and explicit resource refusals.",
+  "falsifier": "A certified word length fails a finite coloring, a projected line is not a valid labelled homogeneous copy, or the proposed abstract bound algorithm fails to terminate despite its stated mathematical premises.",
+  "scope_boundary": "This closes only classical mathematical vertex-pattern forcing. No native derivation of Hales-Jewett, source-history-faithful word encoding, practical two-color tetrahedral/octahedral numeric bound, optimal Ramsey number, graph/hypergraph result or root closure is inferred."
+}

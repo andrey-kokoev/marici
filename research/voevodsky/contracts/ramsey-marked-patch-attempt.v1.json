@@ -1,0 +1,18 @@
+{
+  "schema": "marici.voevodsky.ramsey-marked-patch-attempt.v1",
+  "owner": "marici.Voevodsky",
+  "id": "marked-dilation-patch",
+  "scope_id": "D3-source-geometry-marked-dilation-patch-v1",
+  "statement": "Within the declared exact execution envelope, an integer-dilated elementary source cell has a finite marked patch built by the existing source primitive-neighbor geometry API, retaining fixed octahedral components and original vertex labels; direct and nested refinements agree on finest geometry and original marked vertices without identifying their histories as native particle processes.",
+  "intent": "prove",
+  "coherence_obligation": "forward_geometry_API_realization_then_geometric_refinement_compatibility; native_packet_transport_not_inferred",
+  "source_API": "research/strominger/demos/particle-overlap-tetrahedron/local-reference-rules.mjs:LocalPrimitiveGeometry.register/neighbor",
+  "source_items": "research/strominger/demos/particle-overlap-tetrahedron/lattice-items.mjs:makeLatticeItem",
+  "algorithm": "For source chamber k and D(v)=a+m*v enumerate j_i in [t_i(a)+m*k_i,t_i(a)+m*k_i+m-1] with -sum(j) in {1,2,3}; materialize source items and their fixed components, replay primitive face neighbors and retain source-to-image vertex labels.",
+  "mathematical_scope": "All positive integer m in the abstract exact-integer construction; the actual Number-based source API is used only inside the implementation's explicit safe execution envelope.",
+  "execution_envelope": {"scale_max": 16, "coordinate_guard": 1048576, "resource_refusal_is_counterexample": false},
+  "tests": {"source_templates": ["upright tetrahedron", "inverted tetrahedron", "octahedron"], "translations": [[0,0,0],[2,0,0],[-1,1,0]], "scales": [1,2,3], "composition_scales": [[1,2],[2,1],[2,2]]},
+  "acceptance": "Preserve exact source primitive sets, positive cell volumes, full patch connectivity, boundary counts and labelled original vertices; replay actual source face-neighbor calls; verify direct/nested finest patches and original marks; cross-check a parity-colored marked fixture with the existing independent certificate verifier.",
+  "falsifier": "A missing/extra source primitive, changed fixed subdivision, disconnected target, incorrect marked corner, failed source-neighbor call or inconsistent direct/nested marked geometry.",
+  "scope_boundary": "No GenerativeAssemblyRules particle packets, phases, PN/NE transfers, new boundary fillers, uniform Ramsey bound or root closure. Alternative geometry histories remain distinct. Prior annotation-preservation theorems are context, not imported proof outcomes."
+}

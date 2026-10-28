@@ -1,0 +1,21 @@
+{
+  "schema": "marici.voevodsky.ramsey-native-query-descent-attempt.v1",
+  "owner": "marici.Voevodsky",
+  "id": "endpoint-cache-query-descent",
+  "scope_id": "fixed-codebook-native-cache-color-query-descent-v1",
+  "statement": "For the declared native word compiler and fixed task, the lattice color query at word length two factors through the complete endpoint and cached model state, even when the codebook, task data and total selected event count are retained.",
+  "intent": "reject",
+  "coherence_obligation": "readout_descent_after_validated_bounded_model_native_trace_realization",
+  "alphabet": ["s0", "s1", "s2"],
+  "pattern": [[0,0,0],[1,1,0],[1,0,1]],
+  "words": [[0,2],[1,0]],
+  "word_length": 2,
+  "region_radius": 2,
+  "color_count": 2,
+  "coloring": "kappa(v)=v_y mod 2 on every point of L_2",
+  "query": "Sum the pattern letters of the decoded word, then read its color",
+  "projection": "Entire canonical GenerativeAssemblyRules data state plus complete endpoint, fixed task and total selected event count; omit ordered event history",
+  "acceptance": "Fresh actual native replay proves equality of both projected states and event counts; independent arithmetic proves the required query colors differ. Full trace decoding must recover both words.",
+  "falsifier": "Different native endpoint/cache/task data would invalidate this proposed collision; equal required queries would invalidate the proposed descent obstruction.",
+  "scope_boundary": "A rejection applies only to this compiler and this forgetting projection. It does not reject retained-history or selection-augmented query representations, all endpoint encodings, the classical Ramsey theorem, or the governing native-forcing conjecture."
+}
