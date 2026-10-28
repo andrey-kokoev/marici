@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-interval-marker-involution-gate",
+    "owner": "marici.Nima",
+    "classification": "fixed_control_interval_realization_gate",
+    "stratum": "Faithful encoding of finite line-path records into the existing four-dimensional marker instrument; one fixed involutive channel, without extra controller or register. Forward realization and operation compatibility only.",
+    "inputs": ["research/nima/interval-marker-involution-gate.md", "research/aspect/checkers/check_path_marker_mate_interferometer.py", "research/nima/checkers/check_indexed_path_synthesis.py", "research/nima/nnmhv_coherence_paths.py"],
+    "checks": [{"id": "interval-marker-involution-exact", "path": "research/nima/checkers/check_interval_marker_involution_gate.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["actual marker controlled flip", "actual line-path compose", "full NNMHV decoder"],
+    "provides": ["bounded exact fixed-control compatibility test"],
+    "missing_constructors": ["independently motivated interval optical encoding", "admitted optical shift family", "physical calibration and causal comparison"],
+    "next_falsifier": "Compare the actual control square with two legal repeated interval extensions on fully visible records; a collision refutes this direct fixed-control realization only."
+  }
+}

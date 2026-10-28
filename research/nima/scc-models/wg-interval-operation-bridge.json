@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-wg-interval-operation-bridge",
+    "owner": "marici.Nima",
+    "classification": "finite_selected_history_operation_bridge",
+    "stratum": "Fixed n>=6 selected left-nested histories with a1=2,a2=3; full boundary updates retained. Forward realization and labelled operation/path compatibility. No physical time or metric.",
+    "inputs": ["research/nima/nnmhv_coherence_paths.py", "research/nima/wg-interval-operation-bridge.md"],
+    "checks": [{"id": "wg-interval-exact-regression", "path": "research/nima/checkers/check_wg_interval_operation_bridge.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["actual selected history compiler", "declared endpoint edit operations", "supplied admissible control word"],
+    "provides": ["full-record interval dictionary", "labelled graph and free path category isomorphism", "endpoint commuting square with retained distinct histories", "controlled WG specialization"],
+    "missing_constructors": ["native WG selection of endpoint edits", "rung schedule identification", "source-selected metric and sign", "continuum completion", "physical AdS and dS realizations"],
+    "next_falsifier": "Compare the declared edits with an independently selected native WG successor; test full boundary-spinor payloads, not only interval endpoints."
+  }
+}

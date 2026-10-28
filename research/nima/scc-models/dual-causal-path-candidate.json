@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "nima-dual-causal-path-candidate",
+    "owner": "marici.Nima",
+    "classification": "conditional_reversible_source_dual_causal_readout",
+    "stratum": "Supplied oriented-line paths with canonical partial inverse trims; two supplied local metric readouts on strictly ordered endpoints. Forward source/observer and causal compatibility, not physical selection.",
+    "inputs": ["research/nima/dual-causal-path-candidate.md", "research/nima/nnmhv_coherence_paths.py", "research/nima/checkers/check_indexed_path_synthesis.py"],
+    "checks": [{"id": "dual-causal-path-exact", "path": "research/nima/checkers/check_dual_causal_path_candidate.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["WG-I5 line carrier", "declared inverse envelope", "supplied local metrics and future cones"],
+    "provides": ["two conditional future subcategories", "nonempty shared R sector", "full-record inverse recovery", "diagonal and causal-role obstructions"],
+    "missing_constructors": ["physical admissibility of reversal envelope", "source-derived observer and future-cone selection", "metric scale", "continuum and global interpretation"],
+    "next_falsifier": "Inspect the exact source operation and observer interfaces for independent authority to realize inverse trims and the two future-cone assignments, without equating mathematical invertibility with physical implementation."
+  }
+}

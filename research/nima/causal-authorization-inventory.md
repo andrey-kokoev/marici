@@ -1,0 +1,50 @@
+# Causal authorization inventory for the interval candidate
+
+## Question, claim boundary and disposition
+
+Does the eight-source packet named by `causal-authorization-inventory` supply an implementation of the interval candidate's inverse operations and two causal assignments?
+
+**Disposition:** the bounded inventory is complete; the physical protocol is not specified. The inspected sources construct record-preserving mathematical operations and conditional comparisons, but do not identify an interval physical state/control interface, an admitted observer implementation, or its time-orientation comparison. This is a documentation-and-interface blocker on this route, not a physical impossibility theorem. WG-I3-R/O/T/J and WG-I3 remain open; WG-I2 and broader AdS/dS claims are unaffected.
+
+SCC obligation: upstream **forward realization**, followed by **attachment transport** for observer/orientation data and **route/coherencer compatibility** on one common source. This is source inspection, not a newly executed SCC model or downstream readout-descent proof. No foreign-owner checker or formal proof was rerun.
+
+## Eight-source inventory
+
+Here “constructed” describes what the inspected code or note explicitly provides; it does not independently recertify its reported proofs. “Missing” is relative to implementing this interval candidate from these sources.
+
+| Source and exact locator | Constructed | Supplied or conditional | Missing for this interval realization |
+|---|---|---|---|
+| [S1: indexed paths](checkers/check_indexed_path_synthesis.py), `compose`, `recover`, final reverse-traversal assertion | Endpoint-matched concatenation of full edge words; fiber reconstruction; retained two-edge reverse traversal | Four-vertex directed graph and chosen path families | No cancellation or physical inverse executor. A reversed edge appends another edge; it does not trim the existing word. No physical observer or time map |
+| [S2: witnessed refinements](composable-witness-specialization.md), Construction and Disposition | Indexed refinement composition, full-step/state comparisons, retained sources, units and associator | Base WG; each refinement's admission, advancement and generated-edge certificate; second refinement typed over the first compilation | Does not discover leaf control authority or arbitrary domain compatibility. A state/step isomorphism is not inverse execution of a physical source operation |
+| [S3: certified image](../strominger/native-promotion-certified-image-v1.md), Certified image / Independently selected target operations / unavailable-role control | `Generated = Sigma(c:A) Sigma(y:B) (run(c)=y)`; exact source recovery; lifted source continuations; composed compatibility squares | Actual source continuation `f`; independently supplied ambient `h` needs `run(f(c))=h(run(c))` | No interval implementation of `run`, `f` and `h`. Actual next-level exchange leaves that certified image, so source recovery cannot justify arbitrary ambient continuation |
+| [S4: opposite branch](../strominger/opposite-branch-canonical-compatibility-v1.md), sections 1–4 and Surviving scope | Full-carrier metric-unitary adapters; based backward lift equals `J-sharp`; selected cycle inverses; reversal with retained bank | Opposite-circulation signs, preparation and addressed interaction/character policy; parameterized Hamiltonian family | No identification of this native-plus-bank carrier with interval records or their trims. No physical-time map or source-selected alternating branch. Reusing forward `J` is not the backward operation |
+| [S5: observer orbit](source-observability-is-a-constructor-generated-dual-orbit.md), Cross-sector object and DPC | `span{ell a}` and common-kernel criterion for a declared constructor algebra and root observer; finite separation versus uniform stability distinction | Source module `H`, authorized algebra `A`, source-rooted `ell` | No such operational `H,A,ell` specified for the interval realization. Separation supplies neither a future cone nor a physical detector implementation |
+| [S6: polarity character](carrier-polarity-time-orientation-character-gate.md), Exact character test and Surviving comparison | Under road-reflection ↔ spatial-reflection comparison, equivariance forces `2a=0`, hence zero map in characteristic zero | Core-exchange ↔ time-reversal identification and nonzero normalization would permit a character-compatible line map | Neither identification nor normalization is source-derived here. Matching signs is compatibility, not physical time-orientation authority |
+| [S7: static interval audit](../sontag/coherent-resolution-control-realization-audit.md), Typed finite realization and Control verdicts | Full interval-field boundary-plus-mixed-curvature descriptor; boundary-only kernel; nonsingular Schur crossover | Finite configuration module, static readouts and boundary-transport deformation parameter | No source-derived physical transition/actuation/output family or physical-time parameter. Field coordinates are not a control plant and are not automatically the individual path-object state space |
+| [S8: dual candidate](dual-causal-path-candidate.md), Frozen candidate / Explicit maps / Proof / Why this does not solve | Guarded mathematical `L,R,l,r`; full-record recovery on objects; retained execution words; common `R` transition; cone compatibility on visible domains | Reversible envelope; two local metrics with fixed scale 4; chart assignments `t_plus=v-u`, `t_minus=u+v`; selected future action sets | No physical authority for trims, chart-time maps, cone selection or observers. Diagonal records remain algebraic but are excluded from metric readouts |
+
+## R/O/T/J classification and first blockers
+
+| Obligation | Available interval object | First missing typed object | Acceptance/reopening condition |
+|---|---|---|---|
+| WG-I3-R | Path trims and extensions with complete decoded records and guarded object recovery (S8) | A declared operational state including accessible records/environment, with admitted interventions realizing the needed trims | Exhibit an independently justified state realization and control action intertwining the interval edit on its stated domain; show target-based recovery of the full state, not just endpoint or scalar recovery. If the full envelope is claimed, include all four actions |
+| WG-I3-O | Both chart maps extract the same ordered pair `(i,j)`; full source records exist (S8) | An admitted physical observation/constructor family realizing this readout on the declared state class | Supply source-rooted observation maps and available operations, factor the actual readout through them, and identify their blind kernel. Distinct physical observer families must be justified if claimed, not inferred from metric signs |
+| WG-I3-T | Two chosen chart functions and monotone future subcategories (S8); an existing conditional character obstruction (S6) | A source-derived physical-time/orientation map, including its involution comparison | Specify the physical-time object and map, reflection/reversal actions and any sheet/subgroup restriction; verify nonzero equivariance and agreement with the physically admitted future operations |
+| WG-I3-J | A common mathematical source and identical `R` transition in both readouts (S8) | Common-source identifications for actual R/O/T realization witnesses | Once witnesses exist, check their comparison squares on matching source, record-access and visible domains, including boundary payloads. Do not assemble different source sectors by dimension or coordinate agreement |
+
+### Two scope corrections to the proposed route
+
+1. The candidate's minus-future branch uses **`l,R`**, not `r`. Thus physical authority for all four envelope actions is stronger than the minimum needed to realize the two declared future sets. An implementation of `L,l,R` may suffice for that narrower operation claim; implementing the full reversible envelope additionally requires `r`. This does not supply even the narrower physical authority.
+2. The two coordinate observers in S8 are **literally the same object map**. What differs is the supplied metric and future assignment. S5 does not turn this into two physically different observer families. The observation factorization and the causal interpretation must be checked separately; observability of `(i,j)` alone cannot select either one.
+
+## Strongest attempted closure and residual
+
+The tempting closure is to combine S3's source recovery, S4's cycle reversal, S5's observer orbit and S6's matching reversal character. It fails as an existing construction at the first source-identification step: none supplies an interval state/control realization transporting the S4 operations to `l` (or `r`). S3 explicitly requires a compatibility square rather than creating that identification. S7 independently prevents substituting a static interval descriptor for the missing control interface.
+
+Even granting a new interval control realization as an assumption would leave the observer authorization and physical-time map unconstructed. No new hypothetical parent carrier, fitted observer or choice of orientation is introduced to hide these residuals.
+
+Stop this branch at these blockers. Reopen on a concrete source-authorized realization with the stated maps, not another algebraic inverse, matching character, or repeated source search over the same packet. The existing mathematical candidate remains valid at its stated conditional scope.
+
+## Verification and durability
+
+All eight named sources were inspected, including the actual concatenation/recovery implementation in S1. The workbench resolution pins this note and all eight sources by SHA-256; its evidence-drift controls check those bindings. That check verifies inventory provenance, not the physical classifications or the truth of imported results. The planner and scientific-outcome audit are separate: completing this inventory must not promote any R/O/T/J or physical WG-I3 claim.
