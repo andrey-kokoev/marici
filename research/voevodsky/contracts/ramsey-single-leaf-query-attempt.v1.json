@@ -1,0 +1,16 @@
+{
+  "schema": "marici.voevodsky.ramsey-single-leaf-query-attempt.v1",
+  "net_node": "single-leaf-query-completeness",
+  "scope_id": "canonical-PN-leaf-all-word-first-window-query-v1",
+  "statement": "For every finite word over the source-bound pattern (000,110,101), a finite path from the canonical seed under the unchanged PN/inverse-PN/NE/reader/NN grammar has a terminal first-window occurrence at the word-sum lattice point.",
+  "intent": "reject",
+  "coherence_obligation": "forward_reachability_before_query_readout",
+  "source_policy": "One canonical fixed seed; successful exact-integer native packet transfers only; point readout F(phaseFrame.window[0].vertex), not arbitrary cache points or a new coordinate decoder",
+  "witness": {"pattern": [[0,0,0],[1,1,0],[1,0,1]], "word": [1,1,1], "region_radius": 3, "required_query": [3,3,0]},
+  "proposed_invariant": "If the native M-plane has h=b0+b2=m, every C reference has h=m-1 or m+1 and every M reference has h=m. Every admitted successor preserves these bounds, including terminal E. At the canonical m=0 seed, F_y=1-h restricts every first-window point to y=0,1,2.",
+  "coverage": "Both regular orientations and all four split components, all 24 ordered markings, retaining every admitted planar P/N chart and all of its native outgoing operations. Translation covariance and origin/permutation-independent availability give the local induction, not a depth cutoff.",
+  "source_context": "research/strominger/four-progression-directions-v1.md motivates this test. No scientific outcome is imported: this probe freshly checks the stronger reference-height bounds needed for the Ramsey query.",
+  "acceptance": "The all-path point bound excludes required query (3,3,0), which is in L_3. This rejects the exact single-seed/first-window strategy, not alternative families or representations.",
+  "falsifier": "An admitted successor violates the declared reference-height bounds, or a finite native path under this policy realizes the excluded point.",
+  "boundary": "No claim against all Marici source policies, translated seed families, other point representations or the governing Ramsey conjecture."
+}

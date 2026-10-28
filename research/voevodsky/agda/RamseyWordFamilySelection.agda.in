@@ -1,0 +1,92 @@
+{-# OPTIONS --safe --cubical --guardedness #-}
+module RamseyWordFamilySelection where
+open import Cubical.Foundations.Prelude
+open import Cubical.Data.Nat.Base using (ℕ; _+_)
+open import Agda.Builtin.String using (String)
+open import RamseyRegionFamily
+
+data Letter : Type where
+  l0 l1 l2 : Letter
+data Word : Type where
+  word : Letter → Letter → Letter → Word
+Point : Type
+Point = Σ ℕ (λ _ → Σ ℕ (λ _ → ℕ))
+plus : Point → Point → Point
+plus (x , (y , z)) (u , (v , w)) = (x + u) , ((y + v) , (z + w))
+letter-point : Letter → Point
+@@LETTERS@@
+word-sum : Word → Point
+word-sum (word a b c) = plus (letter-point a) (plus (letter-point b) (letter-point c))
+shifted : Point → Point
+shifted (x , (y , z)) = (x + 3) , ((y + 3) , (z + 3))
+
+-- Canonical request observation; the sector parser/binding is checked externally.
+canonical-trace : Word → String
+@@TRACES@@
+
+-- Source-derived declared point observation, checked against quoted sector data.
+region-point : RegionIndex → Point
+@@REGION@@
+
+-- Compile-time geometric instruction map, not a query argument or seed value.
+compile-index : Word → RegionIndex
+@@INDICES@@
+data Component : Type where
+  prepared program answer : Component
+
+module Query (color : RegionIndex → ℕ) where
+  module B = UnderInput color
+  module R = B.R
+  retained-row : (i : RegionIndex) → R.Resolve (B.fiber i)
+  retained-row i = snd (R.premise (N.Pi-package RegionIndex B.fiber , B.family) (lift i))
+
+  point-package : Word → G.Package
+  point-package w = N.E-package RegionIndex B.fiber (compile-index w)
+  point-derivation : (w : Word) → R.Resolve (point-package w)
+  point-derivation w = R.apply (N.E-kind , RegionIndex , B.fiber , compile-index w)
+    (λ { (lift i) → retained-row i })
+
+  table : R.Resolve (N.Pi-package Word point-package)
+  table = R.apply (N.P-kind , Word , point-package) (λ { (lift w) → point-derivation w })
+  word-premise : (w : Word) → R.Resolve (point-package w)
+  word-premise w = snd (R.premise (N.Pi-package Word point-package , table) (lift w))
+  query-package : Word → G.Package
+  query-package w = N.E-package Word point-package w
+  query : (w : Word) → R.Resolve (query-package w)
+  query w = R.apply (N.E-kind , Word , point-package , w) (λ { (lift v) → word-premise v })
+
+  history-part : Word → Component → G.Package
+  history-part w prepared = N.Pi-package RegionIndex B.fiber
+  history-part w program = N.Pi-package Word point-package
+  history-part w answer = query-package w
+  history-proof : (w : Word) (c : Component) → R.Resolve (history-part w c)
+  history-proof w prepared = B.family
+  history-proof w program = table
+  history-proof w answer = query w
+  result-package : Word → G.Package
+  result-package w = N.Pi-package Component (history-part w)
+  result : (w : Word) → R.Resolve (result-package w)
+  result w = R.apply (N.P-kind , Component , history-part w) (λ { (lift c) → history-proof w c })
+
+  retains-prepared-family : (w : Word) → R.premise (result-package w , result w) (lift prepared)
+    ≡ (N.Pi-package RegionIndex B.fiber , B.family)
+  retains-prepared-family w = refl
+  retains-compiled-table : (w : Word) → R.premise (result-package w , result w) (lift program)
+    ≡ (N.Pi-package Word point-package , table)
+  retains-compiled-table w = refl
+
+  query-value : (w : Word) → N.value (result-package w) answer
+    ≡ (w , (compile-index w , (context (compile-index w) , color (compile-index w))))
+  query-value w = refl
+
+  canonical-request-preserved : (w : Word) → canonical-trace (fst (N.value (result-package w) answer)) ≡ canonical-trace w
+  canonical-request-preserved w = refl
+
+  all-inputs-retained : (w v : Word) (i : RegionIndex)
+    → R.premise (R.premise (query-package w , query w) (lift v)) (lift i)
+      ≡ (B.fiber i , retained-row i)
+  all-inputs-retained w v i = refl
+
+  -- BEGIN TASK SQUARE
+  point-square : (w : Word) → region-point (fst (snd (N.value (result-package w) answer))) ≡ shifted (word-sum w)
+@@SQUARES@@

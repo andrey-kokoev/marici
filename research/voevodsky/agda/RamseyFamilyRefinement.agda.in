@@ -1,0 +1,126 @@
+{-# OPTIONS --safe --cubical --guardedness #-}
+module RamseyFamilyRefinement where
+open import Cubical.Foundations.Prelude
+open import Cubical.Data.Nat.Base using (ℕ)
+open import Agda.Builtin.String using (String)
+import IndexedConstructorTables as Tables
+import NativeTableRules as Rules
+import NativeTableResolution as Resolution
+import RamseyRegionFamily as Old
+import RamseyWordFamilySelection as W
+module G = Tables.Core ℓ-zero
+module N = Rules.Native ℓ-zero
+
+data NewIndex : Type where
+@@NEWINDICES@@
+embed : Old.RegionIndex → NewIndex
+@@EMBED@@
+new-context : NewIndex → String
+@@CONTEXTS@@
+new-point : NewIndex → W.Point
+@@POINTS@@
+compile-new : W.Word → NewIndex
+@@COMPILE@@
+
+data Route : Type where
+  transported direct : Route
+-- Exact rule/premise structure with complete state values at leaves. Seed
+-- certificates change policy through the explicit inclusion below.
+data History : G.Package → Type (ℓ-suc ℓ-zero) where
+  history-leaf : {q : G.Package} → History q
+  history-node : (r : N.Rule) → ((i : N.Arity r) → History (N.input r i)) → History (N.output r)
+
+module Refine (color : NewIndex → ℕ) where
+  module Small = W.Query (λ i → color (embed i))
+  fiber : NewIndex → G.Package
+  fiber i = N.pack (G.atom-node Old.Row) (new-context i , color i)
+  Admit : G.Package → Type (ℓ-suc ℓ-zero)
+  Admit q = Σ NewIndex (λ i → q ≡ fiber i)
+  module Big = Resolution.Full ℓ-zero Admit
+  seed-at : (i : NewIndex) → Big.Resolve (fiber i)
+  seed-at i = Big.seed (i , refl)
+  family : Big.Resolve (N.Pi-package NewIndex fiber)
+  family = Big.apply (N.P-kind , NewIndex , fiber) (λ { (lift i) → seed-at i })
+
+  point-package : W.Word → G.Package
+  point-package w = N.E-package NewIndex fiber (compile-new w)
+  point-proof : (w : W.Word) → Big.Resolve (point-package w)
+  point-proof w = Big.apply (N.E-kind , NewIndex , fiber , compile-new w) (λ { (lift i) → seed-at i })
+  table : Big.Resolve (N.Pi-package W.Word point-package)
+  table = Big.apply (N.P-kind , W.Word , point-package) (λ { (lift w) → point-proof w })
+  query-package : W.Word → G.Package
+  query-package w = N.E-package W.Word point-package w
+  query : (w : W.Word) → Big.Resolve (query-package w)
+  query w = Big.apply (N.E-kind , W.Word , point-package , w) (λ { (lift v) → point-proof v })
+  part : W.Word → W.Component → G.Package
+  part w W.prepared = N.Pi-package NewIndex fiber
+  part w W.program = N.Pi-package W.Word point-package
+  part w W.answer = query-package w
+  part-proof : (w : W.Word) (c : W.Component) → Big.Resolve (part w c)
+  part-proof w W.prepared = family
+  part-proof w W.program = table
+  part-proof w W.answer = query w
+  direct-package : W.Word → G.Package
+  direct-package w = N.Pi-package W.Component (part w)
+  direct-proof : (w : W.Word) → Big.Resolve (direct-package w)
+  direct-proof w = Big.apply (N.P-kind , W.Component , part w) (λ { (lift c) → part-proof w c })
+
+  -- BEGIN SOURCE TRANSPORT
+  context-preserved : (i : Old.RegionIndex) → Old.context i ≡ new-context (embed i)
+@@CONTEXT-PROOFS@@
+  fiber-preserved : (i : Old.RegionIndex) → Small.B.fiber i ≡ fiber (embed i)
+  fiber-preserved i = cong (λ s → N.pack (G.atom-node Old.Row) (s , color (embed i))) (context-preserved i)
+  seed-inclusion : {q : G.Package} → Small.B.Admit q → Admit q
+  seed-inclusion (i , p) = embed i , p ∙ fiber-preserved i
+
+  map-derivation : {q : G.Package} → Small.R.Resolve q → Big.Resolve q
+  map-derivation (Small.R.seed a) = Big.seed (seed-inclusion a)
+  map-derivation (Small.R.apply r ds) = Big.apply r (λ i → map-derivation (ds i))
+
+  old-history : {q : G.Package} → Small.R.Resolve q → History q
+  old-history (Small.R.seed a) = history-leaf
+  old-history (Small.R.apply r ds) = history-node r (λ i → old-history (ds i))
+  new-history : {q : G.Package} → Big.Resolve q → History q
+  new-history (Big.seed a) = history-leaf
+  new-history (Big.apply r ds) = history-node r (λ i → new-history (ds i))
+  history-preserved : {q : G.Package} (d : Small.R.Resolve q) → new-history (map-derivation d) ≡ old-history d
+  history-preserved (Small.R.seed a) = refl
+  history-preserved (Small.R.apply r ds) = cong (history-node r) (funExt (λ i → history-preserved (ds i)))
+
+  mapped-old : (w : W.Word) → Big.Resolve (Small.result-package w)
+  mapped-old w = map-derivation (Small.result w)
+  route-package : W.Word → Route → G.Package
+  route-package w transported = Small.result-package w
+  route-package w direct = direct-package w
+  route-proof : (w : W.Word) (r : Route) → Big.Resolve (route-package w r)
+  route-proof w transported = mapped-old w
+  route-proof w direct = direct-proof w
+  both-package : W.Word → G.Package
+  both-package w = N.Pi-package Route (route-package w)
+  both : (w : W.Word) → Big.Resolve (both-package w)
+  both w = Big.apply (N.P-kind , Route , route-package w) (λ { (lift r) → route-proof w r })
+  transported-history-retained : (w : W.Word) → Big.premise (both-package w , both w) (lift transported)
+    ≡ (Small.result-package w , mapped-old w)
+  transported-history-retained w = refl
+  direct-history-retained : (w : W.Word) → Big.premise (both-package w , both w) (lift direct)
+    ≡ (direct-package w , direct-proof w)
+  direct-history-retained w = refl
+
+  -- BEGIN READOUT SQUARES
+  index-square : (w : W.Word) → embed (W.compile-index w) ≡ compile-new w
+@@INDEX-PROOFS@@
+  old-answer : (w : W.Word) → N.Ty (Small.query-package w)
+  old-answer w = N.value (both-package w) transported W.answer
+  new-answer : (w : W.Word) → N.Ty (query-package w)
+  new-answer w = N.value (both-package w) direct W.answer
+  request-square : (w : W.Word) → fst (old-answer w) ≡ fst (new-answer w)
+  request-square w = refl
+  trace-square : (w : W.Word) → W.canonical-trace (fst (old-answer w)) ≡ W.canonical-trace (fst (new-answer w))
+  trace-square w = refl
+  context-square : (w : W.Word) → fst (snd (snd (old-answer w))) ≡ fst (snd (snd (new-answer w)))
+  context-square w = context-preserved (W.compile-index w) ∙ cong new-context (index-square w)
+  color-square : (w : W.Word) → snd (snd (snd (old-answer w))) ≡ snd (snd (snd (new-answer w)))
+  color-square w = cong color (index-square w)
+  point-square : (w : W.Word) → new-point (fst (snd (new-answer w)))
+    ≡ W.plus (W.region-point (fst (snd (old-answer w)))) (1 , (1 , 1))
+@@POINT-PROOFS@@

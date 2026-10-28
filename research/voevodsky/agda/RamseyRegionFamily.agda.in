@@ -1,0 +1,51 @@
+{-# OPTIONS --safe --cubical --guardedness #-}
+module RamseyRegionFamily where
+open import Cubical.Foundations.Prelude
+open import Cubical.Data.Nat.Base using (ℕ)
+open import Agda.Builtin.String using (String)
+import IndexedConstructorTables as Tables
+import NativeTableRules as Rules
+import NativeTableResolution as Resolution
+
+-- All contexts are fixed before any requested word or output is supplied.
+data RegionIndex : Type where
+@@INDICES@@
+
+context : RegionIndex → String
+@@CONTEXTS@@
+
+module G = Tables.Core ℓ-zero
+module N = Rules.Native ℓ-zero
+Row : Type
+Row = Σ String (λ _ → ℕ)
+
+module UnderInput (color : RegionIndex → ℕ) where
+  fiber : RegionIndex → G.Package
+  fiber i = N.pack (G.atom-node Row) (context i , color i)
+
+  -- Literal input admission is explicit and restricted to this prepared family.
+  -- The external source checker validates the contents of each quoted context.
+  Admit : G.Package → Type (ℓ-suc ℓ-zero)
+  Admit q = Σ RegionIndex (λ i → q ≡ fiber i)
+  module R = Resolution.Full ℓ-zero Admit
+
+  seed-at : (i : RegionIndex) → R.Resolve (fiber i)
+  seed-at i = R.seed (i , refl)
+
+  family : R.Resolve (N.Pi-package RegionIndex fiber)
+  family = R.apply (N.P-kind , RegionIndex , fiber) (λ { (lift i) → seed-at i })
+
+  selected : (i : RegionIndex) → R.Resolve (N.E-package RegionIndex fiber i)
+  selected i = R.apply (N.E-kind , RegionIndex , fiber , i) (λ { (lift j) → seed-at j })
+
+  family-value : (i : RegionIndex) → N.value (N.Pi-package RegionIndex fiber) i ≡ (context i , color i)
+  family-value i = refl
+
+  selected-value : (i : RegionIndex) → N.value (N.E-package RegionIndex fiber i) ≡ (i , (context i , color i))
+  selected-value i = refl
+
+  selected-retains-every-input : (i j : RegionIndex)
+    → R.premise (N.E-package RegionIndex fiber i , selected i) (lift j) ≡ (fiber j , seed-at j)
+  selected-retains-every-input i j = refl
+
+-- No word-to-index map is assumed or constructed here.
