@@ -1,0 +1,30 @@
+{
+  "schema": "marici.native-query-source-fragment.v1",
+  "status": "declared_specification",
+  "source": "The actual abc and adb Vertex permutations in research/nima/agda/NativeSeedTransitionProbe.agda; close under composition to obtain A4.",
+  "objects": ["X = A4 x Bool"],
+  "generators": {
+    "L_ABC": "(g,b) -> (abc composed after g,b)",
+    "L_ADB": "(g,b) -> (adb composed after g,b)",
+    "Q_AB": "(g,b) -> (g,b xor [g(A)=B])",
+    "Q_BC": "(g,b) -> (g,b xor [g(B)=C])",
+    "Q_CA": "(g,b) -> (g,b xor [g(C)=A])",
+    "Q_AD": "(g,b) -> (g,b xor [g(A)=D])",
+    "Q_DB": "(g,b) -> (g,b xor [g(D)=B])",
+    "Q_BA": "(g,b) -> (g,b xor [g(B)=A])"
+  },
+  "syntax": "Free monoid of finite lists of the eight named generators on the one object X. No path-endpoint restrictions, relations, quotient, implicit resets, measurement commands or additional controls.",
+  "composition": "Chronological list concatenation: eval(u ++ v,x)=eval(v,eval(u,x)). The empty word is identity.",
+  "initialization": "An explicitly supplied g in A4 and pointer false. Correctness of generator implementations is on all X, not only blank inputs.",
+  "observations": "The Boolean pointer at authorized word boundaries; retain the complete successor (g,b) for all future continuations. Reading here is a mathematical function, not an inserted physical instrument.",
+  "history": "Retain the literal word and intermediate states. Equal permutation semantics does not identify histories.",
+  "native_interpretation_specification": {
+    "carrier": "Embed each enumerated permutation g as its actual Vertex equivalence e_g, paired with the Boolean, in NativeQueryControlledRecorder.Carrier.",
+    "Q_e": "Use NativeQueryControlledRecorder.native-record at the named endpoints; its blank correctness, native agreement and undo are already Agda-checked for every supplied Vertex equivalence.",
+    "L_h": "Map (e,b) to (compEquiv e h,b), using the actual Query.ABC or Query.ADB. Retain its equivalence/marked-value attachment at the Complete package interface.",
+    "words": "Chronological composition of those mapped operations, retaining the word and actual intermediate packages.",
+    "proof_boundary": "This is the declared generator/word interpretation. The finite group embedding and L_h/all-word native amplitude comparison are not newly Agda-proved here; they remain Output-A proof obligations. No arbitrary target equivalence or desired output is an interpreter input."
+  },
+  "negative_syntax_examples": ["Q_AA is not a generator", "implicit blank reset is not a generator", "Q_AB;Q_AB is not the empty syntax word despite equal state semantics"],
+  "scope": "An explicitly supplied group-query task, not the original endpoint-typed six-edge traversal language and not a source-selected physical protocol grammar."
+}

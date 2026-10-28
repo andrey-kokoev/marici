@@ -1,0 +1,35 @@
+{
+  "schema": "marici.native-query-realization-equivalence.v1",
+  "status": "declared_specification",
+  "fragment": "research/strominger/contracts/native-query-source-fragment.v1.json",
+  "objects": {
+    "carrier": "A 12-dimensional real vector space C with a labelled basis beta_g indexed by the frozen A4 elements and positive inner product H.",
+    "pointer": "A two-dimensional real space P with labelled basis r_0,r_1 of unit vectors and fixed overlap eta in (-1,1). Eta is an external parameter, not quotiented.",
+    "joint": "C tensor P with the product inner product; no mixing of carrier and pointer factors is allowed as a realization gauge.",
+    "operations": "Linear extensions of the eight frozen labelled permutations on beta_g tensor r_b, with literal word histories retained.",
+    "preparations": "Every labelled beta_g tensor r_0. These are mathematical amplitude vectors, not claimed normalized quantum states or autonomous physical preparations.",
+    "readings": "On the distinguished labelled states beta_g tensor r_b, the native reader returns b. No deterministic Boolean reader or Born instrument on arbitrary superpositions is supplied.",
+    "normalization": "Each feature sum_{g:g(a)=b} beta_g for the six off-diagonal queries has squared norm one. This fixes c=1/3 if H=cI in the labelled basis.",
+    "admissible_subspace": "For Output A, additionally require all eight operation matrices to be isometries. The equivalence definition itself does not assume that property has been proved."
+  },
+  "morphisms": {
+    "type": "Invertible real linear A:C->C' and B:P->P', acting jointly as A tensor B.",
+    "label_laws": ["A beta_g = beta'_g for every fixed source label g", "B r_0 = r'_0", "B r_1 = r'_1"],
+    "pairing_laws": ["A^T H' A = H in coordinate presentations", "B^T R' B = R in coordinate presentations"],
+    "operation_law": "(A tensor B) rho(w) = rho'(w) (A tensor B) for every identical literal word w; generator intertwining suffices by induction.",
+    "preparation_and_reading": "Carry each named preparation to its namesake, preserve the pointer answer on all distinguished labelled states and preserve every future word reading.",
+    "composition": "Ordinary composition of the two factor maps; inverses are their actual linear inverses; identity maps retain each label.",
+    "uniqueness_boundary": "The labelled bases determine A and B uniquely when a morphism exists. Existence is equality of the two labelled Gram matrices. This gauge does not choose those Grams."
+  },
+  "excluded": [
+    "Permuting source or pointer labels while calling the named task unchanged",
+    "Changing eta",
+    "Rescaling the normalized pairing while leaving the labelled preparations and features fixed",
+    "Entangling the carrier and pointer coordinate factors as a gauge move",
+    "Quotienting histories merely because their endpoint operators agree",
+    "Claiming arbitrary-superposition readout or physical control from this mathematical equivalence"
+  ],
+  "scale_boundary": "Before normalization the theorem H=cI has a free common scale. Distinct c are not isometric objects preserving the fixed labelled basis; unit-feature normalization selects one representative by convention, not a physical energy calibration.",
+  "coordinate_example": "Any invertible shear A is allowed if beta'=A beta and H'=A^{-T} H A^{-1}, with operations conjugated and labels unchanged.",
+  "refusal_examples": ["Changing H from I/3 to (I+J/9)/4 while fixing beta is not a coordinate equivalence", "Changing eta from 0 to 1/2 is not an allowed pointer gauge", "Swapping r_0 and r_1 is not record-label-preserving"]
+}

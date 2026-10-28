@@ -1,0 +1,32 @@
+{
+  "schema": "marici.physical-candidate-audit.v1",
+  "candidate": "existing-directed-transition-oscillator-candidate",
+  "status": "audit_complete_with_missing_interfaces_and_scoped_obstruction",
+  "accepted_physical_model": false,
+  "added_primitives": [],
+  "sources": [
+    "research/nima/seed-exchange-hypothesis-existing-instrument-realization.md",
+    "research/nima/exchange-oscillator-preparation-and-measurement.md",
+    "research/nima/exchange-detector-calibration-and-identifiability.md",
+    "research/nima/checkers/check_seed_probe_exchange_bridge.py",
+    "research/nima/checkers/check_exchange_oscillator_instrument.py"
+  ],
+  "checklist": {
+    "carrier and pointer domains": {"disposition": "specified_with_target_interface_missing", "finding": "24 S4-labelled carrier modes and six persistent scalar record modes. No A4 x Bool code, finite Boolean pointer, or invariant embedding is supplied."},
+    "existing primitive Hamiltonians and allowed controls": {"disposition": "specified_for_passive_pulse_submodel", "finding": "Six addressed difference-mode pulses S_e(theta)=I+(exp(-i theta)-1)d_e d_e^T. Arbitrary pulse areas enlarge the tested submodel conservatively; arbitrary joint unitaries, controlled reflections, Kerr interactions and adaptive gates are not supplied."},
+    "preparation and readout": {"disposition": "conditional_existing_model", "finding": "Vacuum/coherent preparation and phase-referenced homodyne with a reference trial. Pointer record means are continuous noisy quantities, not an exact Boolean instrument or nondemolition encoder."},
+    "auxiliaries and return/reset": {"disposition": "incomplete", "finding": "Persistent record modes and reversible ideal pulse histories are specified; a Boolean recording apparatus with controller/bath return and reset resources is not."},
+    "timing and accuracy": {"disposition": "partial", "finding": "Pulse area selects the ideal operation, not duration or frequency. Prior detector work supplies conditional population moments and calibration failure controls, not a uniform finite-word implementation error bound."},
+    "source provenance of each assumption": {"disposition": "explicit_external_assumptions", "finding": "Bosonic mechanics, counting-normalized transition features, coherent preparation, supermode controls and phase reference are supplied. They are not derived from native query retention."},
+    "relation to A4 x Bool": {"disposition": "not_supplied_and_direct_linear_binding_obstructed", "finding": "Agreement of some S4/A4 feature overlaps is not an operation-preserving code map. Every six-pulse word acts trivially on a common 24-dimensional subspace of the 30-mode amplitude space; it cannot intertwine the native triangle on its 24-dimensional joint label representation."},
+    "missing interfaces and obstructions": {"disposition": "listed", "finding": "Missing code/decoder, controlled Boolean recorder, uniform error contract and resource-return instrument. Direct faithful linear amplitude or single-excitation compilation is excluded by a rank invariant; arbitrary Fock-space/nonlinear/measurement-assisted encodings are not excluded."}
+  },
+  "scoped_no_go": {
+    "allowed_dynamics": "Finite words in the six documented passive pulses at arbitrary angles; optional common global phase does not remove the obstruction.",
+    "encoding_class": "Injective linear map J:R^24 (or C^24) -> R^30 (or C^30), intertwining the native triangle L_ABC tensor I with a pulse word, without quotienting data.",
+    "pulse_invariant": "The six independent difference directions span at most six dimensions. Every pulse word fixes their common orthogonal complement pointwise, so rank(U-I)<=6.",
+    "target": "L_ABC tensor I has eight disjoint three-cycles, hence rank(L-I)=16. For any scalar z, rank(L-zI)>=16 over C.",
+    "contradiction": "UJ=JL implies rank(J(L-I))=16 <= rank(U-I)<=6. A common phase gives the same contradiction with L-zI.",
+    "not_claimed": "No universal physical no-go, no exclusion of nonlinear or multiparticle encodings, and no permission to add controls after this failure."
+  }
+}
