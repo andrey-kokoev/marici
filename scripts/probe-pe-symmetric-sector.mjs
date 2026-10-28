@@ -1,0 +1,3 @@
+import {buildPESymmetricSector,neutralCentre} from '../research/strominger/pe-symmetric-sector.mjs';
+const sectors=[0,1,2,3].map(radius=>{const s=buildPESymmetricSector(radius);return {radius,edgeUnits:s.edgeUnits,...s.audit,allTwelveEdgesBalanced:s.edgeStrips.every(e=>e.combined.proton===e.combined.electron),exampleEdge:s.edgeStrips[0]};});
+console.log(JSON.stringify({operation:'q -> 2c - q',centre:neutralCentre,domain:'integer sum(q)=1; |q_i-c_i| <= radius+1/2; whole native cells only',sectors,scope:'Independent symmetric-sector probe; does not change the viewer or identify Pb-208.'},null,2));
