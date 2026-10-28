@@ -1,0 +1,53 @@
+import {beltLayerCount} from '../../research/realization-tower/belt-layer-model.mjs';
+import {esd7NodePlanes} from './esd7-node-planes.js';
+import {doubleEsd7Stages,doubleEsd7Rules} from '../../research/realization-tower/double-esd7-process.mjs';
+import {cellFibrationStages} from '../../research/realization-tower/cell-fibration-process.mjs';
+import {foldedFibrationStages as fibration12Stages} from '../../research/realization-tower/fibration-folded-process.mjs';
+import {centerInterfaceStages} from '../../research/realization-tower/center-interface-process.mjs';
+import {retainedPbStages} from '../../research/realization-tower/retained-pb-process.mjs';
+import {diamondStageTitles} from '../../research/realization-tower/diamond-construction.mjs';
+import {restoreNeutralValues,neutralExtensionSize} from '../../research/realization-tower/neutral-state-extension.mjs';
+// App-qualified, versioned key: independent of whichever dev-server port hosts it.
+export const sceneSettingsKey='marici:isotope-constructor:v1:scene-settings';
+const bool=(value,fallback)=>typeof value==='boolean'?value:fallback;
+const number=(value,fallback,min,max)=>value===null||value===undefined||String(value).trim()===''||!Number.isFinite(Number(value))?fallback:Math.max(min,Math.min(max,Number(value)));
+const processIds=['ruthenium-98','sulfur-32','single-octahedral','native-octahedral-bridge','signed-octahedral-belt','neutron-belt','double-esd7','cell-fibration','pair-context-7x4','edge-ray','new-construction','diamond-construction','retained-construction','from-center-cell','fibration-12x12','unsplit-octahedron'];
+function normalizeProgress(value,fallbackK=1,id){
+ const p=value&&typeof value==='object'?value:{};
+ return {k:['ruthenium-98','sulfur-32','single-octahedral','native-octahedral-bridge','signed-octahedral-belt','neutron-belt','double-esd7','cell-fibration','pair-context-7x4','retained-construction','from-center-cell','fibration-12x12','unsplit-octahedron'].includes(id)?7:Math.round(number(p.k,fallbackK,1,7)),step:Math.round(number(p.step,0,0,id==='ruthenium-98'?0:id==='sulfur-32'?1:id==='single-octahedral'?3:id==='native-octahedral-bridge'?2:id==='signed-octahedral-belt'?3:id==='neutron-belt'?0:id==='double-esd7'?doubleEsd7Stages.length-1:id==='cell-fibration'?cellFibrationStages.length-1:id==='pair-context-7x4'?27:id==='unsplit-octahedron'?1:id==='fibration-12x12'?fibration12Stages.length-1:id==='from-center-cell'?centerInterfaceStages.length-1:id==='retained-construction'?retainedPbStages.length-1:id==='diamond-construction'?diamondStageTitles.length-1:512)),branch:Number(p.branch)===3?3:1};
+}
+function normalizeProcess(value,fallbackK){
+ if(!value||!processIds.includes(value.id))return null;
+ const current=normalizeProgress(value,fallbackK,value.id),progress={};
+ for(const id of processIds)if(value.progress?.[id])progress[id]=normalizeProgress(value.progress[id],fallbackK,id);
+ progress[value.id]={...current};
+ return {id:value.id,...current,progress};
+}
+const vector=value=>Array.isArray(value)&&value.length===3&&value.every(x=>typeof x==='number'&&Number.isFinite(x)&&Math.abs(x)<=1e5);
+export function normalizeSceneSettings(value={}){
+ const s=value&&typeof value==='object'?value:{},a=s.appearance??{},m=s.motion??{},l=s.locks??{},p=s.panels??{},d=s.sections??{},c=s.camera;
+ const validCamera=c&&vector(c.offset)&&vector(c.targetOffset)&&vector(c.up)&&Math.hypot(...c.offset)>1e-6&&Math.hypot(...c.up)>1e-6;
+ const process=normalizeProcess(s.process,Math.round(number(s.k,1,1,7)));
+ const cutEnd=Math.round(number(s.cut?.layer,0,0,6)),cutStart=Math.round(number(s.cut?.startLayer,0,0,cutEnd));
+ return {version:1,k:process?.k??Math.round(number(s.k,1,1,7)),process,
+  cut:{enabled:bool(s.cut?.enabled,false),vertex:s.cut?.vertex==='all'?'all':Math.round(number(s.cut?.vertex,1,1,4)),startLayer:cutStart,layer:cutEnd,showEmpty:bool(s.cut?.showEmpty,true),highlightUnassigned:bool(s.cut?.highlightUnassigned,false)},
+  neutralValues:restoreNeutralValues(s.neutralValues),selectedNeutralMode:Math.round(number(s.selectedNeutralMode,0,0,neutralExtensionSize-1)),
+  appearance:{sulfurChannels:bool(a.sulfurChannels,false),sulfurChannelCut:number(a.sulfurChannelCut,.5,0,1),sulfurChannelOpen:bool(a.sulfurChannelOpen,true),sulfurChannelNormal:Array.isArray(a.sulfurChannelNormal)&&a.sulfurChannelNormal.length===3&&a.sulfurChannelNormal.every(Number.isFinite)&&Math.hypot(...a.sulfurChannelNormal)>1e-6?[...a.sulfurChannelNormal]:[.35,-.85,.4],sulfurWireBundle:bool(a.sulfurWireBundle,false),sulfurNTubeMarkers:bool(a.sulfurNTubeMarkers,false),sulfurNIdentity:typeof a.sulfurNIdentity==='string'&&/^s32:cell:neutron:[\d,\-]+$/.test(a.sulfurNIdentity)?a.sulfurNIdentity:'all',sulfurNTubeOpacity:number(a.sulfurNTubeOpacity,.14,0,1),sulfurWireOpacity:number(a.sulfurWireOpacity,1,0,1),rutheniumWireOpacity:number(a.rutheniumWireOpacity,1,0,1),rutheniumViewVersion:2,rutheniumView:a.rutheniumView==='wiring'?(a.rutheniumViewVersion===2?'wiring':'lattice'):a.rutheniumView==='lattice'?'lattice':'geometry',sulfurTubes:bool(a.sulfurTubes,false),sulfurHandlebody:bool(a.sulfurHandlebody,false),nTubeAxis:['coupled','response','all','0','1','2','3','4','5'].includes(a.nTubeAxis)?a.nTubeAxis:'off',singleFaceColoring:a.singleFaceColoring==='orientation'?'orientation':'cell-role',parentHalfStepTrim:bool(a.parentHalfStepTrim,false),nativeBeltLayers:Array.from({length:9},(_,i)=>bool(a.nativeBeltLayers?.[i],true)),esd7Layers:esd7NodePlanes.map((_,i)=>bool(a.esd7Layers?.[i]??a.esd7Planes?.original?.[i],true)),beltLayers:Array.from({length:beltLayerCount},(_,i)=>bool(a.beltLayers?.[i],true)),complexVisibility:{original:bool(a.complexVisibility?.original,true),clone:bool(a.complexVisibility?.clone,true),belt:bool(a.complexVisibility?.belt,true)},rimAssembly:bool(a.rimAssembly,true),seamBelts:{enabled:bool(a.seamBelts?.enabled,false),a:Math.round(number(a.seamBelts?.a,0,0,14)),b:Math.round(number(a.seamBelts?.b,1,0,14))},internalElectronSelf:bool(a.internalElectronSelf,false),doubleRules:doubleEsd7Rules.map(r=>r.id).filter(id=>Array.isArray(a.doubleRules)?a.doubleRules.includes(id):(s.process?.id==='double-esd7'&&s.process.step>=7)),highlightRulePreview:bool(a.highlightRulePreview,false),cellGraph:bool(a.cellGraph,false),polaritySheet:a.polaritySheet==='positive'?'positive':'negative',grid:bool(a.grid,true),opacity:number(a.opacity,.12,.01,.5),faceOpacity:number(a.faceOpacity,1,0,1),edgesOnly:bool(a.edgesOnly,false),showCellInfo:bool(a.showCellInfo,false),prior:bool(a.prior,false),bodies:bool(a.bodies,true),labels:bool(a.labels,true)},
+  motion:{spin:bool(m.spin,false),axialRotation:bool(m.axialRotation,false),speed:number(m.speed,1,-4,4)},
+  locks:Object.fromEntries(['v1','v2','v3','v4','v5'].map(key=>[key,bool(l[key],false)])),
+  panels:{process:bool(p.process,true),scene:bool(p.scene,true)},
+  sections:{appearance:bool(d.appearance,true),view:bool(d.view,true),motion:bool(d.motion,true)},
+  camera:validCamera?{offset:[...c.offset],targetOffset:[...c.targetOffset],up:[...c.up],zoom:number(c.zoom,1,.2,20)}:null,
+ };
+}
+export function loadSceneSettings(){
+ try{
+  const storage=globalThis.localStorage,raw=storage?.getItem(sceneSettingsKey);
+  if(raw!==null&&raw!==undefined){const saved=JSON.parse(raw);return normalizeSceneSettings(saved?.version===1?saved:{});}
+  // Read legacy keys only when the namespaced record does not yet exist.
+  return normalizeSceneSettings({k:storage?.getItem('normal-ray:k'),appearance:{labels:storage?.getItem('normal-ray:labels')!=='false',faceOpacity:storage?.getItem('normal-ray:face-opacity')}});
+ }catch{return normalizeSceneSettings();}
+}
+export function saveSceneSettings(settings){
+ try{globalThis.localStorage?.setItem(sceneSettingsKey,JSON.stringify(normalizeSceneSettings(settings)));}catch{/* Disabled storage / quota must not disable the viewer. */}
+}
