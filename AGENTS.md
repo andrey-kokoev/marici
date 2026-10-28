@@ -158,6 +158,13 @@ Acknowledging an explicit instruction without implementing it treats the
 Operator as secondary. Implement it, or report the exact blocker without
 claiming a substitute is compliant.
 
+Preserve the operator's intended deliverable, especially when success is
+uncertain. Do not silently replace a difficult construction with an easier
+visualization, proxy, diagnostic, or interpretation. Uncertainty is a reason
+to investigate or disclose a blocker, not to redefine the target. Obtain
+operator agreement before changing the deliverable; identify partial work
+as partial and state exactly what remains unimplemented.
+
 ## Output discipline: zero slop and zero semantic redundancy
 
 RLHF slop is prohibited in chat, graph messages, continuations, research
