@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "processId": "fibration-12x12",
+  "carrier": "face-glued-esd7-pair",
+  "steps": [
+    {
+      "id": "corners",
+      "operation": "assign-corners",
+      "assignments": [
+        {"label": "+P", "role": "proton", "vertex": "V2"},
+        {"label": "−P", "role": "proton", "vertex": "V5"},
+        {"label": "+N", "role": "neutron", "vertex": "V1"},
+        {"label": "E", "role": "electron", "vertex": "V3"},
+        {"label": "−N", "role": "neutron", "vertex": "V4"}
+      ]
+    },
+    {
+      "id": "layer-1",
+      "operation": "fill-paired-surface-layer",
+      "layer": 1,
+      "pairing": "V5-V2-face-reflection",
+      "words": ["NPN", "NPE", "EPN"],
+      "provisionalRuns": []
+    },
+    {
+      "id": "layer-2",
+      "operation": "fill-paired-surface-layer",
+      "layer": 2,
+      "pairing": "V5-V2-face-reflection",
+      "words": ["NNPNN", "NNPNE", "ENPNN"],
+      "provisionalRuns": []
+    },
+    {
+      "id": "layer-3",
+      "operation": "fill-paired-surface-layer",
+      "layer": 3,
+      "pairing": "V5-V2-face-reflection",
+      "words": ["NNNPNNN", "NNNENPE", "EPNPNNN"],
+      "provisionalRuns": []
+    },
+    {
+      "id": "layer-4",
+      "operation": "fill-paired-surface-layer",
+      "layer": 4,
+      "pairing": "V5-V2-face-reflection",
+      "words": ["NNNNPNNNN", "NNNNPNPNE", "EPEPNNNNN"],
+      "provisionalRuns": []
+    },
+    {
+      "id": "layer-5",
+      "operation": "fill-paired-surface-layer",
+      "layer": 5,
+      "pairing": "V5-V2-face-reflection",
+      "words": ["NNNNNPNNNNN", "NNNNPNPNPNE", "EPEPNNNNNNN"],
+      "provisionalRuns": [1, 3]
+    },
+    {
+      "id": "layer-6",
+      "operation": "fill-paired-surface-layer",
+      "layer": 6,
+      "pairing": "V5-V2-face-reflection",
+      "words": [null, "NNNNPNPNPNPNE", null],
+      "provisionalRuns": []
+    }
+  ],
+  "pairings": {
+    "V5-V2-face-reflection": {
+      "canonicalOrigin": "V5",
+      "pairedOrigin": "V2",
+      "canonicalStart": "E51",
+      "pairedStart": "E21",
+      "operation": "reflect-across-shared-face",
+      "fixedVertices": ["V1", "V3", "V4"],
+      "preserveParticleTypes": true,
+      "faces": [
+        {"canonical": "F154", "paired": "F124", "sourcePlane": 3, "towardAxis": 2},
+        {"canonical": "F453", "paired": "F423", "sourcePlane": 0, "towardAxis": 3},
+        {"canonical": "F351", "paired": "F321", "sourcePlane": 2, "towardAxis": 0}
+      ]
+    }
+  }
+}

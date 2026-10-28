@@ -1,0 +1,243 @@
+{
+  "schema": "marici.research.operator-attempt.v1",
+  "title": "P/E path comparisons at the surface and in the filler",
+  "version": 1,
+  "status": "exploratory",
+  "origin": "User-proposed attempt in the current conversation",
+  "purpose": "Track this attempt separately from earlier constructions, without treating its starting assertions as established results.",
+  "operator_statement": [
+    "we know that electron has 12x12 connections. 12 paths of combinations of 3 arrows",
+    "and proton is dual of electron in this space, so it has also 12x12 connections if that pattern",
+    "so, 12P and 12E connections must meet on surface",
+    "and 12P and 12E connections must meetin in filler"
+  ],
+  "proposed_starting_structure": {
+    "electron": {
+      "path_count": 12,
+      "path_description": "Paths of combinations of three arrows",
+      "claimed_connection_shape": [12, 12],
+      "primitive_arrows": null,
+      "path_words": null,
+      "connection_definition": null
+    },
+    "proton": {
+      "proposed_relation_to_electron": "Dual in the same space",
+      "claimed_connection_shape": [12, 12],
+      "path_count": 12,
+      "duality_map": null,
+      "path_words": null
+    },
+    "meeting_locations": ["surface", "filler"],
+    "meeting_rule": null,
+    "geometric_realization": "esd_7(Delta^3)"
+  },
+  "assistant_suggestions_not_yet_confirmed": {
+    "all_to_all_interpretation": "If every P path can meet every E path, index the comparisons by (i,j) in {1,...,12} squared.",
+    "surface_notation": "S_ij: surface comparison of P_i and E_j",
+    "filler_notation": "F_ij: interior witness for S_ij",
+    "alternative": "A one-to-one meeting of the two families would give 12 matched pairs rather than 144 comparisons.",
+    "filler_relationship": "The filler could witness the surface comparisons rather than supply an independent duplicate table."
+  },
+  "open_questions": [
+    "What are the three arrows, and how do their combinations generate the twelve paths?",
+    "What are the source and target types of those paths?",
+    "What precisely does a connection count, and which pairs are admissible?",
+    "What operation defines proton/electron duality in this space?",
+    "What data are retained at a surface meeting?",
+    "What boundary does a filler meeting witness?",
+    "Are surface and filler meetings related witnesses, independent connections, or another construction?"
+  ],
+  "prior_work_reference": {
+    "guide": "../../docs/arrow-assembly.md",
+    "common_protocol": "common-three-carrier-protocol.md",
+    "electron_coefficient_transfer_supports": [16, 64, 64],
+    "electron_coefficient_transfer_total": 144,
+    "proton_coefficient_transfer_supports": [108, 432, 1296],
+    "proton_coefficient_transfer_total": 1836,
+    "relationship_to_this_attempt": "Not identified. Equality of 12*12 with the prior electron transfer total does not itself define a correspondence."
+  },
+  "construction_steps": [
+    {
+      "step": 1,
+      "source": "user",
+      "operation": "Place P, E, N, N at the four outer vertices of esd7.",
+      "location_type": "vertex",
+      "assignments": [
+        {"vertex": "P", "type": "P"},
+        {"vertex": "E", "type": "E"},
+        {"vertex": "N1", "type": "N"},
+        {"vertex": "N2", "type": "N"}
+      ],
+      "coordinate_binding": null,
+      "note": "N1 and N2 distinguish two occurrences of N. No particular coordinate orientation, corner-cell filling, edge assignment, or interior filling is specified."
+    },
+    {
+      "step": 2,
+      "source": "user",
+      "operation": "Lay three-step paths from E and P toward each other.",
+      "paths": [
+        {
+          "origin": "E",
+          "toward": "P",
+          "step_count": 3,
+          "word": ["E", "E", "E"]
+        },
+        {
+          "origin": "P",
+          "toward": "E",
+          "step_count": 3,
+          "word": ["P", "P", "P"]
+        }
+      ],
+      "coordinate_paths": null,
+      "meeting_rule": null,
+      "note": "Retain both directed paths. Their exact lattice routes and treatment of the remaining separation are not yet specified."
+    },
+    {
+      "step": 3,
+      "source": "user",
+      "operation": "Lay three-step N paths from E and P toward their respective N vertices.",
+      "paths": [
+        {
+          "origin": "E",
+          "toward": "N_E",
+          "step_count": 3,
+          "word": ["N", "N", "N"]
+        },
+        {
+          "origin": "P",
+          "toward": "N_P",
+          "step_count": 3,
+          "word": ["N", "N", "N"]
+        }
+      ],
+      "target_binding": {
+        "N_E": "The N vertex respective to E",
+        "N_P": "The N vertex respective to P",
+        "mapping_to_N1_N2": null
+      },
+      "coordinate_paths": null,
+      "note": "N_E and N_P refer to the two existing N vertices, not new vertices. Their mapping to the N1/N2 names is not yet specified."
+    },
+    {
+      "step": 4,
+      "source": "user",
+      "operation": "Grow ENN from P toward the other N than in Step 3, and PNN from E toward the other N than in Step 3.",
+      "paths": [
+        {
+          "origin": "P",
+          "toward": "N_E",
+          "step_count": 3,
+          "word": ["E", "N", "N"]
+        },
+        {
+          "origin": "E",
+          "toward": "N_P",
+          "step_count": 3,
+          "word": ["P", "N", "N"]
+        }
+      ],
+      "coordinate_paths": null,
+      "relationship_to_step_3_paths": "Distinct routes: each source targets the other N vertex.",
+      "note": "User clarified that Step 4 targets the other N than Step 3. Words remain ordered from their stated origins."
+    },
+    {
+      "step": 5,
+      "source": "user",
+      "operation": "Lay NNN from each N toward the other N.",
+      "paths": [
+        {"origin": "N1", "toward": "N2", "step_count": 3, "word": ["N", "N", "N"]},
+        {"origin": "N2", "toward": "N1", "step_count": 3, "word": ["N", "N", "N"]}
+      ],
+      "coordinate_paths": null
+    },
+    {
+      "step": 6,
+      "source": "user",
+      "operation": "Lay PNN from one N toward P, and ENN from the other N toward E.",
+      "paths": [
+        {"origin": "N1", "toward": "P", "step_count": 3, "word": ["P", "N", "N"]},
+        {"origin": "N2", "toward": "E", "step_count": 3, "word": ["E", "N", "N"]}
+      ],
+      "coordinate_paths": null,
+      "naming_convention": "Call the first N in this instruction N1 and the other N2; carry those names into Step 7. Their binding to the earlier N_P/N_E references remains unspecified."
+    },
+    {
+      "step": 7,
+      "source": "user",
+      "operation": "Lay EPN from the first N toward E, and PEN from the other N toward P.",
+      "paths": [
+        {"origin": "N1", "toward": "E", "step_count": 3, "word": ["E", "P", "N"]},
+        {"origin": "N2", "toward": "P", "step_count": 3, "word": ["P", "E", "N"]}
+      ],
+      "coordinate_paths": null
+    }
+  ],
+  "experiments": [],
+  "results": [],
+  "decision_log": [
+    {
+      "sequence": 1,
+      "source": "user",
+      "decision": "Start a new JSON record for this attempt."
+    },
+    {
+      "sequence": 2,
+      "source": "user",
+      "decision": "Work in esd7. Step 1 places P, E, N, N at its outer vertices."
+    },
+    {
+      "sequence": 3,
+      "source": "user",
+      "decision": "Step 2 lays EEE from E toward P and PPP from P toward E, three steps each."
+    },
+    {
+      "sequence": 4,
+      "source": "user",
+      "decision": "Step 3 lays NNN from E and P toward their respective N vertices."
+    },
+    {
+      "sequence": 5,
+      "source": "user",
+      "decision": "Step 4 grows ENN from P toward its N and PNN from E toward its N."
+    },
+    {
+      "sequence": 6,
+      "source": "user",
+      "decision": "Step 5: NNN between the two Ns in both directions. Step 6: PNN from the first N to P and ENN from the other N to E. Step 7: EPN from the first N to E and PEN from the other N to P."
+    },
+    {
+      "sequence": 7,
+      "source": "user",
+      "decision": "Show the construction in a new process named 12x12 fibration."
+    },
+    {
+      "sequence": 8,
+      "source": "user",
+      "decision": "Clarification: Step 4 goes toward the other N than Step 3, not along the same routes. This supersedes the ambiguous Step 4 target wording in sequence 5."
+    }
+  ],
+  "viewer_binding": {
+    "process_id": "fibration-12x12",
+    "process_name": "12x12 fibration",
+    "corner_order": ["P", "E", "N1", "N2"],
+    "respective_N": {"N_P": "N1", "N_E": "N2"},
+    "status": "Coordinate and N-name convention for display; Step 4 targets the other N as confirmed by the user.",
+    "glued_clone": {
+      "requested_by": "user",
+      "construction": "Clone esd7, rotate, and glue faces so E and E-prime are entry/exit tips.",
+      "display_choice": "Glue the P-N1-N2 face opposite E using a half-turn about its P-to-N-midpoint axis.",
+      "seam_identification": {"P": "P", "N1": "N2", "N2": "N1"},
+      "preserves_cell_sizes": true,
+      "shared_triangles_checked": 49,
+      "paths": "The clone transports the same recorded paths; this does not add new construction words."
+    }
+  },
+  "scope": {
+    "new_viewer_changes": true,
+    "new_physical_claims_verified": false,
+    "graph_admission": false,
+    "identification_with_esd7": "Specified by the user as the geometric setting for this attempt, not derived by it",
+    "identification_with_137_comparison_leaves": null
+  }
+}

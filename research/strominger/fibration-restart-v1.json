@@ -1,0 +1,94 @@
+{
+  "process_id": "fibration-12x12",
+  "status": "Historical instruction log, not an executable definition. Superseded word values below are retained as history only.",
+  "execution_definition": "fibration-steps-v1.json",
+  "reflection_correction": "Inspection showed the half-turn plus a one-face reversal crossed the other two pairs. Execution now reflects every surface triangle across the shared V1-V3-V4 plane. It fixes those three vertices and exchanges V5/V2: F154↔F124, F453↔F423, F351↔F321. Reflected triangles are resolved to native cells. No particle-type changes or individual face reversal patches.",
+  "execution_revision": "User requires each step itself to define paired filling. The authoritative steps now contain one word set and a face-pairing reference; machinery derives both ±P sides and the UI from these definitions. No per-copy overrides. Layer 5 second run is NNNNPNPNPNE for both reflected faces.",
+  "supersedes_active_construction": "pe-surface-filler-attempt-v1.json",
+  "label_revision": "User requested signed names: P → +P, P-prime → −P, N → +N, N2 → −N. E unchanged. Names only; geometry and particle roles unchanged.",
+  "carrier": "Two congruent esd7 tetrahedra glued along one face by the existing rigid half-turn",
+  "paired_rendering": {
+    "source": "user",
+    "instruction": "Each step should render layers from both V5 and V2",
+    "mapping": "Transport geometry through the existing rigid half-turn. V5: E51 → E54 → E53; V2: E21 → E23 → E24. Reverse each run's placement on F423 only; particle types are unchanged and F453 retains its recorded order.",
+    "face_symmetry_revision": "After visual inspection, user approved reversing pattern placement across F423 so the E band faces V3. This is a positional reversal, not an E/N label exchange. Other faces unchanged.",
+    "counts": "Layer face/cell counts in the records below are per copy; both copies now grow together."
+  },
+  "layer_5": {
+    "superseded_face_423_override": {
+      "source": "user",
+      "word": "NNNNPNPNPNE",
+      "confirmation": "User clarified Layer 5, not Layer 6, and confirmed removing one leading N to fit eleven triangles.",
+      "placement": "Retain the positional reversal on F423. F453 is unchanged."
+    },
+    "source": "assistant proposal at user request",
+    "confirmed": false,
+    "surface_word": ["NNNNNPNNNNN", "NNNNNNPNPNP", "EPEPNNNNNNN"],
+    "face_453_revision": "User supplied NNNNNPNPNP, confirmed leading N padding, then clarified this is Layer 5, not Layer 6. One leading N added for eleven triangles. Applied to rotated counterpart too; other runs remain provisional.",
+    "heuristic": "Preserve Layer 4 non-N order. Add one N at both ends of run 1; one leading N and one internal padding N in run 2; two trailing Ns in run 3. This is a tentative extension, not a derived recurrence.",
+    "start_axis": "E51",
+    "direction": ["E51", "E54", "E53", "E51"],
+    "display": "Step 6: fifth slab after the −P tip cell; thirty-three outer triangles on thirty native cells. Earlier layers retained. Layer 6 unassigned."
+  },
+  "layer_4": {
+    "source": "user",
+    "surface_word": ["NNNNPNNNN", "NNNNPNPNE", "EPEPNNNNN"],
+    "face_453_revision": "User subsequently corrected Layer 4 on face 453 to NNNNPNPNE. Applied to its rotated counterpart too; supersedes the earlier padded NNNNNENPN.",
+    "padding": "User requested adding N to padding Ns: one leading N in run 2 and one trailing N in run 3.",
+    "start_axis": "E51",
+    "direction": ["E51", "E54", "E53", "E51"],
+    "display": "Step 5: fourth slab after the −P tip cell; twenty-seven outer triangles on twenty-four native cells. Earlier layers retained. Layers 5–6 unassigned."
+  },
+  "layer_3": {
+    "source": "user",
+    "surface_word": ["NNNPNNN", "NNNENPE", "EPNPNNN"],
+    "confirmation": "User confirmed NNNPNNN as the seven-letter first run.",
+    "start_axis": "E51",
+    "direction": ["E51", "E54", "E53", "E51"],
+    "display": "Step 4: third slab after the −P tip cell; twenty-one outer triangles on eighteen native cells. Earlier layers retained. Layers 4–6 unassigned."
+  },
+  "layer_2": {
+    "source": "user",
+    "surface_word": ["NNPNN", "NNPNE", "ENPNN"],
+    "revision": "User corrected the last run from EPNNN to ENPNN.",
+    "start_axis": "E51",
+    "direction": ["E51", "E54", "E53", "E51"],
+    "display": "Step 3: second slab after the −P tip cell, fifteen surface triangles on twelve native cells. Retains Layer 1. Layers 4–6 remain unassigned."
+  },
+  "steps": [
+    {
+      "step": 1,
+      "source": "user",
+      "instruction": "put P in one vertex and P' in the opposite other. put N in vertex between them. then E and and N2 in the remaining verexes",
+      "display_binding": {
+        "+P": "Original free tip, previously P",
+        "−P": "Clone free tip, previously P-prime",
+        "+N": "Shared-face vertex previously N",
+        "E": "Shared-face vertex formerly N1",
+        "−N": "Shared-face vertex previously N2"
+      },
+      "rendering_convention": "Each vertex assignment types its incident corner tetrahedron in each copy. Shared-face vertices therefore each type two face-touching cells. Five vertex assignments, eight native corner cells.",
+      "paths": []
+    },
+    {
+      "step": 2,
+      "source": "user",
+      "instruction": "now we will be working on 6 layers down from -P to -N edge as support. Layer 1 surface filing: NPN NPN NPE",
+      "layer_count": 6,
+      "support_edge": {"from": "−P", "toward": "+N", "axis": "E51", "from_vertex": "V5", "toward_vertex": "V1"},
+      "start_revision": "User changed the starting axis from E54 to E51.",
+      "layer_1_surface_word": ["NPN", "NPE", "EPN"],
+      "word_revision": "User corrected the third run to EPN, then specified the complete word NPN NPE EPN.",
+      "surface_cell_order": {
+        "traversal": "Around the layer perimeter",
+        "start_axis": "E51",
+        "direction": "From the E51 start toward the E54 side first, then E53, returning to E51",
+        "vertex_order": ["V1", "V4", "V3", "V1"],
+        "role_order": ["+N", "−N", "E", "+N"]
+      },
+      "rendering_status": "Implemented in Three.js as Step 2.",
+      "display_interpretation": "Layer 1 is the first slab after the −P tip cell, with nine outer triangular faces on six native cells. Each triple colors one side, starting at E51 and proceeding toward E54, then E53. Face types are not promoted to whole-cell assignments.",
+      "cell_typing_status": "Surface types agree on both outer faces at each layer corner."
+    }
+  ]
+}
