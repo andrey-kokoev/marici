@@ -1,0 +1,30 @@
+{
+  "schema": "marici.strominger.wrap-attempt.v1",
+  "source": "buildPESymmetricSector(3), research/strominger/pe-symmetric-sector.mjs",
+  "target": "buildFoldedFibration().geometry, research/realization-tower/fibration-folded-process.mjs",
+  "obligation": "Forward realization and attachment transport, before readout descent",
+  "native_candidate": {
+    "map": "Continuous map, isometric on every whole source cell, onto whole target cells, with shared vertices and full shared faces agreeing",
+    "hostile": "A source octahedron must map to one of the target octahedra. Test every root octahedral symmetry. Unlike tetrahedron/octahedron neighbours cannot fold onto the same target cell; a target face has at most one owner of each kind. Consequently propagation fixes the same rigid frame across the face-connected source.",
+    "preserve": ["source occurrences", "cell kind", "full shared-face vertex map", "native unit metric"],
+    "not_allowed": ["discarding cells", "mapping an octahedron to a tetrahedron", "independent vertex placement", "selecting counts to match Pb"]
+  },
+  "piecewise_affine_candidate": {
+    "source_axes": [[1,1,-1,-1],[1,-1,1,-1],[1,-1,-1,1]],
+    "source_axis_coordinates": "(u,v,w) = dot(q-centre, axis)/(4*halfWidth)",
+    "branches": "sign(u), sign(v); each branch is a tetrahedron with the two w poles and one pole from each remaining pair",
+    "target_corners": [[-5,2,2,2],[2,-5,2,2],[2,2,-5,2],[2,2,2,-5]],
+    "pole_assignment": "u+ -> corner0, u- -> corner1, v+ -> corner2, v- -> corner3; w+ -> midpoint01, w- -> midpoint23",
+    "inverse": "u=beta0-beta1; v=beta2-beta3; w=2*min(beta0,beta1)-2*min(beta2,beta3)",
+    "transport": "Keep each original cell ID, role and all chart fragments. P/E duality is conjugated through the map, never inferred from target coordinate colours.",
+    "metric_transport": "For each affine matrix A in three independent coordinates, use A^(-T) (I + 11^T) A^(-1) to retain source lengths. This is not the native ESD7 Euclidean metric.",
+    "hostiles": ["seam disagreement", "failed inverse", "lost source record", "nonmanifold fragment face", "zero volume fragment", "pretending half-integer target points are native ESD7 nodes", "erasing branch records", "pretending a deformed native edge retains its original Euclidean length"]
+  },
+  "common_refinement_continuation": {
+    "introduced_after": "The first 20 envelope/native-frame checks; their receipt is retained separately as envelope-phase-verification.json",
+    "operation": "Intersect each mapped affine chart fragment with every overlapping native ESD7 cell. Retain source cell ID, source role, chart, target cell ID and exact intersection geometry.",
+    "tests": ["exact full volume in every native target cell", "exact full mapped volume for every original source cell", "inverse at every intersection vertex", "every target cell covered", "fragment deletion violates source and target coverage"],
+    "not_claimed": "A single P/N/E label per target cell, unit-metric source-cell preservation, a quotient of physical modes, or a particle-count reduction."
+  },
+  "scope": "Finite geometry and retained records only. Neither candidate supplies phase/witness dynamics, particle modes, stability, or 82/126/82. A piecewise-affine homeomorphism to the ESD7 envelope is not a whole-cell native ESD7 realization."
+}

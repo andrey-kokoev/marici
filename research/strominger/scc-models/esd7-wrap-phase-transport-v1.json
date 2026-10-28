@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "esd7-wrap-phase-transport-v1",
+    "owner": "marici.Strominger",
+    "classification": "candidate",
+    "stratum": "Actual He-3, He-4 and Li-6 phase-reference carriers embedded by one declared native-lattice translation; not a phase assignment to the entire symmetric octahedron",
+    "inputs": ["research/strominger/contracts/esd7-wrap-phase-transport-v1.json", "research/strominger/checkers/export_esd7_wrap_phase_inputs.mjs", "research/strominger/demos/particle-overlap-tetrahedron/phase-assembly-model.mjs", "research/strominger/demos/particle-overlap-tetrahedron/phase-advance-model.mjs", "research/strominger/demos/particle-overlap-tetrahedron/phase-discipline-model.mjs"],
+    "checks": [{"id": "esd7-wrap-native-phase-pilot", "path": "research/strominger/checkers/check_esd7_wrap_phase_transport.py", "requires": []}],
+    "depends_on": ["octahedron-esd7-wrap-v1"],
+    "consumes": ["invertible geometric encoding", "native phase-reference operations and occurrence histories"],
+    "provides": [],
+    "missing_constructors": ["whole-sector phase assignment", "full-state P/E phase duality", "physical mode descent"],
+    "next_falsifier": "Replay actual phase witnesses on encoded aliases, reject history and coefficient loss, and compare full chart-split contact faces rather than endpoint samples."
+  }
+}

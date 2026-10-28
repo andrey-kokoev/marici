@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "octahedron-esd7-wrap-v1",
+    "owner": "marici.Strominger",
+    "classification": "candidate",
+    "stratum": "Finite exact native edge-7 octahedron versus whole-cell ESD7; native unit-metric realization is separate from piecewise-affine envelope transport",
+    "inputs": ["research/strominger/contracts/octahedron-esd7-wrap-v1.json", "research/strominger/pe-symmetric-sector.mjs", "research/realization-tower/fibration-folded-process.mjs"],
+    "checks": [{"id": "octahedron-esd7-wrap-exact", "path": "research/strominger/checkers/check_octahedron_esd7_wrap.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["native whole-cell geometry", "ESD7 whole-cell target"],
+    "provides": [],
+    "missing_constructors": ["native metric-preserving full-face fold", "physical mode readout", "phase and witness transport"],
+    "next_falsifier": "Test every root-octahedron native isometry; independently test exact four-chart inverse, all fragment seams and refusal of half-lattice target coordinates as native nodes."
+  }
+}
