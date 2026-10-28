@@ -2,6 +2,10 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { createHash } from 'node:crypto'
 import { prepareResearchLab } from './prepare-research-lab.mjs'
+import { prepareNativeBeltViewer } from './prepare-native-belt-viewer.mjs'
+import { prepareThreejsReference } from './prepare-threejs-reference.mjs'
+import { prepareTetrahedralPlanes } from './prepare-tetrahedral-planes.mjs'
+import { prepareRealizationLattice } from './prepare-realization-lattice.mjs'
 
 function withGalleryReturn(html, name) {
   const container = html.match(/<aside\b[^>]*>/) || html.match(/<main\b[^>]*>/)
@@ -11,6 +15,10 @@ function withGalleryReturn(html, name) {
 
 // Publish copies only: research pages and screenshots remain authoritative.
 export async function prepareVisualizationAssets(root) {
+  await prepareNativeBeltViewer(root)
+  await prepareThreejsReference(root)
+  await prepareTetrahedralPlanes(root)
+  await prepareRealizationLattice(root)
   const out = path.join(root, 'website/public/experiments')
   await fs.mkdir(path.join(out, 'previews'), { recursive: true })
   await prepareResearchLab(root, out)

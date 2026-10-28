@@ -6,9 +6,13 @@ Interactive guides to declared geometry, retained information, and coefficient r
 
 **Choose a family:** [Packet primitive](#proposed-packet-primitive) · [Geometry and assembly](#geometry-and-assembly) · [Information and readouts](#information-and-readouts) · [Spinor comparisons](#spinor-comparisons) · [Products and closure](#products-and-closure) · [Retained-information research lab](#retained-information-research-lab) · [Static diagram](#diagrams-and-retained-records).
 
+## Viewer reference
+
+[Three.js reference viewer](/experiments/threejs-reference/index.html) — a small tetrahedron demonstrating local assets, keyboard controls, responsive sizing, paused-by-default motion and a static fallback. This is a developer example, not a scientific model. [Authoring guide](https://github.com/andrey-kokoev/marici/blob/main/docs/threejs-pages.md).
+
 ## Conjecture-net explorer
 
-[Open the conjecture-net web app](/experiments/conjecture-nets.html). Browse the seed/atlas, low-energy, core-bridge, high-energy and local-core proof-outcome nets. Switch between dependency and D3 four-port implication graphs; inspect source records and directed reachability. The same generated HTML works offline, and accepts local JSON nets without uploading them. [Usage and source](https://github.com/andrey-kokoev/marici/blob/main/docs/conjecture-net-explorer.md).
+[Open the conjecture-net web app](/experiments/conjecture-nets.html). Browse the seed/atlas, low-energy, core-bridge, high-energy and local-core proof-outcome nets, plus the [persistent-seam P/E conjecture](/experiments/conjecture-nets.html#net=marici.persistent-seam-pe.v1&tab=dependencies&node=persistent-seam-pe). Its conditional seam theorem and open protocol-selection claim remain distinct. Switch between dependency and D3 four-port implication graphs; inspect source records and directed reachability. The same generated HTML works offline, and accepts local JSON nets without uploading them. [Usage and source](https://github.com/andrey-kokoev/marici/blob/main/docs/conjecture-net-explorer.md).
 
 ## Proposed packet primitive
 
@@ -24,7 +28,18 @@ The signed geometry is supplied for exploration. Minimality concerns complete se
 
 ## Geometry and assembly
 
+**[Native N-cut belt: controls and verification boundaries](/experiments/native-belt-guide)** · [Ledger 4331](/research/ledger/20261025-4331-native-n-cut-belt-docking-and-separate-wiring-views/)
+
 <div class="construction-gallery">
+  <a class="construction-preview" href="/experiments/native-belt/index.html?preset=native-belt" target="_self">
+    <strong>Native N-cut belt — extended geometry and expanded wiring</strong>
+    <span>Two E replacement tips touch an extended native belt with 32 P and 32 E boundary faces. Compare opaque faces with thick white borders against the separate wiring diagram. Native cell geometry and tip contact are checked; combined particle accounting and field transport remain open.</span>
+  </a>
+  <a class="construction-preview" href="/experiments/tetrahedral-planes/index.html" target="_self">
+    <img src="/experiments/tetrahedral-planes/preview.svg" alt="Four golden circular plane patches around a wireframe tetrahedron" loading="lazy" width="660" height="460">
+    <strong>Four intersecting disks — tetrahedral planes</strong>
+    <span>Explore plane spacing, repeated disks, finite intersections and the bounded tetrahedron. Vue panels with free camera rotation and roll.</span>
+  </a>
   <a class="construction-preview" href="/experiments/proton-neutron-assembly.html" target="_self">
     <img src="/experiments/previews/assembly.png" alt="Tetrahedron, six-panel belt and projected pentachoron with solid spatial edges and dotted coefficient-phase guides" loading="lazy" width="1450" height="950">
     <strong>Geometry and retained phase links</strong>
@@ -43,6 +58,8 @@ The signed geometry is supplied for exploration. Minimality concerns complete se
 </div>
 
 ## Information and readouts
+
+**[What a shared edge can detect](/research/ledger/20261022-4330-persistent-shared-seam-compatibility-is-an-observability-condition/)** — for two triangle primitives, persistent simultaneous gluing is an observability condition. The specified cyclic and half-phase operators expose every coefficient mismatch; identity updates do not. This conditional pairing theorem does not select a protocol or assign particle identities. [Proof and exact checker](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/shared-seam-observability.md).
 
 <div class="construction-gallery">
   <a class="construction-preview" href="/experiments/potential-fold-explorer.html" target="_self">

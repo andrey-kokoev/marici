@@ -37,6 +37,7 @@ export default defineConfig({
         { text: 'Comparison targets', link: '/research/predictions/' },
         { text: 'Research ledger', link: '/research/ledger/' },
         { text: 'Research graph', link: '/explore/graph/' },
+        { text: 'Native N-cut belt viewer', link: '/experiments/native-belt-guide' },
         { text: 'Conjecture nets', link: '/experiments/conjecture-nets.html', target: '_self' },
       ] },
       { text: 'About', items: [
@@ -74,6 +75,7 @@ export default defineConfig({
         { text: 'Next synthesis step', link: '/research/system-characteristics/#next-synthesis-step' },
       ] }],
       '/research/results/': [{ text: 'Results · checks, exclusions and open tests', items: [
+        { text: 'Native N-cut belt · October 25', link: '/research/results/#october-25-native-n-cut-belt-attachment' },
         { text: 'Reader fields · October 18', link: '/research/results/tessellated-reader-fields' },
         { text: 'October 12 · retained information', link: '/research/results/#october-12-retained-information-and-claim-boundaries' },
         { text: 'Earlier synthesis', link: '/research/results/#current-research-synthesis-october-8–10-2026' },
