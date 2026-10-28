@@ -9,19 +9,15 @@
     :root { color-scheme: light; --bg: #f3f6fa; --surface: #fff; --text: #17263a; --muted: #53657b; --line: #dce4ee; --stripe: #f7f9fc; --accent: #155d85; --head: #17344e; }
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.5; }
-    main { max-width: 1280px; margin: 0 auto; padding: 48px 24px; }
-    .eyebrow { margin: 0 0 8px; color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-    h1 { margin: 0 0 12px; font-size: clamp(1.8rem, 4vw, 2.7rem); line-height: 1.2; letter-spacing: -.035em; }
-    .intro { max-width: 850px; margin: 0; color: var(--muted); }
-    .toolbar { display: flex; align-items: end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin: 28px 0 14px; }
+    main { padding: 24px; }
+    .toolbar { display: flex; align-items: end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin: 16px 0 14px; }
     .search { display: grid; gap: 6px; width: min(100%, 360px); }
     label { font-size: .85rem; font-weight: 600; }
     input { width: 100%; padding: 11px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font: inherit; }
     input:focus-visible, .table-wrap:focus-visible { outline: 3px solid #60a5fa; outline-offset: 3px; }
     .count { margin: 0; color: var(--muted); font-size: .85rem; }
-    .table-wrap { overflow: auto; max-height: 72vh; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: 0 8px 30px #17344e08; }
+    .table-wrap { overflow: auto; height: 90vh; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: 0 8px 30px #17344e08; }
     table { border-spacing: 0; width: 100%; min-width: 1000px; font-size: .9rem; font-variant-numeric: tabular-nums; }
-    caption { padding: 12px 18px; text-align: left; color: var(--muted); background: var(--surface); font-size: .82rem; border-bottom: 1px solid var(--line); }
     thead th { position: sticky; top: 0; z-index: 2; padding: 15px 12px; background: var(--head); color: #fff; text-align: center; white-space: nowrap; font-weight: 600; }
     thead th:first-child { left: 0; z-index: 3; text-align: left; padding-left: 18px; }
     tbody th, tbody td { padding: 11px 12px; border-bottom: 1px solid var(--line); background: var(--surface); text-align: center; }
@@ -33,20 +29,17 @@
     td.empty { color: var(--muted); opacity: .6; }
     tr[hidden] { display: none; }
     .empty-state { padding: 20px; margin: 0; color: var(--muted); }
-    footer { margin-top: 16px; max-width: 950px; color: var(--muted); font-size: .83rem; }
-    footer p { margin: 6px 0; }
     @media (prefers-color-scheme: dark) {
       :root { color-scheme: dark; --bg: #101923; --surface: #172332; --text: #e4edf6; --muted: #a7b8cb; --line: #304155; --stripe: #1c2a3b; --accent: #80c8ef; --head: #234866; }
       tbody tr:hover > * { background: #263d55; }
     }
-    @media (max-width: 600px) { main { padding: 28px 16px; } .table-wrap { max-height: 70vh; } }
+    @media (max-width: 600px) { main { padding: 16px; } .toolbar { gap: 8px; margin-top: 12px; } }
     @page { size: landscape; margin: 12mm; }
     @media print {
       :root { --bg: white; --surface: white; --text: black; --muted: #444; --line: #ccc; --stripe: #f5f5f5; }
-      main { padding: 0; max-width: none; }
-      h1 { font-size: 22pt; }
+      main { padding: 0; height: auto; display: block; }
       .toolbar { display: none; }
-      .table-wrap { max-height: none; overflow: visible; box-shadow: none; border-radius: 0; margin-top: 16px; }
+      .table-wrap { height: auto; max-height: none; overflow: visible; box-shadow: none; border-radius: 0; margin-top: 16px; }
       table { min-width: 0; font-size: 9pt; }
       thead { display: table-header-group; }
       thead th, tbody th { position: static; }
@@ -58,21 +51,15 @@
 </head>
 <body>
   <main>
-    <header>
-      <p class="eyebrow">Atomic reference</p>
-      <h1>Isotopes &amp; electron shells</h1>
-      <p class="intro">Proton and neutron counts for the supplied isotopes, alongside the electron populations of their neutral atoms.</p>
-    </header>
     <div class="toolbar">
       <div class="search">
         <label for="isotope-search">Find an isotope</label>
         <input id="isotope-search" type="search" placeholder="For example, Iron or Lead-208" autocomplete="off" aria-controls="isotope-body">
       </div>
-      <p class="count" id="row-count" role="status" aria-live="polite">39 isotopes</p>
+      <p class="count" id="row-count" role="status" aria-live="polite">96 isotopes · 80 elements</p>
     </div>
     <div class="table-wrap" role="region" aria-label="Isotope and electron-shell table; scroll horizontally on smaller screens" tabindex="0">
       <table>
-        <caption>Shell headings give maximum capacities. An em dash (—) means that shell is unoccupied.</caption>
         <thead>
           <tr>
             <th scope="col">Nucleus</th><th scope="col">Protons</th><th scope="col">Neutrons</th>
@@ -120,33 +107,93 @@
           <tr><th scope="row">Lead-206</th><td>82</td><td>124</td><td>2</td><td>8</td><td>18</td><td>32</td><td>18</td><td>4</td></tr>
           <tr><th scope="row">Lead-207</th><td>82</td><td>125</td><td>2</td><td>8</td><td>18</td><td>32</td><td>18</td><td>4</td></tr>
           <tr><th scope="row">Lead-208</th><td>82</td><td>126</td><td>2</td><td>8</td><td>18</td><td>32</td><td>18</td><td>4</td></tr>
+          <tr><th scope="row">Fluorine-19</th><td>9</td><td>10</td><td>2</td><td>7</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Sodium-23</th><td>11</td><td>12</td><td>2</td><td>8</td><td>1</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Aluminium-27</th><td>13</td><td>14</td><td>2</td><td>8</td><td>3</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Phosphorus-31</th><td>15</td><td>16</td><td>2</td><td>8</td><td>5</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Chlorine-35</th><td>17</td><td>18</td><td>2</td><td>8</td><td>7</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Potassium-39</th><td>19</td><td>20</td><td>2</td><td>8</td><td>8</td><td>1</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Scandium-45</th><td>21</td><td>24</td><td>2</td><td>8</td><td>9</td><td>2</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Titanium-48</th><td>22</td><td>26</td><td>2</td><td>8</td><td>10</td><td>2</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Vanadium-51</th><td>23</td><td>28</td><td>2</td><td>8</td><td>11</td><td>2</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Chromium-52</th><td>24</td><td>28</td><td>2</td><td>8</td><td>13</td><td>1</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Manganese-55</th><td>25</td><td>30</td><td>2</td><td>8</td><td>13</td><td>2</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Cobalt-59</th><td>27</td><td>32</td><td>2</td><td>8</td><td>15</td><td>2</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Copper-63</th><td>29</td><td>34</td><td>2</td><td>8</td><td>18</td><td>1</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Zinc-64</th><td>30</td><td>34</td><td>2</td><td>8</td><td>18</td><td>2</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Gallium-69</th><td>31</td><td>38</td><td>2</td><td>8</td><td>18</td><td>3</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Germanium-74</th><td>32</td><td>42</td><td>2</td><td>8</td><td>18</td><td>4</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Arsenic-75</th><td>33</td><td>42</td><td>2</td><td>8</td><td>18</td><td>5</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Selenium-80</th><td>34</td><td>46</td><td>2</td><td>8</td><td>18</td><td>6</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Bromine-79</th><td>35</td><td>44</td><td>2</td><td>8</td><td>18</td><td>7</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Krypton-84</th><td>36</td><td>48</td><td>2</td><td>8</td><td>18</td><td>8</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Rubidium-85</th><td>37</td><td>48</td><td>2</td><td>8</td><td>18</td><td>8</td><td>1</td><td>—</td></tr>
+          <tr><th scope="row">Strontium-88</th><td>38</td><td>50</td><td>2</td><td>8</td><td>18</td><td>8</td><td>2</td><td>—</td></tr>
+          <tr><th scope="row">Yttrium-89</th><td>39</td><td>50</td><td>2</td><td>8</td><td>18</td><td>9</td><td>2</td><td>—</td></tr>
+          <tr><th scope="row">Niobium-93</th><td>41</td><td>52</td><td>2</td><td>8</td><td>18</td><td>12</td><td>1</td><td>—</td></tr>
+          <tr><th scope="row">Molybdenum-98</th><td>42</td><td>56</td><td>2</td><td>8</td><td>18</td><td>13</td><td>1</td><td>—</td></tr>
+          <tr><th scope="row">Ruthenium-102</th><td>44</td><td>58</td><td>2</td><td>8</td><td>18</td><td>15</td><td>1</td><td>—</td></tr>
+          <tr><th scope="row">Rhodium-103</th><td>45</td><td>58</td><td>2</td><td>8</td><td>18</td><td>16</td><td>1</td><td>—</td></tr>
+          <tr><th scope="row">Palladium-106</th><td>46</td><td>60</td><td>2</td><td>8</td><td>18</td><td>18</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">Silver-107</th><td>47</td><td>60</td><td>2</td><td>8</td><td>18</td><td>18</td><td>1</td><td>—</td></tr>
+          <tr><th scope="row">Cadmium-114</th><td>48</td><td>66</td><td>2</td><td>8</td><td>18</td><td>18</td><td>2</td><td>—</td></tr>
+          <tr><th scope="row">Indium-113</th><td>49</td><td>64</td><td>2</td><td>8</td><td>18</td><td>18</td><td>3</td><td>—</td></tr>
+          <tr><th scope="row">Antimony-121</th><td>51</td><td>70</td><td>2</td><td>8</td><td>18</td><td>18</td><td>5</td><td>—</td></tr>
+          <tr><th scope="row">Tellurium-126</th><td>52</td><td>74</td><td>2</td><td>8</td><td>18</td><td>18</td><td>6</td><td>—</td></tr>
+          <tr><th scope="row">Iodine-127</th><td>53</td><td>74</td><td>2</td><td>8</td><td>18</td><td>18</td><td>7</td><td>—</td></tr>
+          <tr><th scope="row">Caesium-133</th><td>55</td><td>78</td><td>2</td><td>8</td><td>18</td><td>18</td><td>8</td><td>1</td></tr>
+          <tr><th scope="row">Lanthanum-139</th><td>57</td><td>82</td><td>2</td><td>8</td><td>18</td><td>18</td><td>9</td><td>2</td></tr>
+          <tr><th scope="row">Cerium-140</th><td>58</td><td>82</td><td>2</td><td>8</td><td>18</td><td>19</td><td>9</td><td>2</td></tr>
+          <tr><th scope="row">Praseodymium-141</th><td>59</td><td>82</td><td>2</td><td>8</td><td>18</td><td>21</td><td>8</td><td>2</td></tr>
+          <tr><th scope="row">Neodymium-142</th><td>60</td><td>82</td><td>2</td><td>8</td><td>18</td><td>22</td><td>8</td><td>2</td></tr>
+          <tr><th scope="row">Samarium-152</th><td>62</td><td>90</td><td>2</td><td>8</td><td>18</td><td>24</td><td>8</td><td>2</td></tr>
+          <tr><th scope="row">Europium-153</th><td>63</td><td>90</td><td>2</td><td>8</td><td>18</td><td>25</td><td>8</td><td>2</td></tr>
+          <tr><th scope="row">Gadolinium-158</th><td>64</td><td>94</td><td>2</td><td>8</td><td>18</td><td>25</td><td>9</td><td>2</td></tr>
+          <tr><th scope="row">Terbium-159</th><td>65</td><td>94</td><td>2</td><td>8</td><td>18</td><td>27</td><td>8</td><td>2</td></tr>
+          <tr><th scope="row">Dysprosium-164</th><td>66</td><td>98</td><td>2</td><td>8</td><td>18</td><td>28</td><td>8</td><td>2</td></tr>
+          <tr><th scope="row">Holmium-165</th><td>67</td><td>98</td><td>2</td><td>8</td><td>18</td><td>29</td><td>8</td><td>2</td></tr>
+          <tr><th scope="row">Erbium-166</th><td>68</td><td>98</td><td>2</td><td>8</td><td>18</td><td>30</td><td>8</td><td>2</td></tr>
+          <tr><th scope="row">Thulium-169</th><td>69</td><td>100</td><td>2</td><td>8</td><td>18</td><td>31</td><td>8</td><td>2</td></tr>
+          <tr><th scope="row">Ytterbium-174</th><td>70</td><td>104</td><td>2</td><td>8</td><td>18</td><td>32</td><td>8</td><td>2</td></tr>
+          <tr><th scope="row">Lutetium-175</th><td>71</td><td>104</td><td>2</td><td>8</td><td>18</td><td>32</td><td>9</td><td>2</td></tr>
+          <tr><th scope="row">Hafnium-180</th><td>72</td><td>108</td><td>2</td><td>8</td><td>18</td><td>32</td><td>10</td><td>2</td></tr>
+          <tr><th scope="row">Tantalum-181</th><td>73</td><td>108</td><td>2</td><td>8</td><td>18</td><td>32</td><td>11</td><td>2</td></tr>
+          <tr><th scope="row">Tungsten-184</th><td>74</td><td>110</td><td>2</td><td>8</td><td>18</td><td>32</td><td>12</td><td>2</td></tr>
+          <tr><th scope="row">Rhenium-185</th><td>75</td><td>110</td><td>2</td><td>8</td><td>18</td><td>32</td><td>13</td><td>2</td></tr>
+          <tr><th scope="row">Osmium-192</th><td>76</td><td>116</td><td>2</td><td>8</td><td>18</td><td>32</td><td>14</td><td>2</td></tr>
+          <tr><th scope="row">Iridium-193</th><td>77</td><td>116</td><td>2</td><td>8</td><td>18</td><td>32</td><td>15</td><td>2</td></tr>
+          <tr><th scope="row">Platinum-195</th><td>78</td><td>117</td><td>2</td><td>8</td><td>18</td><td>32</td><td>17</td><td>1</td></tr>
+          <tr><th scope="row">Thallium-205</th><td>81</td><td>124</td><td>2</td><td>8</td><td>18</td><td>32</td><td>18</td><td>3</td></tr>
         </tbody>
       </table>
       <p class="empty-state" id="empty-state" hidden>No matching isotopes.</p>
     </div>
-    <footer>
-      <p><strong>Reading the table:</strong> protons and neutrons belong to the nucleus; the shell columns describe the surrounding electrons of a neutral atom. Isotopes of the same element have the same electron counts here.</p>
-      <p>The maximum capacity of principal shell n is 2n². These capacities are not a sequential filling rule: subshell energies determine the actual populations. The supplied table values are preserved.</p>
-    </footer>
   </main>
   <script>
     const input = document.getElementById('isotope-search');
-    const rows = [...document.querySelectorAll('#isotope-body tr')];
+    const body = document.getElementById('isotope-body');
+    const rows = [...body.rows].sort((a, b) =>
+      Number(a.cells[1].textContent) - Number(b.cells[1].textContent) ||
+      Number(a.cells[2].textContent) - Number(b.cells[2].textContent));
+    body.append(...rows);
+    const elementCount = new Set(rows.map(row => row.cells[1].textContent)).size;
     const count = document.getElementById('row-count');
     const empty = document.getElementById('empty-state');
     rows.forEach(row => [...row.cells].slice(1).forEach(cell => {
       if (cell.textContent.trim() === '—') cell.classList.add('empty');
     }));
-    input.addEventListener('input', () => {
+    function filterRows() {
       const query = input.value.trim().toLocaleLowerCase();
       let visible = 0;
       rows.forEach(row => {
         row.hidden = !row.cells[0].textContent.toLocaleLowerCase().includes(query);
         if (!row.hidden) visible++;
       });
-      count.textContent = query ? `${visible} of ${rows.length} isotopes` : `${rows.length} isotopes`;
+      count.textContent = query ? `${visible} of ${rows.length} isotopes` : `${rows.length} isotopes · ${elementCount} elements`;
       empty.hidden = visible !== 0;
-    });
+    }
+    input.addEventListener('input', filterRows);
+    filterRows();
   </script>
 </body>
 </html>
