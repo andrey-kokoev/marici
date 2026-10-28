@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "oscillator-fibration-cut",
+    "owner": "marici.Strominger",
+    "classification": "bounded_markov_domain_decorated_FCC_representation_checked",
+    "stratum": "Single-mode Markov oscillator, positive real coupling amplitudes, real detuning; forward realization and readout descent on the primitive coefficient DAG.",
+    "inputs": ["research/chatgpt/20261019/fcc_gaussian_boundary_recursion.md", "research/nima/agda/ThreeWitnessRetainedCone.agda", "research/nima/agda/RetainedTetrahedralPackage.agda", "research/nima/checkers/check_rung_transport_diagram.py", "research/aspect/markov-oscillator-loss-noise-identity.md", "research/aspect/checkers/markov_oscillator_loss_noise_identity.py", "research/strominger/checkers/check_berry_fibration_cut.py", "research/strominger/contracts/marici-tower-cut-domain-net.v1.json"],
+    "checks": [{"id": "oscillator-cut-hostile", "path": "research/strominger/checkers/check_oscillator_fibration_cut.py", "requires": ["sympy"]}, {"id": "oscillator-family-promotion", "path": "research/strominger/checkers/check_oscillator_family_promotion.py", "requires": ["sympy"]}, {"id": "oscillator-retained-cone", "path": "research/strominger/checkers/check_oscillator_retained_cone.py", "requires": ["sympy"]}, {"id": "oscillator-fcc-representation", "path": "research/strominger/checkers/check_oscillator_fcc_representation.py", "requires": ["sympy"]}],
+    "depends_on": [],
+    "consumes": ["fixed source-index cut", "declared oscillator input-output equations"],
+    "provides": ["response/noise-preserving four-port cut", "literal three-port triangle loses bath noise", "commutator-only false positive"],
+    "missing_constructors": [],
+    "next_falsifier": "For a proposed extension beyond this Markov fixture, test whether the same retained representation preserves its additional bath/transport data; do not infer full thermal fluctuation-dissipation."
+  }
+}

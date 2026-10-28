@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "tetrahedral-berry-cut",
+    "owner": "marici.Strominger",
+    "classification": "finite_berry_fibration_cut_checked_general_domain_open",
+    "stratum": "Four rank-one Pauli projectors with nonzero pairwise overlaps; Pancharatnam transport on shortest projective geodesics. Route/coherencer compatibility, not arbitrary-path flattening.",
+    "inputs": ["research/voevodsky/results/electron_tetrahedral_spinor_store.json", "research/nima/agda/TableFibrationCycle.agda", "research/voevodsky/checkers/check_electron_tetrahedral_spinor.py", "research/nima/agda/RetainedTetrahedralPackage.agda", "research/strominger/contracts/marici-tower-cut-domain-net.v1.json"],
+    "checks": [{"id": "tetrahedral-berry-faces", "path": "research/strominger/checkers/check_tetrahedral_berry_cut.py", "requires": ["sympy"]}, {"id": "berry-fibration-cut", "path": "research/strominger/checkers/check_berry_fibration_cut.py", "requires": ["sympy"]}],
+    "depends_on": [],
+    "consumes": ["four-face negative-polarization Pauli source", "rank-one projector overlap products"],
+    "provides": ["four gauge-invariant nontrivial face phases", "oriented tetrahedral boundary identity", "strict-flat-face and face-deletion hostiles"],
+    "missing_constructors": ["extension of the frozen finite source-index cut to a full continuum Berry-domain exposure"],
+    "next_falsifier": "Test the fixed cut definition against unsampled path/connection data; do not infer arbitrary continuum transport from four projectors."
+  }
+}

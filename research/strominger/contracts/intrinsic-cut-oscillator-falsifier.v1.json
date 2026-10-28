@@ -1,0 +1,17 @@
+{
+  "schema": "marici.frozen-falsification-contract.v1",
+  "id": "intrinsic-cut-oscillator-bath-occupation",
+  "claim": "cut-determines-law-domain",
+  "source": "research/aspect/markov-oscillator-loss-noise-identity.md",
+  "cut_implementation": "research/nima/checkers/check_rung_transport_diagram.py",
+  "cut": "Two actual incoming-family promotions of the four coefficient rows, followed by their raw/from-indexed/to-indexed presentations. Retain all labels, endpoint fields, aggregate values, masses and recursive members. No cone or FCC wrapper is included.",
+  "cut_equivalence": "Exact equality of the complete three presentations at fixed labelled ports and policy, with the same index/unindex comparison functions. This suffices to exhibit equivalence without erasing any retained field.",
+  "target_class": "Prepared stationary single-mode Markov input-output models with explicit internal-bath occupation n>=0, fixed external preparation, coupling rates and detuning. Bath preparation is part of the model boundary condition, not quotiented away.",
+  "target_observation": "Added external output occupation N_add=|q|^2*n, in the existing source convention.",
+  "target_equivalence": "Preserve the external/bath port interpretation, prepared bath state, and external response/noise observations; different N_add at the same external preparation separates prepared models.",
+  "fixtures": {"g": "1", "h": "2", "delta": "0", "bath_occupations": ["0", "3/2"]},
+  "rival": "The cut retains the transfer-coefficient domain but not the full prepared stochastic/quantum domain. Full-packet recovery cannot recover an input absent from that packet.",
+  "predicted_falsifier": "Complete identical cut presentations for both occupations, but different added output occupation.",
+  "positive_control": "Changing the actual bath coupling and regenerating all records changes the retained cut; nested members must not be erased to produce a collision.",
+  "scope_guard": "A collision refutes this frozen cut map as a representation of the prepared thermal domain. It does not refute the existence of a different WG source/cut retaining occupation, nor full recovery of the coefficient-only domain. A preparation difference must not be relabelled as a difference of unprepared dynamics."
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "berry-connection-domain-cut",
+    "owner": "marici.Strominger",
+    "classification": "scoped_CP1_connection_representation_checked",
+    "stratum": "Rank-one CP1 eigenline with canonical connection; separate annular central flat twist. Attachment transport and readout descent, not flat homotopy invariance.",
+    "inputs": ["research/benincasa/complex-kernel-berry-curvature.md", "research/aspect/a-berry-eigenline-falsifies-frozen-v10.md", "research/nima/local-berry-response-requires-framing.md", "research/strominger/checkers/check_oscillator_retained_cone.py", "research/strominger/checkers/check_oscillator_fcc_representation.py"],
+    "checks": [{"id": "berry-connection-cut", "path": "research/strominger/checkers/check_berry_connection_domain_cut.py", "requires": ["sympy"]}],
+    "depends_on": [],
+    "consumes": ["declared CP1 frames and connection convention", "retained promotion/cone/chart constructors"],
+    "provides": ["symbolic chart and curvature recovery", "equatorial holonomy", "annular flat-twist hostile to projector-only recovery"],
+    "missing_constructors": [],
+    "next_falsifier": "Any claimed generalization must retain arbitrary path and non-Abelian connection data rather than infer it from this rank-one family."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "marici.prepared-oscillator-cut.v2",
+  "id": "prepared-oscillator-cut-v2",
+  "predecessor_falsifier": "research/strominger/contracts/intrinsic-cut-oscillator-falsifier.v1.json",
+  "physical_source": "research/aspect/markov-oscillator-loss-noise-identity.md",
+  "inputs": "Real positive g,h, real detuning delta, nonnegative bath occupation n. Fixed external preparation and Markov input-output convention. Occupation is an independent source input, not inferred from response or fitted to output noise.",
+  "records": "Four existing transfer rows labelled (leaf,i), i=0..3, and one scalar preparation row labelled (occupation,1), with source=target=(bath-state,1) and value=n. The latter is a typed preparation datum, NOT a transfer edge.",
+  "operation": "Existing incoming_promotion, unchanged, under inherited/common policies; all five source records enter before the first promotion and remain recoverable through recursive members.",
+  "aggregate_semantics": "Mixed-role scalar means are transport summaries only, not physical amplitudes or noise. Physical evaluation uses typed recovered leaves, never the aggregate.",
+  "presentations": "Raw/from-indexed/to-indexed records and existing index/unindex comparison maps, without an added cone wrapper.",
+  "readout": "Recover and validate the five source leaves. Apply the existing path-composition transfer readout only to the four transfer rows. Read n from the recovered occupation row. Compute r,q, commutator weight, and added occupation |q|^2*n.",
+  "failure_policy": "Reject missing, duplicate, negative or untyped occupation records; do not silently default to vacuum or consult a saved input model.",
+  "scope": "Prepared Markov transfer/noise interface for independent occupation-only bath preparations. Does not represent arbitrary bath density operators, squeezed/correlated baths, all physical-domain operations, or full fluctuation-dissipation.",
+  "authority_boundary": "Declared source-schema adapter using the existing executable promotion, not a newly proved native WG derivation or a derivation of the analytic noise law. The old frozen contract remains falsified on the larger prepared domain."
+}
