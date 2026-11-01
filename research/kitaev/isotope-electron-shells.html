@@ -27,6 +27,10 @@
     tbody tr:last-child > * { border-bottom: 0; }
     tbody td:nth-child(4), thead th:nth-child(4) { border-left: 2px solid var(--line); }
     td.empty { color: var(--muted); opacity: .6; }
+    .notes { color: var(--muted); font-size: .85rem; max-width: 1100px; }
+    .notes a { color: var(--accent); }
+    td.stability { min-width: 180px; }
+    td.abundance { white-space: nowrap; }
     tr[hidden] { display: none; }
     .empty-state { padding: 20px; margin: 0; color: var(--muted); }
     @media (prefers-color-scheme: dark) {
@@ -65,6 +69,7 @@
             <th scope="col">Nucleus</th><th scope="col">Protons</th><th scope="col">Neutrons</th>
             <th scope="col">Shell 1 ≤2</th><th scope="col">Shell 2 ≤8</th><th scope="col">Shell 3 ≤18</th>
             <th scope="col">Shell 4 ≤32</th><th scope="col">Shell 5 ≤50</th><th scope="col">Shell 6 ≤72</th>
+            <th scope="col">Natural abundance (%)</th><th scope="col">Nuclear stability</th>
           </tr>
         </thead>
         <tbody id="isotope-body">
@@ -168,13 +173,61 @@
       </table>
       <p class="empty-state" id="empty-state" hidden>No matching isotopes.</p>
     </div>
+    <p class="notes">Abundance is the percentage of an element’s atoms that are this isotope, not its share of all matter.
+      Values are representative natural isotopic compositions from
+      <a href="https://physics.nist.gov/PhysRefData/Compositions/index.html">NIST</a> (uncertainties omitted),
+      not universal constants: samples can differ, particularly hydrogen, helium, lithium, boron and lead.
+      Only selected isotopes are listed, so an element’s rows need not total 100%.</p>
+    <p class="notes">Stability follows <a href="https://www-nds.iaea.org/relnsd/vcharthtml/VChartHTML.html">IAEA LiveChart / ENSDF</a>.
+      “Stable” means no radioactive decay is observed; it does not rule out theoretically possible, extremely slow decay.
+      Lead-204 has a reported half-life lower limit (≥), not a measured decay lifetime. y = years.
+      These reference values are independent of the geometric model.</p>
   </main>
   <script>
+    // NIST representative atom fractions × 100; embedded for offline file:// use.
+    const abundancePercent = {
+      'Hydrogen-1': '99.9885', 'Hydrogen-2': '0.0115', 'Helium-3': '0.000134', 'Helium-4': '99.999866',
+      'Lithium-6': '7.59', 'Lithium-7': '92.41', 'Beryllium-9': '100', 'Boron-10': '19.9', 'Boron-11': '80.1',
+      'Carbon-12': '98.93', 'Carbon-13': '1.07', 'Nitrogen-14': '99.636', 'Nitrogen-15': '0.364',
+      'Oxygen-16': '99.757', 'Oxygen-17': '0.038', 'Oxygen-18': '0.205', 'Neon-20': '90.48',
+      'Magnesium-24': '78.99', 'Silicon-28': '92.223', 'Sulfur-32': '94.99', 'Argon-40': '99.6035',
+      'Calcium-40': '96.941', 'Calcium-46': '0.004', 'Iron-54': '5.845', 'Iron-56': '91.754', 'Iron-58': '0.282',
+      'Nickel-62': '3.6346', 'Zirconium-90': '51.45', 'Tin-112': '0.97', 'Tin-120': '32.58', 'Tin-124': '5.79',
+      'Xenon-132': '26.9086', 'Barium-138': '71.698', 'Gold-197': '100', 'Mercury-204': '6.87',
+      'Lead-204': '1.4', 'Lead-206': '24.1', 'Lead-207': '22.1', 'Lead-208': '52.4',
+      'Fluorine-19': '100', 'Sodium-23': '100', 'Aluminium-27': '100', 'Phosphorus-31': '100',
+      'Chlorine-35': '75.76', 'Potassium-39': '93.2581', 'Scandium-45': '100', 'Titanium-48': '73.72',
+      'Vanadium-51': '99.75', 'Chromium-52': '83.789', 'Manganese-55': '100', 'Cobalt-59': '100',
+      'Copper-63': '69.15', 'Zinc-64': '49.17', 'Gallium-69': '60.108', 'Germanium-74': '36.5',
+      'Arsenic-75': '100', 'Selenium-80': '49.61', 'Bromine-79': '50.69', 'Krypton-84': '56.987',
+      'Rubidium-85': '72.17', 'Strontium-88': '82.58', 'Yttrium-89': '100', 'Niobium-93': '100',
+      'Molybdenum-98': '24.39', 'Ruthenium-102': '31.55', 'Rhodium-103': '100', 'Palladium-106': '27.33',
+      'Silver-107': '51.839', 'Cadmium-114': '28.73', 'Indium-113': '4.29', 'Antimony-121': '57.21',
+      'Tellurium-126': '18.84', 'Iodine-127': '100', 'Caesium-133': '100', 'Lanthanum-139': '99.91119',
+      'Cerium-140': '88.45', 'Praseodymium-141': '100', 'Neodymium-142': '27.152', 'Samarium-152': '26.75',
+      'Europium-153': '52.19', 'Gadolinium-158': '24.84', 'Terbium-159': '100', 'Dysprosium-164': '28.26',
+      'Holmium-165': '100', 'Erbium-166': '33.503', 'Thulium-169': '100', 'Ytterbium-174': '32.026',
+      'Lutetium-175': '97.401', 'Hafnium-180': '35.08', 'Tantalum-181': '99.98799', 'Tungsten-184': '30.64',
+      'Rhenium-185': '37.4', 'Osmium-192': '40.78', 'Iridium-193': '62.7', 'Platinum-195': '33.78', 'Thallium-205': '70.48'
+    };
+    // All listed nuclides are marked STABLE by LiveChart except Pb-204,
+    // whose ENSDF entry gives a GE half-life limit, not an observed decay.
+    const stabilityExceptions = { 'Lead-204': 'No decay observed; t½ ≥ 1.4 × 10¹⁷ y' };
     const input = document.getElementById('isotope-search');
     const body = document.getElementById('isotope-body');
     const rows = [...body.rows].sort((a, b) =>
       Number(a.cells[1].textContent) - Number(b.cells[1].textContent) ||
       Number(a.cells[2].textContent) - Number(b.cells[2].textContent));
+    rows.forEach(row => {
+      const name = row.cells[0].textContent;
+      const abundance = row.insertCell();
+      abundance.className = 'abundance';
+      abundance.textContent = abundancePercent[name] ?? 'Not available';
+      const stability = row.insertCell();
+      stability.className = 'stability';
+      stability.textContent = Object.hasOwn(abundancePercent, name)
+        ? (stabilityExceptions[name] ?? 'Stable') : 'Not assessed';
+    });
     body.append(...rows);
     const elementCount = new Set(rows.map(row => row.cells[1].textContent)).size;
     const count = document.getElementById('row-count');
