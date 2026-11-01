@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "strominger-su32-three-contact-binding-v1",
+    "owner": "marici.Strominger",
+    "classification": "native_graph_symmetry_verified_block_contact_binding_missing",
+    "stratum": "Forward realization and attachment transport: verify the proposed lattice action on the actual native graph before any contact-composite or filler test.",
+    "inputs": ["research/strominger/su32_three_contact_results.md", "research/strominger/pe-symmetric-sector.mjs", "research/realization-tower/sulfur-32-wiring.mjs", "research/strominger/sulfur-period-covers.mjs", "research/strominger/native-window-operation.mjs", "research/strominger/checkers/check_su32_three_contact_binding.mjs"],
+    "checks": [{"id": "strominger-su32-three-contact-binding", "path": "research/strominger/checkers/check_su32_three_contact_binding.py", "requires": []}],
+    "depends_on": ["strominger-su32-native-window-operation-v1"],
+    "consumes": ["Proposed order-three lattice action and displacement triple", "Actual native cells, ports, edge transports and wires"],
+    "provides": ["Full native geometric port automorphism with representative corrections", "Exact rejection of whole edge-three and edge-five windows as the proposed point-contact blocks"],
+    "missing_constructors": ["Source realization of the proposed five-vertex 4-simplex blocks and typed contact ports", "Native transports at those contacts and retained comparison of their composite"],
+    "next_falsifier": "Deferred until actual block/contact realization is supplied; then compare the two-contact composite with the reversed third contact on the full retained object, not merely its geometric endpoint."
+  }
+}
