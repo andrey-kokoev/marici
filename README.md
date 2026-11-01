@@ -7,6 +7,12 @@ Research ledger and public map for the scalar master geometry program: intrinsic
 [Assembly guide](docs/arrow-assembly.md): proton and electron workflows,
 shared geometric cycles, retained results, recovery and assembly measures.
 
+## Isotope wiring app
+
+[Isotope Wiring](examples/isotope-wiring/README.md) is the working app for isotope
+wiring development. Open `examples/isotope-wiring/index.html` directly in a browser;
+edit that standalone source for ongoing work.
+
 ## Project objective map
 
 The [project objective map](docs/project-objective-map.md) connects the main

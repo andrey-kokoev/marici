@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Isotope Wiring — Standalone</title>
+<style>
+:root{--ink:#252a31;--muted:#6a727e;--line:#d9dde2;--paper:#f5f6f8;--green:#4d8051;--red:#c2483f;--blue:#356cac;--focus:#e8edf4;font:13px/1.4 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper)}
+*{box-sizing:border-box}body{margin:0;overflow:hidden}button,input,select,textarea{font:inherit;color:inherit}button,select{border:1px solid transparent;border-radius:3px;background:transparent;padding:6px 9px;cursor:pointer}button:hover{background:#e9edf2}button:disabled{opacity:.35;cursor:default}button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible,.cell-hit:focus-visible{outline:2px solid #5287bd;outline-offset:2px}button[aria-pressed=true]{background:#e3eaf3;color:#234e7f}button.primary{background:#2e557e;color:#fff}button.primary:hover{background:#234568}[hidden]{display:none!important}input{accent-color:#426b97}h1,h2,h3,p{margin:0}h2,h3{font-size:13px;font-weight:600}summary{cursor:pointer}kbd{font:11px ui-monospace,monospace;color:#929cab}.app-shell{height:100dvh;min-height:420px;display:flex;flex-direction:column;overflow:hidden}.appbar{height:48px;flex:none;background:#252a32;color:#edf0f5;display:flex;align-items:center;padding:0 14px;gap:14px;z-index:5}.brand{font-size:13px;font-weight:600;white-space:nowrap;letter-spacing:-.02em}.appbar button{color:inherit;font-size:12px}.appbar button:hover{background:#3b424e}.appbar button[aria-expanded=true]{background:#424b58}.divider{height:20px;width:1px;background:#4b515b;flex:none}.isotope-picker{display:flex;align-items:center;gap:25px;min-width:150px;justify-content:space-between;text-align:left}.isotope-picker #title{font-size:13px;font-weight:500}.chevron{font-size:10px;color:#9ca8b7}.spacer{flex:1}.appbar .view-switch{display:flex;gap:2px}.appbar .view-switch button[aria-pressed=true]{background:#454f5e;color:#fff}.file-menu{position:relative;font-size:12px}.file-menu>summary{padding:6px 10px;list-style:none;border-radius:3px}.file-menu[open]>summary,.file-menu>summary:hover{background:#3b424e}.file-menu-panel{position:absolute;right:0;top:34px;width:198px;padding:5px;background:#fff;color:var(--ink);box-shadow:0 9px 30px #17223626;border:1px solid #d3d9df;border-radius:4px}.file-menu-panel button{display:block;color:var(--ink);width:100%;text-align:left;padding:8px 10px}.file-menu-panel button:hover{background:#edf1f5}.file-menu-panel hr{border:0;border-top:1px solid var(--line);margin:4px 5px}.toolstrip{height:39px;flex:none;display:flex;align-items:center;gap:5px;border-bottom:1px solid var(--line);background:#fbfcfd;padding:0 14px;z-index:3}.toolstrip button,.toolstrip label{font-size:12px}.toolstrip label{display:flex;align-items:center;gap:5px;padding:0 7px;white-space:nowrap}.toolstrip input{margin:0}.toolstrip .divider{height:17px;background:var(--line);margin:0 5px}.zoom-controls{display:flex;align-items:center}.zoom-controls #zoom-fit{min-width:50px;font-variant-numeric:tabular-nums}.zoom-controls #zoom-in,.zoom-controls #zoom-out{font-size:17px;padding:1px 9px}.toolstrip .move-tool{margin-left:4px}.toolstrip #inspect-toggle{margin-left:auto}.workarea{position:relative;flex:1;min-height:0;display:flex;overflow:hidden}.stage{position:relative;flex:1;min-width:0;display:flex;flex-direction:column}#diagram-panel{position:relative;flex:1;min-height:0;overflow:hidden;background:#f5f6f8;background-image:radial-gradient(#bfc7d14d .7px,transparent .7px);background-size:24px 24px;touch-action:none}.drawing{width:100%;height:100%;display:flex;justify-content:center;gap:20px;padding:40px 55px 55px}.diagram{display:block;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden}.diagram-meta{position:absolute;top:16px;left:22px;font:11px ui-monospace,monospace;color:#8a939f;pointer-events:none}.legend{position:absolute;bottom:16px;left:22px;display:flex;gap:18px;font-size:11px;color:var(--muted);pointer-events:none}.legend span{display:flex;align-items:center;gap:5px}.legend i{display:inline-block;width:16px;height:2px}.legend .red{background:var(--red)}.legend .blue{background:var(--blue)}.legend .green{background:var(--green)}.space-frame,.neutron{fill:none;stroke:var(--green);stroke-width:2.2;stroke-linecap:round;vector-effect:non-scaling-stroke}.space-frame{stroke-width:1.5}.ep{fill:none;stroke-width:3;stroke-linecap:round;vector-effect:non-scaling-stroke}.ep.red{stroke:var(--red)}.ep.blue{stroke:var(--blue)}.ep.conflict{stroke:#a1398e;stroke-dasharray:4 3}.boundary-dot{fill:var(--green)}.grid-cell{fill:none;stroke:#aeb8c4;stroke-width:.7;stroke-dasharray:3 5;vector-effect:non-scaling-stroke}.shell-label{font:12px ui-monospace,monospace;fill:#8b96a4}.cell-hit{cursor:crosshair}.cell-hit:hover path{fill:#3f6c9a0b}.selection{fill:none;stroke:#425e7b;stroke-width:1.3;stroke-dasharray:3 4;pointer-events:none;vector-effect:non-scaling-stroke}.cell-number{font:11px ui-monospace,monospace;fill:#324d6b;paint-order:stroke;stroke:var(--paper);stroke-width:3px;pointer-events:none}#diagram-panel[data-move=true],#diagram-panel[data-move=true] .cell-hit{cursor:grab}#diagram-panel[data-dragging=true],#diagram-panel[data-dragging=true] .cell-hit{cursor:grabbing}.compare-column{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:12px}.compare-column h3{font-size:12px;font-weight:500}.compare-column p{font:11px ui-monospace,monospace;color:var(--muted)}.compare-column .diagram{flex:1}.compare-column .cell-hit{pointer-events:none}.statusbar{height:29px;flex:none;display:flex;align-items:center;gap:18px;padding:0 15px;background:#fafbfc;border-top:1px solid var(--line);font-size:11px;color:var(--muted);white-space:nowrap}.statusbar #inventory{font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis}.statusbar #status-counts{margin-left:auto;font-size:11px;padding:2px 0;white-space:nowrap}.statusbar #status-counts[data-errors=true]{color:#b04433}.statusbar #status-counts[data-warnings=true]{color:#926b2d}.statusbar #storage-state{overflow:hidden;text-overflow:ellipsis;max-width:200px;font-size:10px;color:#8b94a0}.panel{background:#fff;border:1px solid #ccd3dc;border-radius:5px;box-shadow:0 10px 35px #1e2b3d20}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:13px}.panel-head h2{font-size:12px}.close-panel{font-size:19px;line-height:1;padding:2px 6px;color:#7a8592}.catalog{position:absolute;top:9px;left:12px;width:340px;max-width:calc(100% - 24px);max-height:calc(100% - 22px);display:flex;flex-direction:column;padding:16px;z-index:8}.catalog-tools{display:grid;gap:10px;flex:none}.catalog-tools>input{background:#f8fafc;border:1px solid #c7d2df;border-radius:3px;width:100%;padding:9px 10px;font-size:13px}.catalog-filters{display:flex;gap:8px}.catalog-filters label{display:flex;align-items:center;gap:5px;min-width:0;font-size:11px;color:var(--muted)}.catalog-filters label:first-child{flex:1}.catalog-filters select{border:1px solid var(--line);padding:5px 6px;background:#fff;min-width:0;width:100%;font-size:11px}.catalog-filters input{border:1px solid var(--line);padding:5px 6px;width:55px;min-width:0;border-radius:3px;background:#fff;font-size:11px}#catalog-count{font-size:10px;color:#929aa5;margin:12px 0 6px}#isotopes{min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:1px;max-height:430px}#isotopes button{display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;padding:8px 9px;border-radius:2px;flex:none}#isotopes button[aria-current=true]{background:#e8eef6;color:#284f7c}.isotope-label{display:block;font-size:12px}.isotope-id{display:block;font:10px ui-monospace,monospace;color:#8c96a2;margin-top:1px}#isotopes small{font-size:10px;color:#9b773e}.pagination{display:flex;align-items:center;justify-content:space-between;margin-top:8px;flex:none}.pagination button,.pagination span{font-size:11px}.pagination span{color:var(--muted)}.catalog #compare{border-top:1px solid var(--line);border-radius:0;margin-top:9px;padding-top:12px;font-size:11px;width:100%;flex:none}.inspector{width:308px;flex:none;border-left:1px solid var(--line);background:#fcfdfe;padding:17px;overflow:auto}.inspector .panel-head{margin-bottom:6px}.inspector .eyebrow{color:#8893a0;font-size:10px;text-transform:uppercase;letter-spacing:.08em}.inspector #cell-title{font:14px ui-monospace,monospace;color:#31455d;margin:16px 0 6px}.inspector #cell-meta{font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:20px}.control-row{display:flex;gap:5px;margin:7px 0 17px}.control-row button{flex:1;font-size:11px;border:1px solid #dbe1e8;padding:7px 3px;background:#fff}.control-row button[aria-pressed=true]{background:#e7edf5;border-color:#b5c6d9;color:#2a527c}.inspector .wide{width:100%;font-size:11px;text-align:left;border:1px solid #dbe1e8;background:#fff;padding:7px 8px}.inspector .wide[aria-pressed=true]{background:#e7edf5}.hint{font-size:11px;color:var(--muted);line-height:1.6}.inspector .hint{margin:11px 0}.record{font-size:11px;border-bottom:1px solid #e4e8ee;padding:10px 0;overflow-wrap:anywhere}.record summary{font-family:ui-monospace,monospace;color:#516276;list-style-position:inside}.record p{font:11px/1.8 ui-monospace,monospace;margin:8px 0;color:#4a5c72}.record code{display:block;white-space:pre-wrap;font:10px/1.7 ui-monospace,monospace;color:#8c96a2;margin-top:7px}.operations{margin-top:20px;font-size:11px;color:var(--muted)}#history{font-size:10px;line-height:1.7;padding-left:17px;margin-bottom:0}.counts-panel{position:absolute;top:9px;right:12px;width:460px;max-width:calc(100% - 24px);max-height:calc(100% - 22px);overflow:auto;padding:17px;z-index:9}.ledger-header{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px}.ledger-header h2{font-size:12px}#roundtrip{font-size:10px;color:#84909e}table{width:100%;border-collapse:collapse;font:11px/1.5 ui-monospace,monospace;font-variant-numeric:tabular-nums}td,th{text-align:right;padding:8px 5px;border-bottom:1px solid #e5e9ef}th{font-size:10px;font-weight:400;color:#8b95a2}th:first-child,td:first-child{text-align:left}.total{font-weight:600}.bad,.error{color:#b13c2c}.warning{color:#98712d}.validation{padding-top:20px}.validation h2{font-size:12px;font-weight:500}#issues{font-size:11px;line-height:1.7;padding-left:16px;margin-top:9px}#issues:empty{display:none}#notes{font-size:10px;line-height:1.7;color:#8b95a1;margin-top:12px}.grammar{margin-top:20px;border-top:1px solid var(--line);padding-top:13px;font-size:11px;color:var(--muted)}.grammar p{margin:10px 0;line-height:1.7}#definition-panel{flex:1;min-height:0;display:flex;flex-direction:column;background:#fff}.source-tools{display:flex;align-items:center;gap:16px;padding:12px 20px;flex:none;border-bottom:1px solid #e5e9ef;min-height:59px}.source-tools label{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted)}.source-tools select,.base-picker input{background:#f7f9fb;border:1px solid #d7dfe8;border-radius:3px;padding:6px 8px;font-size:12px}.source-tools #apply{margin-left:auto;font-size:12px}.base-picker{position:relative;min-width:0}.base-picker input{width:180px;min-width:0}#base-caption{font-size:10px;color:var(--muted);padding-left:33px;margin-top:3px}#base-results{position:absolute;top:100%;left:30px;width:250px;max-height:280px;overflow:auto;z-index:12;background:#fff;border:1px solid #cbd5df;box-shadow:0 8px 24px #22324824;border-radius:3px;padding:4px}#base-results button{display:block;width:100%;text-align:left;font-size:11px;padding:8px}#base-results p{font-size:11px;padding:8px;color:var(--muted)}textarea{display:block;flex:1;min-height:120px;width:100%;resize:none;border:0;outline:none!important;background:#fff;color:#39516b;font:12px/1.75 ui-monospace,SFMono-Regular,Consolas,monospace;padding:18px 24px;tab-size:2}.source-actions{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 20px;border-top:1px solid #e4e9ef;font-size:11px;flex:none;min-height:43px}.source-actions button{font-size:11px;color:var(--muted)}#source-status{font-size:11px;color:var(--muted)}#source-status.error{color:#b13c2c}#toast{position:fixed;bottom:44px;left:50%;transform:translateX(-50%);background:#293646;color:#fff;border-radius:3px;padding:9px 15px;font-size:12px;z-index:30;max-width:calc(100% - 24px);box-shadow:0 5px 25px #17233420}.render-error{margin:auto;color:#b13c2c;max-width:450px;padding:20px;overflow-wrap:anywhere}noscript{background:#fff2ed;padding:15px;display:block}
+@media(max-width:900px){.appbar{padding:0 10px;gap:9px}.brand{font-size:12px}.isotope-picker{min-width:140px;gap:12px}.inspector{width:270px;padding:14px}.drawing{padding:35px 28px 48px}.statusbar #storage-state{display:none}}
+@media(max-width:600px){.appbar{height:46px;gap:6px}.brand{display:none}.appbar>.divider{display:none}.isotope-picker{min-width:0;flex:1;padding-left:2px}.isotope-picker #title{font-size:12px}.appbar .spacer{display:none}.appbar .view-switch button{font-size:11px;padding:6px}.appbar #counts-toggle{font-size:11px;padding:6px}.file-menu>summary{font-size:11px;padding:6px}.toolstrip{padding:0 8px;gap:1px}.toolstrip button,.toolstrip label{font-size:10px}.toolstrip label{padding:0 4px}.toolstrip .divider{margin:0 3px}.toolstrip #inspect-toggle{font-size:10px}.toolstrip #undo,.toolstrip #redo{padding:4px 6px}.toolstrip .move-tool{margin-left:0}.drawing{padding:34px 16px 48px;gap:8px}.legend{left:13px;bottom:12px;gap:12px;font-size:10px}.diagram-meta{left:13px;font-size:10px}.statusbar{padding:0 10px;gap:8px;font-size:10px}.statusbar #inventory{max-width:67%}.statusbar #status-counts{font-size:10px}.inspector{position:absolute;right:0;top:0;bottom:0;z-index:6;box-shadow:-9px 0 30px #24354d14;width:270px}.source-tools{padding:10px;gap:8px;flex-wrap:wrap}.source-tools label{font-size:10px}.source-tools select{max-width:95px}.base-picker input{width:130px}#base-caption{display:none}.source-tools #apply{font-size:11px}textarea{padding:13px;font-size:11px}.source-actions{padding:8px 10px;gap:5px}.source-actions button{font-size:10px}.compare-column h3{font-size:10px}.compare-column p{font-size:9px}.catalog{padding:13px}.counts-panel{padding:13px}#roundtrip{font-size:9px}}
+
+</style>
+<style id="website-theme">
+/* Site tokens are supplied by the VitePress host; fallbacks support direct opening. */
+:root{color-scheme:light;--ink:var(--vp-c-text-1,#3c3c43);--muted:var(--vp-c-text-2,#67676c);--line:var(--vp-c-divider,#e2e2e3);--paper:var(--vp-c-bg,#fff);--surface:var(--vp-c-bg-soft,#f6f6f7);--hover:var(--vp-c-default-soft,#efeff0);--accent:var(--vp-c-brand-1,#9a6235);--accent-soft:var(--vp-c-brand-soft,#f5eadf);--focus:var(--accent-soft);font-family:var(--vp-font-family-base,Inter,ui-sans-serif,system-ui,sans-serif)}
+:root.dark{color-scheme:dark;--red:#f08078;--blue:#82b5ef;--green:#8ab78e}
+.appbar,.toolstrip,.statusbar,.inspector,.panel,.file-menu-panel,#base-results,#definition-panel,textarea{background:var(--paper);color:var(--ink);border-color:var(--line)}
+.appbar{border-bottom:1px solid var(--line)}
+.appbar button,.file-menu-panel button,.source-actions button,.source-tools select,.base-picker input,textarea,.record p,.record summary,.inspector #cell-title{color:var(--ink)}
+.appbar .divider,.toolstrip .divider{background:var(--line)}
+button:hover,.appbar button:hover,.file-menu>summary:hover,.file-menu[open]>summary,.file-menu-panel button:hover{background:var(--hover)}
+button[aria-pressed=true],.appbar .view-switch button[aria-pressed=true],.appbar button[aria-expanded=true],#isotopes button[aria-current=true],.control-row button[aria-pressed=true],.inspector .wide[aria-pressed=true]{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+button.primary{background:var(--accent);color:var(--vp-c-bg,#fff)}button.primary:hover{background:var(--vp-c-brand-2,#80502e)}
+button,input,select,textarea{border-radius:6px}button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible,.cell-hit:focus-visible{outline-color:var(--accent)}input{accent-color:var(--accent)}
+.catalog-tools>input,.catalog-filters select,.catalog-filters input,.source-tools select,.base-picker input,.control-row button,.inspector .wide{background:var(--surface);color:var(--ink);border-color:var(--line)}
+#diagram-panel{background-color:var(--surface);background-image:radial-gradient(var(--line) .7px,transparent .7px)}
+.panel,.file-menu-panel,#base-results{border-radius:10px;box-shadow:0 8px 24px #0002}
+.chevron,kbd,.diagram-meta,.shell-label,.inspector .eyebrow,.inspector #cell-meta,.record code,#catalog-count,#isotopes small,.isotope-id,#roundtrip,#notes,#source-status,.statusbar #storage-state,.close-panel{color:var(--muted);fill:var(--muted)}
+.cell-number{fill:var(--ink)}.selection{stroke:var(--accent)}.grid-cell{stroke:var(--muted)}
+.cell-hit:hover path{fill:var(--accent-soft)}
+.record,.grammar,.source-tools,.source-actions,td,th,.catalog #compare{border-color:var(--line)}
+#toast{background:var(--ink);color:var(--paper)}
+</style>
+</head>
+<body>
+<div class="app-shell" id="app-shell">
+<header class="appbar">
+  <div class="brand">Isotope Wiring</div><span class="divider"></span>
+  <button id="catalog-toggle" class="isotope-picker" aria-expanded="false" aria-controls="catalog"><span id="title">Oxygen-16</span><span class="chevron">▾</span></button>
+  <div class="spacer"></div>
+  <div class="view-switch"><button id="diagram-view" aria-pressed="true">Graph</button><button id="definition-view" aria-pressed="false">Wiring</button></div>
+  <button id="counts-toggle" aria-expanded="false" aria-controls="counts-panel">Counts</button>
+  <details class="file-menu" id="file-menu"><summary>File</summary><div class="file-menu-panel"><button id="import">Import project or definition…</button><input id="file-input" type="file" accept=".json,application/json" hidden><hr><button id="export-project">Export project</button><button id="export-json">Export definition</button><button id="export-svg">Export SVG</button><hr><button id="reset">Reset fixture</button></div></details>
+</header>
+<div class="toolstrip" id="toolstrip">
+  <div class="zoom-controls"><button id="zoom-out" aria-label="Zoom out">−</button><button id="zoom-fit" aria-label="Fit graph">Fit</button><button id="zoom-in" aria-label="Zoom in">+</button></div>
+  <button id="move-tool" class="move-tool" aria-pressed="false">Move</button><span class="divider"></span>
+  <label><input id="grid" type="checkbox">Grid</label><label><input id="labels" type="checkbox">Occupancy</label>
+  <span class="divider"></span><button id="undo" aria-label="Undo" disabled>↶</button><button id="redo" aria-label="Redo" disabled>↷</button>
+  <button id="inspect-toggle" aria-expanded="false" aria-controls="inspector">Inspect</button>
+</div>
+<div class="workarea">
+  <nav class="catalog panel" id="catalog" aria-label="Isotope definitions" hidden>
+    <div class="panel-head"><h2>Find isotope</h2><button id="catalog-close" class="close-panel" aria-label="Close isotope catalog">×</button></div>
+    <div class="catalog-tools"><input id="catalog-search" type="search" placeholder="Element, isotope, or ID" aria-label="Search isotope catalog" autocomplete="off"><div class="catalog-filters"><label>Element<select id="element-filter"><option value="">All elements</option></select></label><label>A<input id="mass-filter" type="number" min="1" step="1" placeholder="Any" aria-label="Mass number"></label></div></div>
+    <div id="catalog-count" role="status" aria-live="polite"></div><div id="isotopes"></div>
+    <div class="pagination"><button id="catalog-prev" aria-label="Previous catalog page">Previous</button><span id="catalog-page"></span><button id="catalog-next" aria-label="Next catalog page">Next</button></div>
+    <button id="compare">Compare oxygen 16 / 17 / 18</button>
+  </nav>
+  <main class="stage">
+    <section id="diagram-panel"><div class="diagram-meta" id="view-kind">ABSOLUTE WIRING</div><div id="canvas" class="drawing"></div><div class="legend"><span><i class="red"></i>EP</span><span><i class="blue"></i>EP</span><span><i class="green"></i>Neutron space</span></div></section>
+    <section id="definition-panel" hidden>
+      <div class="source-tools"><label>Wiring<select id="format"><option value="absolute">Absolute</option><option value="delta">Delta</option></select></label><div id="base-label" class="base-picker" hidden><label>Base<input id="base-search" type="search" autocomplete="off" aria-label="Search base definition" aria-controls="base-results" placeholder="Find base…"></label><input id="base" type="hidden"><div id="base-caption"></div><div id="base-results" hidden></div></div><button id="apply" class="primary">Apply</button></div>
+      <textarea id="source" aria-label="JSON definition" spellcheck="false"></textarea>
+      <div class="source-actions"><p id="source-status" role="status"></p><button id="reload-source">Restore compiled text</button></div>
+    </section>
+  </main>
+  <aside class="inspector" id="inspector" hidden>
+    <div class="panel-head"><h2>Cell</h2><button id="inspector-close" class="close-panel" aria-label="Close cell inspector">×</button></div><h2 id="cell-title">Select a cell</h2><p id="cell-meta"></p>
+    <div id="cell-actions" hidden><p class="eyebrow">EP records</p><div class="control-row"><button id="upper" aria-pressed="false">Upper pair</button><button id="lower" aria-pressed="false">Lower pair</button></div><p class="eyebrow">Neutron witnesses</p><div class="control-row"><button id="horizontal" aria-pressed="false">Horizontal</button><button id="vertical" aria-pressed="false">Vertical</button></div><button id="boundary" class="wide" aria-pressed="false">Shell boundary witness</button></div>
+    <div id="records"></div><details class="operations"><summary>Edit history</summary><ol id="history"></ol></details>
+  </aside>
+  <section class="counts-panel panel" id="counts-panel" hidden>
+    <div class="panel-head"><h2>Inventory</h2><button id="counts-close" class="close-panel" aria-label="Close count inspector">×</button></div>
+    <div class="ledger-header"><h2>Records by shell</h2><span id="roundtrip"></span></div><div id="counts"></div>
+    <div class="validation"><h2 id="validation-title"></h2><ul id="issues"></ul><p id="notes"></p></div>
+    <details class="grammar"><summary>Diagram grammar</summary><p>One EP record owns one red and one blue path. A complete cell owns two EP records. Shared visible edges retain their separate histories.</p><p>One green H or V witness counts as one neutron. A shell boundary counts only when its witness record is present.</p><p>Red and blue directions alternate between shells. A delta is an alternate definition of the complete graph, not a physical isotope-growth claim.</p><p>Wiring accepts absolute graphs or deltas with add, remove, and replace operations. Change the ID and name to create another definition.</p></details>
+  </section>
+</div>
+<footer class="statusbar"><span id="inventory"></span><span id="storage-state"></span><button id="status-counts" aria-label="Open count validation"></button></footer>
+<div id="toast" role="status" hidden></div>
+<noscript>This app needs JavaScript. All code is included in this file.</noscript>
+</div>
+
+<script>
+(() => {
+'use strict';
+const clone=x=>JSON.parse(JSON.stringify(x));
+const esc=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const collections=['shells','cells','pairs','witnesses'];
+const forbidden=new Set(['__proto__','prototype','constructor']);
+function requireId(x,label){if(typeof x!=='string'||!x.trim()||forbidden.has(x))throw Error(label+' needs a nonempty, safe ID.');}
+const stable=x=>JSON.stringify(canonical(x));
+function canonical(x){if(Array.isArray(x))return x.map(canonical);if(x&&typeof x==='object')return Object.fromEntries(Object.keys(x).sort().map(k=>[k,canonical(x[k])]));return x;}
+function sameGraph(a,b){return collections.every(k=>stable([...a.graph[k]].sort((x,y)=>x.id.localeCompare(y.id)))===stable([...b.graph[k]].sort((x,y)=>x.id.localeCompare(y.id))));}
+function compile(input,registry={},trail=[]){
+ if(!input||typeof input!=='object'||Array.isArray(input))throw Error('A definition must be an object.');
+ requireId(input.id,'Definition');
+ if(trail.includes(input.id))throw Error('Cyclic delta: '+[...trail,input.id].join(' → '));
+ let out;
+ if(input.kind==='absolute'){out=clone(input);}
+ else if(input.kind==='delta'){
+  requireId(input.base,'Delta base');
+  if(!Object.hasOwn(registry,input.base))throw Error('Missing base: '+input.base);
+  const base=compile(registry[input.base],registry,[...trail,input.id]);
+  if(!Array.isArray(input.ops))throw Error('A delta needs an ops array.');
+  out={...clone(base),...clone(input),kind:'absolute',graph:clone(base.graph)};
+  delete out.base;delete out.ops;
+  for(const op of input.ops){
+   if(!op||!collections.includes(op.collection))throw Error('Unknown graph collection.');
+   const list=out.graph[op.collection];
+   if(op.op==='add'){
+    requireId(op.value?.id,'Added record');
+    if(list.some(r=>r.id===op.value.id))throw Error('Record already exists: '+op.value.id);
+    list.push(clone(op.value));
+   }else if(op.op==='remove'||op.op==='replace'){
+    const index=list.findIndex(r=>r.id===op.id);if(index<0)throw Error('Missing record: '+op.id);
+    if(op.op==='remove')list.splice(index,1);
+    else {if(op.value?.id!==op.id)throw Error('Replacement must retain ID: '+op.id);list[index]=clone(op.value);}
+   }else throw Error('Unknown delta operation: '+op.op);
+  }
+ }else throw Error('Definition kind must be absolute or delta.');
+ if(!out.graph||typeof out.graph!=='object')throw Error('Missing graph.');
+ for(const kind of collections){
+  if(!Array.isArray(out.graph[kind]))throw Error('Missing collection: '+kind);
+  const ids=new Set();for(const r of out.graph[kind]){requireId(r?.id,kind);if(ids.has(r.id))throw Error('Duplicate '+kind+' ID: '+r.id);ids.add(r.id);}
+ }
+ return out;
+}
+function diff(base,target){
+ const {graph,kind,...meta}=clone(target),ops=[];
+ for(const collection of collections){
+  const a=new Map(base.graph[collection].map(r=>[r.id,r])),b=new Map(graph[collection].map(r=>[r.id,r]));
+  for(const [id] of a)if(!b.has(id))ops.push({op:'remove',collection,id});
+  for(const [id,value] of b){if(!a.has(id))ops.push({op:'add',collection,value});else if(stable(value)!==stable(a.get(id)))ops.push({op:'replace',collection,id,value});}
+ }
+ return {...meta,kind:'delta',base:base.id,ops};
+}
+function layout(doc){
+ const shells=new Map(),cells=new Map(doc.graph.cells.map(c=>[c.id,c]));let top=34,maxRadius=50;
+ for(const s of [...doc.graph.shells].sort((a,b)=>a.order-b.order)){
+  const radius=s.size*50;maxRadius=Math.max(maxRadius,radius);shells.set(s.id,{...s,top,cy:top+radius,radius,scale:s.order===1?1:(radius-7)/radius});top+=radius*2;
+ }
+ const point=(id,port)=>{
+  const c=cells.get(id);if(!c)throw Error('Unknown cell: '+id);
+  const s=shells.get(c.shell);if(!s)throw Error('Unknown shell: '+c.shell);
+  const offsets={T:[0,-50],R:[50,0],B:[0,50],L:[-50,0],C:[0,0]};
+  const o=offsets[port];if(!o)throw Error('Unknown port: '+port);
+  const x=(c.col-c.row)*50+o[0],y=s.top+(c.row+c.col+1)*50+o[1];
+  return [+(x*s.scale).toFixed(5),+(s.cy+(y-s.cy)*s.scale).toFixed(5)];
+ };
+ return {shells,cells,point,width:2*maxRadius+72,height:top+30};
+}
+const edgeKey=(a,b)=>[a.join(','),b.join(',')].sort().join('|');
+function geometry(doc){const l=layout(doc),edges=new Map();for(const p of doc.graph.pairs)for(const color of ['red','blue']){const a=l.point(p.cell,p[color][0]),b=l.point(p.cell,p[color][1]),k=edgeKey(a,b);if(!edges.has(k))edges.set(k,{a,b,colors:new Set(),owners:[]});const e=edges.get(k);e.colors.add(color);e.owners.push({id:p.id,color,history:p.history});}return {...l,edges};}
+function validate(doc){
+ const issues=[],issue=(code,message,level='error')=>issues.push({code,message,level});let structural=false;
+ const broken=(code,message)=>{structural=true;issue(code,message);};
+ try{compile(doc);}catch(e){return {valid:false,issues:[{code:'schema',level:'error',message:e.message}],EP:0,N:0,byShell:{},shared:0,geometry:null};}
+ if(typeof doc.name!=='string'||!doc.name.trim())issue('name','A definition needs a name.');
+ if(!Number.isInteger(doc.Z)||doc.Z<0||!Number.isInteger(doc.N)||doc.N<0)broken('inventory','Z and N must be nonnegative integers.');
+ if(!Array.isArray(doc.expectedByShell)||doc.expectedByShell.some(x=>!Number.isInteger(x)||x<0))broken('targets','Shell targets must be nonnegative integers.');
+ const shells=new Map(doc.graph.shells.map(s=>[s.id,s])),cells=new Map(doc.graph.cells.map(c=>[c.id,c])),byShell={},orders=new Set(),positions=new Set();
+ if(!shells.size)broken('shell','At least one shell is required.');
+ for(const s of shells.values()){
+  if(!Number.isInteger(s.order)||s.order<1||!Number.isInteger(s.size)||s.size<1||s.size>20||orders.has(s.order))broken('shell','Invalid or duplicate shell order/size: '+s.id);
+  orders.add(s.order);byShell[s.id]={EP:0,N:0,complete:0,partial:0};
+ }
+ for(const c of cells.values()){
+  const s=shells.get(c.shell),key=c.shell+':'+c.row+','+c.col;
+  if(!s||!Number.isInteger(c.row)||!Number.isInteger(c.col)||c.row<0||c.col<0||c.row>=s.size||c.col>=s.size||positions.has(key))broken('cell','Invalid, overlapping, or unbound cell: '+c.id);
+  positions.add(key);
+ }
+ const pairShapes=new Set(),local={T:[0,-1],R:[1,0],B:[0,1],L:[-1,0]};
+ for(const p of doc.graph.pairs){
+  const c=cells.get(p.cell),s=shells.get(p.shell);
+  if(!c||!s||c.shell!==p.shell){broken('reference','EP record has a missing/mismatched cell or shell: '+p.id);continue;}
+  byShell[p.shell].EP++;
+  if(!Array.isArray(p.history)||p.history.some(x=>typeof x!=='string'))broken('history','Invalid history: '+p.id);
+  for(const color of ['red','blue']){
+   const route=p[color];
+   if(!Array.isArray(route)||route.length!==2||route.some(port=>!Object.hasOwn(local,port))){broken('path','Invalid '+color+' path: '+p.id);continue;}
+   const a=local[route[0]],b=local[route[1]],dx=b[0]-a[0],dy=b[1]-a[1];
+   if(Math.abs(dx)!==1||Math.abs(dy)!==1)issue('path','Path is not one diagonal cell edge: '+p.id+' '+color);
+   const expected=(s.order%2?1:-1)*(color==='red'?1:-1);
+   if(dx*dy!==expected)issue('angle','Wrong '+color+' direction in '+s.id+': '+p.id);
+  }
+  const key=p.cell+':'+stable([p.red,p.blue].map(r=>Array.isArray(r)?[...r].sort():r));
+  if(pairShapes.has(key))issue('duplicate-pair','Duplicate EP occupancy in '+p.cell);pairShapes.add(key);
+ }
+ const witnessSlots=new Set();
+ for(const w of doc.graph.witnesses){
+  if(!shells.has(w.shell)){broken('reference','Witness has no shell: '+w.id);continue;}byShell[w.shell].N++;
+  if(!Array.isArray(w.history)||w.history.some(x=>typeof x!=='string'))broken('history','Invalid history: '+w.id);
+  if(w.kind==='line'){
+   if(!cells.has(w.cell)||cells.get(w.cell).shell!==w.shell||!['H','V'].includes(w.axis))broken('witness','Invalid witness cell/axis: '+w.id);
+  }else if(w.kind!=='boundary')broken('witness','Unknown witness kind: '+w.id);
+  const slot=w.kind==='boundary'?w.shell+':boundary':w.cell+':'+w.axis;
+  if(witnessSlots.has(slot))issue('witness','Duplicate neutron witness at '+slot);witnessSlots.add(slot);
+ }
+ for(const c of cells.values()){
+  const n=doc.graph.pairs.filter(p=>p.cell===c.id).length,b=byShell[c.shell];if(!b)continue;
+  if(n===2)b.complete++;if(n===1)b.partial++;if(n>2)issue('capacity','More than two EP records in '+c.id);
+ }
+ const EP=doc.graph.pairs.length,N=doc.graph.witnesses.length;
+ if(EP!==doc.Z)issue('ep-count',`EP total ${EP}; target ${doc.Z}.`);
+ if(N!==doc.N)issue('n-count',`Neutron witnesses ${N}; target ${doc.N}.`);
+ for(const s of shells.values()){const target=doc.expectedByShell?.[s.order-1];if(byShell[s.id].EP!==target)issue('shell-count',`Shell ${s.order}: ${byShell[s.id].EP} EP; target ${target??'missing'}.`);}
+ let g=null,shared=0;
+ if(!structural){try{
+  g=geometry(doc);
+  for(const e of g.edges.values()){if(e.owners.length>1)shared++;if(e.colors.size>1)issue('color','Red and blue occupy the same edge.');}
+  for(const c of cells.values()){
+   const n=doc.graph.pairs.filter(p=>p.cell===c.id).length;
+   if(n<2&&[['T','R'],['R','B'],['B','L'],['L','T']].every(([a,b])=>g.edges.has(edgeKey(g.point(c.id,a),g.point(c.id,b)))))issue('borrowed-contour',`${c.id} looks closed using neighboring edges but owns ${n} EP records.`,'warning');
+  }
+ }catch(e){broken('geometry',e.message);g=null;}}
+ if(doc.status==='unresolved')issue('unresolved','This fixture retains unresolved placement decisions.','warning');
+ return {valid:!issues.some(i=>i.level==='error'),issues,EP,N,byShell,shared,geometry:g};
+}
+const cellId=(n,r,c)=>`s${n}-${r}${c}`;
+function addShell(d,n){d.graph.shells.push({id:'s'+n,order:n,size:n});for(let r=0;r<n;r++)for(let c=0;c<n;c++)d.graph.cells.push({id:cellId(n,r,c),shell:'s'+n,row:r,col:c});}
+function pairRecord(n,r,c,half){const cell=cellId(n,r,c),odd=n%2===1;let red=half==='upper'?['T','R']:['L','B'],blue=half==='upper'?['T','L']:['R','B'];if(!odd)[red,blue]=[blue,red];return {id:cell+'-'+half,shell:'s'+n,cell,red,blue,history:['shell:'+n,'cell:'+r+','+c,'expose:'+half]};}
+function witnessRecord(n,r,c,axis){const cell=cellId(n,r,c);return {id:cell+'-'+axis,kind:'line',shell:'s'+n,cell,axis,history:['shell:'+n,'cell:'+r+','+c,'witness:'+axis]};}
+function addFull(d,n,r,c){d.graph.pairs.push(pairRecord(n,r,c,'upper'),pairRecord(n,r,c,'lower'));}
+function addCross(d,n,r,c){d.graph.witnesses.push(witnessRecord(n,r,c,'H'),witnessRecord(n,r,c,'V'));}
+function addBoundary(d,n){d.graph.witnesses.push({id:'s'+n+'-boundary',kind:'boundary',shell:'s'+n,history:['open-neutron-space:s'+n]});}
+function make(id,name,Z,N,expectedByShell){return {kind:'absolute',id,name,Z,N,expectedByShell,status:'fixture',notes:'Counts validate the declared diagram grammar. These are model fixtures, not measured nuclear structures.',graph:{shells:[],cells:[],pairs:[],witnesses:[]},editHistory:[]};}
+function fixtures(){
+ const out=Object.create(null),o=make('O16','Oxygen-16',8,8,[2,6]);addShell(o,1);addShell(o,2);addFull(o,1,0,0);addCross(o,1,0,0);for(const [r,c] of [[0,1],[1,0],[1,1]]){addFull(o,2,r,c);addCross(o,2,r,c);}out.O16=o;
+ out.O17={...clone(o),id:'O17',name:'Oxygen-17',N:9};out.O17.graph.witnesses.push(witnessRecord(2,0,0,'H'));
+ out.O18={...clone(out.O17),id:'O18',name:'Oxygen-18',N:10};out.O18.graph.witnesses.push(witnessRecord(2,0,0,'V'));
+ out.F19={...clone(out.O18),id:'F19',name:'Fluorine-19',Z:9,expectedByShell:[2,7]};out.F19.graph.pairs.push(pairRecord(2,0,0,'upper'));
+ out.Ne20={...clone(out.F19),id:'Ne20',name:'Neon-20',Z:10,expectedByShell:[2,8]};out.Ne20.graph.pairs.push(pairRecord(2,0,0,'lower'));
+ out.Na23={...clone(out.Ne20),id:'Na23',name:'Sodium-23',Z:11,N:12,expectedByShell:[2,8,1]};addShell(out.Na23,3);out.Na23.graph.pairs.push(pairRecord(3,0,0,'upper'));addBoundary(out.Na23,3);out.Na23.graph.witnesses.push(witnessRecord(3,0,0,'H'));
+ const ti={...clone(out.Ne20),id:'Ti48',name:'Titanium-48',Z:22,N:26,expectedByShell:[2,8,10,2]};addShell(ti,3);addShell(ti,4);
+ for(const [r,c] of [[0,0],[1,1],[2,2],[0,2],[2,0]]){addFull(ti,3,r,c);addCross(ti,3,r,c);}addBoundary(ti,3);ti.graph.witnesses.push(witnessRecord(3,0,1,'H'),witnessRecord(3,1,0,'H'));addFull(ti,4,0,0);addCross(ti,4,0,0);addBoundary(ti,4);out.Ti48=ti;
+ const v={...clone(ti),id:'V51',name:'Vanadium-51',Z:23,N:28,expectedByShell:[2,8,11,2],status:'unresolved',notes:'One new EP record is assigned to s3-10. Its apparent closed contour borrows neighboring edges; this placement remains unresolved.'};v.graph.pairs.push(pairRecord(3,1,0,'upper'));v.graph.witnesses.push(witnessRecord(3,0,1,'V'),witnessRecord(3,1,0,'V'));out.V51=v;
+ const bad={...clone(v),id:'V51-conflict',name:'Vanadium — miscount',notes:'Regression fixture: two extra full cells give 14 EP in shell 3 against target 11. This graph must fail validation.'};bad.graph.pairs.push(pairRecord(3,1,0,'lower'));addFull(bad,3,0,1);out['V51-conflict']=bad;
+ return out;
+}
+const BUILTINS=fixtures(),BASES={O17:'O16',O18:'O17',F19:'O18',Ne20:'F19',Na23:'Ne20',Ti48:'Na23',V51:'Ti48','V51-conflict':'V51'};
+
+const SYMBOLS=['',...'H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe Cs Ba La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Po At Rn Fr Ra Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr Rf Db Sg Bh Hs Mt Ds Rg Cn Nh Fl Mc Lv Ts Og'.split(' ')];
+const searchKey=x=>String(x).toLowerCase().replace(/[^\p{L}\p{N}]/gu,'');
+function catalogIndex(definitions){
+ return Object.entries(definitions).map(([id,d])=>{const symbol=SYMBOLS[d.Z]||'',A=d.Z+d.N;return {id,name:d.name||id,Z:d.Z,N:d.N,A,symbol,status:d.status,search:[d.name,id,symbol+A].map(searchKey).join(' ')};}).sort((a,b)=>a.Z-b.Z||a.A-b.A||a.id.localeCompare(b.id));
+}
+function catalogPage(index,{query='',element='',mass='',page=0,pageSize=30,exclude=''}={}){
+ const q=searchKey(query),matches=index.filter(x=>x.id!==exclude&&(!q||x.search.includes(q))&&(element===''||x.Z===Number(element))&&(mass===''||x.A===Number(mass)));
+ const pages=Math.max(1,Math.ceil(matches.length/pageSize)),current=Math.max(0,Math.min(page,pages-1));
+ return {items:matches.slice(current*pageSize,(current+1)*pageSize),total:matches.length,page:current,pages};
+}
+
+const svgStyles='.space-frame,.neutron{fill:none;stroke:#4e824b;stroke-width:2.2;stroke-linecap:round;vector-effect:non-scaling-stroke}.space-frame{stroke-width:1.4}.ep{fill:none;stroke-width:3;stroke-linecap:round;vector-effect:non-scaling-stroke}.ep.red{stroke:#bc493c}.ep.blue{stroke:#346ba6}.ep.conflict{stroke:#9b008f;stroke-dasharray:4 3}.boundary-dot{fill:#4e824b}.shell-label{font:12px sans-serif;fill:#83917d}.cell-hit{display:none}';
+function renderSVG(doc,{selected=null,grid=false,labels=false,standalone=false,view=null}={}){
+ const g=geometry(doc),point=g.point,parts=[];
+ if(standalone)parts.push('<style>'+svgStyles+'</style>');
+ const path=(a,b)=>'M'+a.join(' ')+' L'+b.join(' '),diamond=c=>'M'+point(c.id,'T')+' L'+point(c.id,'R')+' L'+point(c.id,'B')+' L'+point(c.id,'L')+' Z';
+ for(const s of g.shells.values()){
+  if(s.order>1)parts.push(`<path class="space-frame" d="M0 ${s.top} L${s.radius} ${s.cy} L0 ${s.cy+s.radius} L${-s.radius} ${s.cy} Z"><title>${esc(s.id)} neutron space; ${doc.graph.witnesses.some(w=>w.kind==='boundary'&&w.shell===s.id)?'1 boundary witness':'uncounted frame'}</title></path>`);
+  parts.push(`<text class="shell-label" x="${-s.radius-13}" y="${s.cy}" text-anchor="end">${s.order}</text>`);
+ }
+ if(grid)for(const c of doc.graph.cells)parts.push(`<path class="grid-cell" d="${diamond(c)}"/>`);
+ for(const w of doc.graph.witnesses){
+  if(w.kind==='line')parts.push(`<path class="neutron" data-witness="${esc(w.id)}" d="${path(point(w.cell,w.axis==='H'?'L':'T'),point(w.cell,w.axis==='H'?'R':'B'))}"><title>${esc(w.id)} · 1 N\n${esc(w.history.join(' → '))}</title></path>`);
+  else {const s=g.shells.get(w.shell);parts.push(`<circle class="boundary-dot" data-witness="${esc(w.id)}" cx="${s.radius}" cy="${s.cy}" r="3"><title>${esc(w.id)} · 1 N boundary witness</title></circle>`);}
+ }
+ for(const e of g.edges.values())parts.push(`<path class="ep ${e.colors.size===1?[...e.colors][0]:'conflict'}" d="${path(e.a,e.b)}"><title>${esc(e.owners.map(o=>o.color+': '+o.id+'\n'+o.history.join(' → ')).join('\n\n'))}</title></path>`);
+ if(!standalone)for(const c of doc.graph.cells){
+  const p=point(c.id,'C'),n=doc.graph.pairs.filter(x=>x.cell===c.id).length,wn=doc.graph.witnesses.filter(x=>x.cell===c.id).length;
+  parts.push(`<g class="cell-hit" data-cell="${esc(c.id)}" role="button" tabindex="0" aria-label="${esc(c.id)}: ${n} EP, ${wn} N"><path fill="transparent" d="${diamond(c)}"/><title>${esc(c.id)} · ${n} EP · ${wn} N</title></g>`);
+  if(c.id===selected)parts.push(`<circle class="selection" cx="${p[0]}" cy="${p[1]}" r="33"/>`);
+  if(labels)parts.push(`<text class="cell-number" x="${p[0]+9}" y="${p[1]-9}">${n}</text>`);
+ }
+ return `<svg class="diagram" xmlns="http://www.w3.org/2000/svg" data-definition="${esc(doc.id)}" viewBox="${view?view.join(' '):[-(g.width+10)/2,0,g.width+10,g.height].join(' ')}" role="img" aria-label="${esc(doc.name)} wiring diagram">${parts.join('')}</svg>`;
+}
+function graphViewport(doc,zoom=1,pan={x:0,y:0}){
+ const g=layout(doc),w=(g.width+10)/zoom,h=g.height/zoom;
+ return [pan.x-w/2,g.height/2+pan.y-h/2,w,h];
+}
+// Public core is also used by the file's offline regression tests.
+globalThis.IsotopeWiring=Object.freeze({clone,compile,diff,validate,geometry,renderSVG,sameGraph,fixtures,catalogIndex,catalogPage,graphViewport});
+if(typeof document==='undefined')return;
+const $=id=>document.getElementById(id),databaseName='isotope-wiring-standalone-v1';
+let inspectorOpen=false,zoom=1,pan={x:0,y:0},moveMode=false,drag=null,suppressClick=false;
+let drafts=Object.create(null),id='O16',doc=clone(BUILTINS.O16),selected='s2-00',mode='diagram',comparison=false,base='O17',format='absolute';
+const undo=new Map(),redo=new Map(),buffers=new Map();let database=null,toastTimer,catalog=[],catalogDirty=true,catalogPageNumber=0;
+const registry=()=>Object.assign(Object.create(null),BUILTINS,drafts,{[id]:doc});
+const bufferKey=()=>[id,format,format==='delta'?base:''].join('|');
+const toast=text=>{$('toast').textContent=text;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,3800);};
+async function openDraftStore(){
+ let factory;try{factory=globalThis.indexedDB;}catch{return null;}if(!factory)return null;
+ return new Promise(resolve=>{
+  let request;try{request=factory.open(databaseName,1);}catch{return resolve(null);}
+  const timer=setTimeout(()=>resolve(null),3000);
+  request.onupgradeneeded=()=>{if(!request.result.objectStoreNames.contains('definitions'))request.result.createObjectStore('definitions',{keyPath:'id'});};
+  request.onsuccess=()=>{clearTimeout(timer);resolve(request.result);};request.onerror=request.onblocked=()=>{clearTimeout(timer);resolve(null);};
+ });
+}
+async function saveDefinitions(items){
+ if(!database){$('storage-state').textContent='Session only · export to retain edits';return;}
+ $('storage-state').textContent='Saving…';
+ try{await new Promise((resolve,reject)=>{const tx=database.transaction('definitions','readwrite'),store=tx.objectStore('definitions');for(const d of items)store.put(d);tx.oncomplete=resolve;tx.onerror=tx.onabort=()=>reject(tx.error);});$('storage-state').textContent='Saved locally';}
+ catch{$('storage-state').textContent='Save failed · export to retain edits';}
+}
+function persist(){drafts[id]=clone(doc);catalogDirty=true;void saveDefinitions([drafts[id]]);}
+
+function resetBase(){const all=registry();base=BASES[id]&&all[BASES[id]]?BASES[id]:Object.keys(all).find(key=>key!==id)||'';}
+resetBase();
+function refreshCatalog(){
+ if(!catalogDirty)return;catalog=catalogIndex(registry());catalogDirty=false;
+ const previous=$('element-filter').value,groups=new Map();for(const d of catalog)if(!groups.has(d.Z))groups.set(d.Z,d.symbol||String(d.Z));
+ $('element-filter').innerHTML='<option value="">All elements</option>'+[...groups].map(([z,symbol])=>`<option value="${z}">${esc(symbol)} · Z ${z}</option>`).join('');
+ $('element-filter').value=groups.has(Number(previous))&&previous!==''?previous:'';
+}
+function drawCatalog(){
+ refreshCatalog();
+ const result=catalogPage(catalog,{query:$('catalog-search').value,element:$('element-filter').value,mass:$('mass-filter').value,page:catalogPageNumber});catalogPageNumber=result.page;
+ $('isotopes').innerHTML=result.items.map(d=>`<button type="button" data-id="${esc(d.id)}" aria-current="${d.id===id&&!comparison}"><span><span class="isotope-label">${esc(d.name)}</span><span class="isotope-id">${esc(d.symbol)}-${d.A} · ${esc(d.id)}</span></span><small>${d.status==='unresolved'?'draft':drafts[d.id]?'edited':''}</small></button>`).join('')||'<p class="hint">No matching definitions. Import a project or create one in the Definition editor.</p>';
+ const first=result.total?result.page*30+1:0,last=Math.min((result.page+1)*30,result.total);
+ $('catalog-count').textContent=`${first}–${last} of ${result.total} definitions`;
+ $('catalog-page').textContent=`${result.page+1} / ${result.pages}`;$('catalog-prev').disabled=result.page===0;$('catalog-next').disabled=result.page===result.pages-1;
+}
+function fillNavigation(){
+ drawCatalog();const all=registry();if(!all[base]||base===id)resetBase();
+ $('base').value=base;$('base-search').value=base;$('base-caption').textContent=all[base]?.name||'';$('base-results').hidden=true;
+ $('compare').setAttribute('aria-pressed',String(comparison));
+}
+function showBaseResults(){
+ refreshCatalog();const result=catalogPage(catalog,{query:$('base-search').value,pageSize:20,exclude:id});
+ $('base-results').innerHTML=result.items.map(d=>`<button type="button" data-base="${esc(d.id)}">${esc(d.name)} <small>(${esc(d.id)})</small></button>`).join('')||'<p>No matching base.</p>';
+ if(result.total>20)$('base-results').innerHTML+=`<p>${result.total} matches. Refine the search.</p>`;
+ $('base-results').hidden=false;
+}
+
+function selectDefinition(nextId){
+ const all=registry();if(!Object.hasOwn(all,nextId))throw Error('Unknown isotope: '+nextId);
+ const next=compile(all[nextId],all);if(next.id!==nextId)throw Error('Definition ID mismatch.');
+ id=nextId;doc=next;comparison=false;zoom=1;pan={x:0,y:0};setCatalog(false);setCounts(false);selected=doc.graph.cells.find(c=>c.shell==='s2')?.id||doc.graph.cells[0]?.id||null;resetBase();fillNavigation();render();
+}
+function draw(){
+ const previous=$('canvas'),scene=document.createElement('div');scene.id='canvas';scene.className='drawing';scene.dataset.definition=comparison?'oxygen-comparison':id;
+ try{
+  if(comparison)scene.innerHTML=['O16','O17','O18'].map(key=>`<div class="compare-column"><h3>${esc(BUILTINS[key].name)}</h3>${renderSVG(BUILTINS[key])}<p>8 EP · ${BUILTINS[key].N} N</p></div>`).join('');
+  else scene.innerHTML=renderSVG(doc,{selected:inspectorOpen?selected:null,grid:$('grid').checked,labels:$('labels').checked,view:graphViewport(doc,zoom,pan)});
+ }catch(e){const p=document.createElement('p');p.className='render-error';p.textContent='Cannot render '+doc.name+': '+e.message;scene.append(p);}
+ previous.replaceWith(scene);
+}
+function countTable(d,r){
+ const rows=[...d.graph.shells].sort((a,b)=>a.order-b.order).map(s=>{const b=r.byShell[s.id]||{EP:0,N:0,complete:0,partial:0},target=d.expectedByShell?.[s.order-1];return `<tr><td>Shell ${s.order}</td><td class="${b.EP!==target?'bad':''}">${b.EP} / ${target??'—'}</td><td>${b.N}</td><td>${b.complete} + ${b.partial} half</td></tr>`;});
+ return '<table><thead><tr><th>Shell</th><th>EP / target</th><th>N</th><th>Recorded cells</th></tr></thead><tbody>'+rows.join('')+`<tr class="total"><td>Total</td><td class="${r.EP!==d.Z?'bad':''}">${r.EP} / ${d.Z}</td><td class="${r.N!==d.N?'bad':''}">${r.N} / ${d.N}</td><td>${r.shared} shared edges</td></tr></tbody></table>`;
+}
+function render(){
+ draw();
+ $('title').textContent=comparison?'Oxygen isotope comparison':doc.name;
+ $('inventory').textContent=comparison?'O-16 / O-17 / O-18 · same EP paths':`${doc.Z} P  /  ${doc.N} N  /  ${doc.Z} E     ·     shells ${doc.expectedByShell?.join(' · ')||'—'}`;
+ $('view-kind').textContent=comparison?'Three absolute definitions':format==='delta'?'Delta from '+base:'Absolute wiring';
+ $('diagram-panel').hidden=mode!=='diagram';$('definition-panel').hidden=mode!=='definition';
+ $('diagram-view').setAttribute('aria-pressed',String(mode==='diagram'));$('definition-view').setAttribute('aria-pressed',String(mode==='definition'));
+ $('reset').disabled=comparison||!Object.hasOwn(BUILTINS,id);$('undo').disabled=comparison||!(undo.get(id)?.length);$('redo').disabled=comparison||!(redo.get(id)?.length);
+ $('inspector').hidden=!inspectorOpen||comparison||mode!=='diagram';$('inspect-toggle').setAttribute('aria-expanded',String(inspectorOpen&&!comparison&&mode==='diagram'));
+ $('toolstrip').hidden=mode!=='diagram';$('diagram-panel').dataset.move=String(moveMode);$('move-tool').setAttribute('aria-pressed',String(moveMode));
+ $('zoom-fit').textContent=zoom===1?'Fit':Math.round(zoom*100)+'%';
+ for(const key of ['zoom-in','zoom-out','zoom-fit','move-tool','inspect-toggle'])$(key).disabled=comparison;
+ const r=validate(doc),errors=r.issues.filter(x=>x.level==='error').length;
+ $('status-counts').textContent=comparison?'3 definitions':errors?errors+' errors':r.issues.length?r.issues.length+' to review':r.EP+' EP · '+r.N+' N';
+ $('status-counts').dataset.errors=String(!comparison&&errors>0);$('status-counts').dataset.warnings=String(!comparison&&!errors&&r.issues.length>0);
+ $('counts').innerHTML=countTable(doc,r);$('validation-title').textContent=errors?`${errors} count or wiring ${errors===1?'error':'errors'}`:r.issues.length?'Review required':'Counts and wiring agree';
+ $('issues').innerHTML=r.issues.map(i=>`<li class="${i.level}">${esc(i.message)}</li>`).join('');$('notes').textContent=doc.notes||'';
+ try{const all=registry();$('roundtrip').textContent=base&&sameGraph(doc,compile(diff(all[base],doc),all))?'Absolute ↔ delta verified':'';}catch(e){$('roundtrip').textContent=e.message;}
+ if(comparison){
+  $('counts').innerHTML='<table><thead><tr><th>Isotope</th><th>EP</th><th>N</th><th>Top-cell crossing</th></tr></thead><tbody>'+['O16','O17','O18'].map((key,n)=>`<tr><td>${BUILTINS[key].name}</td><td>8</td><td>${8+n}</td><td>${['None','Horizontal','H + V'][n]}</td></tr>`).join('')+'</tbody></table>';
+  $('validation-title').textContent='Three independent graphs';$('issues').innerHTML='';$('roundtrip').textContent='';$('notes').textContent='Comparison uses the original fixtures. Select an isotope to edit its working definition.';
+ }
+ inspect();if(mode==='definition')writeSource();
+ $('history').innerHTML=(doc.editHistory||[]).slice(-6).reverse().map(e=>`<li>${esc(e.action)}</li>`).join('')||'<li>No edits recorded.</li>';
+}
+function inspect(){
+ const c=doc.graph.cells.find(x=>x.id===selected);$('cell-actions').hidden=!c||comparison;
+ if(!c||comparison){$('cell-title').textContent='Select a cell';$('cell-meta').textContent=comparison?'Select one isotope to edit its paths.':'Click a diamond in the graph.';$('records').innerHTML='';return;}
+ const ps=doc.graph.pairs.filter(p=>p.cell===c.id),ws=doc.graph.witnesses.filter(w=>w.cell===c.id),frame=doc.graph.witnesses.find(w=>w.kind==='boundary'&&w.shell===c.shell);
+ $('cell-title').textContent=c.id;$('cell-meta').textContent=`Shell ${doc.graph.shells.find(s=>s.id===c.shell).order} · row ${c.row}, column ${c.col} · ${ps.length} EP · ${ws.length} N`;
+ const s=doc.graph.shells.find(s=>s.id===c.shell);
+ for(const half of ['upper','lower']){const p=pairRecord(s.order,c.row,c.col,half);$(half).setAttribute('aria-pressed',String(ps.some(x=>stable(x.red)===stable(p.red)&&stable(x.blue)===stable(p.blue))));}
+ $('horizontal').setAttribute('aria-pressed',String(ws.some(w=>w.axis==='H')));$('vertical').setAttribute('aria-pressed',String(ws.some(w=>w.axis==='V')));$('boundary').setAttribute('aria-pressed',String(!!frame));
+ $('records').innerHTML=[...ps,...ws,...(frame?[frame]:[])].map(p=>`<details class="record"><summary>${esc(p.id)}</summary>${p.red?`<p>Red: ${esc(p.red.join(' → '))}<br>Blue: ${esc(p.blue.join(' → '))}</p>`:''}<code>${p.history.map(esc).join('\n↓ ')}</code></details>`).join('')||'<p class="hint">No owned paths or witnesses. Visible edges may belong to neighboring cells.</p>';
+}
+function clearBuffers(key){for(const k of buffers.keys())if(k.startsWith(key+'|'))buffers.delete(k);}
+function mutate(action,fn){
+ const next=clone(doc);
+ try{fn(next);compile(next);const r=validate(next);if(!r.geometry)throw Error(r.issues.map(i=>i.message).join(' '));}catch(e){toast(e.message);return;}
+ const ops=diff(doc,next).ops.map(op=>({...op,...(op.op==='remove'||op.op==='replace'?{before:clone(doc.graph[op.collection].find(r=>r.id===op.id))}:{})}));
+ next.editHistory=[...(doc.editHistory||[]),{action,ops}];
+ undo.set(id,[...(undo.get(id)||[]),clone(doc)]);redo.set(id,[]);doc=next;clearBuffers(id);persist();fillNavigation();render();
+}
+function togglePair(half){const c=doc.graph.cells.find(x=>x.id===selected);if(!c)return;const s=doc.graph.shells.find(x=>x.id===c.shell);mutate('Toggle '+half+' EP at '+c.id,d=>{
+ const p=pairRecord(s.order,c.row,c.col,half);p.cell=c.id;p.shell=c.shell;p.id=c.id+'-'+half;
+ const index=d.graph.pairs.findIndex(x=>x.cell===c.id&&stable(x.red)===stable(p.red)&&stable(x.blue)===stable(p.blue));
+ if(index>=0)d.graph.pairs.splice(index,1);else{p.history.push('edit:add-pair');d.graph.pairs.push(p);}
+});}
+function toggleWitness(axis){const c=doc.graph.cells.find(x=>x.id===selected);if(!c)return;mutate('Toggle '+axis+' witness at '+c.id,d=>{const i=d.graph.witnesses.findIndex(w=>w.cell===c.id&&w.axis===axis);if(i>=0)d.graph.witnesses.splice(i,1);else d.graph.witnesses.push({id:c.id+'-'+axis,kind:'line',shell:c.shell,cell:c.id,axis,history:['shell:'+c.shell,'cell:'+c.id,'edit:add-witness:'+axis]});});}
+function writeSource(){
+ $('format').value=format;$('base').value=base;$('base-label').hidden=format!=='delta';
+ const pending=buffers.get(bufferKey());
+ if(pending!==undefined){$('source').value=pending;$('source-status').textContent='Unapplied edits';return;}
+ try{$('source').value=JSON.stringify(format==='delta'?diff(registry()[base],doc):doc,null,2);$('source-status').textContent='Compiled definition';$('source-status').className='';}catch(e){$('source-status').textContent=e.message;$('source-status').className='error';}
+}
+function applyInput(input){
+ const all=registry();
+ if(input?.schemaVersion===1&&input.definitions){
+  const entries=Object.entries(input.definitions);if(!entries.length)throw Error('The project contains no definitions.');
+  const combined=Object.assign(Object.create(null),all,input.definitions),checked=Object.create(null);
+  for(const [key,value] of entries){requireId(key,'Project key');const d=compile(value,combined);if(d.id!==key)throw Error('Definition ID does not match project key: '+key);const r=validate(d);if(!r.geometry)throw Error('Invalid graph '+key+': '+r.issues.map(i=>i.message).join(' '));checked[key]={...clone(value),name:d.name,Z:d.Z,N:d.N,expectedByShell:clone(d.expectedByShell),status:d.status};}
+  Object.assign(drafts,checked);catalogDirty=true;for(const [key] of entries){undo.delete(key);redo.delete(key);clearBuffers(key);}selectDefinition(entries[0][0]);void saveDefinitions(Object.values(checked));toast('Project imported');return;
+ }
+ const next=compile(input,all),r=validate(next);if(!next.name?.trim()||!r.geometry)throw Error('Invalid definition: '+r.issues.map(i=>i.message).join(' '));
+ const existing=all[next.id];if(existing)undo.set(next.id,[...(undo.get(next.id)||[]),clone(existing)]);redo.set(next.id,[]);
+ drafts[next.id]=input.kind==='delta'?{...clone(input),name:next.name,Z:next.Z,N:next.N,expectedByShell:clone(next.expectedByShell),status:next.status}:next;catalogDirty=true;clearBuffers(next.id);selectDefinition(next.id);void saveDefinitions([drafts[next.id]]);toast('Definition applied; '+r.issues.filter(i=>i.level==='error').length+' count/wiring errors.');
+}
+function download(name,content,type){$('file-menu').open=false;const url=URL.createObjectURL(new Blob([content],{type})),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);}
+function handle(fn){return event=>{try{fn(event);}catch(e){toast(e.message);}};}
+$('isotopes').addEventListener('click',handle(e=>{const b=e.target.closest('button[data-id]');if(b)selectDefinition(b.dataset.id);}));
+$('diagram-panel').addEventListener('click',handle(e=>{const c=e.target.closest('[data-cell]');if(suppressClick){suppressClick=false;return;}if(c&&!comparison&&!moveMode){selected=c.dataset.cell;inspectorOpen=true;setCatalog(false);setCounts(false);render();}}));
+$('diagram-panel').addEventListener('keydown',handle(e=>{if((e.key==='Enter'||e.key===' ')&&e.target.closest('[data-cell]')&&!comparison){e.preventDefault();selected=e.target.closest('[data-cell]').dataset.cell;inspectorOpen=true;render();}}));
+$('upper').onclick=()=>togglePair('upper');$('lower').onclick=()=>togglePair('lower');$('horizontal').onclick=()=>toggleWitness('H');$('vertical').onclick=()=>toggleWitness('V');
+$('boundary').onclick=()=>{const c=doc.graph.cells.find(x=>x.id===selected);if(!c)return;mutate('Toggle boundary witness in '+c.shell,d=>{const index=d.graph.witnesses.findIndex(w=>w.kind==='boundary'&&w.shell===c.shell);if(index>=0)d.graph.witnesses.splice(index,1);else d.graph.witnesses.push({id:c.shell+'-boundary',kind:'boundary',shell:c.shell,history:['open-neutron-space:'+c.shell,'edit:add-boundary']});});};
+$('undo').onclick=()=>{const stack=undo.get(id);if(!stack?.length)return;redo.set(id,[...(redo.get(id)||[]),clone(doc)]);doc=stack.pop();clearBuffers(id);persist();render();};
+$('redo').onclick=()=>{const stack=redo.get(id);if(!stack?.length)return;undo.set(id,[...(undo.get(id)||[]),clone(doc)]);doc=stack.pop();clearBuffers(id);persist();render();};
+$('reset').onclick=()=>{$('file-menu').open=false;if(!BUILTINS[id])return;undo.set(id,[...(undo.get(id)||[]),clone(doc)]);redo.set(id,[]);doc=clone(BUILTINS[id]);clearBuffers(id);persist();render();};
+$('diagram-view').onclick=()=>{mode='diagram';comparison=false;fillNavigation();render();};$('definition-view').onclick=()=>{mode='definition';comparison=false;fillNavigation();render();};
+$('compare').onclick=()=>{comparison=!comparison;mode='diagram';setCatalog(false);setCounts(false);fillNavigation();render();};
+$('grid').onchange=render;$('labels').onchange=render;
+$('format').onchange=()=>{format=$('format').value;render();};
+$('base-search').oninput=showBaseResults;$('base-search').onfocus=showBaseResults;
+$('base-results').onclick=handle(e=>{const b=e.target.closest('[data-base]');if(b){base=b.dataset.base;fillNavigation();render();}});
+$('base-search').onkeydown=handle(e=>{if(e.key==='Escape'){$('base-results').hidden=true;return;}if(e.key==='Enter'){e.preventDefault();const key=$('base-search').value;if(key!==id&&Object.hasOwn(registry(),key)){base=key;fillNavigation();render();}else toast('Choose a matching base from the results.');}});
+let searchTimer;const filterCatalog=()=>{catalogPageNumber=0;drawCatalog();};
+$('catalog-search').oninput=()=>{clearTimeout(searchTimer);searchTimer=setTimeout(filterCatalog,100);};
+$('element-filter').onchange=filterCatalog;$('mass-filter').oninput=filterCatalog;
+$('catalog-prev').onclick=()=>{catalogPageNumber--;drawCatalog();};$('catalog-next').onclick=()=>{catalogPageNumber++;drawCatalog();};
+$('source').addEventListener('input',()=>{buffers.set(bufferKey(),$('source').value);$('source-status').textContent='Unapplied edits';$('source-status').className='';});
+$('reload-source').onclick=()=>{buffers.delete(bufferKey());writeSource();};
+$('apply').onclick=()=>{try{applyInput(JSON.parse($('source').value));}catch(e){$('source-status').textContent=e.message;$('source-status').className='error';}};
+$('import').onclick=()=>{$('file-menu').open=false;$('file-input').click();};
+$('file-input').onchange=async()=>{try{const file=$('file-input').files[0];if(file)applyInput(JSON.parse(await file.text()));}catch(e){toast(e.message);}finally{$('file-input').value='';}};
+$('export-json').onclick=handle(()=>download(id+'-'+format+'.json',JSON.stringify(format==='delta'?diff(registry()[base],doc):doc,null,2),'application/json'));
+$('export-project').onclick=handle(()=>download('isotope-wiring-project.json',JSON.stringify({schemaVersion:1,definitions:registry()},null,2),'application/json'));
+$('export-svg').onclick=handle(()=>download(id+'.svg',renderSVG(doc,{standalone:true}),'image/svg+xml'));
+
+function setCatalog(open){$('catalog').hidden=!open;$('catalog-toggle').setAttribute('aria-expanded',String(open));if(open){setCounts(false);drawCatalog();$('catalog-search').focus?.();}}
+function setCounts(open){$('counts-panel').hidden=!open;$('counts-toggle').setAttribute('aria-expanded',String(open));if(open)setCatalog(false);}
+function setInspector(open){inspectorOpen=open;render();}
+function changeZoom(factor){if(comparison)return;zoom=Math.max(.25,Math.min(8,zoom*factor));render();}
+function fitGraph(){zoom=1;pan={x:0,y:0};render();}
+$('catalog-toggle').onclick=()=>setCatalog($('catalog').hidden);$('catalog-close').onclick=()=>setCatalog(false);
+$('counts-toggle').onclick=()=>setCounts($('counts-panel').hidden);$('status-counts').onclick=()=>setCounts($('counts-panel').hidden);$('counts-close').onclick=()=>setCounts(false);
+$('inspect-toggle').onclick=()=>setInspector(!inspectorOpen);$('inspector-close').onclick=()=>setInspector(false);
+$('zoom-in').onclick=()=>changeZoom(1.25);$('zoom-out').onclick=()=>changeZoom(.8);$('zoom-fit').onclick=fitGraph;
+$('move-tool').onclick=()=>{moveMode=!moveMode;render();};
+const surface=$('diagram-panel');
+surface.addEventListener('pointerdown',event=>{
+ if(comparison||(!moveMode&&event.button!==1))return;
+ const svg=$('canvas').querySelector('svg');if(!svg)return;
+ const rect=svg.getBoundingClientRect(),view=graphViewport(doc,zoom,pan),scale=Math.min(rect.width/view[2],rect.height/view[3]);
+ if(!scale)return;event.preventDefault();drag={x:event.clientX,y:event.clientY,pan:{...pan},scale,pointer:event.pointerId};surface.setPointerCapture(event.pointerId);surface.dataset.dragging='true';
+});
+surface.addEventListener('pointermove',event=>{
+ if(!drag)return;const dx=event.clientX-drag.x,dy=event.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>3)suppressClick=true;
+ pan={x:drag.pan.x-dx/drag.scale,y:drag.pan.y-dy/drag.scale};
+ $('canvas').querySelector('svg')?.setAttribute('viewBox',graphViewport(doc,zoom,pan).join(' '));
+});
+function endDrag(){if(drag){if(surface.hasPointerCapture(drag.pointer))surface.releasePointerCapture(drag.pointer);drag=null;}surface.dataset.dragging='false';}
+surface.addEventListener('pointerup',endDrag);surface.addEventListener('pointercancel',endDrag);
+surface.addEventListener('wheel',event=>{if(comparison||mode!=='diagram')return;event.preventDefault();changeZoom(event.deltaY<0?1.12:1/1.12);},{passive:false});
+document.addEventListener('keydown',event=>{
+ const editing=['INPUT','TEXTAREA','SELECT'].includes(event.target?.tagName);
+ if(event.key==='Escape'){setCatalog(false);setCounts(false);$('file-menu').open=false;$('base-results').hidden=true;if(inspectorOpen)setInspector(false);return;}
+ if(editing)return;
+ if(event.key==='/'){event.preventDefault();setCatalog(true);}
+ if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='z'){event.preventDefault();(event.shiftKey?$('redo'):$('undo')).onclick();}
+ if(event.key==='0')fitGraph();if(event.key==='+'||event.key==='=')changeZoom(1.25);if(event.key==='-')changeZoom(.8);
+});
+
+async function initialize(){
+ $('storage-state').textContent='Loading…';
+ database=await openDraftStore();
+ if(database){try{const records=await new Promise((resolve,reject)=>{const r=database.transaction('definitions','readonly').objectStore('definitions').getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});for(const d of records){try{requireId(d.id,'Saved definition');if(d.kind==='absolute'||d.kind==='delta')drafts[d.id]=d;}catch{}}}catch{$('storage-state').textContent='Saved drafts could not be loaded. Import a project to recover them.';}}
+ try{doc=compile(drafts[id]||BUILTINS[id],Object.assign(Object.create(null),BUILTINS,drafts));}catch{doc=clone(BUILTINS[id]);}
+ catalogDirty=true;resetBase();fillNavigation();render();
+ $('storage-state').textContent=database?'Local file · drafts saved in browser':'Session only · export to retain edits';
+}
+void initialize();
+})();
+</script>
+</body>
+</html>
