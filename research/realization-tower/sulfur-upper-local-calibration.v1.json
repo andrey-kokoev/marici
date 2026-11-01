@@ -1,0 +1,22 @@
+{
+  "schema": "sulfur-upper-local-calibration.v1",
+  "provenance": "Frozen from sulfur-route-blind-v1; all eight previous leave-one-carrier-out fits agreed. Not newly fitted to the carrier-generation test.",
+  "scope": "Existing candidate reference's upper junctions; a and b are retained route-choice labels, not layer-derived physical states.",
+  "rule": {
+    "selectorByA": {"+": "p", "-": "e"},
+    "inputByAgreement": {"true": "oblique", "false": "straight"},
+    "outputBySign": {"+": "skew", "-": "coplanar"}
+  },
+  "angularModel": {
+    "bySign": {
+      "+": {
+        "axisCosine": {"bits": [], "coefficient": -0.5},
+        "transverseCosine": {"bits": [], "coefficient": 0.3333333333333333}
+      },
+      "-": {
+        "axisCosine": {"bits": ["a", "b", "p", "e"], "coefficient": 0.5},
+        "transverseCosine": {"bits": ["a", "b", "p", "e"], "coefficient": 1}
+      }
+    }
+  }
+}
