@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "strominger-su32-edge5-native-bulk-v1",
+    "owner": "marici.Strominger",
+    "classification": "native_bulk_constructed_literal_closure_obstructed",
+    "stratum": "Forward realization and attachment transport: globally constructed native axis graph, calibrated against the edge-three quotient; conditional whole-cell closure capacity bound.",
+    "inputs": ["research/strominger/contracts/su32-edge5-native-bulk-v1.json", "research/strominger/native-axis-port-graph.mjs", "research/strominger/pe-symmetric-sector.mjs", "research/realization-tower/sulfur-32-wiring.mjs"],
+    "checks": [{"id": "strominger-su32-edge5-native-bulk", "path": "research/strominger/checkers/check_su32_edge5_native_bulk.py", "requires": []}],
+    "depends_on": ["strominger-su32-native-boundary-extraction-v1"],
+    "consumes": ["Whole native edge-three and edge-five carriers", "Source axis-continuity and retained quotient lifts"],
+    "provides": ["Exact recovery of the edge-three 64 wires", "Open edge-five native bulk with all 200 boundary ports", "N-fibre lower bound 82 versus 80 required by the literal inherited interface"],
+    "missing_constructors": ["A globally specified edge-five fibration whose interface avoids the stated whole-cell capacity obstruction"],
+    "next_falsifier": "Test the actual larger-carrier interface against the explicit closure hypotheses; do not repair the bound by dropping native face incidences or quietly adding branching, port multiplicity or N-N seams."
+  }
+}

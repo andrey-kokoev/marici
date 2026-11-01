@@ -1,0 +1,10 @@
+{
+  "schema": "su32.edge5-reflection-compatible-routing-contract.v1",
+  "source": "research/strominger/results/su32-edge5-global-routing-witness-v1/verification.json",
+  "audit": "research/strominger/results/su32-edge5-twisted-return-v1/verification.json",
+  "operatorConstraint": "Reflection is reversal/duality, not a forward transport step.",
+  "construction": "Retain the globally solved upper half of all eighty labelled routes through layer nine. Complete the lower half by reversing and reflecting each entire retained prefix. No new endpoint matching or local reader extension is used.",
+  "requiredChecks": ["Every middle N cell is fixed by carrier reflection", "All upper-half paths and fibre identities are unchanged", "All 245 whole cells remain covered", "Every hop is an actual shared face", "Each reflected route equals that same fibre's inverse route", "All eight marked middle triples and their partner tips retain their original named visits", "Boundary payload identity and complete histories are retained"],
+  "comparisonWithSource": "Keep the original witness immutable. Report changed routes and added/removed shared faces. This is a new candidate enforcing an additional reflection constraint.",
+  "scope": "Geometric corridors with multiplexing and arbitrary whole-cell turns, not native dynamics, pair-content delivery, a full cone filling law, or finite-width disjointness. The four-face macrostep remains a chosen granularity."
+}
