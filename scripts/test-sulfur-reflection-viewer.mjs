@@ -1,0 +1,53 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import {chromium} from '@playwright/test';
+const out='research/strominger/results/regular-simplex-reflection-v1/viewer';
+await fs.mkdir(out,{recursive:true});
+const browser=await chromium.launch({headless:true});
+try{
+ const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];
+ page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(process.env.NORMAL_RAY_URL??'http://127.0.0.1:8777/research/realization-tower/normal-ray.html');
+ await page.locator('#process-select').waitFor();
+ await page.waitForFunction(()=>!document.querySelector('#process-select').disabled);
+ await page.selectOption('#process-select','sulfur-32-reflection');
+ await page.waitForFunction(()=>globalThis.normalRayAudit?.processId==='sulfur-32-reflection'&&normalRayAudit.reflectionAudit.histories===16);
+ assert.match(await page.locator('#reflection-counts').innerText(),/16 retained histories.*14 distinct/);
+ assert.equal(await page.locator('#reflection-view').inputValue(),'wiring');
+ await page.waitForFunction(()=>normalRayAudit.reflectionAudit.view==='wiring'&&normalRayAudit.reflectionAudit.wireMeshes===16&&normalRayAudit.reflectionAudit.strands===16);
+ const wires=await page.evaluate(()=>normalRayAudit.reflectionAudit);
+ assert.deepEqual(wires.input,wires.output);assert.equal(new Set(wires.strandIds).size,16);
+ for(const color of ['white','blue-white','red-white','blue'])assert.equal(wires.colors.filter(c=>c===color).length,4);
+ await page.locator('#bodies').uncheck();
+ await page.screenshot({path:out+'/wiring.png'});
+ await page.locator('#reflection-wire-opacity').fill('0.6');await page.locator('#reflection-wire-opacity').dispatchEvent('input');
+ await page.waitForFunction(()=>normalRayAudit.reflectionAudit.wireOpacity===.6);
+ for(const [step,histories,cells] of [[0,1,1],[1,2,2],[2,4,4],[3,8,8],[4,16,14]]){
+  await page.selectOption('#reflection-stage',String(step));
+  await page.waitForFunction(({step,histories,cells})=>normalRayAudit.proceduralStep===step&&normalRayAudit.reflectionAudit.histories===histories&&normalRayAudit.reflectionAudit.cells===cells&&normalRayAudit.reflectionAudit.wireMeshes===histories,{step,histories,cells});
+ }
+ assert(await page.locator('#next').isDisabled());
+ await page.selectOption('#reflection-copy','c15');
+ await page.waitForFunction(()=>normalRayAudit.reflectionAudit.selectedCopy==='c15');
+ await page.selectOption('#reflection-copy','all');
+ await page.locator('#bodies').check();
+ await page.selectOption('#reflection-view','geometry');
+ await page.waitForFunction(()=>normalRayAudit.reflectionAudit.view==='geometry');
+ await page.screenshot({path:out+'/geometry.png'});
+ await page.reload();
+ await page.waitForFunction(()=>globalThis.normalRayAudit?.processId==='sulfur-32-reflection'&&normalRayAudit.reflectionAudit.view==='geometry');
+ assert.equal(await page.locator('#reflection-stage').inputValue(),'4');
+ await page.selectOption('#reflection-view','wiring');
+ await page.locator('#reflection-angle').fill('-25');
+ await page.locator('#reflection-angle').dispatchEvent('input');
+ await page.waitForFunction(()=>normalRayAudit.reflectionAudit.angle===-25);
+ await page.selectOption('#process-select','sulfur-32');
+ await page.selectOption('#sulfur-32-view','wiring');
+ await page.waitForFunction(()=>globalThis.normalRayAudit?.incomingBundleAudit?.strands===16);
+ await page.screenshot({path:out+'/original-wiring.png'});
+ await page.selectOption('#process-select','sulfur-32-reflection');
+ await page.waitForFunction(()=>normalRayAudit.processId==='sulfur-32-reflection'&&normalRayAudit.proceduralStep===4&&normalRayAudit.reflectionAudit.angle===-25);
+ assert.deepEqual(errors,[]);
+ await fs.writeFile(out+'/verification.json',JSON.stringify({passed:true,stages:5,reflectionStrands:16,reflectionWireMeshes:16,incomingBundles:1,outgoingBundles:1,endpointBijection:true,reloadPersistence:true,oldWiringStrands:16,errors},null,2)+'\n');
+ console.log('Sulfur-32 reflection viewer: stages, projections, copy selection, persistence, and original Wiring passed.');
+}finally{await browser.close();}

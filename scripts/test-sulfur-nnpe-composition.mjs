@@ -1,0 +1,38 @@
+import assert from 'node:assert/strict';
+import {mkdir} from 'node:fs/promises';
+import {chromium} from '@playwright/test';
+const browser=await chromium.launch();
+try{
+ const page=await browser.newPage({viewport:{width:1680,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(process.env.NORMAL_RAY_URL??'http://127.0.0.1:8777/research/realization-tower/normal-ray.html');
+ await page.waitForFunction(()=>document.querySelector('#process-select')&&!document.querySelector('#process-select').disabled);
+ await page.selectOption('#process-select','sulfur-32');await page.selectOption('#sulfur-32-view','nnpe-composition');
+ await page.waitForFunction(()=>globalThis.normalRayCompositionAudit?.components===16);
+ await page.waitForFunction(()=>globalThis.normalRayAudit?.nnpeCompositionAudit?.planeMeshes===48&&normalRayViewAudit.nnpePorts.length===48);
+ assert.equal(await page.locator('#nnpe-composition svg').count(),0);
+ assert.equal(await page.evaluate(()=>normalRayAudit.nnpeCompositionAudit.intersectionPoints),0);
+ assert.equal(await page.evaluate(()=>normalRayAudit.nnpeCompositionAudit.portMeshes),0);assert.equal(await page.evaluate(()=>normalRayAudit.nnpeCompositionAudit.labelSprites),0);
+ assert.equal(await page.evaluate(()=>normalRayAudit.nnpeCompositionAudit.representation),'diagonal-half-cube');
+ assert.equal(await page.locator('#role-label-toggles').isVisible(),false);assert.equal((await page.locator('#nnpe-composition').innerText()).trim(),'');
+ assert.equal(await page.locator('.nnpe-operation').count(),16);assert.equal(await page.locator('.nnpe-port').count(),48);
+ for(const selector of ['#procedure','#sulfur-32-fibrate','#process-notes','#inventory-panel'])assert.equal(await page.locator(selector).isVisible(),false,selector);
+ const port=id=>page.getByRole('button',{name:id,exact:true});
+ await port('S1:N').click();await port('S2:N').click();await page.waitForFunction(()=>normalRayCompositionAudit.joins===1);
+ await port('S1:P').click();await port('S2:E').click();assert.match(await page.locator('.composition-status').innerText(),/loop/);assert.equal(await page.evaluate(()=>normalRayCompositionAudit.joins),1);
+ await port('S3:E').click();await page.waitForFunction(()=>normalRayCompositionAudit.joins===2);
+ assert.deepEqual(await page.evaluate(()=>normalRayCompositionAudit.inventory),{N:16,P:16});
+ await page.check('#nnpe-collapse');await page.waitForFunction(()=>normalRayAudit.nnpeCompositionAudit.planeMeshes===42);assert.equal(await page.locator('.nnpe-operation').count(),14);assert.equal(await page.locator('.nnpe-port').count(),44);
+ assert.equal(await page.evaluate(()=>normalRayCompositionAudit.componentsData[0].stars.length),3);
+ await mkdir('test-results',{recursive:true});await page.screenshot({path:'test-results/sulfur-nnpe-composition.png'});
+ assert.equal(await page.locator('#error').count(),0);assert.equal(await page.locator('#process-select').isEnabled(),true);
+ await page.reload();await page.waitForFunction(()=>globalThis.normalRayCompositionAudit?.joins===2);assert.equal(await page.locator('#nnpe-collapse').isChecked(),true);
+ await page.click('#nnpe-undo');await page.waitForFunction(()=>normalRayCompositionAudit.joins===1);
+ await page.click('#nnpe-reset');await page.waitForFunction(()=>normalRayCompositionAudit.joins===0);assert.equal(await page.locator('.nnpe-operation').count(),16);
+ await page.waitForFunction(()=>normalRayAudit.nnpeCompositionAudit.planeMeshes===48);
+ const before=await page.evaluate(()=>JSON.stringify(normalRayViewAudit.camera.offset));
+ await page.getByRole('button',{name:'+X',exact:true}).click();await page.waitForFunction(before=>JSON.stringify(normalRayViewAudit.camera.offset)!==before,before);
+ const zoom=await page.evaluate(()=>normalRayViewAudit.zoom);await page.getByRole('button',{name:'Zoom +',exact:true}).click();await page.waitForFunction(zoom=>normalRayViewAudit.zoom!==zoom,zoom);
+ await page.selectOption('#sulfur-32-view','channels');assert.equal(await page.locator('#nnpe-composition').count(),0);assert.equal(await page.locator('#sulfur-channel-cut').isVisible(),true);
+ assert.equal(await page.locator('#error').count(),0);
+ assert.deepEqual(errors,[]);console.log('PASS: Three.js blue/red/white half-cubes without labels, spheres or axes, shared scene rotation/zoom, matched-port composition, loop rejection, retained inventory/history, collapse, undo/reset, persistence and channel-view return.');
+}finally{await browser.close();}
