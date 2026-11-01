@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "strominger-su32-native-boundary-extraction-v1",
+    "owner": "marici.Strominger",
+    "classification": "native_cut_extracted_formal_identification_refuted",
+    "stratum": "Attachment transport: independently extract an actual global-wiring cut before comparing a formal boundary operation. The source wiring remains a declared periodic candidate.",
+    "inputs": ["research/strominger/contracts/su32-native-boundary-extraction-v1.json", "research/realization-tower/sulfur-32-wiring.mjs", "research/strominger/results/su32-boundary-composition-span-v1/verification.json"],
+    "checks": [{"id": "strominger-su32-native-boundary-extraction", "path": "research/strominger/checkers/check_su32_native_boundary_extraction.py", "requires": []}],
+    "depends_on": ["strominger-su32-boundary-composition-span-v1"],
+    "consumes": ["Complete source global wiring and fixed cross-cone motif"],
+    "provides": ["Actual twelve-port boundary relation on ten wire values", "Full internal cut reconstruction", "Formal-input/native-output nonfactorization witness"],
+    "missing_constructors": ["An information-sufficient source interface relating formal views to the native cut", "Globally specified edge-five fibration without importing the edge-three period lattice"],
+    "next_falsifier": "Build from the native cut's wire fibres and test a proposed smaller boundary restriction for factorization, rather than certifying an axis-changing formal programme as native transport."
+  }
+}
