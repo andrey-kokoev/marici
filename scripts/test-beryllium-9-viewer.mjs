@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import {mkdir} from 'node:fs/promises';
+import {chromium} from '@playwright/test';
+const browser=await chromium.launch();
+try{
+ const page=await browser.newPage({viewport:{width:1680,height:1200}}),errors=[];
+ page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(process.env.NORMAL_RAY_URL??'http://127.0.0.1:8777/research/realization-tower/normal-ray.html');
+ await page.waitForFunction(()=>document.querySelector('#process-select')&&!document.querySelector('#process-select').disabled);
+ await page.selectOption('#process-select','beryllium-8');await page.check('#seed-show-reference');
+ await page.waitForFunction(()=>document.querySelectorAll('.assembly-canvas[data-audit]').length===3);
+ const original=await page.evaluate(()=>({seed:normalRayAudit.branchingSeedAudit,ids:normalRayComparisonAudit.referenceIds,assemblies:[...document.querySelectorAll('.assembly-canvas')].map(e=>JSON.parse(e.dataset.audit))}));
+ await page.selectOption('#process-select','beryllium-9');await page.waitForFunction(()=>normalRayAudit.processId==='beryllium-9'&&normalRayComparisonAudit.processId==='beryllium-9');
+ await page.uncheck('#be9-central-sleeve');await page.waitForFunction(()=>normalRayComparisonAudit.referenceKind==='be9-reference-clone'&&[...document.querySelectorAll('.assembly-canvas')].every(e=>JSON.parse(e.dataset.audit).edges===12));
+ assert.deepEqual(await page.locator('#beryllium-9-view option').allTextContents(),['White-rooted hex simplex','3D assembly','Wiring single procedure']);assert.equal(await page.locator('#beryllium-8-view').count(),0);
+ assert.match(await page.locator('#beryllium-9-audit h3').innerText(),/^Be-9$/);assert.match(await page.locator('#seed-show-reference').locator('..').innerText(),/Show Be-9 reference/);
+ assert.match(await page.locator('#sulfur-reference-top h3').innerText(),/Be-9 reference \(Be-8 clone\)/);
+ assert.match(await page.locator('#sulfur-reference-top canvas').getAttribute('aria-label'),/Be-9/);
+ assert.deepEqual(await page.evaluate(()=>({seed:normalRayAudit.branchingSeedAudit,ids:normalRayComparisonAudit.referenceIds,assemblies:[...document.querySelectorAll('.assembly-canvas')].map(e=>JSON.parse(e.dataset.audit))})),original);
+ assert.equal(await page.locator('.reference-strand').count(),8);assert.equal(await page.locator('.reference-direction-strand').count(),16);
+ await page.check('#seed-pairs-combined');await page.selectOption('#seed-comparison-rule','same-colour');await page.waitForFunction(()=>normalRayComparisonAudit.combinedStrands===8);
+ await page.click('#seed-layer-2');await page.waitForFunction(()=>normalRayComparisonAudit.sourceCopies===56);
+ await page.uncheck('#seed-pairs-combined');await page.uncheck('#seed-pairs-by-layer');
+ await page.locator('#process-panel').evaluate(e=>e.scrollTop=0);await page.locator('#sulfur-reference-panel').evaluate(e=>e.scrollTop=0);
+ await mkdir('test-results',{recursive:true});await page.screenshot({path:'test-results/beryllium-9-clone.png'});
+ await page.reload();await page.waitForFunction(()=>globalThis.normalRayAudit?.processId==='beryllium-9'&&globalThis.normalRayComparisonAudit?.processId==='beryllium-9');
+ assert.equal(await page.locator('#process-select').inputValue(),'beryllium-9');assert.equal(await page.locator('#beryllium-9-view').inputValue(),'branching-seed');assert.equal(await page.locator('#seed-show-reference').isChecked(),true);
+ await page.selectOption('#process-select','beryllium-8');await page.waitForFunction(()=>normalRayAudit.processId==='beryllium-8');assert.match(await page.locator('#sulfur-reference-top h3').innerText(),/Be-8 reference candidate/);
+ assert.deepEqual(errors,[]);console.log('PASS: Be-9 process clone, depth-four view, matching reference and three assemblies, controls, persistence and retained Be-8 entry.');
+}finally{await browser.close();}

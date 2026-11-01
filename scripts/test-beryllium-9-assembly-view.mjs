@@ -1,0 +1,36 @@
+import assert from 'node:assert/strict';
+import {chromium} from '@playwright/test';
+const browser=await chromium.launch();
+try{
+ const page=await browser.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(process.env.NORMAL_RAY_URL??'http://127.0.0.1:8777/research/realization-tower/normal-ray.html');
+ await page.waitForFunction(()=>document.querySelector('#process-select')&&!document.querySelector('#process-select').disabled);
+ await page.selectOption('#process-select','beryllium-9');
+ await page.waitForFunction(()=>globalThis.normalRayAudit?.processId==='beryllium-9');
+ const seed=await page.evaluate(()=>normalRayAudit.branchingSeedAudit);
+ await page.check('#seed-show-reference');await page.click('#seed-layer-1');
+ await page.selectOption('#beryllium-9-view','3d-assembly');
+ await page.waitForFunction(()=>normalRayAudit.view==='3d-assembly');
+ const single=await page.evaluate(()=>normalRayAudit.branchingSeedAudit);
+ assert.equal(single.layers,1);assert.equal(single.depth,8);assert.equal(single.edges,108);assert.equal(single.nodes,81);assert.equal(single.paths,256);assert.equal(single.sidePairs,0);assert.deepEqual(single.visibleLayers,[1]);
+ assert.equal(await page.locator('#branching-seed-controls').count(),0);assert.equal(await page.locator('#sulfur-reference-panel').count(),0);
+ await page.reload();await page.waitForFunction(()=>globalThis.normalRayAudit?.view==='3d-assembly');
+ assert.equal(await page.locator('#beryllium-9-view').inputValue(),'3d-assembly');
+ assert.deepEqual(await page.evaluate(()=>normalRayAudit.branchingSeedAudit),single);
+ assert.equal(single.dihedralDegrees,120);assert.equal(single.planar,false);assert.equal(await page.locator('#be9-assembly-next').isEnabled(),true);
+ await page.click('#be9-assembly-next');await page.waitForFunction(()=>normalRayAudit.branchingSeedAudit.assemblyStep===1);
+ const folded=await page.evaluate(()=>normalRayAudit.branchingSeedAudit);assert.equal(folded.layers,1);assert.equal(folded.edges,108);assert.equal(folded.foldAngle,60);assert.equal(folded.foldBeforeWhiteLayer,5);assert.deepEqual(folded.foldEdgeRoles,['red','blue']);assert.equal(folded.foldLatticeX,13.5);
+ await page.reload();await page.waitForFunction(()=>globalThis.normalRayAudit?.branchingSeedAudit?.assemblyStep===1);assert.deepEqual(await page.evaluate(()=>normalRayAudit.branchingSeedAudit),folded);
+ await page.click('#be9-assembly-next');await page.waitForFunction(()=>normalRayAudit.branchingSeedAudit.assemblyStep===2);
+ const sides=await page.evaluate(()=>normalRayAudit.branchingSeedAudit);assert.equal(sides.triangularFaces,4);assert.equal(sides.sideFoldAngle,60);assert.equal(sides.nodes,81);assert.equal(sides.edges,108);
+ await page.reload();await page.waitForFunction(()=>globalThis.normalRayAudit?.branchingSeedAudit?.assemblyStep===2);assert.deepEqual(await page.evaluate(()=>normalRayAudit.branchingSeedAudit),sides);
+ await page.screenshot({path:'test-results/beryllium-9-step-3.png'});
+ await page.click('#be9-assembly-prev');await page.waitForFunction(()=>normalRayAudit.branchingSeedAudit.assemblyStep===1);assert.deepEqual(await page.evaluate(()=>normalRayAudit.branchingSeedAudit),folded);
+ await page.click('#be9-assembly-prev');await page.waitForFunction(()=>normalRayAudit.branchingSeedAudit.assemblyStep===0);assert.deepEqual(await page.evaluate(()=>normalRayAudit.branchingSeedAudit),single);
+ await page.selectOption('#beryllium-9-view','branching-seed');await page.waitForFunction(()=>normalRayAudit.view==='branching-seed');
+ assert.equal(await page.locator('#seed-layer-1').getAttribute('aria-pressed'),'false');await page.click('#seed-layer-1');
+ await page.waitForFunction(()=>normalRayAudit.branchingSeedAudit.visibleLayers.length===8);
+ assert.deepEqual(await page.evaluate(()=>normalRayAudit.branchingSeedAudit),seed);
+ await page.selectOption('#process-select','beryllium-8');assert.deepEqual(await page.locator('#beryllium-8-view option').allTextContents(),['White-rooted hex simplex']);
+ assert.deepEqual(errors,[]);console.log('PASS: Be-9 3D assembly view contains only the original simplex, no copies/pairs/comparison, persists, restores the eight-layer view, and leaves Be-8 unchanged.');
+}finally{await browser.close();}
