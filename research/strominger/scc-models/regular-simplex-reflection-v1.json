@@ -1,0 +1,16 @@
+{
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "strominger-regular-simplex-reflection-v1",
+    "owner": "marici.Strominger",
+    "classification": "regular_4_simplex_whole_assembly_reflection_constructed",
+    "stratum": "Exact full-cell affine geometry with retained construction histories and a derived shared-edge circuit.",
+    "inputs": ["research/strominger/regular_simplex_reflection.py", "research/strominger/checkers/check_regular_simplex_reflection.py", "research/chatgpt/reflection_experiment_note.md"],
+    "checks": [{"id": "strominger-regular-simplex-reflection", "path": "research/strominger/checkers/check_regular_simplex_reflection.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["Explicit regular five-vertex seed and Gram matrix", "Whole-assembly clone-reflect/rotate protocol with fixed endpoint centers"],
+    "provides": ["Sixteen retained histories and fourteen distinct regular 4-simplexes", "Computed actual outer-red supporting edge", "Exact full-cell contact maps", "Six-seam identity on the complete frame and all five labels"],
+    "missing_constructors": [],
+    "next_falsifier": "A contact must map all five vertices under its derived reflection; matching projections or substituting a supporting corner for an edge is insufficient."
+  }
+}
