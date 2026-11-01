@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hex grid · 3-star inspector</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#0b111b;color:#dce7f4}
+*{box-sizing:border-box}body{margin:0}header{padding:22px 28px;border-bottom:1px solid #253244;display:flex;align-items:center;gap:24px;flex-wrap:wrap}h1{font-size:21px;font-weight:600;margin:0}header p{margin:5px 0 0;color:#94a6bc;font-size:13px}.controls{margin-left:auto;display:flex;gap:14px;align-items:center;font-size:13px}input{accent-color:#63e7ff}select{font:inherit;color:inherit;background:#172435;border:1px solid #34465f;border-radius:6px;padding:8px}select:focus-visible{outline:2px solid #63e7ff}.controls{flex-wrap:wrap}button{font:inherit;color:inherit;background:#172435;border:1px solid #34465f;border-radius:6px;padding:8px 12px;cursor:pointer}button:hover,button:focus-visible{border-color:#63e7ff;outline:2px solid #63e7ff44}main{display:grid;grid-template-columns:minmax(0,1fr) 340px;min-height:calc(100vh - 100px)}.canvas{min-width:0;position:relative;background:radial-gradient(ellipse at center,#162338 0%,#0b111b 75%)}svg{display:block;width:100%;height:calc(100vh - 150px);min-height:350px;touch-action:manipulation}.legend{display:flex;gap:24px;padding:14px 28px;color:#91a5bf;font-size:12px}.legend span:before{content:'';display:inline-block;width:20px;height:3px;background:#63e7ff;margin-right:8px;vertical-align:middle}.legend span+span:before{background:#e9b66d}.edge{stroke:#40536d;stroke-width:1.4;stroke-linecap:round;pointer-events:none;vector-effect:non-scaling-stroke}.edge.neighbor{stroke:#e9b66d;stroke-width:3}.edge.active{stroke:#63e7ff;stroke-width:4;filter:drop-shadow(0 0 5px #41d9ff)}.hit{fill:transparent;pointer-events:all;cursor:crosshair;outline:none}.dot{fill:#8199b7;pointer-events:none}.neighbor-dot{fill:#e9b66d;pointer-events:none}button:disabled{opacity:.5;cursor:default}.endpoint{fill:#eaffff;stroke:#63e7ff;stroke-width:2;pointer-events:none}.vertex-label{fill:#d9faff;font:11px ui-monospace,monospace;paint-order:stroke;stroke:#0b111b;stroke-width:4;stroke-linejoin:round;pointer-events:none}aside{padding:25px 22px;border-left:1px solid #253244;background:#0e1724}h2{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#91a5bf;margin:0 0 18px}.status{font-size:12px;color:#63e7ff;margin-bottom:12px}#vertex-id{font:16px ui-monospace,monospace;overflow-wrap:anywhere;min-height:44px}h3{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#91a5bf;margin:25px 0 10px}code{font:12px ui-monospace,monospace}.row{margin:8px 0;font-size:13px}.neighbors{display:grid;gap:7px}.neighbors button{text-align:left;font:12px ui-monospace,monospace}.help{font-size:12px;line-height:1.7;color:#91a5bf}.stats{margin-top:26px;border-top:1px solid #253244;padding-top:15px;font:12px ui-monospace,monospace;color:#91a5bf}#empty{line-height:1.8;color:#91a5bf;font-size:14px}[hidden]{display:none!important}@media(max-width:760px){header{padding:16px}.controls{margin-left:0}main{grid-template-columns:1fr}svg{height:55vh;min-height:300px}aside{border-left:0;border-top:1px solid #253244}.legend{padding:10px 16px}}
+.edge.simplex-edge{stroke-width:4}.edge[data-role="forward"]{stroke:#ffffff}.edge[data-role="left"]{stroke:#ff4545}.edge[data-role="right"]{stroke:#438bff}.edge.active[data-role]:not([data-role=""]){filter:drop-shadow(0 0 5px currentColor);stroke-width:6}.dot.simplex-vertex{fill:#dce7f4}.legend{flex-wrap:wrap}.legend .forward:before{background:#ffffff}.legend .left:before{background:#ff4545}.legend .right:before{background:#438bff}
+#process-steps{list-style:none;padding:0;display:grid;gap:8px}#process-steps li{display:flex;align-items:center;gap:10px}#process-steps button{min-width:36px;padding:7px 10px}#process-steps button[aria-pressed="true"]{background:#63e7ff;border-color:#63e7ff;color:#0b111b;font-weight:700}
+#reference-workspace iframe{display:block;width:100%;height:calc(100vh - 120px);min-height:600px;border:0}
+.strand-overlay{pointer-events:none}.strand-line{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}.show-strands .edge.simplex-edge{opacity:.18}.strand-controls{display:grid;gap:9px;font-size:13px}.strand-table{width:100%;border-collapse:collapse;font:11px ui-monospace,monospace;margin:12px 0}.strand-table th,.strand-table td{text-align:left;padding:4px;border-bottom:1px solid #253244}.strand-table button{padding:3px 5px;font:inherit;border-left:4px solid var(--strand-color)}.strand-table button[aria-pressed="true"]{background:#30445e}#strand-path{white-space:pre-wrap;overflow-wrap:anywhere;font:11px ui-monospace,monospace;line-height:1.7}
+</style>
+</head>
+<body>
+<header><div><h1 id="experiment-title">Hex grid / 3-star inspector</h1><p id="experiment-summary">Fixed simplex: (−14, −14) · depth 4 · southeast ↘ toward center.</p></div><div class="controls"><label for="process">Process</label><select id="process"><option value="original">Original only</option><option value="process1" selected>Process 1</option><option value="reference">Reference A · port routing</option></select><label for="radius">Grid radius <output id="radius-value">10</output></label><input id="radius" type="range" min="1" max="14" value="10"><button id="clear" type="button">Clear pin</button></div></header>
+<main id="hex-workspace"><section class="canvas" aria-label="Hexagonal grid"><svg id="grid" role="group" aria-label="Hover or focus a vertex to inspect its three-star; click or press Enter to pin it"></svg><div class="legend"><span class="forward">Forward</span><span class="left">Left of forward</span><span class="right">Right of forward</span></div></section><aside aria-label="Vertex information"><h2>Process</h2><p id="process-description" class="help"></p><ol id="process-steps" class="help" aria-label="Process 1 stages"><li><button type="button" data-stage="1" aria-label="Jump to stage 1: reflect crossing white" aria-pressed="false">1</button><span>Reflect crossing white</span></li><li><button type="button" data-stage="2" aria-label="Jump to stage 2: reflect crossing red" aria-pressed="false">2</button><span>Reflect crossing red</span></li><li><button type="button" data-stage="3" aria-label="Jump to stage 3: point reflection" aria-pressed="false">3</button><span>Point reflection about (0, −1)</span></li><li><button type="button" data-stage="4" aria-label="Jump to stage 4: clone and rotate 120 degrees clockwise" aria-pressed="false">4</button><span>Clone, rotate 120° clockwise</span></li><li><button type="button" data-stage="5" aria-label="Jump to stage 5: point reflection" aria-pressed="false">5</button><span>Point reflection about (0, −1)</span></li><li><button type="button" data-stage="6" aria-label="Jump to stage 6: clone and rotate 120 degrees clockwise" aria-pressed="false">6</button><span>Clone, rotate 120° clockwise</span></li><li><button type="button" data-stage="7" aria-label="Jump to stage 7: point reflection" aria-pressed="true">7</button><span>Point reflection about (0, −1)</span></li></ol><section aria-label="Calculated strands"><h2>Calculated strands</h2><div class="strand-controls"><label><input id="show-strands" type="checkbox" checked> Show strands</label><label>Highlight <select id="strand-select"><option value="all">All strands</option></select></label></div><p id="strand-summary" class="help"></p><table class="strand-table"><thead><tr><th>Strand / turns</th><th>Seed exit (x, y)</th><th>Copies</th></tr></thead><tbody id="strand-table"></tbody></table><details><summary>Selected seed route</summary><pre id="strand-path"></pre></details><p class="help">L/R record the actual left/right choices during growth. Overlay colours identify strands; turn the overlay off to inspect the white/red/blue process colours. A shared edge does not merge strand identities. Process stages carry each seed path through their exact transformations; copies are shown under the same strand ID. Connections across added seams are not assigned by this calculation.</p></section><h2>3-star inspector</h2><div id="status" class="status">Ready</div><div id="empty">Hover a dot to reveal its three arms.<br>Click to pin the star.</div><div id="details" hidden><h3>Vertex coordinates</h3><div id="vertex-id"></div><h3>Three neighboring vertices</h3><div id="neighbors" class="neighbors"></div><p id="boundary" class="help"></p><p id="wire-detail" class="help"></p></div><p class="help">The unit is the vertex (x, y). Its three neighbors and arms are derived from its coordinates, with no separate star ID or orientation parameter.</p><p class="help">Integer lattice coordinates: screen position is proportional to (x, √3 y), with y increasing downward. Valid vertices have x + y even and x not divisible by 3.</p><p class="help">Click to pin; use neighbor buttons to move between stars. Tab to focus a dot, Enter to pin, Escape to clear. A boundary star still has three arms; faint-grid coverage is only a display cutoff.</p><p id="simplex-summary" class="help"></p><div id="stats" class="stats"></div></aside></main>
+<section id="reference-workspace" hidden aria-label="Reference A port routing"><iframe id="reference-router" title="Reference A: seam ports, routes, and transported payloads"></iframe></section>
+<script src="./hex-edge-strands.js"></script>
+<script>
+// Exact integer coordinates: screen x = X/2, screen y = sqrt(3)*Y/2.
+// Axial cell (q,r) has center (3q, q+2r). No floating-point deduplication.
+function buildHexGrid(radius) {
+  const vertices = new Map(), edges = new Map(), cells = new Map();
+  const corners = [[2,0],[1,1],[-1,1],[-2,0],[-1,-1],[1,-1]];
+  const compare = (a,b) => a.x-b.x || a.y-b.y;
+  for(let q=-radius;q<=radius;q++) for(let r=-radius;r<=radius;r++) {
+    if(Math.abs(q+r)>radius) continue;
+    const cell = {id:`h(${q},${r})`,q,r,edges:[]}; cells.set(cell.id,cell);
+    const points = corners.map(([dx,dy]) => {
+      const x=3*q+dx,y=q+2*r+dy,id=`v(${x},${y})`;
+      if(!vertices.has(id)) vertices.set(id,{id,x,y,edges:[]});
+      return vertices.get(id);
+    });
+    for(let i=0;i<6;i++) {
+      const [a,b]=[points[i],points[(i+1)%6]].sort(compare);
+      const id=`e[${a.x},${a.y}|${b.x},${b.y}]`;
+      if(!edges.has(id)) {
+        edges.set(id,{id,a:a.id,b:b.id,cells:[],neighbors:[]});
+        a.edges.push(id); b.edges.push(id);
+      }
+      edges.get(id).cells.push(cell.id); cell.edges.push(id);
+    }
+  }
+  for(const edge of edges.values()) edge.neighbors=[...new Set([
+    ...vertices.get(edge.a).edges,...vertices.get(edge.b).edges
+  ])].filter(id=>id!==edge.id).sort();
+  return {vertices,edges,cells};
+}
+// The infinite honeycomb star is determined by this coordinate pair alone.
+function starAt(x,y) {
+  if(!Number.isInteger(x)||!Number.isInteger(y)||(x+y)%2!==0||x%3===0)
+    throw new Error('Not a honeycomb vertex');
+  const direction=((x%3+3)%3)===2?1:-1;
+  return {x,y,id:`v(${x},${y})`,neighbors:[
+    [x+2*direction,y],[x-direction,y-1],[x-direction,y+1]
+  ].map(([x,y])=>({x,y,id:`v(${x},${y})`}))};
+}
+// Directional lattice growth: one depth unit is two successive edge layers.
+// At each frontier, keep every arm with positive projection on the selected
+// direction. Merge common coordinates/edges; do not duplicate overlapping stars.
+function growSimplex(x,y,depth,directionIndex) {
+  const root=starAt(x,y);
+  if(!Number.isInteger(depth)||depth<1||depth>8) throw new Error('Depth must be an integer from 1 to 8');
+  if(!Number.isInteger(directionIndex)||directionIndex<0||directionIndex>2) throw new Error('Invalid arm direction');
+  const tip=root.neighbors[directionIndex],dx=tip.x-x,dy=tip.y-y;
+  const vertices=new Map([[root.id,{id:root.id,x,y}]]),edges=new Map();
+  let frontier=[vertices.get(root.id)];
+  for(let layer=0;layer<2*depth;layer++) {
+    const next=new Map();
+    for(const vertex of frontier) for(const neighbor of starAt(vertex.x,vertex.y).neighbors) {
+      if((neighbor.x-vertex.x)*dx+3*(neighbor.y-vertex.y)*dy<=0) continue;
+      const [a,b]=[vertex,neighbor].sort((a,b)=>a.x-b.x||a.y-b.y);
+      const id=`e[${a.x},${a.y}|${b.x},${b.y}]`;
+      edges.set(id,{id,a:a.id,b:b.id,cells:[]});
+      if(!vertices.has(neighbor.id)) next.set(neighbor.id,neighbor);
+    }
+    for(const [id,vertex] of next) vertices.set(id,vertex);
+    frontier=[...next.values()];
+  }
+  return {vertices,edges,origin:{x,y},depth,direction:{dx,dy}};
+}
+function simplexEdgeRole(a,b,direction) {
+  let dx=b.x-a.x,dy=b.y-a.y;
+  // Orient each undirected edge forward before testing its side.
+  if(dx*direction.dx+3*dy*direction.dy<0) {dx=-dx;dy=-dy;}
+  const cross=direction.dx*dy-direction.dy*dx;
+  // Screen y grows downward: negative cross is the viewer's left.
+  return cross===0?'forward':cross<0?'left':'right';
+}
+function simplexScene(simplex) {
+  return {strands:calculateSeedStrands(simplex),origins:[simplex.origin],vertices:new Map(simplex.vertices),edges:new Map([...simplex.edges.values()].map(edge=>[
+    edge.id,{...edge,part:'original',role:simplexEdgeRole(simplex.vertices.get(edge.a),simplex.vertices.get(edge.b),simplex.direction)}
+  ]))};
+}
+function wireLayers(edge) {
+  return edge.wires||[{role:edge.role,part:edge.part,sourceEdge:edge.sourceEdge||null}];
+}
+function wireRoles(edge) {
+  const present=new Set(wireLayers(edge).map(wire=>wire.role));
+  return ['forward','left','right'].filter(role=>present.has(role));
+}
+function reflectCrossing(input,d,seamRole,paletteDirection,copyPart,seamPart,options={}) {
+  const scene={vertices:new Map(input.vertices),edges:new Map(input.edges)};
+  const norm=d.dx*d.dx+3*d.dy*d.dy;
+  const projection=v=>v.x*d.dx+3*v.y*d.dy;
+  const base=Math.max(...[...input.vertices.values()].map(projection));
+  // Mirror through the midpoints of the next forward edges, not through
+  // the boundary vertices: this preserves the honeycomb sublattices.
+  const axisOffset=options.axisOffset??(base+norm/2);
+  const reflect=v=>{
+    const scale=2*(axisOffset-projection(v))/norm;
+    const x=v.x+scale*d.dx,y=v.y+scale*d.dy;
+    starAt(x,y); // Reject any off-lattice image rather than round it.
+    return {x,y,id:`v(${x},${y})`};
+  };
+  const images=new Map([...input.vertices.values()].map(v=>[v.id,reflect(v)]));
+  for(const v of images.values()) scene.vertices.set(v.id,v);
+  function addEdge(a,b,part,role,sourceEdge=null,wires=null) {
+    if(!starAt(a.x,a.y).neighbors.some(v=>v.id===b.id)) throw new Error('Off-grid process edge');
+    [a,b]=[a,b].sort((a,b)=>a.x-b.x||a.y-b.y);
+    const id=`e[${a.x},${a.y}|${b.x},${b.y}]`;
+    const edge={id,a:a.id,b:b.id,cells:[],part,role,sourceEdge};
+    if(options.preserveColors) {
+      const existing=scene.edges.get(id);
+      const incoming=wires||wireLayers(edge);
+      scene.edges.set(id,existing?{...existing,wires:[...wireLayers(existing),...incoming]}:{...edge,wires:incoming});
+    } else scene.edges.set(id,edge);
+  }
+  for(const edge of input.edges.values()) {
+    const a=images.get(edge.a),b=images.get(edge.b);
+    if(options.preserveColors) {
+      const wires=wireLayers(edge).map(wire=>({...wire,part:copyPart,sourceEdge:edge.id}));
+      addEdge(a,b,copyPart,wires[0].role,edge.id,wires);
+    } else addEdge(a,b,copyPart,simplexEdgeRole(a,b,paletteDirection),edge.id);
+  }
+  // With an internal axis, join across that axis rather than the far boundary.
+  const seamMidpoints=[];
+  for(const v of input.vertices.values()) if(projection(v)===axisOffset-norm/2) {
+    const image=images.get(v.id);
+    const [a,b]=[v,image].sort((a,b)=>a.x-b.x||a.y-b.y);
+    const exposed=!scene.edges.has(`e[${a.x},${a.y}|${b.x},${b.y}]`);
+    addEdge(v,image,seamPart,seamRole);
+    const midpoint={x:(v.x+image.x)/2,y:(v.y+image.y)/2};
+    if((!options.guideOccupiedOnly||!exposed)&&(!options.guideEastOnly||midpoint.x>0))
+      seamMidpoints.push(midpoint);
+  }
+  // Bound the guide to the chosen seam. Step 4 marks the original,
+  // already occupied eastern edge, not the newly joined western edge.
+  seamMidpoints.sort((a,b)=>a.x-b.x||a.y-b.y);
+  const axisGuide=[seamMidpoints[0],seamMidpoints[seamMidpoints.length-1]];
+  return {...scene,strands:cloneStrandTraces(input.strands||[],reflect,copyPart),reflect,axisOffset,axisDirection:{...d},axisGuide,reflectedOrigin:reflect(input.origins[0]),
+    origins:[...new Map([...input.origins,...input.origins.map(reflect)]
+      .map(v=>[`v(${v.x},${v.y})`,v])).values()]};
+}
+function cloneTransformed(input,transform,part) {
+  const vertices=new Map(input.vertices),edges=new Map(input.edges);
+  const images=new Map([...input.vertices.values()].map(v=>[v.id,transform(v)]));
+  for(const v of images.values()) if(!vertices.has(v.id)) vertices.set(v.id,v);
+  for(const edge of input.edges.values()) {
+    const [a,b]=[images.get(edge.a),images.get(edge.b)].sort((a,b)=>a.x-b.x||a.y-b.y);
+    if(!starAt(a.x,a.y).neighbors.some(v=>v.id===b.id)) throw new Error('Off-grid transformed edge');
+    const id=`e[${a.x},${a.y}|${b.x},${b.y}]`;
+    const wires=wireLayers(edge).map(wire=>({...wire,part,sourceEdge:edge.id}));
+    const existing=edges.get(id);
+    edges.set(id,existing?{...existing,wires:[...wireLayers(existing),...wires]}
+      :{id,a:a.id,b:b.id,cells:[],part,role:wires[0].role,sourceEdge:edge.id,wires});
+  }
+  return {vertices,edges,strands:cloneStrandTraces(input.strands||[],transform,part),
+    origins:[...new Map([...input.origins,...input.origins.map(transform)]
+      .map(v=>[`v(${v.x},${v.y})`,v])).values()]};
+}
+function reflectThroughPoint(input,center,part='step3-reflection') {
+  const reflect=v=>{
+    const x=2*center.x-v.x,y=2*center.y-v.y;
+    starAt(x,y);
+    return {x,y,id:`v(${x},${y})`};
+  };
+  return {...cloneTransformed(input,reflect,part),center,reflect};
+}
+function cloneRotate120(input,center,part='step4-rotation') {
+  const rotate=v=>{
+    const dx=v.x-center.x,dy=v.y-center.y;
+    // Exact +120° in screen coordinates, where y increases downward.
+    const x=center.x+(-dx-3*dy)/2,y=center.y+(dx-dy)/2;
+    starAt(x,y);
+    return {x,y,id:`v(${x},${y})`};
+  };
+  return {...cloneTransformed(input,rotate,part),rotationCenter:center,rotate};
+}
+function applyProcess1(simplex) {
+  const original=simplexScene(simplex),d=simplex.direction;
+  const white=reflectCrossing(original,d,'forward',d,'reflection','seam');
+  // Obtain the forward-facing red axis from the original colored geometry.
+  const redEdge=[...original.edges.values()].find(edge=>edge.role==='left');
+  const a=original.vertices.get(redEdge.a),b=original.vertices.get(redEdge.b);
+  const sign=(b.x-a.x)*d.dx+3*(b.y-a.y)*d.dy<0?-1:1;
+  const redDirection={dx:sign*(b.x-a.x),dy:sign*(b.y-a.y)};
+  // Reflect the WHOLE white-step result, including its five joining edges.
+  const red=reflectCrossing(white,redDirection,'left',d,'red-reflection','red-seam');
+  // Natural center: midpoint of the forwardmost joining edge of step 2.
+  // Here its endpoints are (-1,-1) and (1,-1), hence center (0,-1).
+  const centers=[...red.edges.values()].filter(edge=>edge.part==='red-seam').map(edge=>{
+    const a=red.vertices.get(edge.a),b=red.vertices.get(edge.b);
+    return {x:(a.x+b.x)/2,y:(a.y+b.y)/2};
+  }).sort((a,b)=>(b.x-a.x)*d.dx+3*(b.y-a.y)*d.dy);
+  const pointReflected=reflectThroughPoint(red,centers[0]);
+  // The adjacent hexagon center supports a 120° lattice rotation; the
+  // step-3 bond midpoint does not. Keep the original and add exactly one copy.
+  const rotated=cloneRotate120(pointReflected,{x:0,y:0});
+  const fifth=reflectThroughPoint(rotated,pointReflected.center,'step5-reflection');
+  const sixth=cloneRotate120(fifth,rotated.rotationCenter,'step6-rotation');
+  const seventh=reflectThroughPoint(sixth,pointReflected.center,'step7-reflection');
+  return {...seventh,whiteStep:white,redStep:red,step3:pointReflected,
+    step4:rotated,step5:fifth,step6:sixth};
+}
+const svg=document.querySelector('#grid'),ns='http://www.w3.org/2000/svg';
+const $=id=>document.getElementById(id);
+let model, active=null, pinned=null, marks;
+const simplex=growSimplex(-14,-14,4,2);
+const originalScene=simplexScene(simplex),process1Scene=applyProcess1(simplex);
+const processStages=[process1Scene.whiteStep,process1Scene.redStep,process1Scene.step3,
+  process1Scene.step4,process1Scene.step5,process1Scene.step6,process1Scene];
+let activeStage=7,scene=process1Scene;
+const point=v=>[v.x*18,v.y*18*Math.sqrt(3)];
+function element(tag,attrs,parent) {
+  const el=document.createElementNS(ns,tag);
+  for(const [key,value] of Object.entries(attrs)) el.setAttribute(key,value);
+  parent.append(el); return el;
+}
+function drawWires(a,b,edge,parent,active=false) {
+  const [x1,y1]=point(a),[x2,y2]=point(b);
+  const roles=edge?wireRoles(edge):[''];
+  const scale=Math.abs(svg.getScreenCTM()?.a||1),length=Math.hypot(x2-x1,y2-y1);
+  const ux=(x2-x1)/length,uy=(y2-y1)/length;
+  for(const [index,role] of roles.entries()) {
+    const wire=edge?wireLayers(edge).find(wire=>wire.role===role):null;
+    const attrs={class:`edge${active?' active':edge?' simplex-edge':''}`,'data-role':role,
+      'data-part':wire?.part||'grid','data-overlap':String(roles.length>1),
+      'data-x1':x1,'data-y1':y1,'data-x2':x2,'data-y2':y2};
+    if(!active) attrs['data-edge']=edge?.id||`grid:${a.id}|${b.id}`;
+    if(roles.length===1) element('line',{...attrs,x1,y1,x2,y2},parent);
+    else {
+      // Separate in screen pixels, joining back at the same logical vertices.
+      const offset=(index-(roles.length-1)/2)*6/scale;
+      const stub=Math.min(length/4,8/scale),nx=-uy*offset,ny=ux*offset;
+      const d=`M ${x1} ${y1} L ${x1+ux*stub+nx} ${y1+uy*stub+ny} L ${x2-ux*stub+nx} ${y2-uy*stub+ny} L ${x2} ${y2}`;
+      element('path',{...attrs,d,fill:'none',style:'stroke-width:3;filter:none'},parent);
+    }
+  }
+}
+function renderStrands(parent) {
+  const audit=auditStrands(scene),selected=$('strand-select').value||'all';
+  $('strand-select').replaceChildren(new Option('All strands','all'),...scene.strands.map(s=>new Option(s.id,s.id)));
+  $('strand-select').value=scene.strands.some(s=>s.id===selected)?selected:'all';
+  $('strand-summary').textContent=`${audit.strands} seed strands · ${simplex.depth} binary choices · ${audit.seedTerminals} seed exits · ${audit.traceCopies} retained path copies in this stage. ${audit.unassignedEdges.length} joining edges have no assigned strand continuation.`;
+  $('strand-table').replaceChildren();
+  const colors=new Map(scene.strands.map((s,i)=>[s.id,`hsl(${i*360/scene.strands.length} 85% 68%)`]));
+  for(const strand of scene.strands) {
+    const row=document.createElement('tr'),cell=document.createElement('td'),button=document.createElement('button');
+    button.type='button';button.textContent=strand.id;button.dataset.strand=strand.id;
+    button.style.setProperty('--strand-color',colors.get(strand.id));button.setAttribute('aria-pressed',String(selected===strand.id));
+    button.addEventListener('click',()=>{$('strand-select').value=strand.id;$('show-strands').checked=true;render();});cell.append(button);row.append(cell);
+    for(const value of [`(${strand.seedVertices.at(-1).x}, ${strand.seedVertices.at(-1).y})`,strand.traces.length]){const td=document.createElement('td');td.textContent=value;row.append(td);}
+    $('strand-table').append(row);
+  }
+  const chosen=scene.strands.find(s=>s.id===selected);
+  $('strand-path').textContent=chosen?`${chosen.id}: ${chosen.seedVertices.map(v=>`(${v.x}, ${v.y})`).join(' → ')}`:'Select a strand to inspect its ordered seed vertices.';
+  window.hexStrandAudit={...audit,memberships:undefined,scope:'seed paths and exact transformed copies; seam continuation unassigned',stage:$('process').value==='original'?0:activeStage,
+    routes:scene.strands.map(s=>({id:s.id,choices:s.choices,vertices:s.seedVertices.map(v=>[v.x,v.y]),copies:s.traces.length}))};
+  const show=$('show-strands').checked;svg.classList.toggle('show-strands',show);if(!show)return;
+  const overlay=element('g',{class:'strand-overlay','aria-hidden':'true'},parent),scale=Math.abs(svg.getScreenCTM()?.a||1);
+  for(const [edgeId,members] of audit.memberships) {
+    const ids=[...members].filter(id=>selected==='all'||id===selected).sort();if(!ids.length)continue;
+    const edge=scene.edges.get(edgeId),[x1,y1]=point(scene.vertices.get(edge.a)),[x2,y2]=point(scene.vertices.get(edge.b));
+    const length=Math.hypot(x2-x1,y2-y1),ux=(x2-x1)/length,uy=(y2-y1)/length,stub=Math.min(length/3,6/scale);
+    for(const [index,id] of ids.entries()) {
+      const offset=(index-(ids.length-1)/2)*1.8/scale,nx=-uy*offset,ny=ux*offset;
+      element('path',{class:'strand-line','data-strand':id,'data-strand-edge':edgeId,stroke:colors.get(id),'stroke-width':selected==='all'?1.3:3,
+        d:`M ${x1} ${y1} L ${x1+ux*stub+nx} ${y1+uy*stub+ny} L ${x2-ux*stub+nx} ${y2-uy*stub+ny} L ${x2} ${y2}`},overlay);
+    }
+  }
+}
+function inspect(id) {
+  active=id;marks.replaceChildren();
+  $('details').hidden=!id; $('empty').hidden=!!id;
+  $('status').textContent=pinned?'Pinned · click another dot to change':id?'Hover · click to pin':'Ready';
+  if(!id) return;
+  const vertex=model.vertices.get(id),star=starAt(vertex.x,vertex.y);
+  const [cx,cy]=point(vertex);
+  $('vertex-id').textContent=`(${vertex.x}, ${vertex.y})`;
+  $('neighbors').replaceChildren();
+  let doubledArms=0;
+  for(const neighbor of star.neighbors) {
+    const [x,y]=point(neighbor),visible=model.vertices.has(neighbor.id);
+    const [a,b]=[vertex,neighbor].sort((a,b)=>a.x-b.x||a.y-b.y);
+    const edge=scene.edges.get(`e[${a.x},${a.y}|${b.x},${b.y}]`);
+    if(edge&&wireRoles(edge).length>1) doubledArms++;
+    drawWires(a,b,edge,marks,true);
+    element('circle',{cx:x,cy:y,r:4,class:'neighbor-dot'},marks);
+    const label=element('text',{x:x+9,y:y-9,class:'vertex-label'},marks);
+    label.textContent=`(${neighbor.x}, ${neighbor.y})`;
+    const button=document.createElement('button');button.type='button';
+    button.textContent=`(${neighbor.x}, ${neighbor.y})${visible?'':' · outside patch'}`;
+    button.dataset.vertex=neighbor.id;button.disabled=!visible;
+    button.addEventListener('click',()=>{pinned=neighbor.id;inspect(neighbor.id);});$('neighbors').append(button);
+  }
+  element('circle',{cx,cy,r:5,class:'endpoint'},marks);
+  $('wire-detail').textContent=doubledArms?`${doubledArms} arms carry multiple differently colored wires, drawn side by side.`:'';
+  $('boundary').textContent=star.neighbors.some(n=>!model.vertices.has(n.id))
+    ?'Full 3-star shown. Increase the grid radius to navigate to neighbors outside this patch.':'';
+}
+function render() {
+  const reference=$('process').value==='reference';
+  $('experiment-title').textContent=reference?'Reference A / port routing':'Hex grid / 3-star inspector';
+  $('experiment-summary').textContent=reference?'W → R → E → R · midpoint ports · shortest-seam routing.':'Fixed simplex: (−14, −14) · depth 4 · southeast ↘ toward center.';
+  $('hex-workspace').hidden=reference;
+  $('reference-workspace').hidden=!reference;
+  for(const control of [document.querySelector('label[for="radius"]'),$('radius'),$('clear')]) control.hidden=reference;
+  if(reference) {
+    if(!$('reference-router').getAttribute('src')) $('reference-router').src='./reflection-port-routing.html';
+    return;
+  }
+  const radius=Number($('radius').value);$('radius-value').textContent=radius;
+  const showProcess=$('process').value==='process1';
+  scene=showProcess?processStages[activeStage-1]:originalScene;
+  model=buildHexGrid(radius);
+  // All process vertices remain addressable even beyond the background cutoff.
+  for(const [id,vertex] of scene.vertices) if(!model.vertices.has(id)) model.vertices.set(id,vertex);
+  for(const [id,edge] of scene.edges) if(!model.edges.has(id)) model.edges.set(id,edge);
+  svg.replaceChildren();
+  const strokes=element('g',{},svg),dots=element('g',{},svg),hits=element('g',{},svg);
+  marks=element('g',{'aria-hidden':'true'},svg);
+  const coords=[...model.vertices.values()].map(point),xs=coords.map(p=>p[0]),ys=coords.map(p=>p[1]);
+  svg.setAttribute('viewBox',`${Math.min(...xs)-80} ${Math.min(...ys)-80} ${Math.max(...xs)-Math.min(...xs)+160} ${Math.max(...ys)-Math.min(...ys)+160}`);
+  for(const edge of model.edges.values()) {
+    const start=model.vertices.get(edge.a),end=model.vertices.get(edge.b);
+    if(scene.edges.has(edge.id)) drawWires(start,end,scene.edges.get(edge.id),strokes);
+    else {
+      const [x1,y1]=point(start),[x2,y2]=point(end);
+      element('line',{x1,y1,x2,y2,class:'edge','data-edge':edge.id,'data-part':'grid'},strokes);
+    }
+  }
+  renderStrands(strokes);
+  for(const vertex of model.vertices.values()) {
+    const [cx,cy]=point(vertex);
+    const onSimplex=scene.vertices.has(vertex.id);
+    element('circle',{cx,cy,r:onSimplex?4:3,class:`dot${onSimplex?' simplex-vertex':''}`,'data-vertex':vertex.id},dots);
+    const hit=element('circle',{cx,cy,r:12,class:'hit',tabindex:0,role:'button','aria-label':`Inspect star (${vertex.x}, ${vertex.y})`,'data-id':vertex.id},hits);
+    hit.addEventListener('pointerenter',()=>{if(!pinned) inspect(vertex.id);});
+    hit.addEventListener('focus',()=>{if(!pinned) inspect(vertex.id);});
+    hit.addEventListener('click',()=>{pinned=vertex.id;inspect(vertex.id);});
+    hit.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();pinned=vertex.id;inspect(vertex.id);}});
+  }
+  $('stats').textContent=`${model.cells.size} hexagons · ${model.vertices.size} vertices · ${model.edges.size} edges`;
+  $('process-description').textContent=showProcess
+    ?`Stage ${activeStage} of ${processStages.length}. ${[
+      'Reflect crossing white; original and reflected copy joined by a white seam.',
+      'Reflect the first result crossing red; both steps are shown.',
+      'Clone the second result and turn it 180° about (0, −1), the midpoint of the joining edge (−1, −1) ↔ (1, −1).',
+      'Keep the third result and add one copy rotated 120° clockwise about the hexagon center (0, 0). Wire colors are retained; differently colored overlaps run side by side.',
+      'Clone the entire fourth result and point-reflect it about (0, −1), as in step 3.',
+      'Clone the entire fifth result and rotate it 120° clockwise about (0, 0), as in step 4.',
+      'Clone the entire sixth result and point-reflect it about (0, −1), as in step 5. All distinct wire colors are retained.'
+    ][activeStage-1]}`
+    :'Original only — fixed simplex at (−14, −14), depth 4, pointing southeast.';
+  $('process-steps').hidden=!showProcess;
+  for(const button of $('process-steps').querySelectorAll('button'))
+    button.setAttribute('aria-pressed',String(Number(button.dataset.stage)===activeStage));
+  const doubled=[...scene.edges.values()].filter(edge=>wireRoles(edge).length>1).length;
+  $('simplex-summary').textContent=`${showProcess?`Process 1 · stage ${activeStage}`:'Original'}: ${scene.vertices.size} vertices · ${scene.edges.size} geometric edges · ${doubled} multicolor overlaps. Each simplex copy has depth ${simplex.depth} (8 edge layers).`;
+  for(const origin of scene.origins) {
+    const [x,y]=point(origin),left=origin.x<0;
+    const label=element('text',{x:x+(left?-10:10),y:y-14,class:'vertex-label','text-anchor':left?'end':'start'},dots);
+    label.textContent=`(${origin.x}, ${origin.y})`;
+  }
+  if(showProcess) {
+    const shownCenters=new Set();
+    for(const [index,step] of processStages.slice(0,activeStage).entries()) {
+      if(step.rotationCenter) {
+        const key=`rotation:${step.rotationCenter.x},${step.rotationCenter.y}`;
+        if(shownCenters.has(key)) continue;
+        shownCenters.add(key);
+        const [cx,cy]=point(step.rotationCenter);
+        element('circle',{id:'rotation-center',class:'rotation-guide','data-step':index+1,
+          cx,cy,r:8,fill:'none',stroke:'#438bff','stroke-width':2,'pointer-events':'none',
+          'vector-effect':'non-scaling-stroke'},strokes);
+        const label=element('text',{x:cx+12,y:cy+22,class:'vertex-label','data-step':index+1},dots);
+        label.textContent=`120° ↻ · (${step.rotationCenter.x}, ${step.rotationCenter.y})`;
+        continue;
+      }
+      if(step.center) {
+        const key=`point:${step.center.x},${step.center.y}`;
+        if(shownCenters.has(key)) continue;
+        shownCenters.add(key);
+        const [cx,cy]=point(step.center);
+        element('circle',{id:'point-reflection-center',class:'point-guide','data-step':index+1,
+          cx,cy,r:8,fill:'none',stroke:'#ffffff','stroke-width':2,'pointer-events':'none',
+          'vector-effect':'non-scaling-stroke'},strokes);
+        const label=element('text',{x:cx+12,y:cy+22,class:'vertex-label','data-step':index+1},dots);
+        label.textContent=`center (${step.center.x}, ${step.center.y})`;
+        continue;
+      }
+      const [x1,y1]=point(step.axisGuide[0]),[x2,y2]=point(step.axisGuide[1]);
+      element('line',{id:index===2?'reflection-guide':`reflection-guide-step${index+1}`,
+        class:'reflection-guide','data-step':index+1,x1,y1,x2,y2,
+        stroke:index===3?'#438bff':index===1?'#ff4545':'#ffffff','stroke-width':2,'stroke-dasharray':'8 6',
+        'pointer-events':'none','vector-effect':'non-scaling-stroke'},strokes);
+    }
+  }
+  if(pinned&&!model.vertices.has(pinned)) pinned=null;
+  inspect(pinned);
+}
+svg.addEventListener('pointerleave',()=>{if(!pinned) inspect(null);});
+svg.addEventListener('pointermove',event=>{if(!pinned&&!event.target.classList.contains('hit')&&active) inspect(null);});
+$('radius').addEventListener('input',render);
+$('process').addEventListener('change',render);
+$('strand-select').addEventListener('change',render);
+$('show-strands').addEventListener('change',render);
+for(const button of $('process-steps').querySelectorAll('button')) button.addEventListener('click',()=>{
+  activeStage=Number(button.dataset.stage);render();
+});
+window.addEventListener('resize',render);
+function clear(){pinned=null;inspect(null);}
+$('clear').addEventListener('click',clear);
+document.addEventListener('keydown',event=>{if(event.key==='Escape') clear();});
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,8174 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reflection assembly: ports and routed comparisons</title>
+<style>
+:root{color-scheme:dark;--bg:#11171e;--panel:#1a2530;--line:#405164;--ink:#eaf0f5;--muted:#adc0d0;--route:#ffcd86;--past:#86c9ff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,sans-serif}main{max-width:1450px;margin:auto;padding:24px}h1{font-size:26px;font-weight:600;line-height:1.2;margin:0 0 10px}h2{font-size:17px;margin:0 0 8px;font-weight:600}p{margin:6px 0 13px}.muted,small{color:var(--muted)}.topline{display:flex;gap:28px;flex-wrap:wrap;margin:18px 0}.topline b{font-size:22px;display:block}.topline span{font-size:13px;color:var(--muted)}.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0}button,select{font:inherit;padding:7px 10px;background:#233447;color:var(--ink);border:1px solid #62788d;border-radius:5px}button{cursor:pointer}button:hover{background:#354b62}button:disabled{opacity:.4;cursor:default}label{display:flex;gap:6px;align-items:center;font-size:13px}.grid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(340px,1fr);gap:17px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:7px;overflow:hidden}svg{display:block;width:100%;height:auto;background:#121e29}aside{padding:16px;min-width:0}.head{padding:14px 16px;border-bottom:1px solid var(--line)}.foot{padding:12px 16px;border-top:1px solid var(--line);font-size:13px}.box{padding:12px 14px;border:1px solid var(--line);background:#182430;border-radius:5px;margin:12px 0}.warn{border-left:3px solid #ffcd86}.path{font:14px/1.9 ui-monospace,monospace;overflow-wrap:anywhere}.path button{font:inherit;padding:1px 5px;margin:2px}.path button.active{background:#725d3c;border-color:#ffcd86}table{border-collapse:collapse;width:100%;font-size:12px}td,th{padding:7px 5px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--muted);font-weight:500}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#111b25;padding:10px;border:1px solid var(--line);font-size:12px}details{margin:13px 0}summary{cursor:pointer}.legend{display:flex;gap:18px;flex-wrap:wrap;padding:10px 16px;font-size:12px}.legend i{display:inline-block;width:20px;height:3px;vertical-align:middle;margin-right:5px}.status{color:#acd3ed}.note{font-size:13px;max-width:1150px}.port{cursor:pointer}.port:hover{stroke:white;stroke-width:3}.seam{cursor:pointer}.seam:hover{stroke:white!important}.requests{width:min(100%,480px)}@media(max-width:900px){.grid{grid-template-columns:1fr}main{padding:14px}h1{font-size:22px}.topline{gap:18px}aside{padding:14px}}
+</style></head><body><main>
+<h1>Exact seam ports · 32 routed history comparisons</h1>
+<p class="muted">Variant A. Routes now cross actual shared edges; point contacts and disjoint shortcuts are not used.</p>
+<div class="topline"><div><b>32 / 32</b><span>requests routed</span></div><div><b>14</b><span>geometric seams</span></div><div><b>22</b><span>requests with another simple route</span></div><div><b>0</b><span>route-dependent frame defects</span></div></div>
+<div class="controls"><label>Request <select id="request" class="requests" aria-label="History request"></select></label><label>Route <select id="route" aria-label="Route choice"></select></label><button id="reverse">Reverse direction</button></div>
+<div class="controls"><button id="prev">Previous seam</button><button id="next">Next seam</button><span id="step" class="status"></span><label>4D realization <select id="lift"><option value="centered">Centered hidden vertices</option><option value="asymmetric">Asymmetric hidden vertices</option></select></label><label><input id="ports" type="checkbox" checked>Show seam / outer ports</label><label><input id="loads" type="checkbox">Show 32-request seam loads</label></div>
+<div class="grid"><section class="panel"><div class="head"><h2 id="routeTitle"></h2><div class="path" id="path"></div></div><svg id="scene" viewBox="0 0 900 660" aria-label="Exact cell contact geometry with routed midpoint ports"></svg><div class="legend"><span><i style="background:#ffcd86"></i>selected route</span><span><i style="background:#86c9ff"></i>completed portion</span><span>● shared-seam port</span><span>□ outer port</span></div><div class="foot" id="geometryFoot"></div></section>
+<aside class="panel"><h2>Current retained state</h2><div id="state"></div><div class="box"><h2>Full simplex labels</h2><p class="muted">Reflection carries every label to the same inherited label in the next cell. Coordinates below include both hidden directions.</p><table><thead><tr><th>Slot</th><th>Current four coordinates</th></tr></thead><tbody id="values"></tbody></table></div><details open><summary>Next paired ports</summary><div id="portDetail"></div></details><details><summary>Complete route transform</summary><pre id="transform"></pre></details><div class="box warn" id="scope"></div></aside></div>
+<div class="box note"><h2>What was selected, and what was derived</h2><p>The new routing convention places a port at each seam midpoint and chooses the fewest-seams route for each specified history pair. Every one of the 32 requests has a unique shortest route. This policy was not present in the earlier construction.</p><p>The seam reflections are calculated from the existing geometry. They obey S(j←i) = Tⱼ Tᵢ⁻¹ on every complete labelled 4-simplex. Thus every allowed route between the same endpoint cells gives the same transport, even when the route histories differ. Distinct construction histories and route records are retained.</p><p>32 counts endpoint requests, not independent physical wire channels or sheets of a bundle. Routes share seams. A separate, explicitly defined cover of the five vertex-label states has five sheets and trivial return. No native Su-32 port admission is claimed.</p></div>
+</main><script id="data" type="application/json">{
+  "scope": "New explicit midpoint-port / shortest-seam routing on supplied variant A; not native Su-32.",
+  "added_rules": [
+    "Use the exact midpoint of each existing OAB seam as a port representative.",
+    "For each of the 32 fixed history endpoint requests, select a fewest-seams route.",
+    "Keep request ID, endpoint histories, and full route as records; internal continuation follows that route.",
+    "Transport complete simplex coordinates by the geometrically computed seam reflection."
+  ],
+  "forced_data": [
+    "Actual seam incidences",
+    "Reflection fixes seam pointwise",
+    "All 14 full ordered simplex maps",
+    "All geometric path transports factor through endpoint frames"
+  ],
+  "history_count": 16,
+  "cell_count": 14,
+  "seam_count": 14,
+  "ports": [
+    {
+      "id": "C12:AB",
+      "cell": 12,
+      "edge_labels": [
+        "A",
+        "B"
+      ],
+      "midpoint4": [
+        "-5/2",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": null,
+      "external": true
+    },
+    {
+      "id": "C12:OB",
+      "cell": 12,
+      "edge_labels": [
+        "O",
+        "B"
+      ],
+      "midpoint4": [
+        "-5/2",
+        "1",
+        "0",
+        "0"
+      ],
+      "neighbor": null,
+      "external": true
+    },
+    {
+      "id": "C12:OA",
+      "cell": 12,
+      "edge_labels": [
+        "O",
+        "A"
+      ],
+      "midpoint4": [
+        "-2",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 13,
+      "external": false
+    },
+    {
+      "id": "C13:OA",
+      "cell": 13,
+      "edge_labels": [
+        "O",
+        "A"
+      ],
+      "midpoint4": [
+        "-2",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 12,
+      "external": false
+    },
+    {
+      "id": "C13:AB",
+      "cell": 13,
+      "edge_labels": [
+        "A",
+        "B"
+      ],
+      "midpoint4": [
+        "-3/2",
+        "0",
+        "0",
+        "0"
+      ],
+      "neighbor": null,
+      "external": true
+    },
+    {
+      "id": "C11:OB",
+      "cell": 11,
+      "edge_labels": [
+        "O",
+        "B"
+      ],
+      "midpoint4": [
+        "-2",
+        "3/2",
+        "0",
+        "0"
+      ],
+      "neighbor": null,
+      "external": true
+    },
+    {
+      "id": "C10:OB",
+      "cell": 10,
+      "edge_labels": [
+        "O",
+        "B"
+      ],
+      "midpoint4": [
+        "-3/2",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 13,
+      "external": false
+    },
+    {
+      "id": "C13:OB",
+      "cell": 13,
+      "edge_labels": [
+        "O",
+        "B"
+      ],
+      "midpoint4": [
+        "-3/2",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 10,
+      "external": false
+    },
+    {
+      "id": "C10:OA",
+      "cell": 10,
+      "edge_labels": [
+        "O",
+        "A"
+      ],
+      "midpoint4": [
+        "-3/2",
+        "1",
+        "0",
+        "0"
+      ],
+      "neighbor": 11,
+      "external": false
+    },
+    {
+      "id": "C11:OA",
+      "cell": 11,
+      "edge_labels": [
+        "O",
+        "A"
+      ],
+      "midpoint4": [
+        "-3/2",
+        "1",
+        "0",
+        "0"
+      ],
+      "neighbor": 10,
+      "external": false
+    },
+    {
+      "id": "C11:AB",
+      "cell": 11,
+      "edge_labels": [
+        "A",
+        "B"
+      ],
+      "midpoint4": [
+        "-3/2",
+        "3/2",
+        "0",
+        "0"
+      ],
+      "neighbor": null,
+      "external": true
+    },
+    {
+      "id": "C2:AB",
+      "cell": 2,
+      "edge_labels": [
+        "A",
+        "B"
+      ],
+      "midpoint4": [
+        "-1",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 10,
+      "external": false
+    },
+    {
+      "id": "C10:AB",
+      "cell": 10,
+      "edge_labels": [
+        "A",
+        "B"
+      ],
+      "midpoint4": [
+        "-1",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 2,
+      "external": false
+    },
+    {
+      "id": "C9:AB",
+      "cell": 9,
+      "edge_labels": [
+        "A",
+        "B"
+      ],
+      "midpoint4": [
+        "-1/2",
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": null,
+      "external": true
+    },
+    {
+      "id": "C2:OB",
+      "cell": 2,
+      "edge_labels": [
+        "O",
+        "B"
+      ],
+      "midpoint4": [
+        "-1/2",
+        "0",
+        "0",
+        "0"
+      ],
+      "neighbor": 9,
+      "external": false
+    },
+    {
+      "id": "C9:OB",
+      "cell": 9,
+      "edge_labels": [
+        "O",
+        "B"
+      ],
+      "midpoint4": [
+        "-1/2",
+        "0",
+        "0",
+        "0"
+      ],
+      "neighbor": 2,
+      "external": false
+    },
+    {
+      "id": "C2:OA",
+      "cell": 2,
+      "edge_labels": [
+        "O",
+        "A"
+      ],
+      "midpoint4": [
+        "-1/2",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 3,
+      "external": false
+    },
+    {
+      "id": "C3:OA",
+      "cell": 3,
+      "edge_labels": [
+        "O",
+        "A"
+      ],
+      "midpoint4": [
+        "-1/2",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 2,
+      "external": false
+    },
+    {
+      "id": "C3:AB",
+      "cell": 3,
+      "edge_labels": [
+        "A",
+        "B"
+      ],
+      "midpoint4": [
+        "-1/2",
+        "1",
+        "0",
+        "0"
+      ],
+      "neighbor": null,
+      "external": true
+    },
+    {
+      "id": "C8:OA",
+      "cell": 8,
+      "edge_labels": [
+        "O",
+        "A"
+      ],
+      "midpoint4": [
+        "0",
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 9,
+      "external": false
+    },
+    {
+      "id": "C9:OA",
+      "cell": 9,
+      "edge_labels": [
+        "O",
+        "A"
+      ],
+      "midpoint4": [
+        "0",
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 8,
+      "external": false
+    },
+    {
+      "id": "C8:AB",
+      "cell": 8,
+      "edge_labels": [
+        "A",
+        "B"
+      ],
+      "midpoint4": [
+        "1/2",
+        "-1",
+        "0",
+        "0"
+      ],
+      "neighbor": null,
+      "external": true
+    },
+    {
+      "id": "C0:OB",
+      "cell": 0,
+      "edge_labels": [
+        "O",
+        "B"
+      ],
+      "midpoint4": [
+        "0",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 3,
+      "external": false
+    },
+    {
+      "id": "C3:OB",
+      "cell": 3,
+      "edge_labels": [
+        "O",
+        "B"
+      ],
+      "midpoint4": [
+        "0",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 0,
+      "external": false
+    },
+    {
+      "id": "C1:OB",
+      "cell": 1,
+      "edge_labels": [
+        "O",
+        "B"
+      ],
+      "midpoint4": [
+        "1/2",
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 8,
+      "external": false
+    },
+    {
+      "id": "C8:OB",
+      "cell": 8,
+      "edge_labels": [
+        "O",
+        "B"
+      ],
+      "midpoint4": [
+        "1/2",
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 1,
+      "external": false
+    },
+    {
+      "id": "C0:OA",
+      "cell": 0,
+      "edge_labels": [
+        "O",
+        "A"
+      ],
+      "midpoint4": [
+        "1/2",
+        "0",
+        "0",
+        "0"
+      ],
+      "neighbor": 1,
+      "external": false
+    },
+    {
+      "id": "C1:OA",
+      "cell": 1,
+      "edge_labels": [
+        "O",
+        "A"
+      ],
+      "midpoint4": [
+        "1/2",
+        "0",
+        "0",
+        "0"
+      ],
+      "neighbor": 0,
+      "external": false
+    },
+    {
+      "id": "C7:AB",
+      "cell": 7,
+      "edge_labels": [
+        "A",
+        "B"
+      ],
+      "midpoint4": [
+        "0",
+        "3/2",
+        "0",
+        "0"
+      ],
+      "neighbor": null,
+      "external": true
+    },
+    {
+      "id": "C0:AB",
+      "cell": 0,
+      "edge_labels": [
+        "A",
+        "B"
+      ],
+      "midpoint4": [
+        "1/2",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 4,
+      "external": false
+    },
+    {
+      "id": "C4:AB",
+      "cell": 4,
+      "edge_labels": [
+        "A",
+        "B"
+      ],
+      "midpoint4": [
+        "1/2",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 0,
+      "external": false
+    },
+    {
+      "id": "C4:OB",
+      "cell": 4,
+      "edge_labels": [
+        "O",
+        "B"
+      ],
+      "midpoint4": [
+        "1/2",
+        "1",
+        "0",
+        "0"
+      ],
+      "neighbor": 7,
+      "external": false
+    },
+    {
+      "id": "C7:OB",
+      "cell": 7,
+      "edge_labels": [
+        "O",
+        "B"
+      ],
+      "midpoint4": [
+        "1/2",
+        "1",
+        "0",
+        "0"
+      ],
+      "neighbor": 4,
+      "external": false
+    },
+    {
+      "id": "C6:OA",
+      "cell": 6,
+      "edge_labels": [
+        "O",
+        "A"
+      ],
+      "midpoint4": [
+        "1/2",
+        "3/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 7,
+      "external": false
+    },
+    {
+      "id": "C7:OA",
+      "cell": 7,
+      "edge_labels": [
+        "O",
+        "A"
+      ],
+      "midpoint4": [
+        "1/2",
+        "3/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 6,
+      "external": false
+    },
+    {
+      "id": "C6:AB",
+      "cell": 6,
+      "edge_labels": [
+        "A",
+        "B"
+      ],
+      "midpoint4": [
+        "1/2",
+        "2",
+        "0",
+        "0"
+      ],
+      "neighbor": null,
+      "external": true
+    },
+    {
+      "id": "C1:AB",
+      "cell": 1,
+      "edge_labels": [
+        "A",
+        "B"
+      ],
+      "midpoint4": [
+        "1",
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": null,
+      "external": true
+    },
+    {
+      "id": "C4:OA",
+      "cell": 4,
+      "edge_labels": [
+        "O",
+        "A"
+      ],
+      "midpoint4": [
+        "1",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 5,
+      "external": false
+    },
+    {
+      "id": "C5:OA",
+      "cell": 5,
+      "edge_labels": [
+        "O",
+        "A"
+      ],
+      "midpoint4": [
+        "1",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": 4,
+      "external": false
+    },
+    {
+      "id": "C5:AB",
+      "cell": 5,
+      "edge_labels": [
+        "A",
+        "B"
+      ],
+      "midpoint4": [
+        "3/2",
+        "0",
+        "0",
+        "0"
+      ],
+      "neighbor": null,
+      "external": true
+    },
+    {
+      "id": "C6:OB",
+      "cell": 6,
+      "edge_labels": [
+        "O",
+        "B"
+      ],
+      "midpoint4": [
+        "1",
+        "3/2",
+        "0",
+        "0"
+      ],
+      "neighbor": null,
+      "external": true
+    },
+    {
+      "id": "C5:OB",
+      "cell": 5,
+      "edge_labels": [
+        "O",
+        "B"
+      ],
+      "midpoint4": [
+        "3/2",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "neighbor": null,
+      "external": true
+    }
+  ],
+  "cells": [
+    {
+      "id": 0,
+      "triangle": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "histories": [
+        "0000"
+      ],
+      "transform": [
+        [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "vertices4": {
+        "centered": [
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "1",
+            "0"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "0",
+            "1"
+          ]
+        ],
+        "asymmetric": [
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "1/4",
+            "1/4",
+            "1",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/4",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "centers4": {
+        "centered": [
+          "1/3",
+          "1/3",
+          "1/5",
+          "1/5"
+        ],
+        "asymmetric": [
+          "7/20",
+          "3/10",
+          "1/5",
+          "1/5"
+        ]
+      }
+    },
+    {
+      "id": 1,
+      "triangle": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "-1"
+        ]
+      ],
+      "histories": [
+        "1000"
+      ],
+      "transform": [
+        [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "0",
+            "-1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "vertices4": {
+        "centered": [
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "-1",
+            "0",
+            "0"
+          ],
+          [
+            "2/3",
+            "-1/3",
+            "1",
+            "0"
+          ],
+          [
+            "2/3",
+            "-1/3",
+            "0",
+            "1"
+          ]
+        ],
+        "asymmetric": [
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "-1",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "-1/4",
+            "1",
+            "0"
+          ],
+          [
+            "3/4",
+            "-1/4",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "centers4": {
+        "centered": [
+          "2/3",
+          "-1/3",
+          "1/5",
+          "1/5"
+        ],
+        "asymmetric": [
+          "13/20",
+          "-3/10",
+          "1/5",
+          "1/5"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "triangle": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "-1",
+          "1"
+        ],
+        [
+          "-1",
+          "0"
+        ]
+      ],
+      "histories": [
+        "0100",
+        "0001"
+      ],
+      "transform": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "vertices4": {
+        "centered": [
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-2/3",
+            "1/3",
+            "1",
+            "0"
+          ],
+          [
+            "-2/3",
+            "1/3",
+            "0",
+            "1"
+          ]
+        ],
+        "asymmetric": [
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-1/2",
+            "1/4",
+            "1",
+            "0"
+          ],
+          [
+            "-3/4",
+            "1/2",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "centers4": {
+        "centered": [
+          "-2/3",
+          "1/3",
+          "1/5",
+          "1/5"
+        ],
+        "asymmetric": [
+          "-13/20",
+          "7/20",
+          "1/5",
+          "1/5"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "triangle": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "-1",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "histories": [
+        "1100",
+        "1001"
+      ],
+      "transform": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "vertices4": {
+        "centered": [
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-1/3",
+            "2/3",
+            "1",
+            "0"
+          ],
+          [
+            "-1/3",
+            "2/3",
+            "0",
+            "1"
+          ]
+        ],
+        "asymmetric": [
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-1/4",
+            "1/2",
+            "1",
+            "0"
+          ],
+          [
+            "-1/2",
+            "3/4",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "centers4": {
+        "centered": [
+          "-1/3",
+          "2/3",
+          "1/5",
+          "1/5"
+        ],
+        "asymmetric": [
+          "-7/20",
+          "13/20",
+          "1/5",
+          "1/5"
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "triangle": [
+        [
+          "1",
+          "1"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "histories": [
+        "0010"
+      ],
+      "transform": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "vertices4": {
+        "centered": [
+          [
+            "1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "1",
+            "0"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "0",
+            "1"
+          ]
+        ],
+        "asymmetric": [
+          [
+            "1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "3/4",
+            "3/4",
+            "1",
+            "0"
+          ],
+          [
+            "3/4",
+            "1/2",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "centers4": {
+        "centered": [
+          "2/3",
+          "2/3",
+          "1/5",
+          "1/5"
+        ],
+        "asymmetric": [
+          "7/10",
+          "13/20",
+          "1/5",
+          "1/5"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "triangle": [
+        [
+          "1",
+          "1"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "2",
+          "0"
+        ]
+      ],
+      "histories": [
+        "1010"
+      ],
+      "transform": [
+        [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "-1",
+            "-1"
+          ]
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "vertices4": {
+        "centered": [
+          [
+            "1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "4/3",
+            "1/3",
+            "1",
+            "0"
+          ],
+          [
+            "4/3",
+            "1/3",
+            "0",
+            "1"
+          ]
+        ],
+        "asymmetric": [
+          [
+            "1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "2",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "5/4",
+            "1/2",
+            "1",
+            "0"
+          ],
+          [
+            "5/4",
+            "1/4",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "centers4": {
+        "centered": [
+          "4/3",
+          "1/3",
+          "1/5",
+          "1/5"
+        ],
+        "asymmetric": [
+          "13/10",
+          "7/20",
+          "1/5",
+          "1/5"
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "triangle": [
+        [
+          "1",
+          "1"
+        ],
+        [
+          "0",
+          "2"
+        ],
+        [
+          "1",
+          "2"
+        ]
+      ],
+      "histories": [
+        "0110"
+      ],
+      "transform": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "vertices4": {
+        "centered": [
+          [
+            "1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "2",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "2",
+            "0",
+            "0"
+          ],
+          [
+            "2/3",
+            "5/3",
+            "1",
+            "0"
+          ],
+          [
+            "2/3",
+            "5/3",
+            "0",
+            "1"
+          ]
+        ],
+        "asymmetric": [
+          [
+            "1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "2",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "2",
+            "0",
+            "0"
+          ],
+          [
+            "3/4",
+            "3/2",
+            "1",
+            "0"
+          ],
+          [
+            "1/2",
+            "7/4",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "centers4": {
+        "centered": [
+          "2/3",
+          "5/3",
+          "1/5",
+          "1/5"
+        ],
+        "asymmetric": [
+          "13/20",
+          "33/20",
+          "1/5",
+          "1/5"
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "triangle": [
+        [
+          "1",
+          "1"
+        ],
+        [
+          "0",
+          "2"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "histories": [
+        "1110"
+      ],
+      "transform": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "vertices4": {
+        "centered": [
+          [
+            "1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "2",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "1/3",
+            "4/3",
+            "1",
+            "0"
+          ],
+          [
+            "1/3",
+            "4/3",
+            "0",
+            "1"
+          ]
+        ],
+        "asymmetric": [
+          [
+            "1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "2",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "5/4",
+            "1",
+            "0"
+          ],
+          [
+            "1/4",
+            "3/2",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "centers4": {
+        "centered": [
+          "1/3",
+          "4/3",
+          "1/5",
+          "1/5"
+        ],
+        "asymmetric": [
+          "7/20",
+          "27/20",
+          "1/5",
+          "1/5"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "triangle": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "1",
+          "-1"
+        ]
+      ],
+      "histories": [
+        "0101"
+      ],
+      "transform": [
+        [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "-1",
+            "-1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "vertices4": {
+        "centered": [
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "-1",
+            "0",
+            "0"
+          ],
+          [
+            "1/3",
+            "-2/3",
+            "1",
+            "0"
+          ],
+          [
+            "1/3",
+            "-2/3",
+            "0",
+            "1"
+          ]
+        ],
+        "asymmetric": [
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "-1",
+            "0",
+            "0"
+          ],
+          [
+            "1/4",
+            "-1/2",
+            "1",
+            "0"
+          ],
+          [
+            "1/4",
+            "-3/4",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "centers4": {
+        "centered": [
+          "1/3",
+          "-2/3",
+          "1/5",
+          "1/5"
+        ],
+        "asymmetric": [
+          "3/10",
+          "-13/20",
+          "1/5",
+          "1/5"
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "triangle": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "-1",
+          "0"
+        ]
+      ],
+      "histories": [
+        "1101"
+      ],
+      "transform": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "vertices4": {
+        "centered": [
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-1/3",
+            "-1/3",
+            "1",
+            "0"
+          ],
+          [
+            "-1/3",
+            "-1/3",
+            "0",
+            "1"
+          ]
+        ],
+        "asymmetric": [
+          [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-1/4",
+            "-1/4",
+            "1",
+            "0"
+          ],
+          [
+            "-1/4",
+            "-1/2",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "centers4": {
+        "centered": [
+          "-1/3",
+          "-1/3",
+          "1/5",
+          "1/5"
+        ],
+        "asymmetric": [
+          "-3/10",
+          "-7/20",
+          "1/5",
+          "1/5"
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "triangle": [
+        [
+          "-2",
+          "1"
+        ],
+        [
+          "-1",
+          "1"
+        ],
+        [
+          "-1",
+          "0"
+        ]
+      ],
+      "histories": [
+        "0011"
+      ],
+      "transform": [
+        [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "0",
+            "-1"
+          ]
+        ],
+        [
+          "-2",
+          "1"
+        ]
+      ],
+      "vertices4": {
+        "centered": [
+          [
+            "-2",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-4/3",
+            "2/3",
+            "1",
+            "0"
+          ],
+          [
+            "-4/3",
+            "2/3",
+            "0",
+            "1"
+          ]
+        ],
+        "asymmetric": [
+          [
+            "-2",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-3/2",
+            "3/4",
+            "1",
+            "0"
+          ],
+          [
+            "-5/4",
+            "3/4",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "centers4": {
+        "centered": [
+          "-4/3",
+          "2/3",
+          "1/5",
+          "1/5"
+        ],
+        "asymmetric": [
+          "-27/20",
+          "7/10",
+          "1/5",
+          "1/5"
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "triangle": [
+        [
+          "-2",
+          "1"
+        ],
+        [
+          "-1",
+          "1"
+        ],
+        [
+          "-2",
+          "2"
+        ]
+      ],
+      "histories": [
+        "1011"
+      ],
+      "transform": [
+        [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        [
+          "-2",
+          "1"
+        ]
+      ],
+      "vertices4": {
+        "centered": [
+          [
+            "-2",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-2",
+            "2",
+            "0",
+            "0"
+          ],
+          [
+            "-5/3",
+            "4/3",
+            "1",
+            "0"
+          ],
+          [
+            "-5/3",
+            "4/3",
+            "0",
+            "1"
+          ]
+        ],
+        "asymmetric": [
+          [
+            "-2",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-2",
+            "2",
+            "0",
+            "0"
+          ],
+          [
+            "-7/4",
+            "5/4",
+            "1",
+            "0"
+          ],
+          [
+            "-3/2",
+            "5/4",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "centers4": {
+        "centered": [
+          "-5/3",
+          "4/3",
+          "1/5",
+          "1/5"
+        ],
+        "asymmetric": [
+          "-33/20",
+          "13/10",
+          "1/5",
+          "1/5"
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "triangle": [
+        [
+          "-2",
+          "1"
+        ],
+        [
+          "-2",
+          "0"
+        ],
+        [
+          "-3",
+          "1"
+        ]
+      ],
+      "histories": [
+        "0111"
+      ],
+      "transform": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "-2",
+          "1"
+        ]
+      ],
+      "vertices4": {
+        "centered": [
+          [
+            "-2",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-2",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-3",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-7/3",
+            "2/3",
+            "1",
+            "0"
+          ],
+          [
+            "-7/3",
+            "2/3",
+            "0",
+            "1"
+          ]
+        ],
+        "asymmetric": [
+          [
+            "-2",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-2",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-3",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-9/4",
+            "3/4",
+            "1",
+            "0"
+          ],
+          [
+            "-9/4",
+            "1/2",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "centers4": {
+        "centered": [
+          "-7/3",
+          "2/3",
+          "1/5",
+          "1/5"
+        ],
+        "asymmetric": [
+          "-23/10",
+          "13/20",
+          "1/5",
+          "1/5"
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "triangle": [
+        [
+          "-2",
+          "1"
+        ],
+        [
+          "-2",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ]
+      ],
+      "histories": [
+        "1111"
+      ],
+      "transform": [
+        [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "-1",
+            "-1"
+          ]
+        ],
+        [
+          "-2",
+          "1"
+        ]
+      ],
+      "vertices4": {
+        "centered": [
+          [
+            "-2",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-2",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-5/3",
+            "1/3",
+            "1",
+            "0"
+          ],
+          [
+            "-5/3",
+            "1/3",
+            "0",
+            "1"
+          ]
+        ],
+        "asymmetric": [
+          [
+            "-2",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "-2",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-1",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-7/4",
+            "1/2",
+            "1",
+            "0"
+          ],
+          [
+            "-7/4",
+            "1/4",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "centers4": {
+        "centered": [
+          "-5/3",
+          "1/3",
+          "1/5",
+          "1/5"
+        ],
+        "asymmetric": [
+          "-17/10",
+          "7/20",
+          "1/5",
+          "1/5"
+        ]
+      }
+    }
+  ],
+  "seams": [
+    {
+      "id": "12-13",
+      "cells": [
+        12,
+        13
+      ],
+      "edge": [
+        [
+          "-2",
+          "0"
+        ],
+        [
+          "-2",
+          "1"
+        ]
+      ],
+      "midpoint4": [
+        "-2",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "reflection": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "-4",
+          "2"
+        ]
+      ],
+      "labels_left": [
+        "O",
+        "A"
+      ],
+      "labels_right": [
+        "O",
+        "A"
+      ],
+      "label_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shortest_route_load": 4
+    },
+    {
+      "id": "10-13",
+      "cells": [
+        10,
+        13
+      ],
+      "edge": [
+        [
+          "-2",
+          "1"
+        ],
+        [
+          "-1",
+          "0"
+        ]
+      ],
+      "midpoint4": [
+        "-3/2",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "reflection": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "-1",
+          "-1"
+        ]
+      ],
+      "labels_left": [
+        "O",
+        "B"
+      ],
+      "labels_right": [
+        "O",
+        "B"
+      ],
+      "label_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shortest_route_load": 6
+    },
+    {
+      "id": "10-11",
+      "cells": [
+        10,
+        11
+      ],
+      "edge": [
+        [
+          "-2",
+          "1"
+        ],
+        [
+          "-1",
+          "1"
+        ]
+      ],
+      "midpoint4": [
+        "-3/2",
+        "1",
+        "0",
+        "0"
+      ],
+      "reflection": [
+        [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "0",
+            "-1"
+          ]
+        ],
+        [
+          "-1",
+          "2"
+        ]
+      ],
+      "labels_left": [
+        "O",
+        "A"
+      ],
+      "labels_right": [
+        "O",
+        "A"
+      ],
+      "label_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shortest_route_load": 4
+    },
+    {
+      "id": "2-10",
+      "cells": [
+        2,
+        10
+      ],
+      "edge": [
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "1"
+        ]
+      ],
+      "midpoint4": [
+        "-1",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "reflection": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "-2",
+          "1"
+        ]
+      ],
+      "labels_left": [
+        "A",
+        "B"
+      ],
+      "labels_right": [
+        "A",
+        "B"
+      ],
+      "label_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shortest_route_load": 8
+    },
+    {
+      "id": "2-9",
+      "cells": [
+        2,
+        9
+      ],
+      "edge": [
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "midpoint4": [
+        "-1/2",
+        "0",
+        "0",
+        "0"
+      ],
+      "reflection": [
+        [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "0",
+            "-1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "labels_left": [
+        "O",
+        "B"
+      ],
+      "labels_right": [
+        "O",
+        "B"
+      ],
+      "label_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shortest_route_load": 6
+    },
+    {
+      "id": "2-3",
+      "cells": [
+        2,
+        3
+      ],
+      "edge": [
+        [
+          "-1",
+          "1"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "midpoint4": [
+        "-1/2",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "reflection": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "labels_left": [
+        "O",
+        "A"
+      ],
+      "labels_right": [
+        "O",
+        "A"
+      ],
+      "label_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shortest_route_load": 12
+    },
+    {
+      "id": "8-9",
+      "cells": [
+        8,
+        9
+      ],
+      "edge": [
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "midpoint4": [
+        "0",
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "reflection": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "labels_left": [
+        "O",
+        "A"
+      ],
+      "labels_right": [
+        "O",
+        "A"
+      ],
+      "label_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shortest_route_load": 4
+    },
+    {
+      "id": "0-3",
+      "cells": [
+        0,
+        3
+      ],
+      "edge": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "midpoint4": [
+        "0",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "reflection": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "labels_left": [
+        "O",
+        "B"
+      ],
+      "labels_right": [
+        "O",
+        "B"
+      ],
+      "label_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shortest_route_load": 10
+    },
+    {
+      "id": "1-8",
+      "cells": [
+        1,
+        8
+      ],
+      "edge": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "1",
+          "-1"
+        ]
+      ],
+      "midpoint4": [
+        "1/2",
+        "-1/2",
+        "0",
+        "0"
+      ],
+      "reflection": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "labels_left": [
+        "O",
+        "B"
+      ],
+      "labels_right": [
+        "O",
+        "B"
+      ],
+      "label_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shortest_route_load": 0
+    },
+    {
+      "id": "0-1",
+      "cells": [
+        0,
+        1
+      ],
+      "edge": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "midpoint4": [
+        "1/2",
+        "0",
+        "0",
+        "0"
+      ],
+      "reflection": [
+        [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "0",
+            "-1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "labels_left": [
+        "O",
+        "A"
+      ],
+      "labels_right": [
+        "O",
+        "A"
+      ],
+      "label_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shortest_route_load": 4
+    },
+    {
+      "id": "0-4",
+      "cells": [
+        0,
+        4
+      ],
+      "edge": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "midpoint4": [
+        "1/2",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "reflection": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "labels_left": [
+        "A",
+        "B"
+      ],
+      "labels_right": [
+        "A",
+        "B"
+      ],
+      "label_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shortest_route_load": 8
+    },
+    {
+      "id": "4-7",
+      "cells": [
+        4,
+        7
+      ],
+      "edge": [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "midpoint4": [
+        "1/2",
+        "1",
+        "0",
+        "0"
+      ],
+      "reflection": [
+        [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "0",
+            "-1"
+          ]
+        ],
+        [
+          "-1",
+          "2"
+        ]
+      ],
+      "labels_left": [
+        "O",
+        "B"
+      ],
+      "labels_right": [
+        "O",
+        "B"
+      ],
+      "label_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shortest_route_load": 6
+    },
+    {
+      "id": "6-7",
+      "cells": [
+        6,
+        7
+      ],
+      "edge": [
+        [
+          "0",
+          "2"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "midpoint4": [
+        "1/2",
+        "3/2",
+        "0",
+        "0"
+      ],
+      "reflection": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "2",
+          "2"
+        ]
+      ],
+      "labels_left": [
+        "O",
+        "A"
+      ],
+      "labels_right": [
+        "O",
+        "A"
+      ],
+      "label_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shortest_route_load": 4
+    },
+    {
+      "id": "4-5",
+      "cells": [
+        4,
+        5
+      ],
+      "edge": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "midpoint4": [
+        "1",
+        "1/2",
+        "0",
+        "0"
+      ],
+      "reflection": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "2",
+          "-1"
+        ]
+      ],
+      "labels_left": [
+        "O",
+        "A"
+      ],
+      "labels_right": [
+        "O",
+        "A"
+      ],
+      "label_permutation": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "shortest_route_load": 4
+    }
+  ],
+  "histories": [
+    {
+      "bits": "0000",
+      "cell": 0,
+      "operations": [],
+      "transform": [
+        [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "bits": "1000",
+      "cell": 1,
+      "operations": [
+        "W"
+      ],
+      "transform": [
+        [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "0",
+            "-1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "bits": "0100",
+      "cell": 2,
+      "operations": [
+        "R1"
+      ],
+      "transform": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "bits": "1100",
+      "cell": 3,
+      "operations": [
+        "W",
+        "R1"
+      ],
+      "transform": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "bits": "0010",
+      "cell": 4,
+      "operations": [
+        "E"
+      ],
+      "transform": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ]
+    },
+    {
+      "bits": "1010",
+      "cell": 5,
+      "operations": [
+        "W",
+        "E"
+      ],
+      "transform": [
+        [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "-1",
+            "-1"
+          ]
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ]
+    },
+    {
+      "bits": "0110",
+      "cell": 6,
+      "operations": [
+        "R1",
+        "E"
+      ],
+      "transform": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ]
+    },
+    {
+      "bits": "1110",
+      "cell": 7,
+      "operations": [
+        "W",
+        "R1",
+        "E"
+      ],
+      "transform": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ]
+    },
+    {
+      "bits": "0001",
+      "cell": 2,
+      "operations": [
+        "R2"
+      ],
+      "transform": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "bits": "1001",
+      "cell": 3,
+      "operations": [
+        "W",
+        "R2"
+      ],
+      "transform": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "bits": "0101",
+      "cell": 8,
+      "operations": [
+        "R1",
+        "R2"
+      ],
+      "transform": [
+        [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "-1",
+            "-1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "bits": "1101",
+      "cell": 9,
+      "operations": [
+        "W",
+        "R1",
+        "R2"
+      ],
+      "transform": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "bits": "0011",
+      "cell": 10,
+      "operations": [
+        "E",
+        "R2"
+      ],
+      "transform": [
+        [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "0",
+            "-1"
+          ]
+        ],
+        [
+          "-2",
+          "1"
+        ]
+      ]
+    },
+    {
+      "bits": "1011",
+      "cell": 11,
+      "operations": [
+        "W",
+        "E",
+        "R2"
+      ],
+      "transform": [
+        [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        [
+          "-2",
+          "1"
+        ]
+      ]
+    },
+    {
+      "bits": "0111",
+      "cell": 12,
+      "operations": [
+        "R1",
+        "E",
+        "R2"
+      ],
+      "transform": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "-2",
+          "1"
+        ]
+      ]
+    },
+    {
+      "bits": "1111",
+      "cell": 13,
+      "operations": [
+        "W",
+        "R1",
+        "E",
+        "R2"
+      ],
+      "transform": [
+        [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "-1",
+            "-1"
+          ]
+        ],
+        [
+          "-2",
+          "1"
+        ]
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": 0,
+      "history_from": "0000",
+      "history_to": "0001",
+      "source": 0,
+      "target": 2,
+      "previous_contact": "point only",
+      "length": 2,
+      "path": [
+        0,
+        3,
+        2
+      ],
+      "all_simple_paths": [
+        [
+          0,
+          3,
+          2
+        ],
+        [
+          0,
+          1,
+          8,
+          9,
+          2
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 0,
+          "target": 3,
+          "source_port": "C0:OB",
+          "target_port": "C3:OB",
+          "midpoint4": [
+            "0",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 3,
+          "target": 2,
+          "source_port": "C3:OA",
+          "target_port": "C2:OA",
+          "midpoint4": [
+            "-1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 0,
+          "from_cell": null,
+          "to_cell": 3,
+          "action": "source"
+        },
+        {
+          "cell": 3,
+          "from_cell": 0,
+          "to_cell": 2,
+          "action": "continue"
+        },
+        {
+          "cell": 2,
+          "from_cell": 3,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "history_from": "0000",
+      "history_to": "0010",
+      "source": 0,
+      "target": 4,
+      "previous_contact": "shared edge",
+      "length": 1,
+      "path": [
+        0,
+        4
+      ],
+      "all_simple_paths": [
+        [
+          0,
+          4
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 0,
+          "target": 4,
+          "source_port": "C0:AB",
+          "target_port": "C4:AB",
+          "midpoint4": [
+            "1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "1",
+              "1"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 0,
+          "from_cell": null,
+          "to_cell": 4,
+          "action": "source"
+        },
+        {
+          "cell": 4,
+          "from_cell": 0,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "history_from": "0000",
+      "history_to": "0100",
+      "source": 0,
+      "target": 2,
+      "previous_contact": "point only",
+      "length": 2,
+      "path": [
+        0,
+        3,
+        2
+      ],
+      "all_simple_paths": [
+        [
+          0,
+          3,
+          2
+        ],
+        [
+          0,
+          1,
+          8,
+          9,
+          2
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 0,
+          "target": 3,
+          "source_port": "C0:OB",
+          "target_port": "C3:OB",
+          "midpoint4": [
+            "0",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 3,
+          "target": 2,
+          "source_port": "C3:OA",
+          "target_port": "C2:OA",
+          "midpoint4": [
+            "-1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 0,
+          "from_cell": null,
+          "to_cell": 3,
+          "action": "source"
+        },
+        {
+          "cell": 3,
+          "from_cell": 0,
+          "to_cell": 2,
+          "action": "continue"
+        },
+        {
+          "cell": 2,
+          "from_cell": 3,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "history_from": "0000",
+      "history_to": "1000",
+      "source": 0,
+      "target": 1,
+      "previous_contact": "shared edge",
+      "length": 1,
+      "path": [
+        0,
+        1
+      ],
+      "all_simple_paths": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          3,
+          2,
+          9,
+          8,
+          1
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "0",
+            "-1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 0,
+          "target": 1,
+          "source_port": "C0:OA",
+          "target_port": "C1:OA",
+          "midpoint4": [
+            "1/2",
+            "0",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 0,
+          "from_cell": null,
+          "to_cell": 1,
+          "action": "source"
+        },
+        {
+          "cell": 1,
+          "from_cell": 0,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "history_from": "0001",
+      "history_to": "0011",
+      "source": 2,
+      "target": 10,
+      "previous_contact": "shared edge",
+      "length": 1,
+      "path": [
+        2,
+        10
+      ],
+      "all_simple_paths": [
+        [
+          2,
+          10
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "-2",
+          "1"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 2,
+          "target": 10,
+          "source_port": "C2:AB",
+          "target_port": "C10:AB",
+          "midpoint4": [
+            "-1",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "-2",
+              "1"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 2,
+          "from_cell": null,
+          "to_cell": 10,
+          "action": "source"
+        },
+        {
+          "cell": 10,
+          "from_cell": 2,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "history_from": "0001",
+      "history_to": "0101",
+      "source": 2,
+      "target": 8,
+      "previous_contact": "point only",
+      "length": 2,
+      "path": [
+        2,
+        9,
+        8
+      ],
+      "all_simple_paths": [
+        [
+          2,
+          9,
+          8
+        ],
+        [
+          2,
+          3,
+          0,
+          1,
+          8
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 2,
+          "target": 9,
+          "source_port": "C2:OB",
+          "target_port": "C9:OB",
+          "midpoint4": [
+            "-1/2",
+            "0",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 9,
+          "target": 8,
+          "source_port": "C9:OA",
+          "target_port": "C8:OA",
+          "midpoint4": [
+            "0",
+            "-1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 2,
+          "from_cell": null,
+          "to_cell": 9,
+          "action": "source"
+        },
+        {
+          "cell": 9,
+          "from_cell": 2,
+          "to_cell": 8,
+          "action": "continue"
+        },
+        {
+          "cell": 8,
+          "from_cell": 9,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "history_from": "0001",
+      "history_to": "1001",
+      "source": 2,
+      "target": 3,
+      "previous_contact": "shared edge",
+      "length": 1,
+      "path": [
+        2,
+        3
+      ],
+      "all_simple_paths": [
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          9,
+          8,
+          1,
+          0,
+          3
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 2,
+          "target": 3,
+          "source_port": "C2:OA",
+          "target_port": "C3:OA",
+          "midpoint4": [
+            "-1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 2,
+          "from_cell": null,
+          "to_cell": 3,
+          "action": "source"
+        },
+        {
+          "cell": 3,
+          "from_cell": 2,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "history_from": "0010",
+      "history_to": "0011",
+      "source": 4,
+      "target": 10,
+      "previous_contact": "separated",
+      "length": 4,
+      "path": [
+        4,
+        0,
+        3,
+        2,
+        10
+      ],
+      "all_simple_paths": [
+        [
+          4,
+          0,
+          3,
+          2,
+          10
+        ],
+        [
+          4,
+          0,
+          1,
+          8,
+          9,
+          2,
+          10
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 4,
+          "target": 0,
+          "source_port": "C4:AB",
+          "target_port": "C0:AB",
+          "midpoint4": [
+            "1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "1",
+              "1"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 0,
+          "target": 3,
+          "source_port": "C0:OB",
+          "target_port": "C3:OB",
+          "midpoint4": [
+            "0",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 2,
+          "source": 3,
+          "target": 2,
+          "source_port": "C3:OA",
+          "target_port": "C2:OA",
+          "midpoint4": [
+            "-1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 3,
+          "source": 2,
+          "target": 10,
+          "source_port": "C2:AB",
+          "target_port": "C10:AB",
+          "midpoint4": [
+            "-1",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "-2",
+              "1"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 4,
+          "from_cell": null,
+          "to_cell": 0,
+          "action": "source"
+        },
+        {
+          "cell": 0,
+          "from_cell": 4,
+          "to_cell": 3,
+          "action": "continue"
+        },
+        {
+          "cell": 3,
+          "from_cell": 0,
+          "to_cell": 2,
+          "action": "continue"
+        },
+        {
+          "cell": 2,
+          "from_cell": 3,
+          "to_cell": 10,
+          "action": "continue"
+        },
+        {
+          "cell": 10,
+          "from_cell": 2,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "history_from": "0010",
+      "history_to": "0110",
+      "source": 4,
+      "target": 6,
+      "previous_contact": "point only",
+      "length": 2,
+      "path": [
+        4,
+        7,
+        6
+      ],
+      "all_simple_paths": [
+        [
+          4,
+          7,
+          6
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "-1",
+            "-1"
+          ]
+        ],
+        [
+          "0",
+          "3"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 4,
+          "target": 7,
+          "source_port": "C4:OB",
+          "target_port": "C7:OB",
+          "midpoint4": [
+            "1/2",
+            "1",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "-1",
+              "2"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 7,
+          "target": 6,
+          "source_port": "C7:OA",
+          "target_port": "C6:OA",
+          "midpoint4": [
+            "1/2",
+            "3/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "2",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 4,
+          "from_cell": null,
+          "to_cell": 7,
+          "action": "source"
+        },
+        {
+          "cell": 7,
+          "from_cell": 4,
+          "to_cell": 6,
+          "action": "continue"
+        },
+        {
+          "cell": 6,
+          "from_cell": 7,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "history_from": "0010",
+      "history_to": "1010",
+      "source": 4,
+      "target": 5,
+      "previous_contact": "shared edge",
+      "length": 1,
+      "path": [
+        4,
+        5
+      ],
+      "all_simple_paths": [
+        [
+          4,
+          5
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "2",
+          "-1"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 4,
+          "target": 5,
+          "source_port": "C4:OA",
+          "target_port": "C5:OA",
+          "midpoint4": [
+            "1",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "2",
+              "-1"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 4,
+          "from_cell": null,
+          "to_cell": 5,
+          "action": "source"
+        },
+        {
+          "cell": 5,
+          "from_cell": 4,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "history_from": "0011",
+      "history_to": "0111",
+      "source": 10,
+      "target": 12,
+      "previous_contact": "point only",
+      "length": 2,
+      "path": [
+        10,
+        13,
+        12
+      ],
+      "all_simple_paths": [
+        [
+          10,
+          13,
+          12
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "-1",
+            "-1"
+          ]
+        ],
+        [
+          "-3",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 10,
+          "target": 13,
+          "source_port": "C10:OB",
+          "target_port": "C13:OB",
+          "midpoint4": [
+            "-3/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "-1",
+              "-1"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 13,
+          "target": 12,
+          "source_port": "C13:OA",
+          "target_port": "C12:OA",
+          "midpoint4": [
+            "-2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "-4",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 10,
+          "from_cell": null,
+          "to_cell": 13,
+          "action": "source"
+        },
+        {
+          "cell": 13,
+          "from_cell": 10,
+          "to_cell": 12,
+          "action": "continue"
+        },
+        {
+          "cell": 12,
+          "from_cell": 13,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "history_from": "0011",
+      "history_to": "1011",
+      "source": 10,
+      "target": 11,
+      "previous_contact": "shared edge",
+      "length": 1,
+      "path": [
+        10,
+        11
+      ],
+      "all_simple_paths": [
+        [
+          10,
+          11
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "0",
+            "-1"
+          ]
+        ],
+        [
+          "-1",
+          "2"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 10,
+          "target": 11,
+          "source_port": "C10:OA",
+          "target_port": "C11:OA",
+          "midpoint4": [
+            "-3/2",
+            "1",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "-1",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 10,
+          "from_cell": null,
+          "to_cell": 11,
+          "action": "source"
+        },
+        {
+          "cell": 11,
+          "from_cell": 10,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "history_from": "0100",
+      "history_to": "0101",
+      "source": 2,
+      "target": 8,
+      "previous_contact": "point only",
+      "length": 2,
+      "path": [
+        2,
+        9,
+        8
+      ],
+      "all_simple_paths": [
+        [
+          2,
+          9,
+          8
+        ],
+        [
+          2,
+          3,
+          0,
+          1,
+          8
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 2,
+          "target": 9,
+          "source_port": "C2:OB",
+          "target_port": "C9:OB",
+          "midpoint4": [
+            "-1/2",
+            "0",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 9,
+          "target": 8,
+          "source_port": "C9:OA",
+          "target_port": "C8:OA",
+          "midpoint4": [
+            "0",
+            "-1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 2,
+          "from_cell": null,
+          "to_cell": 9,
+          "action": "source"
+        },
+        {
+          "cell": 9,
+          "from_cell": 2,
+          "to_cell": 8,
+          "action": "continue"
+        },
+        {
+          "cell": 8,
+          "from_cell": 9,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "history_from": "0100",
+      "history_to": "0110",
+      "source": 2,
+      "target": 6,
+      "previous_contact": "separated",
+      "length": 5,
+      "path": [
+        2,
+        3,
+        0,
+        4,
+        7,
+        6
+      ],
+      "all_simple_paths": [
+        [
+          2,
+          3,
+          0,
+          4,
+          7,
+          6
+        ],
+        [
+          2,
+          9,
+          8,
+          1,
+          0,
+          4,
+          7,
+          6
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 2,
+          "target": 3,
+          "source_port": "C2:OA",
+          "target_port": "C3:OA",
+          "midpoint4": [
+            "-1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 3,
+          "target": 0,
+          "source_port": "C3:OB",
+          "target_port": "C0:OB",
+          "midpoint4": [
+            "0",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 2,
+          "source": 0,
+          "target": 4,
+          "source_port": "C0:AB",
+          "target_port": "C4:AB",
+          "midpoint4": [
+            "1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "1",
+              "1"
+            ]
+          ]
+        },
+        {
+          "step": 3,
+          "source": 4,
+          "target": 7,
+          "source_port": "C4:OB",
+          "target_port": "C7:OB",
+          "midpoint4": [
+            "1/2",
+            "1",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "-1",
+              "2"
+            ]
+          ]
+        },
+        {
+          "step": 4,
+          "source": 7,
+          "target": 6,
+          "source_port": "C7:OA",
+          "target_port": "C6:OA",
+          "midpoint4": [
+            "1/2",
+            "3/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "2",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 2,
+          "from_cell": null,
+          "to_cell": 3,
+          "action": "source"
+        },
+        {
+          "cell": 3,
+          "from_cell": 2,
+          "to_cell": 0,
+          "action": "continue"
+        },
+        {
+          "cell": 0,
+          "from_cell": 3,
+          "to_cell": 4,
+          "action": "continue"
+        },
+        {
+          "cell": 4,
+          "from_cell": 0,
+          "to_cell": 7,
+          "action": "continue"
+        },
+        {
+          "cell": 7,
+          "from_cell": 4,
+          "to_cell": 6,
+          "action": "continue"
+        },
+        {
+          "cell": 6,
+          "from_cell": 7,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "history_from": "0100",
+      "history_to": "1100",
+      "source": 2,
+      "target": 3,
+      "previous_contact": "shared edge",
+      "length": 1,
+      "path": [
+        2,
+        3
+      ],
+      "all_simple_paths": [
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          9,
+          8,
+          1,
+          0,
+          3
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 2,
+          "target": 3,
+          "source_port": "C2:OA",
+          "target_port": "C3:OA",
+          "midpoint4": [
+            "-1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 2,
+          "from_cell": null,
+          "to_cell": 3,
+          "action": "source"
+        },
+        {
+          "cell": 3,
+          "from_cell": 2,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "history_from": "0101",
+      "history_to": "0111",
+      "source": 8,
+      "target": 12,
+      "previous_contact": "separated",
+      "length": 5,
+      "path": [
+        8,
+        9,
+        2,
+        10,
+        13,
+        12
+      ],
+      "all_simple_paths": [
+        [
+          8,
+          9,
+          2,
+          10,
+          13,
+          12
+        ],
+        [
+          8,
+          1,
+          0,
+          3,
+          2,
+          10,
+          13,
+          12
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "-2",
+          "1"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 8,
+          "target": 9,
+          "source_port": "C8:OA",
+          "target_port": "C9:OA",
+          "midpoint4": [
+            "0",
+            "-1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 9,
+          "target": 2,
+          "source_port": "C9:OB",
+          "target_port": "C2:OB",
+          "midpoint4": [
+            "-1/2",
+            "0",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 2,
+          "source": 2,
+          "target": 10,
+          "source_port": "C2:AB",
+          "target_port": "C10:AB",
+          "midpoint4": [
+            "-1",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "-2",
+              "1"
+            ]
+          ]
+        },
+        {
+          "step": 3,
+          "source": 10,
+          "target": 13,
+          "source_port": "C10:OB",
+          "target_port": "C13:OB",
+          "midpoint4": [
+            "-3/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "-1",
+              "-1"
+            ]
+          ]
+        },
+        {
+          "step": 4,
+          "source": 13,
+          "target": 12,
+          "source_port": "C13:OA",
+          "target_port": "C12:OA",
+          "midpoint4": [
+            "-2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "-4",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 8,
+          "from_cell": null,
+          "to_cell": 9,
+          "action": "source"
+        },
+        {
+          "cell": 9,
+          "from_cell": 8,
+          "to_cell": 2,
+          "action": "continue"
+        },
+        {
+          "cell": 2,
+          "from_cell": 9,
+          "to_cell": 10,
+          "action": "continue"
+        },
+        {
+          "cell": 10,
+          "from_cell": 2,
+          "to_cell": 13,
+          "action": "continue"
+        },
+        {
+          "cell": 13,
+          "from_cell": 10,
+          "to_cell": 12,
+          "action": "continue"
+        },
+        {
+          "cell": 12,
+          "from_cell": 13,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "history_from": "0101",
+      "history_to": "1101",
+      "source": 8,
+      "target": 9,
+      "previous_contact": "shared edge",
+      "length": 1,
+      "path": [
+        8,
+        9
+      ],
+      "all_simple_paths": [
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          1,
+          0,
+          3,
+          2,
+          9
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 8,
+          "target": 9,
+          "source_port": "C8:OA",
+          "target_port": "C9:OA",
+          "midpoint4": [
+            "0",
+            "-1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 8,
+          "from_cell": null,
+          "to_cell": 9,
+          "action": "source"
+        },
+        {
+          "cell": 9,
+          "from_cell": 8,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "history_from": "0110",
+      "history_to": "0111",
+      "source": 6,
+      "target": 12,
+      "previous_contact": "separated",
+      "length": 8,
+      "path": [
+        6,
+        7,
+        4,
+        0,
+        3,
+        2,
+        10,
+        13,
+        12
+      ],
+      "all_simple_paths": [
+        [
+          6,
+          7,
+          4,
+          0,
+          3,
+          2,
+          10,
+          13,
+          12
+        ],
+        [
+          6,
+          7,
+          4,
+          0,
+          1,
+          8,
+          9,
+          2,
+          10,
+          13,
+          12
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 6,
+          "target": 7,
+          "source_port": "C6:OA",
+          "target_port": "C7:OA",
+          "midpoint4": [
+            "1/2",
+            "3/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "2",
+              "2"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 7,
+          "target": 4,
+          "source_port": "C7:OB",
+          "target_port": "C4:OB",
+          "midpoint4": [
+            "1/2",
+            "1",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "-1",
+              "2"
+            ]
+          ]
+        },
+        {
+          "step": 2,
+          "source": 4,
+          "target": 0,
+          "source_port": "C4:AB",
+          "target_port": "C0:AB",
+          "midpoint4": [
+            "1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "1",
+              "1"
+            ]
+          ]
+        },
+        {
+          "step": 3,
+          "source": 0,
+          "target": 3,
+          "source_port": "C0:OB",
+          "target_port": "C3:OB",
+          "midpoint4": [
+            "0",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 4,
+          "source": 3,
+          "target": 2,
+          "source_port": "C3:OA",
+          "target_port": "C2:OA",
+          "midpoint4": [
+            "-1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 5,
+          "source": 2,
+          "target": 10,
+          "source_port": "C2:AB",
+          "target_port": "C10:AB",
+          "midpoint4": [
+            "-1",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "-2",
+              "1"
+            ]
+          ]
+        },
+        {
+          "step": 6,
+          "source": 10,
+          "target": 13,
+          "source_port": "C10:OB",
+          "target_port": "C13:OB",
+          "midpoint4": [
+            "-3/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "-1",
+              "-1"
+            ]
+          ]
+        },
+        {
+          "step": 7,
+          "source": 13,
+          "target": 12,
+          "source_port": "C13:OA",
+          "target_port": "C12:OA",
+          "midpoint4": [
+            "-2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "-4",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 6,
+          "from_cell": null,
+          "to_cell": 7,
+          "action": "source"
+        },
+        {
+          "cell": 7,
+          "from_cell": 6,
+          "to_cell": 4,
+          "action": "continue"
+        },
+        {
+          "cell": 4,
+          "from_cell": 7,
+          "to_cell": 0,
+          "action": "continue"
+        },
+        {
+          "cell": 0,
+          "from_cell": 4,
+          "to_cell": 3,
+          "action": "continue"
+        },
+        {
+          "cell": 3,
+          "from_cell": 0,
+          "to_cell": 2,
+          "action": "continue"
+        },
+        {
+          "cell": 2,
+          "from_cell": 3,
+          "to_cell": 10,
+          "action": "continue"
+        },
+        {
+          "cell": 10,
+          "from_cell": 2,
+          "to_cell": 13,
+          "action": "continue"
+        },
+        {
+          "cell": 13,
+          "from_cell": 10,
+          "to_cell": 12,
+          "action": "continue"
+        },
+        {
+          "cell": 12,
+          "from_cell": 13,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "history_from": "0110",
+      "history_to": "1110",
+      "source": 6,
+      "target": 7,
+      "previous_contact": "shared edge",
+      "length": 1,
+      "path": [
+        6,
+        7
+      ],
+      "all_simple_paths": [
+        [
+          6,
+          7
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "2",
+          "2"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 6,
+          "target": 7,
+          "source_port": "C6:OA",
+          "target_port": "C7:OA",
+          "midpoint4": [
+            "1/2",
+            "3/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "2",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 6,
+          "from_cell": null,
+          "to_cell": 7,
+          "action": "source"
+        },
+        {
+          "cell": 7,
+          "from_cell": 6,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "history_from": "0111",
+      "history_to": "1111",
+      "source": 12,
+      "target": 13,
+      "previous_contact": "shared edge",
+      "length": 1,
+      "path": [
+        12,
+        13
+      ],
+      "all_simple_paths": [
+        [
+          12,
+          13
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "-4",
+          "2"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 12,
+          "target": 13,
+          "source_port": "C12:OA",
+          "target_port": "C13:OA",
+          "midpoint4": [
+            "-2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "-4",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 12,
+          "from_cell": null,
+          "to_cell": 13,
+          "action": "source"
+        },
+        {
+          "cell": 13,
+          "from_cell": 12,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "history_from": "1000",
+      "history_to": "1001",
+      "source": 1,
+      "target": 3,
+      "previous_contact": "point only",
+      "length": 2,
+      "path": [
+        1,
+        0,
+        3
+      ],
+      "all_simple_paths": [
+        [
+          1,
+          0,
+          3
+        ],
+        [
+          1,
+          8,
+          9,
+          2,
+          3
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 1,
+          "target": 0,
+          "source_port": "C1:OA",
+          "target_port": "C0:OA",
+          "midpoint4": [
+            "1/2",
+            "0",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 0,
+          "target": 3,
+          "source_port": "C0:OB",
+          "target_port": "C3:OB",
+          "midpoint4": [
+            "0",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 1,
+          "from_cell": null,
+          "to_cell": 0,
+          "action": "source"
+        },
+        {
+          "cell": 0,
+          "from_cell": 1,
+          "to_cell": 3,
+          "action": "continue"
+        },
+        {
+          "cell": 3,
+          "from_cell": 0,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "history_from": "1000",
+      "history_to": "1010",
+      "source": 1,
+      "target": 5,
+      "previous_contact": "point only",
+      "length": 3,
+      "path": [
+        1,
+        0,
+        4,
+        5
+      ],
+      "all_simple_paths": [
+        [
+          1,
+          0,
+          4,
+          5
+        ],
+        [
+          1,
+          8,
+          9,
+          2,
+          3,
+          0,
+          4,
+          5
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 1,
+          "target": 0,
+          "source_port": "C1:OA",
+          "target_port": "C0:OA",
+          "midpoint4": [
+            "1/2",
+            "0",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 0,
+          "target": 4,
+          "source_port": "C0:AB",
+          "target_port": "C4:AB",
+          "midpoint4": [
+            "1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "1",
+              "1"
+            ]
+          ]
+        },
+        {
+          "step": 2,
+          "source": 4,
+          "target": 5,
+          "source_port": "C4:OA",
+          "target_port": "C5:OA",
+          "midpoint4": [
+            "1",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "2",
+              "-1"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 1,
+          "from_cell": null,
+          "to_cell": 0,
+          "action": "source"
+        },
+        {
+          "cell": 0,
+          "from_cell": 1,
+          "to_cell": 4,
+          "action": "continue"
+        },
+        {
+          "cell": 4,
+          "from_cell": 0,
+          "to_cell": 5,
+          "action": "continue"
+        },
+        {
+          "cell": 5,
+          "from_cell": 4,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "history_from": "1000",
+      "history_to": "1100",
+      "source": 1,
+      "target": 3,
+      "previous_contact": "point only",
+      "length": 2,
+      "path": [
+        1,
+        0,
+        3
+      ],
+      "all_simple_paths": [
+        [
+          1,
+          0,
+          3
+        ],
+        [
+          1,
+          8,
+          9,
+          2,
+          3
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 1,
+          "target": 0,
+          "source_port": "C1:OA",
+          "target_port": "C0:OA",
+          "midpoint4": [
+            "1/2",
+            "0",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 0,
+          "target": 3,
+          "source_port": "C0:OB",
+          "target_port": "C3:OB",
+          "midpoint4": [
+            "0",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 1,
+          "from_cell": null,
+          "to_cell": 0,
+          "action": "source"
+        },
+        {
+          "cell": 0,
+          "from_cell": 1,
+          "to_cell": 3,
+          "action": "continue"
+        },
+        {
+          "cell": 3,
+          "from_cell": 0,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "history_from": "1001",
+      "history_to": "1011",
+      "source": 3,
+      "target": 11,
+      "previous_contact": "point only",
+      "length": 3,
+      "path": [
+        3,
+        2,
+        10,
+        11
+      ],
+      "all_simple_paths": [
+        [
+          3,
+          2,
+          10,
+          11
+        ],
+        [
+          3,
+          0,
+          1,
+          8,
+          9,
+          2,
+          10,
+          11
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "-2",
+          "1"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 3,
+          "target": 2,
+          "source_port": "C3:OA",
+          "target_port": "C2:OA",
+          "midpoint4": [
+            "-1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 2,
+          "target": 10,
+          "source_port": "C2:AB",
+          "target_port": "C10:AB",
+          "midpoint4": [
+            "-1",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "-2",
+              "1"
+            ]
+          ]
+        },
+        {
+          "step": 2,
+          "source": 10,
+          "target": 11,
+          "source_port": "C10:OA",
+          "target_port": "C11:OA",
+          "midpoint4": [
+            "-3/2",
+            "1",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "-1",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 3,
+          "from_cell": null,
+          "to_cell": 2,
+          "action": "source"
+        },
+        {
+          "cell": 2,
+          "from_cell": 3,
+          "to_cell": 10,
+          "action": "continue"
+        },
+        {
+          "cell": 10,
+          "from_cell": 2,
+          "to_cell": 11,
+          "action": "continue"
+        },
+        {
+          "cell": 11,
+          "from_cell": 10,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "history_from": "1001",
+      "history_to": "1101",
+      "source": 3,
+      "target": 9,
+      "previous_contact": "point only",
+      "length": 2,
+      "path": [
+        3,
+        2,
+        9
+      ],
+      "all_simple_paths": [
+        [
+          3,
+          2,
+          9
+        ],
+        [
+          3,
+          0,
+          1,
+          8,
+          9
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 3,
+          "target": 2,
+          "source_port": "C3:OA",
+          "target_port": "C2:OA",
+          "midpoint4": [
+            "-1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 2,
+          "target": 9,
+          "source_port": "C2:OB",
+          "target_port": "C9:OB",
+          "midpoint4": [
+            "-1/2",
+            "0",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 3,
+          "from_cell": null,
+          "to_cell": 2,
+          "action": "source"
+        },
+        {
+          "cell": 2,
+          "from_cell": 3,
+          "to_cell": 9,
+          "action": "continue"
+        },
+        {
+          "cell": 9,
+          "from_cell": 2,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "history_from": "1010",
+      "history_to": "1011",
+      "source": 5,
+      "target": 11,
+      "previous_contact": "separated",
+      "length": 6,
+      "path": [
+        5,
+        4,
+        0,
+        3,
+        2,
+        10,
+        11
+      ],
+      "all_simple_paths": [
+        [
+          5,
+          4,
+          0,
+          3,
+          2,
+          10,
+          11
+        ],
+        [
+          5,
+          4,
+          0,
+          1,
+          8,
+          9,
+          2,
+          10,
+          11
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 5,
+          "target": 4,
+          "source_port": "C5:OA",
+          "target_port": "C4:OA",
+          "midpoint4": [
+            "1",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "2",
+              "-1"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 4,
+          "target": 0,
+          "source_port": "C4:AB",
+          "target_port": "C0:AB",
+          "midpoint4": [
+            "1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "1",
+              "1"
+            ]
+          ]
+        },
+        {
+          "step": 2,
+          "source": 0,
+          "target": 3,
+          "source_port": "C0:OB",
+          "target_port": "C3:OB",
+          "midpoint4": [
+            "0",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 3,
+          "source": 3,
+          "target": 2,
+          "source_port": "C3:OA",
+          "target_port": "C2:OA",
+          "midpoint4": [
+            "-1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 4,
+          "source": 2,
+          "target": 10,
+          "source_port": "C2:AB",
+          "target_port": "C10:AB",
+          "midpoint4": [
+            "-1",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "-2",
+              "1"
+            ]
+          ]
+        },
+        {
+          "step": 5,
+          "source": 10,
+          "target": 11,
+          "source_port": "C10:OA",
+          "target_port": "C11:OA",
+          "midpoint4": [
+            "-3/2",
+            "1",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "-1",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 5,
+          "from_cell": null,
+          "to_cell": 4,
+          "action": "source"
+        },
+        {
+          "cell": 4,
+          "from_cell": 5,
+          "to_cell": 0,
+          "action": "continue"
+        },
+        {
+          "cell": 0,
+          "from_cell": 4,
+          "to_cell": 3,
+          "action": "continue"
+        },
+        {
+          "cell": 3,
+          "from_cell": 0,
+          "to_cell": 2,
+          "action": "continue"
+        },
+        {
+          "cell": 2,
+          "from_cell": 3,
+          "to_cell": 10,
+          "action": "continue"
+        },
+        {
+          "cell": 10,
+          "from_cell": 2,
+          "to_cell": 11,
+          "action": "continue"
+        },
+        {
+          "cell": 11,
+          "from_cell": 10,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "history_from": "1010",
+      "history_to": "1110",
+      "source": 5,
+      "target": 7,
+      "previous_contact": "point only",
+      "length": 2,
+      "path": [
+        5,
+        4,
+        7
+      ],
+      "all_simple_paths": [
+        [
+          5,
+          4,
+          7
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "-1",
+            "-1"
+          ]
+        ],
+        [
+          "0",
+          "3"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 5,
+          "target": 4,
+          "source_port": "C5:OA",
+          "target_port": "C4:OA",
+          "midpoint4": [
+            "1",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "2",
+              "-1"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 4,
+          "target": 7,
+          "source_port": "C4:OB",
+          "target_port": "C7:OB",
+          "midpoint4": [
+            "1/2",
+            "1",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "-1",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 5,
+          "from_cell": null,
+          "to_cell": 4,
+          "action": "source"
+        },
+        {
+          "cell": 4,
+          "from_cell": 5,
+          "to_cell": 7,
+          "action": "continue"
+        },
+        {
+          "cell": 7,
+          "from_cell": 4,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "history_from": "1011",
+      "history_to": "1111",
+      "source": 11,
+      "target": 13,
+      "previous_contact": "point only",
+      "length": 2,
+      "path": [
+        11,
+        10,
+        13
+      ],
+      "all_simple_paths": [
+        [
+          11,
+          10,
+          13
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "0",
+            "1"
+          ],
+          [
+            "-1",
+            "-1"
+          ]
+        ],
+        [
+          "-3",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 11,
+          "target": 10,
+          "source_port": "C11:OA",
+          "target_port": "C10:OA",
+          "midpoint4": [
+            "-3/2",
+            "1",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "-1",
+              "2"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 10,
+          "target": 13,
+          "source_port": "C10:OB",
+          "target_port": "C13:OB",
+          "midpoint4": [
+            "-3/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "-1",
+              "-1"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 11,
+          "from_cell": null,
+          "to_cell": 10,
+          "action": "source"
+        },
+        {
+          "cell": 10,
+          "from_cell": 11,
+          "to_cell": 13,
+          "action": "continue"
+        },
+        {
+          "cell": 13,
+          "from_cell": 10,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "history_from": "1100",
+      "history_to": "1101",
+      "source": 3,
+      "target": 9,
+      "previous_contact": "point only",
+      "length": 2,
+      "path": [
+        3,
+        2,
+        9
+      ],
+      "all_simple_paths": [
+        [
+          3,
+          2,
+          9
+        ],
+        [
+          3,
+          0,
+          1,
+          8,
+          9
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 3,
+          "target": 2,
+          "source_port": "C3:OA",
+          "target_port": "C2:OA",
+          "midpoint4": [
+            "-1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 2,
+          "target": 9,
+          "source_port": "C2:OB",
+          "target_port": "C9:OB",
+          "midpoint4": [
+            "-1/2",
+            "0",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 3,
+          "from_cell": null,
+          "to_cell": 2,
+          "action": "source"
+        },
+        {
+          "cell": 2,
+          "from_cell": 3,
+          "to_cell": 9,
+          "action": "continue"
+        },
+        {
+          "cell": 9,
+          "from_cell": 2,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "history_from": "1100",
+      "history_to": "1110",
+      "source": 3,
+      "target": 7,
+      "previous_contact": "point only",
+      "length": 3,
+      "path": [
+        3,
+        0,
+        4,
+        7
+      ],
+      "all_simple_paths": [
+        [
+          3,
+          0,
+          4,
+          7
+        ],
+        [
+          3,
+          2,
+          9,
+          8,
+          1,
+          0,
+          4,
+          7
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "0",
+            "-1"
+          ],
+          [
+            "-1",
+            "0"
+          ]
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 3,
+          "target": 0,
+          "source_port": "C3:OB",
+          "target_port": "C0:OB",
+          "midpoint4": [
+            "0",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 0,
+          "target": 4,
+          "source_port": "C0:AB",
+          "target_port": "C4:AB",
+          "midpoint4": [
+            "1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "1",
+              "1"
+            ]
+          ]
+        },
+        {
+          "step": 2,
+          "source": 4,
+          "target": 7,
+          "source_port": "C4:OB",
+          "target_port": "C7:OB",
+          "midpoint4": [
+            "1/2",
+            "1",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "-1",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 3,
+          "from_cell": null,
+          "to_cell": 0,
+          "action": "source"
+        },
+        {
+          "cell": 0,
+          "from_cell": 3,
+          "to_cell": 4,
+          "action": "continue"
+        },
+        {
+          "cell": 4,
+          "from_cell": 0,
+          "to_cell": 7,
+          "action": "continue"
+        },
+        {
+          "cell": 7,
+          "from_cell": 4,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "history_from": "1101",
+      "history_to": "1111",
+      "source": 9,
+      "target": 13,
+      "previous_contact": "point only",
+      "length": 3,
+      "path": [
+        9,
+        2,
+        10,
+        13
+      ],
+      "all_simple_paths": [
+        [
+          9,
+          2,
+          10,
+          13
+        ],
+        [
+          9,
+          8,
+          1,
+          0,
+          3,
+          2,
+          10,
+          13
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        [
+          "-2",
+          "1"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 9,
+          "target": 2,
+          "source_port": "C9:OB",
+          "target_port": "C2:OB",
+          "midpoint4": [
+            "-1/2",
+            "0",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 2,
+          "target": 10,
+          "source_port": "C2:AB",
+          "target_port": "C10:AB",
+          "midpoint4": [
+            "-1",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "-2",
+              "1"
+            ]
+          ]
+        },
+        {
+          "step": 2,
+          "source": 10,
+          "target": 13,
+          "source_port": "C10:OB",
+          "target_port": "C13:OB",
+          "midpoint4": [
+            "-3/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "-1",
+              "-1"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 9,
+          "from_cell": null,
+          "to_cell": 2,
+          "action": "source"
+        },
+        {
+          "cell": 2,
+          "from_cell": 9,
+          "to_cell": 10,
+          "action": "continue"
+        },
+        {
+          "cell": 10,
+          "from_cell": 2,
+          "to_cell": 13,
+          "action": "continue"
+        },
+        {
+          "cell": 13,
+          "from_cell": 10,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "history_from": "1110",
+      "history_to": "1111",
+      "source": 7,
+      "target": 13,
+      "previous_contact": "separated",
+      "length": 6,
+      "path": [
+        7,
+        4,
+        0,
+        3,
+        2,
+        10,
+        13
+      ],
+      "all_simple_paths": [
+        [
+          7,
+          4,
+          0,
+          3,
+          2,
+          10,
+          13
+        ],
+        [
+          7,
+          4,
+          0,
+          1,
+          8,
+          9,
+          2,
+          10,
+          13
+        ]
+      ],
+      "all_simple_path_transports_equal": true,
+      "transport": [
+        [
+          [
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "0"
+          ]
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "steps": [
+        {
+          "step": 0,
+          "source": 7,
+          "target": 4,
+          "source_port": "C7:OB",
+          "target_port": "C4:OB",
+          "midpoint4": [
+            "1/2",
+            "1",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "1",
+                "1"
+              ],
+              [
+                "0",
+                "-1"
+              ]
+            ],
+            [
+              "-1",
+              "2"
+            ]
+          ]
+        },
+        {
+          "step": 1,
+          "source": 4,
+          "target": 0,
+          "source_port": "C4:AB",
+          "target_port": "C0:AB",
+          "midpoint4": [
+            "1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "1",
+              "1"
+            ]
+          ]
+        },
+        {
+          "step": 2,
+          "source": 0,
+          "target": 3,
+          "source_port": "C0:OB",
+          "target_port": "C3:OB",
+          "midpoint4": [
+            "0",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 3,
+          "source": 3,
+          "target": 2,
+          "source_port": "C3:OA",
+          "target_port": "C2:OA",
+          "midpoint4": [
+            "-1/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "step": 4,
+          "source": 2,
+          "target": 10,
+          "source_port": "C2:AB",
+          "target_port": "C10:AB",
+          "midpoint4": [
+            "-1",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "-1",
+                "0"
+              ],
+              [
+                "1",
+                "1"
+              ]
+            ],
+            [
+              "-2",
+              "1"
+            ]
+          ]
+        },
+        {
+          "step": 5,
+          "source": 10,
+          "target": 13,
+          "source_port": "C10:OB",
+          "target_port": "C13:OB",
+          "midpoint4": [
+            "-3/2",
+            "1/2",
+            "0",
+            "0"
+          ],
+          "reflection": [
+            [
+              [
+                "0",
+                "-1"
+              ],
+              [
+                "-1",
+                "0"
+              ]
+            ],
+            [
+              "-1",
+              "-1"
+            ]
+          ]
+        }
+      ],
+      "continuations": [
+        {
+          "cell": 7,
+          "from_cell": null,
+          "to_cell": 4,
+          "action": "source"
+        },
+        {
+          "cell": 4,
+          "from_cell": 7,
+          "to_cell": 0,
+          "action": "continue"
+        },
+        {
+          "cell": 0,
+          "from_cell": 4,
+          "to_cell": 3,
+          "action": "continue"
+        },
+        {
+          "cell": 3,
+          "from_cell": 0,
+          "to_cell": 2,
+          "action": "continue"
+        },
+        {
+          "cell": 2,
+          "from_cell": 3,
+          "to_cell": 10,
+          "action": "continue"
+        },
+        {
+          "cell": 10,
+          "from_cell": 2,
+          "to_cell": 13,
+          "action": "continue"
+        },
+        {
+          "cell": 13,
+          "from_cell": 10,
+          "to_cell": null,
+          "action": "sink"
+        }
+      ]
+    }
+  ],
+  "central_cycle": [
+    0,
+    1,
+    8,
+    9,
+    2,
+    3
+  ],
+  "census": {
+    "local_ports": 42,
+    "internal_port_occurrences": 28,
+    "external_ports": 14,
+    "requests": 32,
+    "route_length_distribution": {
+      "1": 10,
+      "2": 12,
+      "3": 4,
+      "4": 1,
+      "5": 2,
+      "6": 2,
+      "8": 1
+    },
+    "simple_routes_checked": 54,
+    "requests_with_alternative_simple_route": 22,
+    "shortest_route_seam_traversals": 80,
+    "used_seams": 13,
+    "max_seam_load": 12,
+    "base_degrees": {
+      "1": 4,
+      "2": 6,
+      "3": 4
+    },
+    "label_cover_vertices": 70,
+    "label_cover_edges": 70,
+    "label_cover_components": 5
+  },
+  "negative_controls": [
+    "Wrong full label map rejected",
+    "Point-only contact rejected as seam",
+    "Disjoint-cell shortcut rejected"
+  ],
+  "limitations": [
+    "32 requests are inherited from the bit cube, not derived physical degrees of freedom.",
+    "Coincident histories are not identified or deleted.",
+    "A shared seam is not automatically an independent channel for every routed request.",
+    "Geometry does not select the shortest-route policy or an outgoing neighbor at a junction.",
+    "The five-sheet cover is a construction on vertex labels, not the spatial union of simplex cells.",
+    "No native P/N/E port rule, independent 32-wire carrier, or nontrivial Hopf bundle is established."
+  ],
+  "source_sha256": "db3abe95bd60d01e8a3055cd4a559f55b7e276ede44c8e8ac3e25b5703946f46",
+  "checks": {
+    "duplicate_cells_keep_identical_ordered_frames": 2,
+    "source_cell_coordinates": 14,
+    "no_three_cells_share_seam": 1,
+    "all_contacts_reconstructed": 1,
+    "seam_reflection_involutive": 14,
+    "port_point_fixed": 14,
+    "seam_is_exact_relative_frame": 14,
+    "exact_shared_vertices_only": 28,
+    "whole_labelled_four_simplex_matches": 28,
+    "centroid_transport": 28,
+    "barycentric_transport": 112,
+    "port_census": 1,
+    "base_connected": 1,
+    "base_cycle_rank_one": 1,
+    "request_reachable": 32,
+    "request_unique_shortest_route": 32,
+    "all_simple_routes_have_target_transport": 54,
+    "route_reverse_recovers_frame": 54,
+    "paired_ports_same_full_point": 80,
+    "opaque_payload_round_trip": 32,
+    "all_32_history_requests_retained": 1,
+    "request_identity_injective": 1,
+    "cycle_return_identity": 1,
+    "cover_locally_bijective": 70,
+    "label_constant_in_source_frames": 70,
+    "five_trivial_cover_components": 1,
+    "wrong_label_transport_rejected": 1,
+    "point_contact_not_a_seam": 1,
+    "disjoint_cells_not_a_seam": 1,
+    "three_way_routing_junctions_exist": 1,
+    "not_32_physical_seams": 1
+  },
+  "total_checks": 692,
+  "native_su32_records_evaluated": 0
+}</script><script>
+'use strict';
+const D=JSON.parse(document.getElementById('data').textContent),$=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg';
+const C=Object.fromEntries(D.cells.map(c=>[c.id,c])),H=Object.fromEntries(D.histories.map(h=>[h.bits,h]));
+const N=x=>{if(typeof x==='number')return x;const a=String(x).split('/');return +a[0]/(a[1]?+a[1]:1)};
+const world=p=>[N(p[0])+N(p[1])/2,Math.sqrt(3)*N(p[1])/2];
+const all=D.cells.flatMap(c=>c.triangle.map(world)),xmin=Math.min(...all.map(p=>p[0])),xmax=Math.max(...all.map(p=>p[0])),ymin=Math.min(...all.map(p=>p[1])),ymax=Math.max(...all.map(p=>p[1]));
+const scale=Math.min(785/(xmax-xmin),525/(ymax-ymin));
+const screen=p=>{const x=world(p);return [450+scale*(x[0]-(xmin+xmax)/2),330-scale*(x[1]-(ymin+ymax)/2)]};
+let id=0,choice=0,position=0,reversed=false;
+function svg(tag,attrs={},text){const x=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))x.setAttribute(k,v);if(text!==undefined)x.textContent=text;$('scene').appendChild(x);return x}
+function line(a,b,attrs={}){a=screen(a);b=screen(b);return svg('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],...attrs})}
+function seam(a,b){return D.seams.find(s=>s.cells.includes(a)&&s.cells.includes(b))}
+function current(){let p=[...D.routes[id].all_simple_paths[choice]];return reversed?p.reverse():p}
+function routeOptions(){const r=D.routes[id];$('route').replaceChildren();r.all_simple_paths.forEach((p,i)=>{let o=document.createElement('option');o.value=i;o.textContent=(i===0?'Shortest':'Other simple route')+' · '+(p.length-1)+' seams';$('route').appendChild(o)});$('route').value=choice}
+D.routes.forEach(r=>{let o=document.createElement('option');o.value=r.id;o.textContent=String(r.id+1).padStart(2,'0')+' · '+r.history_from+' ↔ '+r.history_to+' · '+r.length+' seams';$('request').appendChild(o)});
+function showPort(s,a,b){const pa=D.ports.find(p=>p.cell===a&&p.neighbor===b),pb=D.ports.find(p=>p.cell===b&&p.neighbor===a);$('portDetail').innerHTML='<p>'+pa.id+' → '+pb.id+'</p><pre>shared midpoint = ('+s.midpoint4.join(', ')+')\nreflection = '+JSON.stringify(s.reflection)+'</pre><p class="muted">The geometric point agrees exactly on both sides. Port identity also retains the cell, ordered inherited labels, request, and route.</p>'}
+function render(){const r=D.routes[id],p=current(),kind=$('lift').value;position=Math.min(position,p.length-1);const cell=p[position];
+$('routeTitle').textContent=(reversed?r.history_to:r.history_from)+' → '+(reversed?r.history_from:r.history_to)+' · '+(p.length-1)+' seam crossings';
+$('step').textContent='Cell '+(position+1)+' of '+p.length+' · C'+cell;$('prev').disabled=position===0;$('next').disabled=position===p.length-1;
+$('path').replaceChildren();p.forEach((v,k)=>{if(k)$('path').append(' → ');let b=document.createElement('button');b.textContent='C'+v;b.className=k===position?'active':'';b.onclick=()=>{position=k;render()};$('path').appendChild(b)});
+$('scene').replaceChildren();
+for(const c of D.cells){const active=c.id===cell,on=p.includes(c.id);svg('polygon',{points:c.triangle.map(v=>screen(v).join(',')).join(' '),fill:active?'#698bb2':on?'#c29863':'#b0c1cf','fill-opacity':active?.28:on?.13:.035,stroke:'#6e8799','stroke-width':1.2});}
+if($('loads').checked)for(const s of D.seams){const count=s.shortest_route_load;const l=line(s.edge[0],s.edge[1],{stroke:'#ac8dc9','stroke-width':1+count*.5,opacity:count?.8:.15,class:'seam'});l.addEventListener('click',()=>showPort(s,...s.cells));const [x,y]=screen(s.midpoint4);svg('text',{x:x+7,y:y-7,fill:'#e0c3ff','font-size':13},String(count));}
+for(let k=0;k<p.length-1;k++){const a=p[k],b=p[k+1],s=seam(a,b);const pts=[C[a].centers4[kind],s.midpoint4,C[b].centers4[kind]];svg('polyline',{points:pts.map(v=>screen(v).join(',')).join(' '),fill:'none',stroke:k<position?'#86c9ff':'#ffcd86','stroke-width':4,'stroke-linejoin':'round','stroke-dasharray':k<position?'':'8 4'});}
+if($('ports').checked){const done=new Set();for(const port of D.ports){const key=port.midpoint4.join(',');if(done.has(key))continue;done.add(key);const [x,y]=screen(port.midpoint4);let node=port.external?svg('rect',{x:x-3,y:y-3,width:6,height:6,fill:'#152432',stroke:'#8da4b5','stroke-width':1}):svg('circle',{cx:x,cy:y,r:4,fill:'#99d3ce',stroke:'#101b24','stroke-width':1.2,class:'port'});if(!port.external)node.addEventListener('click',()=>showPort(seam(port.cell,port.neighbor),port.cell,port.neighbor));}}
+for(const c of D.cells){const [x,y]=screen(c.centers4[kind]);svg('text',{x,y:y-8,'text-anchor':'middle',fill:c.id===cell?'#ffffff':'#d8e4ed','font-size':14,'font-weight':c.id===cell?600:400},'C'+c.id);if(c.histories.length>1)svg('text',{x,y:y+10,'text-anchor':'middle',fill:'#a5c9e8','font-size':11},'2 histories');}
+const now=screen(C[cell].centers4[kind]);svg('circle',{cx:now[0],cy:now[1],r:6,fill:'#ffcd86',stroke:'#121e29','stroke-width':2});
+$('state').innerHTML='<p>Request '+(id+1)+' · '+r.history_from+' ↔ '+r.history_to+'</p><p>Current geometric cell: C'+cell+'<br>Retained construction histories here: <code>'+C[cell].histories.join(', ')+'</code></p><p>Continuation: '+(position+1<p.length?'cross the '+seam(cell,p[position+1]).labels_left.join('–')+' seam into C'+p[position+1]:'deliver to the target; do not erase route history')+'.</p>';
+$('values').innerHTML=C[cell].vertices4[kind].map((v,k)=>'<tr><td>'+['O','A','B','D','E'][k]+'</td><td>('+v.join(', ')+')</td></tr>').join('');
+if(position+1<p.length)showPort(seam(cell,p[position+1]),cell,p[position+1]);else $('portDetail').innerHTML='<p>Target reached. Reverse direction to verify recovery.</p>';
+const t=r.transport;$('transform').textContent='Forward endpoint map in (u,v):\n'+JSON.stringify(t)+'\nHidden coordinates unchanged.\nReverse traversal uses its exact affine inverse.\nEvery listed alternative has this same forward map.';
+$('scope').innerHTML='<p>'+r.all_simple_paths.length+' simple route'+(r.all_simple_paths.length===1?'':'s')+' for this request. '+(r.all_simple_paths.length===2?'Switch routes to compare the geometric paths; their full frame transports agree.':'The contact graph gives one simple route for these endpoints.')+'</p><p>The shortest-route rule selects a path. Reflection geometry determines its transport.</p>';
+$('geometryFoot').textContent='32 requests use 80 seam crossings in total and 13 of the 14 seams. Busiest seam: C2–C3, used by 12 requests. Shared ports require request labels; this does not establish independent physical capacity.';
+}
+$('request').onchange=()=>{id=+$('request').value;choice=0;position=0;reversed=false;routeOptions();render()};$('route').onchange=()=>{choice=+$('route').value;position=0;render()};$('reverse').onclick=()=>{reversed=!reversed;position=0;render()};$('prev').onclick=()=>{position=Math.max(0,position-1);render()};$('next').onclick=()=>{position=Math.min(current().length-1,position+1);render()};for(const el of ['lift','ports','loads'])$(el).onchange=render;
+routeOptions();render();window.auditViewer={data:D,getState:()=>({id,choice,position,reversed,path:current()}),select:(i)=>{id=i;choice=0;position=0;reversed=false;$('request').value=i;routeOptions();render()}};
+</script></body></html>
