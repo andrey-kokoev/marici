@@ -1,5 +1,7 @@
 # Explore the constructions
 
+**[Isotope wiring editor](/experiments/isotope-wiring)** — edit isotope cells, inspect counts, compare wiring definitions, and import or export projects.
+
 **[Isotope / R-space viewer](/experiments/isotope-space)** — explore native isotope constructions and the separate R-space tessellation. Includes controls, provenance, and the boundary between their coordinate frames.
 
 Interactive guides to declared geometry, retained information, and coefficient readouts. **These are mathematical construction models—not established particles, mass predictions, or nuclear binding.** The previews open full-screen workbenches; drag to rotate and use their step controls. These families are separate experiments, not successive stages of one physical construction.

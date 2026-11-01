@@ -29,6 +29,7 @@ export default defineConfig({
       { text: 'Constructions', link: '/experiments/' },
       { text: 'Isotope / R-space', link: '/experiments/isotope-space' },
       { text: 'Matter', items: [
+        { text: 'Isotope wiring editor', link: '/experiments/isotope-wiring' },
         { text: 'Element & isotope catalogue', link: '/experiments/matter-catalog.html', target: '_self' },
         { text: 'Standard Model graph', link: '/matter/standard-model-graph' },
       ] },
