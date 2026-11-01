@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tetrahedral–octahedral cellulation</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0b1020;color:#e6edf7;font:14px system-ui}main{height:100dvh;display:flex;flex-direction:column}header{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:12px 18px;background:#181e2b}a{color:#aacfff}label{display:flex;align-items:center;gap:6px}input[type=range]{width:100px}button{color:inherit;background:#283448;border:1px solid #607089;border-radius:4px;padding:6px 10px;cursor:pointer}#viewport{flex:1;min-height:0;position:relative;overflow:hidden}canvas{display:block;touch-action:none}#error{position:absolute;top:20px;left:20px}noscript{padding:20px}input,button,a{accent-color:#81baff}:focus-visible{outline:2px solid #81baff;outline-offset:3px}
+</style></head><body><main>
+<header aria-label="Cellulation controls">
+<a href="./index.html">← Views</a>
+<label><input id="tetrahedra" type="checkbox" checked>Tetrahedra · 119</label>
+<label><input id="octahedra" type="checkbox" checked>Octahedra · 56</label>
+<label><input id="edges" type="checkbox" checked>Edges</label>
+<label>Faces <input id="opacity" aria-label="Face opacity" type="range" min="0" max="1" step=".01" value=".12"></label>
+<button id="reset" type="button">Reset view</button>
+</header>
+<div id="viewport" aria-label="Three-dimensional tetrahedral–octahedral cellulation"><p id="error" role="status">Loading geometry…</p></div>
+<noscript>JavaScript and WebGL are required for this viewer.</noscript>
+</main><script type="module" src="./cellulation.js"></script></body></html>

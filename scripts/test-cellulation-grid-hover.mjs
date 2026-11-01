@@ -1,0 +1,41 @@
+import assert from 'node:assert/strict';
+import {chromium} from '@playwright/test';
+import * as T from 'three';
+import {buildCellulationStep} from '../research/realization-tower/cellulation-steps.mjs';
+import {buildCellulationNeighborhood} from '../research/realization-tower/cellulation-neighborhood.mjs';
+const browser=await chromium.launch();
+try{
+ const page=await browser.newPage({viewport:{width:1680,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(process.env.NORMAL_RAY_URL??'http://127.0.0.1:8777/research/realization-tower/normal-ray.html');await page.waitForFunction(()=>document.querySelector('#process-select')&&!document.querySelector('#process-select').disabled);
+ await page.selectOption('#process-select','sulfur-32');await page.selectOption('#sulfur-32-view','cellulation');await page.waitForFunction(()=>Math.abs(Math.hypot(...(window.normalRayAudit?.cellulationAudit?.translation??[]))-8)<1e-8);
+ await page.locator('#cellulation-next').click();await page.waitForFunction(()=>normalRayAudit.cellulationAudit.step===2);await page.locator('#viewport-recenter').click();await page.waitForTimeout(100);
+ const toggle=page.getByLabel('Highlight grid edges on dot hover',{exact:true}),seed=page.locator('[data-dot-lock="seed"]');assert.equal(await toggle.isChecked(),false);
+ await seed.hover();await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>normalRayAudit.cellulationAudit.gridHover??null),null);
+ await toggle.check();await page.locator('#zoom-out').click();await page.locator('#zoom-out').click();await page.waitForTimeout(100);await page.evaluate(()=>{window.gridBeforeHover=normalRayAudit.cellulationAudit.grid;});await seed.hover();await page.waitForFunction(()=>normalRayAudit.cellulationAudit.gridHover?.id==='seed');
+ assert.equal(await page.evaluate(()=>normalRayAudit.cellulationAudit.gridHover.edges),12);assert.equal(await page.evaluate(()=>normalRayAudit.cellulationAudit.grid===window.gridBeforeHover),true);assert.equal(await page.evaluate(()=>normalRayViewAudit.cellulationLock),null);
+ const labels=await page.evaluate(()=>normalRayAudit.cellulationAudit.gridHover.labels);assert.equal(labels.length,13);assert.equal(await page.locator('[data-grid-label="dot"]').innerText(),'FCC (0, 0, 0)');assert.equal(await page.locator('[data-grid-label="edge"]:visible').count(),12);
+ assert.equal(await page.locator('#cellulation-grid-labels').evaluate(el=>getComputedStyle(el).pointerEvents),'none');
+ await page.screenshot({path:'test-results/cellulation-grid-labels.png'});
+ const v=await page.evaluate(()=>normalRayViewAudit),translation=await page.evaluate(()=>normalRayAudit.cellulationAudit.translation),box=await page.locator('canvas').first().boundingBox();
+ const camera=new T.OrthographicCamera(...v.frustum,.01,200);camera.zoom=v.zoom;camera.up.fromArray(v.camera.up);camera.position.fromArray(v.target).add(new T.Vector3(...v.camera.offset));camera.lookAt(new T.Vector3(...v.target));camera.updateProjectionMatrix();camera.updateMatrixWorld();
+ const points=buildCellulationNeighborhood(buildCellulationStep(2).cells).edges.flatMap(e=>e.vertices).map(p=>new T.Vector3(...p).add(new T.Vector3(...translation)).project(camera)).map(p=>({x:(p.x+1)*box.width/2,y:(1-p.y)*box.height/2}));
+ const bareVertex=points.find(p=>p.x>40&&p.x<box.width-80&&p.y>160&&p.y<box.height-40&&v.cellulationDots.every(d=>Math.hypot(d.x-p.x,d.y-p.y)>35));assert(bareVertex);
+ await page.mouse.move(box.x+bareVertex.x,box.y+bareVertex.y);await page.waitForFunction(()=>!normalRayAudit.cellulationAudit.gridHover);await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>normalRayAudit.cellulationAudit.gridHover??null),null);assert.equal(await page.locator('[data-grid-label]').count(),0);
+ const vertexToggle=page.getByLabel('Show grid vertex candidates on hover',{exact:true});assert.equal(await vertexToggle.isChecked(),false);assert.equal(await page.evaluate(()=>normalRayViewAudit.gridVertexCandidate),null);
+ await vertexToggle.check();await page.mouse.move(box.x+bareVertex.x,box.y+bareVertex.y);
+ await page.waitForFunction(()=>normalRayViewAudit.gridVertexCandidate!==null);
+ const candidate=await page.evaluate(()=>normalRayViewAudit.gridVertexCandidate);assert(candidate.latticePoint.every(Number.isInteger));assert(Math.hypot(candidate.x-bareVertex.x,candidate.y-bareVertex.y)<=10);
+ assert.equal(await page.locator('#grid-vertex-candidate .cellulation-grid-label').innerText(),`FCC (${candidate.latticePoint.join(', ')})`);
+ assert.equal(await page.locator('#grid-vertex-candidate').evaluate(el=>getComputedStyle(el).pointerEvents),'none');assert.equal(await page.evaluate(()=>normalRayAudit.cellulationAudit.grid===window.gridBeforeHover),true);
+ assert.deepEqual(await page.evaluate(()=>normalRayViewAudit.cellulationDots.map(d=>d.id)),v.cellulationDots.map(d=>d.id));
+ await page.screenshot({path:'test-results/cellulation-grid-vertex-candidate.png'});
+ await vertexToggle.evaluate(el=>el.click());await page.waitForFunction(()=>normalRayViewAudit.gridVertexCandidate===null);assert.equal(await page.locator('#grid-vertex-candidate').count(),0);
+ await page.mouse.move(box.x+bareVertex.x+1,box.y+bareVertex.y);await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>normalRayViewAudit.gridVertexCandidate),null);
+ await vertexToggle.check();
+ await seed.hover();await page.waitForFunction(()=>normalRayAudit.cellulationAudit.gridHover?.id==='seed');
+ assert.equal(await page.evaluate(()=>normalRayViewAudit.gridVertexCandidate),null);
+ // Disable without moving the pointer, to verify the active highlight disappears.
+ await toggle.evaluate(el=>el.click());await page.waitForFunction(()=>!normalRayAudit.cellulationAudit.gridHover);
+ await toggle.check();await page.reload();await page.waitForFunction(()=>window.normalRayAudit?.cellulationAudit?.step===2);assert.equal(await toggle.isChecked(),true);assert.equal(await vertexToggle.isChecked(),true);assert.equal(await page.evaluate(()=>normalRayAudit.cellulationAudit.gridHover??null),null);
+ assert.deepEqual(errors,[]);console.log('PASS: saved opt-in highlights 12 incident grid edges only from an existing dot; bare grid vertices show only a temporary hollow candidate and FCC position, without changing construction dots or rebuilding the grid.');
+}finally{await browser.close();}
