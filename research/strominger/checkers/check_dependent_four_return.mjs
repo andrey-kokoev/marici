@@ -60,7 +60,7 @@ const result={schema:'strominger.dependent-four-return.v1',passed:true,
  theorem:'For every type S and G:S→S, shift^4 on Σ a, G^4(a)≡a is homotopic to identity, without isSet.',
  proofMethod:'Explicit cubical dependent square and its first shift-equivariance law via relative hcomp naturality, with source-selected four-arrow seed fixture and non-erasure lemma.',
  firstHigherEquivariance:'cong shift (shift-four x) ≡ shift-four (shift x)' },
- residuals:['Full higher-coherent C4 action not established beyond the first equivariance square','No source-canonical successor selection','No directed-occurrence-to-identity-path conversion','No edge-five payload return operator or period-four closure supplied'],sourceHashes};
+ residuals:['Identification of this specific return homotopy with the coherence of the separately constructed torsor action is not established','No source-canonical successor selection','No directed-occurrence-to-identity-path conversion','No edge-five payload return operator or period-four closure supplied'],sourceHashes};
 await fs.mkdir('research/strominger/results/dependent-four-return-v1',{recursive:true});
 await fs.writeFile('research/strominger/results/dependent-four-return-v1/verification.json',JSON.stringify(result,null,2)+'\n');
 console.log(JSON.stringify({passed:true,histories:closed.length,orbitSizes,circleChecks:circle.length,d5Checks:d5.length,agda:result.agda,residuals:result.residuals},null,2));

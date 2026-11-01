@@ -1,5 +1,5 @@
 param(
-  [ValidateSet('DependentFourReturn', 'CoherentFourReturn')][string]$Module = 'DependentFourReturn',
+  [ValidateSet('DependentFourReturn', 'CoherentFourReturn', 'TwistedRouteReturn')][string]$Module = 'DependentFourReturn',
   [switch]$Fresh
 )
 $ErrorActionPreference = 'Stop'
@@ -12,7 +12,11 @@ $Tools = Join-Path $env:USERPROFILE 'tools/cubical-agda'
 $Agda = Join-Path $Tools 'agda-2.8.0/agda.exe'
 $Library = Join-Path $Tools 'cubical-0.9'
 $Source = Join-Path $Root "research/strominger/agda/$Module.agda"
-$ResultName = if ($Module -eq 'DependentFourReturn') { 'dependent-four-return-v1' } else { 'coherent-four-return-v1' }
+$ResultName = switch ($Module) {
+  'DependentFourReturn' { 'dependent-four-return-v1' }
+  'CoherentFourReturn' { 'coherent-four-return-v1' }
+  'TwistedRouteReturn' { 'su32-edge5-twisted-return-v1' }
+}
 $Results = Join-Path $Root "research/strominger/results/$ResultName"
 $Log = Join-Path $Results 'agda.log'
 $Receipt = Join-Path $Results 'agda.json'
