@@ -1,6 +1,25 @@
 // Owned imperative renderer following examples/threejs-reference/scene.js.
 // Uses the matched, bundled r180/TrackballControls pair as in tetrahedral-planes.
 import * as T from 'three';
+import {buildCellulationNeighborhood,cellulationIncidentEdges} from '../../research/realization-tower/cellulation-neighborhood.mjs';
+import {cellulationResetPose} from '../../research/realization-tower/cellulation-camera.mjs';
+import {buildCellulationStep,cellulationStepEnvelope} from '../../research/realization-tower/cellulation-steps.mjs';
+import {buildRepeatingCellulation,cellulationWindow} from '../../research/realization-tower/repeating-cellulation.mjs';
+import {createRetainedExpansion,retainedExpansionEnvelope,retainedExpansionSquareEnvelope} from './retained-expansion-renderer.js';
+import {createCellulation} from './cellulation-renderer.js';
+import {layoutNNPEComposition} from '../../research/realization-tower/sulfur-nnpe-layout.mjs';
+import {createNNPEComposition} from './nnpe-composition-renderer.js';
+import {buildNNPEComposition} from '../../research/realization-tower/sulfur-nnpe-composition.mjs';
+import {buildBeryllium9Wiring} from '../../research/realization-tower/beryllium-9-wiring-procedure.mjs';
+import {createBeryllium9Wiring} from './beryllium-9-wiring-renderer.js';
+const isBe9Wiring=state=>state.processId==='beryllium-9'&&state.be9View==='wiring-single-procedure';
+import {buildBranchingSeed} from '../../research/realization-tower/branching-seed.mjs';
+import {createBranchingSeed} from './branching-seed-renderer.js';
+import {buildHexStrandsView} from '../../research/realization-tower/hex-strands-view.mjs';
+import {createHexStrandsView} from './hex-strands-renderer.js';
+import {isBranchingSeedView} from './branching-seed-view.js';
+import {sulfur32ReflectionProcess} from '../../research/realization-tower/sulfur-32-reflection-process.mjs';
+import {createSulfurReflection} from './sulfur-reflection-renderer.js';
 import {buildSulfur32Handlebody} from '../../research/realization-tower/sulfur-32-handlebody.mjs';
 import {createSulfurHandlebody} from './sulfur-handlebody-renderer.js';
 import {removeSulfurTubesTips} from '../../research/realization-tower/sulfur-32-tubes-view.mjs';
@@ -16,6 +35,10 @@ import {nativeBridgeEnvelope} from '../../research/realization-tower/native-brid
 import {signedOctahedralEnvelope} from '../../research/realization-tower/signed-octahedral-process.mjs';
 import {protonRotationLine,locksAllowAxialRotation} from './axial-rotation.js';
 import {createBeltNodeArrow,createBeltTerminal,createBeltTransportLines,createBeltSurface,insideNBorderStyle} from './belt-renderer.js';
+import {validateCellulationLoop} from '../../research/realization-tower/cellulation-loop-validation.mjs';
+import {renderedCellulationArrows} from './cellulation-loop-validation.js';
+import {cellulationGridVertices,pickCellulationGridVertex} from './cellulation-grid-picking.js';
+import {cellulationGridLabels} from './cellulation-grid-labels.js';
 import {layoutVertexLabels} from './vertex-label-layout.js';
 import {geometryParentPoint} from './belt-geometry-layout.js';
 import {wiringParentPoint} from './belt-wiring-layout.js';
@@ -43,7 +66,7 @@ import { edgeProbe } from '../../research/realization-tower/edge-ray-model.mjs';
 const cache = Array.from({ length: 7 }, (_, i) => edgeProbe(i + 1));
 const edgeIds = [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]], faceIds = [0,2,1,0,1,3,0,3,2,1,2,3];
 const envelopeAt = k => [0,1,2,3].map(i => apex.map((x,j)=>x+(i===0?0:j===0?k:j===i?-k:0)));
-const vec = p => new T.Vector3(...worldPoint(p));
+const vec = p => new T.Vector3(...(p.length===3?p:worldPoint(p)));
 const direction = vec(cache[6].point).sub(vec(apex)).normalize();
 const roleColors={proton:0x1265a8,electron:0xa82664,neutron:0xe5eaf0};
 const roleEdgeColors={proton:0x94a3b8,electron:0x94a3b8,neutron:0x64748b};
@@ -66,7 +89,12 @@ export function createViewer({ host, signal, onFailure, onView = () => {}, onCel
   let envelope=envelopeAt(state.k);
   let barycenter=envelope.map(vec).reduce((s,p)=>s.add(p),new T.Vector3()).multiplyScalar(.25);
   let halfSpan=Math.max(...envelope.map(p=>vec(p).distanceTo(barycenter)))*1.15;
-  let buildKey='', audit=null, latestView=null,inspectionCell=null,lastCutVertex=null;
+  let cellulationLock=null,cellulationShape=null,cellulationBackground=null,neighborhoodKey='';
+  let hoveredCellulationDot=null,cellulationGridEdges=[],cellulationGridHighlight=null,gridHighlightKey='';
+  let gridVertexPointer=null,gridVertices=[],gridVertexCacheSource=null;
+  let loopValidationModel=null,loopValidationCache=null,loopValidation=null;
+  let constructionAnimationKey='',constructionElapsed=0,constructionFrameTime=0;
+  let buildKey='', audit=null, latestView=null,inspectionCell=null,lastCutVertex=null,nnpeLayout=null;
   let raySegments=[],dottedRaySegments=[],dottedArrowSegments=[],dottedRayIds=[],surfaceBatch=null,cellEdgeObjects=0;
   const sortDirection=new T.Vector3();
   function disposeTree(group) {
@@ -120,10 +148,49 @@ export function createViewer({ host, signal, onFailure, onView = () => {}, onCel
     const sprite=new T.Sprite(new T.SpriteMaterial({map:texture,transparent:true,depthTest:false,depthWrite:false,toneMapped:false}));
     const size=port.role==='neutron'?.25:.32;sprite.scale.set(size,size,1);sprite.position.copy(vec(port.point));sprite.renderOrder=port.role==='neutron'?9:10;sprite.layers.set(1);current.add(sprite);
   }
+  function repeatingWindow(){
+    const right=new T.Vector3(1,0,0).applyQuaternion(camera.quaternion),up=new T.Vector3(0,1,0).applyQuaternion(camera.quaternion),normal=new T.Vector3(0,0,1).applyQuaternion(camera.quaternion);
+    const center=controls.target.clone().addScaledVector(right,(camera.right+camera.left)/2).addScaledVector(up,(camera.top+camera.bottom)/2);
+    return cellulationWindow(1,center.sub(new T.Vector3(...(state.cellulationTranslation??[0,0,0]))).toArray(),0,{right:right.toArray(),up:up.toArray(),normal:normal.toArray(),halfWidth:(camera.right-camera.left)/(2*camera.zoom),halfHeight:(camera.top-camera.bottom)/(2*camera.zoom)});
+  }
   function rebuild(){
     const graphMode=state.processId==='ruthenium-98'?state.rutheniumView==='lattice':['sulfur-32','double-esd7','single-octahedral','signed-octahedral-belt','native-octahedral-bridge'].includes(state.processId)&&state.cellGraph&&!(state.processId==='sulfur-32'&&state.sulfurWireBundle);
     cellHover?.begin(state.showCellInfo,graphMode?false:state.edgesOnly);
-    disposeTree(current);rebuilds++;surfaceBatch=null;cellEdgeObjects=0;raySegments=[];dottedRaySegments=[];dottedArrowSegments=[];dottedRayIds=[];grid=null;
+    disposeTree(current);current.position.set(0,0,0);cellulationShape=null;cellulationBackground=null;loopValidationModel=null;loopValidationCache=null;loopValidation=null;neighborhoodKey='';hoveredCellulationDot=null;gridVertexPointer=null;gridVertices=[];gridVertexCacheSource=null;cellulationGridEdges=[];cellulationGridHighlight=null;gridHighlightKey='';rebuilds++;surfaceBatch=null;nnpeLayout=null;cellEdgeObjects=0;raySegments=[];dottedRaySegments=[];dottedArrowSegments=[];dottedRayIds=[];grid=null;
+    if(state.processId==='sulfur-32'&&state.sulfurRetainedExpansion){
+      const group=createRetainedExpansion(state.retainedExpansionStep??1);current.add(group);marker.visible=false;
+      audit={processId:state.processId,view:'retained-expansion',retainedExpansionAudit:group.userData.audit,visibleLabels:[],assignments:[],graphMode:false};return;
+    }
+    if(state.processId==='sulfur-32'&&state.sulfurCellulation){
+      current.position.fromArray(state.cellulationTranslation??[0,0,0]);
+      const model=state.cellulationStep===0?buildRepeatingCellulation(repeatingWindow()):buildCellulationStep(state.cellulationStep??1,1);
+      if(state.cellulationStep===0)cellulationGridEdges=model.edges;
+      let gridAudit=null;
+      const group=createCellulation(model,state.cellulationStep===0?{...state,bodies:true,edgesOnly:state.edgesOnly||state.bodies===false}:state);current.add(group);cellulationShape=group;loopValidationModel=model;marker.visible=false;
+      audit={processId:state.processId,view:'cellulation',cellulationAudit:{...group.userData.audit,translation:current.position.toArray(),grid:gridAudit},visibleLabels:[],assignments:[],graphMode:false};return;
+    }
+    if(state.processId==='sulfur-32'&&state.sulfurComposition){
+      const model=buildNNPEComposition(state.sulfurCompositionJoins);nnpeLayout=layoutNNPEComposition(model,state.sulfurCompositionCollapsed);
+      const group=createNNPEComposition(nnpeLayout,state);current.add(group);marker.visible=false;
+      audit={processId:state.processId,view:'nnpe-composition',nnpeCompositionAudit:{...model.audit,...nnpeLayout.audit,...group.userData.audit},visibleLabels:[],assignments:[],graphMode:false};return;
+    }
+    if(isBe9Wiring(state)){
+      const model=buildBeryllium9Wiring(state),group=createBeryllium9Wiring(model);current.add(group);marker.visible=false;
+      audit={processId:state.processId,view:state.be9View,proceduralStep:state.be9WiringStep,wiringProcedureAudit:model.audit,visibleLabels:[],assignments:[],graphMode:false};return;
+    }
+    if(isBranchingSeedView(state)){
+      const model=buildBranchingSeed(state),group=createBranchingSeed(model,state);current.add(group);marker.visible=false;
+      audit={processId:state.processId,view:state.processId==='beryllium-9'?state.be9View:'branching-seed',proceduralStep:state.step,branchingSeedAudit:group.userData.audit,visibleLabels:[],assignments:[],graphMode:false};return;
+    }
+    if(state.processId==='sulfur-32'&&state.sulfurHexStrands){
+      const model=buildHexStrandsView(state),group=createHexStrandsView(model,state);current.add(group);marker.visible=false;
+      audit={processId:state.processId,proceduralStep:state.step,hexStrandsAudit:group.userData.audit,visibleLabels:[],assignments:[],graphMode:false};return;
+    }
+    if(state.processId==='sulfur-32-reflection'){
+      const model=sulfur32ReflectionProcess(state.k,state.step,state),group=createSulfurReflection(model,state);current.add(group);marker.visible=false;
+      audit={processId:state.processId,proceduralStep:state.step,reflectionAudit:group.userData.audit,constructionHistory:model.copies,shownCells:model.reflectionCells.map(c=>c.id),visibleLabels:[],assignments:[],graphMode:false};
+      return;
+    }
     if(state.processId==='sulfur-32'&&state.sulfurChannels){
       const bundle=buildSulfurIncomingBundle(),carved=createSulfurChannelCutaway(bundle,{cut:state.sulfurChannelCut??.5,openExterior:state.sulfurChannelOpen??true,cutDirection:state.sulfurChannelNormal??[.35,-.85,.4]});
       if(state.bodies)current.add(carved);
@@ -386,6 +453,8 @@ export function createViewer({ host, signal, onFailure, onView = () => {}, onCel
     audit={incomingBundleAudit,rutheniumWiringAudit,ruthenium98Audit:proc.ruthenium98Audit,tubesViewAudit:proc.tubesViewAudit,peCoupledRoutingAudit:proc.peCoupledRoutingAudit,ambientNeutralAudit:proc.ambientNeutralAudit,nTubeAudit:proc.nTubeAudit,emptyRegionAudit:proc.emptyRegionAudit,interiorNPairingAudit:proc.interiorNPairingAudit,singleOctahedralAudit:proc.singleOctahedralAudit,nativeBridgeAudit:proc.nativeBridgeAudit,signedOctahedralAudit:proc.signedOctahedralAudit,parentTrimAudit:proc.parentTrimAudit,nativeWiringAudit:proc.nativeWiringAudit,parentCellulations:proc.parentCellulations?.map(p=>({copy:p.copy,counts:p.counts})),parentEdgeRays:proc.parentEdgeRays??[],geometryLayoutAudit:proc.geometryLayoutAudit,wiringLayoutAudit:proc.wiringLayoutAudit,parentCutAudit:proc.parentCutAudit,beltViewAudit:proc.beltViewAudit,centralBeltAudit:proc.centralBeltAudit,perimeterBeltAudit:proc.perimeterBeltAudit,complexVisibilityAudit:proc.complexVisibilityAudit,neutronRefinementAudit:proc.neutronRefinementAudit,rimAssemblyAudit:proc.rimAssemblyAudit,attachmentBodyCount:proc.attachmentBodies?.length??0,terminalBundleCount:proc.terminalBundles?.length??0,rulePreviewCount:previewCandidates.size,highlightedRulePreviewCount:state.highlightRulePreview&&state.bodies?previewCandidates.size:0,graphMode:Boolean(graphMode),graphNodeCount,graphLinkCount,edgesOnly:Boolean(state.edgesOnly),cellEdgeObjects,cellEdgeWidth:state.edgesOnly?3:null,faceRendering:state.edgesOnly?'none':'filled',wireframeBodyCount:proc.presentationWireframes?.length??0,highlightedUnassignedCount:state.processId==='cell-fibration'&&state.cut?.highlightUnassigned?(proc.emptyBodies?.length??0):0,cutAudit:proc.cutAudit??null,cellFibrationAudit:proc.cellFibrationAudit,doubleEsd7Audit:proc.doubleEsd7Audit,neutronBeltAudit:proc.neutronBeltAudit,collectiveCells:proc.collectiveCells??[],displayedPolaritySheet:state.polaritySheet??'negative',pairContextAudit:proc.pairContextAudit,octahedronAudit:proc.octahedronAudit,fibrationAudit:proc.fibrationAudit,presentationAudit:proc.presentationAudit,conflictBodyCount:proc.conflictBodies?.length??0,sourcePresentationBodyCount:proc.preCutRetainedCount,presentationBodyCount:proc.presentationAudit?proc.retainedBodies.length+(proc.conflictBodies?.length??0):undefined,retainedAudit:proc.retainedAudit,retainedHistory:proc.retainedBodies?proc.history:undefined,processId:state.processId,constructionHistory:proc.history,diamonds:proc.diamonds,conflicts:proc.conflicts,foundationComplete:proc.foundationComplete,radial:proc.radial,collectiveCore:proc.collectiveCore,connectionGuides:proc.connectionGuides,dottedRayIds,ray34Visible:proc.ray34Visible,ray34:proc.ray34,edge34Assignments:proc.edge34Assignments,edge34Predecessors:proc.edge34Predecessors,ray14Visible:proc.ray14Visible,ray14:proc.ray14,edge14Assignments:proc.edge14Assignments,edge14Predecessors:proc.edge14Predecessors,ray12Visible:proc.ray12Visible,ray12:proc.ray12,edge12Assignments:proc.edge12Assignments,edge12Predecessors:proc.edge12Predecessors,ray32PatternVisible:proc.ray32PatternVisible,ray32Pattern:proc.ray32Pattern,edge32Assignments:proc.edge32Assignments,edge32Predecessors:proc.edge32Predecessors,patternClosureRounds:proc.patternClosureRounds,nextPatternClosure:proc.nextPatternClosure,baseNeutronPassVisible:proc.baseNeutronPassVisible,baseNeutronPass:proc.baseNeutronPass,edgeVertexFillVisible:proc.edgeVertexFillVisible,edgeVertexNeutrons:proc.edgeVertexNeutrons,edgeClosureRounds:proc.edgeClosureRounds,nextEdgeClosure:proc.nextEdgeClosure,median3To24Visible:proc.median3To24Visible,median1To24Visible:proc.median1To24Visible,faceMedianRays:proc.faceMedianRays,faceMedianAssignments:proc.faceMedianAssignments,diamondGapVisible:proc.diamondGapVisible,diamondGapPlan:proc.diamondGapPlan,neutronBoundaryVisible:proc.neutronBoundaryVisible,neutronBoundaryPlan:proc.neutronBoundaryPlan,identifiedSurfacePlan:proc.identifiedSurfacePlan,identifiedSurfaceVisible:proc.identifiedSurfaceVisible,f134DiamondPlan:proc.f134DiamondPlan,f134DiamondVisible:proc.f134DiamondVisible,f123DiamondPlan:proc.f123DiamondPlan,f123DiamondVisible:proc.f123DiamondVisible,surfaceRemainderPlan:proc.surfaceRemainderPlan,surfaceRemainderVisible:proc.surfaceRemainderVisible,remainingFacePlan:proc.remainingFacePlan,remainingFaceVisible:proc.remainingFaceVisible,baseEdgeVisible:proc.baseEdgeVisible,baseEdgeRays:proc.baseEdgeRays,surfaceRays:proc.surfaceRays,surfacePropagationVisible:proc.surfacePropagationVisible,edgeMeeting:proc.edgeMeeting,edgeFronts:proc.edgeFronts,k:state.k,visibleLabels:visibleLabels.map(a=>({cell:a.cell,role:a.polarityRoles?.[state.polaritySheet??'negative']??a.role,text:a.polarityText?.[state.polaritySheet??'negative']??a.text})),surfaceCount:surfaces.size,sharedSurfaceCount:[...surfaces.values()].filter(f=>f.count>1).length,proceduralStep:state.step,firstRay:proc.firstRay,faceNeighbors:proc.faceNeighbors,neutronNeighbors:proc.neutronNeighbors,surfaceNeutronNeighbors:proc.surfaceNeutronNeighbors,closureRounds:proc.closureRounds,postMediationRounds:proc.postMediationRounds,surfaceContinuations:proc.surfaceContinuations,surfaceContinuationVisible:proc.surfaceContinuationVisible,nextClosure:proc.nextClosure,comparisonVisible:proc.comparisonVisible,faceVertexComparisons:proc.faceVertexComparisons,mediation:proc.mediation,mediationAvailable:proc.mediationAvailable,mediationVisible:proc.mediationVisible,signalConnections,partners:proc.partners,secondRay:proc.secondRay,thirdRay:proc.thirdRay,returnRay:proc.returnRay,closingRay:proc.closingRay,rays:proc.rays,shownCells:[...shown.keys()].sort((a,b)=>a-b),filledCells,emptySecondCells:[...new Set(continuations.flatMap(ray=>ray.contacts.map(c=>c.cell)))].filter(id=>shown.has(id)&&!filledCells.includes(id)),assignments:proc.assignments,endingCell:proc.end.id,endingCellOutsideEnvelope:false,seed:seed.id,sliceTiles:data.polygons.length,supportPlane:data.plane,rayEndpoint:data.point,rayCells:proc.firstRay?data.traversed.length:0,atStop:data.atStop.length,surfaceFace:data.surfaceFace,pathCells:proc.firstRay?data.traversed:[],edgeCrossings:data.crossings};
   }
   function updateFaceOpacity(){
+    if(state.processId==='sulfur-32'&&state.sulfurCellulation)current.traverse(o=>{if(o.userData.cellulationFaces)o.material.opacity=o.userData.baseOpacity*state.faceOpacity;});
+    if(nnpeLayout)current.traverse(o=>{if(o.userData.nnpePlane)o.material.opacity=.4*state.faceOpacity;});
     if(state.processId==='ruthenium-98'&&state.rutheniumView==='wiring'){
       const opacities=setSulfurWiringOpacity(current,{wireOpacity:state.rutheniumWireOpacity??1});if(audit.rutheniumWiringAudit)audit.rutheniumWiringAudit.wireOpacity=opacities.wireOpacity;
     }
@@ -419,8 +488,18 @@ export function createViewer({ host, signal, onFailure, onView = () => {}, onCel
     const vertices=state.rimAssembly?rotationVertices():fibrationDisplayEnvelope;
     return (v.original!==false&&vertices.slice(0,4).some(same))||(v.clone!==false&&vertices.slice(4).some(same));
   }
+  function cellulationAnchors(){return state.processId==='sulfur-32'&&state.sulfurCellulation&&state.bodies!==false?current.children.flatMap(o=>o.userData.cellulationAnchors??[]).map(a=>({...a,latticePoint:a.point.map(x=>Math.round(x*Math.SQRT2)),point:vec(a.point).add(current.position).toArray()})):[];}
+  function lockedCellulationAnchor(){return cellulationLock?cellulationAnchors().find(a=>a.id===cellulationLock.id):null;}
+  function keepCellulationAnchor(){
+    const anchor=lockedCellulationAnchor();if(!anchor){cellulationLock=null;return;}
+    camera.updateMatrixWorld();
+    const point=vec(anchor.point),projected=point.clone().project(camera);
+    const desired=new T.Vector3(cellulationLock.ndc.x,cellulationLock.ndc.y,projected.z).unproject(camera),shift=point.clone().sub(desired);
+    camera.position.add(shift);controls.target.add(shift);camera.updateMatrixWorld();
+  }
   function rotationConstraint(){
-    const fixed=rotationVertices().filter((_,i)=>state.locks[`v${i+1}`]).map(vec);
+    const anchor=lockedCellulationAnchor();if(anchor)return {count:1,pivot:vec(anchor.point),axis:vec(anchor.normal)};
+    const fixed=(isBranchingSeedView(state)||state.processId==='sulfur-32-reflection'||state.processId==='sulfur-32'&&(state.sulfurHexStrands||state.sulfurBranchSeed))?[]:rotationVertices().filter((_,i)=>state.locks[`v${i+1}`]).map(vec);
     return {count:fixed.length,pivot:fixed.length===2?fixed[0]:barycenter,
       axis:fixed.length===2?fixed[1].clone().sub(fixed[0]).normalize():fixed.length===1?fixed[0].clone().sub(barycenter).normalize():null};
   }
@@ -458,8 +537,10 @@ export function createViewer({ host, signal, onFailure, onView = () => {}, onCel
     cellHover.clear();
   }
   function updateControls(){
+    controls.panSpeed=state.processId==='sulfur-32'&&state.sulfurCellulation?renderer.domElement.clientWidth/Math.max(.01,camera.position.distanceTo(controls.target)):.3;
+    controls.noPan=!!lockedCellulationAnchor();
     const before=camera.quaternion.clone(),oldTarget=controls.target.clone(),offset=camera.position.clone().sub(oldTarget),up=camera.up.clone();controls.update();
-    if(Object.values(state.locks).some(Boolean)){
+    if(lockedCellulationAnchor()||Object.values(state.locks).some(Boolean)){
       const q=constrained(camera.quaternion.clone().multiply(before.invert())),r=camera.position.distanceTo(controls.target);
       const pan=controls.target.clone().sub(oldTarget),pivot=rotationConstraint().pivot;
       camera.position.copy(offset.normalize().multiplyScalar(r)).add(oldTarget).sub(pivot).applyQuaternion(q).add(pivot).add(pan);
@@ -472,36 +553,66 @@ export function createViewer({ host, signal, onFailure, onView = () => {}, onCel
     const s=new T.Spherical().setFromVector3(camera.position.clone().sub(controls.target));
     const azimuth=T.MathUtils.radToDeg(s.theta),elevation=90-T.MathUtils.radToDeg(s.phi);
     camera.updateMatrixWorld();
-    const displayedVertices=rotationVertices(),doubleParent=state.processId==='double-esd7'&&displayedVertices.length===8;
+    const displayedVertices=(isBranchingSeedView(state)||state.processId==='sulfur-32-reflection'||state.processId==='sulfur-32'&&(state.sulfurHexStrands||state.sulfurBranchSeed))?[]:rotationVertices(),doubleParent=state.processId==='double-esd7'&&displayedVertices.length===8;
     const vertexLabels=layoutVertexLabels(displayedVertices.map((p,i)=>{
       const anchor=vec(p).project(camera),owner=doubleParent?displayedVertices.slice(i<4?0:4,i<4?4:8):displayedVertices;
       const ownerCenter=owner.map(vec).reduce((s,p)=>s.add(p),new T.Vector3()).divideScalar(owner.length).project(camera);
       return {key:`v${i+1}`,index:i+1,text:`V${['₁','₂','₃','₄','₅','₆','₇','₈'][i]}${state.processId==='double-esd7'&&!state.rimAssembly?' '+doubleEsd7VertexLabels[i]:''}`,anchorX:(anchor.x+1)*width/2,anchorY:(1-anchor.y)*height/2,centerX:(ownerCenter.x+1)*width/2,centerY:(1-ownerCenter.y)*height/2,visible:!['sulfur-32','single-octahedral','signed-octahedral-belt','native-octahedral-bridge'].includes(state.processId)&&!(state.processId==='double-esd7'&&state.rimAssembly&&(state.parentHalfStepTrim||[0,1,6].includes(i)))&&complexVertexVisible(p)&&Math.abs(anchor.x)<=1&&Math.abs(anchor.y)<=1&&Math.abs(anchor.z)<=1};
     }),{width,height});
     const inspected=inspectionCell===null?null:vec(cells[inspectionCell].vertices[0].map((_,i)=>cells[inspectionCell].vertices.reduce((sum,p)=>sum+p[i]/4,0))).project(camera);
-    latestView={inspection:inspected?{cell:inspectionCell,ndc:inspected.toArray()}:null,camera:{offset:camera.position.clone().sub(controls.target).toArray(),targetOffset:controls.target.clone().sub(barycenter).toArray(),up:camera.up.toArray(),zoom:camera.zoom},vertexLocks:{...state.locks},vertexLabels,quaternion:camera.quaternion.toArray(),cameraUp:camera.up.toArray(),projection:camera.type,zoom:camera.zoom,frustum:[camera.left,camera.right,camera.top,camera.bottom],azimuth,elevation,autoRotate:state.spin,axialRotate:!!state.axialRotation,target:controls.target.toArray(),constructionDirection:direction.toArray()};
+    const nnpePorts=(nnpeLayout?.ports??[]).map(port=>{const p=vec(port.point).project(camera);return {...port,x:(p.x+1)*width/2,y:(1-p.y)*height/2,visible:state.bodies!==false&&Math.abs(p.x)<=1&&Math.abs(p.y)<=1&&Math.abs(p.z)<=1};});
+    const cellulationDots=cellulationAnchors().map(a=>{const p=vec(a.point).project(camera);return {...a,x:(p.x+1)*width/2,y:(1-p.y)*height/2,visible:Math.abs(p.x)<=1&&Math.abs(p.y)<=1&&Math.abs(p.z)<=1,locked:cellulationLock?.id===a.id};});
+    const gridHover=audit.cellulationAudit?.gridHover,hoverDot=cellulationDots.find(d=>d.id===gridHover?.id);
+    const gridLabels=layoutVertexLabels((gridHover?.labels??[]).map(label=>{
+      const p=vec(label.point).add(current.position).project(camera);
+      if(label.kind==='edge'&&hoverDot?.visible){
+        const from=vec(label.from).add(current.position).project(camera),to=vec(label.to).add(current.position).project(camera);let t=1;
+        for(const axis of ['x','y'])if(Math.abs(to[axis])>1)t=Math.min(t,(Math.sign(to[axis])-from[axis])/(to[axis]-from[axis]));
+        p.copy(from).lerp(to,t/2); // Midpoint of the visible edge segment, even when zoomed in.
+      }
+      return {...label,anchorX:(p.x+1)*width/2,anchorY:(1-p.y)*height/2,centerX:hoverDot?.x??0,centerY:hoverDot?.y??0,visible:Math.abs(p.x)<=1&&Math.abs(p.y)<=1&&Math.abs(p.z)<=1};
+    }),{width,height,metrics:{height:22,charWidth:6.6,clearance:24,radii:[24,40,60,84,108,144]}});
+    const gridVertexCandidate=state.cellulationGridVertexHover&&!interacting&&!hoveredCellulationDot?pickCellulationGridVertex(gridVertices,{pointer:gridVertexPointer,width,height,project:p=>vec(p).add(current.position).project(camera),excluded:new Set(cellulationDots.map(d=>d.latticePoint.join(',')))}):null;
+    if(gridVertexCandidate){
+      gridVertexCandidate.text=`FCC (${gridVertexCandidate.latticePoint.join(', ')})`;
+      const half=gridVertexCandidate.text.length*3.3+8;
+      gridVertexCandidate.labelX=T.MathUtils.clamp(gridVertexCandidate.x,half,width-half);
+      gridVertexCandidate.labelY=T.MathUtils.clamp(gridVertexCandidate.y-23,12,height-12);
+    }
+    const projectLoopPoint=point=>{if(!point)return {x:0,y:0,visible:false};const p=vec(point).add(current.position).project(camera);return {x:(p.x+1)*width/2,y:(1-p.y)*height/2,visible:Math.abs(p.x)<=1&&Math.abs(p.y)<=1&&Math.abs(p.z)<=1};};
+    const loopOverlay=loopValidation?.joins?{joins:loopValidation.joins.map(j=>({...j,...projectLoopPoint(j.point)})),issues:loopValidation.issues.slice(0,12).map((issue,i)=>({...issue,id:i,...projectLoopPoint(issue.point),start:issue.from?projectLoopPoint(issue.from):null,end:issue.to?projectLoopPoint(issue.to):null}))}:null;
+    latestView={cellulationWitness:audit?.cellulationAudit?.witness??null,loopValidation,loopOverlay,gridVertexCandidate,cellulationGridLabels:gridLabels,cellulationDots,cellulationLock:lockedCellulationAnchor()??null,nnpePorts,inspection:inspected?{cell:inspectionCell,ndc:inspected.toArray()}:null,camera:{offset:camera.position.clone().sub(controls.target).toArray(),targetOffset:controls.target.clone().sub(barycenter).toArray(),up:camera.up.toArray(),zoom:camera.zoom},vertexLocks:{...state.locks},vertexLabels,quaternion:camera.quaternion.toArray(),cameraUp:camera.up.toArray(),projection:camera.type,zoom:camera.zoom,frustum:[camera.left,camera.right,camera.top,camera.bottom],azimuth,elevation,autoRotate:state.spin,axialRotate:!!state.axialRotation,target:controls.target.toArray(),constructionDirection:direction.toArray()};
     onView(latestView,audit);
   }
   function render(time){
     frame=0;if(disposed||document.hidden||!inView)return;
     try{
-      const key=JSON.stringify([state.processId,state.k,state.step,state.branch,state.prior,state.bodies,state.esd7Planes,state.beltLayers,state.nativeBeltLayers,state.complexVisibility,state.rimAssembly,state.parentHalfStepTrim,state.seamBelts,state.internalElectronSelf,state.doubleRules,state.cellGraph,state.rutheniumView,state.coherenceGroup,state.sulfurWireBundle,state.sulfurChannels,state.sulfurChannelCut,state.sulfurChannelOpen,state.sulfurChannelNormal,state.sulfurNTubeMarkers,state.sulfurNIdentity,state.sulfurHandlebody,state.sulfurTubes,state.highlightRulePreview,state.edgesOnly,state.showCellInfo,state.labels,state.grid,state.polaritySheet,state.singleFaceColoring,state.nTubeAxis,state.cut,state.processId==='fibration-12x12'?[state.selectedNeutralMode,state.neutralValues]:null]);if(key!==buildKey){rebuild();buildKey=key;}
-      updateControls();const dt=Math.min(previousTime?(time-previousTime)/1000:0,.05);previousTime=time;
+      updateControls();
+      const key=JSON.stringify([state.sulfurRetainedExpansion,state.retainedExpansionStep,state.processId==='sulfur-32'&&state.sulfurCellulation?(state.cellulationStep===0?repeatingWindow():[state.cellulationStep]):null,state.cellulationTranslation,state.sulfurCellulation,state.sulfurComposition,state.sulfurCompositionCollapsed,state.sulfurCompositionJoins,state.be9WiringStep,state.be9AssemblySides,state.be9AssemblyFold,state.be9View,state.sulfurBranchSeed,state.seedPairsByLayer,state.seedLayerGap,state.seedVisibleLayers,state.sulfurHexStrands,state.hexStrandStage,state.hexStrandSpacing,state.hexStrandSelection,state.hexStrandCopy,state.hexStrandIsolate,state.reflectionWireOpacity,state.reflectionView,state.reflectionAngle,state.reflectionCopy,state.reflectionCycle,state.processId==='sulfur-32-reflection'?state.faceOpacity:null,state.processId,state.k,state.step,state.branch,state.prior,state.bodies,state.esd7Planes,state.beltLayers,state.nativeBeltLayers,state.complexVisibility,state.rimAssembly,state.parentHalfStepTrim,state.seamBelts,state.internalElectronSelf,state.doubleRules,state.cellGraph,state.rutheniumView,state.coherenceGroup,state.sulfurWireBundle,state.sulfurChannels,state.sulfurChannelCut,state.sulfurChannelOpen,state.sulfurChannelNormal,state.sulfurNTubeMarkers,state.sulfurNIdentity,state.sulfurHandlebody,state.sulfurTubes,state.highlightRulePreview,state.edgesOnly,state.showCellInfo,state.labels,state.grid,state.polaritySheet,state.singleFaceColoring,state.nTubeAxis,state.cut,state.processId==='fibration-12x12'?[state.selectedNeutralMode,state.neutralValues]:null]);if(key!==buildKey){rebuild();buildKey=key;}
+      const expansion=state.processId==='sulfur-32'&&state.sulfurRetainedExpansion;
+      const animationKey=expansion?`expansion:${state.retainedExpansionStep}:${state.retainedExpansionAnimate}`:state.processId==='sulfur-32'&&state.sulfurCellulation&&state.cellulationStep>=4?`${state.cellulationStep}:${state.cellulationAnimate}`:'';
+      if(animationKey!==constructionAnimationKey){constructionAnimationKey=animationKey;constructionElapsed=0;}else if(animationKey)constructionElapsed+=Math.min(100,Math.max(0,time-constructionFrameTime));
+      constructionFrameTime=time;let constructionAnimating=false;
+      for(const child of current.children)if(child.userData.animate)constructionAnimating=child.userData.animate((expansion?state.retainedExpansionAnimate:state.cellulationAnimate)?constructionElapsed:Infinity,state)||constructionAnimating;
+      updateCellulationNeighborhood();updateCellulationGridHighlight();updateGridVertexCache();updateLoopValidation();
+      const dt=Math.min(previousTime?(time-previousTime)/1000:0,.05);previousTime=time;
       const constraint=rotationConstraint(),axial=state.axialRotation&&state.processId==='double-esd7'?protonRotationLine(state.rimAssembly,state.cellGraph):null;
       const normalSpinning=state.spin&&constraint.count<3&&state.speed!==0;
       const axialSpinning=axial&&state.speed!==0&&locksAllowAxialRotation(axial,rotationVertices().filter((_,i)=>state.locks[`v${i+1}`]).map(vec));
       const spinning=normalSpinning||axialSpinning;
       if(normalSpinning)rotate(new T.Quaternion().setFromAxisAngle(constraint.axis??new T.Vector3(0,1,0),dt*state.speed*.3));
       if(axialSpinning)rotate(new T.Quaternion().setFromAxisAngle(axial.axis,dt*state.speed*.3),axial);
+      keepCellulationAnchor();
+      current.traverse(o=>{if(o.userData.cellulationBillboard)o.quaternion.copy(camera.quaternion);const u=o.userData.cellulationDepth;if(u){camera.getWorldDirection(u.normal.value);u.center.value.copy(controls.target);}});
       orientation();updateFaceOpacity();cellHover.update();renderer.info.reset();
-      if(state.edgesOnly||(state.processId==='sulfur-32'&&(state.sulfurHandlebody||state.sulfurChannels)))renderer.render(scene,camera);
+      if(!surfaceBatch||isBranchingSeedView(state)||(state.processId==='sulfur-32'&&(state.sulfurHexStrands||state.sulfurBranchSeed))||state.processId==='sulfur-32-reflection'||state.edgesOnly||(state.processId==='sulfur-32'&&(state.sulfurHandlebody||state.sulfurChannels)))renderer.render(scene,camera);
       else if(faceCompositor)faceCompositor.render(scene,camera,surfaceBatch.mesh,state.faceOpacity===1&&!surfaceBatch.hasTranslucentFaces);
       else {
         surfaceBatch.mesh.material.transparent=state.faceOpacity<1||surfaceBatch.hasTranslucentFaces;surfaceBatch.mesh.material.depthWrite=!surfaceBatch.mesh.material.transparent;
         if(surfaceBatch.mesh.material.transparent)sortSurfaceTriangles();renderer.render(scene,camera);
       }
       draws++;fallback.hidden=true;
-      if(interacting||spinning)requestRender();else previousTime=0;
+      if(interacting||spinning||constructionAnimating)requestRender();else previousTime=0;
     }catch(e){fail(e);}
   }
   function start(){interacting=true;requestRender();}function end(){interacting=false;requestRender();}
@@ -514,7 +625,70 @@ export function createViewer({ host, signal, onFailure, onView = () => {}, onCel
     const aspect=width/height,h=halfSpan/Math.min(1,aspect);camera.left=-h*aspect;camera.right=h*aspect;camera.top=1.25*h;camera.bottom=-.75*h;camera.updateProjectionMatrix();controls.handleResize();requestRender();
   }
   function densityChanged(){densityQuery?.removeEventListener('change',densityChanged);densityQuery=matchMedia(`(resolution: ${devicePixelRatio}dppx)`);densityQuery.addEventListener('change',densityChanged);resize();}
-  function reset(){camera.up.set(0,1,0);controls.target.copy(barycenter);camera.position.copy(barycenter).add(new T.Vector3().setFromSphericalCoords(10,T.MathUtils.degToRad(158),T.MathUtils.degToRad(67)));camera.zoom=1;camera.lookAt(controls.target);requestRender();}
+  function updateCellulationNeighborhood(){
+    if(!cellulationShape||state.cellulationStep===0)return;
+    const cells=cellulationShape.userData.cellulationCells??[],context=cellulationShape.userData.cellulationGridSeeds??[],key=cells.map(c=>c.id).join('|')+';'+context.map(c=>c.id).join('|');
+    if(key===neighborhoodKey)return;neighborhoodKey=key;
+    if(cellulationBackground){current.remove(cellulationBackground);disposeTree(cellulationBackground);}
+    const lattice=buildCellulationNeighborhood([...cells,...context],2);cellulationGridEdges=lattice.edges;
+    cellulationBackground=createCellulation({...lattice,faces:[]},{...state,bodies:true,edgesOnly:true});
+    grid=cellulationBackground.children[1];grid.userData.cellulationGrid=true;grid.material.opacity=state.opacity;current.add(cellulationBackground);
+    audit.cellulationAudit.grid={source:lattice.source,cellSize:1,layers:2,placedCells:cells.length,edgeContextCells:context.length,cells:lattice.cells.length,edges:lattice.edges.length};
+  }
+  function updateLoopValidation(){
+    loopValidation=null;
+    if(state.cellulationValidateLoop&&loopValidationModel?.step>=20){
+      if(state.bodies===false)loopValidation={status:'pending',message:'Show construction to inspect rendered arrows.'};
+      else if(cellulationShape.userData.audit.animation.phase!=='complete')loopValidation={status:'pending',message:'Validation waits for the current animation to finish.'};
+      else{
+        if(!loopValidationCache)loopValidationCache=validateCellulationLoop(loopValidationModel,renderedCellulationArrows(cellulationShape),cellulationShape.userData.cellulationAnchors);
+        loopValidation=loopValidationCache;
+      }
+    }
+    if(audit.cellulationAudit)audit.cellulationAudit.loopValidation=loopValidation;
+  }
+  function updateGridVertexCache(){
+    if(!state.cellulationGridVertexHover||!cellulationShape){
+      gridVertices=[];gridVertexCacheSource=null;gridVertexPointer=null;return;
+    }
+    if(gridVertexCacheSource!==cellulationGridEdges){gridVertices=cellulationGridVertices(cellulationGridEdges);gridVertexCacheSource=cellulationGridEdges;}
+  }
+  function updateCellulationGridHighlight(){
+    if(!audit.cellulationAudit)return;
+    const anchor=state.cellulationHighlightGridEdges?cellulationAnchors().find(a=>a.id===hoveredCellulationDot):null;
+    const key=anchor?`${anchor.id}:${neighborhoodKey}`:'';
+    if(key===gridHighlightKey)return;gridHighlightKey=key;
+    if(cellulationGridHighlight){current.remove(cellulationGridHighlight);cellulationGridHighlight.geometry.dispose();cellulationGridHighlight.material.dispose();cellulationGridHighlight=null;}
+    audit.cellulationAudit.gridHover=null;
+    if(!anchor)return;
+    const point=anchor.latticePoint.map(x=>x/Math.SQRT2),edges=cellulationIncidentEdges(cellulationGridEdges,point);
+    const geometry=new T.BufferGeometry().setFromPoints(edges.flatMap(e=>e.vertices).map(vec));
+    cellulationGridHighlight=new T.LineSegments(geometry,new T.LineBasicMaterial({color:0xffd166,transparent:true,opacity:1,depthTest:false,depthWrite:false}));
+    cellulationGridHighlight.renderOrder=1000;current.add(cellulationGridHighlight);
+    audit.cellulationAudit.gridHover={id:anchor.id,edges:edges.length,eulerOrder:'XYZ',angleUnit:'degrees',labels:cellulationGridLabels({...anchor,point},edges)};
+  }
+  function recenter(){
+    if(!cellulationShape||state.cellulationStep===0)return;
+    const points=[...(cellulationShape.userData.cellulationCells??[]).flatMap(c=>c.vertices),...(cellulationShape.userData.cellulationPoints??[])].map(p=>vec(p).add(current.position));if(!points.length)return;
+    const axes=[new T.Vector3(1,0,0),new T.Vector3(0,1,0),new T.Vector3(0,0,1)].map(a=>a.applyQuaternion(camera.quaternion));
+    const bounds=axes.map(a=>{const values=points.map(p=>p.dot(a));return [Math.min(...values),Math.max(...values)];});
+    const zoom=T.MathUtils.clamp(.85*Math.min((camera.right-camera.left)/Math.max(1e-9,bounds[0][1]-bounds[0][0]),(camera.top-camera.bottom)/Math.max(1e-9,bounds[1][1]-bounds[1][0])),.2,20);
+    const center=axes.reduce((p,a,i)=>p.addScaledVector(a,(bounds[i][0]+bounds[i][1])/2),new T.Vector3()).addScaledVector(axes[0],-(camera.right+camera.left)/2).addScaledVector(axes[1],-(camera.top+camera.bottom)/2);
+    const offset=camera.position.clone().sub(controls.target);cellulationLock=null;controls.noPan=false;
+    controls.target.copy(center);camera.position.copy(center).add(offset);camera.zoom=zoom;camera.updateProjectionMatrix();requestRender();
+  }
+  function reset(){
+    cellulationLock=null;controls.noPan=false;
+    if(state.processId==='sulfur-32'&&state.sulfurRetainedExpansion){
+      camera.up.set(0,1,0);controls.target.copy(barycenter);camera.position.copy(barycenter).add(new T.Vector3(0,0,40));
+    }else if(state.processId==='sulfur-32'&&state.sulfurCellulation){
+      const pose=cellulationResetPose(state.cellulationStep,1,[camera.left,camera.right,camera.top,camera.bottom].map((x,i)=>{const center=i<2?(camera.left+camera.right)/2:(camera.top+camera.bottom)/2;return center+(x-center)/(state.cellulationCellSize??1);}));
+      camera.up.fromArray(pose.up);controls.target.fromArray(pose.target).add(new T.Vector3(...(state.cellulationTranslation??[0,0,0])));camera.position.copy(controls.target).add(new T.Vector3(...pose.offset));
+    }else{
+      camera.up.set(0,1,0);controls.target.copy(barycenter);camera.position.copy(barycenter).add(new T.Vector3().setFromSphericalCoords(10,T.MathUtils.degToRad(158),T.MathUtils.degToRad(67)));
+    }
+    camera.zoom=state.processId==='sulfur-32'&&state.sulfurCellulation?(state.cellulationCellSize??1):1;camera.updateProjectionMatrix();camera.lookAt(controls.target);requestRender();
+  }
   function aim(d){if(disposed)return;rotate(new T.Quaternion().setFromUnitVectors(camera.position.clone().sub(controls.target).normalize(),d.normalize()));requestRender();}
   try{
     renderer=new T.WebGLRenderer({antialias:true});renderer.domElement.setAttribute('role','img');renderer.domElement.setAttribute('aria-label','Lattice slice and normal-ray procedure; camera controls provide keyboard navigation.');renderer.domElement.setAttribute('aria-describedby','instructions');renderer.domElement.className='webgl-canvas';host.append(renderer.domElement);
@@ -523,6 +697,11 @@ export function createViewer({ host, signal, onFailure, onView = () => {}, onCel
     cellHover=createCellHover({scene,camera,canvas:renderer.domElement,host,signal:lifetime.signal,requestRender,onHover:onCellHover});
     marker=dot(cache[0].point,.065,0xffffff);scene.add(marker);
     controls.addEventListener('change',requestRender);controls.addEventListener('start',start);controls.addEventListener('end',end);
+    listen(renderer.domElement,'pointermove',e=>{
+      if(!state.cellulationGridVertexHover||state.processId!=='sulfur-32'||!state.sulfurCellulation)return;
+      const rect=renderer.domElement.getBoundingClientRect();gridVertexPointer=e.buttons?null:{x:e.clientX-rect.left,y:e.clientY-rect.top};requestRender();
+    });
+    for(const event of ['pointerleave','pointercancel','pointerdown'])listen(renderer.domElement,event,()=>{if(gridVertexPointer){gridVertexPointer=null;requestRender();}});
     listen(renderer.domElement,'webglcontextlost',e=>{e.preventDefault();fail(new Error('3D context lost. Reload to retry.'));});
     listen(document,'visibilitychange',()=>{stopFrame();requestRender();});
     listen(window,'pagehide',e=>{if(e.persisted)stopFrame();else dispose();});listen(window,'pageshow',e=>{if(e.persisted)requestRender();});
@@ -530,16 +709,22 @@ export function createViewer({ host, signal, onFailure, onView = () => {}, onCel
     intersectionObserver=new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;stopFrame();requestRender();});intersectionObserver.observe(host);
     reset();densityChanged();resize();signal.throwIfAborted();requestRender();
     return Object.freeze({
+      recenter,
       update(next){
         if(disposed)return;
-        const changedK=(next.processId==='ruthenium-98'&&(state.rutheniumView==='wiring')!==(next.rutheniumView==='wiring'))||(next.processId==='sulfur-32'&&(state.sulfurWireBundle!==next.sulfurWireBundle||state.sulfurChannels!==next.sulfurChannels))||(next.processId==='single-octahedral'&&(state.nTubeAxis==='coupled')!==(next.nTubeAxis==='coupled'))||(['single-octahedral','signed-octahedral-belt','native-octahedral-bridge'].includes(next.processId)&&state.step!==next.step)||state.k!==next.k||state.processId!==next.processId||(next.processId==='double-esd7'&&state.rimAssembly!==next.rimAssembly);
+        const changedK=(next.processId==='sulfur-32'&&next.sulfurRetainedExpansion!==state.sulfurRetainedExpansion)||(next.processId==='sulfur-32'&&(next.sulfurCellulation!==state.sulfurCellulation))||(next.processId==='sulfur-32'&&(next.sulfurComposition!==state.sulfurComposition||next.sulfurComposition&&(next.sulfurCompositionCollapsed!==state.sulfurCompositionCollapsed||next.sulfurCompositionJoins!==state.sulfurCompositionJoins)))||(next.processId==='beryllium-9'&&(next.be9View!==state.be9View||next.be9WiringStep!==state.be9WiringStep||next.be9AssemblyFold!==state.be9AssemblyFold||next.be9AssemblySides!==state.be9AssemblySides))||(isBranchingSeedView(next)!==isBranchingSeedView(state)||isBranchingSeedView(next)&&(next.seedLayerGap!==state.seedLayerGap||next.seedPairsByLayer!==state.seedPairsByLayer))||(next.processId==='sulfur-32'&&(next.sulfurHexStrands!==state.sulfurHexStrands||next.sulfurHexStrands&&(next.hexStrandStage!==state.hexStrandStage||next.hexStrandSpacing!==state.hexStrandSpacing)))||(next.processId==='sulfur-32-reflection'&&(next.reflectionView!==state.reflectionView||next.reflectionAngle!==state.reflectionAngle))||(next.processId==='ruthenium-98'&&(state.rutheniumView==='wiring')!==(next.rutheniumView==='wiring'))||(next.processId==='sulfur-32'&&(state.sulfurWireBundle!==next.sulfurWireBundle||state.sulfurChannels!==next.sulfurChannels))||(next.processId==='single-octahedral'&&(state.nTubeAxis==='coupled')!==(next.nTubeAxis==='coupled'))||(['single-octahedral','signed-octahedral-belt','native-octahedral-bridge'].includes(next.processId)&&state.step!==next.step)||state.k!==next.k||state.processId!==next.processId||(next.processId==='double-esd7'&&state.rimAssembly!==next.rimAssembly);
         const numericVertex=Number.isInteger(next.cut?.vertex)&&next.cut.vertex>=1&&next.cut.vertex<=4;
         const selectedVertex=!changedK&&next.processId==='cell-fibration'&&numericVertex&&next.cut.vertex!==state.cut?.vertex&&lastCutVertex!==null;
+        if(next.cellulationAnimate!==state.cellulationAnimate)constructionAnimationKey='';
+        if(next.processId!==state.processId||next.sulfurCellulation!==state.sulfurCellulation)cellulationLock=null;
+        if(next.processId==='sulfur-32'&&next.sulfurCellulation&&state.processId==='sulfur-32'&&state.sulfurCellulation&&next.cellulationCellSize!==state.cellulationCellSize){
+          camera.zoom=T.MathUtils.clamp(camera.zoom*(next.cellulationCellSize??1)/(state.cellulationCellSize??1),.2,20);camera.updateProjectionMatrix();
+        }
         state={...next,locks:{...next.locks},cut:next.cut?{...next.cut}:undefined};
         if(changedK){
           inspectionCell=null;
           const previousCenter=barycenter;
-          envelope=state.processId==='ruthenium-98'?singleOctahedralEnvelope(2):state.processId==='sulfur-32'?singleOctahedralEnvelope(1):state.processId==='single-octahedral'?singleOctahedralEnvelope(state.step+(state.nTubeAxis==='coupled'?1:0)):state.processId==='native-octahedral-bridge'?nativeBridgeEnvelope(state.step):state.processId==='signed-octahedral-belt'?signedOctahedralEnvelope(state.step):state.processId==='neutron-belt'?neutronBeltEnvelope:state.processId==='double-esd7'?(state.rimAssembly?centralBeltEnvelope:doubleEsd7Envelope):state.processId==='pair-context-7x4'?pairContextEnvelope:['cell-fibration','fibration-12x12'].includes(state.processId)?foldedFibrationEnvelope:state.processId==='unsplit-octahedron'?[0,1,2,3].map(i=>[0,1,2,3].map(j=>.25+2*(Number(i===j)-.25))):envelopeAt(state.k);barycenter=rotationVertices().map(vec).reduce((s,p)=>s.add(p),new T.Vector3()).divideScalar(rotationVertices().length);
+          envelope=state.processId==='sulfur-32'&&state.sulfurRetainedExpansion?(state.retainedExpansionStep>=3&&state.retainedExpansionStep<=8?retainedExpansionSquareEnvelope:retainedExpansionEnvelope):state.processId==='sulfur-32'&&state.sulfurCellulation?cellulationStepEnvelope:state.processId==='sulfur-32'&&state.sulfurComposition?layoutNNPEComposition(buildNNPEComposition(state.sulfurCompositionJoins),state.sulfurCompositionCollapsed).envelope:isBe9Wiring(state)?buildBeryllium9Wiring(state).envelope:isBranchingSeedView(state)?buildBranchingSeed(state).envelope:state.processId==='sulfur-32'&&state.sulfurHexStrands?buildHexStrandsView(state).envelope:state.processId==='sulfur-32-reflection'?sulfur32ReflectionProcess(state.k,4,state).envelope:state.processId==='ruthenium-98'?singleOctahedralEnvelope(2):state.processId==='sulfur-32'?singleOctahedralEnvelope(1):state.processId==='single-octahedral'?singleOctahedralEnvelope(state.step+(state.nTubeAxis==='coupled'?1:0)):state.processId==='native-octahedral-bridge'?nativeBridgeEnvelope(state.step):state.processId==='signed-octahedral-belt'?signedOctahedralEnvelope(state.step):state.processId==='neutron-belt'?neutronBeltEnvelope:state.processId==='double-esd7'?(state.rimAssembly?centralBeltEnvelope:doubleEsd7Envelope):state.processId==='pair-context-7x4'?pairContextEnvelope:['cell-fibration','fibration-12x12'].includes(state.processId)?foldedFibrationEnvelope:state.processId==='unsplit-octahedron'?[0,1,2,3].map(i=>[0,1,2,3].map(j=>.25+2*(Number(i===j)-.25))):envelopeAt(state.k);barycenter=rotationVertices().map(vec).reduce((s,p)=>s.add(p),new T.Vector3()).divideScalar(rotationVertices().length);
           const fitPoints=state.processId==='ruthenium-98'&&state.rutheniumView==='wiring'?[...envelope,...buildFiveSideOctWiring().strands.flatMap(s=>s.points)]:state.processId==='sulfur-32'&&state.sulfurWireBundle?[...envelope,...buildSulfurIncomingBundle().strands.flatMap(s=>s.points)]:envelope;
           halfSpan=Math.max(...fitPoints.map(p=>vec(p).distanceTo(barycenter)))*1.15;
           const delta=barycenter.clone().sub(previousCenter);controls.target.add(delta);camera.position.add(delta);
@@ -548,7 +733,7 @@ export function createViewer({ host, signal, onFailure, onView = () => {}, onCel
         if(selectedVertex)matchVertexView(lastCutVertex,state.cut.vertex);
         if(changedK)lastCutVertex=null;
         if(state.processId==='cell-fibration'&&numericVertex)lastCutVertex=state.cut.vertex;
-        if(grid){grid.visible=state.grid;grid.material.opacity=Math.min(1,state.opacity*3.75);}requestRender();
+        if(grid){grid.visible=grid.userData.cellulationGrid||state.grid;grid.material.opacity=grid.userData.cellulationGrid?state.opacity:Math.min(1,state.opacity*3.75);}requestRender();
       },
       focusCell(cell,zoom=3){
         if(disposed)return;
@@ -559,6 +744,14 @@ export function createViewer({ host, signal, onFailure, onView = () => {}, onCel
         const up=new T.Vector3(0,1,0).applyQuaternion(camera.quaternion);
         controls.target.copy(vec(point)).addScaledVector(up,-(camera.top+camera.bottom)/2);
         camera.position.copy(controls.target).add(offset);camera.lookAt(controls.target);camera.updateProjectionMatrix();requestRender();
+      },
+      hoverCellulationDot(id){
+        if(disposed)return;
+        hoveredCellulationDot=id!==null&&cellulationAnchors().some(a=>a.id===id)?id:null;requestRender();
+      },
+      toggleCellulationAnchor(id){
+        if(disposed)return;const anchor=cellulationAnchors().find(a=>a.id===id);if(!anchor)return;
+        camera.updateMatrixWorld();cellulationLock=cellulationLock?.id===id?null:{id,ndc:vec(anchor.point).project(camera)};requestRender();
       },
       restoreView(saved){
         if(disposed||!saved)return;

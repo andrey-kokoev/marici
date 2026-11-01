@@ -1,6 +1,7 @@
 import * as T from 'three';
-import {worldPoint} from '../../research/realization-tower/normal-ray-model.mjs';
+import {worldPoint as nativeWorldPoint} from '../../research/realization-tower/normal-ray-model.mjs';
 export function createSulfurIncomingBundle(model){
+ const worldPoint=model.coordinateSpace==='world3'?(p=>p):nativeWorldPoint;
  const group=new T.Group();
  for(const strand of model.strands){
   const trunk=(strand.branchStemPoints??strand.points).map(p=>new T.Vector3(...worldPoint(p))),trunkLength=trunk.slice(1).reduce((s,p,i)=>s+p.distanceTo(trunk[i]),0);
@@ -9,7 +10,7 @@ export function createSulfurIncomingBundle(model){
   const points=path.points.map(p=>new T.Vector3(...worldPoint(p)));
   const curve=new T.CurvePath();
   for(let i=1;i<points.length;i++)curve.add(new T.LineCurve3(points[i-1],points[i]));
-  const geometry=new T.TubeGeometry(curve,Math.max(192,points.length*3),.024,16,false);
+  const geometry=new T.TubeGeometry(curve,Math.max(192,Math.ceil(points.length*(model.tubeSegmentsPerPoint??3))),model.tubeRadius??.024,model.radialSegments??16,false);
   // Wiring overlay keeps all four edge guides visible on the unchanged shape.
   const material=new T.MeshBasicMaterial({color:strand.colors[0],depthTest:false,depthWrite:false});
   if(strand.colors.length===2){

@@ -1,9 +1,17 @@
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
+import {useClipboard} from '@vueuse/core';
+import {orientationCompass} from './orientation-compass.js';
+import {cellulationStartTranslation} from '../../research/realization-tower/cellulation-placement.mjs';
+import {cellulationSteps} from '../../research/realization-tower/cellulation-steps.mjs';
+import NNPEComposition from './NNPEComposition.vue';
+import SulfurReferencePanel from './SulfurReferencePanel.vue';
+import {hexStrandIds,hexStrandStageNames,hexStrandStages} from '../../research/realization-tower/hex-strands-view.mjs';
 import {buildFiveSideOctWiring} from '../../research/realization-tower/five-side-oct-wiring.mjs';
 import {buildSulfurIncomingBundle} from '../../research/realization-tower/sulfur-32-incoming-bundle.mjs';
 import {buildSulfurTubeNetwork} from '../../research/realization-tower/sulfur-32-tube-network.mjs';
 import {esd7NodePlanes} from './esd7-node-planes.js';
+import {retainedExpansionAtoms} from './retained-expansion-renderer.js';
 import { useViewerModel } from './useViewerModel.js';
 import {cellFibrationStages} from '../../research/realization-tower/cell-fibration-process.mjs';
 import {esd7CellId} from '../../research/realization-tower/esd7-cell-ids.mjs';
@@ -11,7 +19,26 @@ import {zeroNeutralValues} from '../../research/realization-tower/neutral-state-
 const props=defineProps({host:{type:HTMLElement,required:true}});
 const m=useViewerModel({processId:'retained-construction'});
 const {process,appearance,motion,locks,panels,sections,phase,error,view,k,status,summary,counts,pneInventory,polarityCounts,neutralValues,selectedNeutralMode,cut,cutAudit}=m;
+const compass=computed(()=>orientationCompass(view.quaternion));
+const isBeryllium=computed(()=>['beryllium-8','beryllium-9'].includes(process.id));
+const berylliumLabel=computed(()=>process.id==='beryllium-9'?'Be-9':'Be-8');
+const seedActive=computed(()=>isBeryllium.value||process.id==='sulfur-32'&&appearance.sulfurBranchSeed);
+const cellulationView=computed(()=>process.id==='sulfur-32'&&appearance.sulfurCellulation);
+let cellulationCamera=cellulationView.value?m.savedCamera:null;
+const compositionView=computed(()=>process.id==='sulfur-32'&&appearance.sulfurComposition);
+const channelView=computed(()=>process.id==='sulfur-32'&&appearance.sulfurChannels);
+const retainedExpansionView=computed(()=>process.id==='sulfur-32'&&appearance.sulfurRetainedExpansion);
+const retainedExpansionLabels=['White dot','Grow one arrow','Open two white triangles into a square','Color the square red / blue','Add the white X-axis diagonal','Helium-3 · split both halves vertically','Helium-4 · add the vertical white diagonal','Lithium-6 · split the upper-right along x=y','Lithium-7 · separate the right pair','Beryllium-9 · divide the left-center face','Boron-10 · split the upper-right face','Boron-11 · separate the upper-right pair','Carbon-12 · subdivide the upper-right triangle','Carbon-13 · separate the smaller pair','Nitrogen-14 · split the opposite upper face','Nitrogen-15 · separate the upper-left pair','Oxygen-16 · subdivide the topmost left triangle','Oxygen-17 · separate the smaller left pair','Fluorine-19 · split the topmost right triangle','Neon-20 · split the left-center face'];
+const compactSulfurView=computed(()=>channelView.value||compositionView.value||cellulationView.value||retainedExpansionView.value);
+const be9Wiring=computed(()=>process.id==='beryllium-9'&&appearance.be9View==='wiring-single-procedure');
+const be9Assembly=computed(()=>process.id==='beryllium-9'&&appearance.be9View==='3d-assembly');
+const seedDepth=computed(()=>isBeryllium.value?4:8);
 const nIdentityNetwork=computed(()=>process.id==='sulfur-32'&&appearance.sulfurWireBundle?buildSulfurTubeNetwork(buildSulfurIncomingBundle()):null);
+watch(()=>appearance.cellulationStep,()=>{appearance.cellulationWitnessAction=-1;});
+watch(()=>appearance.cellulationAnimate,on=>{if(on)appearance.cellulationWitnessAction=-1;});
+watch(()=>appearance.hexStrandStage,()=>{if(appearance.hexStrandCopy>=2**appearance.hexStrandStage)appearance.hexStrandCopy=-1;});
+const selectedReflectionCopy=computed(()=>process.id==='sulfur-32-reflection'?m.state.value.copies.find(c=>c.id===appearance.reflectionCopy):null);
+watch(()=>[process.id,process.step],()=>{if(process.id==='sulfur-32-reflection'&&!m.state.value.copies.some(c=>c.id===appearance.reflectionCopy))appearance.reflectionCopy='all';});
 const selectedNIdentity=computed(()=>nIdentityNetwork.value?.identities.find(g=>g.id===appearance.sulfurNIdentity));
 import {doubleEsd7Rules as doubleRules} from '../../research/realization-tower/double-esd7-process.mjs';
 const publishedBelt=globalThis.location?.pathname.startsWith('/experiments/native-belt/');
@@ -24,13 +51,24 @@ const vertexLabels=ref([]),lifetime=new AbortController();
 const inventoryDetails=ref(false),coherenceGroup=ref('all');
 const coherenceGroups=computed(()=>process.id==='ruthenium-98'&&appearance.rutheniumView==='wiring'?buildFiveSideOctWiring().coherenceGroups:[]);
 const cutVertices=[{value:'all',label:'All'},{value:2,label:'P',color:'#1265a8'},{value:1,label:'N1',color:'#e5eaf0'},{value:4,label:'N2',color:'#e5eaf0'},{value:3,label:'E',color:'#a82664'}];
-const hoveredCell=ref(null),copyFeedback=ref('');
+const hoveredCell=ref(null),copyFeedback=ref(''),dotCopyError=ref('');
+const {copy:copyDotClipboard,text:copiedDotId,copied:dotIdCopied,isSupported:dotCopySupported}=useClipboard({copiedDuring:4000});
+const {copy:copyCellClipboard,isSupported:cellCopySupported}=useClipboard();
+const dotCopyFeedback=computed(()=>dotCopyError.value||(dotIdCopied.value?`Copied ID: ${copiedDotId.value}`:''));
+async function copyDotId(dot){
+ dotCopyError.value='';
+ try{
+  if(!dotCopySupported.value)throw Error('Clipboard unavailable');
+  await copyDotClipboard(dot.id);
+ }catch{dotCopyError.value=`Clipboard unavailable. ID: ${dot.id}`;}
+}
 const formatPosition=xs=>xs.map(x=>Number(x.toFixed(4))).join(', ');
+function cellulationDotLabel(dot){return `ID: ${dot.id}\nLattice (x, y, z): (${dot.latticePoint.join(', ')})\nWorld (x, y, z): (${formatPosition(dot.point)})\nClick to ${dot.locked?'release':'fix'} this dot and its normal.\nDouble-click to copy its ID.`;}
 const formatFaces=fs=>fs.map(f=>f.join('–')).join(' / ');
 async function copyCellInfo(mode='info'){
  if(!hoveredCell.value)return;
  const {x,y,pinned,...info}=hoveredCell.value;
- try{await navigator.clipboard.writeText(mode==='id'?String(info.id):JSON.stringify(info,null,2));copyFeedback.value=mode==='id'?'ID copied':'Copied';}
+ try{if(!cellCopySupported.value)throw Error('Clipboard unavailable');await copyCellClipboard(mode==='id'?String(info.id):JSON.stringify(info,null,2));copyFeedback.value=mode==='id'?'ID copied':'Copied';}
  catch{copyFeedback.value='Copy unavailable; select the text below.';}
 }
 const fillerDisplay=ref('input'),fillerCoordinate=ref(0),neutralCoordinate=ref(0);
@@ -49,10 +87,20 @@ const formatFillerCoefficient=z=>`${z[0]}${z[1]<0?'':'+'}${z[1]}i`;
 let viewer;
 function failure(e){motion.spin=false;motion.axialRotation=false;error.value=e.message;phase.value='fallback';}
 function reset(){motion.spin=false;motion.axialRotation=false;Object.assign(locks,{v1:false,v2:false,v3:false,v4:false,v5:false});viewer?.reset();}
+function recenter(){motion.spin=false;motion.axialRotation=false;viewer?.recenter();}
 function dispose(){m.disposeSettings();lifetime.abort();viewer?.dispose();motion.spin=false;motion.axialRotation=false;phase.value='fallback';}
 function angles(axis,event){const value=Number(event.target.value);viewer?.angles(axis==='azimuth'?value:view.azimuth,axis==='elevation'?value:view.elevation);}
 function togglePanel(name){panels[name]=!panels[name];requestAnimationFrame(()=>document.getElementById(`${panels[name]?'close':'open'}-${name}`)?.focus());}
 watch(()=>({...m.renderState.value,coherenceGroup:coherenceGroup.value}),s=>viewer?.update(s),{flush:'post'});
+watch(()=>process.id,id=>{if(id==='sulfur-32-reflection')viewer?.angles(15,20);},{flush:'post'});
+watch(()=>process.id==='sulfur-32'&&appearance.sulfurHexStrands,on=>{if(on)viewer?.angles(55,20);},{flush:'post'});
+function planarSeedView(){motion.spin=false;motion.axialRotation=false;viewer?.restoreView({targetOffset:[0,0,0],offset:[0,0,40],up:[0,1,0],zoom:1});}
+function seedLayersView(){motion.spin=false;motion.axialRotation=false;viewer?.restoreView({targetOffset:[0,0,0],offset:be9Wiring.value?[0,0,32]:[24,16,32],up:[0,1,0],zoom:1});}
+watch(retainedExpansionView,on=>{if(on)planarSeedView();},{flush:'post'});
+watch(compositionView,on=>{if(on){motion.spin=false;motion.axialRotation=false;viewer?.restoreView({targetOffset:[0,0,0],offset:[12,8,24],up:[0,1,0],zoom:1});}},{flush:'post'});
+watch(cellulationView,on=>{if(on){if(cellulationCamera)viewer?.restoreView(cellulationCamera);else reset();}},{flush:'post'});
+watch(be9Wiring,()=>{if(seedActive.value)seedLayersView();},{flush:'post'});
+watch(seedActive,on=>{if(on)seedLayersView();},{flush:'post'});
 watch(()=>[panels.process,panels.scene],([p,s])=>{document.body.classList.toggle('process-closed',!p);document.body.classList.toggle('scene-closed',!s);},{immediate:true});
 onMounted(async ()=>{
  window.addEventListener('pagehide',event=>{if(event.persisted)m.flushSettings();else m.disposeSettings();},{signal:lifetime.signal});
@@ -64,12 +112,19 @@ onMounted(async ()=>{
   const {createViewer}=await import('./scene.js');
   if(lifetime.signal.aborted)return;
   viewer=createViewer({host:props.host,signal:lifetime.signal,onFailure:failure,onCellHover:info=>{hoveredCell.value=info;copyFeedback.value='';},onView:(v,a)=>{
-   view.azimuth=v.azimuth;view.elevation=v.elevation;vertexLabels.value=v.vertexLabels;m.captureCamera(v.camera);
+   view.cellulationWitness=v.cellulationWitness;view.loopValidation=v.loopValidation;view.loopOverlay=v.loopOverlay;view.quaternion=v.quaternion;view.azimuth=v.azimuth;view.elevation=v.elevation;view.nnpePorts=v.nnpePorts;view.cellulationDots=v.cellulationDots;view.cellulationGridLabels=v.cellulationGridLabels;view.gridVertexCandidate=v.gridVertexCandidate;vertexLabels.value=v.vertexLabels;m.captureCamera(v.camera);
+   if(a?.view==='cellulation'){
+    cellulationCamera=v.camera;
+    if(appearance.cellulationTranslation===null)appearance.cellulationTranslation=cellulationStartTranslation(v.quaternion);
+   }
    // Compatibility diagnostics, now emitted only on rendered changes.
    globalThis.normalRayViewAudit=v;globalThis.normalRayAudit=a;
   }});
   if(lifetime.signal.aborted){viewer.dispose();return;}
-  phase.value='ready';viewer.update(m.renderState.value);viewer.restoreView(m.savedCamera);
+  phase.value='ready';viewer.update(m.renderState.value);
+  if(m.savedCamera)viewer.restoreView(m.savedCamera);else if(cellulationView.value)reset();
+  if(seedActive.value)seedLayersView();
+  if(retainedExpansionView.value)planarSeedView();
  }catch(e){if(!lifetime.signal.aborted)failure(e);}
 });
 onUnmounted(()=>{dispose();document.body.classList.remove('process-closed','scene-closed');});
@@ -81,12 +136,17 @@ defineExpose({dispose,inspectView:({cell,zoom=3,axis}={})=>{if(axis){if(!['x','y
   <button id="close-process" class="panel-close" aria-label="Close process panel" aria-controls="process-panel" @click="togglePanel('process')">×</button>
   <p v-if="publishedBelt"><a href="/experiments/">← Gallery</a> · <a href="/experiments/native-belt-guide">Guide and scope</a></p>
   <h2>Process</h2>
+  <p v-if="process.id==='fibration-12x12'"><a id="cellulation-view" href="./cellulation.html">Tetrahedral–octahedral cellulation</a></p>
   <label for="process-select">Construction process</label>
   <select id="process-select" :value="process.id" :disabled="phase!=='ready'" @change="m.selectProcess($event.target.value)">
    <option v-for="item in m.processes" :key="item.id" :value="item.id">{{item.name}}</option>
   </select>
-  <div v-if="!['double-esd7','neutron-belt'].includes(process.id)" class="row process-navigation"><button id="prev" :disabled="phase!=='ready'||process.step===0" @click="m.move(-1)">← Previous</button><button id="next" :disabled="phase!=='ready'||!m.canAdvance.value" @click="m.move(1)">Next →</button></div>
-  <p v-if="!['double-esd7','neutron-belt'].includes(process.id)" id="procedure" class="process-stage" role="status"><template v-if="m.state.value.cellFibrationAudit">{{process.step===9?'Interior pairs':process.step===8?'Opposite-face quartets':process.step===7?'Layer 3 · remaining cells':process.step===6?'Central cells':process.step===5?'Surface triangles':process.step===4?'Layer 2 · inner hexagons':m.state.value.cellFibrationAudit.complementaryLayer?'Complementary layer '+m.state.value.cellFibrationAudit.complementaryLayer:'Layer '+m.state.value.cellFibrationAudit.layer}}</template><template v-else>Step {{process.step}}</template><small v-if="m.state.value.cellFibrationAudit" id="process-step-index">Step {{process.step}} / {{cellFibrationStages.length-1}}<span v-if="!m.canAdvance.value"> · End of defined steps</span></small><small v-else-if="!m.canAdvance.value">End of defined steps</small></p>
+  <div v-if="!['double-esd7','neutron-belt'].includes(process.id) && !seedActive && !compactSulfurView" class="row process-navigation"><button id="prev" :disabled="phase!=='ready'||process.step===0" @click="m.move(-1)">← Previous</button><button id="next" :disabled="phase!=='ready'||!m.canAdvance.value" @click="m.move(1)">Next →</button></div>
+  <p v-if="be9Wiring" id="wiring-procedure" class="process-stage" role="status">{{['Start · 8 strands / 16 wires','Step 1 · Midpoint twist 180°'][appearance.be9WiringStep]}}</p>
+  <div v-if="be9Wiring" class="row process-navigation"><button id="be9-wiring-prev" :disabled="appearance.be9WiringStep===0" @click="appearance.be9WiringStep--">← Previous</button><button id="be9-wiring-next" :disabled="appearance.be9WiringStep===1" @click="appearance.be9WiringStep++">Next →</button></div>
+  <p v-if="be9Assembly" id="assembly-procedure" class="process-stage" role="status">Step {{appearance.be9AssemblySides?3:appearance.be9AssemblyFold?2:1}} · {{appearance.be9AssemblySides?'Four triangular faces · side folds 60°':appearance.be9AssemblyFold?'Fold at red/blue midpoints · 60°':'8-simplex · 120°'}}</p>
+  <div v-if="be9Assembly" class="row process-navigation"><button id="be9-assembly-prev" :disabled="!appearance.be9AssemblyFold" @click="appearance.be9AssemblySides?appearance.be9AssemblySides=false:appearance.be9AssemblyFold=false">← Previous</button><button id="be9-assembly-next" :disabled="appearance.be9AssemblySides" @click="appearance.be9AssemblyFold?appearance.be9AssemblySides=true:appearance.be9AssemblyFold=true">Next →</button></div>
+  <p v-if="!compactSulfurView && !be9Assembly && !be9Wiring && !['double-esd7','neutron-belt'].includes(process.id)" id="procedure" class="process-stage" role="status"><template v-if="m.state.value.cellFibrationAudit">{{process.step===9?'Interior pairs':process.step===8?'Opposite-face quartets':process.step===7?'Layer 3 · remaining cells':process.step===6?'Central cells':process.step===5?'Surface triangles':process.step===4?'Layer 2 · inner hexagons':m.state.value.cellFibrationAudit.complementaryLayer?'Complementary layer '+m.state.value.cellFibrationAudit.complementaryLayer:'Layer '+m.state.value.cellFibrationAudit.layer}}</template><template v-else>Step {{process.step}}</template><small v-if="m.state.value.cellFibrationAudit" id="process-step-index">Step {{process.step}} / {{cellFibrationStages.length-1}}<span v-if="!m.canAdvance.value"> · End of defined steps</span></small><small v-else-if="!m.canAdvance.value">End of defined steps</small></p>
   <section v-if="process.id==='pair-context-7x4'" id="pair-context-audit" aria-label="Seven contexts and four depths">
    <p>Depth {{m.state.value.pairContextAudit.depth}}/4 · {{m.state.value.pairContextAudit.context.join('–')}} · {{m.state.value.pairContextAudit.confirmation}}</p>
    <p>Blue: P face · magenta: E face · pale: N witness · gold: selected context / flow. The seven endpoint contexts exclude the mixed N face.</p>
@@ -115,10 +175,110 @@ defineExpose({dispose,inspectView:({cell,zoom=3,axis}={})=>{if(axis){if(!['x','y
    <label v-if="appearance.rutheniumView==='wiring'">Wiring opacity {{Math.round(appearance.rutheniumWireOpacity*100)}}% <input id="ruthenium-wire-opacity" type="range" min="0" max="1" step="0.01" v-model.number="appearance.rutheniumWireOpacity"></label>
    <p v-else>Whole-cell geometry and native shared-face lattice. P/E colours distinguish tetrahedral orientations; N marks octahedra.</p>
   </section>
-  <section v-if="process.id==='sulfur-32'" id="sulfur-32-audit">
-   <h3>Sulfur-32</h3><p>Edge units: 3 · {{m.state.value.retainedBodies.length}} whole geometric cells.</p>
-   <label>View <select id="sulfur-32-view" :value="appearance.sulfurChannels?'channels':appearance.sulfurWireBundle?'wiring':appearance.sulfurTubes?'tubes':appearance.sulfurHandlebody?'handlebody':appearance.cellGraph?'lattice':'geometry'" @change="appearance.sulfurChannels=$event.target.value==='channels';appearance.sulfurWireBundle=$event.target.value==='wiring';appearance.sulfurTubes=$event.target.value==='tubes';appearance.sulfurHandlebody=$event.target.value==='handlebody';appearance.cellGraph=$event.target.value==='lattice'"><option value="geometry">Geometry</option><option value="tubes">Tubes</option><option value="lattice">Lattice</option><option value="wiring">Wiring</option><option value="channels">Channels / cutaway</option><option value="handlebody">Handlebody — empty tubes</option></select></label>
-   <div v-if="appearance.sulfurChannels" id="sulfur-channel-info"><p>Open honeycomb chambers. Turquoise marks the carved passage walls, not overlaid tubes. Voxel approximation.</p><label><input id="sulfur-channel-open" type="checkbox" v-model="appearance.sulfurChannelOpen"> Peel away exterior walls</label><button id="sulfur-channel-expose" type="button" @click="appearance.sulfurChannelCut=.35;appearance.sulfurChannelOpen=true;appearance.sulfurChannelNormal=[...(view.camera?.offset??[.35,-.85,.4])];appearance.sulfurWireOpacity=.2">Expose interior from this view</button><label>Retained depth {{Math.round(appearance.sulfurChannelCut*100)}}% <input id="sulfur-channel-cut" type="range" min="0" max="1" step="0.05" v-model.lazy.number="appearance.sulfurChannelCut"></label><small>Release to update. To restore the full exterior, use 100% and turn off exterior peeling.</small></div>
+  <section v-if="process.id==='sulfur-32-reflection'" id="sulfur-reflection-audit">
+   <h3>Sulfur-32 reflection</h3>
+   <label>Stage <select id="reflection-stage" v-model.number="process.step"><option :value="0">0 · Regular 4-simplex</option><option :value="1">1 · White reflection</option><option :value="2">2 · First 120° rotation</option><option :value="3">3 · Outer-red reflection</option><option :value="4">4 · Second 120° rotation</option></select></label>
+   <label>View <select id="reflection-view" v-model="appearance.reflectionView"><option value="geometry">Geometry</option><option value="wiring">Wiring</option></select></label>
+   <label>4D projection angle {{appearance.reflectionAngle}}° <input id="reflection-angle" type="range" min="-90" max="90" step="1" v-model.number="appearance.reflectionAngle"></label>
+   <label v-if="appearance.reflectionView==='geometry'" class="check"><input id="reflection-cycle" type="checkbox" v-model="appearance.reflectionCycle"> Show central contact circuit</label>
+   <label>Copy history <select id="reflection-copy" v-model="appearance.reflectionCopy"><option value="all">All copies</option><option v-for="c in m.state.value.copies" :key="c.id" :value="c.id">{{c.id}} · {{c.word.join(' → ') || 'seed'}}</option></select></label>
+   <p id="reflection-counts">{{m.state.value.reflectionAudit.histories}} retained histories · {{m.state.value.reflectionAudit.cells}} distinct regular 4-simplexes · {{m.state.value.reflectionAudit.contacts}} shared-edge contacts.</p>
+   <p v-if="appearance.reflectionView==='wiring'">{{m.state.value.reflectionBundle.strands.length}} retained strands, present at both ends. White, blue-white, red-white and blue strands follow copy histories through the reflected assembly, without merging coincident copies.</p>
+   <label v-if="appearance.reflectionView==='wiring'">Wiring opacity {{Math.round(100*appearance.reflectionWireOpacity)}}% <input id="reflection-wire-opacity" type="range" min="0" max="1" step=".01" v-model.number="appearance.reflectionWireOpacity"></label>
+   <p v-if="appearance.reflectionView==='geometry'">Blue cells form the central circuit. Pink and gold vertices are v₃ and v₄. Every simplex retains all five vertices and ten edges.</p>
+   <p v-if="process.step===4 && appearance.reflectionView==='geometry'">Six seam reflections return the complete frame and all five labels exactly.</p>
+   <p v-if="selectedReflectionCopy">{{selectedReflectionCopy.id}} · parent {{selectedReflectionCopy.parent ?? 'none'}} · {{selectedReflectionCopy.word.join(' → ') || 'seed'}}</p>
+  </section>
+  <section v-if="['sulfur-32','beryllium-8','beryllium-9'].includes(process.id)" :id="process.id+'-audit'">
+   <h3 v-if="!compactSulfurView">{{isBeryllium?berylliumLabel:'Sulfur-32'}}</h3><p v-if="process.id==='sulfur-32' && !appearance.sulfurBranchSeed && !compactSulfurView">Edge units: 3 · {{m.state.value.retainedBodies.length}} whole geometric cells.</p>
+   <label v-if="process.id==='beryllium-9'">View <select id="beryllium-9-view" v-model="appearance.be9View"><option value="branching-seed">White-rooted hex simplex</option><option value="3d-assembly">3D assembly</option><option value="wiring-single-procedure">Wiring single procedure</option></select></label>
+   <label v-else-if="process.id==='beryllium-8'">View <select id="beryllium-8-view" value="branching-seed"><option value="branching-seed">White-rooted hex simplex</option></select></label>
+   <label v-else>View <select id="sulfur-32-view" :value="appearance.sulfurRetainedExpansion?'retained-expansion':appearance.sulfurCellulation?(appearance.cellulationStep===0?'cellulation-reference':'cellulation'):appearance.sulfurComposition?'nnpe-composition':appearance.sulfurBranchSeed?'branching-seed':appearance.sulfurHexStrands?'hex-strands':appearance.sulfurChannels?'channels':appearance.sulfurWireBundle?'wiring':appearance.sulfurTubes?'tubes':appearance.sulfurHandlebody?'handlebody':appearance.cellGraph?'lattice':'geometry'" @change="appearance.sulfurRetainedExpansion=$event.target.value==='retained-expansion';appearance.sulfurCellulation=['cellulation','cellulation-reference'].includes($event.target.value);if($event.target.value==='cellulation-reference')appearance.cellulationStep=0;else if($event.target.value==='cellulation' && appearance.cellulationStep===0)appearance.cellulationStep=1;appearance.sulfurComposition=$event.target.value==='nnpe-composition';appearance.sulfurBranchSeed=$event.target.value==='branching-seed';appearance.sulfurHexStrands=$event.target.value==='hex-strands';appearance.sulfurChannels=$event.target.value==='channels';appearance.sulfurWireBundle=$event.target.value==='wiring';appearance.sulfurTubes=$event.target.value==='tubes';appearance.sulfurHandlebody=$event.target.value==='handlebody';appearance.cellGraph=$event.target.value==='lattice'"><option value="retained-expansion">Retained expansion</option><option value="cellulation">Cellulation</option><option value="cellulation-reference">Full cellulation · reference</option><option value="nnpe-composition">NNPE composition</option><option value="geometry">Geometry</option><option value="tubes">Tubes</option><option value="lattice">Lattice</option><option value="wiring">Wiring</option><option value="channels">Channels / cutaway</option><option value="handlebody">Handlebody — empty tubes</option><option value="hex-strands">Hex strands · 3D</option><option value="branching-seed">White-rooted hex simplex</option></select></label>
+   <template v-if="retainedExpansionView">
+    <div class="row process-navigation"><button id="retained-expansion-prev" :disabled="phase!=='ready'||appearance.retainedExpansionStep<=1" @click="appearance.retainedExpansionStep--">← Previous</button><button id="retained-expansion-next" :disabled="phase!=='ready'||appearance.retainedExpansionStep>=20" @click="appearance.retainedExpansionStep++">Next →</button></div>
+    <p id="retained-expansion-step" role="status">Step {{appearance.retainedExpansionStep}} · {{retainedExpansionLabels[appearance.retainedExpansionStep-1]}}</p>
+    <label class="check"><input id="retained-expansion-animate" type="checkbox" v-model="appearance.retainedExpansionAnimate"> Animate expansion</label>
+   </template>
+   <template v-if="cellulationView && appearance.cellulationStep>0">
+    <div class="row process-navigation"><button id="cellulation-prev" :disabled="phase!=='ready'||appearance.cellulationStep<=1" @click="appearance.cellulationStep--">← Previous</button><button id="cellulation-next" :disabled="phase!=='ready'||appearance.cellulationStep>=cellulationSteps.length||view.cellulationWitness?.phase==='blocked'" @click="appearance.cellulationStep++">Next →</button></div>
+    <p id="cellulation-step-label" role="status">Step {{appearance.cellulationStep}} · {{cellulationSteps[appearance.cellulationStep-1].label}}</p>
+    <label v-if="appearance.cellulationStep>=4" class="check"><input id="cellulation-animate" type="checkbox" v-model="appearance.cellulationAnimate"> Animate</label>
+   </template>
+   <label v-if="cellulationView" for="cellulation-cell-size">Cell scale <output>{{appearance.cellulationCellSize.toFixed(2)}}</output><input id="cellulation-cell-size" type="range" min="0.5" max="2" step="0.05" v-model.number="appearance.cellulationCellSize"></label>
+   <section v-if="cellulationView && appearance.cellulationStep>=23 && view.cellulationWitness" id="shell-witness-controls">
+    <h3>Witnessed construction</h3>
+    <p id="shell-order-warning">Order dependence detected: permitted reorderings can change dot colors/normals, and changing face order can change arrows. This displays one selected sequence—not a confluence certificate.</p>
+    <p id="shell-role-compatibility">Source-role compatibility: {{view.cellulationWitness.compatibilityStatus}} · {{view.cellulationWitness.sourceRoleViolations}} source-role violations. Geometry completion below does not certify compatible gluing.</p>
+    <details v-if="view.cellulationWitness.dot422?.status==='unresolved'" id="shell-dot-422-unresolved" open>
+     <summary>Dot 422: unresolved — no recoloring or role-changing transport admitted</summary>
+     <ul><li v-for="claim in view.cellulationWitness.dot422.claims" :key="claim.event+claim.role">{{claim.cell}} · {{claim.role}} · {{claim.colour===0xffffff?'white':claim.colour===0xff3030?'red':'blue'}} ({{claim.kind}})</li></ul>
+     <small>The displayed dot and click normal retain the legacy selected reading, not an agreed shared-vertex reading.</small>
+    </details>
+    <p id="shell-witness-status">{{view.cellulationWitness.phase}} · {{view.cellulationWitness.completedCells}} / {{view.cellulationWitness.targetCells}} cells</p>
+    <small>Action {{Math.min(view.cellulationWitness.action+1,view.cellulationWitness.totalActions)}} / {{view.cellulationWitness.totalActions}} · {{view.cellulationWitness.cell}}</small>
+    <div class="row"><button id="shell-witness-start" @click="appearance.cellulationAnimate=false;appearance.cellulationWitnessAction=0">Inspect from start</button><button id="shell-witness-complete" @click="appearance.cellulationAnimate=false;appearance.cellulationWitnessAction=-1">Show complete</button></div>
+    <div class="row"><button id="shell-action-prev" :disabled="appearance.cellulationWitnessAction<=0" @click="appearance.cellulationWitnessAction--">Previous action</button><button id="shell-action-next" :disabled="appearance.cellulationWitnessAction<0||appearance.cellulationWitnessAction>=view.cellulationWitness.totalActions-1" @click="appearance.cellulationWitnessAction++">Next action</button></div>
+    <small>{{view.cellulationWitness.requires.length}} recorded prerequisites for this action. Normal playback: {{Math.ceil(view.cellulationWitness.duration/1000)}} seconds.</small>
+    <small>Opposite-direction additions: {{view.cellulationWitness.newOpposingArrows}}. Existing arrows are retained, not reversed or counted as the missing direction.</small>
+    <p v-if="view.cellulationWitness.blockers.length">Blocked: {{view.cellulationWitness.blockers}}</p>
+   </section>
+   <section v-if="cellulationView && appearance.cellulationValidateLoop && view.loopValidation" id="loop-validation-report" aria-label="Loop validation report">
+    <h3>Loop validation</h3>
+    <p v-if="view.loopValidation.status==='pending'">{{view.loopValidation.message}}</p>
+    <template v-else>
+     <strong>{{view.loopValidation.issues.length}} findings · roles unassigned</strong>
+     <ul><li v-for="check in view.loopValidation.checks" :key="check.name" :data-validation-status="check.status"><b>{{check.status==='pass'?'✓':check.status==='fail'?'!':'?'}} {{check.name}}</b><small>{{check.detail}}</small></li></ul>
+     <ol v-if="view.loopValidation.issues.length"><li v-for="issue in view.loopValidation.issues" :key="issue.message">{{issue.message}}</li></ol>
+     <small>{{view.loopValidation.scope}}</small>
+    </template>
+   </section>
+   <div v-if="compositionView" id="nnpe-controls">
+    <p>Target: 16 N · 16 P</p>
+    <label class="check"><input id="nnpe-collapse" type="checkbox" v-model="appearance.sulfurCompositionCollapsed"> Collapse composites</label>
+    <div class="row"><button id="nnpe-undo" :disabled="!appearance.sulfurCompositionJoins.length" @click="appearance.sulfurCompositionJoins=appearance.sulfurCompositionJoins.slice(0,-1)">Undo join</button><button id="nnpe-reset" :disabled="!appearance.sulfurCompositionJoins.length" @click="appearance.sulfurCompositionJoins=[]">Reset</button></div>
+    <details id="nnpe-rules"><summary>Composition rules</summary><p>Each complex is shown as a diagonal half-cube with blue, red and white surfaces. Attachment labels are retained internally. N ↔ N; P ↔ E. Tree compositions only.</p><p>Trial inventory: each generator contributes 1 N and 1 P. Port labels add no particles; joining retains the inventory and history.</p></details>
+   </div>
+   <div v-if="seedActive && !be9Assembly && !be9Wiring" id="branching-seed-controls">
+    <div id="seed-pair-controls" role="group" aria-label="Show twisted pairs">
+     <span>Show twisted pairs</span>
+     <label class="check"><input id="seed-pairs-by-layer" type="checkbox" v-model="appearance.seedPairsByLayer"> By layer</label>
+     <label class="check"><input id="seed-pairs-combined" type="checkbox" v-model="appearance.seedPairsCombined"> Combined</label>
+     <label class="check"><input id="seed-show-reference" type="checkbox" v-model="appearance.seedShowReference"> Show {{isBeryllium?berylliumLabel:'Su-32'}} reference</label>
+     <label v-if="process.id==='beryllium-9' && appearance.seedShowReference" class="check"><input id="be9-central-sleeve" type="checkbox" v-model="appearance.be9CentralSleeve"> Central neutron sleeve (trial)</label>
+    </div>
+    <p v-if="appearance.seedPairsCombined">Combined uses the selected layers and continuation rule in the strand-comparison panel.</p>
+    <p v-else-if="appearance.seedShowReference">The reference appears in the strand-comparison panel.</p>
+    <div v-if="appearance.seedPairsByLayer" id="seed-layer-geometry-notes">
+    <p>Eight layers: layers 1–4 are retained; layers 5–8 copy all four lower and point-reflect each within its own plane. Colours are retained; arrows follow every reflection.</p>
+    <p>Original directions: vertical white · 120° blue · 240° red, clockwise from upward vertical. The mirrored pair keeps its inherited colours.</p>
+    <p>Depth {{seedDepth}} = {{seedDepth}} white-plus-branch steps ({{2*seedDepth}} edge layers). Each layer retains its own vertices, edges and routes.</p>
+    </div>
+    <div v-if="appearance.seedPairsByLayer || appearance.seedPairsCombined" id="seed-layer-selector" role="group" :aria-label="appearance.seedPairsByLayer?'Visible layers':'Combined source layers'">
+     <span>{{appearance.seedPairsByLayer?'Layers':'Combined source layers'}}</span>
+     <button v-for="n in 8" :key="n" :id="'seed-layer-'+n" type="button" :aria-label="'Show layer '+n" :aria-pressed="appearance.seedVisibleLayers[n-1]" @click="appearance.seedVisibleLayers[n-1]=!appearance.seedVisibleLayers[n-1]">{{n}}</button>
+    </div>
+    <div v-if="appearance.seedPairsByLayer" id="seed-spatial-controls">
+    <label>Layer gap {{appearance.seedLayerGap.toFixed(2)}} <input id="seed-layer-gap" type="range" min="0" max="6" step=".25" v-model.number="appearance.seedLayerGap"></label>
+    <p>Layers lie at Z = 0 through −7gap. Layers 3–4 mirror 1–2 perpendicular to the central white arrow. Layers 5–8 are four gaps below 1–4, with XY reflected about the same center; their layer order is unchanged. Gold points mark the centers. No inter-layer connections are added.</p>
+    <button id="seed-layers-view" type="button" @click="seedLayersView">Oblique view</button>
+    <button id="seed-face-on" type="button" @click="planarSeedView">Face-on view</button>
+    </div>
+   </div>
+   <template v-if="process.id==='sulfur-32' && !compositionView && !cellulationView">
+   <div v-if="appearance.sulfurHexStrands" id="hex-strands-controls">
+    <label>Hex process stage <select id="hex-strand-stage" v-model.number="appearance.hexStrandStage"><option v-for="(name,index) in hexStrandStageNames" :key="index" :value="index">{{index}} · {{name}}</option></select></label>
+    <label>Strand <select id="hex-strand-select" v-model="appearance.hexStrandSelection"><option value="all">All 16 strands</option><option v-for="id in hexStrandIds" :key="id" :value="id">{{id}}</option></select></label>
+    <label>Transformed copy <select id="hex-strand-copy" v-model.number="appearance.hexStrandCopy"><option :value="-1">All copies</option><option v-for="(trace,index) in hexStrandStages[appearance.hexStrandStage].strands[0].traces" :key="index" :value="index">{{index}} · {{trace.history.join(' → ') || 'original'}}</option></select></label>
+    <label>Layer spacing {{appearance.hexStrandSpacing.toFixed(2)}} <input id="hex-strand-spacing" type="range" min="0" max="1" step=".02" v-model.number="appearance.hexStrandSpacing"></label>
+    <label class="check"><input id="hex-strand-isolate" type="checkbox" v-model="appearance.hexStrandIsolate"> Isolate selected strand</label>
+    <p>16 depth-4 seed strands · {{16*2**appearance.hexStrandStage}} retained transformed paths. Each strand has its own depth layer; rotate the scene to separate overlaps. Show shape adds the original planar graph.</p>
+    <p>Depth is display-only, not an octahedral folding. Coincident edges within a strand are drawn once; their copy histories are retained. Added seam continuations remain unassigned.</p>
+   </div>
+   <div v-if="appearance.sulfurChannels" id="sulfur-channel-info">
+    <label class="check"><input id="sulfur-channel-open" type="checkbox" v-model="appearance.sulfurChannelOpen"> Peel exterior</label>
+    <button id="sulfur-channel-expose" type="button" @click="appearance.sulfurChannelCut=.35;appearance.sulfurChannelOpen=true;appearance.sulfurChannelNormal=[...(view.camera?.offset??[.35,-.85,.4])];appearance.sulfurWireOpacity=.2">Cut from current view</button>
+    <label>Retained depth {{Math.round(appearance.sulfurChannelCut*100)}}% <input id="sulfur-channel-cut" type="range" min="0" max="1" step="0.05" v-model.lazy.number="appearance.sulfurChannelCut"></label>
+   </div>
    <p v-if="appearance.sulfurHandlebody" id="sulfur-handlebody-info">19 N chambers, joined through 32 neutral connector spaces and 104 shared-face necks. Six open mouths; matching rim colours mark opposite-tip identities. No wires or direction assignments. Periodic seam links are not drawn as physical tubes.</p>
    <p v-if="appearance.sulfurWireBundle" id="sulfur-wire-info">16 retained (a,b,p,e) strands, present at both ends. Complete native-edge paths cover all 19 N carriers and all 16 retained N groups, with no copied branches. This is an incidence-coverage result, not equivalence to the 64-wire periodic model.</p>
    <label v-if="appearance.sulfurWireBundle || appearance.sulfurChannels">Wiring opacity {{Math.round(appearance.sulfurWireOpacity*100)}}% <input id="sulfur-wire-opacity" type="range" min="0" max="1" step="0.01" v-model.number="appearance.sulfurWireOpacity"></label>
@@ -132,9 +292,9 @@ defineExpose({dispose,inspectView:({cell,zoom=3,axis}={})=>{if(axis){if(!['x','y
      <div v-for="g in selectedNIdentity?[selectedNIdentity]:nIdentityNetwork.identities" :key="g.id"><strong>{{g.label}}</strong> · {{g.edgeIds.length}} edges · {{g.segmentIds.length}} segments · {{g.components.length}} connected locations<ul><li v-for="id in g.members" :key="id"><code>{{id}}</code></li></ul></div>
     </details>
    </div>
-   <p v-if="process.step===0 && !appearance.sulfurWireBundle && !appearance.sulfurChannels">Single octahedron starting geometry. Existing colours indicate geometric roles.</p>
-   <button v-show="!appearance.sulfurHandlebody" id="sulfur-32-fibrate" type="button" @click="process.step=process.step===0?1:0">{{process.step===0?'Fibrate globally':'Return to geometry'}}</button>
-   <div v-if="process.step===1 && !appearance.sulfurHandlebody" v-show="!appearance.sulfurWireBundle && !appearance.sulfurChannels" id="sulfur-32-fibration">
+   <p v-if="!retainedExpansionView && process.step===0 && !appearance.sulfurBranchSeed && !appearance.sulfurHexStrands && !appearance.sulfurWireBundle && !appearance.sulfurChannels">Single octahedron starting geometry. Existing colours indicate geometric roles.</p>
+   <button v-show="!retainedExpansionView && !appearance.sulfurBranchSeed && !appearance.sulfurHandlebody && !channelView" id="sulfur-32-fibrate" type="button" @click="process.step=process.step===0?1:0">{{process.step===0?'Fibrate globally':'Return to geometry'}}</button>
+   <div v-if="!retainedExpansionView && process.step===1 && !appearance.sulfurHandlebody" v-show="!appearance.sulfurBranchSeed && !appearance.sulfurHexStrands && !appearance.sulfurWireBundle && !appearance.sulfurChannels" id="sulfur-32-fibration">
     <p>16 N channels · 64 wires · four slots per channel. All 51 cell records retained in 48 cell fibers.</p>
     <label>Read from <select id="sulfur-32-direction" v-model.number="process.branch"><option :value="1">P | E</option><option :value="3">E | P</option></select></label>
     <p>Candidate global periodic closure. Gold links sew 24 boundary interfaces; teal links identify the three opposite-tip pairs. These are retained comparisons, not straight passages through intervening cells.</p>
@@ -145,6 +305,7 @@ defineExpose({dispose,inspectView:({cell,zoom=3,axis}={})=>{if(axis){if(!['x','y
      </div>
     </details>
    </div>
+   </template>
   </section>
   <section v-if="process.id==='unsplit-octahedron'" id="octahedron-audit" aria-label="Unsplit octahedron">
    <p>6 vertices · 12 edges · 8 triangular faces · 1 body.</p>
@@ -177,7 +338,7 @@ defineExpose({dispose,inspectView:({cell,zoom=3,axis}={})=>{if(axis){if(!['x','y
    <details id="cell-construction-rules"><summary>Construction rules</summary><p>k=7 · V₂≡V₅. Whole-cell colours.</p><ol start="0"><li v-for="(rule,i) in cellFibrationStages" :key="i" :aria-current="process.step===i?'step':undefined">{{rule}}</li></ol></details>
    <details><summary>Growth attachments</summary><p v-for="g in m.state.value.cellFibrationAudit.growth" :key="g.child">{{g.complementaryLayer?'Complementary layer '+g.complementaryLayer:'Layer '+g.layer}} · <template v-if="g.kind==='filler-coherence'">{{g.layers.join('')}} · {{g.pattern}} · {{g.neighbors.map(n=>esd7CellId(n.cell)+': '+n.role).join(' + ')}}</template><template v-else-if="g.kind==='nearest-vertex-color'">V{{g.vertex}} ({{g.vertexRole}}) → {{g.role}}</template><template v-else-if="g.kind==='vertex-2-path'">V{{g.vertex}}: {{g.source}} → {{g.target}}</template><template v-else-if="g.kind==='interior-pair'">{{g.layers.join('')}} ← {{g.parents.map(p=>p.layers.join('')).join(' / ')}}</template><template v-else-if="g.kind==='opposite-quartet'">Face {{g.face.join('–')}} · copy {{esd7CellId(g.parent)}}</template><template v-else-if="g.kind==='layer-3-fill'">V{{g.sources.join(' / V')}} · layer 3 → N</template><template v-else-if="g.kind==='central-quartet'">V{{g.source}} · {{g.pattern}} · {{g.neighbors.map(n=>esd7CellId(n.cell)+': '+n.role).join(' + ')}}</template><template v-else-if="g.kind==='face-middle'">Faces {{formatFaces(g.faces)}} · cell {{esd7CellId(g.parent)}}: {{g.sourceRole}} → {{g.role}}</template><template v-else-if="g.kind==='inner-hex-reflection'"><span v-for="w in g.hexWitnesses" :key="w.face.join('-')">Inside V{{w.source}}, layer 2: opposite {{esd7CellId(w.oppositeCell)}} ({{w.role}}) → {{w.assignedRole}}; </span></template><template v-else-if="g.kind==='complementary'">V{{g.source}} · face-attached to {{esd7CellId(g.parent)}}</template><template v-else-if="g.kind==='shared-interior'">Shared interior · {{g.proposals.map(p=>`V${p.source}→V${p.target}: ${p.role}`).join('; ')}} · P > N > E</template><template v-else-if="g.kind==='corner-interior'">V{{g.source}} · interior (1,1,1)</template><template v-else-if="g.kind==='face-center'">Face {{g.face.join('–')}}; opposite V{{g.opposite}}</template><template v-else-if="g.kind==='face'">V{{g.source}}, face {{g.face.join('–')}}; opposite V{{g.opposite}}</template><template v-else-if="g.kind==='face-completion'">V{{g.source}}, face {{g.face.join('–')}}; nearest other V{{g.target}}</template><template v-else-if="g.kind==='midpoint'">Edge V{{g.source}}–V{{g.target}} · {{g.word}} (new cell in the middle)</template><template v-else>V{{g.source}} → V{{g.target}}</template>: {{g.role}} · {{esd7CellId(g.child)}}</p></details>
   </section>
-  <details v-if="process.id!=='double-esd7'" id="process-notes" :key="process.id"><summary>About this process &amp; current step</summary><p>{{m.selectedProcess.value.description}}</p><p>{{summary}}</p></details>
+  <details v-if="process.id!=='double-esd7' && !compactSulfurView" id="process-notes" :key="process.id"><summary>About this process &amp; current step</summary><p>{{m.selectedProcess.value.description}}</p><p>{{summary}}</p></details>
   <section v-if="process.id==='fibration-12x12'" id="fibration12-audit" aria-label="12x12 fibration construction">
    <button id="restart-fibration" :disabled="phase!=='ready'" @click="process.step=0">Restart at −P</button>
    <label for="polarity-sheet">Whole-face polarity reading</label>
@@ -270,38 +431,58 @@ defineExpose({dispose,inspectView:({cell,zoom=3,axis}={})=>{if(axis){if(!['x','y
    <ul><li v-for="layer in m.state.value.radial.layers" :key="layer.insideLayer">Layer {{layer.insideLayer}}: {{layer.allowedRoles.map(r=>r[0].toUpperCase()).join('/')}}; {{layer.assigned.length}} assigned, {{layer.unassigned.length}} unresolved.<span v-if="layer.exceptions.length"> Explicit core constraints: {{layer.exceptions.map(e=>`${e.cell}=${e.allowedRoles.join('/')}`).join(', ')}}.</span></li></ul>
    <p v-if="m.state.value.radial.surfaceElectrons.some(e=>!e.hasInteriorFaceNeighbor)">Surface E without an interior face-neighbor: {{m.state.value.radial.surfaceElectrons.filter(e=>!e.hasInteriorFaceNeighbor).map(e=>e.cell).join(', ')}}. Hidden pairing here needs a different rule or a corner exception.</p>
   </details>
-  <label v-show="!['ruthenium-98','sulfur-32','single-octahedral','native-octahedral-bridge','signed-octahedral-belt','unsplit-octahedron','cell-fibration','double-esd7'].includes(process.id)" for="step">{{process.id==='from-center-cell'?'Reference envelope k':'Input k'}} = <output id="kval">{{k}}</output></label><input v-show="!['ruthenium-98','sulfur-32','single-octahedral','native-octahedral-bridge','signed-octahedral-belt','unsplit-octahedron','cell-fibration','double-esd7'].includes(process.id)" id="step" v-model.number="process.k" :disabled="phase!=='ready'||['cell-fibration','pair-context-7x4','retained-construction','from-center-cell','fibration-12x12','unsplit-octahedron'].includes(process.id)" type="range" min="1" max="7" step="1">
+  <label v-show="!seedActive && !['sulfur-32-reflection','ruthenium-98','sulfur-32','single-octahedral','native-octahedral-bridge','signed-octahedral-belt','unsplit-octahedron','cell-fibration','double-esd7'].includes(process.id)" for="step">{{process.id==='from-center-cell'?'Reference envelope k':'Input k'}} = <output id="kval">{{k}}</output></label><input v-show="!seedActive && !['sulfur-32-reflection','ruthenium-98','sulfur-32','single-octahedral','native-octahedral-bridge','signed-octahedral-belt','unsplit-octahedron','cell-fibration','double-esd7'].includes(process.id)" id="step" v-model.number="process.k" :disabled="phase!=='ready'||['cell-fibration','pair-context-7x4','retained-construction','from-center-cell','fibration-12x12','unsplit-octahedron'].includes(process.id)" type="range" min="1" max="7" step="1">
   <p v-if="status" id="status">{{status}}</p><p v-if="error" id="error" role="alert">{{error}}</p>
  </aside>
+ <NNPEComposition v-if="compositionView" :projected-ports="view.nnpePorts??[]" v-model:joins="appearance.sulfurCompositionJoins" :collapsed="appearance.sulfurCompositionCollapsed" :process-open="panels.process" :scene-open="panels.scene" />
+ <SulfurReferencePanel v-if="seedActive && !be9Assembly && !be9Wiring && (appearance.seedShowReference || appearance.seedPairsCombined)"
+  :process-id="process.id" :central-sleeve="appearance.be9CentralSleeve" :reference-on="appearance.seedShowReference" :combined-on="appearance.seedPairsCombined" :process-open="panels.process" :scene-open="panels.scene"
+  :visible-layers="appearance.seedVisibleLayers" :gap="appearance.seedLayerGap" v-model:rule="appearance.seedComparisonRule"
+  @close="appearance.seedShowReference=false; appearance.seedPairsCombined=false" />
  <aside id="scene-panel" aria-label="Scene controls" v-show="panels.scene">
   <button id="close-scene" class="panel-close" aria-label="Close scene panel" aria-controls="scene-panel" @click="togglePanel('scene')">×</button><h2>Scene</h2>
   <fieldset :disabled="phase!=='ready'" class="controls">
    <details :open="sections.appearance" @toggle="sections.appearance=$event.target.open"><summary>Appearance</summary>
-    <label class="check"><input id="grid" v-model="appearance.grid" :disabled="['ruthenium-98','sulfur-32','single-octahedral','native-octahedral-bridge','signed-octahedral-belt','cell-fibration','fibration-12x12','pair-context-7x4','from-center-cell','unsplit-octahedron'].includes(process.id)" type="checkbox"> Lattice above k-floor</label>
+    <label v-if="!cellulationView" class="check"><input id="grid" v-model="appearance.grid" :disabled="!(cellulationView && appearance.cellulationStep!==0) && ['beryllium-8','beryllium-9','sulfur-32-reflection','ruthenium-98','sulfur-32','single-octahedral','native-octahedral-bridge','signed-octahedral-belt','cell-fibration','fibration-12x12','pair-context-7x4','from-center-cell','unsplit-octahedron'].includes(process.id)" type="checkbox"> {{cellulationView?'Lattice grid':'Lattice above k-floor'}}</label>
     <label for="opacity">Grid opacity</label><input id="opacity" v-model.number="appearance.opacity" type="range" min="0.01" max="0.5" step="0.01">
-    <label class="check"><input id="cell-hover-enabled" v-model="appearance.showCellInfo" type="checkbox"> Show cell / tube info on hover</label>
-    <small v-if="appearance.showCellInfo">Hover a cell or visible tube (an edge in edges-only mode). Click to pin and copy; Esc closes.</small>
-    <label class="check"><input id="edges-only" v-model="appearance.edgesOnly" type="checkbox"> Edges only · thick outlines</label>
+    <label v-if="cellulationView && appearance.cellulationStep>=20" class="check"><input id="cellulation-validate-loop" v-model="appearance.cellulationValidateLoop" type="checkbox"> Validate loop</label>
+    <label v-if="cellulationView" class="check"><input id="cellulation-grid-vertex-hover" v-model="appearance.cellulationGridVertexHover" type="checkbox"> Show grid vertex candidates on hover</label>
+    <label v-if="cellulationView && appearance.cellulationStep!==0" class="check"><input id="cellulation-highlight-grid-edges" v-model="appearance.cellulationHighlightGridEdges" type="checkbox"> Highlight grid edges on dot hover</label>
+    <small v-if="cellulationView && appearance.cellulationHighlightGridEdges">Edges: XYZ Euler degrees, shortest rotation from +X. Dot: FCC coordinates.</small>
+    <label v-if="!cellulationView" class="check"><input id="cell-hover-enabled" v-model="appearance.showCellInfo" type="checkbox"> Show cell / tube info on hover</label>
+    <small v-if="!cellulationView && appearance.showCellInfo">Hover a cell or visible tube (an edge in edges-only mode). Click to pin and copy; Esc closes.</small>
+    <label class="check"><input id="edges-only" v-model="appearance.edgesOnly" type="checkbox"> {{cellulationView?'Edges only':'Edges only · thick outlines'}}</label>
     <label for="face-opacity">Cell face opacity <output>{{Math.round(m.renderState.value.faceOpacity*100)}}%</output></label>
-    <input id="face-opacity" v-model.number="appearance.faceOpacity" :disabled="appearance.edgesOnly" type="range" min="0" max="1" step="0.01" title="Opacity of all cell faces. At 100%, the nearest face fully hides faces behind it. Outlines and labels are unchanged.">
-    <label class="check"><input id="prior" v-model="appearance.prior" :disabled="['ruthenium-98','sulfur-32','single-octahedral','native-octahedral-bridge','signed-octahedral-belt','pair-context-7x4','from-center-cell','unsplit-octahedron'].includes(process.id)" type="checkbox"> Earlier plane outlines</label>
-    <label class="check"><input id="bodies" v-model="appearance.bodies" type="checkbox"> {{['ruthenium-98','sulfur-32','single-octahedral'].includes(process.id)?'Show shape':['signed-octahedral-belt','native-octahedral-bridge'].includes(process.id)?'Show assembly':process.id==='pair-context-7x4'?'Show interface faces':['cell-fibration','fibration-12x12'].includes(process.id)?'Show tiling bodies':process.id==='unsplit-octahedron'?'Show octahedron':process.id==='from-center-cell'?'Show layer bodies':'Cells intersected along ray'}}</label>
+    <input id="face-opacity" v-model.number="appearance.faceOpacity" :disabled="appearance.edgesOnly" type="range" min="0" max="1" step="0.01" :title="cellulationView?'Opacity of cell faces; edges and arrows are unchanged.':'Opacity of all cell faces. At 100%, the nearest face fully hides faces behind it. Outlines and labels are unchanged.'">
+    <label v-if="!cellulationView" class="check"><input id="prior" v-model="appearance.prior" :disabled="['beryllium-8','beryllium-9','ruthenium-98','sulfur-32','single-octahedral','native-octahedral-bridge','signed-octahedral-belt','pair-context-7x4','from-center-cell','unsplit-octahedron'].includes(process.id)" type="checkbox"> Earlier plane outlines</label>
+    <label class="check"><input id="bodies" v-model="appearance.bodies" type="checkbox"> {{cellulationView?(appearance.cellulationStep===0?'Show faces':'Show construction'):['beryllium-8','beryllium-9','sulfur-32-reflection','ruthenium-98','sulfur-32','single-octahedral'].includes(process.id)?'Show shape':['signed-octahedral-belt','native-octahedral-bridge'].includes(process.id)?'Show assembly':process.id==='pair-context-7x4'?'Show interface faces':['cell-fibration','fibration-12x12'].includes(process.id)?'Show tiling bodies':process.id==='unsplit-octahedron'?'Show octahedron':process.id==='from-center-cell'?'Show layer bodies':'Cells intersected along ray'}}</label>
    </details>
-   <details :open="sections.view" @toggle="sections.view=$event.target.open"><summary>View direction &amp; rotation</summary>
-    <label for="azimuth">Azimuth {{view.azimuth.toFixed(1)}}°</label><input id="azimuth" :value="view.azimuth" @input="angles('azimuth',$event)" type="range" min="-180" max="180" step="1">
-    <label for="elevation">Elevation {{view.elevation.toFixed(1)}}°</label><input id="elevation" :value="view.elevation" @input="angles('elevation',$event)" type="range" min="-180" max="180" step="1">
-    <div class="row"><button v-for="a in ['x','y','z']" :key="a" :data-view-axis="a" @click="viewer?.axis(a)">+{{a.toUpperCase()}}</button><button id="ray-view" @click="viewer?.ray()">Along edge</button><button id="reset-view" @click="reset">Reset view</button></div>
+   <details :open="sections.view" @toggle="sections.view=$event.target.open"><summary>{{cellulationView?'Camera':'View direction & rotation'}}</summary>
+    <template v-if="!cellulationView"><label for="azimuth">Azimuth {{view.azimuth.toFixed(1)}}°</label><input id="azimuth" :value="view.azimuth" @input="angles('azimuth',$event)" type="range" min="-180" max="180" step="1">
+    <label for="elevation">Elevation {{view.elevation.toFixed(1)}}°</label><input id="elevation" :value="view.elevation" @input="angles('elevation',$event)" type="range" min="-180" max="180" step="1"></template>
+    <div class="row camera-presets"><button v-for="a in ['x','y','z']" :key="a" :data-view-axis="a" @click="viewer?.axis(a)">+{{a.toUpperCase()}}</button><button v-if="!cellulationView" id="ray-view" @click="viewer?.ray()">Along edge</button><span class="view-framing"><button id="reset-view" @click="reset">Reset view</button><button v-if="cellulationView && appearance.cellulationStep!==0" id="recenter-view" aria-label="Recenter" title="Recenter: fit the construction without rotating" @click="recenter"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M12 7v10M7 12h10"/></svg></button></span></div>
     <div class="row"><button aria-label="Rotate left" @click="viewer?.orbit('y',-.15)">←</button><button aria-label="Rotate right" @click="viewer?.orbit('y',.15)">→</button><button aria-label="Rotate up" @click="viewer?.orbit('x',-.15)">↑</button><button aria-label="Rotate down" @click="viewer?.orbit('x',.15)">↓</button><button aria-label="Roll left" @click="viewer?.orbit('z',-.15)">↶</button><button aria-label="Roll right" @click="viewer?.orbit('z',.15)">↷</button></div>
     <div class="row"><button id="zoom-in" @click="viewer?.zoom(1.2)">Zoom +</button><button id="zoom-out" @click="viewer?.zoom(1/1.2)">Zoom −</button></div>
    </details>
-   <details :open="sections.motion" @toggle="sections.motion=$event.target.open"><summary>Motion</summary><label class="check"><input id="auto-rotate" v-model="motion.spin" type="checkbox"> Auto-rotate view</label><label class="check"><input id="axial-rotation" v-model="motion.axialRotation" type="checkbox" :disabled="process.id!=='double-esd7'"> Axial rotation (−P → +P)</label><label for="rotation-speed">Rotation speed</label><input id="rotation-speed" v-model.number="motion.speed" type="range" min="-4" max="4" step="0.25"></details>
+   <details :open="sections.motion" @toggle="sections.motion=$event.target.open"><summary>Motion</summary><label class="check"><input id="auto-rotate" v-model="motion.spin" type="checkbox"> Auto-rotate view</label><label v-if="!cellulationView" class="check"><input id="axial-rotation" v-model="motion.axialRotation" type="checkbox" :disabled="process.id!=='double-esd7'"> Axial rotation (−P → +P)</label><template v-if="!cellulationView || motion.spin"><label for="rotation-speed">Rotation speed</label><input id="rotation-speed" v-model.number="motion.speed" type="range" min="-4" max="4" step="0.25"></template></details>
   </fieldset>
 
  </aside>
  <button id="open-process" class="panel-open" v-show="!panels.process" aria-controls="process-panel" :aria-expanded="panels.process" @click="togglePanel('process')">Process</button>
  <button id="open-scene" class="panel-open" v-show="!panels.scene" aria-controls="scene-panel" :aria-expanded="panels.scene" @click="togglePanel('scene')">Scene</button>
  <Teleport to="#scene">
-  <div v-if="hoveredCell&&appearance.showCellInfo" id="cell-hover-info" class="cell-hover-info" :class="{'is-pinned':hoveredCell.pinned}" :style="{left:hoveredCell.x+'px',top:hoveredCell.y+'px'}" :role="hoveredCell.pinned?'region':'tooltip'" :aria-label="hoveredCell.kind==='tube'?'Tube information':'Cell information'">
+  <div v-if="retainedExpansionView && appearance.retainedExpansionStep>=4" id="retained-expansion-label" role="status" style="position:absolute;top:14px;left:14px;z-index:5;color:#e5eaf3;background:rgba(10,15,28,.9);border:1px solid #ffffff20;padding:10px 14px;border-radius:9px;font-size:12px;line-height:1.65;min-width:145px;pointer-events:none;box-shadow:0 4px 16px #0003;font-variant-numeric:tabular-nums">
+   <template v-for="atom in [retainedExpansionAtoms[appearance.retainedExpansionStep]]" :key="atom.name">
+    <strong style="display:block;color:white;font-size:14px;letter-spacing:.02em;margin-bottom:6px;padding-bottom:5px;border-bottom:1px solid #ffffff18">{{atom.name}}</strong>
+    <div v-for="(count,name) in {neutrons:atom.neutrons,protons:atom.protons,electrons:atom.shells.reduce((sum,n)=>sum+n,0)}" :key="name" style="display:flex;justify-content:space-between;gap:24px"><span style="color:#aab7cb">{{name}}:</span><b>{{count}}</b></div>
+    <div v-for="(count,i) in atom.shells" :key="i" style="display:flex;justify-content:space-between;gap:24px;padding-left:8px;color:#aab7cb"><span>- shell {{i+1}}:</span><span style="color:#e5eaf3">{{count}}/{{2*(i+1)**2}}</span></div>
+    <div style="margin-top:6px;padding-top:5px;border-top:1px solid #ffffff18" aria-label="Reference data: representative natural abundance varies by sample; stable means no observed radioactive decay.">
+     <div style="display:flex;justify-content:space-between;gap:24px"><span style="color:#aab7cb">natural abundance:</span><b data-isotope-abundance>{{atom.abundancePercent}}%</b></div>
+     <div style="display:flex;justify-content:space-between;gap:24px"><span style="color:#aab7cb">stability:</span><b data-isotope-stability>{{atom.stability}}</b></div>
+    </div>
+   </template>
+  </div>
+  <div v-if="!cellulationView&&hoveredCell&&appearance.showCellInfo" id="cell-hover-info" class="cell-hover-info" :class="{'is-pinned':hoveredCell.pinned}" :style="{left:hoveredCell.x+'px',top:hoveredCell.y+'px'}" :role="hoveredCell.pinned?'region':'tooltip'" :aria-label="hoveredCell.kind==='tube'?'Tube information':'Cell information'">
    <template v-if="hoveredCell.selection">
     <header class="cell-hover-heading">Selected items · {{hoveredCell.selection.length}}</header>
     <div v-for="cell in hoveredCell.selection" :key="cell.id" class="selected-cell-summary"><strong>#{{cell.id}} · {{cell.shape}}</strong><span v-if="cell.role"> · {{cell.role}}</span><div v-if="cell.layers">Simplex code: {{cell.layers.join(' · ')}}</div></div>
@@ -348,7 +529,7 @@ defineExpose({dispose,inspectView:({cell,zoom=3,axis}={})=>{if(axis){if(!['x','y
    <small v-else>Click to pin this cell</small><small v-if="copyFeedback" role="status">{{copyFeedback}}</small>
    </template>
   </div>
-  <details id="inventory-panel" open :class="{'has-inventory': !!pneInventory, 'show-breakdown': inventoryDetails}" v-show="phase==='ready' && !(process.id==='sulfur-32' && appearance.sulfurHandlebody) && (pneInventory || process.id==='fibration-12x12' || counts.total.total>0) && !['neutron-belt','pair-context-7x4','retained-construction','from-center-cell','unsplit-octahedron'].includes(process.id)">
+  <details id="inventory-panel" open :class="{'has-inventory': !!pneInventory, 'show-breakdown': inventoryDetails}" v-show="phase==='ready' && !retainedExpansionView && !compositionView && !cellulationView && !seedActive && !(process.id==='sulfur-32' && (appearance.sulfurHexStrands || appearance.sulfurBranchSeed)) && process.id!=='sulfur-32-reflection' && !(process.id==='sulfur-32' && appearance.sulfurHandlebody) && (pneInventory || process.id==='fibration-12x12' || counts.total.total>0) && !['neutron-belt','pair-context-7x4','retained-construction','from-center-cell','unsplit-octahedron'].includes(process.id)">
    <summary>Counts</summary>
    <div class="inventory-content">
    <table id="particle-counts" :aria-label="pneInventory?'P N E inventory by counting domain':process.id==='fibration-12x12'?'Retained P N E cell-role counts by polarity sheet':'Assigned particle counts: surface and interior filler'">
@@ -382,9 +563,43 @@ defineExpose({dispose,inspectView:({cell,zoom=3,axis}={})=>{if(axis){if(!['x','y
    <label class="inventory-detail-toggle"><input id="inventory-details" v-model="inventoryDetails" type="checkbox"> Breakdown &amp; notes</label>
    </div>
   </details>
+  <div v-if="cellulationView" id="cellulation-dot-controls" role="group" aria-label="Dot rotation locks">
+   <button v-for="dot in view.cellulationDots??[]" :key="dot.id" v-show="dot.visible" class="cellulation-dot-lock" :data-dot-lock="dot.id" :style="{left:dot.x+'px',top:dot.y+'px'}" :aria-pressed="dot.locked" :aria-label="`${dot.locked?'Release':'Fix'} dot and normal; ID: ${dot.id}; lattice coordinates: ${dot.latticePoint.join(', ')}`" :title="cellulationDotLabel(dot)" @click="viewer?.toggleCellulationAnchor(dot.id)" @dblclick.stop="copyDotId(dot)" @pointerenter="viewer?.hoverCellulationDot(dot.id)" @pointerleave="viewer?.hoverCellulationDot(null)" @pointercancel="viewer?.hoverCellulationDot(null)"></button>
+  </div>
+  <div v-if="cellulationView" id="cellulation-grid-labels" aria-hidden="true">
+   <svg width="100%" height="100%"><line v-for="label in (view.cellulationGridLabels??[]).filter(l=>l.visible)" :key="label.key" :x1="label.anchorX" :y1="label.anchorY" :x2="label.leaderX" :y2="label.leaderY" /></svg>
+   <span v-for="label in view.cellulationGridLabels??[]" :key="label.key" v-show="label.visible" class="cellulation-grid-label" :data-grid-label="label.kind" :style="{left:label.x+'px',top:label.y+'px'}">{{label.text}}</span>
+  </div>
+  <div v-if="cellulationView && view.gridVertexCandidate" id="grid-vertex-candidate" aria-hidden="true">
+   <span class="grid-vertex-candidate-ring" :style="{left:view.gridVertexCandidate.x+'px',top:view.gridVertexCandidate.y+'px'}"></span>
+   <span class="cellulation-grid-label" :style="{left:view.gridVertexCandidate.labelX+'px',top:view.gridVertexCandidate.labelY+'px'}">{{view.gridVertexCandidate.text}}</span>
+  </div>
+  <div v-if="cellulationView && dotCopyFeedback" id="cellulation-copy-status" role="status" aria-live="polite">{{dotCopyFeedback}}</div>
+  <svg v-if="cellulationView && appearance.cellulationValidateLoop && view.loopOverlay" id="loop-validation-overlay" width="100%" height="100%" aria-hidden="true">
+   <g v-for="issue in view.loopOverlay.issues" :key="issue.id" v-show="issue.visible" class="loop-issue" :data-loop-issue="issue.type">
+    <line v-if="issue.start && issue.end" :x1="issue.start.x" :y1="issue.start.y" :x2="issue.end.x" :y2="issue.end.y" stroke="#ffb84d" stroke-width="5" stroke-opacity=".8" />
+    <circle :cx="issue.x" :cy="issue.y" r="10" fill="#161019" stroke="#ffb84d" stroke-width="2" /><text :x="issue.x" :y="issue.y+4" text-anchor="middle" fill="#ffb84d">{{issue.id+1}}</text>
+   </g>
+   <g v-for="join in view.loopOverlay.joins" :key="join.id" v-show="join.visible" :data-loop-join="join.id" :data-status="join.status">
+    <circle :cx="join.x" :cy="join.y" r="9" fill="none" :stroke="join.status==='pass'?'#77dfa7':'#ffb84d'" stroke-width="2" />
+    <text :x="join.x+13" :y="join.y-12" :fill="join.status==='pass'?'#77dfa7':'#ffb84d'">{{join.id}}</text>
+   </g>
+  </svg>
+  <svg id="orientation-compass" v-show="phase==='ready'" viewBox="0 0 152 160" role="img" aria-label="Camera orientation: XYZ directions and XY, XZ, YZ planes">
+   <rect x="1" y="1" width="150" height="158" rx="9" fill="#0b1020" fill-opacity=".82" stroke="#8ba9d0" stroke-opacity=".3" />
+   <defs><marker id="compass-arrowhead" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L6 3L0 6Z" fill="context-stroke" /></marker></defs>
+   <polygon v-for="plane in compass.planes" :key="plane.name" :data-compass-plane="plane.name" :points="plane.points" :fill="plane.color" fill-opacity=".14" :stroke="plane.color" stroke-opacity=".4" />
+   <g v-for="axis in compass.directions" :key="axis.key" :data-compass-direction="axis.key">
+    <line :x1="compass.center.x" :y1="compass.center.y" :x2="axis.x" :y2="axis.y" :stroke="axis.color" :stroke-width="axis.positive?1.8:1" :stroke-dasharray="axis.positive?undefined:'3 3'" marker-end="url(#compass-arrowhead)" />
+    <text :x="axis.labelX" :y="axis.labelY" :fill="axis.color" text-anchor="middle" dominant-baseline="central">{{axis.key}}</text>
+   </g>
+   <circle :cx="compass.center.x" :cy="compass.center.y" r="2.5" fill="white" />
+   <text v-for="plane in compass.planes" :key="plane.name+'-legend'" :x="plane.legendX" y="147" :fill="plane.color" text-anchor="middle">{{plane.name}}</text>
+  </svg>
   <button id="viewport-reset" v-show="phase==='ready'" aria-label="Reset view" title="Reset view" @click="reset">↺</button>
-  <button id="role-label-toggles" v-show="phase==='ready' && (m.state.value.assignments.length>0 || m.state.value.presentationLabels?.length>0)" aria-label="Particle labels" :title="appearance.labels?'Hide particle labels':'Show particle labels'" :aria-pressed="appearance.labels" @click="appearance.labels=!appearance.labels">P|N|E</button>
-  <div id="vertex-labels" v-show="phase==='ready' && !['sulfur-32','single-octahedral','native-octahedral-bridge','signed-octahedral-belt','neutron-belt','pair-context-7x4','unsplit-octahedron'].includes(process.id)" role="group" aria-label="Vertex rotation anchors">
+  <button v-if="cellulationView && appearance.cellulationStep!==0" id="viewport-recenter" v-show="phase==='ready'" aria-label="Recenter" title="Recenter: fit the construction without rotating" @click="recenter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M12 7v10M7 12h10"/></svg></button>
+  <button id="role-label-toggles" v-show="!compositionView && !cellulationView && phase==='ready' && (m.state.value.assignments.length>0 || m.state.value.presentationLabels?.length>0)" aria-label="Particle labels" :title="appearance.labels?'Hide particle labels':'Show particle labels'" :aria-pressed="appearance.labels" @click="appearance.labels=!appearance.labels">P|N|E</button>
+  <div id="vertex-labels" v-show="phase==='ready' && !seedActive && !['sulfur-32-reflection','sulfur-32','single-octahedral','native-octahedral-bridge','signed-octahedral-belt','neutron-belt','pair-context-7x4','unsplit-octahedron'].includes(process.id)" role="group" aria-label="Vertex rotation anchors">
    <svg aria-hidden="true" width="100%" height="100%" style="position:absolute;inset:0;pointer-events:none;overflow:visible">
     <line v-for="v in vertexLabels.filter(v=>v.visible)" :key="v.key" :x1="v.anchorX" :y1="v.anchorY" :x2="v.leaderX" :y2="v.leaderY" stroke="currentColor" stroke-opacity=".45" stroke-width="1" />
    </svg>

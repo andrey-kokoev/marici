@@ -1,4 +1,7 @@
+import {sulfur32ReflectionProcess} from './sulfur-32-reflection-process.mjs';
 import {sulfur32Process} from './sulfur-32-process.mjs';
+import {beryllium8Process} from './beryllium-8-process.mjs';
+import {beryllium9Process} from './beryllium-9-process.mjs';
 import {ruthenium98Process} from './ruthenium-98-process.mjs';
 import {singleOctahedralProcess} from './single-octahedral-process.mjs';
 import {nativeBridgeProcess} from './native-bridge-process.mjs';
@@ -19,7 +22,10 @@ import {diamondConstruction} from './diamond-construction.mjs';
 
 export const processes=Object.freeze([
  Object.freeze({id:'ruthenium-98',name:'5-side oct',description:'Native five-edge octahedron: 245 cells. Full 80-fibre P/E fibration with explicit opposite-face N channels, coherence groups and retained boundary-lift seams; Geometry and Lattice remain separate views.'}),
+ Object.freeze({id:'beryllium-8',name:'Be-8',description:'Beryllium-8 exploration: white-rooted hex simplex with retained layer histories.'}),
+ Object.freeze({id:'beryllium-9',name:'Be-9',description:'Beryllium-9 exploration from Be-8, with a switchable central four-strand sleeve trial in the reference assemblies.'}),
  Object.freeze({id:'sulfur-32',name:'Sulfur-32',description:'Edge-three octahedron with a candidate global periodic fibration: 16 N channels, four wires each, reversible 2×2 P|E ports. All geometric records retained.'}),
+ Object.freeze({id:'sulfur-32-reflection',name:'Sulfur-32 reflection',description:'Regular 4-simplex: whole-assembly reflection and rotation. Sixteen retained histories, fourteen distinct cells, exact six-seam frame return.'}),
  Object.freeze({id:'single-octahedral',name:'Single octahedron — edge 7, no belt',description:'One native P/E-symmetric octahedral sector with ±P/±N/±E boundary ports. No second parent, inherited belt or bridge.'}),
  Object.freeze({id:'native-octahedral-bridge',name:'Octahedral pair — native grown bridge',description:'Common-lattice parents connected by all shortest shared-face paths: 49 added cells, two shared N terminals, no point-only links. Explicit geometric growth rule, not derived transport dynamics.'}),
  Object.freeze({id:'signed-octahedral-belt',name:'Octahedral pair + belt — ±P / ±N / ±E',description:'Two P/E-symmetric native octahedral parents joined by the existing extended belt at opposite signed E ports. Boundary-port labels are distinct from cell roles; no transport law inferred.'}),
@@ -36,6 +42,9 @@ export const processes=Object.freeze([
  Object.freeze({id:'new-construction',name:'Process 2 — new construction',description:'E at V₁. Cast ray₁₃ to P, ray₃₂ to N, then ray₂₁ back to E. Each ray is k units long.'}),
 ]);
 export function processState(id,k,step,branch=1,options={}){
+ if(id==='beryllium-8')return beryllium8Process();
+ if(id==='beryllium-9')return beryllium9Process(options);
+ if(id==='sulfur-32-reflection')return sulfur32ReflectionProcess(k,step,options);
  if(id==='ruthenium-98')return ruthenium98Process(k,step);
  if(id==='sulfur-32')return sulfur32Process(k,step,{...options,sulfurDirection:branch===3?'E|P':'P|E'});
  if(id==='single-octahedral')return singleOctahedralProcess(k,step,options);
