@@ -1,0 +1,46 @@
+{
+  "name": "@marici/isotope-wiring",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check:types": "pnpm check:typescript && pnpm check:vue",
+    "check:typescript": "tsc -p tsconfig.verify.json && node .verification/scripts/check-types.js",
+    "check:vue": "node tooling/vue-check/node_modules/vue-tsc/bin/vue-tsc.js --noEmit -p tsconfig.vue.json && node tooling/vue-check/check.ts",
+    "check:vue-probes": "node tooling/vue-check/probes.ts",
+    "check:enforcement": "tsc -p tsconfig.verify.json && node .verification/scripts/check-enforcement.js",
+    "check:local": "pnpm check:types && pnpm lint && pnpm check:schemas && pnpm check:inspection && pnpm check:edge-edits && pnpm check:named-versions && pnpm check:morse-surface && pnpm check:routing && pnpm check:catalog && pnpm check:diagrams && pnpm check:camera && pnpm check:enforcement && pnpm check:vue-probes && pnpm check:format && pnpm build",
+    "check:schemas": "tsc -p tsconfig.verify.json && node .verification/scripts/check-schemas.js",
+    "lint": "oxlint --deny-warnings && oxlint --type-aware --deny-warnings --ignore-pattern \"src/vue/**\" && pnpm check:vue",
+    "dev": "vite",
+    "build": "pnpm check:types && vite build",
+    "preview": "vite preview",
+    "check:browser": "tsc -p tsconfig.verify.json && node .verification/scripts/check-browser.js && pnpm check:pointer",
+    "check:pointer": "node tooling/vue-check/check-pointer-browser.ts",
+    "check:camera": "tsc -p tsconfig.verify.json && node .verification/scripts/check-camera.js",
+    "check:diagrams": "tsc -p tsconfig.verify.json && node .verification/scripts/check-diagrams.js",
+    "check:catalog": "tsc -p tsconfig.verify.json && node .verification/scripts/check-catalog.js && node tooling/vue-check/check-catalog-source.ts",
+    "check:routing": "tsc -p tsconfig.verify.json && node .verification/scripts/check-routing.js",
+    "check:morse-surface": "tsc -p tsconfig.verify.json && node .verification/scripts/check-morse-surface.js",
+    "check:named-versions": "tsc -p tsconfig.verify.json && node .verification/scripts/check-named-versions.js",
+    "check:edge-edits": "tsc -p tsconfig.verify.json && node .verification/scripts/check-edge-edits.js",
+    "check:inspection": "tsc -p tsconfig.verify.json && node .verification/scripts/check-inspection.js",
+    "format": "oxfmt --write .",
+    "check:format": "oxfmt --check ."
+  },
+  "dependencies": {
+    "pinia": "4.1.0",
+    "vue": "3.5.44",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "@vitejs/plugin-vue": "6.0.10",
+    "oxfmt": "0.76.0",
+    "oxlint": "1.91.0",
+    "oxlint-tsgolint": "7.0.2005",
+    "typescript": "7.0.2",
+    "vite": "8.3.5"
+  },
+  "packageManager": "pnpm@12.16.1"
+}
