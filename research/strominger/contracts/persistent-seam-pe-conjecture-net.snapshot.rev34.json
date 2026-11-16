@@ -1,0 +1,521 @@
+{
+  "schema": "marici.persistent-seam-pe.conjecture-net.v1",
+  "id": "marici.persistent-seam-pe.v1",
+  "title": "Persistent-seam P/E pairing",
+  "owner": "marici.Strominger",
+  "version": 1,
+  "revision": 34,
+  "previous_revision": "research/strominger/contracts/persistent-seam-pe-conjecture-net.snapshot.rev33.json",
+  "maintenance": {
+    "instruction": "maintain it properly",
+    "scope": "Owner-local repository net maintenance; no external graph mutation or formal outcome admission.",
+    "recommendation_origin": "Maintainer-proposed work plan, recorded explicitly; not a mechanically derived ranking or operator-confirmed theorem.",
+    "operator_conjecture": "if we serialize our 1+4x28+1 into single channel, there should be an operator that allows to assemble the esd7 from that single channel",
+    "research_target": "assembler-as-global-evolution"
+  },
+  "objective": {"target": "persistent-seam-pe", "outcome": null},
+  "coherence_obligation": "source-protocol realization on the marked shared-edge pair, conditional on independently specified admissible operations",
+  "operator_stimulus": {
+    "wording": "i confirm that it seems to be in line with what i expected",
+    "instruction": "let's connect this conjecture into our current conjecture net",
+    "confidence_modality": "seems",
+    "effect": "Use the marked shared-edge triangle pair as the working P/E interpretation; record a conjecture, not proof of protocol selection or particle identities."
+  },
+  "semantics": {
+    "depends_on": "Local research-context and evidence dependencies; no automatic proof implications.",
+    "connections": "Checked references to existing net nodes, with relation and scope stated; no parent verdict changes.",
+    "outcome": "All formal attempt outcomes remain null. Conditional mathematical results have separate verified_conditional status and evidence.",
+    "pe": "Working reference/dual labels on retained triangle occurrences, not independently established particle species.",
+    "composition_index": "Operator application count, not physical time."
+  },
+  "conjectures": [
+    {
+      "id": "existing-seed-context", "kind": "context", "status": "source_located", "outcome": null, "depends_on": [],
+      "statement": "The existing arrow-seed programme retains separate source records and interpretation boundaries. This is a cross-net context link, not evidence selecting a P/E protocol.",
+      "external_dependency": {"contract": "research/scattering/seed-composition/contracts/seed-composition-work-net.v1.json", "node": "arrow-seed-collection-evidence"},
+      "scope": "No identification of this working P/E pair with an existing photon, proton or electron record is imported."
+    },
+    {
+      "id": "shared-edge-source", "kind": "evidence", "status": "source_located", "outcome": null, "depends_on": [],
+      "statement": "Two retained triangle occurrences T1=(AB,BC,CA), T2=(BA,AD,DB) have local restrictions R1x=(a,b,c), R2x=(-a,d,e) and documented C,S operations.",
+      "evidence": ["research/nima/two-triangles-shared-edge-half-phase.md", "research/nima/checkers/check_two_triangle_half_phase.py"]
+    },
+    {
+      "id": "persistent-seam-observability", "kind": "conditional-theorem", "status": "verified_conditional", "outcome": null, "depends_on": ["shared-edge-source"],
+      "statement": "For identical simultaneous local C or S, persistent gluing is equivalent to R2x=-R1x; the maximal compatible carrier is K(R^3).",
+      "scope": "Observability rank 3 plus Cayley-Hamilton; C,S and oriented-cochain conventions are supplied. Does not select simultaneous processing.",
+      "evidence": ["research/strominger/shared-seam-observability.md", "research/strominger/results/shared-seam-observability.json", "src/ledger/20261022-4330 Persistent Shared-Seam Compatibility Is an Observability Condition.md"],
+      "falsifier_control": "Identity updates have a two-dimensional unobservable mismatch and do not force synchronization."
+    },
+    {
+      "id": "reference-exchange-covariance", "kind": "conditional-theorem", "status": "verified_conditional", "outcome": null, "depends_on": ["shared-edge-source"],
+      "statement": "J(a,b,c,d,e)=(-a,d,e,b,c) swaps restrictions, has J^2=I, sends Kv to K(-v), and conjugates serial orders without identifying triangle occurrences.",
+      "evidence": ["research/strominger/shared-seam-observability.md", "research/strominger/results/shared-seam-observability.json"]
+    },
+    {
+      "id": "serial-shared-coordinate-rival", "kind": "rival", "status": "verified_alternative", "outcome": null, "depends_on": ["shared-edge-source"],
+      "statement": "The intended pair may instead use the documented serial shared-coordinate operations T2T1 or T1T2, with order-sensitive shared-edge updates.",
+      "scope": "The alternative operators exist; their selection as the intended protocol is unproved. They are not rejected merely because they are not synchronized.",
+      "evidence": ["research/strominger/shared-seam-observability.md", "research/strominger/results/shared-seam-observability.json"],
+      "discriminant": "C2C1 K(0,1,0)=(1,0,0,0,-1) lies outside K(R^3), whereas synchronized C returns (1,0,0,0,0)."
+    },
+    {
+      "id": "working-pe-interpretation", "kind": "interpretation", "status": "working_convention", "outcome": null, "depends_on": ["shared-edge-source"],
+      "statement": "Use the marked triangle pair and seam as the intended working P/E relation, following the operator's tentative confirmation.",
+      "scope": "Fixes research meaning, not source-derived protocol selection, physical particle identity or an empirical result.",
+      "evidence": ["research/strominger/persistent-seam-pe-conjecture.md"]
+    },
+    {
+      "id": "persistent-seam-pe", "kind": "conjecture", "status": "open", "outcome": null,
+      "depends_on": ["working-pe-interpretation", "persistent-seam-observability", "reference-exchange-covariance", "existing-seed-context"],
+      "statement": "The intended basic marked P/E pair has admissible joint states K(R^3), with elementary joint cyclic and half-phase operations given by simultaneous synchronized gluing, Kv -> KCv and Kv -> KSv, rather than serial rewriting of the shared coordinate.",
+      "scope": "A source-protocol realization conjecture for this marked pair. P/E labels remain a working interpretation; the conditional theorem alone does not prove the conjecture.",
+      "rivals": ["serial-shared-coordinate-rival", "counteroriented-synchronous-rival"],
+      "risky_consequences": ["Every admissible pair state has R2x=-R1x.", "Both local circulations are preserved by the selected joint C and S operations, with L=-R and outer circulation zero.", "Reference exchange swaps retained occurrences and reverses the local triple without merging identities."],
+      "acceptance": "Independently specify the intended source's admissible pair states and joint operations, then exhibit an occurrence-preserving binding intertwining both restrictions, C/S and J with K. Derive the domain and protocol rather than restricting them after observing a mismatch.",
+      "falsifier": "An independently admitted intended-pair state outside K(R^3), or a source-required elementary joint operation differing from synchronized C/S (including an admitted serial operation leaving K). A toy rival alone does not establish source admissibility.",
+      "strongest_current_test": "The counteroriented rival preserves seam invariants as an atomic inverse-operation model, but fails the unchanged native-forward source binding: (S^-1)^2=C^-1, not C. Independent native I/S/C clocks cannot begin a non-idle prefix-glued execution on its full carrier. This narrows the rival without selecting the intended P/E protocol.",
+      "test_evidence": ["research/strominger/persistent-seam-pe-falsification.md", "research/strominger/results/persistent-seam-pe-falsification.json"],
+      "disposition": "Open; conditional compatibility and exchange mathematics established, source selection not established.",
+      "first_missing_datum": "An independently specified intended joint-operation/admissibility rule, including the relative orientation of the two legs. Fixed-forward commutation with J is stronger than covariance under transported schedules.",
+      "reopening_condition": "New source or operator-level specification of admissible operations/states, clearly labeled as supplied input, permits the stated intertwining/falsification test.",
+      "next_action": "Do not repeat observability calculations or invent a filler. Compare any newly specified admissible joint operation against the recorded synchronized/serial discriminant.",
+      "actionable": false
+    },
+    {
+      "id": "counteroriented-synchronous-rival", "kind": "rival", "status": "verified_alternative", "outcome": null, "depends_on": ["shared-edge-source", "reference-exchange-covariance"],
+      "statement": "Applying T and T^-1 to the two triangles is persistently gluable on Kminus(a,b,c)=(a,b,c,-c,-b), for T=C or S, with preserved local circulations and paired-occurrence metric.",
+      "scope": "Verified endpoint algebra with atomic inverse powers C^2 and S^5; not an unchanged native-forward elementary protocol. J conjugates forward to inverse rather than commuting. Intended-source selection is not established.",
+      "source_binding_status": "rejected_under_unchanged_native_forward_interface",
+      "source_binding_obstruction": "Inverse half-phase squares to C^-1 rather than native C. No independent I/S/C clock implementation preserves gluing at every prefix on the full carrier. Atomic inverses or an orientation/prefix-policy change require additional admission.",
+      "evidence": ["research/strominger/persistent-seam-pe-falsification.md", "research/strominger/results/persistent-seam-pe-falsification.json", "research/strominger/counteroriented-rival-source-audit.md", "research/strominger/results/counteroriented-rival-source.json"],
+      "discriminant": "From the common input (1,0,0,0,0), same-orientation C gives (0,0,1,0,-1), whereas counteroriented C gives (0,0,1,-1,0), outside the original K carrier."
+    },
+    {
+      "id": "seam-invariants-select-same-orientation", "kind": "rejected-selection-claim", "status": "refuted_bounded_claim", "outcome": null, "depends_on": ["counteroriented-synchronous-rival", "persistent-seam-observability"],
+      "statement": "Candidate: seam compatibility, balanced local circulations, paired-occurrence norm and covariance under transported reference exchange uniquely select the same-orientation synchronized protocol.",
+      "scope": "Refuted within the 36 pairs of powers of the declared six-phase S, without changing port labels. Does not reject the fixed-same-operator observability theorem or prove which protocol the intended P/E source selects.",
+      "evidence": ["research/strominger/persistent-seam-pe-falsification.md", "research/strominger/results/persistent-seam-pe-falsification.json"]
+    },
+    {
+      "id": "counteroriented-native-realization", "kind": "rejected-source-binding", "status": "refuted_bounded_claim", "outcome": null, "depends_on": ["counteroriented-synchronous-rival", "shared-edge-source"],
+      "statement": "Candidate: the counteroriented rival realizes the unchanged native forward C/S interface, either elementarily or through independent forward clocks glued at every prefix.",
+      "scope": "Rejected by the native square-root defect and the prefix obstruction for per-leg I/S/C ticks. Does not reject atomic inverse algebra, arbitrary serial rewriting, or a separately admitted reversed orientation policy.",
+      "evidence": ["research/strominger/counteroriented-rival-source-audit.md", "research/strominger/results/counteroriented-rival-source.json"]
+    },
+    {
+      "id": "global-28-stage-pe-fibration", "kind": "conjecture", "status": "open", "outcome": null, "depends_on": [],
+      "statement": "A single operator on the whole retained coherence complex produces 28 globally coherent stages exchanging P/E presentations. After choosing an initial orientation, four seven-stage convolution-depth blocks are connected by full-presentation quarter-turn handoffs; the proposed depth profile within each block is 1,2,3,4,3,2,1. Opposite-end traversals pass through one another without identifying their histories.",
+      "scope": "Whole-presentation hypothesis, not the older local identical-C/S coupling claim. P/N/E are proposed contextual-window readouts. No phase-to-sector, spatial-turn, esd7 or Pb-208 binding is established. A sequential P-to-E-to-P response is a distinct candidate, not a silent replacement for endpoint exchange.",
+      "evidence": ["research/strominger/global-28-stage-pe-fibration-conjecture.md", "research/strominger/global-28-stage-pe-prior-clues.md", "research/strominger/two-ended-sector-trace-v1.md", "research/strominger/sector-request-response-v1.md"],
+      "acceptance": "Construct the whole state, fibration/readout and state-dependent operator without a fitted stage schedule; verify all intermediate shared coherences, initial-frame covariance and the 28-stage endpoint exchange.",
+      "first_missing_datum": "A source-bound global operator and contextual P/E readout, rather than a local species transition or four-periodic corner label.",
+      "falsifier": "An independently fixed candidate operator violates a required intermediate coherence or fails its specified endpoint readout. Failure of a local candidate alone does not reject every global realization."
+    },
+    {
+      "id": "nested-double-observation-certificate", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null, "depends_on": [],
+      "statement": "In the declared four-level binary certificate protocol, each of seven internal nodes compares LR and RL routes and retains the first receipt and child ancestry. Serial work is 28 flips; sibling-parallel execution with sequential observations has span 12 move rounds.",
+      "scope": "17 exact checks of a finite consistency certificate. Both routes use supplied commuting operators. Not independent empirical corroboration, a physical reality criterion, a P/E exchange, or a forced 28-stage global law. Parallel-route computation has span 6 under a different scheduling policy; comparison costs are excluded.",
+      "evidence": ["research/strominger/nested-double-observation-v1.md", "research/strominger/checkers/check_nested_double_observation.py", "research/strominger/results/nested-double-observation.json"],
+      "serial_work": 28, "sequential_observation_parallel_span": 12,
+      "global_28_stages_established": false
+    },
+    {
+      "id": "rung4-double-observation-readout", "kind": "conjecture", "status": "open", "outcome": null, "depends_on": ["nested-double-observation-certificate"],
+      "related_nodes": ["global-28-stage-pe-fibration"],
+      "statement": "The completed, twice-observed coherence complex, with comparisons checked and full ancestry retained, realizes the Marici Realization Tower's rung4 reference/readout presentation of the same whole.",
+      "scope": "Structural rung assignment by the role of the readout, not by four binary levels, four square corners or the number 28. The finite certificate motivates the candidate but does not supply the tower binding. Rung4 identification does not require treating serial work as global stages or imply physical reality.",
+      "operator_stimulus": "Capture the proposed rung4 interpretation of the nested double-observation completion as a conjecture in the net.",
+      "evidence": ["research/realization-tower/definition.md", "research/strominger/nested-double-observation-v1.md", "research/strominger/global-28-stage-pe-fibration-conjecture.md"],
+      "acceptance": "Exhibit a typed map from the higher retained presentations to the specified rung4 reference/readout; identify visible data and retained witnesses, prove compatibility of the two observations and shared interfaces, and construct reconstruction or the required continued transport without erasing ancestry.",
+      "falsifier": "A proposed tower binding cannot preserve the specified readout or coherence, loses required ancestry, or fails its reconstruction/continuation law. A count match or an arbitrary relabeling is not an admissible binding.",
+      "first_missing_datum": "The explicit tower-to-certificate/readout map and the source-defined reconstruction or continuation interface.",
+      "next_action": "Specify and test that map against existing retained-fibration and rung4 readout interfaces; do not infer a rung from a matching numeral.",
+      "rung_assignment_established": false,
+      "physical_reality_established": false
+    },
+    {
+      "id": "retained-channel-sources", "kind": "context", "status": "source_located", "outcome": null, "depends_on": [],
+      "statement": "Marked table fibration and arrow/history windows provide prior recoverable whole-presentation machinery; the actual esd7 census supplies an independent assembly target.",
+      "scope": "Source locations, not a new serialization or reconstruction theorem for the proposed114 records. Prior formal certificates are not re-admitted by this net.",
+      "evidence": ["research/nima/table-fibration.md", "research/nima/arrow-history-window.md", "research/strominger/esd7-coherence-layout-recovery.md", "research/voevodsky/results/esd7_explicit_analytical_census.json"]
+    },
+    {
+      "id": "native-intrinsic-selector-audit", "kind": "rejected-selection-claim", "status": "refuted_bounded_claim", "outcome": null, "depends_on": [],
+      "statement": "The implemented native retained-state admissibility rules do not uniquely select the next operation:96 fully recorded sources admit192 certified continuations.",
+      "scope": "24 seed markings and four history prefixes; not a rejection of a separately supplied global law or deterministic policy. Local uniqueness is not a prerequisite of global evolution.",
+      "evidence": ["research/strominger/intrinsic-retained-selector-conjecture.md", "research/strominger/results/intrinsic-retained-selector.json"],
+      "actionable": false
+    },
+    {
+      "id": "native-task-selector-audit", "kind": "rejected-selection-claim", "status": "refuted_bounded_claim", "outcome": null, "depends_on": ["native-intrinsic-selector-audit"],
+      "statement": "A fixed broad realization-advance task still admits two successors on8 tested N markings. Fixed-carrier versus cross-face refinements distinguish them where available;16 N markings admit neither.",
+      "scope": "48 native P/N source fixtures; no general task-relative uniqueness, clock or physical selection theorem. These results do not block proposing a coordinated whole-state law.",
+      "evidence": ["research/strominger/task-relative-retained-transport-conjecture.md", "research/strominger/contracts/retained-transport-task-selection.v1.json", "research/strominger/results/retained-transport-task-selection.json"],
+      "actionable": false
+    },
+    {
+      "id": "scalar-global-fcc-candidate", "kind": "rejected-endpoint-binding", "status": "refuted_bounded_claim", "outcome": null, "depends_on": [],
+      "statement": "The declared120-site Cayley evolution preserves its scalar coherence and norm but fails the independently embedded native E target after28 steps.",
+      "scope": "Failure of this scalar Hamiltonian/embedding candidate, not of the global conjecture. Seven visits were supplied by a structural controller, not derived as a native clock.",
+      "evidence": ["research/strominger/global-fcc-evolution-candidate-v1.md", "research/strominger/results/global-fcc-evolution.json"],
+      "native_endpoint_match": false, "global_conjecture_refuted": false, "actionable": false
+    },
+    {
+      "id": "native-joint-field-assembly-sewing", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null, "depends_on": [],
+      "statement": "The prior44-channel candidate sews over a certified five-body retained assembly:14 packet presentations and18 interfaces satisfy the native transport/readout square on the full field. Both E exits preserve two E directions plus three retained baryon directions.",
+      "scope": "One retained construction-map assembly, under the prior PN completion, joint NE exchange and transported bindings. Not equality of raw fixed-face values, arbitrary-assembly coherence, physical cloning or an autonomous evolution law.",
+      "evidence": ["research/strominger/full-five-channel-candidate-v1.md", "research/strominger/joint-field-assembly-sewing-v1.md", "research/strominger/results/joint-field-sewing-fixture.json", "research/strominger/results/joint-field-assembly-sewing.json"],
+      "all_assemblies_established": false, "global_clock_established": false
+    },
+    {
+      "id": "single-channel-esd7-assembly", "kind": "conjecture", "status": "open", "outcome": null, "depends_on": ["retained-channel-sources"],
+      "related_nodes": ["global-28-stage-pe-fibration", "native-joint-field-assembly-sewing"],
+      "statement": "Serializing the retained1+4x28+1 construction into one ordered channel admits an operator reconstructing the full esd7 coherence presentation, including shared incidences, contexts and witnesses.",
+      "proposal_origin": "operator",
+      "scope": "114 proposed record occurrences, not114 geometric cells or global time steps. The opening/closing record types remain unspecified. Incremental assembly is a stronger extension, not part of the basic claim.",
+      "evidence": ["research/strominger/single-channel-esd7-assembly-conjecture.md"],
+      "acceptance": "Specify the channel from retained transport, construct assembly without loading the completed esd7 census as its answer, and compare incidence, markings and coherence with that independent target.",
+      "falsifier": "Two admissible retained constructions have indistinguishable encodings but incompatible required assemblies. Failure of a particular decoder rejects that decoder alone.",
+      "first_missing_datum": "The proposed114-record producer and its analytical/field coherence bindings. A345-record source-rule producer now reconstructs the full geometry; that does not supply the proposed convention or discharge its witnesses.",
+      "reconstruction_established": false, "next_action": "Extend the tested bounded channel through the esd7 attachment construction task; keep full-target verification independent of generation."
+    },
+    {
+      "id": "channel-contract-and-first-assembly-step", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["retained-channel-sources", "native-joint-field-assembly-sewing"],
+      "related_nodes": ["single-channel-esd7-assembly", "assembler-as-global-evolution"],
+      "statement": "An executable23-record native channel reconstructs the14-packet,18-interface joint-field fixture, its ordered occurrences, contexts and frame comparison. All18 full-field readout squares pass again on the reconstructed output.",
+      "scope": "A bounded constructive first step, not an assertion that the14-packet fixture already is the114-record channel or full esd7. No local uniqueness theorem is required.",
+      "evidence": ["research/strominger/native-retained-channel-v1.md", "research/strominger/contracts/native-retained-channel.v1.json", "research/strominger/checkers/native_retained_channel.mjs", "research/strominger/results/native-retained-channel-verification.json", "research/strominger/results/channel-assembled-field-sewing.json"],
+      "acceptance": "Deliver executable record types and an assembly state/update. On the retained fixture, recover occurrence identity, shared references, ordered histories and all18 interface readout squares. Separate input data from derived attachments; do not embed the final target census in a record.",
+      "falsifier": "Reconstruction merges distinct histories, loses a shared interface, breaks a native readout square, or succeeds only by reading the completed target as input.",
+      "next_action": "Reuse the completed decoder and hostile controls while constructing the full esd7 attachment/channel extension; do not count the23-record fixture as the114-record conjecture.",
+      "deliverable": "Typed channel contract, executable first assembler, fixture reconstruction receipt and explicit remaining esd7 obligations.",
+      "record_count": 23, "channel_checks": 20, "reconstructed_field_checks": 18,
+      "full114_channel_established": false, "full_esd7_established": false,
+      "actionable": false
+    },
+    {
+      "id": "esd7-generated-geometric-channel", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["channel-contract-and-first-assembly-step", "retained-channel-sources"],
+      "statement": "A345-record source-rule channel generates the complete labelled esd7 geometric incidence without reading the census:120 vertices,560 edges,784 faces and343 tetrahedra. Signed boundaries and the native five-body embedding pass25 checks.",
+      "scope": "Geometric attachment records, not new PN/NE laws or a physical clock. The114-record convention, analytical face/tetrahedral fillers and global field transport are not established.",
+      "evidence": ["research/strominger/esd7-attachment-channel-v1.md", "research/strominger/checkers/esd7_attachment_channel.py", "research/strominger/results/esd7-attachment-channel-verification.json"],
+      "geometric_reconstruction_established": true, "record_count": 345,
+      "full114_channel_established": false, "analytical_coherence_discharged": false, "global_field_transport_established": false,
+      "actionable": false
+    },
+    {
+      "id": "esd7-analytical-prototype-bridge", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["esd7-generated-geometric-channel"],
+      "statement": "An explicit sorting bridge binds343 cube-indexed source analytical prototypes to generated tetrahedra and records both local contexts on588 shared faces. Of these,294 compare H123 with H234;147 each compare H124/H124 and H134/H134. Twenty-four finite checks pass.",
+      "scope": "New finite indexing/prototype construction, not imported analytical fillers or native field operators. Local H123/H234 roles are not the analytical image under canonical edgewise refinement: F006 lifts from the parent tetrahedron. The role counts are not a no-go theorem.",
+      "evidence": ["research/strominger/esd7-analytical-binding-v1.md", "research/strominger/checkers/esd7_analytical_binding.py", "research/strominger/results/esd7-analytical-binding-verification.json"],
+      "registry_bridge_established": true, "mixed_role_shared_faces": 294,
+      "analytical_coherence_discharged": false, "global_field_transport_established": false, "full114_channel_established": false,
+      "actionable": false
+    },
+    {
+      "id": "esd7-retained-face-comparison-gate", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["esd7-analytical-prototype-bridge"],
+      "statement": "An exact finite residual/endpoint comparison gate is implemented for the F006 interface. Twelve implementation and hostile-control checks pass; actual source operators and domain bindings are not supplied.",
+      "scope": "Positive matrices are explicitly synthetic implementation controls, not analytical F006 data. A finite residual square is not an analytical homotopy or filler.",
+      "evidence": ["research/strominger/esd7-retained-face-comparison-v1.md", "research/strominger/checkers/esd7_retained_face_comparison.py", "research/strominger/results/esd7-retained-face-comparison.json"],
+      "implementation_checks": 12, "actual_face": "F006", "actual_face_comparison_established": false,
+      "actual_face_status": "blocked_missing_source_bound_payload", "synthetic_controls_only": true,
+      "analytical_coherence_discharged": false, "global_field_transport_established": false,
+      "actionable": false
+    },
+    {
+      "id": "esd7-bare-parent-chart-substitution", "kind": "bounded-candidate-audit", "status": "refuted_bounded_claim", "outcome": null,
+      "depends_on": ["esd7-generated-geometric-channel"],
+      "related_nodes": ["esd7-retained-face-comparison-gate", "esd7-channel-attachment-construction"],
+      "statement": "Bare context-free substitution d_ij(alpha)=C_ij cannot assign one parent chart to each fine vertex:116 vertices have incompatible incident chart requirements. At V001, E004 requires chart3 while E003 requires chart4. Twelve finite checks pass.",
+      "scope": "Only this substitution is rejected. Parent essential-image coherence remains available; context-dependent refinement and the full conjecture are not refuted. This is not a prerequisite uniqueness theorem.",
+      "evidence": ["research/strominger/esd7-parent-chart-binding-v1.md", "research/strominger/results/esd7-parent-chart-binding-verification.json"],
+      "conflicting_vertices": 116, "refinement_impossible": false, "actual_face_comparison_established": false,
+      "actionable": false
+    },
+    {
+      "id": "esd7-simplicial-fine-vertex-refinement", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["esd7-generated-geometric-channel", "retained-channel-sources"],
+      "statement": "All1807 generated cells admit the explicit edgewise parent-nerve lift, with20 checks. Fine vertices are seven-position comparison histories; fine dimensions0..3 lift to parent degrees6,13,20,27. All face restrictions and signed orientation changes are checked.",
+      "scope": "Structural esd7 refinement, conditional on an admitted coherent analytical parent diagram for evaluation. F006 lifts from the parent tetrahedron, not one local face-role label.28 positions are not28 evolution steps or the114-record producer.",
+      "evidence": ["research/strominger/esd7-simplicial-refinement-v1.md", "research/strominger/checkers/esd7_simplicial_refinement.py", "research/strominger/results/esd7-simplicial-refinement-verification.json"],
+      "structural_refinement_established": true, "cell_count": 1807, "implementation_checks": 20,
+      "analytical_realization_established": false, "actual_face_comparison_established": false, "full114_channel_established": false,
+      "actionable": false
+    },
+    {
+      "id": "esd7-strict-parent-evaluation", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["esd7-simplicial-fine-vertex-refinement"],
+      "statement": "The1807-cell refinement, including F006, evaluates symbolically in the source strict joint-graph chart diagram, conditional on its declared image-inverse identities.21 checks cover64736 restriction adjacencies and5421 retained endpoint/residual readout squares.",
+      "scope": "Correlated essential images of one admitted observer domain; full-response chart4, not its scalar shadow. No fresh proof of analytic inverses, completion extension, intended analytical face-witness identification or native44 transport binding is supplied.",
+      "evidence": ["research/strominger/esd7-strict-parent-evaluation-v1.md", "research/strominger/contracts/esd7-strict-parent-profile.v1.json", "research/strominger/results/esd7-strict-parent-evaluation-verification.json"],
+      "conditional_strict_evaluation_established": true, "implementation_checks": 21,
+      "source_identities_freshly_proved": false, "intended_witness_binding_established": false,
+      "native44_transport_binding_established": false, "completion_extension_established": false, "full114_channel_established": false,
+      "actionable": false
+    },
+    {
+      "id": "strict-native-witness-comparison", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["esd7-strict-parent-evaluation", "channel-contract-and-first-assembly-step"],
+      "statement": "Exact native matrices verify196 pairwise readout/binding squares and2744 comparison triangles, retaining the order-five coefficient witness hidden by an identity field comparison.3136 analytical/native squares commute conditionally through K_(i,a)=U_a L R_i. This comparison-family result left L unspecified; the successor finite-packet node supplies a declared candidate.14 checks pass.",
+      "scope": "Actual14-packet native fixture plus symbolic comparison family, not full-esd7 transport or an analytical observer encoding. Field-frame equality does not erase coefficient witnesses.",
+      "evidence": ["research/strominger/strict-native-comparison-v1.md", "research/strominger/results/strict-native-comparison-verification.json"],
+      "implementation_checks": 14, "native_pairwise_comparisons": 196,
+      "encoder_supplied": false, "intended_witness_binding_established": false,
+      "full_esd7_native_transport_established": false, "full114_channel_established": false,
+      "actionable": false
+    },
+    {
+      "id": "finite-observer-encoder-candidate", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["strict-native-witness-comparison"],
+      "statement": "An explicit five-dimensional compact physical observer packet has an invertible two-endpoint/three-flux observation matrix of determinant -3/2. Its encoder uses the actual native electron contrast and retained complement;17 checks verify reconstruction in14 presentations,18 native interfaces and both E endpoint readouts.",
+      "scope": "Declared finite-packet candidate in a fixed Mellin/calibration convention, not a unique source-forced encoder, full observer-domain encoding, physical preparation or evaluated analytical face filler. Parent-chart application retains its common-domain hypotheses.",
+      "evidence": ["research/strominger/finite-observer-encoder-v1.md", "research/strominger/contracts/finite-observer-encoder.v1.json", "research/strominger/results/finite-observer-encoder-verification.json"],
+      "explicit_finite_packet_encoder_constructed": true, "packet_dimension": 5, "implementation_checks": 17,
+      "source_forced_or_unique": false, "full_observer_domain_encoded": false,
+      "specific_analytical_residual_evaluated": false, "intended_witness_binding_established": false,
+      "physical_preparation_established": false, "full114_channel_established": false,
+      "actionable": false
+    },
+    {
+      "id": "finite-packet-signed-endpoint-form", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["finite-observer-encoder-candidate"],
+      "statement": "The actual source endpoint Green term is evaluated on all25 packet pairs: G_ij=2^(i-j)+2^(j-i), with signature(1,1,3). Its native signed readout J sigma_x J* matches both E exits and transported endpoint readers;18 checks pass.",
+      "scope": "One analytical term in the declared packet/Mellin convention, not the full regulated residual, analytical homotopy, positivity or calibrated apparatus. The positive E norm is not the signed endpoint pairing.",
+      "evidence": ["research/strominger/finite-packet-endpoint-form-v1.md", "research/strominger/results/finite-packet-endpoint-form-verification.json"],
+      "specific_endpoint_term_evaluated": true, "implementation_checks": 18, "signature": [1,1,3],
+      "full_regulated_residual_evaluated": false, "analytical_face_homotopy_established": false,
+      "positivity_established": false, "physical_readout_established": false, "full114_channel_established": false,
+      "actionable": false
+    },
+    {
+      "id": "finite-packet-green-trace-subproblem", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["finite-observer-encoder-candidate", "finite-packet-signed-endpoint-form"],
+      "statement": "The declared weighted Volterra/value-flux lift yields125 exact seam entries and70 native pullback checks. Two packets with both Mellin endpoints zero have calibrated pairing -10.17 checks preserve bilinear orientation and give a five-reading packet reconstruction protocol.",
+      "scope": "A specific source trace subproblem, not identification with the full physical mixed polarization or cutoff remainder. Two fixed probe packet types with four seam settings and five readings are not two arbitrary nodes selecting a unique complex.",
+      "evidence": ["research/strominger/finite-packet-green-trace-v1.md", "research/strominger/contracts/finite-packet-green-trace.v1.json", "research/strominger/results/finite-packet-green-trace-verification.json"],
+      "source_trace_subproblem_evaluated": true, "implementation_checks": 17,
+      "full_physical_mixed_polarization_identified": false, "physical_cutoff_residual_evaluated": false,
+      "analytical_face_homotopy_established": false, "physical_probe_protocol_established": false, "full114_channel_established": false,
+      "actionable": false
+    },
+    {
+      "id": "cutoff-leg-cyclicity-shortcut", "kind": "bounded-candidate-audit", "status": "refuted_bounded_claim", "outcome": null,
+      "depends_on": [],
+      "statement": "The displayed finite-cutoff observer-leg rewrite is not justified by trace cyclicity without extra commutation: an exact projection/commuting-observer control gives -11/2 versus -21/4, defect -1/4.",
+      "scope": "Algebraic rewrite only. This does not refute direct unitary transport, an extra physical-model cancellation, or the global conjecture. The control is not physical cutoff data.",
+      "evidence": ["research/strominger/cutoff-regulator-placement-v1.md", "research/strominger/results/cutoff-regulator-placement-verification.json"],
+      "source_unitary_transport_refuted": false, "global_conjecture_refuted": false, "actionable": false
+    },
+    {
+      "id": "corrected-cutoff-observer-legs", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["finite-packet-green-trace-subproblem"],
+      "related_nodes": ["cutoff-leg-cyclicity-shortcut"],
+      "statement": "Correct cyclic placement is tr(B* Z^2 P DeltaQ A), with feature legs left=Z^2 B and right=A for self-adjoint Z.12 checks, including24 exact finite controls, verify the ordered trace and Hermitian/skew feature reconstruction.",
+      "scope": "Corrected finite algebra and source formula audit, not evaluation of the actual physical regulator or packet cutoff residual. Retain Z^2 unless projection/idempotence is justified.",
+      "evidence": ["research/strominger/cutoff-regulator-placement-v1.md", "research/strominger/results/cutoff-regulator-placement-verification.json"],
+      "corrected_finite_identity_verified": true, "implementation_checks": 12,
+      "full_physical_cutoff_evaluated": false, "packet_cutoff_residual_evaluated": false,
+      "actionable": false
+    },
+    {
+      "id": "archimedean-physical-cutoff-enclosures", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["corrected-cutoff-observer-legs", "finite-observer-encoder-candidate", "finite-packet-signed-endpoint-form"],
+      "statement": "The actual real archimedean even-sector spatial/cosine cutoff kernel gives rigorous enclosures for all20 off-diagonal packet entries at Lambda2,4,8.23 checks certify support, root and rational error arithmetic; the continuum derivation supplies the analytic justification. All60 enclosures are positive, while endpoint-subtracted entries are negative.",
+      "scope": "One declared physical sector, normalized dilation convention and inversion reference. No numerical quadrature, complete packet matrix, diagonal finite part, all-semilocal extension or analytical filler is claimed.",
+      "evidence": ["research/strominger/archimedean-cutoff-entry-v1.md", "research/strominger/contracts/archimedean-cutoff-entry.v1.json", "research/strominger/results/archimedean-cutoff-entry-verification.json"],
+      "physical_off_diagonal_entries_enclosed": true, "off_diagonal_entries": 20, "finite_enclosures": 60, "implementation_checks": 23,
+      "complete_packet_matrix_evaluated": false, "diagonal_finite_part_evaluated": false,
+      "all_semilocal_sectors_established": false, "full_analytical_filler_established": false, "full114_channel_established": false,
+      "actionable": false
+    },
+    {
+      "id": "archimedean-centered-packet-limit", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["archimedean-physical-cutoff-enclosures"],
+      "statement": "The common diagonal has an explicit convergent finite-part formula after subtraction of2d log(Lambda), d=integral p0^2.19 checks certify constants and a rational O(log(Lambda)/Lambda^2) error bound. Combined with off-diagonal bounds, the complete centered5x5 packet matrix has a controlled limit in the declared sector.",
+      "scope": "Analytic representation and rational convergence certificate, not numerical quadrature, positivity, all-semilocal realization or an analytical higher witness. The volume matrix is d I5, not the encoder observation Gram.",
+      "evidence": ["research/strominger/archimedean-diagonal-limit-v1.md", "research/strominger/contracts/archimedean-diagonal-limit.v1.json", "research/strominger/results/archimedean-diagonal-limit-verification.json"],
+      "diagonal_finite_part_represented": true, "centered_packet_matrix_limit_controlled": true, "implementation_checks": 19,
+      "numerical_finite_part_value_computed": false, "positivity_established": false,
+      "all_semilocal_sectors_established": false, "analytical_higher_witness_established": false, "full114_channel_established": false,
+      "actionable": false
+    },
+    {
+      "id": "esd7-channel-attachment-construction", "kind": "construction-task", "status": "open", "outcome": null,
+      "depends_on": ["channel-contract-and-first-assembly-step", "retained-channel-sources", "esd7-generated-geometric-channel", "esd7-analytical-prototype-bridge", "esd7-retained-face-comparison-gate", "esd7-simplicial-fine-vertex-refinement", "esd7-strict-parent-evaluation", "strict-native-witness-comparison", "finite-observer-encoder-candidate", "finite-packet-signed-endpoint-form", "finite-packet-green-trace-subproblem", "corrected-cutoff-observer-legs", "archimedean-physical-cutoff-enclosures", "archimedean-centered-packet-limit"],
+      "related_nodes": ["single-channel-esd7-assembly", "assembler-as-global-evolution"],
+      "statement": "Extend the working native channel into a source-bound esd7 attachment grammar and a producer for the proposed retained full channel.",
+      "scope": "Do not serialize the completed census or insert a114-entry schedule. The existing native fixture is a regression case, not the full esd7 target. Unsupported attachments must remain explicit rather than being invented as verified native operations.",
+      "evidence": ["research/strominger/native-retained-channel-v1.md", "research/strominger/single-channel-esd7-assembly-conjecture.md", "research/strominger/fcc-first-sector-transport-v1.md", "research/strominger/esd7-coherence-layout-recovery.md"],
+      "acceptance": "Define which source-generated records introduce, identify or compare cells and face/tetrahedral witnesses; implement their incremental attachments and retain open obligations. Produce the intended full channel independently of the census, then compare the assembled labelled incidence and coherence with that target.",
+      "falsifier": "Generation depends on loading the completed target, suppresses required interface witnesses, identifies histories from matching counts, or promotes a bounded fixture to full reconstruction.",
+      "next_action": "Bind generated attachments by comparing the now-controlled centered archimedean packet form with the intended analytical witness data and its native-field pullback. Preserve the actual d I5 volume subtraction, endpoint/residual coordinates and direction conventions; matrix convergence is not a higher-witness identification or positivity theorem. Keep other sectors and the114-record producer separate.",
+      "deliverable": "Source-bound attachment grammar, executable channel producer/assembler extension and independent target comparison or a precise residual interface.",
+      "actionable": true
+    },
+    {
+      "id": "pb208-process-substitution-criticism", "kind": "criticism", "status": "open", "outcome": null,
+      "depends_on": [],
+      "statement": "The assistant substituted completed-target chart changes and then untyped geometric filling for the requested retained P/N/E construction of Pb-208. The operator rejected these substitutions; implementation success does not discharge the actual task.",
+      "scope": "Research-direction correction, not a mathematical counterexample or an impossibility result. Existing geometry and transport controls retain their bounded scope.",
+      "evidence": ["research/strominger/pb208-retained-construction-obligation-v1.md", "research/realization-tower/process4.md"],
+      "substitutes_discharge_task": false, "construction_impossible": false, "actionable": false
+    },
+    {
+      "id": "native-retained-joint-attachment-attempt", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["native-joint-field-assembly-sewing"],
+      "statement": "An actual marked-seed PN construction admits NE and NN-phase-advance separately, but their simultaneous attachment assigns electron and neutron to the same primitive. The operation pair is inclusion-minimal on that source snapshot. Exhaustive compatible-subset checks on four snapshots retain10 packet configurations after three exploratory maximal-batch rounds;15 checks pass.",
+      "scope": "A bounded native primitive-carrier attempt, not geometric filling. Maximality is a declared scheduling hypothesis; neither a physical selection law nor a refutation of whole-assembly reader presentations. All8736 subsets on the tested snapshots are checked, not all possible assemblies.",
+      "evidence": ["research/strominger/native-retained-batch-attempt-v1.md", "research/strominger/native-retained-batch-attempt.mjs", "research/strominger/results/native-retained-batch-attempt/verification.json"],
+      "implementation_checks": 15, "concrete_native_attempt": true, "minimal_joint_conflict_recorded": true,
+      "full_pb_construction_established": false, "physical_selection_established": false, "whole_assembly_presentation_refuted": false, "actionable": false
+    },
+    {
+      "id": "native-ne-nn-reader-comparison", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["native-retained-joint-attachment-attempt"],
+      "statement": "The actual NE/NN target maps admit the invertible five-slot comparison Q=[0,3,1,4,2]. Three occurrences coincide, but C1 becomes C3 at the fourth vertex and outside-reference provenance differs. A nonzero E-invisible vector becomes N-visible. The existing composition reader changes from1P/1N/1E to1P/2N/0E.12 checks pass.",
+      "scope": "Full-coefficient comparison exists; neither an admitted cross-species native arrow nor a composition-preserving whole-assembly equivalence follows. Does not refute a differently bound reader/inventory interpretation.",
+      "evidence": ["research/strominger/native-reader-comparison-v1.md", "research/strominger/results/native-reader-comparison/verification.json"],
+      "implementation_checks": 12, "full_coefficient_comparison_established": true,
+      "native_cross_species_arrow_established": false, "current_composition_readout_preserved": false,
+      "active_reader_only_factorization": false, "whole_assembly_interpretation_refuted": false, "full_pb_construction_established": false,
+      "actionable": false
+    },
+    {
+      "id": "pb208-inventory-fibration-attempt", "kind": "construction-task", "status": "refuted_bounded_claim", "outcome": null,
+      "depends_on": ["native-ne-nn-reader-comparison"],
+      "related_nodes": ["pb208-retained-native-construction"],
+      "statement": "Pre-registered attempt: test whether the existing retained-total fibration supplies the missing inventory comparison for the actual NE/NN alternatives, rather than preserving incompatible input inventories separately.",
+      "scope": "A candidate-source test under frozen success/failure criteria, not a new inventory defined to fit the desired answer.",
+      "evidence": ["research/strominger/contracts/pb208-inventory-fibration-attempt.v1.json", "research/nima/label-from-to-fibration-tower.md", "research/strominger/pb208-inventory-fibration-result-v1.md", "research/strominger/results/pb208-inventory-fibration/verification.json"],
+      "acceptance": "Exhibit a source-backed cross-alternative inventory/occurrence comparison, or show precisely that this candidate requires the missing comparison as an input. No constant inventory, erased target or geometry-only substitute.",
+      "next_action": "Do not repeat this candidate as the missing bridge: its generic field-preserving recovery remains valid, but it preserves incompatible supplied inventories. Assess a separately grounded whole-carrier source under a new registered test.",
+      "deliverable": "Reproducible native finite instance, comparison or counterexample, and criterion-linked disposition.",
+      "registration_before_execution": true, "inventory_bridge_established": false, "actionable": false,
+      "criterion_disposition": "candidate-insufficient-for-inventory-bridge", "implementation_checks": 22,
+      "generic_fibration_refuted": false, "all_whole_assembly_models_refuted": false, "full_pb_construction_established": false
+    },
+    {
+      "id": "pb208-native-whole-fixture-attempt", "kind": "construction-task", "status": "refuted_bounded_claim", "outcome": null,
+      "depends_on": ["native-joint-field-assembly-sewing", "native-ne-nn-reader-comparison"],
+      "related_nodes": ["pb208-retained-native-construction"],
+      "statement": "Pre-registered test: distinguish grounded chart-independent inventory in the native retained-whole fixture from actual admission of both conflicting NE/NN targets into that same whole.",
+      "evidence": ["research/strominger/contracts/pb208-native-whole-fixture-attempt.v1.json", "research/strominger/joint-field-assembly-sewing-v1.md", "research/strominger/native-whole-inventory-fixture-result-v1.md", "research/strominger/results/native-whole-inventory-fixture/verification.json"],
+      "scope": "One existing native fixture; test all its marked P-root frames. Inventory preservation alone is not pair binding or Pb construction.",
+      "acceptance": "Replay the native fixture and all interfaces; separately test whole inventory and simultaneous source-bound pair admission without independently relocating alternatives.",
+      "next_action": "Do not promote the grounded2P/2N/1E whole inventory into admission of the conflicting pair. Any broader reader/carrier interpretation requires an explicitly registered extension and its occurrence/geometry/field witnesses.",
+      "deliverable": "Fresh fixture/field replay, inventory table, all marked-root pair checks and criterion-linked disposition.",
+      "registration_before_execution": true, "pair_binding_established": false, "actionable": false,
+      "criterion_disposition": "inventory-grounded-but-pair-not-admitted", "implementation_checks": 9,
+      "inventory_criterion_passed": true, "root_frames_checked": 7, "prefix_bindings": 5, "electron_bindings": 2, "neutron_bindings": 0,
+      "full_pb_construction_established": false, "all_whole_assembly_models_refuted": false
+    },
+    {
+      "id": "pb208-octahedral-reader-atlas-attempt", "kind": "construction-task", "status": "refuted_bounded_claim", "outcome": null,
+      "depends_on": ["native-retained-joint-attachment-attempt"],
+      "related_nodes": ["pb208-retained-native-construction"],
+      "statement": "Prior-research-led attempt: test whether the canonical root reaches an external NE port of its first octahedral support using unchanged NN and N-reader phase advances, including reference-only P contexts.",
+      "scope": "N-only reader atlas on a specified support; no whole-volume particle-count law, root recoloring or universal no-go claim.",
+      "evidence": ["research/strominger/contracts/pb208-octahedral-reader-atlas-attempt.v1.json", "research/strominger/prior-assembly-clues-v1.md", "research/strominger/composite-neutron-binding-v1.md", "research/strominger/octahedral-reader-atlas-result-v1.md", "research/strominger/results/octahedral-reader-atlas/verification.json"],
+      "acceptance": "Produce a validated fixed-root external NE port, or a source-derived invariant excluding it under these exact N-only rules. Finite non-discovery without that invariant is only bounded.",
+      "next_action": "The N-only rules preserve an antipodal C1/C2 diagonal, making every NE face internal. Do not repeat longer N-only searches. Assess the already documented inverse-PN/P-reader screw continuation separately; it lies outside this invariant.",
+      "deliverable": "Native reader atlas and source-bound exit or narrowly scoped obstruction.",
+      "registration_before_execution": true, "external_port_established": false, "actionable": false,
+      "criterion_disposition": "no-external-port-under-fixed-root-N-only-rules", "implementation_checks": 9,
+      "reader_states": 8, "native_transitions": 16, "source_invariant_established": true,
+      "all_native_routes_excluded": false, "whole_neutron_admission_established": false, "absolute_histories_identified": false
+    },
+    {
+      "id": "pb208-screw-field-attempt", "kind": "construction-task", "status": "verified_conditional", "outcome": null,
+      "depends_on": ["native-joint-field-assembly-sewing"],
+      "related_nodes": ["pb208-retained-native-construction", "esd7-channel-attachment-construction"],
+      "statement": "Pre-registered native sewing gate: replay the actual screw-growth patch and test the unchanged44-channel candidate over every retained interface, including contact repairs.",
+      "scope": "Native sewing is necessary supporting data, not an actual analytical esd7 face binding or full Pb construction.",
+      "evidence": ["research/strominger/contracts/pb208-screw-field-attempt.v1.json", "research/strominger/native-screw-patch-v1.md", "research/strominger/joint-field-assembly-sewing-v1.md", "research/strominger/screw-field-sewing-result-v1.md", "research/strominger/results/screw-field-sewing.json"],
+      "acceptance": "All actual interfaces satisfy full-field, five-coefficient and readout squares without refitting source maps; otherwise preserve the exact failing edge/equation.",
+      "next_action": "Retain this completed native sewing gate as input to a separately registered actual esd7 attachment. Do not repeat the check as a substitute for selecting and validating the source-bound attachment map.",
+      "deliverable": "Native growth fixture and exact all-interface field/readout receipt or a concrete failed equation.",
+      "registration_before_execution": true, "screw_field_sewing_established": true, "actionable": false,
+      "implementation_checks": 19, "packet_count": 66, "interface_count": 95, "body_count": 24,
+      "actual_esd7_face_binding_established": false, "full_pb_construction_established": false, "infinite_retained_extension_established": false
+    },
+    {
+      "id": "screw-esd7-geometric-attachment-attempt", "kind": "construction-task", "status": "refuted_bounded_claim", "outcome": null,
+      "depends_on": ["pb208-screw-field-attempt", "esd7-generated-geometric-channel"],
+      "related_nodes": ["pb208-retained-native-construction", "esd7-channel-attachment-construction"],
+      "statement": "Pre-registered literal shared-lattice attachment test of the actual screw patch to esd7, over signed coordinate permutations and admissible integer translations.",
+      "scope": "Occupied primitives and retained references must fit together. This geometric interpretation is distinct from a coherence-presentation map and does not supply F006 analytical operators.",
+      "evidence": ["research/strominger/contracts/screw-esd7-geometric-attachment-attempt.v1.json", "research/strominger/esd7-retained-face-comparison-v1.md", "research/strominger/screw-esd7-geometric-attachment-result-v1.md", "research/strominger/results/screw-esd7-geometric-attachment/verification.json"],
+      "acceptance": "Exhibit a full primitive/reference embedding or an exact obstruction for the registered map family; no scaling, hidden clipping or independently moved bodies.",
+      "next_action": "Retain the bounded obstruction: full reference context needs resolution8 in both sign classes, while40 exact occupied embeddings exist. Use the explicit packet5-to15 NE reference witness as input to a separately registered relative attachment retaining external context.",
+      "deliverable": "Source-bound attachment map or scope-bounded coordinate obstruction with reproducible checks.",
+      "registration_before_execution": true, "geometric_attachment_established": false, "actionable": false,
+      "criterion_disposition": "fully-internalized-reference-context-excluded-in-registered-map-family",
+      "implementation_checks": 11, "occupied_primitive_embeddings": 40, "minimum_external_reference_vertices": 1,
+      "all_geometric_embeddings_excluded": false, "coherence_presentation_interpretation_refuted": false,
+      "actual_analytical_face_binding_established": false, "full_pb_construction_established": false
+    },
+    {
+      "id": "screw-esd7-relative-attachment-attempt", "kind": "construction-task", "status": "open", "outcome": null,
+      "depends_on": ["pb208-screw-field-attempt"],
+      "related_nodes": ["screw-esd7-geometric-attachment-attempt", "pb208-retained-native-construction"],
+      "statement": "Registered relative native attachment in the explicit diagnostic frame, with external references retained rather than clipped.",
+      "scope": "Occupied esd7 primitives plus a reference-only ledger; not an analytical domain extension or F006 witness.",
+      "evidence": ["research/strominger/contracts/screw-esd7-relative-attachment-attempt.v1.json"],
+      "acceptance": "Actual native reference completion and all transfers validate, with inverse reconstruction and no new occupancy from reference completion; otherwise retain the failed equation.",
+      "next_action": "Execute the registered native completion, transfer, recovery and loss-control checks.",
+      "registration_before_execution": true, "relative_native_attachment_established": false,
+      "analytical_domain_extension_established": false, "actual_f006_binding_established": false, "full_pb_construction_established": false,
+      "actionable": true
+    },
+    {
+      "id": "pb208-retained-native-construction", "kind": "construction-task", "status": "open", "outcome": null,
+      "depends_on": ["native-joint-field-assembly-sewing"],
+      "related_nodes": ["native-ne-nn-reader-comparison", "native-retained-joint-attachment-attempt", "global-28-stage-pe-fibration", "pb208-process-substitution-criticism", "esd7-channel-attachment-construction", "assembler-as-global-evolution"],
+      "proposal_origin": "operator_requested_research_direction",
+      "statement": "Construct the Pb-208 representation through retained esd7 operations: determine each operation's effect on P/N/E structure, constrain subsequent operations by shared interfaces, and test the resulting whole against the independent composition readout without loading or prescribing the answer.",
+      "scope": "A concrete construction attempt, not generic geometric filling, completed-target re-presentation, a fitted isotope assignment, or a physical formation/stability claim. The full4x28 realization remains open.",
+      "evidence": ["research/strominger/pb208-retained-construction-obligation-v1.md", "research/strominger/pb208-formation-gate-audit-v1.md", "research/strominger/pb208-representation-trace-target-v1.md", "research/nima/generative-phase-assembly-v1.md"],
+      "acceptance": "Execute source-bound native operations on retained P/N/E carriers with shared-interface and history witnesses; compare resulting composition independently. If blocked, return a minimal concrete failed attachment with its state, attempted operation, violated equation and exact missing rule. Geometry-only outputs do not satisfy this acceptance.",
+      "falsifier": "A proposed operation violates a retained marked interface, loses coefficients/history or requires target-specific role quotas. This rejects the candidate, not every possible construction.",
+      "next_action": "Register a relative attachment using an explicit occupied embedding and its complete external-reference ledger. The diagnostic frame x->-x+(-3,2,2,1) places all24 occupied primitives in esd7 but sends C0 shared by neutron packet5 and electron packet15 to(-3,1,3,0), outside x_2<=2. Verify inverse reconstruction, native face/occurrence maps and the required external analytical domain without clipping C0 or pretending it is an internal esd7 vertex. The95 native sewing squares remain valid; actual F006 analytical binding and the full Pb construction remain open.",
+      "deliverable": "Executable retained P/N/E construction attempt with provenance and independent readouts, or a reproducible smallest failed attachment identifying the missing rule.",
+      "construction_established": false, "isotope_counts_derived": false, "geometric_fill_sufficient": false, "completed_target_input_allowed": false,
+      "actionable": true
+    },
+    {
+      "id": "assembler-as-global-evolution", "kind": "conjecture", "status": "open", "outcome": null,
+      "depends_on": ["single-channel-esd7-assembly", "global-28-stage-pe-fibration"],
+      "related_nodes": ["channel-contract-and-first-assembly-step", "native-joint-field-assembly-sewing"],
+      "proposal_origin": "assistant_synthesis",
+      "statement": "A single incremental assembly update both reconstructs esd7 from the retained channel and realizes the global evolution through its intermediate retained states, with compatible native P/N/E readouts.",
+      "scope": "Stronger synthesis than the operator's basic assembly-existence conjecture. Neither the full retained-channel realization nor the evolution identification is proved or mechanically recommended by evidence alone.",
+      "evidence": ["research/strominger/single-channel-esd7-assembly-conjecture.md", "research/strominger/global-28-stage-pe-fibration-conjecture.md"],
+      "acceptance": "Construct one update whose final assembly matches the independent esd7 registry and whose intermediate readouts intertwine native transport, retaining all histories without a fitted stage schedule or phase-triggered P/E label.",
+      "first_missing_datum": "The114-record producer and analytical/field bindings beyond the now-generated full geometry, followed by a source-backed identification of assembly updates with evolution steps.",
+      "next_action": "Continue with the esd7 attachment construction task; keep assembly recovery and physical/evolution interpretation as separate gates.",
+      "evolution_binding_established": false
+    },
+    {
+      "id": "polarity-cover-audit", "kind": "scope-boundary", "status": "deferred_missing_operation", "outcome": null, "depends_on": [],
+      "statement": "Source polarity flip bijections remain unspecified in the audit at cb0c254; polarity face/crosscap parities are undefined.",
+      "scope": "Separate global cover question, not a prerequisite of local P/E pairing or reference exchange.",
+      "evidence": ["research/strominger/polarity-flip-cover-source-audit.md"],
+      "actionable": false
+    }
+  ],
+  "connections": [
+    {"source_node": "persistent-seam-observability", "target_contract": "research/conjecture_net/contracts/wg-identity-composition-work-net.v1.json", "target_nodes": ["local-half-phase", "serial-local-roots-compose"], "relation": "scoped_compatibility_continuation_of_existing_source", "scope": "Same documented triangle coefficient operations; no whole-package WG half-step or source-identity conclusion.", "proof_bearing": false, "discharges_parent_obligation": false},
+    {"source_node": "persistent-seam-observability", "target_contract": "research/conjecture_net/contracts/event-sourced-control-work-net.v1.json", "target_nodes": ["history-to-state-congruence", "observation-feedback-realization"], "relation": "bounded_observability_example", "scope": "Finite linear seam observation; no control authority, feedback policy or physical-time realization.", "proof_bearing": false, "discharges_parent_obligation": false},
+    {"source_node": "persistent-seam-pe", "target_contract": "research/conjecture_net/contracts/common-foundations-conjecture-net.v1.json", "target_nodes": ["identity-continuation-coherence"], "relation": "candidate_marked_pair_identity_and_continuation_instance", "scope": "Working P/E interpretation; distinct occurrences remain retained. No root proof transfer.", "proof_bearing": false, "discharges_parent_obligation": false},
+    {"source_node": "persistent-seam-pe", "target_contract": "research/scattering/seed-composition/contracts/seed-composition-work-net.v1.json", "target_nodes": ["atlas-seed-source-correspondence"], "relation": "candidate_pairing_law_for_future_source_correspondence", "scope": "No existing particle source is renamed, no composition output or isotope count is derived.", "proof_bearing": false, "discharges_parent_obligation": false}
+  ],
+  "frontier": ["screw-esd7-relative-attachment-attempt", "pb208-retained-native-construction", "esd7-channel-attachment-construction"],
+  "recommended_start": "screw-esd7-relative-attachment-attempt",
+  "frontier_reason": "All95 native sewing squares pass and40 exact occupied esd7 embeddings exist. Only fully internalized reference context is excluded in the registered map family. A concrete shared NE C0 reference outside the carrier now identifies the next relative-attachment and domain obligation; this is not a failed occupied contact or an exclusion of coherence-presentation maps.",
+  "port_implications": [],
+  "boundary": {"conjecture_proved": false, "operator_confirmation_is_evidence": false, "protocol_selected": false, "physical_particle_identity_established": false, "isotope_counts_derived": false, "global_polarity_cover_required": false, "parent_outcomes_changed": false, "formal_outcomes_admitted": false}
+}

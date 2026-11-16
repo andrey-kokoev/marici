@@ -92,6 +92,8 @@ function renderDetails() {
   out.append(el('p', 'Formal outcome: ' + (n.outcome === null ? 'none recorded' : JSON.stringify(n.outcome))));
   if (current.frontier.includes(n.id)) out.append(el('strong', 'Declared frontier'));
   field(out, 'Statement', n.statement);
+  const connections = Array.isArray(current.raw.connections) ? current.raw.connections.filter(c => c.source_node === n.id) : [];
+  if (connections.length) field(out, 'Scoped cross-net connections (not proof imports)', connections);
   for (const [key,label] of [['verdict','Scoped verdict'],['scope','Scope'],['next_action','Next action'],['acceptance','Acceptance'],['blocker','Blocker'],['reopening','Reopening'],['prerequisite_use','Prerequisite use']]) field(out, label, n.raw[key]);
   out.append(el('h3', 'Prerequisites'));
   if (!n.depends_on.length) out.append(el('p', 'No local prerequisites.', 'empty'));

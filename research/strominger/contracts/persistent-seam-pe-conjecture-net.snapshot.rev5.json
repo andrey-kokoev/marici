@@ -1,0 +1,147 @@
+{
+  "schema": "marici.persistent-seam-pe.conjecture-net.v1",
+  "id": "marici.persistent-seam-pe.v1",
+  "title": "Persistent-seam P/E pairing",
+  "owner": "marici.Strominger",
+  "version": 1,
+  "revision": 5,
+  "objective": {"target": "persistent-seam-pe", "outcome": null},
+  "coherence_obligation": "source-protocol realization on the marked shared-edge pair, conditional on independently specified admissible operations",
+  "operator_stimulus": {
+    "wording": "i confirm that it seems to be in line with what i expected",
+    "instruction": "let's connect this conjecture into our current conjecture net",
+    "confidence_modality": "seems",
+    "effect": "Use the marked shared-edge triangle pair as the working P/E interpretation; record a conjecture, not proof of protocol selection or particle identities."
+  },
+  "semantics": {
+    "depends_on": "Local research-context and evidence dependencies; no automatic proof implications.",
+    "connections": "Checked references to existing net nodes, with relation and scope stated; no parent verdict changes.",
+    "outcome": "All formal attempt outcomes remain null. Conditional mathematical results have separate verified_conditional status and evidence.",
+    "pe": "Working reference/dual labels on retained triangle occurrences, not independently established particle species.",
+    "composition_index": "Operator application count, not physical time."
+  },
+  "conjectures": [
+    {
+      "id": "existing-seed-context", "kind": "context", "status": "source_located", "outcome": null, "depends_on": [],
+      "statement": "The existing arrow-seed programme retains separate source records and interpretation boundaries. This is a cross-net context link, not evidence selecting a P/E protocol.",
+      "external_dependency": {"contract": "research/scattering/seed-composition/contracts/seed-composition-work-net.v1.json", "node": "arrow-seed-collection-evidence"},
+      "scope": "No identification of this working P/E pair with an existing photon, proton or electron record is imported."
+    },
+    {
+      "id": "shared-edge-source", "kind": "evidence", "status": "source_located", "outcome": null, "depends_on": [],
+      "statement": "Two retained triangle occurrences T1=(AB,BC,CA), T2=(BA,AD,DB) have local restrictions R1x=(a,b,c), R2x=(-a,d,e) and documented C,S operations.",
+      "evidence": ["research/nima/two-triangles-shared-edge-half-phase.md", "research/nima/checkers/check_two_triangle_half_phase.py"]
+    },
+    {
+      "id": "persistent-seam-observability", "kind": "conditional-theorem", "status": "verified_conditional", "outcome": null, "depends_on": ["shared-edge-source"],
+      "statement": "For identical simultaneous local C or S, persistent gluing is equivalent to R2x=-R1x; the maximal compatible carrier is K(R^3).",
+      "scope": "Observability rank 3 plus Cayley-Hamilton; C,S and oriented-cochain conventions are supplied. Does not select simultaneous processing.",
+      "evidence": ["research/strominger/shared-seam-observability.md", "research/strominger/results/shared-seam-observability.json", "src/ledger/20261022-4330 Persistent Shared-Seam Compatibility Is an Observability Condition.md"],
+      "falsifier_control": "Identity updates have a two-dimensional unobservable mismatch and do not force synchronization."
+    },
+    {
+      "id": "reference-exchange-covariance", "kind": "conditional-theorem", "status": "verified_conditional", "outcome": null, "depends_on": ["shared-edge-source"],
+      "statement": "J(a,b,c,d,e)=(-a,d,e,b,c) swaps restrictions, has J^2=I, sends Kv to K(-v), and conjugates serial orders without identifying triangle occurrences.",
+      "evidence": ["research/strominger/shared-seam-observability.md", "research/strominger/results/shared-seam-observability.json"]
+    },
+    {
+      "id": "serial-shared-coordinate-rival", "kind": "rival", "status": "verified_alternative", "outcome": null, "depends_on": ["shared-edge-source"],
+      "statement": "The intended pair may instead use the documented serial shared-coordinate operations T2T1 or T1T2, with order-sensitive shared-edge updates.",
+      "scope": "The alternative operators exist; their selection as the intended protocol is unproved. They are not rejected merely because they are not synchronized.",
+      "evidence": ["research/strominger/shared-seam-observability.md", "research/strominger/results/shared-seam-observability.json"],
+      "discriminant": "C2C1 K(0,1,0)=(1,0,0,0,-1) lies outside K(R^3), whereas synchronized C returns (1,0,0,0,0)."
+    },
+    {
+      "id": "working-pe-interpretation", "kind": "interpretation", "status": "working_convention", "outcome": null, "depends_on": ["shared-edge-source"],
+      "statement": "Use the marked triangle pair and seam as the intended working P/E relation, following the operator's tentative confirmation.",
+      "scope": "Fixes research meaning, not source-derived protocol selection, physical particle identity or an empirical result.",
+      "evidence": ["research/strominger/persistent-seam-pe-conjecture.md"]
+    },
+    {
+      "id": "persistent-seam-pe", "kind": "conjecture", "status": "open", "outcome": null,
+      "depends_on": ["working-pe-interpretation", "persistent-seam-observability", "reference-exchange-covariance", "existing-seed-context"],
+      "statement": "The intended basic marked P/E pair has admissible joint states K(R^3), with elementary joint cyclic and half-phase operations given by simultaneous synchronized gluing, Kv -> KCv and Kv -> KSv, rather than serial rewriting of the shared coordinate.",
+      "scope": "A source-protocol realization conjecture for this marked pair. P/E labels remain a working interpretation; the conditional theorem alone does not prove the conjecture.",
+      "rivals": ["serial-shared-coordinate-rival", "counteroriented-synchronous-rival"],
+      "risky_consequences": ["Every admissible pair state has R2x=-R1x.", "Both local circulations are preserved by the selected joint C and S operations, with L=-R and outer circulation zero.", "Reference exchange swaps retained occurrences and reverses the local triple without merging identities."],
+      "acceptance": "Independently specify the intended source's admissible pair states and joint operations, then exhibit an occurrence-preserving binding intertwining both restrictions, C/S and J with K. Derive the domain and protocol rather than restricting them after observing a mismatch.",
+      "falsifier": "An independently admitted intended-pair state outside K(R^3), or a source-required elementary joint operation differing from synchronized C/S (including an admitted serial operation leaving K). A toy rival alone does not establish source admissibility.",
+      "strongest_current_test": "The counteroriented rival preserves seam invariants as an atomic inverse-operation model, but fails the unchanged native-forward source binding: (S^-1)^2=C^-1, not C. Independent native I/S/C clocks cannot begin a non-idle prefix-glued execution on its full carrier. This narrows the rival without selecting the intended P/E protocol.",
+      "test_evidence": ["research/strominger/persistent-seam-pe-falsification.md", "research/strominger/results/persistent-seam-pe-falsification.json"],
+      "disposition": "Open; conditional compatibility and exchange mathematics established, source selection not established.",
+      "first_missing_datum": "An independently specified intended joint-operation/admissibility rule, including the relative orientation of the two legs. Fixed-forward commutation with J is stronger than covariance under transported schedules.",
+      "reopening_condition": "New source or operator-level specification of admissible operations/states, clearly labeled as supplied input, permits the stated intertwining/falsification test.",
+      "next_action": "Do not repeat observability calculations or invent a filler. Compare any newly specified admissible joint operation against the recorded synchronized/serial discriminant.",
+      "actionable": false
+    },
+    {
+      "id": "counteroriented-synchronous-rival", "kind": "rival", "status": "verified_alternative", "outcome": null, "depends_on": ["shared-edge-source", "reference-exchange-covariance"],
+      "statement": "Applying T and T^-1 to the two triangles is persistently gluable on Kminus(a,b,c)=(a,b,c,-c,-b), for T=C or S, with preserved local circulations and paired-occurrence metric.",
+      "scope": "Verified endpoint algebra with atomic inverse powers C^2 and S^5; not an unchanged native-forward elementary protocol. J conjugates forward to inverse rather than commuting. Intended-source selection is not established.",
+      "source_binding_status": "rejected_under_unchanged_native_forward_interface",
+      "source_binding_obstruction": "Inverse half-phase squares to C^-1 rather than native C. No independent I/S/C clock implementation preserves gluing at every prefix on the full carrier. Atomic inverses or an orientation/prefix-policy change require additional admission.",
+      "evidence": ["research/strominger/persistent-seam-pe-falsification.md", "research/strominger/results/persistent-seam-pe-falsification.json", "research/strominger/counteroriented-rival-source-audit.md", "research/strominger/results/counteroriented-rival-source.json"],
+      "discriminant": "From the common input (1,0,0,0,0), same-orientation C gives (0,0,1,0,-1), whereas counteroriented C gives (0,0,1,-1,0), outside the original K carrier."
+    },
+    {
+      "id": "seam-invariants-select-same-orientation", "kind": "rejected-selection-claim", "status": "refuted_bounded_claim", "outcome": null, "depends_on": ["counteroriented-synchronous-rival", "persistent-seam-observability"],
+      "statement": "Candidate: seam compatibility, balanced local circulations, paired-occurrence norm and covariance under transported reference exchange uniquely select the same-orientation synchronized protocol.",
+      "scope": "Refuted within the 36 pairs of powers of the declared six-phase S, without changing port labels. Does not reject the fixed-same-operator observability theorem or prove which protocol the intended P/E source selects.",
+      "evidence": ["research/strominger/persistent-seam-pe-falsification.md", "research/strominger/results/persistent-seam-pe-falsification.json"]
+    },
+    {
+      "id": "counteroriented-native-realization", "kind": "rejected-source-binding", "status": "refuted_bounded_claim", "outcome": null, "depends_on": ["counteroriented-synchronous-rival", "shared-edge-source"],
+      "statement": "Candidate: the counteroriented rival realizes the unchanged native forward C/S interface, either elementarily or through independent forward clocks glued at every prefix.",
+      "scope": "Rejected by the native square-root defect and the prefix obstruction for per-leg I/S/C ticks. Does not reject atomic inverse algebra, arbitrary serial rewriting, or a separately admitted reversed orientation policy.",
+      "evidence": ["research/strominger/counteroriented-rival-source-audit.md", "research/strominger/results/counteroriented-rival-source.json"]
+    },
+    {
+      "id": "global-28-stage-pe-fibration", "kind": "conjecture", "status": "open", "outcome": null, "depends_on": [],
+      "statement": "A single operator on the whole retained coherence complex produces 28 globally coherent stages exchanging P/E presentations. After choosing an initial orientation, four seven-stage convolution-depth blocks are connected by full-presentation quarter-turn handoffs; the proposed depth profile within each block is 1,2,3,4,3,2,1. Opposite-end traversals pass through one another without identifying their histories.",
+      "scope": "Whole-presentation hypothesis, not the older local identical-C/S coupling claim. P/N/E are proposed contextual-window readouts. No phase-to-sector, spatial-turn, esd7 or Pb-208 binding is established. A sequential P-to-E-to-P response is a distinct candidate, not a silent replacement for endpoint exchange.",
+      "evidence": ["research/strominger/global-28-stage-pe-fibration-conjecture.md", "research/strominger/global-28-stage-pe-prior-clues.md", "research/strominger/two-ended-sector-trace-v1.md", "research/strominger/sector-request-response-v1.md"],
+      "acceptance": "Construct the whole state, fibration/readout and state-dependent operator without a fitted stage schedule; verify all intermediate shared coherences, initial-frame covariance and the 28-stage endpoint exchange.",
+      "first_missing_datum": "A source-bound global operator and contextual P/E readout, rather than a local species transition or four-periodic corner label.",
+      "falsifier": "An independently fixed candidate operator violates a required intermediate coherence or fails its specified endpoint readout. Failure of a local candidate alone does not reject every global realization."
+    },
+    {
+      "id": "nested-double-observation-certificate", "kind": "conditional-construction", "status": "verified_conditional", "outcome": null, "depends_on": [],
+      "statement": "In the declared four-level binary certificate protocol, each of seven internal nodes compares LR and RL routes and retains the first receipt and child ancestry. Serial work is 28 flips; sibling-parallel execution with sequential observations has span 12 move rounds.",
+      "scope": "17 exact checks of a finite consistency certificate. Both routes use supplied commuting operators. Not independent empirical corroboration, a physical reality criterion, a P/E exchange, or a forced 28-stage global law. Parallel-route computation has span 6 under a different scheduling policy; comparison costs are excluded.",
+      "evidence": ["research/strominger/nested-double-observation-v1.md", "research/strominger/checkers/check_nested_double_observation.py", "research/strominger/results/nested-double-observation.json"],
+      "serial_work": 28, "sequential_observation_parallel_span": 12,
+      "global_28_stages_established": false
+    },
+    {
+      "id": "rung4-double-observation-readout", "kind": "conjecture", "status": "open", "outcome": null, "depends_on": ["nested-double-observation-certificate"],
+      "related_nodes": ["global-28-stage-pe-fibration"],
+      "statement": "The completed, twice-observed coherence complex, with comparisons checked and full ancestry retained, realizes the Marici Realization Tower's rung4 reference/readout presentation of the same whole.",
+      "scope": "Structural rung assignment by the role of the readout, not by four binary levels, four square corners or the number 28. The finite certificate motivates the candidate but does not supply the tower binding. Rung4 identification does not require treating serial work as global stages or imply physical reality.",
+      "operator_stimulus": "Capture the proposed rung4 interpretation of the nested double-observation completion as a conjecture in the net.",
+      "evidence": ["research/realization-tower/definition.md", "research/strominger/nested-double-observation-v1.md", "research/strominger/global-28-stage-pe-fibration-conjecture.md"],
+      "acceptance": "Exhibit a typed map from the higher retained presentations to the specified rung4 reference/readout; identify visible data and retained witnesses, prove compatibility of the two observations and shared interfaces, and construct reconstruction or the required continued transport without erasing ancestry.",
+      "falsifier": "A proposed tower binding cannot preserve the specified readout or coherence, loses required ancestry, or fails its reconstruction/continuation law. A count match or an arbitrary relabeling is not an admissible binding.",
+      "first_missing_datum": "The explicit tower-to-certificate/readout map and the source-defined reconstruction or continuation interface.",
+      "next_action": "Specify and test that map against existing retained-fibration and rung4 readout interfaces; do not infer a rung from a matching numeral.",
+      "rung_assignment_established": false,
+      "physical_reality_established": false
+    },
+    {
+      "id": "polarity-cover-audit", "kind": "scope-boundary", "status": "deferred_missing_operation", "outcome": null, "depends_on": [],
+      "statement": "Source polarity flip bijections remain unspecified in the audit at cb0c254; polarity face/crosscap parities are undefined.",
+      "scope": "Separate global cover question, not a prerequisite of local P/E pairing or reference exchange.",
+      "evidence": ["research/strominger/polarity-flip-cover-source-audit.md"],
+      "actionable": false
+    }
+  ],
+  "connections": [
+    {"source_node": "persistent-seam-observability", "target_contract": "research/conjecture_net/contracts/wg-identity-composition-work-net.v1.json", "target_nodes": ["local-half-phase", "serial-local-roots-compose"], "relation": "scoped_compatibility_continuation_of_existing_source", "scope": "Same documented triangle coefficient operations; no whole-package WG half-step or source-identity conclusion.", "proof_bearing": false, "discharges_parent_obligation": false},
+    {"source_node": "persistent-seam-observability", "target_contract": "research/conjecture_net/contracts/event-sourced-control-work-net.v1.json", "target_nodes": ["history-to-state-congruence", "observation-feedback-realization"], "relation": "bounded_observability_example", "scope": "Finite linear seam observation; no control authority, feedback policy or physical-time realization.", "proof_bearing": false, "discharges_parent_obligation": false},
+    {"source_node": "persistent-seam-pe", "target_contract": "research/conjecture_net/contracts/common-foundations-conjecture-net.v1.json", "target_nodes": ["identity-continuation-coherence"], "relation": "candidate_marked_pair_identity_and_continuation_instance", "scope": "Working P/E interpretation; distinct occurrences remain retained. No root proof transfer.", "proof_bearing": false, "discharges_parent_obligation": false},
+    {"source_node": "persistent-seam-pe", "target_contract": "research/scattering/seed-composition/contracts/seed-composition-work-net.v1.json", "target_nodes": ["atlas-seed-source-correspondence"], "relation": "candidate_pairing_law_for_future_source_correspondence", "scope": "No existing particle source is renamed, no composition output or isotope count is derived.", "proof_bearing": false, "discharges_parent_obligation": false}
+  ],
+  "frontier": [],
+  "frontier_reason": "Local controls and the bounded nested certificate are checked. The open global-operator and rung4-identification branches still require explicit source-bound maps; no executable binding or task is admitted merely by recording these conjectures.",
+  "port_implications": [],
+  "boundary": {"conjecture_proved": false, "operator_confirmation_is_evidence": false, "protocol_selected": false, "physical_particle_identity_established": false, "isotope_counts_derived": false, "global_polarity_cover_required": false, "parent_outcomes_changed": false, "formal_outcomes_admitted": false}
+}
