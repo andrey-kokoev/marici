@@ -2,6 +2,14 @@
 
 Shared, machine-readable index of element/isotope observations and our construction research. The authoritative data is `element-isotope-catalog.json`, not a viewer, generated website asset, or an individual researcher's summary.
 
+## Extracted isotope reference data
+
+[`isotope-reference.resource.json`](isotope-reference.resource.json) is a separate
+Frictionless tabular resource extracted from the existing isotope-reference HTML:
+96 isotope rows, with counts, electron shells, natural abundance and stability.
+It does not add measured radii, moments or energies, nor promote model claims.
+See [format, provenance and regeneration instructions](ISOTOPE-REFERENCE.md).
+
 ## Assembly implementation guide
 
 For arrow assembly, proton/electron constructors, reversible cycles and assembly

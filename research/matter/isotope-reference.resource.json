@@ -1,0 +1,253 @@
+{
+  "profile": "tabular-data-resource",
+  "name": "isotope-reference",
+  "title": "Isotope and electron-shell reference",
+  "description": "Extraction of the repository HTML reference, independent of proposed geometric models. Selected isotopes only; not a complete nuclide evaluation.",
+  "dialect": {
+    "header": false
+  },
+  "sources": [
+    {
+      "title": "Repository isotope reference (extraction source)",
+      "path": "../kitaev/isotope-electron-shells.html"
+    },
+    {
+      "title": "NIST representative isotopic compositions (cited by the HTML)",
+      "path": "https://physics.nist.gov/PhysRefData/Compositions/index.html"
+    },
+    {
+      "title": "IAEA LiveChart / ENSDF stability (cited by the HTML)",
+      "path": "https://www-nds.iaea.org/relnsd/vcharthtml/VChartHTML.html"
+    }
+  ],
+  "provenance": {
+    "sourceFile": "research/kitaev/isotope-electron-shells.html",
+    "sourceSha256": "06abee289587af3907010d09ad87aab5b88ce5f6b0df2ed917eb07c53644d393",
+    "generator": "scripts/extract-isotope-reference.mjs",
+    "verification": "Repository extraction only. Upstream sources were not fetched or independently revalidated by this extraction."
+  },
+  "notes": [
+    "Natural abundance is percent of an element’s atoms, not percent of all matter. Uncertainties were omitted in the HTML; none are invented here.",
+    "Natural compositions vary between samples, particularly hydrogen, helium, lithium, boron and lead. Selected isotope rows need not sum to 100 percent.",
+    "Stable means no radioactive decay observed, not a proven infinite lifetime. Lead-204 retains the reported half-life lower limit, not a measured decay lifetime.",
+    "An em dash in an electron-shell column is exported as null; zero occupancy is not imputed.",
+    "unit and sourceRef on schema fields, and provenance and notes on this resource, are extension metadata. Other fields use Frictionless vocabulary.",
+    "Spin/parity, binding energies, radii and moments are absent from the source HTML and are not added by this extraction."
+  ],
+  "schema": {
+    "fields": [
+      {
+        "name": "isotope",
+        "title": "Nucleus",
+        "type": "string",
+        "constraints": {
+          "required": true,
+          "pattern": "^[A-Za-z]+-[0-9]+$"
+        },
+        "description": "Full element name and mass number as recorded in the HTML; not the editor shorthand ID."
+      },
+      {
+        "name": "protons",
+        "title": "Protons",
+        "type": "integer",
+        "constraints": {
+          "required": true,
+          "minimum": 1
+        }
+      },
+      {
+        "name": "neutrons",
+        "title": "Neutrons",
+        "type": "integer",
+        "constraints": {
+          "required": true,
+          "minimum": 0
+        }
+      },
+      {
+        "name": "electron_shell_1",
+        "title": "Shell 1 ≤2",
+        "type": "integer",
+        "constraints": {
+          "minimum": 0,
+          "maximum": 2
+        },
+        "description": "Neutral-atom electron population; null preserves a source em dash."
+      },
+      {
+        "name": "electron_shell_2",
+        "title": "Shell 2 ≤8",
+        "type": "integer",
+        "constraints": {
+          "minimum": 0,
+          "maximum": 8
+        },
+        "description": "Neutral-atom electron population; null preserves a source em dash."
+      },
+      {
+        "name": "electron_shell_3",
+        "title": "Shell 3 ≤18",
+        "type": "integer",
+        "constraints": {
+          "minimum": 0,
+          "maximum": 18
+        },
+        "description": "Neutral-atom electron population; null preserves a source em dash."
+      },
+      {
+        "name": "electron_shell_4",
+        "title": "Shell 4 ≤32",
+        "type": "integer",
+        "constraints": {
+          "minimum": 0,
+          "maximum": 32
+        },
+        "description": "Neutral-atom electron population; null preserves a source em dash."
+      },
+      {
+        "name": "electron_shell_5",
+        "title": "Shell 5 ≤50",
+        "type": "integer",
+        "constraints": {
+          "minimum": 0,
+          "maximum": 50
+        },
+        "description": "Neutral-atom electron population; null preserves a source em dash."
+      },
+      {
+        "name": "electron_shell_6",
+        "title": "Shell 6 ≤72",
+        "type": "integer",
+        "constraints": {
+          "minimum": 0,
+          "maximum": 72
+        },
+        "description": "Neutral-atom electron population; null preserves a source em dash."
+      },
+      {
+        "name": "natural_abundance_percent",
+        "title": "Natural abundance (%)",
+        "type": "number",
+        "unit": "%",
+        "constraints": {
+          "minimum": 0,
+          "maximum": 100
+        },
+        "sourceRef": "https://physics.nist.gov/PhysRefData/Compositions/index.html",
+        "description": "Representative composition; source uncertainties omitted. Null means unavailable."
+      },
+      {
+        "name": "nuclear_stability",
+        "title": "Nuclear stability",
+        "type": "string",
+        "constraints": {
+          "required": true
+        },
+        "sourceRef": "https://www-nds.iaea.org/relnsd/vcharthtml/VChartHTML.html",
+        "description": "Exact display wording, including the Pb-204 half-life lower-limit qualifier."
+      }
+    ],
+    "primaryKey": "isotope",
+    "missingValues": [
+      ""
+    ]
+  },
+  "data": [
+    ["Hydrogen-1",1,0,1,null,null,null,null,null,99.9885,"Stable"],
+    ["Hydrogen-2",1,1,1,null,null,null,null,null,0.0115,"Stable"],
+    ["Helium-3",2,1,2,null,null,null,null,null,0.000134,"Stable"],
+    ["Helium-4",2,2,2,null,null,null,null,null,99.999866,"Stable"],
+    ["Lithium-6",3,3,2,1,null,null,null,null,7.59,"Stable"],
+    ["Lithium-7",3,4,2,1,null,null,null,null,92.41,"Stable"],
+    ["Beryllium-9",4,5,2,2,null,null,null,null,100,"Stable"],
+    ["Boron-10",5,5,2,3,null,null,null,null,19.9,"Stable"],
+    ["Boron-11",5,6,2,3,null,null,null,null,80.1,"Stable"],
+    ["Carbon-12",6,6,2,4,null,null,null,null,98.93,"Stable"],
+    ["Carbon-13",6,7,2,4,null,null,null,null,1.07,"Stable"],
+    ["Nitrogen-14",7,7,2,5,null,null,null,null,99.636,"Stable"],
+    ["Nitrogen-15",7,8,2,5,null,null,null,null,0.364,"Stable"],
+    ["Oxygen-16",8,8,2,6,null,null,null,null,99.757,"Stable"],
+    ["Oxygen-17",8,9,2,6,null,null,null,null,0.038,"Stable"],
+    ["Oxygen-18",8,10,2,6,null,null,null,null,0.205,"Stable"],
+    ["Fluorine-19",9,10,2,7,null,null,null,null,100,"Stable"],
+    ["Neon-20",10,10,2,8,null,null,null,null,90.48,"Stable"],
+    ["Sodium-23",11,12,2,8,1,null,null,null,100,"Stable"],
+    ["Magnesium-24",12,12,2,8,2,null,null,null,78.99,"Stable"],
+    ["Aluminium-27",13,14,2,8,3,null,null,null,100,"Stable"],
+    ["Silicon-28",14,14,2,8,4,null,null,null,92.223,"Stable"],
+    ["Phosphorus-31",15,16,2,8,5,null,null,null,100,"Stable"],
+    ["Sulfur-32",16,16,2,8,6,null,null,null,94.99,"Stable"],
+    ["Chlorine-35",17,18,2,8,7,null,null,null,75.76,"Stable"],
+    ["Argon-40",18,22,2,8,8,null,null,null,99.6035,"Stable"],
+    ["Potassium-39",19,20,2,8,8,1,null,null,93.2581,"Stable"],
+    ["Calcium-40",20,20,2,8,8,2,null,null,96.941,"Stable"],
+    ["Calcium-46",20,26,2,8,8,2,null,null,0.004,"Stable"],
+    ["Scandium-45",21,24,2,8,9,2,null,null,100,"Stable"],
+    ["Titanium-48",22,26,2,8,10,2,null,null,73.72,"Stable"],
+    ["Vanadium-51",23,28,2,8,11,2,null,null,99.75,"Stable"],
+    ["Chromium-52",24,28,2,8,13,1,null,null,83.789,"Stable"],
+    ["Manganese-55",25,30,2,8,13,2,null,null,100,"Stable"],
+    ["Iron-54",26,28,2,8,14,2,null,null,5.845,"Stable"],
+    ["Iron-56",26,30,2,8,14,2,null,null,91.754,"Stable"],
+    ["Iron-58",26,32,2,8,14,2,null,null,0.282,"Stable"],
+    ["Cobalt-59",27,32,2,8,15,2,null,null,100,"Stable"],
+    ["Nickel-62",28,34,2,8,16,2,null,null,3.6346,"Stable"],
+    ["Copper-63",29,34,2,8,18,1,null,null,69.15,"Stable"],
+    ["Zinc-64",30,34,2,8,18,2,null,null,49.17,"Stable"],
+    ["Gallium-69",31,38,2,8,18,3,null,null,60.108,"Stable"],
+    ["Germanium-74",32,42,2,8,18,4,null,null,36.5,"Stable"],
+    ["Arsenic-75",33,42,2,8,18,5,null,null,100,"Stable"],
+    ["Selenium-80",34,46,2,8,18,6,null,null,49.61,"Stable"],
+    ["Bromine-79",35,44,2,8,18,7,null,null,50.69,"Stable"],
+    ["Krypton-84",36,48,2,8,18,8,null,null,56.987,"Stable"],
+    ["Rubidium-85",37,48,2,8,18,8,1,null,72.17,"Stable"],
+    ["Strontium-88",38,50,2,8,18,8,2,null,82.58,"Stable"],
+    ["Yttrium-89",39,50,2,8,18,9,2,null,100,"Stable"],
+    ["Zirconium-90",40,50,2,8,18,10,2,null,51.45,"Stable"],
+    ["Niobium-93",41,52,2,8,18,12,1,null,100,"Stable"],
+    ["Molybdenum-98",42,56,2,8,18,13,1,null,24.39,"Stable"],
+    ["Ruthenium-102",44,58,2,8,18,15,1,null,31.55,"Stable"],
+    ["Rhodium-103",45,58,2,8,18,16,1,null,100,"Stable"],
+    ["Palladium-106",46,60,2,8,18,18,null,null,27.33,"Stable"],
+    ["Silver-107",47,60,2,8,18,18,1,null,51.839,"Stable"],
+    ["Cadmium-114",48,66,2,8,18,18,2,null,28.73,"Stable"],
+    ["Indium-113",49,64,2,8,18,18,3,null,4.29,"Stable"],
+    ["Tin-112",50,62,2,8,18,18,4,null,0.97,"Stable"],
+    ["Tin-120",50,70,2,8,18,18,4,null,32.58,"Stable"],
+    ["Tin-124",50,74,2,8,18,18,4,null,5.79,"Stable"],
+    ["Antimony-121",51,70,2,8,18,18,5,null,57.21,"Stable"],
+    ["Tellurium-126",52,74,2,8,18,18,6,null,18.84,"Stable"],
+    ["Iodine-127",53,74,2,8,18,18,7,null,100,"Stable"],
+    ["Xenon-132",54,78,2,8,18,18,8,null,26.9086,"Stable"],
+    ["Caesium-133",55,78,2,8,18,18,8,1,100,"Stable"],
+    ["Barium-138",56,82,2,8,18,18,8,2,71.698,"Stable"],
+    ["Lanthanum-139",57,82,2,8,18,18,9,2,99.91119,"Stable"],
+    ["Cerium-140",58,82,2,8,18,19,9,2,88.45,"Stable"],
+    ["Praseodymium-141",59,82,2,8,18,21,8,2,100,"Stable"],
+    ["Neodymium-142",60,82,2,8,18,22,8,2,27.152,"Stable"],
+    ["Samarium-152",62,90,2,8,18,24,8,2,26.75,"Stable"],
+    ["Europium-153",63,90,2,8,18,25,8,2,52.19,"Stable"],
+    ["Gadolinium-158",64,94,2,8,18,25,9,2,24.84,"Stable"],
+    ["Terbium-159",65,94,2,8,18,27,8,2,100,"Stable"],
+    ["Dysprosium-164",66,98,2,8,18,28,8,2,28.26,"Stable"],
+    ["Holmium-165",67,98,2,8,18,29,8,2,100,"Stable"],
+    ["Erbium-166",68,98,2,8,18,30,8,2,33.503,"Stable"],
+    ["Thulium-169",69,100,2,8,18,31,8,2,100,"Stable"],
+    ["Ytterbium-174",70,104,2,8,18,32,8,2,32.026,"Stable"],
+    ["Lutetium-175",71,104,2,8,18,32,9,2,97.401,"Stable"],
+    ["Hafnium-180",72,108,2,8,18,32,10,2,35.08,"Stable"],
+    ["Tantalum-181",73,108,2,8,18,32,11,2,99.98799,"Stable"],
+    ["Tungsten-184",74,110,2,8,18,32,12,2,30.64,"Stable"],
+    ["Rhenium-185",75,110,2,8,18,32,13,2,37.4,"Stable"],
+    ["Osmium-192",76,116,2,8,18,32,14,2,40.78,"Stable"],
+    ["Iridium-193",77,116,2,8,18,32,15,2,62.7,"Stable"],
+    ["Platinum-195",78,117,2,8,18,32,17,1,33.78,"Stable"],
+    ["Gold-197",79,118,2,8,18,32,18,1,100,"Stable"],
+    ["Mercury-204",80,124,2,8,18,32,18,2,6.87,"Stable"],
+    ["Thallium-205",81,124,2,8,18,32,18,3,70.48,"Stable"],
+    ["Lead-204",82,122,2,8,18,32,18,4,1.4,"No decay observed; t½ ≥ 1.4 × 10¹⁷ y"],
+    ["Lead-206",82,124,2,8,18,32,18,4,24.1,"Stable"],
+    ["Lead-207",82,125,2,8,18,32,18,4,22.1,"Stable"],
+    ["Lead-208",82,126,2,8,18,32,18,4,52.4,"Stable"]
+  ]
+}
