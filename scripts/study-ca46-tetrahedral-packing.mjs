@@ -1,0 +1,10 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import vm from 'node:vm';
+import {buildLayeredCalcium} from '../examples/isotope-wiring/core/layered-neutron-transport.mjs';
+import {buildStackedFullInterface} from '../examples/isotope-wiring/core/stacked-full-interface.mjs';
+import {solveTetrahedralDepths} from '../examples/isotope-wiring/core/tetrahedral-depth-constraints.mjs';
+import {auditTetrahedralPacking} from '../examples/isotope-wiring/core/tetrahedral-packing-audit.mjs';
+const c=vm.createContext({});vm.runInContext(readFileSync(new URL('../examples/isotope-wiring/index.html',import.meta.url),'utf8').match(/<script>([\s\S]*?)<\/script>/)[1],c);
+const d=JSON.parse(JSON.stringify(c.IsotopeWiring.fixtures().Ca46)),model=buildLayeredCalcium(d,c.IsotopeWiring.renderSVG(d,{interactive:true})),depths=solveTetrahedralDepths(buildStackedFullInterface(model),{allowContactTranslation:true}),result=auditTetrahedralPacking(depths);
+if(process.argv[2])writeFileSync(process.argv[2],JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({status:result.status,embeddings:result.embeddings,perEmbeddingCounts:[...new Set(result.results.map(r=>JSON.stringify(r.counts)))].map(s=>JSON.parse(s)),scope:result.scope,limits:result.limits},null,2));

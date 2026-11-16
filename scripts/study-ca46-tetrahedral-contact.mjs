@@ -1,0 +1,13 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import vm from 'node:vm';
+import {buildLayeredCalcium} from '../examples/isotope-wiring/core/layered-neutron-transport.mjs';
+import {buildStackedFullInterface} from '../examples/isotope-wiring/core/stacked-full-interface.mjs';
+import {studyTetrahedralContact} from '../examples/isotope-wiring/core/tetrahedral-contact-trial.mjs';
+const c=vm.createContext({});vm.runInContext(readFileSync(new URL('../examples/isotope-wiring/index.html',import.meta.url),'utf8').match(/<script>([\s\S]*?)<\/script>/)[1],c);
+const d=JSON.parse(JSON.stringify(c.IsotopeWiring.fixtures().Ca46)),model=buildLayeredCalcium(d,c.IsotopeWiring.renderSVG(d,{interactive:true})),full=buildStackedFullInterface(model),trials=[];
+for(const sourceDepth of [1,-1])for(const targetDepth of [1,-1])for(const targetLeg of ['outgoing','incoming'])trials.push(studyTetrahedralContact(full,{sourceDepth,targetDepth,targetLeg}));
+const key=r=>JSON.stringify(r.alignment.rotation.map(row=>row.map(x=>Math.round(x*1e9)/1e9)));
+const defaultRotation=trials[0].alignment.rotation,defaultAngleDegrees=Math.acos(Math.max(-1,Math.min(1,(defaultRotation.reduce((sum,row,i)=>sum+row[i],0)-1)/2)))*180/Math.PI;
+const result={status:'unknown',defaultAngleDegrees,trialCount:trials.length,distinctConditionalRotations:new Set(trials.map(key)).size,trials,conclusion:'PE legs can define transverse references after a 3D lift and correspondence are supplied. The same square projections admit different contact matrices in the chosen coordinate convention; these are not claimed to be physically inequivalent states, and none is selected as physical.'};
+if(process.argv[2])writeFileSync(process.argv[2],JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({status:result.status,defaultAngleDegrees:result.defaultAngleDegrees,trialCount:result.trialCount,distinctConditionalRotations:result.distinctConditionalRotations,markers:trials.map(t=>({parameters:t.parameters,sourcePort:t.sourceMarker.port,targetPort:t.targetMarker.port,rotation:t.alignment.rotation})),conclusion:result.conclusion},null,2));
