@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "purpose": "Screen embeddings for this lexical emotion-search task before making another model recommendation.",
+  "status": "Assistant-authored screening cases, frozen before these model comparisons; not independently human-validated benchmark labels.",
+  "known_regression": "The earlier fastText subword run placed heartened near disheartened. These checks are not a blind evaluation of that observation.",
+  "decision_rule": "For each case, cosine(query, positive) must exceed cosine(query, negative) by more than 0.000001. Report every margin. Each group passes only if all its cases pass. Passing is necessary screening evidence, not proof of suitability or of an emotional composition law.",
+  "limitations": [
+    "Positive and negative labels are explicit semantic judgments, not ground truth supplied by the operator.",
+    "Lexical checks use bare words; context checks test specified senses rather than declaring an ambiguous word to have only one valid meaning.",
+    "Join checks test whether descriptions retaining both emotions outrank descriptions dropping or reversing one; this does not implement a native witnessed join.",
+    "The fastText pretrained variants share the documented corpus family and dimension, but are not a randomized experiment isolating subword training alone."
+  ],
+  "cases": [
+    {"id":"lexical-01","group":"lexical_polarity","query":"disheartened","positive":"discouraged","negative":"heartened"},
+    {"id":"lexical-02","group":"lexical_polarity","query":"dejected","positive":"downcast","negative":"delighted"},
+    {"id":"lexical-03","group":"lexical_polarity","query":"despondent","positive":"hopeless","negative":"hopeful"},
+    {"id":"lexical-04","group":"lexical_polarity","query":"demoralized","positive":"dispirited","negative":"encouraged"},
+    {"id":"lexical-05","group":"lexical_polarity","query":"furious","positive":"enraged","negative":"calm"},
+    {"id":"lexical-06","group":"lexical_polarity","query":"angry","positive":"irate","negative":"pleased"},
+    {"id":"lexical-07","group":"lexical_polarity","query":"resentful","positive":"aggrieved","negative":"grateful"},
+    {"id":"lexical-08","group":"lexical_polarity","query":"disappointed","positive":"dissatisfied","negative":"satisfied"},
+    {"id":"sense-01","group":"contextual_sense","query":"I am pissed at you for wasting my work.","positive":"I am angry at you for wasting my work.","negative":"I am drunk while looking at my work."},
+    {"id":"sense-02","group":"contextual_sense","query":"After all those drinks, he was completely pissed.","positive":"After all those drinks, he was completely drunk.","negative":"After all those drinks, he was completely angry."},
+    {"id":"sense-03","group":"contextual_sense","query":"That failure left me disheartened about continuing the project.","positive":"That failure left me discouraged about continuing the project.","negative":"That failure left me encouraged about continuing the project."},
+    {"id":"sense-04","group":"contextual_sense","query":"I am pissed off, not intoxicated.","positive":"I am angry and sober.","negative":"I am drunk and calm."},
+    {"id":"joint-01","group":"joint_retention","query":"I am angry and disheartened about how the work was handled.","positive":"The handling of the work left me both furious and discouraged.","negative":"The handling of the work left me furious but hopeful."},
+    {"id":"joint-02","group":"joint_retention","query":"I am angry and disheartened about how the work was handled.","positive":"The handling of the work left me both furious and discouraged.","negative":"The handling of the work left me calm but discouraged."},
+    {"id":"joint-03","group":"joint_retention","query":"I am angry and disheartened about how the work was handled.","positive":"The handling of the work left me both furious and discouraged.","negative":"The handling of the work left me mildly irritated but otherwise hopeful."},
+    {"id":"joint-04","group":"joint_retention","query":"I am angry and disheartened about how the work was handled.","positive":"The handling of the work left me both furious and discouraged.","negative":"The handling of the work made me neither angry nor disheartened."},
+    {"id":"joint-05","group":"joint_retention","query":"I am pissed and losing heart over this failure.","positive":"I feel angry about the failure and discouraged about going on.","negative":"I feel angry about the failure but encouraged about going on."},
+    {"id":"joint-06","group":"joint_retention","query":"I am pissed and losing heart over this failure.","positive":"I feel angry about the failure and discouraged about going on.","negative":"I feel calm about the failure but discouraged about going on."},
+    {"id":"joint-07","group":"joint_retention","query":"I am furious about what happened, and my confidence in continuing is gone.","positive":"I am angry about what happened and have lost heart about continuing.","negative":"I am angry about what happened and have renewed confidence about continuing."},
+    {"id":"joint-08","group":"joint_retention","query":"I am furious about what happened, and my confidence in continuing is gone.","positive":"I am angry about what happened and have lost heart about continuing.","negative":"I am pleased about what happened but have lost heart about continuing."}
+  ]
+}
