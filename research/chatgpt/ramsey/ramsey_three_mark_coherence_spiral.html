@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Three-Mark Coherence Spiral — Ramsey Research</title>
+<style>
+:root{color-scheme:dark;--bg:#090e16;--panel:#141c2a;--border:#2a3851;--text:#eaf0fc;--muted:#a5b4d0;--accent:#70d5f5}
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+header{padding:17px 21px 11px;border-bottom:1px solid var(--border);background:#101724}h1{font-size:21px;letter-spacing:.1px;margin:0 0 3px;font-weight:650}.sub{color:var(--muted);font-size:12px;margin:0}
+.app{display:grid;grid-template-columns:minmax(0,1fr) 330px;height:calc(100vh - 86px);min-height:560px}
+.stage{position:relative;overflow:hidden;background:radial-gradient(circle at 50% 50%,#111c2b,#080d15 72%);touch-action:none;cursor:crosshair}
+canvas{display:block;width:100%;height:100%}
+.stage-tools{position:absolute;left:14px;top:14px;display:flex;gap:6px;z-index:2}.stage-tools button{width:34px;height:34px;padding:0;text-align:center}
+.stage-note{position:absolute;bottom:12px;left:14px;right:14px;pointer-events:none;display:flex;gap:8px;justify-content:space-between;color:#c6d4ed;font-size:11px;text-shadow:0 1px 2px #02060c}
+.pane{overflow:auto;background:var(--panel);border-left:1px solid var(--border);padding:17px 16px 28px}h2{margin:0 0 10px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#9fb3d6;font-weight:700}section{border-bottom:1px solid var(--border);padding-bottom:15px;margin-bottom:17px}
+button,select,input{background:#202c40;border:1px solid #40516d;color:var(--text);border-radius:7px;padding:7px 8px;font:inherit}button{cursor:pointer}button:hover{background:#2c3d55}input[type=number]{width:100%;min-width:0}input[type=checkbox]{accent-color:#69c9ee}input[type=range]{width:100%}
+label{display:block;color:#bfcee7;margin-bottom:7px;font-size:12px}.label-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.row{display:flex;gap:6px;align-items:center}.row>*{min-width:0}.row input{flex:1}.row button{white-space:nowrap}
+.radio-row{display:flex;gap:6px}.radio-row button{flex:1;font-size:12px;padding:8px 6px}.selected{background:#274a5c!important;border-color:#71cce6!important;color:#e3fbff}
+.check{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:#c3d1e9;margin:7px 0}.check input{margin:0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:11px 10px}.stat{background:#1b2637;border:1px solid #2b3e57;border-radius:8px;padding:9px}.stat .v{font-size:16px;font-variant-numeric:tabular-nums;font-weight:650;color:#ebf6ff;overflow-wrap:anywhere}.stat .l{font-size:11px;color:#98aecf;margin-top:3px}
+.legend{display:flex;flex-wrap:wrap;gap:7px}.chip{display:inline-flex;gap:7px;align-items:center;padding:4px 8px;border:1px solid #384b64;border-radius:100px;font-size:11px}.dot{display:inline-block;width:10px;height:10px;border-radius:3px}
+.note{color:#a9bad6;font-size:12px;line-height:1.5}.note b{color:#d9e8ff}
+.inspect{min-height:115px;background:#1b2637;border:1px solid #2b3e57;border-radius:9px;padding:11px;word-break:break-word}.inspect .math{color:#86d7ec;font-family:ui-monospace,Consolas,monospace;font-size:13px;margin:7px 0}.inspect .small{font-size:11px;color:#adbfdd}
+.bench{width:100%;border-collapse:collapse;text-align:left;font-size:12px}.bench th,.bench td{border-bottom:1px solid #27364c;padding:5px 4px}.bench th{font-size:11px;color:#91a8c7;font-weight:600}
+#hoverTip{position:absolute;display:none;pointer-events:none;background:#071019f2;border:1px solid #52738d;border-radius:8px;padding:8px 10px;max-width:280px;z-index:3;font-size:11px;box-shadow:0 12px 30px #0009}
+.cellviz{display:block;width:100%;height:237px;background:#0b1320;border:1px solid #30435c;border-radius:8px;margin-top:9px}
+.rank-buttons{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.rank-buttons button{flex:1;font-size:11px;padding:7px 4px}
+.comparisons{font-size:12px;color:#cad8ec;line-height:1.5;margin:9px 0 0}
+.micro{font-size:11px;color:#91a7c7;margin-top:7px;line-height:1.4}
+@media(max-width:860px){.app{grid-template-columns:1fr;grid-template-rows:minmax(430px,60vh) auto;height:auto}.pane{border-left:0;border-top:1px solid var(--border)}.stage{min-height:430px}}
+</style>
+</head>
+<body>
+<header>
+<h1>Three-mark coherence spiral</h1>
+<p class="sub">Exact nonadjacent three-mark configurations form concentric gap shells. The new overlays expose insertion strands, multi-parent junctions, actual interval reflection, and complete commuting coherence cells.</p>
+</header>
+<div class="app">
+  <div class="stage" id="stage">
+    <canvas id="surface"></canvas>
+    <div class="stage-tools"><button id="zoomIn" title="Zoom in">+</button><button id="zoomOut" title="Zoom out">−</button><button id="fit" title="Fit full spiral">Fit</button></div>
+    <div id="hoverTip"></div>
+    <div class="stage-note"><span>Drag to pan · wheel to zoom · hover to inspect · click to pin</span><span id="resolution">Exact tiles</span></div>
+  </div>
+  <aside class="pane">
+    <section>
+      <h2>Configuration family</h2>
+      <div class="radio-row" id="modes">
+        <button type="button" data-mode="anchored" class="selected">First mark fixed</button>
+        <button type="button" data-mode="all">All triples</button>
+      </div>
+      <p class="note" id="familyNote" style="margin:9px 0 0"></p>
+    </section>
+    <section>
+      <h2>Automatic generation</h2>
+      <label for="maxK">Last segment length <i>k</i> (minimum 5)</label>
+      <div class="row"><input id="maxK" type="number" min="5" max="1000000" step="1" value="32"><button id="doubleDepth">×2</button><button id="tripleDepth">×3</button></div>
+      <p class="note" style="margin:7px 0 0">No precomputed configurations. This build accepts up to k=1,000,000; tiles smaller than a pixel are displayed in aggregates while exact counts remain available.</p>
+    </section>
+    <section>
+      <h2>Visual encoding</h2>
+      <label for="colorBy">Tile color represents</label>
+      <select id="colorBy" style="width:100%"><option value="shell">Gap-shell depth (min gap)</option><option value="sector">Boundary gap / sector</option><option value="parents">Coherence rank: active gap directions</option><option value="reflection">Actual reflection: fixed / paired / outside family</option></select>
+      <label class="check"><input id="showCellBorders" type="checkbox" checked> Subdivision boundaries</label>
+      <label class="check"><input id="showBirths" type="checkbox" checked> Emphasize first appearance of shells</label>
+      <label class="check"><input id="showStrands" type="checkbox" checked> Sample generated insertion strands</label>
+      <label class="check"><input id="showConvergence" type="checkbox" checked> Mark exact multi-parent junctions</label>
+      <label class="check"><input id="showMirror" type="checkbox" checked> Mark reflection-fixed configurations</label>
+      <label class="check"><input id="showCells" type="checkbox" checked> Fill selected commuting squares</label>
+      <label class="check"><input id="showLinks" type="checkbox" checked> Trace parents/children of selected tile</label>
+      <label class="check"><input id="showOrbit" type="checkbox" checked> Highlight actual interval-reflection pair</label>
+      <div class="legend" id="legend" style="margin-top:11px"></div>
+    </section>
+    <section><h2>Combinatorial census</h2><div class="stats" id="stats"></div></section>
+    <section>
+      <h2>Local coherence cell</h2>
+      <div class="note">Select a tile. Its positive gap coordinates supply independent insertion directions. The inset draws their complete commuting cube; shaded squares are canonical 2-cells.</div>
+      <canvas class="cellviz" id="cellViz" aria-label="Projected local commuting coherence cell"></canvas>
+      <div class="comparisons" id="cellStats"></div>
+      <div class="rank-buttons"><button type="button" data-rank="2">First square</button><button type="button" data-rank="3">First cube</button><button type="button" data-rank="4">First 4-cube</button></div>
+      <div class="micro">Every square commutes exactly in this unrestricted insertion model. No unfilled obstruction is inferred. The inset is a projection of an abstract cube, not a spatial embedding of the interval. With three marks, the maximum independent insertion dimension is 3 (anchored) or 4 (unanchored), even as new radial shells continue appearing.</div>
+    </section>
+    <section>
+      <h2>Inspected tile</h2>
+      <div class="inspect" id="inspect">Select a tile to inspect its configuration, inherited parents, and interval reflection.</div>
+    </section>
+    <section><h2>Ramsey reference values (not inferred)</h2>
+      <table class="bench"><thead><tr><th>k</th><th>R(3,k)</th><th>Anchored triples</th><th>All triples</th></tr></thead><tbody id="bench"></tbody></table>
+    </section>
+    <p class="note"><b>Mathematical scope:</b> “Valid” means three nonadjacent marked positions in a length-<i>k</i> binary segment. An anchored first mark gives 3 gap coordinates; an unanchored triple gives 4. Independent empty-slot insertions commute, so their squares and higher cubes are already filled. The only geometric interval symmetry used here is reflection; no Ramsey edge-coloring constraint has been imposed. Color bands and angular placement do not, by themselves, establish new rotational symmetries.</p>
+  </aside>
+</div>
+<script>
+(() => {
+'use strict';
+const TAU=2*Math.PI;
+const $=id=>document.getElementById(id);
+const stage=$('stage'),canvas=$('surface'),g=canvas.getContext('2d',{alpha:false});
+const state={mode:'anchored',maxK:32,color:'shell',showCellBorders:true,showBirths:true,showStrands:true,showConvergence:true,showMirror:true,showCells:true,showLinks:true,showOrbit:true,scale:1,panX:0,panY:0,W:1000,H:700,hover:null,pin:null,drag:null,needsFit:true,renderStats:null};
+const R0=30,PITCH=38;
+const benchmark={3:'6',4:'9',5:'14',6:'18',7:'23',8:'28',9:'36',10:'40–41'};
+const numberfmt=n=>Number(n).toLocaleString('en-US');
+const bigfmt=n=>n.toLocaleString('en-US');
+function choose(n,r){if(n<r||n<0) return 0n;let x=BigInt(n),v=1n;for(let i=1n;i<=BigInt(r);i++)v=v*(x-i+1n)/i;return v}
+function countRing(s,m){return choose(s+m-1,m-1)}
+function countShell(t,m){if(t===0)return 1;if(m===3)return 3*t;return 2*t*t+2}
+function countShellBig(t,m){if(t===0)return 1n;let T=BigInt(t);return m===3?3n*T:2n*T*T+2n}
+function countThrough(s,m){return choose(s+m,m)}
+function topCells(s,m,p){return choose(m,p)*choose(s+m-p-1,m-1)}
+function reflectionFixedCount(s,m){if(s%2)return 0n;return m===3?1n:BigInt(s/2+1)}
+const minimum=a=>Math.min(...a);
+const sum=a=>a.reduce((x,y)=>x+y,0);
+function tupleFromShell(s,m,d,j){
+ const t=s-m*d;
+ if(t===0) return Array(m).fill(d);
+ if(m===3){
+   const side=Math.floor(j/t),h=j%t;
+   const a=side===0?[0,h,t-h]:side===1?[h,t-h,0]:[t-h,0,h];
+   return a.map(x=>x+d);
+ }
+ let remaining=j, i=0;
+ for(;i<4;i++){
+   const M=t-i;
+   const cnt=M<0?0:(M+2)*(M+1)/2;
+   if(remaining<cnt) break;
+   remaining-=cnt;
+ }
+ if(i===4) throw Error('Invalid shell index');
+ const M=t-i;
+ let lo=0,hi=M;
+ while(lo<hi){const mid=Math.floor((lo+hi+1)/2);const prefix=mid*(M+1)-mid*(mid-1)/2;if(prefix<=remaining)lo=mid;else hi=mid-1;}
+ const y0=lo, prefix=lo*(M+1)-lo*(lo-1)/2;
+ const y1=remaining-prefix,y2=M-y0-y1;
+ const y=[y0,y1,y2];let pos=0;
+ return Array.from({length:4},(_,q)=>q===i?d:(d+(q<i?1:0)+y[pos++]));
+}
+function indexInShell(a){
+ const m=a.length, d=minimum(a), r=a.map(x=>x-d),t=sum(r);
+ if(t===0) return {d,t,j:0,N:1};
+ if(m===3){
+   const j = (r[0]===0&&r[1]<t)?r[1]:
+             (r[2]===0&&r[0]<t)?t+r[0]:
+             (r[1]===0&&r[2]<t)?2*t+r[2]:-1;
+   if(j<0)throw Error('Invalid anchored shell coordinate');
+   return {d,t,j,N:countShell(t,3)};
+ }
+ const i=r.findIndex(x=>x===0);let offset=0;
+ for(let h=0;h<i;h++){let M=t-h;if(M>=0)offset+=(M+2)*(M+1)/2;}
+ const x=[];for(let h=0;h<4;h++)if(h!==i)x.push(r[h]-(h<i?1:0));
+ const M=t-i, y0=x[0],y1=x[1];
+ const rank=y0*(M+1)-y0*(y0-1)/2+y1;
+ return {d,t,j:offset+rank,N:countShell(t,4)};
+}
+function cls(a){const d=minimum(a),r=a.map(x=>x-d),t=sum(r);if(t===0)return -1;if(a.length===3){let o=indexInShell(a);return Math.floor(o.j/t);}return r.findIndex(x=>x===0)}
+function parentCount(a){return a.filter(x=>x>0).length}
+function positions(a){
+ if(a.length===3){const[u,v,w]=a;return [1,u+3,u+v+5]}
+ const[A,B,C,D]=a;return [A+1,A+B+3,A+B+C+5]
+}
+function configWord(a){const k=sum(a)+5;if(k>80)return '(segment too long to print; positions below)';
+ if(a.length===3){const[u,v,w]=a;return 'R'+'0'.repeat(u+1)+'R'+'0'.repeat(v+1)+'R'+'0'.repeat(w)}
+ const[A,B,C,D]=a;return '0'.repeat(A)+'R'+'0'.repeat(B+1)+'R'+'0'.repeat(C+1)+'R'+'0'.repeat(D)
+}
+function hue(d){return (198+d*79.7)%360}
+function reflect(a){
+ if(a.length===4)return a.slice().reverse();
+ if(a[2]===0)return [a[1],a[0],0];
+ return null; // Anchoring the first mark is not closed under reflection unless the last mark is at k.
+}
+function reflectionFixed(a){const b=reflect(a);return !!b&&a.every((x,i)=>x===b[i])}
+function tileColor(a,d,approx=false){
+ if(approx&&state.color!=='shell')return 'hsl(220 16% 38%)';
+ if(state.color==='reflection'){
+   if(reflectionFixed(a))return '#f8d97c';
+   if(reflect(a))return '#477fa8';
+   return '#39455f';
+ }
+ if(state.color==='shell'){
+   const sector=cls(a),light=sector===-1?61:47+(sector%4)*3;
+   return `hsl(${hue(d).toFixed(1)} 64% ${light}%)`;
+ }
+ if(state.color==='sector'){
+   const s=cls(a);if(s===-1)return 'hsl(46 74% 62%)';
+   return ['#45bdd6','#a87de9','#f09b62','#5bc98c'][s]||'#a2b3cd';
+ }
+ const p=parentCount(a);return ['#faf0af','#5cbde3','#eea15b','#aa82ed','#5ed3a0'][p]||'#90acc0';
+}
+function roundToSafeNumber(x){const n=Number(x);return Number.isFinite(n)?n:1e300}
+function polar(r,theta){return [Math.cos(theta)*r,Math.sin(theta)*r]}
+function spiralR(n,theta,f){return R0+PITCH*(n+theta/TAU+f)}
+function traceTile(n,a0,a1,f0,f1){
+ const pieces=Math.max(2,Math.min(12,Math.ceil((a1-a0)*10)));
+ let [x,y]=polar(spiralR(n,a0,f0),a0);g.moveTo(x,y);
+ [x,y]=polar(spiralR(n,a0,f1),a0);g.lineTo(x,y);
+ for(let i=1;i<=pieces;i++){const a=a0+(a1-a0)*i/pieces;[x,y]=polar(spiralR(n,a,f1),a);g.lineTo(x,y)}
+ for(let i=pieces;i>=0;i--){const a=a0+(a1-a0)*i/pieces;[x,y]=polar(spiralR(n,a,f0),a);g.lineTo(x,y)}
+ g.closePath();
+}
+function centerOf(n,d,j,N,m){const D=Math.floor(n/m)+1,theta=(j+.5)/N*TAU;
+ const radius=spiralR(n,theta,(d+.5)/D);return polar(radius,theta)}
+function dims(){return state.mode==='anchored'?3:4}
+function bounds(){const rr=R0+PITCH*(state.maxK-3);return rr}
+function fitView(){const radius=bounds();state.scale=Math.max(.00000001,Math.min(state.W,state.H)*.44/radius);state.panX=state.panY=0;state.needsFit=false}
+function drawEdge(p,q,color,width=2){g.beginPath();g.moveTo(...p);g.lineTo(...q);g.strokeStyle=color;g.lineWidth=width/state.scale;g.stroke()}
+function pointOnTile(a){const n=sum(a),m=a.length,D=Math.floor(n/m)+1,{d,j,N}=indexInShell(a);const theta=(j+.5)/N*TAU;return polar(spiralR(n,theta,(d+.5)/D),theta)}
+function drawNodeHighlight(a,color,outer=false){
+ const n=sum(a),m=a.length,D=Math.floor(n/m)+1,{d,j,N}=indexInShell(a);
+ g.beginPath();traceTile(n,j/N*TAU,(j+1)/N*TAU,d/D,(d+1)/D);
+ g.strokeStyle=color;g.lineWidth=(outer?2.8:2)/state.scale;g.stroke();
+}
+function symOrbit(a){
+ const out=[a.slice()],b=reflect(a);
+ if(b&&b.join(',')!==a.join(','))out.push(b);
+ return out;
+}
+function drawRelations(){const item=state.pin||state.hover;if(!item||!item.a)return;
+ const a=item.a, p=pointOnTile(a);
+ if(state.showCells && state.scale*PITCH>=24){
+   const active=a.map((v,i)=>v>0?i:-1).filter(i=>i>=0);
+   for(let h=0;h<active.length;h++)for(let j=h+1;j<active.length;j++){
+     const i=active[h],l=active[j];
+     const ai=a.slice(),aj=a.slice(),aij=a.slice();ai[i]--;aj[l]--;aij[i]--;aij[l]--;
+     const corners=[a,ai,aij,aj].map(pointOnTile);
+     g.beginPath();g.moveTo(...corners[0]);for(const p of corners.slice(1))g.lineTo(...p);g.closePath();
+     g.fillStyle='rgba(255,206,115,.12)';g.fill();
+     g.lineWidth=1.3/state.scale;g.strokeStyle='rgba(255,223,166,.64)';g.stroke();
+   }
+ }
+ if(state.showOrbit){for(const b of symOrbit(a))drawNodeHighlight(b,'rgba(255,245,173,.98)')}
+ if(state.showLinks){
+  for(let i=0;i<a.length;i++){
+    if(a[i]>0){const par=a.slice();par[i]--;drawEdge(p,pointOnTile(par),'rgba(255,255,255,.95)',1.8)}
+    if(sum(a)+6<=state.maxK){const child=a.slice();child[i]++;drawEdge(p,pointOnTile(child),'rgba(111,240,204,.9)',1.8)}
+  }
+ }
+ drawNodeHighlight(a,'#fff',true);
+ const rr=5/state.scale;g.beginPath();g.arc(...p,rr,0,TAU);g.fillStyle='#fff';g.fill();
+}
+
+function balancedTuple(n,m,shift){
+ const q=Math.floor(n/m),rem=n%m;
+ const a=Array(m).fill(q);
+ for(let j=0;j<rem;j++)a[(shift+j)%m]++;
+ return a;
+}
+function drawGeneratedStrands(nMin,nMax){
+ // Display only when individual spiral turns are resolvable. Otherwise overlapping
+ // long chords would falsely suggest an intrinsic geometric braid.
+ if(!state.showStrands || state.scale*PITCH<16)return;
+ const m=dims(),start=Math.max(0,nMin),last=Math.min(state.maxK-5,nMax);
+ if(last-start>400)return;
+ for(let h=0;h<m;h++){
+   for(let n=start;n<last;n++){
+     const a=balancedTuple(n,m,h),b=balancedTuple(n+1,m,h);
+     const A=indexInShell(a),B=indexInShell(b);
+     const t0=(A.j+.5)/A.N*TAU,t1=(B.j+.5)/B.N*TAU;
+     let diff=((t1-t0+3*Math.PI)%TAU)-Math.PI;
+     const D0=Math.floor(n/m)+1,D1=Math.floor((n+1)/m)+1;
+     const r0=spiralR(n,t0,(A.d+.5)/D0),r1=spiralR(n+1,t1,(B.d+.5)/D1);
+     g.beginPath();
+     for(let j=0;j<=8;j++){
+       const t=j/8,angle=t0+diff*t,r=r0+(r1-r0)*t;
+       const xy=polar(r,angle);if(j===0)g.moveTo(...xy);else g.lineTo(...xy);
+     }
+     g.strokeStyle=['rgba(103,220,239,.65)','rgba(245,150,116,.65)','rgba(176,141,252,.65)','rgba(115,228,175,.65)'][h];
+     g.lineWidth=1.8/state.scale;g.stroke();
+   }
+ }
+}
+function drawJunctions(markers){
+ for(const item of markers){
+   const {p,x,y,mirror}=item;
+   if(state.showConvergence&&p>=2){
+     const r= p===2?3.2:p===3?4.4:5.2;
+     g.beginPath();
+     if(p===2)g.arc(x,y,r/state.scale,0,TAU);
+     else{const M=p===3?3:4;const start=p===3?-Math.PI/2:Math.PI/4;
+       for(let i=0;i<M;i++){const theta=start+i*TAU/M,xx=x+r*Math.cos(theta)/state.scale,yy=y+r*Math.sin(theta)/state.scale;if(i===0)g.moveTo(xx,yy);else g.lineTo(xx,yy)}g.closePath();}
+     g.fillStyle=p===4?'#ffde91':p===3?'#cae6ff':'#f5faff';g.fill();
+     g.lineWidth=.9/state.scale;g.strokeStyle='#1a2b43';g.stroke();
+   }
+   if(state.showMirror&&mirror){
+     const r=7/state.scale;
+     g.beginPath();g.moveTo(x-r,y-r);g.lineTo(x+r,y+r);g.moveTo(x-r,y+r);g.lineTo(x+r,y-r);
+     g.strokeStyle='#fb79ac';g.lineWidth=2/state.scale;g.stroke();
+   }
+ }
+}
+function getVisibleTurns(){
+ const s=state.scale,W=state.W,H=state.H;
+ const x0=(-W/2-state.panX)/s,x1=(W/2-state.panX)/s;
+ const y0=(-H/2-state.panY)/s,y1=(H/2-state.panY)/s;
+ const dx=x0>0?x0:x1<0?-x1:0,dy=y0>0?y0:y1<0?-y1:0;
+ const rmin=Math.hypot(dx,dy),rmax=Math.max(Math.hypot(x0,y0),Math.hypot(x0,y1),Math.hypot(x1,y0),Math.hypot(x1,y1));
+ return [Math.max(0,Math.floor((rmin-R0)/PITCH)-2),Math.min(state.maxK-5,Math.ceil((rmax-R0)/PITCH)+2)];
+}
+function render(){
+ if(!g)return;
+ const dpr=Math.min(2,window.devicePixelRatio||1);
+ canvas.width=Math.floor(state.W*dpr);canvas.height=Math.floor(state.H*dpr);
+ g.setTransform(dpr,0,0,dpr,0,0);g.fillStyle='#09101b';g.fillRect(0,0,state.W,state.H);
+ if(state.needsFit)fitView();
+ g.setTransform(dpr*state.scale,0,0,dpr*state.scale,dpr*(state.W/2+state.panX),dpr*(state.H/2+state.panY));
+ const m=dims();const [nMin,nMax]=getVisibleTurns();
+ const turnStep=Math.max(1,Math.ceil(2.2/(PITCH*state.scale)),Math.ceil((nMax-nMin+1)/330));
+ let rendered=0,compressedTurns=0,compressedCells=0;const junctions=[];
+ // A seed disk fills the innermost region, and a ramped spiral cuts the surrounding field into turns.
+ g.beginPath();g.arc(0,0,R0,0,TAU);g.fillStyle='#d3c8ad';g.fill();
+ if(nMin===0){g.beginPath();g.moveTo(0,0);for(let i=0;i<=120;i++){const th=TAU*i/120;g.lineTo(...polar(R0+PITCH*i/120,th))}g.closePath();g.fillStyle='#c4b89e';g.fill();}
+ for(let n=nMin;n<=nMax;n+=turnStep){
+  const block=Math.min(turnStep,nMax-n+1);
+  if(block>1){
+    compressedTurns+=block;
+    const samples=24;
+    for(let i=0;i<samples;i++){
+      const a0=i/samples*TAU,a1=(i+1)/samples*TAU;
+      g.beginPath();traceTile(n,a0,a1,0,block);
+      g.fillStyle=i%2===0?'#2b4056':'#30485d';g.fill();
+      if(state.showCellBorders){g.lineWidth=.6/state.scale;g.strokeStyle='#72839c42';g.stroke()}
+      rendered++;
+    }
+    continue;
+  }
+  const D=Math.floor(n/m)+1;
+  const radialPx=PITCH*state.scale/D;
+  const shellStep=Math.max(1,Math.ceil(1.7/radialPx),Math.ceil(D/24));
+  for(let d=0;d<D;d+=shellStep){
+    const db=Math.min(shellStep,D-d),t=n-m*d;
+    const f0=d/D,f1=(d+db)/D;
+    if(db>1){
+      compressedCells++;
+      for(let j=0;j<12;j++){
+        const a0=j/12*TAU,a1=(j+1)/12*TAU;
+        g.beginPath();traceTile(n,a0,a1,f0,f1);
+        g.fillStyle=`hsl(${hue(d).toFixed(1)} 25% 35%)`;g.fill();
+        if(state.showCellBorders){g.lineWidth=.65/state.scale;g.strokeStyle='#b4c4dd35';g.stroke()}
+        rendered++;
+      }
+      continue;
+    }
+    const N=countShell(t,m);
+    const rm=R0+PITCH*(n+.5);
+    const maxAngular=Math.max(12,Math.min(240,Math.floor(TAU*rm*state.scale/3.2)));
+    const group=Math.max(1,Math.ceil(N/maxAngular));
+    if(group>1)compressedCells++;
+    for(let j=0;j<N;j+=group){
+      const last=Math.min(N,j+group),a0=j/N*TAU,a1=last/N*TAU;
+      const sample=tupleFromShell(n,m,d,Math.floor((j+last-1)/2));
+      g.beginPath();traceTile(n,a0,a1,f0,f1);
+      g.fillStyle=tileColor(sample,d,group>1);g.fill();
+      if(state.showCellBorders){g.lineWidth=(group>1?.5:.7)/state.scale;g.strokeStyle=group>1?'#d2e0f02b':'#0a162a70';g.stroke()}
+      if(group===1&&junctions.length<3200&&(state.showConvergence||state.showMirror)){
+        const angularPixels=rm*state.scale*(a1-a0);
+        const radialPixels=PITCH*state.scale/D;
+        if(angularPixels>8&&radialPixels>8){
+          const p=parentCount(sample),mirror=reflectionFixed(sample);
+          if(p>=2||mirror){const a=(a0+a1)/2,[x,y]=polar(spiralR(n,a,(f0+f1)/2),a);
+            junctions.push({p,mirror,x,y});}
+        }
+      }
+      rendered++;
+    }
+  }
+  if(state.showBirths&&n>0&&n%m===0){
+    g.beginPath();for(let i=0;i<=100;i++){
+      const th=TAU*i/100;const r=spiralR(n,th,.5);
+      if(i===0)g.moveTo(...polar(r,th));else g.lineTo(...polar(r,th));
+    }
+    g.lineWidth=2/state.scale;g.strokeStyle='rgba(255,239,156,.8)';g.setLineDash([8/state.scale,8/state.scale]);g.stroke();g.setLineDash([]);
+  }
+ }
+ // Overlays are computed from exact insertion / reflection maps, not from the visual sector coloring.
+ drawGeneratedStrands(nMin,nMax);
+ drawJunctions(junctions);
+ drawRelations();
+ state.renderStats={rendered,compressedTurns,compressedCells,turnStep};
+ $('resolution').textContent=compressedTurns||compressedCells?`Adaptive display · ${rendered.toLocaleString()} visible patches`:`Exact tiles · ${rendered.toLocaleString()} patches`;
+}
+function parseHit(localX,localY){
+ const x=(localX-state.W/2-state.panX)/state.scale,y=(localY-state.H/2-state.panY)/state.scale;
+ const radius=Math.hypot(x,y),m=dims();
+ let theta=Math.atan2(y,x);if(theta<0)theta+=TAU;
+ if(radius<R0)return {a:Array(m).fill(0),k:5,n:0,seed:true};
+ const q=(radius-R0)/PITCH-theta/TAU;
+ if(q<0)return {a:Array(m).fill(0),k:5,n:0,seed:true};
+ const n=Math.floor(q),k=n+5;
+ if(k>state.maxK)return null;
+ const D=Math.floor(n/m)+1,frac=q-n;
+ const d=Math.max(0,Math.min(D-1,Math.floor(frac*D)));
+ const t=n-m*d,N=countShell(t,m);
+ const j=Math.min(N-1,Math.floor(theta/TAU*N));
+ const a=tupleFromShell(n,m,d,j);
+ return {a,k,n,d,j,N};
+}
+function explain(item){
+ if(!item||!item.a)return 'Hover over a tile to inspect its configuration, gap tuple, parents, and formal symmetry orbit.';
+ const a=item.a,k=item.k,d=minimum(a),pos=positions(a),pc=parentCount(a),orb=symOrbit(a).length;const pairs=pc*(pc-1)/2,faces=pc>=2?pairs*(2**(pc-2)):0;
+ const label=state.mode==='anchored'?'(u, v, w)':'(a, b, c, d)';
+ const notation=a.map(x=>numberfmt(x)).join(', ');
+ const note=state.mode==='anchored'?'first mark fixed at position 1':'first mark free';
+ const refl=reflect(a),isFixed=reflectionFixed(a);
+ return `<div class="small">Segment k=${numberfmt(k)} · ${note}</div><div class="math">${label} = (${notation})</div><div class="math">${configWord(a)}</div><div class="small">Marks at positions ${pos.map(numberfmt).join(', ')}<br>Shell depth <b>${d}</b> · ${pc} immediate parents · ${pairs} top-level commuting squares · ${faces} total square faces of its ${pc}-cube<br>Interval reflection: ${!refl?'outside anchored family':isFixed?'fixed configuration':'partner ('+refl.join(', ')+')'} · ${orb} represented member(s)</div>`;
+}
+
+function drawCellInset(item){
+ const canvas=$('cellViz'),box=canvas.getBoundingClientRect(),width=Math.max(100,box.width),height=237,dpr=Math.min(2,devicePixelRatio||1);
+ canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
+ const c=canvas.getContext('2d');c.setTransform(dpr,0,0,dpr,0,0);c.fillStyle='#0b1320';c.fillRect(0,0,width,height);
+ if(!item||!item.a){$('cellStats').textContent='Select a configuration to display its canonical commuting cell.';return;}
+ const a=item.a,active=a.map((v,i)=>v>0?i:-1).filter(x=>x>=0),d=active.length;
+ if(d<2){$('cellStats').textContent=`${d} active insertion direction(s): no commuting square exists at this configuration.`;c.fillStyle='#9fb4d3';c.font='13px sans-serif';c.fillText('No two-direction comparison yet',14,24);return;}
+ const vec=[[1,0.2],[0.15,1],[-.80,.34],[-.38,-.83]];
+ const vertices=[];
+ for(let mask=0;mask<(1<<d);mask++){
+  let x=0,y=0;
+  for(let i=0;i<d;i++)if(mask&(1<<i)){x+=vec[i][0];y+=vec[i][1];}
+  vertices.push({x,y,mask});
+ }
+ let minX=Math.min(...vertices.map(p=>p.x)),maxX=Math.max(...vertices.map(p=>p.x));
+ let minY=Math.min(...vertices.map(p=>p.y)),maxY=Math.max(...vertices.map(p=>p.y));
+ const span=Math.max((maxX-minX)/(.82*width),(maxY-minY)/(height*.72),.015),scale=1/span;
+ function toXY(v){return [width/2+(v.x-(minX+maxX)/2)*scale,height/2+(v.y-(minY+maxY)/2)*scale]}
+ const xy=vertices.map(toXY);
+ // Draw every 2-face of the d-cube: choose two varying bits and fix the others.
+ let squareCount=0;
+ for(let i=0;i<d;i++)for(let j=i+1;j<d;j++){
+   const varying=(1<<i)|(1<<j);
+   for(let mask=0;mask<(1<<d);mask++){
+     if(mask&varying)continue;
+     const poly=[mask,mask|(1<<i),mask|varying,mask|(1<<j)];
+     c.beginPath();c.moveTo(...xy[poly[0]]);for(let h=1;h<4;h++)c.lineTo(...xy[poly[h]]);c.closePath();
+     c.fillStyle=`hsla(${(42+30*(i+j))%360} 85% 68% / .12)`;c.fill();
+     c.strokeStyle='rgba(224,192,134,.28)';c.lineWidth=1;c.stroke();squareCount++;
+   }
+ }
+ let edges=0;
+ for(let mask=0;mask<(1<<d);mask++)for(let i=0;i<d;i++){
+   if(mask&(1<<i))continue;
+   const [x1,y1]=xy[mask],[x2,y2]=xy[mask|(1<<i)];
+   c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);
+   c.strokeStyle=['#67dcef','#f99e7d','#c09aff','#7ddead'][i];c.lineWidth=1.6;c.stroke();edges++;
+ }
+ for(const [idx,p] of xy.entries()){
+   c.beginPath();c.arc(p[0],p[1],3.4,0,TAU);
+   c.fillStyle=idx===(1<<d)-1?'#ffe4a1':'#e1eeff';c.fill();
+   c.strokeStyle='#0e1726';c.lineWidth=.7;c.stroke();
+ }
+ c.font='11px system-ui';c.fillStyle='#dee9fb';c.fillText(`${d}D cubical comparison`,12,18);
+ c.fillStyle='#8fa8cd';c.font='10px system-ui';c.fillText(`independent gap directions ${active.map(x=>x+1).join(', ')}`,12,height-10);
+ const fact=[1,1,2,6,24][d];
+ $('cellStats').innerHTML=`<b>${1<<d}</b> presentations · <b>${edges}</b> commuting edges · <b>${squareCount}</b> square 2-faces · <b>${fact}</b> maximal insertion orders.<br>All comparison faces are canonically filled by equality of independent insertions.`;
+}
+function selectFirstRank(rank){
+ const m=dims();if(rank>m)return;
+ const a=Array(m).fill(0);for(let i=0;i<rank;i++)a[i]=1;
+ const k=5+rank;
+ if(state.maxK<k)state.maxK=k;
+ $('maxK').value=state.maxK;
+ state.pin={a,k,n:rank};state.hover=null;updateInfo();state.needsFit=true;schedule();
+}
+function showTip(px,py,item){const tip=$('hoverTip');if(!item){tip.style.display='none';return}tip.innerHTML=`k=${item.k}, gaps (${item.a.join(', ')})<br>depth=${minimum(item.a)}, parents=${parentCount(item.a)}`;tip.style.display='block';const w=stage.clientWidth,h=stage.clientHeight;tip.style.left=Math.min(px+13,w-235)+'px';tip.style.top=Math.max(10,Math.min(py+15,h-70))+'px';}
+function updateInfo(){
+ const m=dims(),N=state.maxK-5,d=Math.floor(N/m),firstNew=d*m+5;
+ const total=countThrough(N,m),ring=countRing(N,m),shells=d+1;
+ const squareCount=topCells(N,m,2),cubeCount=topCells(N,m,3),fourCubeCount=topCells(N,m,4);
+ const reflectionCount=reflectionFixedCount(N,m),rank=Math.min(m,N);
+ const visible=(state.pin||state.hover);
+ $('inspect').innerHTML=explain(visible);
+ drawCellInset(visible);
+ $('familyNote').innerHTML=m===3?`<b>Anchored:</b> <code>R 0<sup>u+1</sup> R 0<sup>v+1</sup> R 0<sup>w</sup></code>. Three nonnegative gaps sum to <b>k−5</b>. Formal cyclic symmetry is a 120° sector rotation.`:`<b>Unanchored:</b> <code>0<sup>a</sup> R 0<sup>b+1</sup> R 0<sup>c+1</sup> R 0<sup>d</sup></code>. Four gaps sum to <b>k−5</b>. Ordinary segment reflection reverses the tuple.`;
+ $('stats').innerHTML=`<div class="stat"><div class="v">${bigfmt(ring)}</div><div class="l">Valid configurations at k=${numberfmt(state.maxK)}</div></div><div class="stat"><div class="v">${bigfmt(total)}</div><div class="l">Total across k=5…${numberfmt(state.maxK)}</div></div><div class="stat"><div class="v">${shells}</div><div class="l">Shell depths at final k</div></div><div class="stat"><div class="v">${numberfmt(firstNew)}</div><div class="l">Most recent shell birth at k</div></div><div class="stat"><div class="v">${bigfmt(squareCount)}</div><div class="l">Commuting 2-cells ending at k</div></div><div class="stat"><div class="v">${bigfmt(cubeCount)}</div><div class="l">Commuting 3-cells ending at k</div></div><div class="stat"><div class="v">${bigfmt(fourCubeCount)}</div><div class="l">Commuting 4-cells ending at k</div></div><div class="stat"><div class="v">${bigfmt(reflectionCount)}</div><div class="l">Actual reflection-fixed configurations at k</div></div>`;
+ let leg='';for(let i=0;i<Math.min(d+1,10);i++)leg+=`<span class="chip"><span class="dot" style="background:hsl(${hue(i)} 64% 51%)"></span>d=${i}</span>`;
+ if(d>=10)leg+=`<span class="chip">… to d=${d}</span>`;
+ if(state.color==='sector')leg=['0','1','2',...(m===4?['3']:[])].map((x,i)=>`<span class="chip"><span class="dot" style="background:${['#45bdd6','#a87de9','#f09b62','#5bc98c'][i]}"></span>gap ${x} first at minimum</span>`).join('')+'<span class="chip">gold: central state</span>';
+ if(state.color==='parents')leg=Array.from({length:m+1},(_,i)=>`<span class="chip"><span class="dot" style="background:${['#faf0af','#5cbde3','#eea15b','#aa82ed','#5ed3a0'][i]}"></span>${i} active gap directions</span>`).join('');
+ if(state.color==='reflection')leg='<span class="chip"><span class="dot" style="background:#f8d97c"></span>reflection fixed</span><span class="chip"><span class="dot" style="background:#477fa8"></span>reflected partner inside family</span><span class="chip"><span class="dot" style="background:#39455f"></span>reflection outside anchored family</span>';
+ $('legend').innerHTML=leg;
+}
+let queued=false;
+function schedule(){if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;render()})}
+function resize(){const rect=stage.getBoundingClientRect();state.W=rect.width;state.H=rect.height;if(state.needsFit)fitView();schedule()}
+function setMode(m){if(!['anchored','all'].includes(m))return;state.mode=m;state.pin=state.hover=null;document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('selected',b.dataset.mode===m));updateInfo();schedule()}
+function setMaxK(n){if(!Number.isFinite(n))return;state.maxK=Math.max(5,Math.min(1000000,Math.trunc(n)));$('maxK').value=state.maxK;state.pin=state.hover=null;state.needsFit=true;updateInfo();schedule()}
+function adjustZoom(f,cx=state.W/2,cy=state.H/2){const old=state.scale;state.scale=Math.max(1e-8,Math.min(250,old*f));const ratio=state.scale/old;state.panX=(state.panX+state.W/2-cx)*ratio+cx-state.W/2;state.panY=(state.panY+state.H/2-cy)*ratio+cy-state.H/2;schedule()}
+$('maxK').addEventListener('change',e=>setMaxK(Number(e.target.value)));
+$('doubleDepth').addEventListener('click',()=>setMaxK(5+2*(state.maxK-5)));
+$('tripleDepth').addEventListener('click',()=>setMaxK(5+3*(state.maxK-5)));
+$('modes').addEventListener('click',e=>{const b=e.target.closest('[data-mode]');if(b)setMode(b.dataset.mode)});
+$('colorBy').addEventListener('change',e=>{state.color=e.target.value;updateInfo();schedule()});
+for(const [id,key] of [['showCellBorders','showCellBorders'],['showBirths','showBirths'],['showStrands','showStrands'],['showConvergence','showConvergence'],['showMirror','showMirror'],['showCells','showCells'],['showLinks','showLinks'],['showOrbit','showOrbit']])$(id).addEventListener('change',e=>{state[key]=e.target.checked;schedule()});
+document.querySelectorAll('[data-rank]').forEach(b=>b.addEventListener('click',()=>{let rank=+b.dataset.rank;if(rank>dims())setMode('all');selectFirstRank(rank)}));
+$('fit').addEventListener('click',()=>{fitView();schedule()});
+$('zoomIn').addEventListener('click',()=>adjustZoom(1.6));$('zoomOut').addEventListener('click',()=>adjustZoom(1/1.6));
+stage.addEventListener('wheel',e=>{e.preventDefault();const rect=stage.getBoundingClientRect();adjustZoom(Math.exp(-e.deltaY*.0012),e.clientX-rect.left,e.clientY-rect.top)},{passive:false});
+stage.addEventListener('pointerdown',e=>{if(e.target.tagName==='BUTTON')return;state.drag={x:e.clientX,y:e.clientY,panX:state.panX,panY:state.panY,moved:false};stage.setPointerCapture(e.pointerId)});
+stage.addEventListener('pointermove',e=>{const rect=stage.getBoundingClientRect(),px=e.clientX-rect.left,py=e.clientY-rect.top;
+ if(state.drag){const dx=e.clientX-state.drag.x,dy=e.clientY-state.drag.y;state.panX=state.drag.panX+dx;state.panY=state.drag.panY+dy;if(Math.hypot(dx,dy)>4)state.drag.moved=true;schedule();return}
+ const item=parseHit(px,py);if((item?.a.join(','))!==(state.hover?.a.join(','))||item?.k!==state.hover?.k){state.hover=item;updateInfo();schedule()}showTip(px,py,item);
+});
+stage.addEventListener('pointerup',e=>{if(!state.drag)return;const wasMove=state.drag.moved;state.drag=null;if(!wasMove){const rect=stage.getBoundingClientRect();const item=parseHit(e.clientX-rect.left,e.clientY-rect.top);state.pin=item;updateInfo();schedule()}});
+stage.addEventListener('pointerleave',()=>{state.hover=null;$('hoverTip').style.display='none';updateInfo();schedule()});
+window.addEventListener('keydown',e=>{if(e.key==='Escape'){state.pin=null;updateInfo();schedule()}});
+window.addEventListener('resize',resize);
+for(let k=3;k<=10;k++){
+ const s=k-5;
+ const tr=document.createElement('tr');tr.innerHTML=`<td>${k}</td><td>${benchmark[k]}</td><td>${s<0?'0':bigfmt(countRing(s,3))}</td><td>${s<0?'0':bigfmt(countRing(s,4))}</td>`;$('bench').appendChild(tr)
+}
+// Start at the first fully interior point to show the smallest complete local coherence cell.
+state.pin={a:[1,1,1],k:8,n:3};
+updateInfo();resize();
+window.__spiral={state,countRing,countShell,topCells,reflectionFixedCount,tupleFromShell,indexInShell,positions,parseHit,render,reflect,reflectionFixed,selectFirstRank};
+})();
+</script>
+</body>
+</html>
