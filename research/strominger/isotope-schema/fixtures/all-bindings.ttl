@@ -1,0 +1,32 @@
+@prefix iso: <urn:marici:isotope:> .
+@prefix ex: <urn:marici:isotope-fixture:> .
+
+# Every constituent is bound, but this is STILL a partial synthetic structure.
+# No physical interpretation, geometric realization, or witness proof follows.
+ex:source a iso:Source ; iso:sourceKind "fixture" ;
+  iso:reference "research/strominger/isotope-schema/fixtures/all-bindings.ttl" ;
+  iso:description "Total role-binding fixture within a partial structural profile." .
+ex:structure a iso:IsotopeStructure ; iso:source ex:source ;
+  iso:profile iso:PartialStructureProfile ; iso:bindingScope iso:TotalBindings ;
+  iso:nucleus ex:nucleus ; iso:electronicState ex:electrons ;
+  iso:vertex ex:v0, ex:v1 ; iso:edge ex:edge ; iso:arrow ex:arrow ;
+  iso:witness ex:witness ; iso:boundary ex:constantBoundary ;
+  iso:interpretation ex:pbind, ex:nbind, ex:ebind .
+ex:nucleus a iso:Nucleus ; iso:source ex:source ; iso:proton ex:p ; iso:neutron ex:n .
+ex:p a iso:Proton ; iso:source ex:source .
+ex:n a iso:Neutron ; iso:source ex:source .
+ex:electrons a iso:ElectronicState ; iso:source ex:source ; iso:electron ex:e .
+ex:e a iso:Electron ; iso:source ex:source .
+ex:v0 a iso:Vertex ; iso:source ex:source .
+ex:v1 a iso:Vertex ; iso:source ex:source .
+ex:edge a iso:Edge ; iso:source ex:source ; iso:end0 ex:v0 ; iso:end1 ex:v1 .
+ex:arrow a iso:Arrow ; iso:source ex:source ;
+  iso:support ex:edge ; iso:from ex:v0 ; iso:to ex:v1 ; iso:color "red" .
+ex:constantBoundary a iso:Boundary ; iso:source ex:source ; iso:base ex:v0 .
+ex:witness a iso:Witness ; iso:source ex:source ;
+  iso:witnessKind iso:BoundaryDeclaration ; iso:status iso:Declared ;
+  iso:boundary ex:constantBoundary ;
+  iso:description "Declaration about a constant boundary, not verified evidence." .
+ex:pbind a iso:Interpretation ; iso:source ex:source ; iso:particle ex:p ; iso:role ex:v0 .
+ex:nbind a iso:Interpretation ; iso:source ex:source ; iso:particle ex:n ; iso:role ex:witness .
+ex:ebind a iso:Interpretation ; iso:source ex:source ; iso:particle ex:e ; iso:role ex:arrow .

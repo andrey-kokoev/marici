@@ -1,0 +1,56 @@
+@prefix iso: <urn:marici:isotope:> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+# These constraints are additive to shapes.ttl, not an alternative validator.
+iso:ProfileShape a sh:NodeShape ;
+  sh:targetClass iso:IsotopeStructure ;
+  sh:sparql iso:ProfileBindingScopeConstraint,
+    iso:InventoryHasNoStructureConstraint .
+
+iso:ProfileBindingScopeConstraint a sh:SPARQLConstraint ;
+  sh:message "Inventory requires NoBindings; partial structure requires PartialBindings or TotalBindings; complete structure requires TotalBindings." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:profile ?profile ; iso:bindingScope ?scope .
+      FILTER (
+        (?profile = iso:InventoryProfile && ?scope != iso:NoBindings)
+        || (?profile = iso:PartialStructureProfile && ?scope = iso:NoBindings)
+        || (?profile = iso:CompleteStructureProfile && ?scope != iso:TotalBindings)
+      )
+    }
+  """ .
+
+iso:InventoryHasNoStructureConstraint a sh:SPARQLConstraint ;
+  sh:message "An inventory-only record cannot contain structural members or role bindings." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:profile iso:InventoryProfile ; ?predicate ?member .
+      FILTER (?predicate IN (iso:vertex, iso:edge, iso:arrow, iso:witness, iso:interpretation, iso:path, iso:boundary, iso:cell, iso:shell, iso:junction, iso:readerState, iso:readerTransition))
+    }
+  """ .
+
+# Complete-profile obligations are in organization-shapes.ttl. All shape files
+# must be loaded together; completeness is combinatorial, not physical evidence.
+
+iso:BindingCoverageShape a sh:NodeShape ;
+  sh:targetClass iso:IsotopeStructure ;
+  sh:sparql iso:ConstituentCoverageConstraint .
+
+iso:ConstituentCoverageConstraint a sh:SPARQLConstraint ;
+  sh:message "TotalBindings requires an in-structure role for every constituent; CompleteStructureProfile requires a spatial role, not only a reader-state role." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this ?value WHERE {
+      $this iso:bindingScope iso:TotalBindings ;
+        (iso:nucleus/iso:proton|iso:nucleus/iso:neutron|iso:electronicState/iso:electron) ?value .
+      FILTER NOT EXISTS {
+        $this iso:interpretation ?interpretation .
+        ?interpretation iso:particle ?value ; iso:role ?role .
+        $this (iso:vertex|iso:edge|iso:arrow|iso:witness|iso:path|iso:boundary|iso:cell|iso:shell|iso:junction|iso:readerState) ?role .
+        FILTER (NOT EXISTS { $this iso:profile iso:CompleteStructureProfile }
+          || EXISTS { $this (iso:vertex|iso:edge|iso:arrow|iso:witness|iso:path|iso:boundary|iso:cell|iso:shell|iso:junction) ?role })
+      }
+    }
+  """ .

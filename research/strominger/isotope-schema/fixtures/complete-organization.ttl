@@ -1,0 +1,26 @@
+@prefix iso: <urn:marici:isotope:> .
+@prefix ex: <urn:marici:isotope-fixture:> .
+
+# Additive fixture for two-cells.ttl. The test constructor explicitly removes
+# its PartialStructureProfile triple before merging this file. No OWL import.
+ex:organizationSource a iso:Source ; iso:sourceKind "fixture" ;
+  iso:reference "research/strominger/isotope-schema/fixtures/complete-organization.ttl" ;
+  iso:description "Authored shell assignments and combinatorial cyclic/straight port data, not a derived spatial embedding." .
+ex:structure iso:profile iso:CompleteStructureProfile ;
+  iso:shell ex:shell1, ex:shell2 ; iso:junction ex:jA, ex:jB, ex:jC, ex:jD .
+ex:shell1 a iso:Shell ; iso:source ex:organizationSource ; iso:level 1 ; iso:cell ex:c1 ; iso:electron ex:e .
+ex:shell2 a iso:Shell ; iso:source ex:organizationSource ; iso:level 2 ; iso:cell ex:c2 .
+ex:jA a iso:Junction ; iso:source ex:organizationSource ; iso:vertex ex:A ; iso:port ex:pAB0, ex:pAC0, ex:pAD0 .
+ex:jB a iso:Junction ; iso:source ex:organizationSource ; iso:vertex ex:B ; iso:port ex:pAB1, ex:pBC0 .
+ex:jC a iso:Junction ; iso:source ex:organizationSource ; iso:vertex ex:C ; iso:port ex:pAC1, ex:pBC1, ex:pCD0 .
+ex:jD a iso:Junction ; iso:source ex:organizationSource ; iso:vertex ex:D ; iso:port ex:pCD1, ex:pAD1 .
+ex:pAB0 a iso:Port ; iso:source ex:organizationSource ; iso:junction ex:jA ; iso:edge ex:AB ; iso:endIndex 0 ; iso:index 0 .
+ex:pAC0 a iso:Port ; iso:source ex:organizationSource ; iso:junction ex:jA ; iso:edge ex:AC ; iso:endIndex 0 ; iso:index 1 .
+ex:pAD0 a iso:Port ; iso:source ex:organizationSource ; iso:junction ex:jA ; iso:edge ex:AD ; iso:endIndex 0 ; iso:index 2 .
+ex:pAB1 a iso:Port ; iso:source ex:organizationSource ; iso:junction ex:jB ; iso:edge ex:AB ; iso:endIndex 1 ; iso:index 0 ; iso:opposite ex:pBC0 .
+ex:pBC0 a iso:Port ; iso:source ex:organizationSource ; iso:junction ex:jB ; iso:edge ex:BC ; iso:endIndex 0 ; iso:index 1 ; iso:opposite ex:pAB1 .
+ex:pAC1 a iso:Port ; iso:source ex:organizationSource ; iso:junction ex:jC ; iso:edge ex:AC ; iso:endIndex 1 ; iso:index 0 .
+ex:pBC1 a iso:Port ; iso:source ex:organizationSource ; iso:junction ex:jC ; iso:edge ex:BC ; iso:endIndex 1 ; iso:index 1 ; iso:opposite ex:pCD0 .
+ex:pCD0 a iso:Port ; iso:source ex:organizationSource ; iso:junction ex:jC ; iso:edge ex:CD ; iso:endIndex 0 ; iso:index 2 ; iso:opposite ex:pBC1 .
+ex:pCD1 a iso:Port ; iso:source ex:organizationSource ; iso:junction ex:jD ; iso:edge ex:CD ; iso:endIndex 1 ; iso:index 0 .
+ex:pAD1 a iso:Port ; iso:source ex:organizationSource ; iso:junction ex:jD ; iso:edge ex:AD ; iso:endIndex 1 ; iso:index 1 .

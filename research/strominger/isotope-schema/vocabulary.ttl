@@ -1,0 +1,111 @@
+@prefix iso: <urn:marici:isotope:> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Proposed core vocabulary, not a physical identification or source derivation.
+# No OWL axioms, imports, equivalences, or inference rules.
+iso:IsotopeStructure a rdfs:Class ; rdfs:comment "A record whose explicit profile states whether it is inventory-only, partial, or claims a complete structure. The type alone does not assert completeness." .
+iso:ValidationProfile a rdfs:Class .
+iso:InventoryProfile a iso:ValidationProfile .
+iso:PartialStructureProfile a iso:ValidationProfile .
+iso:CompleteStructureProfile a iso:ValidationProfile ; rdfs:comment "Complete nonempty combinatorial arrow/cell record with shell assignment, oriented incidence and total constituent bindings; not source verification, physical correctness or proof of declarations." .
+iso:BindingScope a rdfs:Class .
+iso:NoBindings a iso:BindingScope .
+iso:PartialBindings a iso:BindingScope .
+iso:TotalBindings a iso:BindingScope ; rdfs:comment "Every declared constituent has at least one in-structure role binding. This is neither a bijection nor a claim of complete structure or physical correctness." .
+iso:profile a rdf:Property .
+iso:bindingScope a rdf:Property .
+iso:Nucleus a rdfs:Class .
+iso:ElectronicState a rdfs:Class .
+iso:Proton a rdfs:Class .
+iso:Neutron a rdfs:Class .
+iso:Electron a rdfs:Class .
+iso:Vertex a rdfs:Class .
+iso:Edge a rdfs:Class ; rdfs:comment "Undirected support; endpoints may coincide. Not a transport arrow." .
+iso:Arrow a rdfs:Class ; rdfs:comment "Directed transport occurrence on an edge; color is a label, not particle identity." .
+iso:Witness a rdfs:Class ; rdfs:comment "Typed non-transport declaration; checked payload is not proof of its mathematical claim." .
+iso:Path a rdfs:Class .
+iso:PathStep a rdfs:Class ; rdfs:comment "One indexed directed-arrow occurrence owned by one path." .
+iso:Boundary a rdfs:Class ; rdfs:comment "Closed oriented-edge walk at a declared base vertex, possibly empty." .
+iso:BoundaryStep a rdfs:Class ; rdfs:comment "One indexed edge occurrence with explicit reversal, owned by one boundary." .
+iso:Cell a rdfs:Class .
+iso:Shell a rdfs:Class ; rdfs:comment "Declared cell/electron grouping with a positive level; no occupancy law is inferred." .
+iso:Junction a rdfs:Class ; rdfs:comment "Declared positive cyclic order of edge-end ports at one vertex." .
+iso:Port a rdfs:Class ; rdfs:comment "An edge-end occurrence, explicitly distinguishing both ends of a loop; optional opposite gives a declared straight continuation." .
+iso:WitnessKind a rdfs:Class .
+iso:BoundaryDeclaration a iso:WitnessKind .
+iso:FillingDeclaration a iso:WitnessKind .
+iso:ComparisonDeclaration a iso:WitnessKind .
+iso:DeclarationStatus a rdfs:Class .
+iso:Declared a iso:DeclarationStatus .
+iso:Interpretation a rdfs:Class ; rdfs:comment "Explicit proposed binding of a constituent to structural roles, not an inferred physical equivalence." .
+iso:Source a rdfs:Class .
+iso:InputArtifact a rdfs:Class ; rdfs:comment "Repository-relative input file with a SHA-256 pin; not an authenticity certificate." .
+iso:ReferenceNuclearInventoryV1 a rdfs:Resource ; rdfs:comment "Deterministic projection of isotope/protons/neutrons from a pinned isotope-reference resource. Does not infer topology or electrons." .
+iso:inputArtifact a rdf:Property .
+iso:artifactPath a rdf:Property .
+iso:sha256 a rdf:Property .
+iso:operation a rdf:Property .
+iso:recordKey a rdf:Property .
+iso:outputStructure a rdf:Property .
+iso:isotopeName a rdf:Property .
+iso:ReaderState a rdfs:Class ; rdfs:comment "Native finite-reader state, not a spatial vertex." .
+iso:ReaderTransition a rdfs:Class ; rdfs:comment "Directed native reader transition, not a colored transport arrow." .
+iso:NativeReaderIncidenceV1 a rdfs:Resource ; rdfs:comment "Incidence projection after fresh saved Ne-22 constructor replay; not a complete spatial isotope diagram." .
+iso:readerState a rdf:Property .
+iso:readerTransition a rdf:Property .
+iso:readerBody a rdf:Property .
+iso:readerChart a rdf:Property .
+iso:nativeId a rdf:Property .
+iso:origin a rdf:Property .
+iso:fromReader a rdf:Property .
+iso:toReader a rdf:Property .
+iso:transitionKind a rdf:Property .
+iso:phaseDelta a rdf:Property .
+iso:dependencyArtifact a rdf:Property .
+iso:sourceErrorCode a rdf:Property .
+iso:validationStage a rdf:Property .
+iso:SourceVerificationConstraintComponent a rdfs:Resource ; rdfs:comment "Application-stage provenance error marker, not a SHACL Core constraint or inference rule." .
+
+iso:source a rdf:Property .
+iso:sourceKind a rdf:Property .
+iso:reference a rdf:Property .
+iso:description a rdf:Property .
+iso:nucleus a rdf:Property .
+iso:electronicState a rdf:Property .
+iso:proton a rdf:Property .
+iso:neutron a rdf:Property .
+iso:electron a rdf:Property .
+iso:vertex a rdf:Property .
+iso:edge a rdf:Property .
+iso:arrow a rdf:Property .
+iso:witness a rdf:Property .
+iso:interpretation a rdf:Property .
+iso:end0 a rdf:Property .
+iso:end1 a rdf:Property .
+iso:support a rdf:Property .
+iso:from a rdf:Property .
+iso:to a rdf:Property .
+iso:color a rdf:Property .
+iso:particle a rdf:Property .
+iso:role a rdf:Property .
+iso:path a rdf:Property .
+iso:boundary a rdf:Property .
+iso:cell a rdf:Property .
+iso:step a rdf:Property .
+iso:index a rdf:Property .
+iso:inPath a rdf:Property .
+iso:inBoundary a rdf:Property .
+iso:base a rdf:Property .
+iso:reversed a rdf:Property .
+iso:filling a rdf:Property .
+iso:witnessKind a rdf:Property .
+iso:status a rdf:Property .
+iso:left a rdf:Property .
+iso:right a rdf:Property .
+iso:shell a rdf:Property .
+iso:level a rdf:Property .
+iso:junction a rdf:Property .
+iso:port a rdf:Property .
+iso:endIndex a rdf:Property .
+iso:opposite a rdf:Property .

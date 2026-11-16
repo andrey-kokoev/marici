@@ -1,0 +1,34 @@
+@prefix iso: <urn:marici:isotope:> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Finite-reader incidence is a separate layer, never spatial/color geometry.
+iso:ReaderStateShape a sh:NodeShape ; sh:targetClass iso:ReaderState ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:nativeId ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ] ;
+  sh:property [ sh:path iso:origin ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ] ;
+  sh:property [ sh:path iso:readerChart ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ] ;
+  sh:property [ sh:path iso:readerBody ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+    sh:or ( [ sh:class iso:Proton ] [ sh:class iso:Neutron ] [ sh:class iso:Electron ] ) ] .
+iso:ReaderTransitionShape a sh:NodeShape ; sh:targetClass iso:ReaderTransition ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:nativeId ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ] ;
+  sh:property [ sh:path iso:transitionKind ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ] ;
+  sh:property [ sh:path iso:phaseDelta ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+  sh:property [ sh:path iso:fromReader ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:ReaderState ] ;
+  sh:property [ sh:path iso:toReader ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:ReaderState ] .
+iso:ReaderMembershipShape a sh:NodeShape ; sh:targetClass iso:IsotopeStructure ;
+  sh:sparql iso:ReaderMembershipConstraint .
+iso:ReaderMembershipConstraint a sh:SPARQLConstraint ;
+  sh:message "Reader endpoints and reader body assignments must belong to this structure." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this ?value WHERE {
+      { $this iso:readerTransition ?transition . ?transition (iso:fromReader|iso:toReader) ?value .
+        FILTER NOT EXISTS { $this iso:readerState ?value } }
+      UNION
+      { $this iso:readerState ?state . ?state iso:readerBody ?value .
+        FILTER NOT EXISTS { $this (iso:nucleus/iso:proton|iso:nucleus/iso:neutron|iso:electronicState/iso:electron) ?value } }
+    }
+  """ .

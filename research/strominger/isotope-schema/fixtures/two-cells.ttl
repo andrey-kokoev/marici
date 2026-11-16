@@ -1,0 +1,69 @@
+@prefix iso: <urn:marici:isotope:> .
+@prefix ex: <urn:marici:isotope-fixture:> .
+
+# Independently authored combinatorial fixture: two cells share edge AC in
+# opposite boundary orientations. This is not an isotope derivation.
+ex:source a iso:Source ; iso:sourceKind "fixture" ;
+  iso:reference "research/strominger/isotope-schema/fixtures/two-cells.ttl" ;
+  iso:description "Two cells, shared support, two parallel directed paths and explicit declarations; no geometric or physical proof." .
+ex:structure a iso:IsotopeStructure ; iso:source ex:source ;
+  iso:profile iso:PartialStructureProfile ; iso:bindingScope iso:TotalBindings ;
+  iso:nucleus ex:nucleus ; iso:electronicState ex:electrons ;
+  iso:vertex ex:A, ex:B, ex:C, ex:D ;
+  iso:edge ex:AB, ex:BC, ex:AC, ex:CD, ex:AD ;
+  iso:arrow ex:aAB, ex:aBC, ex:aAC, ex:aCD, ex:aAD ;
+  iso:path ex:long, ex:short, ex:identity ;
+  iso:boundary ex:b1, ex:b2, ex:constant ; iso:cell ex:c1, ex:c2 ;
+  iso:witness ex:f1, ex:f2, ex:comparison, ex:boundaryDeclaration ;
+  iso:interpretation ex:pbind, ex:nbind, ex:ebind .
+ex:nucleus a iso:Nucleus ; iso:source ex:source ; iso:proton ex:p ; iso:neutron ex:n .
+ex:p a iso:Proton ; iso:source ex:source .
+ex:n a iso:Neutron ; iso:source ex:source .
+ex:e a iso:Electron ; iso:source ex:source .
+ex:electrons a iso:ElectronicState ; iso:source ex:source ; iso:electron ex:e .
+ex:pbind a iso:Interpretation ; iso:source ex:source ; iso:particle ex:p ; iso:role ex:c1 .
+ex:nbind a iso:Interpretation ; iso:source ex:source ; iso:particle ex:n ; iso:role ex:comparison .
+ex:ebind a iso:Interpretation ; iso:source ex:source ; iso:particle ex:e ; iso:role ex:c2 .
+
+ex:A a iso:Vertex ; iso:source ex:source .
+ex:B a iso:Vertex ; iso:source ex:source .
+ex:C a iso:Vertex ; iso:source ex:source .
+ex:D a iso:Vertex ; iso:source ex:source .
+ex:AB a iso:Edge ; iso:source ex:source ; iso:end0 ex:A ; iso:end1 ex:B .
+ex:BC a iso:Edge ; iso:source ex:source ; iso:end0 ex:B ; iso:end1 ex:C .
+ex:AC a iso:Edge ; iso:source ex:source ; iso:end0 ex:A ; iso:end1 ex:C .
+ex:CD a iso:Edge ; iso:source ex:source ; iso:end0 ex:C ; iso:end1 ex:D .
+ex:AD a iso:Edge ; iso:source ex:source ; iso:end0 ex:A ; iso:end1 ex:D .
+ex:aAB a iso:Arrow ; iso:source ex:source ; iso:support ex:AB ; iso:from ex:A ; iso:to ex:B ; iso:color "red" .
+ex:aBC a iso:Arrow ; iso:source ex:source ; iso:support ex:BC ; iso:from ex:B ; iso:to ex:C ; iso:color "blue" .
+ex:aAC a iso:Arrow ; iso:source ex:source ; iso:support ex:AC ; iso:from ex:A ; iso:to ex:C ; iso:color "green" .
+ex:aCD a iso:Arrow ; iso:source ex:source ; iso:support ex:CD ; iso:from ex:C ; iso:to ex:D ; iso:color "red" .
+ex:aAD a iso:Arrow ; iso:source ex:source ; iso:support ex:AD ; iso:from ex:A ; iso:to ex:D ; iso:color "blue" .
+
+ex:long a iso:Path ; iso:source ex:source ; iso:from ex:A ; iso:to ex:C ; iso:step ex:l0, ex:l1 .
+ex:l0 a iso:PathStep ; iso:source ex:source ; iso:inPath ex:long ; iso:index 0 ; iso:arrow ex:aAB .
+ex:l1 a iso:PathStep ; iso:source ex:source ; iso:inPath ex:long ; iso:index 1 ; iso:arrow ex:aBC .
+ex:short a iso:Path ; iso:source ex:source ; iso:from ex:A ; iso:to ex:C ; iso:step ex:s0 .
+ex:s0 a iso:PathStep ; iso:source ex:source ; iso:inPath ex:short ; iso:index 0 ; iso:arrow ex:aAC .
+ex:identity a iso:Path ; iso:source ex:source ; iso:from ex:A ; iso:to ex:A .
+
+ex:b1 a iso:Boundary ; iso:source ex:source ; iso:base ex:A ; iso:step ex:b10, ex:b11, ex:b12 .
+ex:b10 a iso:BoundaryStep ; iso:source ex:source ; iso:inBoundary ex:b1 ; iso:index 0 ; iso:edge ex:AB ; iso:reversed false .
+ex:b11 a iso:BoundaryStep ; iso:source ex:source ; iso:inBoundary ex:b1 ; iso:index 1 ; iso:edge ex:BC ; iso:reversed false .
+ex:b12 a iso:BoundaryStep ; iso:source ex:source ; iso:inBoundary ex:b1 ; iso:index 2 ; iso:edge ex:AC ; iso:reversed true .
+ex:b2 a iso:Boundary ; iso:source ex:source ; iso:base ex:A ; iso:step ex:b20, ex:b21, ex:b22 .
+ex:b20 a iso:BoundaryStep ; iso:source ex:source ; iso:inBoundary ex:b2 ; iso:index 0 ; iso:edge ex:AC ; iso:reversed false .
+ex:b21 a iso:BoundaryStep ; iso:source ex:source ; iso:inBoundary ex:b2 ; iso:index 1 ; iso:edge ex:CD ; iso:reversed false .
+ex:b22 a iso:BoundaryStep ; iso:source ex:source ; iso:inBoundary ex:b2 ; iso:index 2 ; iso:edge ex:AD ; iso:reversed true .
+ex:constant a iso:Boundary ; iso:source ex:source ; iso:base ex:A .
+
+ex:c1 a iso:Cell ; iso:source ex:source ; iso:boundary ex:b1 ; iso:filling ex:f1 .
+ex:c2 a iso:Cell ; iso:source ex:source ; iso:boundary ex:b2 ; iso:filling ex:f2 .
+ex:f1 a iso:Witness ; iso:source ex:source ; iso:witnessKind iso:FillingDeclaration ;
+  iso:status iso:Declared ; iso:cell ex:c1 ; iso:boundary ex:b1 .
+ex:f2 a iso:Witness ; iso:source ex:source ; iso:witnessKind iso:FillingDeclaration ;
+  iso:status iso:Declared ; iso:cell ex:c2 ; iso:boundary ex:b2 .
+ex:comparison a iso:Witness ; iso:source ex:source ; iso:witnessKind iso:ComparisonDeclaration ;
+  iso:status iso:Declared ; iso:left ex:long ; iso:right ex:short .
+ex:boundaryDeclaration a iso:Witness ; iso:source ex:source ; iso:witnessKind iso:BoundaryDeclaration ;
+  iso:status iso:Declared ; iso:boundary ex:b1 .

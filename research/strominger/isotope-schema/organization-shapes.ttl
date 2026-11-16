@@ -1,0 +1,149 @@
+@prefix iso: <urn:marici:isotope:> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+iso:ShellShape a sh:NodeShape ; sh:targetClass iso:Shell ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:level ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 1 ] ;
+  sh:property [ sh:path iso:cell ; sh:nodeKind sh:IRI ; sh:class iso:Cell ] ;
+  sh:property [ sh:path iso:electron ; sh:nodeKind sh:IRI ; sh:class iso:Electron ] .
+
+iso:JunctionShape a sh:NodeShape ; sh:targetClass iso:Junction ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:vertex ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Vertex ] ;
+  sh:property [ sh:path iso:port ; sh:nodeKind sh:IRI ; sh:class iso:Port ] ;
+  sh:sparql iso:PortOwnerConstraint, iso:PortOrderConstraint, iso:PortOccurrenceUniquenessConstraint .
+iso:PortShape a sh:NodeShape ; sh:targetClass iso:Port ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:junction ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Junction ] ;
+  sh:property [ sh:path iso:edge ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Edge ] ;
+  sh:property [ sh:path iso:endIndex ; sh:minCount 1 ; sh:maxCount 1 ; sh:in (0 1) ] ;
+  sh:property [ sh:path iso:index ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ] ;
+  sh:property [ sh:path iso:opposite ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Port ] ;
+  sh:sparql iso:PortMembershipConstraint, iso:PortEndpointConstraint, iso:OppositePortsConstraint .
+
+iso:PortOwnerConstraint a sh:SPARQLConstraint ; sh:message "A junction must own every listed port." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE { $this iso:port ?p . FILTER NOT EXISTS { ?p iso:junction $this } }
+  """ .
+iso:PortMembershipConstraint a sh:SPARQLConstraint ; sh:message "A port's junction must list the port." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE { $this iso:junction ?j . FILTER NOT EXISTS { ?j iso:port $this } }
+  """ .
+iso:PortEndpointConstraint a sh:SPARQLConstraint ; sh:message "Selected edge end must equal the junction vertex, including loop-end identity." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:junction/iso:vertex ?v ; iso:edge ?e ; iso:endIndex ?i .
+      ?e iso:end0 ?a ; iso:end1 ?b . FILTER (?v != IF(?i = 0, ?a, ?b))
+    }
+  """ .
+iso:PortOrderConstraint a sh:SPARQLConstraint ; sh:message "Cyclic port order must have unique consecutive indices starting at zero." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      { $this iso:port ?a, ?b . ?a iso:index ?i . ?b iso:index ?j . FILTER (?a != ?b && ?i = ?j) }
+      UNION { $this iso:port ?p . ?p iso:index ?i . FILTER (?i > 0)
+        FILTER NOT EXISTS { $this iso:port ?q . ?q iso:index ?j . FILTER (?j = ?i - 1) } }
+    }
+  """ .
+iso:PortOccurrenceUniquenessConstraint a sh:SPARQLConstraint ; sh:message "An edge endpoint occurrence can appear only once in a junction." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:port ?p, ?q . ?p iso:edge ?e ; iso:endIndex ?i . ?q iso:edge ?e ; iso:endIndex ?j .
+      FILTER (?p != ?q && ?i = ?j)
+    }
+  """ .
+iso:OppositePortsConstraint a sh:SPARQLConstraint ; sh:message "Straight continuations are distinct reciprocal ports within one junction." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:opposite ?other ; iso:junction ?j .
+      FILTER ($this = ?other || NOT EXISTS { ?other iso:junction ?j ; iso:opposite $this })
+    }
+  """ .
+
+iso:OrganizationShape a sh:NodeShape ; sh:targetClass iso:IsotopeStructure ;
+  sh:sparql iso:OrganizationMembershipConstraint, iso:ShellLevelConstraint,
+    iso:ShellAssignmentConstraint, iso:JunctionUniquenessConstraint .
+iso:OrganizationMembershipConstraint a sh:SPARQLConstraint ; sh:message "Shell and junction references must belong to their structure." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this ?value WHERE {
+      { $this iso:shell/iso:cell ?value . FILTER NOT EXISTS { $this iso:cell ?value } }
+      UNION { $this iso:shell/iso:electron ?value . FILTER NOT EXISTS { $this iso:electronicState/iso:electron ?value } }
+      UNION { $this iso:junction/iso:vertex ?value . FILTER NOT EXISTS { $this iso:vertex ?value } }
+      UNION { $this iso:junction/iso:port/iso:edge ?value . FILTER NOT EXISTS { $this iso:edge ?value } }
+    }
+  """ .
+iso:ShellLevelConstraint a sh:SPARQLConstraint ; sh:message "Shell levels must be unique within a structure." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:shell ?a, ?b . ?a iso:level ?i . ?b iso:level ?j . FILTER (?a != ?b && ?i = ?j)
+    }
+  """ .
+iso:ShellAssignmentConstraint a sh:SPARQLConstraint ; sh:message "A cell or electron cannot be assigned to two shells of one structure." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this ?value WHERE {
+      $this iso:shell ?a, ?b . ?a (iso:cell|iso:electron) ?value . ?b (iso:cell|iso:electron) ?value . FILTER (?a != ?b)
+    }
+  """ .
+iso:JunctionUniquenessConstraint a sh:SPARQLConstraint ; sh:message "One structure declares at most one junction frame for each vertex." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this ?value WHERE {
+      $this iso:junction ?a, ?b . ?a iso:vertex ?value . ?b iso:vertex ?value . FILTER (?a != ?b)
+    }
+  """ .
+
+iso:CompletenessShape a sh:NodeShape ; sh:targetClass iso:IsotopeStructure ;
+  sh:sparql iso:CompleteMembersConstraint, iso:CompleteShellCoverageConstraint,
+    iso:CompleteJunctionCoverageConstraint, iso:CompletePortCoverageConstraint .
+iso:CompleteMembersConstraint a sh:SPARQLConstraint ;
+  sh:message "A complete combinatorial record requires nonempty vertex, edge, arrow, cell, shell and junction inventories." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:profile iso:CompleteStructureProfile .
+      FILTER (NOT EXISTS { $this iso:vertex ?v } || NOT EXISTS { $this iso:edge ?e }
+        || NOT EXISTS { $this iso:arrow ?a } || NOT EXISTS { $this iso:cell ?c }
+        || NOT EXISTS { $this iso:shell ?s } || NOT EXISTS { $this iso:junction ?j })
+    }
+  """ .
+iso:CompleteShellCoverageConstraint a sh:SPARQLConstraint ;
+  sh:message "Every cell and every declared electron in a complete record must belong to a shell." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this ?value WHERE {
+      $this iso:profile iso:CompleteStructureProfile .
+      { $this iso:cell ?value . FILTER NOT EXISTS { $this iso:shell/iso:cell ?value } }
+      UNION { $this iso:electronicState/iso:electron ?value . FILTER NOT EXISTS { $this iso:shell/iso:electron ?value } }
+    }
+  """ .
+iso:CompleteJunctionCoverageConstraint a sh:SPARQLConstraint ;
+  sh:message "Every vertex in a complete record must have its junction frame." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this ?value WHERE {
+      $this iso:profile iso:CompleteStructureProfile ; iso:vertex ?value .
+      FILTER NOT EXISTS { $this iso:junction/iso:vertex ?value }
+    }
+  """ .
+iso:CompletePortCoverageConstraint a sh:SPARQLConstraint ;
+  sh:message "Every edge end occurrence in a complete record must have a junction port, including both ends of a loop." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this ?value WHERE {
+      $this iso:profile iso:CompleteStructureProfile ; iso:edge ?value .
+      { ?value iso:end0 ?v . BIND (0 AS ?i) } UNION { ?value iso:end1 ?v . BIND (1 AS ?i) }
+      FILTER NOT EXISTS {
+        $this iso:junction ?j . ?j iso:vertex ?v ; iso:port ?p . ?p iso:edge ?value ; iso:endIndex ?i .
+      }
+    }
+  """ .

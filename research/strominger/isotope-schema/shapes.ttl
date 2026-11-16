@@ -1,0 +1,155 @@
+@prefix iso: <urn:marici:isotope:> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Each concrete record is closed. Shared provenance is checked separately,
+# not exempted from validation by the ignoredProperties lists.
+iso:ProvenanceShape a sh:NodeShape ;
+  sh:targetClass iso:IsotopeStructure, iso:Nucleus, iso:ElectronicState,
+    iso:Proton, iso:Neutron, iso:Electron, iso:Vertex, iso:Edge,
+    iso:Arrow, iso:Witness, iso:Interpretation, iso:Path, iso:PathStep,
+    iso:Boundary, iso:BoundaryStep, iso:Cell, iso:Shell, iso:Junction, iso:Port, iso:ReaderState, iso:ReaderTransition ;
+  sh:nodeKind sh:IRI ;
+  sh:property [ sh:path iso:source ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:nodeKind sh:IRI ; sh:class iso:Source ] .
+
+iso:SourceShape a sh:NodeShape ; sh:targetClass iso:Source ;
+  sh:nodeKind sh:IRI ; sh:closed true ; sh:ignoredProperties (rdf:type) ;
+  sh:property [ sh:path iso:sourceKind ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:in ("fixture" "operator-input" "derived-input") ] ;
+  sh:property [ sh:path iso:reference ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:datatype xsd:string ; sh:minLength 1 ] ;
+  sh:property [ sh:path iso:description ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:datatype xsd:string ; sh:minLength 1 ] ;
+  sh:property [ sh:path iso:inputArtifact ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:InputArtifact ] ;
+  sh:property [ sh:path iso:dependencyArtifact ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:InputArtifact ] ;
+  sh:property [ sh:path iso:operation ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ;
+  sh:property [ sh:path iso:recordKey ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ] ;
+  sh:property [ sh:path iso:outputStructure ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:IsotopeStructure ] .
+
+iso:ParticleShape a sh:NodeShape ;
+  sh:targetClass iso:Proton, iso:Neutron, iso:Electron ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:xone ( [ sh:class iso:Proton ] [ sh:class iso:Neutron ] [ sh:class iso:Electron ] ) ;
+  sh:not [ sh:or ( [ sh:class iso:Vertex ] [ sh:class iso:Edge ]
+    [ sh:class iso:Arrow ] [ sh:class iso:Witness ] [ sh:class iso:Path ]
+    [ sh:class iso:PathStep ] [ sh:class iso:Boundary ] [ sh:class iso:BoundaryStep ]
+    [ sh:class iso:Cell ] [ sh:class iso:Shell ] [ sh:class iso:Junction ] [ sh:class iso:Port ] ) ] .
+
+iso:NucleusShape a sh:NodeShape ; sh:targetClass iso:Nucleus ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:proton ; sh:minCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Proton ] ;
+  sh:property [ sh:path iso:neutron ; sh:nodeKind sh:IRI ; sh:class iso:Neutron ] .
+
+iso:ElectronicStateShape a sh:NodeShape ; sh:targetClass iso:ElectronicState ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:electron ; sh:nodeKind sh:IRI ; sh:class iso:Electron ] .
+
+iso:VertexShape a sh:NodeShape ; sh:targetClass iso:Vertex ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) .
+
+iso:EdgeShape a sh:NodeShape ; sh:targetClass iso:Edge ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:end0 ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Vertex ] ;
+  sh:property [ sh:path iso:end1 ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Vertex ] .
+
+iso:ArrowShape a sh:NodeShape ; sh:targetClass iso:Arrow ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:not [ sh:class iso:Witness ] ;
+  sh:property [ sh:path iso:support ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Edge ] ;
+  sh:property [ sh:path iso:from ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Vertex ] ;
+  sh:property [ sh:path iso:to ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Vertex ] ;
+  sh:property [ sh:path iso:color ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ("red" "blue" "green") ] ;
+  sh:sparql iso:ArrowSupportEndpointsConstraint .
+
+iso:ArrowSupportEndpointsConstraint a sh:SPARQLConstraint ;
+  sh:message "Arrow endpoints must match its undirected support, in either order." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:support ?edge ; iso:from ?from ; iso:to ?to .
+      ?edge iso:end0 ?a ; iso:end1 ?b .
+      FILTER (!((?from = ?a && ?to = ?b) || (?from = ?b && ?to = ?a)))
+    }
+  """ .
+
+iso:WitnessShape a sh:NodeShape ; sh:targetClass iso:Witness ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:not [ sh:class iso:Arrow ] ;
+  sh:property [ sh:path iso:witnessKind ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:in (iso:BoundaryDeclaration iso:FillingDeclaration iso:ComparisonDeclaration) ] ;
+  sh:property [ sh:path iso:status ; sh:minCount 1 ; sh:maxCount 1 ; sh:hasValue iso:Declared ] ;
+  sh:property [ sh:path iso:description ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ] ;
+  sh:property [ sh:path iso:boundary ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Boundary ] ;
+  sh:property [ sh:path iso:cell ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Cell ] ;
+  sh:property [ sh:path iso:left ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Path ] ;
+  sh:property [ sh:path iso:right ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Path ] ;
+  sh:sparql iso:WitnessPayloadConstraint, iso:FillingSubjectConstraint, iso:ComparisonEndpointsConstraint .
+
+iso:InterpretationShape a sh:NodeShape ; sh:targetClass iso:Interpretation ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:particle ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+    sh:xone ( [ sh:class iso:Proton ] [ sh:class iso:Neutron ] [ sh:class iso:Electron ] ) ] ;
+  sh:property [ sh:path iso:role ; sh:minCount 1 ; sh:nodeKind sh:IRI ;
+    sh:or ( [ sh:class iso:Vertex ] [ sh:class iso:Edge ] [ sh:class iso:Arrow ] [ sh:class iso:Witness ]
+      [ sh:class iso:Path ] [ sh:class iso:Boundary ] [ sh:class iso:Cell ]
+      [ sh:class iso:Shell ] [ sh:class iso:Junction ] [ sh:class iso:ReaderState ] ) ] .
+
+iso:StructureShape a sh:NodeShape ; sh:targetClass iso:IsotopeStructure ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:isotopeName ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ] ;
+  sh:property [ sh:path iso:profile ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:in (iso:InventoryProfile iso:PartialStructureProfile iso:CompleteStructureProfile) ] ;
+  sh:property [ sh:path iso:bindingScope ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:in (iso:NoBindings iso:PartialBindings iso:TotalBindings) ] ;
+  sh:property [ sh:path iso:nucleus ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Nucleus ] ;
+  sh:property [ sh:path iso:electronicState ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:ElectronicState ] ;
+  sh:property [ sh:path iso:vertex ; sh:nodeKind sh:IRI ; sh:class iso:Vertex ] ;
+  sh:property [ sh:path iso:edge ; sh:nodeKind sh:IRI ; sh:class iso:Edge ] ;
+  sh:property [ sh:path iso:arrow ; sh:nodeKind sh:IRI ; sh:class iso:Arrow ] ;
+  sh:property [ sh:path iso:witness ; sh:nodeKind sh:IRI ; sh:class iso:Witness ] ;
+  sh:property [ sh:path iso:path ; sh:nodeKind sh:IRI ; sh:class iso:Path ] ;
+  sh:property [ sh:path iso:boundary ; sh:nodeKind sh:IRI ; sh:class iso:Boundary ] ;
+  sh:property [ sh:path iso:cell ; sh:nodeKind sh:IRI ; sh:class iso:Cell ] ;
+  sh:property [ sh:path iso:shell ; sh:nodeKind sh:IRI ; sh:class iso:Shell ] ;
+  sh:property [ sh:path iso:junction ; sh:nodeKind sh:IRI ; sh:class iso:Junction ] ;
+  sh:property [ sh:path iso:readerState ; sh:nodeKind sh:IRI ; sh:class iso:ReaderState ] ;
+  sh:property [ sh:path iso:readerTransition ; sh:nodeKind sh:IRI ; sh:class iso:ReaderTransition ] ;
+  sh:property [ sh:path iso:interpretation ; sh:nodeKind sh:IRI ; sh:class iso:Interpretation ] ;
+  sh:sparql iso:EdgeVertexMembershipConstraint,
+    iso:ArrowSupportMembershipConstraint, iso:InterpretationMembershipConstraint .
+
+iso:EdgeVertexMembershipConstraint a sh:SPARQLConstraint ;
+  sh:message "Every edge endpoint must belong to this structure's vertex inventory." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:edge ?edge . ?edge (iso:end0|iso:end1) ?vertex .
+      FILTER NOT EXISTS { $this iso:vertex ?vertex }
+    }
+  """ .
+
+iso:ArrowSupportMembershipConstraint a sh:SPARQLConstraint ;
+  sh:message "Every arrow support must belong to this structure's edge inventory." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:arrow ?arrow . ?arrow iso:support ?edge .
+      FILTER NOT EXISTS { $this iso:edge ?edge }
+    }
+  """ .
+
+iso:InterpretationMembershipConstraint a sh:SPARQLConstraint ;
+  sh:message "An interpretation must reference a constituent and role belonging to this structure." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:interpretation ?interpretation .
+      ?interpretation iso:particle ?particle ; iso:role ?role .
+      FILTER (
+        NOT EXISTS { $this (iso:nucleus/iso:proton|iso:nucleus/iso:neutron|iso:electronicState/iso:electron) ?particle }
+        || NOT EXISTS { $this (iso:vertex|iso:edge|iso:arrow|iso:witness|iso:path|iso:boundary|iso:cell|iso:shell|iso:junction|iso:readerState) ?role }
+      )
+    }
+  """ .

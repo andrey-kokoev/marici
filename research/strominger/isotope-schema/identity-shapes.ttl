@@ -1,0 +1,35 @@
+@prefix iso: <urn:marici:isotope:> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# Each concrete record has exactly one explicit record type and one effective
+# record classification. Extra annotation types are permitted only when they
+# do not create another record classification through RDFS subclass links.
+# Inherited class membership alone cannot bypass explicit application readers.
+iso:RecordIdentityShape a sh:NodeShape ;
+  sh:targetClass iso:IsotopeStructure, iso:Nucleus, iso:ElectronicState,
+    iso:Proton, iso:Neutron, iso:Electron, iso:Vertex, iso:Edge, iso:Arrow,
+    iso:Witness, iso:Interpretation, iso:Source, iso:InputArtifact,
+    iso:Path, iso:PathStep, iso:Boundary, iso:BoundaryStep, iso:Cell,
+    iso:Shell, iso:Junction, iso:Port, iso:ReaderState, iso:ReaderTransition ;
+  sh:property [
+    sh:path rdf:type ;
+    sh:qualifiedValueShape [ sh:in (
+      iso:IsotopeStructure iso:Nucleus iso:ElectronicState
+      iso:Proton iso:Neutron iso:Electron iso:Vertex iso:Edge iso:Arrow
+      iso:Witness iso:Interpretation iso:Source iso:InputArtifact
+      iso:Path iso:PathStep iso:Boundary iso:BoundaryStep iso:Cell
+      iso:Shell iso:Junction iso:Port iso:ReaderState iso:ReaderTransition
+    ) ] ;
+    sh:qualifiedMinCount 1 ; sh:qualifiedMaxCount 1
+  ] ;
+  sh:xone (
+    [ sh:class iso:IsotopeStructure ] [ sh:class iso:Nucleus ] [ sh:class iso:ElectronicState ]
+    [ sh:class iso:Proton ] [ sh:class iso:Neutron ] [ sh:class iso:Electron ]
+    [ sh:class iso:Vertex ] [ sh:class iso:Edge ] [ sh:class iso:Arrow ]
+    [ sh:class iso:Witness ] [ sh:class iso:Interpretation ] [ sh:class iso:Source ]
+    [ sh:class iso:InputArtifact ] [ sh:class iso:Path ] [ sh:class iso:PathStep ]
+    [ sh:class iso:Boundary ] [ sh:class iso:BoundaryStep ] [ sh:class iso:Cell ]
+    [ sh:class iso:Shell ] [ sh:class iso:Junction ] [ sh:class iso:Port ]
+    [ sh:class iso:ReaderState ] [ sh:class iso:ReaderTransition ]
+  ) .

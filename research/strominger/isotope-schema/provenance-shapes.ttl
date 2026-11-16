@@ -1,0 +1,31 @@
+@prefix iso: <urn:marici:isotope:> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+iso:ArtifactShape a sh:NodeShape ; sh:targetClass iso:InputArtifact ;
+  sh:nodeKind sh:IRI ; sh:closed true ; sh:ignoredProperties (rdf:type) ;
+  sh:property [ sh:path iso:artifactPath ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ] ;
+  sh:property [ sh:path iso:sha256 ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9a-f]{64}$" ] .
+
+iso:SourcePayloadShape a sh:NodeShape ; sh:targetClass iso:Source ;
+  sh:sparql iso:SourceDerivationPayloadConstraint .
+iso:SourceDerivationPayloadConstraint a sh:SPARQLConstraint ;
+  sh:message "A derived-input source requires an input artifact, operation, record selector and output; attribution-only sources cannot carry derivation fields." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:sourceKind ?kind .
+      FILTER (
+        (?kind = "derived-input" && NOT EXISTS {
+          $this iso:inputArtifact ?input ; iso:operation ?operation ; iso:recordKey ?key ; iso:outputStructure ?output
+        })
+        || (?kind != "derived-input" && EXISTS {
+          $this (iso:inputArtifact|iso:dependencyArtifact|iso:operation|iso:recordKey|iso:outputStructure) ?value
+        })
+      )
+    }
+  """ .
+
+# Filesystem resolution, digest verification and operation replay are an
+# explicit application validation stage in provenance.py, not SHACL inference.

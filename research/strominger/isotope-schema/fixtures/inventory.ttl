@@ -1,0 +1,12 @@
+@prefix iso: <urn:marici:isotope:> .
+@prefix ex: <urn:marici:isotope-fixture:> .
+
+# Inventory-only synthetic fixture, not a structural model.
+ex:source a iso:Source ; iso:sourceKind "fixture" ;
+  iso:reference "research/strominger/isotope-schema/fixtures/inventory.ttl" ;
+  iso:description "One-proton inventory with unspecified electronic state; no diagram is supplied." .
+ex:structure a iso:IsotopeStructure ; iso:source ex:source ;
+  iso:profile iso:InventoryProfile ; iso:bindingScope iso:NoBindings ;
+  iso:nucleus ex:nucleus .
+ex:nucleus a iso:Nucleus ; iso:source ex:source ; iso:proton ex:p .
+ex:p a iso:Proton ; iso:source ex:source .

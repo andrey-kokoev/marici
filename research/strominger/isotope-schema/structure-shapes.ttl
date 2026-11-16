@@ -1,0 +1,198 @@
+@prefix iso: <urn:marici:isotope:> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+iso:SequenceShape a sh:NodeShape ; sh:targetClass iso:Path, iso:Boundary ;
+  sh:sparql iso:UniqueStepIndexConstraint, iso:ConsecutiveStepIndexConstraint .
+iso:UniqueStepIndexConstraint a sh:SPARQLConstraint ;
+  sh:message "Different step occurrences cannot have the same index." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:step ?a, ?b . ?a iso:index ?i . ?b iso:index ?j .
+      FILTER (?a != ?b && ?i = ?j)
+    }
+  """ .
+iso:ConsecutiveStepIndexConstraint a sh:SPARQLConstraint ;
+  sh:message "Indices must be consecutive from zero; a positive index requires its predecessor." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:step ?step . ?step iso:index ?i . FILTER (?i > 0)
+      FILTER NOT EXISTS { $this iso:step ?previous . ?previous iso:index ?j . FILTER (?j = ?i - 1) }
+    }
+  """ .
+
+iso:PathShape a sh:NodeShape ; sh:targetClass iso:Path ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:from ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Vertex ] ;
+  sh:property [ sh:path iso:to ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Vertex ] ;
+  sh:property [ sh:path iso:step ; sh:nodeKind sh:IRI ; sh:class iso:PathStep ] ;
+  sh:sparql iso:PathOwnerConstraint, iso:EmptyPathConstraint, iso:PathEndpointsConstraint, iso:PathCompositionConstraint .
+iso:PathStepShape a sh:NodeShape ; sh:targetClass iso:PathStep ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:inPath ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Path ] ;
+  sh:property [ sh:path iso:index ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ] ;
+  sh:property [ sh:path iso:arrow ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Arrow ] ;
+  sh:sparql iso:PathStepMembershipConstraint .
+iso:PathOwnerConstraint a sh:SPARQLConstraint ;
+  sh:message "Every path step must explicitly belong to that path." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE { $this iso:step ?s . FILTER NOT EXISTS { ?s iso:inPath $this } }
+  """ .
+iso:PathStepMembershipConstraint a sh:SPARQLConstraint ;
+  sh:message "A path step's owner must list that occurrence." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE { $this iso:inPath ?p . FILTER NOT EXISTS { ?p iso:step $this } }
+  """ .
+iso:EmptyPathConstraint a sh:SPARQLConstraint ;
+  sh:message "An empty path is an identity and must have equal endpoints." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:from ?a ; iso:to ?b . FILTER (?a != ?b)
+      FILTER NOT EXISTS { $this iso:step ?step }
+    }
+  """ .
+iso:PathEndpointsConstraint a sh:SPARQLConstraint ;
+  sh:message "First and last arrows must agree with the path's declared endpoints." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:from ?start ; iso:to ?end ; iso:step ?s .
+      ?s iso:index ?i ; iso:arrow ?arrow . ?arrow iso:from ?a ; iso:to ?b .
+      FILTER ((?i = 0 && ?a != ?start) ||
+        (?b != ?end && NOT EXISTS { $this iso:step ?t . ?t iso:index ?j . FILTER (?j > ?i) }))
+    }
+  """ .
+iso:PathCompositionConstraint a sh:SPARQLConstraint ;
+  sh:message "Consecutive directed arrows must compose." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:step ?a, ?b . ?a iso:index ?i ; iso:arrow/iso:to ?end .
+      ?b iso:index ?j ; iso:arrow/iso:from ?start .
+      FILTER (?j = ?i + 1 && ?end != ?start)
+    }
+  """ .
+
+iso:BoundaryShape a sh:NodeShape ; sh:targetClass iso:Boundary ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:base ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Vertex ] ;
+  sh:property [ sh:path iso:step ; sh:nodeKind sh:IRI ; sh:class iso:BoundaryStep ] ;
+  sh:sparql iso:BoundaryOwnerConstraint, iso:BoundaryClosureConstraint, iso:BoundaryCompositionConstraint .
+iso:BoundaryStepShape a sh:NodeShape ; sh:targetClass iso:BoundaryStep ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:inBoundary ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Boundary ] ;
+  sh:property [ sh:path iso:index ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ] ;
+  sh:property [ sh:path iso:edge ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Edge ] ;
+  sh:property [ sh:path iso:reversed ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:boolean ] ;
+  sh:sparql iso:BoundaryStepMembershipConstraint .
+iso:BoundaryOwnerConstraint a sh:SPARQLConstraint ;
+  sh:message "Every boundary step must explicitly belong to that boundary." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE { $this iso:step ?s . FILTER NOT EXISTS { ?s iso:inBoundary $this } }
+  """ .
+iso:BoundaryStepMembershipConstraint a sh:SPARQLConstraint ;
+  sh:message "A boundary step's owner must list that occurrence." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE { $this iso:inBoundary ?b . FILTER NOT EXISTS { ?b iso:step $this } }
+  """ .
+iso:BoundaryClosureConstraint a sh:SPARQLConstraint ;
+  sh:message "The first oriented edge starts and the last ends at the boundary base." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:base ?base ; iso:step ?s . ?s iso:index ?i ; iso:edge ?edge ; iso:reversed ?reverse .
+      ?edge iso:end0 ?a ; iso:end1 ?b .
+      BIND (IF(?reverse, ?b, ?a) AS ?start) BIND (IF(?reverse, ?a, ?b) AS ?end)
+      FILTER ((?i = 0 && ?start != ?base) ||
+        (?end != ?base && NOT EXISTS { $this iso:step ?t . ?t iso:index ?j . FILTER (?j > ?i) }))
+    }
+  """ .
+iso:BoundaryCompositionConstraint a sh:SPARQLConstraint ;
+  sh:message "Consecutive oriented boundary edges must compose." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:step ?a, ?b .
+      ?a iso:index ?i ; iso:edge ?ea ; iso:reversed ?ra . ?ea iso:end0 ?a0 ; iso:end1 ?a1 .
+      ?b iso:index ?j ; iso:edge ?eb ; iso:reversed ?rb . ?eb iso:end0 ?b0 ; iso:end1 ?b1 .
+      FILTER (?j = ?i + 1 && IF(?ra, ?a0, ?a1) != IF(?rb, ?b1, ?b0))
+    }
+  """ .
+
+iso:CellShape a sh:NodeShape ; sh:targetClass iso:Cell ;
+  sh:closed true ; sh:ignoredProperties (rdf:type iso:source) ;
+  sh:property [ sh:path iso:boundary ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Boundary ] ;
+  sh:property [ sh:path iso:filling ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ; sh:class iso:Witness ] ;
+  sh:sparql iso:CellFillingConstraint .
+iso:CellFillingConstraint a sh:SPARQLConstraint ;
+  sh:message "A cell's filling must name that cell and the same boundary." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:boundary ?b ; iso:filling ?w .
+      FILTER NOT EXISTS { ?w iso:witnessKind iso:FillingDeclaration ; iso:cell $this ; iso:boundary ?b }
+    }
+  """ .
+
+iso:WitnessPayloadConstraint a sh:SPARQLConstraint ;
+  sh:message "Witness kind determines its required payload and excludes unrelated payload fields." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:witnessKind ?kind .
+      FILTER (
+        (?kind = iso:BoundaryDeclaration && (
+          NOT EXISTS { $this iso:boundary ?b } || EXISTS { $this (iso:cell|iso:left|iso:right) ?extra }))
+        || (?kind = iso:FillingDeclaration && (
+          NOT EXISTS { $this iso:cell ?c ; iso:boundary ?b } || EXISTS { $this (iso:left|iso:right) ?extra }))
+        || (?kind = iso:ComparisonDeclaration && (
+          NOT EXISTS { $this iso:left ?l ; iso:right ?r } || EXISTS { $this (iso:cell|iso:boundary) ?extra }))
+      )
+    }
+  """ .
+iso:FillingSubjectConstraint a sh:SPARQLConstraint ;
+  sh:message "A filling declaration must agree with its cell's boundary and filling reference." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:witnessKind iso:FillingDeclaration ; iso:cell ?c ; iso:boundary ?b .
+      FILTER NOT EXISTS { ?c iso:boundary ?b ; iso:filling $this }
+    }
+  """ .
+iso:ComparisonEndpointsConstraint a sh:SPARQLConstraint ;
+  sh:message "Compared paths must have the same source and target; this is not proof of equivalence." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this WHERE {
+      $this iso:witnessKind iso:ComparisonDeclaration ; iso:left ?left ; iso:right ?right .
+      ?left iso:from ?a ; iso:to ?b . ?right iso:from ?c ; iso:to ?d .
+      FILTER (?a != ?c || ?b != ?d)
+    }
+  """ .
+
+iso:StructuralMembershipShape a sh:NodeShape ; sh:targetClass iso:IsotopeStructure ;
+  sh:sparql iso:StructuralMembershipConstraint .
+iso:StructuralMembershipConstraint a sh:SPARQLConstraint ;
+  sh:message "Every nested structural reference must belong to the containing structure." ;
+  sh:select """
+    PREFIX iso: <urn:marici:isotope:>
+    SELECT $this ?value WHERE {
+      { $this iso:path ?p . ?p (iso:from|iso:to) ?value . FILTER NOT EXISTS { $this iso:vertex ?value } }
+      UNION { $this iso:path ?p . ?p iso:step/iso:arrow ?value . FILTER NOT EXISTS { $this iso:arrow ?value } }
+      UNION { $this iso:boundary ?b . ?b iso:base ?value . FILTER NOT EXISTS { $this iso:vertex ?value } }
+      UNION { $this iso:boundary ?b . ?b iso:step/iso:edge ?value . FILTER NOT EXISTS { $this iso:edge ?value } }
+      UNION { $this iso:cell ?c . ?c iso:boundary ?value . FILTER NOT EXISTS { $this iso:boundary ?value } }
+      UNION { $this iso:cell ?c . ?c iso:filling ?value . FILTER NOT EXISTS { $this iso:witness ?value } }
+      UNION { $this iso:witness ?w . ?w iso:boundary ?value . FILTER NOT EXISTS { $this iso:boundary ?value } }
+      UNION { $this iso:witness ?w . ?w iso:cell ?value . FILTER NOT EXISTS { $this iso:cell ?value } }
+      UNION { $this iso:witness ?w . ?w (iso:left|iso:right) ?value . FILTER NOT EXISTS { $this iso:path ?value } }
+    }
+  """ .
