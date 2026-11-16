@@ -1,0 +1,23 @@
+{
+  "$schema": "../../aspect/scc/model-manifest.schema.json",
+  "schema": "marici.scc.model-manifest.v1",
+  "model": {
+    "id": "ne20-morse-surface",
+    "owner": "marici.Strominger",
+    "classification": "forward_ribbon_surface_realization_not_physical_readout",
+    "stratum": "Bundled revision-20 Ne-20 incidence and its fixed authored clockwise rotation, with untwisted orientable bands. The rotation is constant within its noncoincident tangent-order chamber; colors and arrows are annotations. Other rotation systems are separate surface realizations, including the checked planar alternative.",
+    "inputs": [
+      "apps/isotope-wiring/src/examples/neon20.ts",
+      "apps/isotope-wiring/src/domain/morse-surface.ts",
+      "apps/isotope-wiring/src/schemas/morse-surface.ts",
+      "apps/isotope-wiring/MORSE_SURFACE.md",
+      "research/strominger/results/ne20-morse-surface.json"
+    ],
+    "checks": [{"id": "ne20-morse-independent", "path": "research/strominger/checkers/check_ne20_morse_surface.py", "requires": []}],
+    "depends_on": [],
+    "consumes": ["authored graph incidence and outgoing polyline tangents"],
+    "provides": ["typed half-edge involution and disk rotations", "boundary permutation and surface classification", "Morse handle critical-level data", "forest contraction to ten minima and twenty-four saddles with boundary words and vertex provenance preserved"],
+    "missing_constructors": ["numerical smooth atlas and gradient metric if a rendered differentiable surface is requested", "source-derived relation between colored traversal and Morse gradient"],
+    "next_falsifier": "Compare exact boundary permutations independently, including contraction by skipping removed ports; reject false genus, missing half-edges, altered rotation and lost minimum provenance. Retain the loop and three parallel bands created by contracting 8/9. Rebuild the v2 TypeScript receipt after source changes before rerunning the independent check."
+  }
+}
