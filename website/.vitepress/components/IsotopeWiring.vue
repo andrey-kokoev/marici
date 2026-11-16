@@ -8,7 +8,16 @@ const { isDark } = useData()
 const tokens = ['--vp-c-text-1', '--vp-c-text-2', '--vp-c-divider', '--vp-c-bg',
   '--vp-c-bg-soft', '--vp-c-default-soft', '--vp-c-brand-1', '--vp-c-brand-2',
   '--vp-c-brand-soft', '--vp-font-family-base']
-let pending
+let pending, editorWindow
+function focusEditor() {
+  frame.value?.scrollIntoView({ block: 'start', behavior: 'instant' })
+}
+function connectEditor() {
+  syncTheme()
+  editorWindow?.removeEventListener('isotope-editor-focus', focusEditor)
+  editorWindow = frame.value?.contentWindow
+  editorWindow?.addEventListener('isotope-editor-focus', focusEditor)
+}
 function syncTheme() {
   const root = frame.value?.contentDocument?.documentElement
   if (!root) return
@@ -20,17 +29,21 @@ watch(isDark, () => {
   cancelAnimationFrame(pending)
   pending = requestAnimationFrame(syncTheme)
 }, { flush: 'post' })
-onBeforeUnmount(() => cancelAnimationFrame(pending))
+onBeforeUnmount(() => {
+  cancelAnimationFrame(pending)
+  editorWindow?.removeEventListener('isotope-editor-focus', focusEditor)
+})
 </script>
 
 <template>
   <iframe ref="frame" class="isotope-wiring" title="Isotope wiring editor"
-    :srcdoc="source" @load="syncTheme" />
+    :srcdoc="source" @load="connectEditor" />
 </template>
 
 <style scoped>
 .isotope-wiring {
   display: block;
+  scroll-margin-top: 80px;
   width: 100%;
   height: max(640px, calc(100dvh - 200px));
   border: 1px solid var(--vp-c-divider);

@@ -18,15 +18,17 @@ test('host surfaces validation/export limitations before the embedded editor', (
   assert(limits.includes('/experiments/isotope-wiring'))
 })
 
-test('legacy failures are described as unresolved, not hidden by a passing graph check', () => {
-  for (const phrase of ['identity delta', 'base-only metadata', '(1,10)', '(11,0)', 'mutable base', 'graph projection', 'TODO failures are not passes']) assert(limits.includes(phrase), phrase)
+test('repaired legacy cases remain distinct from unresolved whole-definition persistence guarantees', () => {
+  for (const phrase of ['identity delta', 'remove-metadata', 'shell sizes 1–20', 'mutable base', 'Graph records replay checked', '14 passing checks with no TODOs']) assert(limits.includes(phrase), phrase)
   assert(limits.includes('absolute definitions'))
 })
 
-test('independent machinery milestones are not advertised as integrated editor functionality', () => {
-  for (const phrase of ['not connected to the visualization', 'pending local development', 'finite-incidence', 'attributed adapter', 'model predicates', 'ground rewrites', 'before-image', 'selective evidence transport', 'not a formal proof']) assert(limits.includes(phrase), phrase)
+test('embedded structural checks are not advertised as full revision machinery or physical acceptance', () => {
+  for (const phrase of ['same embedded structural adapter', 'pending local development', 'finite-incidence', 'attributed adapter', 'core/model-predicates.mjs', 'ground rewrites', 'before-image', 'selective evidence transport', 'not a formal proof', 'Browser autosave and legacy delta compilation do not use this revision engine']) assert(limits.includes(phrase), phrase)
   assert.match(wrapper, /isotope-wiring\/index\.html\?raw/)
-  assert.doesNotMatch(editor, /(?:finite-diagrams|legacy-adapter|model-predicates|revisions)\.mjs/)
+  assert(editor.includes('<!-- isotope-research-core:start -->'))
+  assert(editor.includes('IsotopeWiringResearch'))
+  assert.doesNotMatch(editor, /(?:import|src=)[^\n]*(?:model-predicates|revisions)\.mjs/)
 })
 
 test('software validation is kept distinct from model completion and physical acceptance', () => {

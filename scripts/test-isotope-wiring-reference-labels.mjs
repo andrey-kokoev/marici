@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {expect} from '@playwright/test';
+import {launchBrowser,newBrowserPage} from './isotope-browser.mjs';
+const browser=await launchBrowser();
+try{
+ const page=await newBrowserPage(browser,{offline:true,viewport:{width:1100,height:850}}),errors=[];
+ page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(new URL('../examples/isotope-wiring/index.html',import.meta.url).href);
+ const choose=async id=>{if(!await page.locator('#catalog').isVisible())await page.locator('#catalog-toggle').click();await page.locator('#catalog-search').fill(id);await page.locator(`#isotopes button[data-id="${id}"]`).click();await page.locator('#catalog-close').click();};
+ const settings=async()=>{if(!await page.locator('#reference-label-popover').isVisible())await page.locator('#view-kind [data-reference-settings]').click();};
+ await choose('Li6');await expect(page.locator('#view-kind [data-property="nuclear_stability"]')).toHaveText('Nuclear stability: Stable');
+ await expect(page.locator('#view-kind [data-property="natural_abundance_percent"]')).toHaveCount(0);
+ const heading=page.locator('#view-kind [data-reference-settings]'),normalColor=await heading.evaluate(e=>getComputedStyle(e).color);await heading.hover();assert.notEqual(await heading.evaluate(e=>getComputedStyle(e).color),normalColor);await expect(heading).toHaveCSS('border-bottom-style','dotted');await expect(page.locator('#settings-menu #reference-label-settings')).toHaveCount(0);
+ await settings();await page.locator('[data-reference-label="natural_abundance_percent"]').check();await page.locator('[data-reference-label="electron_shells"]').check();await page.locator('[data-reference-label="nucleon_counts"]').check();await page.getByRole('button',{name:'Close reference settings'}).click();
+ await expect(page.locator('#view-kind [data-property="natural_abundance_percent"]')).toHaveText('Natural abundance (%): 7.59');
+ await expect(page.locator('#view-kind [data-property="electron_shells"]')).toHaveText('Reference electron shells: 2 · 1 · — · — · — · —');
+ await expect(page.locator('#view-kind [data-property="nucleon_counts"]')).toHaveText('Reference P / N: 3 / 3');
+ await page.locator('#catalog-toggle').click();await page.locator('#pin-reference').click();await page.locator('#catalog-close').click();
+ await choose('Li7');await expect(page.locator('#view-kind [data-property="natural_abundance_percent"]')).toHaveText('Natural abundance (%): 92.41');await expect(page.locator('#reference-cards [data-property="natural_abundance_percent"]')).toHaveText('Natural abundance (%): 7.59');
+ await page.locator('#reference-cards [data-reference-settings]').click();await expect(page.locator('#reference-label-popover')).toBeVisible();await page.keyboard.press('Escape');await expect(page.locator('#reference-label-popover')).toBeHidden();
+ await page.reload();await expect(page.locator('#view-kind [data-property="natural_abundance_percent"]')).toHaveText('Natural abundance (%): 92.41');await expect(page.locator('#reference-cards [data-property="nucleon_counts"]')).toHaveText('Reference P / N: 3 / 3');
+ await page.locator('#file-menu > summary').click();const pending=page.waitForEvent('download');await page.locator('#export-canvas').click();const download=await pending,svg=await readFile(await download.path(),'utf8');assert(svg.includes('7.59')&&svg.includes('92.41')&&svg.includes('Reference · Nuclear stability: Stable'));assert(svg.includes('sourceSha256'));
+ await choose('Mg25');await expect(page.locator('#view-kind [data-property="nuclear_stability"]')).toHaveText('Nuclear stability: not available');await expect(page.locator('#view-kind [data-property="natural_abundance_percent"]')).toHaveText('Natural abundance (%): not available');
+ await settings();await page.locator('[data-reference-label="nuclear_stability"]').uncheck();await expect(page.locator('#canvas-scene [data-property="nuclear_stability"]')).toHaveCount(0);await page.getByRole('button',{name:'Close reference settings'}).click();
+ await page.setViewportSize({width:390,height:844});await choose('Li7');
+ await expect.poll(()=>page.locator('#canvas-scene').evaluate(scene=>[...scene.querySelectorAll('.focus-graph,.reference-card')].every(card=>{const head=card.querySelector('.diagram-meta,.reference-head'),svg=card.querySelector('svg.diagram');return !head||!svg||head.getBoundingClientRect().bottom<=svg.getBoundingClientRect().top;}))).toBe(true);
+ assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+ await settings();await expect(page.locator('[data-reference-label="natural_abundance_percent"]')).toBeVisible();await page.locator('#reference-data-sources > summary').click();await expect(page.locator('#reference-data-sources')).toContainText('uncertainties omitted');
+ const popup=await page.locator('#reference-label-popover').boundingBox();assert(popup.x>=0&&popup.x+popup.width<=390&&popup.y>=0&&popup.y+popup.height<=844);
+ await page.mouse.click(5,800);await expect(page.locator('#reference-label-popover')).toBeHidden();await settings();for(const input of await page.locator('#reference-label-settings input').all())await input.uncheck();await page.keyboard.press('Escape');await expect(page.locator('#canvas-scene .reference-property')).toHaveCount(0);const trigger=page.locator('#view-kind [data-reference-settings]');await expect(trigger).toBeVisible();await expect(trigger).toHaveCSS('border-bottom-style','dotted');await trigger.focus();await page.keyboard.press('Enter');await expect(page.locator('#reference-label-popover')).toBeVisible();await page.keyboard.press('Escape');await expect(trigger).toBeFocused();
+ const blocked=await newBrowserPage(browser,{offline:true,viewport:{width:1100,height:850}});blocked.on('pageerror',e=>errors.push(e.message));await blocked.addInitScript(()=>Object.defineProperty(window,'localStorage',{get(){throw new Error('Storage blocked');}}));await blocked.goto(new URL('../examples/isotope-wiring/index.html',import.meta.url).href);await expect(blocked.locator('#view-kind [data-property="nuclear_stability"]')).toHaveText('Nuclear stability: Stable');await blocked.locator('#view-kind [data-reference-settings]').click();await blocked.locator('[data-reference-label="natural_abundance_percent"]').check();await expect(blocked.locator('#view-kind [data-property="natural_abundance_percent"]')).toHaveText('Natural abundance (%): 99.757');await expect(blocked.locator('#toast')).toContainText('session-only');await blocked.close();
+ assert.deepEqual(errors,[]);console.log('PASS: offline FTS labels, settings persistence, references, missing data, export provenance, mobile layout, sources and blocked storage.');
+}finally{await browser.close();}

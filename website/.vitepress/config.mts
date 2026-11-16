@@ -1,5 +1,9 @@
 import { defineConfig } from 'vitepress'
 import { katex } from '@mdit/plugin-katex'
+import { prepareIsotopeWiringPublic } from '../../scripts/prepare-isotope-wiring-public.mjs'
+
+// Both direct VitePress builds and the normal site build publish the canonical editor.
+await prepareIsotopeWiringPublic()
 
 export default defineConfig({
   title: 'Marici',
