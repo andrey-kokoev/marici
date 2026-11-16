@@ -7,18 +7,23 @@ import http from 'node:http';
 import { prepareConjectureNets } from './prepare-conjecture-nets.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-await prepareConjectureNets(root,{check:true});
-const html=await fs.readFile(path.join(root,'website/public/experiments/conjecture-nets.html'));
+const development=process.argv.includes('--development');
+await prepareConjectureNets(root,{check:true,development});
+const output=path.join(root,development?'.ai/conjecture-nets/development':'website/public/experiments');
+const html=await fs.readFile(path.join(output,'conjecture-nets.html'));
+const catalog=JSON.parse(await fs.readFile(path.join(root,'src/conjecture-nets',development?'development-catalog.json':'catalog.json'),'utf8'));
+const peNet=development?JSON.parse(await fs.readFile(path.join(root,'research/strominger/contracts/persistent-seam-pe-conjecture-net.v1.json'),'utf8')):null;
+console.log(development?'Testing local development bundle, not public admission':'Testing public bundle; pending P/E development checks are not run');
 const server=http.createServer((req,res)=>{if(req.url.split('?')[0]==='/experiments/conjecture-nets.html'){res.setHeader('Content-Type','text/html; charset=utf-8');res.end(html);}else{res.statusCode=404;res.end();}});
 await new Promise(r=>server.listen(0,'127.0.0.1',r));
 let browser;
 try {
   browser=await chromium.launch({headless:true});
-  for (const [mode,url] of [['file',pathToFileURL(path.join(root,'website/public/experiments/conjecture-nets.html')).href],['http',`http://127.0.0.1:${server.address().port}/experiments/conjecture-nets.html`]]) {
+  for (const [mode,url] of [['file',pathToFileURL(path.join(output,'conjecture-nets.html')).href],['http',`http://127.0.0.1:${server.address().port}/experiments/conjecture-nets.html`]]) {
     const page=await browser.newPage({viewport:{width:1440,height:960},reducedMotion:'reduce'}),errors=[];
     page.on('pageerror',e=>errors.push(e.message));
     await page.goto(url);await page.locator('#graph .graph-node').first().waitFor();
-    assert.equal(await page.locator('#net-select option').count(),5);
+    assert.equal(await page.locator('#net-select option').count(),catalog.nets.length);
     assert.equal(await page.locator('#graph .graph-node').count(),7);
     assert.equal(await page.locator('#results').isVisible(),false);
     assert.equal(await page.locator('#drawer').getAttribute('aria-hidden'),'true');
@@ -56,6 +61,52 @@ try {
     await page.locator('#net-select').selectOption({label:'Proof-outcome net · local core'});
     assert.equal(await page.locator('.port').count(),72);assert.equal(await page.locator('.implication-edge').count(),7);assert.equal(await page.locator('.and-gate').count(),1);
     assert.match(await page.locator('#port-notice').innerText(),/5 declared implications. 2 non-outcome relations omitted/);
+    // Preserve the pending branch checks behind explicit development selection.
+    if(development){
+    // P/E interpretation stays open; source connections are visible but do not become proof arrows.
+    await page.locator('#net-select').selectOption('marici.persistent-seam-pe.v1');
+    assert.equal(await page.locator('.port').count(),4*peNet.conjectures.length);
+    assert.equal(await page.locator('.implication-edge:not(.dependency-edge)').count(),0);
+    await page.locator('#tab-dependencies').click();
+    assert.equal(await page.locator('#graph .graph-node').count(),peNet.conjectures.length);
+    await page.locator('.graph-node[data-id="persistent-seam-pe"]').click();
+    assert.equal(await page.locator('#details .badge').first().textContent(),'open');
+    assert.match(await page.locator('#details').innerText(),/Formal outcome: none recorded/);
+    assert.match(await page.locator('#details').innerText(),/Scoped cross-net connections \(not proof imports\)/);
+    assert.match(await page.locator('#details').innerText(),/identity-continuation-coherence/);
+    await page.reload();
+    assert.equal(await page.locator('#net-select').inputValue(),'marici.persistent-seam-pe.v1');
+    assert.equal(await page.locator('.graph-node.selected').getAttribute('data-id'),'persistent-seam-pe');
+    await page.locator('#close-details').click();
+    // Maintained frontier and the new conjecture must reach the bundled explorer.
+    await page.locator('#filter').selectOption('frontier');
+    assert.equal(await page.locator('.node-item').count(),peNet.frontier.length);
+    await page.locator(`.node-item[data-id="${peNet.recommended_start}"]`).click();
+    assert.match(await page.locator('#details').innerText(),/Declared frontier/);
+    assert.match(await page.locator('#details').innerText(),/Bind generated attachments/);
+    assert.equal(await page.locator('#details .badge').first().textContent(),'open');
+    await page.locator('#close-details').click();
+    await page.locator('#filter').selectOption('all');
+    await page.locator('#search').fill('single-channel-esd7-assembly');
+    await page.locator('.node-item[data-id="single-channel-esd7-assembly"]').click();
+    assert.match(await page.locator('#details').innerText(),/114 proposed record occurrences/);
+    assert.match(await page.locator('#details').innerText(),/Formal outcome: none recorded/);
+    await page.locator('#close-details').click();
+    await page.locator('#search').fill('');
+    const peDownloadPromise=page.waitForEvent('download');await page.locator('#download').click();
+    const peDownload=await peDownloadPromise;
+    const maintained=JSON.parse(await fs.readFile(await peDownload.path(),'utf8'));
+    assert.equal(maintained.revision,peNet.revision);
+    assert.equal(maintained.recommended_start,'esd7-channel-attachment-construction');
+    assert.equal(maintained.conjectures.find(n=>n.id==='channel-contract-and-first-assembly-step').status,'verified_conditional');
+    assert.equal(maintained.conjectures.find(n=>n.id==='channel-contract-and-first-assembly-step').full_esd7_established,false);
+    assert.equal(maintained.conjectures.find(n=>n.id==='assembler-as-global-evolution').proposal_origin,'assistant_synthesis');
+    await page.locator('.graph-node[data-id="existing-seed-context"]').click();
+    await page.getByRole('button',{name:/Open Arrow seeds & isotope atlas:/}).click();
+    assert.equal(await page.locator('#net-select').inputValue(),'scattering.seed-composition.research.v1');
+    await page.locator('#close-details').click();
+    }
+    await page.locator('#tab-ports').click();
     const fixture={id:'port-fixture',conjectures:['a','b','c','d','e'].map(id=>({id,title:'Conjecture '+id,depends_on:id==='d'?['a']:[]})),port_implications:[
       {id:'ab',from:{node:'a',port:'++'},to:{node:'b',port:'++'},weight:4},
       {id:'bc',from:{node:'b',port:'++'},to:{node:'c',port:'-+'},weight:1},

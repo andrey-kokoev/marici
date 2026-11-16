@@ -8,13 +8,19 @@ Interactive guides to declared geometry, retained information, and coefficient r
 
 **Choose a family:** [Packet primitive](#proposed-packet-primitive) · [Geometry and assembly](#geometry-and-assembly) · [Information and readouts](#information-and-readouts) · [Spinor comparisons](#spinor-comparisons) · [Products and closure](#products-and-closure) · [Retained-information research lab](#retained-information-research-lab) · [Static diagram](#diagrams-and-retained-records).
 
+**[Observed isotope reference](/experiments/isotope-reference)** — selected isotope shell populations, natural abundance and stability annotations, with NIST/ENSDF provenance. These are reference data, not output predicted by the construction models.
+
+## Construction workbench directory
+
+[Choose a workbench mode and read its evidence boundary](/experiments/construction-workbench): Be-8/Be-9 reference routes, retained expansion, cellulation, NNPE tree composition, hex strands, wiring and cutaways. The guide distinguishes slot permutations, internal passages, assigned inventory and conditional one-step continuation; none alone establishes nuclear stability.
+
 ## Viewer reference
 
 [Three.js reference viewer](/experiments/threejs-reference/index.html) — a small tetrahedron demonstrating local assets, keyboard controls, responsive sizing, paused-by-default motion and a static fallback. This is a developer example, not a scientific model. [Authoring guide](https://github.com/andrey-kokoev/marici/blob/main/docs/threejs-pages.md).
 
 ## Conjecture-net explorer
 
-[Open the conjecture-net web app](/experiments/conjecture-nets.html). Browse the seed/atlas, low-energy, core-bridge, high-energy and local-core proof-outcome nets, plus the [persistent-seam P/E conjecture](/experiments/conjecture-nets.html#net=marici.persistent-seam-pe.v1&tab=dependencies&node=persistent-seam-pe). Its conditional seam theorem and open protocol-selection claim remain distinct. Switch between dependency and D3 four-port implication graphs; inspect source records and directed reachability. The same generated HTML works offline, and accepts local JSON nets without uploading them. [Usage and source](https://github.com/andrey-kokoev/marici/blob/main/docs/conjecture-net-explorer.md).
+[Open the conjecture-net web app](/experiments/conjecture-nets.html). Browse the seed/atlas, low-energy, core-bridge, high-energy and local-core proof-outcome nets. Pending local additions, including the persistent-seam P/E net, are not advertised as bundled public selections until their source/pin closure is reviewed; local JSON import is separate from publication. Switch between dependency and D3 four-port implication graphs; inspect source records and directed reachability. The same generated HTML works offline, and accepts local JSON nets without uploading them. [Usage and source](https://github.com/andrey-kokoev/marici/blob/main/docs/conjecture-net-explorer.md).
 
 ## Proposed packet primitive
 
@@ -146,7 +152,21 @@ The lab selects recorded cases and evaluates the source's explicit finite rank/e
 - **One paw cycle:** four records remain fixed while supplied rotations and two completion paths add BD and CD. Axes, unit lengths, angles, and admission rules are inputs; playback is not physical time and the many-to-one stage is not an automatic quotient. [Source demo](https://github.com/andrey-kokoev/marici/blob/main/research/nima/demos/paw-cycle/index.html).
 - **Two-paw closure:** local admission gives 11 edges, global admission 15, on the same six vertices. Cross-paw lengths are not generally unit lengths. The two shown hulls and individual volumes do not give a filled K6 or a union volume. Replaying the animation is not a second closure cycle. [Source demo](https://github.com/andrey-kokoev/marici/blob/main/research/nima/demos/two-paws/index.html).
 
-All 3D guides require WebGL. The newer workbenches also require network access to their Three.js dependencies; the three retained-product/paw demos bundle their dependencies and license locally. The observatory retains its numerical experiment if its 3D view is unavailable.
+## Runtime requirements
+
+WebGL availability and network access are separate requirements. Local assets must still be downloaded or retained together; saving one HTML file is not a complete offline bundle. Serve module-based bundles over local HTTP when offline rather than assuming every page supports `file://`.
+
+| Family | WebGL | Runtime assets and fallback |
+|---|---|---|
+| [Isotope reference table](/experiments/isotope-reference) | Not required | Self-contained HTML data and filtering; no runtime fetch or external script. Upstream provenance links require network access. |
+| Native-belt/cellulation workbench, tetrahedral planes and realization lattice | Required for the interactive 3D scene | Three.js/Vue assets are bundled locally; no external CDN is required by these published bundles. No static 3D fallback is promised for the native workbench. |
+| Three.js reference viewer and minimal-data packet | Required for interactive 3D, not the fallback | Local dependencies; retain the complete bundle. Their SVG/static fallback remains available without a WebGL scene. |
+| Retained-product and paw demos | Required for their 3D scenes | Vendor dependencies and licenses are local. Retain their supporting files for offline serving. |
+| Legacy geometry, receiver, fold, spinor and source-assembly pages | Required for 3D | Their import maps use an external Three.js CDN. Offline 3D is not promised without separately retaining/replacing those dependencies. |
+| Retained-direction observatory | Required only for its 3D view | The 3D module uses the CDN; the numerical experiment remains available when the scene cannot load. |
+| Research lab, conjecture-net explorer and static witness diagram | Not required | Retain their same-site scripts, snapshots or diagram assets. The lab's pinned JSON and the explorer's bundled data are different publication mechanisms. |
+
+External source/provenance links require network access independently of whether a local scene can render. [Workbench controls and scientific limits](/experiments/construction-workbench).
 
 ## Diagrams and retained records
 

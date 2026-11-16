@@ -13,6 +13,20 @@ A [Witness Generator](/theory/#witness-generator-glossary) returns an output wit
 - **[Isotope / R-space viewer](/experiments/isotope-space):** native isotope constructions and a separate realization-space tessellation.
 - **[Research ledger](/research/ledger/):** the dated record behind the current synthesis.
 
+## Current research frontier: October 2026
+
+This table summarizes source reports; it is not a fresh verification or a physical acceptance certificate. It distinguishes constructions that survive their stated tests from rejected identifications and missing source operations.
+
+| Track | Reported construction or counterexample | Remaining boundary and sources |
+|---|---|---|
+| Interval and projective models | Conditional interval observation is constructed; a retained execution envelope composes across rank loss, while output-plus-matrix recovery fails. | Causal geometry and metric scale are not selected. [Interval result](/research/results/#october-20-verified-interval-calculus) · [Projective/AdS–dS workbench](https://github.com/andrey-kokoev/marici/blob/main/research/nima/ADS-DS-WORKBENCH.md). |
+| Source-relative witness generation | Formal continuation and higher comparison are constructed for the declared source families. One exact atomic higher package is not admitted, but an admitted E-envelope recovers its higher path. | This is source-relative closure, not arbitrary native admission or every possible policy. [Theorem and admission boundary](https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/witness-generator-coherence-v1.md). |
+| Interface obstruction | The retained AB and AD;DB attachment histories share an active endpoint, but their carriers cannot be equivalent. | Generic comparison machinery does not supply a comparison between these unequal interfaces. [Adapter and obstruction](https://github.com/andrey-kokoev/marici/blob/main/research/grothendieck/retained-pair-fails-complete-comparison-at-carrier-equivalence.md). |
+| Native SU32 record comparison | The corrected Boolean fragment has a complete four-record reader and a unique full-record-preserving current-value filler. | Producer histories are not identified; the original release construction remains unbound. [Record classification](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/su32-record-reader-classification-v1.md) · [Release-source audit](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/su32-release-source-audit-v1.md). |
+| Ramsey E/P readers | Retaining coefficient history repairs the tested reader square. Full operators remain unchanged on the tested preparations; compressed matrices vary with history. | Complete four-facet descent and source selection of the coupling remain open. [Scoped repair and original hostile control](https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/ramsey-covariant-EP-reader-v1.md). |
+| Coherent dependent returns | An Agda-reported coherent cyclic action realizes the shift on dependent four-return records for a supplied successor. | The record type may be empty; this does not generate a periodic state, a native successor or the separate operational complex whole-return certificate. [Construction and limits](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/coherent-four-return-v1.md). |
+| Cellulation and source roles | The frozen weaker model has a complete local order-dependence counterexample; global enumeration remains incomplete. | Both competing decorated-source copies violate retained roles. The strict gate admits 0 of 30 target cells in the tested patch: blocked, not repaired. [Coverage](https://github.com/andrey-kokoev/marici/blob/main/research/realization-tower/cellulation-shell-exhaustive-verification.md) · [Source-role correction](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/cellulation-dot-422-compatibility.md). |
+
 ## October 18: tessellated reader fields
 
 A source-derived 12-by-3 baryon field, a conditional PN/NE connection, and retained coefficient frames now form one checked candidate. Seven central checkers pass on fresh replay. Its bounded frame test covers 250,040 states and 458,912 transitions through depth 28, with no conflicting parity at repeated marked charts.
@@ -61,6 +75,8 @@ A conditional spinor quantum model supplies an exact invariant 16-dimensional si
 [Explore the isotope and mechanism registry →](/experiments/matter-catalog.html)
 
 Current coverage includes **hydrogen-1 and hydrogen-2**, constituent candidates, and linked mass, charge, coupling, and memory mechanisms. Observed isotope properties are separate from geometric constructions and conditional models. Input masses or binding energies used in accounting are not independently predicted; binding and isotope-stability explanations remain open. Mechanism links indicate relevance, not completed physical identification.
+
+The separate [observed isotope reference](/experiments/isotope-reference) publishes selected shell populations, abundance and stability annotations across 80 elements. This broader reference coverage is not an expansion of the catalogue's constructed models or a prediction of those data.
 
 [Standard Model reference graph](/matter/standard-model-graph) displays conventional field species and interaction families separately from Marici's conjectural constructions.
 
@@ -112,12 +128,16 @@ No new quantitative physical prediction is established by the October 8–10 con
 
 [Detailed results and exclusions](/results/) · [weak-mixing audit](/theory/#weak-mixing-matter-trace-audit).
 
+### October 25: stable-nucleus coherence-capacity conjecture
+
+The [Pb-208 capacity proposal](/research/predictions/pb208-coherence-capacity) conjectures an eight-contribution reference window, a 256-record capacity, four positional records and 126 internal dual pairs. These are unproved source identifications, not a verified stability prediction. The stable-only scope does not prohibit heavier unstable nuclei. Binary independence, lossless positional separation, fixed-point-free duality, a neutron readout and the proton-sector rule remain missing; the card retains the Pb-208/Bi-209 discriminator and the unrelated routing counterexamples.
+
 **Construction and formalizations**
 
 ## Proofs, models, and next tests
 
 Kernel-checked formal laws, written mathematical arguments, exact finite checks, numerical diagnostics, and prospective apparatus designs have different evidentiary roles. A proof of an integer identity or a supplied Hamiltonian's properties is not a proof of its physical interpretation. Proof-file totals are not a measure of completed physics.
 
-The next discriminating work is to complete the separately scoped operational whole-return certificate, supply independently justified physical current/charge and clock/energy standards, and test a stable cross-carrier interaction with identical composite/breakup accounting. Record architecture, conditional feedback, and retained memory remain separately specified until their source and observation adapters are constructed.
+The earlier programme still requires the separately scoped operational whole-return certificate, independently justified physical current/charge and clock/energy standards, and a stable cross-carrier interaction tested with identical composite/breakup accounting. The current frontier above adds distinct interface, release, descent and source-role obligations; none is discharged by matching an endpoint, count or rendered shape. The [versioned frontier map](/research/frontier/current) supplies each scope's first missing object and acceptance/reopening condition.
 
 [Full theory and verification boundaries](/theory/) · [research status and next tests](/results/#next-discriminating-tests) · [architecture and construction contracts](/research/system-characteristics/).

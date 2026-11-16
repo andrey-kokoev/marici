@@ -22,9 +22,23 @@ The HTML remains a snapshot until regenerated; it does not watch the source tree
 
 The regular `pnpm dev` / `pnpm build` preparation generates the same assets. Site navigation has **Research → Conjecture nets**, and the construction gallery links to the app. The route is `/experiments/conjecture-nets.html`. Generation or a local test is not deployment; publishing still uses the separately authorized website deployment workflow.
 
+## Public selection and pending development
+
+The public catalogue contains the five source contracts already available in the committed selection. The pending persistent-seam P/E addition is preserved in `src/conjecture-nets/development-catalog.json`, not silently included by the normal website preparation. Its root contract and snapshot/pin closure still require review; a local build is not that review.
+
+To inspect the pending selection in a checkout containing its local inputs:
+
+```sh
+node scripts/prepare-conjecture-nets.mjs --development
+node scripts/prepare-conjecture-nets.mjs --development --check
+node scripts/test-conjecture-nets-browser.mjs --development
+```
+
+This writes `.ai/conjecture-nets/development/conjecture-nets.html` and its JSON, outside the public tree. It does not replace the public bundle. The optional development browser run retains the P/E-specific controls; normal browser verification does not count those pending checks as passed. A clean checkout without the pending research files may not run development preparation, but must still build the public selection.
+
 ## Controls
 
-- **Research net:** switch among arrow seeds/isotope atlas, low-energy scattering, core bridge/inverse, high-energy scattering and the existing local-core proof-outcome net.
+- **Research net:** switch among arrow seeds/isotope atlas, low-energy scattering, core bridge/inverse, high-energy scattering, and the existing local-core proof-outcome net. Pending P/E pairing is available only through the separate development selection or explicit local JSON import; that does not add it to the public catalogue.
 - **Tabs:** Dependencies and Four-port implications. Both graph canvases span the page width and are 90vh high; arrow keys switch focused tabs.
 - **Selection:** initially nothing is selected. Clicking a node opens an overlaid sliding right panel; it never reduces the graph width. Close or Escape deselects it and clears reachability highlighting. Click a node, or focus it and press Enter/Space, to inspect its source statement, status, formal outcome, scope, next action, acceptance, dependencies and evidence. Long raw IDs remain available in the detail view.
 - **Search / Show:** display matching-node buttons only while a search or filter is active. There is no permanent Nodes column. The complete graph stays visible so a filtered result cannot hide prerequisites.
@@ -64,13 +78,14 @@ Click a port to follow directed implication reachability from precisely that por
 ## Authored sources and publication
 
 - `src/conjecture-nets/catalog.json`: explicit public selection of five source contracts, not an automatic mirror of the full research registry.
+- `src/conjecture-nets/development-catalog.json`: separate local selection retaining the pending owner-local P/E branch. Its typed scope connections do not change parent verdicts, supply reviewed publication closure or select a source protocol.
 - `src/conjecture-nets/model.js`: shared validation and safe source-link construction.
 - `src/conjecture-nets/app.html`, `app.js`: authored UI and selection drawer.
 - `src/conjecture-nets/ports.js`, `port-view.js`: typed implication extraction, AND-aware reachability and D3 force rendering.
 - `scripts/prepare-conjecture-nets.mjs`: deterministic bundle with per-contract SHA-256 identities, embedded JSON and inline code.
 - Generated `website/public/experiments/conjecture-nets.html` and `conjecture-nets.json`: do not edit manually.
 
-To add a public net, review its contents and add an explicit catalog entry. Its local dependency DAG must validate; every declared external prerequisite must point to a node in another bundled contract. This is an implementation constraint of the current curated explorer, not a restriction on scientific graphs in general. The source evidence files themselves are not copied into the public bundle.
+To add a public net, review its contents and source/snapshot/pin publication closure, then add an explicit public catalog entry. Presence in the development catalogue, local import or generated HTML is insufficient. Its local dependency DAG must validate; every declared external prerequisite must point to a node in another bundled contract. This is an implementation constraint of the current curated explorer, not a restriction on scientific graphs in general. The source evidence files themselves are not copied into the public bundle.
 
 The app does not automatically promote `constructed`, `resolved`, `source_located` or similar research dispositions into formal outcomes. Null outcomes are displayed as **none recorded**. Declared boundaries and raw nodes remain inspectable. Snapshot hashes identify source bytes; they do not rerun scientific checkers, verify their dependencies, or certify physics.
 

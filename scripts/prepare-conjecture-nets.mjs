@@ -6,9 +6,10 @@ import { normalizeNet, repositoryPath } from '../src/conjecture-nets/model.js';
 import { normalizeImplications } from '../src/conjecture-nets/ports.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-export async function prepareConjectureNets(base = root, {check = false} = {}) {
+export async function prepareConjectureNets(base = root, {check = false, development = false} = {}) {
   const source = path.join(base, 'src/conjecture-nets');
-  const catalog = JSON.parse(await fs.readFile(path.join(source, 'catalog.json'), 'utf8'));
+  const catalogFile = development ? 'development-catalog.json' : 'catalog.json';
+  const catalog = JSON.parse(await fs.readFile(path.join(source, catalogFile), 'utf8'));
   const nets = [], paths = new Set(), ids = new Set();
   for (const item of catalog.nets) {
     if (!repositoryPath(item.path) || paths.has(item.path)) throw Error('Unsafe or duplicate catalog path: ' + item.path);
@@ -25,7 +26,7 @@ export async function prepareConjectureNets(base = root, {check = false} = {}) {
     const target=nets.find(t=>t.source===n.external_dependency.contract);
     if (!target || !target.contract.conjectures.some(t=>t.id===n.external_dependency.node)) throw Error('Missing bundled external prerequisite: '+n.id);
   }
-  const payload={schema:'marici.conjecture-net-explorer.snapshot.v1',scope:'Curated source snapshot; not formal admission or a full registry',nets};
+  const payload={schema:'marici.conjecture-net-explorer.snapshot.v1',scope:development?'Local development selection; not the public catalogue or scientific admission':'Curated source snapshot; not formal admission or a full registry',nets};
   const json=JSON.stringify(payload,null,2)+'\n';
   const template=await fs.readFile(path.join(source,'app.html'),'utf8');
   const model=(await fs.readFile(path.join(source,'model.js'),'utf8')).replaceAll('export function ', 'function ');
@@ -40,16 +41,18 @@ export async function prepareConjectureNets(base = root, {check = false} = {}) {
     if (html.split(marker).length!==2) throw Error('Missing/duplicated template marker: '+marker);
     html=html.replace(marker,()=>value);
   }
-  const out=path.join(base,'website/public/experiments');
+  // Keep local held-net experiments outside the public asset tree. Both output
+  // directories have depth three so offline relative repository links still work.
+  const out=path.join(base,development?'.ai/conjecture-nets/development':'website/public/experiments');
   if (!check) await fs.mkdir(out,{recursive:true});
   for (const [name,content] of [['conjecture-nets.html',html],['conjecture-nets.json',json]]) {
     const file=path.join(out,name);
     if (check) {
-      if (await fs.readFile(file,'utf8').catch(()=>null)!==content) throw Error('Stale '+name+'; run pnpm nets:prepare');
+      if (await fs.readFile(file,'utf8').catch(()=>null)!==content) throw Error('Stale '+name+'; run node scripts/prepare-conjecture-nets.mjs'+(development?' --development':''));
     } else await fs.writeFile(file,content,'utf8');
   }
-  return {nets:nets.length,nodes:nets.reduce((n,x)=>n+x.contract.conjectures.length,0),check};
+  return {nets:nets.length,nodes:nets.reduce((n,x)=>n+x.contract.conjectures.length,0),check,development};
 }
 if (process.argv[1] && path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
-  console.log(JSON.stringify(await prepareConjectureNets(root,{check:process.argv.includes('--check')})));
+  console.log(JSON.stringify(await prepareConjectureNets(root,{check:process.argv.includes('--check'),development:process.argv.includes('--development')})));
 }

@@ -30,4 +30,10 @@ Implement all source boundary replacements, then prove cyclicity and the complet
 
 > **Claim boundary:** exact symbolic identities and source-derived arbitrary-$n$ proofs; bounded exact finite computations; floating asymptotic fits and toy models remain diagnostic only.
 
+## October 13 follow-up: local contour and covariance
+
+The [later local closure audit](/research/results/local-contour-covariance-closure) reports ten local checkers passing with retained cycle/period lattices, covariance and conditional boundary comparisons. It does not select or admit the physical contour: the full marked integral lift, external constraint/normal prescription and physical boundary-program attachment remain required. The ordinary blowdown seven-form is unavailable, not zero, and global weighted gates remain open.
+
+This is a separately scoped follow-up, not a rewrite of the September 18 cutoff or completion of its historical frontier. The linked report distinguishes the source's local scientific replay from structural net validation and this website's publication checks.
+
 [Return to results](/research/results/)

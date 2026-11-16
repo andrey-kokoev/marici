@@ -70,7 +70,11 @@ temp/
 # Compiled Agda interfaces; regenerate from source.
 *.agdai
 
+# TypeScript incremental compiler caches; retain tsconfig sources.
+*.tsbuildinfo
+
 # Generated runtime and checker outputs; never commit.
+/research/strominger/isotope-schema/test-results.json
 /executions/
 /research/**/results/
 /.narada/capabilities/mcp-surfaces.json
@@ -125,16 +129,27 @@ temp/
 /research/voevodsky/inputs/hodge-*/*.txt
 /research/strominger/references/chamon-gauge-map-source/supplementary.nb
 
+# Generated frontier Markdown; edit config/public-research-coverage.v1.json.
+/website/research/frontier/current.md
+
+# Compact provenance publication copies; keep versioned config manifests instead.
+/website/public/research/provenance/
+
 # Generated reader-field replay receipt (published from local verification).
 /website/public/research/tessellated-reader-fields/verification.json
 
 # Additional generated publication copies.
+# Reference table source: research/kitaev/isotope-electron-shells.html.
+/website/public/experiments/isotope-electron-shells.html
 /website/public/experiments/minimal-data-packet/
 /website/public/experiments/conjecture-nets.html
 /website/public/experiments/conjecture-nets.json
 
 # Viewer builds emitted by scripts/prepare-{threejs-reference,tetrahedral-planes,
-# realization-lattice,normal-ray}.mjs; edit examples/ instead.
+# realization-lattice,normal-ray,two-attractor-field,simplex-step-span}.mjs;
+# retain source modules and publisher scripts instead of generated bundles.
+/website/public/experiments/two-attractor-field/
+/website/public/experiments/simplex-step-span/
 /website/public/experiments/threejs-reference/
 /website/public/experiments/tetrahedral-planes/
 /website/public/experiments/tetrahedron_planes_free_rotation.html

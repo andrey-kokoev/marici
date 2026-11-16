@@ -4,6 +4,8 @@
 
 The launch link selects the double-ESD7 belt assembly in Geometry view. The workbench also contains other construction processes; they are separate experiments. Assets are bundled locally; WebGL is required for the interactive scene.
 
+For Be-8/Be-9, cellulation, NNPE composition, hex strands and other modes in the same app, use the [construction workbench directory](/experiments/construction-workbench). Those modes have separate source contracts; this page documents the belt only.
+
 ## Read the two views
 
 - **Geometry:** the two former N-tip locations carry E-assigned tetrahedra with thick white borders. Their tips touch the opposite tips of an axially aligned, extended belt. Its staggered middle extension uses **20 tetrahedra and 14 whole octahedra**. This is vertex contact, not the earlier reference face docking.

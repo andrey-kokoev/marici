@@ -35,6 +35,29 @@ possible carrier construction. They do not erase the positive identities and
 conditional constructions used in the tests. [Theory synthesis](/research/theory/#recent-constructive-results-and-exclusions)
 · [results and exclusions](/research/results/#exclusions-and-unresolved-selection).
 
+### Native continuation and comparison contracts
+
+The newer native results have separate input and preservation contracts. The table summarizes source-reported formal constructions; the linked result pages distinguish kernel proofs, executable controls and remaining source bindings. No scientific checker is rerun by this register.
+
+| Contract | Supplied inputs | Retained output | Not supplied |
+|---|---|---|---|
+| [Source-relative continuation](/research/results/witness-continuation-admission) | Selected comparison, declared source families/certified policies, native derivations and the existing target reader/alignment. | Finite-history continuation, direct/staged higher comparisons and an admitted E-envelope with exact higher-path recovery and reusable native admission. | The excluded atomic presentation; arbitrary-policy routing; executable inverse source edges. |
+| [Shared-reader join](/research/results/su32-native-record-comparisons) | Both native operand derivations, shared readers and selected-value agreement at the shared reference. | Both operand derivations and compatibility witnesses; a derived native exchange of enriched ordered joins. Generic loop witnesses remain retained. | An equivalence of the original operands or reconstruction of the full joint input from one projection. |
+| [Boolean reader classification](/research/results/su32-native-record-comparisons) | One corrected Boolean native package, its complete four-record reader and the declared full-record-preservation policy. | Current-value classification and a contractible pointed comparison filler, with both producer programs retained. | Equality of producer programs or external histories; original incidence-path comparison; richer-payload classification; native charged-cell release. |
+| [Coherent dependent return](/research/results/coherent-dependent-four-return) | A state type and supplied successor G; the dependent return-record fibre. | A family over the four-cycle classifying space whose generator realizes shift, preserving the return witnesses. | Nonemptiness: the fibre may be empty. No selected native successor, physical-time law, payload-return operation or operational complex whole-return certificate follows. |
+
+Formation, classification and physical identification are distinct arrows. A new application must bind its actual operands, complete readers and continuation interface; it cannot copy a theorem's result while omitting that theorem's inputs. [Conceptual distinctions](/research/theory/#source-relative-continuation-and-higher-admission).
+
+### Concrete atom-route transport
+
+The actual He-3, He-4 and Li-6 adapter supplies a source-bound instance of retained transport, rather than another arbitrary matrix fixture. Its objects retain a chart, absolute phase origin and five complex coefficients. Commands carry typed source/target frames; route composition matches those boundaries and retains commands, intermediate values and witnesses. Inverting the coefficient action recovers payload, not an empty realization history.
+
+A passive frame change acts at each command's two endpoints, so intermediate frame factors cancel in the composite. This is a concrete discrete connection-style covariance law. Its numerical coordinates are not the entire retained state, and the result is an executable specialization of the earlier formal interface pattern, not a new Agda instantiation.
+
+The unrestricted coefficient permutations generate S5, excluding their identification with one fixed S4 action alone. Actual routes still obey chart/phase restrictions; S5 is not selected as a physical gauge group. The source's outside-context retention law matters because a later admitted reader can expose a difference invisible at the immediate geometric readout. Separate operation/representation maps are needed for the 137-record T9 fixture, scattering operators and physical gauge dynamics.
+
+[Reported checks, source contract and remaining ancestor comparison](/research/results/atom-retained-source-transport). These source-reported route/covariance checks are not replayed by this architectural summary.
+
 ### Retained comparison architecture
 
 **Organizing specification.** The middle triple carries9:12->6,8:11->5 and

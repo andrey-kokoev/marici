@@ -10,11 +10,27 @@ This page develops specified mathematical constructions and keeps their proposed
 
 For the existing three-round retained cavity, the ordered product $E(i,j)=W_{j-1}\cdots W_{i-1}$ represents each nonempty interval on a three-edge line. Full-record recovery and all legal extension/trim comparisons hold; an edit $p\to p'$ acts on the output through the based correction $E(p')E(p)^T$, rather than a universal bare inverse. A specified three-probe family separates these six processes distributionally, and reference-calibrated counts support a finite-sample identification theorem. <a href="/research/ledger/20261020-4328-verified-interval-calculus-with-an-observation-and-identification-procedure/" target="_self">Ledger 4328</a> gives the equations, assumptions, counterexamples and reproduction sources; [the results page](/research/results/#october-20-verified-interval-calculus) summarizes verification. This finite process calculus does not select AdS/dS causal geometry.
 
+### Retained projective frontier
+
+The enriched source already has a nontrivial projective coefficient: four points derived from twistor incidence reproduce a transported boundary coefficient as a cross-ratio. The bare interval/compiler record does not determine it across the admitted kinematic fixtures. Consequently, the missing premise is not merely “some projective structure”; it is the comparison from this enriched source to real ordered endpoint geometry.
+
+The retained matrix-execution envelope preserves the original points and composes across singular products. That is retention of input, not recovery from collapsed output, and the declared envelope does not prove arbitrary native history composability. Its rank-one cases cannot be renamed invertible projective symmetries. A real endpoint bridge must state its chart, singular/boundary treatment and compatible transport before it can supply the geometric premise of the metric theorem.
+
+[October 20 programme snapshot and next bounded audit](/research/programs/ads-ds-projective-frontier) records the positive source invariant, rejected recovery and scale-selection claims, and revised two-shadow objective. It distinguishes reported exact checks from the still-open geometric identification; this summary is not a new proof replay.
+
 ### Analytic return: same witness, different verification levels
 
 The standard-complex construction uses the same source-linearized operators $H_j=\pi(I-P_j)/2$ and $U_j(t)=\exp(-itH_j)$ for local motion and whole-record return. Two reversed-order unitary pieces glue continuously on $[0,2]$, return to the source basis vector, and distinguish the retained schedule tags by their seam states. Reconstruction and schedule exchange respect the whole retained record. The all-time result is a **written analytic proof**, supported by exact finite checks and the Agda source-classification theorem; samples alone do not prove it. No derivative at the switching seam or Cubical-pointwise state decoding is claimed. [Whole-return proof](../research/nima/spectral-whole-return-proof.md).
 
 Separately, the operational completion development reports fresh safe Agda closure for unit norm, all-scale continuity and derivative, unit-circle flow, and the assembled half-turn of the same operational phase. Its identification with **standard pi** uses an explicitly accepted written proof, not a kernel-checked ordinary-real interpretation. Operational complex/tensor whole-return assembly is still the unresolved goal in the cited net. The written standard-complex result must not be silently promoted to an operational certificate. [Assembled half-turn](../research/nima/constructed-unitary-half-turn.md) · [current completion frontier](../research/nima/completion-refinement-conjecture-net.md).
+
+### Coherent dependent four-return
+
+A dependent four-return record retains a state and a chosen witness that four applications of a supplied successor return to that state. The source reports a safe Cubical construction of a family over the four-cycle's classifying space, with standard fibre `Per4 G`. Transport around its generator agrees with the original shift. The state type need not be a set, the successor need not be invertible, and return witnesses are not discarded.
+
+The return-record type **may be empty**: the theorem does not produce a periodic state or select a native successor. Identifying its chosen fourfold coherence with the earlier `shift-four` homotopy remains separate. Nor does the cyclic index supply physical time, a native payload-return operation, or the operational complex whole-return certificate discussed above. These are distinct objects and verification obligations, not different names for one completed return.
+
+[Reported theorem, controls and residual](/research/results/coherent-dependent-four-return) · [Classifying-space construction](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/coherent-four-return-v1.md). This explanation does not claim a fresh proof replay.
 
 ### A fixed-carrier restriction law
 
@@ -64,6 +80,36 @@ This is a chosen finite affine realization, not physical geometry or a general i
 ### Family formation is not execution
 
 A dependent `Pi-package` retains a family of witnessed values $\prod_{i:I}B(i)$. The original native `P-kind` rule derives that family when **every component already has a derivation**; it can recover a certified component premise from such a derivation. Merely storing or seeding the family does not derive a selected output from a function and input. An explicit dependent application/elimination rule can do that while retaining both operands and its beta witness, but this has been checked only in the **application-extended runtime**, not as a theorem of the original twelve-rule closure. This separation matters for the proposed domain-specific constructor compiler: [scoped experiment](../research/nima/meta-witness-native-bridge.md) and [open conjecture](https://github.com/andrey-kokoev/marici/blob/main/src/ledger/4295%20Domain-Specific%20Constructors%20from%20Retained%20Domain%20Presentations.md).
+
+### Source-relative continuation and higher admission
+
+The WG interface does not itself assert continuation or higher coherence. For the existing declared source families, the newer formal construction derives native continuation along every finite history, compares direct and staged extensions, and admits retained higher comparisons as reusable next inputs. Its reader and continuation binding are constructed from the existing target boundary, not inferred from an admission judgment alone.
+
+Two statements coexist: the exact atomic `higher-package-formed` presentation has no derivation under the unchanged rules/seeds, while an admitted **E-envelope** recovers the actual higher path. The envelope changes the retained code presentation; it does not identify that code with the excluded atom code. Thus the obstruction does not call for a new primitive merely to retain and reuse this higher witness.
+
+This is source-relative closure, **not arbitrary native admission** or closure for every conceivable policy. Independently chosen complete fillers need their actual comparison path; equal endpoints or port readings do not provide it. Opposite comparison/query presentation is available, but is **not inverse execution** of source edges. Original histories and native derivations remain retained.
+
+[Quantified result and unequal-interface control](/research/results/witness-continuation-admission) · [Source theorem and exact admission boundary](https://github.com/andrey-kokoev/marici/blob/main/research/voevodsky/witness-generator-coherence-v1.md). Formal verification is reported by the source, not rerun by this explanation.
+
+### Native joins and complete-record comparisons
+
+A shared-reader join retains two values together with a compatibility witness between their shared readings. Its native derivation retains **both operand derivations** through the existing reflexivity, Pi and E rules. The derived exchange compares the enriched ordered joins; it is **not an equivalence of the original operands**. Generic retained loop witnesses are not silently erased or assumed contractible.
+
+For the corrected **Boolean** fragment, the complete four-record reader classifies current values of one fixed native package. Under the specified selected-value and whole-reader-preservation requirements, its constructed filler type is **contractible**. A port-only reader is insufficient. This is a classification under one explicit reader policy, not selection of a universal physical reader.
+
+Current-value uniqueness does not make `Resolve` proofs, producer histories, earlier packages or external path words equal. The original SU32 incidence histories, charged-cell release and continuation operations still need their source binding; richer payload types are not classified by this Boolean theorem.
+
+[Result and remaining release obligation](/research/results/su32-native-record-comparisons) · [Native join construction](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/native-shared-reader-join-v1.md) · [Reader classification](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/su32-record-reader-classification-v1.md). The source's formal and executable checks are distinct evidence, not new publication-time verification.
+
+### Comparison actions and operation-valued boundaries
+
+A comparison must state what it acts on. In the inspected SU32 symmetry, geometry, preparation slots and outgoing incidences move together. Transporting the registry from `r` to `S_*r` is not reconciliation at the unchanged registry and binding. Even a fixed terminal cell can have exchanged outgoing edges; carrying the endpoint without those edges changes the requested operation.
+
+Content and the witness of an operation on content are also distinct. The tested static finite-JSON identification makes a value equal a full comparison packet containing that same value as a strict subtree. Increasing node rank excludes that equality. It does not exclude keeping static values and growing comparison records separately, and it does not refute every content-bearing fibration.
+
+The constructive successor denotes a composite operation on a tree's external boundary rather than overwriting a fibre's content. Its local restriction/gluing and two-edge contraction comparison hold in a formal source-generated envelope. Adding retained edges refines a presentation; contracting them has the opposite variance. The next map must interpret these operations in the native boundary-corolla fibre, preserving generators, contraction and cyclic structure. A finite operation span is not a full higher-operadic construction or a physical period law.
+
+[Concrete action, excluded identification and bounded composition span](/research/results/su32-comparison-content-and-operations). The linked source reports keep their executable audits and the separate formal rank theorem distinct; this explanation adds no scientific verification.
 
 ## Finite-place incidence and physical descent
 

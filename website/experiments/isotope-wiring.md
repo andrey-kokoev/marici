@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Isotope wiring
-description: Edit isotope wiring, inspect constituent counts, and import or export definitions.
+description: Edit working isotope definitions and review validation, delta replay, and export limitations.
 ---
 
 <script setup>
@@ -13,6 +13,8 @@ import IsotopeWiring from '../.vitepress/components/IsotopeWiring.vue'
 # Isotope wiring
 
 Select an isotope, inspect or edit its cells, and compare absolute or delta wiring definitions. Use **File** to import or export your work.
+
+**Research model—not established nuclear geometry.** [Validation and export limits](/experiments/isotope-wiring-limitations).
 
 <ClientOnly><IsotopeWiring /></ClientOnly>
 

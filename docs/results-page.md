@@ -4,11 +4,48 @@ Use this page for verification status. [Theory](/research/theory/) explains the 
 
 This page separates **checked mathematical constructions**, **conditional models**, **open physical identifications**, and **excluded branches**. A checker pass, an exact numerical identity, or a research-ledger admission does not establish a physical theory. Verification levels below are those reported in the linked research; this synthesis is not a new proof certificate.
 
+[Publication provenance for the current result families](/research/provenance/current-results) provides pinned packet/checker identities, historical receipt hashes, reproduction pointers and scope limits. Its metadata checks are not a new scientific replay.
+
+## New results frontier: October 2026
+
+These source-linked reports separate formal theorems, exact runtime checks, finite search coverage and blocked source identifications. They summarize reported research verification; publication is not a new scientific replay. Older dated results remain below.
+
+| Result family | Reported evidence and surviving scope | First unresolved obligation |
+|---|---|---|
+| [Witness continuation and admission](/research/results/witness-continuation-admission) | Source-relative finite-history and higher-continuation theorems; one atomic presentation is excluded, while its retained E-envelope is admitted. | Supply the actual interface/reader binding for a new application; equal endpoints do not establish carrier equivalence. |
+| [Native SU32 record comparisons](/research/results/su32-native-record-comparisons) | Corrected Boolean reader classification and a unique specified current-value filler, not equality of producer histories. | Construct the original contextual release and its source-compatible continuations; charged-cell signal execution remains unbound. |
+| [SU32 comparison, content and operations](/research/results/su32-comparison-content-and-operations) | Preparation-transporting symmetry is not fixed-preparation reconciliation. Literal static-payload identification fails; a separate finite operation-composition span is constructed. | Bind the actual comparison reader/continuation policy and interpret the formal boundary operation in its native fibre. |
+| [Sulfur local continuation](/experiments/construction-workbench#sulfur-local-continuation-what-was-predicted) | A reference-calibrated angular rule selects 16/16 held-out next edges; 768 synthetic checks test local uniqueness. | Derive the carrier/frame/polarity inputs from layers; within-reference calibration is not independent validation or complete global wiring. |
+| [Ramsey history-covariant readers](/research/results/ramsey-history-covariant-readers) | Kernel coefficient naturality and 24 live one-step reader cases, with the original false-square control retained. | Complete four-facet semantic descent and independently select the outside/coupling convention. |
+| [Coherent dependent four-return](/research/results/coherent-dependent-four-return) | Reported safe Cubical coherent cyclic action on a supplied successor's dependent return records. | The type may be empty; native successor/return binding and identification of chosen coherences remain separate. |
+| [Cellulation order and source roles](/research/results/cellulation-order-and-source-roles) | Complete local nonconfluence for the weaker model; global search incomplete. The stricter source-role gate admits 0 of 30 tested targets. | Construct a role-compatible continuation. The strict patch is blocked, not repaired, and the legacy viewer selection remains unresolved. |
+
+### Cross-sector follow-ups
+
+| Report | Reported positive evidence | Remaining boundary |
+|---|---|---|
+| [Analytical/native two-route pilot](/research/results/analytical-native-two-route-pilot) | Exact native transport and decoding on the retained packet. | The chosen analytical equality has a negative enclosure; the intended analytical witness/boundary map is absent. |
+| [Conditional optical control and integration](/research/results/conditional-optical-control-integration) | Bounded mathematical control interfaces and a conditional statistical optical assembly. | Shared integration is unapplied; statistical acceptance is not exact nondisturbing readout or licensed apparatus. |
+| [Local contour/covariance closure](/research/results/local-contour-covariance-closure) | Ten local checkers reported passing on declared localizations and retained cycle/transport data. | Full source-selected physical contour and global weighted gates remain open; unavailable blowdown data is not zero. |
+| [Concrete atom-route transport](/research/results/atom-retained-source-transport) | Actual chart/origin-indexed commands retain histories and obey local-frame endpoint covariance. | The unrestricted S5 skeleton is not the old fixed S4 action or a selected physical gauge group; T9/scattering identifications need explicit maps. |
+
+**Conjecture recorded October 25:** the [Pb-208 coherence-capacity proposal](/research/predictions/pb208-coherence-capacity) is a stable-only hypothesis, not a verified result. Its arithmetic does not construct the window bound, record decomposition or nuclear readout. The card separates its missing bridges from the earlier falsified routing-count claim.
+
+## October 25: native N-cut belt attachment
+
+The [construction report and viewer guide](/experiments/native-belt-guide) distinguish an extended native belt's geometry from its whole-cell wiring diagram. The reported geometric checks cover unit edges, a closed oriented boundary, connected cell adjacency and tip coincidence. The extended belt has 20 tetrahedra and 14 whole octahedra; its exposed boundary has 32 P and 32 E faces. The combined wiring has 384 whole-cell nodes, 792 shared-face links and two separately marked tip-contact links. Face counts and node counts are different declared readouts, not interchangeable particle inventories.
+
+These are reported finite construction and viewer checks, not a new scientific replay or a physical verification. Geometric contact and undirected adjacency do not establish native field transport, mechanical stability, particle identity or binding energy. The earlier face-docking model remains reference data; the extended model uses vertex contact.
+
+[Ledger 4331](/research/ledger/20261025-4331-native-n-cut-belt-docking-and-separate-wiring-views/) · [Construction source and tests](https://github.com/andrey-kokoev/marici/blob/main/research/strominger/belt-parent-gluing.md)
+
 ## October 20: verified interval calculus
 
 <a href="/research/ledger/20261020-4328-verified-interval-calculus-with-an-observation-and-identification-procedure/" target="_self">Ledger 4328 — Verified Interval Calculus with an Observation-and-Identification Procedure</a> connects six interval records to retained cavity processes, preserves all twelve endpoint edits, and constructs a separating three-probe observation family. Under the declared independent-trial, static shared-calibration model, 240,000 trials suffice for correct unique identification with probability above 99%.
 
 The verification consists of written proofs and exact rational checks, not experimental data or proof-assistant certification. Vacuum output, phase-insensitive counts and unrestricted calibration drift each expose distinct limits. The construction does not derive AdS/dS geometry, causal orientation or metric scale. [Mathematical construction](/research/theory/#finite-interval-processes-and-observations).
+
+The [October 20 projective-frontier follow-up](/research/programs/ads-ds-projective-frontier) distinguishes the enriched source invariant and retained singular executions from failed bare-record recovery. Its next bounded two-shadow audit is a recorded proposal, not a completed geometric identification or a revision of the interval observation theorem.
 
 ## October 18: tessellated reader fields and framed coherence
 
@@ -54,6 +91,7 @@ Failures below reject the stated branch or sufficiency claim, not every possible
 
 | Tested proposal | Outcome | What would require new evidence |
 |---|---|---|
+| Static fibre content equals its full comparison packet | The specified finite-JSON identification introduces a strict self-containing subtree in 48 producer constraints. Keeping packets separate from static values passes the source's positive control. | A representation distinguishing content from operation/history witnesses; the finite source-generated operation span still needs its native boundary-fibre interpretation. [Excluded conjunction and bounded successor](/research/results/su32-comparison-content-and-operations). |
 | Common charging mass law | With a shared gap on 1836 occupied channels, a one-gap elementary baseline, coherent contacts, and the same normalized displacement field, matching the proton/electron ratio bounds the belt–proton splitting by approximately 42.5 eV, far below the retained approximately 1.293 MeV comparison. Changing the clock or common coupling cannot repair this branch. | A different source-supported charging or elementary interaction law, tested against both absolute and relative masses. |
 | Deuterium binding in the current common-vacuum graph | Pair-minus-breakup energy is positive with independent exterior reservoirs and exactly zero with the same total exterior reservoir. Typed rim maps do not supply attraction. | A bounded, number- and charge-preserving cross-carrier interaction, using identical boundary and reservoir accounting for composite and breakup states. |
 | Geometry fixes belt–proton energy ordering | In the source-weighted field model the ordering reverses as middle-mode exterior conductance changes. | Independently justified exterior attachment and conductance metric, rather than choosing them from the desired mass. |
@@ -145,6 +183,10 @@ Exact arithmetic establishes these expressions, not their physical identificatio
 - **Broader connections:** modular weights, moduli spaces, stable homotopy, sporadic groups, division algebras, TQFT, and integrable systems remain separate proposed comparisons unless an explicit map and its laws are supplied. Matching dimensions or the identity $12^3=1728=j(i)$ does not establish those identifications; $i$ is not a modular cusp.
 
 ## Next discriminating tests
+
+The [versioned current-frontier map](/research/frontier/current) names the first missing source object, acceptance test and reopening condition for the newly curated interfaces, release, source roles, boundary operations and cross-sector comparisons. It is a dated source-synthesis map, not a live workboard or a claim that downstream tests can execute without their inputs.
+
+**Earlier physical-programme obligations remain:**
 
 1. Complete the separately scoped operational whole-return certificate without promoting written standard-real identification to kernel evidence.
 2. Derive or calibrate physical charge/current, clock, and energy standards independently of desired constants.

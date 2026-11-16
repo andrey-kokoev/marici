@@ -49,7 +49,16 @@ test('cyclic port reachability terminates; branch activations are not outcome im
   const {rules,omitted}=normalizeImplications(normalizeNet(raw));assert.equal(rules.length,2);assert.equal(omitted.length,1);
   assert.equal(reachablePorts(rules,[portKey('a','++')]).ports.size,2);
 });
-test('curated generated snapshot is fresh and includes external producer',async()=>{const result=await prepareConjectureNets(undefined,{check:true});assert.equal(result.nets,5);assert.ok(result.nodes>30);});
+test('public snapshot is fresh and held P/E selection remains development-only',async()=>{
+  const catalog=JSON.parse(await fs.readFile(new URL('../src/conjecture-nets/catalog.json',import.meta.url),'utf8'));
+  const result=await prepareConjectureNets(undefined,{check:true});
+  assert.equal(result.nets,catalog.nets.length);assert.ok(result.nodes>30);
+  assert.equal(result.development,false);
+  const held='research/strominger/contracts/persistent-seam-pe-conjecture-net.v1.json';
+  assert.ok(!catalog.nets.some(n=>n.path===held));
+  const development=JSON.parse(await fs.readFile(new URL('../src/conjecture-nets/development-catalog.json',import.meta.url),'utf8'));
+  assert.ok(development.nets.some(n=>n.path===held));
+});
 test('builder escapes script injection, is deterministic and detects stale source and external targets',async()=>{
   const temp=await fs.mkdtemp(path.join(os.tmpdir(),'marici-net-test-'));
   try {

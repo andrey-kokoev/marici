@@ -6,6 +6,7 @@ import { prepareNativeBeltViewer } from './prepare-native-belt-viewer.mjs'
 import { prepareThreejsReference } from './prepare-threejs-reference.mjs'
 import { prepareTetrahedralPlanes } from './prepare-tetrahedral-planes.mjs'
 import { prepareRealizationLattice } from './prepare-realization-lattice.mjs'
+import { prepareIsotopeReference } from './prepare-isotope-reference.mjs'
 
 function withGalleryReturn(html, name) {
   const container = html.match(/<aside\b[^>]*>/) || html.match(/<main\b[^>]*>/)
@@ -15,6 +16,7 @@ function withGalleryReturn(html, name) {
 
 // Publish copies only: research pages and screenshots remain authoritative.
 export async function prepareVisualizationAssets(root) {
+  await prepareIsotopeReference(root)
   await prepareNativeBeltViewer(root)
   await prepareThreejsReference(root)
   await prepareTetrahedralPlanes(root)
