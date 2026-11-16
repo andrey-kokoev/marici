@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto'
 import { prepareResearchLab } from './prepare-research-lab.mjs'
 import { prepareNativeBeltViewer } from './prepare-native-belt-viewer.mjs'
 import { prepareThreejsReference } from './prepare-threejs-reference.mjs'
+import { prepareTwoAttractorField } from './prepare-two-attractor-field.mjs'
 import { prepareTetrahedralPlanes } from './prepare-tetrahedral-planes.mjs'
 import { prepareRealizationLattice } from './prepare-realization-lattice.mjs'
 import { prepareIsotopeReference } from './prepare-isotope-reference.mjs'
@@ -19,6 +20,7 @@ export async function prepareVisualizationAssets(root) {
   await prepareIsotopeReference(root)
   await prepareNativeBeltViewer(root)
   await prepareThreejsReference(root)
+  await prepareTwoAttractorField(root)
   await prepareTetrahedralPlanes(root)
   await prepareRealizationLattice(root)
   const out = path.join(root, 'website/public/experiments')
