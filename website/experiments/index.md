@@ -2,6 +2,8 @@
 
 **[Isotope wiring editor](/experiments/isotope-wiring)** — edit isotope cells, inspect counts, compare wiring definitions, and import or export projects.
 
+**[Which editor is hosted? Typed-app and Morse status](/experiments/typed-wiring-development)** — the separate Vue/Pinia application is development-only; its read-only ribbon/handle construction is not a new feature of the hosted legacy editor or a physical nuclear surface.
+
 **[Isotope / R-space viewer](/experiments/isotope-space)** — explore native isotope constructions and the separate R-space tessellation. Includes controls, provenance, and the boundary between their coordinate frames.
 
 Interactive guides to declared geometry, retained information, and coefficient readouts. **These are mathematical construction models—not established particles, mass predictions, or nuclear binding.** The previews open full-screen workbenches; drag to rotate and use their step controls. These families are separate experiments, not successive stages of one physical construction.
@@ -22,6 +24,8 @@ Interactive guides to declared geometry, retained information, and coefficient r
 
 [Open the conjecture-net web app](/experiments/conjecture-nets.html). Browse the seed/atlas, low-energy, core-bridge, high-energy and local-core proof-outcome nets. Pending local additions, including the persistent-seam P/E net, are not advertised as bundled public selections until their source/pin closure is reviewed; local JSON import is separate from publication. Switch between dependency and D3 four-port implication graphs; inspect source records and directed reachability. The same generated HTML works offline, and accepts local JSON nets without uploading them. [Usage and source](https://github.com/andrey-kokoev/marici/blob/main/docs/conjecture-net-explorer.md).
 
+[P/E revision-73 frontier and publication status](/experiments/pe-net-publication-status) — committed research, local development selection, graph admission and public release are distinct. The five-net bundle is retained; the owning note's conflicting public-selection wording is recorded, not silently applied or corrected outside its owner locus.
+
 ## Proposed packet primitive
 
 <div class="construction-gallery">
@@ -36,9 +40,19 @@ The signed geometry is supplied for exploration. Minimality concerns complete se
 
 ## Geometry and assembly
 
+**[Switched-attractor field and ESD7 outer shell: controls and limits](/experiments/field-and-shell-viewers)** — selected for the reviewed source build; live release acceptance remains separate. These are a supplied toy dynamics model and a static subdivision boundary, not physical particle models.
+
 **[Native N-cut belt: controls and verification boundaries](/experiments/native-belt-guide)** · [Ledger 4331](/research/ledger/20261025-4331-native-n-cut-belt-docking-and-separate-wiring-views/)
 
 <div class="construction-gallery">
+  <a class="construction-preview" href="/experiments/two-attractor-field/index.html" target="_self">
+    <strong>A switched-attractor toy field</strong>
+    <span>Place one test particle; vary prescribed attraction and damping. Closest-pass switching retains velocity, not a guaranteed orbit or a derived physical interaction.</span>
+  </a>
+  <a class="construction-preview" href="/experiments/simplex-step-span/index.html" target="_self">
+    <strong>ESD7 outer shell — geometry only</strong>
+    <span>Rotate 100 boundary vertices, 294 edges and 196 triangles. Inspect opacity without interior cells, the former 23-step path, a growth rule or nuclear interpretation.</span>
+  </a>
   <a class="construction-preview" href="/experiments/native-belt/index.html?preset=native-belt" target="_self">
     <strong>Native N-cut belt — extended geometry and expanded wiring</strong>
     <span>Two E replacement tips touch an extended native belt with 32 P and 32 E boundary faces. Compare opaque faces with thick white borders against the separate wiring diagram. Native cell geometry and tip contact are checked; combined particle accounting and field transport remain open.</span>
@@ -160,6 +174,7 @@ WebGL availability and network access are separate requirements. Local assets mu
 |---|---|---|
 | [Isotope reference table](/experiments/isotope-reference) | Not required | Self-contained HTML data and filtering; no runtime fetch or external script. Upstream provenance links require network access. |
 | Native-belt/cellulation workbench, tetrahedral planes and realization lattice | Required for the interactive 3D scene | Three.js/Vue assets are bundled locally; no external CDN is required by these published bundles. No static 3D fallback is promised for the native workbench. |
+| Switched-attractor toy field and ESD7 outer shell | Required for their interactive scenes, not static explanations/fallbacks | Local r128 Three.js/OrbitControls, license and bundled Vue; retain the complete directory and serve over HTTP. [Controls and model limits](/experiments/field-and-shell-viewers). |
 | Three.js reference viewer and minimal-data packet | Required for interactive 3D, not the fallback | Local dependencies; retain the complete bundle. Their SVG/static fallback remains available without a WebGL scene. |
 | Retained-product and paw demos | Required for their 3D scenes | Vendor dependencies and licenses are local. Retain their supporting files for offline serving. |
 | Legacy geometry, receiver, fold, spinor and source-assembly pages | Required for 3D | Their import maps use an external Three.js CDN. Offline 3D is not promised without separately retaining/replacing those dependencies. |

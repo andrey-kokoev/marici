@@ -5,6 +5,7 @@ import vm from 'node:vm';
 import { inspectDefinition, compareDefinitions, trialPairPlacement, trialWitnessPlacement, surveyPlacements } from '../examples/isotope-wiring/core/editor-research.mjs';
 import { importLegacyAbsolute } from '../examples/isotope-wiring/core/legacy-adapter.mjs';
 import { verifyModel } from '../examples/isotope-wiring/core/model-predicates.mjs';
+import { assertCurrentDrawing } from './helpers/isotope-wiring-current-drawings.mjs';
 const html = readFileSync(new URL('../examples/isotope-wiring/index.html', import.meta.url), 'utf8');
 const context = vm.createContext({});
 vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)[1], context);
@@ -41,7 +42,7 @@ test('hydrogen sketches are open/closed triangles and He4 is a square with both 
       assert.doesNotMatch(svg,/class="neutron sketch-cross"/);
     }
     assert.equal(JSON.stringify(fixtures[id]),before);
-    assert.match(render(fixtures[id]),/<path class="ep /);
+    assert.doesNotMatch(render(fixtures[id]),/<path class="ep /, 'Neutron-only is the sole renderer, including default options');
   }
 });
 
@@ -59,108 +60,19 @@ test('He3 closes the outer Vs vertically without changing its square or inventor
   assert.equal(JSON.stringify(fixtures.He3),before);assert.equal(fixtures.He3.N,1);
 });
 
-test('Li6 green sketch directly attaches a closed triangle without a sector frame', () => {
-  const before=JSON.stringify(fixtures.Li6),svg=context.IsotopeWiring.renderSVG(fixtures.Li6,{neutronVs:true,standalone:true});
-  assert.equal([...svg.matchAll(/class="neutron neutron-v"/g)].length,2);
-  assert.equal([...svg.matchAll(/class="neutron lithium-triangle"/g)].length,1);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,2);
-  assert.equal([...svg.matchAll(/class="space-frame"/g)].length,0);
-  const anchor=context.IsotopeWiring.geometry(fixtures.Li6).point('s1-00','B');
-  assert(svg.includes(`data-cell="s2-01" d="M${anchor.join(' ')} L-50 ${anchor[1]+50} L50 ${anchor[1]+50} Z"`),'Closed triangle shares its apex exactly with the first-shell bottom vertex');
-  assert.doesNotMatch(svg,/<path class="ep /);
-  assert.equal(JSON.stringify(fixtures.Li6),before);
-});
-
-test('Li7 encloses a single second-shell triangle in a square', () => {
-  const before=JSON.stringify(fixtures.Li7),svg=context.IsotopeWiring.renderSVG(fixtures.Li7,{neutronVs:true,standalone:true});
-  assert.equal([...svg.matchAll(/class="neutron lithium-triangle"/g)].length,1);
-  assert.match(svg,/d="M0 144 L-50 194 L50 194 Z"/);
-  assert.match(svg,/class="space-frame lithium-sector" d="M0 134 L60 194 L0 254 L-60 194 Z"/);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,2,'Only shell 1 has crossing diagonals');
-  assert.equal([...svg.matchAll(/class="space-frame lithium-sector"/g)].length,1);assert.match(svg,/viewBox="-86 14 172 250"/);
-  assert.equal(JSON.stringify(fixtures.Li7),before);
-});
-
-test('Be9 replaces the Li7 inner triangle with a fully crossed square', () => {
-  const before=JSON.stringify(fixtures.Be9),svg=context.IsotopeWiring.renderSVG(fixtures.Be9,{neutronVs:true,standalone:true});
-  assert.equal([...svg.matchAll(/class="space-frame lithium-sector"/g)].length,1);
-  assert.equal([...svg.matchAll(/class="neutron beryllium-square"/g)].length,1);
-  assert.match(svg,/class="neutron beryllium-square" data-cell="s2-01" d="M0,144 L50,194 L0,244 L-50,194 Z"/);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,4);
-  assert.doesNotMatch(svg,/lithium-triangle|data-witness="s2-/);
-  assert.equal(JSON.stringify(fixtures.Be9),before);assert.equal(fixtures.Be9.N,5);
-});
-
-test('B10 retains its crossed square and bottom triangle without a shell-2 wrapper', () => {
-  const before=JSON.stringify(fixtures.B10),svg=context.IsotopeWiring.renderSVG(fixtures.B10,{neutronVs:true,standalone:true});
-  assert.equal([...svg.matchAll(/class="neutron beryllium-square"/g)].length,1);
-  assert.doesNotMatch(svg,/<path class="space-frame|lithium-sector/);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,4);
-  assert.equal([...svg.matchAll(/class="neutron boron-triangle"/g)].length,1);
-  assert.match(svg,/class="neutron boron-triangle" data-cell="s2-10" d="M0,234 L-50,284 L50,284 Z"/);
-  assert.match(svg,/class="neutron beryllium-square" data-cell="s2-01" d="M0,134 L50,184 L0,234 L-50,184 Z"/);
-  assert.match(svg,/data-cell="s1-00" d="M-50 84 L0 134 L50 84"/,'The first square bottom and second square top share (0,134)');
-  assert.match(svg,/viewBox="-136 14 272 370"/);assert.equal(JSON.stringify(fixtures.B10),before);
-});
-
-test('B11 adds only the shell-2 wrapper to B10', () => {
-  const before=JSON.stringify(fixtures.B11),svg=context.IsotopeWiring.renderSVG(fixtures.B11,{neutronVs:true,standalone:true});
-  assert.doesNotMatch(svg,/boron-growth-square|boron-slot-square|data-cell="s2-00"/);
-  assert.match(svg,/class="neutron boron-triangle" data-cell="s2-10" d="M0,244 L-50,294 L50,294 Z"/);
-  assert.match(svg,/class="neutron beryllium-square" data-cell="s2-01" d="M0,144 L50,194 L0,244 L-50,194 Z"/);
-  assert.match(svg,/class="space-frame lithium-sector" d="M0 134 L110 244 L0 354 L-110 244 Z"/);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,4,'Only the two existing squares are crossed');
-  assert.match(svg,/viewBox="-136 14 272 370"/);assert.equal(JSON.stringify(fixtures.B11),before);
-});
-
-test('C12 has three joined crossed squares without a wrapper or empty square', () => {
-  const before=JSON.stringify(fixtures.C12),svg=context.IsotopeWiring.renderSVG(fixtures.C12,{standalone:true});
-  assert.match(svg,/class="neutron carbon-bottom-square" data-cell="s2-10" d="M0,234 L50,284 L0,334 L-50,284 Z"/);
-  assert.match(svg,/class="neutron beryllium-square" data-cell="s2-01" d="M0,134 L50,184 L0,234 L-50,184 Z"/);
-  assert.match(svg,/data-cell="s1-00" d="M-50 84 L0 134 L50 84"/);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,6);
-  assert.match(svg,/class="neutron sketch-cross" data-cell="s2-10" d="M-50 284 L50 284"/);
-  assert.match(svg,/class="neutron sketch-cross" data-cell="s2-10" d="M0 234 L0 334"/);
-  assert.doesNotMatch(svg,/<path class="space-frame|boron-growth-square|boron-slot-square|boron-triangle|drawing-unavailable|data-cell="s2-00"|data-cell="s2-11"/);
-  assert.match(svg,/viewBox="-136 14 272 370"/);assert.equal(JSON.stringify(fixtures.C12),before);
-});
-
-test('C13 adds a shell-2 wrapper around two crossed squares without an empty square', () => {
-  const before=JSON.stringify(fixtures.C13),svg=context.IsotopeWiring.renderSVG(fixtures.C13,{standalone:true});
-  assert.match(svg,/class="neutron beryllium-square" data-cell="s2-01" d="M0,144 L50,194 L0,244 L-50,194 Z"/);
-  assert.match(svg,/class="neutron carbon-bottom-square" data-cell="s2-10" d="M0,244 L50,294 L0,344 L-50,294 Z"/);
-  assert.match(svg,/class="space-frame lithium-sector" d="M0 134 L110 244 L0 354 L-110 244 Z"/);
-  assert.equal([...svg.matchAll(/class="space-frame lithium-sector"/g)].length,1);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,6);
-  assert.match(svg,/data-cell="s2-10" d="M-50 294 L50 294"/);
-  assert.match(svg,/data-cell="s2-10" d="M0 244 L0 344"/);
-  assert.doesNotMatch(svg,/boron-growth-square|boron-triangle|drawing-unavailable|data-cell="s2-00"|data-cell="s2-11"/);
-  assert.match(svg,/viewBox="-136 14 272 370"/);assert.equal(JSON.stringify(fixtures.C13),before);
-});
-
-test('N14 keeps C12 squares fixed and rotates the added triangle 90 degrees counterclockwise', () => {
-  const before=JSON.stringify(fixtures.N14),svg=context.IsotopeWiring.renderSVG(fixtures.N14,{standalone:true});
-  assert.match(svg,/class="neutron beryllium-square" data-cell="s2-01" d="M0,134 L50,184 L0,234 L-50,184 Z"/);
-  assert.match(svg,/class="neutron carbon-bottom-square" data-cell="s2-10" d="M0,234 L50,284 L0,334 L-50,284 Z"/);
-  assert.match(svg,/class="neutron nitrogen-middle-triangle" data-cell="s2-00" d="M0,234 L50,284 L50,184 Z"/);
-  assert.match(svg,/data-cell="s2-10" d="M-50 284 L50 284"/);
-  assert.match(svg,/data-cell="s2-10" d="M0 234 L0 334"/);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,6);
-  assert.doesNotMatch(svg,/<path class="space-frame|boron-growth-square|drawing-unavailable|data-cell="s2-11"/);
-  assert.match(svg,/viewBox="-136 14 272 370"/);assert.equal(JSON.stringify(fixtures.N14),before);
-});
-
-test('N15 adds a shell-2 wrapper to the N14 squares and rotated triangle', () => {
-  const before=JSON.stringify(fixtures.N15),svg=context.IsotopeWiring.renderSVG(fixtures.N15,{standalone:true});
-  assert.match(svg,/class="neutron beryllium-square" data-cell="s2-01" d="M0,144 L50,194 L0,244 L-50,194 Z"/);
-  assert.match(svg,/class="neutron carbon-bottom-square" data-cell="s2-10" d="M0,244 L50,294 L0,344 L-50,294 Z"/);
-  assert.match(svg,/class="neutron nitrogen-middle-triangle" data-cell="s2-00" d="M0,244 L50,294 L50,194 Z"/);
-  assert.match(svg,/class="space-frame lithium-sector" d="M0 134 L110 244 L0 354 L-110 244 Z"/);
-  assert.equal([...svg.matchAll(/class="space-frame lithium-sector"/g)].length,1);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,6);
-  assert.doesNotMatch(svg,/boron-growth-square|drawing-unavailable|data-cell="s2-11"/);
-  assert.match(svg,/viewBox="-136 14 272 370"/);assert.equal(JSON.stringify(fixtures.N15),before);
-});
+// Supersession review: current H–Na authored recipes replace the older contour
+// sketches below. Keep independent inventory, identity, transform/arrow counts,
+// exact viewport and no-mutation checks; detailed edge tests live alongside them.
+for (const id of ['Li6','Li7','Be9','B10','B11','C12','C13','N14','N15']) {
+  test(`${id} preserves its reviewed current drawing recipe and inventory`, () => {
+    assertCurrentDrawing(context.IsotopeWiring, fixtures[id]);
+    assert.equal(inspectDefinition(fixtures[id]).status, 'verified');
+    if (id === 'Li6') {
+      const broken = { ...context.IsotopeWiring, renderSVG: () => '<svg viewBox="wrong"/>' };
+      assert.throws(() => assertCurrentDrawing(broken, fixtures[id]), /Expected values/);
+    }
+  });
+}
 
 test('Ca42 Ca43 Ca44 Ca46 Sc45 retain their specified wrapper allocations', () => {
  for(const [id,Z,N,shells,counts,top,height,width] of [
@@ -481,95 +393,27 @@ test('Mg24 has six crossed squares joined without a neutron wrapper', () => {
   assert.match(svg,/viewBox="-136 14 272 450"/);assert.equal(JSON.stringify(d),before);
 });
 
-test('Na23 wraps the Ne20 squares and grows a triangle from the wrapper bottom', () => {
-  const before=JSON.stringify(fixtures.Na23),svg=context.IsotopeWiring.renderSVG(fixtures.Na23,{standalone:true});
-  assert.match(svg,/class="neutron beryllium-square" data-cell="s2-01" d="M0,144 L50,194 L0,244 L-50,194 Z"/);
-  assert.match(svg,/class="neutron carbon-bottom-square" data-cell="s2-10" d="M0,244 L50,294 L0,344 L-50,294 Z"/);
-  assert.match(svg,/class="neutron oxygen-right-square" data-cell="s2-00" d="M50,194 L100,244 L50,294 L0,244 Z"/);
-  assert.match(svg,/class="neutron oxygen-left-square" data-cell="s2-11" d="M-50,194 L0,244 L-50,294 L-100,244 Z"/);
-  assert.match(svg,/class="space-frame lithium-sector" d="M0 134 L110 244 L0 354 L-110 244 Z"/);
-  assert.match(svg,/class="neutron sodium-bottom-triangle" data-cell="s3-00" d="M0,354 L-50,404 L50,404 Z"/);
-  assert.equal([...svg.matchAll(/class="space-frame/g)].length,1);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,10);
-  for(const cell of ['s1-00','s2-01','s2-10','s2-00','s2-11'])assert.equal([...svg.matchAll(new RegExp('class="neutron sketch-cross" data-cell="'+cell+'"','g'))].length,2);
-  assert.doesNotMatch(svg,/class="neutron sketch-cross" data-cell="s3-|drawing-unavailable/);
-  assert.match(svg,/viewBox="-136 14 272 420"/);assert.equal(JSON.stringify(fixtures.Na23),before);
-});
+for (const id of ['Na23','Ne20','F19','O18','O17','O16']) {
+  test(`${id} preserves its reviewed inherited drawing, braces and inventory`, () => {
+    assertCurrentDrawing(context.IsotopeWiring, fixtures[id]);
+    assert.equal(inspectDefinition(fixtures[id]).status, 'verified');
+  });
+}
 
-test('Ne20 removes the wrapper and fully crosses both side squares', () => {
-  const before=JSON.stringify(fixtures.Ne20),svg=context.IsotopeWiring.renderSVG(fixtures.Ne20,{standalone:true});
-  assert.match(svg,/class="neutron beryllium-square" data-cell="s2-01" d="M0,134 L50,184 L0,234 L-50,184 Z"/);
-  assert.match(svg,/class="neutron carbon-bottom-square" data-cell="s2-10" d="M0,234 L50,284 L0,334 L-50,284 Z"/);
-  assert.match(svg,/class="neutron oxygen-right-square" data-cell="s2-00" d="M50,184 L100,234 L50,284 L0,234 Z"/);
-  assert.match(svg,/class="neutron oxygen-left-square" data-cell="s2-11" d="M-50,184 L0,234 L-50,284 L-100,234 Z"/);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,10);
-  for(const cell of ['s1-00','s2-01','s2-10','s2-00','s2-11'])assert.equal([...svg.matchAll(new RegExp('class="neutron sketch-cross" data-cell="'+cell+'"','g'))].length,2);
-  assert.match(svg,/data-cell="s2-11" d="M-100 234 L0 234"/);
-  assert.match(svg,/data-cell="s2-11" d="M-50 184 L-50 284"/);
-  assert.doesNotMatch(svg,/<path class="space-frame|middle-triangle|left-triangle|drawing-unavailable/);
-  assert.match(svg,/viewBox="-136 14 272 370"/);assert.equal(JSON.stringify(fixtures.Ne20),before);
-});
-
-test('F19 replaces only the O17 right triangle with a fully crossed square', () => {
-  const before=JSON.stringify(fixtures.F19),svg=context.IsotopeWiring.renderSVG(fixtures.F19,{standalone:true});
-  assert.match(svg,/class="neutron beryllium-square" data-cell="s2-01" d="M0,144 L50,194 L0,244 L-50,194 Z"/);
-  assert.match(svg,/class="neutron carbon-bottom-square" data-cell="s2-10" d="M0,244 L50,294 L0,344 L-50,294 Z"/);
-  assert.match(svg,/class="neutron oxygen-right-square" data-cell="s2-00" d="M50,194 L100,244 L50,294 L0,244 Z"/);
-  assert.match(svg,/class="neutron oxygen-left-triangle" data-cell="s2-11" d="M0,244 L-50,294 L-50,194 Z"/);
-  assert.match(svg,/class="space-frame lithium-sector" d="M0 134 L110 244 L0 354 L-110 244 Z"/);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,8);
-  for(const cell of ['s1-00','s2-01','s2-10','s2-00'])assert.equal([...svg.matchAll(new RegExp('class="neutron sketch-cross" data-cell="'+cell+'"','g'))].length,2);
-  assert.doesNotMatch(svg,/class="neutron sketch-cross" data-cell="s2-11"/);
-  assert.doesNotMatch(svg,/middle-triangle|oxygen-left-square|drawing-unavailable/);
-  assert.match(svg,/viewBox="-136 14 272 370"/);assert.equal(JSON.stringify(fixtures.F19),before);
-});
-
-test('O18 extends C13 with a crossed right square and uncrossed left square', () => {
-  const before=JSON.stringify(fixtures.O18),svg=context.IsotopeWiring.renderSVG(fixtures.O18,{standalone:true});
-  assert.match(svg,/class="neutron beryllium-square" data-cell="s2-01" d="M0,144 L50,194 L0,244 L-50,194 Z"/);
-  assert.match(svg,/class="neutron carbon-bottom-square" data-cell="s2-10" d="M0,244 L50,294 L0,344 L-50,294 Z"/);
-  assert.match(svg,/class="neutron oxygen-right-square" data-cell="s2-00" d="M50,194 L100,244 L50,294 L0,244 Z"/);
-  assert.match(svg,/class="neutron oxygen-left-square" data-cell="s2-11" d="M-50,194 L0,244 L-50,294 L-100,244 Z"/);
-  assert.match(svg,/class="space-frame lithium-sector" d="M0 134 L110 244 L0 354 L-110 244 Z"/);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,8);
-  assert.match(svg,/class="neutron sketch-cross" data-cell="s2-00" d="M0 244 L100 244"/);
-  assert.match(svg,/class="neutron sketch-cross" data-cell="s2-00" d="M50 194 L50 294"/);
-  assert.doesNotMatch(svg,/class="neutron sketch-cross" data-cell="s2-11"|middle-triangle|left-triangle|drawing-unavailable/);
-  assert.match(svg,/viewBox="-136 14 272 370"/);assert.equal(JSON.stringify(fixtures.O18),before);
-});
-
-test('O17 adds the shell-2 wrapper around the O16 squares and mirrored triangles', () => {
-  const before=JSON.stringify(fixtures.O17),svg=context.IsotopeWiring.renderSVG(fixtures.O17,{standalone:true});
-  assert.match(svg,/class="neutron beryllium-square" data-cell="s2-01" d="M0,144 L50,194 L0,244 L-50,194 Z"/);
-  assert.match(svg,/class="neutron carbon-bottom-square" data-cell="s2-10" d="M0,244 L50,294 L0,344 L-50,294 Z"/);
-  assert.match(svg,/class="neutron nitrogen-middle-triangle" data-cell="s2-00" d="M0,244 L50,294 L50,194 Z"/);
-  assert.match(svg,/class="neutron oxygen-left-triangle" data-cell="s2-11" d="M0,244 L-50,294 L-50,194 Z"/);
-  assert.match(svg,/class="space-frame lithium-sector" d="M0 134 L110 244 L0 354 L-110 244 Z"/);
-  assert.equal([...svg.matchAll(/class="space-frame lithium-sector"/g)].length,1);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,6);
-  assert.doesNotMatch(svg,/boron-growth-square|drawing-unavailable/);
-  assert.match(svg,/viewBox="-136 14 272 370"/);assert.equal(JSON.stringify(fixtures.O17),before);
-});
-
-test('O16 mirrors the N14 triangle across the axis without moving crossed squares', () => {
-  const original=JSON.stringify(fixtures.O16),svg=context.IsotopeWiring.renderSVG(fixtures.O16,{standalone:true});
-  assert.match(svg,/class="neutron beryllium-square" data-cell="s2-01" d="M0,134 L50,184 L0,234 L-50,184 Z"/);
-  assert.match(svg,/class="neutron carbon-bottom-square" data-cell="s2-10" d="M0,234 L50,284 L0,334 L-50,284 Z"/);
-  assert.match(svg,/class="neutron nitrogen-middle-triangle" data-cell="s2-00" d="M0,234 L50,284 L50,184 Z"/);
-  assert.match(svg,/class="neutron oxygen-left-triangle" data-cell="s2-11" d="M0,234 L-50,284 L-50,184 Z"/);
-  assert.equal([...svg.matchAll(/class="neutron neutron-v"/g)].length,2);
-  assert.equal([...svg.matchAll(/class="neutron sketch-cross"/g)].length,6);
-  assert.doesNotMatch(svg,/<path class="ep |<path class="space-frame|drawing-unavailable/);
-  assert.match(svg,/viewBox="-136 14 272 370"/);
-  assert.equal(JSON.stringify(fixtures.O16),original);
-});
-
-test('interactive diagrams have one keyboard entry and read-only diagrams retain labels without controls', () => {
+test('supported drawings retain one keyboard entry with a visible fallback; undefined drawings stay explicit', () => {
   const render = context.IsotopeWiring.renderSVG;
-  const svg = render(fixtures.V51, { focusCell: 's3-10' });
+  const svg = render(fixtures.Li6, { focusCell: 's2-01' });
   assert.equal([...svg.matchAll(/tabindex="0"/g)].length, 1);
-  assert.match(svg, /data-cell="s3-10"[^>]*tabindex="0"[^>]*aria-label="s3-10: 1 EP, 2 N"/);
+  assert.match(svg, /data-cell="s2-01"[^>]*tabindex="0"[^>]*aria-label="s2-01: 1 EP, 1 N"/);
   assert.match(svg, /role="group"/);
+  for (const options of [{ focusCell: 'absent' }, { selected: 'hidden' }, { focusCell: 's2-00' }]) {
+    const fallback = render(fixtures.Li6, options);
+    assert.equal([...fallback.matchAll(/tabindex="0"/g)].length, 1);
+    assert.match(fallback, /data-cell="s1-00"[^>]*tabindex="0"/);
+  }
+  const unavailable = render(fixtures.V51, { focusCell: 's3-10' });
+  assert.match(unavailable, /Neutron drawing not defined/);
+  assert.doesNotMatch(unavailable, /class="cell-hit"|tabindex="0"/);
   const comparison = render(fixtures.O16, { interactive: false, labels: true });
   assert.doesNotMatch(comparison, /class="cell-hit"/);
   assert.match(comparison, /class="cell-number"/);
@@ -726,43 +570,57 @@ const core = context.IsotopeWiring;
 const overlayPaths = svg => [...svg.matchAll(/<path class="difference-mark [^"]+" data-change="([^"]+)" data-side="([^"]+)" data-record="([^"]+)" d="([^"]+)"/g)]
   .map(([, change, side, id, path]) => ({ change, side, id, path }));
 
-test('graphical differences preserve added/removed/changed ownership and do not mutate definitions', () => {
+test('stored record comparisons retain ownership without restoring retired canvas overlays', () => {
   const before = fixtures.O16, after = clone(fixtures.O17);
   after.graph.pairs[0].history.push('changed history'); after.graph.witnesses.splice(0, 1);
   const original = JSON.stringify([before, after]), difference = compareDefinitions(before, after);
-  const paths = overlayPaths(core.renderSVG(after, { before, changes: difference.changes }));
-  for (const kind of ['added', 'removed', 'changed']) assert(paths.some(p => p.change === kind));
-  assert(paths.filter(p => p.change === 'removed').every(p => p.side === 'before'));
-  assert(paths.filter(p => p.change === 'added').every(p => p.side === 'after'));
-  assert.equal(paths.filter(p => p.id === after.graph.pairs[0].id).length, 4, 'Both colored routes retain both versions');
-  assert.equal(JSON.stringify([before, after]), original);
-  assert.equal(overlayPaths(core.renderSVG(after)).length, 0);
-});
-
-test('changed witness shows its old horizontal and new vertical geometry', () => {
-  const before = fixtures.O17, after = clone(before);
-  const witness = after.graph.witnesses.find(w => w.id === 's2-00-H'); witness.axis = 'V';
-  const paths = overlayPaths(core.renderSVG(after, { before, changes: compareDefinitions(before, after).changes })).filter(p => p.id === witness.id);
-  assert.equal(paths.length, 2);
-  assert.notEqual(paths[0].path, paths[1].path);
-  assert.deepEqual(paths.map(p => p.side), ['before', 'after']);
-});
-
-test('removed shells/cells stay visible and the comparison viewport fits both definitions', () => {
-  const before = fixtures.V51, after = fixtures.O16, difference = compareDefinitions(before, after);
+  for (const kind of ['added', 'removed', 'changed']) assert(difference.changes.some(change => change.change === kind));
+  for (const change of difference.changes) {
+    if (change.change === 'removed') { assert(change.before); assert.equal(change.after, undefined); }
+    if (change.change === 'added') { assert(change.after); assert.equal(change.before, undefined); }
+  }
+  const changed = difference.changes.find(change => change.id === after.graph.pairs[0].id);
+  assert.deepEqual(changed.before, before.graph.pairs[0]);
+  assert.deepEqual(changed.after, after.graph.pairs[0]);
   const svg = core.renderSVG(after, { before, changes: difference.changes });
-  const paths = overlayPaths(svg), view = svg.match(/viewBox="([^"]+)"/)[1].split(' ').map(Number);
-  assert(paths.some(p => p.id === 's4' && p.change === 'removed'));
-  assert(paths.some(p => p.id === 's4-00' && p.change === 'removed'));
+  assert.match(svg, /Neutron drawing not defined/);
+  assert.equal(overlayPaths(svg).length, 0);
+  assert.equal(svg, core.renderSVG(after));
+  assert.equal(JSON.stringify([before, after]), original);
+});
+
+test('changed witness retains both values without promoting model checks to an edited drawing', () => {
+  const before = fixtures.O17, original = JSON.stringify(before), after = clone(before);
+  const witness = after.graph.witnesses.find(w => w.id === 's2-00-H'); witness.axis = 'V';
+  const changes = compareDefinitions(before, after).changes;
+  assert.equal(changes.length, 1);
+  assert.equal(changes[0].id, witness.id);
+  assert.equal(changes[0].before.axis, 'H'); assert.equal(changes[0].after.axis, 'V');
+  assert.equal(inspectDefinition(after).status, 'verified', 'Passing supplied predicates does not select an edited drawing');
+  const invalid = clone(after);
+  const conflicting = invalid.graph.witnesses.find(w => w.kind === 'line' && w.shell === witness.shell && w.axis === 'V' && w.id !== witness.id);
+  assert(conflicting); conflicting.cell = witness.cell;
+  assert.equal(inspectDefinition(invalid).status, 'refuted', 'Same inventory cannot hide duplicate witness occupancy');
+  assert.match(core.renderSVG(after), /Neutron drawing not defined/);
+  assert.equal(overlayPaths(core.renderSVG(after, { before, changes })).length, 0);
+  assert.equal(JSON.stringify(before), original);
+});
+
+test('removed shells/cells remain in record comparison while the canvas exports only its authored drawing', () => {
+  const before = fixtures.V51, after = fixtures.O16, original = JSON.stringify([before, after]);
+  const difference = compareDefinitions(before, after);
+  assert(difference.changes.some(change => change.id === 's4' && change.change === 'removed'));
+  assert(difference.changes.some(change => change.id === 's4-00' && change.change === 'removed'));
+  const view = core.graphViewport(after, 1, { x: 0, y: 0 }, before);
   for (const doc of [before, after]) {
     const g = core.geometry(doc);
     assert(view[2] >= g.width + 10); assert(view[3] >= g.height);
   }
   const exported = core.renderSVG(after, { standalone: true, before, changes: difference.changes });
-  assert.match(exported, /Removed: dashed pink/);
-  assert.match(exported, /Independent layouts, not a physical transition/);
-  assert.match(exported, /stroke-dasharray:8 5/);
-  assert(overlayPaths(exported).length > 0);
+  assert.equal(exported, core.renderSVG(after, { standalone: true }));
+  assert.equal(overlayPaths(exported).length, 0);
+  assert.doesNotMatch(exported, /Removed: dashed pink|Independent layouts, not a physical transition|data-change=/);
+  assert.equal(JSON.stringify([before, after]), original);
 });
 
 test('placement metadata is retained without question overlays or export caveats', () => {

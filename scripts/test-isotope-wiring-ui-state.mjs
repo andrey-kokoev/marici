@@ -5,34 +5,34 @@ const browser=await launchBrowser();
 try{
  const page=await newBrowserPage(browser,{offline:true,viewport:{width:1400,height:950}}),errors=[];
  page.on('pageerror',e=>errors.push(e.message));
- await page.addInitScript(()=>{if(!localStorage.getItem('isotope-wiring-ui-v1'))localStorage.setItem('isotope-wiring-ui-v1',JSON.stringify({version:1,id:'O16',comparison:true,visualization:'oxygen-comparison'}));});
- await page.goto(new URL('../examples/isotope-wiring/index.html',import.meta.url).href);await expect(page.locator('#core-state')).toHaveText('Passed');
- await expect(page.locator('#compare')).toHaveCount(0);assert.deepEqual(await page.locator('#visualization-view option').allTextContents(),['EP wiring','Neutron-only']);await expect(page.locator('#visualization-view')).toHaveValue('ep-wiring');await expect(page.locator('.compare-column')).toHaveCount(0);
- await page.locator('#catalog-toggle').click();await expect(page.locator('#catalog-search')).toBeFocused();
- await expect(page.locator('#catalog-pin svg')).toHaveCount(1);await expect(page.locator('#catalog-pin')).toHaveText('');await expect(page.locator('#catalog-pin')).toHaveAccessibleName('Undock isotope panel');
+ await page.addInitScript(()=>{if(!localStorage.getItem('isotope-wiring-ui-v1'))localStorage.setItem('isotope-wiring-ui-v1',JSON.stringify({version:1,id:'O16',comparison:true,visualization:'ep-wiring'}));});
+ const url=new URL('../examples/isotope-wiring/index.html',import.meta.url).href;
+ await page.goto(url);await expect(page.locator('#core-state')).toHaveText('Passed');
+ await expect(page.locator('#compare,#visualization-view,.compare-column,#canvas .ep')).toHaveCount(0);
+ if(await page.locator('#catalog').isHidden())await page.locator('#catalog-toggle').click();
+ await expect(page.locator('#catalog-search')).toBeFocused();
+ await expect(page.locator('#catalog-pin')).toHaveAccessibleName('Undock isotope panel');
  await page.locator('#catalog-pin').click();await expect(page.locator('#catalog-pin')).toHaveAccessibleName('Dock isotope panel');await page.locator('#catalog-pin').click();
  await page.locator('#catalog-search').fill('Li6');await page.locator('#element-filter').selectOption('3');await page.locator('#mass-filter').fill('6');await page.locator('#isotopes button[data-id="Li6"]').click();
- await page.locator('#visualization-view').selectOption('neutron-only');await page.locator('#grid').check();await page.locator('#labels').check();await page.locator('#zoom-in').click();
+ await page.locator('#grid').check();await page.locator('#labels').check();await page.locator('#zoom-in').click();
  const viewBox=await page.locator('#canvas svg').getAttribute('viewBox');
- await page.reload();await expect(page.locator('#title')).toHaveText('Lithium-6');await expect(page.locator('#visualization-view')).toHaveValue('neutron-only');
+ await page.reload();await expect(page.locator('#title')).toHaveText('Lithium-6');
  await expect(page.locator('#catalog')).toBeVisible();await expect(page.locator('#catalog-search')).toBeFocused();await expect(page.locator('#catalog-search')).toHaveValue('Li6');await expect(page.locator('#element-filter')).toHaveValue('3');await expect(page.locator('#mass-filter')).toHaveValue('6');
  await expect(page.locator('#isotopes button[data-id="Li6"]')).toHaveAttribute('aria-current','true');await expect(page.locator('#catalog-pin')).toHaveAttribute('aria-pressed','true');
- await expect(page.locator('#grid')).toBeChecked();await expect(page.locator('#labels')).toBeChecked();assert.equal(await page.locator('#canvas svg').getAttribute('viewBox'),viewBox);await expect(page.locator('#canvas .lithium-triangle')).toHaveCount(1);
+ await expect(page.locator('#grid')).toBeChecked();await expect(page.locator('#labels')).toBeChecked();assert.equal(await page.locator('#canvas svg').getAttribute('viewBox'),viewBox);
+ await expect(page.locator('#canvas .lithium-bottom-reflection')).toHaveCount(1);
  await page.locator('#catalog-reset-filters').click();await expect(page.locator('#catalog-search')).toHaveValue('');await expect(page.locator('#catalog-search')).toBeFocused();await expect(page.locator('#element-filter')).toHaveValue('');await expect(page.locator('#mass-filter')).toHaveValue('');assert(await page.locator('#isotopes button').count()>1);
- await page.locator('#catalog-close').click();await page.locator('#canvas .cell-hit[data-cell="s2-01"]').click();
+ await page.locator('#catalog-close').click();await page.locator('#inspect-toggle').click();await page.locator('#canvas .cell-hit[data-cell="s2-01"]').click();
  await page.reload();await expect(page.locator('#inspector')).toBeVisible();await expect(page.locator('#cell-title')).toHaveText('s2-01');await expect(page.locator('#catalog')).toBeHidden();
  await page.locator('#definition-view').click();await page.locator('#format').selectOption('delta');await page.reload();await expect(page.locator('#definition-panel')).toBeVisible();await expect(page.locator('#format')).toHaveValue('delta');
- await page.locator('#diagram-view').click();await page.reload();await expect(page.locator('#visualization-view')).toHaveValue('neutron-only');await expect(page.locator('.compare-column')).toHaveCount(0);
- // Unavailable views are explicit, not silent substitution.
- await page.locator('#catalog-toggle').click();await page.locator('#catalog-search').fill('C12');await page.locator('#isotopes button[data-id="C12"]').click();await expect(page.locator('#visualization-view')).toHaveValue('ep-wiring');assert(await page.locator('#visualization-view option[value="neutron-only"]').evaluate(option=>option.disabled));
- // Rehydrate a custom isotope only after its stored definition has loaded.
+ await page.locator('#diagram-view').click();await page.reload();await expect(page.locator('#visualization-view,#canvas .ep')).toHaveCount(0);
  const custom=await page.evaluate(()=>({...IsotopeWiring.fixtures().H2,id:'SavedUI',name:'Saved UI isotope'}));
- await page.locator('#catalog-close').click();await page.locator('#definition-view').click();await page.locator('#format').selectOption('absolute');await page.locator('#source').fill(JSON.stringify(custom));await page.locator('#apply').click();await expect(page.locator('#storage-state')).toHaveText('Definitions saved in this browser');
+ await page.locator('#definition-view').click();await page.locator('#format').selectOption('absolute');await page.locator('#source').fill(JSON.stringify(custom));await page.locator('#apply').click();await expect(page.locator('#storage-state')).toHaveText('Definitions saved in this browser');
  await page.reload();await expect(page.locator('#title')).toHaveText('Saved UI isotope');assert.equal(JSON.parse(await page.locator('#source').inputValue()).id,'SavedUI');
- // A removed selected definition falls back safely. Malformed storage must not break startup.
+ await page.locator('#diagram-view').click();await expect(page.locator('#canvas .drawing-unavailable')).toHaveCount(1);await expect(page.locator('#canvas .ep,#canvas .cell-hit')).toHaveCount(0);
  await page.addInitScript(()=>{const next=sessionStorage.getItem('test-ui-next');if(next!==null){localStorage.setItem('isotope-wiring-ui-v1',next);sessionStorage.removeItem('test-ui-next');}});
- await page.evaluate(()=>sessionStorage.setItem('test-ui-next',JSON.stringify({version:1,id:'missing',zoom:-10,pan:{x:'bad',y:null},visualization:'bogus'})));await page.reload();await expect(page.locator('#title')).toHaveText('Oxygen-16');await expect(page.locator('#visualization-view')).toHaveValue('ep-wiring');
+ await page.evaluate(()=>sessionStorage.setItem('test-ui-next',JSON.stringify({version:1,id:'missing',zoom:-10,pan:{x:'bad',y:null},visualization:'bogus'})));await page.reload();await expect(page.locator('#title')).toHaveText('Oxygen-16');await expect(page.locator('#visualization-view,#canvas .ep')).toHaveCount(0);
  await page.evaluate(()=>sessionStorage.setItem('test-ui-next','broken JSON'));await page.reload();await expect(page.locator('#core-state')).toHaveText('Passed');
- await page.evaluate(()=>Object.defineProperty(window,'localStorage',{configurable:true,get(){throw Error('Blocked for test');}}));await page.locator('#visualization-view').selectOption('neutron-only');await expect(page.locator('#canvas .neutron-v')).toHaveCount(8);
- assert.deepEqual(errors,[]);console.log('PASS: isotope/UI rehydration, explicit views, panel focus, clear search, selection/filter recovery, malformed/missing state and storage denial.');
+ await page.evaluate(()=>Object.defineProperty(window,'localStorage',{configurable:true,get(){throw Error('Blocked for test');}}));await page.locator('#grid').check();await expect(page.locator('#canvas .neutron-v')).toHaveCount(2);
+ assert.deepEqual(errors,[]);console.log('PASS: neutron-only migration, panel focus/filter/selection/camera recovery, Definition format, custom-definition persistence, undefined drawing, malformed state and storage denial.');
 }finally{await browser.close();}

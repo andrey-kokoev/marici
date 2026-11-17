@@ -42,7 +42,7 @@ The editor does not infer connectivity, direction, or traversal from rendered
 positions. Its dependent animation, path readout, trace download, and rendered
 segment ID labels/hover targets have also been removed. The authored drawing,
 arrows, colors, inventory attachment, Inspect control, and pan/zoom remain.
-No replacement routing algorithm is installed.
+No replacement routing algorithm is installed. The [regression contract review](../../docs/isotope-wiring-regression-contract.md) accounts for superseded routing, contour and canvas-overlay tests separately from the current authored-diagram checks.
 
 `node scripts/test-isotope-wiring-no-rendered-routing.mjs` checks that the removed
 pipeline stays absent and that the drawing and ordinary interactions still work.
@@ -127,15 +127,13 @@ locations or making changes, and import them to resume work.
 
 The app provides isotope selection, graph and wiring views, absolute/delta JSON
 definitions, cell editing, counts, validation, and import/export. In both hosted
-and direct-file sessions, **Counts** runs the structural core and shows changes from a selected
-base. Enable **Changes** in the graph toolbar to overlay added records (solid teal),
-removed base geometry (dashed pink), and changed records (dotted amber, with their
-previous geometry dashed). The overview viewport fits both definitions; SVG export retains
-the overlay and its legend. These are independently laid-out record differences,
-not a physical transition or a registration of two measured structures. Metadata
-changes stay in the list, and unchanged records are not highlighted merely because
-a shell-layout change moves their drawing. Expand a change or failed check and use
-**Inspect** to select its cell.
+and direct-file sessions, validation runs the structural core. In **Definition** mode,
+**Compare stored records** shows added, removed and changed records against the selected
+base, retaining before/after values and metadata distinctions. It does not draw canvas
+overlays or turn edited records into a new authored sketch. The read-only canvas and its
+SVG export retain only the supported authored drawing; undefined drawings remain explicit.
+A record difference is not a physical transition or registration of measured structures.
+Expand a change or failed check and use **Inspect** to select its record where supported.
 The inspector shows exact lattice ports, occupied supports, and neighboring cells
 sharing support. Checks update after edits and undo; unresolved placement remains
 explicit even when the model checks pass. Both modes run the same embedded runtime,
@@ -153,6 +151,15 @@ with records and inventory targets matching their built-in definition. Unsupport
 or edited definitions show **Neutron drawing not defined**, never a fallback view.
 Existing unsupported references retain their data and show the same placeholder;
 new references require a defined drawing.
+The current H–Na drawings are the explicit `DRAWING_RECIPES` in `index.html` and the
+independent edge/arrow expectations in `tests/isotope-wiring-li6-line-colors.test.mjs`.
+Li7 inherits Li6 with vertical braces; successive named recipes retain authored
+translations/reflections and added triangle sides. Ne20 uses its declared color overrides
+and rotated green diagonals: edge IDs containing `red` or `blue` are historical identifiers,
+not a rule deriving current colors. Inventories and physical interpretation remain separate.
+
+<details><summary>Historical H–Na contour description — superseded by the current authored recipes</summary>
+
 H1 is an open triangle (two edges), H2 a closed triangle, He3 a square with two outward Vs closed by vertical outer edges
 attached at its left and right vertices, and He4 a square
 with both diagonals. Li6 uses that crossed first-shell square plus a closed triangle whose apex directly
@@ -186,6 +193,11 @@ crossed square too. All five squares are crossed, with no gap below shell 1.
 Na23 adds the shell-2 wrapper around that four-square cluster, with the usual
 small inset, and a closed triangle growing downward from the wrapper's bottom
 vertex. The triangle represents the visible `s3-00` cell; no shell-3 wrapper is drawn.
+
+</details>
+
+The following higher-isotope contour checks retain their separately scoped fixtures:
+
 Mg24 is a provisional continuation: the Na23 bottom triangle becomes a fully
 crossed square, with the shell-2 neutron wrapper removed. All six crossed squares
 join without gaps. Under the requested drawing convention, each PE triangle
@@ -548,19 +560,16 @@ base definitions; `base` and `ops` remain delta protocol fields, not roundtrippa
 custom metadata. Editing still uses the repaired legacy engine, not the independent
 revision machinery.
 
-Validate website integration with `node scripts/test-isotope-wiring-website.mjs`.
-It checks rendering, theme changes without losing editor text, isotope selection,
-counts, responsive comparison and toolbar editing, same-ID snapshot application,
-metadata deletion through delta export, authored-delta project replay in a fresh
-browser context, and cyclic-update rejection. It also checks live core results for
-all fixtures, edit/undo refresh, links from differences to cell inspection, and the
-direct-file runtime. `node --test tests/isotope-wiring-research.test.mjs` checks the
-browser-facing projection against the Node core and tests record differences. `vitepress build website` builds the public route.
-
-For standalone regressions, run `node scripts/test-isotope-wiring-standalone.mjs`
-and `node scripts/test-isotope-wiring-placement.mjs --standalone`. These run with
-network disabled and check editing, SVG export, theme persistence, placement trials
-and project replay.
+Validate the built website with `node scripts/test-isotope-wiring-public.mjs` and
+run the current matrix with `node scripts/test-isotope-wiring-browsers.mjs`. These
+exercise the actual Neutron-only/Definition contract, production iframe/theme
+retention, exact downloads, storage/replay and failure controls. The older
+`test-isotope-wiring-website`, `standalone`, `placement`, `witness-placement`,
+`survey`, `accessibility` and `ux` scripts include retired UI criteria; they are
+historical probes, not the current passing matrix. Headless comparison/placement
+coverage remains in `node --test tests/isotope-wiring-research.test.mjs` and the
+current browser data-bridge workflow; neither implies that retired dialogs exist.
+`vitepress build website` builds the public route but does not deploy it.
 
 **Text drafts and recovery.** Unapplied Wiring text is retained independently of the
 applied graph through graph edits, Undo/Redo, reset and imports. It is restored after
@@ -588,25 +597,27 @@ On mobile the inspector occupies a separate lower pane, not an overlay. The grap
 focuses on the selected shell and identifies that scope in its caption. Dense SVG
 cells can still require zooming.
 
-Run `node scripts/test-isotope-wiring-accessibility.mjs chromium` for keyboard,
-mouse panning, 320px touch-target, tap/edit and touch-pan regressions. The runner also
-accepts `firefox` or `webkit`; keyboard, mouse panning and emulated touch editing have
-passed in all three. Continuous touch-drag injection is tested only in Chromium.
-Emulation is not a physical-device or screen-reader audit, and pinch zoom/multi-touch
-navigation is not supplied.
+The historical `test-isotope-wiring-accessibility.mjs` includes removed editing
+controls; its earlier touch/editing report is not current acceptance. The current
+matrix checks mouse/keyboard interactions and emulated viewport sizes, including
+visible keyboard entry/Inspect and camera-state recovery. It does not certify
+real devices, screen readers, multi-touch or every pointer gesture.
 
 **Cross-browser regression.** Run `node scripts/test-isotope-wiring-browsers.mjs`
 for the complete sequential Chromium/Firefox/WebKit matrix, or append engine names
-to select a subset. It covers ten editor workflows plus a network-isolation check
-per engine, including hosted and direct-file EP/witness trials, surveys, exports and
-fresh-context project replay. All 33 runs passed on Windows with the installed
-Playwright engines. This does not certify shipping Safari, iOS or Android devices.
-The catalog filter updates synchronously so a delayed redraw cannot detach a result
-between pointer-down and click. The matrix includes that regression as well as
-portable mouse-panning checks. Individual browser scripts also accept the
-`ISOTOPE_BROWSER` environment variable.
-Missing engines fail rather than silently skipping; install them with
-`node node_modules/@playwright/test/cli.js install chromium firefox webkit`.
+and `--case=<id>` for an explicitly partial diagnosis. Its current ten-case contract
+is in `config/isotope-wiring-browser-matrix.v1.json`; it is not the historical
+eleven-case/33-run contract requiring removed EP/placement-dialog controls.
+
+Currency iteration 3 records **30/30 passing runs**, zero failures/unrun cases, on
+Chromium 151.0.7922.34, Firefox 153.0 and WebKit 26.5. Base commit `3ace86e33` alone
+is insufficient: the tested working tree was dirty and exact source hashes are in
+`config/isotope-wiring-browser-evidence.v1.json`. See the [verification record](../../docs/isotope-wiring-browser-verification.md)
+for scope, engine versions, failure controls and limits. `node scripts/check-isotope-wiring-browser-evidence.mjs`
+checks recorded byte freshness without replaying browsers. A partial or drifted run
+cannot be reported as a complete pass. Missing engines fail rather than being skipped;
+install them explicitly with `node node_modules/@playwright/test/cli.js install chromium firefox webkit`.
+This record does not certify shipping Safari, iOS/Android, real devices or physical adequacy.
 
 WebKit's native offline flag rejects `file://` navigation on this Windows build.
 Its file-mode tests instead abort HTTP(S) requests via Playwright routing; a dedicated

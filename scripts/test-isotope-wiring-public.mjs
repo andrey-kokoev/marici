@@ -26,11 +26,14 @@ try {
   await expect(app.locator('#core-state')).toHaveText('Passed');
   await app.locator('#catalog-toggle').click(); await app.locator('#catalog-search').fill('V51');
   await app.locator('#isotopes button[data-id="V51"]').click();
-  await expect(app.locator('#placement-banner')).toBeVisible();
-  await app.locator('#canvas .cell-hit[data-cell="s3-10"]').click(); await app.locator('#trial-open').click();
-  await app.locator('#trial-survey summary').click(); await app.locator('#survey-run').click();
-  await expect(app.locator('#survey-status')).toContainText('Checked 8 of 8');
-  await app.locator('#trial-cancel').click();
+  await expect(app.locator('#canvas .drawing-unavailable')).toHaveCount(1);
+  await expect(app.locator('#canvas .ep,#canvas .cell-hit,#trial-open')).toHaveCount(0);
+  await app.locator('#catalog-search').fill('Li6');await app.locator('#isotopes button[data-id="Li6"]').click();await app.locator('#catalog-close').click();
+  await app.locator('#inspect-toggle').click();const entry=app.locator('#canvas .cell-hit[tabindex="0"]');await expect(entry).toHaveCount(1);await entry.focus();await page.keyboard.press('Enter');
+  await app.locator('#definition-view').click();const retained=await app.locator('#source').inputValue();
+  await page.locator('.VPSwitchAppearance').first().click();await expect(app.locator('html.dark')).toHaveCount(1);
+  assert.equal(await app.locator('#source').inputValue(),retained,'Host theme synchronization must not reload the editor');
+  await app.locator('#diagram-view').click();await expect(app.locator('#canvas .difference-mark')).toHaveCount(0);
 
   const pending = page.waitForEvent('download'); await page.locator('#wiring-download').click();
   const download = await pending; assert.equal(download.suggestedFilename(), 'isotope-wiring.html');
@@ -46,7 +49,7 @@ try {
   await page.getByRole('link', { name: 'Validation and export limits', exact: true }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Isotope wiring: validation and export limits');
   assert.deepEqual(errors, []);
-  console.log('PASS: production navigation, embedded core/survey, full-window editor, exact standalone download and limitations route.');
+  console.log('PASS: production navigation, current embedded core/readonly controls, keyboard entry, theme retention, full-window editor, exact standalone download and limitations route.');
 } finally {
   if (browser) await browser.close();
   await new Promise((resolve, reject) => server.httpServer.close(error => error ? reject(error) : resolve()));

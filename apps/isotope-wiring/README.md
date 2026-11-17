@@ -1,5 +1,7 @@
 # Isotope Wiring
 
+**Publication status: development-only.** This application is not the website's hosted legacy iframe or standalone editor. Its local build is not publication acceptance. See the [public application/Morse status guide](../../website/experiments/typed-wiring-development.md) and `config/typed-editor-publication.v1.json` at the repository root. Existing PWA, model/convention and broader browser requirements remain in force; this disposition does not remove or replace them.
+
 A Vue/Pinia authored-diagram inspection and alternating-route slice, not the finished replacement application. Binding scope and unresolved domain requirements are in `REQUIREMENTS.md`. The development-server failure and its proposed corrective/preventive actions are tracked in [CORRECTIVE-ACTION-PLAN.md](CORRECTIVE-ACTION-PLAN.md).
 
 ## Run

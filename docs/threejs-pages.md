@@ -37,6 +37,12 @@ URL. The website also publishes the same bundled viewer at
 `scripts/prepare-native-belt-viewer.mjs`, invoked by the website build. `pnpm normal-ray:test` runs model and local-only Chromium lifecycle/fallback
 checks. This local research viewer is not automatically a public-site deployment.
 
+## Selected public derivatives: switched-attractor field and ESD7 shell
+
+The [public selection guide](../website/experiments/field-and-shell-viewers.md) distinguishes a prescribed switched-force numerical toy from a static order-seven subdivision boundary. Both retain local r128/OrbitControls, an SVG fallback and model disclosures outside the JavaScript mount. Authoritative sources remain in `examples/two-attractor-field/` and `examples/simplex-step-span/`; their existing publishers are invoked by normal visualization preparation. The historical shell URL no longer denotes a 23-step path or growth process.
+
+`node scripts/test-curated-viewers.mjs` checks the actual production-build paths with same-origin assets at desktop/mobile sizes. `--live` additionally requires exact served viewer bytes matching the local build and is a separate post-release acceptance step. Source selection and local browser checks do not satisfy T08's deployed-route requirement or authorize release. Existing model and fallback tests remain required; these checks are not physical validation.
+
 ## Reference implementation
 
 - **Edit:** `examples/threejs-reference/`: `App.vue` (panel), `useViewerModel.js` (reactive/computed state), `scene.js` (imperative renderer), `app.js` (mount), plus HTML/CSS.

@@ -81,7 +81,9 @@ try {
   for (const id of ['proposed-packet-primitive', 'retained-information-research-lab', 'geometry-and-assembly', 'information-and-readouts', 'spinor-comparisons', 'products-and-closure', 'diagrams-and-retained-records']) {
     assert(await page.evaluate(id => !!document.getElementById(id), id), `Gallery family anchor missing: ${id}`)
   }
-  assert.equal(await page.locator('.construction-preview').count(), 18)
+  // Eighteen retained cards plus the two explicitly reviewed standalone viewers.
+  assert.equal(await page.locator('.construction-preview').count(), 20)
+  for (const name of ['two-attractor-field', 'simplex-step-span']) await expect(page.locator(`.construction-preview[href="/experiments/${name}/index.html"]`)).toHaveCount(1)
   for (const image of await page.locator('.construction-preview img').all()) {
     await image.scrollIntoViewIfNeeded()
     await page.waitForFunction(img => img.complete && img.naturalWidth > 0, await image.elementHandle())
@@ -415,7 +417,7 @@ try {
       if (!/^(?:https?:|#)/.test(href)) assert.equal((await fetch(new URL(href, page.url()))).status, 200, `${name}: ${href}`)
     }
     await Promise.all([page.waitForNavigation({ waitUntil: 'domcontentloaded' }), returnLink.click()])
-    await expect(page.locator('.construction-preview')).toHaveCount(18)
+    await expect(page.locator('.construction-preview')).toHaveCount(20)
   }
   for (const name of ['relational-growth', 'paw-cycle', 'two-paws']) {
     await page.setViewportSize({ width: 1440, height: 1000 })
@@ -469,7 +471,7 @@ try {
     const returnLink = page.getByRole('link', { name: '← Construction gallery', exact: true })
     await expect(returnLink).toHaveAttribute('target', '_self')
     await Promise.all([page.waitForNavigation({ waitUntil: 'domcontentloaded' }), returnLink.click()])
-    await expect(page.locator('.construction-preview')).toHaveCount(18)
+    await expect(page.locator('.construction-preview')).toHaveCount(20)
   }
   await page.goto(base + '/experiments/')
   await page.waitForLoadState('networkidle')

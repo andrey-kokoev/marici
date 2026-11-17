@@ -6,7 +6,9 @@ export async function launchBrowser(name = process.env.ISOTOPE_BROWSER || 'chrom
   assert(Object.hasOwn(engines, name), `Unsupported ISOTOPE_BROWSER: ${name}`);
   console.log(`Browser engine: ${name}`);
   if (name === 'webkit') console.log('WebKit file-mode tests block HTTP(S) via routing: its native offline flag rejects file:// navigation on Windows.');
-  return engines[name].launch();
+  const browser = await engines[name].launch();
+  console.log(`Browser version: ${name} ${browser.version()}`);
+  return browser;
 }
 
 export async function disableNetworking(page) {

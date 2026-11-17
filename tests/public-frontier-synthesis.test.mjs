@@ -27,18 +27,22 @@ function frontier(text) {
 
 function checkCoverage(section) {
   for (const source of sources) assert(section.includes(source), `Missing frontier source: ${source}`)
+  assert(section.includes('/research/results/source-certified-coherent-assembly'), 'Missing frontier source: WG revision-27 assembly')
 }
 
 test('homepage leads dated research coverage with source-linked results and counterexamples', async () => {
   const section = frontier(canonical)
   checkCoverage(section)
   assert(canonical.indexOf(heading) < canonical.indexOf('## October 18:'))
-  assert.equal((section.match(/^\| (?!Track|---)/gm) || []).length, 7)
+  // Seven retained tracks plus the separately scoped revision-27 assembly.
+  assert.equal((section.match(/^\| (?!Track|---)/gm) || []).length, 8)
+  assert.match(section, /WG common-witness assembly.*Stop that local objective.*physical adequacy remain separate/)
   for (const source of sources) await access(new URL(`../${source}`, import.meta.url))
 })
 
 test('frontier coverage check rejects an omitted research source', () => {
   assert.throws(() => checkCoverage(''), /Missing frontier source/)
+  assert.throws(() => checkCoverage(frontier(canonical).replaceAll('/research/results/source-certified-coherent-assembly', '')), /WG revision-27 assembly/)
 })
 
 test('frontier retains the tested models and the unresolved physical/source boundaries', () => {

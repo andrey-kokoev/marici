@@ -24,7 +24,9 @@ The regular `pnpm dev` / `pnpm build` preparation generates the same assets. Sit
 
 ## Public selection and pending development
 
-The public catalogue contains the five source contracts already available in the committed selection. The pending persistent-seam P/E addition is preserved in `src/conjecture-nets/development-catalog.json`, not silently included by the normal website preparation. Its root contract and snapshot/pin closure still require review; a local build is not that review.
+The public catalogue retains the five reviewed source contracts. Persistent-seam P/E research is present in the repository but remains held in `src/conjecture-nets/development-catalog.json`, not silently included by normal website preparation. Its local revision-73 frontier and publication wording have been reviewed; full source/snapshot/pin publication closure has not been approved. A commit, graph admission or local build is not publication approval.
+
+[Public selection, revision-73 frontier and unresolved source wording](/experiments/pe-net-publication-status): the owner note claims public catalogue selection and its checker asserts public registration, while the actual catalogue/bundle exclude that path. No owner-locus correction or scientific rejection is applied by this editorial clarification. Keep the five-net selection; do not add a net merely to satisfy the stale registration assumption.
 
 To inspect the pending selection in a checkout containing its local inputs:
 
@@ -34,7 +36,7 @@ node scripts/prepare-conjecture-nets.mjs --development --check
 node scripts/test-conjecture-nets-browser.mjs --development
 ```
 
-This writes `.ai/conjecture-nets/development/conjecture-nets.html` and its JSON, outside the public tree. It does not replace the public bundle. The optional development browser run retains the P/E-specific controls; normal browser verification does not count those pending checks as passed. A clean checkout without the pending research files may not run development preparation, but must still build the public selection.
+This writes `.ai/conjecture-nets/development/conjecture-nets.html` and its JSON, outside the public tree. It does not replace the public bundle. The optional development browser run retains the P/E-specific controls; normal browser verification does not count those pending checks as passed. Development preparation requires its own research inputs and closure. The public publisher must remain reproducible with only its five selected contracts; that independence is not a statement that the held research is uncommitted or scientifically rejected.
 
 ## Controls
 

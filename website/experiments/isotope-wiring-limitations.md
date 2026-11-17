@@ -2,7 +2,9 @@
 
 [Return to the editor](/experiments/isotope-wiring) · [Separate 3D workbench](/experiments/construction-workbench)
 
-The hosted editor embeds the standalone `examples/isotope-wiring/index.html`. Its original counts, delta compiler and File operations belong to the **legacy implementation**. Both hosted and direct-file sessions run the same embedded structural adapter and model evaluator: **Counts → Structural checks** exposes findings, **Changes from base** compares working records, and the cell inspector shows lattice ports and shared-support neighbors. These additions do not replace the editing engine. Direct-file sessions need no network assets or server. An incomplete HTML copy missing the core explicitly marks checks unavailable. A valid definition or matching inventory is not an established nuclear geometry, isotope stability result, or complete equivalence certificate.
+**[Which editor is hosted? Typed-app and Morse status](/experiments/typed-wiring-development)** — `apps/isotope-wiring/` is a separate development-only application, not the source of this iframe or standalone download. Its Morse dialog describes authored incidence plus a supplied rotation/handle convention; it is not a computed smooth atlas, gradient flow or physical nuclear surface.
+
+The hosted editor embeds the standalone `examples/isotope-wiring/index.html`. Its original counts, delta compiler and File operations belong to the **legacy implementation**. Both hosted and direct-file sessions run the same embedded structural adapter and model evaluator: validation exposes findings, **Definition → Compare stored records** retains before/after record values, and the cell inspector shows lattice ports and shared-support neighbors. The canvas is read-only and Neutron-only: it does not infer routing from SVG, display record-difference overlays or invent a sketch for edited/unsupported definitions. These additions do not replace the editing engine. Direct-file sessions need no network assets or server. An incomplete HTML copy missing the core explicitly marks checks unavailable. A valid definition or matching inventory is not an established nuclear geometry, isotope stability result, or complete equivalence certificate.
 
 ## Repaired cases and remaining limits
 
@@ -15,7 +17,9 @@ The hosted editor embeds the standalone `examples/isotope-wiring/index.html`. It
 
 Retain original project exports and **absolute definitions** outside the app before editing or moving between browser locations. Inspect metadata as well as graph records when comparing exports. This is a caution, **not a certified persistence or roundtrip guarantee**. Do not rely solely on delta exports, displayed counts or an apparently unchanged drawing as a backup check.
 
-The local legacy suite now contains 14 passing checks with no TODOs, including the three repaired regressions, true-cycle rejection, metadata deletion and exhaustive generated-ID uniqueness over the supported coordinate range. It also retains counterexamples showing mutable-base dependence and loss of graph-array ordering. The Counts panel says **Graph records replay checked**: that check compares graph records, not the entire definition.
+**Verified software checkpoint: `3ace86e33`, rechecked during currency correction iteration 1.** The narrow legacy core suite contains 14 passing checks with no TODOs, including the three repaired regressions, true-cycle rejection, metadata deletion and exhaustive generated-ID uniqueness over the supported coordinate range. At that historical checkpoint the separate broader software baseline was **343/371 passing, with 28 failures and zero TODOs**, in traversal/color/rendering tests; those failures were not the three repaired core cases.
+
+**Currency correction iteration 2:** the reviewed combined suite now has **371/371 passing, with no skips or TODOs**. The [regression contract review](https://github.com/andrey-kokoev/marici/blob/main/docs/isotope-wiring-regression-contract.md) accounts for all 28 earlier failures and their replacement coverage. This is not a claim that an old routing algorithm or obsolete contour picture was proved correct: removed mechanisms stay removed. The renderer also now falls back to a visible keyboard target when the requested cell is absent from the authored template. It also retains counterexamples showing mutable-base dependence and loss of graph-array ordering. The Counts panel says **Graph records replay checked**: that check compares graph records, not the entire definition.
 
 ## Applied state and unapplied text
 
@@ -33,6 +37,10 @@ and definition exports contain applied state, not unapplied buffers. Local brows
 storage can be cleared and is not cloud sync or a durable backup. Keep external
 exports. Same-ID Apply/import updates the current visible definition, and graph
 save messages refer only to completion of the latest graph write.
+
+<details><summary>Historical placement-trial UI — not current read-only canvas controls</summary>
+
+The following two sections describe the earlier interactive placement workflow. Current Definition data operations and headless trial functions are separate from what the hosted canvas exposes; do not treat these historical instructions as current UI acceptance.
 
 ## Placement questions and alternatives
 
@@ -85,6 +93,8 @@ coverage/pagination, result inspection and source isolation offline; add `--host
 for the website. General composition, multi-record transformations and comparison
 against physical observations remain outside this action.
 
+</details>
+
 ## Core integration boundary
 
 The inspected pending local development includes several headless layers. These source paths are provenance locators, not promises of a stable public API; uncommitted files may be absent from a clean checkout of the published revision.
@@ -106,39 +116,41 @@ In a development checkout containing the pending suites, use:
 
 ```sh
 node --test tests/isotope-wiring-core.test.mjs
-node scripts/test-isotope-wiring-website.mjs
+node scripts/test-isotope-wiring-browsers.mjs
+node scripts/check-isotope-wiring-browser-evidence.mjs
 node --test tests/isotope-wiring-category.test.mjs tests/isotope-wiring-adapter.test.mjs tests/isotope-wiring-model.test.mjs tests/isotope-wiring-revisions.test.mjs
 ```
 
-The first command checks the actual legacy source. The browser command covers editing, responsive layout, same-ID snapshot application, metadata-deleting delta export, authored-delta project replay in a fresh context, rejection of cyclic updates, live core checks, inspectable changes and direct-file parity. The final command checks the independent software layers, not physical isotope claims. `node --test tests/isotope-wiring-research.test.mjs` additionally checks agreement between the browser-facing projection and Node evaluation. Test totals are snapshot-specific; inspect TODO, failure and scope fields rather than treating a process exit as a universal certificate.
+The first command checks the actual legacy source. The current browser matrix checks the Neutron-only contract, Definition replay, metadata deletion, fresh-context import/reload, rejected cyclic updates, missing-runtime/corrupt-data refusal and built-host/download behavior. Placement and survey functions are tested through isolated data APIs, not a retired placement dialog. The evidence command checks the recorded coverage and matching tested bytes; it does not replay browsers. The final command checks the independent software layers, not physical isotope claims. `node --test tests/isotope-wiring-research.test.mjs` additionally checks agreement between the browser-facing projection and Node evaluation. Test totals are snapshot-specific; inspect TODO, failure and scope fields rather than treating a process exit as a universal certificate.
 
-`node scripts/test-isotope-wiring-standalone.mjs` tests direct-file checks, edits,
-undo/redo, differences, SVG export, system/manual themes and explicit missing-core
-failure with network access disabled. `node --test tests/isotope-wiring-standalone.test.mjs`
+Earlier scripts such as `test-isotope-wiring-standalone.mjs` contain retired EP-editing/canvas-overlay criteria and are not current acceptance tests. The current matrix replaces them with explicit Neutron-only, Definition, missing-runtime and download checks. `node --test tests/isotope-wiring-standalone.test.mjs`
 checks the embedded runtime against maintained source functions. Maintainers regenerate
 its marked HTML section with `node scripts/prepare-isotope-wiring-core.mjs` after core
 changes; opening the delivered file needs no build step.
 
-`node scripts/test-isotope-wiring-browsers.mjs` runs ten editor workflows and a
-network-isolation check in each of Chromium, Firefox and WebKit. All 33 runs pass
-on the current Windows Playwright engines, including hosted/direct-file placement
-trials, surveys, exports and fresh-context project replay. Missing engines fail the
-runner rather than being skipped. Engine automation is not a certification of
-shipping Safari, iOS, Android, or every browser/OS combination.
+`node scripts/test-isotope-wiring-browsers.mjs` runs ten current-contract cases in each of Chromium, Firefox and WebKit, including a reachable-server network-isolation control. Missing engines and failures are recorded; unrun cases never count as passes.
 
-WebKit's native offline flag rejects local-file navigation on this Windows build;
-its file tests abort HTTP(S) requests through routing instead. A dedicated check
-confirms that a reachable server receives no request. Chromium and Firefox also
-use native offline mode. This limitation of the test engine is not hidden as a
-passing native-offline navigation test.
+**Historical browser report (first committed in `c1025e302`):** the source reported
+33 passing Windows Playwright runs, including hosted/direct-file placement trials,
+surveys, exports and fresh-context project replay. The exact tested source revision
+and engine versions were not retained with that report; its commit identifies the
+record, not an independently established execution checkpoint. That historical result is not current acceptance.
+
+**Current recorded browser matrix (currency iteration 3): 30/30 runs passed**, with zero failures or unrun cases, on Chromium 151.0.7922.34, Firefox 153.0 and WebKit 26.5. Exact source hashes and per-case engine versions are recorded against base commit `3ace86e33` plus the tested dirty working tree. The [verification record and scope](https://github.com/andrey-kokoev/marici/blob/main/docs/isotope-wiring-browser-verification.md) identify the ten cases and explain why they are not the historical eleven-case/33-run matrix. They include direct-file and built-host behavior, storage/replay and data-API placement checks, not retired placement-dialog controls. The separate typed app, live deployment, real devices and screen readers are outside this record.
+
+The same historical report described WebKit's native offline flag rejecting local-file
+navigation on that Windows build, with HTTP(S) requests aborted through routing and
+a dedicated reachable-server isolation check instead. Chromium and Firefox used native
+offline mode. A new run must recheck the engine-specific behavior rather than treating
+that workaround as a passing native-offline navigation test.
 
 `node scripts/test-isotope-wiring-accessibility.mjs chromium` additionally exercises
 keyboard cell navigation and focus return, panel dismissal, 44px coarse-pointer
 controls, and emulated touch editing/panning at 320px. Arrow navigation follows
 record order, not spatial proximity. Dense diagram cells may require zoom; pinch
-and multi-touch navigation are not implemented. Keyboard, mouse panning and emulated
-touch editing pass in all three engines; continuous touch-drag injection is currently
-Chromium-only. Real-device and screen-reader testing remain open. The mobile inspector now sits below the graph,
+and multi-touch navigation are not implemented. The historical report described keyboard, mouse panning and emulated
+touch editing passing in all three engines, with continuous touch-drag injection
+checked only in Chromium; this is not a current cross-engine result. Real-device and screen-reader testing remain open. The mobile inspector now sits below the graph,
 which focuses on the selected shell rather than being covered by the panel.
 `node scripts/test-isotope-wiring-ux.mjs` exercises these layouts, modal focus,
 text-draft recovery and confirmation flows.

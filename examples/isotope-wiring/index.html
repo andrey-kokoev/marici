@@ -605,9 +605,10 @@ function renderSVG(doc,{selected=null,focusCell=null,grid=false,labels=false,sta
  if(['Li6','Li7'].includes(doc.id))for(const cell of ['s1-00'])parts.push(li6MidArrow(point(cell,'L'),point(cell,'R'),'var(--green,#4e824b)','right'));
 
  if(doc.id==='Ca46'&&stackedContact){if(presentation==='terminal-map')for(const [cell,port] of [['s2-01','T'],['s2-10','B'],['s3-00','T'],['s3-10','B'],['s4-00','T']]){const q=point(cell,port);parts.push(`<circle class="transport-port" data-cell="${cell}" data-port="${port}" cx="${q[0]}" cy="${q[1]}" r="3" fill="#608570" stroke="white" stroke-width="1"><title>${cell}:${port} · declared neutron-space interface</title></circle>`);}const p=point('s1-00','B');parts.push(`<circle class="stacked-contact" cx="${p[0]}" cy="${p[1]}" r="3.5" fill="#c47712" stroke="white" stroke-width="1" pointer-events="none"><title>Shell 1 bottom ↔ shell 2 top-cell vertex: one reversible contact. Wrapper contours are coherence spans, not extra transfer channels.</title></circle>`);}
+ const requestedFocus=focusCell||selected,tabStop=visibleCells.some(c=>c.id===requestedFocus)?requestedFocus:visibleCells[0]?.id;
  if(!standalone)for(const c of visibleCells){
   const p=point(c.id,'C'),n=doc.graph.pairs.filter(x=>x.cell===c.id).length,wn=doc.graph.witnesses.filter(x=>x.cell===c.id).length;
-  if(interactive)parts.push(`<g class="cell-hit" data-cell="${esc(c.id)}" role="button" tabindex="${c.id===(focusCell||selected||doc.graph.cells[0]?.id)?0:-1}" aria-describedby="graph-keyboard-help" aria-label="${esc(c.id)}: ${n} EP, ${wn} N"><path fill="transparent" d="${diamond(c)}"/><title>${esc(c.id)} · ${n} EP · ${wn} N</title></g>`);
+  if(interactive)parts.push(`<g class="cell-hit" data-cell="${esc(c.id)}" role="button" tabindex="${c.id===tabStop?0:-1}" aria-describedby="graph-keyboard-help" aria-label="${esc(c.id)}: ${n} EP, ${wn} N"><path fill="transparent" d="${diamond(c)}"/><title>${esc(c.id)} · ${n} EP · ${wn} N</title></g>`);
   if(c.id===selected)parts.push(`<circle class="selection" cx="${p[0]}" cy="${p[1]}" r="33"/>`);
   if(labels)parts.push(`<text class="cell-number" x="${p[0]+9}" y="${p[1]-9}">${n}</text>`);
  }

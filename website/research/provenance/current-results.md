@@ -1,6 +1,24 @@
 # Current result provenance: pinned metadata, not a new replay
 
-<a href="/research/provenance/current-results.v1.json" target="_self">Download the compact v1 provenance manifest</a> · [Result summaries](/research/results/)
+<a href="/research/provenance/current-results.v2.json" target="_self">Download the compact v2 successor manifest</a> · Historical: <a href="/research/provenance/current-results.v1.json" target="_self">Download the compact v1 provenance manifest</a> · [Result summaries](/research/results/)
+
+## Reviewed successor v2
+
+Snapshot `current-results-publication-v2` adds **two result families and three explanation guides**, with **36 immediate source identities, 27 checker/build-source identities and 19 historical artifact identifiers**. It references the unchanged ten-family v1 snapshot by canonical JSON SHA-256; it does not rewrite, recapture or enlarge v1's pins. The publisher validates both snapshots. V2 is file metadata only, not a scientific replay, receipt/source compatibility audit or full dependency closure.
+
+| New coverage | Verification boundary retained |
+|---|---|
+| [WG common-witness assembly](/research/results/source-certified-coherent-assembly) | Source-reported certified-input completion, not arbitrary native admission or physical adequacy. Compiler identities in historical artifacts are not newly executed binaries. |
+| [Ramsey retained/candidate assembly](/research/results/ramsey-retained-assembly-coherence) | Scoped Cubical correspondence checks are distinct from the written unbounded exact-integer candidate theorem and its finite certificate. No new kernel certification or parent descent. |
+| [November mathematical programme](/research/programs/ramsey-mathematical-programme-2026-11) | Written arguments, conditional finite heptagon certificates, counterexamples and conjectures remain distinct; three heptagon receipts do not verify the entire programme. |
+| [Typed-editor/Morse explanation](/experiments/typed-wiring-development) | Development-only source/rotation/handle interpretation, not a computed atlas, gradient flow, public app release or physical geometry. |
+| [Held P/E status](/experiments/pe-net-publication-status) | Current source wording/checker assume registration that the five-net public selection intentionally excludes. A historical pass does not establish present registration or native K. |
+
+The three named rigidity/stability helpers were not located; neither was a concrete identity for the described rigidity cycle-rank JSON attachment. Reflected-simplex sibling packages are absent from the reviewed tree. The heptagon Rust frontend and its Cargo manifest/lockfile are pinned as immediate checker/build inputs. Heptagon CNF/DRAT payloads remain local artifacts, not website downloads. V2 preserves these unavailable-input boundaries rather than fabricating script, certificate or successful-run identities.
+
+Receipt headers such as `passed`, `UNSAT` or a scoped `++` are copied historical metadata, not a new result. Recorded compiler identities differ between packets; no shared, freshly validated compiler environment is inferred. The P/E registration mismatch is an explicit compatibility limitation, not a scientific rejection. **Receipt/source compatibility is not revalidated.**
+
+## Historical v1 selection
 
 Snapshot `current-results-publication-v1` covers ten selected result families. It records **17 immediate source-packet identities, 17 checker-source identities and 16 historical receipt identifiers**. Compiler version/hash fields are retained only where found in the selected receipt metadata. The manifest publishes no raw scientific receipt, execution log, matrix archive or screenshot.
 
@@ -39,15 +57,15 @@ For a result, find its slug in the manifest, then follow the named source packet
 To check only this publication's metadata and generated copy:
 
 ```sh
-node scripts/prepare-current-research-provenance.mjs --check
+node scripts/prepare-research-provenance-successor.mjs --check
 ```
 
 To create a **metadata-only review candidate**, without overwriting the versioned config or running suppliers:
 
 ```sh
-node scripts/prepare-current-research-provenance.mjs --capture
+node scripts/prepare-research-provenance-successor.mjs --capture
 ```
 
-The candidate is written under ignored `.ai/`. A source/status change requires explicit review of a successor snapshot; do not silently refresh pins to silence a failed build or call recapture a scientific replay. The regular website preparation validates `config/current-research-provenance.v1.json` and emits the small generated JSON copy.
+The candidate is written under ignored `.ai/`, not into the versioned configuration. Inspect its sources, status bindings, receipt headers, missing inputs and compatibility limits. The optional `--accept-reviewed-candidate SHA256` command creates a new v2 file exclusively from those exact reviewed bytes and refuses to overwrite an existing config. It supplies no scientific or graph admission. A source/status change requires explicit review of a successor snapshot; do not silently refresh pins to silence a failed build or call recapture a scientific replay. The regular website preparation validates the frozen `config/current-research-provenance.v1.json`, reviewed `config/current-research-provenance.v2.json` and its editorial selection, then emits both small JSON copies. The new result pages and all three guides link here. Builds neither require historical receipt payloads nor rerun their suppliers.
 
 No scientific checker, proof assistant, measurement or shared research disposition is executed or changed by these metadata commands.

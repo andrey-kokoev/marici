@@ -6,7 +6,10 @@ import { normalizeNet } from '../src/conjecture-nets/model.js'
 import { prepareConjectureNets } from './prepare-conjecture-nets.mjs'
 import { synthesisPages, normalizePublicSynthesis, predictionTargets } from './public-synthesis-content.mjs'
 import { preparePublicResearchFrontier } from './prepare-public-research-frontier.mjs'
-import { prepareCurrentResearchProvenance } from './prepare-current-research-provenance.mjs'
+import { preparePublicationResearchProvenance as prepareCurrentResearchProvenance } from './prepare-research-provenance-successor.mjs'
+import { loadPublicResearchCoverage } from './public-research-coverage-config.mjs'
+import { checkTypedEditorPublication } from './check-typed-editor-publication.mjs'
+import { checkResearchCurrency, dispositionsFile } from './research-currency.mjs'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const read = file => fs.readFile(file, 'utf8')
@@ -46,14 +49,26 @@ async function markdownFiles(dir) {
 
 export async function checkPublicResearchCoverage(base = root, { built = false, contract: suppliedContract, navigation: suppliedNavigation } = {}) {
   const website = path.join(base, 'website')
-  const contract = suppliedContract ?? JSON.parse(await read(path.join(base, 'config/public-research-coverage.v1.json')))
+  const selected = await loadPublicResearchCoverage(base)
+  const contract = suppliedContract ?? selected.contract
   if (contract.schema !== 'marici.public-research-coverage.v1' || contract.scientific_dispositions_modified !== false) throw Error('Invalid or overstated coverage contract')
   const inventory = JSON.parse(await read(path.join(base, 'src/data/results-physics.json')))
   if (new Set(inventory.map(item => item.slug)).size !== inventory.length) throw Error('Duplicate public result slug')
+  if (new Set(contract.required_result_slugs).size !== contract.required_result_slugs.length) throw Error('Duplicate required result coverage')
   for (const slug of contract.required_result_slugs) if (!inventory.some(item => item.slug === slug)) throw Error('Missing required result coverage: ' + slug)
   const provenance = await prepareCurrentResearchProvenance(base, { check: true })
   for (const slug of contract.required_result_slugs) if (!provenance.slugs.includes(slug)) throw Error('Required result has no pinned provenance: ' + slug)
+  for (const slug of provenance.slugs) if (!contract.required_result_slugs.includes(slug)) throw Error('Selected provenance result omitted from required coverage: ' + slug)
+  for (const route of provenance.routes) if (!contract.required_pages.includes(route)) throw Error('Missing required successor provenance route: ' + route)
   await preparePublicResearchFrontier(base, { check: true })
+  if (built) for (const name of ['current.json', ...selected.snapshots.map(item => item.snapshot_id + '.json')]) {
+    if (await read(path.join(website, '.vitepress/dist/research/frontier', name)) !== await read(path.join(website, 'public/research/frontier', name))) throw Error('Stale built frontier snapshot: ' + name)
+  }
+  if (built) for (const artifact of [provenance, provenance.predecessor]) {
+    const published = path.join(base, artifact.target)
+    const rendered = path.join(website, '.vitepress/dist', artifact.target.replace('website/public/', ''))
+    if (await read(rendered).catch(() => null) !== await read(published)) throw Error('Stale built provenance snapshot: ' + artifact.snapshot_id)
+  }
   for (const item of synthesisPages) {
     if (await read(path.join(base, item.target)) !== normalizePublicSynthesis(await read(path.join(base, item.source)))) throw Error('Stale synthesis projection: ' + item.target)
   }
@@ -71,6 +86,7 @@ export async function checkPublicResearchCoverage(base = root, { built = false, 
   const snapshot = JSON.parse(await read(path.join(website, 'public/experiments/conjecture-nets.json')))
   if (JSON.stringify(snapshot.nets.map(item => item.source)) !== JSON.stringify(contract.required_net_sources)) throw Error('Stale or extra bundled public net')
   const nets = snapshot.nets.map(item => normalizeNet(item.contract, item.source, item.title))
+  if (JSON.stringify(nets.map(net => net.id)) !== JSON.stringify(contract.required_net_ids)) throw Error('Public net IDs differ from reviewed coverage contract')
   const [config] = await resolveUserConfig(website, 'build', 'production')
   const md = await createMarkdownRenderer(website, config.markdown ?? {})
   const nav = suppliedNavigation ?? navigationLinks({ nav: config.themeConfig?.nav, sidebar: config.themeConfig?.sidebar })
@@ -131,7 +147,10 @@ export async function checkPublicResearchCoverage(base = root, { built = false, 
     const html = md.render(await read(file))
     for (const href of staticHrefs(html)) await checkLink(href, route)
   }
-  return { scope: 'publication consistency only; not scientific verification', snapshot_id: contract.snapshot_id, built, markdown_pages: files.length, navigation_links: nav.length, internal_links: internalLinks, fragments, net_links: netLinks, required_results: contract.required_result_slugs.length, frontier_obligations: contract.frontier.length }
+  await checkTypedEditorPublication(base, { built })
+  if (contract.research_change_dispositions !== dispositionsFile) throw Error('Missing or unreviewed research currency queue selection')
+  const currency = await checkResearchCurrency(base)
+  return { research_currency: { audited_files: currency.audited_files, observed_files: currency.observed_files, unreviewed_changes: currency.unreviewed.length, disposition_counts: currency.disposition_counts }, reviewed_net_ids: nets.map(net => net.id), scope: 'publication consistency only; not scientific verification', snapshot_id: contract.snapshot_id, built, markdown_pages: files.length, navigation_links: nav.length, internal_links: internalLinks, fragments, net_links: netLinks, required_results: contract.required_result_slugs.length, frontier_obligations: contract.frontier.length }
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

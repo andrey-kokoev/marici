@@ -6,7 +6,7 @@ This viewer now shows only the boundary of esd_7(Delta^3). The previous 23-step 
 
 The model test compares every boundary triangle against `research/voevodsky/results/esd7_explicit_analytical_census.json`, checks closed-surface edge incidence and Euler characteristic. The browser test checks local-only rendering, two shell draw calls, opacity and camera controls, removal of path controls, mobile overflow, disposal and no-JavaScript fallback.
 
-The repository Three.js reference renderer, local licensed r128/OrbitControls pair, theme and Vue lifecycle remain. The historical directory/URL is retained so the existing link continues working.
+The repository Three.js reference renderer, local licensed r128/OrbitControls pair, theme and Vue lifecycle remain. The historical directory/URL is retained; it does not restore the old path model. Selected for the reviewed public source build, with [model/control limits](../../website/experiments/field-and-shell-viewers.md), gallery navigation and static model disclosure. Local selection is not deployment acceptance, which remains T08/T14. `node scripts/test-curated-viewers.mjs` checks the built-site routes and local assets; `--live` is a separate post-release check.
 
 ```sh
 node scripts/prepare-simplex-step-span.mjs

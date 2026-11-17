@@ -1,0 +1,30 @@
+{
+  "schema": "marici.isotope-wiring-browser-matrix.v1",
+  "contract": "Current Neutron-only legacy editor; source-defined drawings and Definition-only record operations. Not the separate typed application or the retired EP/placement UI.",
+  "engines": ["chromium", "firefox", "webkit"],
+  "cases": [
+    {"id": "network-isolation", "script": "test-isotope-browser-network.mjs", "scope": "Reachable HTTP is blocked while self-contained file loads"},
+    {"id": "no-rendered-routing", "script": "test-isotope-wiring-no-rendered-routing.mjs", "scope": "Offline desktop/mobile read-only drawing, absent SVG routing and keyboard Inspect"},
+    {"id": "neutron-only", "script": "test-isotope-wiring-neutron-only.mjs", "scope": "Removed EP controls, migration, missing-runtime failures, Definition undo and project recovery"},
+    {"id": "reference-labels", "script": "test-isotope-wiring-reference-labels.mjs", "scope": "Reference provenance, preferences, mobile bounds and denied storage"},
+    {"id": "turtle-inventory", "script": "test-isotope-wiring-turtle.mjs", "scope": "Offline byte-pinned inventory, download, mismatch and corrupt/missing data rejection"},
+    {"id": "catalog-filters", "script": "test-isotope-wiring-catalog-filters.mjs", "scope": "Filters, captions, persistence and desktop/mobile empty-result recovery"},
+    {"id": "catalog-scroll", "script": "test-isotope-wiring-catalog-scroll.mjs", "scope": "Mouse/keyboard selection, scroll stability and reload recovery"},
+    {"id": "ui-state", "script": "test-isotope-wiring-ui-state.mjs", "scope": "Current controls, selection/view persistence, malformed state and custom-definition recovery"},
+    {"id": "production", "script": "test-isotope-wiring-public.mjs", "scope": "Built-site iframe, theme, readonly/Definition behavior, exact download and full-window route"},
+    {"id": "definition-model-workflows", "script": "test-isotope-wiring-current-workflows.mjs", "scope": "Definition drafts, replay and export/import plus isolated placement/survey data APIs; no placement-dialog claim"}
+  ],
+  "supersession": {
+    "historical_runner_cases": 11,
+    "historical_reported_runs": 33,
+    "first_recorded_commit": "c1025e302",
+    "reason": "The old matrix requires removed EP controls, canvas overlays and placement dialogs. Its historical passing report is not current acceptance.",
+    "replacement_policy": "Test current functionality and explicit removal boundaries. Data-API placement checks are not represented as UI placement-dialog checks. Preserve the missing-runtime, corrupt-data, storage, replay and network negative controls."
+  },
+  "limits": [
+    "Automated desktop engines and emulated viewport dimensions, not shipping Safari/iOS/Android, real devices or screen-reader acceptance",
+    "Mouse/keyboard interaction is not multi-touch or real-device validation",
+    "WebKit file tests block HTTP(S) through routing because its Windows native offline mode rejects file navigation",
+    "No physical adequacy, scientific source admission or equivalence with the separate typed application's routing policy"
+  ]
+}

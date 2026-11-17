@@ -2,7 +2,7 @@
 
 Rebuilt directly from `examples/threejs-reference/`: the reference `app.js`, panel-host HTML structure, styles/theme/palette, cancellable local vendor loading, owned renderer lifecycle, OrbitControls, keyboard camera controls, demand scheduling, and Vue computed-model boundary are retained. `fieldLayer.js` replaces the tetrahedron content; `model.js` implements the pure dynamics. Uses the reference's pinned local r128 Three.js/OrbitControls pair and MIT license.
 
-Authoritative source: this directory. Published copy: `website/public/experiments/two-attractor-field/`. The former `public/experiments/two-attractor-field/` viewer was deleted. Publication is registered in `scripts/prepare-visualization-assets.mjs`.
+Authoritative source: this directory. Published copy: `website/public/experiments/two-attractor-field/`. The former `public/experiments/two-attractor-field/` viewer was deleted. Publication is registered in `scripts/prepare-visualization-assets.mjs`. Selected for the reviewed public source build, with [model/control limits](../../website/experiments/field-and-shell-viewers.md), gallery navigation and static model disclosure. Local selection is not a claim that the current deployment serves these bytes; live acceptance remains T08/T14. `node scripts/test-curated-viewers.mjs` checks the complete built-site route; `--live` is a separate post-release check.
 
 ```sh
 node scripts/prepare-two-attractor-field.mjs

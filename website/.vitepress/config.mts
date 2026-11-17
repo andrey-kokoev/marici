@@ -34,6 +34,7 @@ export default defineConfig({
       { text: 'Isotope / R-space', link: '/experiments/isotope-space' },
       { text: 'Matter', items: [
         { text: 'Isotope wiring editor', link: '/experiments/isotope-wiring' },
+        { text: 'Editor variants · development status', link: '/experiments/typed-wiring-development' },
         { text: 'Observed isotope reference', link: '/experiments/isotope-reference' },
         { text: 'Element & isotope catalogue', link: '/experiments/matter-catalog.html', target: '_self' },
         { text: 'Standard Model graph', link: '/matter/standard-model-graph' },
@@ -41,12 +42,15 @@ export default defineConfig({
       { text: 'Research', items: [
         { text: 'Reader fields · bounded coherence', link: '/research/results/tessellated-reader-fields' },
         { text: 'AdS–dS projective frontier', link: '/research/programs/ads-ds-projective-frontier' },
+        { text: 'Ramsey mathematics · November guide', link: '/research/programs/ramsey-mathematical-programme-2026-11' },
         { text: 'Comparison targets', link: '/research/predictions/' },
         { text: 'Research ledger', link: '/research/ledger/' },
         { text: 'Research graph', link: '/explore/graph/' },
         { text: 'Construction workbench modes', link: '/experiments/construction-workbench' },
         { text: 'Native N-cut belt viewer', link: '/experiments/native-belt-guide' },
+        { text: 'Field and shell viewers · limits', link: '/experiments/field-and-shell-viewers' },
         { text: 'Conjecture nets', link: '/experiments/conjecture-nets.html', target: '_self' },
+        { text: 'P/E net · publication status', link: '/experiments/pe-net-publication-status' },
       ] },
       { text: 'About', items: [
         { text: 'Team', link: '/about/team/' },

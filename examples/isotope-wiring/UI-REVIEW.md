@@ -9,16 +9,27 @@ to Neutron-only, or show an explicit undefined-drawing placeholder. Definitions 
 inventory validation remain data features. Undo/Redo and record comparisons belong
 only to Definition, never to the read-only canvas.
 
-Current acceptance commands:
+Current acceptance commands (the maintained matrix is defined in `config/isotope-wiring-browser-matrix.v1.json`):
+
+- `node scripts/test-isotope-wiring-browsers.mjs`
+- `node scripts/check-isotope-wiring-browser-evidence.mjs`
+- `node scripts/test-isotope-wiring-public.mjs`
+- `node scripts/test-isotope-wiring-no-rendered-routing.mjs`
 
 - `node scripts/test-isotope-wiring-neutron-only.mjs`
-- `node scripts/test-isotope-wiring-green-v.mjs temp/isotope-green-v`
 - `node scripts/test-isotope-wiring-catalog-filters.mjs`
 - `node scripts/test-isotope-wiring-catalog-scroll.mjs`
+
+The old `test-isotope-wiring-green-v.mjs` contains earlier contour-picture expectations; current H–Na recipe checks are in the reviewed headless suite, not that historical script.
 
 These cover removal of EP controls, legacy preference/reference migration, renderer
 API refusal to restore EP paths, supported drawings, undefined/edited placeholders,
 reference pinning/scale, definition-only undo, SVG/project exports and persistence.
+
+The current recorded result is 30/30 automated runs with exact source fingerprints
+and engine versions; see [the verification checkpoint](../../docs/isotope-wiring-browser-verification.md).
+The older 33-run report and the placement/editing instructions below remain historical,
+not current UI acceptance. Data-API placement checks do not resurrect those dialogs.
 
 ## Historical review before the single-mechanism change
 
