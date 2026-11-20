@@ -1,0 +1,11 @@
+# Hall-pair normal form for the failed eight-position remainder
+
+Use the duad–syntheme incidence graph (the self-dual generalized quadrangle GQ(2,2)). Let four duads A and four synthemes B remain. Assume no isolates and that on either side a common neighbor of two residual vertices is residual (the complement must have minimum degree two).
+
+Hall failure forces two degree-one vertices with the same neighbor on one side: a deficient triple on one side leaves two opposite-side vertices seeing at most the single remaining vertex; deficient singletons or full sides are impossible. By point–line duality and relabeling assume the two duads are 12 and 34 with only residual line H=12|34|56. Any other residual duad disjoint from either leaf must lie on H, by the common-neighbor rule. Thus the other two duads are 56 or cross-duads joining {1,2} to {3,4}.
+
+If both are crosses and disjoint, assume 13 and 24. Their shared line 13|24|56 must be residual. Its intersection 56 with H must then be residual, a contradiction. If both are crosses and meet, assume 13 and 14. The other three residual lines must each cover one of these crosses and cannot contain 56 (they would meet H outside A). Only 13|25|46, 13|26|45, 14|25|36, 14|26|35 remain. At most one containing 25 and at most one containing 26 are allowed, since 25 and 26 are outside A. Three lines are impossible.
+
+Therefore A={12,34,56,13} after relabeling, and J=13|24|56 is forced along with H. The two remaining lines cannot contain either leaf, and must touch 56 or 13. Their complete menu is K=14|23|56, P=13|25|46, Q=13|26|45. Choose P,Q (a second pair of leaves, now on the line side), or K,P (equivalent to K,Q by exchanging 5 and 6). In the first case there are two competing pairs of leaves, in the second only one. All proposed forms satisfy the common-neighbor rule directly. The existing forced-ring calculation gives the omission graph on the complement: C12 for two competing pairs; P5 + P7 for one. Dualizing does not affect the complement graph.
+
+Count: choose a line H and its unordered two leaves in 15*3 ways, then choose the cross in 4 ways. Two-sided collisions give 180 (counted from the duad side alone); single-sided collisions give 360 with duad leaves plus 360 dual. No catalogue of four-by-four candidates is needed.
