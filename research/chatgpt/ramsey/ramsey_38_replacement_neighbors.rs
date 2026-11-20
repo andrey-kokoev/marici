@@ -1,0 +1,4 @@
+// For each graph6 record, output every changed valid (vertex, positive-neighbor mask).
+use std::io::{self,BufRead,Write};
+fn main(){for line in io::stdin().lock().lines(){let s=line.unwrap();let b=s.as_bytes();assert_eq!(b[0],90);let mut a=[0u32;27];let mut z=0;for j in 0..27{for i in 0..j{if (b[1+z/6]-63)>>(5-z%6)&1!=0{a[i]|=1<<j;a[j]|=1<<i}z+=1}}
+let mut ind=vec![0u32];for i in 0..27{let n=ind.len();for j in 0..n{let p=ind[j];if p&a[i]==0{ind.push(p|(1<<i))}}}assert!(ind.iter().all(|s|s.count_ones()<8));let sevens:Vec<_>=ind.iter().copied().filter(|s|s.count_ones()==7).collect();let mut out=String::new();for p in ind{let mut possible=((1<<27)-1)^p;for &s in &sevens{if s&p==0{possible&=s;if possible==0{break}}}while possible!=0{let i=possible.trailing_zeros() as usize;possible&=possible-1;if p!=a[i]{out.push_str(&format!(" {}:{}",i,p));}}}println!("{}",out.trim());io::stdout().flush().unwrap()}}

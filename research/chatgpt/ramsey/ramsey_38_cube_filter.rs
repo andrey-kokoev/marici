@@ -1,0 +1,4 @@
+// Cube coordinate rotation: 3 fixed addresses and 8 triples. Invariant classes
+// must use at least size mod 3 fixed vertices each. Refine until stable.
+use std::{io::{self,BufRead},collections::HashMap};
+fn main(){for (k,s) in io::stdin().lock().lines().enumerate(){let s=s.unwrap();let b=s.as_bytes();let mut a=[0u32;27];let mut z=0;for j in 0..27{for i in 0..j{if (b[1+z/6]-63)>>(5-z%6)&1!=0{a[i]|=1<<j;a[j]|=1<<i}z+=1}}let mut cls=[0usize;27];let mut old=1;loop{let mut map=HashMap::new();let mut next=[0usize;27];let mut cnt=[0;27];for i in 0..27{let mut h=[0u8;27];let mut m=a[i];while m!=0{h[cls[m.trailing_zeros() as usize]]+=1;m&=m-1}let id=map.len();let c=*map.entry((cls[i],h)).or_insert(id);cnt[c]+=1;next[i]=c;}if cnt.iter().map(|n|n%3).sum::<usize>()>3{break}if map.len()==old{println!("{} {}",k+1,s);break}old=map.len();cls=next;}}}
