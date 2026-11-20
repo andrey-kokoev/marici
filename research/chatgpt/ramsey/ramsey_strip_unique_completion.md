@@ -1,0 +1,9 @@
+# A 22-cycle forces its eight-position remainder to be a forest
+
+In the cubic incidence graph of pairs and three-pair partitions on six labels, let C be any 22-cycle and U its eight unused positions. Two disjoint pairs determine a unique partition, ruling out 4-cycles. A 6-cycle would require three pairwise disjoint pairs, all in the same unique partition, rather than three distinct partitions. Thus any cycle contained in U would exhaust U and be an 8-cycle.
+
+In such an 8-cycle the four pair positions form a cyclic list with consecutive pairs disjoint and opposite pairs intersecting: if opposite pairs were disjoint, both intervening pairs would have to equal the unique pair on the two remaining labels. The opposite intersecting pairs therefore occupy two disjoint triples, and can be named 12,13 on one triple and 45,46 on the other. The four partition positions are exactly the partitions pairing one of {12,13} with one of {45,46}.
+
+Consider 23, which is on C. Its three neighbors are 23|14|56, 23|15|46 and 23|16|45. The latter two each lose an incidence to U (46 and 45 respectively), so both their remaining incidences are compulsory on C. Thus 23 must omit its link to 23|14|56. Similarly 56 must omit its link to the very same partition: its other neighbors are 56|12|34 and 56|13|24, each already missing a pair in U. The outside partition 23|14|56 has only its link to 14 left and cannot have degree two on C. Contradiction. Indeed there cannot even be a disjoint spanning cycle cover of the complement of this 8-cycle.
+
+Therefore U is a forest. Two distinct perfect matchings would differ along an alternating cycle, so at most one matching is possible. Together with the isolate-free existence result this proves uniqueness. Once existence is known, repeated removal of any leaf and its sole neighbor constructs the unique matching; this is not a claim that every isolate-free forest is matchable.
