@@ -1,0 +1,6 @@
+// Per-column incidence counts of valid all-negative triples/quartets, with repeats.
+use std::{io::{self,BufRead},hash::{Hash,Hasher},collections::hash_map::DefaultHasher};
+fn main(){for line in io::stdin().lock().lines(){let s=line.unwrap();let b=s.as_bytes();let n=(b[0]-63) as usize;let f=(1<<n)-1;let mut a=vec![0;n];let mut z=0;for j in 0..n{for i in 0..j{if (b[1+z/6]-63)>>(5-z%6)&1!=0{a[i]|=1<<j;a[j]|=1<<i}z+=1}}
+let mut al=vec![0u8;f+1];let mut ind=vec![0];for m in 1..=f{let i=m.trailing_zeros() as usize;let r=m&(m-1);al[m]=al[r].max(1+al[r&!a[i]]);if al[m] as u32==m.count_ones(){ind.push(m)}}let o:Vec<_>=ind.into_iter().filter(|&p|al[f^p]<5).map(|p|f^p).collect();let l=o.len();let mut rows=vec![[0u64;7];l];let mut neg=vec![vec![false;l];l];for i in 0..l{for j in 0..l{neg[i][j]=al[o[i]&o[j]]<4;let cell=(((o[i]|o[j])==f) as usize)+2*neg[i][j] as usize;rows[i][cell]+=1;if i==j{rows[i][4]=cell as u64}}}
+for i in 0..l{for j in i..l{if !neg[i][j]{continue}for k in j..l{let t=o[i]&o[j]&o[k];if !neg[i][k]||!neg[j][k]||al[t]>=3{continue}for v in [i,j,k]{rows[v][5]+=1}for h in k..l{if neg[i][h]&&neg[j][h]&&neg[k][h] && al[t&o[h]]<2 && [(i,j),(i,k),(j,k)].iter().all(|&(x,y)|al[o[x]&o[y]&o[h]]<3){for v in [i,j,k,h]{rows[v][6]+=1}}}}}}
+rows.sort();let mut h=DefaultHasher::new();rows.hash(&mut h);println!("{}",h.finish());}}

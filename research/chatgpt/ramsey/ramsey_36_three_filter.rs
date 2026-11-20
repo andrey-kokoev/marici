@@ -1,0 +1,4 @@
+// Necessary isomorphism invariant of signed pair tables; no hash used to certify a match.
+use std::{io::{self,BufRead},hash::{Hash,Hasher},collections::hash_map::DefaultHasher};
+fn main(){for l in io::stdin().lock().lines(){let s=l.unwrap();let b=s.as_bytes();let n=(b[0]-63) as usize;let f=(1usize<<n)-1;let mut a=vec![0;n];let mut z=0;for j in 0..n{for i in 0..j{if ((b[1+z/6]-63)>>(5-z%6))&1!=0{a[i]|=1<<j;a[j]|=1<<i}z+=1}}
+let mut al=vec![0u8;f+1];let mut ind=vec![0];for m in 1..=f{let i=m.trailing_zeros() as usize;let r=m&(m-1);al[m]=al[r].max(1+al[r&!a[i]]);if al[m] as u32==m.count_ones(){ind.push(m)}}let o:Vec<_>=ind.into_iter().filter(|&p|al[f^p]<5).collect();let mut rows=vec![];for &p in &o{let mut row=[0u16;5];for &q in &o{let cell=(p&q==0) as usize+2*((al[f&!(p|q)]<4) as usize);row[cell]+=1;if p==q{row[4]=cell as u16}}rows.push(row)}rows.sort();let mut h=DefaultHasher::new();rows.hash(&mut h);println!("{}",h.finish());}}
