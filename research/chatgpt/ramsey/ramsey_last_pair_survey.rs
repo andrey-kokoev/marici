@@ -1,0 +1,6 @@
+// stdin: catalogue graph6 records. args: k. Count successful return orders.
+use std::{env,io::{self,BufRead}};
+fn main(){let k:u8=env::args().nth(1).unwrap().parse().unwrap();for (id,s) in io::stdin().lock().lines().enumerate(){let s=s.unwrap();let b=s.as_bytes();let n=(b[0]-63) as usize;let full=(1usize<<n)-1;let mut a=vec![0;n];let mut z=0;for j in 0..n{for i in 0..j{if ((b[1+z/6]-63)>>(5-z%6))&1!=0{a[i]|=1<<j;a[j]|=1<<i;}z+=1;}}
+let mut alpha=vec![0u8;full+1];let mut ind=vec![0];for m in 1..=full{let i=m.trailing_zeros() as usize;let r=m&(m-1);alpha[m]=alpha[r].max(1+alpha[r&!a[i]]);if alpha[m] as u32==m.count_ones(){ind.push(m)}}assert!(alpha[full]<k);assert!((0..n).all(|i|(0..i).all(|j| a[i]>>j&1==0 || a[i]&a[j]==0)));
+let mut c=[0;3];let mut by=[[0;3];2];for i in 0..n{for j in 0..i{let base=full^(1<<i)^(1<<j);let opts:Vec<_>=ind.iter().copied().filter(|&p|p&!base==0 && alpha[base&!p]<k-1).collect();let score=|p:usize|opts.iter().filter(|&&q|p&q==0 ||alpha[base&!(p|q)]<k-2).count();let high=opts.iter().map(|&p|score(p)).max().unwrap();let ok=[a[i]&base,a[j]&base].iter().filter(|&&p|score(p)==high).count();c[ok]+=1;by[(a[i]>>j)&1][ok]+=1;}}
+println!("{} {} {} {} {} {} {} {} {}",id+1,c[0],c[1],c[2],by[0][0],by[0][1],by[0][2],by[1][0],by[1][1]);}}

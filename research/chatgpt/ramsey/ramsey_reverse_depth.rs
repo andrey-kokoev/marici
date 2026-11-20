@@ -1,0 +1,9 @@
+// stdin: graph6 records; args: k [max distinct parent subsets examined per record].
+use std::{env,io::{self,BufRead},collections::HashSet};
+struct Search {a:Vec<usize>,alpha:Vec<u8>,ind:Vec<usize>,k:u8,seen:HashSet<usize>,best:Vec<usize>,budget:usize,cut:bool}
+impl Search {
+fn leader(&self,b:usize,p:usize)->bool{let opts:Vec<_>=self.ind.iter().copied().filter(|&t|t&!b==0 && self.alpha[b&!t]<self.k-1).collect();let score=|x:usize|opts.iter().filter(|&&y|x&y==0 ||self.alpha[b&!(x|y)]<self.k-2).count();let s=score(p);s==opts.len() || !opts.iter().any(|&x|score(x)>s)}
+fn visit(&mut self,b:usize,path:&mut Vec<usize>){if self.seen.contains(&b){return}if self.seen.len()==self.budget{self.cut=true;return}self.seen.insert(b);if path.len()>self.best.len(){self.best=path.clone()}let mut todo=b;while todo!=0 && self.best.len()<self.a.len(){let i=todo.trailing_zeros() as usize;todo&=todo-1;let c=b^(1<<i);if !self.seen.contains(&c)&& self.leader(c,self.a[i]&c){path.push(i+1);self.visit(c,path);path.pop();if self.cut{return}}}}
+}
+fn main(){let args:Vec<_>=env::args().collect();let k=args[1].parse().unwrap();let budget=args.get(2).map_or(usize::MAX,|s|s.parse().unwrap());for line in io::stdin().lock().lines(){let s=line.unwrap();let b=s.as_bytes();let n=(b[0]-63) as usize;let f=(1<<n)-1;let mut a=vec![0;n];let mut z=0;for j in 0..n{for i in 0..j{if (b[1+z/6]-63)>>(5-z%6)&1!=0{a[i]|=1<<j;a[j]|=1<<i}z+=1}}
+let mut alpha=vec![0u8;f+1];let mut ind=vec![0];for m in 1..=f{let i=m.trailing_zeros() as usize;let r=m&(m-1);alpha[m]=alpha[r].max(1+alpha[r&!a[i]]);if alpha[m] as u32==m.count_ones(){ind.push(m)}}let mut x=Search{a,alpha,ind,k,seen:HashSet::new(),best:vec![],budget,cut:false};x.visit(f,&mut vec![]);println!("base={} cut={} visited={} deletions={:?}",n-x.best.len(),x.cut,x.seen.len(),x.best)}}
