@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>3:7 · relation matrix</title>
+<style>
+body{font:1rem/1.5 system-ui,sans-serif;color:#172836;background:#fafafa;margin:2rem auto;max-width:45rem;padding:0 .7rem}table{border-collapse:collapse;width:100%;table-layout:fixed}td,th{text-align:center;padding:0}th{font-weight:550}td{border:1px solid white}button{display:block;width:100%;padding:.35em 0;border:0;background:transparent;color:inherit;font:bold 1.2rem monospace;cursor:pointer}button[aria-pressed=true]{outline:3px solid #172836;outline-offset:-3px}button:focus-visible{box-shadow:inset 0 0 0 4px #975100}td.mark{background:#ffd6d4}td.rest{background:#d9e9ff}td.cross{background:#eee}caption{text-align:left;margin-bottom:.5rem}output{display:block;font:600 1rem/1.6 monospace;padding:.75rem;background:#fff;border-left:3px solid #344454;margin:.6rem 0}select{max-width:100%}
+</style></head><body><h1>3:7 relation matrix</h1>
+<p><a href="ramsey-3-4-puzzle.html">Play the nine-position R(3,4) pair puzzle →</a> · <a href="ramsey-fig23-3d.html">Explore Tutte’s 8-cage in 3D</a></p>
+<p><label for="route">Matrix source:</label> <select id="route"><option value="">Original · fixed 3 + 7 partition</option></select></p>
+<section id="strip" hidden><p><code>BRNN / BNRN</code> gives row pairs <code>12|34</code> and <code>13|24</code>. Start with the B-fan {12,13}; finish with those two blocks and {14,23}. There are ten candidate strips with these endpoints: six close and four fail.</p>
+<p><label for="reading">Reference path orientation:</label> <select id="reading"><option>Start to finish</option><option>Finish to start</option></select></p><output id="test" aria-live="polite"></output><p>Positions 1–10 stay in visit order from the start in both readings. A mark denotes a selected profile, not a red Ramsey edge. Closure means the unused Hall positions can be matched.</p></section>
+<p id="groups"></p><p>Nine relative signs suffice; the first diagonal entry is always +1.<br><code id="stored"></code></p>
+<table><caption>Select a cell: + means same group; − means different groups. Pink = both marked, blue = both unmarked.</caption><thead></thead><tbody></tbody></table>
+<p><label for="via">Compose through intermediate vertex:</label> <select id="via"></select></p><output id="result" aria-live="polite"></output>
+<section id="diagonals"><h2>Ten strip diagonals</h2><p>Every diagonal sign is +1. The rows below show the cell colors: M = marked (pink), · = unmarked (blue).</p><label>Reading: <select id="diagReading"><option>Start to finish</option><option>Finish to start</option></select></label><table><caption>One strip per row, visits 1–10 from left to right.</caption><thead id="diagHead"></thead><tbody id="diagBody"></tbody></table>
+<label>Gap-count notation: <select id="gapBase"><option value="10">Decimal</option><option value="2">Binary (three bits per count)</option></select></label><table id="switch-gaps"><caption>Unmarked steps before, between, and after marks, in visit order 1–10.</caption><thead><tr><th>Strip</th><th>Start to finish</th><th>Finish to start</th><th>Result</th></tr></thead><tbody id="gapBody"></tbody></table></section>
+<section id="folded"><h2>Fold the readings onto each other</h2><p>Align the forward marks with the return marks counted from the other end (visit <i>i</i> faces 11−<i>i</i>). XOR keeps only disagreements. The last column groups readings up to exchanging ends; it classifies the marks, not the full route.</p><table><caption>Folded comparison · positions numbered from the start</caption><thead><tr><th>Strip</th><th>XOR positions</th><th>Mismatch count</th><th>Mirror class</th></tr></thead><tbody id="foldBody"></tbody></table></section>
+<p><a href="../chatgpt/ramsey/ramsey_strip_closure_control.json">Route census</a> · <a href="../chatgpt/ramsey/ramsey_strip_prism_proof.py">Folded-strip closure check</a></p>
+<script>
+// Projection of the census for endpoints (0,29), in census order. Embedded for file:// use.
+// [marked positions forward, marked positions reverse, near opposite pole at 3, at 8]
+const routes=[[[2,5,8],[5,9],0,1],[[2,4,7],[4,7,9],0,0],[[2,5,8],[3,5,9],1,1],[[2,6],[3,6,9],1,0],[[2,6,8],[3,6,9],1,1],[[2,5,8],[3,5,9],1,1],[[2,6],[3,6,9],1,0],[[2,6,8],[3,6,9],1,1],[[2,4,7],[4,7,9],0,0],[[2,5,8],[5,9],0,1]];
+const ids=Array.from({length:10},(_,i)=>i),q=s=>document.querySelector(s),fmt=n=>n===1?'+1':'−1';let signs,row=1,col=2;
+const rel=(i,j)=>signs[i]*signs[j];
+function show(){const k=Number(q('#via').value);document.querySelectorAll('button[data-i]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.i===row && +b.dataset.j===col)));const id=i=>q('#route').value===''?'x'+i:'v'+(i+1);q('#result').textContent=`r[${id(row)},${id(col)}] = r[${id(row)},${id(k)}] × r[${id(k)},${id(col)}] = (${fmt(rel(row,k))}) × (${fmt(rel(k,col))}) = ${fmt(rel(row,col))}`;}
+function render(){const choice=q('#route').value,strip=choice!=='';q('#strip').hidden=!strip;let marks=[1,2,3];
+ if(strip){const r=routes[Number(choice)];marks=r[q('#reading').selectedIndex];q('#test').textContent=`Visit 3: ${r[2]?'toward':'away'} · visit 8: ${r[3]?'toward':'away'} → ${r[2]===r[3]?'closes':'fails'}. Marks in the two readings: ${r[0].length} and ${r[1].length}.`;}
+ signs=ids.map(i=>marks.includes(i+1)?1:-1);const label=i=>strip?`v<sub>${i+1}</sub>`:`x<sub>${i}</sub>`;
+ q('#groups').textContent=`Marked: ${marks.map(p=>strip?'v'+p:'x'+(p-1)).join(', ')}. Partition: ${marks.length} + ${10-marks.length}.`;
+ q('#stored').textContent=(strip?'r[v1,v2…v10] = ':'r[x0,x1…x9] = ')+ids.slice(1).map(j=>fmt(rel(0,j))).join('  ');
+ q('thead').innerHTML='<tr><th></th>'+ids.map(i=>`<th scope="col">${label(i)}</th>`).join('')+'</tr>';
+ q('tbody').innerHTML=ids.map(i=>`<tr><th scope="row">${label(i)}</th>`+ids.map(j=>`<td class="${rel(i,j)<0?'cross':signs[i]>0?'mark':'rest'}"><button type="button" data-i="${i}" data-j="${j}" aria-label="${strip?'Visits':'Indices'} ${i+Number(strip)}, ${j+Number(strip)}: ${fmt(rel(i,j))}">${rel(i,j)>0?'+':'−'}</button></td>`).join('')+'</tr>').join('');
+ const k=q('#via').value||'6';q('#via').innerHTML=ids.map(i=>`<option value="${i}">${strip?'v'+(i+1):'x'+i}</option>`).join('');q('#via').value=k;show();}
+q('#diagHead').innerHTML='<tr><th>Strip</th>'+ids.map(i=>`<th scope="col">${i+1}</th>`).join('')+'<th>Result</th></tr>';
+function diagonals(){const k=q('#diagReading').selectedIndex;q('#diagBody').innerHTML=routes.map((r,n)=>`<tr><th scope="row">${n+1}</th>`+ids.map(i=>r[k].includes(i+1)?'<td class="mark">M</td>':'<td class="rest">·</td>').join('')+`<td>${r[2]===r[3]?'closes':'fails'}</td></tr>`).join('');}
+function gaps(marks){const stops=[0,...marks,11];return stops.slice(1).map((v,i)=>v-stops[i]-1);}
+function renderGaps(){const binary=q('#gapBase').value==='2';const word=m=>gaps(m).map(n=>binary?n.toString(2).padStart(3,'0'):String(n)).join(' ');q('#gapBody').innerHTML=routes.map(([a,b,x,y],i)=>`<tr><th scope="row">${i+1}</th><td><code>${word(a)}</code></td><td><code>${word(b)}</code></td><td>${x===y?'closes':'fails'}</td></tr>`).join('');}
+q('#gapBase').onchange=renderGaps;renderGaps();
+const markWord=m=>ids.map(i=>m.includes(i+1)?'1':'0').join(''),rev=w=>[...w].reverse().join('');const classes=new Map();
+q('#foldBody').innerHTML=routes.map(([a,b],i)=>{const f=markWord(a),r=markWord(b),mirror=rev(r),diff=ids.filter(j=>f[j]!==mirror[j]).map(j=>j+1),key=[f+':'+r,mirror+':'+rev(f)].sort()[0];if(!classes.has(key))classes.set(key,String.fromCharCode(65+classes.size));return `<tr><th scope="row">${i+1}</th><td>${diff.join(', ')||'none'}</td><td>${diff.length}</td><td>${classes.get(key)}</td></tr>`;}).join('');
+q('#diagReading').onchange=diagonals;diagonals();
+routes.forEach((r,i)=>q('#route').add(new Option(`Strip ${i+1} · ${r[2]===r[3]?'closes':'fails'}`,String(i))));
+q('tbody').onclick=e=>{const b=e.target.closest('button');if(b){row=Number(b.dataset.i);col=Number(b.dataset.j);show();}};q('#via').onchange=show;q('#reading').onchange=render;q('#route').onchange=render;render();
+</script></body></html>
