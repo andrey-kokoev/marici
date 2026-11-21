@@ -1,0 +1,8 @@
+// Generate sparse four-port completions of a 21-core, with regular-35 lookahead.
+// Input: 21 adjacency masks as command line arguments. Output fully anchored 26-core support tuples.
+use std::collections::BTreeMap;
+fn main(){let h:Vec<u32>=std::env::args().skip(1).map(|s|s.parse().unwrap()).collect();assert_eq!(h.len(),21);let f=(1usize<<21)-1;let mut alpha=vec![0u8;f+1];let mut m=vec![];for x in 1..=f{let b=x&x.wrapping_neg();let v=b.trailing_zeros() as usize;alpha[x]=alpha[x-b].max(1+alpha[(x-b)&!(h[v]as usize)]);if u32::from(alpha[x])==x.count_ones()&&alpha[x]>=1{m.push(x)}}let mut sat=0;for v in 0..21{if h[v].count_ones()==6{sat|=1<<v}}
+let mut nb=vec![vec![];m.len()];for i in 0..m.len(){for j in i..m.len(){if m[i]&m[j]&sat==0 && alpha[f^(m[i]|m[j])]<=5{nb[i].push(j)}}}
+let mut counts=BTreeMap::new();let sum_needed=76-4-h.iter().map(|r|r.count_ones()).sum::<u32>()/2;
+for (i,row) in nb.iter().enumerate(){for &j in row{let common:Vec<_>=row.iter().copied().filter(|k|nb[j].binary_search(k).is_ok()).collect();let s=m[i]|m[j];for (off,&k) in common.iter().enumerate(){let t=s|m[k];if alpha[f^t]>4{continue}for &l in &common[off..]{let ports=[m[i],m[j],m[k],m[l]];if ports.iter().map(|p|p.count_ones()).sum::<u32>()!=sum_needed||nb[k].binary_search(&l).is_err(){continue}let u=m[k]|m[l];if alpha[f^(t|m[l])]>3||alpha[f^(s|m[l])]>4||alpha[f^(u|m[i])]>4||alpha[f^(u|m[j])]>4{continue}let anchors=(0..21).filter(|&v|h[v].count_ones()+ports.iter().filter(|p|(*p>>v)&1!=0).count() as u32==7).count()+ports.iter().filter(|p|p.count_ones()==6).count();*counts.entry(anchors).or_insert(0usize)+=1;if anchors==8{println!("{} {} {} {}",m[i],m[j],m[k],m[l])}
+}}}}eprintln!("valid 76-edge support multisets by anchor count: {:?}",counts);}
