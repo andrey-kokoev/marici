@@ -1,0 +1,13 @@
+# Bounded backbone-changing search: no comparison drift found
+
+ramsey_frame_loop_search.py explores labeled graph+Hall-center+comparison states from the actual seed comparison transported to catalogue191. Allowed moves are: (1) every four-edge matching exchange in the current center's chart; (2) rebasing at another Hall center when the comparison fixes it and preserves its neighbor set; (3) full five-switch cooperative transfer on a one-center type, again on the admitted domain. After chart changes, comparisons are canonically re-lifted. These moves include incidence-backbone changes, not only the fixed-root loops excluded earlier.
+
+Most recent run: --nodes2000 --depth8. Expanded2000 states; discovered6622, with4622 queued at budget exhaustion. Examined20000 four-edge moves,438 full-orbit transfers,226 rebases. Encountered previously visited graph+center combinations14043 times. In EVERY encounter the comparison permutation agreed. No nontrivial-return collision found.
+
+Coverage limitation: depth8 was a ceiling, not an exhausted radius. Expanded depth counts were {0:1,1:11,2:57,3:177,4:481,5:1273}; the budget stopped partway through depth5. Reencounters include trivial backtracking as well as potentially different routes; the count is not a count of independent nontrivial loops. It is a bounded negative result, not a theorem of flatness or full exploration of the component.
+
+A collision would supply two paths from the same initial state to the same labeled graph and center but different comparisons. Because the admitted moves are reversible on these domains (four-edge changes preserve the chart; two-center rebasing has inverse star correspondence; full transfer round-trip was proved), reversing one path gives a closed route with nontrivial return. Four-edge move certificates now record actual removed/added edges, so future collisions are replayable.
+
+The search is restricted to the two Hall graph types, where the needed charts exist. Cooperative escapes to no-Hall-center graphs are NOT included: canonical pair-chart transport is undefined there. A broader claim would require specifying generalized signature transport first.
+
+Next explanatory target: a conserved structure determining the transported comparison from the current labeled graph and center throughout this reachable component. Such an invariant would explain the observed path independence; simply increasing the budget would not. Alternatively a collision refutes that flatness conjecture. Do not conflate this unresolved comparison-return question with the previously established nonzero phase drift in the repair-obligation graph, which has a different state space.
