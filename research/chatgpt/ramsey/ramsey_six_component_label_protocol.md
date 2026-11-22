@@ -1,0 +1,3 @@
+# Natural cube / (3,7) component label
+
+Fix the two row pairings and row exchange from the boundary protocol. Precompute their action on the 45 named candidate links (no wiring needed). For each orbit of a single link count red links; if insufficient count simultaneously red occurrences of each orbit of unordered link pairs, then triples if needed. Invariant counts must be calculated on one input, without generating its orbit. Test whether equal keys coincide with true orbit membership; retain counts for each level and a reproducible reduced key (training-selected if compressed). No component label possible from the identical boundary strings alone. A sufficient label is not necessarily an intrinsic six-bit readout or minimal.
