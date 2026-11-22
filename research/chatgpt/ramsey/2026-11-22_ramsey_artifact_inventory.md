@@ -1,0 +1,546 @@
+# Local Ramsey research artifact inventory
+
+Window: 2026-11-21T05:57:05+00:00 through 2026-11-22T05:57:05+00:00 (filesystem modification times). 542 files. Python descriptions below are the author’s module summaries, not independent validation.
+
+- [ramsey_miss_prediction.py](ramsey_miss_prediction.py) — Blind decision from maximum independent rows only. Test against six previously solved regular-lift cases.
+- [ramsey_miss_prediction.json](ramsey_miss_prediction.json)
+- [ramsey_final_miss_levels.json](ramsey_final_miss_levels.json)
+- [ramsey_last_port_transversal.py](ramsey_last_port_transversal.py) — With three ports fixed, solve the fourth as an independent hitting set for residual tight rows.
+- [ramsey_last_port_transversal.json](ramsey_last_port_transversal.json)
+- [ramsey_all_last_port_kernels.py](ramsey_all_last_port_kernels.py) — All distinct triples left by erasing a port in the 1699 maximal completions. Find every minimal independent fourth support, with no maximality assumption on that support.
+- [ramsey_all_last_port_kernels.json](ramsey_all_last_port_kernels.json)
+- [ramsey_blind_port_cover.py](ramsey_blind_port_cover.py) — Rank supports and cover the relaxed four-port problem using only core maximum rows (no valid completions).
+- [ramsey_blind_port_cover.json](ramsey_blind_port_cover.json)
+- [ramsey_reuse_stress.py](ramsey_reuse_stress.py) — Test the old-neighborhood cover on smaller vertex-transitive parents; then test the role of maximality at 34.
+- [ramsey_reuse_stress.json](ramsey_reuse_stress.json)
+- [ramsey_fractional_reuse.py](ramsey_fractional_reuse.py) — Can a nonnegative sum of row budgets prove reuse? Build exact rational primal/dual certificates.
+- [ramsey_fractional_reuse.json](ramsey_fractional_reuse.json)
+- [ramsey_integral_obstruction.json](ramsey_integral_obstruction.json)
+- [ramsey_integral_obstruction_34.json](ramsey_integral_obstruction_34.json)
+- [ramsey_integral_obstruction.py](ramsey_integral_obstruction.py) — Classify pair-compatible no-reuse tuples, and cover survivors with explicit smaller rows.
+- [ramsey_min_certificate_geometry.py](ramsey_min_certificate_geometry.py) — Enumerate all size-three post-pair certificates by branching on a least-covered surviving quartet.
+- [ramsey_min_certificate_geometry.json](ramsey_min_certificate_geometry.json)
+- [ramsey_extension_row_filter.py](ramsey_extension_row_filter.py) — Row redundancy from ALL strict supersets, independent of which global supports are proposed. A locally possible violation chooses b+1 independent traces on the one-vertex extensions E. Enumerate traces and test every nonempty independent subextension.
+- [ramsey_extension_row_filter.json](ramsey_extension_row_filter.json)
+- [ramsey_mandatory_global_rows.py](ramsey_mandatory_global_rows.py) — Near-solutions certify individual rows irredundant: invalidate every old port by one deletion while conserving all but one inequality. Masks avoid graph-solver dependencies.
+- [ramsey_mandatory_global_rows.json](ramsey_mandatory_global_rows.json)
+- [ramsey_inherited_ablation.py](ramsey_inherited_ablation.py) — Test conjecture 2 without extra capacity, degree or independence tests on port tuples.
+- [ramsey_inherited_ablation.json](ramsey_inherited_ablation.json)
+- [ramsey_seventh_label_transport.py](ramsey_seventh_label_transport.py) — Predeclared stationary-chart hypothesis: add one fixed label to the six square edges. Translations flip an even number of the three opposite-edge pairs. Axis swap exchanges two pair blocks, fixing both members of the diagonal block. Test signature multiset only, not graph automorphisms.
+- [ramsey_seventh_label_transport.json](ramsey_seventh_label_transport.json)
+- [ramsey_seventh_label_scan.rs](ramsey_seventh_label_scan.rs)
+- [ramsey_seventh_label_full_run.txt](ramsey_seventh_label_full_run.txt)
+- [ramsey_seventh_label_first_frame.json](ramsey_seventh_label_first_frame.json)
+- [ramsey_seven_transport_synthesis.py](ramsey_seven_transport_synthesis.py) — Address-only synthesis, no graph/census input. Labels (01)(23)(45) and fixed 6. Axis exchanges blocks 23 and 45.
+- [ramsey_seven_transport_synthesis.json](ramsey_seven_transport_synthesis.json)
+- [ramsey_seven_row_differences.py](ramsey_seven_row_differences.py) — Project all legal wirings onto the vector of mismatched link-orbits of the literal row exchange. Block projections, not labeled wirings.
+- [ramsey_seven_row_differences.json](ramsey_seven_row_differences.json)
+- [ramsey_seven_all_wirings.json](ramsey_seven_all_wirings.json)
+- [ramsey_six_label_readout.py](ramsey_six_label_readout.py) — Apply the seven-label readout question to the complete six-label duad table. Test even ALL links at a reference, not just triples.
+- [ramsey_six_label_readout.json](ramsey_six_label_readout.json)
+- [ramsey_pentad_readout.py](ramsey_pentad_readout.py) — Resolve the six-label duad wiring into five synthemes covering K6; test its ternary readout and dihedral cyclic compression.
+- [ramsey_pentad_readout.json](ramsey_pentad_readout.json)
+- [ramsey_transport_order_bits.py](ramsey_transport_order_bits.py) — Exact charged decisions for uniform labeled six-label Hall wirings. Fixed lex base and paired random controls. No per-witness order selection.
+- [ramsey_transport_order_bits.json](ramsey_transport_order_bits.json)
+- [ramsey_local_transport_decoder.py](ramsey_local_transport_decoder.py) — Construct decision trees from exact-one constraints only. Each disjoint-duad link xy corresponds to flag (partition xyz, middle z); blue selects that flag. No list of legal wirings in decoder.
+- [ramsey_local_transport_decoder.json](ramsey_local_transport_decoder.json)
+- [ramsey_seven_local_readout.rs](ramsey_seven_local_readout.rs)
+- [ramsey_seven_local_readout_run.txt](ramsey_seven_local_readout_run.txt)
+- [ramsey_seven_transport_algebra.py](ramsey_seven_transport_algebra.py) — Exact Boolean algebra of the three probes, learned from the verified eight outputs; report symmetries, algebraic degrees and verify reconstruction.
+- [ramsey_seven_transport_algebra.json](ramsey_seven_transport_algebra.json)
+- [ramsey_seven_incidence_radius.py](ramsey_seven_incidence_radius.py) — Derive link colors from interactions confined to at most L distinct labels; measure exactly what is forced given the frame, without reading completed graphs.
+- [ramsey_seven_incidence_radius.json](ramsey_seven_incidence_radius.json)
+- [ramsey_seven_incidence_motif.json](ramsey_seven_incidence_motif.json)
+- [ramsey_motif_obstructions.py](ramsey_motif_obstructions.py) — Derive unit clauses on each motif bit from seven-address blue obstructions, conditional only on the 6-label backbone. No completed wiring input.
+- [ramsey_motif_obstructions.json](ramsey_motif_obstructions.json)
+- [ramsey_eight_label_star_test.py](ramsey_eight_label_star_test.py) — k=9, leave-one-red-link-out test on the cyclic witness. Chart-local means a Hall or root clause over at most 7 of the 8 label positions. Full-neighborhood tests are allowed at EVERY surviving degree-8 vertex, not only chart labels.
+- [ramsey_eight_label_star_test.json](ramsey_eight_label_star_test.json)
+- [ramsey_eight_label_blind_stars.json](ramsey_eight_label_blind_stars.json)
+- [ramsey_eight_label_blind_stars.py](ramsey_eight_label_blind_stars.py) — Contrast deletion repairs with reconstruction: erase ALL exterior links before imposing label-star coverage, triangle freedom and regular degree 8.
+- [ramsey_eight_label_probe_transport.py](ramsey_eight_label_probe_transport.py) — Rooted 35-chart actual address automorphisms. Prefix masks never ranked by target values. Separate orbit ordering from invariant-color hypothesis.
+- [ramsey_eight_label_probe_transport.json](ramsey_eight_label_probe_transport.json)
+- [ramsey_nine_frame_readout.py](ramsey_nine_frame_readout.py) — Read the 8 transported k=9 wirings (not a census of other completions). Find all rooted 3-probe coordinates; test geometry of the induced group.
+- [ramsey_nine_frame_readout.json](ramsey_nine_frame_readout.json)
+- [ramsey_address_to_cube.py](ramsey_address_to_cube.py) — Infer cyclic coordinate charts from address incidence alone. No exterior links, preselected steps, output graphs or cube truth tables as input. Canonicalize the cyclic coordinate freedom by all units mod 35.
+- [ramsey_address_to_cube.json](ramsey_address_to_cube.json)
+- [verify_ramsey_nine_chart_exhaustion.py](verify_ramsey_nine_chart_exhaustion.py) — Rooted embedding count. External premise: uniqueness up to isomorphism of the (3,9;35) graph. Enumerate all labeled fits of that graph to the fixed signature table, without assuming a modular relabeling on the chart.
+- [ramsey_nine_chart_exhaustion.json](ramsey_nine_chart_exhaustion.json)
+- [ramsey_nine_chart_native_sat.json](ramsey_nine_chart_native_sat.json)
+- [ramsey_nine_chart_native_sat.py](ramsey_nine_chart_native_sat.py) — Classification-free synthesis. Input ONLY 26 subset addresses; no regularity assumption. Learn obstruction clauses from premature SAT solutions, blocking verified completions one by one.
+- [ramsey_nine_chart_local_audit.json](ramsey_nine_chart_local_audit.json)
+- [ramsey_nine_opposite_faces.py](ramsey_nine_opposite_faces.py) — Recognition using signatures only. Match the six deletion tests to opposite faces; independent check against the classification-free local audit. Identify cube coordinate parity.
+- [ramsey_nine_opposite_faces.json](ramsey_nine_opposite_faces.json)
+- [ramsey_cube_pair_rules.py](ramsey_cube_pair_rules.py) — Compile the known state-000 solution into one predicate per geometric type of unordered disjoint cube-feature pair. Evaluation/verification uses NO completed graph, chart fits, or SAT solver (compile is separate). Words read least-significant coordinate first.
+- [ramsey_cube_pair_rules.json](ramsey_cube_pair_rules.json)
+- [ramsey_cube_rule_necessity.py](ramsey_cube_rule_necessity.py) — Synthesize equivariant 11-row rules from cube incidence, NOT from saved outputs. Work at 000 modulo its stabilizer. Compare strictly local Hall, neighborhood and triangle obligations. MUS-style optional certificate compression.
+- [ramsey_cube_rule_necessity.json](ramsey_cube_rule_necessity.json)
+- [verify_cube_necessity_certificate.py](verify_cube_necessity_certificate.py) — Standard-library recheck: derive every supplied clause from its indicated cube incidence and exhaust its satisfying assignments by binary split/unit propagation.
+- [ramsey_boundary_corner_bridge.py](ramsey_boundary_corner_bridge.py) — Test a specific cross-k binding: four seed columns as vertices of an inscribed tetrahedron, its six edges as their unique common cube faces, incident face pairs as cube edge addresses. B pole selects its body diagonal only. Compare BOTH endpoints and both boundary-selected rows.
+- [ramsey_boundary_corner_bridge.json](ramsey_boundary_corner_bridge.json)
+- [ramsey_directed_flag_pole.py](ramsey_directed_flag_pole.py) — Color-blind bridge hypothesis. A selected incident-face duad at entry gives an edge tangent; an opposite-face duad at exit gives a normal axis. Orient both rays from B into the cube. Entry cross exit is an axial vector; project it onto the B body diagonal. No Ramsey graph colors used.
+- [ramsey_directed_flag_pole.json](ramsey_directed_flag_pole.json)
+- [ramsey_native_seam_pole.py](ramsey_native_seam_pole.py) — Direct four-column binding test. Use native endpoint incidence and its two directed cycles; distinguish arrow automorphism from reversal of endpoints. No Ramsey colors as input.
+- [ramsey_native_seam_pole.json](ramsey_native_seam_pole.json)
+- [ramsey_seam_replay_basepoint.py](ramsey_seam_replay_basepoint.py) — Replay the actual finite seed execution adapter. Test the EXTRA bridge B-column=common basepoint; control by recutting the SAME directed cycles, without reversing any arrow.
+- [ramsey_seam_replay_basepoint.json](ramsey_seam_replay_basepoint.json)
+- [ramsey_basepoint_identifiability.py](ramsey_basepoint_identifiability.py) — Audit independent views, before pole decoding. Enumerate the compatible column-to-vertex bridges after calibrating the A-cut. No rule tying column identity across execution recuts is imposed.
+- [ramsey_basepoint_identifiability.json](ramsey_basepoint_identifiability.json)
+- [ramsey_retained_event_recut.py](ramsey_retained_event_recut.py) — Recut the same validated events, not a fresh replay. Keep one literal row view and BOTH natural endpoint observations; do not insert a column->native-vertex field.
+- [ramsey_retained_event_recut.json](ramsey_retained_event_recut.json)
+- [ramsey_independent_mark_reader_trial.py](ramsey_independent_mark_reader_trial.py) — Use the pre-existing marked_reader verbatim. Whole-tour rotations versus recutting each closed triangle before sewing; retain the same six event objects. Mark is the reader's existing A/B argument, not an edited event endpoint.
+- [ramsey_independent_mark_reader_trial.json](ramsey_independent_mark_reader_trial.json)
+- [ramsey_strip_entry_not_cursor.py](ramsey_strip_entry_not_cursor.py) — Recover entry from the unbased alternating boundary cycle, then test whether mark=column B and seam=entry can give a distinguishing endpoint mark reader. No pole/color output used.
+- [ramsey_strip_entry_not_cursor.json](ramsey_strip_entry_not_cursor.json)
+- [ramsey_flag_tour_equivariance.py](ramsey_flag_tour_equivariance.py) — Test equivariant ordered-flag -> full triangle-tour selectors in the direct four-column bridge. Use seed's directed tour normalization and sewing reader; distinguish path reversal from projection onto cyclic words.
+- [ramsey_flag_tour_equivariance.json](ramsey_flag_tour_equivariance.json)
+- [ramsey_square_seam_probe.py](ramsey_square_seam_probe.py) — Restrict the existing directed-transition probes to operations generated by the literal four-column square. All four color-exchanging anti-bindings are tested. A directed triangle rotation outside the square is a positive control, not a derived flag adapter.
+- [ramsey_square_seam_probe.json](ramsey_square_seam_probe.json)
+- [ramsey_flag_triangle_probe.py](ramsey_flag_triangle_probe.py) — Extract the R triangle from flags, compare ordinary conjugation vs directed native admission (inverse conjugation); no output graph or pole used.
+- [ramsey_flag_triangle_probe.json](ramsey_flag_triangle_probe.json)
+- [ramsey_directed_rim_binding.py](ramsey_directed_rim_binding.py) — Test the added bridge preserving orientation of the flag-read square rim to the uncancelled native face boundary. No pole, graph color or native endpoint name used to select a binding.
+- [ramsey_directed_rim_binding.json](ramsey_directed_rim_binding.json)
+- [ramsey_first_fan_rim_probe.py](ramsey_first_fan_rim_probe.py) — Read the first actual movement between tetrahedral fan apexes on the alternating Hall path. Compare all boundary-compatible matchings and all four native bindings; do not look at cube colors to select a movement.
+- [ramsey_first_fan_rim_probe.json](ramsey_first_fan_rim_probe.json)
+- [ramsey_uniform_rim_scan.py](ramsey_uniform_rim_scan.py) — Compare apex-only projection with a uniform move-if-available, otherwise hold scan of actual duads. The scan convention is a hypothesis, not native execution. Test all boundary-compatible matchings.
+- [ramsey_uniform_rim_scan.json](ramsey_uniform_rim_scan.json)
+- [ramsey_two_visit_overlap_reader.py](ramsey_two_visit_overlap_reader.py) — Intrinsic 2-duad lookahead reader: successive Hall partitions through a duad are different pairings of its four unused ground labels. No move/hold simulation or color test.
+- [ramsey_two_visit_overlap_reader.json](ramsey_two_visit_overlap_reader.json)
+- [ramsey_oriented_overlap_reader.py](ramsey_oriented_overlap_reader.py) — Orient overlap e from its first to second occurrence: a companion sharing an endpoint in the first duad pins the tail, one in the second pins the head. Report failures rather than breaking ties. No square-rim, color, or native input to orient().
+- [ramsey_oriented_overlap_reader.json](ramsey_oriented_overlap_reader.json)
+- [ramsey_overlap_triangle_execution.py](ramsey_overlap_triangle_execution.py) — Close head and tail rim arcs using supplied native arrows. Distinguish fixed binding and orientation from reorienting arcs and choosing a common sewing base.
+- [ramsey_overlap_triangle_execution.json](ramsey_overlap_triangle_execution.json)
+- [ramsey_overlap_handoff_selector.py](ramsey_overlap_handoff_selector.py) — Select by a consecutive apex-to-apex transition, not by desired sewing base. Verify cyclic and based uniqueness, then apply the unmodified mark reader.
+- [ramsey_overlap_handoff_selector.json](ramsey_overlap_handoff_selector.json)
+- [ramsey_handoff_distance_audit.py](ramsey_handoff_distance_audit.py) — Color-free control: ordered apex visits vs shortest forward separation. Enumerate cyclic native tours from the retained source arrows only; no strip matcher, selected-tour table or graph score imported.
+- [ramsey_handoff_distance_audit.json](ramsey_handoff_distance_audit.json)
+- [ramsey_based_rim_projection_fiber.py](ramsey_based_rim_projection_fiber.py) — Fibers after deleting reciprocal seam events, even when the projected tour starts at a specified apex. No shortest-path or cube-color inputs.
+- [ramsey_based_rim_projection_fiber.json](ramsey_based_rim_projection_fiber.json)
+- [ramsey_fan_clock_lift.py](ramsey_fan_clock_lift.py) — Test a positive-duration lift of successive Hall duads to a full native receipt, with and without preserving every defined fan apex. Enumerate all clock assignments rather than declare a duration at exit.
+- [ramsey_fan_clock_lift.json](ramsey_fan_clock_lift.json)
+- [ramsey_stuttering_fan_clock.json](ramsey_stuttering_fan_clock.json)
+- [ramsey_stuttering_fan_clock.py](ramsey_stuttering_fan_clock.py) — Allow zero-tick Hall intervals, keeping all observed apexes and exactly one native tour. Compare row-local minimum pauses with any synchronized clock. No graph inputs.
+- [ramsey_partial_fan_clock.py](ramsey_partial_fan_clock.py) — Audit partial synchronization: inclusion-minimal sets of shared internal visit times forcing opposite seams, with all fan pins retained.
+- [ramsey_partial_fan_clock.json](ramsey_partial_fan_clock.json)
+- [ramsey_apex_arc_transport.py](ramsey_apex_arc_transport.py) — Exhaust vertex relabelings with optional path reversal, comparing the image of a retained apex arc to the row-swapped outward arc. No clock assignment or score input.
+- [ramsey_apex_arc_transport.json](ramsey_apex_arc_transport.json)
+- [ramsey_parallel_rim_reference.py](ramsey_parallel_rim_reference.py) — Compare marker reread from entry with parallel transport around a single row's directed rim. No native coordinates used to extract the two references.
+- [ramsey_parallel_rim_reference.json](ramsey_parallel_rim_reference.json)
+- [ramsey_halfturn_execution_scope.py](ramsey_halfturn_execution_scope.py) — Compare a two-event execution advancing one vertex to its half-turn image with relabeling an entire six-event receipt by that same permutation.
+- [ramsey_halfturn_execution_scope.json](ramsey_halfturn_execution_scope.json)
+- [ramsey_diagonal_window_provenance.py](ramsey_diagonal_window_provenance.py) — Read every native event of the apex passage against the actual three-duad overlap window. Distinguish visiting a block once per event from expanding both members of one duad. No use of cube colors.
+- [ramsey_diagonal_window_provenance.json](ramsey_diagonal_window_provenance.json)
+- [ramsey_interleaved_window_provenance.py](ramsey_interleaved_window_provenance.py) — Restore intermediate Hall partitions. Compare exposing only each partition's unique unvisited duad with exposing its entire support, using at most one event per Hall position.
+- [ramsey_interleaved_window_provenance.json](ramsey_interleaved_window_provenance.json)
+- [ramsey_handoff_flag_owners.py](ramsey_handoff_flag_owners.py) — Use only traversed incidence flags with their matching identities. One event per flag, in path order. No expansion of a partition into unselected members.
+- [ramsey_handoff_flag_owners.json](ramsey_handoff_flag_owners.json)
+- [ramsey_flag_online_first_hit.py](ramsey_flag_online_first_hit.py) — Stream the active flags starting at the first overlap fan. No path search, owner filter, or future flag in the emission decision. Test whether extending the scan could source the complete receipt.
+- [ramsey_flag_online_first_hit.json](ramsey_flag_online_first_hit.json)
+- [ramsey_resume_handoff_receipt.py](ramsey_resume_handoff_receipt.py) — Append to the two issued handoff events using only per-face successors. No lookup of a precomputed tour to construct the suffix. The original mark reader is applied after execution.
+- [ramsey_resume_handoff_receipt.json](ramsey_resume_handoff_receipt.json)
+- [ramsey_causal_fan_start.py](ramsey_causal_fan_start.py) — Start on the next outgoing incidence from a fan centered at the literal R column. Inspect vertices as encountered; no overlap or cycle index in the trigger. Test arbitrary incoming phase and reversed traversal.
+- [ramsey_causal_fan_start.json](ramsey_causal_fan_start.json)
+- [ramsey_live_matching_receipt.py](ramsey_live_matching_receipt.py) — Execute directly from two retained matchings, alternating lookup (no stored cycle or tour lookup). Compare exit-stop / first-return-stop / bounded continuation. Flags are reusable lookup data, not executed native events.
+- [ramsey_live_matching_receipt.json](ramsey_live_matching_receipt.json)
+- [ramsey_folded_entry_handoff.py](ramsey_folded_entry_handoff.py) — Reconstruct the across-entry window from a finite two-flag prefix. Reverse the reflected Hall incidences, not issued native events. Use the old live receipt only as an output oracle.
+- [ramsey_folded_entry_handoff.json](ramsey_folded_entry_handoff.json)
+- [ramsey_observed_half_sources.py](ramsey_observed_half_sources.py) — Only observed flags on the finite entry-to-exit half. Compare time-ordered streaming with a buffer of distinct observed sources; no reflected incidences used for event provenance.
+- [ramsey_observed_half_sources.json](ramsey_observed_half_sources.json)
+- [ramsey_partition_turn_replay.py](ramsey_partition_turn_replay.py) — Finite online reader: permit backward use only of the incoming flag of the partition currently being exited, and only after the outgoing flag fires. No arbitrary history or target tour lookup.
+- [ramsey_partition_turn_replay.json](ramsey_partition_turn_replay.json)
+- [ramsey_partition_turn_lookup.py](ramsey_partition_turn_lookup.py) — Recover every incoming active incidence by inverse matching lookup at the partition, with no previous-flag cache. Count counterexamples to recovering the same inbound flag from boundary plus outbound flag alone.
+- [ramsey_partition_turn_lookup.json](ramsey_partition_turn_lookup.json)
+- [ramsey_entry_anchored_turn.py](ramsey_entry_anchored_turn.py) — Separate mere exit membership from occurrence at the second partition. Reconstruct the inbound duad from two partitions, without an inverse lookup or stored predecessor.
+- [ramsey_entry_anchored_turn.json](ramsey_entry_anchored_turn.json)
+- [ramsey_entry_replay_identity.py](ramsey_entry_replay_identity.py) — Distinguish reconstructed Hall flag values, freshly emitted native events, and provenance the native validator never receives. Use only the entry/current flags to choose the handoff.
+- [ramsey_entry_replay_identity.json](ramsey_entry_replay_identity.json)
+- [ramsey_flag_selector_ablation.py](ramsey_flag_selector_ablation.py) — Separate information selecting the word from availability of incidence witnesses. Hold rows, endpoints and binding fixed; vary all 36 matchings with the same boundary.
+- [ramsey_flag_selector_ablation.json](ramsey_flag_selector_ablation.json)
+- [ramsey_flag_support_short_path_identity.py](ramsey_flag_support_short_path_identity.py) — Compare exact sets of complete matchings; separately enumerate local simple prefixes, with no global matching assumption, to expose the mechanism.
+- [ramsey_flag_support_short_path_identity.json](ramsey_flag_support_short_path_identity.json)
+- [ramsey_flag_timing_relaxation.py](ramsey_flag_timing_relaxation.py) — Relax the allowed source pairs, keeping observed support and both row directions fixed. Identify the effect on local prefixes and actual matching IDs.
+- [ramsey_flag_timing_relaxation.json](ramsey_flag_timing_relaxation.json)
+- [ramsey_owner_locality_control.py](ramsey_owner_locality_control.py) — Intersect two index-free witness tests: one common ordered pair of distinct matching owners across rows, and at most one flag of reverse access. No specified exit, polarity or permitted slot pair used by the filter.
+- [ramsey_owner_locality_control.json](ramsey_owner_locality_control.json)
+- [ramsey_quotient_handoff_bundle_trace.py](ramsey_quotient_handoff_bundle_trace.py) — Recover the two parallel bundles behind every handoff, identify the actual transport their composition defines, and compare matching-owner order across direct bindings.
+- [ramsey_quotient_handoff_bundle_trace.json](ramsey_quotient_handoff_bundle_trace.json)
+- [ramsey_exit_port_types.py](ramsey_exit_port_types.py) — Classify the three exit duads by directed native endpoint types, then compose by incidence without assuming E-first or F-first. Compare with each row's own incoming exit flag.
+- [ramsey_exit_port_types.json](ramsey_exit_port_types.json)
+- [ramsey_exit_third_bundle_gate.py](ramsey_exit_third_bundle_gate.py) — Locate the third incidence at 29 in the source quotient and test what using it costs among the eight actual invariant perfect matchings.
+- [ramsey_exit_third_bundle_gate.json](ramsey_exit_third_bundle_gate.json)
+- [ramsey_exit_consumption_units.py](ramsey_exit_consumption_units.py) — Enumerate first-hit apex trails without repeating native occurrences, with the WHOLE partition visible. Test linear use at the flag, underlying ground-label, and directed-occurrence levels separately.
+- [ramsey_exit_consumption_units.json](ramsey_exit_consumption_units.json)
+- [ramsey_exit_orientation_descent.py](ramsey_exit_orientation_descent.py) — Test descent of an orientation choice on the fixed 14 support under the actual arrow-reversing row action. Contrast invariant exposure, row-conditioned choices, and shared-token versus per-arrow consumption.
+- [ramsey_exit_orientation_descent.json](ramsey_exit_orientation_descent.json)
+- [ramsey_exit_three_successor_probes.py](ramsey_exit_three_successor_probes.py) — Measure successor support before completion, not just finished tours. Separate native ledger output from three proposed Hall admission filters.
+- [ramsey_exit_three_successor_probes.json](ramsey_exit_three_successor_probes.json)
+- [ramsey_exit_payload_ablation.py](ramsey_exit_payload_ablation.py) — Ablate exit-flag support upstream of actual retained payload composition. Native registry unchanged. Test source scope, and whether composition itself spends a reused operand.
+- [ramsey_exit_payload_ablation.json](ramsey_exit_payload_ablation.json)
+- [ramsey_native_boundary_call_trace.py](ramsey_native_boundary_call_trace.py) — Trace actual native call boundaries without adding an exit policy. Contrast the quotient constructor with the explicit live receipt adapter, and separate handoff from completion.
+- [ramsey_native_boundary_call_trace.json](ramsey_native_boundary_call_trace.json)
+- [ramsey_three_selector_interventions.py](ramsey_three_selector_interventions.py) — Intervene on certification, exit inputs and cross-return retention separately. Keep one direct binding and unchanged typed executor for both rows.
+- [ramsey_three_selector_interventions.json](ramsey_three_selector_interventions.json)
+- [ramsey_selector_reachability_census.py](ramsey_selector_reachability_census.py) — Compare candidate certification, the retained vs visited exit, and live first-two-event behavior over the same 36 boundary-compatible records. No assumed traversal timeout.
+- [ramsey_selector_reachability_census.json](ramsey_selector_reachability_census.json)
+- [ramsey_selector_read_barrier.py](ramsey_selector_read_barrier.py) — Read barriers on an off-exit live-success witness. Do not materialize a lap for the live reader. Trace demanded incidences, actual issuance, and access failures separately.
+- [ramsey_selector_read_barrier.json](ramsey_selector_read_barrier.json)
+- [ramsey_proton_handoff_mode_contrast.py](ramsey_proton_handoff_mode_contrast.py) — Conditional last-arrow port encoding. Use an archived collective column as a common phase reference. Apply the actual proton coefficients over Q(i sqrt(3)); no fit or label-to-coordinate permutation.
+- [ramsey_proton_handoff_mode_contrast.json](ramsey_proton_handoff_mode_contrast.json)
+- [ramsey_proton_mark_filter_order.py](ramsey_proton_mark_filter_order.py) — Endpoint mask on the archived outer-arrow port labels. Compare filtering before vs after alignment; the mask is a proposed interface, not one of the native L/G/N stages.
+- [ramsey_proton_mark_filter_order.json](ramsey_proton_mark_filter_order.json)
+- [ramsey_common_agreement_closure.py](ramsey_common_agreement_closure.py) — Use actual selected Hall bundles. Project onto agreement at a duad or at a partition; close their generated symmetry group. Unit counting metric explicit. No assignment of proton coefficients to Hall flags.
+- [ramsey_common_agreement_closure.json](ramsey_common_agreement_closure.json)
+- [ramsey_proton_port_joint_weights.py](ramsey_proton_port_joint_weights.py) — Exact joint-projector squared weights of single coordinate preparations and of the equally weighted mixture of the three coordinates of each outer-arrow port.
+- [ramsey_proton_port_joint_weights.json](ramsey_proton_port_joint_weights.json)
+- [ramsey_electron_face_joint_weights.py](ramsey_electron_face_joint_weights.py) — Exact face compressions of joint projectors and norm of every directed face-to-face block in the native electron return.
+- [ramsey_electron_face_joint_weights.json](ramsey_electron_face_joint_weights.json)
+- [ramsey_face_crossing_loop_phase.py](ramsey_face_crossing_loop_phase.py) — Compare cyclic block traces of the actual electron and proton N operators, indexing proton ports by source face and its directed crossing's shared edge. This is port-resolved composition, not a physical time schedule.
+- [ramsey_face_crossing_loop_phase.json](ramsey_face_crossing_loop_phase.json)
+- [ramsey_face_walk_refinement.py](ramsey_face_walk_refinement.py) — Local factor test for arbitrary closed walks. Resolve a stationary face step by ALL three centroid-edge ports of that face and sum closed proton traces (not amplitudes before squaring).
+- [ramsey_face_walk_refinement.json](ramsey_face_walk_refinement.json)
+- [ramsey_crossing_axis_scramble.py](ramsey_crossing_axis_scramble.py) — Compare signed electron Pauli-commutator axes with proton directed edge displacements in the documented common tetrahedral frame. Test all port permutations within each fixed source face.
+- [ramsey_crossing_axis_scramble.json](ramsey_crossing_axis_scramble.json)
+- [ramsey_strip_diagonal_frame.py](ramsey_strip_diagonal_frame.py) — Extract an ordered opposite-edge frame from strip incidences alone, then count the directed ports it distinguishes with and without source-face information.
+- [ramsey_strip_diagonal_frame.json](ramsey_strip_diagonal_frame.json)
+- [ramsey_handoff_source_face.py](ramsey_handoff_source_face.py) — Predict both handoff source faces from the ordered strip frame alone. Test against archived port ownership after binding; distinguish predicting face context from choosing a particular edge.
+- [ramsey_handoff_source_face.json](ramsey_handoff_source_face.json)
+- [ramsey_rim_quarter_face_transport.py](ramsey_rim_quarter_face_transport.py) — Use one recorded rim step, not an external S4 relabeling, to rotate the two face tags. Test preservation of the selected Hall component and of the native arrow registry independently.
+- [ramsey_rim_quarter_face_transport.json](ramsey_rim_quarter_face_transport.json)
+- [ramsey_proton_anti_quarterturn.py](ramsey_proton_anti_quarterturn.py) — Test spatial signed-coordinate transport, oriented port ownership, and complex conjugation independently on the archived native proton transfers. Source tetrahedron coordinates from the original constructor.
+- [ramsey_proton_anti_quarterturn.json](ramsey_proton_anti_quarterturn.json)
+- [ramsey_electron_anti_quarterturn.py](ramsey_electron_anti_quarterturn.py) — Lift the same vertex permutation as the proton rim test. Search single-qubit Clifford rotations, with or without K. Verify all four stored local projectors and all return blocks exactly; measure the fourth spinor power.
+- [ramsey_electron_anti_quarterturn.json](ramsey_electron_anti_quarterturn.json)
+- [ramsey_rim_signed_dictionary.py](ramsey_rim_signed_dictionary.py) — Compare the even powers of the antiunitary rim lift to the actual signed electron packet dictionary. Replay only admitted linear operations, not a fictitious archive of antiunitary steps.
+- [ramsey_rim_signed_dictionary.json](ramsey_rim_signed_dictionary.json)
+- [ramsey_three_rim_axes.py](ramsey_three_rim_axes.py) — Transport the recovered rim half-turn by the existing native t, deriving the vertex permutation from face projectors. Compare all three opposite-edge partitions and their signed commutators.
+- [ramsey_three_rim_axes.json](ramsey_three_rim_axes.json)
+- [ramsey_exit_triad_axis_lift.py](ramsey_exit_triad_axis_lift.py) — Lift the cyclic ordering (own exit, mate exit, unused exit) to S4 by fixing the entry apex. Compare a derived transport of frames with a symmetry of the selected strip.
+- [ramsey_exit_triad_axis_lift.json](ramsey_exit_triad_axis_lift.json)
+- [ramsey_triad_schedule_glue.py](ramsey_triad_schedule_glue.py) — Compare genuine alternating successor with iterating the proposed triad frame change. Check overlap at the intermediate matching, not merely at its exit flag.
+- [ramsey_triad_schedule_glue.json](ramsey_triad_schedule_glue.json)
+- [ramsey_triad_join_decoder.py](ramsey_triad_join_decoder.py) — Decode a join against every relabeling of the selected ordered strip. Separately allow all permutations, preserve entry apex, or preserve tetrahedral orientation as well. No preferred successor permutation supplied to decoder.
+- [ramsey_triad_join_decoder.json](ramsey_triad_join_decoder.json)
+- [ramsey_join_flag_phase.py](ramsey_join_flag_phase.py) — Refine a join incidence with its active-cycle provenance: does the second shared flag even have a phase on the candidate's active cycle? Preserve only labels/roles already retained by the matching pair.
+- [ramsey_join_flag_phase.json](ramsey_join_flag_phase.json)
+- [ramsey_join_nonreturn_scale.py](ramsey_join_nonreturn_scale.py) — Apply the source nonbacktracking rule at its own scale (successive Hall vertices). Do not treat a complete transit d->29->e as a primitive egress edge.
+- [ramsey_join_nonreturn_scale.json](ramsey_join_nonreturn_scale.json)
+- [ramsey_fork_missing_corner.py](ramsey_fork_missing_corner.py) — Which boundary role is omitted by the fan partition at the first fork? Recover it without using target frame permutations or native arrows. Compare full incoming local histories for ambiguity.
+- [ramsey_fork_missing_corner.json](ramsey_fork_missing_corner.json)
+- [ramsey_fork_bit_iteration.py](ramsey_fork_bit_iteration.py) — Compose actual nonreversing Hall walks after a fork-bit intervention. Contrast inherited departure at the next 29 with a separately declared, old-duad departure. No abbreviated exit edge is treated as primitive.
+- [ramsey_fork_bit_iteration.json](ramsey_fork_bit_iteration.json)
+- [ramsey_return_address_memory.py](ramsey_return_address_memory.py) — Check whether the two proposed return policies can be read as fixed matching lookups, vertex successors, or deterministic finite-window successors on their full periodic Hall walks. Enumerate all six initial transit contexts jointly.
+- [ramsey_return_address_memory.json](ramsey_return_address_memory.json)
+- [ramsey_history_matching_provenance.py](ramsey_history_matching_provenance.py) — Can the proposed discriminating history actually be observed by a stationary Hall matching successor? Fit prefixes to arbitrary fixed matching pairs and to pairs related by the literal row involution. Also count minimum latent frame changes, preserving traversal phase.
+- [ramsey_history_matching_provenance.json](ramsey_history_matching_provenance.json)
+- [ramsey_history_transported_involution.py](ramsey_history_transported_involution.py) — Fit contiguous pieces to transported copies of the actual selected matching pair. Enumerate all optimal cuts; keep matching parity fixed. Conjugate the literal (23) along with each copy.
+- [ramsey_history_transported_involution.json](ramsey_history_transported_involution.json)
+- [ramsey_online_exit_reanchor.py](ramsey_online_exit_reanchor.py) — Generate, do not fit, frame switches: install the incoming exit-duad partner of column 1 as the new image of the original stationary N corner (4). Only tested within the three rooted even frames.
+- [ramsey_online_exit_reanchor.json](ramsey_online_exit_reanchor.json)
+- [ramsey_exit_literal_row_gauge.py](ramsey_exit_literal_row_gauge.py) — Factor the observed candidate reanchor into a row exchange and the unique nonidentity column symmetry invisible to the current literal word. Compare the full ordered pair, not just its common word.
+- [ramsey_exit_literal_row_gauge.json](ramsey_exit_literal_row_gauge.json)
+- [ramsey_third_word_active_exit.py](ramsey_third_word_active_exit.py) — Decode word supports at fixed B column directly from the partition. Can the third word occur as an ACTIVE exit with the literal row swap, even if the initial matching is changed?
+- [ramsey_third_word_active_exit.json](ramsey_third_word_active_exit.json)
+- [ramsey_hold_matching_switch_swap.py](ramsey_hold_matching_switch_swap.py) — Keep the intermediate matching exactly, change only the literal involution. Test existence of the original single ten-flag criterion on successive sides, and distinguish a word period from a matching period.
+- [ramsey_hold_matching_switch_swap.json](ramsey_hold_matching_switch_swap.json)
+- [ramsey_second_cycle_ablation.py](ramsey_second_cycle_ablation.py) — Toggle the two disjoint cycles of the retained-matching handoff independently. Compare the next full swap/involution, exit component, closure and active-cycle locality. Controls are perfect matchings, not asserted literal swap outputs.
+- [ramsey_second_cycle_ablation.json](ramsey_second_cycle_ablation.json)
+- [ramsey_aux_completion_decoder.py](ramsey_aux_completion_decoder.py) — Complete the observed first exit cycle without prescribing the disjoint complement. Ask whether the local record already forces the literal mate, optionally requiring the NEXT swap to be irreducible.
+- [ramsey_aux_completion_decoder.json](ramsey_aux_completion_decoder.json)
+- [ramsey_division_triality.py](ramsey_division_triality.py) — Read each exit division as its partner involution on the four corners; compare their actual products with the action that permutes divisions.
+- [ramsey_division_triality.json](ramsey_division_triality.json)
+- [ramsey_exit_common_missing_endpoint.py](ramsey_exit_common_missing_endpoint.py) — Decode the third duad from the two red graphs' missing edges, not by composing corner permutations. Use the affine witness's duad-edge rule; test all 15 partitions.
+- [ramsey_exit_common_missing_endpoint.json](ramsey_exit_common_missing_endpoint.json)
+- [ramsey_unused_flag_threads.py](ramsey_unused_flag_threads.py) — Decompose incidences selected by neither literal matching. Endpoints have residual degree one, so tracing from them requires no choice.
+- [ramsey_unused_flag_threads.json](ramsey_unused_flag_threads.json)
+- [ramsey_antipode_extension.py](ramsey_antipode_extension.py) — Do the five complementary threads define one global incidence duality? Prescribe endpoint reversal, propagate along threads, test all dihedral maps of the remaining decagon against the full flag set.
+- [ramsey_antipode_extension.json](ramsey_antipode_extension.json)
+- [ramsey_polarity_receipt_quotient.py](ramsey_polarity_receipt_quotient.py) — Identify dual vertices; record loops and their two nonloop neighbours. Suppress degree-two vertices to expose underlying core.
+- [ramsey_polarity_receipt_quotient.json](ramsey_polarity_receipt_quotient.json)
+- [ramsey_pentagon_exchange_order.py](ramsey_pentagon_exchange_order.py) — Test whole-pentagon exchanges preserving the five distinguished connections, without assigning an orientation. Forget owner colours for the symmetry test.
+- [ramsey_pentagon_exchange_order.json](ramsey_pentagon_exchange_order.json)
+- [ramsey_pentagon_exchange_lift.py](ramsey_pentagon_exchange_lift.py) — Lift both core exchanges at the exit connection to the bipartite Hall carrier. Compare their square with the independently defined literal row swap, not just with an unlabelled reflection.
+- [ramsey_pentagon_exchange_lift.json](ramsey_pentagon_exchange_lift.json)
+- [ramsey_intrinsic_complement_matching.py](ramsey_intrinsic_complement_matching.py) — Recover intermediate matchings from edge exclusion alone. Test whether old row order plus the marked exit & apex duad (entry 0) breaks the symmetry of the two reconstructions, using type-preserving incidence automorphisms on six edge letters.
+- [ramsey_intrinsic_complement_matching.json](ramsey_intrinsic_complement_matching.json)
+- [ramsey_row_duality_square.py](ramsey_row_duality_square.py) — Act by each row's simultaneous B/R and N/N endpoint reversal on the entire incidence neighbourhood of the third division.
+- [ramsey_row_duality_square.json](ramsey_row_duality_square.json)
+- [ramsey_all_thread_row_reversals.py](ramsey_all_thread_row_reversals.py) — Generalize the exit reversal to any selected flag (d,t): fix both letters of d, exchange partners of each other block of t. Does one row acting independently at the five threads pick flags of a SINGLE intermediate matching?
+- [ramsey_all_thread_row_reversals.json](ramsey_all_thread_row_reversals.json)
+- [ramsey_iterated_thread_operator.py](ramsey_iterated_thread_operator.py) — Recompute every thread and every local reversal solely from the current ordered pair. End flags are forced common; orient each thread from its partition endpoint.
+- [ramsey_iterated_thread_operator.json](ramsey_iterated_thread_operator.json)
+- [ramsey_dual_thread_operator.py](ramsey_dual_thread_operator.py) — Compare the type-reversed rule with forward and inverse at first intermediates. Change type using a correlation, apply the same operator, then pull back; vary the correlation by every six-letter relabeling.
+- [ramsey_dual_thread_operator.json](ramsey_dual_thread_operator.json)
+- [ramsey_dual_shift_successor.py](ramsey_dual_shift_successor.py) — Predict the dual reading of a single thread by a direct reading one alternating turn away. Compare individual output flags, not just permutations of sources, on all four ordered states.
+- [ramsey_dual_shift_successor.json](ramsey_dual_shift_successor.json)
+- [ramsey_ten_cycle_shift_census.py](ramsey_ten_cycle_shift_census.py) — Partition ALL ordered single-decagon matching pairs into S6 orbits; test one representative per orbit. Dual reading via the same fixed correlation on both input and output (need not stabilize the pair).
+- [ramsey_ten_cycle_shift_census.json](ramsey_ten_cycle_shift_census.json)
+- [ramsey_five_edge_centres.py](ramsey_five_edge_centres.py) — Test path reversal, middle flags and endpoint phase in the two uniform five-edge representatives. Number the active decagon starting at a partition and taking the FIRST row out, second back.
+- [ramsey_five_edge_centres.json](ramsey_five_edge_centres.json)
+- [ramsey_shared_middle_polarity_census.py](ramsey_shared_middle_polarity_census.py) — All correlations stabilizing each representative unordered pair, counting only involutions; measure how many of the five unused paths each reverses in place.
+- [ramsey_shared_middle_polarity_census.json](ramsey_shared_middle_polarity_census.json)
+- [ramsey_all_pairs_shared_polarity.py](ramsey_all_pairs_shared_polarity.py) — Remove decagon premise. Use all S6 orbits of distinct unordered pairs (criterion symmetric); test every pair-stabilizing correlation that is involutory. Nonempty path condition excludes equal rows.
+- [ramsey_all_pairs_shared_polarity.json](ramsey_all_pairs_shared_polarity.json)
+- [ramsey_polarity_middle_bound.py](ramsey_polarity_middle_bound.py) — Small carrier-only inputs for the middle-count proof: count absolute flags on polarities and measure girth, without testing pairs of matchings.
+- [ramsey_polarity_middle_bound.json](ramsey_polarity_middle_bound.json)
+- [ramsey_literal_swap_polarity_controls.py](ramsey_literal_swap_polarity_controls.py) — Fix the literal swap and both boundary flags, but no C5, decagon or global polarity. Find counterexamples, recording full matchings and the actual boundary component. Test matching polarity by three-edge paths using the established exhaustive class criterion.
+- [ramsey_literal_swap_polarity_controls.json](ramsey_literal_swap_polarity_controls.json)
+- [ramsey_entry_unused_owner.py](ramsey_entry_unused_owner.py) — Read the unused duad at the entry partition. Inspect the common owner and its tetrahedral fan count, without tracing a complementary path. Distinguish conditional from unconditional sufficiency.
+- [ramsey_entry_unused_owner.json](ramsey_entry_unused_owner.json)
+- [ramsey_fan_tip_exchange.py](ramsey_fan_tip_exchange.py) — Use only the unordered fan left at the two row-related entry partitions. Swap its tips in the tetrahedron, not its apex or unused corner. Test the predicted common assignment against all boundary completions.
+- [ramsey_fan_tip_exchange.json](ramsey_fan_tip_exchange.json)
+- [ramsey_fan_tip_holdout.py](ramsey_fan_tip_holdout.py) — Hold out the other active partitions. For each unused tetrahedral fan, predict its common owner from tip exchange without consulting that owner; test all ordered thread states and report stabilizer orbits of candidates.
+- [ramsey_fan_tip_holdout.json](ramsey_fan_tip_holdout.json)
+- [ramsey_open_shortcut_constructor.py](ramsey_open_shortcut_constructor.py) — Construct from naked decagons, no matching, polarity or row swap input. Keep each shortest antipodal path unused; force the remaining flag at BOTH internal vertices. Compare to one-ended constraints on marked cycle.
+- [ramsey_open_shortcut_constructor.json](ramsey_open_shortcut_constructor.json)
+- [ramsey_boundary_decagon_selector.py](ramsey_boundary_decagon_selector.py) — Test boundary and literal swap on bare cycles, not completed matchings. Are the two marked neighbours sufficient to determine an oriented half from 0 to 29?
+- [ramsey_boundary_decagon_selector.json](ramsey_boundary_decagon_selector.json)
+- [ramsey_boundary_role_table.py](ramsey_boundary_role_table.py) — Generate five-flag halves from endpoints alone and close them by literal reflection. Decode the moving R named by the missing entry fan apex and by the exit BR edge.
+- [ramsey_boundary_role_table.json](ramsey_boundary_role_table.json)
+- [ramsey_source_apex_holdout.py](ramsey_source_apex_holdout.py) — Read the existing strip closure census as an independent constraint, not as an issued five-edge matching half. Filter to the exact poles and marked entry; test whether closure selects the changing apex even at fixed exit.
+- [ramsey_source_apex_holdout.json](ramsey_source_apex_holdout.json)
+- [ramsey_route_fill_decagon_test.py](ramsey_route_fill_decagon_test.py) — Keep ONLY the actual shared residual flags of a closing long route and test both short decagons. Distinguish arbitrary shared completions, literal-swap completions and open-shortcut completions.
+- [ramsey_route_fill_decagon_test.json](ramsey_route_fill_decagon_test.json)
+- [ramsey_residual_fan_reading.py](ramsey_residual_fan_reading.py) — Decode the nonconstant residual flags on the six closed strip paths in fixed corner labels. Test each member separately against the previously computed compatibility outcomes.
+- [ramsey_residual_fan_reading.json](ramsey_residual_fan_reading.json)
+- [ramsey_residual_clause_duals.py](ramsey_residual_clause_duals.py) — Test the selected polarity first. Search all type-preserving and type-reversing Hall symmetries for a genuine exchange of the two residual handoff cases, distinguishing exchange of whole fills from exchange of marked fans.
+- [ramsey_residual_clause_duals.json](ramsey_residual_clause_duals.json)
+- [ramsey_selfdual_fill_obstruction.py](ramsey_selfdual_fill_obstruction.py) — Direct obstruction certificate: classify a shared residual flag against each cycle's active flags and open antipodal paths. Test fixed residual records beyond the six issued by closing-long-strip enumeration.
+- [ramsey_selfdual_fill_obstruction.json](ramsey_selfdual_fill_obstruction.json)
+- [ramsey_long_residual_inverse.py](ramsey_long_residual_inverse.py) — Given four shared flags, remove their eight vertices. On the remaining graph test whether a single 22-cycle reflected at 0,29 can use every vertex. Record degree obstructions and forced edges at degree two, before any strip search.
+- [ramsey_long_residual_inverse.json](ramsey_long_residual_inverse.json)
+- [ramsey_all_extra_deadends.py](ramsey_all_extra_deadends.py) — All free row-swap pairs disjoint from the constant flags. Include only vertex-disjoint assignments (otherwise not a residual matching). Independently enumerate spanning two-factors by deleting a perfect matching on degree-three vertices.
+- [ramsey_all_extra_deadends.json](ramsey_all_extra_deadends.json)
+- [ramsey_split_pole_ownership.py](ramsey_split_pole_ownership.py) — Trace marked and unmarked circuits and test if literal R exchanges their alternating matching phases, not just their uncoloured flags.
+- [ramsey_split_pole_ownership.json](ramsey_split_pole_ownership.json)
+- [ramsey_polefree_component_exchange.py](ramsey_polefree_component_exchange.py) — All perfect matchings against their literal images, without residual-fill or strip-length assumptions. Count active components exchanged as sets, separately for exactly the marked fixed poles, any two fixed poles, and all cases.
+- [ramsey_polefree_component_exchange.json](ramsey_polefree_component_exchange.json)
+- [ramsey_octagon_phase_square.py](ramsey_octagon_phase_square.py) — Vary only the two octagon phases. Recompute literal mate, shared/open paths and the action of the independently constructed decagon polarity on each phase choice.
+- [ramsey_octagon_phase_square.json](ramsey_octagon_phase_square.json)
+- [ramsey_phase_path_routing.py](ramsey_phase_path_routing.py) — Hold decagon, common exit thread, and polarity fixed; measure fork distances and the involution on boundary endpoints induced by tracing unused paths in each agreement phase.
+- [ramsey_phase_path_routing.json](ramsey_phase_path_routing.json)
+- [ramsey_minimal_crossing_receipts.py](ramsey_minimal_crossing_receipts.py) — Minimum positive self-dual crossing receipts on the fixed marked decagon, with and without imposing the literal swap. Enumerate all subsets, not a greedy choice.
+- [ramsey_minimal_crossing_receipts.json](ramsey_minimal_crossing_receipts.json)
+- [ramsey_crossing_even_runs.py](ramsey_crossing_even_runs.py) — Extract the residual ring directly from incidences; count extensions by matching runs, without enumerating Hall matchings. Cross-check every exact observation pattern including multiplicity zero.
+- [ramsey_crossing_even_runs.json](ramsey_crossing_even_runs.json)
+- [ramsey_fork_audit_uniform.py](ramsey_fork_audit_uniform.py) — Calibration only. Frozen predictor: four ports fit iff the UNIFORM eight-set miss budget passes. Failure is a certificate, pass only a prediction. Use all eight one-port omissions and first legal single thinning per omission (lexicographic). No 39 schedule used. Predict batch before importing comparator.
+- [ramsey_fork_audit_uniform.json](ramsey_fork_audit_uniform.json)
+- [ramsey_fork_miss_transfer.py](ramsey_fork_miss_transfer.py) — Transfer the earlier exact 8/7/6 miss census to the batch by certified edge-marked graph isomorphisms. Count how many ports actually reuse the two newly compatible endpoints. Labels are zero-based.
+- [ramsey_fork_miss_transfer.json](ramsey_fork_miss_transfer.json)
+- [ramsey_fork_deletion_rank.py](ramsey_fork_deletion_rank.py) — Frozen ranking: among ALL legal red-edge deletions on skip-0 core, maximize the number of ORIGINAL independent sevens hit by one newly available support containing both endpoints. Equal scores stay tied. Predict first tier succeeds; exact four-port search only after scoring all edges.
+- [ramsey_fork_deletion_rank.json](ramsey_fork_deletion_rank.json)
+- [ramsey_fork_deletion_rank_controls.json](ramsey_fork_deletion_rank_controls.json)
+- [ramsey_deletion_rank_new_parents.py](ramsey_deletion_rank_new_parents.py) — Transfer frozen original-seven hit score to 34-cores of DIFFERENT densities. Delete 0 from a constructed cyclic 35, then add the lexicographically first jointly triangle-safe k-edge augmentation for each k=1..4, without reading completion outcomes. Evaluate every legal deletion, including undo moves labelled separately.
+- [ramsey_deletion_rank_new_parents.json](ramsey_deletion_rank_new_parents.json)
+- [ramsey_final_miss_levels.py](ramsey_final_miss_levels.py) — Separate top-row, triple and quadruple obstructions on matched 34-cores. Count ALL sorted maximal-support multisets (repetitions allowed).
+- [ramsey_fixed_reuse_matched_pair.py](ramsey_fixed_reuse_matched_pair.py) — All maximal four-port multisets on two legal deletions of the same fresh parent. For each endpoint-using anchor, count unordered remaining triples by the first unmet size budget. Distinguish original seven-set coverage from compatibility with future ports.
+- [ramsey_fixed_reuse_matched_pair.json](ramsey_fixed_reuse_matched_pair.json)
+- [ramsey_matched_seven_cover.py](ramsey_matched_seven_cover.py) — Minimum old-row cover by DP over 11 assignments. Predeclared source-only pools: independent seven-vertex neighbourhoods of the parent, and of either deleted endpoint; compare against the exact minimum.
+- [ramsey_matched_seven_cover.json](ramsey_matched_seven_cover.json)
+- [ramsey_degree_capacity_audit.py](ramsey_degree_capacity_audit.py) — Screen all 22 deletion cases without seven/six-set tests. For completeness of rejection for a REAL extension, enlarge supports to independent maximal sets (preserves triangle/alpha and hence degree cap). Passing this maximal-support screen is not a feasibility certificate.
+- [ramsey_degree_capacity_audit.json](ramsey_degree_capacity_audit.json)
+- [ramsey_capacity_transfer_78.json](ramsey_capacity_transfer_78.json)
+- [ramsey_capacity_transfer_78.py](ramsey_capacity_transfer_78.py) — Transfer frozen two-rule four-port screen to k=8. Count full multisets and classify missed smaller rows after the screen, independently of stored successful schedules.
+- [ramsey_five_row_exposure.py](ramsey_five_row_exposure.py) — Source-only filter for dangerous fives: maximal, or singly extendible by a vertex with >=2 spare port slots. Separately test maximal fives alone and rows equal to a vertex neighbourhood (not logically exhaustive). Count distinct bad assignments and record *all* their witnesses.
+- [ramsey_five_row_exposure.json](ramsey_five_row_exposure.json)
+- [ramsey_seven_exposure_transfer.py](ramsey_seven_exposure_transfer.py) — Transfer the proved extension filter to seven-sets of 34-cores. Count all pairwise-eight-compatible maximal-support multisets by degree capacity and ALL detected obstruction classes (not only first witness).
+- [ramsey_seven_exposure_transfer.json](ramsey_seven_exposure_transfer.json)
+- [ramsey_exposed_extenders_test.py](ramsey_exposed_extenders_test.py) — Conjecture 1: inspect ALL missed sixes for every failed quadruple on the calibrated thinned core. Do not infer a negative result from the first missed row.
+- [ramsey_exposed_extenders_test.json](ramsey_exposed_extenders_test.json)
+- [ramsey_compulsory_kernel_test.py](ramsey_compulsory_kernel_test.py) — Census exact minimal repairs of every distinct triple of the failed 404. Start with all valid maximal-support completions, then test EVERY subset of their fourth supports against tight rows, so nonmaximal repairs are included.
+- [ramsey_compulsory_kernel_test.json](ramsey_compulsory_kernel_test.json)
+- [ramsey_capacity_fresh_falsifier.py](ramsey_capacity_fresh_falsifier.py) — Fresh generated cores (no catalogue or previously tuned core). Screen 4 maximal independent ports at k=alpha+2 >=5. Verify one counterexample exhaustively, reporting witnesses for every screen survivor.
+- [ramsey_capacity_fresh_falsifier.json](ramsey_capacity_fresh_falsifier.json)
+- [ramsey_connected_fourth_repairs.py](ramsey_connected_fourth_repairs.py) — Exact reconfiguration graph of all legal fourth supports. Reconstruct from minimal elements by upward closure inside independent sets. Cross-check component partition via independent unions of minima.
+- [ramsey_connected_fourth_repairs.json](ramsey_connected_fourth_repairs.json)
+- [ramsey_endpoint_bottleneck_test.py](ramsey_endpoint_bottleneck_test.py) — Exact endpoint-only test: maximize each independent support WITHOUT changing its membership at either endpoint. This avoids incorrectly ruling out nonmaximal supports that conserve endpoint slots.
+- [ramsey_endpoint_bottleneck_test.json](ramsey_endpoint_bottleneck_test.json)
+- [ramsey_three_row_conflict_test.py](ramsey_three_row_conflict_test.py) — Test for an empty triple of row-hit families over maximal independent fourth supports. Superset of all tight rows of any legal fixed triple. Prune only by union cardinality; if empty triple found, still requires pairwise checks and simultaneous tightness.
+- [ramsey_three_row_small_example.py](ramsey_three_row_small_example.py) — Independent small-target search. Require EVERY tight row pair repairable, not only pairs of the displayed three. Also require initial three ports legal and the core itself four-port extendible if possible.
+- [ramsey_three_row_conflict_test.json](ramsey_three_row_conflict_test.json)
+- [ramsey_three_row_small_example.json](ramsey_three_row_small_example.json)
+- [ramsey_two_port_repair_depth.py](ramsey_two_port_repair_depth.py) — Compute exact port replacement distance with multiset overlap; for any depth >2 case additionally search all pairs of replacement maximal supports independently with the two retained ports fixed.
+- [ramsey_two_port_repair_depth.json](ramsey_two_port_repair_depth.json)
+- [ramsey_two_corner_separation.py](ramsey_two_corner_separation.py) — Test the red-edge separator first on four frozen splits, then on fixed maximal-port triples of fresh small triangle-free cores. Enumerate every independent fourth support. Stop on the first two-component counterexample.
+- [ramsey_two_corner_separation.json](ramsey_two_corner_separation.json)
+- [ramsey_four_row_bound.py](ramsey_four_row_bound.py) — Try to certify nonexistence of four-row refutations by an elementary counting bound. For each fixed triple enumerate all and only tight rows, and sum the four largest numbers of maximal supports individually excluded. No heuristic support sampling.
+- [ramsey_four_row_bound.json](ramsey_four_row_bound.json)
+- [ramsey_tight_vertex_blockers.py](ramsey_tight_vertex_blockers.py) — Test one-step vertex blocking, and its sound iterative closure: restrict each tight row to surviving vertices; delete x if all remaining options in one row are neighbours of x. Never treat x as a neighbour of itself.
+- [ramsey_tight_vertex_blockers.json](ramsey_tight_vertex_blockers.json)
+- [ramsey_exceptional_forced_kernel.py](ramsey_exceptional_forced_kernel.py) — Singleton-hit closure on unique exceptional repairs. Distinguish mere compatibility with the partial support from iterated row-blocker compatibility (stronger control).
+- [ramsey_exceptional_forced_kernel.json](ramsey_exceptional_forced_kernel.json)
+- [ramsey_exceptional_port_drop.py](ramsey_exceptional_port_drop.py) — Exact minimum incidence loss for fixed other ports: for each minimal legal exceptional kernel K keep all old vertices not adjacent to K. Cross-check against all independent supports containing some kernel.
+- [ramsey_exceptional_port_drop.json](ramsey_exceptional_port_drop.json)
+- [ramsey_missed_row_reopen_78.py](ramsey_missed_row_reopen_78.py) — Predict reopenable slots solely by all currently violated fives. Independently solve each fixed triple by exact residual tight-row intersection, without restricting fourth supports to the original screen. Track minimum total replacements against all valid maximal assignments.
+- [ramsey_missed_row_reopen_78.json](ramsey_missed_row_reopen_78.json)
+- [ramsey_local_clearance_cost.py](ramsey_local_clearance_cost.py) — Exact lower bounds on exceptional-port drops by separate row clearance, then by fixed-point vertex blocking. No minimal kernels used to estimate costs; compare afterward with known optimum.
+- [ramsey_local_clearance_cost.json](ramsey_local_clearance_cost.json)
+- [ramsey_blocker_backbone_audit.py](ramsey_blocker_backbone_audit.py) — Forbid each vertex with NO seed assumptions; compare empty-row blocker closure with intersection of ALL inclusion-minimal legal fourth supports.
+- [ramsey_blocker_backbone_audit.json](ramsey_blocker_backbone_audit.json)
+- [ramsey_repair_pair_gluing.py](ramsey_repair_pair_gluing.py) — Does knowing exactly which pairs coexist in some repair suffice to recognize extendible partial supports? Build the co-occurrence graph, enumerate its maximal cliques, compare to maximal legal repairs. Certify smallest bad faces by exhaustive subsets of spurious cliques.
+- [ramsey_repair_pair_gluing.json](ramsey_repair_pair_gluing.json)
+- [ramsey_conditioned_triple_blockers.py](ramsey_conditioned_triple_blockers.py) — Predict feasibility of EVERY independent three-vertex commitment on the 12 hard fixed triples. Only graph, three old ports and commitment enter the predictor. Minimal repair list used afterwards as oracle.
+- [ramsey_conditioned_triple_blockers.json](ramsey_conditioned_triple_blockers.json)
+- [ramsey_blocker_forward_constructor.py](ramsey_blocker_forward_constructor.py) — Construct without repair oracle. Audit ALL independent commitments by monotonicity: enumerate minimal incompatible commitments as independent minimal transversals of the neighbour masks of known minimal repairs. A missed minimal nonface disproves completeness.
+- [ramsey_blocker_forward_constructor.json](ramsey_blocker_forward_constructor.json)
+- [ramsey_blocker_transfer_countersearch.py](ramsey_blocker_transfer_countersearch.py) — Frozen blocker rule on new cores. Exhaustively audit every independent partial support of each tested repairable triple; enumerate maximal repairs as independent oracle. Stop on first false acceptance.
+- [ramsey_blocker_transfer_countersearch.json](ramsey_blocker_transfer_countersearch.json)
+- [ramsey_rectangle_holdout.json](ramsey_rectangle_holdout.json)
+- [ramsey_rectangle_holdout.py](ramsey_rectangle_holdout.py) — Independent random cores. For every repairable maximal triple in sampled cores test minimal impossible commitments. At blocker fixed points test rectangle certificate and all binary obligations. Precomputed row bitsets.
+- [ramsey_conflict_row_closure.py](ramsey_conflict_row_closure.py) — Saturate positive hitting obligations by red-edge conflict resolution; eliminate redundant supersets after each parallel round. Check existence and construct by shrinking a hitting set after closure.
+- [ramsey_conflict_row_closure.json](ramsey_conflict_row_closure.json)
+- [ramsey_guarded_prefix_pilot.py](ramsey_guarded_prefix_pilot.py) — Extract small unsatisfiable row families before a branching refutation, then lift their guards into third-port cuts. Catalogue record 20, failed reopen position 1.
+- [ramsey_guarded_prefix_pilot.json](ramsey_guarded_prefix_pilot.json)
+- [ramsey_sat_prefix_pilot.py](ramsey_sat_prefix_pilot.py) — PySAT pilot: fix two ports, jointly encode third and fourth. Learn absence-only cores, verify coverage independently with fourth-support enumeration.
+- [ramsey_sat_prefix_pilot.json](ramsey_sat_prefix_pilot.json)
+- [ramsey_sat_learning_batch.py](ramsey_sat_learning_batch.py) — Same candidate order, fresh incremental Glucose instance per strategy/pair. No completion oracle in learner. Time classifying ALL maximal thirds, not first-solution search.
+- [ramsey_sat_learning_batch.json](ramsey_sat_learning_batch.json)
+- [ramsey_small_obligation_holdout.py](ramsey_small_obligation_holdout.py) — Held-out catalogue cores: six fixed pairs from first saved valid attachment per core. Compute all legal thirds (not just maximal), and exact singleton/pair-obligation coverage of impossible maximal thirds.
+- [ramsey_small_obligation_holdout.json](ramsey_small_obligation_holdout.json)
+- [ramsey_time_first_attachment.py](ramsey_time_first_attachment.py) — Paired first-witness timings, counterbalanced repeats and two fixed ordering policies. Time includes SAT bootstrap/model extraction, excludes identical CNF/candidate generation and independent verification.
+- [ramsey_time_first_attachment.json](ramsey_time_first_attachment.json)
+- [ramsey_second_port_core_transfer.py](ramsey_second_port_core_transfer.py) — Fix one port; classify every maximal second without skipping. Three independently encoded free ports, symmetry unrestricted. Measure transfer of the first raw Glucose assumption core per failure.
+- [ramsey_second_port_core_transfer.json](ramsey_second_port_core_transfer.json)
+- [ramsey_second_short_obligations.py](ramsey_second_short_obligations.py) — Query unconditional singleton and binary obligations on an unrestricted second port; use previously verified maximal-second labels only to audit coverage.
+- [ramsey_second_short_obligations.json](ramsey_second_short_obligations.json)
+- [ramsey_second_port_first_time.py](ramsey_second_port_first_time.py) — Counterbalanced time to first independently verified full attachment with ONE fixed port. Identical prepared CNF/order; fresh solver and no saved rules on each timed invocation.
+- [ramsey_second_port_first_time.json](ramsey_second_port_first_time.json)
+- [ramsey_bare_core_rank.py](ramsey_bare_core_rank.py) — Fresh induced 21-vertex cores; target still (3,8). Commit rankings before labelling. Exhaust all maximal firsts with joint four-port SAT, verify each positive witness.
+- [ramsey_bare_core_rank.json](ramsey_bare_core_rank.json)
+- [ramsey_port_union_hierarchy.py](ramsey_port_union_hierarchy.py) — Classify first supports via nested union tests, no SAT. Count sorted maximal port multisets surviving each level; repeats permitted.
+- [ramsey_port_union_hierarchy.json](ramsey_port_union_hierarchy.json)
+- [ramsey_first_link_obstructions.json](ramsey_first_link_obstructions.json)
+- [ramsey_link_cover_duality.py](ramsey_link_cover_duality.py) — Exact minimum cover of partner triangles by missed five-sets, and maximum packing of triangles with disjoint miss lists. Certificates on all distributed failures.
+- [ramsey_link_cover_duality.json](ramsey_link_cover_duality.json)
+- [ramsey_first_link_obstructions.py](ramsey_first_link_obstructions.py) — Rooted partner link: six-set compatibility plus five-set tests involving the root are ordinary edges. A surviving triangle must cover every remaining five-set. Self-loops allow repeated supports.
+- [ramsey_partner_bipartitions.py](ramsey_partner_bipartitions.py) — Are triangle-free rooted compatibility graphs bipartite? Can two original rows certify failure directly? Each partner's demand list is its missed six-sets plus its missed five-sets also missed by the root. Link edges mean disjoint lists.
+- [ramsey_partner_bipartitions.json](ramsey_partner_bipartitions.json)
+- [ramsey_fractional_partner_barrier.py](ramsey_fractional_partner_barrier.py) — Fractional matching/cover LP for partner misses. Rationalize only nonzero weights; verify both primal and dual inequalities with exact arithmetic; normalize both rational certificates.
+- [ramsey_fractional_partner_barrier.json](ramsey_fractional_partner_barrier.json)
+- [ramsey_partner_fractional_coloring.json](ramsey_partner_fractional_coloring.json)
+- [ramsey_partner_fractional_coloring.py](ramsey_partner_fractional_coloring.py) — Certified upper bounds on the fractional chromatic number of hard rooted links. Fold dominated vertices, then cover the remainder by sampled incompatible families. The dual is for the restricted LP only and is not a global lower bound.
+- [ramsey_partner_threshold_pricing.py](ramsey_partner_threshold_pricing.py) — Column generation for threshold chi_f<3, rational certificates. Price the restricted dual exactly on positive-weight vertices using a memoized weighted independent-set recurrence.
+- [ramsey_partner_threshold_pricing.json](ramsey_partner_threshold_pricing.json)
+- [ramsey_uniform_partner_search.py](ramsey_uniform_partner_search.py) — Exact Hall-ratio >=3 decision on small folded links. For k>=4 choose 3k vertices, with at most k in every maximal independent family. Complete SAT search up to n/3. Uniform witness can be trimmed to size 3*alpha.
+- [ramsey_uniform_partner_search.json](ramsey_uniform_partner_search.json)
+- [ramsey_common_partner_pattern.py](ramsey_common_partner_pattern.py) — Complete common INDUCED (3,5) template search on folded partner links. Enumerate all witnesses in the smallest host; deduplicate by induced isomorphism; keep embeddings in all remaining hosts.
+- [ramsey_common_partner_pattern.json](ramsey_common_partner_pattern.json)
+- [ramsey_witness_row_basis.py](ramsey_witness_row_basis.py) — Exact minimum old-row bases: preserve every conflict edge vs merely refute every triple of a selected 12-partner witness. Compare with unrestricted incompatible families.
+- [ramsey_witness_row_basis.json](ramsey_witness_row_basis.json)
+- [ramsey_local_basis_transfer.py](ramsey_local_basis_transfer.py) — Evaluate saved twelve-choice certificates away from their witnesses. Condition on ALL six-set compatibility tests, then count partner multisets surviving the selected rows. Compare uniform random eligible row sets matched by row size.
+- [ramsey_local_basis_transfer.json](ramsey_local_basis_transfer.json)
+- [ramsey_global_five_basis.py](ramsey_global_five_basis.py) — Exact five-row cover after six-set screen. Compare rooted-link certificates with full five-set obligations (a row missed by any three of four ports). Find rows required even in an unrestricted-size certificate, and in every minimum one.
+- [ramsey_global_five_basis.json](ramsey_global_five_basis.json)
+- [ramsey_lazy_root_basis.py](ramsey_lazy_root_basis.py) — Implicit minimum hitting set: SAT master only sees separated triples; graph separator returns first surviving triangle (loops allow repeated supports). No table of surviving triples constructed. Oracle yields both minimum certificate and a matching lower-bound teaching set.
+- [ramsey_lazy_root_basis.json](ramsey_lazy_root_basis.json)
+- [ramsey_blind_row_builder.py](ramsey_blind_row_builder.py) — Shared old-core obligations: blind search for a verified attachment or exhaustion from each maximal first. Pairwise six-set screen fixed; add ONE violated 5/4-row at a time. Compare cold vs persistent rows, identical candidate order.
+- [ramsey_blind_row_builder.json](ramsey_blind_row_builder.json)
+- [ramsey_shared_row_fidelity.json](ramsey_shared_row_fidelity.json)
+- [ramsey_shared_row_fidelity.py](ramsey_shared_row_fidelity.py) — Do learned rows recognize every maximal port multiset? Find smallest exact augmentation holding learned rows fixed, and globally indispensable rows via singleton violations.
+- [ramsey_intrinsic_attachment_basis.py](ramsey_intrinsic_attachment_basis.py) — Minimum exact recognition modulo mandatory six-set screen. Remove singleton failures, decompose residual constraints with disjoint row vocabularies, solve each cardinality optimum and its backbone.
+- [ramsey_intrinsic_attachment_basis.json](ramsey_intrinsic_attachment_basis.json)
+- [ramsey_unique_blue_hall.py](ramsey_unique_blue_hall.py) — Necessary local expansion for a unique forbidden independent 8-set B=T+missing ports. Singleton outsiders require >=2 red neighbours in B. Enforce triangle-free maximal missing supports via SAT; other port, when present, must hit T twice. Compare to exact singleton-violation labels.
+- [ramsey_unique_blue_hall.json](ramsey_unique_blue_hall.json)
+- [ramsey_exchange_depth.py](ramsey_exchange_depth.py) — Separation in increasing exchange size. Solve for m maximal missing supports avoiding T. All exchanges on OLD outside vertices included, up to alpha(H); no nonmissing port in separator for five-rows. Use a countermodel to add only actually violated exchanges.
+- [ramsey_exchange_depth.json](ramsey_exchange_depth.json)
+- [ramsey_unique_five_last_port.py](ramsey_unique_five_last_port.py) — For EVERY old-only feasible missing triple for a candidate unique five-row T, project partial independent seven-sets to old vertices. Test independent transversal for the last port, and whether tight obligations shared across ALL triples already refute T.
+- [ramsey_unique_five_last_port.json](ramsey_unique_five_last_port.json)
+- [ramsey_predict_shared_rows.py](ramsey_predict_shared_rows.py) — No missing-triple enumeration: domain propagation on three unnamed missing ports. Negate one last-port obligation R by requiring the first |R|-3 slots to hit it (symmetry). Row-capacity propagation to contradiction proves R compulsory.
+- [ramsey_predict_shared_rows.json](ramsey_predict_shared_rows.json)
+- [ramsey_core_fractional_supply.py](ramsey_core_fractional_supply.py) — Bare-core fractional port supply for target (3,8). Maximize total multiplicity of maximal independent supports subject to miss budgets. For deciding four ports only rows of sizes 4..6 matter. Rational primal/dual bounds for the truncated capacity; cap at 4 when interpreting a positive test.
+- [ramsey_core_fractional_supply.json](ramsey_core_fractional_supply.json)
+- [ramsey_regular_four_pack.py](ramsey_regular_four_pack.py) — Every maximal-support port on a 6-regular core consumes degree capacity at each of its vertices. Enumerate disjoint packings before applying any non-neighbourhood obligations; compute smallest row-family refutations of all packs.
+- [ramsey_regular_four_pack.json](ramsey_regular_four_pack.json)
+- [ramsey_overlap_diversity.py](ramsey_overlap_diversity.py) — Exact diversity hierarchy on nonregular cores; separate existence of DISJOINT valid nonmaximal supports by SAT (maximal enlargement need not preserve disjointness). Minimize number of old vertices carrying multiple colors.
+- [ramsey_overlap_diversity.json](ramsey_overlap_diversity.json)
+- [ramsey_overlap_shapes.json](ramsey_overlap_shapes.json)
+- [ramsey_overlap_shapes.py](ramsey_overlap_shapes.py) — All valid attachments including nonmaximal supports, via downwards deletion from valid maximal multisets. Classify overlap multigraph up to permuting four slots, find size of individual tight rows preventing loss of each shared incidence.
+- [ramsey_overlap_matching_screen.json](ramsey_overlap_matching_screen.json)
+- [ramsey_rooted_square_propagation.json](ramsey_rooted_square_propagation.json)
+- [ramsey_rooted_square_propagation.py](ramsey_rooted_square_propagation.py) — Square-rooted support domains, not SAT. Binary constraints enforce independence, exact shared seed, and six-set diversity. Arc consistency then path consistency; enumerate residual completions and test 5/4-set rows.
+- [ramsey_square_residual_helly.py](ramsey_square_residual_helly.py) — Why does pair consistency suffice? Seek a linear order at each port on which every other port-value's residual neighbourhood is an interval. Test pruned lists for laminarity, plus direct three-neighbourhood Helly and legal triangle extension.
+- [ramsey_square_residual_helly.json](ramsey_square_residual_helly.json)
+- [ramsey_square_branch_coordinates.py](ramsey_square_branch_coordinates.py) — Quotient surviving port supports by exact continuation lists. Which signatures coincide in the old core? Factor six-set solutions into Cartesian boxes; distinguish direct incompatibilities from implied ones.
+- [ramsey_square_branch_coordinates.json](ramsey_square_branch_coordinates.json)
+- [ramsey_neighbourhood_square.py](ramsey_neighbourhood_square.py) — Construct directly from endpoint neighbourhoods: each port takes its two named seed endpoints plus all four private neighbours of ONE of its two opposite endpoints. The two perfect matchings of this incidence cycle give two assignments. No partner search or propagation.
+- [ramsey_neighbourhood_square.json](ramsey_neighbourhood_square.json)
+- [ramsey_collision_square.py](ramsey_collision_square.py) — Nonprivate square: copy each donor's neighbourhood except neighbours conflicting with a named endpoint. Try filling uncoloured vertices without changing a private colour. Compare against exact optimum on exceptional seeds.
+- [ramsey_collision_square.json](ramsey_collision_square.json)
+- [ramsey_square_level_transfer.py](ramsey_square_level_transfer.py) — Freeze corrected two-orientation rule. All induced matching seeds on complete smaller catalogues and a seeded record-uniform sample from the 27-vertex catalogue. No tuning by degree beyond necessary target-capacity checks.
+- [ramsey_square_level_transfer.json](ramsey_square_level_transfer.json)
+- [ramsey_copy_exchange_counter.py](ramsey_copy_exchange_counter.py) — Exhaust rooted triangle-free cores in increasing order around fixed induced 2K2. Search connected min-degree-two collision cores; insist on a maximal triangle-free core for a stronger stress test. Verify top diversity exhaustively.
+- [ramsey_copy_exchange_counter.json](ramsey_copy_exchange_counter.json)
+- [ramsey_three_only_copy.py](ramsey_three_only_copy.py) — Search for a collision-corrected copy whose only failures need three ports. Deterministic maximal triangle-free stress graphs, every oriented matching considered.
+- [ramsey_three_only_copy.json](ramsey_three_only_copy.json)
+- [ramsey_copy_three_reduction.py](ramsey_copy_three_reduction.py) — Finite local proof obligation for both donor orientations: every outsider touching the seed receives exactly one port colour after clipping. For each omitted port, every old vertex missed by the other three avoids both its seed endpoints. They can be adjoined simultaneously.
+- [ramsey_copy_three_reduction.json](ramsey_copy_three_reduction.json)
+- [ramsey_orientation_veto.py](ramsey_orientation_veto.py) — Project maximum independent rows to seed-incidence profiles. A row using <=2 colors in one orientation vetoes it. Independent derivation by adjacent palette anchored at common endpoint, or opposite palette excluding whole seed. Test joint veto vs conflicting demands on sampled 27-vertex catalogue.
+- [ramsey_orientation_veto.json](ramsey_orientation_veto.json)
+- [ramsey_split_veto_switches.py](ramsey_split_veto_switches.py) — Attribute vetoes by their collision vertices; then release the single orientation bit. Each touched outsider keeps exactly one endpoint-compatible colour, invisible vertices remain uncoloured. Exact CNF checks full diversity and independence, minimize switches vs two copies.
+- [ramsey_split_veto_switches.json](ramsey_split_veto_switches.json)
+- [ramsey_invisible_region_repairs.json](ramsey_invisible_region_repairs.json)
+- [ramsey_invisible_region_repairs.py](ramsey_invisible_region_repairs.py) — Ablation of frozen square assumptions: add colours on invisible vertices, recolour or drop private incidences, allow extra overlap. Exact full attachment CNF, fixed seed incidence in every model; verify graph witnesses.
+- [ramsey_private_bridge_minima.py](ramsey_private_bridge_minima.py) — Enumerate ALL minimum sets of doubly used private neighbours; block a bridge set, not a full solution. Classify pair shape and whether the extra overlapping vertices reproduce a second square seed.
+- [ramsey_private_bridge_minima.json](ramsey_private_bridge_minima.json)
+- [ramsey_bridge_row_proofs.py](ramsey_bridge_row_proofs.py) — Row-labelled proofs of compulsory private incidences. Use only seed compatibility, red-edge exclusions and old-row obligations. Earliest sufficient size tier, fresh-solver failed-literal unit propagation, then deletion-minimal UNSAT cores of row labels (not minimum-cardinality).
+- [ramsey_bridge_row_proofs.json](ramsey_bridge_row_proofs.json)
+- [ramsey_square_unit_builder.json](ramsey_square_unit_builder.json)
+- [ramsey_square_unit_builder.py](ramsey_square_unit_builder.py) — Blind row propagation. Demand masks are positive CNF clauses over incidences; red adjacency supplies binary incompatibilities. Iterate simultaneous singleton forcing; compare one-literal lookahead, then deterministic greedy construction with no retractions.
+- [ramsey_square_one_row_split.py](ramsey_square_one_row_split.py) — Second-level lookahead on surviving square seeds. Seek a concrete row/port-subset whose every remaining option is refuted by probed propagation; refresh probes on tentative choices for a no-retraction constructor.
+- [ramsey_square_one_row_split.json](ramsey_square_one_row_split.json)
+- [ramsey_square_choice_audit.py](ramsey_square_choice_audit.py) — Explore every surviving incidence option of the builder's smallest outstanding clause, recursively; separately test off-policy live choices at the root. Independent SAT truth for extendibility, never used to accept a move.
+- [ramsey_square_choice_audit.json](ramsey_square_choice_audit.json)
+- [ramsey_thirteen_port_motif_control.py](ramsey_thirteen_port_motif_control.py) — Same G13 and four new vertices, vary ONLY their internal graph. Compare archived supports, completely free supports (no maximal assumption), and 2K2-donor templates.
+- [ramsey_thirteen_port_motif_control.json](ramsey_thirteen_port_motif_control.json)
+- [ramsey_inverse_five_motifs.py](ramsey_inverse_five_motifs.py) — Inverse census: deletion D leaves alpha<=5 iff D hits every independent six-set of target. Bitset filter over 26334 five-sets; identify residual by exact induced isomorphism, classify D modulo S5.
+- [ramsey_inverse_five_motifs.json](ramsey_inverse_five_motifs.json)
+- [ramsey_missing_cross_edge.json](ramsey_missing_cross_edge.json)
+- [ramsey_missing_cross_edge.py](ramsey_missing_cross_edge.py) — Forward decomposition of K2,3 minus ux. Fix left supports U,V. The two ordinary right ports use maximal independent supports outside U|V; exceptional X may meet U but not V, and X|U must hit every old five-set. Enumerate the successive right-hand partner tests. No completed target as input.
+- [ramsey_missing_cross_edge_bridges.json](ramsey_missing_cross_edge_bridges.json)
+- [ramsey_exceptional_bridge_projection.py](ramsey_exceptional_bridge_projection.py) — Project missing-edge construction to X,Y,Z and the promise of a common neighbour b of U,X. Enumerate right triples meeting five-set diversity and inherited degree caps, then ask whether ANY U and finally V can attach (old fives only). No target inputs. Record gate of first unavoidable second bridge.
+- [ramsey_exceptional_bridge_projection.json](ramsey_exceptional_bridge_projection.json)
+- [ramsey_three_color_row_kernel.py](ramsey_three_color_row_kernel.py) — Three disjoint independent supports = proper partial 3-colouring. Each selected maximum row needs two distinct colours. Compute indispensable rows, deletion-minimal refutations and exact lower bounds via near-colourings. No preselected support list.
+- [ramsey_three_color_row_kernel.json](ramsey_three_color_row_kernel.json)
+- [ramsey_three_color_orbit_proof.py](ramsey_three_color_orbit_proof.py) — Symmetry-aware row kernels: test small orbit families exhaustively; optimize orbit count on the archived 17-core. Different objective from minimizing individual rows. Independent group enumeration via adjacency-preserving bijections.
+- [ramsey_three_color_orbit_proof.json](ramsey_three_color_orbit_proof.json)
+- [ramsey_orbit_escape_anatomy.py](ramsey_orbit_escape_anatomy.py) — Exhaust the escape routes when one of five obligation orbits is relaxed. Unordered supports quotient colour names, then quotient by actual old-core automorphisms. Record precisely which rows must fail and how many independently repairable pieces split each orbit.
+- [ramsey_orbit_escape_anatomy.json](ramsey_orbit_escape_anatomy.json)
+- [ramsey_root_signature_transfer.py](ramsey_root_signature_transfer.py) — Freeze the five archived rooted row signatures. Test held-out degree-four roots separately, pooled, and under predeclared coordinate projections; distinguish transfer by recognizing informative rows from vacuous inclusion of every row.
+- [ramsey_root_signature_transfer.json](ramsey_root_signature_transfer.json)
+- [ramsey_three_color_unrooted_types.py](ramsey_three_color_unrooted_types.py) — Independent transfer check: classify old fives by how close they are to being a red neighbourhood. (maximum overlap with any neighbourhood, multiplicity). Compare q-only strata, then smallest common selection of these coarse types.
+- [ramsey_three_color_unrooted_types.json](ramsey_three_color_unrooted_types.json)
+- [ramsey_fifth_vertex_forks.py](ramsey_fifth_vertex_forks.py) — Group q=4 row obligations by their four spokes. Compare double completions, singleton completions, and progressively weaker consequences of sharing a four-set. Exact proper partial 3-colour SAT, with independent witnesses.
+- [ramsey_fifth_vertex_forks.json](ramsey_fifth_vertex_forks.json)
+- [ramsey_core5_fork_escapes.py](ramsey_core5_fork_escapes.py) — Exhaust colour-unlabelled partial colourings obeying single-completion rows on core 5. Minimal extra fork constraints and concrete impossibility witnesses.
+- [ramsey_core5_fork_escapes.json](ramsey_core5_fork_escapes.json)
+- [ramsey_color_label_forcing.py](ramsey_color_label_forcing.py) — No privileged color: peel impossible color classes before choosing any triple. Partners of C must individually hit its missed rows. A forced common vertex of the partner family would need both other colors. A stronger test forbids intersecting partner pairs without consulting their row compatibility.
+- [ramsey_color_label_forcing.json](ramsey_color_label_forcing.json)
+- [ramsey_near_row_level_transfer.py](ramsey_near_row_level_transfer.py) — Level transfer: three disjoint independent color classes. Classify maximum independent rows by q=max neighbourhood overlap. Predictor q=alpha-1 frozen at the 17-core level; compare exact neighbourhoods, complement, all maximum rows, and full three-port feasibility. Exact SAT not restricted to maximal supports.
+- [ramsey_near_row_level_transfer.json](ramsey_near_row_level_transfer.json)
+- [ramsey_uncovered_five.py](ramsey_uncovered_five.py) — Enumerate inclusion-maximal top-feasible partial three-colourings modulo colour names. Adding a vertex to a support preserves row coverage. At maximality every uncoloured vertex sees all three colours. An unhit five is dominating (else extends to a six with at most one colour).
+- [ramsey_uncovered_five.json](ramsey_uncovered_five.json)
+- [ramsey_residual_hall.py](ramsey_residual_hall.py) — Fix seven leftover vertices, partition complement into independent fives. For each independent J inside R, each color must supply |J| distinct neighbours. Test exact sharp Hall depth against every one-vertex swap of every known feasible reservoir, without using the original partition as seed.
+- [ramsey_residual_hall.json](ramsey_residual_hall.json)
+- [ramsey_residual_edge_certificate.py](ramsey_residual_edge_certificate.py) — Strip leftover edges, preserving a fixed three-port extension. Required-edge hitting sets from deficient subsets give exact certificate sizes; compare with matching-alone and ordinary Hall on each independent transversal of a matched reservoir.
+- [ramsey_residual_edge_certificate.json](ramsey_residual_edge_certificate.json)
+- [ramsey_preport_edge_demands.py](ramsey_preport_edge_demands.py) — How early can residual-edge necessity be recognized? Fix R only; range over all partitions of its complement into independent fives (without row/validity tests). A potential witness is two endpoints plus an independent subset of their common antineighbourhood. Count colour-independent versus adaptive witnesses and minimum named port information.
+- [ramsey_preport_edge_demands.json](ramsey_preport_edge_demands.json)
+- [ramsey_reservoir_row_obstructions.py](ramsey_reservoir_row_obstructions.py) — Fixed matched leftover R. Project old sixes onto V-R: forbid monochrome traces. Exact minimum witness family covering all candidate balanced colourings, and test whether unary/binary traces alone suffice.
+- [ramsey_reservoir_row_obstructions.json](ramsey_reservoir_row_obstructions.json)
+- [ramsey_projected_graph.py](ramsey_projected_graph.py) — Replace each size-two trace of a maximum row by a colour inequality. Test obstructions of the resulting ordinary graph independently of balance; distinguish K4, other non-3-colourable, and equitable-only failures.
+- [ramsey_projected_graph.json](ramsey_projected_graph.json)
+- [ramsey_reservoir_descent.tsv](ramsey_reservoir_descent.tsv)
+- [ramsey_patch_glue.rs](ramsey_patch_glue.rs)
+- [ramsey_reservoir_descent.rs](ramsey_reservoir_descent.rs)
+- [ramsey_patch_glue.tsv](ramsey_patch_glue.tsv)
+- [ramsey_small_first.rs](ramsey_small_first.rs)
+- [ramsey_quartet_witnesses.tsv](ramsey_quartet_witnesses.tsv)
+- [ramsey_small_first.tsv](ramsey_small_first.tsv)
+- [ramsey_odd_block_cover.py](ramsey_odd_block_cover.py) — Certify alpha(R+S)<=5 on twelve vertices without testing rows: partition into small certified induced subgraphs. Compare odd-cycle factors with general tight block partitions; find size of largest necessary block and blocks' isomorphism-independent size/alpha profiles.
+- [ramsey_odd_block_cover.json](ramsey_odd_block_cover.json)
+- [ramsey_block_templates.py](ramsey_block_templates.py) — Identify compact reusable spanning certificates inside the largest tight blocks: remove edges preserving the independence budget, then explicitly match each resulting graph against template representatives. Counts describe the deterministic chosen certificates, not all alternatives.
+- [ramsey_block_templates.json](ramsey_block_templates.json)
+- [ramsey_template_transfer_records.json](ramsey_template_transfer_records.json)
+- [ramsey_template_transfer.tsv](ramsey_template_transfer.tsv)
+- [ramsey_template_transfer_checked.json](ramsey_template_transfer_checked.json)
+- [ramsey_template_transfer.rs](ramsey_template_transfer.rs)
+- [ramsey_template_pentagon_control.tsv](ramsey_template_pentagon_control.tsv)
+- [README.md](README.md)
