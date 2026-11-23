@@ -1,0 +1,9 @@
+# Independence bound for the double pentagon
+
+On five cyclic labels use f(side)=side−2, f(diagonal)=diagonal−1 (translations mod 5). This covers all directed double pentagons up to renaming: in a Petersen five-cycle consecutive label-pairs are disjoint, so each label occurs at most twice; the ten incidences force each to occur twice. Thus these five pairs form a pentagon on the labels and their complement its diagonals. Disjoint succession translates sides by ±2 and diagonals by ±1. Doubling the labels takes the sign pair (s,d) to (d,−s), transitive on the four orientations.
+
+Middle red edges require disjointness in both views. Within sides and within diagonals this is a five-cycle each. No mixed edge survives: by rotation it suffices to test side 01 and its only disjoint diagonal 24, whose images 34 and 13 meet. Hence an independent set takes at most four contacts.
+
+With a pole, only opposite labels may join it. If k are selected, at most min(4, binom(5−k,2)) contacts avoid them on that side; 1+k+min(4,binom(5−k,2)) ≤ 6 for k=0,...,5 (binomial zero below two).
+
+Without poles take m≤4 independent contacts. Let A,B be the unions of their left and right pairs. The maximum number of additional label vertices is 5−|A∩B|: matching label copies cannot both be taken, and a label common to the two unions allows neither copy. For m=0,1 the total is ≤6. For m=2 each union has size ≥3, so the intersection has size ≥1. For m=4 each has size ≥4, so the intersection has size ≥3. For m=3 the intersection has size ≥2 unless both unions have size three. Then the left pairs are precisely a triangle of labels. Up to rotation its vertices are 012 or 013. Their respective image triples are {34,40,14} and {34,24,02}, each using four labels. Thus both unions cannot have size three. This proves the total never exceeds six. A pole plus all five opposite labels attains six.
