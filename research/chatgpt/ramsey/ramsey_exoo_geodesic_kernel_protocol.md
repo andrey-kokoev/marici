@@ -1,0 +1,3 @@
+# natural-hypercube-representation: structural no-detour test
+
+Reduce nine-set obligations after factoring constant bits; keep inclusion-minimal rows and prune with red incompatibilities. Use a sufficient condition independent of distances: every pair of minimal legal supports has independent union. This gives a monotone transfer of coverage before releasing the old support. Compare the reduced formula exhaustively with the archived legal family, then transfer the same test to each different single-vertex deletion of Exoo's 39-site graph (not distinct whole charts). Test whether majority of three legal words stays legal on the distinguished chart via a binary-clause characterization. Record failure of the criterion separately from failure of isometry.

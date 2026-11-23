@@ -1,0 +1,3 @@
+# Natural hypercube / one-site reattachment: search for strict connected detour
+
+For each catalogued (3,7;22) graph and single-site deletion, form all legal red neighborhoods on the retained sites. Inspect inclusion-minimal supports. Seek endpoints in the SAME single-toggle component with graph distance exceeding Hamming distance (disconnection is a different outcome). Search the 191 parents and deletions in file/ID order; if exhausted, try cores with one further old site deleted. Stop at first connected obstruction. Record the full legal interval inside the difference coordinates to prove no monotone route, a shortest path, and an explanation from conflict/coverage if available. Conditional fixed named core only; no inference about a full Ramsey space.
