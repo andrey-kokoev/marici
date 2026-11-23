@@ -1,0 +1,5 @@
+// Same retained root and first neutron. Test availability, compatibility, and whole-set exit certification separately. Native inspect, no scoring or preferred branch.
+import {GenerativeAssemblyRules} from '../../strominger/demos/particle-overlap-tetrahedron/local-reference-rules.mjs';import fs from 'node:fs';import assert from 'node:assert/strict';
+const r=new GenerativeAssemblyRules(),get=(id,kind)=>r.outgoing(id).map(k=>r.operations[k]).find(o=>o.kind===kind).target;
+const p=r.root,n=get(p,'PN'),s=get(n,'reader-phase-advance'),x=get(n,'NN-phase-advance'),se=get(s,'NE'),xe=get(x,'NE'),direct=get(n,'NE');
+const sets={stay:[s,se],cross:[x,xe],both_advances:[s,x],both_exits:[s,x,se,xe],direct_exit_then_stay:[direct,s],direct_exit_then_cross:[direct,x]};const rows={};for(const [name,t] of Object.entries(sets)){const ids=[...new Set([p,n,...t])],v=r.inspect(ids);rows[name]={ids,valid:v.valid,reason:v.reason,certified:v.certifiedExit,counts:v.counts}}assert(rows.stay.certified&&rows.cross.certified);console.log(rows);fs.writeFileSync(new URL('../results/pne_stay_cross_selector.json',import.meta.url),JSON.stringify(rows,null,2)+'\n');
