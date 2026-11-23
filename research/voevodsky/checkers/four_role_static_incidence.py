@@ -1,0 +1,8 @@
+"""Static reducts only: automorphisms and their fixed perfect matchings. Invariance does not imply arithmetic admissibility. No transition enumeration."""
+from pathlib import Path
+from itertools import permutations,combinations
+import json
+D=Path(__file__).resolve().parents[1];P=list(permutations(range(4)));M=[frozenset((frozenset((0,j)),frozenset(set(range(1,4))-{j}))) for j in (1,2,3)];mk=lambda *s:frozenset(map(frozenset,s));act=lambda p,R:mk(*[[p[i] for i in e] for e in R]);fmt=lambda m:sorted(sorted(s) for s in m)
+def audit(*relations):
+ aut=[p for p in P if all(act(p,r)==r for r in relations)];return dict(automorphisms=len(aut),fixed_pairings=[fmt(m) for m in M if all(act(p,m)==m for p in aut)])
+r=json.loads((D.parent/'chatgpt/ramsey/ramsey_seven_all_wirings.json').read_text());S=r['address_masks'];Q,=[s for s in S if s.bit_count()==4];q=[i for i in range(7) if Q>>i&1];inc=mk(*[(a,b) for a,b in combinations(range(4),2) if 1<<q[a]|1<<q[b] in S]);seed=json.loads((D/'results/ramsey_native_reader_pn_exit.json').read_text());names=['C0','M0','C1','M1'];pts=[seed['seed']['aliases'][n] for n in names];f=tuple(pts.index(x) for x in seed['B'][0]['face']);window=(0,1,2);equal_type=mk((0,2),(1,3));r=dict(bare=audit(),ramsey_pair_address=audit(inc),strict_rank_adjacency=audit(mk((0,1),(1,2),(2,3))),digit_1123=audit(mk((0,1)),mk((2,)),mk((3,))),seed_one_window=audit(mk(window)),seed_both_faces_unordered=audit(mk(window,f)),seed_CM_equality=audit(equal_type),seed_both_readings=audit(mk(window,f),equal_type));print(r);(D/'results/four_role_static_incidence.json').write_text(json.dumps(r,indent=2)+'\n')

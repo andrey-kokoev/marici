@@ -1,0 +1,7 @@
+# Operator interpretation: three readings of one realization carrier
+
+Interpretive note for `four-role-relational-carrier`; not a new tested outcome. Preserve the earlier ordered source windows in ../strominger/carrier-particle-circuits.md. C_i reads what is possible relative to a realization; M_i reads a realization. C0 refers to what was possible after the previous state, C1 after M0, C2 after M1. The operator calls the three windows together 1.5 realization cycles. Do not infer a numerical period, arrow codomain convention, or codimension-one boundary calculation.
+
+P=(C0,M0,C1) reads the contrast between a prior possibility and what is realized, disclosing possibility relative to the present. N=(M0,C1,M1) certifies the realization across that common possibility. E=(M1,C1,C2) is the future-facing counterpart reading: from the side of C2 it relates back to C1 at M1. Future-facing viewpoint does not rewrite the stored E order. Difference is left relational, not numeric. The incidence to preserve is C1 in all three: P's last, N's middle, E's middle; M1 is N's last and E's first. No assertion of physical time reversal, quantum correction, or trajectory of particles.
+
+Open formalization: specify a relation on the three typed slots and how its port roles are reindexed between P and E. Test whether the same relation suffices or whether E needs an independent rule. Do not silently equate word reversal of CMC with MCC.
