@@ -1,0 +1,5 @@
+"""Use only the published address masks, edge order and three probe slots. A cycle edge qualifies if it is itself an endpoint address of a probe. No wiring values, cycle direction or P/N/E inputs."""
+import json,itertools
+from pathlib import Path
+D=Path(__file__).resolve().parents[1];raw=json.loads((D.parent/'chatgpt/ramsey/ramsey_seven_all_wirings.json').read_text());S=[frozenset(i for i in range(7) if m>>i&1) for m in raw['address_masks']];Q,=[a for a in S if len(a)==4];edges={a for a in S if len(a)==2 and a<=Q};assert len(edges)==4
+probes={k:[S[i] for i in raw['edge_order'][k]] for k in (0,4,6)};cuts={k:sorted(sorted(e) for e in set(ends)&edges) for k,ends in probes.items()};cut,=set.union(*(set(v) for v in probes.values()))&edges;rest=edges-{cut};paths=[p for p in itertools.permutations(sorted(Q)) if all(frozenset(x) in rest for x in zip(p,p[1:]))];inc={i:sum(any(i in a for a in v) for v in probes.values()) for i in Q};out=dict(cuts=cuts,remaining_orders=paths,probes_containing_each_label=inc);print(out);(D/'results/ramsey_probe_cycle_cut.json').write_text(json.dumps(out,indent=2)+'\n')
