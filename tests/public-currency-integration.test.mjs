@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url'
 import { resolveUserConfig } from 'vitepress'
 import { checkPublicResearchCoverage } from '../scripts/check-public-research-coverage.mjs'
 import { loadPublicResearchCoverage } from '../scripts/public-research-coverage-config.mjs'
-import { baselineFile, dispositionsFile } from '../scripts/research-currency.mjs'
+import { dispositionsFile, observeResearchMarkdown } from '../scripts/research-currency.mjs'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const readJSON = async file => JSON.parse(await fs.readFile(path.join(root, file), 'utf8'))
@@ -42,8 +42,10 @@ test('reviewed routes cover both viewers, authored status guides and no public t
 async function publicationFixture(t) {
   const temp = await fs.mkdtemp(path.join(root, '.ai', 'currency-gate-'))
   t.after(() => fs.rm(temp, { recursive: true, force: true }))
-  const baseline = await readJSON(baselineFile)
-  const files = new Set(baseline.observed_files.map(item => item.path))
+  // Exercise the current reviewed tree, including subsequent exact-hash dispositions.
+  // Copy bytes, never hardlink or modify the owners' live sources.
+  const observed = await observeResearchMarkdown(root)
+  const files = new Set(observed.map(item => item.path))
   for (const name of ['config/current-research-provenance.v1.json', 'config/current-research-provenance.v2.json']) {
     for (const entry of (await readJSON(name)).entries) for (const pin of [...entry.source_packets, ...entry.checker_sources]) files.add(pin.path)
   }
@@ -92,6 +94,6 @@ test('normal source AND built gates detect an actual undispositioned research ad
   await assert.rejects(fs.access(path.join(root, synthetic)), { code: 'ENOENT' })
   const queue = JSON.parse(await fs.readFile(path.join(fixture, dispositionsFile), 'utf8'))
   assert.equal(queue.inventory.length, 160)
-  assert.deepEqual(queue.subsequent_dispositions, [])
+  assert.deepEqual(queue.subsequent_dispositions, (await readJSON(dispositionsFile)).subsequent_dispositions)
   assert.equal(queue.scientific_dispositions_modified, false)
 })

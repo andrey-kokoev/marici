@@ -24,6 +24,12 @@ The executed thematic commit journal and NUL path manifests were preserved under
 
 Hashes preserve source bytes after CRLF/CR → LF normalization, including BOM and legacy non-UTF-8 bytes. Do not decode malformed bytes with replacement: distinct legacy bytes must not collapse to the same hash. Initial local validation exposed twelve such legacy files outside the 160-file set; only their new, unreleased index identities were explicitly corrected before final validation. No research file or scientific provenance snapshot was changed.
 
+## Subsequent editorial review — revision 2
+
+The 2026-11-25 review accounts for 138 later research Markdown changes: **53 development-only** protocol/inventory records and **85 pending-source-review** claims, arguments and context notes. No additional public-coverage routes were selected. These counts describe the subsequent rows, not replacements for the original 160-file audit above.
+
+Each subsequent row binds its observed bytes and change kind to checkout context `97bf26a21c7dae891e8ea9acfbd0c14bb071cbda`. The review includes dirty working-tree content; that revision is not a claim that all reviewed bytes are committed. Pending review does not assert invalidity or absence of indirect coverage. The frozen baseline, initial inventory, thematic evidence, scientific verdicts and owner sources are unchanged. Further source edits still invalidate their matching review rows.
+
 ## Detect changes without automatic promotion
 
 After source preparation, run:

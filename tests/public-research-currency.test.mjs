@@ -8,7 +8,9 @@ import { assessResearchCurrency, checkResearchCurrency, observeResearchMarkdown,
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const baseline = JSON.parse(await fs.readFile(path.join(root, baselineFile), 'utf8'))
-const queue = JSON.parse(await fs.readFile(path.join(root, dispositionsFile), 'utf8'))
+const currentQueue = JSON.parse(await fs.readFile(path.join(root, dispositionsFile), 'utf8'))
+// Synthetic baseline tests exercise the frozen audit independently of later reviews.
+const queue = { ...currentQueue, subsequent_dispositions: [] }
 const copy = value => structuredClone(value)
 const unknown = { path: 'research/fixture/new-source.md', text_sha256: sha256('# New unreviewed source\n') }
 const subsequent = (item, change, text_sha256) => ({ path: item.path, change, text_sha256, group: 'finite',
@@ -45,8 +47,25 @@ test('reviewed 160-file inventory has accountable, non-scientific dispositions',
 
 test('fresh actual research tree still matches observed source checkpoint', async () => {
   const result = await checkResearchCurrency(root)
-  assert.equal(result.observed_files, baseline.observed_files.length)
+  const additions = currentQueue.subsequent_dispositions.filter(item => item.change === 'added').length
+  const deletions = currentQueue.subsequent_dispositions.filter(item => item.change === 'deleted').length
+  assert.equal(result.observed_files, baseline.observed_files.length + additions - deletions)
+  assert.equal(result.changes.length, currentQueue.subsequent_dispositions.length)
   assert.deepEqual(result.unreviewed, [])
+})
+
+test('subsequent editorial reviews preserve the frozen audit and do not select new public claims', () => {
+  assert.equal(currentQueue.revision, 2)
+  assert.equal(assessResearchCurrency(baseline, queue, baseline.observed_files).audited_files, 160)
+  assert.equal(currentQueue.subsequent_dispositions.length, 138)
+  assert.equal(currentQueue.subsequent_dispositions.filter(item => item.disposition === 'development-only').length, 53)
+  assert.equal(currentQueue.subsequent_dispositions.filter(item => item.disposition === 'pending-source-review').length, 85)
+  for (const item of currentQueue.subsequent_dispositions) {
+    assert.deepEqual(item.coverage, [])
+    assert.match(item.text_sha256, /^[a-f0-9]{64}$/)
+    assert.match(item.reviewed_revision, /^[a-f0-9]{40}$/)
+  }
+  assert.equal(currentQueue.scientific_dispositions_modified, false)
 })
 
 test('new uncited research is unreviewed, not automatically covered or scientifically failed', () => {
