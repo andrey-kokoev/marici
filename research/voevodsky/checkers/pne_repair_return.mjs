@@ -1,0 +1,9 @@
+// Shortest repairs from three histories, before their attempted electron exit. BFS through legal P/N moves; verify final certificate on the entire retained packet set.
+import fs from 'node:fs';import {GenerativeAssemblyRules as Rules} from '../../strominger/demos/particle-overlap-tetrahedron/local-reference-rules.mjs';
+const file=k=>new URL('../results/'+k+'.json',import.meta.url),out=[],kind={p:'inverse-PN',n:'PN',S:'reader-phase-advance',X:'NN-phase-advance',E:'NE'};
+for(const {perm} of JSON.parse(fs.readFileSync(file('pne_return_face_trace')))){
+ const r=new Rules({seedBindings:Object.fromEntries(['C0','M0','C1','M1'].map((k,i)=>[k,perm.map((_,j)=>+(perm[i]===j)).join(',')]))}),cell=i=>r.charts[r.packets[i].chart].cell;
+ function advance(a,k){let ops=r.outgoing(a.at(-1)).map(i=>r.operations[i]),op=ops.find(o=>o.kind===kind[k]);if(!op)return;let b=[...a,op.target],z=r.inspect([...new Set(b)]);if(z.valid)return {b,z,step:[k,cell(a.at(-1)),cell(op.target),z.pendingContacts.map(c=>c.key)]}}
+ for(let prefix of ['SpSn','XXXpSn']){let a=[r.root];for(let k of 'n'+prefix)a=advance(a,k).b;let start=r.inspect([...new Set(a)]).pendingContacts,front=[{a,w:'',trace:[]}],found=null;
+ for(let depth=0;depth<=7&&!found;depth++){let next=[];for(let v of front){let e=advance(v.a,'E');if(e?.z.certifiedExit){found={w:v.w+'E',trace:[...v.trace,e.step]};break}if(depth===7)continue;for(let k of 'pnSX'){let u=advance(v.a,k);if(u)next.push({a:u.b,w:v.w+k,trace:[...v.trace,u.step]})}}front=next}out.push({perm,prefix,start,found})}}
+fs.writeFileSync(file('pne_repair_return'),JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify(out.slice(0,2)));
