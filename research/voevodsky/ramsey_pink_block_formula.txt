@@ -1,0 +1,21 @@
+=LET(
+  width,P1,
+  startcol,IF(Q1="",1,Q1),
+  IF(OR(width<5,width<>INT(width),startcol<1,startcol>=width,startcol<>INT(startcol)),"Check P1 and Q1",
+    LET(
+      span,width-2,
+      ids,SEQUENCE(span^3,,0),
+      fst,QUOTIENT(ids,span^2)+1,
+      mid,MOD(QUOTIENT(ids,span),span)+1,
+      lst,MOD(ids,span)+1,
+      pos,FILTER(HSTACK(fst,mid+1,lst+2),(fst<mid)*(mid<lst)),
+      redat,LAMBDA(rownum,colnum,OR(colnum=INDEX(pos,rownum,1),colnum=INDEX(pos,rownum,2),colnum=INDEX(pos,rownum,3))),
+      UNIQUE(MAKEARRAY(ROWS(pos),width,LAMBDA(ii,jj,
+        LET(
+          pink,AND(OR(redat(ii,startcol),redat(ii,startcol+1)),NOT(redat(ii,startcol-1)),NOT(redat(ii,startcol+2))),
+          IF(AND(pink,jj=startcol),"P",IF(AND(pink,jj=startcol+1),"",IF(redat(ii,jj),"R","B")))
+        )
+      )))
+    )
+  )
+)
