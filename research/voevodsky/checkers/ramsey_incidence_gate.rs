@@ -1,0 +1,1 @@
+#[path="ramsey35_mask_propagate.rs"]mod inner;use std::io::{self,BufRead};fn main(){let limit=std::env::args().nth(1).unwrap().parse().unwrap();for l in io::stdin().lock().lines(){let m:Vec<u32>=l.unwrap().split_whitespace().map(|s|s.parse().unwrap()).collect();assert_eq!(m.len(),26);let(k,d)=inner::propagate(&m,limit);println!("{k} {d}")}}
