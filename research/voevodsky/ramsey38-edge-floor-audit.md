@@ -1,0 +1,11 @@
+# Auditing the reduction to a 7-regular graph
+
+The original order-28 window used external edge floors 44, 51 and 60 for triangle-free graphs with independence number at most six on 20, 21 and 22 vertices. The exact 21- and 22-vertex minima are not needed.
+
+At order 20 with at most 44 edges, a minimum-degree root has degree at most four by the handshake lemma and at least two because its non-neighbors form a (3,6) graph of order at most 17. For d=2,3,4 take every possible smaller non-neighborhood C of order 19-d and enumerate unordered, repeatable red-support rows. Rows are independent, each has size at least d-1, and their total size is at most 44-d-e(C). A blue clique Q in C cannot be missed by 7-|Q| rows. These tests exhaust the mixed obstructions. Keeping final minimum degree d and canonicalizing yields exactly the 15 stored 44-edge types, none below. The 15-core input truncated at 33 edges is sufficient: at d=4 only e(C)<=28 matters.
+
+For order n=21 or 22 a vertex has  n-18 <= d <= 6. The identity sum_v e(C_v)=n e - sum_v d(v)^2 follows by subtracting all degrees of neighbors in each triangle-free root decomposition. For n-1-d=14,15,16,17 take edge lower bounds 13,25,32,40 respectively: the first follows from Turan's theorem on the complement (five classes of sizes 3,3,3,3,2); the others come from the smaller catalogue minima. The degree-histogram audit retains every even-sum sequence satisfying this identity as a lower bound. It gives e>=49 at n=21 and e>=59 at n=22.
+
+Thus for a putative order-28 graph with a,b,c vertices of degrees 5,6,7 (the only possibilities by R(3,7)=23 and triangle avoidance), the exact sum of root-core edges is 45a+48b+49c. Since every 44--48-edge degree-7 core was excluded and there are no legal smaller ones, the lower bound is 59a+49b+49c. Comparison forces a=b=0. This removes the external order-20/21/22 minima as premises, not the smaller catalogue assumptions. The 44-edge inventory is an output comparison, not a pruning input.
+
+Replay: `uv run --with igraph python research/voevodsky/checkers/ramsey_38_edge_floor_audit.py`. The [receipt](results/ramsey_38_edge_floor_audit.json) includes the input hashes. This is a reduction audit, not an independent replay of all extension screens.
