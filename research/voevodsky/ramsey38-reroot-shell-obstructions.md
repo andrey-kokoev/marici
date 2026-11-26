@@ -1,0 +1,10 @@
+# The three-row conflict changes with the root
+
+Scope: the first graph of the order-27 catalogue, all 24 roots of red degree seven, the same root-plus-seven-column convention and intact support simplices. Outside-row numbers remain graph vertex IDs. For each center enumerate cyclic orders of the link vertices required on the boundary; force the rim edges specified by exposed triangles and reject alternating forced chords. Passing is necessary, not sufficient. Keep inclusion-minimal rejected requests across centers.
+
+- Roots 1 and 15 each have one minimal rejection: rows 6,10,17 at center 15; rows 5,20,27 at center 1. These are opposite views of the same red edge. The link data before taking simplices is the bipartite red incidence between the other neighbors of the two endpoints. Exchanging endpoints transposes it. At root 15, rows 5 and 27 force the path 6–22–10, row 20 puts 3 elsewhere on the rim, and rows 23 and 14 force crossing chords 6–10 and 22–3.
+- Root 6 has three minimal rejections; root 10 has two. These need not be crossings. At root 6 and center 23 the three rows 1,3,9 require the complete boundary triangle on 5,15,7. Row 25 demands a fourth boundary vertex, 19. The rim cannot be both a closed triangle and a cycle through a fourth vertex. No proper subset is rejected by the rim scan (not a proof of global feasibility).
+- Roots 8 and 11 already force a five-label support, on the same common neighbors 2,4,12,19,26. As an intact simplex it has dimension four, so no simplicial 3-ball can realize it under this rule.
+- The remaining 18 roots pass the local rim-order test even when all short rows are requested. This is not a certificate that the link disks or a single global 3-ball exist. The exact sufficiency and five/six cost classification from root 1 do not transfer.
+
+Replay: `python research/voevodsky/checkers/ramsey38_reroot_obstructions.py`. Next: choose a locally unobstructed root (e.g. 2) and test all short rows together against one global boundary sphere and compatible filling.
