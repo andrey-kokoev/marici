@@ -1,0 +1,7 @@
+// Scan McKay's graph6 order-24 (4,5) catalogue for an induced (4,4) on 17.
+// Both color degrees in such a seed are exactly 8 by R(3,4)=9.
+use std::{io::{BufRead,BufReader},fs::File,env};
+fn hit(a:&[u32;24],mut p:u32,mut keep:u32)->Option<u32>{loop{let n=p.count_ones();if n<17{return None}let mut del=0;let mut todo=p;while todo>0{let i=todo.trailing_zeros()as usize;let b=1<<i;todo^=b;let d=(p&a[i]).count_ones();if d<8||n-1-d<8{del|=b}else if keep&b!=0{if (keep&a[i]).count_ones()>8||(keep&!(a[i]|b)).count_ones()>8{return None}if d==8{keep|=p&a[i]}if n-1-d==8{keep|=p&!(a[i]|b)}}}if keep&del!=0||keep.count_ones()>17{return None}if del==0{break}p^=del}
+ let mut x=p;while x!=0{let i=x.trailing_zeros()as usize;x&=x-1;let mut y=x&!a[i];while y!=0{let j=y.trailing_zeros()as usize;y&=y-1;let mut z=y&!a[j];while z!=0{let k=z.trailing_zeros()as usize;z&=z-1;let w=z&!a[k];if w!=0{if p.count_ones()==17{return None}let mut choices=((1<<i)|(1<<j)|(1<<k)|(1<<w.trailing_zeros()))&!keep;while choices!=0{let b=choices&choices.wrapping_neg();choices^=b;if let Some(q)=hit(a,p^b,keep){return Some(q)}keep|=b}return None}}}}
+ Some(p)}
+fn main(){let mut n=0;for l in BufReader::new(File::open(env::args().nth(1).unwrap()).unwrap()).lines(){let l=l.unwrap();let b=l.as_bytes();assert_eq!(b[0],87);let mut a=[0;24];let mut t=0;for j in 1..24{for i in 0..j{if (b[1+t/6]-63)>>(5-t%6)&1!=0{a[i]|=1<<j;a[j]|=1<<i}t+=1}}n+=1;if let Some(p)=hit(&a,(1<<24)-1,0){println!("found row {n} {p} {l}");return}}println!("excluded {n}")}
