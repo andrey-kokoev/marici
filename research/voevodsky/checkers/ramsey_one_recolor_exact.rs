@@ -1,0 +1,4 @@
+// Input: 27 red adjacency masks, deleted index supplied first. Reuse the complete subset-load search.
+use std::io::{self,BufRead};
+mod old {include!("ramsey_deleted27_six_joint.rs");pub fn solve(red:&[u32],z:u32)->Vec<u32>{let p=((1<<27)-1)^(1<<z);let mut a=[0;27];for i in 0..27{a[i]=p&!(red[i]|1<<i)}if clique(&a,p,8){return vec![]}let mut rows=vec![];maximal(&a,p,0,0,&mut rows);let n=rows.len();let mut c=vec![vec![false;n];n];for i in 0..n{for j in i..n{c[i][j]=!clique(&a,p&!(rows[i]|rows[j]),7)}}let mut picked=vec![];if choose(&a,&rows,&c,&(0..n).collect::<Vec<_>>(),&[(p,0)],&mut picked,7){picked.iter().map(|&j|rows[j]).collect()}else{vec![]}}}
+fn main(){for l in io::stdin().lock().lines(){let l=l.unwrap();let x:Vec<u32>=l.split_whitespace().map(|v|v.parse().unwrap()).collect();assert_eq!(x.len(),28);println!("{:?}",old::solve(&x[1..],x[0]))}}
