@@ -1,0 +1,9 @@
+# Why a three-port obstruction needs one movable site
+
+Work on a width-ten square and pentagon. The four new rows admit a repair by a pairing. Before repair each individual row and each pair passes. A legal row excludes the fixed site f and contains at most one member of each movable pair. Suppose a blue seven uses three new ports and the two outside sites jointly missed by their rows; assume these are the only missed outside sites, as in the two-repair census.
+
+Every triple contains one pair from the repair pairing. These two rows are disjoint, so they cover six of the nine nonfixed sites. Besides the two missed outside sites there can be at most one missed movable site. It remains to exclude a completion with no movable site. The fixed site cannot join a square port in blue. Thus such a completion would need two square ports whose corners meet all three rows.
+
+If the corners share a movable site, each row meeting both must contain that site: the alternative is to use both members of the other movable pair, which are consecutive. That contradicts disjointness of the matched pair. If the corners are opposite, mark them (x0,y0) and (x1,y1). To meet both, a row must use (x0,y1) or (x1,y0). Among three rows two make the same choice. Their ports meet the same three square corners and together miss at least three outside sites. Two of these outside sites are blue to one another, since the outside red pentagon has no triangle. These two sites, the three corners and the two row ports already form a blue seven, contrary to pair legality.
+
+Thus precisely one of the last two vertices is movable. The other is the fixed site or one square port. The conclusion concerns three-port sevens: a seven containing all four new ports needs only one more vertex besides the missed edge. Any repair link already breaks such a seven.
