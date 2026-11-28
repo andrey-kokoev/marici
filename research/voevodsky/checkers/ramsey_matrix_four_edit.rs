@@ -1,0 +1,10 @@
+// rustc -O; stdin: one-based catalogue index and graph6 string, 85..87 edges.
+use std::io::{self,BufRead};
+fn blue(a:&[u32;27],mut p:u32,k:u32)->bool{if k==0{return true}while p.count_ones()>=k{let i=p.trailing_zeros() as usize;p&=p-1;if blue(a,p&!a[i],k-1){return true}}false}
+fn flip(a:&mut[u32;27],i:usize,j:usize){a[i]^=1<<j;a[j]^=1<<i;}
+fn dfs(a:&mut[u32;27],p:u32,opts:&[(usize,usize)],k:usize,add:Option<(usize,usize)>,stat:&mut[u64;5]){if k==0{if let Some((i,j))=add{if a[i]&a[j]&p!=0{return}}stat[2]+=1;let mut h=[0;28];for i in 0..27{if p>>i&1!=0{h[(a[i]&p).count_ones() as usize]+=1}}if h[4]==6&&h[6]==12&&h[7]==8{stat[3]+=1;let f=(0..27).filter(|&i|p>>i&1!=0&&(a[i]&p).count_ones()==4).fold(0,|v,i|v|1<<i);if (0..27).all(|i|f>>i&1==0||(a[i]&f).count_ones()<=1){stat[4]+=1;}}return}
+for (pos,&(i,j)) in opts.iter().enumerate(){if opts.len()-pos<k{break}if blue(a,p&!a[i]&!a[j]&!(1<<i)&!(1<<j),6){continue}flip(a,i,j);dfs(a,p,&opts[pos+1..],k-1,add,stat);flip(a,i,j)}}
+fn main(){let edits=std::env::args().nth(1).map(|s|s.parse::<u32>().unwrap()).unwrap_or(4);assert!(edits==4||edits==5);let mut counts=[[0u64;5];2];for l in io::stdin().lock().lines(){let l=l.unwrap();let (_,g)=l.split_once(' ').unwrap();let bytes=g.as_bytes();let mut a=[0u32;27];let mut t=0;let mut ec=0;for j in 0..27{for i in 0..j{if (bytes[1+t/6]-63)>>(5-t%6)&1==1{flip(&mut a,i,j);ec+=1}t+=1}}
+for z in 0..27{let ne=ec-a[z].count_ones();if ne!=76+edits&&ne!=74+edits{continue}let mixed=ne==74+edits;let st=&mut counts[mixed as usize];st[0]+=1;let p=((1<<27)-1)^(1<<z);let mut es=vec![];let mut plus=if mixed{vec![]}else{vec![None]};for j in 0..27{for i in 0..j{if i==z||j==z{continue}if a[i]>>j&1==1{es.push((i,j))}else if mixed&&(a[i]&a[j]&p).count_ones()<edits{plus.push(Some((i,j)))}}}
+for add in plus{if let Some((i,j))=add{flip(&mut a,i,j)}let opts:Vec<_>=es.iter().copied().filter(|&(i,j)|!blue(&a,p&!a[i]&!a[j]&!(1<<i)&!(1<<j),6)).collect();st[1]+=1;dfs(&mut a,p,&opts,(edits-if mixed{1}else{0}) as usize,add,st);if let Some((i,j))=add{flip(&mut a,i,j)}}}}
+println!("{:?}",counts)}
